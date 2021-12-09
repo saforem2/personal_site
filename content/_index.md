@@ -91,9 +91,9 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 
 # Publications & Pre-prints
 
--   **S. Foreman**, X.Y. Jin, J.C. Osborn, [**LeapFrogLayers: Trainable Framework for Effective Topological Sampling**](https://indico.cern.ch/event/1006302/contributions/4380743/), [_Lattice, 2021_](https://indico.cern.ch/event/1006302)
+-   **S. Foreman**, X.Y. Jin, J.C. Osborn, [**LeapFrogLayers: Trainable Framework for Effective Topological Sampling**](https://arxiv.org/abs/2112.01582), [slides](https://indico.cern.ch/event/1006302/contributions/4380743/), [_Lattice, 2021_](https://indico.cern.ch/event/1006302)
 
--   **S. Foreman** L. Jin, X.Y. Jin, A. Tomiya, J.C. Osborn, & T. Izubuchi, [**HMC with Normalizing Flows**](https://indico.cern.ch/event/1006302/contributions/4380743/), [_Lattice, 2021_](https://indico.cern.ch/event/1006302/)
+-   **S. Foreman** L. Jin, X.Y. Jin, A. Tomiya, J.C. Osborn, & T. Izubuchi, [**HMC with Normalizing Flows**](https://arxiv.org/abs/2112.01586), [slides](https://indico.cern.ch/event/1006302/contributions/4380743/), [_Lattice, 2021_](https://indico.cern.ch/event/1006302/)
 
 -   **S. Foreman**, X.Y. Jin, & J.C. Osborn, [**Deep Learning Hamiltonian Monte Carlo**](https://arxiv.org/abs/2105.03418) [(+ poster)](https://simdl.github.io/posters/57-supp_DLHMC_Foreman_SimDL-ICLR2021_poster1.pdf) at [_SimDL Workshop @ ICLR_](https://simdl.github.io/), 2021
 
