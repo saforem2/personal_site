@@ -76,7 +76,9 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 
 # Invited Talks
 
-*   [**Training Topological Samplers for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/) at [_ML4HEP, on and off the Lattice_](https://indico.ectstar.eu/event/77/contributions/2349/) @ ECT\* Trento, Sep 2021
+*   [**Accelerated Sampling Methods for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc-dwq25/), at [_BNL-HET  & RBRC Joint Workshop "DWQ @ 25"_](https://indico.bnl.gov/event/13576/), Dec 2021
+
+*   [**Training Topological Samplers for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/), [_ML4HEP, on and off the Lattice_](https://indico.ectstar.eu/event/77/contributions/2349/) @ ECT\* Trento, Sep 2021
     
 *   [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the _MIT Lattice Group Seminar_, 2021
     
