@@ -95,7 +95,7 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 
 # Publications & Pre-prints
 
-- D. Boyda, Salvatore Calí, **S. Foreman**, et. al, [Applications of Machine Learning to Lattice Quantum Field Theory](https://arxiv.org/abs/2202.05838) [_arXiv:2202.05838_](https://arxiv.org/abs/2202.05838), 2022
+- D. Boyda, Salvatore Calí, **S. Foreman**, et al., [Applications of Machine Learning to Lattice Quantum Field Theory](https://arxiv.org/abs/2202.05838) [_arXiv:2202.05838_](https://arxiv.org/abs/2202.05838), Feb 2022
 
 - **S. Foreman**, X.Y. Jin, J.C. Osborn, [**LeapFrogLayers: Trainable Framework for Effective Topological Sampling**](https://arxiv.org/abs/2112.01582), [slides](https://indico.cern.ch/event/1006302/contributions/4380743/), [_Lattice, 2021_](https://indico.cern.ch/event/1006302)
 
