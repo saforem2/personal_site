@@ -58,7 +58,7 @@ seo:
 
 # About Me
 
-I'm currently a [postdoctoral research associate](https://www.alcf.anl.gov/about/people/sam-foreman) working in the data science group at the [Leadership Computing Facility](https://www.alcf.anl.gov) at [Argonne National Laboratory](https://www.anl.gov).
+I'm currently an [Assistant Computational Scientist](https://www.alcf.anl.gov/about/people/sam-foreman) working in the data science group at the [Leadership Computing Facility](https://www.alcf.anl.gov) at [Argonne National Laboratory](https://www.anl.gov).
 
 I'm generally interested in the application of machine learning to computational problems in physics, particularly within the context of high performance computing.
 
@@ -74,26 +74,7 @@ Applied Mathematics, 2015) from The University of Illinois at Urbana-Champaign.
 
 My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was supervised by Professor [Alfred Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the Center for Complex Systems Research at UIUC.
 
-# Invited Talks
-
-- [**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar), at UNC Greensboro, March 2022
-
-- [**Accelerated Sampling Methods for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc-dwq25/), at [_BNL-HET  & RBRC Joint Workshop "DWQ @ 25"_](https://indico.bnl.gov/event/13576/), Dec 2021
-
-- [**Training Topological Samplers for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/), [_ML4HEP, on and off the Lattice_](https://indico.ectstar.eu/event/77/contributions/2349/) @ ECT\* Trento, Sep 2021
-    
-- [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the _MIT Lattice Group Seminar_, 2021
-    
-- [**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) to the [_Machine Learning Techniques in Lattice QCD Workshop_](https://bit.ly/mainz21_overview), 2021
-    
-- [**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) at the University of Iowa, 2020
-    
-- [**Machine learning inspired analysis of the Ising model transition**](https://bit.ly/latt2018) to [_Lattice, 2018_](https://indico.fnal.gov/event/15949/overview)
-    
-- **Machine Learning Analysis of Ising Worms** at _Brookhaven National Laboratory_, 2017
-    
-
-# Publications & Pre-prints
+# Recent Work
 
 - D. Boyda, Salvatore Calí, **S. Foreman**, et al., [Applications of Machine Learning to Lattice Quantum Field Theory](https://arxiv.org/abs/2202.05838) [_arXiv:2202.05838_](https://arxiv.org/abs/2202.05838), Feb 2022
 
@@ -110,6 +91,60 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 - **S. Foreman**, J. Giedt, Y. Meurice, & J. Unmuth-Yockey [**RG inspired Machine Learning for lattice field theory**](https://arxiv.org/abs/1710.02079) [_arXiv:1710.02079_](https://www.arxiv.or/abs/1710.02079), 2017
 
 - **S. Foreman**, J. Liu, & L. Wortsmann [**Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade**](https://doi.org/10.1063/1.5009698) _J. Appl. Phys_, 2018
+
+
+# Invited Talks
+
+- [**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/), at Argonne National Laboratory, May 2022
+
+<div align="center">
+<iframe src="https://saforem2.github.io/anl-job-talk/#/" title="ANL Job Talk" width="66%" align="center" height="500" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;align:center;">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+
+- [**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar), at UNC Greensboro, March 2022
+
+<div align="center">
+<iframe src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" width="66%" align="center" height="500" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+
+- [**Accelerated Sampling Methods for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc-dwq25/), at [_BNL-HET  & RBRC Joint Workshop "DWQ @ 25"_](https://indico.bnl.gov/event/13576/), Dec 2021
+
+<div align="center">
+<iframe src="https://saforem2.github.io/l2hmc-dwq25" title="Accelerated Sampling Methods for Lattice Gauge Theory" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="66%" align="center" height="500" style="border:none;">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+
+- [**Training Topological Samplers for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/), [_ML4HEP, on and off the Lattice_](https://indico.ectstar.eu/event/77/contributions/2349/) @ ECT\* Trento, Sep 2021
+
+<div align="center">
+<iframe src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for Lattice Gauge Theory" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="66%" align="center" height="500" style="border:none;">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+    
+- [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the _MIT Lattice Group Seminar_, 2021
+    
+- [**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) to the [_Machine Learning Techniques in Lattice QCD Workshop_](https://bit.ly/mainz21_overview), 2021
+    
+- [**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) at the University of Iowa, 2020
+
+<div align="center">
+<iframe src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="66%" align="center" height="500" style="border:none;">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+
+<!-- <iframe src="https://slides.com/samforeman/l2hmc-qcd/embed" width="576" height="420" title="l2hmc-qcd" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+    
+- [**Machine learning inspired analysis of the Ising model transition**](https://bit.ly/latt2018) to [_Lattice, 2018_](https://indico.fnal.gov/event/15949/overview)
+    
+- **Machine Learning Analysis of Ising Worms** at _Brookhaven National Laboratory_, 2017
+    
 
 <p align="center">
 <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fwww.samforeman.me&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
