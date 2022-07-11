@@ -135,7 +135,7 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 
 <!-- </span> -->
 {{< admonition type=tip title="" open=true >}}
-- You can get a live view of some of my recent talks [here](slides) 
+- You can get a live view of some of my recent talks [here](slides)
 {{< /admonition >}}
     
 
