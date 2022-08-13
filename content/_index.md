@@ -58,23 +58,33 @@ seo:
 
 # About Me
 
-I'm currently an [Assistant Computational Scientist](https://www.alcf.anl.gov/about/people/sam-foreman) working in the data science group at the [Leadership Computing Facility](https://www.alcf.anl.gov) at [Argonne National Laboratory](https://www.anl.gov).
+I'm currently an [Assistant Computational
+Scientist](https://www.alcf.anl.gov/about/people/sam-foreman) working in the
+data science group at the [Leadership Computing
+Facility](https://www.alcf.anl.gov) at [Argonne National
+Laboratory](https://www.anl.gov).
 
-I'm generally interested in the application of machine learning to computational problems in physics, particularly within the context of high performance computing.
+I'm generally interested in the application of machine learning to
+computational problems in physics, particularly within the context of high
+performance computing. My current research focuses on using deep generative
+modeling to help build better sampling algorithms in lattice gauge theory. In
+particular, I'm interested in building gauge equivariant neural network
+architectures and using inductive priors to incorporate physical symmetries
+into machine learning models.
 
-My current research focuses on using deep generative modeling to help build better sampling algorithms in lattice gauge theory.
-
-In particular, I'm interested in building gauge equivariant neural network
-architectures and using inductive priors to incorporate physical symmetries into machine learning models.
-
-I received my PhD in Physics from the University of Iowa in 2019 and my thesis was on [Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771).
-
+I received my PhD in Physics from the University of Iowa in 2019 and my thesis
+was on [Learning Better Physics: A Machine Learning Approach to Lattice Gauge
+Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771).
 Prior to this, I completed two bachelors degrees (Engineering Physics and
 Applied Mathematics, 2015) from The University of Illinois at Urbana-Champaign.
-
-My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was supervised by Professor [Alfred Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the Center for Complex Systems Research at UIUC.
+My undergraduate dissertation was titled [Energy Storage in Quantum
+Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was supervised
+by Professor [Alfred Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler)
+within the Center for Complex Systems Research at UIUC.
 
 # Recent Work
+
+- Andreas S. Kronfeld et. al. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641), 15 Jul 2022
 
 - D. Boyda, Salvatore Calí, **S. Foreman**, et al., [Applications of Machine Learning to Lattice Quantum Field Theory](https://arxiv.org/abs/2202.05838) [_arXiv:2202.05838_](https://arxiv.org/abs/2202.05838), Feb 2022
 
@@ -97,6 +107,7 @@ My undergraduate dissertation was titled [Energy Storage in Quantum Resonators](
 
 
 <!-- <span style="font-size:1.25em;"> -->
+- [**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning), at [ATPESC 2022](https://extremecomputingtraining.anl.gov/), August 2022 [📕 accompanying notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
 
 - [**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/), at Argonne National Laboratory, May 2022
   <!-- <iframe src="https://saforem2.github.io/anl-job-talk/#/" title="ANL Job Talk" width="66%" align="center" height="300" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="margin-top:1em;margin-bottom:1em;border:none;align:center;"> -->
