@@ -105,7 +105,7 @@ within the Center for Complex Systems Research at UIUC.
 
 # Invited Talks
 
-
+- [**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022), at [2022 ALCF Simulation, Data, and Learning Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop), October 2022 
 <!-- <span style="font-size:1.25em;"> -->
 - [**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning), at [ATPESC 2022](https://extremecomputingtraining.anl.gov/), August 2022 [📕 accompanying notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
 

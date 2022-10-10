@@ -1,4 +1,9 @@
 # Recent Talks
+- [**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/), at [2022 ALCF Simulation, Data, and Learning Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop), October 2022 
+    <iframe src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" width="66%" align="center" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="margin-top:1em;margin-bottom:1em;border:none;align:center;">
+    <p>Your browser does not support iframes.</p>
+  </iframe>
+
 - [**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning), at [ATPESC 2022](https://extremecomputingtraining.anl.gov/), August 2022 [📕 accompanying notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
   <iframe src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" width="66%" align="center" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="margin-top:1em;margin-bottom:1em;border:none;align:center;">
     <p>Your browser does not support iframes.</p>
@@ -23,21 +28,16 @@
   <iframe src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for Lattice Gauge Theory" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="66%" align="center" height="400" style="border:none;margin-top:1em;margin-bottom:1em;">
     <p>Your browser does not support iframes.</p>
   </iframe>
-    
+
 - [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the _MIT Lattice Group Seminar_, 2021
-    
+
 - [**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) to the [_Machine Learning Techniques in Lattice QCD Workshop_](https://bit.ly/mainz21_overview), 2021
-    
+
 - [**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) at the University of Iowa, 2020
   <iframe src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="66%" align="center" height="400" style="border:none;margin-top:1em;margin-bottom:1em;">
     <p>Your browser does not support iframes.</p>
   </iframe>
 
-<!-- <iframe src="https://slides.com/samforeman/l2hmc-qcd/embed" width="576" height="400" title="l2hmc-qcd" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
-    
 - [**Machine learning inspired analysis of the Ising model transition**](https://bit.ly/latt2018) to [_Lattice, 2018_](https://indico.fnal.gov/event/15949/overview)
-    
-- **Machine Learning Analysis of Ising Worms** at _Brookhaven National Laboratory_, 2017
 
-<!-- </span> -->
-    
+- **Machine Learning Analysis of Ising Worms** at _Brookhaven National Laboratory_, 2017
