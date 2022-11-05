@@ -1,4 +1,9 @@
 # Recent Talks
+- [**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training), at [Introduction to AI-driven Science on Supercomputers: A Student Training Series](https://github.com/argonne-lcf/ai-science-training-series), November 2022 
+    <iframe src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" width="66%" align="center" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="margin-top:1em;margin-bottom:1em;border:none;align:center;">
+    <p>Your browser does not support iframes.</p>
+  </iframe>
+
 - [**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/), at [2022 ALCF Simulation, Data, and Learning Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop), October 2022 
     <iframe src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" width="66%" align="center" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="margin-top:1em;margin-bottom:1em;border:none;align:center;">
     <p>Your browser does not support iframes.</p>
