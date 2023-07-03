@@ -82,9 +82,13 @@ Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was supervised
 by Professor [Alfred Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler)
 within the Center for Complex Systems Research at UIUC.
 
+{{< admonition type="abstract" title="Recent Talks" open=true >}}
+You can get a live view of some of my recent talks [here :(fas fa-chart-line fa-fw):](slides).
+{{< /admonition >}}
+
 # Recent Work
 
-- M. Zvyagin, A. Brace, K. Hippe, et. al [GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract), Oct 2022
+- M. Zvyagin, A. Brace, K. Hippe, et. al., [GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract), Oct 2022
 
 - A.S. Kronfeld et al. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641), 15 Jul 2022
 
@@ -106,6 +110,10 @@ within the Center for Complex Systems Research at UIUC.
 
 
 # Invited Talks
+
+- [**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/), at [PASC23](https://pasc23.pasc-conference.org/), July 2023 
+
+- [**Efficient Sampling for Lattice Gauge Theory**](https://saforem2.github.io/deep-fridays), at [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html), April 2023
 
 - [**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training), at [Introduction to AI-driven Science on Supercomputers: A Student Training Series](https://github.com/argonne-lcf/ai-science-training-series), November 2022 
 
@@ -149,9 +157,6 @@ within the Center for Complex Systems Research at UIUC.
 - **Machine Learning Analysis of Ising Worms** at _Brookhaven National Laboratory_, 2017
 
 <!-- </span> -->
-{{< admonition type=tip title="" open=true >}}
-- You can get a live view of some of my recent talks [here](slides)
-{{< /admonition >}}
     
 
 <p align="center">
