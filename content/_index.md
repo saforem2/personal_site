@@ -86,11 +86,15 @@ within the Center for Complex Systems Research at UIUC.
 You can get a live view of some of my recent talks [here :(fas fa-chart-line fa-fw):](slides).
 {{< /admonition >}}
 
-# Recent Work
+## Recent Work
 
-- M. Zvyagin, A. Brace, K. Hippe, et. al., [GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract), Oct 2022
+- M. Zvyagin, A. Brace, K. Hippe, et. al., [GenSLMs: Genome-scale language
+models reveal SARS-CoV-2 evolutionary
+dynamics](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract),
+Oct 2022
 
-- A.S. Kronfeld et al. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641), 15 Jul 2022
+- A.S. Kronfeld et al. [Lattice QCD and Particle
+Physics](https://arxiv.org/abs/2207.07641), 15 Jul 2022
 
 - D. Boyda, Salvatore Calí, **S. Foreman**, et al., [Applications of Machine Learning to Lattice Quantum Field Theory](https://arxiv.org/abs/2202.05838) [_arXiv:2202.05838_](https://arxiv.org/abs/2202.05838), Feb 2022
 
