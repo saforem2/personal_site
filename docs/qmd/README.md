@@ -1,6 +1,6 @@
 # Loooooooong Sequence Lengths
 Sam Foreman
-2023-10-14
+2023-10-31
 
 <div id="fig-ds4sci" style="text-align:center;">
 
@@ -89,15 +89,15 @@ colors = {
 
 data = {
     '25B': {
+        'Old Megatron-DS': np.array([36, 42, 42]),
+        'Megatron-LM': np.array([26, 48, 52]),
+        'New Megatron-DS': np.array([192, 448, 512]),
+    },
+    '33B': {
         'Old Megatron-DS': np.array([28, 32, 32]),
         'Megatron-LM': np.array([14, 46, 52]),
         'New Megatron-DS': np.array([128, 384, 448]),
     },
-    '33B': {
-        'Old Megatron-DS': np.array([36, 42, 42]),
-        'Megatron-LM': np.array([26, 48, 52]),
-        'New Megatron-DS': np.array([192, 448, 512]),
-    }
 }
 ```
 
