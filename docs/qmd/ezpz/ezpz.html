@@ -236,7 +236,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
   <ul>
   <li><a href="#initialization-times" id="toc-initialization-times" class="nav-link active" data-scroll-target="#initialization-times">Initialization Times</a>
   <ul class="collapse">
-  <li><a href="#measuring-calculating-startup-time" id="toc-measuring-calculating-startup-time" class="nav-link" data-scroll-target="#measuring-calculating-startup-time">Measuring / Calculating Startup Time</a></li>
+  <li><a href="#sec-measurements" id="toc-sec-measurements" class="nav-link" data-scroll-target="#sec-measurements">Measuring / Calculating Startup Time</a></li>
   </ul></li>
   <li><a href="#minimal-working-example" id="toc-minimal-working-example" class="nav-link" data-scroll-target="#minimal-working-example">Minimal Working Example</a></li>
   </ul>
@@ -339,19 +339,19 @@ For examples, we can measure the start-up time for the <code>rank0</code>?</li>
 </div>
 </div>
 <ol type="1">
-<li><p>In <a href="#startup-timing">Startup Timing</a>,I provide a summary of how the startup time is identified</p></li>
+<li><p>In <a href="#sec-measurements">Measuring / Calculating Startup Time</a>,I provide a summary of how the startup time is identified and calculated.</p></li>
 <li><p>I’m not sure exactly I understand</p>
 <blockquote class="blockquote">
 <p>Will the measurement methodology be the same for distributed training? For examples, we can measure the start-up time for the rank0?</p>
 </blockquote>
 <p>The startup time is being measured for distributed training (logs only created on <code>RANK = 0</code>)</p></li>
-<li><p>I discuss in <a href="#ezpz"><code>ezpz</code></a> a minimal example that can be used to measure the startup times.</p>
+<li><p>I discuss in <a href="#minimal-working-example">Minimal Working Example</a> a minimal example that can be used to measure the startup times.</p>
 <ul>
 <li>This is using a library I’ve been working on, <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a> that is designed to help simplify the process of setting up / initializing distributed training across many GPUs.</li>
 </ul></li>
 </ol>
-<section id="measuring-calculating-startup-time" class="level3">
-<h3 class="anchored" data-anchor-id="measuring-calculating-startup-time">Measuring / Calculating Startup Time</h3>
+<section id="sec-measurements" class="level3">
+<h3 class="anchored" data-anchor-id="sec-measurements">Measuring / Calculating Startup Time</h3>
 <ul>
 <li><p>The startup timing was identified by parsing the logfiles from existing runs and calculating the difference <span class="math inline">\delta t = t_{1} - t_{0}</span>,</p>
 <ul>

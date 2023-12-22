@@ -131,8 +131,8 @@ format:
 :::
 
 
-1. In [Startup Timing](#startup-timing),I provide a summary of how the
-   startup time is identified
+1. In [Measuring / Calculating Startup Time](#sec-measurements),I provide a
+   summary of how the startup time is identified and calculated.
 
 2. I'm not sure exactly I understand
 
@@ -142,7 +142,7 @@ format:
    The startup time is being measured for distributed training (logs only
    created on `RANK = 0`)
 
-3. I discuss in [`ezpz`](#ezpz) a minimal example that can be used to measure
+3. I discuss in [Minimal Working Example](#minimal-working-example) a minimal example that can be used to measure
    the startup times.
 
    - This is using a library I've been working on,
@@ -150,7 +150,7 @@ format:
      simplify the process of setting up / initializing distributed training
      across many GPUs.
 
-### Measuring / Calculating Startup Time
+### Measuring / Calculating Startup Time  {#sec-measurements}
 
 - The startup timing was identified by parsing the logfiles from existing runs
   and calculating the difference $\delta t = t_{1} - t_{0}$,
