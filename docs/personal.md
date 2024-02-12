@@ -1,14 +1,12 @@
-# Sam Foreman
+# [Sam Foreman](https://samforeman.me)
 
-
-# 
-
+<!--
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"
-style="width: 100%;">![](./assets/avatar.png)</span>  
+<span class="profile-avatar" style="width: 5%;">![](./assets/avatar.png)</span> 
 <span style="font-size: 1.875rem; color: var(--dim-text)!important; font-weight: bold; margin-bottom: -1rem; letter-spacing:-1px;">👋
 [![](https://readme-typing-svg.demolab.com?font=IBM+Plex+Sans+Condensed&weight=700&size=32&duration=2500&pause=1000&color=838383&vCenter=true&random=true&repeat=false&width=175&lines=Hi%2C+I'm+Sam!)](https://git.io/typing-svg)
+
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)</span>  
 <span style="font-size:1.5rem; padding-right: 0.075rem;">[](https://samforeman.me)</span>
 <span style="font-size:1.5rem; padding-left: 0.075rem; padding-right: 0.075rem">[](https://github.com/saforem2)</span>
@@ -18,26 +16,33 @@ style="width: 100%;">![](./assets/avatar.png)</span>
 <span style="font-size:1.5rem; padding-left: 0.075rem; padding-right: 0.075rem">[](https://open.spotify.com/user/saforem2)</span>
 <span style="font-size:1.5rem; padding-left: 0.075rem; padding-right: 0.075rem">[](https://www.last.fm/user/saforem2)</span>
 <span style="font-size:1.5rem; padding-left: 0.075rem; padding-right: 0.075rem">[](https://linkedin.com/in/saforem2)</span>
-<!-- [[$\longrightarrow$]{.red-text} [**Intel oneAPI Talk**](https://samforeman.me/oneapi-talk/) @ UIC (10/21/2023) [$\longleftarrow$]{.red-text}]{style="font-size: 1.5em; font-weight: 700;"} -->
+[[$\longrightarrow$]{.red-text} [**Intel oneAPI Talk**](https://samforeman.me/oneapi-talk/) @ UIC (10/21/2023) [$\longleftarrow$]{.red-text}]{style="font-size: 1.5em; font-weight: 700;"}
 
 </div>
 
 <div>
 
 </div>
+-->
+
+I'm currently an [Assistant Computational Scientist](https://alcf.anl.gov/about/people/sam-foreman) 
+at [Argonne National Laboratory](https://anl.gov).
 
 I received my PhD in Physics from the University of Iowa in 2019 and my
-thesis was on [Learning Better Physics: A Machine Learning Approach to
-Lattice Gauge
-Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771).
+thesis was on:   
+
+> [Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771).  
+
 Prior to this, I completed two bachelors degrees (Engineering Physics
 and Applied Mathematics, 2015) from The University of Illinois at
-Urbana-Champaign. My undergraduate dissertation was titled [Energy
+Urbana-Champaign.  
+
+My undergraduate dissertation was titled [Energy
 Storage in Quantum
 Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was
 supervised by Professor [Alfred
 Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the
-Center for Complex Systems Research at UIUC.
+Center for Complex Systems Research at UIUC.  
 
 As a member of the [Data Science
 Group](https://www.alcf.anl.gov/about/people/group/506) at
@@ -231,6 +236,7 @@ Climate Analysis project using ClimRR data
 ## <span class="yellow-text"></span> Active Projects
 
 > [!TIP]
+> <details closed><summary>Github Profile</summary>
 >
 > ### <span class="yellow-text"><span class="quarto-shortcode__" data-is-shortcode="1" data-raw="{{&lt; fa brands github &gt;}}"><span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="fa" data-raw="fa"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="brands" data-raw="brands"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="github" data-raw="github"></span></span></span> <span class="dim-text">GitHub Stats</span> <span class="dim-text">([`saforem2`](https://github.com/saforem2)):</span>
 >
@@ -275,6 +281,10 @@ Climate Analysis project using ClimRR data
 >
 > </div>
 >
+> > </div>
+> </details>
+
+<!--
 > > [!TIP]
 > >
 > > ### [`l2hmc-qcd`](https://saforem2.github.io/l2hmc-qcd)
@@ -284,8 +294,10 @@ Climate Analysis project using ClimRR data
 > > [![](https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg)](https://saforem2.github.io/l2hmc-qcd)  
 > > [ GitHub repo](https://github.com/saforem2/l2hmc-qcd)
 > >
-> > <!-- <a href="https://github.com/saforem2/l2hmc-qcd"><img src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&icon_color=#00CCFF&title_color=#00CCFF&bg_color=#1c1c1c" /></a> -->
-> > <!-- ![l2hmc-qcd](https://github.com/saforem2/saforem2/blob/main/assets/l2hmc-qcd-small.svg) -->
+-->
+<!-- <a href="https://github.com/saforem2/l2hmc-qcd"><img src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&icon_color=#00CCFF&title_color=#00CCFF&bg_color=#1c1c1c" /></a> -->
+<!-- ![l2hmc-qcd](https://github.com/saforem2/saforem2/blob/main/assets/l2hmc-qcd-small.svg) -->
+<!--
 > >
 > > <a href="https://hits.seeyoufarm.com"><img alt="hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsaforem2%2Fl2hmc-qcd&count_bg=%2300CCFF&title_bg=%23555555&icon=&icon_color=%23111111&title=👋&edge_flat=false"></a>  
 > > <a href="https://github.com/saforem2/l2hmc-qcd/"><img alt="l2hmc-qcd" src="https://img.shields.io/badge/-l2hmc--qcd-252525?style=flat&logo=github&labelColor=gray"></a>
@@ -300,7 +312,7 @@ Climate Analysis project using ClimRR data
 > > <br>
 > > [<img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Weights & Biases monitoring" height=20>](https://wandb.ai/l2hmc-qcd/l2hmc-qcd)
 > >
-> > </div>
+-->
 
 <div>
 
@@ -317,7 +329,7 @@ Climate Analysis project using ClimRR data
 
 ## <span class="pink-text"></span> Appendix
 
-> [!TIP]
+> [!NOTE]
 >
 > ### <span style="color: #FF5252;"><span class="quarto-shortcode__" data-is-shortcode="1" data-raw="{{&lt; iconify material-symbols ecg-heart &gt;}}"><span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="iconify" data-raw="iconify"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="material-symbols" data-raw="material-symbols"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="ecg-heart" data-raw="ecg-heart"></span></span> Status</span>
 >
