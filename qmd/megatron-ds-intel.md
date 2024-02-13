@@ -14,7 +14,6 @@ editor:
    render-on-save: true
 execute:
    freeze: auto
-lightbox: auto
 twitter-card:
     image: "./assets/thumbnail.png"
     creator: "@saforem2"
@@ -64,7 +63,7 @@ format:
       <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet" />
   gfm:
     author: Sam Foreman
-    output-file: "Megatron-DeepSpeed-Intel"
+    output-file: "megatron-ds-intel.md"
 ---
 
 ## Install / Setup
@@ -138,9 +137,9 @@ format:
 
     $ conda activate anl_release_q4
 
+    # [BUG] for some reason, need to run twice ¯\_(ツ)_/¯
     $ git clone https://github.com/saforem2/ezpz
     $ python3 -m pip install -e "ezpz[dev]"
-    # [BUG] for some reason, need to run twice ¯\_(ツ)_/¯
     $ source ./ezpz/src/ezpz/bin/savejobenv && source ./ezpz/src/ezpz/bin/savejobenv
     ```
 

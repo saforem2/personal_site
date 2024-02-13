@@ -1,6 +1,6 @@
 # Megatron DeepSpeed on `xpu`
 Sam Foreman
-2024-01-23
+2024-02-12
 
 ## Install / Setup
 
@@ -82,9 +82,9 @@ Sam Foreman
 
   $ conda activate anl_release_q4
 
-  # [BUG] for some reason, need to run twice ¯\_(ツ)_/¯
   $ git clone https://github.com/saforem2/ezpz
   $ python3 -m pip install -e "ezpz[dev]"
+  # [BUG] for some reason, need to run twice ¯\_(ツ)_/¯
   $ source ./ezpz/src/ezpz/bin/savejobenv && source ./ezpz/src/ezpz/bin/savejobenv
   ```
 

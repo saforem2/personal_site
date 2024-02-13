@@ -8,52 +8,14 @@ editor:
    render-on-save: true
 execute:
    freeze: auto
-filters:
-  - lightbox
+lightbox: auto
 format:
   # html:
   html:
-    callout-appearance: simple
-    code-link: true
-    code-line-numbers: false
-    toc: true
-    self-contained: false
-    toc-location: right
-    # grid:
-    #   body-width: 1150px
-    fig-responsive: true
-    anchor-sections: true
-    highlight-style: atom-one
-    code-overflow: scroll
-    # code-fold: false
-    code-copy: true
-    code-summary: " "
-    code-tools:
-      source: repo
-      toggle: true
-      caption: none
-    html-math-method: katex
-    css:
-      - ../css/default.css
-      - ../css/callouts.css
-      - ../css/profile.css
-    theme: 
-      dark:
-        - ../css/syntax-dark.scss
-        - ../css/dark.scss 
-        - ../css/common.scss
-      light:
-        - ../css/syntax-light.scss
-        - ../css/light.scss
-        - ../css/common.scss
-    # smooth-scroll: true
-    citations-hover: true
-    footnotes-hover: true
-    header-includes: |
-      <link href="https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css" rel="stylesheet" />
+    format: default
   gfm:
     author: Sam Foreman
-    output-file: "README.md"
+    output-file: "deepspeed4science-genslm.md"
 ---
 
 ::: {#fig-ds4sci style="text-align:center;"}
@@ -74,7 +36,7 @@ sequences than was previously possible.
 <!-- > [📁 `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/examples_deepspeed/deepspeed4science/megatron_long_seq_support/README.md) -->
 <!-- > folder. -->
 
-::: {.callout-tip icon=false title="[{{< fa solid newspaper >}}]{.green-text} Additional Details" collapse="false" style="width:100%;"}
+::: {.callout-note icon=false title="📓 Note:" collapse="false" style="width:100%; background: none!important; border: none!important; border-left: 2px solid var(--callout-note-color)!important; border-radius: 0pt!important; opacity: 100%;"}
 
 Additional details can be found in the
 [📁 `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/tree/main/examples_deepspeed/deepspeed4science/megatron_long_seq_support)
@@ -139,20 +101,17 @@ import datetime
 from typing import Tuple
 import matplotlib.pyplot as plt
 from pathlib import Path
-# NOTE:
-# - [Toolbox](https://github.com/saforem2/toolbox)
-from toolbox import set_plot_style
+from ambivalent import STYLES
 import seaborn as sns
-from opinionated import STYLES
 import seaborn as sns
 
 sns.set_context('talk')
-set_plot_style()
+#set_plot_style()
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
 
 plt.style.use('default')
-set_plot_style()
-plt.style.use(STYLES['opinionated_min'])
+# set_plot_style()
+plt.style.use(STYLES['ambivalent'])
 plt.rcParams['ytick.labelsize'] = 14.0
 plt.rcParams['xtick.labelsize'] = 14.0
 plt.rcParams['grid.alpha'] = 0.4

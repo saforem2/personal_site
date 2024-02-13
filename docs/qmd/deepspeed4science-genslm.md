@@ -1,15 +1,8 @@
 # Loooooooong Sequence Lengths
 Sam Foreman
-2023-10-31
-
-<div id="fig-ds4sci" style="text-align:center;">
+2024-02-12
 
 <span class="stretch">![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg)</span>
-
-Figure 1: This work was done as part of the DeepSpeed4Science project,
-in collaboration with Microsoft.
-
-</div>
 
 The new
 [Megatron-DeepSpeed](https://github.com/microsoft/Megatron-DeepSpeed)
@@ -22,15 +15,13 @@ sequences than was previously possible.
 <!-- > [📁 `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/examples_deepspeed/deepspeed4science/megatron_long_seq_support/README.md) -->
 <!-- > folder. -->
 
-<div>
-
-> **<span class="green-text"></span> Additional Details**
+> [!NOTE]
+>
+> ### 📓 Note:
 >
 > Additional details can be found in the [📁
 > `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/tree/main/examples_deepspeed/deepspeed4science/megatron_long_seq_support)
 > folder.
-
-</div>
 
 ## [DeepSpeed4Science](https://ai4science.azurewebsites.net/2023/09/18/model-showcase-genslms/) (09/2023)
 
@@ -57,8 +48,6 @@ sequences than was previously possible.
 
 ### Initial Results
 
-<div id="tbl-results">
-
 | Sequence Length |     Old Megatron-DeepSpeed (TFLOPS)      |      New Megatron-DeepSpeed (TFLOPS)      |
 |:---------------:|:----------------------------------------:|:-----------------------------------------:|
 |       2k        | <span style="text-weight:600;">25</span> | <span style="text-weight:600;">68</span>  |
@@ -70,12 +59,7 @@ sequences than was previously possible.
 |      128k       |    <span class="red-text">OOM</span>     | <span style="text-weight:600;">119</span> |
 |      256k       |    <span class="red-text">OOM</span>     | <span style="text-weight:600;">94</span>  |
 
-Table 1: Long sequence length support[^1] from
-[`microsoft/Megatron-DeepSpeed`](https://github.com/microsoft/Megatron-DeepSpeed)
-
-</div>
-
-<details>
+<details class="code-fold">
 <summary>Data</summary>
 
 ``` python
@@ -102,10 +86,7 @@ data = {
 ```
 
 </details>
-
-<div id="fig-seq-len" style="background-color:none;">
-
-<details>
+<details class="code-fold">
 <summary>Make the plots</summary>
 
 ``` python
@@ -173,20 +154,13 @@ for idx, (model_size, d) in enumerate(data.items()):
 
 ![GPT-`33B` Model](dsblog_files/figure-commonmark/cell-4-output-2.svg)
 
-Figure 2: Pre-training with long sequence support across different model
-sizes and numbers of GPUs. In each case, the `new` (current)
-implementation **significantly** outperforms both NVIDIA/Megatron-LM as
-well as our previous implementation.
-
-</div>
-
 ## Installation
 
 ### Using [`install.sh`](https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh)
 
-<div>
-
-> **Installation**
+> [!TIP]
+>
+> ### Installation
 >
 > **Important**<br> To install, simply:
 >
@@ -202,10 +176,8 @@ well as our previous implementation.
 >
 > 1.  **Automatically** create a virtual environment *on top of* the
 >     latest `conda` module
-> 2.  Install (+ update[^2]) / build all the required
+> 2.  Install (+ update[^1]) / build all the required
 >     [dependencies](#dependencies) into this virtual environment
-
-</div>
 
 ### Step-by-Step
 
@@ -244,7 +216,7 @@ building each of the dependencies.
       fi
       ```
 
-3.  Setup Virtual Environment[^3]:
+3.  Setup Virtual Environment[^2]:
 
     ``` bash
     cd ./genslm/examples/long-sequences
@@ -343,16 +315,14 @@ dependencies.
 6.  [
     `Dao-AILab/flash-attention`](https://github.com/Dao-AILab/flash-attention):
 
-    <div>
-
-    > **Flash Attention**
+    > [!CAUTION]
+    >
+    > ### Flash Attention
     >
     > - The new release supports three different implementations of
     >   FlashAttention: (`v1.0.4`, `v2.x`, `triton`)
     > - FlashAttention `v2.x` may have numerical instability issues. For
     >   the best performance, we recommend using FlashAttention + Triton
-
-    </div>
 
     - `v1.0.4`:
 
@@ -436,9 +406,7 @@ metrics for throughput: `samples_per_sec` and `TFLOPS`.
 
 Explicitly, we see that we are able to scale up to significantly longer
 sequences (`420k / 128k ~ 3.3x`) with only a minimal impact on
-throughput performance (`81 / 105 ~ 77\%`)[^4].
-
-<div id="tbl-seqlen">
+throughput performance (`81 / 105 ~ 77\%`)[^3].
 
 |  Name  | Sequence Length (k) |         (`seq_len / min_seq_len`)          |  TFLOPS  |            TFLOPS (% of peak)             |
 |:------:|:-------------------:|:------------------------------------------:|:--------:|:-----------------------------------------:|
@@ -450,16 +418,8 @@ throughput performance (`81 / 105 ~ 77\%`)[^4].
 | GPT25B |         128         |                     1                      | 106.672  |                 101.5788                  |
 | GPT25B |         128         |                     1                      | 105.014  |                  100.00                   |
 
-Table 2: Impact on TFLOPS as a function of increasing sequence length.
-Table from:
-[`throughput/TFLOPS`](https://api.wandb.ai/links/l2hmc-qcd/awklywn7)
-
-</div>
-
 <!-- [^config]: Using: `{model_size: 25B, WORLD_SIZE: 32, micro_batch: 1}` -->
 <!-- <iframe src="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking?workspace=user-saforem2" style="border:none;height:1024px;width:100%"> -->
-
-<div id="fig-wandb">
 
 <div style="padding:0.5rem; border: 1px solid var(--dim-text); border-radius: 0.2rem;">
 
@@ -468,20 +428,12 @@ Table from:
 
 </div>
 
-Figure 3: Weights & Biases Report
-
-</div>
-
-[^1]: The described experiments were performed on 4 NVIDIA DGX A100-40GB
-    nodes, all using `TPSIZE=32`\[^tpsize\], connected through 8 HDR
-    InfiniBand (200Gb/s per HDR).
-
-[^2]:
+[^1]:
 
     2.  `deepspeed-0.10.3`
     3.  `pytorch==2.0.0+cu118`
 
-[^3]: Where `"${MACHINE}"` $\in$ `{"ThetaGPU", "Polaris"}` and
+[^2]: Where `"${MACHINE}"` $\in$ `{"ThetaGPU", "Polaris"}` and
     `"${CONDA_DATE}"` $\in$ `{"2023-01-10", "2023-01-11"}`
 
-[^4]: [`throughput/TFLOPS`](https://api.wandb.ai/links/l2hmc-qcd/awklywn7)
+[^3]: [`throughput/TFLOPS`](https://api.wandb.ai/links/l2hmc-qcd/awklywn7)
