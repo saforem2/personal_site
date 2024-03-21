@@ -292,17 +292,18 @@ construct.
 For single-column slides, constructing the content is as simple as writing it in Markdown:
 
 <!-- :::: {layout="[ [50, 50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; overflow: scroll;"} -->
-:::: {.columns}
+<!-- :::: {.columns} -->
+:::: {.panel-tabset}
 
-::: {#fig-overview .column width="60%" style="text-align:center;"}
+## Slide {style="text-align:center;"}
 
-![](./assets/overview.png)
+::: {style="text-align:center;"}
 
-[Overview Slide](https://saforem2.github.io/lattice23/#/overview)
+![[Overview Slide](https://saforem2.github.io/lattice23/#/overview)](./assets/overview.png){#fig-overview width="60%"}
 
 :::
 
-::: {.column width="40%"}
+## Code
 
 ```markdown
 # Overview
@@ -319,8 +320,6 @@ For single-column slides, constructing the content is as simple as writing it in
 4. [Extras](#sec-extras)
 ```
 
-:::
-
 ::::
 
 ## Centered Slides
@@ -329,11 +328,14 @@ We can center all the text on a slide by adding the `{.centeredslide}` class to 
 e.g.
 
 <!-- :::: {layout="[ [50,50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; width: 100%;" align="center"} -->
-:::: {.columns}
+<!-- :::: {.columns} -->
+:::: {.panel-tabset}
 
-::: {.column width="60%" style="margin-right: 5%;"}
+<!-- ::: {.column width="60%" style="margin-right: 5%;"} -->
 
-`index.qmd`:
+Note that `style.scss` is included in the `revealjs` theme of the `yaml` metadata of `index.qmd`.
+
+## `index.qmd`:
 
 ```markdown
 ---
@@ -345,11 +347,11 @@ format:
 # Title {.centeredslide}
 ```
 
-:::
+<!-- ::: -->
+<!---->
+<!-- ::: {.column width="35%"} -->
 
-::: {.column width="35%"}
-
-`style.scss`:
+## `style.scss`:
 
 ```scss
 // style.scss
@@ -358,9 +360,8 @@ format:
 }
 ```
 
-Note that `style.scss` is included in the `revealjs` theme of the `yaml` metadata of `index.qmd`.
 
-:::
+<!-- ::: -->
 
 ::::
 
@@ -374,7 +375,7 @@ Side-by-side content (either text or images)
 
 ![](./assets/mcmc.png)
 
-[Markov Chain Monte Carlo](https://saforem2.github.io/lattice23/#/overview)
+[Markov Chain Monte Carlo](https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc)
 
 :::
 
@@ -392,7 +393,11 @@ This slide is horizontally centered[^centered] and the content consists of two r
 - In panel A, we have a `::: {.callout-note}` block followed by a single list element containing a
   LaTeX equation.
 
-- In panel B we have a standard markdown image `![](./img.png)`
+- In panel B we have a standard markdown image
+
+    ```markdown
+    ![](./asets/mcmc.png)
+    ```
 
 - In panel C we have normal text + math with LaTeX[^math] syntax.
 
@@ -473,7 +478,7 @@ Example of selecting an element and making a change to the CSS.
 
 </details>
 
-## GitHub Page
+## 📃 GitHub Page
 
 To enable your GitHub page, you can do the following:
 

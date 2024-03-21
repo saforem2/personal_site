@@ -88,21 +88,21 @@
     "href": "qmd/dope-slides/index.html#single-column-slides",
     "title": "How to Make Dope Slides",
     "section": "Single-Column Slides",
-    "text": "Single-Column Slides\nOther than the title slide, the remainder of the slides are all relatively straightforward to construct.\nFor single-column slides, constructing the content is as simple as writing it in Markdown:\n\n\n\n\n\n\n\n\nFigure 2: Overview Slide\n\n\n\n# Overview\n\n1. [Background: `{MCMC,HMC}`](#markov-chain-monte-carlo-mcmc)\n    - [Leapfrog Integrator](#leapfrog-integrator-hmc)\n    - [Issues with HMC](#sec-issues-with-hmc)\n    - [Can we do better?](#sec-can-we-do-better)\n\n2. [L2HMC: Generalizing MD](#sec-l2hmc)\n    - [4D $SU(3)$ Model](#sec-su3)\n    - [Results](#sec-results)\n3. [References](#sec-references)\n4. [Extras](#sec-extras)"
+    "text": "Single-Column Slides\nOther than the title slide, the remainder of the slides are all relatively straightforward to construct.\nFor single-column slides, constructing the content is as simple as writing it in Markdown:\n\n\n\nSlideCode\n\n\n\n\n\n\n\n\n\nFigure 2: Overview Slide\n\n\n\n\n\n\n# Overview\n\n1. [Background: `{MCMC,HMC}`](#markov-chain-monte-carlo-mcmc)\n    - [Leapfrog Integrator](#leapfrog-integrator-hmc)\n    - [Issues with HMC](#sec-issues-with-hmc)\n    - [Can we do better?](#sec-can-we-do-better)\n\n2. [L2HMC: Generalizing MD](#sec-l2hmc)\n    - [4D $SU(3)$ Model](#sec-su3)\n    - [Results](#sec-results)\n3. [References](#sec-references)\n4. [Extras](#sec-extras)"
   },
   {
     "objectID": "qmd/dope-slides/index.html#centered-slides",
     "href": "qmd/dope-slides/index.html#centered-slides",
     "title": "How to Make Dope Slides",
     "section": "Centered Slides",
-    "text": "Centered Slides\nWe can center all the text on a slide by adding the {.centeredslide} class to the slide header, e.g.\n\n\n\nindex.qmd:\n---\nformat:\n  revealjs:\n    theme: [style.scss]\n---\n\n# Title {.centeredslide}\n\nstyle.scss:\n// style.scss\n.centeredslide {\n  text-align: center;\n}\nNote that style.scss is included in the revealjs theme of the yaml metadata of index.qmd."
+    "text": "Centered Slides\nWe can center all the text on a slide by adding the {.centeredslide} class to the slide header, e.g.\n\n\n\nindex.qmd:style.scss:\n\n\n---\nformat:\n  revealjs:\n    theme: [style.scss]\n---\n\n# Title {.centeredslide}\n\n\n\n\n\n// style.scss\n.centeredslide {\n  text-align: center;\n}"
   },
   {
     "objectID": "qmd/dope-slides/index.html#multi-column-slides",
     "href": "qmd/dope-slides/index.html#multi-column-slides",
     "title": "How to Make Dope Slides",
     "section": "Multi-Column Slides",
-    "text": "Multi-Column Slides\nSide-by-side content (either text or images)\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Markov Chain Monte Carlo\n\n\n\n\n\nThis slide is horizontally centered5 and the content consists of two rows split as follows:\n\n\n\n\n\n\nA\nB\n\n\nC\nC\n\n\n\n\n\nTable 1: Slide layout. First row split into two columns, second row spans full width.\n\n\n\n\nIn panel A, we have a ::: {.callout-note} block followed by a single list element containing a LaTeX equation.\nIn panel B we have a standard markdown image ![](./img.png)\nIn panel C we have normal text + math with LaTeX6 syntax.\n\n\n\n\n\nNote that we additionally have a ::: footer element included at the bottom of the slide.\nThe code used to generate the slide above is included below:\n\n\nExpand forquarto\n\n# Markov Chain Monte Carlo (MCMC) {.centeredslide}\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n\n::: {.callout-note title=\"Goal\" style=\"text-align:left;!important\"}\nGenerate **independent** samples $\\{x_{i}\\}$, such that[^notation]\n$$\\{x_{i}\\} \\sim p(x) \\propto e^{-S(x)}$$\nwhere $S(x)$ is the _action_ (or potential energy)\n:::\n\n- Want to calculate observables $\\mathcal{O}$:  \n  $\\left\\langle \\mathcal{O}\\right\\rangle \\propto \\int \\left[\\mathcal{D}x\\right]\\hspace{4pt} {\\mathcal{O}(x)\\, p(x)}$\n\n:::\n\n::: {.column width=\"49%\"}\n![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)\n:::\n\n::::\n\nIf these were [independent]{.style=\"color:#00CCFF;\"}, we could approximate:\n$\\left\\langle\\mathcal{O}\\right\\rangle \\simeq \\frac{1}{N}\\sum^{N}_{n=1}\\mathcal{O}(x_{n})$\n$$\\sigma_{\\mathcal{O}}^{2} = \\frac{1}{N}\\mathrm{Var}{\\left[\\mathcal{O} (x) \\right]}\\Longrightarrow\n\\sigma_{\\mathcal{O}} \\propto \\frac{1}{\\sqrt{N}}$$\n\n[^notation]: Here, $\\sim$ means \"is distributed according to\"\n\n::: footer\n[ `saforem2/lattice23`](https://saforem2.github.io/lattice23)\n:::"
+    "text": "Multi-Column Slides\nSide-by-side content (either text or images)\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Markov Chain Monte Carlo\n\n\n\n\n\nThis slide is horizontally centered5 and the content consists of two rows split as follows:\n\n\n\n\n\n\nA\nB\n\n\nC\nC\n\n\n\n\n\nTable 1: Slide layout. First row split into two columns, second row spans full width.\n\n\n\n\nIn panel A, we have a ::: {.callout-note} block followed by a single list element containing a LaTeX equation.\nIn panel B we have a standard markdown image\n![](./asets/mcmc.png)\nIn panel C we have normal text + math with LaTeX6 syntax.\n\n\n\n\n\nNote that we additionally have a ::: footer element included at the bottom of the slide.\nThe code used to generate the slide above is included below:\n\n\nExpand forquarto\n\n# Markov Chain Monte Carlo (MCMC) {.centeredslide}\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n\n::: {.callout-note title=\"Goal\" style=\"text-align:left;!important\"}\nGenerate **independent** samples $\\{x_{i}\\}$, such that[^notation]\n$$\\{x_{i}\\} \\sim p(x) \\propto e^{-S(x)}$$\nwhere $S(x)$ is the _action_ (or potential energy)\n:::\n\n- Want to calculate observables $\\mathcal{O}$:  \n  $\\left\\langle \\mathcal{O}\\right\\rangle \\propto \\int \\left[\\mathcal{D}x\\right]\\hspace{4pt} {\\mathcal{O}(x)\\, p(x)}$\n\n:::\n\n::: {.column width=\"49%\"}\n![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)\n:::\n\n::::\n\nIf these were [independent]{.style=\"color:#00CCFF;\"}, we could approximate:\n$\\left\\langle\\mathcal{O}\\right\\rangle \\simeq \\frac{1}{N}\\sum^{N}_{n=1}\\mathcal{O}(x_{n})$\n$$\\sigma_{\\mathcal{O}}^{2} = \\frac{1}{N}\\mathrm{Var}{\\left[\\mathcal{O} (x) \\right]}\\Longrightarrow\n\\sigma_{\\mathcal{O}} \\propto \\frac{1}{\\sqrt{N}}$$\n\n[^notation]: Here, $\\sim$ means \"is distributed according to\"\n\n::: footer\n[ `saforem2/lattice23`](https://saforem2.github.io/lattice23)\n:::"
   },
   {
     "objectID": "qmd/dope-slides/index.html#css",
@@ -115,15 +115,15 @@
     "objectID": "qmd/dope-slides/index.html#github-page",
     "href": "qmd/dope-slides/index.html#github-page",
     "title": "How to Make Dope Slides",
-    "section": "GitHub Page",
-    "text": "GitHub Page\nTo enable your GitHub page, you can do the following:\n\n\n\n\n\n\nFigure 5: Instructions for building a GitHub page using the docs/ directory off the main branch.\n\n\n\nIn this case, the repo is:\n saforem2/lattice23\nand the site is published at\nhttps://saforem2.github.io/lattice23"
+    "section": "📃 GitHub Page",
+    "text": "📃 GitHub Page\nTo enable your GitHub page, you can do the following:\n\n\n\n\n\n\nFigure 5: Instructions for building a GitHub page using the docs/ directory off the main branch.\n\n\n\nIn this case, the repo is:\n saforem2/lattice23\nand the site is published at\nhttps://saforem2.github.io/lattice23"
   },
   {
     "objectID": "qmd/dope-slides/index.html#references",
     "href": "qmd/dope-slides/index.html#references",
     "title": "How to Make Dope Slides",
     "section": "📓 References",
-    "text": "📓 References\n\nReveal Themes\nUsing Pandoc fenced divs\nSlidecraft 101: Colors and Fonts\nBeautiful Reports and Presentations with Quarto\n Quarto Clean Theme\n\n\n\n\n\n\n\n❤️‍🩹 Status\n\n\n\n\n\n\n\nLast Updated: 03/18/2024 @ 11:34:27\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Title Slide\nFigure 2: Overview Slide\nFigure 3: Markov Chain Monte Carlo\nFigure 4: Example of selecting an element and making a change to the CSS.\nFigure 5: Instructions for building a GitHub page using the docs/ directory off the main branch."
+    "text": "📓 References\n\nReveal Themes\nUsing Pandoc fenced divs\nSlidecraft 101: Colors and Fonts\nBeautiful Reports and Presentations with Quarto\n Quarto Clean Theme\n\n\n\n\n\n\n\n❤️‍🩹 Status\n\n\n\n\n\n\n\nLast Updated: 03/20/2024 @ 23:18:06\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Title Slide\nFigure 2: Overview Slide\nFigure 3: Markov Chain Monte Carlo\nFigure 4: Example of selecting an element and making a change to the CSS.\nFigure 5: Instructions for building a GitHub page using the docs/ directory off the main branch."
   },
   {
     "objectID": "qmd/dope-slides/index.html#footnotes",
@@ -193,7 +193,7 @@
     "href": "index.html#appendix",
     "title": "",
     "section": " Appendix",
-    "text": "Appendix\n\n\n\n\n\n\n❤️‍🩹 Status\n\n\n\n\n\n\n\nLast Updated: 03/20/2024 @ 08:41:16"
+    "text": "Appendix\n\n\n\n\n\n\n❤️‍🩹 Status\n\n\n\n\n\n\n\nLast Updated: 03/20/2024 @ 23:43:34"
   },
   {
     "objectID": "index.html#footnotes",
