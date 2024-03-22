@@ -138,12 +138,8 @@ documentation:
 
     - Example: `[This is *some text*]{.class key="val"}`
 
-    - idk what I'm doing really, so I mostly find myself doing things like
-
-      ```
-      [blue text]{style="color:#1E88E5;"}
-      ```
-      which produces [blue text]{style="color:#1E88E5;"}.
+    - idk what I'm doing really, so I mostly find myself doing things like `[blue
+      text]{style="color:#1E88E5;"}` which produces [blue text]{style="color:#1E88E5;"}.
 
 
 
@@ -238,7 +234,7 @@ Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
 
 ## Title Slide
 
-- Starting with the title slide:
+- Starting with the title slide[^images]:
 
   ::: {#fig-title style="text-align:center;"}
 
@@ -287,6 +283,9 @@ Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
     # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
     ```
 
+[^images]: Quarto comes with lightbox support, so you can click on images to display them full
+screen.
+
 ## Single-Column Slides
 
 Other than the title slide, the remainder of the slides are all relatively straightforward to
@@ -297,14 +296,6 @@ For single-column slides, constructing the content is as simple as writing it in
 <!-- :::: {layout="[ [50, 50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; overflow: scroll;"} -->
 <!-- :::: {.columns} -->
 :::: {.panel-tabset}
-
-## Slide {style="text-align:center;"}
-
-::: {style="text-align:center;"}
-
-![[Overview Slide](https://saforem2.github.io/lattice23/#/overview)](./assets/overview.png){#fig-overview width="60%"}
-
-:::
 
 ## Code
 
@@ -323,6 +314,15 @@ For single-column slides, constructing the content is as simple as writing it in
 4. [Extras](#sec-extras)
 ```
 
+## Slide {style="text-align:center;"}
+
+::: {style="text-align:center;"}
+
+![[Overview Slide](https://saforem2.github.io/lattice23/#/overview)](./assets/overview.png){#fig-overview width="60%"}
+
+:::
+
+
 ::::
 
 ## Centered Slides
@@ -330,15 +330,11 @@ For single-column slides, constructing the content is as simple as writing it in
 We can center all the text on a slide by adding the `{.centeredslide}` class to the slide header,
 e.g.
 
-<!-- :::: {layout="[ [50,50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; width: 100%;" align="center"} -->
-<!-- :::: {.columns} -->
 :::: {.panel-tabset}
-
-<!-- ::: {.column width="60%" style="margin-right: 5%;"} -->
 
 Note that `style.scss` is included in the `revealjs` theme of the `yaml` metadata of `index.qmd`.
 
-## `index.qmd`:
+## `index.qmd`
 
 ```markdown
 ---
@@ -350,21 +346,13 @@ format:
 # Title {.centeredslide}
 ```
 
-<!-- ::: -->
-<!---->
-<!-- ::: {.column width="35%"} -->
-
-## `style.scss`:
+## `style.scss`
 
 ```scss
-// style.scss
 .centeredslide {
   text-align: center;
 }
 ```
-
-
-<!-- ::: -->
 
 ::::
 
@@ -525,9 +513,6 @@ print(' '.join([
   f"[#1A8FFF]{time}[/]"
 ]))
 ```
-
-<!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
-
 
 <p align="center">
 <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>

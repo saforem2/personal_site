@@ -1,7 +1,7 @@
 # How to Make Dope Slides
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-03-21
+2024-03-22
 
 ## Quarto 🤝 Reveal.js
 
@@ -129,11 +129,8 @@ Reveal.js is the official documentation:
     - Example: `[This is *some text*]{.class key="val"}`
 
     - idk what I’m doing really, so I mostly find myself doing things
-      like
-
-          [blue text]{style="color:#1E88E5;"}
-
-      which produces <span style="color:#1E88E5;">blue text</span>.
+      like `[blue   text]{style="color:#1E88E5;"}` which produces
+      <span style="color:#1E88E5;">blue text</span>.
 
   - **`<div>`**’s: are created by wrapping text with a line consisting
     of at least three colons `:::`.
@@ -229,7 +226,7 @@ Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
 
 ## Title Slide
 
-- Starting with the title slide:
+- Starting with the title slide[^5]:
 
   <img src="./assets/title-slide.png" style="width:66.0%" />
   - The full slide contents are included below:
@@ -289,14 +286,6 @@ writing it in Markdown:
 
 <div class="panel-tabset">
 
-## Slide
-
-<div style="text-align:center;">
-
-<img src="./assets/overview.png" style="width:60.0%" />
-
-</div>
-
 ## Code
 
 ``` markdown
@@ -314,6 +303,14 @@ writing it in Markdown:
 4. [Extras](#sec-extras)
 ```
 
+## Slide
+
+<div style="text-align:center;">
+
+<img src="./assets/overview.png" style="width:60.0%" />
+
+</div>
+
 </div>
 
 ## Centered Slides
@@ -321,12 +318,9 @@ writing it in Markdown:
 We can center all the text on a slide by adding the `{.centeredslide}`
 class to the slide header, e.g.
 
-<!-- :::: {layout="[ [50,50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; width: 100%;" align="center"} -->
-<!-- :::: {.columns} -->
-
 <div class="panel-tabset">
 
-## `index.qmd`:
+## `index.qmd`
 
 ``` markdown
 ---
@@ -338,20 +332,13 @@ format:
 # Title {.centeredslide}
 ```
 
-<!-- ::: -->
-<!---->
-<!-- ::: {.column width="35%"} -->
-
-## `style.scss`:
+## `style.scss`
 
 ``` scss
-// style.scss
 .centeredslide {
   text-align: center;
 }
 ```
-
-<!-- ::: -->
 
 </div>
 
@@ -464,9 +451,8 @@ and the site is published at
 >
 > ### <span style="color: #FF5252;">❤️‍🩹 Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">03</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">21</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">17:33:23</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">03</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">22</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:07:20</span>
 > </pre>
-> <!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
 > <p align="center">
 > <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 > </p>
@@ -480,3 +466,6 @@ and the site is published at
 [^3]: *An open-source scientific and technical publishing system*
 
 [^4]: [Equations](https://quarto.org/docs/authoring/markdown-basics.html#equations)
+
+[^5]: Quarto comes with lightbox support, so you can click on images to
+    display them full screen.
