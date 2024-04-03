@@ -1,7 +1,7 @@
 # How to Make Dope Slides
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-03-22
+2024-04-03
 
 ## Quarto 🤝 Reveal.js
 
