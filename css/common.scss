@@ -25,6 +25,8 @@ $callout-important-color: #FF5252;
 $border-transparent-color: rgba(131, 131, 131, 0.7);
 //     border: 0.1px solid $code-block-border-color;
 
+$bs-nav-tabs-link-active-border-color: $code-block-border-color!default;
+
 // The left hand sidebar
 // $grid-sidebar-width: !default;
 
@@ -269,7 +271,7 @@ a {
     border-radius: $link-border-radius;
 }
 
-body p a {
+.body p a:not(.img, .callout) {
     color: $link-color;
     background: $link-bg-color;
     border-radius: $link-border-radius;
@@ -301,10 +303,6 @@ p a:hover {
 }
 
 
-
-div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, div.sidebar-item-container .sidebar-link>code {
-    color: $link-color-hover;
-}
 
 h1 {
     opacity: 100%;
@@ -1471,24 +1469,92 @@ div.sourceCode {
     // border-color: $dim-text;
 }
 
+
+div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, div.sidebar-item-container .sidebar-link>code {
+    color: $link-color-hover;
+    background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
+    border-radius: $link-border-radius;
+    border-left: 1pt solid $link-color-hover;
+    padding-left: 4pt;
+    font-weight: bold;
+}
+
 .sidebar-navigation {
     line-height: 1.5rem;
     overflow: scroll;
     // padding: 0.3rem;
 }
 
-.sidebar-navigation li {
-    padding: 0.2rem;
-    // border: 1px solid rgba(0, 0, 0, 0.0);
+// .sidebar-navigation li {
+//     padding: 0.2rem;
+//     // border: 1px solid rgba(0, 0, 0, 0.0);
+// }
+
+.sidebar-item-text {
+    width: 100%;
 }
 
-.sidebar-navigation li:hover {
-    text-decoration: inherit;
+.sidebar-navigation .sidebar-section .sidebar-item {
+    font-size: .875rem;
+}
+
+// .sidebar-item {
+//     margin-bottom: 
+//
+// }
+
+.sidebar-section {
+    // padding-left: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+ul>li:not(:has(>p))>ul, ol>li:not(:has(>p))>ul, ul>li:not(:has(>p))>ol, ol>li:not(:has(>p))>ol {
+    margin-bottom: 1em;
+}
+
+.sidebar-navigation .sidebar-item li:hover {
+    // text-decoration: underline;
     color: $link-color-hover;
     background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
     // border: 1px solid $link-color-hover;
     box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px!important;
     // padding: 0.1rem;
+}
+
+.tab-content {
+    margin-top: 0px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin-left: 0;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: 1px;
+    --bs-nav-tabs-border-color: $code-block-border-color;
+    --bs-nav-tabs-border-radius: 0;
+    --bs-nav-tabs-link-hover-border-color: $code-block-border-color;
+    --bs-nav-tabs-link-active-color: $link-color;
+    --bs-nav-tabs-link-active-bg: #1c1c1c;
+    --bs-nav-tabs-link-active-border-color: $code-block-border-color;
+    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    // color: ;
+    // color: var(--bs-nav-tabs-link-active-color);
+    background-color: $link-bg-color;
+    border-color: $link-color;
+    // var(--bs-nav-tabs-link-active-border-color);
+}
+
+.sidebar-navigation li a {
+    text-decoration: none;
+    overflow-x: scroll;
+    text-wrap: balance;
 }
 
 // .tab-content {
