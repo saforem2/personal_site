@@ -1,48 +1,41 @@
-# About Me (alt)
+# Sam, I am
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-04-03
-
-# 
-
-<div style="font-size:1.0em; text-align: center;">
-
-<span class="profile-avatar"
-style="width: 100%;">![](./assets/avatar.png)</span>
-
-<span style="font-size: 1.25rem; color: var(--dim-text)!important; font-weight: bold; letter-spacing:-1px; padding-bottom: 0pt;">![](https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=500&size=24&duration=3000&pause=1000&color=838383&center=true&vCenter=true&width=205&lines=%F0%9F%91%8B+Hi%2C+Im+Sam!)
-[<span class="orcid-green"
-style="background: none!important;"></span>](https://orcid.org/0000-0002-9981-0876)</span>
-
-<div style="display: flex; flex-direction: row; margin-top: -2.0em; align-items: center; text-align: center!important; justify-content: center; background-color: var(--link-bg-color);">
-
-<span class="icon"
-style="font-size:1.5rem; padding-right: 0pt;">[<span class="icon"
-style="background-color:rgba(0,0,0,0.0);!important"></span>](https://samforeman.me)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://github.com/saforem2)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://www.twitter.com/saforem2)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](mailto:///foremans@anl.gov)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://open.spotify.com/user/saforem2)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://www.last.fm/user/saforem2)</span>
-<span class="icon"
-style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linkedin.com/in/saforem2)</span>
-
-</div>
-
-<!-- [[$\longrightarrow$]{.red-text} [**Intel oneAPI Talk**](https://samforeman.me/oneapi-talk/) @ UIC (10/21/2023) [$\longleftarrow$]{.red-text}]{style="font-size: 1.5em; font-weight: 700;"} -->
-
-</div>
+2024-04-13
 
 <div>
 
 </div>
+
+<details closed>
+<summary>
+🚶🏻‍♂️ How I got here
+</summary>
+
+My [current research](https://saforem2.github.io/l2hmc-qcd) focuses on
+using deep generative modeling to help build better sampling algorithms
+in lattice gauge theory. In particular, I’m interested in building gauge
+equivariant neural network architectures and using inductive priors to
+incorporate physical symmetries into machine learning models.
+
+I received my PhD in Physics from the University of Iowa in 2019 and my
+thesis was on [Learning Better Physics: A Machine Learning Approach to
+Lattice Gauge
+Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771).
+Prior to this, I completed two bachelors degrees (Engineering Physics
+and Applied Mathematics, 2015) at The University of Illinois at
+Urbana-Champaign. My undergraduate dissertation was titled [Energy
+Storage in Quantum
+Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was
+supervised by Professor [Alfred
+Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the
+Center for Complex Systems Research at UIUC[^1].
+
+</details>
+<details closed>
+<summary>
+🤔 What I work on
+</summary>
 
 As a member of the [AI / ML
 Group](https://www.alcf.anl.gov/about/people/group/506) at
@@ -81,9 +74,53 @@ Group](https://www.alcf.anl.gov/about/people/group/506) at
 
 </div>
 
+<details closed>
+<summary>
+📦 Ongoing Projects
+</summary>
+
+<div class="flex-container" style="margin-top: 1em;">
+
+<div class="flex-container">
+
+[ `ezpz` ✨](https://github.com/saforem2/ezpz) \[[web](https://saforem2.github.io/ezpz)\]  
+Distributed training, `ezpz`
+
+[ `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+For the *largest* of large language models.
+
+[ `wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[web](https://saforem2.github.io/wordplay)\]  
+\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^2]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
+
+[ `ai-science-training-series` 📝](https://github.com/argonne-lcf/ai-science-training-series) \[[web](https://www.alcf.anl.gov/alcf-ai-science-training-series)\]  
+Lecture series, “AI-4-Science-on-Supercomputers”
+
+</div>
+
+<div class="flex-container">
+
+[ `enrich` 💸](https://github.com/saforem2/enrich) \[[web](https://saforem2.github.io/enrich)\]  
+Python’s `logging`, with [Rich](https://github.com/Textualize/rich)
+
+[ `ambivalent` 🤷🏻‍♂️](https://github.com/saforem2/ambivalent) \[[web](https://saforem2.github.io/ambivalent)\]  
+Clean, simple style for Matplotlib figures[^3].
+
+[ `l2hmc-qcd` 🔲](https://github.com/saforem2/l2hmc-qcd) \[[web](https://saforem2.github.io/l2hmc-qcd)\]  
+Accelerated samplers for Lattice QCD
+
+[ `climate-analysis` 🌍](https://github.com/saforem2/climate-analysis) \[[web](https://saforem2.github.io/climate-analysis)\]  
+Climate Analysis project using ClimRR data
+
+</div>
+
+</div>
+
+</details>
+</details>
+
 <div class="panel-tabset">
 
-### <span class="red-text"></span> Recent Work
+### 📰 Recent Work
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects](https://jocse.org/downloads/jocse-15-1-10.pdf),
@@ -167,7 +204,7 @@ Group](https://www.alcf.anl.gov/about/people/group/506) at
   Blockade](https://doi.org/10.1063/1.5009698), **S. Foreman** et al.,
   *J. Appl. Phys*, *2018*
 
-### <span class="orange-text"></span> Recent Talks
+### 🎤 Recent Talks
 
 - [**Parallel Training
   Techniques**](https://github.com/saforem2/parallel-training-slides) at
@@ -269,9 +306,9 @@ Group](https://www.alcf.anl.gov/about/people/group/506) at
 - **Machine Learning Analysis of Ising Worms** at *Brookhaven National
   Laboratory*, 2017
 
-## <span class="dim-text"></span> Projects\]
+### 📦 Projects
 
-<div class="flex-container">
+<div class="flex-container" style="margin-top: 1em;">
 
 <div class="flex-container">
 
@@ -282,10 +319,10 @@ Distributed training, `ezpz`
 For the *largest* of large language models.
 
 [ `wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[web](https://saforem2.github.io/wordplay)\]  
-\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^1]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
+\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^4]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
 
-[ `ai-science-training-series` 📝](https://github.com/argonne-lcf/ai-science-training-series) \[[web](https://www.alcf.anl.gov/alcf-ai-science-training-series?)\]  
-Student training series on AI-driven Science on Supercomputers
+[ `ai-science-training-series` 📝](https://github.com/argonne-lcf/ai-science-training-series) \[[web](https://www.alcf.anl.gov/alcf-ai-science-training-series)\]  
+Lecture series, “AI-4-Science-on-Supercomputers”
 
 </div>
 
@@ -295,10 +332,10 @@ Student training series on AI-driven Science on Supercomputers
 Python’s `logging`, with [Rich](https://github.com/Textualize/rich)
 
 [ `ambivalent` 🤷🏻‍♂️](https://github.com/saforem2/ambivalent) \[[web](https://saforem2.github.io/ambivalent)\]  
-Clean, simple style for Matplotlib figures[^2].
+Clean, simple style for Matplotlib figures[^5].
 
 [ `l2hmc-qcd` 🔲](https://github.com/saforem2/l2hmc-qcd) \[[web](https://saforem2.github.io/l2hmc-qcd)\]  
-Application of the L2HMC algorithm to simulations in lattice QCD.
+Accelerated samplers for Lattice QCD
 
 [ `climate-analysis` 🌍](https://github.com/saforem2/climate-analysis) \[[web](https://saforem2.github.io/climate-analysis)\]  
 Climate Analysis project using ClimRR data
@@ -306,6 +343,8 @@ Climate Analysis project using ClimRR data
 </div>
 
 </div>
+
+#### <span class="yellow-text"></span> GitHub Stats
 
 > [!TIP]
 >
@@ -379,7 +418,7 @@ Climate Analysis project using ClimRR data
 > >
 > > </div>
 
-### <span class="purple-text"></span> Events
+### 🎫 Events
 
 - Organizer for [SC23 Workshop: High Performance Python for Science at
   Scale (HPPSS)](https://hppss.github.io/SC23/), November 2023
@@ -388,7 +427,7 @@ Climate Analysis project using ClimRR data
   Sciences](https://17.usnccm.org/702) at 17th U. S. National Congress
   on Computational Mechanics, July 2023
 
-### <span class="green-text"></span> Experience
+### 👔 Experience
 
 |                                                                                    |                              |      |      |     |
 |:-----------------------------------------------------------------------------------|:----------------------------:|:----:|:----:|:---:|
@@ -396,7 +435,7 @@ Climate Analysis project using ClimRR data
 | Postdoc                                                                            |             ALCF             | 2019 | 2022 |     |
 | Graduate Researcher                                                                |    [ANL](https://anl.gov)    | 2018 | 2019 |     |
 
-### <span class="blue-text"></span> Education
+### 🎒 Education
 
 |                                       |                                                                                            |                               |      |
 |:--------------------------------------|:------------------------------------------------------------------------------------------:|:-----------------------------:|:----:|
@@ -404,13 +443,13 @@ Climate Analysis project using ClimRR data
 | B.Sc                                  | [Physics](https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics) | [UIUC](https://illinois.edu/) | 2015 |
 | B.Sc                                  |                             [Math](https://math.illinois.edu/)                             |             UIUC              | 2015 |
 
-### <span class="pink-text"></span> Status
+### ❤️‍🩹 Status
 
 > [!TIP]
 >
 > ### <span style="color: #FF5252;">❤️‍🩹 Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">03</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">19:19:14</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">13</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">19:54:56</span>
 > </pre>
 > <!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
 > <p align="center">
@@ -419,8 +458,16 @@ Climate Analysis project using ClimRR data
 
 </div>
 
-[^1]: ⚡ powered by [`ezpz`](https://github.com/saforem2/ezpz)
+[^1]: And resulted in a
+    [patent](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC)
+    !!
 
-[^2]: Forked from ~~[
+[^2]: ⚡ powered by [`ezpz`](https://github.com/saforem2/ezpz)
+
+[^3]: Forked from ~~[
     `saforem2/opinionated`](https://github.com/saforem2/opinonated)~~
-    \### <span class="yellow-text"></span> GitHub Stats
+
+[^4]: ⚡ powered by [`ezpz`](https://github.com/saforem2/ezpz)
+
+[^5]: Forked from ~~[
+    `saforem2/opinionated`](https://github.com/saforem2/opinonated)~~
