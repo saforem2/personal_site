@@ -206,102 +206,274 @@ Climate Analysis project using ClimRR data
 
 ### 🎤 Recent Talks
 
-- [**Parallel Training
+<!-- - [**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) at [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training), March 2024 -->
+
+- <details closed>
+  <summary>
+  [**Parallel Training
   Techniques**](https://github.com/saforem2/parallel-training-slides) at
   [*AI-4-Science Training
   Series*](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training),
   March 2024
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/parallel-training-slides" title="🪧 Parallel Training Techniques" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**LLMs from Scratch**](https://github.com/saforem2/llm-workshop-talk)
+- <details closed>
+  <summary>
+  [**LLMs from Scratch**](https://github.com/saforem2/llm-workshop-talk)
   at [*LLM Tutorial Workshop
   (2)*](https://github.com/argonne-lcf/llm-workshop), February 2024
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Creating Small(-ish)
+- <details closed>
+  <summary>
+  [**Creating Small(-ish)
   LLMs**](https://github.com/saforem2/LLM-tutorial) at [*LLM Tutorial
   Workshop (1)*](https://github.com/brettin/llm_tutorial), November 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/LLM-tutorial" title="🪧 Creating Small(-ish) LLMs" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Exascale Science on
+- <details closed>
+  <summary>
+  [**Exascale Science on
   Aurora**](https://saforem2.github.io/oneapi-talk) at [*Intel oneAPI
   Workshop @
   UIC*](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop),
   October 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/oneapi-talk/#0" title="🪧 Exascale Science on Aurora" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) at
+- <details closed>
+  <summary>
+  [**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) at
   [*ALCF Hands On HPC
   Workshop*](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop),
   October 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="🪧 LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Scaling LLMs for Science and Ongoing
+- <details closed>
+  <summary>
+  [**Scaling LLMs for Science and Ongoing
   Collaborations**](https://saforem2.github.io/scaling4science) at
   [*Data-Intensive Computing and AI/ML at
   Scale*](https://events.cels.anl.gov/event/426/overview), August 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/scaling4science/#/section" title="🪧 Scaling LLMs for Science and Ongoing Collaborations" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**MLMC: Machine Learning Monte Carlo for Lattice Gauge
+- <details closed>
+  <summary>
+  [**MLMC: Machine Learning Monte Carlo for Lattice Gauge
   Theory**](https://saforem2.github.io/lattice23), at [Lattice
   2023](https://mlmc2022.github.io/), July 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Generative Modeling and Efficient
+- <details closed>
+  <summary>
+  [**Generative Modeling and Efficient
   Sampling**](https://saforem2.github.io/lqcd-pasc23/), at
   [PASC23](https://pasc23.pasc-conference.org/), July 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lqcd-pasc23/" title="🪧 Generative Modeling and Efficient Sampling" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Efficient Sampling for Lattice Gauge
+- <details closed>
+  <summary>
+  [**Efficient Sampling for Lattice Gauge
   Theory**](https://saforem2.github.io/deep-fridays), at [Deep Fridays
   @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html),
   April 2023
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/deep-fridays/" title="🪧 Efficient Sampling for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Large Scale
+- <details closed>
+  <summary>
+  [**Large Scale
   Training**](https://saforem2.github.io/ai4sci-large-scale-training),
   at [Introduction to AI-driven Science on Supercomputers: A Student
   Training
   Series](https://github.com/argonne-lcf/ai-science-training-series),
   November 2022
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="🪧 Large Scale Training" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Hyperparameter
+- <details closed>
+  <summary>
+  [**Hyperparameter
   Management**](https://saforem2.github.io/hparam-management-sdl2022),
   at [2022 ALCF Simulation, Data, and Learning
   Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop),
   October 2022
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/hparam-management-sdl2022" title="🪧 Hyperparameter Management" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Statistical
+- <details closed>
+  <summary>
+  [**Statistical
   Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning), at
   [ATPESC 2022](https://extremecomputingtraining.anl.gov/), August 2022
   [📕 accompanying
   notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="🪧 Statistical Learning" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Scientific Data Science: An Emerging
+- <details closed>
+  <summary>
+  [**Scientific Data Science: An Emerging
   Symbiosis**](https://saforem2.github.io/anl-job-talk/), at Argonne
   National Laboratory, May 2022
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/anl-job-talk" title="🪧 Scientific Data Science" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Machine Learning in
+- <details closed>
+  <summary>
+  [**Machine Learning in
   HEP**](https://saforem2.github.io/physicsSeminar), at UNC Greensboro,
   March 2022
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="🪧 Machine Learning in HEP" width="100%" align="center" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;border-radius:0.25rem;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Accelerated Sampling Methods for Lattice Gauge
+- <details closed>
+  <summary>
+  [**Accelerated Sampling Methods for Lattice Gauge
   Theory**](https://saforem2.github.io/l2hmc-dwq25/), at [*BNL-HET& RBRC
   Joint Workshop “DWQ @ 25”*](https://indico.bnl.gov/event/13576/), Dec
   2021
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc-dwq25/" title="🪧 Accelerated Sampling Methods for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Training Topological Samplers for Lattice Gauge
+- <details closed>
+  <summary>
+  [**Training Topological Samplers for Lattice Gauge
   Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/), [*ML4HEP,
   on and off the
   Lattice*](https://indico.ectstar.eu/event/77/contributions/2349/) @
   ECT\* Trento, Sep 2021
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="🪧 Training Topological Samplers for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the *MIT
+- <details closed>
+  <summary>
+  [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the *MIT
   Lattice Group Seminar*, 2021
+  </summary>
+  </details>
 
-- [**Deep Learning HMC for Improved Gauge
+- <details closed>
+  <summary>
+  [**Deep Learning HMC for Improved Gauge
   Generation**](https://bit.ly/mainz21) to the [*Machine Learning
   Techniques in Lattice QCD Workshop*](https://bit.ly/mainz21_overview),
   2021
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://bit.ly/mainz21" title="🪧 Deep Learning HMC for Improved Gauge Generation" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
-- [**Machine Learning for Lattice
+- <details closed>
+  <summary>
+  [**Machine Learning for Lattice
   QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) at the
   University of Iowa, 2020
+  </summary>
+  </details>
 
-- [**Machine learning inspired analysis of the Ising model
+- <details closed>
+  <summary>
+  [**Machine learning inspired analysis of the Ising model
   transition**](https://bit.ly/latt2018) to [*Lattice,
   2018*](https://indico.fnal.gov/event/15949/overview)
+  </summary>
+  <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd-93bc0c" title="🪧 Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <p>
+  Your browser does not support iframes.
+  </p>
+  </iframe>
+  </details>
 
 - **Machine Learning Analysis of Ising Worms** at *Brookhaven National
   Laboratory*, 2017
@@ -449,7 +621,7 @@ Climate Analysis project using ClimRR data
 >
 > ### <span style="color: #FF5252;">❤️‍🩹 Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">13</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">19:54:56</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">13</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">22:22:14</span>
 > </pre>
 > <!-- [[![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsaforem2.github.io&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)]{style="text-align:center;"} -->
 > <p align="center">
