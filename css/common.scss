@@ -933,6 +933,10 @@ code span.kw {
 }
 
 :root {
+    --navbar-bg: $navbar-bg;
+    --navbar-fg: $navbar-fg;
+    --code-bg: $code-bg;
+    --code-fg: $code-color;
     --link-color: $link-color;
     --link-bg-color: $link-bg-color;
     --callout-tip-color: $callout-tip-color;
@@ -1553,7 +1557,9 @@ ul>li:not(:has(>p))>ul, ol>li:not(:has(>p))>ul, ul>li:not(:has(>p))>ol, ol>li:no
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    box-shadow: 0px 5px 15px 0px $shadow-color;
+    // box-shadow: 0px 5px 15px 0px $shadow-color;
+    border-radius: 0.25rem;
+    box-shadow: $shadow-color 0px 2px 7px!important;
     border: 1px solid $link-color-hover!important;
     background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
     color: $link-color-hover;
@@ -1600,6 +1606,7 @@ ul>li:not(:has(>p))>ul, ol>li:not(:has(>p))>ul, ul>li:not(:has(>p))>ol, ol>li:no
 
 details>summary {
     text-align: left;
+    border-radius: 0.25rem;
     color: $code-color;
     background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
     min-width: max-content;
@@ -1612,6 +1619,7 @@ details>summary {
 
 details>summary:hover {
     text-align: left;
+    border-radius: 0.25rem;
     color: $code-color;
     background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
     // box-shadow: 0px 5px 15px 0px $shadow-color;
@@ -1622,6 +1630,42 @@ details>summary:hover {
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
+
+.navbar {
+    background-color: $navbar-bg;
+    color: $navbar-fg;
+}
+
+.sourceCode {
+    overflow: scroll;
+}
+
+code span.cf {
+    color: var(--myblue);
+    font-weight: bold;
+}
+
+//
+// .navbar-dark {
+//     background-color: #f8f8f8;
+//     color: #838383;
+//     // box-shadow: RGBA(100, 100, 100, 0.15) 0px 5px 15px;
+//     // color: #222222!important;
+// }
+//
+//
+// .navbar {
+//     background-color: #f8f8f8;
+//     color: #838383;
+// }
+
+// .navbar-dark { 
+//     background-color: #222222; 
+//     // box-shadow: 
+//     box-shadow: RGBA(0, 0, 0, 0.05) 0px 2px 4px!important;
+//     color: #838383;
+//     // color: #F8F8F8;
+// }
 
 // .tab-content {
 //     margin-top: 0px;
