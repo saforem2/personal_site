@@ -23,9 +23,25 @@ $callout-warning-color: #FD971F;
 $callout-caution-color: #E599F7;
 $callout-important-color: #FF5252;
 $border-transparent-color: rgba(131, 131, 131, 0.7);
+
+$nav-link-padding-x: 0.5rem;
+$nav-link-padding-y: 0.2rem;
 //     border: 0.1px solid $code-block-border-color;
 
 $bs-nav-tabs-link-active-border-color: $code-block-border-color!default;
+
+// fonts
+$font-family-sans-serif: "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif !default;
+$font-family-headings: "IBM Plex Sans Condensed", "Open Sans", "Playfair Display", Helvetica, sans-serif, $font-family-sans-serif !default;
+// $font-family-monospace: 'Iosevka Web', 'agave Nerd Font', Menlo, Monaco, Consolas, monospace !default;
+$font-family-monospace: "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace!default;
+// $font-family-monospace: "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+// $line-height-base: 1.0 !default;
+
+// line height
+$presentation-font-family-line-height: 1.0em !default;
+$presentation-line-height: 1.0em !default;
 
 // The left hand sidebar
 // $grid-sidebar-width: !default;
@@ -307,6 +323,8 @@ p a:hover {
 h1 {
     opacity: 100%;
     color: $brighter-text;
+    font-family: $font-family-headings;
+    font-weight: 700;
 }
 
 h2 {
@@ -316,7 +334,26 @@ h2 {
     border-bottom: none;
     padding-bottom: auto;
     margin-bottom: auto;
-    margin-top: 1em;
+    // margin-top: 1em;
+    font-family: $font-family-headings;
+    font-weight: 600;
+}
+
+h3 {
+    font-family: $font-family-headings;
+    font-weight: 500;
+}
+
+.h4 {
+    font-family: $font-family-headings;
+}
+
+.h5 {
+    font-family: $font-family-headings;
+}
+
+.h6 {
+    font-family: $font-family-headings;
 }
 
 dd {
@@ -921,6 +958,7 @@ code span.kw {
 }
 
 
+
 //
 // .div.sourceCode {
 //     border-radius: 2pt;
@@ -933,8 +971,11 @@ code span.kw {
 }
 
 :root {
+    --nav-link-padding-y: $bs-nav-link-padding-y;
+    --nav-link-padding-x: $bs-nav-link-padding-x;
     --navbar-bg: $navbar-bg;
     --navbar-fg: $navbar-fg;
+    --font-family-headings: $font-family-headings;
     --code-bg: $code-bg;
     --code-fg: $code-color;
     --link-color: $link-color;
@@ -1248,10 +1289,6 @@ div.quarto-about-trestles {
     padding-bottom: 1em
 }
 
-.navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active {
-    color: $link-color;
-}
-
 .page-columns .column-screen-inset-shaded {
     grid-column: screen-start/screen-end;
     padding: 1em;
@@ -1351,28 +1388,6 @@ div.quarto-about-trestles {
 //         width: 100%;
 //     }
 
-.navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
-    width: 20px;
-    height: 20px;
-    // color: #adadad;
-    opacity: 1;
-}
-
-.navbar {
-    position: relative;
-    display: flex;
-    display: -webkit-flex;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-}
-
-
 #title-block-header.quarto-title-block.default .quarto-title-meta-heading {
     text-transform: uppercase;
     margin-top: 1em;
@@ -1462,6 +1477,11 @@ div.sourceCode {
     margin-bottom: 1em;
 }
 
+
+.nav-link {
+    padding: $nav-link-padding-y $nav-link-padding-x;
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: inherit;
     // background-color: $code-block-bg-color;
@@ -1479,6 +1499,7 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 }
 
 .sidebar-navigation {
+    font-family: $font-family-headings;
     line-height: 1.5rem;
     overflow: scroll;
     // padding: 0.3rem;
@@ -1631,9 +1652,33 @@ details>summary:hover {
     padding-right: 0.5em;
 }
 
+
+.navbar-dark .navbar-nav .show>.nav-link, .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active {
+    color: $link-color;
+}
+
+.navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
+    width: 20px;
+    height: 20px;
+    // color: #adadad;
+    opacity: 1;
+}
+
 .navbar {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     background-color: $navbar-bg;
     color: $navbar-fg;
+    font-family: $font-family-headings;
 }
 
 .sourceCode {
@@ -1644,6 +1689,78 @@ code span.cf {
     color: var(--myblue);
     font-weight: bold;
 }
+
+nav.quarto-secondary-nav {
+    // background-color: rgba(red($code-bg), green($code-bg), blue($code-bg), 0.05);
+    border-bottom: none;
+}
+
+.toc {
+    font-family: $font-family-headings;
+}
+
+
+.navbar-dark, .navbar[data-bs-theme=dark] {
+    --bs-navbar-color: #adadad;
+    --bs-navbar-hover-color: $link-color-hover;
+    --bs-navbar-disabled-color: rgba(173, 173, 173, 0.75);
+    --bs-navbar-active-color: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    --bs-navbar-brand-color: #adadad;
+    --bs-navbar-brand-hover-color: $link-color-hover;
+    --bs-navbar-toggler-border-color: rgba(173, 173, 173, 0);
+    // --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23adadad' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 6 6'> <path class='sun' d='m0,-3 l1,1 1,0 0,1 1,1 -1,1 0,1 -1,0 -1,1 -1,-1 -1,0 0,-1 -1,-1 1,-1 0,-1 1,0 1,-1 0,1.5 a1,1,1,1,0,0,3 1,1,1,1,0,0,-3' /> <circle class='moon' r='1.1' /> </svg>")
+}
+
+.navbar-dark, .navbar[data-bs-theme=light] {
+    --bs-navbar-color: #adadad;
+    --bs-navbar-hover-color: $link-color-hover;
+    --bs-navbar-disabled-color: rgba(173, 173, 173, 0.75);
+    --bs-navbar-active-color: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    --bs-navbar-brand-color: #adadad;
+    --bs-navbar-brand-hover-color: $link-color-hover;
+    --bs-navbar-toggler-border-color: rgba(173, 173, 173, 0);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 6 6'> <path class='sun' d='m0,-3 l1,1 1,0 0,1 1,1 -1,1 0,1 -1,0 -1,1 -1,-1 -1,0 0,-1 -1,-1 1,-1 0,-1 1,0 1,-1 0,1.5 a1,1,1,1,0,0,3 1,1,1,1,0,0,-3' /> <circle class='moon' r='1.1' /> </svg>")
+    // url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23adadad' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar {
+    // text-align: center;
+    // display: flex;
+    // position: absolute;
+    border-radius: 0.25rem;
+    color: $code-color;
+    // background: $rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    width: 100%;
+    // margin-left: 5%;
+    // margin-right: 5%;
+    // min-width: max-content;
+    // max-width: min-content;
+    // width: fit-content;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    // margin-top: 0.5rem;
+    // padding-left: 40%;
+    // padding-right: 40%;
+
+}
+
+.navbar:hover {
+    border-radius: 0.25rem;
+    color: $code-color;
+    background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    box-shadow: $shadow-color 0px 2px 4px!important;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    // margin-top: 0.5rem;
+    // box-shadow: 0px 5px 15px 0px $shadow-color;
+    // min-width: max-content;
+    // max-width: min-content;
+    // display: flex;
+    // text-align: center;
+}
+
 
 //
 // .navbar-dark {

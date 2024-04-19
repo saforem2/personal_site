@@ -1,7 +1,7 @@
-# Sam, I am
+# 👋 Sam, I am
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-04-13
+2024-04-18
 
 <div>
 
@@ -9,7 +9,7 @@ Sam Foreman
 
 <details closed>
 <summary>
-🗺️ How I got here
+📍 How I got here
 </summary>
 
 My [current research](https://saforem2.github.io/l2hmc-qcd) focuses on
@@ -74,53 +74,11 @@ Group](https://www.alcf.anl.gov/about/people/group/506) at
 
 </div>
 
-<details closed>
-<summary>
-📦 Ongoing Projects
-</summary>
-
-<div class="flex-container" style="margin-top: 1em;">
-
-<div class="flex-container">
-
-[ `ezpz` ✨](https://github.com/saforem2/ezpz) \[[web](https://saforem2.github.io/ezpz)\]  
-Distributed training, `ezpz`
-
-[ `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
-For the *largest* of large language models.
-
-[ `wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[web](https://saforem2.github.io/wordplay)\]  
-\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^2]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
-
-[ `ai-science-training-series` 📝](https://github.com/argonne-lcf/ai-science-training-series) \[[web](https://www.alcf.anl.gov/alcf-ai-science-training-series)\]  
-Lecture series, “AI-4-Science-on-Supercomputers”
-
-</div>
-
-<div class="flex-container">
-
-[ `enrich` 💸](https://github.com/saforem2/enrich) \[[web](https://saforem2.github.io/enrich)\]  
-Python’s `logging`, with [Rich](https://github.com/Textualize/rich)
-
-[ `ambivalent` 🤷🏻‍♂️](https://github.com/saforem2/ambivalent) \[[web](https://saforem2.github.io/ambivalent)\]  
-Clean, simple style for Matplotlib figures[^3].
-
-[ `l2hmc-qcd` 🔲](https://github.com/saforem2/l2hmc-qcd) \[[web](https://saforem2.github.io/l2hmc-qcd)\]  
-Accelerated samplers for Lattice QCD
-
-[ `climate-analysis` 🌍](https://github.com/saforem2/climate-analysis) \[[web](https://saforem2.github.io/climate-analysis)\]  
-Climate Analysis project using ClimRR data
-
-</div>
-
-</div>
-
-</details>
 </details>
 
 <div class="panel-tabset">
 
-### 📰 Recent Work
+### 📰 Work
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects](https://jocse.org/downloads/jocse-15-1-10.pdf),
@@ -147,7 +105,7 @@ Climate Analysis project using ClimRR data
 
   - [ DeepSpeed4Science.ai Blog
     Post](https://deepspeed4science.ai/2023/09/18/model-showcase-genslms/)
-  - [ Loooooooong Sequence Lengths](./qmd/dsblog.qmd)
+  - [ Loooooooong Sequence Lengths](../../qmd/dsblog.qmd)
 
 - [A Comprehensive Performance Study of Large Language Models on Novel
   AI Accelerators](https://arxiv.org/abs/2310.04607), M. Emani, **S.
@@ -204,19 +162,18 @@ Climate Analysis project using ClimRR data
   Blockade](https://doi.org/10.1063/1.5009698), **S. Foreman** et al.,
   *J. Appl. Phys*, *2018*
 
-### 🎤 Recent Talks
-
-<!-- - [**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) at [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training), March 2024 -->
+### 🎤 Talks
 
 - <details closed>
   <summary>
-  [**Parallel Training
-  Techniques**](https://github.com/saforem2/parallel-training-slides) at
-  [*AI-4-Science Training
-  Series*](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training),
-  March 2024
+  <a
+      href="https://saforem2.github.io/parallel-training-slides">🪧<strong>Parallel
+  Training Techniques</strong></a> @ <a
+      href="https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training"><i>AI-4-Science
+  Training Series</i></a> (<code>03/2024</code>)
   </summary>
-  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/parallel-training-slides" title="🪧 Parallel Training Techniques" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/parallel-training-slides" title="🪧 Parallel
+    Training Techniques" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
   Your browser does not support iframes.
   </p>
@@ -225,22 +182,34 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**LLMs from Scratch**](https://github.com/saforem2/llm-workshop-talk)
-  at [*LLM Tutorial Workshop
-  (2)*](https://github.com/argonne-lcf/llm-workshop), February 2024
+  <a href="https://saforem2.github.io/llm-workshop-talk">🪧 <strong>LLMs
+  from Scratch</strong></a> @ <a
+      href="https://github.com/argonne-lcf/llm-workshop"><i>LLM Tutorial
+  Workshop</i></a>
   </summary>
-  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from
+    Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
   Your browser does not support iframes.
   </p>
   </iframe>
   </details>
 
+<!-- - <details closed> -->
+<!--   <summary> -->
+<!--     <a href="https://saforem2.github.io/llm-workshop-talk">🪧 <strong>LLMs from Scratch</strong></a> @ <a href="https://github.com/argonne-lcf/llm-workshop" target="_blank" rel="noopener noreferrer"><i>LLM Tutorial Workshop</i></a> (<code>02/2024</code>) -->
+<!--   </summary> -->
+<!--   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"> -->
+<!--     <p>Your browser does not support iframes.</p> -->
+<!--   </iframe> -->
+<!--   </details> -->
+
 - <details closed>
   <summary>
-  [**Creating Small(-ish)
-  LLMs**](https://github.com/saforem2/LLM-tutorial) at [*LLM Tutorial
-  Workshop (1)*](https://github.com/brettin/llm_tutorial), November 2023
+  <a href="https://github.com/saforem2/LLM-tutorial">🪧 <strong>Creating
+  Small(-ish) LLMs</strong></a> @
+  <a href="https://github.com/brettin/llm_tutorial"><em>LLM Tutorial
+  Workshop (1)</em></a>, (<code>11/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/LLM-tutorial" title="🪧 Creating Small(-ish) LLMs" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -251,13 +220,12 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Exascale Science on
-  Aurora**](https://saforem2.github.io/oneapi-talk) at [*Intel oneAPI
-  Workshop @
-  UIC*](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop),
-  October 2023
+  <a href="https://saforem2.github.io/oneapi-talk"> 🪧 <strong>Exascale
+  Science on Aurora</strong></a> @
+  <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop"><em>Intel
+  oneAPI Workshop @ UIC</em></a>, (<code>10/2023</code>)
   </summary>
-  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/oneapi-talk/#0" title="🪧 Exascale Science on Aurora" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+  <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/oneapi-talk" title="🪧 Exascale Science on Aurora" width="100%" align="center" height="500" frameborder="0" style="border-radius:0.25rem;border:none;align:center;">
   <p>
   Your browser does not support iframes.
   </p>
@@ -266,10 +234,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) at
-  [*ALCF Hands On HPC
-  Workshop*](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop),
-  October 2023
+  <a href="https://saforem2.github.io/llm-lunch-talk">🪧 <strong>LLM
+  Lunch Talk</strong></a> @
+  <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop"><em>ALCF
+  Hands On HPC Workshop</em></a>, (<code>10/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="🪧 LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -280,10 +248,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Scaling LLMs for Science and Ongoing
-  Collaborations**](https://saforem2.github.io/scaling4science) at
-  [*Data-Intensive Computing and AI/ML at
-  Scale*](https://events.cels.anl.gov/event/426/overview), August 2023
+  <a href="https://saforem2.github.io/scaling4science">🪧
+  <strong>Scaling LLMs 4 Science</strong></a> @
+  <a href="https://events.cels.anl.gov/event/426/overview"><em>Data-Intensive
+  Computing and AI/ML at Scale</em></a>, (<code>08/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/scaling4science/#/section" title="🪧 Scaling LLMs for Science and Ongoing Collaborations" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -294,9 +262,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**MLMC: Machine Learning Monte Carlo for Lattice Gauge
-  Theory**](https://saforem2.github.io/lattice23), at [Lattice
-  2023](https://mlmc2022.github.io/), July 2023
+  <a href="https://saforem2.github.io/lattice23">🪧 <strong>MLMC:
+  Machine Learning Monte Carlo for Lattice Gauge Theory</strong></a>, @
+  <a href="https://mlmc2022.github.io/">Lattice 2023</a>,
+  (<code>07/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -307,9 +276,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Generative Modeling and Efficient
-  Sampling**](https://saforem2.github.io/lqcd-pasc23/), at
-  [PASC23](https://pasc23.pasc-conference.org/), July 2023
+  <a href="https://saforem2.github.io/lqcd-pasc23/">🪧
+  <strong>Generative Modeling and Efficient Sampling</strong></a>, @
+  <a href="https://pasc23.pasc-conference.org/">PASC23</a>,
+  (<code>07/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lqcd-pasc23/" title="🪧 Generative Modeling and Efficient Sampling" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -320,10 +290,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Efficient Sampling for Lattice Gauge
-  Theory**](https://saforem2.github.io/deep-fridays), at [Deep Fridays
-  @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html),
-  April 2023
+  <a href="https://saforem2.github.io/deep-fridays">🪧 <strong>Efficient
+  Sampling for Lattice Gauge Theory</strong></a>, @
+  <a href="https://www.cs.unibo.it/~asperti/deep_fridays.html">Deep
+  Fridays @ U. Bologna</a>, (<code>04/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/deep-fridays/" title="🪧 Efficient Sampling for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -334,12 +304,10 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Large Scale
-  Training**](https://saforem2.github.io/ai4sci-large-scale-training),
-  at [Introduction to AI-driven Science on Supercomputers: A Student
-  Training
-  Series](https://github.com/argonne-lcf/ai-science-training-series),
-  November 2022
+  <a href="https://saforem2.github.io/ai4sci-large-scale-training">🪧
+  <strong>Large Scale Training</strong></a>, @
+  <a href="https://github.com/argonne-lcf/ai-science-training-series">AI-4-Science
+  on Supercomputers</a>, (<code>02/2023</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="🪧 Large Scale Training" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -350,11 +318,11 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Hyperparameter
-  Management**](https://saforem2.github.io/hparam-management-sdl2022),
-  at [2022 ALCF Simulation, Data, and Learning
-  Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop),
-  October 2022
+  <a href="https://saforem2.github.io/hparam-management-sdl2022">🪧
+  <strong>Hyperparameter Management</strong></a>, @
+  <a href="https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop">2022
+  ALCF Simulation, Data, and Learning Workshop</a>,
+  (<code>10/2022</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/hparam-management-sdl2022" title="🪧 Hyperparameter Management" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -365,11 +333,12 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Statistical
-  Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning), at
-  [ATPESC 2022](https://extremecomputingtraining.anl.gov/), August 2022
-  [📕 accompanying
-  notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
+  <a href="https://saforem2.github.io/ATPESC-StatisticalLearning">🪧
+  <strong>Statistical Learning</strong></a>, @
+  <a href="https://extremecomputingtraining.anl.gov/">ATPESC 2022</a>,
+  (<code>08/2022</code>)
+  <a href="https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb">📕
+  accompanying notebook</a>
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="🪧 Statistical Learning" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -380,9 +349,9 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Scientific Data Science: An Emerging
-  Symbiosis**](https://saforem2.github.io/anl-job-talk/), at Argonne
-  National Laboratory, May 2022
+  <a href="https://saforem2.github.io/anl-job-talk/">🪧
+  <strong>Scientific Data Science: An Emerging Symbiosis</strong></a> @
+  Argonne National Laboratory, (<code>05/2022</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/anl-job-talk" title="🪧 Scientific Data Science" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -393,9 +362,8 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Machine Learning in
-  HEP**](https://saforem2.github.io/physicsSeminar), at UNC Greensboro,
-  March 2022
+  <a href="https://saforem2.github.io/physicsSeminar">🪧 <strong>Machine
+  Learning in HEP</strong></a>, @ UNC Greensboro, (<code>03/2022</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="🪧 Machine Learning in HEP" width="100%" align="center" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;border-radius:0.25rem;">
   <p>
@@ -406,10 +374,11 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Accelerated Sampling Methods for Lattice Gauge
-  Theory**](https://saforem2.github.io/l2hmc-dwq25/), at [*BNL-HET& RBRC
-  Joint Workshop “DWQ @ 25”*](https://indico.bnl.gov/event/13576/), Dec
-  2021
+  <a href="https://saforem2.github.io/l2hmc-dwq25/">🪧
+  <strong>Accelerated Sampling Methods for Lattice Gauge
+  Theory</strong></a> @
+  <a href="https://indico.bnl.gov/event/13576/"><em>BNL Workshop: “DWQ @
+  25”</em></a>, (<code>12/2021</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc-dwq25/" title="🪧 Accelerated Sampling Methods for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -420,11 +389,11 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Training Topological Samplers for Lattice Gauge
-  Theory**](https://saforem2.github.io/l2hmc_talk_ect2021/), [*ML4HEP,
-  on and off the
-  Lattice*](https://indico.ectstar.eu/event/77/contributions/2349/) @
-  ECT\* Trento, Sep 2021
+  <a href="https://saforem2.github.io/l2hmc_talk_ect2021/">🪧
+  <strong>Training Topological Samplers for Lattice Gauge
+  Theory</strong></a> @
+  <a href="https://indico.ectstar.eu/event/77/contributions/2349/"><em>ML4HEP</em></a>
+  @ ECT\* Trento, (<code>09/2021</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="🪧 Training Topological Samplers for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -435,17 +404,18 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the *MIT
-  Lattice Group Seminar*, 2021
+  <a href="https://github.com/saforem2/l2hmc-qcd">🪧
+  <strong>l2hmc-qcd</strong></a> @ <em>MIT Lattice Group Seminar</em>,
+  (<code>2021</code>)
   </summary>
   </details>
 
 - <details closed>
   <summary>
-  [**Deep Learning HMC for Improved Gauge
-  Generation**](https://bit.ly/mainz21) to the [*Machine Learning
-  Techniques in Lattice QCD Workshop*](https://bit.ly/mainz21_overview),
-  2021
+  <a href="https://bit.ly/mainz21">🪧 <strong>Deep Learning HMC for
+  Improved Gauge Generation</strong></a> @
+  <a href="https://bit.ly/mainz21_overview"><em>ML Techniques in
+  LQCD</em></a>, (<code>2021</code>)
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://bit.ly/mainz21" title="🪧 Deep Learning HMC for Improved Gauge Generation" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -456,17 +426,19 @@ Climate Analysis project using ClimRR data
 
 - <details closed>
   <summary>
-  [**Machine Learning for Lattice
-  QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) at the
-  University of Iowa, 2020
+  <a href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">🪧
+  <strong>Machine Learning for Lattice QCD</strong></a> @ University of
+  Iowa, (<code>2020</code>)
   </summary>
   </details>
 
 - <details closed>
   <summary>
-  [**Machine learning inspired analysis of the Ising model
-  transition**](https://bit.ly/latt2018) to [*Lattice,
-  2018*](https://indico.fnal.gov/event/15949/overview)
+  <a href="https://bit.ly/latt2018">🪧 <strong>Machine learning inspired
+  analysis of the Ising model transition</strong></a> @
+  <a href="https://indico.fnal.gov/event/15949/overview"><em>Lattice,
+  2018</em></a>
+  </p>
   </summary>
   <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd-93bc0c" title="🪧 Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
   <p>
@@ -475,8 +447,8 @@ Climate Analysis project using ClimRR data
   </iframe>
   </details>
 
-- **Machine Learning Analysis of Ising Worms** at *Brookhaven National
-  Laboratory*, 2017
+- **Machine Learning Analysis of Ising Worms** @ *Brookhaven National
+  Laboratory*, (`2017`)
 
 ### 📦 Projects
 
@@ -491,7 +463,7 @@ Distributed training, `ezpz`
 For the *largest* of large language models.
 
 [ `wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[web](https://saforem2.github.io/wordplay)\]  
-\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^4]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
+\[[`nanoGPT`](https://github.com/saforem2/nanoGPT)\][^2]+`{🤗`[`datasets`](https://huggingface.co/datasets),[`DeepSpeed`](https://github.com/microsoft/DeepSpeed)`}`
 
 [ `ai-science-training-series` 📝](https://github.com/argonne-lcf/ai-science-training-series) \[[web](https://www.alcf.anl.gov/alcf-ai-science-training-series)\]  
 Lecture series, “AI-4-Science-on-Supercomputers”
@@ -504,7 +476,7 @@ Lecture series, “AI-4-Science-on-Supercomputers”
 Python’s `logging`, with [Rich](https://github.com/Textualize/rich)
 
 [ `ambivalent` 🤷🏻‍♂️](https://github.com/saforem2/ambivalent) \[[web](https://saforem2.github.io/ambivalent)\]  
-Clean, simple style for Matplotlib figures[^5].
+Clean, simple style for Matplotlib figures[^3].
 
 [ `l2hmc-qcd` 🔲](https://github.com/saforem2/l2hmc-qcd) \[[web](https://saforem2.github.io/l2hmc-qcd)\]  
 Accelerated samplers for Lattice QCD
@@ -590,7 +562,7 @@ Climate Analysis project using ClimRR data
 > >
 > > </div>
 
-### 🎫 Events
+### 🎪 Events
 
 - Organizer for [SC23 Workshop: High Performance Python for Science at
   Scale (HPPSS)](https://hppss.github.io/SC23/), November 2023
@@ -619,7 +591,7 @@ Climate Analysis project using ClimRR data
 
 ![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fhome-alt%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">15</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">14:44:48</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">18</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">21:24:01</span>
 </pre>
 <!-- ::: {.callout-tip icon=false title='[❤️‍🩹 Status]{style="color: #FF5252;"}' collapse="false" style="text-align: left!important; width:100%; border: none!important; border-left: 2px solid var(--red-sf)!important; border-radius: 0pt!importtant; background-color: var(--bg-transparent); opacity:100%;"} -->
 <!-- <p align="center"> -->
@@ -637,9 +609,4 @@ Climate Analysis project using ClimRR data
 [^2]: ⚡ powered by [`ezpz`](https://github.com/saforem2/ezpz)
 
 [^3]: Forked from ~~[
-    `saforem2/opinionated`](https://github.com/saforem2/opinonated)~~
-
-[^4]: ⚡ powered by [`ezpz`](https://github.com/saforem2/ezpz)
-
-[^5]: Forked from ~~[
     `saforem2/opinionated`](https://github.com/saforem2/opinonated)~~
