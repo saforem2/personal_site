@@ -26,6 +26,7 @@ $border-transparent-color: rgba(131, 131, 131, 0.7);
 
 $nav-link-padding-x: 0.5rem;
 $nav-link-padding-y: 0.2rem;
+$dropdown-item-padding-y: 0.25rem;
 //     border: 0.1px solid $code-block-border-color;
 
 $bs-nav-tabs-link-active-border-color: $code-block-border-color!default;
@@ -1577,13 +1578,30 @@ ul>li:not(:has(>p))>ul, ol>li:not(:has(>p))>ul, ul>li:not(:has(>p))>ol, ol>li:no
     text-wrap: balance;
 }
 
+.nav-tabs .nav-link {
+    margin-bottom: calc(-1*var(--bs-nav-tabs-border-width));
+    border: 1px $link-color solid rgba(0,0,0,0);
+    border-radius: 0.25rem;
+    // border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    // border-top-right-radius: var(--bs-nav-tabs-border-radius);
+}
+
+.nav-tabs .nav-link:hover {
+    color: $link-color-hover;
+    margin-bottom: calc(-1*var(--bs-nav-tabs-border-width));
+    border: 1px $link-color-hover solid rgba(0,0,0,0);
+    border-radius: 0.25rem;
+    // border-top-left-radius: var(--bs-nav-tabs-border-radius);
+    // border-top-right-radius: var(--bs-nav-tabs-border-radius);
+}
+
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     // box-shadow: 0px 5px 15px 0px $shadow-color;
     border-radius: 0.25rem;
     box-shadow: $shadow-color 0px 2px 7px!important;
-    border: 1px solid $link-color-hover!important;
-    background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
-    color: $link-color-hover;
+    border: 1px solid $link-color!important;
+    background: rgba(red($link-color), green($link-color), blue($link-color), 0.07);
+    color: $link-color;
 }
 
 .avatar {
@@ -1635,7 +1653,9 @@ details>summary {
     width: fit-content;
     padding-left: 0.5em;
     padding-right: 0.5em;
-
+    margin-block-start: 0.25rem;
+    margin-block-end: 0.25rem;
+    font-size: 0.95rem;
 }
 
 details>summary:hover {
@@ -1644,12 +1664,15 @@ details>summary:hover {
     color: $code-color;
     background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
     // box-shadow: 0px 5px 15px 0px $shadow-color;
-    box-shadow: $shadow-color 0px 2px 7px!important;
+    box-shadow: $shadow-color 0px 2px 5px!important;
     min-width: max-content;
     max-width: min-content;
     width: fit-content;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    font-size: 0.95rem;
+    margin-block-start: 0.25rem;
+    margin-block-end: 0.25rem;
 }
 
 
@@ -1739,6 +1762,8 @@ nav.quarto-secondary-nav {
     // width: fit-content;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    box-shadow: $shadow-color 0px 2px 7px!important;
+    // box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
     // margin-top: 0.5rem;
     // padding-left: 40%;
     // padding-right: 40%;
@@ -1748,11 +1773,13 @@ nav.quarto-secondary-nav {
 .navbar:hover {
     border-radius: 0.25rem;
     color: $code-color;
-    background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
     box-shadow: $shadow-color 0px 2px 4px!important;
     width: 100%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    box-shadow: $shadow-color 0px 2px 7px!important;
+    // box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
     // margin-top: 0.5rem;
     // box-shadow: 0px 5px 15px 0px $shadow-color;
     // min-width: max-content;
@@ -1761,6 +1788,53 @@ nav.quarto-secondary-nav {
     // text-align: center;
 }
 
+.navbar .dropdown-item {
+    padding: .4rem .5rem;
+    color: $link-color;
+    // background: rgba(red($link-color), green($link-color), blue($link-color), 0.07);
+    font-family: $font-family-headings;
+    line-height: 1.5rem;
+    border-radius: $link-border-radius;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding-top: $dropdown-item-padding-y var(--bs-dropdown-item-padding-x);
+    // padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+    /* clear: both; */
+    font-weight: 400;
+    color: var(--bs-dropdown-link-color);
+    text-align: inherit;
+    text-decoration: none;
+    -webkit-text-decoration: none;
+    -moz-text-decoration: none;
+    -ms-text-decoration: none;
+    -o-text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid rgba(0, 0, 0, 0.0)!important;
+    border-radius: $link-border-radius;
+    /* background-color: rgba(0,0,0,0); */
+    // border: 0;
+    // border-radius: var(--bs-dropdown-item-border-radius, 0);
+}
+
+
+.dropdown-item:hover, .dropdown-item:focus {
+    // color: $link-color-hover;
+    // background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
+    border: 1px solid $link-color-hover!important;
+    background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
+    color: $link-color-hover;
+    // border: 1px solid $link-color-hover;
+    box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px!important;
+    border-radius: $link-border-radius;
+}
+
+// .sidebar-item {
+//     margin-bottom: 
+//
+// }
 
 //
 // .navbar-dark {
