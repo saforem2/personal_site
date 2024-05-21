@@ -6,6 +6,9 @@
 $base-font-size: 18px!default;
 $code-block-font-size: 1rem !default;
 
+$quarto-border-width: 1px!default;
+$quarto-border-color: $code-block-border-color!default;
+
 $code-line-numbers: false;
 $output: "asis";
 $table-striped: true;
@@ -226,7 +229,7 @@ pre,code,kbd,samp {
     font-family: $font-family-monospace;
     font-size: 1em;
     direction: ltr /* rtl:ignore */;
-    unicode-bidi: bidi-override
+    unicode-bidi: bidi-override;
 }
 pre {
     font-family: $font-family-monospace!important;
@@ -609,9 +612,10 @@ boxed {
 //     background-color: $code-block-bg-color;
 // }
 
-pre>code.sourceCode {
-    margin-left: auto;
-}
+// pre>code.sourceCode {
+//     margin-left: auto;
+// }
+
 //
 // code a:any-link {
 //     color: $mygrey-050;
@@ -844,19 +848,19 @@ code span.kw {
 // }
 
 
-#title-block-header.quarto-title-block.default .quarto-title-meta-author {
-    // display: inline-grid !important;
-    // grid-template-columns: repeat(3, 1fr);
-}
+// #title-block-header.quarto-title-block.default .quarto-title-meta-author {
+//     // display: inline-grid !important;
+//     // grid-template-columns: repeat(3, 1fr);
+// }
 
-#title-block-header.quarto-title-block.default .quarto-title-meta-author {
-    // display: inline-grid
-}
+// #title-block-header.quarto-title-block.default .quarto-title-meta-author {
+//     // display: inline-grid
+// }
 
-#title-block-header.quarto-title-block.default .quarto-title-meta {
-    // display: inline-grid;
-    // grid-template-columns: repeat(2, 1fr)
-}
+// #title-block-header.quarto-title-block.default .quarto-title-meta {
+//     // display: inline-grid;
+//     // grid-template-columns: repeat(2, 1fr)
+// }
 
 #title-block-header.quarto-title-block.default .quarto-title .title {
     margin-bottom: 0;
@@ -870,10 +874,10 @@ code span.kw {
     margin-bottom: 0;
 }
 
-#title-block-header.quarto-title-block.default .quarto-title-meta-contents p,#title-block-header.quarto-title-block.default .quarto-title-authors p,#title-block-header.quarto-title-block.default .quarto-title-affiliations p {
-    // margin-bottom: .1em
-    // margin-top: -0.5em;
-}
+// #title-block-header.quarto-title-block.default .quarto-title-meta-contents p,#title-block-header.quarto-title-block.default .quarto-title-authors p,#title-block-header.quarto-title-block.default .quarto-title-affiliations p {
+//     // margin-bottom: .1em
+//     // margin-top: -0.5em;
+// }
 
 #title-block-header.quarto-title-block.default .quarto-title-meta-heading {
     text-transform: uppercase;
@@ -1847,3 +1851,59 @@ nav.quarto-secondary-nav {
 //     padding: 1em;
 //     margin-bottom: 1em;
 // }
+
+// .code-with-filename .code-with-filename-file {
+//     margin-bottom: 0;
+//     padding-bottom: 2px;
+//     padding-top: 2px;
+//     padding-left: .7em;
+//     // border: var(--quarto-border-width) solid var($code-block-border-color);
+//     color: $dim-text;
+//     // border-radius: var(--quarto-border-radius);
+//     // border-bottom: 0;
+//     // --bs-nav-tabs-link-active-border-color: $code-block-border-color;
+//     // border-bottom-left-radius: 0%;
+//     // border-bottom-right-radius: 0%;
+//
+//     border-radius: 0.25rem;
+//     color: $code-color!important;
+//     // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+//     box-shadow: $shadow-color 0px 2px 4px!important;
+//     width: 100%;
+//     padding-left: 0.5rem;
+//     padding-right: 0.5rem;
+//     box-shadow: $shadow-color 0px 2px 7px!important;
+//     // box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+//     // margin-top: 0.5rem;
+//     // box-shadow: 0px 5px 15px 0px $shadow-color;
+//     // min-width: max-content;
+//     // max-width: min-content;
+//     // display: flex;
+//     // text-align: center;
+//
+//
+//
+// }
+
+
+.code-with-filename .code-with-filename-file {
+    background-color: $code-block-bg-color;
+}
+
+.quarto-dark .code-with-filename .code-with-filename-file {
+    background-color: $code-block-bg-color;
+}
+
+.quarto-light .code-with-filename .code-with-filename-file {
+    background-color: $code-block-bg-color;
+}
+
+.code-with-filename-file {
+    background-color: $code-block-bg-color;
+    border: 1px solid $code-block-border-color!important;
+    border-bottom: 1.5px solid $dim-text!important;
+    border-radius: 0.25rem;
+    box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
+    color: $dim-text!important;
+    font-size: 0.8rem;
+}
