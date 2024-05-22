@@ -10,7 +10,7 @@
 <atom:link href="https://samforeman.me/qmd/posts.xml" rel="self" type="application/rss+xml"/>
 <description>My ramblings about science and computers</description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Tue, 21 May 2024 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 22 May 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>📸 flash-attn on Sunspot</title>
   <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
@@ -103,12 +103,9 @@ font-style: inherit;">24</span></span></code></pre></div>
 <p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
 <p>This was identified, and to be addressed in upcoming release.</p>
 </section>
-<section id="new-llm-framework-release" class="level2">
-<h2 class="anchored" data-anchor-id="new-llm-framework-release">🎁 New LLM Framework Release</h2>
-<section id="initial-release" class="level3">
-<h3 class="anchored" data-anchor-id="initial-release">📦 Initial Release</h3>
+<section id="llm-framework-release" class="level2">
+<h2 class="anchored" data-anchor-id="llm-framework-release">📦 LLM Framework Release</h2>
 <p>On 05/14/2024, Intel dropped their new LLM frameworks release:</p>
-<!-- ::: {.callout-tip title='🎁 [`frameworks_2024_5_v2` Announcement]{.dim-text}' aria-title="🎁 [`frameworks_2024_5_v2` Announcement]{.dim-text}" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
 <details closed="">
 <summary>
 🎁 <code>frameworks_2024_5_v2</code> Announcement:
@@ -116,8 +113,8 @@ font-style: inherit;">24</span></span></code></pre></div>
 <p>Hi Venkat,</p>
 <p>We have shared the official Q2 release in two different forms :</p>
 <p>Manual Setup: <code>/gila/Aurora_deployment/anl_24_q2_release.tar.gz</code></p>
-<p>and&nbsp;</p>
-<p>Module:&nbsp;</p>
+<p>and</p>
+<p>Module:</p>
 <p><code>module use -a /home/jmitche1/anl_release/2024/q2</code></p>
 <p><code>module load frameworks_2024_5_v2</code></p>
 <p>&nbsp;Instructions on how to use modules with Q2 build are anl_24_q2_release/README</p>
@@ -140,13 +137,11 @@ font-style: inherit;">24</span></span></code></pre></div>
 </ul>
 <p>Thanks,&nbsp;<br>
 Jerome</p>
-<!-- ::: -->
 </details>
-</section>
 <section id="flash-no-flash" class="level3">
 <h3 class="anchored" data-anchor-id="flash-no-flash">📸 flash 🤝 📷 no-flash</h3>
 <p>With this new release, Intel observed that the loss curves agreed exactly for <code>flash</code> / no-<code>flash</code>, using the learning rate settings below:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -174,7 +169,7 @@ font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">320000</span></span></code></pre></div>
 <p>Testing with Jerome’s new release:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> use <span class="at" style="color: #657422;
 background-color: null;
@@ -182,35 +177,33 @@ font-style: inherit;">-a</span> /home/jmitche1/anl_release/2024/q2</span>
 <span id="cb3-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> load frameworks_2024_5_v2</span></code></pre></div>
-<p>I was able to independently confirm these results, shown in 📸 flash 🤝 📷 no-flash below.</p>
-<!-- ::: {.callout-tip title='🖇️ [`wandb` Links]{.dim-text}' aria-title="wandb-links" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
+<p>I was able to independently confirm these results, shown in 📸 <code>flash</code> 🤝 📷 <code>no-flash</code> below.</p>
 <details closed="">
 <summary>
 🔗 <code>wandb</code> links:
 </summary>
 <ul>
-<li>[✅ <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans">youthful-river-1832</a></li>
-<li>[❌ <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans">earthy-wave-1830</a></li>
+<li>[📸 <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans">youthful-river-1832</a></li>
+<li>[📷 no-<code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans">earthy-wave-1830</a></li>
 </ul>
 </details>
-<!-- ::: -->
 <details closed="">
 <summary>
 📸 <code>flash</code> vs.&nbsp;📷 <code>no-flash</code>
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="📸 flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="📸 flash"></a></p>
-<figcaption>📸 flash</figcaption>
+<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
+<figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
 </figure>
 </div>
 </details>
 </section>
-<section id="broken-mpi" class="level3">
-<h3 class="anchored" data-anchor-id="broken-mpi">🧰 Broken MPI ??</h3>
-<p>For whatever reason, things seemed to have spontaneously broken on the night of 2024-04-14.</p>
-<p>When trying to run experiments the following day (05/15/2024) I was met with this<sup>1</sup>:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<section id="broken-mpigremlins" class="level3">
+<h3 class="anchored" data-anchor-id="broken-mpigremlins">🚧 Broken MPI<sup>1</sup></h3>
+<p>For whatever reason, things seemed to have spontaneously broken on the night of 2024-04-14 ??</p>
+<p>When trying to run experiments the following day (05/15/2024) I was met with this[^]:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
 background-color: null;
@@ -223,14 +216,13 @@ background-color: null;
 font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
 <p>which was discussed further in <a href="https://github.com/pmodels/mpich/pull/7001">this thread</a> on slack.</p>
 <p>It seems Subrata also encountered a similar issue [see: <a href="https://cels-anl.slack.com/archives/C047E7ZTUUF/p1715985162970119">slack thread</a>]</p>
-<!-- ::: {.callout-tip title='✅ [`mpi4py` fix]{.dim-text}' aria-title="mpi4py-fix" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
 <details closed="">
 <summary>
 ✅ <code>mpi4py</code> fix
 </summary>
 <!-- `mpi4py` fix -->
 <p>To resolve this</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
 background-color: null;
@@ -242,7 +234,7 @@ font-style: inherit;">)</span><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
 <p>issue we can simply load the correct modules:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> use <span class="at" style="color: #657422;
 background-color: null;
@@ -269,11 +261,12 @@ font-style: inherit;">module</span> load oneapi/release/2024.04.15.001</span></c
 <!-- ::: -->
 </details>
 </section>
-<section id="framework-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="framework-comparison">📊 Framework Comparison ??</h3>
+</section>
+<section id="framework-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="framework-comparison">🕵🏻‍ Framework Comparison ??</h2>
 <p>As I was re-building MPI, and after talking to Jerome, I realized that <em>most</em> of the dependencies are already present in the provided <code>frameworks/</code> modules on Sunspot.</p>
 <p>As a simple test, I tried building a new environment built on the base <code>conda</code> environment<sup>2</sup> provided by the<code>frameworks/2023.12.15.001</code> module, which worked without modification and had ) <em>most</em> of what I needed already installed:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
 background-color: null;
@@ -312,7 +305,7 @@ font-style: inherit;">import</span> MPI</span></code></pre></div>
 </summary>
 <p>Unfortunately, the <code>frameworks/**</code> don’t appear to provide DeepSpeed.</p>
 <p>We can create a virtual environment on top of the base conda by</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> module use frameworks/2023.12.15.001</span>
 <span id="cb8-2"><span class="ex" style="color: null;
@@ -336,7 +329,7 @@ font-style: inherit;">setup_venv_from_conda</span></span></code></pre></div>
 <p>To build / install DeepSpeed, along with its required dependencies:</p>
 <ul>
 <li><p><code>intel-extension-for-deepspeed</code>:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">python3</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -348,7 +341,7 @@ font-style: inherit;">-f</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"https://pytorch-extension.intel.com/release-whl/stable/xpu/us/intel-extension-for-pytorch-deepspeed/"</span></span></code></pre></div></li>
 <li><p><code>DeepSpeed</code>:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -381,7 +374,7 @@ font-style: inherit;">|&amp;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tee</span> build.log</span></code></pre></div></li>
 <li><p>Extras:</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">python3</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -389,7 +382,7 @@ font-style: inherit;">-m</span> pip install transformers datasets python-etcd te
 </ul>
 </details>
 <p>Looking around the available modules a bit, I noticed a newer frameworks release (<code>frameworks/2024.04.15.002</code>) that had a newer version of both <code>torch</code> and <code>ipex</code>:</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span>
 <span id="cb12-2"><span class="ex" style="color: null;
@@ -405,7 +398,7 @@ font-style: inherit;">'from mpi4py import MPI; print(MPI.__file__)'</span></span
 <span id="cb12-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># /soft/datascience/aurora_nre_models_frameworks-2024.1_preview_u1/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code></pre></div>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
 background-color: null;
@@ -497,32 +490,9 @@ font-style: inherit;">-</span>gnu.so</span></code></pre></div>
 <li><code>conda activate anl_24_q2_release</code></li>
 </ul></li>
 </ul>
-</section>
 <section id="fix-in-disguise" class="level3">
 <h3 class="anchored" data-anchor-id="fix-in-disguise">🥸 Fix in Disguise</h3>
 <p>Armed now with functional environment(s) for <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a>, I was able to resume my previous experiments.</p>
-<!--
-%%
-
-The first thing I tried was to again verify that the loss curves don't change
-when toggling `flash-attn` on / off.
-
-
-I was able to verify this using Jerome's new `anl_release/2024/q2` release via:
-
-```sh
-module use -a /home/jmitche1/anl_release/2024/q2
-module load frameworks_2024_5_v2
-
-```
-
-- W&B Runs:
-- \[ 📸 `flash` \]: [youthful-river-1832](https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans)
-- \[ 📷 no-`flash` \]: [earthy-wave-1830](https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans)
-
-![flash-attn-sunspot-compare-new-release](./assets/flash-attn/flash-attn-sunspot-compare-new-release.png)
-%%
--->
 <p>From the discussion with Intel, it was hard to understand / reason about <em>why</em> the <code>flash-attn</code> fix would have <em>any</em> dependence on the learning rate schedule (warmup + decay).</p>
 <p>If the <code>flash-attn</code> fix works for a particular learning rate schedule, you would reasonably expect that it should work for <em>any</em> learning rate schedule.</p>
 <p>An additional source of confusion for me was that the discrepancy in the loss curves (seemingly) disappeared when using the learning rate settings provided by Intel<sup>3</sup>, but not when using the ALCF defaults<sup>4</sup>.</p>
@@ -538,7 +508,7 @@ module load frameworks_2024_5_v2
 <p>So, I was curious what would happen if I used the (larger) learning rate value from the ALCF defaults (<code>lr=0.003</code>) with the very long <code>lr-decay-iters: 320000</code> from Intel.</p>
 <p>These results are shown below.</p>
 <p>In particular, for all three experiments the following learning rate settings were used:</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -547,7 +517,7 @@ background-color: null;
 font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.0003</span></span>
-<span id="cb16-2"><span class="fu" style="color: #4758AB;
+<span id="cb14-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -556,7 +526,7 @@ background-color: null;
 font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.05</span></span>
-<span id="cb16-3"><span class="fu" style="color: #4758AB;
+<span id="cb14-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -585,15 +555,17 @@ font-style: inherit;">320000</span></span></code></pre></div>
 <li>Plateaus towards the end of training</li>
 </ul></li>
 </ul>
-<blockquote class="blockquote">
-<p>[!TLDR]- Older Figs.</p>
+<details closed="">
+<summary>
+Older Figs
+</summary>
 <p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-2.png" class="img-fluid" alt="disguised-fix-2"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-1.png" class="img-fluid" alt="disguised-fix-1"></p>
-</blockquote>
+</details>
 </section>
 <section id="fix" class="level3">
 <h3 class="anchored" data-anchor-id="fix">✅ <code>2024.0</code> Fix</h3>
 <p><strong>Everything</strong> seems to work with</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code></pre></div>
 <p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-2024-0-fix.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-fix-frameworks-comparison.png" class="img-fluid"></p>
@@ -621,6 +593,33 @@ font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code>
 <h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
 <p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-0.png" class="img-fluid"></a></p>
 <p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-1.png" class="img-fluid"></a></p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0003</span></span>
+<span id="cb16-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span></span>
+<span id="cb16-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">null</span></span></code></pre></div>
 
 
 
@@ -630,79 +629,23 @@ font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code>
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>https://github.com/pmodels/mpich/pull/7001↩︎</p></li>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Gremlin">Gremlins</a>, likely↩︎</p></li>
 <li id="fn2"><p>Explicitly, <code>aurora_nre_models_frameworks-2024.0</code>, abbreviated as <code>2024.0</code>↩︎</p></li>
-<li id="fn3"><p>Intel used the following learning rate schedule in their experiments:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.00015</span></span>
-<span id="cb14-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.01</span></span>
-<span id="cb14-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">320000</span></span></code></pre></div>
-↩︎</li>
-<li id="fn4"><p>ALCF used the following learning rate schedule in their experiments:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0003</span></span>
-<span id="cb15-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span></span>
-<span id="cb15-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">null</span></span></code></pre></div>
-↩︎</li>
+<li id="fn3"><p>Intel used the following learning rate schedule in their experiments <code>yml   lr: 0.00015   lr-warmup-frac: 0.01   lr-decay-iters: 320000</code>↩︎</p></li>
+<li id="fn4"><p>ALCF used the following learning rate schedule in their experiments↩︎</p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
   author = {Foreman, Sam},
   title = {Personal {Website}},
-  date = {2024-05-21},
+  date = {2024-05-22},
   url = {https://samforeman.me},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2024. <span>“Personal Website.”</span> May 21, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
+Foreman, Sam. 2024. <span>“Personal Website.”</span> May 22, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
 </div></div></section></div> ]]></description>
   <guid>https://samforeman.me/qmd/flash-attn-sunspot/</guid>
-  <pubDate>Tue, 21 May 2024 05:00:00 GMT</pubDate>
+  <pubDate>Wed, 22 May 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Make Dope Slides</title>
@@ -759,7 +702,7 @@ Your browser does not support iframes.
 <li><code>cd lattice23 &amp;&amp; quarto preview</code></li>
 </ol>
 <p>This will create a <code>docs/</code> directory with the following structure:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">📂</span> docs/</span>
 <span id="cb1-2"><span class="ex" style="color: null;
@@ -781,7 +724,7 @@ font-style: inherit;">├──</span> 📄 search.json</span>
 background-color: null;
 font-style: inherit;">└──</span> 📂 site_libs/</span></code></pre></div>
 <p>Once you’ve created this, and the <code>docs/index.html</code> file looks how you want, you can add the <code>docs/</code> directory to your GitHub repo:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> git add docs</span>
 <span id="cb2-2"><span class="ex" style="color: null;
@@ -805,7 +748,7 @@ font-style: inherit;">$</span> git push</span></code></pre></div>
 <ol type="1">
 <li><p>Create new GitHub repo for it</p></li>
 <li><p>Hunt down the GitHub repo from my <em>last</em> talk and<sup>2</sup>:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> cp <span class="at" style="color: #657422;
 background-color: null;
@@ -843,7 +786,7 @@ font-style: inherit;">}</span> new_talk/</span></code></pre></div></li>
 <ul>
 <li><p>The slides are written in <del>markdown</del> <a href="https://quarto.org/">Quarto (<code>.qmd</code>)</a><sup>3</sup>, a <a href="https://pandoc.org/">pandoc</a>-compliant based markup language.</p></li>
 <li><p>For a single slide deck, the content will be placed in <code>index.qmd</code> and our directory structure will look something like:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">📂</span> lattice23/</span>
 <span id="cb4-2"><span class="ex" style="color: null;
@@ -894,7 +837,7 @@ font-style: inherit;"># BibTex references</span></span></code></pre></div></li>
 <li><p><strong><code>&lt;div&gt;</code></strong>’s: are created by wrapping text with a line consisting of at least three colons <code>:::</code>.</p>
 <ul>
 <li><p>Example:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1">::: {#special .sidebar}</span>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1">::: {#special .sidebar}</span>
 <span id="cb5-2">Here is a paragraph.</span>
 <span id="cb5-3"></span>
 <span id="cb5-4">And another.</span>
@@ -907,7 +850,7 @@ font-style: inherit;"># BibTex references</span></span></code></pre></div></li>
 <h3 class="anchored" data-anchor-id="install-extensions">🎁 Install Extensions</h3>
 <p>Find the full list of available extensions at <a href="https://quarto.org/docs/extensions/">Quarto Extensions</a></p>
 <p>To install various icon sets used in the example slides, we can install the following extensions:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> quarto install extension mcanouil/quarto-iconify      <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -938,7 +881,7 @@ font-style: inherit;"># Font Awesome icons</span></span></code></pre></div>
 <summary>
 Expand for <code>yaml</code>
 </summary>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><span class="pp" style="color: #AD0000;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">---</span></span>
 <span id="cb7-2"><span class="fu" style="color: #4758AB;
@@ -1317,7 +1260,7 @@ Figure&nbsp;1: <a href="https://saforem2.github.io/lattice23/#/section">Title Sl
 <summary>
 <p>Expand for <code>quarto</code></p>
 </summary>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"># {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span>
 <span id="cb8-2"></span>
@@ -1391,7 +1334,7 @@ font-style: inherit;">]</span>{.dim-text style="text-align:left;'}</span>
 <li><p>For the background, I made a simple animation <i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/grid-worms-animation"><code>saforem2/grid-worms-animation</code></a> that is hosted on GitHub pages as a simple html website</p></li>
 <li><p>This static GitHub page is then used as an <a href="https://quarto.org/docs/presentations/revealjs/#iframe-backgrounds">IFrame Background</a> natively in Quarto with Reveal.js</p></li>
 <li><p>This is as simple as:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"># {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span></code></pre></div></li>
 </ul></li>
@@ -1407,7 +1350,7 @@ font-style: inherit;"># {.title-slide .centeredslide background-iframe="https://
 <ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Code</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">Slide</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"># Overview</span></span>
 <span id="cb10-2"></span>
@@ -1518,7 +1461,7 @@ Figure&nbsp;2: <a href="https://saforem2.github.io/lattice23/#/overview">Overvie
 <ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true"><code>index.qmd</code></a></li><li class="nav-item"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" aria-controls="tabset-2-2" aria-selected="false"><code>style.scss</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" aria-labelledby="tabset-2-1-tab">
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">---</span></span>
 <span id="cb11-2"><span class="an" style="color: #5E5E5E;
@@ -1539,7 +1482,7 @@ background-color: null;
 font-style: inherit;"># Title {.centeredslide}</span></span></code></pre></div>
 </div>
 <div id="tabset-2-2" class="tab-pane" aria-labelledby="tabset-2-2-tab">
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">.centeredslide</span> {</span>
 <span id="cb12-2">  <span class="kw" style="color: #003B4F;
@@ -1600,7 +1543,7 @@ Table&nbsp;1: Slide layout. First row split into two columns, second row spans f
 <ul>
 <li><p>In panel A, we have a <code>::: {.callout-note}</code> block followed by a single list element containing a LaTeX equation.</p></li>
 <li><p>In panel B we have a standard markdown image</p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><span class="al" style="color: #AD0000;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><span class="al" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">![](./asets/mcmc.png)</span></span></code></pre></div></li>
 <li><p>In panel C we have normal text + math with LaTeX<sup>7</sup> syntax.</p></li>
@@ -1615,7 +1558,7 @@ font-style: inherit;">![](./asets/mcmc.png)</span></span></code></pre></div></li
 <summary>
 <p>Expand for<code>quarto</code></p>
 </summary>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"># Markov Chain Monte Carlo (MCMC) {.centeredslide}</span></span>
 <span id="cb14-2"></span>
@@ -1819,7 +1762,7 @@ Foreman, Sam. 2024. <span>“How to Make Dope Slides.”</span> May 14,
 <section id="imports--setup" class="level2">
 <h2 class="anchored" data-anchor-id="imports--setup">Imports / Setup</h2>
 <div id="f924fcb4-d11e-44c4-acc5-caf9f50ea803" class="cell code" data-execution_count="1" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:25.674067Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:25.673461Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:26.976641Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:26.976187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:25.674029Z&quot;}" data-jukit_cell_id="ZlqRKELWeh">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> __future__ <span class="im" style="color: #00769E;
 background-color: null;
@@ -1872,7 +1815,7 @@ background-color: null;
 font-style: inherit;">as</span> np</span></code></pre></div>
 </div>
 <div id="707c54d9-1cee-4452-a9e8-beab67f6bb5e" class="cell code" data-execution_count="2" data-execution="{'iopub.execute_input':'2023-09-21T17:23:27.398552Z','iopub.status.busy':'2023-09-21T17:23:27.398037Z','iopub.status.idle':'2023-09-21T17:23:29.370420Z','shell.execute_reply':'2023-09-21T17:23:29.370048Z','shell.execute_reply.started':'2023-09-21T17:23:27.398512Z'}">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> ezpz.dist <span class="im" style="color: #00769E;
 background-color: null;
@@ -1931,7 +1874,7 @@ font-style: inherit;">"</span></span>
 </div>
 <p>:::</p>
 <div id="b55dfeab-27a1-4322-af80-44380adbaadf" class="cell code" data-execution_count="3" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:29.371628Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:29.371422Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:30.756041Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:30.755862Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:29.371616Z&quot;}" data-jukit_cell_id="ZlqRKELWeh">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%</span>matplotlib inline</span>
 <span id="cb3-2"><span class="im" style="color: #00769E;
@@ -2027,7 +1970,7 @@ font-style: inherit;">print</span>(console.is_jupyter)</span></code></pre></div>
 </div>
 </div>
 <div id="a6523472-488a-49e9-bfd6-6ca8fb953650" class="cell code" data-execution_count="5" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:30.954621Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:30.954289Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:31.061599Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:31.058688Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:30.954598Z&quot;}">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">plt.style.use(opinionated.STYLES[<span class="st" style="color: #20794D;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1">plt.style.use(opinionated.STYLES[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'opinionated_min'</span>])</span>
 <span id="cb4-2">sns.set_context(<span class="st" style="color: #20794D;
@@ -2041,7 +1984,7 @@ font-style: inherit;">'notebook'</span>)</span></code></pre></div>
 </section>
 </div>
 <div id="b853ba57" class="cell code" data-execution_count="6" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:46.575842Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:46.575002Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:46.644400Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:46.644215Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:46.575810Z&quot;}" data-jukit_cell_id="x8zCEYjYIg">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> l2hmc.configs <span class="im" style="color: #00769E;
 background-color: null;
@@ -2163,7 +2106,7 @@ font-style: inherit;">=</span> dict_to_list_of_overrides(overrides)</span></code
 </div>
 </div>
 <div id="5ae7bc5d" class="cell code" data-execution_count="7" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:53.284515Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:53.284077Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:53.362789Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:53.362643Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:53.284485Z&quot;}" data-jukit_cell_id="iKzpP0xANE">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> pathlib <span class="im" style="color: #00769E;
 background-color: null;
@@ -2262,7 +2205,7 @@ font-style: inherit;">"</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="4ca95dea" class="cell code" data-execution_count="8" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:55.013350Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:55.012634Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:24:09.645580Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:24:09.645178Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:55.013316Z&quot;}" data-jukit_cell_id="lHICETmP7j">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#os.environ['MASTER_PORT'] = '5436'</span></span>
 <span id="cb8-2"></span>
@@ -2302,7 +2245,7 @@ font-style: inherit;">'backend=DDP'</span></span>
 </div>
 </div>
 <div id="de33e6c7" class="cell code" data-execution_count="10" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:24:11.069316Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:24:11.067417Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:24:11.148435Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:24:11.148240Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:24:11.069247Z&quot;}" data-jukit_cell_id="9XP3KbsEEH">
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">state <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1">state <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> exp.trainer.dynamics.random_state(<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -2350,7 +2293,7 @@ background-color: null;
 font-style: inherit;">0.1</span></span></code></pre></div>
 </div>
 <div id="292fced2" class="cell code" data-execution_count="11" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:24:21.526369Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:24:21.525718Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:25:01.413937Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:25:01.413545Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:24:21.526320Z&quot;}" data-jukit_cell_id="KCwuqXXGds" data-scrolled="true">
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">sns.set_context(<span class="st" style="color: #20794D;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1">sns.set_context(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'notebook'</span>)</span>
 <span id="cb10-2"></span>
@@ -2433,7 +2376,7 @@ nleapfrog=20</code></pre>
 </div>
 </div>
 <div id="a62b5515-1fbe-4a78-9330-a4e675adc55d" class="cell code" data-execution_count="12" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:25:05.409303Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:25:05.408268Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:25:33.378971Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:25:33.378687Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:25:05.409256Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># %matplotlib inline</span></span>
 <span id="cb13-2"><span class="im" style="color: #00769E;
@@ -2591,7 +2534,7 @@ font-style: inherit;">'HMC'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="80a4cca0-19fd-43aa-83a5-8bd9c18da011" class="cell code" data-execution_count="13" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:26:40.599785Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:26:40.598293Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:27:07.102561Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:27:07.101951Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:26:40.599694Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> torch</span>
 <span id="cb15-2"></span>
@@ -2721,13 +2664,13 @@ font-style: inherit;">=</span> initial_states.detach().cpu().numpy()</span></cod
 </div>
 </div>
 <div id="b3874832-0782-4b49-a025-742be370675d" class="cell code" data-execution_count="14" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:27:37.023220Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:27:37.022568Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:27:37.170197Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:27:37.169976Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:27:37.023184Z&quot;}">
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">initial_states_np.shape</span></code></pre></div>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1">initial_states_np.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="14">
 <pre><code>(999, 16, 2048)</code></pre>
 </div>
 </div>
 <div id="46eea215-ac24-46ed-b334-648ab0f082b0" class="cell code" data-execution_count="15" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:27:45.524060Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:27:45.523874Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:27:45.610750Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:27:45.610562Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:27:45.524045Z&quot;}">
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">x_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1">x_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> initial_states_np.reshape(<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2783,7 +2726,7 @@ font-style: inherit;">'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="00862566-256a-4e1b-b96f-b289e146ed65" class="cell code" data-execution_count="16" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:28:23.005041Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:28:23.004835Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:28:41.019060Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:28:41.018864Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:28:23.005025Z&quot;}">
-<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> l2hmc.common <span class="im" style="color: #00769E;
 background-color: null;
@@ -2890,7 +2833,7 @@ font-style: inherit;">True</span>,</span>
 </div>
 </div>
 <div id="544a477a-05cd-4e1f-b11f-5f9d29c61918" class="cell code" data-execution_count="28" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:03:31.911850Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:03:31.910702Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:03:32.065942Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:03:32.065721Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:03:31.911790Z&quot;}">
-<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">class</span> Diffusion:</span>
 <span id="cb21-2">    <span class="kw" style="color: #003B4F;
@@ -3264,7 +3207,7 @@ background-color: null;
 font-style: inherit;">return</span> x</span></code></pre></div>
 </div>
 <div id="f49c6213-2274-45e5-bc10-01a46e19d7c6" class="cell code" data-execution_count="29" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:03:32.936448Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:03:32.936214Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:03:33.006979Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:03:33.006767Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:03:32.936420Z&quot;}">
-<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">initial_states.shape</span></code></pre></div>
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1">initial_states.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="29">
 <pre><code>torch.Size([999, 16, 2048])</code></pre>
 </div>
@@ -3275,7 +3218,7 @@ font-style: inherit;">return</span> x</span></code></pre></div>
 </section>
 </div>
 <div id="24658ef0-6421-465a-aee3-45cbaa84fe16" class="cell code" data-execution_count="19" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:29:05.270957Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:29:05.270198Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:29:05.643233Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:29:05.643039Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:29:05.270924Z&quot;}">
-<div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> torchvision</span>
 <span id="cb24-2"><span class="im" style="color: #00769E;
@@ -3351,7 +3294,7 @@ font-style: inherit;">=</span> Image.fromarray(ndarr)</span>
 </section>
 </div>
 <div id="d7adbbf1-9a17-459c-ba2b-144605576790" class="cell code" data-execution_count="20" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:29:33.246111Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:29:33.245275Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:29:33.647190Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:29:33.646950Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:29:33.246094Z&quot;}">
-<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> torch <span class="im" style="color: #00769E;
 background-color: null;
@@ -3570,7 +3513,7 @@ font-style: inherit;">'diffusion2dU1'</span></span></code></pre></div>
 </section>
 </div>
 <div id="27fcd372-259b-4be5-830d-167a396aeac1" class="cell code" data-execution_count="21" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:29:54.637896Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:29:54.634898Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:45:06.940844Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:45:06.940627Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:29:54.637847Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> torch <span class="im" style="color: #00769E;
 background-color: null;
@@ -3843,7 +3786,7 @@ font-style: inherit;">"</span>)</span>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb27-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -3876,7 +3819,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb28-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb28-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -3923,7 +3866,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </div>
 </div>
 <div id="c4ae942b-4617-4f1e-a837-68e95d6ddabc" class="cell code" data-execution_count="22" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:01:57.860377Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:01:57.859019Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:01:58.250584Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:01:58.250409Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:01:57.860309Z&quot;}">
-<div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1">sns.set_context(<span class="st" style="color: #20794D;
+<div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1">sns.set_context(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'notebook'</span>)</span>
 <span id="cb31-2">tmp <span class="op" style="color: #5E5E5E;
@@ -4032,18 +3975,18 @@ font-style: inherit;">0.8</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="2637733d-1da9-42e9-b00f-630b6b5d8269" class="cell code" data-execution_count="23" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:02:10.910463Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:02:10.910215Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:02:10.982520Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:02:10.982237Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:02:10.910447Z&quot;}">
-<div class="sourceCode" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">sampled_images_history_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1">sampled_images_history_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.stack(sampled_images_history)</span></code></pre></div>
 </div>
 <div id="2afaff5c-a946-4080-90d7-bbb1af973ce0" class="cell code" data-execution_count="24" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:02:11.478836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:02:11.478478Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:02:11.546438Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:02:11.546257Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:02:11.478818Z&quot;}">
-<div class="sourceCode" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">sampled_images_history_.shape</span></code></pre></div>
+<div class="sourceCode" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1">sampled_images_history_.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="24">
 <pre><code>torch.Size([1, 5, 2, 32, 32])</code></pre>
 </div>
 </div>
 <div id="c9397f4d-fbad-4332-b909-c671469b1f7d" class="cell code" data-execution_count="25" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:02:13.627514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:02:13.627140Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:02:13.825037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:02:13.824814Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:02:13.627490Z&quot;}">
-<div class="sourceCode" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">sns.set_context(<span class="st" style="color: #20794D;
+<div class="sourceCode" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1">sns.set_context(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'notebook'</span>)</span>
 <span id="cb35-2">fig, ax <span class="op" style="color: #5E5E5E;
@@ -4143,7 +4086,7 @@ font-style: inherit;">0.85</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="70324363-7315-4c3f-9304-24c0509bdd6c" class="cell code" data-execution_count="27" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:02:25.159709Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:02:25.158545Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:02:25.258988Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:02:25.258835Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:02:25.159655Z&quot;}">
-<div class="sourceCode" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> idx <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -4185,7 +4128,7 @@ font-style: inherit;">'</span>)</span></code></pre></div>
 </section>
 </div>
 <div id="1b571b62-b713-4481-a328-fe3d1bcc0030" class="cell code" data-execution_count="32" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:08:36.186462Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:08:36.185269Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:08:36.391707Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:08:36.391500Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:08:36.186399Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#for retrain_iter in range(config['retrains']):</span></span>
 <span id="cb37-2">state <span class="op" style="color: #5E5E5E;
@@ -4226,13 +4169,13 @@ background-color: null;
 font-style: inherit;">=</span> {}</span></code></pre></div>
 </div>
 <div id="4deb9af0-c9ca-4314-a393-7a206c15d1e6" class="cell code" data-execution_count="33" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:08:40.518616Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:08:40.518438Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:08:40.627283Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:08:40.625908Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:08:40.518604Z&quot;}">
-<div class="sourceCode" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">global_step</span></code></pre></div>
+<div class="sourceCode" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1">global_step</span></code></pre></div>
 <div class="output execute_result" data-execution_count="33">
 <pre><code>0</code></pre>
 </div>
 </div>
 <div id="d3d35fc8-5067-4d51-8cc0-8136b34669a3" class="cell code" data-execution_count="35" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:09:58.481960Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:09:58.480609Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:12:28.387917Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:12:28.387487Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:09:58.481905Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> retrain_iter <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -4638,7 +4581,7 @@ font-style: inherit;">'MSE'</span>: loss.item()</span>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb41-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb41-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4671,7 +4614,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb42-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb42-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4708,7 +4651,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb43-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb43-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4745,7 +4688,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb44-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb44-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4778,7 +4721,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </pre>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb45-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb45-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4807,7 +4750,7 @@ background-color: null;
 font-style: inherit;">}</span></span></code></pre></div>
 </div>
 <div class="cell-output cell-output-display">
-<div class="sourceCode" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb46-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb46-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span><span class="dt" style="color: #AD0000;
 background-color: null;
@@ -4841,7 +4784,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 </div>
 </div>
 <div id="a83cf9fb-9c2c-430e-957a-d42eaed79401" class="cell code" data-execution_count="36" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:12:32.389697Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:12:32.389127Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:12:32.627601Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:12:32.627412Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:12:32.389644Z&quot;}" data-scrolled="true">
-<div class="sourceCode" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1">console.<span class="bu" style="color: null;
+<div class="sourceCode" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1">console.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -4901,7 +4844,7 @@ font-style: inherit;">100</span>]]))</span></code></pre></div>
 </div>
 </div>
 <div id="4b0e9e7c-9585-4f50-81c7-4c9dd37e18ce" class="cell code" data-execution_count="37" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:12:38.701814Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:12:38.699745Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:12:38.789521Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:12:38.789359Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:12:38.701745Z&quot;}">
-<div class="sourceCode" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1">samples_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1">samples_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.stack([i.reshape(<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4924,7 +4867,7 @@ font-style: inherit;">in</span> samples])</span>
 </div>
 </div>
 <div id="bef6ff41-1561-40ce-980c-29014f7efad5" class="cell code" data-execution_count="38" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:12:40.804170Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:12:40.803208Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:12:40.896475Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:12:40.896319Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:12:40.804119Z&quot;}">
-<div class="sourceCode" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(hmc_samples)</span></code></pre></div>
 <div class="output execute_result" data-execution_count="38">
@@ -4932,7 +4875,7 @@ font-style: inherit;">len</span>(hmc_samples)</span></code></pre></div>
 </div>
 </div>
 <div id="a2279e49-e463-4a3a-a08e-14b1a636222f" class="cell code" data-execution_count="41" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:00.841115Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:00.840869Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:00.912440Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:00.912247Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:00.841101Z&quot;}">
-<div class="sourceCode" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(diffusion_samples)</span></code></pre></div>
 <div class="output execute_result" data-execution_count="41">
@@ -4940,7 +4883,7 @@ font-style: inherit;">len</span>(diffusion_samples)</span></code></pre></div>
 </div>
 </div>
 <div id="13d3d5cd-df10-40e0-8dff-b1625a3ead57" class="cell code" data-execution_count="43" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:04.231527Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:04.231202Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:04.328804Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:04.328067Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:04.231509Z&quot;}">
-<div class="sourceCode" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1">hmc_samples_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1">hmc_samples_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.stack([i.reshape(<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4978,25 +4921,25 @@ font-style: inherit;">in</span> diffusion_samples]</span>
 <span id="cb54-4">)</span></code></pre></div>
 </div>
 <div id="7b58ba9e-4a8d-4cdb-a14e-87695db13ec3" class="cell code" data-execution_count="44" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:04.966106Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:04.965159Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:05.068570Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:05.067781Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:04.966070Z&quot;}">
-<div class="sourceCode" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1">hmc_samples_.shape</span></code></pre></div>
+<div class="sourceCode" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1">hmc_samples_.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="44">
 <pre><code>torch.Size([28, 16, 2, 32, 32])</code></pre>
 </div>
 </div>
 <div id="21c844ca-b9dd-4dd4-96cb-c5bb83ad93b5" class="cell code" data-execution_count="45" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:12.549057Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:12.548060Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:12.726595Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:12.726410Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:12.549036Z&quot;}">
-<div class="sourceCode" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1">diffusion_samples_.shape</span></code></pre></div>
+<div class="sourceCode" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1">diffusion_samples_.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="45">
 <pre><code>torch.Size([2, 16, 2, 32, 32])</code></pre>
 </div>
 </div>
 <div id="bee61425-74d1-4faa-9447-ef4c6c71a8ba" class="cell code" data-execution_count="46" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:15.683862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:15.683665Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:15.753128Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:15.752924Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:15.683847Z&quot;}">
-<div class="sourceCode" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1">samples_.shape</span></code></pre></div>
+<div class="sourceCode" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1">samples_.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="46">
 <pre><code>torch.Size([30, 16, 2, 32, 32])</code></pre>
 </div>
 </div>
 <div id="c637a290-4dc3-42f6-abeb-ee807b991ffd" class="cell code" data-execution_count="47" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:29.661939Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:29.661388Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:29.751394Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:29.751170Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:29.661915Z&quot;}">
-<div class="sourceCode" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> calc_plaqs(x):</span>
 <span id="cb61-2">    <span class="cf" style="color: #003B4F;
@@ -5066,7 +5009,7 @@ background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 </div>
 <div id="be21453d-5bd3-4f17-b9eb-294adcdf2e6b" class="cell code" data-execution_count="64" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:17:29.078038Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:17:29.076956Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:17:29.288381Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:17:29.288242Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:17:29.077980Z&quot;}">
-<div class="sourceCode" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1">samples_init_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1">samples_init_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> initial_states.reshape(<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5087,7 +5030,7 @@ font-style: inherit;">32</span>)</span>
 </div>
 </div>
 <div id="8542582c-65ae-40b5-b5b9-70292acc2c81" class="cell code" data-execution_count="65" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:17:43.351050Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:17:43.347957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:17:43.699383Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:17:43.699177Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:17:43.350913Z&quot;}">
-<div class="sourceCode" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1">metrics_init_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1">metrics_init_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb64-2">    <span class="st" style="color: #20794D;
@@ -5144,7 +5087,7 @@ font-style: inherit;">'sinQ'</span>: calc_sinQ(diffusion_samples_)</span>
 <span id="cb64-23">}</span></code></pre></div>
 </div>
 <div id="21bfb626-a2c1-46db-8f1a-7eb86d81eafc" class="cell code" data-execution_count="49" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:13:32.364043Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:13:32.363212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:13:32.470577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:13:32.470322Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:13:32.364002Z&quot;}">
-<div class="sourceCode" id="cb65" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1">metrics_[<span class="st" style="color: #20794D;
+<div class="sourceCode" id="cb65" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1">metrics_[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'plaqs'</span>].shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="49">
@@ -5152,7 +5095,7 @@ font-style: inherit;">'plaqs'</span>].shape</span></code></pre></div>
 </div>
 </div>
 <div id="59f33ef8-cfad-41d5-bfdd-0717c8700376" class="cell code" data-execution_count="52" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:14:16.986650Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:14:16.985673Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:14:17.106591Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:14:17.105464Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:14:16.986586Z&quot;}">
-<div class="sourceCode" id="cb67" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1">console.<span class="bu" style="color: null;
+<div class="sourceCode" id="cb67" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1">console.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -5214,7 +5157,7 @@ font-style: inherit;">in</span> watcher.items()]))</span></code></pre></div>
 </div>
 </div>
 <div id="4e5d7c22-e454-4368-ba7e-599f1d68fa19" class="cell code" data-execution_count="54" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:14:41.427638Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:14:41.427237Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:14:41.629492Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:14:41.629312Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:14:41.427623Z&quot;}">
-<div class="sourceCode" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots()</span>
 <span id="cb68-2"></span>
@@ -5279,7 +5222,7 @@ font-style: inherit;">1.00</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="ce6ca162-689d-4673-b093-261e465eefc7" class="cell code" data-execution_count="66" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:18:08.961955Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:18:08.961699Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:18:10.065123Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:18:10.064912Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:18:08.961923Z&quot;}">
-<div class="sourceCode" id="cb69" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb69" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5346,7 +5289,7 @@ font-style: inherit;">0.92</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="333d6fce-2124-46c7-809b-e584e2efc057" class="cell code" data-execution_count="68" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:18:30.709489Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:18:30.708639Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:18:31.422559Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:18:31.422402Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:18:30.709448Z&quot;}">
-<div class="sourceCode" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5413,7 +5356,7 @@ font-style: inherit;">0.92</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="c348510d-9ec3-41c7-b04e-654b5ba0bd3d" class="cell code" data-execution_count="71" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:01.490764Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:01.490310Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:01.844808Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:01.844643Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:01.490733Z&quot;}">
-<div class="sourceCode" id="cb71" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb71" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5476,7 +5419,7 @@ font-style: inherit;">0.92</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="20a16129-4648-4c62-9ed4-d6753d425f89" class="cell code" data-execution_count="73" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:03.884288Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:03.884107Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:04.146335Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:04.146166Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:03.884273Z&quot;}">
-<div class="sourceCode" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5539,7 +5482,7 @@ font-style: inherit;">0.92</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="9f329885-fa42-4e13-bd2c-e6fff4418cdb" class="cell code" data-execution_count="74" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:05.363396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:05.363028Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:05.494802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:05.494503Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:05.363383Z&quot;}">
-<div class="sourceCode" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> l2hmc.lattice.u1.pytorch.lattice <span class="im" style="color: #00769E;
 background-color: null;
@@ -5552,7 +5495,7 @@ font-style: inherit;">6.0</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="0646c637-546c-49df-876b-4dfb7abb9497" class="cell code" data-execution_count="78" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:41.898242Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:41.898063Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:42.092250Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:42.092113Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:41.898226Z&quot;}">
-<div class="sourceCode" id="cb75" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb75" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots()</span>
 <span id="cb75-2"><span class="co" style="color: #5E5E5E;
@@ -5664,7 +5607,7 @@ font-style: inherit;">'center'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="f44d12ff-37f7-452e-94d7-6c3f0b28205e" class="cell code" data-execution_count="79" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:47.593614Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:47.593330Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:47.769152Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:47.768975Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:47.593598Z&quot;}">
-<div class="sourceCode" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots()</span>
 <span id="cb76-2">_ <span class="op" style="color: #5E5E5E;
@@ -5743,7 +5686,7 @@ font-style: inherit;">'center'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="c0574a41-5d7e-45d9-97e9-0d81a0a6fa84" class="cell code" data-execution_count="80" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:53.009094Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:53.008705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:53.084368Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:53.084175Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:53.009076Z&quot;}">
-<div class="sourceCode" id="cb77" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1">wloops <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb77" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1">wloops <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb77-2">    <span class="st" style="color: #20794D;
@@ -5790,7 +5733,7 @@ font-style: inherit;">in</span> diffusion_samples_</span>
 <span id="cb77-17">}</span></code></pre></div>
 </div>
 <div id="a7659697-40bd-489f-9445-1b27a5c79d8e" class="cell code" data-execution_count="81" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:53.670229Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:53.669768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:53.757525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:53.757339Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:53.670188Z&quot;}">
-<div class="sourceCode" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1">wlhmc <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1">wlhmc <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.stack(wloops[<span class="st" style="color: #20794D;
 background-color: null;
@@ -5802,13 +5745,13 @@ background-color: null;
 font-style: inherit;">'diffusion'</span>]).squeeze()</span></code></pre></div>
 </div>
 <div id="63818acf-ed67-4f87-a2c2-065edebd94ba" class="cell code" data-execution_count="82" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:19:54.068148Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:19:54.067480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:19:54.181682Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:19:54.181151Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:19:54.068106Z&quot;}">
-<div class="sourceCode" id="cb79" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1">wlhmc.shape</span></code></pre></div>
+<div class="sourceCode" id="cb79" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1">wlhmc.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="82">
 <pre><code>torch.Size([28, 16, 32, 32])</code></pre>
 </div>
 </div>
 <div id="3e408fed-abb8-486c-a560-3af19f121179" class="cell code" data-execution_count="85" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:20:23.993243Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:20:23.992854Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:20:24.334498Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:20:24.334319Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:20:23.993216Z&quot;}">
-<div class="sourceCode" id="cb81" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1">_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb81" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1">_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.tight_layout()</span>
 <span id="cb81-2"><span class="cf" style="color: #003B4F;
@@ -5902,7 +5845,7 @@ font-style: inherit;">=</span> ax_.set_yticklabels([])</span></code></pre></div>
 </div>
 </div>
 <div id="ff7b6cca-0327-4be2-aab6-aaa8df6ce2bc" class="cell code" data-execution_count="87" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:20:36.056148Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:20:36.055543Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:20:36.149377Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:20:36.149190Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:20:36.056103Z&quot;}">
-<div class="sourceCode" id="cb83" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1">qhmc <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb83" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1">qhmc <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> metrics_hmc_[<span class="st" style="color: #20794D;
 background-color: null;
@@ -5918,7 +5861,7 @@ font-style: inherit;">'intQ'</span>]</span>
 </div>
 </div>
 <div id="5230a441-1e1b-4901-b4d0-aacf5413ff35" class="cell code" data-execution_count="88" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:20:39.115417Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:20:39.114730Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:20:39.197664Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:20:39.197492Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:20:39.115373Z&quot;}">
-<div class="sourceCode" id="cb85" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1">phmc <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb85" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1">phmc <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.stack(plaqs[<span class="st" style="color: #20794D;
 background-color: null;
@@ -5934,13 +5877,13 @@ font-style: inherit;">'diffusion'</span>]).squeeze()</span>
 </div>
 </div>
 <div id="1af88db9-f706-4b58-8e81-a54cf92f144d" class="cell code" data-execution_count="89" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:20:39.947370Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:20:39.946997Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:20:40.026391Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:20:40.026205Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:20:39.947336Z&quot;}">
-<div class="sourceCode" id="cb87" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1">pdiff.shape</span></code></pre></div>
+<div class="sourceCode" id="cb87" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1">pdiff.shape</span></code></pre></div>
 <div class="output execute_result" data-execution_count="89">
 <pre><code>torch.Size([2, 16])</code></pre>
 </div>
 </div>
 <div id="1eeaeb30-abd1-47e9-8752-42d26873629b" class="cell code" data-execution_count="90" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:20:40.855087Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:20:40.854732Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:20:41.041979Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:20:41.041831Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:20:40.855068Z&quot;}">
-<div class="sourceCode" id="cb89" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb89" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots()</span>
 <span id="cb89-2"></span>
@@ -6111,7 +6054,7 @@ font-style: inherit;">'center'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="b40d5264-8818-40d6-9b6f-1a8e5c62f8a0" class="cell code" data-execution_count="92" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T18:21:00.286255Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T18:21:00.285869Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T18:21:00.480910Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T18:21:00.480726Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T18:21:00.286225Z&quot;}">
-<div class="sourceCode" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1">fig, ax <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1">fig, ax <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots()</span>
 <span id="cb90-2"></span>
@@ -6286,7 +6229,7 @@ font-style: inherit;">'center'</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="667c0f58-fbcf-4268-9193-4d475fbbe01b" class="cell code">
-<div class="sourceCode" id="cb91" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1">global_step <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb91" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1">global_step <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6472,17 +6415,17 @@ font-style: inherit;">0</span>], sample)</span>
 <span id="cb91-44">        frames.append(sample.numpy())</span></code></pre></div>
 </div>
 <div id="bca44d4c-aecd-4348-8ad8-be9a404c8946" class="cell code">
-<div class="sourceCode" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1">dataset[<span class="dv" style="color: #AD0000;
+<div class="sourceCode" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1">dataset[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>]</span></code></pre></div>
 </div>
 <div id="169c00d5-8ef2-42df-8f21-7ce08837ede4" class="cell code">
-<div class="sourceCode" id="cb93" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb93" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(dataloader)</span></code></pre></div>
 </div>
 <div id="8d47bdc2-41a1-4236-8674-090e98f2cd49" class="cell code">
-<div class="sourceCode" id="cb94" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1">eval_batch_size <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb94" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1">eval_batch_size <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6542,7 +6485,7 @@ background-color: null;
 font-style: inherit;">100</span></span></code></pre></div>
 </div>
 <div id="11ce1f12-beb8-4d8b-9475-d27c1b91beee" class="cell code">
-<div class="sourceCode" id="cb95" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1">eval_batch_size <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb95" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1">eval_batch_size <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6567,16 +6510,16 @@ background-color: null;
 font-style: inherit;">0</span>], sample)</span></code></pre></div>
 </div>
 <div id="7db39b1f-807d-4656-a473-fcc818f2d157" class="cell code">
-<div class="sourceCode" id="cb96" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1">sample.shape</span></code></pre></div>
+<div class="sourceCode" id="cb96" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1">sample.shape</span></code></pre></div>
 </div>
 <div id="b7118647-55d6-4605-87cf-c43fbe8d735c" class="cell code">
-<div class="sourceCode" id="cb97" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1">residual.shape</span></code></pre></div>
+<div class="sourceCode" id="cb97" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1">residual.shape</span></code></pre></div>
 </div>
 <div id="77a6735b-f21f-4bc3-adc5-35c075f61bdd" class="cell code">
-<div class="sourceCode" id="cb98" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1">sample_.shape</span></code></pre></div>
+<div class="sourceCode" id="cb98" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1">sample_.shape</span></code></pre></div>
 </div>
 <div id="2648c025-75c8-4555-9d75-3c1c6426f3a1" class="cell code">
-<div class="sourceCode" id="cb99" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1">diffusion_samples <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb99" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1">diffusion_samples <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []</span>
 <span id="cb99-2">hmc_samples <span class="op" style="color: #5E5E5E;
@@ -6715,7 +6658,7 @@ font-style: inherit;">=</span> exp.trainer.hmc_step((sample_, beta))</span>
 <span id="cb99-31">            hmc_samples.append(sample)</span></code></pre></div>
 </div>
 <div id="8333621a-2fee-4736-a66c-bc42650d72aa" class="cell code">
-<div class="sourceCode" id="cb100" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode" id="cb100" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> i, t <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -6759,7 +6702,7 @@ background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 </div>
 <div id="d7d4b80b-17e1-4e3a-b642-ba2bc1f83e9c" class="cell code">
-<div class="sourceCode" id="cb101" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb101" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 <div id="014d60bf-7f4b-48f6-a0e0-20b73392446d" class="cell markdown" data-jp-markdownheadingcollapsed="true">
 <section id="alternate" class="level2">
@@ -6767,7 +6710,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 </section>
 </div>
 <div id="385670d3-4c8a-40e6-abd8-7adf803d0042" class="cell code">
-<div class="sourceCode" id="cb102" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1">diffusion_ <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb102" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1">diffusion_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DiffusionAlt(img_size<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -6780,10 +6723,10 @@ background-color: null;
 font-style: inherit;">'cpu'</span>)</span></code></pre></div>
 </div>
 <div id="a3916da7-d377-460c-8334-61ac3eb806f9" class="cell code">
-<div class="sourceCode" id="cb103" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1">unet</span></code></pre></div>
+<div class="sourceCode" id="cb103" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1">unet</span></code></pre></div>
 </div>
 <div id="88d31f53-1808-4a91-b26d-61b6328b824f" class="cell code">
-<div class="sourceCode" id="cb104" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1">image <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb104" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1">image <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> torch.rand(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6804,22 +6747,22 @@ font-style: inherit;">'cpu'</span>)</span>
 <span id="cb104-3">unet(image, t)</span></code></pre></div>
 </div>
 <div id="eb1d6b2b-dc4b-4325-882f-f10f44a40faf" class="cell code">
-<div class="sourceCode" id="cb105" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1">diffusion_.sample(</span></code></pre></div>
+<div class="sourceCode" id="cb105" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1">diffusion_.sample(</span></code></pre></div>
 </div>
 <div id="62370eb1-36eb-4d46-ae21-62f5c740b809" class="cell code">
-<div class="sourceCode" id="cb106" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb106" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 <div id="1d2e9f49-59d0-4a5b-8bdd-74b1af09f7e5" class="cell code">
-<div class="sourceCode" id="cb107" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb107" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 <div id="8f45bcd5-8b41-4c45-8bd7-6c4a1c6253fe" class="cell code">
-<div class="sourceCode" id="cb108" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb108" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 <div id="c9596b30-6030-4034-8ad0-2a254289153d" class="cell code">
-<div class="sourceCode" id="cb109" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb109" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 <div id="831cbe57-69ea-43af-aa23-f4e880ec4659" class="cell code">
-<div class="sourceCode" id="cb110" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div>
+<div class="sourceCode" id="cb110" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div>
 </div>
 
 
@@ -7296,7 +7239,7 @@ Foreman, Sam. 2024. <span>“Personal Website.”</span> April 15, 2024. <a href
 <summary>
 <p>Interactive Session</p>
 </summary>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> export HTTP_PROXY=http://proxy.alcf.anl.gov:3128</span>
 <span id="cb1-2"><span class="ex" style="color: null;
@@ -7509,7 +7452,7 @@ font-style: inherit;">tee</span> build.log</span></code></pre></div>
 <summary>
 <p>Setup</p>
 </summary>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> qsub <span class="at" style="color: #657422;
 background-color: null;
@@ -7609,7 +7552,7 @@ font-style: inherit;">source</span> ./ezpz/src/ezpz/bin/savejobenv</span></code>
 <summary>
 <p>Output</p>
 </summary>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">┌───────────────────────────────────────────────────────────────────</span></span>
 <span id="cb3-2"><span class="ex" style="color: null;
@@ -7728,7 +7671,7 @@ font-style: inherit;">└──────────────────�
 <summary>
 <p>[WIP] Building out <code>python</code> API</p>
 </summary>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> python3 <span class="at" style="color: #657422;
 background-color: null;
@@ -8158,7 +8101,7 @@ font-style: inherit;">"/home/foremans/PBS-jobs/604319/jobenv.yaml"</span></span>
 background-color: null;
 font-style: inherit;">}</span></span></code></pre></div>
 </details>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> source <span class="st" style="color: #20794D;
 background-color: null;
@@ -8190,14 +8133,14 @@ font-style: inherit;">-ppn</span> 12 <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--hostfile</span> /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span></code></pre></div></details></li>
 <li><p><strong>Take 1</strong>: Crash with</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">RuntimeError:</span> oneCCL: global.cpp:150 getenv_local_coord: EXCEPTION: to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span></code></pre></div>
 <details closed="">
 <summary>
 <p>Run:</p>
 </summary>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> launch python3 pretrain_llama.py <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -10121,7 +10064,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div></details></li>
 <summary>
 <p>Run:</p>
 </summary>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> CCL_ZE_IPC_EXCHANGE=sockets !!</span>
 <span id="cb8-2"><span class="ex" style="color: null;
@@ -10219,7 +10162,7 @@ font-style: inherit;">RuntimeError:</span> oneCCL: global.cpp:150 getenv_local_c
 <summary>
 <p>Setup:</p>
 </summary>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> cat <span class="va" style="color: #111111;
 background-color: null;
@@ -10286,7 +10229,7 @@ font-style: inherit;">&gt;&gt;</span> .deepspeed_env</span></code></pre></div></
 <li><p>Run:</p>
 <ul>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1">  <span class="ex" style="color: null;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> RANK=0 LOCAL_RANK=0 MASTER_ADDR=localhost deepspeed <span class="at" style="color: #657422;
 background-color: null;
@@ -10402,7 +10345,7 @@ font-style: inherit;">--deepspeed</span></span></code></pre></div></li>
 <summary>
 <p>Output</p>
 </summary>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> RANK=0 LOCAL_RANK=0 MASTER_ADDR=localhost deepspeed <span class="at" style="color: #657422;
 background-color: null;
@@ -12111,7 +12054,7 @@ Foreman, Sam. 2024. <span>“Megatron DeepSpeed on `Xpu`.”</span> April 3,
 <p>We have a few follow-up questions so that we establish a methodology to address the issue brought up by Argonne.</p>
 <ol type="1">
 <li><p>We can set a few timestamps in the model scripts and job scripts used for the queue submission: Job script:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Time</span> stamp A:  </span>
 <span id="cb1-2"><span class="op" style="color: #5E5E5E;
@@ -12153,7 +12096,7 @@ For examples, we can measure the start-up time for the <code>rank0</code>?</li>
 <ol start="3" type="1">
 <li><p>If we need to report the startup time for the DL applications, do we need to collect measurements using the actual Aurora NRE workloads or some small benchmarking test cases?</p>
 <p>For example, we can try to recreate the typical start-up scenarios, like library imports, and measure those separately as shown below.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Job</span> script:</span>
 <span id="cb2-2"><span class="ex" style="color: null;
@@ -12213,14 +12156,14 @@ font-style: inherit;">Etc...</span></span></code></pre></div>
 <li><p><img src="https://latex.codecogs.com/png.latex?t_%7B0%7D"> is the time stamp at the <em>very</em> beginning of the shell script (defined <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/657bb3e312e793d7b503f475b59e44c1aee44205/ALCF/train-gpt3.sh#L3">here</a>) which then launches <code>mpiexec &lt;mpi-args&gt; python3 [...]</code>.</p>
 <ul>
 <li><p><img src="https://latex.codecogs.com/png.latex?t_%7B0%7D"> appears in the logfile as:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Job</span> started at: 2023-11-02-183323 on x3004c0s13b0n0</span></code></pre></div></li>
 </ul></li>
 <li><p><img src="https://latex.codecogs.com/png.latex?t_%7B1%7D"> is identified as the timestamp associated with the completion of the first training step</p>
 <ul>
 <li><p><img src="https://latex.codecogs.com/png.latex?t_%7B1%7D"> appears in the logfile as:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[2023-11-02</span> 18:34:13,122] <span class="pp" style="color: #AD0000;
 background-color: null;
@@ -12254,7 +12197,7 @@ font-style: inherit;">]</span></span></code></pre></div></li>
 </ul></li>
 </ul></li>
 <li><p>Below is an example of the bash script use to parse the logfiles and identify these timestamps:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1">  <span class="ex" style="color: null;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> for f in <span class="va" style="color: #111111;
 background-color: null;
@@ -13686,7 +13629,7 @@ Table&nbsp;1: Startup times on Perlmutter
 <li><p><label><input type="checkbox" checked="">&nbsp; Working on Aurora, example:</label></p>
 <ul>
 <li><p>Setup / Install:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># launch job</span></span>
 <span id="cb6-2"><span class="ex" style="color: null;
@@ -13845,7 +13788,7 @@ font-style: inherit;">--hostfile</span> /var/spool/pbs/aux/297306.aurora-pbs-000
 background-color: null;
 font-style: inherit;">└──────────────────────────────────────────────────────────────────</span></span></code></pre></div></li>
 <li><p>Launch with <code>framework=pytorch</code>, <code>backend=DDP</code>:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ----------------------------------------------------------</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -16586,7 +16529,7 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <p>Latest from the blog</p>
 <div id="listing-listing-blog" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1716267600000" data-listing-file-modified-sort="1716297358073" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1140">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1716354000000" data-listing-file-modified-sort="1716384734754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1031">
 <div class="thumbnail">
 <p><a href="../qmd/flash-attn-sunspot/index.html" class="no-external"></a></p><a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/flash-attn-sunspot/index.html -->
@@ -16606,7 +16549,7 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <div class="metadata">
 <a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 <div class="listing-date">
-May 21, 2024
+May 22, 2024
 </div>
 </a><div class="listing-author"><a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a>
@@ -17027,7 +16970,7 @@ Table&nbsp;1: Long sequence length support<sup>1</sup> from <a href="https://git
 <div id="f600620f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Data</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">gpus <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1">gpus <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (<span class="st" style="color: #20794D;
 background-color: null;
@@ -17127,7 +17070,7 @@ font-style: inherit;">448</span>]),</span>
 </div>
 <details class="code-fold">
 <summary>Make the plots</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">x <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1">x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> np.arange(<span class="bu" style="color: null;
 background-color: null;
@@ -17378,7 +17321,7 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div>
 
 </div>
-<div id="839da94c" class="cell quarto-layout-panel" data-execution_count="3" data-layout-ncol="2" data-layout-nrow="1">
+<div id="839da94c" class="cell quarto-layout-panel" data-layout-nrow="1" data-layout-ncol="2" data-execution_count="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
@@ -17423,7 +17366,7 @@ Installation
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p><strong>Important</strong><br> To install, simply:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/ramanthanlab/GenSLM/</span>
 <span id="cb3-2"><span class="bu" style="color: null;
@@ -17446,13 +17389,13 @@ font-style: inherit;">./install.sh</span></span></code></pre></div>
 <p>For completeness, we describe below the steps for installing and building each of the dependencies.</p>
 <ol type="1">
 <li><p>Clone GitHub repo:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/ramanthanlab/GenSLM</span></code></pre></div></li>
 <li><p>Load <code>conda</code> module:</p>
 <ul>
 <li><p>ThetaGPU:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># ThetaGPU:</span></span>
 <span id="cb5-2"><span class="cf" style="color: #003B4F;
@@ -17502,7 +17445,7 @@ font-style: inherit;">conda</span> activate base</span>
 background-color: null;
 font-style: inherit;">fi</span></span></code></pre></div></li>
 <li><p>Polaris:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Polaris:</span></span>
 <span id="cb6-2"><span class="cf" style="color: #003B4F;
@@ -17553,7 +17496,7 @@ background-color: null;
 font-style: inherit;">fi</span></span></code></pre></div></li>
 </ul></li>
 <li><p>Setup Virtual Environment<sup>3</sup>:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">cd</span> ./genslm/examples/long-sequences</span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -17605,7 +17548,7 @@ font-style: inherit;">${CONDA_DATE}</span><span class="st" style="color: #20794D
 background-color: null;
 font-style: inherit;">/bin/activate"</span></span></code></pre></div></li>
 <li><p>Create a new folder (<code>genslm/examples/long-sequences/deps/${MACHINE}</code>) where we’ll installing dependencies locally:</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -17635,7 +17578,7 @@ font-style: inherit;">"</span></span></code></pre></div></li>
 </summary>
 <ol type="1">
 <li><p><a href="https://github.com/saforem2/ezpz"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/ezpz</code></a></p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
 background-color: null;
@@ -17650,7 +17593,7 @@ font-style: inherit;">"git+https://github.com/saforem2/ezpz.git#egg=ezpz"</span>
 </summary>
 <ol start="2" type="1">
 <li><p><a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/DeepSpeed</code></a></p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
 <span id="cb10-2"><span class="bu" style="color: null;
@@ -17671,7 +17614,7 @@ font-style: inherit;">-e</span> .</span></code></pre></div></li>
 </summary>
 <ol start="3" type="1">
 <li><p><a href="https://github.com/microsoft/Megatron-DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/Megatron-DeepSpeed</code></a>:</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/microsoft/Megatron-DeepSpeed.git</span></code></pre></div></li>
 </ol>
@@ -17682,7 +17625,7 @@ font-style: inherit;">git</span> clone https://github.com/microsoft/Megatron-Dee
 </summary>
 <ol start="4" type="1">
 <li><p><a href="https://github.com/NVIDIA/apex"><i class="fa-brands fa-github" aria-label="github"></i> <code>NVIDIA/apex</code></a></p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/NVIDIA/apex</span>
 <span id="cb12-2"><span class="bu" style="color: null;
@@ -17721,7 +17664,7 @@ font-style: inherit;">-e</span> ./</span></code></pre></div></li>
 </summary>
 <ol start="5" type="1">
 <li><p><a href="https://github.com/pybind/pybind11"><i class="fa-brands fa-github" aria-label="github"></i> <code>pybind/PyBind11</code></a></p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">pip</span> install pybind11</span></code></pre></div></li>
 </ol>
@@ -17753,13 +17696,13 @@ Flash Attention
 </div>
 <ul>
 <li><p><code>v1.0.4</code>:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">python3</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-m</span> pip install flash-attn==1.0.4</span></code></pre></div></li>
 <li><p><code>v2.x</code>:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone https://github.com/Dao-AILab/flash-attention</span>
 <span id="cb15-2"><span class="bu" style="color: null;
@@ -17769,7 +17712,7 @@ font-style: inherit;">cd</span> flash-attention</span>
 background-color: null;
 font-style: inherit;">python3</span> setup.py install</span></code></pre></div></li>
 <li><p><code>openai/triton</code>:</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> clone <span class="at" style="color: #657422;
 background-color: null;
@@ -17797,7 +17740,7 @@ font-style: inherit;">-m</span> pip install .</span></code></pre></div></li>
 <h2 class="anchored" data-anchor-id="running">Running</h2>
 <p>The <a href="./ALCF/"><code>ALCF/</code></a> directory contains shell scripts for setting up the environment and specifying the options to be used when launching.</p>
 <p>Various options can be specified dynamically at runtime by setting them in your environment, e.g.:</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="va" style="color: #111111;
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">MODEL_SIZE_KEY</span><span class="op" style="color: #5E5E5E;
 background-color: null;

@@ -1,7 +1,7 @@
 # 📸 `flash-attn` on Sunspot
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-05-21
+2024-05-22
 
 ## 🐛 Impact on Loss \[Bug?\]
 
@@ -32,13 +32,10 @@ This can be seen clearly in the figure below:
 
 This was identified, and to be addressed in upcoming release.
 
-## 🎁 New LLM Framework Release
-
-### 📦 Initial Release
+## 📦 LLM Framework Release
 
 On 05/14/2024, Intel dropped their new LLM frameworks release:
 
-<!-- ::: {.callout-tip title='🎁 [`frameworks_2024_5_v2` Announcement]{.dim-text}' aria-title="🎁 [`frameworks_2024_5_v2` Announcement]{.dim-text}" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
 <details closed>
 <summary>
 🎁 <code>frameworks_2024_5_v2</code> Announcement:
@@ -50,9 +47,9 @@ We have shared the official Q2 release in two different forms :
 
 Manual Setup: `/gila/Aurora_deployment/anl_24_q2_release.tar.gz`
 
-and 
+and
 
-Module: 
+Module:
 
 `module use -a /home/jmitche1/anl_release/2024/q2`
 
@@ -82,7 +79,6 @@ anl_24_q2_release/README
 Thanks,   
 Jerome
 
-<!-- ::: -->
 </details>
 
 ### 📸 flash 🤝 📷 no-flash
@@ -104,39 +100,37 @@ module use -a /home/jmitche1/anl_release/2024/q2
 module load frameworks_2024_5_v2
 ```
 
-I was able to independently confirm these results, shown in [📸 flash 🤝
-📷 no-flash](#📸%20flash%20🤝%20📷%20no-flash) below.
+I was able to independently confirm these results, shown in [📸 `flash`
+🤝 📷 `no-flash`](#📸%20flash%20🤝%20📷%20no-flash) below.
 
-<!-- ::: {.callout-tip title='🖇️ [`wandb` Links]{.dim-text}' aria-title="wandb-links" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
 <details closed>
 <summary>
 🔗 <code>wandb</code> links:
 </summary>
 
-- \[✅ `flash`\] W&B Run:
+- \[📸 `flash`\] W&B Run:
   [youthful-river-1832](https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans)
-- \[❌ `flash`\] W&B Run:
+- \[📷 no-`flash`\] W&B Run:
   [earthy-wave-1830](https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans)
 
 </details>
-<!-- ::: -->
 <details closed>
 <summary>
 📸 <code>flash</code> vs. 📷 <code>no-flash</code>
 </summary>
 
-![📸
-flash](./assets/flash-attn/flash-attn-sunspot-compare-new-release.png)
+![`flash` 📸 🤝 📷
+no-`flash`](./assets/flash-attn/flash-attn-sunspot-compare-new-release.png)
 
 </details>
 
-### 🧰 Broken MPI ??
+### 🚧 Broken MPI[^1]
 
 For whatever reason, things seemed to have spontaneously broken on the
-night of 2024-04-14.
+night of 2024-04-14 ??
 
 When trying to run experiments the following day (05/15/2024) I was met
-with this[^1]:
+with this\[^\]:
 
 ``` sh
 Abort(15): Fatal error in internal_Init_thread: Other MPI error
@@ -148,7 +142,6 @@ thread](https://github.com/pmodels/mpich/pull/7001) on slack.
 It seems Subrata also encountered a similar issue \[see: [slack
 thread](https://cels-anl.slack.com/archives/C047E7ZTUUF/p1715985162970119)\]
 
-<!-- ::: {.callout-tip title='✅ [`mpi4py` fix]{.dim-text}' aria-title="mpi4py-fix" icon=false collapse="true" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;"} -->
 <details closed>
 <summary>
 ✅ <code>mpi4py</code> fix
@@ -180,7 +173,7 @@ thread](https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879)\].
 <!-- ::: -->
 </details>
 
-### 📊 Framework Comparison ??
+## 🕵🏻‍ Framework Comparison ??
 
 As I was re-building MPI, and after talking to Jerome, I realized that
 *most* of the dependencies are already present in the provided
@@ -294,23 +287,6 @@ Armed now with functional environment(s) for
 [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed),
 I was able to resume my previous experiments.
 
-<!--
-%%
-&#10;The first thing I tried was to again verify that the loss curves don't change
-when toggling `flash-attn` on / off.
-&#10;
-I was able to verify this using Jerome's new `anl_release/2024/q2` release via:
-&#10;```sh
-module use -a /home/jmitche1/anl_release/2024/q2
-module load frameworks_2024_5_v2
-&#10;```
-&#10;- W&B Runs:
-- \[ 📸 `flash` \]: [youthful-river-1832](https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans)
-- \[ 📷 no-`flash` \]: [earthy-wave-1830](https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans)
-&#10;![flash-attn-sunspot-compare-new-release](./assets/flash-attn/flash-attn-sunspot-compare-new-release.png)
-%%
--->
-
 From the discussion with Intel, it was hard to understand / reason about
 *why* the `flash-attn` fix would have *any* dependence on the learning
 rate schedule (warmup + decay).
@@ -382,10 +358,15 @@ In each of these experiments, it appears that:
   - Impacted by the `lr-decay-iters` dependence
   - Plateaus towards the end of training
 
-> \[!TLDR\]- Older Figs.
->
-> ![disguised-fix-2](./assets/flash-attn/disguised-fix-2.png)
-> ![disguised-fix-1](./assets/flash-attn/disguised-fix-1.png)
+<details closed>
+<summary>
+Older Figs
+</summary>
+
+![disguised-fix-2](./assets/flash-attn/disguised-fix-2.png)
+![disguised-fix-1](./assets/flash-attn/disguised-fix-1.png)
+
+</details>
 
 ### ✅ `2024.0` Fix
 
@@ -418,25 +399,20 @@ module load frameworks/2023.12.15.001
 
 ![](./assets/performance-2024-1.png)
 
-[^1]: https://github.com/pmodels/mpich/pull/7001
+``` yml
+lr: 0.0003
+lr-warmup-frac: 0.05
+lr-decay-iters: null
+```
+
+[^1]: [Gremlins](https://en.wikipedia.org/wiki/Gremlin), likely
 
 [^2]: Explicitly, `aurora_nre_models_frameworks-2024.0`, abbreviated as
     `2024.0`
 
 [^3]: Intel used the following learning rate schedule in their
-    experiments:
-
-    ``` yml
-    lr: 0.00015
-    lr-warmup-frac: 0.01
-    lr-decay-iters: 320000
-    ```
+    experiments
+    `yml   lr: 0.00015   lr-warmup-frac: 0.01   lr-decay-iters: 320000`
 
 [^4]: ALCF used the following learning rate schedule in their
-    experiments:
-
-    ``` yml
-    lr: 0.0003
-    lr-warmup-frac: 0.05
-    lr-decay-iters: null
-    ```
+    experiments

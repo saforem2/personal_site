@@ -7,9 +7,8 @@ $base-font-size: 18px!default;
 $code-block-font-size: 1rem !default;
 
 $quarto-border-width: 1px!default;
-$quarto-border-color: $code-block-border-color!default;
 
-$code-line-numbers: false;
+// $code-line-numbers: true;
 $output: "asis";
 $table-striped: true;
 $table-hover: true;
@@ -26,13 +25,14 @@ $callout-warning-color: #FD971F;
 $callout-caution-color: #E599F7;
 $callout-important-color: #FF5252;
 $border-transparent-color: rgba(131, 131, 131, 0.7);
+$quarto-border-color: $border-transparent-color!default;
 
 $nav-link-padding-x: 0.5rem;
 $nav-link-padding-y: 0.2rem;
 $dropdown-item-padding-y: 0.25rem;
 //     border: 0.1px solid $code-block-border-color;
 
-$bs-nav-tabs-link-active-border-color: $code-block-border-color!default;
+$bs-nav-tabs-link-active-border-color: $border-transparent-color!default;
 
 // fonts
 $font-family-sans-serif: "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif !default;
@@ -72,13 +72,14 @@ $bs-table-striped-color: $dim-text;
 
 // .theme_toggler {}
 
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
+
+// p {
+//     display: block;
+//     margin-block-start: 1em;
+//     margin-block-end: 1em;
+//     margin-inline-start: 0px;
+//     margin-inline-end: 0px;
+// }
 
 .invisible-text {
     color: rgba(0, 0, 0, 0.0)!important;
@@ -126,6 +127,76 @@ p {
 .pink-text {
     color: $mypink;
 }
+
+:root {
+    --shadow-color: $shadow-color;
+    --bg-transparent: $bg-transparent;
+    --bs-table-striped-color: $bs-table-striped-color;
+    --brighter-text: $brighter-text;
+    --bright-text: $bright-text;
+    --alt-text: $alt-text;
+    --dim-text: $dim-text;
+    --dim-color: $dim-color;
+    --callout-note-color: $callout-note-color;
+    --callout-tip-color: $callout-tip-color;
+    --callout-warning-color: $callout-warning-color;
+    --callout-important-color: $callout-important-color;
+    --green-text: $green-text;
+    --red-text: $red-text;
+    --blue-text: $blue-text;
+    --body-bg: $body-bg;
+    --alt-bg: $alt-bg;
+    --body-color: $body-color;
+    --link-color: $link-color;
+    --link-bg-color: $link-bg-color;
+    --link-border-radius: $link-border-radius;
+    --italic-color: $italic-color;
+    --strong-color: $strong-color;
+    --selection-bg: $selection-bg;
+    --selection-color: $selection-color;
+    --code-fg: $code-fg;
+    --code-block-bg-color: $code-block-bg-color;
+    --code-block-bg: $code-block-bg;
+    --code-block-border-color: $code-block-border-color;
+    --code-block-block-shadow: $code-block-block-shadow;
+    --code-block-hover-box-shadow: $code-block-hover-box-shadow;
+    --dark-bg-code-color: $dark-bg-code-color;
+    --dark-bg-code-bg: $dark-bg-code-bg;
+    --code-color: $dark-bg-code-color;
+    --code-bg: $dark-bg-code-bg;
+    --blockquote-bg: $bg-transparent;
+    --blockquote-border: $blockquote-border;
+    --blockquote-text: $blockquote-text;
+    --nav-link-padding-y: $bs-nav-link-padding-y;
+    --nav-link-padding-x: $bs-nav-link-padding-x;
+    --navbar-bg: $navbar-bg;
+    --navbar-fg: $navbar-fg;
+    --font-family-headings: $font-family-headings;
+    --code-bg: $code-bg;
+    --code-fg: $code-color;
+    --link-color: $link-color;
+    --link-bg-color: $link-bg-color;
+    --callout-tip-color: $callout-tip-color;
+    --callout-warning-color: $callout-warning-color;
+    --callout-important-color: $callout-important-color;
+    --callout-note-color: $callout-note-color;
+    --callout-caution-color: $callout-caution-color;
+    --red-sf: $myred;
+    --orange-sf: $myorange;
+    --yellow-sf: $myyellow;
+    --green-sf: $mygreen;
+    --blue-sf: $myblue;
+    --purple-sf: $mypurple;
+    --pink-sf: $mypink;
+    --dim-sf: $dim-text;
+    --bright-sf: $bright-text;
+    --card-height: 33vh;
+    --card-height: 33vh;
+    --card-width: 50%;
+    // -webkit-font-smoothing: antialiased;
+    // --card-width: calc(var(--card-height) / 1.5);
+}
+
 
 
 // ---------------------------------------------------------------------------------------------
@@ -263,9 +334,9 @@ a>code {
     color: inherit
 }
 
-pre > code.sourceCode {
-    text-align: -webkit-left;
-}
+// pre > code.sourceCode {
+//     text-align: -webkit-left;
+// }
 
 .py-1 {
     padding-top: 0.5em!important;
@@ -987,37 +1058,6 @@ code span.kw {
   inherits: false;
 }
 
-:root {
-    --nav-link-padding-y: $bs-nav-link-padding-y;
-    --nav-link-padding-x: $bs-nav-link-padding-x;
-    --navbar-bg: $navbar-bg;
-    --navbar-fg: $navbar-fg;
-    --font-family-headings: $font-family-headings;
-    --code-bg: $code-bg;
-    --code-fg: $code-color;
-    --link-color: $link-color;
-    --link-bg-color: $link-bg-color;
-    --callout-tip-color: $callout-tip-color;
-    --callout-warning-color: $callout-warning-color;
-    --callout-important-color: $callout-important-color;
-    --callout-note-color: $callout-note-color;
-    --callout-caution-color: $callout-caution-color;
-    --red-sf: $myred;
-    --orange-sf: $myorange;
-    --yellow-sf: $myyellow;
-    --green-sf: $mygreen;
-    --blue-sf: $myblue;
-    --purple-sf: $mypurple;
-    --pink-sf: $mypink;
-    --dim-sf: $dim-text;
-    --bright-sf: $bright-text;
-    --card-height: 33vh;
-    --card-height: 33vh;
-    --card-width: 50%;
-    // -webkit-font-smoothing: antialiased;
-    // --card-width: calc(var(--card-height) / 1.5);
-}
-
 
 .pink-card {
     background: RGBA(red($mypink), green($mypink), blue($mypink), 0.075)!important;
@@ -1468,31 +1508,31 @@ button.close {
 }
 
 
-div.sourceCode {
-    margin: auto;
-}
+// div.sourceCode {
+//     margin: auto;
+// }
 
-.code-copy-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-    margin-top: 2px;
-    margin-right: 2px;
-    color: $code-color;
-    background-color: $code-block-bg-color;
-    z-index: 3;
-}
+// .code-copy-button {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     border: 0;
+//     margin-top: 2px;
+//     margin-right: 2px;
+//     color: $code-color;
+//     background-color: $code-block-bg-color;
+//     z-index: 3;
+// }
 
-.callout div.sourceCode {
-    margin-left: initial;
-    margin-bottom: 1em;
-}
+// .callout div.sourceCode {
+//     margin-left: initial;
+//     margin-bottom: 1em;
+// }
 
-div.sourceCode {
-    margin: auto;
-    margin-bottom: 1em;
-}
+// div.sourceCode {
+//     margin: auto;
+//     margin-bottom: 1em;
+// }
 
 
 .nav-link {
@@ -1630,7 +1670,8 @@ details>summary {
     text-align: left;
     border-radius: 0.25rem;
     color: $code-color;
-    background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
     min-width: max-content;
     max-width: min-content;
     width: fit-content;
@@ -1645,7 +1686,8 @@ details>summary:hover {
     text-align: left;
     border-radius: 0.25rem;
     color: $code-color;
-    background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+    background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
     // box-shadow: 0px 5px 15px 0px $shadow-color;
     box-shadow: $shadow-color 0px 2px 5px!important;
     min-width: max-content;
@@ -1886,24 +1928,97 @@ nav.quarto-secondary-nav {
 // }
 
 
-.code-with-filename .code-with-filename-file {
-    background-color: $code-block-bg-color;
-}
+// .code-with-filename .code-with-filename-file {
+//     background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+//     // background-color: $code-block-bg-color;
+// }
+//
+// .quarto-dark .code-with-filename .code-with-filename-file {
+//     // background-color: $code-block-bg-color;
+//     background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+// }
+//
+// .quarto-light .code-with-filename .code-with-filename-file {
+//     // background-color: $code-block-bg-color;
+//     background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+// }
+
+// .success { --c: green; }dark
+// aside {
+// background: oklch(from var(--c) calc(l * 0.75) c h / 0.5);
+// color: oklch(from var(--c) calc(l * 1.5) c h);
+// }
 
 .quarto-dark .code-with-filename .code-with-filename-file {
-    background-color: $code-block-bg-color;
+    background-color: unset;
 }
 
 .quarto-light .code-with-filename .code-with-filename-file {
-    background-color: $code-block-bg-color;
+    background-color: unset;
 }
 
 .code-with-filename-file {
-    background-color: $code-block-bg-color;
-    border: 1px solid $code-block-border-color!important;
-    border-bottom: 1.5px solid $dim-text!important;
+    // background-color: $code-block-bg-color;
+    border: none!important;
+    // border-bottom: 1px dashed $dim-text!important;
     border-radius: 0.25rem;
-    box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
-    color: $dim-text!important;
+    // box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
+    // color: $dim-text!important;
     font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+    // color: $code-color!important;
+    // background-color: oklch(from $code-fg calc(l + calc(l * 0.25)) c h);
+    // background: oklch(from $code-fg calc(l + 0.01) c h);
+    // background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+}
+
+.quarto-dark .code-with-filename .code-with-filename-file strong {
+    color: oklch(from $code-fg l c h);
+    background: oklch(from $code-fg calc(l * 1.15) c h / 0.085);
+}
+
+.quarto-light .code-with-filename .code-with-filename-file strong {
+    color: oklch(from $code-fg l c h);
+    background: oklch(from $code-fg calc(l * 1.15) c h / 0.085);
+}
+
+figure>figcaption.quarto-float-caption-bottom {
+    margin-bottom: .5em;
+    text-align: center;
+}
+
+// .code-with-filename .code-with-filename-file strong {
+//     font-weight: 400;
+//     font-style: italic;
+//     // color: var(--bs-code-color);
+//     // background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+// }
+
+// .code-with-filename .code-with-filename-file {
+//     background-color: rgba(219,219,219,.8);
+// }
+// .code-with-filename .code-with-filename-file {
+//     // background-color: $bg-transparent;
+//     border: 1px dashed $code-block-border-color;
+// }
+.code-with-filename .code-with-filename-file {
+    // background-color: rgba(0,0,0,0.0);
+    margin-bottom: 0;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    padding-left: .7em;
+    /* border: var(--quarto-border-width) solid var(--quarto-border-color); */
+    border-radius: var(--quarto-border-radius);
+    /* border-bottom: 0; */
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+// .code-with-filename .code-with-filename-file {
+//     /* background-color: rgba(219,219,219,.8); */
+// }
+
+p { 
+    line-height: 1.25em;
 }
