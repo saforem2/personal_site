@@ -8,9 +8,9 @@
 <title>Sam Foreman</title>
 <link>https://samforeman.me/qmd/posts.html</link>
 <atom:link href="https://samforeman.me/qmd/posts.xml" rel="self" type="application/rss+xml"/>
-<description>My ramblings about science and computers</description>
+<description>Sam Foreman</description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Wed, 22 May 2024 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 May 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>📸 flash-attn on Sunspot</title>
   <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
@@ -193,7 +193,7 @@ font-style: inherit;">module</span> load frameworks_2024_5_v2</span></code></pre
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
+<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
 <figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
 </figure>
 </div>
@@ -637,15 +637,192 @@ font-style: inherit;">null</span></span></code></pre></div>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
   author = {Foreman, Sam},
   title = {Personal {Website}},
-  date = {2024-05-22},
+  date = {2024-05-25},
   url = {https://samforeman.me},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2024. <span>“Personal Website.”</span> May 22, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
+Foreman, Sam. 2024. <span>“Personal Website.”</span> May 25, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
 </div></div></section></div> ]]></description>
   <guid>https://samforeman.me/qmd/flash-attn-sunspot/</guid>
-  <pubDate>Wed, 22 May 2024 05:00:00 GMT</pubDate>
+  <pubDate>Sat, 25 May 2024 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
+  <link>https://samforeman.me/qmd/mpi4py-reproducer/</link>
+  <description><![CDATA[ <div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/qmd/mpi4py-reproducer/index.qmd"><i class="bi"></i></button></div></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+<section id="mpi4py-bug-on-sunspot" class="level1">
+<h1>🐛 <code>mpi4py</code> bug on Sunspot</h1>
+<p>Simple reproducer:</p>
+<ol type="1">
+<li><p>Load my <code>anl_24_q2_release</code> conda environment:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#[08:42:38 AM][foremans@x1922c2s3b0n0][~]</span></span>
+<span id="cb1-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> eval <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">~/miniconda3/bin/conda</span> shell.zsh hook<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">conda</span> activate anl_24_q2_release</span></code></pre></div></li>
+<li><p>Try <code>python3 -c 'from mpi4py import MPI'</code></p>
+<ul>
+<li>fails ❌</li>
+</ul>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [08:44:41 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<span id="cb2-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> python3 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'from mpi4py import MPI'</span></span>
+<span id="cb2-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Traceback</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">most</span> recent call last<span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-4">  <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">File</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&lt;string&gt;"</span>, line 1, in <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>module<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb2-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ImportError:</span> /home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so: undefined symbol: MPI_Message_c2f</span>
+<span id="cb2-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[1]</span>    14910 exit 1     python3 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'from mpi4py import MPI'</span></span></code></pre></div></li>
+<li><p>Load correct modules:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [08:44:58 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<span id="cb3-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> module use /home/ftartagl/graphics-compute-runtime/modulefiles <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load graphics-compute-runtime/agama-ci-devel-803.29 spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0 <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0 <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load oneapi/release/2024.04.15.001</span>
+<span id="cb3-3">     <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">UMD:</span> agama-ci-devel-803.29 successfully loaded:</span>
+<span id="cb3-4">     <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">UMD:</span> graphics-compute-runtime/agama-ci-devel-803.29</span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Due</span> to MODULEPATH changes, the following have been reloaded:</span>
+<span id="cb3-7">  <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">1</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mpich-config/collective-tuning/1024</span></span>
+<span id="cb3-8"></span>
+<span id="cb3-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">The</span> following have been reloaded with a version change:</span>
+<span id="cb3-10">  <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">1</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">intel_compute_runtime/release/agama-devel-736.25</span> =<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> intel_compute_runtime/release/775.20     2<span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">mpich/icc-all-pmix-gpu/52.2</span> =<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> mpich/icc-all-pmix-gpu/20231026     3<span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">)</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">oneapi/eng-compiler/2023.12.15.002</span> =<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> oneapi/release/2024.04.15.001</span></code></pre></div></li>
+<li><p>Retry with new modules:</p>
+<ul>
+<li>works ✅</li>
+</ul>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [08:45:01 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> python3 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
+<span id="cb4-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">/home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code></pre></div></li>
+</ol>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
+  author = {Foreman, Sam},
+  title = {Personal {Website}},
+  date = {2024-05-25},
+  url = {https://samforeman.me},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
+Foreman, Sam. 2024. <span>“Personal Website.”</span> May 25, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
+</div></div></section></div> ]]></description>
+  <guid>https://samforeman.me/qmd/mpi4py-reproducer/</guid>
+  <pubDate>Sat, 25 May 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to Make Dope Slides</title>
@@ -1503,7 +1680,7 @@ font-style: inherit;">;</span></span>
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;" data-layout="[ [50,50] ]">
+<div class="quarto-layout-panel" data-layout="[ [50,50] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-mcmc" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
@@ -16529,7 +16706,35 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <p>Latest from the blog</p>
 <div id="listing-listing-blog" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1716354000000" data-listing-file-modified-sort="1716384734754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1031">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1716678669000" data-listing-file-modified-sort="1716678669755" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="49">
+<div class="thumbnail">
+<p><a href="../qmd/posts.html" class="no-external"></a></p><a href="../qmd/posts.html" class="no-external">
+<!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/posts.html -->
+</a><p><a href="../qmd/posts.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../qmd/posts.html" class="no-external">🔥 Hot off the Press 📰</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../qmd/posts.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="../qmd/posts.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:qmd/posts.html --></a>
+</div>
+</div>
+<div class="metadata">
+<a href="../qmd/posts.html" class="no-external">
+<div class="listing-date">
+May 25, 2024
+</div>
+</a><div class="listing-author"><a href="../qmd/posts.html" class="no-external">
+Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a>
+</div>
+
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1716613200000" data-listing-file-modified-sort="1716384734754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1031">
 <div class="thumbnail">
 <p><a href="../qmd/flash-attn-sunspot/index.html" class="no-external"></a></p><a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/flash-attn-sunspot/index.html -->
@@ -16549,7 +16754,7 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <div class="metadata">
 <a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 <div class="listing-date">
-May 22, 2024
+May 25, 2024
 </div>
 </a><div class="listing-author"><a href="../qmd/flash-attn-sunspot/index.html" class="no-external">
 Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a>
@@ -16557,7 +16762,35 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1715695750000" data-listing-file-modified-sort="1715695750101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1923">
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1716613200000" data-listing-file-modified-sort="1716678505561" data-listing-date-modified-sort="1716613200000" data-listing-reading-time-sort="2" data-listing-word-count-sort="271">
+<div class="thumbnail">
+<p><a href="../qmd/mpi4py-reproducer/index.html" class="no-external"></a></p><a href="../qmd/mpi4py-reproducer/index.html" class="no-external">
+<!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/mpi4py-reproducer/index.html -->
+</a><p><a href="../qmd/mpi4py-reproducer/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../qmd/mpi4py-reproducer/index.html" class="no-external">🐛 <code>mpi4py</code> bug on Sunspot</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../qmd/mpi4py-reproducer/index.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="../qmd/mpi4py-reproducer/index.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:qmd/mpi4py-reproducer/index.html --></a>
+</div>
+</div>
+<div class="metadata">
+<a href="../qmd/mpi4py-reproducer/index.html" class="no-external">
+<div class="listing-date">
+May 25, 2024
+</div>
+</a><div class="listing-author"><a href="../qmd/mpi4py-reproducer/index.html" class="no-external">
+Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a>
+</div>
+
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1715695750000" data-listing-file-modified-sort="1715695750101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1923">
 <div class="thumbnail">
 <p><a href="../qmd/dope-slides/index.html" class="no-external"></a></p><a href="../qmd/dope-slides/index.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/dope-slides/index.html -->
@@ -16585,35 +16818,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1713535965000" data-listing-file-modified-sort="1713535965006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="222">
-<div class="thumbnail">
-<p><a href="../qmd/posts.html" class="no-external"></a></p><a href="../qmd/posts.html" class="no-external">
-<!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/posts.html -->
-</a><p><a href="../qmd/posts.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../qmd/posts.html" class="no-external">🔥 Hot off the Press 📰</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../qmd/posts.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../qmd/posts.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:qmd/posts.html --></a>
-</div>
-</div>
-<div class="metadata">
-<a href="../qmd/posts.html" class="no-external">
-<div class="listing-date">
-Apr 19, 2024
-</div>
-</a><div class="listing-author"><a href="../qmd/posts.html" class="no-external">
-Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a>
-</div>
-
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1713491991000" data-listing-file-modified-sort="1713491991548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3138">
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1713491991000" data-listing-file-modified-sort="1713491991548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3138">
 <div class="thumbnail">
 <p><a href="../qmd/home-alt/index.html" class="no-external"></a></p><a href="../qmd/home-alt/index.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/home-alt/index.html -->
@@ -16641,7 +16846,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1713209235000" data-listing-file-modified-sort="1713209235470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7347">
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1713209235000" data-listing-file-modified-sort="1713209235470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7347">
 <div class="thumbnail">
 <p><a href="../qmd/l2hmc-qcd/diffusion/diffusion.html" class="no-external"></a></p><a href="../qmd/l2hmc-qcd/diffusion/diffusion.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/l2hmc-qcd/diffusion/diffusion.html -->
@@ -16669,7 +16874,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1713209152000" data-listing-file-modified-sort="1713209152799" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990">
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1713209152000" data-listing-file-modified-sort="1713209152799" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990">
 <div class="thumbnail">
 <p><a href="../qmd/slides.html" class="no-external"></a></p><a href="../qmd/slides.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/slides.html -->
@@ -16697,7 +16902,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1712172383000" data-listing-file-modified-sort="1712172383859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6589">
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1712172383000" data-listing-file-modified-sort="1712172383859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6589">
 <div class="thumbnail">
 <p><a href="../qmd/aurora-gpt/megatron-ds-intel.html" class="no-external"></a></p><a href="../qmd/aurora-gpt/megatron-ds-intel.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/aurora-gpt/megatron-ds-intel.html -->
@@ -16725,7 +16930,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1711059141000" data-listing-file-modified-sort="1711059141364" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="46" data-listing-word-count-sort="9128">
+<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1711059141000" data-listing-file-modified-sort="1711059141364" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="46" data-listing-word-count-sort="9128">
 <div class="thumbnail">
 <p><a href="../qmd/ezpz/ezpz.html" class="no-external"></a></p><a href="../qmd/ezpz/ezpz.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/ezpz/ezpz.html -->
@@ -16753,7 +16958,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1707787140000" data-listing-file-modified-sort="1707787140926" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2731">
+<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1707787140000" data-listing-file-modified-sort="1707787140926" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2731">
 <div class="thumbnail">
 <p><a href="../qmd/dsblog.html" class="no-external"></a></p><a href="../qmd/dsblog.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/dsblog.html -->
@@ -16781,7 +16986,7 @@ Sam Foreman </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orc
 
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1696519420000" data-listing-file-modified-sort="1696519420990" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1696519420000" data-listing-file-modified-sort="1696519420990" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
 <div class="thumbnail">
 <p><a href="../qmd/projects.html" class="no-external"></a></p><a href="../qmd/projects.html" class="no-external">
 <!-- img(9CEB782EFEE6)[progressive=false, height=]:qmd/projects.html -->
@@ -17321,7 +17526,7 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div>
 
 </div>
-<div id="839da94c" class="cell quarto-layout-panel" data-layout-nrow="1" data-layout-ncol="2" data-execution_count="3">
+<div id="839da94c" class="cell quarto-layout-panel" data-execution_count="3" data-layout-nrow="1" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
