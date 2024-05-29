@@ -32,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="././favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,6 +77,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing-posts .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing-posts'] = new List('listing-listing-posts', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
 <script type="text/javascript">
@@ -96,11 +127,54 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <!-- and it's easy to individually load additional languages -->
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/go.min.js"></script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="css/default.css">
 <link rel="stylesheet" href="css/callouts.css">
 <link rel="stylesheet" href="css/profile.css">
-<meta property="og:title" content="Sam Foreman">
+<link rel="alternate" type="application/rss+xml" title="Sam Foreman" href="index.xml" data-external="1"><meta property="og:title" content="Sam Foreman">
 <meta property="og:description" content="My ramblings about science and computers">
 <meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
 <meta property="og:site_name" content="Sam Foreman">
@@ -327,10 +401,6 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <a class="nav-link" href="https://github.com/saforem2/personal_site"> 
 <span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:github-loop"></iconify-icon></span></span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./docs/sitemap.xml"> 
-<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:rss"></iconify-icon></span></span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -380,13 +450,13 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <p>&nbsp;</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 31.6%;justify-content: flex-start;">
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Recent Talks" title="🎤 [Recent Talks]{.dim-text}" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Recent Talks" title="🎤 [Recent Talks]{.dim-text-11}" style="text-align: left!important; width:100%; background:var(--code-bg)!important; border: none!important; border-left: 2px solid #838383!important; border-radius: 0pt!important; opacity:100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🎤 <span class="dim-text">Recent Talks</span>
+🎤 <span class="dim-text-11">Recent Talks</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -396,13 +466,13 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Now Playing" title="[![](https://api.iconify.design/logos:spotify-icon.svg?color=%23888888) Now Playing:]{style=&quot;color:#1ED760;&quot;}" style="width:100%; border: none!important; border-left: 2px solid #1ED760!important; border-radius: 0pt!important; opacity: 100%;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Now Playing" title="[![](https://api.iconify.design/logos:spotify-icon.svg?color=%23888888) Now Playing:]{style=&quot;color:#1ED760; font-size:1.1em;&quot;}" style="width:100%; border: none!important; border-left: 2px solid #1ED760!important; border-radius: 0pt!important; opacity: 100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span style="color:#1ED760;"><img src="https://api.iconify.design/logos:spotify-icon.svg?color=%23888888" class="img-fluid"> Now Playing:</span>
+<span style="color:#1ED760; font-size:1.1em;"><img src="https://api.iconify.design/logos:spotify-icon.svg?color=%23888888" class="img-fluid"> Now Playing:</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -461,7 +531,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </ul>
 
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">📝 Work</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🦜 Talks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">📦 Projects</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">🎪 Events</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">🪖 Experience</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">🎓 Education</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">❤️‍🩹 Status</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">📝 Work</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🦜 Talks</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">📬 Posts</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">📦 Projects</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">🎪 Events</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">🪖 Experience</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false">🎓 Education</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false">❤️‍🩹 Status</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>NOTE</strong>: <span class="dim-text">You can find a full list of my publications on my <a href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&amp;hl=en">Google Scholar</a></span></p>
@@ -513,216 +583,579 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </ul>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div style="font-size:0.8em;">
-<ul>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/parallel-training-slides">🪧 <strong>Parallel Training Techniques</strong></a> @ <a href="https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training"><i>AI-4-Science Training Series</i></a> (<code>03/2024</code>)
-</summary>
-<iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/parallel-training-slides" title="🪧 Parallel
-  Training Techniques" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
+<div style="font-size: 1.0em; font-family: 'IBM Plex Sans Condensed';">
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section">📆 2024</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Parallel Training**](https://saforem2.github.io/parallel-training-slides) @ [AI-4-Science Training Series](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training) [03/2024]]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/parallel-training-slides"><strong>Parallel Training</strong></a> @ <a href="https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training">AI-4-Science Training Series</a> [03/2024]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/parallel-training-slides" title="🪧 Parallel Training Techniques" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/llm-workshop-talk">🪧 <strong>LLMs from Scratch</strong></a> @ <a href="https://github.com/argonne-lcf/llm-workshop"><i>LLM Tutorial Workshop</i></a>
-</summary>
-<iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from
-  Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**LLMs from Scratch**](https://saforem2.github.io/llm-workshop-talk) @ [LLM Tutorial Workshop](https://github.com/argonne-lcf/llm-workshop) [02/2024]]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/llm-workshop-talk"><strong>LLMs from Scratch</strong></a> @ <a href="https://github.com/argonne-lcf/llm-workshop">LLM Tutorial Workshop</a> [02/2024]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-</ul>
-<!-- - <details closed> -->
-<!--   <summary> -->
-<!--     <a href="https://saforem2.github.io/llm-workshop-talk">🪧 <strong>LLMs from Scratch</strong></a> @ <a href="https://github.com/argonne-lcf/llm-workshop" target="_blank" rel="noopener noreferrer"><i>LLM Tutorial Workshop</i></a> (<code>02/2024</code>) -->
-<!--   </summary> -->
-<!--   <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="🪧 LLMs from Scratch" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"> -->
-<!--     <p>Your browser does not support iframes.</p> -->
-<!--   </iframe> -->
-<!--   </details> -->
-<ul>
-<li><details closed="">
-<summary>
-<a href="https://github.com/saforem2/LLM-tutorial">🪧 <strong>Creating Small(-ish) LLMs</strong></a> @ <a href="https://github.com/brettin/llm_tutorial"><em>LLM Tutorial Workshop (1)</em></a>, (<code>11/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="level4">
+<h4 class="anchored" data-anchor-id="section-1">📆 2023</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Creating Small(-ish) LLMs**](https://saforem2.github.io/LLM-tutorial) @ [LLM Tutorial Workshop (1)](https://github.com/brettin/llm_tutorial) [11/2023]]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/LLM-tutorial"><strong>Creating Small(-ish) LLMs</strong></a> @ <a href="https://github.com/brettin/llm_tutorial">LLM Tutorial Workshop (1)</a> [11/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/LLM-tutorial" title="🪧 Creating Small(-ish) LLMs" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/oneapi-talk"> 🪧 <strong>Exascale Science on Aurora</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop"><em>Intel oneAPI Workshop @ UIC</em></a>, (<code>10/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Exascale Science on Aurora**](https://samforeman.me/oneapi-talk/index.html#0) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://samforeman.me/oneapi-talk/index.html#0"><strong>Exascale Science on Aurora</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop">Intel oneAPI Workshop @ UIC</a> [10/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/oneapi-talk" title="🪧 Exascale Science on Aurora" width="100%" align="center" height="500" frameborder="0" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/llm-lunch-talk">🪧 <strong>LLM Lunch Talk</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop"><em>ALCF Hands On HPC Workshop</em></a>, (<code>10/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<!---->
+<!-- ::: {.callout-tip icon="false" title="🪧 [[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF HPC Workshop](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)]{.dim-text}" collapse="true" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;"}: -->
+<!---->
+<!-- <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="🪧 LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"> -->
+<!--   <p>Your browser does not support iframes.</p> -->
+<!-- </iframe> -->
+<!---->
+<!-- ::: -->
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/llm-lunch-talk"><strong>LLM Lunch Talk</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop">ALCF Hands On HPC Workshop</a> [10/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="🪧 LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/scaling4science">🪧 <strong>Scaling LLMs 4 Science</strong></a> @ <a href="https://events.cels.anl.gov/event/426/overview"><em>Data-Intensive Computing + AI/ML at Scale</em></a>, (<code>08/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Scaling LLMs for Science**](https://saforem2.github.io/scaling4science) @ [Data-Intensive Computing + AI/ML at Scale](https://events.cels.anl.gov/event/426/overview) [08/2023]]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/scaling4science"><strong>Scaling LLMs for Science</strong></a> @ <a href="https://events.cels.anl.gov/event/426/overview">Data-Intensive Computing + AI/ML at Scale</a> [08/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/scaling4science/#/section" title="🪧 Scaling LLMs for Science and Ongoing Collaborations" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/lattice23">🪧 <strong>MLMC: Machine Learning Monte Carlo for LGT</strong></a>, @ <a href="https://mlmc2022.github.io/">Lattice 2023</a>, (<code>07/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/lattice23"><strong>MLMC: Machine Learning Monte Carlo</strong></a> @ <a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a> [07/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/lqcd-pasc23/">🪧 <strong>Generative Modeling and Efficient Sampling</strong></a>, @ <a href="https://pasc23.pasc-conference.org/">PASC23</a>, (<code>07/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/) @ [PASC23](https://pasc23.pasc-conference.org/) [07/2023]]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/lqcd-pasc23/"><strong>Generative Modeling and Efficient Sampling</strong></a> @ <a href="https://pasc23.pasc-conference.org/">PASC23</a> [07/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lqcd-pasc23/" title="🪧 Generative Modeling and Efficient Sampling" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/deep-fridays">🪧 <strong>Efficient Sampling for LGT</strong></a>, @ <a href="https://www.cs.unibo.it/~asperti/deep_fridays.html">Deep Fridays @ U. Bologna</a>, (<code>04/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Efficient Sampling for Lattice Gauge Theory**](https://saforem2.github.io/deep-fridays) @ [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html) [04/2023]]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/deep-fridays"><strong>Efficient Sampling for Lattice Gauge Theory</strong></a> @ <a href="https://www.cs.unibo.it/~asperti/deep_fridays.html">Deep Fridays @ U. Bologna</a> [04/2023]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/deep-fridays/" title="🪧 Efficient Sampling for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/ai4sci-large-scale-training">🪧 <strong>Large Scale Training</strong></a>, @ <a href="https://github.com/argonne-lcf/ai-science-training-series">AI-4-Science on Supercomputers</a>, (<code>02/2023</code>)
-</summary>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="level4">
+<h4 class="anchored" data-anchor-id="section-2">📆 2022</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [Introduction to AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) (11/2022)]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/ai4sci-large-scale-training"><strong>Large Scale Training</strong></a> @ <a href="https://github.com/argonne-lcf/ai-science-training-series">Introduction to AI4Science on Supercomputers (ALCF)</a> (11/2022)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="🪧 Large Scale Training" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/hparam-management-sdl2022">🪧 <strong>Hyperparameter Management</strong></a>, @ <a href="https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop">2022 ALCF SDL Workshop</a>, (<code>10/2022</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF Simulation, Data, and Learning Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) (10/2022)]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/hparam-management-sdl2022/"><strong>Hyperparameter Management</strong></a> @ <a href="https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop">ALCF Simulation, Data, and Learning Workshop</a> (10/2022)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/hparam-management-sdl2022" title="🪧 Hyperparameter Management" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/ATPESC-StatisticalLearning">🪧 <strong>Statistical Learning</strong></a>, @ <a href="https://extremecomputingtraining.anl.gov/">ATPESC 2022</a>, (<code>08/2022</code>) <a href="https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb">📕 accompanying notebook</a>
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) (08/2022)]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/ATPESC-StatisticalLearning"><strong>Statistical Learning</strong></a> @ <a href="https://extremecomputingtraining.anl.gov/">ATPESC 2022</a> (08/2022)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb">📕 accompanying notebook</a></li>
+</ul>
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="🪧 Statistical Learning" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/anl-job-talk/">🪧 <strong>Scientific Data Science: An Emerging Symbiosis</strong></a> @ ANL, (<code>05/2022</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/anl-job-talk/"><strong>Scientific Data Science: An Emerging Symbiosis</strong></a> @ ANL (05/2022)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/anl-job-talk" title="🪧 Scientific Data Science" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/physicsSeminar">🪧 <strong>Machine Learning in HEP</strong></a>, @ UNC Greensboro, (<code>03/2022</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro (03/2022)]{.dim-text}" style="width:100%;background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/physicsSeminar"><strong>Machine Learning in HEP</strong></a> @ UNC Greensboro (03/2022)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://saforem2.github.io/physicsSeminar"><strong>Machine Learning in HEP</strong></a>, at UNC Greensboro, March 2022</li>
+</ul>
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="🪧 Machine Learning in HEP" width="100%" align="center" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border:none;border-radius:0.25rem;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/l2hmc-dwq25/">🪧 <strong>Accelerated Sampling Methods for LGT</strong></a> @ <a href="https://indico.bnl.gov/event/13576/"><em>“DWQ@25 [BNL]”</em></a>, (<code>12/2021</code>)
-</summary>
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="level4">
+<h4 class="anchored" data-anchor-id="section-3">📆 2021</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Accelerated Sampling Methods for Lattice Gauge Theory**](https://saforem2.github.io/l2hmc-dwq25/), @ [BNL / DWQ @ 25](https://indico.bnl.gov/event/13576/) (12/2021)]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/l2hmc-dwq25/"><strong>Accelerated Sampling Methods for Lattice Gauge Theory</strong></a>, @ <a href="https://indico.bnl.gov/event/13576/">BNL / DWQ @ 25</a> (12/2021)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc-dwq25/" title="🪧 Accelerated Sampling Methods for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://saforem2.github.io/l2hmc_talk_ect2021/">🪧 <strong>Training Topological Samplers</strong></a> @ <a href="https://indico.ectstar.eu/event/77/contributions/2349/"><em>ML4HEP</em></a> @ ECT* Trento, (<code>09/2021</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[Training Topological Samplers for Lattice Gauge Theory](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) (09/2021)]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://saforem2.github.io/l2hmc_talk_ect2021">Training Topological Samplers for Lattice Gauge Theory</a> @ <a href="https://indico.ectstar.eu/event/77/contributions/2349/">ML4HEP, ECT* Trento</a> (09/2021)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="🪧 Training Topological Samplers for Lattice Gauge Theory" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://github.com/saforem2/l2hmc-qcd">🪧 <strong>l2hmc-qcd</strong></a> @ <em>MIT Lattice Group Seminar</em>, (<code>2021</code>)
-</summary>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://bit.ly/mainz21">🪧 <strong>Deep Learning HMC</strong></a> @ <a href="https://bit.ly/mainz21_overview"><em>ML Techniques in LQCD</em></a>, (<code>2021</code>)
-</summary>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar (2021)]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://github.com/saforem2/l2hmc-qcd"><strong>l2hmc-qcd</strong></a> @ MIT Lattice Group Seminar (2021)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://github.com/saforem2/l2hmc-qcd"><strong>l2hmc-qcd</strong></a> at the <em>MIT Lattice Group Seminar</em>, 2021</p>
+</div>
+</div>
+</div>
+<!-- -   [**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) to the [*Machine Learning Techniques in Lattice QCD Workshop*](https://bit.ly/mainz21_overview), 2021 -->
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) (2021)]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://bit.ly/mainz21"><strong>Deep Learning HMC for Improved Gauge Generation</strong></a> @ <a href="https://bit.ly/mainz21_overview">ML in LQCD Workshop</a> (2021)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://bit.ly/mainz21" title="🪧 Deep Learning HMC for Improved Gauge Generation" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">🪧 <strong>Machine Learning for Lattice QCD</strong></a> @ University of Iowa, (<code>2020</code>)
-</summary>
-</details></li>
-<li><details closed="">
-<summary>
-<a href="https://bit.ly/latt2018">🪧 <strong>Machine learning analysis of the Ising model transition</strong></a> @ <a href="https://indico.fnal.gov/event/15949/overview"><em>Lattice, 2018</em></a>
-<p></p>
-</summary>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="level4">
+<h4 class="anchored" data-anchor-id="section-4">📆 2020</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) @ U. Iowa (2020)]{.dim-text}" style="width:100%; background-color: var(--bg-transparent); border-radius:0pt!important;border:none!important;border-left:3px solid rgba(131, 131, 131, 0.33)!important;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🪧 <span class="dim-text"><a href="https://slides.com/samforeman/l2hmc-qcd-93bc0c"><strong>Machine Learning for Lattice QCD</strong></a> @ U. Iowa (2020)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd-93bc0c" title="🪧 Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
 <p>
 Your browser does not support iframes.
 </p>
 </iframe>
-</details></li>
-<li><strong>Machine Learning Analysis of Ising Worms</strong> @ <em>Brookhaven National Laboratory</em>, (<code>2017</code>)</li>
-</ul>
+</div>
+</div>
+</div>
+</section>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="feature">
+<div class="feature-top">
+<div id="listing-listing-posts" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-posts-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-posts'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1716958800000" data-listing-file-modified-sort="1716384734754" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1031" data-listing-title-sort="📸 `flash-attn` on Sunspot" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 29, 2024</span>
+</td>
+<td>
+<a href="./qmd/flash-attn-sunspot/index.html" class="title listing-title">📸 <code>flash-attn</code> on Sunspot</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1716613200000" data-listing-file-modified-sort="1716678505561" data-listing-date-modified-sort="1716958800000" data-listing-reading-time-sort="2" data-listing-word-count-sort="271" data-listing-title-sort="🐛 `mpi4py` bug on Sunspot" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 25, 2024</span>
+</td>
+<td>
+<a href="./qmd/mpi4py-reproducer/index.html" class="title listing-title">🐛 <code>mpi4py</code> bug on Sunspot</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1715695750000" data-listing-file-modified-sort="1715695750101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1923" data-listing-title-sort="How to Make Dope Slides" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 14, 2024</span>
+</td>
+<td>
+<a href="./qmd/dope-slides/index.html" class="title listing-title">How to Make Dope Slides</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1713209235000" data-listing-file-modified-sort="1713209235470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7347" data-listing-title-sort="MCMC + Diffusion Sampling" data-listing-filename-sort="diffusion.qmd">
+<td>
+<span class="listing-date">Apr 15, 2024</span>
+</td>
+<td>
+<a href="./qmd/l2hmc-qcd/diffusion/diffusion.html" class="title listing-title">MCMC + Diffusion Sampling</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1713209152000" data-listing-file-modified-sort="1713209152799" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="990" data-listing-title-sort="Recent Talks" data-listing-filename-sort="slides.qmd">
+<td>
+<span class="listing-date">Apr 15, 2024</span>
+</td>
+<td>
+<a href="./qmd/slides.html" class="title listing-title">Recent Talks</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1712172383000" data-listing-file-modified-sort="1712172383859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6589" data-listing-title-sort="Megatron DeepSpeed on `xpu`" data-listing-filename-sort="megatron-ds-intel.qmd">
+<td>
+<span class="listing-date">Apr 3, 2024</span>
+</td>
+<td>
+<a href="./qmd/aurora-gpt/megatron-ds-intel.html" class="title listing-title">Megatron DeepSpeed on <code>xpu</code></a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="6" data-listing-date-sort="1711059141000" data-listing-file-modified-sort="1711059141364" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="46" data-listing-word-count-sort="9128" data-listing-title-sort="Starting Up Distributed Training" data-listing-filename-sort="ezpz.qmd">
+<td>
+<span class="listing-date">Mar 21, 2024</span>
+</td>
+<td>
+<a href="./qmd/ezpz/ezpz.html" class="title listing-title">Starting Up Distributed Training</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="7" data-listing-date-sort="1710708589000" data-listing-file-modified-sort="1710708589570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="13" data-listing-title-sort="Posts" data-listing-filename-sort="features.qmd">
+<td>
+<span class="listing-date">Mar 17, 2024</span>
+</td>
+<td>
+<a href="./qmd/features.html" class="title listing-title">Posts</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="8" data-listing-date-sort="1707787140000" data-listing-file-modified-sort="1707787140926" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2731" data-listing-title-sort="Loooooooong Sequence Lengths" data-listing-filename-sort="dsblog.qmd">
+<td>
+<span class="listing-date">Feb 12, 2024</span>
+</td>
+<td>
+<a href="./qmd/dsblog.html" class="title listing-title">Loooooooong Sequence Lengths</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1696519420000" data-listing-file-modified-sort="1696519420990" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7" data-listing-title-sort="Projects" data-listing-filename-sort="projects.qmd">
+<td>
+<span class="listing-date">Oct 5, 2023</span>
+</td>
+<td>
+<a href="./qmd/projects.html" class="title listing-title">Projects</a>
+</td>
+<td>
+<span class="listing-author">Sam Foreman <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a></span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <div class="flex-container" style="margin-top: 1em;">
 <div class="flex-container">
 <dl>
@@ -768,7 +1201,7 @@ Climate Analysis project using ClimRR data
 <section id="github-stats" class="level4">
 <h4 class="anchored" data-anchor-id="github-stats"><span class="yellow-text"><i class="fa-brands fa-github-alt" aria-label="github-alt"></i></span> GitHub Stats</h4>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" style="width:100%; background-color: rgba(28, 28, 28, 0.0)!important; border-color: var(--bg-border)!important;" title="[[[]{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;fa&quot; data-raw=&quot;fa&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;brands&quot; data-raw=&quot;brands&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;github&quot; data-raw=&quot;github&quot;} ]{.quarto-shortcode__ data-is-shortcode=&quot;1&quot; data-raw=&quot;{{< fa brands github >}}&quot;}]{.yellow-text} [GitHub Stats]{.dim-text} [([`saforem2`](https://github.com/saforem2)):]{.dim-text}">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -777,7 +1210,7 @@ Climate Analysis project using ClimRR data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div class="columns" style="display: flex; flex-direction: row; align-items: center; text-align:left;">
 <div class="column" style="text-align: left;">
@@ -798,7 +1231,7 @@ Climate Analysis project using ClimRR data
 <!-- <a href="https://github.com/saforem2/personal_site"><img src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&icon_color=#00CCFF&title_color=#00CCFF&bg_color=#1c1c1c" /></a> -->
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" style="width:100%; background-color: rgba(28, 28, 28, 0.0); border-color: var(--bg-border)!important;" title="[`l2hmc-qcd`](https://saforem2.github.io/l2hmc-qcd)">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -807,7 +1240,7 @@ Climate Analysis project using ClimRR data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div style="text-align:center;">
 <p><a href="https://saforem2.github.io/l2hmc-qcd"><img src="https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg" class="img-fluid"></a><br>
@@ -825,7 +1258,7 @@ Climate Analysis project using ClimRR data
 </div>
 </section>
 </div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <ul>
 <li><p>Organizer for:</p>
 <ul>
@@ -835,7 +1268,7 @@ Climate Analysis project using ClimRR data
 </ul></li>
 </ul>
 </div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
 <div id="tbl-experience" class="striped hover quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-experience-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -871,7 +1304,7 @@ Table&nbsp;1: 📟 Experience
 </figure>
 </div>
 </div>
-<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
 <div id="tbl-education" class="striped hover quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-education-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -904,17 +1337,18 @@ Table&nbsp;2: 🎓 Education
 </figure>
 </div>
 </div>
-<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
 <p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false" class="img-fluid"> <!-- <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a> --></p>
-<div id="71ded593" class="cell" data-execution_count="1">
+<div id="ce77bc16" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">05</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">25</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">20:25:14</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">05</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">29</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">14:32:24</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
+
 
 
 

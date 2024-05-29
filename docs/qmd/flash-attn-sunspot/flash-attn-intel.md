@@ -1,7 +1,7 @@
 # 📸 `flash-attn` on Sunspot
 Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-05-25
+2024-05-29
 
 ## 🐛 Impact on Loss \[Bug?\]
 
