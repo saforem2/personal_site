@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman ">
-<meta name="dcterms.date" content="2024-06-15">
+<meta name="dcterms.date" content="2024-02-12">
 
-<title>Sam Foreman - 📸 flash-attn on Sunspot</title>
+<title>Sam Foreman - 🚂 Loooooooong Sequence Lengths</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,6 +126,49 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../css/default.css">
 <link rel="stylesheet" href="../../css/callouts.css">
@@ -141,10 +184,10 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Personal Website">
 <meta name="citation_author" content="Sam Foreman">
-<meta name="citation_publication_date" content="2024-06-15">
-<meta name="citation_cover_date" content="2024-06-15">
+<meta name="citation_publication_date" content="2024-02-12">
+<meta name="citation_cover_date" content="2024-02-12">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-06-15">
+<meta name="citation_online_date" content="2024-02-12">
 <meta name="citation_fulltext_html_url" content="https://samforeman.me">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
@@ -385,22 +428,21 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#impact-on-loss-bug" id="toc-impact-on-loss-bug" class="nav-link active" data-scroll-target="#impact-on-loss-bug">🐛 Impact on Loss [Bug?]</a></li>
-  <li><a href="#llm-framework-release" id="toc-llm-framework-release" class="nav-link" data-scroll-target="#llm-framework-release">📦 LLM Framework Release</a>
+  <li><a href="#deepspeed4science-092023" id="toc-deepspeed4science-092023" class="nav-link active" data-scroll-target="#deepspeed4science-092023">DeepSpeed4Science (09/2023)</a>
   <ul class="collapse">
-  <li><a href="#flash-no-flash" id="toc-flash-no-flash" class="nav-link" data-scroll-target="#flash-no-flash">📸 flash 🤝 📷 no-flash</a></li>
-  <li><a href="#broken-mpigremlins" id="toc-broken-mpigremlins" class="nav-link" data-scroll-target="#broken-mpigremlins">🚧 Broken MPI</a></li>
+  <li><a href="#new-features" id="toc-new-features" class="nav-link" data-scroll-target="#new-features">New Features</a></li>
+  <li><a href="#new-optimizations" id="toc-new-optimizations" class="nav-link" data-scroll-target="#new-optimizations">New optimizations</a></li>
+  <li><a href="#initial-results" id="toc-initial-results" class="nav-link" data-scroll-target="#initial-results">Initial Results</a></li>
   </ul></li>
-  <li><a href="#framework-comparison" id="toc-framework-comparison" class="nav-link" data-scroll-target="#framework-comparison">🕵🏻‍ Framework Comparison ??</a>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
   <ul class="collapse">
-  <li><a href="#fix-in-disguise" id="toc-fix-in-disguise" class="nav-link" data-scroll-target="#fix-in-disguise">🥸 Fix in Disguise</a></li>
-  <li><a href="#fix" id="toc-fix" class="nav-link" data-scroll-target="#fix">✅ <code>2024.0</code> Fix</a></li>
-  <li><a href="#lr-decay-iters-comparison" id="toc-lr-decay-iters-comparison" class="nav-link" data-scroll-target="#lr-decay-iters-comparison">📊 <code>lr-decay-iters</code> Comparison</a></li>
+  <li><a href="#using-install.sh" id="toc-using-install.sh" class="nav-link" data-scroll-target="#using-install.sh">Using <code>install.sh</code></a></li>
+  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step-by-Step</a></li>
   </ul></li>
-  <li><a href="#lr-decay-iters-dependence" id="toc-lr-decay-iters-dependence" class="nav-link" data-scroll-target="#lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</a></li>
-  <li><a href="#performance-improvement-in-2024.1" id="toc-performance-improvement-in-2024.1" class="nav-link" data-scroll-target="#performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></a></li>
+  <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a></li>
+  <li><a href="#zero-offloading" id="toc-zero-offloading" class="nav-link" data-scroll-target="#zero-offloading">ZeRO Offloading</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="flash-attn-intel.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="deepspeed4science-genslm.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -410,7 +452,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">📸 <code>flash-attn</code> on Sunspot</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">🚂 Loooooooong Sequence Lengths</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/qmd/long-sequences/index.qmd">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -427,7 +469,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading"></div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 15, 2024</p>
+      <p class="date">February 12, 2024</p>
     </div>
   </div>
   
@@ -439,273 +481,528 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </header>
 
 
-<section id="impact-on-loss-bug" class="level2">
-<h2 class="anchored" data-anchor-id="impact-on-loss-bug">🐛 Impact on Loss [Bug?]</h2>
-<p>In the <code>q4-drop</code>, it was observed that toggling <code>flash-attn</code> on / off seemed to produce different loss curves (with otherwise <em>identical configs</em>)</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>shared-config.yaml</strong></pre>
+<div id="fig-ds4sci" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
 </div>
-<div class="sourceCode" id="cb1" data-filename="shared-config.yaml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">TP</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">PP</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">GAS</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">OPT</span><span class="kw">:</span><span class="at"> adamw</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">dtype</span><span class="kw">:</span><span class="at"> bf16</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">NLAYERS</span><span class="kw">:</span><span class="at"> </span><span class="dv">10</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">MICRO_BATCH</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">WORLD_SIZE</span><span class="kw">:</span><span class="at"> </span><span class="dv">24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This can be seen clearly in the figure below:</p>
-<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
-<p>This was identified, and to be addressed in upcoming release.</p>
-</section>
-<section id="llm-framework-release" class="level2">
-<h2 class="anchored" data-anchor-id="llm-framework-release">📦 LLM Framework Release</h2>
-<p>On 05/14/2024, Intel dropped their new LLM frameworks release:</p>
-<details closed="">
-<summary>
-🎁 <code>frameworks_2024_5_v2</code> Announcement:
-</summary>
-<p>Hi Venkat,</p>
-<p>We have shared the official Q2 release in two different forms :</p>
-<p>Manual Setup: <code>/gila/Aurora_deployment/anl_24_q2_release.tar.gz</code></p>
-<p>and</p>
-<p>Module:</p>
-<p><code>module use -a /home/jmitche1/anl_release/2024/q2</code></p>
-<p><code>module load frameworks_2024_5_v2</code></p>
-<p>&nbsp;Instructions on how to use modules with Q2 build are anl_24_q2_release/README</p>
-<ul>
-<li><strong>The release includes :</strong>
-<ul>
-<li>Megatron-DeepSpeed 0.14.2 (with patch)</li>
-<li>Intel® Extension for PyTorch* v2.1.30+xpu</li>
-<li>TorchCCL 2.1.300</li>
-<li>ONEAPI 2024.1.0.596.PUBLIC_IDP_2024.1.0_723</li>
-<li>Agama driver: 803.29</li>
-</ul></li>
-<li>The release provides following key features:
-<ul>
-<li>Scaleup Performance improvement from the <code>TorchCCl</code> prototype feature enabled by <code>TORCH_LLM_ALLREDUCE=1</code> &nbsp;<a href="https://urldefense.us/v3/__https://github.com/intel/torch-ccl/releases/tag/v2.1.300*2Bxpu__;JQ!!G_uCfscf7eWS!ZDMnN0Oxp1sCv06MkdlBqFIq0NMAXaCBOtl3fEtBq8Fn4-3iYY5-kPEKr-q4vZIL_i6f2wQbULxAIFJAthJyu3VvNA$">details</a></li>
-<li>Auto TP inference support for more workloads</li>
-<li>Flash Attention V2 improvement for 256 head dimension support; MiCS support.</li>
-<li>Latest Features and Optimizations from DeepSpeed&nbsp;<a href="https://github.com/microsoft/DeepSpeed/releases/tag/v0.14.2">0.14.2</a>&nbsp;and Intel® Extension for PyTorch*&nbsp;<a href="https://github.com/intel/intel-extension-for-pytorch/tree/v2.1.30*2Bxpu">2.1.30</a>.</li>
-</ul></li>
-</ul>
-<p>Thanks,&nbsp;<br>
-Jerome</p>
-</details>
-<section id="flash-no-flash" class="level3">
-<h3 class="anchored" data-anchor-id="flash-no-flash">📸 flash 🤝 📷 no-flash</h3>
-<p>With this new release, Intel observed that the loss curves agreed exactly for <code>flash</code> / no-<code>flash</code>, using the learning rate settings below:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.00015</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">lr_warmup_frac</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.01</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">lr_decay_iters</span><span class="kw">:</span><span class="at"> </span><span class="dv">320000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Testing with Jerome’s new release:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">module</span> use <span class="at">-a</span> /home/jmitche1/anl_release/2024/q2</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">module</span> load frameworks_2024_5_v2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I was able to independently confirm these results, shown in <a href="#📸%20flash%20🤝%20📷%20no-flash">📸 <code>flash</code> 🤝 📷 <code>no-flash</code></a> below.</p>
-<details closed="">
-<summary>
-🔗 <code>wandb</code> links:
-</summary>
-<ul>
-<li>[📸 <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans">youthful-river-1832</a></li>
-<li>[📷 no-<code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans">earthy-wave-1830</a></li>
-</ul>
-</details>
-<details closed="">
-<summary>
-📸 <code>flash</code> vs.&nbsp;📷 <code>no-flash</code>
-</summary>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="flash 📸 🤝 📷 no-flash"><img src="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
-<figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft.
+</figcaption>
 </figure>
 </div>
-</details>
-</section>
-<section id="broken-mpigremlins" class="level3">
-<h3 class="anchored" data-anchor-id="broken-mpigremlins">🚧 Broken MPI<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
-<p>For whatever reason, things seemed to have spontaneously broken on the night of 2024-04-14 ??</p>
-<p>When trying to run experiments the following day (05/15/2024) I was met with this[^]:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">Abort</span><span class="er">(</span><span class="ex">15</span><span class="kw">)</span><span class="bu">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which was discussed further in <a href="https://github.com/pmodels/mpich/pull/7001">this thread</a> on slack.</p>
-<p>It seems Subrata also encountered a similar issue [see: <a href="https://cels-anl.slack.com/archives/C047E7ZTUUF/p1715985162970119">slack thread</a>]</p>
-<details closed="">
-<summary>
-✅ <code>mpi4py</code> fix
-</summary>
-<!-- `mpi4py` fix -->
-<p>To resolve this</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">Abort</span><span class="er">(</span><span class="ex">15</span><span class="kw">)</span><span class="bu">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>issue we can simply load the correct modules:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">module</span> use <span class="at">-a</span> /home/jmitche1/anl_release/2024/q2</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">module</span> load frameworks_2024_5_v2</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="ex">module</span> use /home/ftartagl/graphics-compute-runtime/modulefiles</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="ex">module</span> load graphics-compute-runtime/agama-ci-devel-803.29 </span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="ex">module</span> load spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0</span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="ex">module</span> use /soft/preview-modulefiles/24.086.0</span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="ex">module</span> load oneapi/release/2024.04.15.001</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For full details see <a href="mpi4py-reproducer.md">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
-<!-- ::: -->
-</details>
-</section>
-</section>
-<section id="framework-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="framework-comparison">🕵🏻‍ Framework Comparison ??</h2>
-<p>As I was re-building MPI, and after talking to Jerome, I realized that <em>most</em> of the dependencies are already present in the provided <code>frameworks/</code> modules on Sunspot.</p>
-<p>As a simple test, I tried building a new environment built on the base <code>conda</code> environment<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> provided by the<code>frameworks/2023.12.15.001</code> module, which worked without modification and had ) <em>most</em> of what I needed already installed:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> torch</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="op">&gt;&gt;&gt;</span> torch.__version__</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">'2.1.0a0+cxx11.abi'</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> intel_extension_for_pytorch <span class="im">as</span> ipex</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="op">&gt;&gt;&gt;</span> ipex.__version__</span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">'2.1.10+xpu'</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> mpi4py <span class="im">import</span> MPI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The remaining dependencies were installed according to the instructions from the <strong>new</strong> release <code>frameworks_2024_5_v2</code>.</p>
-<p>Details included below.</p>
-<details closed="">
-<summary>
-📦 <code>pip</code> Install Dependencies
-</summary>
-<p>Unfortunately, the <code>frameworks/**</code> don’t appear to provide DeepSpeed.</p>
-<p>We can create a virtual environment on top of the base conda by</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">$</span> module use frameworks/2023.12.15.001</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">$</span> export PBS_O_WORKDIR=<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="kw">;</span> <span class="bu">source</span> ALCF/helpers.sh <span class="kw">&amp;&amp;</span> <span class="ex">setup_venv_from_conda</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Once the <code>venv</code> has been created and activated, we can install the remaining dependencies:</p>
-<p>To build / install DeepSpeed, along with its required dependencies:</p>
+<p>The new <a href="https://github.com/microsoft/Megatron-DeepSpeed">Megatron-DeepSpeed</a> release contains a variety of improvements / optimizations to enable pre-training Transformer based architectures with significantly longer sequences than was previously possible.</p>
+<!-- > **Note**<br> -->
+<!-- > Additional details can be found in the -->
+<!-- > [📁 `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/examples_deepspeed/deepspeed4science/megatron_long_seq_support/README.md) -->
+<!-- > folder. -->
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="📓 Note:" style="width:100%; background: none!important; border: none!important; border-left: 2px solid var(--callout-note-color)!important; border-radius: 0pt!important; opacity: 100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+📓 Note:
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Additional details can be found in the <a href="https://github.com/microsoft/Megatron-DeepSpeed/tree/main/examples_deepspeed/deepspeed4science/megatron_long_seq_support">📁 <code>DeepSpeed4Science</code></a> folder.</p>
+</div>
+</div>
+</div>
+<section id="deepspeed4science-092023" class="level2">
+<h2 class="anchored" data-anchor-id="deepspeed4science-092023"><a href="https://ai4science.azurewebsites.net/2023/09/18/model-showcase-genslms/">DeepSpeed4Science</a> (09/2023)</h2>
+<section id="new-features" class="level3">
+<h3 class="anchored" data-anchor-id="new-features">New Features</h3>
 <ul>
-<li><p><code>intel-extension-for-deepspeed</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install intel_extension_for_pytorch_deepspeed<span class="dt">\=\=</span>2.1.30 <span class="at">-f</span> <span class="st">"https://pytorch-extension.intel.com/release-whl/stable/xpu/us/intel-extension-for-pytorch-deepspeed/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><code>DeepSpeed</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">echo</span> <span class="st">"build deepspeed"</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">cd</span> DeepSpeed</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">git</span> remote add yizhou_ds https://github.com/YizhouZ/DeepSpeed.git</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">git</span> fetch yizhou_ds</span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">git</span> checkout yizhou/kernel_path</span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements/requirements.txt</span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="ex">python</span> setup.py develop <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Extras:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install transformers datasets python-etcd tensorboardX packaging sentencepiece bitsandbytes tiktoken neural-speed einops intel-extension-for-transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Enabled Megatron-LM’s sequence parallel.</p></li>
+<li><p>Enabled rotary positional embedding.</p></li>
+<li><p>Enabled FlashAttention v1 and v2.</p></li>
+<li><p>Enabled new fused kernels from NVIDIA.</p></li>
 </ul>
-</details>
-<p>Looking around the available modules a bit, I noticed a newer frameworks release (<code>frameworks/2024.04.15.002</code>) that had a newer version of both <code>torch</code> and <code>ipex</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">module</span> use /soft/preview-modulefiles/24.086.0</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="ex">module</span> load frameworks/2024.04.15.002.lua</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="ex">python3</span> <span class="at">-c</span> <span class="st">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># /soft/datascience/aurora_nre_models_frameworks-2024.1_preview_u1/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> torch</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="op">&gt;&gt;&gt;</span> torch.__version__</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co">'2.1.0.post2+cxx11.abi'</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> intel_extension_for_pytorch <span class="im">as</span> ipex</span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="op">&gt;&gt;&gt;</span> ipex.__version__</span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">'2.1.30+xpu'</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> mpi4py <span class="im">import</span> MPI<span class="op">;</span> <span class="bu">print</span>(MPI.<span class="va">__file__</span>)</span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="op">/</span>soft<span class="op">/</span>datascience<span class="op">/</span>aurora_nre_models_frameworks<span class="op">-</span><span class="fl">2024.1</span><span class="er">_preview_u1</span><span class="op">/</span>lib<span class="op">/</span>python3<span class="fl">.9</span><span class="op">/</span>site<span class="op">-</span>packages<span class="op">/</span>mpi4py<span class="op">/</span>MPI.cpython<span class="op">-</span><span class="dv">39</span><span class="op">-</span>x86_64<span class="op">-</span>linux<span class="op">-</span>gnu.so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The remaining dependencies were installed identically to what was just done previously for the <code>frameworks/2023.12.15.001</code> module.</p>
-<p><strong>NOTE</strong>: In the figures below, we denote these two environments as:</p>
+</section>
+<section id="new-optimizations" class="level3">
+<h3 class="anchored" data-anchor-id="new-optimizations">New optimizations</h3>
 <ul>
-<li><code>2024.0</code>:
-<ul>
-<li><code>module load frameworks/2023.12.15.001</code></li>
-</ul></li>
-<li><code>2024.1</code>:
-<ul>
-<li><code>module use /soft/preview-modulefiles/24.086.0</code></li>
-<li><code>module load frameworks/2024.04.15.002.lua</code></li>
-</ul></li>
-<li><code>anl_24_q2_release</code>:
-<ul>
-<li><code>eval "$(~/miniconda3/bin/conda shell.zsh hook)"</code></li>
-<li><code>conda activate anl_24_q2_release</code></li>
-</ul></li>
+<li><p>Enabled attention map memory optimization, where we first generated attention mask on CPU memory and then moved it into GPU memory to avoid out-of-memory errors when training with very large sequence lengths.</p></li>
+<li><p>Position embedding partitioning, where we split weights of position encoding across all GPUs when enabling sequence parallel to further reduce the memory footprint.</p></li>
 </ul>
-<section id="fix-in-disguise" class="level3">
-<h3 class="anchored" data-anchor-id="fix-in-disguise">🥸 Fix in Disguise</h3>
-<p>Armed now with functional environment(s) for <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a>, I was able to resume my previous experiments.</p>
-<p>From the discussion with Intel, it was hard to understand / reason about <em>why</em> the <code>flash-attn</code> fix would have <em>any</em> dependence on the learning rate schedule (warmup + decay).</p>
-<p>If the <code>flash-attn</code> fix works for a particular learning rate schedule, you would reasonably expect that it should work for <em>any</em> learning rate schedule.</p>
-<p>An additional source of confusion for me was that the discrepancy in the loss curves (seemingly) disappeared when using the learning rate settings provided by Intel<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, but not when using the ALCF defaults<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<p>After thinking about it for a bit and trying to reason about possible causes, I wondered if it might not be a mix of multiple different factors:</p>
+</section>
+<section id="initial-results" class="level3">
+<h3 class="anchored" data-anchor-id="initial-results">Initial Results</h3>
+<div id="tbl-results" class="striped hover quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Long sequence length support<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from <a href="https://github.com/microsoft/Megatron-DeepSpeed"><code>microsoft/Megatron-DeepSpeed</code></a>
+</figcaption>
+<div aria-describedby="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Sequence Length</th>
+<th style="text-align: center;">Old Megatron-DeepSpeed (TFLOPS)</th>
+<th style="text-align: center;">New Megatron-DeepSpeed (TFLOPS)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2k</td>
+<td style="text-align: center;"><span style="text-weight:600;">25</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">68</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4k</td>
+<td style="text-align: center;"><span style="text-weight:600;">28</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">80</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">86</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">92</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">32k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">100</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">64k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">106</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">128k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">119</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">256k</td>
+<td style="text-align: center;"><span class="red-text">OOM</span></td>
+<td style="text-align: center;"><span style="text-weight:600;">94</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="851758fc" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Data</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>gpus <span class="op">=</span> (<span class="st">'32'</span>, <span class="st">'64'</span>, <span class="st">'128'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>colors <span class="op">=</span> {</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="st">'Old Megatron-DS'</span>: <span class="st">'#FF5252'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="st">'Megatron-LM'</span>: <span class="st">'#76b900'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="st">'New Megatron-DS'</span>:  <span class="st">'#1A8FFF'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>data <span class="op">=</span> {</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="st">'25B'</span>: {</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">36</span>, <span class="dv">42</span>, <span class="dv">42</span>]),</span>
+<span id="cb1-12"><a href="#cb1-12"></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">26</span>, <span class="dv">48</span>, <span class="dv">52</span>]),</span>
+<span id="cb1-13"><a href="#cb1-13"></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">192</span>, <span class="dv">448</span>, <span class="dv">512</span>]),</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    },</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="st">'33B'</span>: {</span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">32</span>]),</span>
+<span id="cb1-17"><a href="#cb1-17"></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">14</span>, <span class="dv">46</span>, <span class="dv">52</span>]),</span>
+<span id="cb1-18"><a href="#cb1-18"></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">128</span>, <span class="dv">384</span>, <span class="dv">448</span>]),</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    },</span>
+<span id="cb1-20"><a href="#cb1-20"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<details class="code-fold">
+<summary>Make the plots</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(gpus))</span>
+<span id="cb2-2"><a href="#cb2-2"></a>width <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>outdir <span class="op">=</span> Path(os.getcwd()).joinpath(<span class="st">'assets'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>outdir.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>, parents<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>improvement <span class="op">=</span> {}</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">for</span> idx, (model_size, d) <span class="kw">in</span> <span class="bu">enumerate</span>(data.items()):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    figure, axes <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="dv">4</span>))</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    fig <span class="op">=</span> plt.gcf()</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    ax <span class="op">=</span> plt.gca()</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">for</span> label, value <span class="kw">in</span> d.items():</span>
+<span id="cb2-15"><a href="#cb2-15"></a>        offset <span class="op">=</span> width <span class="op">*</span> multiplier</span>
+<span id="cb2-16"><a href="#cb2-16"></a>        rects <span class="op">=</span> ax.barh(</span>
+<span id="cb2-17"><a href="#cb2-17"></a>          x <span class="op">+</span> offset,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>          value,</span>
+<span id="cb2-19"><a href="#cb2-19"></a>          width,</span>
+<span id="cb2-20"><a href="#cb2-20"></a>          label<span class="op">=</span>label,</span>
+<span id="cb2-21"><a href="#cb2-21"></a>          color<span class="op">=</span>colors[label],</span>
+<span id="cb2-22"><a href="#cb2-22"></a>          alpha<span class="op">=</span><span class="fl">0.8</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>        )</span>
+<span id="cb2-24"><a href="#cb2-24"></a>        ax.bar_label(</span>
+<span id="cb2-25"><a href="#cb2-25"></a>          rects,</span>
+<span id="cb2-26"><a href="#cb2-26"></a>          padding<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-27"><a href="#cb2-27"></a>          color<span class="op">=</span>colors[label],</span>
+<span id="cb2-28"><a href="#cb2-28"></a>          family<span class="op">=</span><span class="st">'monospace'</span>,</span>
+<span id="cb2-29"><a href="#cb2-29"></a>          weight<span class="op">=</span><span class="st">'bold'</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>        )</span>
+<span id="cb2-31"><a href="#cb2-31"></a>        multiplier <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>    ax.set_ylabel(</span>
+<span id="cb2-33"><a href="#cb2-33"></a>        <span class="st">'GPUs'</span>,</span>
+<span id="cb2-34"><a href="#cb2-34"></a>        fontsize<span class="op">=</span><span class="dv">18</span>,</span>
+<span id="cb2-35"><a href="#cb2-35"></a>        family<span class="op">=</span><span class="st">'sans-serif'</span>,</span>
+<span id="cb2-36"><a href="#cb2-36"></a>        loc<span class="op">=</span><span class="st">'center'</span>,</span>
+<span id="cb2-37"><a href="#cb2-37"></a>    )</span>
+<span id="cb2-38"><a href="#cb2-38"></a>    ax.set_yticks(x <span class="op">+</span> width, gpus)</span>
+<span id="cb2-39"><a href="#cb2-39"></a>    plt.figtext(</span>
+<span id="cb2-40"><a href="#cb2-40"></a>        <span class="fl">0.005</span>, <span class="fl">0.93</span>, <span class="ss">f"</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">"</span>, fontsize<span class="op">=</span><span class="dv">24</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, ha<span class="op">=</span><span class="st">'left'</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a>    )</span>
+<span id="cb2-42"><a href="#cb2-42"></a>    ax.set_xlabel(</span>
+<span id="cb2-43"><a href="#cb2-43"></a>        <span class="st">'Sequence Length (k)'</span>, fontsize<span class="op">=</span><span class="dv">18</span>, loc<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a>    )</span>
+<span id="cb2-45"><a href="#cb2-45"></a>    ax.legend(</span>
+<span id="cb2-46"><a href="#cb2-46"></a>        bbox_to_anchor<span class="op">=</span>(<span class="fl">0.005</span>, <span class="fl">1.04</span>, <span class="fl">0.99</span>, <span class="fl">.098</span>),</span>
+<span id="cb2-47"><a href="#cb2-47"></a>        alignment<span class="op">=</span><span class="st">'center'</span>,</span>
+<span id="cb2-48"><a href="#cb2-48"></a>        edgecolor<span class="op">=</span><span class="st">"#83838320"</span>,</span>
+<span id="cb2-49"><a href="#cb2-49"></a>        frameon<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-50"><a href="#cb2-50"></a>        ncols<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-51"><a href="#cb2-51"></a>        fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb2-52"><a href="#cb2-52"></a>        mode<span class="op">=</span><span class="st">"expand"</span>,</span>
+<span id="cb2-53"><a href="#cb2-53"></a>        borderaxespad<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a>    )</span>
+<span id="cb2-55"><a href="#cb2-55"></a>    save_figure(fname<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">'</span>, outdir<span class="op">=</span>outdir)</span>
+<span id="cb2-56"><a href="#cb2-56"></a>    _ <span class="op">=</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-seq-len" class="quarto-figure quarto-figure-center quarto-float anchored" style="background-color:none;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-seq-len-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+
+</div>
+<div id="dedeaaf5" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="3" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="GPT-25B Model"><img src="index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
+<figcaption>GPT-<code>25B</code> Model</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="GPT-33B Model"><img src="index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
+<figcaption>GPT-<code>33B</code> Model</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seq-len-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Pre-training with long sequence support across different model sizes and numbers of GPUs. In each case, the <code>new</code> (current) implementation <strong>significantly</strong> outperforms both NVIDIA/Megatron-LM as well as our previous implementation.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<section id="using-install.sh" class="level3">
+<h3 class="anchored" data-anchor-id="using-install.sh">Using <a href="https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh"><code>install.sh</code></a></h3>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Installation" style="width:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Installation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Important</strong><br> To install, simply:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM/</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">cd</span> GenSLM/examples/long-sequences/</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">./install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explicitly, <a href="https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh"><code>./install.sh</code></a> will:</p>
 <ol type="1">
-<li>Small learning rate</li>
-<li>Very long decay</li>
-<li>[maybe ?] somehow dependent on the learning rate warmup fraction
-<ol type="1">
-<li>preliminary experiments seemed to suggest this was not the case</li>
-</ol></li>
+<li><strong>Automatically</strong> create a virtual environment <em>on top of</em> the latest <code>conda</code> module</li>
+<li>Install (+ update<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>) / build all the required <a href="#dependencies">dependencies</a> into this virtual environment</li>
 </ol>
-<p>So, I was curious what would happen if I used the (larger) learning rate value from the ALCF defaults (<code>lr=0.003</code>) with the very long <code>lr-decay-iters: 320000</code> from Intel.</p>
-<p>These results are shown below.</p>
-<p>In particular, for all three experiments the following learning rate settings were used:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.0003</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">lr-warmup-frac</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.05</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">lr-decay-iters</span><span class="kw">:</span><span class="at"> </span><span class="dv">320000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./assets/flash-attn/flash-attn-disguise-decay10000-1.png" class="img-fluid" alt="flash-attn-disguise-decay10000-1"> Looking at this figure ^, it appears that up until the very very end, all three loss curves agree <em>identically</em>.</p>
-<p>However, if we look closely at the very end, it looks like there <em>might</em> be a <em>slight</em> difference beginning to appear between the <code>2024.0</code> (brown line) and <code>{anl_24_q2_release, 2024.1}</code> ({dark, light} blue lines, respectively).</p>
-<p>Thinking that I might be onto something, I then tried again with a smaller <code>lr-decay-iters: 5000</code>.</p>
-<p>This result is shown below:</p>
-<p><img src="./assets/flash-attn/flash-attn-disguise-decay5000.png" class="img-fluid" alt="flash-attn-disguise-decay5000"> In particular, we can now more clearly see the difference beginning to appear between the <code>2024.0</code> and <code>2024.1</code> loss curves.</p>
-<p>Continuing on, we see this effect become increasingly dramatic with even smaller values of <code>lr-decay-iters</code>:</p>
-<p><img src="./assets/flash-attn/flash-attn-disguise-decay-2000.png" class="img-fluid" alt="flash-attn-disguise-decay-2000"> <img src="./assets/flash-attn/flash-attn-disguise-decay1500.png" class="img-fluid" alt="flash-attn-disguise-decay1500"></p>
-<p><img src="./assets/flash-attn/flash-attn-disguise-decay1000-1.png" class="img-fluid" alt="flash-attn-disguise-decay1000-1"> In each of these experiments, it appears that:</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-by-step" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step">Step-by-Step</h3>
+<p>For completeness, we describe below the steps for installing and building each of the dependencies.</p>
+<ol type="1">
+<li><p>Clone GitHub repo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Load <code>conda</code> module:</p>
 <ul>
-<li><code>2024.0</code>:
-<ul>
-<li>Not impacted by this <code>lr-decay-iters</code> dependence</li>
-<li>Continue to decrease for the duration of training</li>
+<li><p>ThetaGPU:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># ThetaGPU:</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==theta*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"ThetaGPU"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="ex">module</span> load conda/2023-01-11</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="ex">conda</span> activate base</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Polaris:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Polaris:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==x3*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"Polaris"</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="ex">module</span> load conda/2023-01-10-unstable</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="ex">conda</span> activate base</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><code>2024.1</code>:
-<ul>
-<li>Impacted by the <code>lr-decay-iters</code> dependence</li>
-<li>Plateaus towards the end of training</li>
-</ul></li>
-</ul>
-<details closed="">
+<li><p>Setup Virtual Environment<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">cd</span> ./genslm/examples/long-sequences</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># create a new virtual environment</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">python3</span> <span class="at">-m</span> venv <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span> <span class="at">--system-site-packages</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">source</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">/bin/activate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create a new folder (<code>genslm/examples/long-sequences/deps/${MACHINE}</code>) where we’ll installing dependencies locally:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">cd</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<section id="dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="dependencies">Dependencies</h4>
+<p>We provide below the details needed to install each of the required dependencies.</p>
+<details>
 <summary>
-Older Figs
+<a href="https://github.com/saforem2/ezpz"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/ezpz</code></a>
 </summary>
-<p><img src="./assets/flash-attn/disguised-fix-2.png" class="img-fluid" alt="disguised-fix-2"> <img src="./assets/flash-attn/disguised-fix-1.png" class="img-fluid" alt="disguised-fix-1"></p>
+<ol type="1">
+<li><p><a href="https://github.com/saforem2/ezpz"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/ezpz</code></a></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">"git+https://github.com/saforem2/ezpz.git#egg=ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</details>
+<details>
+<summary>
+<a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/DeepSpeed</code></a>
+</summary>
+<ol start="2" type="1">
+<li><p><a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/DeepSpeed</code></a></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">cd</span> DeepSpeed</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</details>
+<details>
+<summary>
+<a href="https://github.com/microsoft/Megatron-DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/Megatron-DeepSpeed</code></a>
+</summary>
+<ol start="3" type="1">
+<li><p><a href="https://github.com/microsoft/Megatron-DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/Megatron-DeepSpeed</code></a>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> clone https://github.com/microsoft/Megatron-DeepSpeed.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</details>
+<details>
+<summary>
+<a href="https://github.com/NVIDIA/apex"><i class="fa-brands fa-github" aria-label="github"></i> <code>NVIDIA/apex</code></a>
+</summary>
+<ol start="4" type="1">
+<li><p><a href="https://github.com/NVIDIA/apex"><i class="fa-brands fa-github" aria-label="github"></i> <code>NVIDIA/apex</code></a></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">cd</span> ../apex/</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="ex">pip</span> install <span class="at">-v</span> <span class="at">--disable-pip-version-check</span> <span class="at">--no-cache-dir</span> <span class="at">--no-build-isolation</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cpp_ext"</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cuda_ext"</span> <span class="at">-e</span> ./</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</details>
+<details>
+<summary>
+<a href="https://github.com/pybind/pybind11"><i class="fa-brands fa-github" aria-label="github"></i> <code>pybind/PyBind11</code></a>
+</summary>
+<ol start="5" type="1">
+<li><p><a href="https://github.com/pybind/pybind11"><i class="fa-brands fa-github" aria-label="github"></i> <code>pybind/PyBind11</code></a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">pip</span> install pybind11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</details>
+<details>
+<summary>
+<a href="https://github.com/Dao-AILab/flash-attention"><i class="fa-brands fa-github" aria-label="github"></i> <code>Dao-AILab/flash-attention</code></a>
+</summary>
+<ol start="6" type="1">
+<li><p><a href="https://github.com/Dao-AILab/flash-attention"><i class="fa-brands fa-github" aria-label="github"></i> <code>Dao-AILab/flash-attention</code></a>:</p>
+<div class="callout callout-style-simple callout-caution callout-titled" title="Flash Attention" style="font-size:0.8em; width:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Flash Attention
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The new release supports three different implementations of FlashAttention: (<code>v1.0.4</code>, <code>v2.x</code>, <code>triton</code>)</li>
+<li>FlashAttention <code>v2.x</code> may have numerical instability issues. For the best performance, we recommend using FlashAttention + Triton</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li><p><code>v1.0.4</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install flash-attn==1.0.4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>v2.x</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> clone https://github.com/Dao-AILab/flash-attention</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="bu">cd</span> flash-attention</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="ex">python3</span> setup.py install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>openai/triton</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> clone <span class="at">-b</span> legacy-backend https://github.com/openai/triton</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="bu">cd</span> triton/python</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="ex">python3</span> <span class="at">-m</span> pip install cmake</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="ex">python3</span> <span class="at">-m</span> pip install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ol>
 </details>
 </section>
-<section id="fix" class="level3">
-<h3 class="anchored" data-anchor-id="fix">✅ <code>2024.0</code> Fix</h3>
-<p><strong>Everything</strong> seems to work with</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">module</span> load frameworks/2023.12.15.001</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="./assets/flash-attn/flash-attn-2024-0-fix.png" class="img-fluid"> <img src="./assets/flash-attn/flash-attn-fix-frameworks-comparison.png" class="img-fluid"></p>
 </section>
-<section id="lr-decay-iters-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="lr-decay-iters-comparison">📊 <code>lr-decay-iters</code> Comparison</h3>
+</section>
+<section id="running" class="level2">
+<h2 class="anchored" data-anchor-id="running">Running</h2>
+<p>The <a href="./ALCF/"><code>ALCF/</code></a> directory contains shell scripts for setting up the environment and specifying the options to be used when launching.</p>
+<p>Various options can be specified dynamically at runtime by setting them in your environment, e.g.:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="va">MODEL_SIZE_KEY</span><span class="op">=</span><span class="st">"GPT25B"</span> <span class="va">SEQ_LEN</span><span class="op">=</span>128000 <span class="va">USE_FLASH_ATTN</span><span class="op">=</span>1 <span class="va">MICRO_BATCH</span><span class="op">=</span>1 <span class="va">GAS</span><span class="op">=</span>1 <span class="va">SP_TYPE</span><span class="op">=</span><span class="st">"megatron"</span> <span class="va">ZERO_STAGE</span><span class="op">=</span>1 <span class="ex">./ALCF/train-gpt3.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Explicitly:</p>
 <ul>
-<li><code>2024.0</code>:
+<li><a href="./ALCF/train-gpt3.sh"><code>ALCF/train-gpt3.sh</code></a>: <strong>Main entry point for training</strong>
 <ul>
-<li><img src="./assets/flash-attn/decay-experiment-2024-0-1.png" class="img-fluid"></li>
+<li>This script will <strong>automatically</strong> source the rest of the required <a href="./ALCF/"><code>ALCF/*.sh</code></a> scripts below</li>
 </ul></li>
-<li><code>2024.1</code>:
+<li><a href="./ALCF/models.sh"><code>ALCF/models.sh</code></a>: Contains some example model architectures for GPT3-style models</li>
+<li><a href="./ALCF/args.sh"><code>ALCF/args.sh</code></a>: Logic for parsing / setting up runtime options for Megatron and DeepSpeed</li>
+<li><a href="./ALCF/args.sh"><code>ALCF/setup.sh</code></a>: Locate and activate virtual environment to be used, ensure MPI variables are set properly</li>
+<li><a href="./ALCF/launch.sh"><code>ALCF/launch.sh</code></a>: Identify available resources and build the command to be executed
 <ul>
-<li><img src="./assets/flash-attn/decay-experiment-2024-1.png" class="img-fluid"></li>
+<li>i.e.&nbsp;figure out how many: <code>{nodes, GPUs per node, GPUs total}</code>, to pass to <code>mpi{run,exec}</code></li>
+<li>then, use this to build <code>mpiexec &lt;mpiexec-args&gt; python3 pretrain_gpt.py</code></li>
 </ul></li>
 </ul>
 </section>
-</section>
-<section id="lr-decay-iters-dependence" class="level2">
-<h2 class="anchored" data-anchor-id="lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</h2>
-<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="./assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
-<p><img src="./assets/lr-schedule-dependence.png" class="img-fluid"> <img src="./assets/lr-decay-iters-dependence-1.png" class="img-fluid"></p>
-</section>
-<section id="performance-improvement-in-2024.1" class="level2">
-<h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
-<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="./assets/performance-2024-0.png" class="img-fluid"></a></p>
-<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="./assets/performance-2024-1.png" class="img-fluid"></a></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.0003</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">lr-warmup-frac</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.05</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">lr-decay-iters</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="zero-offloading" class="level2">
+<h2 class="anchored" data-anchor-id="zero-offloading">ZeRO Offloading</h2>
+<p><a href="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking/reports/Looooooong-Sequences--Vmlldzo1MzI2NjA1">🚀 <strong>W&amp;B Report</strong>: <em>Looooooooong Sequences</em></a></p>
+<p>These newly introduced optimizations, in combination with <a href="https://www.deepspeed.ai/tutorials/zero-offload/">ZeRO-Offload</a> allows us to go even further.</p>
+<p>By employing ZeRO-Offloading, we are able to free up additional memory which can be used for <em>even longer</em> sequences.</p>
+<p>Though work is still ongoing, this is a promising direction that will allow us to consider significantly larger genomes than previously possible.</p>
+<p>We use <a href="https://wandb.ai">Weights &amp; Biases</a> to track these experiments, and have aggregated our initial results in the <a href="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking/reports/Looooooong-Sequences--Vmlldzo1MzI2NjA1">W&amp;B Report</a> below.</p>
+<p>We can evaluate the performance of our model by looking at two different metrics for throughput: <code>samples_per_sec</code> and <code>TFLOPS</code>.</p>
+<p>Explicitly, we see that we are able to scale up to significantly longer sequences (<code>420k / 128k ~ 3.3x</code>) with only a minimal impact on throughput performance (<code>81 / 105 ~ 77\%</code>)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<div id="tbl-seqlen" class="striped hover quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-seqlen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Impact on TFLOPS as a function of increasing sequence length. Table from: <a href="https://api.wandb.ai/links/l2hmc-qcd/awklywn7"><code>throughput/TFLOPS</code></a>
+</figcaption>
+<div aria-describedby="tbl-seqlen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 25%">
+<col style="width: 29%">
+<col style="width: 11%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Sequence Length (k)</th>
+<th style="text-align: center;">(<code>seq_len / min_seq_len</code>)</th>
+<th style="text-align: center;">TFLOPS</th>
+<th style="text-align: center;">TFLOPS (% of peak)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">420</td>
+<td style="text-align: center;"><span class="blue-text"><strong>3.28125</strong></span></td>
+<td style="text-align: center;">81.77225</td>
+<td style="text-align: center;"><span class="blue-text"><strong>77.867</strong></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">400</td>
+<td style="text-align: center;">3.125</td>
+<td style="text-align: center;">90.62</td>
+<td style="text-align: center;">86.297</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">360</td>
+<td style="text-align: center;">2.8125</td>
+<td style="text-align: center;">81.6325</td>
+<td style="text-align: center;">77.7348</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">360</td>
+<td style="text-align: center;">2.8125</td>
+<td style="text-align: center;">82.6824</td>
+<td style="text-align: center;">78.7346</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">192</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">115.8228</td>
+<td style="text-align: center;">110.2927</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">106.672</td>
+<td style="text-align: center;">101.5788</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">GPT25B</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">105.014</td>
+<td style="text-align: center;">100.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<!-- [^config]: Using: `{model_size: 25B, WORLD_SIZE: 32, micro_batch: 1}` -->
+<!-- <iframe src="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking?workspace=user-saforem2" style="border:none;height:1024px;width:100%"> -->
+<div id="fig-wandb" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wandb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div style="padding:0.5rem; border: 1px solid var(--dim-text); border-radius: 0.2rem;">
+<iframe src="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking/reports/Looooooong-Sequences--Vmlldzo1MzI2NjA1" style="border:none;height:1024px;width:100%">
+</iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wandb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Weights &amp; Biases Report
+</figcaption>
+</figure>
+</div>
 
 
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2"><code>flash</code> 📸 🤝 📷 no-<code>flash</code></span>
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft.</span>
+<span class="glightbox-desc lightbox-desc-2">GPT-<code>25B</code> Model</span>
+<span class="glightbox-desc lightbox-desc-3">GPT-<code>33B</code> Model</span>
 </div>
 </section>
 
@@ -713,20 +1010,26 @@ Older Figs
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Gremlin">Gremlins</a>, likely<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Explicitly, <code>aurora_nre_models_frameworks-2024.0</code>, abbreviated as <code>2024.0</code><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Intel used the following learning rate schedule in their experiments <code>yml   lr: 0.00015   lr-warmup-frac: 0.01   lr-decay-iters: 320000</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>ALCF used the following learning rate schedule in their experiments<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The described experiments were performed on 4 NVIDIA DGX A100-40GB nodes, all using <code>TPSIZE=32</code>[^tpsize], connected through 8 HDR InfiniBand (200Gb/s per HDR).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><div class="line-block"></div>
+<ol start="2" type="1">
+<li><code>deepspeed-0.10.3</code></li>
+<li><code>pytorch==2.0.0+cu118</code></li>
+</ol>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><p>Where <code>"${MACHINE}"</code> <span class="math inline">\in</span> <code>{"ThetaGPU", "Polaris"}</code> and <code>"${CONDA_DATE}"</code> <span class="math inline">\in</span> <code>{"2023-01-10", "2023-01-11"}</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://api.wandb.ai/links/l2hmc-qcd/awklywn7"><code>throughput/TFLOPS</code></a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
   author = {Foreman, Sam},
   title = {Personal {Website}},
-  date = {2024-06-15},
+  date = {2024-02-12},
   url = {https://samforeman.me},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Foreman, Sam. 2024. <span>“Personal Website.”</span> June 15, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
+Foreman, Sam. 2024. <span>“Personal Website.”</span> February 12, 2024.
+<a href="https://samforeman.me">https://samforeman.me</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1391,13 +1694,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://samforeman.me">samforeman.me</a></p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
