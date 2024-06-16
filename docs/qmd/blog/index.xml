@@ -10,7 +10,643 @@
 <atom:link href="https://samforeman.me/qmd/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Sam Foreman</description>
 <generator>quarto-1.4.554</generator>
-<lastBuildDate>Sat, 15 Jun 2024 19:38:13 GMT</lastBuildDate>
+<lastBuildDate>Sun, 16 Jun 2024 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>📸 flash-attn on Sunspot</title>
+  <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
+  <link>https://samforeman.me/qmd/flash-attn-sunspot/</link>
+  <description><![CDATA[ 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+<section id="impact-on-loss-bug" class="level2">
+<h2 class="anchored" data-anchor-id="impact-on-loss-bug">🐛 Impact on Loss [Bug?]</h2>
+<p>In the <code>q4-drop</code>, it was observed that toggling <code>flash-attn</code> on / off seemed to produce different loss curves (with otherwise <em>identical configs</em>)</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>shared-config.yaml</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="shared-config.yaml" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">TP</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">PP</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">GAS</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">OPT</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> adamw</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dtype</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> bf16</span></span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NLAYERS</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">MICRO_BATCH</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">WORLD_SIZE</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24</span></span></code></pre></div>
+</div>
+<p>This can be seen clearly in the figure below:</p>
+<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
+<p>This was identified, and to be addressed in upcoming release.</p>
+</section>
+<section id="llm-framework-release" class="level2">
+<h2 class="anchored" data-anchor-id="llm-framework-release">📦 LLM Framework Release</h2>
+<p>On 05/14/2024, Intel dropped their new LLM frameworks release:</p>
+<details closed="">
+<summary>
+🎁 <code>frameworks_2024_5_v2</code> Announcement:
+</summary>
+<p>Hi Venkat,</p>
+<p>We have shared the official Q2 release in two different forms :</p>
+<p>Manual Setup: <code>/gila/Aurora_deployment/anl_24_q2_release.tar.gz</code></p>
+<p>and</p>
+<p>Module:</p>
+<p><code>module use -a /home/jmitche1/anl_release/2024/q2</code></p>
+<p><code>module load frameworks_2024_5_v2</code></p>
+<p>&nbsp;Instructions on how to use modules with Q2 build are anl_24_q2_release/README</p>
+<ul>
+<li><strong>The release includes :</strong>
+<ul>
+<li>Megatron-DeepSpeed 0.14.2 (with patch)</li>
+<li>Intel® Extension for PyTorch* v2.1.30+xpu</li>
+<li>TorchCCL 2.1.300</li>
+<li>ONEAPI 2024.1.0.596.PUBLIC_IDP_2024.1.0_723</li>
+<li>Agama driver: 803.29</li>
+</ul></li>
+<li>The release provides following key features:
+<ul>
+<li>Scaleup Performance improvement from the <code>TorchCCl</code> prototype feature enabled by <code>TORCH_LLM_ALLREDUCE=1</code> &nbsp;<a href="https://urldefense.us/v3/__https://github.com/intel/torch-ccl/releases/tag/v2.1.300*2Bxpu__;JQ!!G_uCfscf7eWS!ZDMnN0Oxp1sCv06MkdlBqFIq0NMAXaCBOtl3fEtBq8Fn4-3iYY5-kPEKr-q4vZIL_i6f2wQbULxAIFJAthJyu3VvNA$">details</a></li>
+<li>Auto TP inference support for more workloads</li>
+<li>Flash Attention V2 improvement for 256 head dimension support; MiCS support.</li>
+<li>Latest Features and Optimizations from DeepSpeed&nbsp;<a href="https://github.com/microsoft/DeepSpeed/releases/tag/v0.14.2">0.14.2</a>&nbsp;and Intel® Extension for PyTorch*&nbsp;<a href="https://github.com/intel/intel-extension-for-pytorch/tree/v2.1.30*2Bxpu">2.1.30</a>.</li>
+</ul></li>
+</ul>
+<p>Thanks,&nbsp;<br>
+Jerome</p>
+</details>
+<section id="flash-no-flash" class="level3">
+<h3 class="anchored" data-anchor-id="flash-no-flash">📸 flash 🤝 📷 no-flash</h3>
+<p>With this new release, Intel observed that the loss curves agreed exactly for <code>flash</code> / no-<code>flash</code>, using the learning rate settings below:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.00015</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr_warmup_frac</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr_decay_iters</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">320000</span></span></code></pre></div>
+<p>Testing with Jerome’s new release:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-a</span> /home/jmitche1/anl_release/2024/q2</span>
+<span id="cb3-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load frameworks_2024_5_v2</span></code></pre></div>
+<p>I was able to independently confirm these results, shown in 📸 <code>flash</code> 🤝 📷 <code>no-flash</code> below.</p>
+<details closed="">
+<summary>
+🔗 <code>wandb</code> links:
+</summary>
+<ul>
+<li>[📸 <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans">youthful-river-1832</a></li>
+<li>[📷 no-<code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans">earthy-wave-1830</a></li>
+</ul>
+</details>
+<details closed="">
+<summary>
+📸 <code>flash</code> vs.&nbsp;📷 <code>no-flash</code>
+</summary>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
+<figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
+</figure>
+</div>
+</details>
+</section>
+<section id="broken-mpigremlins" class="level3">
+<h3 class="anchored" data-anchor-id="broken-mpigremlins">🚧 Broken MPI<sup>1</sup></h3>
+<p>For whatever reason, things seemed to have spontaneously broken on the night of 2024-04-14 ??</p>
+<p>When trying to run experiments the following day (05/15/2024) I was met with this[^]:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">15</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
+<p>which was discussed further in <a href="https://github.com/pmodels/mpich/pull/7001">this thread</a> on slack.</p>
+<p>It seems Subrata also encountered a similar issue [see: <a href="https://cels-anl.slack.com/archives/C047E7ZTUUF/p1715985162970119">slack thread</a>]</p>
+<details closed="">
+<summary>
+✅ <code>mpi4py</code> fix
+</summary>
+<!-- `mpi4py` fix -->
+<p>To resolve this</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">15</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
+<p>issue we can simply load the correct modules:</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-a</span> /home/jmitche1/anl_release/2024/q2</span>
+<span id="cb6-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load frameworks_2024_5_v2</span>
+<span id="cb6-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use /home/ftartagl/graphics-compute-runtime/modulefiles</span>
+<span id="cb6-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load graphics-compute-runtime/agama-ci-devel-803.29 </span>
+<span id="cb6-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0</span>
+<span id="cb6-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span>
+<span id="cb6-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load oneapi/release/2024.04.15.001</span></code></pre></div>
+<p>For full details see <a href="mpi4py-reproducer.md">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
+<!-- ::: -->
+</details>
+</section>
+</section>
+<section id="framework-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="framework-comparison">🕵🏻‍ Framework Comparison ??</h2>
+<p>As I was re-building MPI, and after talking to Jerome, I realized that <em>most</em> of the dependencies are already present in the provided <code>frameworks/</code> modules on Sunspot.</p>
+<p>As a simple test, I tried building a new environment built on the base <code>conda</code> environment<sup>2</sup> provided by the<code>frameworks/2023.12.15.001</code> module, which worked without modification and had ) <em>most</em> of what I needed already installed:</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span>
+<span id="cb7-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> torch.__version__</span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'2.1.0a0+cxx11.abi'</span></span>
+<span id="cb7-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> intel_extension_for_pytorch <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> ipex</span>
+<span id="cb7-5"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> ipex.__version__</span>
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'2.1.10+xpu'</span></span>
+<span id="cb7-7"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> mpi4py <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> MPI</span></code></pre></div>
+<p>The remaining dependencies were installed according to the instructions from the <strong>new</strong> release <code>frameworks_2024_5_v2</code>.</p>
+<p>Details included below.</p>
+<details closed="">
+<summary>
+📦 <code>pip</code> Install Dependencies
+</summary>
+<p>Unfortunately, the <code>frameworks/**</code> don’t appear to provide DeepSpeed.</p>
+<p>We can create a virtual environment on top of the base conda by</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> module use frameworks/2023.12.15.001</span>
+<span id="cb8-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">$</span> export PBS_O_WORKDIR=<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pwd</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">source</span> ALCF/helpers.sh <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">setup_venv_from_conda</span></span></code></pre></div>
+<p>Once the <code>venv</code> has been created and activated, we can install the remaining dependencies:</p>
+<p>To build / install DeepSpeed, along with its required dependencies:</p>
+<ul>
+<li><p><code>intel-extension-for-deepspeed</code>:</p>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> pip install intel_extension_for_pytorch_deepspeed<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\=\=</span>2.1.30 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://pytorch-extension.intel.com/release-whl/stable/xpu/us/intel-extension-for-pytorch-deepspeed/"</span></span></code></pre></div></li>
+<li><p><code>DeepSpeed</code>:</p>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"build deepspeed"</span></span>
+<span id="cb10-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
+<span id="cb10-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> DeepSpeed</span>
+<span id="cb10-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> remote add yizhou_ds https://github.com/YizhouZ/DeepSpeed.git</span>
+<span id="cb10-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> fetch yizhou_ds</span>
+<span id="cb10-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> checkout yizhou/kernel_path</span>
+<span id="cb10-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-r</span> requirements/requirements.txt</span>
+<span id="cb10-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python</span> setup.py develop <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|&amp;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tee</span> build.log</span></code></pre></div></li>
+<li><p>Extras:</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> pip install transformers datasets python-etcd tensorboardX packaging sentencepiece bitsandbytes tiktoken neural-speed einops intel-extension-for-transformers</span></code></pre></div></li>
+</ul>
+</details>
+<p>Looking around the available modules a bit, I noticed a newer frameworks release (<code>frameworks/2024.04.15.002</code>) that had a newer version of both <code>torch</code> and <code>ipex</code>:</p>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span>
+<span id="cb12-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load frameworks/2024.04.15.002.lua</span>
+<span id="cb12-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
+<span id="cb12-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># /soft/datascience/aurora_nre_models_frameworks-2024.1_preview_u1/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code></pre></div>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span>
+<span id="cb13-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> torch.__version__</span>
+<span id="cb13-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'2.1.0.post2+cxx11.abi'</span></span>
+<span id="cb13-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> intel_extension_for_pytorch <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> ipex</span>
+<span id="cb13-5"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> ipex.__version__</span>
+<span id="cb13-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'2.1.30+xpu'</span></span>
+<span id="cb13-7"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> mpi4py <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> MPI<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(MPI.<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__file__</span>)</span>
+<span id="cb13-8"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>soft<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>datascience<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>aurora_nre_models_frameworks<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2024.1</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">_preview_u1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>lib<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>python3<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.9</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>site<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>mpi4py<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>MPI.cpython<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">39</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>x86_64<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>linux<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>gnu.so</span></code></pre></div>
+<p>The remaining dependencies were installed identically to what was just done previously for the <code>frameworks/2023.12.15.001</code> module.</p>
+<p><strong>NOTE</strong>: In the figures below, we denote these two environments as:</p>
+<ul>
+<li><code>2024.0</code>:
+<ul>
+<li><code>module load frameworks/2023.12.15.001</code></li>
+</ul></li>
+<li><code>2024.1</code>:
+<ul>
+<li><code>module use /soft/preview-modulefiles/24.086.0</code></li>
+<li><code>module load frameworks/2024.04.15.002.lua</code></li>
+</ul></li>
+<li><code>anl_24_q2_release</code>:
+<ul>
+<li><code>eval "$(~/miniconda3/bin/conda shell.zsh hook)"</code></li>
+<li><code>conda activate anl_24_q2_release</code></li>
+</ul></li>
+</ul>
+<section id="fix-in-disguise" class="level3">
+<h3 class="anchored" data-anchor-id="fix-in-disguise">🥸 Fix in Disguise</h3>
+<p>Armed now with functional environment(s) for <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a>, I was able to resume my previous experiments.</p>
+<p>From the discussion with Intel, it was hard to understand / reason about <em>why</em> the <code>flash-attn</code> fix would have <em>any</em> dependence on the learning rate schedule (warmup + decay).</p>
+<p>If the <code>flash-attn</code> fix works for a particular learning rate schedule, you would reasonably expect that it should work for <em>any</em> learning rate schedule.</p>
+<p>An additional source of confusion for me was that the discrepancy in the loss curves (seemingly) disappeared when using the learning rate settings provided by Intel<sup>3</sup>, but not when using the ALCF defaults<sup>4</sup>.</p>
+<p>After thinking about it for a bit and trying to reason about possible causes, I wondered if it might not be a mix of multiple different factors:</p>
+<ol type="1">
+<li>Small learning rate</li>
+<li>Very long decay</li>
+<li>[maybe ?] somehow dependent on the learning rate warmup fraction
+<ol type="1">
+<li>preliminary experiments seemed to suggest this was not the case</li>
+</ol></li>
+</ol>
+<p>So, I was curious what would happen if I used the (larger) learning rate value from the ALCF defaults (<code>lr=0.003</code>) with the very long <code>lr-decay-iters: 320000</code> from Intel.</p>
+<p>These results are shown below.</p>
+<p>In particular, for all three experiments the following learning rate settings were used:</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0003</span></span>
+<span id="cb14-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span></span>
+<span id="cb14-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">320000</span></span></code></pre></div>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay10000-1.png" class="img-fluid" alt="flash-attn-disguise-decay10000-1"> Looking at this figure ^, it appears that up until the very very end, all three loss curves agree <em>identically</em>.</p>
+<p>However, if we look closely at the very end, it looks like there <em>might</em> be a <em>slight</em> difference beginning to appear between the <code>2024.0</code> (brown line) and <code>{anl_24_q2_release, 2024.1}</code> ({dark, light} blue lines, respectively).</p>
+<p>Thinking that I might be onto something, I then tried again with a smaller <code>lr-decay-iters: 5000</code>.</p>
+<p>This result is shown below:</p>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay5000.png" class="img-fluid" alt="flash-attn-disguise-decay5000"> In particular, we can now more clearly see the difference beginning to appear between the <code>2024.0</code> and <code>2024.1</code> loss curves.</p>
+<p>Continuing on, we see this effect become increasingly dramatic with even smaller values of <code>lr-decay-iters</code>:</p>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay-2000.png" class="img-fluid" alt="flash-attn-disguise-decay-2000"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay1500.png" class="img-fluid" alt="flash-attn-disguise-decay1500"></p>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay1000-1.png" class="img-fluid" alt="flash-attn-disguise-decay1000-1"> In each of these experiments, it appears that:</p>
+<ul>
+<li><code>2024.0</code>:
+<ul>
+<li>Not impacted by this <code>lr-decay-iters</code> dependence</li>
+<li>Continue to decrease for the duration of training</li>
+</ul></li>
+<li><code>2024.1</code>:
+<ul>
+<li>Impacted by the <code>lr-decay-iters</code> dependence</li>
+<li>Plateaus towards the end of training</li>
+</ul></li>
+</ul>
+<details closed="">
+<summary>
+Older Figs
+</summary>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-2.png" class="img-fluid" alt="disguised-fix-2"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-1.png" class="img-fluid" alt="disguised-fix-1"></p>
+</details>
+</section>
+<section id="fix" class="level3">
+<h3 class="anchored" data-anchor-id="fix">✅ <code>2024.0</code> Fix</h3>
+<p><strong>Everything</strong> seems to work with</p>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code></pre></div>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-2024-0-fix.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-fix-frameworks-comparison.png" class="img-fluid"></p>
+</section>
+<section id="lr-decay-iters-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="lr-decay-iters-comparison">📊 <code>lr-decay-iters</code> Comparison</h3>
+<ul>
+<li><code>2024.0</code>:
+<ul>
+<li><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/decay-experiment-2024-0-1.png" class="img-fluid"></li>
+</ul></li>
+<li><code>2024.1</code>:
+<ul>
+<li><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/decay-experiment-2024-1.png" class="img-fluid"></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="lr-decay-iters-dependence" class="level2">
+<h2 class="anchored" data-anchor-id="lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</h2>
+<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
+<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-schedule-dependence.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-1.png" class="img-fluid"></p>
+</section>
+<section id="performance-improvement-in-2024.1" class="level2">
+<h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
+<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-0.png" class="img-fluid"></a></p>
+<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-1.png" class="img-fluid"></a></p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0003</span></span>
+<span id="cb16-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span></span>
+<span id="cb16-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">null</span></span></code></pre></div>
+
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Gremlin">Gremlins</a>, likely↩︎</p></li>
+<li id="fn2"><p>Explicitly, <code>aurora_nre_models_frameworks-2024.0</code>, abbreviated as <code>2024.0</code>↩︎</p></li>
+<li id="fn3"><p>Intel used the following learning rate schedule in their experiments <code>yml   lr: 0.00015   lr-warmup-frac: 0.01   lr-decay-iters: 320000</code>↩︎</p></li>
+<li id="fn4"><p>ALCF used the following learning rate schedule in their experiments↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
+  author = {Foreman, Sam},
+  title = {Personal {Website}},
+  date = {2024-06-16},
+  url = {https://samforeman.me},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
+Foreman, Sam. 2024. <span>“Personal Website.”</span> June 16, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
+</div></div></section></div> ]]></description>
+  <guid>https://samforeman.me/qmd/flash-attn-sunspot/</guid>
+  <pubDate>Sun, 16 Jun 2024 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>🦜 Recent Talks</title>
   <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
@@ -1045,7 +1681,7 @@ font-style: inherit;">---</span></span></code></pre></div>
 <div id="fig-title" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/title-slide.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/dope-slides/assets/title-slide.png" class="img-fluid figure-img" style="width:66.0%"></a>
+<a href="./assets/title-slide.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="https://samforeman.me/qmd/dope-slides/assets/title-slide.png" class="img-fluid figure-img" style="width:66.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: <a href="https://saforem2.github.io/lattice23/#/section">Title Slide</a>
@@ -1240,7 +1876,7 @@ font-style: inherit;">](#sec-extras)</span></span></code></pre></div>
 <div id="fig-overview" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/overview.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/qmd/dope-slides/assets/overview.png" class="img-fluid figure-img" style="width:60.0%"></a>
+<a href="./assets/overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="https://samforeman.me/qmd/dope-slides/assets/overview.png" class="img-fluid figure-img" style="width:60.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: <a href="https://saforem2.github.io/lattice23/#/overview">Overview Slide</a>
@@ -1301,13 +1937,13 @@ font-style: inherit;">;</span></span>
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;" data-layout="[ [50,50] ]">
+<div class="quarto-layout-panel" data-layout="[ [50,50] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-mcmc" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mcmc.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/qmd/dope-slides/assets/mcmc.png" class="img-fluid figure-img"></a>
+<a href="./assets/mcmc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="https://samforeman.me/qmd/dope-slides/assets/mcmc.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: <a href="https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo</a>
@@ -1451,7 +2087,7 @@ Expand for <code>css</code>
 <div id="fig-css" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/css.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/dope-slides/assets/css.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="./assets/css.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="https://samforeman.me/qmd/dope-slides/assets/css.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Example of selecting an element and making a change to the CSS.
@@ -1466,7 +2102,7 @@ Figure&nbsp;4: Example of selecting an element and making a change to the CSS.
 <div id="fig-github-page" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/github-pages.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/dope-slides/assets/github-pages.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="./assets/github-pages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="https://samforeman.me/qmd/dope-slides/assets/github-pages.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Instructions for building a GitHub page using the <code>docs/</code> directory off the <code>main</code> branch.
@@ -1541,642 +2177,6 @@ Foreman, Sam. 2024. <span>“How to Make Dope Slides.”</span> June 15,
 </div></div></section></div> ]]></description>
   <guid>https://samforeman.me/qmd/dope-slides/</guid>
   <pubDate>Sat, 15 Jun 2024 18:16:08 GMT</pubDate>
-</item>
-<item>
-  <title>📸 flash-attn on Sunspot</title>
-  <dc:creator>Sam Foreman [[{{&lt; ai orcid &gt;}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)</dc:creator>
-  <link>https://samforeman.me/qmd/flash-attn-sunspot/</link>
-  <description><![CDATA[ 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-
-
-<section id="impact-on-loss-bug" class="level2">
-<h2 class="anchored" data-anchor-id="impact-on-loss-bug">🐛 Impact on Loss [Bug?]</h2>
-<p>In the <code>q4-drop</code>, it was observed that toggling <code>flash-attn</code> on / off seemed to produce different loss curves (with otherwise <em>identical configs</em>)</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>shared-config.yaml</strong></pre>
-</div>
-<div class="sourceCode" id="cb1" data-filename="shared-config.yaml" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">TP</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">PP</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">GAS</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb1-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">OPT</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> adamw</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dtype</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> bf16</span></span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">NLAYERS</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb1-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">MICRO_BATCH</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span></span>
-<span id="cb1-8"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">WORLD_SIZE</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">24</span></span></code></pre></div>
-</div>
-<p>This can be seen clearly in the figure below:</p>
-<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
-<p>This was identified, and to be addressed in upcoming release.</p>
-</section>
-<section id="llm-framework-release" class="level2">
-<h2 class="anchored" data-anchor-id="llm-framework-release">📦 LLM Framework Release</h2>
-<p>On 05/14/2024, Intel dropped their new LLM frameworks release:</p>
-<details closed="">
-<summary>
-🎁 <code>frameworks_2024_5_v2</code> Announcement:
-</summary>
-<p>Hi Venkat,</p>
-<p>We have shared the official Q2 release in two different forms :</p>
-<p>Manual Setup: <code>/gila/Aurora_deployment/anl_24_q2_release.tar.gz</code></p>
-<p>and</p>
-<p>Module:</p>
-<p><code>module use -a /home/jmitche1/anl_release/2024/q2</code></p>
-<p><code>module load frameworks_2024_5_v2</code></p>
-<p>&nbsp;Instructions on how to use modules with Q2 build are anl_24_q2_release/README</p>
-<ul>
-<li><strong>The release includes :</strong>
-<ul>
-<li>Megatron-DeepSpeed 0.14.2 (with patch)</li>
-<li>Intel® Extension for PyTorch* v2.1.30+xpu</li>
-<li>TorchCCL 2.1.300</li>
-<li>ONEAPI 2024.1.0.596.PUBLIC_IDP_2024.1.0_723</li>
-<li>Agama driver: 803.29</li>
-</ul></li>
-<li>The release provides following key features:
-<ul>
-<li>Scaleup Performance improvement from the <code>TorchCCl</code> prototype feature enabled by <code>TORCH_LLM_ALLREDUCE=1</code> &nbsp;<a href="https://urldefense.us/v3/__https://github.com/intel/torch-ccl/releases/tag/v2.1.300*2Bxpu__;JQ!!G_uCfscf7eWS!ZDMnN0Oxp1sCv06MkdlBqFIq0NMAXaCBOtl3fEtBq8Fn4-3iYY5-kPEKr-q4vZIL_i6f2wQbULxAIFJAthJyu3VvNA$">details</a></li>
-<li>Auto TP inference support for more workloads</li>
-<li>Flash Attention V2 improvement for 256 head dimension support; MiCS support.</li>
-<li>Latest Features and Optimizations from DeepSpeed&nbsp;<a href="https://github.com/microsoft/DeepSpeed/releases/tag/v0.14.2">0.14.2</a>&nbsp;and Intel® Extension for PyTorch*&nbsp;<a href="https://github.com/intel/intel-extension-for-pytorch/tree/v2.1.30*2Bxpu">2.1.30</a>.</li>
-</ul></li>
-</ul>
-<p>Thanks,&nbsp;<br>
-Jerome</p>
-</details>
-<section id="flash-no-flash" class="level3">
-<h3 class="anchored" data-anchor-id="flash-no-flash">📸 flash 🤝 📷 no-flash</h3>
-<p>With this new release, Intel observed that the loss curves agreed exactly for <code>flash</code> / no-<code>flash</code>, using the learning rate settings below:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.00015</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr_warmup_frac</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.01</span></span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr_decay_iters</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">320000</span></span></code></pre></div>
-<p>Testing with Jerome’s new release:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> use <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> /home/jmitche1/anl_release/2024/q2</span>
-<span id="cb3-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load frameworks_2024_5_v2</span></code></pre></div>
-<p>I was able to independently confirm these results, shown in 📸 <code>flash</code> 🤝 📷 <code>no-flash</code> below.</p>
-<details closed="">
-<summary>
-🔗 <code>wandb</code> links:
-</summary>
-<ul>
-<li>[📸 <code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/716r5rnq/overview?nw=nwuserforemans">youthful-river-1832</a></li>
-<li>[📷 no-<code>flash</code>] W&amp;B Run: <a href="https://wandb.ai/aurora_gpt/AuroraGPT/runs/120ln0b4/overview?nw=nwuserforemans">earthy-wave-1830</a></li>
-</ul>
-</details>
-<details closed="">
-<summary>
-📸 <code>flash</code> vs.&nbsp;📷 <code>no-flash</code>
-</summary>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
-<figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
-</figure>
-</div>
-</details>
-</section>
-<section id="broken-mpigremlins" class="level3">
-<h3 class="anchored" data-anchor-id="broken-mpigremlins">🚧 Broken MPI<sup>1</sup></h3>
-<p>For whatever reason, things seemed to have spontaneously broken on the night of 2024-04-14 ??</p>
-<p>When trying to run experiments the following day (05/15/2024) I was met with this[^]:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">15</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
-<p>which was discussed further in <a href="https://github.com/pmodels/mpich/pull/7001">this thread</a> on slack.</p>
-<p>It seems Subrata also encountered a similar issue [see: <a href="https://cels-anl.slack.com/archives/C047E7ZTUUF/p1715985162970119">slack thread</a>]</p>
-<details closed="">
-<summary>
-✅ <code>mpi4py</code> fix
-</summary>
-<!-- `mpi4py` fix -->
-<p>To resolve this</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Abort</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">15</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">:</span> Fatal error in internal_Init_thread: Other MPI error</span></code></pre></div>
-<p>issue we can simply load the correct modules:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> use <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> /home/jmitche1/anl_release/2024/q2</span>
-<span id="cb6-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load frameworks_2024_5_v2</span>
-<span id="cb6-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> use /home/ftartagl/graphics-compute-runtime/modulefiles</span>
-<span id="cb6-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load graphics-compute-runtime/agama-ci-devel-803.29 </span>
-<span id="cb6-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0</span>
-<span id="cb6-6"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span>
-<span id="cb6-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load oneapi/release/2024.04.15.001</span></code></pre></div>
-<p>For full details see <a href="mpi4py-reproducer.md">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
-<!-- ::: -->
-</details>
-</section>
-</section>
-<section id="framework-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="framework-comparison">🕵🏻‍ Framework Comparison ??</h2>
-<p>As I was re-building MPI, and after talking to Jerome, I realized that <em>most</em> of the dependencies are already present in the provided <code>frameworks/</code> modules on Sunspot.</p>
-<p>As a simple test, I tried building a new environment built on the base <code>conda</code> environment<sup>2</sup> provided by the<code>frameworks/2023.12.15.001</code> module, which worked without modification and had ) <em>most</em> of what I needed already installed:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch</span>
-<span id="cb7-2"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> torch.__version__</span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">'2.1.0a0+cxx11.abi'</span></span>
-<span id="cb7-4"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> intel_extension_for_pytorch <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> ipex</span>
-<span id="cb7-5"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> ipex.__version__</span>
-<span id="cb7-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">'2.1.10+xpu'</span></span>
-<span id="cb7-7"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> mpi4py <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> MPI</span></code></pre></div>
-<p>The remaining dependencies were installed according to the instructions from the <strong>new</strong> release <code>frameworks_2024_5_v2</code>.</p>
-<p>Details included below.</p>
-<details closed="">
-<summary>
-📦 <code>pip</code> Install Dependencies
-</summary>
-<p>Unfortunately, the <code>frameworks/**</code> don’t appear to provide DeepSpeed.</p>
-<p>We can create a virtual environment on top of the base conda by</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> module use frameworks/2023.12.15.001</span>
-<span id="cb8-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> export PBS_O_WORKDIR=<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pwd</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">source</span> ALCF/helpers.sh <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&amp;&amp;</span> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">setup_venv_from_conda</span></span></code></pre></div>
-<p>Once the <code>venv</code> has been created and activated, we can install the remaining dependencies:</p>
-<p>To build / install DeepSpeed, along with its required dependencies:</p>
-<ul>
-<li><p><code>intel-extension-for-deepspeed</code>:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python3</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-m</span> pip install intel_extension_for_pytorch_deepspeed<span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\=\=</span>2.1.30 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-f</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://pytorch-extension.intel.com/release-whl/stable/xpu/us/intel-extension-for-pytorch-deepspeed/"</span></span></code></pre></div></li>
-<li><p><code>DeepSpeed</code>:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"build deepspeed"</span></span>
-<span id="cb10-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
-<span id="cb10-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> DeepSpeed</span>
-<span id="cb10-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> remote add yizhou_ds https://github.com/YizhouZ/DeepSpeed.git</span>
-<span id="cb10-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> fetch yizhou_ds</span>
-<span id="cb10-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> checkout yizhou/kernel_path</span>
-<span id="cb10-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> requirements/requirements.txt</span>
-<span id="cb10-8"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> setup.py develop <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|&amp;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> build.log</span></code></pre></div></li>
-<li><p>Extras:</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python3</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-m</span> pip install transformers datasets python-etcd tensorboardX packaging sentencepiece bitsandbytes tiktoken neural-speed einops intel-extension-for-transformers</span></code></pre></div></li>
-</ul>
-</details>
-<p>Looking around the available modules a bit, I noticed a newer frameworks release (<code>frameworks/2024.04.15.002</code>) that had a newer version of both <code>torch</code> and <code>ipex</code>:</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span>
-<span id="cb12-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load frameworks/2024.04.15.002.lua</span>
-<span id="cb12-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python3</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
-<span id="cb12-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># /soft/datascience/aurora_nre_models_frameworks-2024.1_preview_u1/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code></pre></div>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch</span>
-<span id="cb13-2"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> torch.__version__</span>
-<span id="cb13-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">'2.1.0.post2+cxx11.abi'</span></span>
-<span id="cb13-4"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> intel_extension_for_pytorch <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> ipex</span>
-<span id="cb13-5"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> ipex.__version__</span>
-<span id="cb13-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">'2.1.30+xpu'</span></span>
-<span id="cb13-7"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;&gt;</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> mpi4py <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> MPI<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(MPI.<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">__file__</span>)</span>
-<span id="cb13-8"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>soft<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>datascience<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>aurora_nre_models_frameworks<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2024.1</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">_preview_u1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>lib<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>python3<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.9</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>site<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>packages<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>mpi4py<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>MPI.cpython<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">39</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>x86_64<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>linux<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>gnu.so</span></code></pre></div>
-<p>The remaining dependencies were installed identically to what was just done previously for the <code>frameworks/2023.12.15.001</code> module.</p>
-<p><strong>NOTE</strong>: In the figures below, we denote these two environments as:</p>
-<ul>
-<li><code>2024.0</code>:
-<ul>
-<li><code>module load frameworks/2023.12.15.001</code></li>
-</ul></li>
-<li><code>2024.1</code>:
-<ul>
-<li><code>module use /soft/preview-modulefiles/24.086.0</code></li>
-<li><code>module load frameworks/2024.04.15.002.lua</code></li>
-</ul></li>
-<li><code>anl_24_q2_release</code>:
-<ul>
-<li><code>eval "$(~/miniconda3/bin/conda shell.zsh hook)"</code></li>
-<li><code>conda activate anl_24_q2_release</code></li>
-</ul></li>
-</ul>
-<section id="fix-in-disguise" class="level3">
-<h3 class="anchored" data-anchor-id="fix-in-disguise">🥸 Fix in Disguise</h3>
-<p>Armed now with functional environment(s) for <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a>, I was able to resume my previous experiments.</p>
-<p>From the discussion with Intel, it was hard to understand / reason about <em>why</em> the <code>flash-attn</code> fix would have <em>any</em> dependence on the learning rate schedule (warmup + decay).</p>
-<p>If the <code>flash-attn</code> fix works for a particular learning rate schedule, you would reasonably expect that it should work for <em>any</em> learning rate schedule.</p>
-<p>An additional source of confusion for me was that the discrepancy in the loss curves (seemingly) disappeared when using the learning rate settings provided by Intel<sup>3</sup>, but not when using the ALCF defaults<sup>4</sup>.</p>
-<p>After thinking about it for a bit and trying to reason about possible causes, I wondered if it might not be a mix of multiple different factors:</p>
-<ol type="1">
-<li>Small learning rate</li>
-<li>Very long decay</li>
-<li>[maybe ?] somehow dependent on the learning rate warmup fraction
-<ol type="1">
-<li>preliminary experiments seemed to suggest this was not the case</li>
-</ol></li>
-</ol>
-<p>So, I was curious what would happen if I used the (larger) learning rate value from the ALCF defaults (<code>lr=0.003</code>) with the very long <code>lr-decay-iters: 320000</code> from Intel.</p>
-<p>These results are shown below.</p>
-<p>In particular, for all three experiments the following learning rate settings were used:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0003</span></span>
-<span id="cb14-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span></span>
-<span id="cb14-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">320000</span></span></code></pre></div>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay10000-1.png" class="img-fluid" alt="flash-attn-disguise-decay10000-1"> Looking at this figure ^, it appears that up until the very very end, all three loss curves agree <em>identically</em>.</p>
-<p>However, if we look closely at the very end, it looks like there <em>might</em> be a <em>slight</em> difference beginning to appear between the <code>2024.0</code> (brown line) and <code>{anl_24_q2_release, 2024.1}</code> ({dark, light} blue lines, respectively).</p>
-<p>Thinking that I might be onto something, I then tried again with a smaller <code>lr-decay-iters: 5000</code>.</p>
-<p>This result is shown below:</p>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay5000.png" class="img-fluid" alt="flash-attn-disguise-decay5000"> In particular, we can now more clearly see the difference beginning to appear between the <code>2024.0</code> and <code>2024.1</code> loss curves.</p>
-<p>Continuing on, we see this effect become increasingly dramatic with even smaller values of <code>lr-decay-iters</code>:</p>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay-2000.png" class="img-fluid" alt="flash-attn-disguise-decay-2000"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay1500.png" class="img-fluid" alt="flash-attn-disguise-decay1500"></p>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-disguise-decay1000-1.png" class="img-fluid" alt="flash-attn-disguise-decay1000-1"> In each of these experiments, it appears that:</p>
-<ul>
-<li><code>2024.0</code>:
-<ul>
-<li>Not impacted by this <code>lr-decay-iters</code> dependence</li>
-<li>Continue to decrease for the duration of training</li>
-</ul></li>
-<li><code>2024.1</code>:
-<ul>
-<li>Impacted by the <code>lr-decay-iters</code> dependence</li>
-<li>Plateaus towards the end of training</li>
-</ul></li>
-</ul>
-<details closed="">
-<summary>
-Older Figs
-</summary>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-2.png" class="img-fluid" alt="disguised-fix-2"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/disguised-fix-1.png" class="img-fluid" alt="disguised-fix-1"></p>
-</details>
-</section>
-<section id="fix" class="level3">
-<h3 class="anchored" data-anchor-id="fix">✅ <code>2024.0</code> Fix</h3>
-<p><strong>Everything</strong> seems to work with</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code></pre></div>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-2024-0-fix.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-fix-frameworks-comparison.png" class="img-fluid"></p>
-</section>
-<section id="lr-decay-iters-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="lr-decay-iters-comparison">📊 <code>lr-decay-iters</code> Comparison</h3>
-<ul>
-<li><code>2024.0</code>:
-<ul>
-<li><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/decay-experiment-2024-0-1.png" class="img-fluid"></li>
-</ul></li>
-<li><code>2024.1</code>:
-<ul>
-<li><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/decay-experiment-2024-1.png" class="img-fluid"></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="lr-decay-iters-dependence" class="level2">
-<h2 class="anchored" data-anchor-id="lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</h2>
-<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
-<p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-schedule-dependence.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-1.png" class="img-fluid"></p>
-</section>
-<section id="performance-improvement-in-2024.1" class="level2">
-<h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
-<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-0.png" class="img-fluid"></a></p>
-<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-1.png" class="img-fluid"></a></p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0003</span></span>
-<span id="cb16-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-warmup-frac</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span></span>
-<span id="cb16-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lr-decay-iters</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">null</span></span></code></pre></div>
-
-
-
-</section>
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Gremlin">Gremlins</a>, likely↩︎</p></li>
-<li id="fn2"><p>Explicitly, <code>aurora_nre_models_frameworks-2024.0</code>, abbreviated as <code>2024.0</code>↩︎</p></li>
-<li id="fn3"><p>Intel used the following learning rate schedule in their experiments <code>yml   lr: 0.00015   lr-warmup-frac: 0.01   lr-decay-iters: 320000</code>↩︎</p></li>
-<li id="fn4"><p>ALCF used the following learning rate schedule in their experiments↩︎</p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
-  author = {Foreman, Sam},
-  title = {Personal {Website}},
-  date = {2024-06-15},
-  url = {https://samforeman.me},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2024. <span>“Personal Website.”</span> June 15, 2024. <a href="https://samforeman.me">https://samforeman.me</a>.
-</div></div></section></div> ]]></description>
-  <guid>https://samforeman.me/qmd/flash-attn-sunspot/</guid>
-  <pubDate>Sat, 15 Jun 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -11896,7 +11896,7 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <div id="fig-ds4sci" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
+<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft.
@@ -12368,7 +12368,7 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="GPT-25B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="GPT-25B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
 <figcaption>GPT-<code>25B</code> Model</figcaption>
 </figure>
 </div>
@@ -12376,7 +12376,7 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="GPT-33B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="GPT-33B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
 <figcaption>GPT-<code>33B</code> Model</figcaption>
 </figure>
 </div>
