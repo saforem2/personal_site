@@ -23,6 +23,22 @@
 
 
 
+<section id="update-2024-06-16" class="level2">
+<h2 class="anchored" data-anchor-id="update-2024-06-16">Update: 2024-06-16</h2>
+<p>After an interactive debug session with Intel, the root behavior of the apparent discrepancy was identified.</p>
+<p>In particular, we found that the <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">ALCF/Megatron-DeepSpeed</a> repo was <strong>NOT</strong> explicitly setting the dropout values to <code>0.0</code> (and so, was using the default values of <code>0.1</code>) for both <code>--attention-dropout</code> and <code>--hidden-dropout</code>.</p>
+<p>After making this change, the losses were observed to agree, as can be seen below in</p>
+<div id="fig-flash-attn-dropout-fix" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flash-attn-dropout-fix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/flash-attn/flash-attn-dropout-fix.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-dropout-fix.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flash-attn-dropout-fix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: After correctly setting the dropout values, the loss curves were observed to agree.
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="impact-on-loss-bug" class="level2">
 <h2 class="anchored" data-anchor-id="impact-on-loss-bug">🐛 Impact on Loss [Bug?]</h2>
 <p>In the <code>q4-drop</code>, it was observed that toggling <code>flash-attn</code> on / off seemed to produce different loss curves (with otherwise <em>identical configs</em>)</p>
@@ -100,7 +116,7 @@ background-color: null;
 font-style: inherit;">24</span></span></code></pre></div>
 </div>
 <p>This can be seen clearly in the figure below:</p>
-<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
+<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
 <p>This was identified, and to be addressed in upcoming release.</p>
 </section>
 <section id="llm-framework-release" class="level2">
@@ -193,7 +209,7 @@ font-style: inherit;">module</span> load frameworks_2024_5_v2</span></code></pre
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
+<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="flash 📸 🤝 📷 no-flash"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
 <figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
 </figure>
 </div>
@@ -257,7 +273,7 @@ font-style: inherit;">module</span> use /soft/preview-modulefiles/24.086.0</span
 <span id="cb6-7"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">module</span> load oneapi/release/2024.04.15.001</span></code></pre></div>
-<p>For full details see <a href="mpi4py-reproducer.md">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
+<p>For full details see <a href="../../qmd/mpi4py-reproducer/index.html">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
 <!-- ::: -->
 </details>
 </section>
@@ -586,13 +602,13 @@ font-style: inherit;">module</span> load frameworks/2023.12.15.001</span></code>
 </section>
 <section id="lr-decay-iters-dependence" class="level2">
 <h2 class="anchored" data-anchor-id="lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</h2>
-<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
+<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
 <p><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-schedule-dependence.png" class="img-fluid"> <img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/lr-decay-iters-dependence-1.png" class="img-fluid"></p>
 </section>
 <section id="performance-improvement-in-2024.1" class="level2">
 <h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
-<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-0.png" class="img-fluid"></a></p>
-<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-1.png" class="img-fluid"></a></p>
+<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-0.png" class="img-fluid"></a></p>
+<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://samforeman.me/qmd/flash-attn-sunspot/assets/performance-2024-1.png" class="img-fluid"></a></p>
 <div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lr</span><span class="kw" style="color: #003B4F;
@@ -661,7 +677,7 @@ Foreman, Sam. 2024. <span>“Personal Website.”</span> June 16, 2024. <a href=
 
 <section id="section" class="level4">
 <h4 class="anchored" data-anchor-id="section">📆 2024</h4>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) @ [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training) [03/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) @ [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training) [03/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -681,7 +697,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLMs from Scratch**](https://saforem2.github.io/llm-workshop-talk) @ [LLM Tutorial Workshop](https://github.com/argonne-lcf/llm-workshop) [02/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLMs from Scratch**](https://saforem2.github.io/llm-workshop-talk) @ [LLM Tutorial Workshop](https://github.com/argonne-lcf/llm-workshop) [02/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -704,7 +720,7 @@ Your browser does not support iframes.
 </section>
 <section id="section-1" class="level4">
 <h4 class="anchored" data-anchor-id="section-1">📆 2023</h4>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Creating Small(-ish) LLMs**](https://saforem2.github.io/LLM-tutorial) @ [LLM Tutorial Workshop (1)](https://github.com/brettin/llm_tutorial) [11/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Creating Small(-ish) LLMs**](https://saforem2.github.io/LLM-tutorial) @ [LLM Tutorial Workshop (1)](https://github.com/brettin/llm_tutorial) [11/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -724,7 +740,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Exascale Science on Aurora**](https://samforeman.me/oneapi-talk/index.html#0) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Exascale Science on Aurora**](https://samforeman.me/oneapi-talk/index.html#0) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -745,14 +761,14 @@ Your browser does not support iframes.
 </div>
 </div>
 <!---->
-<!-- ::: {.callout-tip icon="false" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF HPC Workshop](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;"}: -->
+<!-- ::: {.callout-tip icon="false" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF HPC Workshop](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;"}: -->
 <!---->
 <!-- <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"> -->
 <!--   <p>Your browser does not support iframes.</p> -->
 <!-- </iframe> -->
 <!---->
 <!-- ::: -->
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -772,7 +788,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scaling LLMs for Science**](https://saforem2.github.io/scaling4science) @ [Data-Intensive Computing + AI/ML at Scale](https://events.cels.anl.gov/event/426/overview) [08/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scaling LLMs for Science**](https://saforem2.github.io/scaling4science) @ [Data-Intensive Computing + AI/ML at Scale](https://events.cels.anl.gov/event/426/overview) [08/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -792,7 +808,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -812,7 +828,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/) @ [PASC23](https://pasc23.pasc-conference.org/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/) @ [PASC23](https://pasc23.pasc-conference.org/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -832,7 +848,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Efficient Sampling for LGT**](https://saforem2.github.io/deep-fridays) @ [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html) [04/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Efficient Sampling for LGT**](https://saforem2.github.io/deep-fridays) @ [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html) [04/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -855,7 +871,7 @@ Your browser does not support iframes.
 </section>
 <section id="section-2" class="level4">
 <h4 class="anchored" data-anchor-id="section-2">📆 2022</h4>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) (11/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) (11/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -875,7 +891,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) (10/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) (10/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -895,7 +911,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) (08/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) (08/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -918,7 +934,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -938,7 +954,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro (03/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro (03/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -964,7 +980,7 @@ Your browser does not support iframes.
 </section>
 <section id="section-3" class="level4">
 <h4 class="anchored" data-anchor-id="section-3">📆 2021</h4>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 [BNL]](https://indico.bnl.gov/event/13576/) (12/2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 [BNL]](https://indico.bnl.gov/event/13576/) (12/2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -984,7 +1000,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) (09/2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) (09/2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -1004,7 +1020,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar (2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar (2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -1020,8 +1036,7 @@ Your browser does not support iframes.
 </div>
 </div>
 </div>
-<!-- -   [**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) to the [*Machine Learning Techniques in Lattice QCD Workshop*](https://bit.ly/mainz21_overview), 2021 -->
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) (2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:none!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) (2021)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -1044,7 +1059,7 @@ Your browser does not support iframes.
 </section>
 <section id="section-4" class="level4">
 <h4 class="anchored" data-anchor-id="section-4">📆 2020</h4>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) @ U. Iowa (2020)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) @ U. Iowa (2020)]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0);border: 1px solid rgba(131,131,131,0.2)!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -1681,7 +1696,7 @@ font-style: inherit;">---</span></span></code></pre></div>
 <div id="fig-title" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/title-slide.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="https://samforeman.me/qmd/dope-slides/assets/title-slide.png" class="img-fluid figure-img" style="width:66.0%"></a>
+<a href="./assets/title-slide.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://samforeman.me/qmd/dope-slides/assets/title-slide.png" class="img-fluid figure-img" style="width:66.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: <a href="https://saforem2.github.io/lattice23/#/section">Title Slide</a>
@@ -1876,7 +1891,7 @@ font-style: inherit;">](#sec-extras)</span></span></code></pre></div>
 <div id="fig-overview" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="https://samforeman.me/qmd/dope-slides/assets/overview.png" class="img-fluid figure-img" style="width:60.0%"></a>
+<a href="./assets/overview.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/qmd/dope-slides/assets/overview.png" class="img-fluid figure-img" style="width:60.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: <a href="https://saforem2.github.io/lattice23/#/overview">Overview Slide</a>
@@ -1943,7 +1958,7 @@ font-style: inherit;">;</span></span>
 <div id="fig-mcmc" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mcmc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="https://samforeman.me/qmd/dope-slides/assets/mcmc.png" class="img-fluid figure-img"></a>
+<a href="./assets/mcmc.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/qmd/dope-slides/assets/mcmc.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: <a href="https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo</a>
@@ -2087,7 +2102,7 @@ Expand for <code>css</code>
 <div id="fig-css" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/css.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="https://samforeman.me/qmd/dope-slides/assets/css.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="./assets/css.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="https://samforeman.me/qmd/dope-slides/assets/css.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Example of selecting an element and making a change to the CSS.
@@ -2102,7 +2117,7 @@ Figure&nbsp;4: Example of selecting an element and making a change to the CSS.
 <div id="fig-github-page" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/github-pages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="https://samforeman.me/qmd/dope-slides/assets/github-pages.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="./assets/github-pages.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="https://samforeman.me/qmd/dope-slides/assets/github-pages.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Instructions for building a GitHub page using the <code>docs/</code> directory off the <code>main</code> branch.
@@ -11896,7 +11911,7 @@ March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman
 <div id="fig-ds4sci" class="quarto-figure quarto-figure-center quarto-float anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
+<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft.
@@ -12363,12 +12378,12 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div>
 
 </div>
-<div id="dedeaaf5" class="cell quarto-layout-panel" data-layout-nrow="1" data-execution_count="3" data-layout-ncol="2">
+<div id="dedeaaf5" class="cell quarto-layout-panel" data-execution_count="3" data-layout-nrow="1" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="GPT-25B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="GPT-25B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
 <figcaption>GPT-<code>25B</code> Model</figcaption>
 </figure>
 </div>
@@ -12376,7 +12391,7 @@ font-style: inherit;">=</span> plt.show()</span></code></pre></div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="GPT-33B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="GPT-33B Model"><img src="https://samforeman.me/qmd/long-sequences/index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
 <figcaption>GPT-<code>33B</code> Model</figcaption>
 </figure>
 </div>

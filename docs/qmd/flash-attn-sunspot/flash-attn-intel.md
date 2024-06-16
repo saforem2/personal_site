@@ -3,6 +3,35 @@ Sam Foreman
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-06-16
 
+- [Update: 2024-06-16](#update-2024-06-16)
+- [🐛 Impact on Loss \[Bug?\]](#-impact-on-loss-bug)
+- [📦 LLM Framework Release](#-llm-framework-release)
+  - [📸 flash 🤝 📷 no-flash](#-flash---no-flash)
+  - [🚧 Broken MPI](#-broken-mpigremlins)
+- [🕵🏻‍ Framework Comparison ??](#-framework-comparison-)
+  - [🥸 Fix in Disguise](#-fix-in-disguise)
+  - [✅ `2024.0` Fix](#-20240-fix)
+  - [📊 `lr-decay-iters` Comparison](#-lr-decay-iters-comparison)
+- [📈 `lr-decay-iters` dependence](#-lr-decay-iters-dependence)
+- [🏎️ Performance Improvement in
+  `2024.1`](#️-performance-improvement-in-20241)
+
+## Update: 2024-06-16
+
+After an interactive debug session with Intel, the root behavior of the
+apparent discrepancy was identified.
+
+In particular, we found that the
+[ALCF/Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+repo was **NOT** explicitly setting the dropout values to `0.0` (and so,
+was using the default values of `0.1`) for both `--attention-dropout`
+and `--hidden-dropout`.
+
+After making this change, the losses were observed to agree, as can be
+seen below in
+
+![](./assets/flash-attn/flash-attn-dropout-fix.png)
+
 ## 🐛 Impact on Loss \[Bug?\]
 
 In the `q4-drop`, it was observed that toggling `flash-attn` on / off
@@ -166,8 +195,8 @@ module use /soft/preview-modulefiles/24.086.0
 module load oneapi/release/2024.04.15.001
 ```
 
-For full details see [mpi4py-reproducer](mpi4py-reproducer.md), and this
-\[[slack
+For full details see
+[mpi4py-reproducer](../mpi4py-reproducer/index.qmd), and this \[[slack
 thread](https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879)\].
 
 <!-- ::: -->

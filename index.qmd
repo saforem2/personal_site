@@ -13,8 +13,14 @@ format:
   html:
     css:
       - css/profile.css
-  # gfm:
-  #   output-file: "README.md"
+    grid:
+      body-width: 800px
+      sidebar-width: 0px
+      margin-width: 0px
+      gutter-width: 1.5em
+  gfm:
+    output-file: "README.md"
+format-links: false
 editor:
    render-on-save: true
 listing:
@@ -47,13 +53,10 @@ listing:
       # - "!./qmd/home/*.qmd"
       # - "!./qmd/*home-alt*/**"
       # - "!./qmd/home-talks-tab.qmd"
-      # - "!./qmd/home-talks-tab-details.qmd"
       # - "!./qmd/posts.qmd"
     type: table
     feed: true
     sort: "date desc"
-# execute:
-#    freeze: true
 ---
 
 ::: {style="font-size:1.0em; text-align: center;"}
@@ -89,24 +92,7 @@ listing:
 
 ### 📝 Work
 
-\[**NOTE**\]: [_You can find a full list of my publications on my [Google Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)_]{.dim-text}.
-
 {{< include qmd/_work.qmd >}}
-
-```{python}
-#| echo: false
-import datetime
-from rich import print
-now = datetime.datetime.now()
-day = now.strftime('%m/%d/%Y')
-time = now.strftime('%H:%M:%S')
-print(' '.join([
-  "[dim italic]\[updated @[/]",
-  f"[#1A8FFF]{time}[/]"
-  f"[dim italic] on[/]",
-  f"[#F06292]{day}[/]]",
-]))
-```
 
 ### 🦜 Talks
 
@@ -135,59 +121,21 @@ print(' '.join([
 
 ### 🪖 Experience
 
-#### 🎪 Events
-
-- Organizer for:
-
-  - [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)](https://hppss.github.io/SC24/), November 2024
-
-  - [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)](https://hppss.github.io/SC23/), November 2023
-
-  - [Machine Learning and Quantum Computing for Earth Sciences](https://17.usnccm.org/702) at 17th U. S. National Congress on Computational Mechanics, July 2023
-
-#### 👔 Employment
-
-::: {#tbl-experience}
-|                                                                                    |                              |      |      |     |
-|:---------------------------------------------------------------------------------- |:----------------------------:|:----:|:----:|:---:|
-| [Assistant Computational Scientist](https://alcf.anl.gov/about/people/sam-foreman) | [ALCF](https://alcf.anl.gov) | 2022 |  --  |     |
-| Postdoc                                                                            |             ALCF             | 2019 | 2022 |     | 
-| Graduate Researcher                                                                |  [ANL](https://anl.gov)  | 2018 | 2019 |     |
-
-: 📟 Experience {.striped .hover}
-:::
-
-#### 🍎 School
-
-::: {#tbl-education}
-
-|                                       |                                                                                              |                                    |      |
-|:------------------------------------- |:--------------------------------------------------------------------------------------------:|:----------------------------------:|:----:|
-| [PhD](https://bit.ly/sam-foreman-phd) |                  [Physics](https://physics.uiowa.edu/graduate/phd-physics)                   |                University of Iowa  | 2019 |
-| B.Sc                                  |  [Physics](https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics)  |      [UIUC](https://illinois.edu/) | 2015 |
-| B.Sc                                  |                       [Math](https://math.illinois.edu/)                                     |                        UIUC        | 2015 |
-
-: 🎓 Education {.striped .hover}
-:::
-
-<!-- ### ❤️‍🩹 Status -->
-
-<!-- ![](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false) -->
-
-
-<!-- ```{python} -->
-<!-- #| echo: false -->
-<!-- import datetime -->
-<!-- from rich import print -->
-<!-- now = datetime.datetime.now() -->
-<!-- day = now.strftime('%m/%d/%Y') -->
-<!-- time = now.strftime('%H:%M:%S') -->
-<!-- print(' '.join([ -->
-<!--   "[dim italic]Last Updated[/]:", -->
-<!--   f"[#F06292]{day}[/]", -->
-<!--   f"[dim]@[/]", -->
-<!--   f"[#1A8FFF]{time}[/]" -->
-<!-- ])) -->
-<!-- ``` -->
+{{< include qmd/_experience.qmd >}}
 
 :::
+
+```{python}
+#| echo: false
+import datetime
+from rich import print
+now = datetime.datetime.now()
+day = now.strftime('%m/%d/%Y')
+time = now.strftime('%H:%M:%S')
+print(' '.join([
+  "[dim][updated @[/]",
+  f"[#1A8FFF]{time}[/]"
+  f"[dim] on[/]",
+  f"[#F06292]{day}[/][dim]][/]",
+]))
+```

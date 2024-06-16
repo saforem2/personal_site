@@ -375,13 +375,34 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="flash-attn-intel.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#update-2024-06-16" id="toc-update-2024-06-16" class="nav-link active" data-scroll-target="#update-2024-06-16">Update: 2024-06-16</a></li>
+  <li><a href="#impact-on-loss-bug" id="toc-impact-on-loss-bug" class="nav-link" data-scroll-target="#impact-on-loss-bug">🐛 Impact on Loss [Bug?]</a></li>
+  <li><a href="#llm-framework-release" id="toc-llm-framework-release" class="nav-link" data-scroll-target="#llm-framework-release">📦 LLM Framework Release</a>
+  <ul class="collapse">
+  <li><a href="#flash-no-flash" id="toc-flash-no-flash" class="nav-link" data-scroll-target="#flash-no-flash">📸 flash 🤝 📷 no-flash</a></li>
+  <li><a href="#broken-mpigremlins" id="toc-broken-mpigremlins" class="nav-link" data-scroll-target="#broken-mpigremlins">🚧 Broken MPI</a></li>
+  </ul></li>
+  <li><a href="#framework-comparison" id="toc-framework-comparison" class="nav-link" data-scroll-target="#framework-comparison">🕵🏻‍ Framework Comparison ??</a>
+  <ul class="collapse">
+  <li><a href="#fix-in-disguise" id="toc-fix-in-disguise" class="nav-link" data-scroll-target="#fix-in-disguise">🥸 Fix in Disguise</a></li>
+  <li><a href="#fix" id="toc-fix" class="nav-link" data-scroll-target="#fix">✅ <code>2024.0</code> Fix</a></li>
+  <li><a href="#lr-decay-iters-comparison" id="toc-lr-decay-iters-comparison" class="nav-link" data-scroll-target="#lr-decay-iters-comparison">📊 <code>lr-decay-iters</code> Comparison</a></li>
+  </ul></li>
+  <li><a href="#lr-decay-iters-dependence" id="toc-lr-decay-iters-dependence" class="nav-link" data-scroll-target="#lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</a></li>
+  <li><a href="#performance-improvement-in-2024.1" id="toc-performance-improvement-in-2024.1" class="nav-link" data-scroll-target="#performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="flash-attn-intel.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -393,7 +414,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     <div>
     <div class="quarto-title-meta-heading"></div>
@@ -417,6 +438,22 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </header>
 
 
+<section id="update-2024-06-16" class="level2">
+<h2 class="anchored" data-anchor-id="update-2024-06-16">Update: 2024-06-16</h2>
+<p>After an interactive debug session with Intel, the root behavior of the apparent discrepancy was identified.</p>
+<p>In particular, we found that the <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">ALCF/Megatron-DeepSpeed</a> repo was <strong>NOT</strong> explicitly setting the dropout values to <code>0.0</code> (and so, was using the default values of <code>0.1</code>) for both <code>--attention-dropout</code> and <code>--hidden-dropout</code>.</p>
+<p>After making this change, the losses were observed to agree, as can be seen below in</p>
+<div id="fig-flash-attn-dropout-fix" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flash-attn-dropout-fix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/flash-attn/flash-attn-dropout-fix.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="./assets/flash-attn/flash-attn-dropout-fix.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flash-attn-dropout-fix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: After correctly setting the dropout values, the loss curves were observed to agree.
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="impact-on-loss-bug" class="level2">
 <h2 class="anchored" data-anchor-id="impact-on-loss-bug">🐛 Impact on Loss [Bug?]</h2>
 <p>In the <code>q4-drop</code>, it was observed that toggling <code>flash-attn</code> on / off seemed to produce different loss curves (with otherwise <em>identical configs</em>)</p>
@@ -434,7 +471,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8"></a><span class="fu">WORLD_SIZE</span><span class="kw">:</span><span class="at"> </span><span class="dv">24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This can be seen clearly in the figure below:</p>
-<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
+<p><a href="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="./assets/flash-attn/flash-attn-bug-q4-drop-sunspot-1.png" class="img-fluid"></a></p>
 <p>This was identified, and to be addressed in upcoming release.</p>
 </section>
 <section id="llm-framework-release" class="level2">
@@ -497,7 +534,7 @@ Jerome</p>
 </summary>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="flash 📸 🤝 📷 no-flash"><img src="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
+<p><a href="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="flash 📸 🤝 📷 no-flash"><img src="./assets/flash-attn/flash-attn-sunspot-compare-new-release.png" class="img-fluid figure-img" alt="flash 📸 🤝 📷 no-flash"></a></p>
 <figcaption><code>flash</code> 📸 🤝 📷 no-<code>flash</code></figcaption>
 </figure>
 </div>
@@ -525,7 +562,7 @@ Jerome</p>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="ex">module</span> load spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0</span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="ex">module</span> use /soft/preview-modulefiles/24.086.0</span>
 <span id="cb6-7"><a href="#cb6-7"></a><span class="ex">module</span> load oneapi/release/2024.04.15.001</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For full details see <a href="mpi4py-reproducer.md">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
+<p>For full details see <a href="../../qmd/mpi4py-reproducer/index.html">mpi4py-reproducer</a>, and this [<a href="https://cels-anl.slack.com/archives/C05V0SRAVB6/p1715867557424879">slack thread</a>].</p>
 <!-- ::: -->
 </details>
 </section>
@@ -670,20 +707,21 @@ Older Figs
 </section>
 <section id="lr-decay-iters-dependence" class="level2">
 <h2 class="anchored" data-anchor-id="lr-decay-iters-dependence">📈 <code>lr-decay-iters</code> dependence</h2>
-<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="./assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
+<p><a href="./assets/lr-decay-iters-dependence-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="./assets/lr-decay-iters-dependence-2.png" class="img-fluid"></a></p>
 <p><img src="./assets/lr-schedule-dependence.png" class="img-fluid"> <img src="./assets/lr-decay-iters-dependence-1.png" class="img-fluid"></p>
 </section>
 <section id="performance-improvement-in-2024.1" class="level2">
 <h2 class="anchored" data-anchor-id="performance-improvement-in-2024.1">🏎️ Performance Improvement in <code>2024.1</code></h2>
-<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="./assets/performance-2024-0.png" class="img-fluid"></a></p>
-<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="./assets/performance-2024-1.png" class="img-fluid"></a></p>
+<p><a href="./assets/performance-2024-0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="./assets/performance-2024-0.png" class="img-fluid"></a></p>
+<p><a href="./assets/performance-2024-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="./assets/performance-2024-1.png" class="img-fluid"></a></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">lr</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.0003</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="fu">lr-warmup-frac</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.05</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="fu">lr-decay-iters</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2"><code>flash</code> 📸 🤝 📷 no-<code>flash</code></span>
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1: After correctly setting the dropout values, the loss curves were observed to agree.</span>
+<span class="glightbox-desc lightbox-desc-3"><code>flash</code> 📸 🤝 📷 no-<code>flash</code></span>
 </div>
 </section>
 
@@ -1318,13 +1356,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/qmd/flash-attn-sunspot/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
