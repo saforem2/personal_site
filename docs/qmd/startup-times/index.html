@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.45">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman ">
 <meta name="dcterms.date" content="2024-03-21">
 
-<title>Sam Foreman - ⏰ Starting Up Distributed Training</title>
+<title>⏰ Starting Up Distributed Training – Sam Foreman</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,7 +121,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -136,7 +136,7 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -165,7 +165,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../css/default.css">
 <link rel="stylesheet" href="../../css/callouts.css">
 <meta property="og:title" content="Sam Foreman">
 <meta property="og:description" content="My ramblings about science and computers">
@@ -190,7 +189,7 @@ window.Quarto = {
 <meta name="citation_fulltext_html_url" content="https://samforeman.me/qmd/ezpz/ezpz">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
-<meta name="citation_reference" content="citation_title=Progress on (g-2)_\mu from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
 <meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
 <meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
 <meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
@@ -218,19 +217,23 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-posts" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-posts" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">🪧 Posts</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-posts">    
         <li>
     <a class="dropdown-item" href="../../qmd/blog/index.html">
  <span class="dropdown-text">📬 All Posts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../qmd/determinstic-flash-attn/index.html">
+ <span class="dropdown-text">🎰 Deterministic Flash Attention</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../qmd/flash-attn-sunspot/index.html">
@@ -263,7 +266,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-talks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-talks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">🎙️ Talks</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-talks">    
@@ -346,7 +349,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">🎁 Projects</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
@@ -412,7 +415,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -464,13 +467,13 @@ window.Quarto = {
 <section id="initialization-times" class="level2">
 <h2 class="anchored" data-anchor-id="initialization-times">Initialization Times</h2>
 <!-- ::: {.callout-info title='[ Startup Times (Perlmutter)]{.dim-text}' collapse="True"} -->
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[[]{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;iconify&quot; data-raw=&quot;iconify&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;material-symbols&quot; data-raw=&quot;material-symbols&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;attach-email-outline-rounded&quot; data-raw=&quot;attach-email-outline-rounded&quot;} ]{.quarto-shortcode__ data-is-shortcode=&quot;1&quot; data-raw=&quot;{{< iconify material-symbols attach-email-outline-rounded >}}&quot;} Application Startup Time]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[{{< iconify material-symbols attach-email-outline-rounded >}} Application Startup Time]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="dim-text"><span class="quarto-shortcode__" data-is-shortcode="1" data-raw="{{< iconify material-symbols attach-email-outline-rounded >}}"><span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="iconify" data-raw="iconify"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="material-symbols" data-raw="material-symbols"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="attach-email-outline-rounded" data-raw="attach-email-outline-rounded"></span></span> Application Startup Time</span>
+<span class="dim-text">{{&lt; iconify material-symbols attach-email-outline-rounded &gt;}} Application Startup Time</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -573,25 +576,25 @@ For examples, we can measure the start-up time for the <code>rank0</code>?</li>
 <span id="cb5-17"><a href="#cb5-17"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_actCkpt_GPT1T_4L_z1_seqlen2048_mp8_pp2_sp1_nl4_hs25600_gb16_mb2/logs/foremans-x3108c0s25b1n0-nhosts2-ngpu8-2023-11-02-192739.log</span></span>
 <span id="cb5-18"><a href="#cb5-18"></a>  <span class="ex">Job</span> started at: 2023-11-02-192739 on x3108c0s25b1n0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[[]{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;iconify&quot; data-raw=&quot;iconify&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;octicon&quot; data-raw=&quot;octicon&quot;} []{.quarto-shortcode__-param data-is-shortcode=&quot;1&quot; data-value=&quot;stopwatch-16&quot; data-raw=&quot;stopwatch-16&quot;} ]{.quarto-shortcode__ data-is-shortcode=&quot;1&quot; data-raw=&quot;{{< iconify octicon stopwatch-16 >}}&quot;} Startup Times (Perlmutter)]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[{{< iconify octicon stopwatch-16 >}} Startup Times (Perlmutter)]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="dim-text"><span class="quarto-shortcode__" data-is-shortcode="1" data-raw="{{< iconify octicon stopwatch-16 >}}"><span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="iconify" data-raw="iconify"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="octicon" data-raw="octicon"></span> <span class="quarto-shortcode__-param" data-is-shortcode="1" data-value="stopwatch-16" data-raw="stopwatch-16"></span></span> Startup Times (Perlmutter)</span>
+<span class="dim-text">{{&lt; iconify octicon stopwatch-16 &gt;}} Startup Times (Perlmutter)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="tbl-perlmutter-init" class="quarto-float anchored" style="font-size: 0.8em;">
+<div id="tbl-perlmutter-init" class="quarto-float quarto-figure quarto-figure-center anchored" style="font-size: 0.8em;">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-perlmutter-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Startup times on Perlmutter
 </figcaption>
 <div aria-describedby="tbl-perlmutter-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 42%">
 <col style="width: 9%">
@@ -2238,18 +2241,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2281,7 +2273,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -2340,7 +2354,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

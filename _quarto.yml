@@ -19,19 +19,26 @@ citeproc: true
 #   - lightbox
 # lightbox: auto
 project:
+  type: website
+  output-dir: "docs"
+  preview:
+    port: 4209
   render:
     - "index.qmd"
-    # - ".qmd/aurora-gpt/megatron-ds-intel.qmd"
-    - "./qmd/blog/index.qmd"
-    - "./qmd/aurora-gpt/megatron-ds-intel.qmd"
-    - "./qmd/projects/index.qmd"
-    - "./qmd/dope-slides/index.qmd"
-    - "./qmd/startup-times/index.qmd"
-    - "./qmd/flash-attn-sunspot/index.qmd"
-    - "./qmd/l2hmc-qcd/diffusion/diffusion.qmd"
-    - "./qmd/long-sequences/index.qmd"
-    - "./qmd/mpi4py-reproducer/index.qmd"
-    - "./qmd/talks/index.qmd"
+    - "./qmd/**/*.qmd"
+    - "!./qmd/partials/*.qmd"
+    # - "index.qmd"
+    # - "./qmd/blog/index.qmd"
+    # - "./qmd/determinstic-flash-attn/index.qmd"
+    # - "./qmd/aurora-gpt/megatron-ds-intel.qmd"
+    # - "./qmd/projects/index.qmd"
+    # - "./qmd/dope-slides/index.qmd"
+    # - "./qmd/startup-times/index.qmd"
+    # - "./qmd/flash-attn-sunspot/index.qmd"
+    # - "./qmd/l2hmc-qcd/diffusion/diffusion.qmd"
+    # - "./qmd/long-sequences/index.qmd"
+    # - "./qmd/mpi4py-reproducer/index.qmd"
+    # - "./qmd/talks/index.qmd"
 
     # - ".qmd/blog/index.qmd"
     # - ".qmd/dope-slides/index.qmd"
@@ -64,10 +71,6 @@ project:
     # - qmd/blog/*.qmd
     # - qmd/ezpz/*.qmd
     # - qmd/aurora-gpt/megatron-ds-intel.qmd
-  type: website
-  output-dir: "docs"
-  preview:
-    port: 4209
 author:
   name: "Sam Foreman [[{{< ai orcid >}}]{.orcid-green}](https://orcid.org/0000-0002-9981-0876)"
   url: https://samforeman.me

@@ -390,7 +390,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >   HEP**](https://saforem2.github.io/physicsSeminar), at UNC
 >   Greensboro, March 2022
 >
-> <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" width="100%" align="center" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;border-radius:0.25rem;">
+> <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border:none;border-radius:0.25rem;">
 > <p>
 > Your browser does not support iframes.
 > </p>
@@ -439,9 +439,9 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd-93bc0c) @ U. Iowa (2020)</span>
+> ### <span class="dim-text">[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd/embed) @ U. Iowa (2020)</span>
 >
-> <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd-93bc0c" title="Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+> <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
 > Your browser does not support iframes.
 > </p>
@@ -549,23 +549,35 @@ style="grid-template-columns: repeat(var(--bs-columns, 2), 1fr);">
 
 #### 👔 Employment
 
-| Position                                                                           |              @               | Start | End  |
-|:-----------------------------------------------------------------------------------|:----------------------------:|:-----:|:----:|
-| [Assistant Computational Scientist](https://alcf.anl.gov/about/people/sam-foreman) | [ALCF](https://alcf.anl.gov) | 2022  |  –   |
-| Postdoc                                                                            |             ALCF             | 2019  | 2022 |
-| Graduate Researcher                                                                |    [ANL](https://anl.gov)    | 2018  | 2019 |
+<div id="tbl-experience">
 
-#### 🍎 School
+Table 1: 📟 Experience
 
-| Degree                                |                                             In                                             |               @               | End  |
-|:--------------------------------------|:------------------------------------------------------------------------------------------:|:-----------------------------:|:----:|
-| [PhD](https://bit.ly/sam-foreman-phd) |                 [Physics](https://physics.uiowa.edu/graduate/phd-physics)                  |      University of Iowa       | 2019 |
-| B.Sc                                  | [Physics](https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics) | [UIUC](https://illinois.edu/) | 2015 |
-| B.Sc                                  |                             [Math](https://math.illinois.edu/)                             |             UIUC              | 2015 |
+| Position | @ | Start | End |
+|:---|:--:|:--:|:--:|
+| [Assistant Computational Scientist](https://alcf.anl.gov/about/people/sam-foreman) | [ALCF](https://alcf.anl.gov) | 2022 | – |
+| Postdoc | ALCF | 2019 | 2022 |
+| Graduate Researcher | [ANL](https://anl.gov) | 2018 | 2019 |
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:45:36</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">06</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">16</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+#### 🍎 School
+
+<div id="tbl-education">
+
+Table 2: 🎓 Education
+
+| Degree | In | @ | End |
+|:---|:--:|:--:|:--:|
+| [PhD](https://bit.ly/sam-foreman-phd) | [Physics](https://physics.uiowa.edu/graduate/phd-physics) | University of Iowa | 2019 |
+| B.Sc | [Physics](https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics) | [UIUC](https://illinois.edu/) | 2015 |
+| B.Sc | [Math](https://math.illinois.edu/) | UIUC | 2015 |
+
+</div>
+
+</div>
+
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:57:18</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">06</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">17</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
 [^1]: And resulted in a

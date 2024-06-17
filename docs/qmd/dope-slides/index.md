@@ -228,7 +228,16 @@ Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
 
 - Starting with the title slide[^5]:
 
+  <div id="fig-title">
+
   <img src="./assets/title-slide.png" style="width:66.0%" />
+
+
+  Figure 1: [Title
+  Slide](https://saforem2.github.io/lattice23/#/section)
+
+  </div>
+
   - The full slide contents are included below:
 
     <details closed>
@@ -307,7 +316,15 @@ writing it in Markdown:
 
 <div style="text-align:center;">
 
+<div id="fig-overview">
+
 <img src="./assets/overview.png" style="width:60.0%" />
+
+
+Figure 2: [Overview
+Slide](https://saforem2.github.io/lattice23/#/overview)
+
+</div>
 
 </div>
 
@@ -417,14 +434,30 @@ while to figure out how things worked so maybe its helpful for others.
 <summary>
 Expand for <code>css</code>
 </summary>
+<div id="fig-css">
+
 <img src="./assets/css.png" style="width:80.0%" />
+
+
+Figure 4: Example of selecting an element and making a change to the
+CSS.
+
+</div>
 </details>
 
 ## 📃 GitHub Page
 
 To enable your GitHub page, you can do the following:
 
+<div id="fig-github-page">
+
 <img src="./assets/github-pages.png" style="width:80.0%" />
+
+
+Figure 5: Instructions for building a GitHub page using the `docs/`
+directory off the `main` branch.
+
+</div>
 
 In this case, the repo is:
 
