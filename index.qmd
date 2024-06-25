@@ -11,9 +11,11 @@ citation:
 format:
   html:
     css:
+      - css/lastfm.css
       - css/profile.css
+    # page-layout: full
     grid:
-      body-width: 800px
+      # body-width: 800px
       sidebar-width: 0px
       margin-width: 0px
       gutter-width: 1.5em
@@ -27,20 +29,10 @@ listing:
     contents:
       - "./qmd/**/*.qmd"
       - "! ../qmd/partials/"
-      # - "!./qmd/_work.qmd"
-      # - "!./qmd/_talks.qmd"
-      # - "!./qmd/_about.qmd"
-      # - "!./qmd/_projects.qmd"
-      # - "./qmd/aurora-gpt/megatron-ds-intel.qmd"
-      # - "./qmd/dope-slides/index.qmd"
-      # - "./qmd/startup-times/index.qmd"
-      # - "./qmd/flash-attn-sunspot/index.qmd"
-      # - "./qmd/l2hmc-qcd/diffusion/diffusion.qmd"
-      # - "./qmd/long-sequences/index.qmd"
-      # - "./qmd/mpi4py-reproducer/index.qmd"
     type: table
     feed: true
     sort: "date desc"
+
 ---
 
 ::: {style="font-size:1.0em; text-align: center;"}
@@ -63,10 +55,6 @@ listing:
 :::
 
 :::
-
-::: {layout="[ [60,-5,30] ]" layout-valign="center" style="display: flex; flex-direction: row; align-items: center; text-wrap: wrap"}
-
-::: {style="border: 1px solid red;"}
 
 ## 🧑🏻‍💻 About Me
 
@@ -109,6 +97,8 @@ listing:
 
 :::
 
+::: {style="text-align:center!important;"}
+
 ```{python}
 #| echo: false
 import datetime
@@ -116,10 +106,19 @@ from rich import print
 now = datetime.datetime.now()
 day = now.strftime('%m/%d/%Y')
 time = now.strftime('%H:%M:%S')
+dtime = now.strftime("%Y-%m-%d-%H:%M:%S")
+# print(f"[dim]Last updated @ [/dim][#838383]{now}[/]")
+# print(' '.join([f"[dim][updated @ {time} on {day}[/]]"]))
+# print(' '.join([
+#   "[dim][updated @[/]",
+#   f"[#838383]{dtime}[/][dim]][/]"
+# ]))
 print(' '.join([
   "[dim][updated @[/]",
-  f"[#1A8FFF]{time}[/]"
+  f"[#838383]{time}[/]"
   f"[dim] on[/]",
-  f"[#F06292]{day}[/][dim]][/]",
+  f"[#838383]{day}[/][dim]][/]",
 ]))
 ```
+
+:::

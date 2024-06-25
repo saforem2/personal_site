@@ -34,9 +34,34 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 </div>
 
-<div>
+## 🧑🏻‍💻 About Me
+
+<!-- ::: {layout="[ [60,-5,35] ]" style="display: flex; flex-direction: row; align-items: top; text-wrap: wrap"} -->
+
+<div class="group1" style="font-size: 1.0em;">
+
+- 💻 [Computational
+  scientist](https://alcf.anl.gov/about/people/sam-foreman) at Argonne
+  National Laboratory [(ALCF)](https://alcf.anl.gov)[^1]
+
+- 🧪 Interested in {AI, HPC} for science[^2]
+
+  <!-- - 🧪 Interested in {AI, HPC} for science[^disciplines] -->
+  <!-- - 🚀 scaling large {language, vision, multi-modal}[^aurora] models for: -->
+  <!--   - protein generation, genome modeling, virtual drug discovery -->
+  <!--   - weather ( / climate ) forecasting, earth system modeling -->
+  <!-- - building better sampling methods for Lattice Quantum Chromodynamics -->
+
+<!-- [^aurora]: On [Aurora](https://www.alcf.anl.gov/aurora)! -->
 
 </div>
+
+<!-- ::: {.group2} -->
+<!-- ::: {.callout-tip icon=false aria-title="last.fm" title='[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)]{style="color:#D41109; font-size:1.1em;"}' collapse="true" style='width:100%; border: none!important; border: 2px solid rgba(212, 17, 9, 0.5)!important; background: rgba(212, 17, 9, 0.05); opacity: 100%;'} -->
+<!-- {{< include qmd/partials/_music.qmd >}} -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: -->
 
 - <details closed>
   <summary>
@@ -46,15 +71,56 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
   - <details closed>
     <summary>
 
-    📍 How I got here
+    🚀 What I work on
 
     </summary>
 
-    <!-- I did my undergrad at the University of Illinois at Urbana-Champaign -->
-    <!-- (UIUC^[ILL]), where I got bachelors degrees in Engineering Physics and -->
-    <!-- Applied Mathematics. -->
-    <!-- I decided on Physics for grad school (the math GRE was brutal 😂) and attended -->
-    <!-- the University of Iowa planning -->
+    As a member of the [AI / ML
+    Group](https://www.alcf.anl.gov/about/people/group/506) at
+    [ALCF](https://alcf.anl.gov), I work on[^3]:
+
+    <div class="flex-container">
+
+    <div class="flex-container">
+
+    - 🤖 🧪 [AI + Science](https://github.com/saforem2/)
+
+    - 🎲 [Building better sampling methods for Lattice
+      QCD](https://github.com/saforem2/l2hmc-qcd)
+
+    - 🧬 [Genome-Scale Language
+      Models](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2)
+
+      - [ GenSLM](https://github.com/ramanathanlab/genslm)
+
+      - 🥇 [ACM Gordon Bell Special
+        Prize](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
+
+    </div>
+
+    <div class="flex-container">
+
+    - 🌍 [Foundation models for long term climate
+      forecasting](https://saforem2.github.io/climate-analysis)
+
+    - 🏃‍♂️ [Scaling Large Language
+      Models](https://github.com/saforem2/Megatron-DS-Benchmarking)
+
+    - 🏎️ [Distributed training across thousands of
+      GPUs](https://github.com/argonne-lcf/mlprof)
+
+    </div>
+
+    </div>
+
+    </details>
+
+  - <details closed>
+    <summary>
+
+    📍 How I got here
+
+    </summary>
 
     My [current research](https://saforem2.github.io/l2hmc-qcd) focuses
     on using deep generative modeling to help build better sampling
@@ -75,57 +141,173 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
     Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was
     supervised by Professor [Alfred
     Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the
-    Center for Complex Systems Research at UIUC[^1].
+    Center for Complex Systems Research at UIUC[^4].
 
     </details>
 
   - <details closed>
     <summary>
 
-    🤔 What I work on
+    🎶 Now Playing
 
     </summary>
 
-    As a member of the [AI / ML
-    Group](https://www.alcf.anl.gov/about/people/group/506) at
-    [ALCF](https://alcf.anl.gov), I work on:
+    > [!TIP]
+    >
+    > ### <span style="color:#D41109; font-size:1.1em;">![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)</span>
+    >
+    > <script>
+    > /**
+    >   Developed by Prashant Shrestha
+    >   + https://prashant.me
+    > */
+    > var lastfmData = {
+    >   baseURL:
+    >     "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
+    >   // Your Last.fm Username
+    >   user: "saforem2",
+    >   // Your API key
+    >   api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
+    >   additional: "&format=json&limit=1"
+    > };
+    > &#10;var getSetLastFM = function() {
+    >   $.ajax({
+    >     type: "GET",
+    >     url:
+    >       lastfmData.baseURL +
+    >       lastfmData.user +
+    >       "&api_key=" +
+    >       lastfmData.api_key +
+    >       lastfmData.additional,
+    >     dataType: "json",
+    >     success: function(resp) {
+    >       var recentTrack = resp.recenttracks.track[0];
+    >       var formatted = recentTrack.name;
+    >       $("a#tracktitle")
+    >         .html(formatted)
+    >         .attr("href", recentTrack.url)
+    >         .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
+    >         .attr("target", "_blank");
+    > &#10;      var artistFormatted = recentTrack.artist["#text"];
+    >       $("a#trackartist")
+    >         .html(artistFormatted)
+    >         .attr("title", "Artist : " + recentTrack.artist["#text"]);
+    >       $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
+    >     },
+    >     error: function(resp) {
+    >       $("a#tracktitle").html(
+    >         "<img src='https://i.imgur.com/EgWjJry.png'>" + "Silence!"
+    >       );
+    >       $("img#trackart").attr("src", "https://i.imgur.com/Q6cCswP.jpg");
+    >       var artistFormatted =
+    >         "<img src='https://i.imgur.com/fae5XZA.png'>Prashant Shrestha";
+    >       $("a#trackartist")
+    >         .html(artistFormatted)
+    >         .attr("href", "www.prashant.me/");
+    >     }
+    >   });
+    > };
+    > &#10;// Get the new one.
+    > getSetLastFM();
+    > // Start the countdown.
+    > setInterval(getSetLastFM, 10 * 1000);
+    > </script> <div class="nowplayingcard" style="text-align:left;color:#838383">
+    > <div class="nowplayingcontainer-inner">
+    > <img id="trackart" src="#">
+    > <div class="trackInfo">
+    > <a id="tracktitle"></a>
+    > <a href="#" id="trackartist"></a>
+    > </div>
+    > </div>
+    > </div>
+    > <!-- [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
+    > <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
+    >
+    > <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a>
 
-    <div class="flex-container">
-
-    <div class="flex-container">
-
-    - [AI + Science](https://github.com/saforem2/)
-
-      - [Building better sampling methods for Lattice
-        QCD](https://github.com/saforem2/l2hmc-qcd)
-
-      - [GenSLM: Genome-Scale Language
-        Models](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2)
-
-      - [Foundation models for long term climate
-        forecasting](https://saforem2.github.io/climate-analysis)
-
-    </div>
-
-    <div class="flex-container">
-
-    - [Scaling Large Language
-      Models](https://github.com/saforem2/Megatron-DS-Benchmarking)
-
-    - [Optimizing distributed training across thousands of
-      GPUs](https://github.com/argonne-lcf/mlprof)
-
-    - Building new parallelism techniques for efficient scaling
-
-    - Generative modeling (esp. for physical systems)
-
-    </div>
-
-    </div>
-
-    </details>
+  </details>
 
 </details>
+<!-- - <details closed><summary>👀 <strong>If you're curious</strong></summary> -->
+<!---->
+<!--     - <details closed><summary>🎶 <strong>Now Playing</strong>:</summary> -->
+<!---->
+<!--       [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
+<!---->
+<!--         <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
+<!---->
+<!--     </details> -->
+<!---->
+<!--     - <details closed><summary>📍 How I got here</summary> -->
+<!---->
+<!--       [NOTE: Update the **NEW** text below !!]: # -->
+<!---->
+<!--       My [current research](https://saforem2.github.io/l2hmc-qcd) focuses on -->
+<!--       using deep generative modeling to help build better sampling algorithms -->
+<!--       in lattice gauge theory. In particular, I'm interested in building gauge -->
+<!--       equivariant neural network architectures and using inductive priors to -->
+<!--       incorporate physical symmetries into machine learning models. -->
+<!---->
+<!--       I received my PhD in Physics from the University of Iowa in 2019 and my thesis -->
+<!--       was on [Learning Better Physics: A Machine Learning Approach to Lattice Gauge -->
+<!--       Theory](https://iro.uiowa.edu/esploro/outputs/doctoral/Learning-better-physics-a-machine-learning/9983776792002771). -->
+<!---->
+<!--       Prior to this, I completed two bachelors degrees (Engineering Physics and -->
+<!--       Applied Mathematics, 2015) at The University of Illinois at -->
+<!--       Urbana-Champaign. My undergraduate dissertation was titled [Energy -->
+<!--       Storage in Quantum -->
+<!--       Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was -->
+<!--       supervised by Professor [Alfred -->
+<!--       Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the -->
+<!--       Center for Complex Systems Research at UIUC[^patent]. -->
+<!---->
+<!--       [^patent]: And resulted in a [patent](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC) !! -->
+<!---->
+<!--     </details> -->
+<!---->
+<!--     - <details closed><summary>🤔 what I work on</summary> -->
+<!---->
+<!--       As a member of the [AI / ML Group](https://www.alcf.anl.gov/about/people/group/506) at -->
+<!--       [ALCF](https://alcf.anl.gov), I work on: -->
+<!---->
+<!--       ::: {.flex-container} -->
+<!---->
+<!--       ::: {.flex-container} -->
+<!---->
+<!--       - [AI + Science](https://github.com/saforem2/) -->
+<!---->
+<!--         - [Building better sampling methods for Lattice QCD](https://github.com/saforem2/l2hmc-qcd) -->
+<!---->
+<!--         - [GenSLM: Genome-Scale Language Models](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2) -->
+<!---->
+<!--         - [Foundation models for long term climate forecasting](https://saforem2.github.io/climate-analysis) -->
+<!---->
+<!--       ::: -->
+<!---->
+<!--       ::: {.flex-container} -->
+<!---->
+<!--       - [Scaling Large Language Models](https://github.com/saforem2/Megatron-DS-Benchmarking) -->
+<!---->
+<!--       - [Optimizing distributed training across thousands of GPUs](https://github.com/argonne-lcf/mlprof) -->
+<!---->
+<!--       - Building new parallelism techniques for efficient scaling -->
+<!---->
+<!--       - Generative modeling (esp. for physical systems) -->
+<!---->
+<!--       ::: -->
+<!---->
+<!--       ::: -->
+<!---->
+<!--     </details> -->
+<!---->
+<!-- </details> -->
+<!-- ::: {.callout-tip icon=false aria-title="Now Playing" title='[[![](assets/lastfm.svg)]{style="display:inline;height:1em!important;"} Now Playing:]{style="color:#D51007; font-size:1.1em;"}' collapse="true" style='width:100%; border: none!important; border: 1px solid rgba(213, 16, 7, 1.0, 0.5)!important; opacity: 100%;'} -->
+<!-- ::: {.callout-tip icon=false aria-title="Now Playing" title='🎵 Now Playing' collapse="true" style='width:100%; border: none!important; border: 1px solid rgba(131, 131, 131, 0.05)!important;background-color: rgba(0,0,0,0.0)!important; opacity: 100%;'} -->
+<!-- I did my undergrad at the University of Illinois at Urbana-Champaign -->
+<!-- (UIUC^[ILL]), where I got bachelors degrees in Engineering Physics and -->
+<!-- Applied Mathematics. -->
+<!-- I decided on Physics for grad school (the math GRE was brutal 😂) and attended -->
+<!-- the University of Iowa planning -->
 
 <div class="panel-tabset">
 
@@ -153,7 +335,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
   Scoring](https://dl.acm.org/doi/abs/10.1145/3624062.3626087)  
   <span class="dim-text">@ SC’23, *11/2023*</span>
 
--  [DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+-  [**DeepSpeed4Science Initiative**: Enabling Large-Scale Scientific
   Discovery \[…\]](https://arxiv.org/abs/2310.04610)  
   <span class="dim-text">@ [NeurIPS 2023 AI For Science
   Workshop](https://ai4sciencecommunity.github.io/neurips23.html),
@@ -175,10 +357,9 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
   NERSC](https://github.com/NERSC/intro-HPC-bootcamp-2023),
   *08/2023*</span>
 
-<!-- SARS-CoV-2 evolutionary dynamics -->
-
-- 🏆 [**GenSLMs: Genome-scale language models reveal**
-  \[…\]](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract)  
+- 🏆 [**GenSLMs: Genome-scale language models reveal SARS-Cov-2
+  evolutionary
+  dynamics**](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract)  
   <span class="dim-text">@ SC’22 *10/2022*</span>
 
   - 🥇 [ACM Gordon Bell Special
@@ -577,9 +758,23 @@ Table 2: 🎓 Education
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">10:57:18</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">06</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">17</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<div style="text-align:center!important;">
+
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">00:43:11</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">06</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">25</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
-[^1]: And resulted in a
+</div>
+
+[^1]: Mostly trying to get supercomputers to stop yelling at each other
+    🫠
+
+[^2]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
+    Generation, Drug Discovery), and Climate Modeling / Weather
+    Forecasting}
+
+[^3]: If this sounds like something you’d be interested in doing, please
+    feel free to [reach out to me](mailto:foremans@anl.gov)!
+
+[^4]: And resulted in a
     [patent](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC)
     !!

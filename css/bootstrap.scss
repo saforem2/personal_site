@@ -1,0 +1,433 @@
+
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+:root {
+    --callout-card-border-width: 0px;
+    --callout-card-border-opacity: 0.25;
+    --callout-card-padding: var(--size-4-3) var(--size-4-3) var(--size-4-3) var(--size-4-6);
+    --callout-card-radius: var(--radius-s);
+    --callout-card-blend-mode: var(--highlight-mix-blend-mode);
+    --callout-card-title-color: inherit;
+    --callout-card-title-padding: 0;
+    --callout-card-title-size: inherit;
+    --callout-card-content-padding: 0;
+    --callout-card-content-background: transparent;
+    --callout-card-bug: var(--color-red-rgb);
+    --callout-card-default: var(--color-blue-rgb);
+    --callout-card-error: var(--color-red-rgb);
+    --callout-card-example: var(--color-purple-rgb);
+    --callout-card-fail: var(--color-red-rgb);
+    --callout-card-important: var(--color-cyan-rgb);
+    --callout-card-info: var(--color-blue-rgb);
+    --callout-card-question: var(--color-yellow-rgb);
+    --callout-card-success: var(--color-green-rgb);
+    --callout-card-summary: var(--color-cyan-rgb);
+    --callout-card-tip: var(--color-cyan-rgb);
+    --callout-card-todo: var(--color-blue-rgb);
+    --callout-card-warning: var(--color-orange-rgb)
+}
+
+.callout-card {
+    --callout-card-color: var(--callout-card-default);
+    --callout-card-icon: lucide-pencil
+}
+
+.callout-card[data-callout-card=abstract],.callout-card[data-callout-card=summary],.callout-card[data-callout-card=tldr] {
+    --callout-card-color: var(--callout-card-summary);
+    --callout-card-icon: lucide-clipboard-list
+}
+
+.callout-card[data-callout-card=info] {
+    --callout-card-color: var(--callout-card-info);
+    --callout-card-icon: lucide-info
+}
+
+.callout-card[data-callout-card=todo] {
+    --callout-card-color: var(--callout-card-todo);
+    --callout-card-icon: lucide-check-circle-2
+}
+
+.callout-card[data-callout-card=important] {
+    --callout-card-color: var(--callout-card-important);
+    --callout-card-icon: lucide-flame
+}
+
+.callout-card[data-callout-card=tip],.callout-card[data-callout-card=hint] {
+    --callout-card-color: var(--callout-card-tip);
+    --callout-card-icon: lucide-flame
+}
+
+.callout-card[data-callout-card=success],.callout-card[data-callout-card=check],.callout-card[data-callout-card=done] {
+    --callout-card-color: var(--callout-card-success);
+    --callout-card-icon: lucide-check
+}
+
+.callout-card[data-callout-card=question],.callout-card[data-callout-card=help],.callout-card[data-callout-card=faq] {
+    --callout-card-color: var(--callout-card-question);
+    --callout-card-icon: help-circle
+}
+
+.callout-card[data-callout-card=warning],.callout-card[data-callout-card=caution],.callout-card[data-callout-card=attention] {
+    --callout-card-color: var(--callout-card-warning);
+    --callout-card-icon: lucide-alert-triangle
+}
+
+.callout-card[data-callout-card=failure],.callout-card[data-callout-card=fail],.callout-card[data-callout-card=missing] {
+    --callout-card-color: var(--callout-card-fail);
+    --callout-card-icon: lucide-x
+}
+
+.callout-card[data-callout-card=danger],.callout-card[data-callout-card=error] {
+    --callout-card-color: var(--callout-card-error);
+    --callout-card-icon: lucide-zap
+}
+
+.callout-card[data-callout-card=bug] {
+    --callout-card-color: var(--callout-card-bug);
+    --callout-card-icon: lucide-bug
+}
+
+.callout-card[data-callout-card=example] {
+    --callout-card-color: var(--callout-card-example);
+    --callout-card-icon: lucide-list
+}
+
+.callout-card[data-callout-card=quote],.callout-card[data-callout-card=cite] {
+    --callout-card-color: var(--callout-card-quote);
+    --callout-card-icon: quote-glyph
+}
+
+.callout-card {
+    overflow: hidden;
+    border-style: solid;
+    border-color: rgba(var(--callout-card-color), var(--callout-card-border-opacity));
+    border-width: var(--callout-card-border-width);
+    border-radius: var(--callout-card-radius);
+    margin: 1em 0;
+    mix-blend-mode: var(--callout-card-blend-mode);
+    background-color: rgba(var(--callout-card-color), 0.1);
+    padding: var(--callout-card-padding)
+}
+
+.callout-card.is-collapsible .callout-card-title {
+    cursor: var(--cursor)
+}
+
+.callout-card-title {
+    padding: var(--callout-card-title-padding);
+    display: flex;
+    gap: var(--size-4-1);
+    font-size: var(--callout-card-title-size);
+    color: rgb(var(--callout-card-color));
+    line-height: var(--line-height-tight);
+    align-items: flex-start
+}
+
+.callout-card-content {
+    overflow-x: auto;
+    padding: var(--callout-card-content-padding);
+    background-color: var(--callout-card-content-background)
+}
+
+.callout-card-icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center
+}
+
+.callout-card-icon .svg-icon {
+    color: rgb(var(--callout-card-color))
+}
+
+.callout-card-icon::after {
+    content: "​"
+}
+
+.callout-card-title-inner {
+    font-weight: var(--bold-weight);
+    color: var(--callout-card-title-color)
+}
+
+.callout-card-fold {
+    display: flex;
+    align-items: center;
+    padding-right: var(--size-4-2)
+}
+
+.callout-card-fold::after {
+    content: "​"
+}
+
+.callout-card-fold .svg-icon {
+    transition: transform 100ms ease-in-out
+}
+
+.callout-card-fold.is-collapsed .svg-icon {
+    transform: rotate(-90deg)
+}
+
+
+.callout {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-radius: .25rem;
+    overflow-wrap: break-word
+}
+
+.callout .callout-title-container {
+    overflow-wrap: anywhere
+}
+
+.callout.callout-style-simple {
+    padding: .4em .7em;
+    border-left: 5px solid;
+    border-right: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6
+}
+
+.callout.callout-style-default {
+    border-left: 5px solid;
+    border-right: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6
+}
+
+.callout .callout-body-container {
+    flex-grow: 1
+}
+
+.callout.callout-style-simple .callout-body {
+    font-size: .9rem;
+    font-weight: 400
+}
+
+.callout.callout-style-default .callout-body {
+    font-size: .9rem;
+    font-weight: 400
+}
+
+.callout:not(.no-icon).callout-titled.callout-style-simple .callout-body {
+    padding-left: 1.6em
+}
+
+.callout.callout-titled>.callout-header {
+    padding-top: .2em;
+    margin-bottom: -0.2em
+}
+
+.callout.callout-style-simple>div.callout-header {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%
+}
+
+.callout.callout-style-default>div.callout-header {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: .9rem;
+    padding-left: .5em;
+    padding-right: .5em
+}
+
+.callout.callout-style-default .callout-body {
+    padding-left: .5em;
+    padding-right: .5em
+}
+
+.callout.callout-style-default .callout-body>:first-child {
+    padding-top: .5rem;
+    margin-top: 0
+}
+
+.callout>div.callout-header[data-bs-toggle=collapse] {
+    cursor: pointer
+}
+
+.callout.callout-style-default .callout-header[aria-expanded=false],.callout.callout-style-default .callout-header[aria-expanded=true] {
+    padding-top: 0px;
+    margin-bottom: 0px;
+    align-items: center
+}
+
+.callout.callout-titled .callout-body>:last-child:not(.sourceCode),.callout.callout-titled .callout-body>div>:last-child:not(.sourceCode) {
+    padding-bottom: .5rem;
+    margin-bottom: 0
+}
+
+.callout:not(.callout-titled) .callout-body>:first-child,.callout:not(.callout-titled) .callout-body>div>:first-child {
+    margin-top: .25rem
+}
+
+.callout:not(.callout-titled) .callout-body>:last-child,.callout:not(.callout-titled) .callout-body>div>:last-child {
+    margin-bottom: .2rem
+}
+
+.callout.callout-style-simple .callout-icon::before,.callout.callout-style-simple .callout-toggle::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem
+}
+
+.callout.callout-style-default .callout-icon::before,.callout.callout-style-default .callout-toggle::before {
+    height: .9rem;
+    width: .9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: .9rem .9rem
+}
+
+.callout.callout-style-default .callout-toggle::before {
+    margin-top: 5px
+}
+
+.callout .callout-btn-toggle .callout-toggle::before {
+    transition: transform .2s linear
+}
+
+.callout .callout-header[aria-expanded=false] .callout-toggle::before {
+    transform: rotate(-90deg)
+}
+
+.callout .callout-header[aria-expanded=true] .callout-toggle::before {
+    transform: none
+}
+
+.callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
+    padding-top: .2em;
+    padding-right: .55em
+}
+
+.callout.callout-style-default:not(.no-icon) div.callout-icon-container {
+    padding-top: .1em;
+    padding-right: .35em
+}
+
+.callout.callout-style-default:not(.no-icon) div.callout-title-container {
+    margin-top: -1px
+}
+
+.callout.callout-style-default.callout-caution:not(.no-icon) div.callout-icon-container {
+    padding-top: .3em;
+    padding-right: .35em
+}
+
+.callout>.callout-body>.callout-icon-container>.no-icon,.callout>.callout-header>.callout-icon-container>.no-icon {
+    display: none
+}
+
+div.callout.callout {
+    border-left-color: #6c757d
+}
+
+div.callout.callout-style-default>.callout-header {
+    background-color: #6c757d
+}
+
+div.callout-note.callout {
+    border-left-color: #0d6efd
+}
+
+div.callout-note.callout-style-default>.callout-header {
+    background-color: #e7f1ff
+}
+
+div.callout-note:not(.callout-titled) .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %230c63e4" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
+}
+
+div.callout-note.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %230c63e4" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
+}
+
+div.callout-note .callout-toggle::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(34, 34, 34)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>')
+}
+
+div.callout-tip.callout {
+    border-left-color: #198754
+}
+
+div.callout-tip.callout-style-default>.callout-header {
+    background-color: #e8f3ee
+}
+
+div.callout-tip:not(.callout-titled) .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23177a4c" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
+}
+
+div.callout-tip.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23177a4c" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
+}
+
+div.callout-tip .callout-toggle::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(34, 34, 34)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>')
+}
+
+div.callout-warning.callout {
+    border-left-color: #ffc107
+}
+
+div.callout-warning.callout-style-default>.callout-header {
+    background-color: #fff9e6
+}
+
+div.callout-warning:not(.callout-titled) .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23e6ae06" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
+}
+
+div.callout-warning.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23e6ae06" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
+}
+
+div.callout-warning .callout-toggle::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(34, 34, 34)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>')
+}
+
+div.callout-caution.callout {
+    border-left-color: #fd7e14
+}
+
+div.callout-caution.callout-style-default>.callout-header {
+    background-color: #fff2e8
+}
+
+div.callout-caution:not(.callout-titled) .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23e47112" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
+}
+
+div.callout-caution.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23e47112" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
+}
+
+div.callout-caution .callout-toggle::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(34, 34, 34)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>')
+}
+
+div.callout-important.callout {
+    border-left-color: #dc3545
+}
+
+div.callout-important.callout-style-default>.callout-header {
+    background-color: #fcebec
+}
+
+div.callout-important:not(.callout-titled) .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23c6303e" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
+}
+
+div.callout-important.callout-titled .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: %23c6303e" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
+}
+
+div.callout-important .callout-toggle::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(34, 34, 34)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>')
+}
