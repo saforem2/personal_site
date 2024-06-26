@@ -48,7 +48,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
   - <details closed>
     <summary>
 
-    🚀 What I work on
+    🔥 What I work on
 
     </summary>
 
@@ -81,7 +81,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
       forecasting](https://saforem2.github.io/climate-analysis)
 
     - 🏃‍♂️ [Scaling Large Language
-      Models](https://github.com/saforem2/Megatron-DS-Benchmarking)
+      Models](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
     - 🏎️ [Distributed training across thousands of
       GPUs](https://github.com/argonne-lcf/mlprof)
@@ -122,94 +122,17 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
     </details>
 
-  - <details closed>
-    <summary>
-
-    🎶 Now Playing
-
-    </summary>
-    <!-- ::: {.callout-tip icon=false aria-title="last.fm" title='[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)]{style="color:#D41109; font-size:1.1em;"}' collapse="true" style='max-width:60%; border: none!important; border: 2px solid rgba(212, 17, 9, 0.5)!important; background: rgba(212, 17, 9, 0.05); opacity: 100%;'} -->
-    <script>
-    /**
-      Developed by Prashant Shrestha
-      + https://prashant.me
-    */
-    var lastfmData = {
-      baseURL:
-        "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-      // Your Last.fm Username
-      user: "saforem2",
-      // Your API key
-      api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-      additional: "&format=json&limit=1"
-    };
-    &#10;var getSetLastFM = function() {
-      $.ajax({
-        type: "GET",
-        url:
-          lastfmData.baseURL +
-          lastfmData.user +
-          "&api_key=" +
-          lastfmData.api_key +
-          lastfmData.additional,
-        dataType: "json",
-        success: function(resp) {
-          var recentTrack = resp.recenttracks.track[0];
-          // var formatted =
-          //  "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-          // var formatted = recentTrack.name;
-          var formatted =
-            "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-          $("a#tracktitle")
-            .html(formatted)
-            .attr("href", recentTrack.url)
-            .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-            .attr("target", "_blank");
-    &#10;      // var artistFormatted = recentTrack.artist["#text"];
-          // var artistFormatted =
-          //  "<img src='https://i.imgur.com/fae5XZA.png'>" +
-          //  recentTrack.artist["#text"];
-          var artistFormatted =
-            "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-          $("a#trackartist")
-            .html(artistFormatted)
-            .attr("title", "Artist : " + recentTrack.artist["#text"]);
-          $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-        },
-        error: function(resp) {
-          $("a#tracktitle").html(
-            "<img src='https://i.imgur.com/EgWjJry.png'>" + "Silence!"
-          );
-          $("img#trackart").attr("src", "https://i.imgur.com/Q6cCswP.jpg");
-          var artistFormatted =
-            "<img src='https://i.imgur.com/fae5XZA.png'>Prashant Shrestha";
-          $("a#trackartist")
-            .html(artistFormatted)
-            .attr("href", "www.prashant.me/");
-        }
-      });
-    };
-    &#10;// Get the new one.
-    getSetLastFM();
-    // Start the countdown.
-    setInterval(getSetLastFM, 10 * 1000);
-    </script> <div class="nowplayingcard">
-    <div class="nowplayingcontainer-inner">
-    <img id="trackart" src="#">
-    <div class="trackInfo">
-    <a id="tracktitle"></a>
-    <a href="#" id="trackartist"></a>
-    </div>
-    </div>
-    </div>
-    <!-- [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
-    <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
-
-    <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a>
-
-    <!-- ::: -->
-
-  </details>
+  <!-- - <details closed><summary>🎶 Now Playing</summary> -->
+  <!---->
+  <!--   <!-- ::: {.callout-tip icon=false aria-title="last.fm" title='[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)]{style="color:#D41109; font-size:1.1em;"}' collapse="true" style='max-width:60%; border: none!important; border: 2px solid rgba(212, 17, 9, 0.5)!important; background: rgba(212, 17, 9, 0.05); opacity: 100%;'} -->
+  –\> <!---->
+  <!--   {{< include qmd/partials/_music_indented.qmd >}} --> <!---->
+  <!--   <!-- [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
+  –\> <!---->
+  <!--   <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
+  –\> <!---->
+  <!--   <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
+  <!----> <!--   <!-- ::: --> –\> <!----> <!-- </details> -->
 
 </details>
 <!-- - As a member of the [AI / ML Group](https://www.alcf.anl.gov/about/people/group/506) at -->
@@ -772,12 +695,83 @@ Table 2: 🎓 Education
 
 </div>
 
+### 🎶 Playing
+
+<script>
+/**
+  Developed by Prashant Shrestha
+  + https://prashant.me
+*/
+var lastfmData = {
+  baseURL:
+    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
+  // Your Last.fm Username
+  user: "saforem2",
+  // Your API key
+  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
+  additional: "&format=json&limit=1"
+};
+&#10;var getSetLastFM = function() {
+  $.ajax({
+    type: "GET",
+    url:
+      lastfmData.baseURL +
+      lastfmData.user +
+      "&api_key=" +
+      lastfmData.api_key +
+      lastfmData.additional,
+    dataType: "json",
+    success: function(resp) {
+      var recentTrack = resp.recenttracks.track[0];
+      var formatted =
+        "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
+      $("a#tracktitle")
+        .html(formatted)
+        .attr("href", recentTrack.url)
+        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
+        .attr("target", "_blank");
+&#10;      var artistFormatted =
+        "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
+      $("a#trackartist")
+        .html(artistFormatted)
+        .attr("title", "Artist : " + recentTrack.artist["#text"]);
+      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
+    },
+    error: function(resp) {
+      $("a#tracktitle").html(
+        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
+      );
+      $("img#trackart").attr("src", "🧑🏻‍💻");
+      var artistFormatted =
+        "Sam Foreman";
+      $("a#trackartist")
+        .html(artistFormatted)
+        .attr("href", "https://samforeman.me");
+    }
+  });
+};
+&#10;// Get the new one.
+getSetLastFM();
+// Start the countdown.
+setInterval(getSetLastFM, 10 * 1000);
+</script> <div class="nowplayingcard">
+<div class="nowplayingcontainer-inner">
+<img id="trackart" src="#">
+<div class="trackInfo">
+<a id="tracktitle"></a>
+<a href="#" id="trackartist"></a>
+</div>
+</div>
 </div>
 
-<!-- ::: {style="text-align:center!important;"} -->
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">11:14:43</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">06</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">25</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<span class="stretch">[<img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" >](https://last.fm/user/saforem2)</span>
+
+<!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" ></a> -->
+
+</div>
+
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">13:34:23</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">06</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">26</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
-<!-- ::: -->
 
 [^1]: If this sounds like something you’d be interested in doing, please
     feel free to [reach out to me](mailto:foremans@anl.gov)!
