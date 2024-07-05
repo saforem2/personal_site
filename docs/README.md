@@ -122,58 +122,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
     </details>
 
-  <!-- - <details closed><summary>🎶 Now Playing</summary> -->
-  <!---->
-  <!--   <!-- ::: {.callout-tip icon=false aria-title="last.fm" title='[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)]{style="color:#D41109; font-size:1.1em;"}' collapse="true" style='max-width:60%; border: none!important; border: 2px solid rgba(212, 17, 9, 0.5)!important; background: rgba(212, 17, 9, 0.05); opacity: 100%;'} -->
-  –\> <!---->
-  <!--   {{< include qmd/partials/_music_indented.qmd >}} --> <!---->
-  <!--   <!-- [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
-  –\> <!---->
-  <!--   <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
-  –\> <!---->
-  <!--   <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
-  <!----> <!--   <!-- ::: --> –\> <!----> <!-- </details> -->
-
 </details>
-<!-- - As a member of the [AI / ML Group](https://www.alcf.anl.gov/about/people/group/506) at -->
-<!--   [ALCF](https://alcf.anl.gov), I work on[^students]: -->
-<!---->
-<!--   ::: {.flex-container} -->
-<!---->
-<!--   ::: {.flex-container} -->
-<!---->
-<!--   - 🤖 🧪 [AI + Science](https://github.com/saforem2/) -->
-<!---->
-<!--   - 🎲 [Building better sampling methods for Lattice QCD](https://github.com/saforem2/l2hmc-qcd) -->
-<!---->
-<!--   - 🧬 [Genome-Scale Language Models](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2) -->
-<!---->
-<!--       - [ GenSLM](https://github.com/ramanathanlab/genslm) -->
-<!---->
-<!--       - 🥇 [ACM Gordon Bell Special Prize](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022) -->
-<!---->
-<!--   ::: -->
-<!---->
-<!--   ::: {.flex-container} -->
-<!---->
-<!--   - 🌍 [Foundation models for long term climate forecasting](https://saforem2.github.io/climate-analysis) -->
-<!---->
-<!--   - 🏃‍♂️ [Scaling Large Language Models](https://github.com/saforem2/Megatron-DS-Benchmarking) -->
-<!---->
-<!--   - 🏎️ [Distributed training across thousands of GPUs](https://github.com/argonne-lcf/mlprof) -->
-<!---->
-<!--   ::: -->
-<!---->
-<!--   ::: -->
-<!-- - <details closed><summary>👀 <strong>If you're curious</strong></summary> -->
-<!---->
-<!--     - <details closed><summary>🎶 <strong>Now Playing</strong>:</summary> -->
-<!---->
-<!--       [![last.fm](https://lastfm-recently-played.vercel.app/api?user=saforem2)](https://www.last.fm/user/saforem2) -->
-<!---->
-<!--         <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a> -->
-<!---->
-<!--     </details> -->
 <!---->
 <!--     - <details closed><summary>📍 How I got here</summary> -->
 <!---->
@@ -281,7 +230,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
   - [ DeepSpeed4Science.ai Blog
     Post](https://deepspeed4science.ai/2023/09/18/model-showcase-genslms/)
 
-  - [ Loooooooong Sequence Lengths](./qmd/long-sequences/index.qmd)
+  - [ Loooooooong Sequence Lengths](./posts/long-sequences/index.qmd)
 
 - [Comprehensive Performance Study of LLMs on Novel AI
   Accelerators](https://arxiv.org/abs/2310.04607)  
@@ -461,7 +410,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) (11/2022)</span>
+> ### <span class="dim-text">[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) \[11/2022\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -471,7 +420,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) (10/2022)</span>
+> ### <span class="dim-text">[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) \[10/2022\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -481,7 +430,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) (08/2022)</span>
+> ### <span class="dim-text">[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) \[08/2022\]</span>
 >
 > - [📕 accompanying
 >   notebook](https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb)
@@ -504,7 +453,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro (03/2022)</span>
+> ### <span class="dim-text">[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro \[03/2022\]</span>
 >
 > - [**Machine Learning in
 >   HEP**](https://saforem2.github.io/physicsSeminar), at UNC
@@ -520,7 +469,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 \[BNL\]](https://indico.bnl.gov/event/13576/) (12/2021)</span>
+> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 \[BNL\]](https://indico.bnl.gov/event/13576/) \[12/2021\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -530,7 +479,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT\* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) (09/2021)</span>
+> ### <span class="dim-text">[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT\* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) \[09/2021\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -540,14 +489,14 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar (2021)</span>
+> ### <span class="dim-text">[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar \[2021\]</span>
 >
 > [**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) at the *MIT
 > Lattice Group Seminar*, 2021
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) (2021)</span>
+> ### <span class="dim-text">[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) \[2021\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://bit.ly/mainz21" title="Deep Learning HMC for Improved Gauge Generation" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -559,7 +508,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd/embed) @ U. Iowa (2020)</span>
+> ### <span class="dim-text">[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd/embed) @ U. Iowa \[2020\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -585,71 +534,136 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 ### 📦 Projects
 
-<div class="columns"
-style="display: flex; flex-direction: row; align-items: center; text-align:left;">
+<!-- ::: {.callout-tip icon=false aria-title="GitHub Stats" title=' [GitHub Stats]{.dim-text-11}' collapse="false" style="text-align: left!important; width:100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.3)!important; opacity:100%;"} -->
 
-<div class="column" style="text-align: left;">
+> [!TIP]
+>
+> ### <span class="dim-text-11">📊 GitHub Stats</span>
+>
+> <!-- [![](https://github-readme-streak-stats.herokuapp.com/?user=saforem2&theme=transparent&hide_border=true&include_all_commits=true&include_private=true&text_color=838383&color=838383)]{#img-stretch} -->
+>
+> <div class="columns"
+> style="display: flex; flex-direction: row; align-items: center; text-align:left;">
+>
+> <div class="column" style="text-align: left;width: 57%;">
+>
+> <!-- [![](https://raw.githubusercontent.com/saforem2/github-stats/41d7eeff7888a8c9918152ce46a268cf55d8eabb/generated/overview.svg)](https://github.com/saforem2/) -->
+>
+> [![](https://github-readme-stats.vercel.app/api?username=saforem2&show_icons=true&theme=transparent&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true&rank_icon=percentile.png)](https://github.com/saforem2)
+>
+> </div>
+>
+> <div class="column" style="text-align: left; width: 43%">
+>
+> [![](https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383.png)](https://github.com/saforem2/github-readme-stats)
+> <!-- [![](https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&show_icons=true&theme=transparent&text_color=838383&title_color=838383&hide_border=true&langs_count=10)](https://github.com/saforem2/github-readme-stats) -->
+>
+> </div>
+>
+> </div>
+>
+> [![](https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383)](https://git.io/streak-stats)
+> <img
+> src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&amp;theme=minimal&amp;bg_color=00000000&amp;line=838383&amp;color=838383&amp;days=30&amp;point=838383&amp;hide_border=true&amp;hide_title=true&amp;area=true.png"
+> id="img-stretch" />
+>
+> <!-- ::: {.columns style="display: flex; flex-direction: row; align-items: center; text-align:left;"} -->
+> <!-- ::: {.column style="text-align: left; width: 50%"} -->
+> <!-- [![](https://raw.githubusercontent.com/saforem2/github-stats/master/generated/languages.svg)](https://github.com/saforem2/) -->
+> <!-- ::: -->
+> <!-- ::: {.column style="text-align: left; width: 50%"} -->
+> <!-- [![](https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383)](https://github.com/saforem2/) -->
+> <!-- ::: -->
+> <!-- ![](https://github-readme-streak-stats.herokuapp.com/?user=saforem2&theme=transparent&hide_border=true&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true) -->
+> <!-- ![](https://api.githubtrends.io/user/png/saforem2/langs?time_range=one_year&include_private=True&loc_metric=changed&theme=dark) -->
+> <!-- ![](https://api.githubtrends.io/user/png/saforem2/repos?time_range=one_year&include_private=True&group=private&loc_metric=changed&theme=dark) -->
+> <details closed>
+> <summary>
+> Even More !!
+> </summary>
+> <details closed>
+> <summary>
+> Wakatime
+> </summary>
+>
+> [![](https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png)](https://github.com/saforem2/)
+>
+> </details>
+>
+> ![](https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg)
+>
+> </details>
 
-[![](https://github-readme-stats.vercel.app/api?username=saforem2&show_icons=true&theme=transparent&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true&rank_icon=percentile.png)](https://github.com/saforem2)
+<!-- ####  Repos -->
+<!-- ::: {.callout-tip icon=false aria-title="Repos" title=' [Repos]{.dim-text-11}' collapse="false" style="text-align: left!important; width:100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.3)!important; opacity:100%;"} -->
 
-</div>
+> [!TIP]
+>
+> ### <span class="dim-text-11">📂 [`saforem2/`](https://github.com/saforem2?tab=repositories)</span>
+>
+> <div class="grid"
+> style="grid-template-columns: repeat(var(--bs-columns, 2), 1fr);">
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/l2hmc-qcd)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/ezpz)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/wordplay)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/personal_site)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/ambivalent)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/enrich)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/public)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=lattice23&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/lattice23)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=llm-workshop-talk&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/llm-workshop-talk)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/quarto-site-template)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/public)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=nvim&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/nvim)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/glitz)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=saforem2&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/saforem2)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=awesome-stars&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/awesome-stars)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/nftqcd/fthmc)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383.png)](https://github.com/argonne-lcf/CompPerfWorkshop)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/ai-science-training-series)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/mlprof)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/user-guides)
+>
+> [![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383.png)](https://github.com/saforem2/personal_site)
+>
+> </div>
 
-<div class="column" style="text-align:left;">
-
-[![](https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png)](https://github.com/saforem2/)
-
-</div>
-
-</div>
-
-<div class="grid"
-style="grid-template-columns: repeat(var(--bs-columns, 2), 1fr);">
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/l2hmc-qcd)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/ezpz)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/wordplay)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/personal_site)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/ambivalent)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/enrich)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/public)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=lattice23&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/lattice23)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=llm-workshop-talk&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/llm-workshop-talk)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/quarto-site-template)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/public)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=nvim&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/nvim)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/glitz)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=saforem2&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/saforem2)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=awesome-stars&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/saforem2/awesome-stars)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/nftqcd/fthmc)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383.png)](https://github.com/argonne-lcf/CompPerfWorkshop)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/ai-science-training-series)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/mlprof)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png)](https://github.com/argonne-lcf/user-guides)
-
-[![](https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383.png)](https://github.com/saforem2/personal_site)
-
-</div>
+<!-- :::: {.columns style="display: flex; flex-direction: row; align-items: center; text-align:left;"} -->
+<!---->
+<!-- ::: {.column style="text-align: left;"} -->
+<!-- ![](https://github-readme-streak-stats.herokuapp.com/?user=saforem2&theme=transparent&hide_border=true&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true)   -->
+<!-- ::: -->
+<!---->
+<!-- ::: {.column style="text-align:left;"} -->
+<!-- [![](https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&show_icons=true&layout=compact&langs_count=20&theme=transparent&title_color=838383&hide_border=true&text_color=838383)](https://github.com/saforem2/github-readme-stats) -->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
+<!-- [![](https://github-readme-stats.vercel.app/api?username=saforem2&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&count_private=true&hide_title=false&hide_rank=true&icon_color=#00CCFF&title_color=#00CCFF&card_width=100)](https://github.com/anuraghazra/github-readme-stats) -->
+<!-- [![](https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&2&theme=transparent&show_icons=true&hide_border=true&hide_rank=false&icon_color=#00CCFF&title_color=#00CCFF&card_width=100&langs_count=15&range=last_30_days&layout=compact)](https://wakatime.com/@saforem2) -->
+<!--![](https://github.com/saforem2/saforem2/blob/main/github-metrics.svg)-->
 
 ### 🪖 Experience
 
@@ -695,7 +709,7 @@ Table 2: 🎓 Education
 
 </div>
 
-### 🎶 Playing
+### 🎶 Music
 
 <script>
 /**
@@ -770,7 +784,7 @@ setInterval(getSetLastFM, 10 * 1000);
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">13:34:23</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">06</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">26</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">11:27:50</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">05</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
 [^1]: If this sounds like something you’d be interested in doing, please

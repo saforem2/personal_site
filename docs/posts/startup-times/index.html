@@ -1,0 +1,2778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sam Foreman ">
+<meta name="dcterms.date" content="2024-03-21">
+
+<title>⏰ Starting Up Distributed Training – Sam Foreman</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../.././favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+<!-- End Google Tag Manager -->
+<link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/default.css">
+<link rel="stylesheet" href="../../css/callouts.css">
+<meta property="og:title" content="Sam Foreman">
+<meta property="og:description" content="My ramblings about science and computers">
+<meta property="og:image" content="https://samforeman.me/posts/startup-times/assets/thumbnail.png">
+<meta property="og:site_name" content="Sam Foreman">
+<meta property="og:image:height" content="2572">
+<meta property="og:image:width" content="4112">
+<meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:description" content="My ramblings about science and computers">
+<meta name="twitter:image" content="https://samforeman.me/posts/startup-times/assets/thumbnail.png">
+<meta name="twitter:creator" content="@saforem2">
+<meta name="twitter:site" content="@saforem2">
+<meta name="twitter:image-height" content="2572">
+<meta name="twitter:image-width" content="4112">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Starting Up Distributed Training">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2024-03-21">
+<meta name="citation_cover_date" content="2024-03-21">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-03-21">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/qmd/ezpz/ezpz">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../.././favicon.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sam Foreman</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-posts" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🪧 Posts</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-posts">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.html">
+ <span class="dropdown-text">📬 All Posts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/determinstic-flash-attn/index.html">
+ <span class="dropdown-text">🎰 Deterministic Flash Attention</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/flash-attn-sunspot/index.html">
+ <span class="dropdown-text">📸 <code>flash-attn</code> on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/mpi4py-reproducer/index.html">
+ <span class="dropdown-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/diffusion/diffusion.html">
+ <span class="dropdown-text">🎲 MCMC + Diffusion Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/dope-slides/index.html">
+ <span class="dropdown-text">💅 How to Make Dope Slides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/startup-times/index.html">
+ <span class="dropdown-text">⏰ Starting Up Distributed Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/long-sequences/index.html">
+ <span class="dropdown-text">🚂 Loooooooong Sequence Lengths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/aurora-gpt/megatron-ds-intel.html">
+ <span class="dropdown-text">🏎️ <code>Megatron-DeepSpeed</code> + Intel XPU</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/2dU1/index.html">
+ <span class="dropdown-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/4dSU3/index.html">
+ <span class="dropdown-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-talks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🎙️ Talks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-talks">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/talks/index.html">
+ <span class="dropdown-text">📢 All Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/parallel-training-slides/">
+ <span class="dropdown-text">Parallel Training Techniques</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-workshop-talk/">
+ <span class="dropdown-text">LLMs from Scratch</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/LLM-tutorial">
+ <span class="dropdown-text">Creating Small[~ish] LLMs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/onapi-talk/#0">
+ <span class="dropdown-text">Exascale Science on Aurora</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-lunch-talk/">
+ <span class="dropdown-text">LLM Lunch Talk</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/scaling4science">
+ <span class="dropdown-text">Scaling LLMs for Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lattice23">
+ <span class="dropdown-text">MLMC (for LQCD)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lqcd-pasc23">
+ <span class="dropdown-text">Generative Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/deep-fridays">
+ <span class="dropdown-text">Efficient Sampling for LGT</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ai4sci-large-scale-training">
+ <span class="dropdown-text">Large Scale Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/hparam-management-sdl2022">
+ <span class="dropdown-text">Hyperparameter Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ATPESC-StatisticalLearning">
+ <span class="dropdown-text">Statistical Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/anl-job-talk/">
+ <span class="dropdown-text">Scientific Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">Machine Learning in HEP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21">
+ <span class="dropdown-text">DLHMC for Improved Gauge Generation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">
+ <span class="dropdown-text">ML for LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21_overview">
+ <span class="dropdown-text">ML Techniques in LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">ML for HEP</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🎁 Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/projects/index.html">
+ <span class="dropdown-text">📚 All Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ezpz">
+ <span class="dropdown-text">🍋 <code>ezpz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/l2hmc-qcd">
+ <span class="dropdown-text">🟥 <code>l2hmc-qcd</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/argonne-lcf/Megatron-DeepSpeed)">
+ <span class="dropdown-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/wordplay">
+ <span class="dropdown-text">💬 <code>wordplay</code> 🎮</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.alcf.anl.gov/alcf-ai-science-training-series?">
+ <span class="dropdown-text">🎓 <code>ai-science-training</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/enrich">
+ <span class="dropdown-text">💸 <code>enrich</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ambivalent">
+ <span class="dropdown-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/climate-analysis">
+ <span class="dropdown-text">🌍 <code>climate-analysis</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/glitz">
+ <span class="dropdown-text">🎨 <code>glitz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/personal_site">
+ <span class="dropdown-text">🙋🏻<code>personal_site</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/notes-demo">
+ <span class="dropdown-text">🗒️ <code>Notes-Demo</code></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://twitter.com/saforem2"> 
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:twitter" aria-label="Icon twitter from line-md Iconify.design set." title="Icon twitter from line-md Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/saforem2/personal_site"> 
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#initialization-times" id="toc-initialization-times" class="nav-link active" data-scroll-target="#initialization-times">Initialization Times</a>
+  <ul class="collapse">
+  <li><a href="#sec-measurements" id="toc-sec-measurements" class="nav-link" data-scroll-target="#sec-measurements">Measuring / Calculating Startup Time</a></li>
+  </ul></li>
+  <li><a href="#minimal-working-example" id="toc-minimal-working-example" class="nav-link" data-scroll-target="#minimal-working-example">Minimal Working Example</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/startup-times/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/startup-times/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">⏰ Starting Up Distributed Training</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/posts/startup-times/index.qmd"><i class="bi"></i></button></div></div>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading"></div>
+  <div class="quarto-title-meta-heading"></div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://samforeman.me"><span class="dim-text">Sam Foreman</span> </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            [ALCF]
+            </a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading"></div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 21, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="initialization-times" class="level2">
+<h2 class="anchored" data-anchor-id="initialization-times">Initialization Times</h2>
+<!-- ::: {.callout-info title='[ Startup Times (Perlmutter)]{.dim-text}' collapse="True"} -->
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[{{< iconify material-symbols attach-email-outline-rounded >}} Application Startup Time]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="dim-text"><iconify-icon inline="" icon="material-symbols:attach-email-outline-rounded" aria-label="Icon attach-email-outline-rounded from material-symbols Iconify.design set." title="Icon attach-email-outline-rounded from material-symbols Iconify.design set."></iconify-icon> Application Startup Time</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>From Tanima:</p>
+<blockquote class="blockquote">
+<p>Hi Sam and Corey,</p>
+<p>Thanks for your comments on measuring the application start up time last week.</p>
+<p>Typically, we report the throughput performance after the start-up and warm-up during the “steady” state of the training.</p>
+<p>We have a few follow-up questions so that we establish a methodology to address the issue brought up by Argonne.</p>
+<ol type="1">
+<li><p>We can set a few timestamps in the model scripts and job scripts used for the queue submission: Job script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">Time</span> stamp A:  </span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">&lt;</span>actual <span class="ex">python</span> command using mpiexec<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">Inside</span> the model script:  </span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">main()</span>  </span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="ex">Timestamp</span> B:  </span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">[...]</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">Timestamp</span> C:  </span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">First</span> training steps and onwards.  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By startup time, do you mean measuring time difference between A and C or B and C?</p></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Will the measurement methodology be the same for distributed training?<br>
+For examples, we can measure the start-up time for the <code>rank0</code>?</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li><p>If we need to report the startup time for the DL applications, do we need to collect measurements using the actual Aurora NRE workloads or some small benchmarking test cases?</p>
+<p>For example, we can try to recreate the typical start-up scenarios, like library imports, and measure those separately as shown below.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">Job</span> script:</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">Time</span> stamp A:</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">&lt;</span>actual <span class="ex">python</span> command using mpiexec<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">Time</span> stamp B:</span>
+<span id="cb2-6"><a href="#cb2-6"></a> <span class="ex">import</span> torch</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">Time</span> stamp C</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">import</span> IPEX</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">Time</span> stamp D</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="ex">Etc...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you have any other scenarios, please feel free to suggest.</p></li>
+</ol>
+<p>Thanks, Tanima.</p>
+</blockquote></li>
+</ul>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>In <a href="#sec-measurements">Measuring / Calculating Startup Time</a>,I provide a summary of how the startup time is identified and calculated.</p></li>
+<li><p>I’m not sure exactly I understand</p>
+<blockquote class="blockquote">
+<p>Will the measurement methodology be the same for distributed training? For examples, we can measure the start-up time for the rank0?</p>
+</blockquote>
+<p>The startup time is being measured for distributed training (logs only created on <code>RANK = 0</code>)</p></li>
+<li><p>I discuss in <a href="#minimal-working-example">Minimal Working Example</a> a minimal example that can be used to measure the startup times.</p>
+<ul>
+<li>This is using a library I’ve been working on, <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a> that is designed to help simplify the process of setting up / initializing distributed training across many GPUs.</li>
+</ul></li>
+</ol>
+<section id="sec-measurements" class="level3">
+<h3 class="anchored" data-anchor-id="sec-measurements">Measuring / Calculating Startup Time</h3>
+<ul>
+<li><p>The startup timing was identified by parsing the logfiles from existing runs and calculating the difference <span class="math inline">\delta t = t_{1} - t_{0}</span>,</p>
+<ul>
+<li><p><span class="math inline">t_{0}</span> is the time stamp at the <em>very</em> beginning of the shell script (defined <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/657bb3e312e793d7b503f475b59e44c1aee44205/ALCF/train-gpt3.sh#L3">here</a>) which then launches <code>mpiexec &lt;mpi-args&gt; python3 [...]</code>.</p>
+<ul>
+<li><p><span class="math inline">t_{0}</span> appears in the logfile as:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">Job</span> started at: 2023-11-02-183323 on x3004c0s13b0n0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><p><span class="math inline">t_{1}</span> is identified as the timestamp associated with the completion of the first training step</p>
+<ul>
+<li><p><span class="math inline">t_{1}</span> appears in the logfile as:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">[2023-11-02</span> 18:34:13,122] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">logging.py:96:log_dist</span><span class="pp">]</span> [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[<span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">,</span> <span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul></li>
+<li><p>Below is an example of the bash script use to parse the logfiles and identify these timestamps:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a>  <span class="ex">$</span> for f in <span class="va">$(</span><span class="fu">tail</span> <span class="at">-5</span> logfiles<span class="va">)</span> <span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> <span class="va">$f</span><span class="kw">;</span> <span class="fu">cat</span> <span class="va">$f</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">"Job started|step=0\,"</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">;</span> <span class="bu">echo</span> <span class="st">"\n"</span> <span class="kw">;</span> <span class="cf">done</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_actCkpt_GPT1T_4L_z1_seqlen2048_mp8_pp2_sp1_nl4_hs25600_gb16_mb1/logs/foremans-x3004c0s13b0n0-nhosts4-ngpu16-2023-11-02-183323.log</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="ex">Job</span> started at: 2023-11-02-183323 on x3004c0s13b0n0</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="ex">[2023-11-02</span> 18:34:13,122] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">logging.py:96:log_dist</span><span class="pp">]</span> [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[<span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">,</span> <span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">]</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_SP_actCkpt_GPT125M_z0_seqlen2048_mp16_pp1_sp1_nl12_hs768_gb1_mb1/logs/foremans-x3015c0s37b0n0-nhosts4-ngpu16-2023-11-02-184240.log</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="ex">Job</span> started at: 2023-11-02-184240 on x3015c0s37b0n0</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_SP_actCkpt_GPT125M_z0_seqlen2048_mp16_pp1_sp1_nl12_hs768_gb1_mb1/logs/foremans-x3015c0s37b0n0-nhosts4-ngpu16-2023-11-02-184259.log</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="ex">Job</span> started at: 2023-11-02-184259 on x3015c0s37b0n0</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="ex">[2023-11-02</span> 18:43:23,385] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">logging.py:96:log_dist</span><span class="pp">]</span> [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[<span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">,</span> <span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">]</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_SP_actCkpt_GPT125M_z0_seqlen2048_mp16_pp1_sp1_nl12_hs768_gb1_mb1/logs/foremans-x3004c0s13b0n0-nhosts4-ngpu16-2023-11-02-184407.log</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>  <span class="ex">Job</span> started at: 2023-11-02-184407 on x3004c0s13b0n0</span>
+<span id="cb5-15"><a href="#cb5-15"></a>  <span class="ex">[2023-11-02</span> 18:44:32,804] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">logging.py:96:log_dist</span><span class="pp">]</span> [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[<span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">,</span> <span class="er">(</span><span class="ex">0.9,</span> 0.999<span class="kw">)</span><span class="ex">]</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a>  <span class="ex">/lus/grand/projects/datascience/foremans/locations/polaris/projects/argonne-lcf/Megatron-DeepSpeed/outputs/gpt_actCkpt_GPT1T_4L_z1_seqlen2048_mp8_pp2_sp1_nl4_hs25600_gb16_mb2/logs/foremans-x3108c0s25b1n0-nhosts2-ngpu8-2023-11-02-192739.log</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="ex">Job</span> started at: 2023-11-02-192739 on x3108c0s25b1n0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[{{< iconify octicon stopwatch-16 >}} Startup Times (Perlmutter)]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="dim-text"><iconify-icon inline="" icon="octicon:stopwatch-16" aria-label="Icon stopwatch-16 from octicon Iconify.design set." title="Icon stopwatch-16 from octicon Iconify.design set."></iconify-icon> Startup Times (Perlmutter)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="tbl-perlmutter-init" class="quarto-float quarto-figure quarto-figure-center anchored" style="font-size: 0.8em;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-perlmutter-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Startup times on Perlmutter
+</figcaption>
+<div aria-describedby="tbl-perlmutter-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">****</th>
+<th style="text-align: center;"><strong>model_size</strong></th>
+<th style="text-align: center;"><strong>world_size</strong></th>
+<th style="text-align: center;"><strong>start</strong></th>
+<th style="text-align: center;"><strong>stop</strong></th>
+<th style="text-align: center;"><strong>t0</strong></th>
+<th style="text-align: center;"><strong>t1</strong></th>
+<th style="text-align: center;"><strong>dt</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008217-nhosts2-ngpu8-2023-10-05-191101.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-05-191101</td>
+<td style="text-align: center;">2023-10-05-191215</td>
+<td style="text-align: center;">191101</td>
+<td style="text-align: center;">191215</td>
+<td style="text-align: center;">114</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008217-nhosts2-ngpu8-2023-10-05-191400.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-05-191400</td>
+<td style="text-align: center;">2023-10-05-191511</td>
+<td style="text-align: center;">191400</td>
+<td style="text-align: center;">191511</td>
+<td style="text-align: center;">111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008217-nhosts2-ngpu8-2023-10-05-191707.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-05-191707</td>
+<td style="text-align: center;">2023-10-05-191817</td>
+<td style="text-align: center;">191707</td>
+<td style="text-align: center;">191817</td>
+<td style="text-align: center;">110</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008553-nhosts2-ngpu8-2023-10-15-114506.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-114506</td>
+<td style="text-align: center;">2023-10-15-114616</td>
+<td style="text-align: center;">114506</td>
+<td style="text-align: center;">114616</td>
+<td style="text-align: center;">110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts2-ngpu8-2023-10-15-133531.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-133531</td>
+<td style="text-align: center;">2023-10-15-133745</td>
+<td style="text-align: center;">133531</td>
+<td style="text-align: center;">133745</td>
+<td style="text-align: center;">214</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts2-ngpu8-2023-10-15-135041.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-135041</td>
+<td style="text-align: center;">2023-10-15-135255</td>
+<td style="text-align: center;">135041</td>
+<td style="text-align: center;">135255</td>
+<td style="text-align: center;">214</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts2-ngpu8-2023-10-15-140806.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-140806</td>
+<td style="text-align: center;">2023-10-15-141236</td>
+<td style="text-align: center;">140806</td>
+<td style="text-align: center;">141236</td>
+<td style="text-align: center;">430</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts2-ngpu8-2023-10-15-143120.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-143120</td>
+<td style="text-align: center;">2023-10-15-143655</td>
+<td style="text-align: center;">143120</td>
+<td style="text-align: center;">143655</td>
+<td style="text-align: center;">535</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008268-nhosts2-ngpu8-2023-10-15-154337.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-154337</td>
+<td style="text-align: center;">2023-10-15-154446</td>
+<td style="text-align: center;">154337</td>
+<td style="text-align: center;">154446</td>
+<td style="text-align: center;">109</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008268-nhosts2-ngpu8-2023-10-15-154943.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-154943</td>
+<td style="text-align: center;">2023-10-15-155317</td>
+<td style="text-align: center;">154943</td>
+<td style="text-align: center;">155317</td>
+<td style="text-align: center;">374</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008268-nhosts2-ngpu8-2023-10-15-162315.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-162315</td>
+<td style="text-align: center;">2023-10-15-162441</td>
+<td style="text-align: center;">162315</td>
+<td style="text-align: center;">162441</td>
+<td style="text-align: center;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-180714.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-180714</td>
+<td style="text-align: center;">2023-10-15-180805</td>
+<td style="text-align: center;">180714</td>
+<td style="text-align: center;">180805</td>
+<td style="text-align: center;">91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-181733.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-181733</td>
+<td style="text-align: center;">2023-10-15-181834</td>
+<td style="text-align: center;">181733</td>
+<td style="text-align: center;">181834</td>
+<td style="text-align: center;">101</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-182228.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-182228</td>
+<td style="text-align: center;">2023-10-15-183031</td>
+<td style="text-align: center;">182228</td>
+<td style="text-align: center;">183031</td>
+<td style="text-align: center;">803</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-183345.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-183345</td>
+<td style="text-align: center;">2023-10-15-183750</td>
+<td style="text-align: center;">183345</td>
+<td style="text-align: center;">183750</td>
+<td style="text-align: center;">405</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-184442.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-184442</td>
+<td style="text-align: center;">2023-10-15-184727</td>
+<td style="text-align: center;">184442</td>
+<td style="text-align: center;">184727</td>
+<td style="text-align: center;">285</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts2-ngpu8-2023-10-15-185952.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-185952</td>
+<td style="text-align: center;">2023-10-15-190046</td>
+<td style="text-align: center;">185952</td>
+<td style="text-align: center;">190046</td>
+<td style="text-align: center;">4094</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-15-191508.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-191508</td>
+<td style="text-align: center;">2023-10-15-191608</td>
+<td style="text-align: center;">191508</td>
+<td style="text-align: center;">191608</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-15-192404.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-192404</td>
+<td style="text-align: center;">2023-10-15-192504</td>
+<td style="text-align: center;">192404</td>
+<td style="text-align: center;">192504</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-15-193041.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-193041</td>
+<td style="text-align: center;">2023-10-15-193137</td>
+<td style="text-align: center;">193041</td>
+<td style="text-align: center;">193137</td>
+<td style="text-align: center;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-15-193448.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-15-193448</td>
+<td style="text-align: center;">2023-10-15-193540</td>
+<td style="text-align: center;">193448</td>
+<td style="text-align: center;">193540</td>
+<td style="text-align: center;">92</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-195802.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-195802</td>
+<td style="text-align: center;">2023-10-15-195904</td>
+<td style="text-align: center;">195802</td>
+<td style="text-align: center;">195904</td>
+<td style="text-align: center;">102</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-200019.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-200019</td>
+<td style="text-align: center;">2023-10-15-200258</td>
+<td style="text-align: center;">200019</td>
+<td style="text-align: center;">200258</td>
+<td style="text-align: center;">239</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-200902.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-200902</td>
+<td style="text-align: center;">2023-10-15-201239</td>
+<td style="text-align: center;">200902</td>
+<td style="text-align: center;">201239</td>
+<td style="text-align: center;">337</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-201524.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-201524</td>
+<td style="text-align: center;">2023-10-15-201612</td>
+<td style="text-align: center;">201524</td>
+<td style="text-align: center;">201612</td>
+<td style="text-align: center;">88</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-201834.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-201834</td>
+<td style="text-align: center;">2023-10-15-201923</td>
+<td style="text-align: center;">201834</td>
+<td style="text-align: center;">201923</td>
+<td style="text-align: center;">89</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-202402.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-202402</td>
+<td style="text-align: center;">2023-10-15-202501</td>
+<td style="text-align: center;">202402</td>
+<td style="text-align: center;">202501</td>
+<td style="text-align: center;">99</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-login12-nhosts4-ngpu16-2023-10-15-202606.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-15-202606</td>
+<td style="text-align: center;">2023-10-15-202713</td>
+<td style="text-align: center;">202606</td>
+<td style="text-align: center;">202713</td>
+<td style="text-align: center;">107</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-16-084033.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-16-084033</td>
+<td style="text-align: center;">2023-10-16-084212</td>
+<td style="text-align: center;">84033</td>
+<td style="text-align: center;">84212</td>
+<td style="text-align: center;">179</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-16-084628.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-16-084628</td>
+<td style="text-align: center;">2023-10-16-084728</td>
+<td style="text-align: center;">84628</td>
+<td style="text-align: center;">84728</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-16-085401.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-16-085401</td>
+<td style="text-align: center;">2023-10-16-085505</td>
+<td style="text-align: center;">85401</td>
+<td style="text-align: center;">85505</td>
+<td style="text-align: center;">104</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-16-090142.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-16-090142</td>
+<td style="text-align: center;">2023-10-16-090305</td>
+<td style="text-align: center;">90142</td>
+<td style="text-align: center;">90305</td>
+<td style="text-align: center;">163</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-16-093404.log</code></td>
+<td style="text-align: center;">actCkpt_GPT13B</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-16-093404</td>
+<td style="text-align: center;">2023-10-16-093504</td>
+<td style="text-align: center;">93404</td>
+<td style="text-align: center;">93504</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts4-ngpu16-2023-10-16-101437.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-101437</td>
+<td style="text-align: center;">2023-10-16-101549</td>
+<td style="text-align: center;">101437</td>
+<td style="text-align: center;">101549</td>
+<td style="text-align: center;">112</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-101512.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-101512</td>
+<td style="text-align: center;">2023-10-16-101615</td>
+<td style="text-align: center;">101512</td>
+<td style="text-align: center;">101615</td>
+<td style="text-align: center;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-102217.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-102217</td>
+<td style="text-align: center;">2023-10-16-102452</td>
+<td style="text-align: center;">102217</td>
+<td style="text-align: center;">102452</td>
+<td style="text-align: center;">235</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-102750.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-102750</td>
+<td style="text-align: center;">2023-10-16-103243</td>
+<td style="text-align: center;">102750</td>
+<td style="text-align: center;">103243</td>
+<td style="text-align: center;">493</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008572-nhosts4-ngpu16-2023-10-16-103113.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-103113</td>
+<td style="text-align: center;">2023-10-16-103237</td>
+<td style="text-align: center;">103113</td>
+<td style="text-align: center;">103237</td>
+<td style="text-align: center;">124</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-104037.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-104037</td>
+<td style="text-align: center;">2023-10-16-104148</td>
+<td style="text-align: center;">104037</td>
+<td style="text-align: center;">104148</td>
+<td style="text-align: center;">111</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-104819.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-104819</td>
+<td style="text-align: center;">2023-10-16-110002</td>
+<td style="text-align: center;">104819</td>
+<td style="text-align: center;">110002</td>
+<td style="text-align: center;">5183</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008396-nhosts4-ngpu16-2023-10-16-110119.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-110119</td>
+<td style="text-align: center;">2023-10-16-110225</td>
+<td style="text-align: center;">110119</td>
+<td style="text-align: center;">110225</td>
+<td style="text-align: center;">106</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008701-nhosts4-ngpu16-2023-10-16-113715.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-113715</td>
+<td style="text-align: center;">2023-10-16-113824</td>
+<td style="text-align: center;">113715</td>
+<td style="text-align: center;">113824</td>
+<td style="text-align: center;">109</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008701-nhosts4-ngpu16-2023-10-16-114236.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-114236</td>
+<td style="text-align: center;">2023-10-16-114338</td>
+<td style="text-align: center;">114236</td>
+<td style="text-align: center;">114338</td>
+<td style="text-align: center;">102</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008701-nhosts4-ngpu16-2023-10-16-114610.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-114610</td>
+<td style="text-align: center;">2023-10-16-114711</td>
+<td style="text-align: center;">114610</td>
+<td style="text-align: center;">114711</td>
+<td style="text-align: center;">101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008701-nhosts4-ngpu16-2023-10-16-114819.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-114819</td>
+<td style="text-align: center;">2023-10-16-114953</td>
+<td style="text-align: center;">114819</td>
+<td style="text-align: center;">114953</td>
+<td style="text-align: center;">134</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008701-nhosts4-ngpu16-2023-10-16-131058.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-16-131058</td>
+<td style="text-align: center;">2023-10-16-131203</td>
+<td style="text-align: center;">131058</td>
+<td style="text-align: center;">131203</td>
+<td style="text-align: center;">145</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008576-nhosts1-ngpu4-2023-10-16-151427.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-151427</td>
+<td style="text-align: center;">2023-10-16-151600</td>
+<td style="text-align: center;">151427</td>
+<td style="text-align: center;">151600</td>
+<td style="text-align: center;">173</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008576-nhosts1-ngpu4-2023-10-16-152528.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-152528</td>
+<td style="text-align: center;">2023-10-16-152640</td>
+<td style="text-align: center;">152528</td>
+<td style="text-align: center;">152640</td>
+<td style="text-align: center;">112</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008224-nhosts1-ngpu4-2023-10-16-175717.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-175717</td>
+<td style="text-align: center;">2023-10-16-175829</td>
+<td style="text-align: center;">175717</td>
+<td style="text-align: center;">175829</td>
+<td style="text-align: center;">112</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008224-nhosts1-ngpu4-2023-10-16-180457.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-180457</td>
+<td style="text-align: center;">2023-10-16-180605</td>
+<td style="text-align: center;">180457</td>
+<td style="text-align: center;">180605</td>
+<td style="text-align: center;">148</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008224-nhosts1-ngpu4-2023-10-16-183116.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-183116</td>
+<td style="text-align: center;">2023-10-16-183216</td>
+<td style="text-align: center;">183116</td>
+<td style="text-align: center;">183216</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008224-nhosts1-ngpu4-2023-10-16-183921.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-183921</td>
+<td style="text-align: center;">2023-10-16-184033</td>
+<td style="text-align: center;">183921</td>
+<td style="text-align: center;">184033</td>
+<td style="text-align: center;">112</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008237-nhosts1-ngpu4-2023-10-16-215614.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-16-215614</td>
+<td style="text-align: center;">2023-10-16-215815</td>
+<td style="text-align: center;">215614</td>
+<td style="text-align: center;">215815</td>
+<td style="text-align: center;">201</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-052944.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-052944</td>
+<td style="text-align: center;">2023-10-17-053139</td>
+<td style="text-align: center;">52944</td>
+<td style="text-align: center;">53139</td>
+<td style="text-align: center;">195</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-053529.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-053529</td>
+<td style="text-align: center;">2023-10-17-053650</td>
+<td style="text-align: center;">53529</td>
+<td style="text-align: center;">53650</td>
+<td style="text-align: center;">121</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-053910.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-053910</td>
+<td style="text-align: center;">2023-10-17-054120</td>
+<td style="text-align: center;">53910</td>
+<td style="text-align: center;">54120</td>
+<td style="text-align: center;">210</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-054238.log</code></td>
+<td style="text-align: center;">GPT2_7B</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-054238</td>
+<td style="text-align: center;">2023-10-17-054346</td>
+<td style="text-align: center;">54238</td>
+<td style="text-align: center;">54346</td>
+<td style="text-align: center;">108</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-060418.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-060418</td>
+<td style="text-align: center;">2023-10-17-060600</td>
+<td style="text-align: center;">60418</td>
+<td style="text-align: center;">60600</td>
+<td style="text-align: center;">182</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-061514.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-061514</td>
+<td style="text-align: center;">2023-10-17-061653</td>
+<td style="text-align: center;">61514</td>
+<td style="text-align: center;">61653</td>
+<td style="text-align: center;">139</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-062102.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-062102</td>
+<td style="text-align: center;">2023-10-17-062252</td>
+<td style="text-align: center;">62102</td>
+<td style="text-align: center;">62252</td>
+<td style="text-align: center;">150</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008385-nhosts1-ngpu4-2023-10-17-062445.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-062445</td>
+<td style="text-align: center;">2023-10-17-062720</td>
+<td style="text-align: center;">62445</td>
+<td style="text-align: center;">62720</td>
+<td style="text-align: center;">275</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008333-nhosts2-ngpu8-2023-10-17-064643.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-17-064643</td>
+<td style="text-align: center;">2023-10-17-064848</td>
+<td style="text-align: center;">64643</td>
+<td style="text-align: center;">64848</td>
+<td style="text-align: center;">205</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008333-nhosts2-ngpu8-2023-10-17-065806.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-17-065806</td>
+<td style="text-align: center;">2023-10-17-070003</td>
+<td style="text-align: center;">65806</td>
+<td style="text-align: center;">70003</td>
+<td style="text-align: center;">4197</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008333-nhosts2-ngpu8-2023-10-17-075152.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-17-075152</td>
+<td style="text-align: center;">2023-10-17-075502</td>
+<td style="text-align: center;">75152</td>
+<td style="text-align: center;">75502</td>
+<td style="text-align: center;">350</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008333-nhosts2-ngpu8-2023-10-17-080059.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-17-080059</td>
+<td style="text-align: center;">2023-10-17-080434</td>
+<td style="text-align: center;">80059</td>
+<td style="text-align: center;">80434</td>
+<td style="text-align: center;">375</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008333-nhosts2-ngpu8-2023-10-17-081404.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-17-081404</td>
+<td style="text-align: center;">2023-10-17-081920</td>
+<td style="text-align: center;">81404</td>
+<td style="text-align: center;">81920</td>
+<td style="text-align: center;">516</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008228-nhosts1-ngpu4-2023-10-17-090344.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-090344</td>
+<td style="text-align: center;">2023-10-17-090714</td>
+<td style="text-align: center;">90344</td>
+<td style="text-align: center;">90714</td>
+<td style="text-align: center;">370</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008228-nhosts1-ngpu4-2023-10-17-100759.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2023-10-17-100759</td>
+<td style="text-align: center;">2023-10-17-100957</td>
+<td style="text-align: center;">100759</td>
+<td style="text-align: center;">100957</td>
+<td style="text-align: center;">198</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-182501.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-182501</td>
+<td style="text-align: center;">2023-10-17-184001</td>
+<td style="text-align: center;">182501</td>
+<td style="text-align: center;">184001</td>
+<td style="text-align: center;">1500</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-193736.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-193736</td>
+<td style="text-align: center;">2023-10-17-193856</td>
+<td style="text-align: center;">193736</td>
+<td style="text-align: center;">193856</td>
+<td style="text-align: center;">120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-195432.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-195432</td>
+<td style="text-align: center;">2023-10-17-195536</td>
+<td style="text-align: center;">195432</td>
+<td style="text-align: center;">195536</td>
+<td style="text-align: center;">104</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-201659.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-201659</td>
+<td style="text-align: center;">2023-10-17-201823</td>
+<td style="text-align: center;">201659</td>
+<td style="text-align: center;">201823</td>
+<td style="text-align: center;">164</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-202949.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-202949</td>
+<td style="text-align: center;">2023-10-17-203054</td>
+<td style="text-align: center;">202949</td>
+<td style="text-align: center;">203054</td>
+<td style="text-align: center;">105</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008404-nhosts4-ngpu16-2023-10-17-205848.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-17-205848</td>
+<td style="text-align: center;">2023-10-17-205952</td>
+<td style="text-align: center;">205848</td>
+<td style="text-align: center;">205952</td>
+<td style="text-align: center;">104</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-213244.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-213244</td>
+<td style="text-align: center;">2023-10-17-213406</td>
+<td style="text-align: center;">213244</td>
+<td style="text-align: center;">213406</td>
+<td style="text-align: center;">162</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-213558.log</code></td>
+<td style="text-align: center;">GPT1T_1L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-213558</td>
+<td style="text-align: center;">2023-10-17-213720</td>
+<td style="text-align: center;">213558</td>
+<td style="text-align: center;">213720</td>
+<td style="text-align: center;">162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-214900.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-214900</td>
+<td style="text-align: center;">2023-10-17-214959</td>
+<td style="text-align: center;">214900</td>
+<td style="text-align: center;">214959</td>
+<td style="text-align: center;">59</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-215201.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-215201</td>
+<td style="text-align: center;">2023-10-17-215309</td>
+<td style="text-align: center;">215201</td>
+<td style="text-align: center;">215309</td>
+<td style="text-align: center;">108</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-215612.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-215612</td>
+<td style="text-align: center;">2023-10-17-215726</td>
+<td style="text-align: center;">215612</td>
+<td style="text-align: center;">215726</td>
+<td style="text-align: center;">114</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008577-nhosts8-ngpu32-2023-10-17-215938.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-17-215938</td>
+<td style="text-align: center;">2023-10-17-220044</td>
+<td style="text-align: center;">215938</td>
+<td style="text-align: center;">220044</td>
+<td style="text-align: center;">4106</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008529-nhosts8-ngpu32-2023-10-18-110001.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-18-110001</td>
+<td style="text-align: center;">2023-10-18-110143</td>
+<td style="text-align: center;">110001</td>
+<td style="text-align: center;">110143</td>
+<td style="text-align: center;">142</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008529-nhosts8-ngpu32-2023-10-18-110424.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-18-110424</td>
+<td style="text-align: center;">2023-10-18-110550</td>
+<td style="text-align: center;">110424</td>
+<td style="text-align: center;">110550</td>
+<td style="text-align: center;">126</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008244-nhosts4-ngpu16-2023-10-18-110821.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-18-110821</td>
+<td style="text-align: center;">2023-10-18-110952</td>
+<td style="text-align: center;">110821</td>
+<td style="text-align: center;">110952</td>
+<td style="text-align: center;">131</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008529-nhosts8-ngpu32-2023-10-18-111345.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-18-111345</td>
+<td style="text-align: center;">2023-10-18-111458</td>
+<td style="text-align: center;">111345</td>
+<td style="text-align: center;">111458</td>
+<td style="text-align: center;">113</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008197-nhosts16-ngpu64-2023-10-18-112531.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-112531</td>
+<td style="text-align: center;">2023-10-18-112728</td>
+<td style="text-align: center;">112531</td>
+<td style="text-align: center;">112728</td>
+<td style="text-align: center;">197</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008456-nhosts16-ngpu64-2023-10-18-113119.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-113119</td>
+<td style="text-align: center;">2023-10-18-113343</td>
+<td style="text-align: center;">113119</td>
+<td style="text-align: center;">113343</td>
+<td style="text-align: center;">224</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008244-nhosts4-ngpu16-2023-10-18-113131.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-18-113131</td>
+<td style="text-align: center;">2023-10-18-113257</td>
+<td style="text-align: center;">113131</td>
+<td style="text-align: center;">113257</td>
+<td style="text-align: center;">126</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008244-nhosts4-ngpu16-2023-10-18-113920.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-18-113920</td>
+<td style="text-align: center;">2023-10-18-114157</td>
+<td style="text-align: center;">113920</td>
+<td style="text-align: center;">114157</td>
+<td style="text-align: center;">237</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008197-nhosts16-ngpu64-2023-10-18-114549.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-114549</td>
+<td style="text-align: center;">2023-10-18-114721</td>
+<td style="text-align: center;">114549</td>
+<td style="text-align: center;">114721</td>
+<td style="text-align: center;">172</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008456-nhosts16-ngpu64-2023-10-18-114636.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-114636</td>
+<td style="text-align: center;">2023-10-18-114805</td>
+<td style="text-align: center;">114636</td>
+<td style="text-align: center;">114805</td>
+<td style="text-align: center;">169</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008244-nhosts4-ngpu16-2023-10-18-115808.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-18-115808</td>
+<td style="text-align: center;">2023-10-18-120146</td>
+<td style="text-align: center;">115808</td>
+<td style="text-align: center;">120146</td>
+<td style="text-align: center;">4338</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008456-nhosts16-ngpu64-2023-10-18-123039.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-123039</td>
+<td style="text-align: center;">2023-10-18-123221</td>
+<td style="text-align: center;">123039</td>
+<td style="text-align: center;">123221</td>
+<td style="text-align: center;">182</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008389-nhosts2-ngpu8-2023-10-18-123135.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-18-123135</td>
+<td style="text-align: center;">2023-10-18-123300</td>
+<td style="text-align: center;">123135</td>
+<td style="text-align: center;">123300</td>
+<td style="text-align: center;">165</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008244-nhosts4-ngpu16-2023-10-18-123206.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-18-123206</td>
+<td style="text-align: center;">2023-10-18-123352</td>
+<td style="text-align: center;">123206</td>
+<td style="text-align: center;">123352</td>
+<td style="text-align: center;">146</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008456-nhosts16-ngpu64-2023-10-18-125022.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-18-125022</td>
+<td style="text-align: center;">2023-10-18-125146</td>
+<td style="text-align: center;">125022</td>
+<td style="text-align: center;">125146</td>
+<td style="text-align: center;">124</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-122736.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-122736</td>
+<td style="text-align: center;">2023-10-22-122844</td>
+<td style="text-align: center;">122736</td>
+<td style="text-align: center;">122844</td>
+<td style="text-align: center;">108</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-123824.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-123824</td>
+<td style="text-align: center;">2023-10-22-123945</td>
+<td style="text-align: center;">123824</td>
+<td style="text-align: center;">123945</td>
+<td style="text-align: center;">121</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-130148.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-130148</td>
+<td style="text-align: center;">2023-10-22-130256</td>
+<td style="text-align: center;">130148</td>
+<td style="text-align: center;">130256</td>
+<td style="text-align: center;">108</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-131746.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-131746</td>
+<td style="text-align: center;">2023-10-22-131909</td>
+<td style="text-align: center;">131746</td>
+<td style="text-align: center;">131909</td>
+<td style="text-align: center;">163</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-132700.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-132700</td>
+<td style="text-align: center;">2023-10-22-132817</td>
+<td style="text-align: center;">132700</td>
+<td style="text-align: center;">132817</td>
+<td style="text-align: center;">117</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008256-nhosts8-ngpu32-2023-10-22-133459.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-22-133459</td>
+<td style="text-align: center;">2023-10-22-133708</td>
+<td style="text-align: center;">133459</td>
+<td style="text-align: center;">133708</td>
+<td style="text-align: center;">249</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008380-nhosts4-ngpu16-2023-10-22-175049.log</code></td>
+<td style="text-align: center;">actCkpt_GPT25B</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-22-175049</td>
+<td style="text-align: center;">2023-10-22-175230</td>
+<td style="text-align: center;">175049</td>
+<td style="text-align: center;">175230</td>
+<td style="text-align: center;">181</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008649-nhosts4-ngpu16-2023-10-22-192352.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-22-192352</td>
+<td style="text-align: center;">2023-10-22-192530</td>
+<td style="text-align: center;">192352</td>
+<td style="text-align: center;">192530</td>
+<td style="text-align: center;">178</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008212-nhosts16-ngpu64-2023-10-23-081527.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-23-081527</td>
+<td style="text-align: center;">2023-10-23-081702</td>
+<td style="text-align: center;">81527</td>
+<td style="text-align: center;">81702</td>
+<td style="text-align: center;">175</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008344-nhosts2-ngpu8-2023-10-23-091436.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-23-091436</td>
+<td style="text-align: center;">2023-10-23-091610</td>
+<td style="text-align: center;">91436</td>
+<td style="text-align: center;">91610</td>
+<td style="text-align: center;">174</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008197-nhosts32-ngpu128-2023-10-24-102617.log</code></td>
+<td style="text-align: center;">GPT1T_32L</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">2023-10-24-102617</td>
+<td style="text-align: center;">2023-10-24-102826</td>
+<td style="text-align: center;">102617</td>
+<td style="text-align: center;">102826</td>
+<td style="text-align: center;">209</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008192-nhosts64-ngpu256-2023-10-24-191748.log</code></td>
+<td style="text-align: center;">GPT1T_64L</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">2023-10-24-191748</td>
+<td style="text-align: center;">2023-10-24-192021</td>
+<td style="text-align: center;">191748</td>
+<td style="text-align: center;">192021</td>
+<td style="text-align: center;">273</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008192-nhosts128-ngpu512-2023-10-24-201243.log</code></td>
+<td style="text-align: center;">GPT1T_128L</td>
+<td style="text-align: center;">512</td>
+<td style="text-align: center;">2023-10-24-201243</td>
+<td style="text-align: center;">2023-10-24-201629</td>
+<td style="text-align: center;">201243</td>
+<td style="text-align: center;">201629</td>
+<td style="text-align: center;">386</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008192-nhosts128-ngpu512-2023-10-26-005401.log</code></td>
+<td style="text-align: center;">GPT1T_128L</td>
+<td style="text-align: center;">512</td>
+<td style="text-align: center;">2023-10-26-005401</td>
+<td style="text-align: center;">2023-10-26-005811</td>
+<td style="text-align: center;">5401</td>
+<td style="text-align: center;">5811</td>
+<td style="text-align: center;">410</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008192-nhosts32-ngpu128-2023-10-26-082710.log</code></td>
+<td style="text-align: center;">GPT1T_32L</td>
+<td style="text-align: center;">128</td>
+<td style="text-align: center;">2023-10-26-082710</td>
+<td style="text-align: center;">2023-10-26-083049</td>
+<td style="text-align: center;">82710</td>
+<td style="text-align: center;">83049</td>
+<td style="text-align: center;">339</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008585-nhosts2-ngpu8-2023-10-31-044203.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-10-31-044203</td>
+<td style="text-align: center;">2023-10-31-044533</td>
+<td style="text-align: center;">44203</td>
+<td style="text-align: center;">44533</td>
+<td style="text-align: center;">330</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008272-nhosts4-ngpu16-2023-10-31-072717.log</code></td>
+<td style="text-align: center;">GPT1T_4L</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">2023-10-31-072717</td>
+<td style="text-align: center;">2023-10-31-073131</td>
+<td style="text-align: center;">72717</td>
+<td style="text-align: center;">73131</td>
+<td style="text-align: center;">414</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008221-nhosts8-ngpu32-2023-10-31-083055.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-10-31-083055</td>
+<td style="text-align: center;">2023-10-31-083545</td>
+<td style="text-align: center;">83055</td>
+<td style="text-align: center;">83545</td>
+<td style="text-align: center;">490</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008196-nhosts16-ngpu64-2023-10-31-100336.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-10-31-100336</td>
+<td style="text-align: center;">2023-10-31-100848</td>
+<td style="text-align: center;">100336</td>
+<td style="text-align: center;">100848</td>
+<td style="text-align: center;">512</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008285-nhosts2-ngpu8-2023-11-01-200430.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-11-01-200430</td>
+<td style="text-align: center;">2023-11-01-200829</td>
+<td style="text-align: center;">200430</td>
+<td style="text-align: center;">200829</td>
+<td style="text-align: center;">399</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008193-nhosts8-ngpu32-2023-11-01-201702.log</code></td>
+<td style="text-align: center;">GPT1T_8L</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2023-11-01-201702</td>
+<td style="text-align: center;">2023-11-01-202131</td>
+<td style="text-align: center;">201702</td>
+<td style="text-align: center;">202131</td>
+<td style="text-align: center;">429</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008240-nhosts16-ngpu64-2023-11-01-210454.log</code></td>
+<td style="text-align: center;">GPT1T_16L</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">2023-11-01-210454</td>
+<td style="text-align: center;">2023-11-01-211007</td>
+<td style="text-align: center;">210454</td>
+<td style="text-align: center;">211007</td>
+<td style="text-align: center;">553</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>foremans-nid008321-nhosts2-ngpu8-2023-11-02-154438.log</code></td>
+<td style="text-align: center;">GPT1T_2L</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">2023-11-02-154438</td>
+<td style="text-align: center;">2023-11-02-154949</td>
+<td style="text-align: center;">154438</td>
+<td style="text-align: center;">154949</td>
+<td style="text-align: center;">511</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>foremans-nid008192-nhosts128-ngpu512-2023-11-04-001717.log</code></td>
+<td style="text-align: center;">GPT1T_128L</td>
+<td style="text-align: center;">512</td>
+<td style="text-align: center;">2023-11-04-001717</td>
+<td style="text-align: center;">2023-11-04-002124</td>
+<td style="text-align: center;">1717</td>
+<td style="text-align: center;">2124</td>
+<td style="text-align: center;">407</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="minimal-working-example" class="level2">
+<h2 class="anchored" data-anchor-id="minimal-working-example">Minimal Working Example</h2>
+<ul>
+<li><p>As for 3:</p>
+<blockquote class="blockquote">
+<p>If we need to report the startup time for the DL applications, do we need to collect measurements using the actual Aurora NRE workloads or some small benchmarking test cases? For example, we can try to recreate the typical start-up scenarios, like library imports, and measure those separately as shown below.</p>
+</blockquote>
+<ul>
+<li><p>I’ve been working on a library to help simplify this:</p>
+<p><a href="https://github.com/saforem2/ezpz"><iconify-icon inline="" icon="tabler:brand-github" aria-label="Icon brand-github from tabler Iconify.design set." title="Icon brand-github from tabler Iconify.design set."></iconify-icon> <code>ezpz</code></a><br>
+<span class="dim-text"><em>Minimal library that handles the initialization of distributed training</em></span></p></li>
+</ul></li>
+<li><p><label><input type="checkbox" checked="">&nbsp; Working on Aurora, example:</label></p>
+<ul>
+<li><p>Setup / Install:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># launch job</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">$</span> qsub <span class="at">-q</span> EarlyAppAccess <span class="at">-A</span> Aurora_Deployment <span class="at">-l</span> walltime=2:00:00 <span class="at">-l</span> select=4 <span class="at">-I</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># load frameworks</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="ex">$</span> module use <span class="at">-a</span> /soft/modulefiles <span class="kw">;</span> <span class="ex">module</span> <span class="at">--ignore_cache</span> load frameworks</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="ex">$</span> module load frameworks/.2023.12.15.001</span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># install `ezpz`</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="ex">$</span> git clone https://github.com/saforem2/ezpz</span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="ex">$</span> cd ezpz</span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="ex">$</span> mkdir <span class="at">-p</span> venvs/aurora/2023.12.15.001</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="ex">$</span> python3 <span class="at">-m</span> venv venvs/aurora/2023.12.15.001 <span class="at">--system-site-packages</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="ex">$</span> source venvs/aurora/2023.12.15.001/bin/activate</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-e</span> .</span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co"># print job info and define `launch` alias</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="ex">$</span> source ezpz/src/ezpz/bin/savejobenv</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="ex">┌──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="ex">│</span> <span class="pp">[</span><span class="ss">Hosts</span><span class="pp">]</span>:</span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="ex">│</span>     • x4415c6s5b0n0.hostmgmt2415.cm.aurora.alcf.anl.gov</span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="ex">x4415c6s6b0n0.hostmgmt2415.cm.aurora.alcf.anl.gov</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="ex">x4415c6s7b0n0.hostmgmt2415.cm.aurora.alcf.anl.gov</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="ex">x4415c7s0b0n0.hostmgmt2415.cm.aurora.alcf.anl.gov</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="ex">└──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="ex">┌──────────────────────────────────────────────────────────────────</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="ex">│</span> [DIST INFO]:</span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="ex">│</span>     • Loading job env from: /home/foremans/.pbsenv</span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="ex">│</span>     • HOSTFILE: /var/spool/pbs/aux/297306.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb6-29"><a href="#cb6-29"></a><span class="ex">│</span>     • NHOSTS: 4</span>
+<span id="cb6-30"><a href="#cb6-30"></a><span class="ex">│</span>     • NGPU_PER_HOST: 12</span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="ex">│</span>     • NGPUS <span class="er">(</span><span class="ex">NHOSTS</span> x NGPU_PER_HOST<span class="kw">)</span><span class="bu">:</span> 48</span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="ex">│</span>     • DIST_LAUNCH: mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 48 <span class="at">-ppn</span> 12 <span class="at">--hostfile</span> /var/spool/pbs/aux/297306.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="ex">│</span>     • Defining alias: launch: aliased to mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 48 <span class="at">-ppn</span> 12 <span class="at">--hostfile</span> /var/spool/pbs/aux/297306.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="ex">└──────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Launch with <code>framework=pytorch</code>, <code>backend=DDP</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># ----------------------------------------------------------</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># launch + startup on all workers with</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># • `framework` ∈ {`pytorch`, `tensorflow`}</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># • `backend` ∈ {`horovod`, `deepspeed`, `DDP`}</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># where `deepspeed` and `DDP` only available for `pytorch`</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># ----------------------------------------------------------</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="ex">$</span> launch python3 <span class="at">-m</span> ezpz framework=pytorch backend=DDP</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="ex">[2023-12-19</span> 13:33:24]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-36"><a href="#cb7-36"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-38"><a href="#cb7-38"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-39"><a href="#cb7-39"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a><span class="ex">[2023-12-19</span> 13:33:25]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-42"><a href="#cb7-42"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-43"><a href="#cb7-43"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:243</span><span class="pp">]</span> <span class="at">-</span> Using DDP for distributed training</span>
+<span id="cb7-44"><a href="#cb7-44"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-46"><a href="#cb7-46"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-48"><a href="#cb7-48"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-49"><a href="#cb7-49"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-51"><a href="#cb7-51"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-52"><a href="#cb7-52"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-53"><a href="#cb7-53"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-55"><a href="#cb7-55"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-56"><a href="#cb7-56"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-57"><a href="#cb7-57"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-58"><a href="#cb7-58"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-62"><a href="#cb7-62"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-63"><a href="#cb7-63"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-64"><a href="#cb7-64"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-65"><a href="#cb7-65"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-66"><a href="#cb7-66"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-67"><a href="#cb7-67"></a><span class="ex">[2023-12-19</span> 13:33:26]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-68"><a href="#cb7-68"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-69"><a href="#cb7-69"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-70"><a href="#cb7-70"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-71"><a href="#cb7-71"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-72"><a href="#cb7-72"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-73"><a href="#cb7-73"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-74"><a href="#cb7-74"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-75"><a href="#cb7-75"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-77"><a href="#cb7-77"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-78"><a href="#cb7-78"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-79"><a href="#cb7-79"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-80"><a href="#cb7-80"></a><span class="ex">[2023-12-19</span> 13:33:27]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-81"><a href="#cb7-81"></a><span class="ex">[2023-12-19</span> 13:33:28]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-82"><a href="#cb7-82"></a><span class="ex">[2023-12-19</span> 13:33:28]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-83"><a href="#cb7-83"></a><span class="ex">[2023-12-19</span> 13:33:29]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-84"><a href="#cb7-84"></a><span class="ex">[2023-12-19</span> 13:33:29]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-85"><a href="#cb7-85"></a><span class="ex">[2023-12-19</span> 13:33:29]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-86"><a href="#cb7-86"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-87"><a href="#cb7-87"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-88"><a href="#cb7-88"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-89"><a href="#cb7-89"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-90"><a href="#cb7-90"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-91"><a href="#cb7-91"></a><span class="ex">[2023-12-19</span> 13:33:30]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-92"><a href="#cb7-92"></a><span class="ex">[2023-12-19</span> 13:33:34]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:292</span><span class="pp">]</span> <span class="at">-</span> Using device=<span class="st">'xpu'</span></span>
+<span id="cb7-93"><a href="#cb7-93"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-94"><a href="#cb7-94"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-95"><a href="#cb7-95"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-96"><a href="#cb7-96"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-97"><a href="#cb7-97"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-98"><a href="#cb7-98"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-99"><a href="#cb7-99"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-100"><a href="#cb7-100"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-101"><a href="#cb7-101"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-102"><a href="#cb7-102"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-103"><a href="#cb7-103"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-104"><a href="#cb7-104"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist.py:104</span><span class="pp">]</span> <span class="at">-</span> Using backend=<span class="st">'ccl'</span></span>
+<span id="cb7-105"><a href="#cb7-105"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 1 / 47</span>
+<span id="cb7-106"><a href="#cb7-106"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 2 / 47</span>
+<span id="cb7-107"><a href="#cb7-107"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 3 / 47</span>
+<span id="cb7-108"><a href="#cb7-108"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 4 / 47</span>
+<span id="cb7-109"><a href="#cb7-109"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 0 / 47</span>
+<span id="cb7-110"><a href="#cb7-110"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 5 / 47</span>
+<span id="cb7-111"><a href="#cb7-111"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__main__.py:49</span><span class="pp">]</span> <span class="at">-</span> {</span>
+<span id="cb7-112"><a href="#cb7-112"></a>    <span class="st">"_target_"</span><span class="ex">:</span> <span class="st">"ezpz.configs.TrainConfig"</span>,</span>
+<span id="cb7-113"><a href="#cb7-113"></a>    <span class="st">"framework"</span><span class="ex">:</span> <span class="st">"pytorch"</span>,</span>
+<span id="cb7-114"><a href="#cb7-114"></a>    <span class="st">"backend"</span><span class="ex">:</span> <span class="st">"DDP"</span>,</span>
+<span id="cb7-115"><a href="#cb7-115"></a>    <span class="st">"ds_config_path"</span><span class="ex">:</span> null,</span>
+<span id="cb7-116"><a href="#cb7-116"></a>    <span class="st">"port"</span><span class="ex">:</span> null,</span>
+<span id="cb7-117"><a href="#cb7-117"></a>    <span class="st">"seed"</span><span class="ex">:</span> null,</span>
+<span id="cb7-118"><a href="#cb7-118"></a>    <span class="st">"use_wandb"</span><span class="ex">:</span> true,</span>
+<span id="cb7-119"><a href="#cb7-119"></a>    <span class="st">"wandb_project_name"</span><span class="ex">:</span> null,</span>
+<span id="cb7-120"><a href="#cb7-120"></a>    <span class="st">"precision"</span><span class="ex">:</span> null,</span>
+<span id="cb7-121"><a href="#cb7-121"></a>    <span class="st">"ngpus"</span><span class="ex">:</span> null</span>
+<span id="cb7-122"><a href="#cb7-122"></a><span class="er">}</span></span>
+<span id="cb7-123"><a href="#cb7-123"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 9 / 47</span>
+<span id="cb7-124"><a href="#cb7-124"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 10 / 47</span>
+<span id="cb7-125"><a href="#cb7-125"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 11 / 47</span>
+<span id="cb7-126"><a href="#cb7-126"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 7 / 47</span>
+<span id="cb7-127"><a href="#cb7-127"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 8 / 47</span>
+<span id="cb7-128"><a href="#cb7-128"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 6 / 47</span>
+<span id="cb7-129"><a href="#cb7-129"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 12 / 47</span>
+<span id="cb7-130"><a href="#cb7-130"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 13 / 47</span>
+<span id="cb7-131"><a href="#cb7-131"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 14 / 47</span>
+<span id="cb7-132"><a href="#cb7-132"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 15 / 47</span>
+<span id="cb7-133"><a href="#cb7-133"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 18 / 47</span>
+<span id="cb7-134"><a href="#cb7-134"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 19 / 47</span>
+<span id="cb7-135"><a href="#cb7-135"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 20 / 47</span>
+<span id="cb7-136"><a href="#cb7-136"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 21 / 47</span>
+<span id="cb7-137"><a href="#cb7-137"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 22 / 47</span>
+<span id="cb7-138"><a href="#cb7-138"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 23 / 47</span>
+<span id="cb7-139"><a href="#cb7-139"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 24 / 47</span>
+<span id="cb7-140"><a href="#cb7-140"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 25 / 47</span>
+<span id="cb7-141"><a href="#cb7-141"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 26 / 47</span>
+<span id="cb7-142"><a href="#cb7-142"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 27 / 47</span>
+<span id="cb7-143"><a href="#cb7-143"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 30 / 47</span>
+<span id="cb7-144"><a href="#cb7-144"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 16 / 47</span>
+<span id="cb7-145"><a href="#cb7-145"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 17 / 47</span>
+<span id="cb7-146"><a href="#cb7-146"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 28 / 47</span>
+<span id="cb7-147"><a href="#cb7-147"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 32 / 47</span>
+<span id="cb7-148"><a href="#cb7-148"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 33 / 47</span>
+<span id="cb7-149"><a href="#cb7-149"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 36 / 47</span>
+<span id="cb7-150"><a href="#cb7-150"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 37 / 47</span>
+<span id="cb7-151"><a href="#cb7-151"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 38 / 47</span>
+<span id="cb7-152"><a href="#cb7-152"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 39 / 47</span>
+<span id="cb7-153"><a href="#cb7-153"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 43 / 47</span>
+<span id="cb7-154"><a href="#cb7-154"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 46 / 47</span>
+<span id="cb7-155"><a href="#cb7-155"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 29 / 47</span>
+<span id="cb7-156"><a href="#cb7-156"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 47 / 47</span>
+<span id="cb7-157"><a href="#cb7-157"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 31 / 47</span>
+<span id="cb7-158"><a href="#cb7-158"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 34 / 47</span>
+<span id="cb7-159"><a href="#cb7-159"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 35 / 47</span>
+<span id="cb7-160"><a href="#cb7-160"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 42 / 47</span>
+<span id="cb7-161"><a href="#cb7-161"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 41 / 47</span>
+<span id="cb7-162"><a href="#cb7-162"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 44 / 47</span>
+<span id="cb7-163"><a href="#cb7-163"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 45 / 47</span>
+<span id="cb7-164"><a href="#cb7-164"></a><span class="ex">[2023-12-19</span> 13:33:35]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:307</span><span class="pp">]</span> <span class="at">-</span> RANK: 40 / 47</span>
+<span id="cb7-165"><a href="#cb7-165"></a><span class="ex">[2023-12-19</span> 13:33:47]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:415</span><span class="pp">]</span> <span class="at">-</span> Setting up wandb from rank: 0</span>
+<span id="cb7-166"><a href="#cb7-166"></a><span class="ex">[2023-12-19</span> 13:33:47]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:416</span><span class="pp">]</span> <span class="at">-</span> Using: WB PROJECT: ezpz</span>
+<span id="cb7-167"><a href="#cb7-167"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:448</span><span class="pp">]</span> <span class="at">-</span> W<span class="kw">&amp;</span><span class="ex">B</span> RUN: <span class="pp">[</span><span class="ss">flowing</span><span class="pp">-</span><span class="ss">wood</span><span class="pp">-</span><span class="ss">8</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://wandb.ai/l2hmc-qcd/ezpz/runs/uya29gm5</span><span class="kw">)</span></span>
+<span id="cb7-168"><a href="#cb7-168"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:490</span><span class="pp">]</span> <span class="at">-</span> Running on x4415c6s5b0n0.hostmgmt2415.cm.aurora.alcf.anl.gov</span>
+<span id="cb7-169"><a href="#cb7-169"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:506</span><span class="pp">]</span> <span class="at">-</span> Reading hosts from /var/spool/pbs/aux/297306.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb7-170"><a href="#cb7-170"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__main__.py:57</span><span class="pp">]</span> <span class="at">-</span> Output dir: /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/outputs/runs/pytorch/DDP/2023-12-19/13-33-17</span>
+<span id="cb7-171"><a href="#cb7-171"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">dist.py:519</span><span class="pp">]</span> <span class="at">-</span> 🚀 flowing-wood-8</span>
+<span id="cb7-172"><a href="#cb7-172"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">dist.py:520</span><span class="pp">]</span> <span class="at">-</span> 🔗 https://wandb.ai/l2hmc-qcd/ezpz/runs/uya29gm5</span>
+<span id="cb7-173"><a href="#cb7-173"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">dist.py:521</span><span class="pp">]</span> <span class="at">-</span> 📂/: /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/outputs/runs/pytorch/DDP/2023-12-19/13-33-17/wandb/run-20231219_133354-uya29gm5/files</span>
+<span id="cb7-174"><a href="#cb7-174"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:563</span><span class="pp">]</span> <span class="at">-</span> Adding /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/ezpz-pt-DDP-xpu.log to W<span class="kw">&amp;</span><span class="ex">B</span> artifact...</span>
+<span id="cb7-175"><a href="#cb7-175"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:563</span><span class="pp">]</span> <span class="at">-</span> Adding /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/outputs/runs/pytorch/DDP/2023-12-19/13-33-17/__main__.log to W<span class="kw">&amp;</span><span class="ex">B</span> artifact...</span>
+<span id="cb7-176"><a href="#cb7-176"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:563</span><span class="pp">]</span> <span class="at">-</span> Adding /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/outputs/runs/pytorch/DDP/2023-12-19/13-33-17/main_debug.log to W<span class="kw">&amp;</span><span class="ex">B</span> artifact...</span>
+<span id="cb7-177"><a href="#cb7-177"></a><span class="ex">[2023-12-19</span> 13:33:58]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist.py:563</span><span class="pp">]</span> <span class="at">-</span> Adding /lus/gecko/projects/Aurora_deployment/foremans/projects/saforem2/ezpz/src/ezpz/outputs/runs/pytorch/DDP/2023-12-19/13-33-16/__main__.log to W<span class="kw">&amp;</span><span class="ex">B</span> artifact...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+
+
+
+</section>
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+</tr>
+</thead>
+<tbody class="list">
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
+  author = {Foreman, Sam},
+  title = {Starting {Up} {Distributed} {Training}},
+  date = {2024-03-21},
+  url = {https://samforeman.me/qmd/ezpz/ezpz},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Foreman, Sam. 2024. <span>“Starting Up Distributed Training.”</span>
+March 21, 2024. <a href="https://samforeman.me/qmd/ezpz/ezpz">https://samforeman.me/qmd/ezpz/ezpz</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/samforeman\.me");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/startup-times/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/startup-times/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

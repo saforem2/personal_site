@@ -48,17 +48,13 @@ $font-family-sans-serif:
   sans-serif !default;
 $font-family-headings: "IBM Plex Sans", "IBM Plex Sans Condensed", "Open Sans",
   "Playfair Display", Helvetica, sans-serif, $font-family-sans-serif !default;
-// $font-family-monospace: 'Iosevka Web', 'agave Nerd Font', Menlo, Monaco, Consolas, monospace !default;
-$font-family-monospace: "IBM Plex Mono", "Iosevka Web", "agave Nerd Font",
-  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-  monospace !default;
-// $font-family-monospace: "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-
-// $line-height-base: 1.0 !default;
-
-// line height
+$font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $presentation-font-family-line-height: 1em !default;
 $presentation-line-height: 1em !default;
+// $font-family-monospace: 'Iosevka Web', 'agave Nerd Font', Menlo, Monaco, Consolas, monospace !default;
+// $font-family-monospace: "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// $line-height-base: 1.0 !default;
+// line height
 
 // The left hand sidebar
 // $grid-sidebar-width: !default;
@@ -369,7 +365,6 @@ a > code {
 // }
 
 .py-1 {
-  padding-top: 0.5em !important;
   color: $dim-text;
   opacity: 20% !important;
 }
@@ -733,19 +728,34 @@ boxed {
   padding-top: 0.1rem;
 }
 
+.cell-output {
+    white-space:pre;
+    white-space-collapse: collapse;
+    overflow-x:auto;
+    line-height:normal;
+    font-family: $font-family-monospace;
+    font-size: inherit;
+}
+
 .cell-output.cell-output-display {
+  white-space: pre;
+  overflow-x: auto;
+  font-family: $font-family-monospace;
+  white-space-collapse: collapse;
   display: block;
-  // margin-left: 0.5em;
-  // padding-left: 0.75rem;
   background-color: none;
-  // padding-right: 0.75rem;
-  // margin-block-start: -0.5rem;
-  // -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
-  // box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  font-size: $code-block-font-size;
   border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0);
-  // height: 24em;
+  border: 1px solid rgba(0, 0, 0, 0.0);
   overflow: auto;
+  // line-height: 1em;
+  line-height: normal;
+  overflow: auto;
+  // display: block;
+  // background-color: none;
+  // border-radius: 2px;
+  // border: 1px solid rgba(0, 0, 0, 0);
+  // box-shadow: inset 0 0 5px $dim-text;
   // font-size: 1.0rem;
   // line-height: 1.0em;
   // border-left: 1px solid $code-block-bg-color;
@@ -753,13 +763,34 @@ boxed {
   // border-radius: 0.25rem;
   // line-height: 0.95em;
   // border-left: 1px solid $dim-color;
+    // white-space:pre;overflow-x:auto;line-height:normal;font-family:monospace
 }
 
+// .cell-output.cell-output-display:hover {
+//   white-space-collapse: collapse;
+//   white-space: pre;
+//   font-family: $font-family-monospace;
+//   font-size: $code-block-font-size;
+//   overflow: auto;
+//   display: block;
+//   overflow-x: auto;
+//   background-color: none;
+//   border-radius: 2px;
+//   border: 1px solid $code-color;
+// }
+
 .cell-output.cell-output-display:hover {
-  display: block;
-  background-color: none;
-  border-radius: 2px;
-  border: 1px solid $code-color;
+    white-space-collapse: collapse;
+    white-space: pre;
+    font-family: $font-family-monospace;
+    font-size: .9em;
+    overflow: auto;
+    display: block;
+    overflow-x: auto;
+    background-color: none;
+    border-radius: 2px;
+    border: 1px solid $code-color;
+    white-space-collapse: collapse;
 }
 
 // div.output_scroll {
@@ -1571,7 +1602,6 @@ button.close {
 
 .quarto-layout-cell img {
   max-width: 100%;
-  vertical-align: baseline;
 }
 
 // div.sourceCode {

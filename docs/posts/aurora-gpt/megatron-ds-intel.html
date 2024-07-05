@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sam Foreman ">
+<meta name="dcterms.date" content="2024-06-15">
+
+<title>🏎️ Megatron-DeepSpeed on xpu – Sam Foreman</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../.././favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: [],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+<!-- End Google Tag Manager -->
+<link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/default.css">
+<link rel="stylesheet" href="../../css/callouts.css">
+<meta property="og:title" content="Sam Foreman">
+<meta property="og:description" content="My ramblings about science and computers">
+<meta property="og:image" content="https://samforeman.me/posts/aurora-gpt/assets/thumbnail.png">
+<meta property="og:site_name" content="Sam Foreman">
+<meta property="og:image:height" content="2572">
+<meta property="og:image:width" content="4112">
+<meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:description" content="My ramblings about science and computers">
+<meta name="twitter:image" content="https://samforeman.me/posts/aurora-gpt/assets/thumbnail.png">
+<meta name="twitter:creator" content="@saforem2">
+<meta name="twitter:site" content="@saforem2">
+<meta name="twitter:image-height" content="2572">
+<meta name="twitter:image-width" content="4112">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Megatron DeepSpeed on `xpu`">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2024-06-15">
+<meta name="citation_cover_date" content="2024-06-15">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-06-15">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/qmd/aurora-gpt/megatron-ds-intel.html">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../.././favicon.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sam Foreman</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-posts" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🪧 Posts</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-posts">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.html">
+ <span class="dropdown-text">📬 All Posts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/determinstic-flash-attn/index.html">
+ <span class="dropdown-text">🎰 Deterministic Flash Attention</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/flash-attn-sunspot/index.html">
+ <span class="dropdown-text">📸 <code>flash-attn</code> on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/mpi4py-reproducer/index.html">
+ <span class="dropdown-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/diffusion/diffusion.html">
+ <span class="dropdown-text">🎲 MCMC + Diffusion Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/dope-slides/index.html">
+ <span class="dropdown-text">💅 How to Make Dope Slides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/startup-times/index.html">
+ <span class="dropdown-text">⏰ Starting Up Distributed Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/long-sequences/index.html">
+ <span class="dropdown-text">🚂 Loooooooong Sequence Lengths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/aurora-gpt/megatron-ds-intel.html">
+ <span class="dropdown-text">🏎️ <code>Megatron-DeepSpeed</code> + Intel XPU</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/2dU1/index.html">
+ <span class="dropdown-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/4dSU3/index.html">
+ <span class="dropdown-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-talks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🎙️ Talks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-talks">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/talks/index.html">
+ <span class="dropdown-text">📢 All Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/parallel-training-slides/">
+ <span class="dropdown-text">Parallel Training Techniques</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-workshop-talk/">
+ <span class="dropdown-text">LLMs from Scratch</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/LLM-tutorial">
+ <span class="dropdown-text">Creating Small[~ish] LLMs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/onapi-talk/#0">
+ <span class="dropdown-text">Exascale Science on Aurora</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-lunch-talk/">
+ <span class="dropdown-text">LLM Lunch Talk</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/scaling4science">
+ <span class="dropdown-text">Scaling LLMs for Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lattice23">
+ <span class="dropdown-text">MLMC (for LQCD)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lqcd-pasc23">
+ <span class="dropdown-text">Generative Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/deep-fridays">
+ <span class="dropdown-text">Efficient Sampling for LGT</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ai4sci-large-scale-training">
+ <span class="dropdown-text">Large Scale Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/hparam-management-sdl2022">
+ <span class="dropdown-text">Hyperparameter Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ATPESC-StatisticalLearning">
+ <span class="dropdown-text">Statistical Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/anl-job-talk/">
+ <span class="dropdown-text">Scientific Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">Machine Learning in HEP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21">
+ <span class="dropdown-text">DLHMC for Improved Gauge Generation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">
+ <span class="dropdown-text">ML for LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21_overview">
+ <span class="dropdown-text">ML Techniques in LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">ML for HEP</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🎁 Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/projects/index.html">
+ <span class="dropdown-text">📚 All Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ezpz">
+ <span class="dropdown-text">🍋 <code>ezpz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/l2hmc-qcd">
+ <span class="dropdown-text">🟥 <code>l2hmc-qcd</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/argonne-lcf/Megatron-DeepSpeed)">
+ <span class="dropdown-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/wordplay">
+ <span class="dropdown-text">💬 <code>wordplay</code> 🎮</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.alcf.anl.gov/alcf-ai-science-training-series?">
+ <span class="dropdown-text">🎓 <code>ai-science-training</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/enrich">
+ <span class="dropdown-text">💸 <code>enrich</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ambivalent">
+ <span class="dropdown-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/climate-analysis">
+ <span class="dropdown-text">🌍 <code>climate-analysis</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/glitz">
+ <span class="dropdown-text">🎨 <code>glitz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/personal_site">
+ <span class="dropdown-text">🙋🏻<code>personal_site</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/notes-demo">
+ <span class="dropdown-text">🗒️ <code>Notes-Demo</code></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://twitter.com/saforem2"> 
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:twitter" aria-label="Icon twitter from line-md Iconify.design set." title="Icon twitter from line-md Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/saforem2/personal_site"> 
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#install-setup" id="toc-install-setup" class="nav-link active" data-scroll-target="#install-setup">Install / Setup</a></li>
+  <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a>
+  <ul class="collapse">
+  <li><a href="#using-launch" id="toc-using-launch" class="nav-link" data-scroll-target="#using-launch">Using <code>launch</code></a></li>
+  </ul></li>
+  <li><a href="#using-deepspeed" id="toc-using-deepspeed" class="nav-link" data-scroll-target="#using-deepspeed">Using <code>deepspeed</code></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/aurora-gpt/megatron-ds-intel.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/aurora-gpt/megatron-ds-intel.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">🏎️ <code>Megatron-DeepSpeed</code> on <code>xpu</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/posts/aurora-gpt/megatron-ds-intel.qmd"><i class="bi"></i></button></div></div>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading"></div>
+  <div class="quarto-title-meta-heading"></div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://samforeman.me"><span class="dim-text">Sam Foreman</span> </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            [ALCF]
+            </a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading"></div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 15, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="install-setup" class="level2">
+<h2 class="anchored" data-anchor-id="install-setup">Install / Setup</h2>
+<ul>
+<li><p>Setup script / history:</p>
+<details closed="">
+<summary>
+<p>Interactive Session</p>
+</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">$</span> export HTTP_PROXY=http://proxy.alcf.anl.gov:3128</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">$</span> export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">$</span> export http_proxy=http://proxy.alcf.anl.gov:3128</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">$</span> export https_proxy=http://proxy.alcf.anl.gov:3128</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="ex">$</span> export DRM_LIB=<span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">/usr/include/libdrm"</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># $ export PATH="${HOME}/miniconda3/bin:$PATH"</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="ex">$</span> conda create <span class="at">--name</span> anl_release_q4 python=3.9 <span class="at">--y</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="ex">$</span> wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh <span class="at">-O</span> ~/miniconda3/miniconda.sh</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="ex">$</span> bash ~/miniconda3/miniconda.sh <span class="at">-b</span> <span class="at">-u</span> <span class="at">-p</span> ~/miniconda3</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(${HOME}</span> shell.zsh hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="ex">$</span> export DRM_LIB=<span class="st">"</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">/usr/include/libdrm"</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="ex">$</span> conda config <span class="at">--add</span> channels conda-forge <span class="kw">&amp;&amp;</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge mpi4py <span class="at">-y</span> <span class="at">--no-deps</span> <span class="kw">&amp;&amp;</span> <span class="ex">conda</span> install <span class="at">-c</span> conda-forge libssh <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">conda</span> uninstall mpi <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> <span class="at">-m</span> pip install <span class="pp">*</span>.whl</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="ex">$</span> module unload oneapi/eng-compiler/2022.12.30.003</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="ex">$</span> module unload intel_compute_runtime/release/agama-devel-551</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="ex">$</span> module use <span class="at">-a</span> /soft/modulefiles</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="ex">$</span> module load oneapi/release/2023.12.15.001</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ex">$</span> module use /home/ftartagl/graphics-compute-runtime/modulefiles</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="ex">$</span> module load graphics-compute-runtime/agama-ci-devel-736.9</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># one-liner for modules:</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># module unload oneapi/eng-compiler/2022.12.30.003 &amp;&amp; module unload intel_compute_runtime/release/agama-devel-551&amp;&amp; module use -a /soft/modulefiles &amp;&amp; module load oneapi/release/2023.12.15.001 &amp;&amp; module use /home/ftartagl/graphics-compute-runtime/modulefiles &amp;&amp; module load graphics-compute-runtime/agama-ci-devel-736.9</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="ex">$</span> cd torch-ccl</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="ex">$</span> ls</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="ex">$</span> COMPUTE_BACKEND=dpcpp python3 setup.py develop <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="ex">$</span> cd ../</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="ex">$</span> cd intel-extension-for-deepspeed</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="ex">$</span> python3 setup.py develop <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="ex">$</span> cd ../</span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="ex">$</span> cd DeepSpeed</span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="ex">$</span> ls</span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-r</span> requirements/requirements.txt</span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="ex">$</span> python3 setup.py develop <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details></li>
+</ul>
+</section>
+<section id="running" class="level2">
+<h2 class="anchored" data-anchor-id="running">Running</h2>
+<section id="using-launch" class="level3">
+<h3 class="anchored" data-anchor-id="using-launch">Using <code>launch</code></h3>
+<ul>
+<li><p>Setup:</p>
+<details closed="">
+<summary>
+<p>Setup</p>
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">$</span> qsub <span class="at">-q</span> EarlyAppAccess <span class="at">-A</span> Aurora_Deployment <span class="at">-l</span> walltime=08:00:00 <span class="at">-l</span> select=2 <span class="at">-I</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">qsub:</span> waiting for job 604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov to start</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">qsub:</span> job 604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov ready</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">$</span> module unload oneapi/eng-compiler/2022.12.30.003 <span class="kw">&amp;&amp;</span> <span class="ex">module</span> unload intel_compute_runtime/release/agama-devel-551<span class="kw">&amp;&amp;</span> <span class="ex">module</span> use <span class="at">-a</span> /soft/modulefiles <span class="kw">&amp;&amp;</span> <span class="ex">module</span> load oneapi/release/2023.12.15.001 <span class="kw">&amp;&amp;</span> <span class="ex">module</span> use /home/ftartagl/graphics-compute-runtime/modulefiles <span class="kw">&amp;&amp;</span> <span class="ex">module</span> load graphics-compute-runtime/agama-ci-devel-736.9</span>
+<span id="cb2-6"><a href="#cb2-6"></a> <span class="ex">UMD:</span> agama-ci-devel-736.9 successfully loaded:</span>
+<span id="cb2-7"><a href="#cb2-7"></a> <span class="ex">UMD:</span> graphics-compute-runtime/agama-ci-devel-736.9</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(</span><span class="ex">/home/foremans/miniconda3/bin/conda</span> shell.zsh hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">$</span> conda activate anl_release_q4</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">$</span> git clone https://github.com/saforem2/ezpz</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"ezpz[dev]"</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># [</span><span class="al">BUG</span><span class="co">] for some reason, need to run twice ¯\_(ツ)_/¯</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">$</span> source ./ezpz/src/ezpz/bin/savejobenv <span class="kw">&amp;&amp;</span> <span class="bu">source</span> ./ezpz/src/ezpz/bin/savejobenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details closed="">
+<summary>
+<p>Output</p>
+</summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">┌───────────────────────────────────────────────────────────────────</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">│</span> Writing PBS vars to /home/foremans/.pbsenv</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">│</span> HOSTFILE: /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">│</span> NHOSTS: 2</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">│</span> NGPU_PER_HOST: 12 GPUs per host</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="ex">│</span> NGPUS: 24 GPUs total</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="ex">└───────────────────────────────────────────────────────────────────</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="ex">┌───────────────────────────────────────────────────────────────────</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="ex">│</span> [DIST INFO]:</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="ex">│</span>   • Writing Job info to /home/foremans/.pbsenv</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="ex">│</span>     • HOSTFILE: /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="ex">│</span>     • NHOSTS: 2</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="ex">│</span>     • NGPU_PER_HOST: 12</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="ex">│</span>     • NGPUS = <span class="er">(</span><span class="ex">NHOSTS</span> <span class="pp">*</span> NGPU_PER_HOST<span class="kw">)</span> <span class="ex">=</span> 24</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="ex">│</span> <span class="pp">[</span><span class="ss">Hosts</span><span class="pp">]</span>:</span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="ex">│</span>       • x4502c0s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov, x4502c0s2b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov</span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="ex">│</span> <span class="pp">[</span><span class="ss">Launch</span><span class="pp">]</span>:</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="ex">│</span>     • Use: <span class="st">'launch'</span> <span class="er">(</span><span class="ex">=mpiexec</span> <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 24 <span class="at">-ppn</span> 12 <span class="at">--hostfile</span> /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov<span class="kw">)</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="ex">│</span>       to launch job</span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="ex">└───────────────────────────────────────────────────────────────────</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="ex">┌────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="ex">│</span> YOU ARE HERE: /home/foremans</span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="ex">│</span> Run <span class="st">'source ./bin/getjobenv'</span> in a NEW SHELL to automatically set env vars</span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="ex">└────────────────────────────────────────────────────────────────────────────────</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details closed="">
+<summary>
+<p>[WIP] Building out <code>python</code> API</p>
+</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">$</span> python3 <span class="at">-m</span> ezpz.savejobenv</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torchvision/io/image.py:13:</span> UserWarning: Failed to load image Python extension: <span class="st">'If you dont plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?'</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="ex">warn</span><span class="er">(</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:185</span><span class="pp">]</span> <span class="at">-</span> Saving job env to /home/foremans/PBS-jobs/604319/jobenv.sh</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:193</span><span class="pp">]</span> <span class="at">-</span> Saving job env to dot-env <span class="er">(</span><span class="ex">.env</span><span class="kw">)</span> <span class="fu">file</span> in /home/foremans</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:211</span><span class="pp">]</span> <span class="at">-</span> Saving job env to /home/foremans/PBS-jobs/604319/jobenv.json</span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:225</span><span class="pp">]</span> <span class="at">-</span> Saving job env to /home/foremans/PBS-jobs/604319/jobenv.yaml</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:253</span><span class="pp">]</span> <span class="at">-</span> Writing PBS env vars to /home/foremans/PBS-jobs/604319 / jobenv{.sh, .yaml, .json}</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="ex">[2024-01-23</span> 10:02:37]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">jobs:258</span><span class="pp">]</span> <span class="at">-</span> jobenv={</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">"BACKEND"</span><span class="ex">:</span> <span class="st">"gloo"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="st">"DEVICE"</span><span class="ex">:</span> <span class="st">"xpu"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="st">"DEVICE_ID"</span><span class="ex">:</span> <span class="st">"xpu:0"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="st">"DISTRIBUTED_BACKEND"</span><span class="ex">:</span> <span class="st">"gloo"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="st">"FRAMEWORK"</span><span class="ex">:</span> <span class="st">"pytorch"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="st">"GPUS_PER_NODE"</span><span class="ex">:</span> 12,</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="st">"HOSTFILE"</span><span class="ex">:</span> <span class="st">"/var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="st">"HOSTNAME"</span><span class="ex">:</span> <span class="st">"x4502c0s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    <span class="st">"HOSTS"</span><span class="ex">:</span> <span class="st">"[x4502c0s0b0n0, x4502c0s2b0n0]"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    <span class="st">"LAUNCH_CMD"</span><span class="ex">:</span> <span class="st">"mpiexec --verbose --envall -n 24 -ppn 12 --hostfile /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="st">"LOCAL_RANK"</span><span class="ex">:</span> 0,</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="st">"MACHINE"</span><span class="ex">:</span> <span class="st">"Aurora"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="st">"NGPUS"</span><span class="ex">:</span> 24,</span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="st">"NGPU_PER_HOST"</span><span class="ex">:</span> <span class="st">"12"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24"></a>    <span class="st">"NHOSTS"</span><span class="ex">:</span> <span class="st">"2"</span>,</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    <span class="st">"NODE_ID"</span><span class="ex">:</span> 0,</span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="st">"NUM_NODES"</span><span class="ex">:</span> 2,</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="st">"PBS_ACCOUNT"</span><span class="ex">:</span> <span class="st">"Aurora_Deployment"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28"></a>    <span class="st">"PBS_ENVIRONMENT"</span><span class="ex">:</span> <span class="st">"PBS_INTERACTIVE"</span>,</span>
+<span id="cb4-29"><a href="#cb4-29"></a>    <span class="st">"PBS_HOOK_RESOURCES"</span><span class="ex">:</span> <span class="st">"eJyVUV1vwjAM/EOblHZbgUV54yfs3TKp22bkozgJqP9+LjAJ9jYpD7HvfL5L0Pt0AbQ21VjATmSPMKDzlck0Gq9opBGLOxOspZVriit2Qe5BShoTL2bvsmVaMeTlDpZlpj/AoXIEXjWM0rYyk6x90H1tPza73a7rNq1SejoECKknM3gsepptABdwJGNTmGshKJQLtKp9V03TfMnlremgUUO3lelo55pNq6MDppwqWzJYOTHqKKK2CJbOxKsncTN7FEIWI4VYz5y+hQIzu8SuLMLltK48oD0Oznt5gkz+ppKjvfk8Vex1SQX9YyilL1IVF8io7adScvSpUiV4Dnjv/TPmberZQiaWYDDKdyYY8tXrtTOlQE+NM3rXgwSivORCIZs75eV3+Ady/coN"</span>,</span>
+<span id="cb4-30"><a href="#cb4-30"></a>    <span class="st">"PBS_JOBCOOKIE"</span><span class="ex">:</span> <span class="st">"6B8C4F9D774B0AA5174EAAFB6E2CC14F"</span>,</span>
+<span id="cb4-31"><a href="#cb4-31"></a>    <span class="st">"PBS_JOBDIR"</span><span class="ex">:</span> <span class="st">"/home/foremans"</span>,</span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="st">"PBS_JOBID"</span><span class="ex">:</span> <span class="st">"604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-33"><a href="#cb4-33"></a>    <span class="st">"PBS_JOBNAME"</span><span class="ex">:</span> <span class="st">"STDIN"</span>,</span>
+<span id="cb4-34"><a href="#cb4-34"></a>    <span class="st">"PBS_MOMPORT"</span><span class="ex">:</span> <span class="st">"15003"</span>,</span>
+<span id="cb4-35"><a href="#cb4-35"></a>    <span class="st">"PBS_NODEFILE"</span><span class="ex">:</span> <span class="st">"/var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-36"><a href="#cb4-36"></a>    <span class="st">"PBS_NODENUM"</span><span class="ex">:</span> <span class="st">"0"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37"></a>    <span class="st">"PBS_O_HOME"</span><span class="ex">:</span> <span class="st">"/home/foremans"</span>,</span>
+<span id="cb4-38"><a href="#cb4-38"></a>    <span class="st">"PBS_O_HOST"</span><span class="ex">:</span> <span class="st">"aurora-uan-0010.hostmgmt1000.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb4-39"><a href="#cb4-39"></a>    <span class="st">"PBS_O_LANG"</span><span class="ex">:</span> <span class="st">"en_US.UTF-8"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40"></a>    <span class="st">"PBS_O_LOGNAME"</span><span class="ex">:</span> <span class="st">"foremans"</span>,</span>
+<span id="cb4-41"><a href="#cb4-41"></a>    <span class="st">"PBS_O_MAIL"</span><span class="ex">:</span> <span class="st">"/var/spool/mail/foremans"</span>,</span>
+<span id="cb4-42"><a href="#cb4-42"></a>    <span class="st">"PBS_O_PATH"</span><span class="ex">:</span> <span class="st">"/home/foremans/.nvm/versions/node/v21.5.0/bin:/home/foremans/homebrew/bin:/home/foremans/homebrew/sbin:/opt/cray/pals/1.3.2/bin:/opt/cray/libfabric/1.15.2.0/bin:/opt/aurora/23.073.0/support/libraries/intel-compute-samples/2021.27.01:/opt/aurora/23.073.0/support/libraries/khronos/clinfo/default/bin:/opt/aurora/23.073.0/support/tools/gpu_validation:/opt/aurora/23.073.0/intel-gpu-umd/agama-devel-551/compiler/bin:/opt/aurora/23.073.0/intel-gpu-umd/agama-devel-551/driver/bin:/opt/aurora/23.073.0/CNDA/mpich/51.2/mpich-ofi-all-icc-default-pmix-gpu-drop51/bin:/opt/aurora/23.073.0/support/tools/mpi_wrapper_utils:/opt/aurora/23.073.0/oneapi/debugger/2023.0.0/gdb/intel64/bin:/opt/aurora/23.073.0/CNDA/oneapi/compiler/trunk-20230201/dpcpp-ct/bin:/opt/aurora/23.073.0/oneapi/advisor/2023.0.0/bin64:/opt/aurora/23.073.0/CNDA/oneapi/vtune/2023.0.0_624810_nda/bin64:/opt/aurora/23.073.0/CNDA/oneapi/compiler/trunk-20230201/compiler/linux/bin/intel64:/opt/aurora/23.073.0/CNDA/oneapi/compiler/trunk-20230201/compiler/linux/bin:/opt/aurora/23.073.0/oneapi/inspector/2023.0.0/bin64:/opt/cray/pe/gcc/11.2.0/snos/bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/home/foremans/.local/bin:/home/foremans/bin:/usr/local/bin:/usr/bin:/bin:/opt/c3/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin:/home/foremans/.local/share/kitty-ssh-kitten/kitty/bin:/home/foremans/.cargo/bin:/home/foremans/.fzf/bin:/home/foremans/.luarocks/bin:/home/foremans/.luarocks/bin"</span>,</span>
+<span id="cb4-43"><a href="#cb4-43"></a>    <span class="st">"PBS_O_QUEUE"</span><span class="ex">:</span> <span class="st">"EarlyAppAccess"</span>,</span>
+<span id="cb4-44"><a href="#cb4-44"></a>    <span class="st">"PBS_O_SHELL"</span><span class="ex">:</span> <span class="st">"/bin/zsh"</span>,</span>
+<span id="cb4-45"><a href="#cb4-45"></a>    <span class="st">"PBS_O_SYSTEM"</span><span class="ex">:</span> <span class="st">"Linux"</span>,</span>
+<span id="cb4-46"><a href="#cb4-46"></a>    <span class="st">"PBS_O_TZ"</span><span class="ex">:</span> <span class="st">"America/Chicago"</span>,</span>
+<span id="cb4-47"><a href="#cb4-47"></a>    <span class="st">"PBS_O_WORKDIR"</span><span class="ex">:</span> <span class="st">"/home/foremans"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48"></a>    <span class="st">"PBS_QUEUE"</span><span class="ex">:</span> <span class="st">"LustreApps"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49"></a>    <span class="st">"PBS_TASKNUM"</span><span class="ex">:</span> <span class="st">"1"</span>,</span>
+<span id="cb4-50"><a href="#cb4-50"></a>    <span class="st">"RANK"</span><span class="ex">:</span> 0,</span>
+<span id="cb4-51"><a href="#cb4-51"></a>    <span class="st">"SCHEDULER"</span><span class="ex">:</span> <span class="st">"PBS"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52"></a>    <span class="st">"WORLD_SIZE_IN_USE"</span><span class="ex">:</span> 1,</span>
+<span id="cb4-53"><a href="#cb4-53"></a>    <span class="st">"WORLD_SIZE_TOTAL"</span><span class="ex">:</span> 24,</span>
+<span id="cb4-54"><a href="#cb4-54"></a>    <span class="st">"jobfile_json"</span><span class="ex">:</span> <span class="st">"/home/foremans/PBS-jobs/604319/jobenv.json"</span>,</span>
+<span id="cb4-55"><a href="#cb4-55"></a>    <span class="st">"jobfile_sh"</span><span class="ex">:</span> <span class="st">"/home/foremans/PBS-jobs/604319/jobenv.sh"</span>,</span>
+<span id="cb4-56"><a href="#cb4-56"></a>    <span class="st">"jobfile_yaml"</span><span class="ex">:</span> <span class="st">"/home/foremans/PBS-jobs/604319/jobenv.yaml"</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">$</span> source <span class="st">"</span><span class="va">$(</span><span class="fu">tail</span> <span class="at">-1</span> ~/PBS-jobs.log<span class="va">)</span><span class="st">/jobenv.sh"</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="ex">$</span> which launch</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">launch:</span> aliased to mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 24 <span class="at">-ppn</span> 12 <span class="at">--hostfile</span> /var/spool/pbs/aux/604319.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></details></li>
+<li><p><strong>Take 1</strong>: Crash with</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">RuntimeError:</span> oneCCL: global.cpp:150 getenv_local_coord: EXCEPTION: to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details closed="">
+<summary>
+<p>Run:</p>
+</summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">$</span> launch python3 pretrain_llama.py <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="at">--tensor-model-parallel-size</span> 1 <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="at">--pipeline-model-parallel-size</span> 1 <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="at">--num-layers</span> 32 <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">--hidden-size</span> 4096 <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="at">--ffn-hidden-size</span> 5504 <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="at">--num-attention-heads</span> 32 <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="at">--micro-batch-size</span> 1 <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="at">--global-batch-size</span> 24 <span class="dt">\</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="at">--seq-length</span> 2048 <span class="dt">\</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="at">--max-position-embeddings</span> 2048 <span class="dt">\</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="at">--train-iters</span> 250000 <span class="dt">\</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="at">--save</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="dt">\</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="at">--load</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="dt">\</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>    <span class="at">--data-path</span> <span class="dt">\</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>    <span class="at">--data-impl</span> mmap <span class="dt">\</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>    <span class="at">--tokenizer-type</span> GPTSentencePieceTokenizer <span class="dt">\</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>    <span class="at">--tokenizer-model</span> ./tmp/tokenizer.model <span class="dt">\</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="at">--split</span> 949,50,1 <span class="dt">\</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>    <span class="at">--distributed-backend</span> ccl <span class="dt">\</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="at">--lr</span> 3e-4 <span class="dt">\</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a>    <span class="at">--lr-decay-style</span> cosine <span class="dt">\</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="at">--min-lr</span> 3e-5 <span class="dt">\</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>    <span class="at">--weight-decay</span> 0.1 <span class="dt">\</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>    <span class="at">--clip-grad</span> 1 <span class="dt">\</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>    <span class="at">--lr-warmup-iters</span> 2000 <span class="dt">\</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>    <span class="at">--optimizer</span> adam <span class="dt">\</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>    <span class="at">--adam-beta1</span> 0.9 <span class="dt">\</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a>    <span class="at">--adam-beta2</span> 0.95 <span class="dt">\</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a>    <span class="at">--log-interval</span> 1 <span class="dt">\</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>    <span class="at">--save-interval</span> 10000 <span class="dt">\</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a>    <span class="at">--eval-interval</span> 1000 <span class="dt">\</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a>    <span class="at">--eval-iters</span> 10 <span class="dt">\</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a>    <span class="at">--bf16</span> <span class="dt">\</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a>    <span class="at">--no-query-key-layer-scaling</span> <span class="dt">\</span></span>
+<span id="cb7-36"><a href="#cb7-36"></a>    <span class="at">--attention-dropout</span> 0 <span class="dt">\</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>    <span class="at">--hidden-dropout</span> 0 <span class="dt">\</span></span>
+<span id="cb7-38"><a href="#cb7-38"></a>    <span class="at">--use-rotary-position-embeddings</span> <span class="dt">\</span></span>
+<span id="cb7-39"><a href="#cb7-39"></a>    <span class="at">--untie-embeddings-and-output-weightss</span> <span class="dt">\</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a>    <span class="at">--swiglus</span> <span class="dt">\</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a>    <span class="at">--normalization</span> rmsnorms <span class="dt">\</span></span>
+<span id="cb7-42"><a href="#cb7-42"></a>    <span class="at">--disable-bias-linears</span> <span class="dt">\</span></span>
+<span id="cb7-43"><a href="#cb7-43"></a>    <span class="at">--num-key-value-heads</span> 4s <span class="dt">\</span></span>
+<span id="cb7-44"><a href="#cb7-44"></a>    <span class="at">--tensorboard-dir</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/outputs/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_ <span class="dt">\</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a>    hs4096_gb24_mb1/tensorboard <span class="dt">\</span></span>
+<span id="cb7-46"><a href="#cb7-46"></a>    <span class="at">--log-timers-to-tensorboard</span> <span class="dt">\</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a>    <span class="at">--tensorboard-log-interval</span> 1 <span class="dt">\</span></span>
+<span id="cb7-48"><a href="#cb7-48"></a>    <span class="at">--data-path</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/BookCorpusDataset_text_documents <span class="dt">\</span></span>
+<span id="cb7-49"><a href="#cb7-49"></a>    <span class="at">--vocab-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-vocab.json <span class="dt">\</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a>    <span class="at">--merge-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-merges.txt <span class="dt">\</span></span>
+<span id="cb7-51"><a href="#cb7-51"></a>    <span class="at">--zero-stage</span><span class="op">=</span>3 <span class="dt">\</span></span>
+<span id="cb7-52"><a href="#cb7-52"></a>    <span class="at">--deepspeed_config</span><span class="op">=</span>/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/deepspeed.json <span class="dt">\</span></span>
+<span id="cb7-53"><a href="#cb7-53"></a>    <span class="at">--deepspeed</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a></span>
+<span id="cb7-55"><a href="#cb7-55"></a><span class="ex">Connected</span> to tcp://x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov:7919</span>
+<span id="cb7-56"><a href="#cb7-56"></a><span class="ex">Found</span> executable /home/foremans/miniconda3/envs/anl_release_q4/bin/python3</span>
+<span id="cb7-57"><a href="#cb7-57"></a><span class="ex">Launching</span> application 2e559157-da5e-4185-9902-dc8d932e8bb3</span>
+<span id="cb7-58"><a href="#cb7-58"></a><span class="ex">/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torchvision/io/image.py:13:</span> UserWarning: Failed to load image Python extension: <span class="st">'If you dont plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?'</span></span>
+<span id="cb7-59"><a href="#cb7-59"></a>  <span class="ex">warn</span><span class="er">(</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a><span class="ex">[2024-01-23</span> 00:02:13,326] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a><span class="ex">[2024-01-23</span> 00:02:19,177] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:161:init_deepspeed_backend</span><span class="pp">]</span> Initialize ccl backend</span>
+<span id="cb7-62"><a href="#cb7-62"></a><span class="ex">[2024-01-23</span> 00:02:19,177] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:637:init_distributed</span><span class="pp">]</span> cdb=None</span>
+<span id="cb7-63"><a href="#cb7-63"></a><span class="ex">[2024-01-23</span> 00:02:19,177] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:652:init_distributed</span><span class="pp">]</span> Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...</span>
+<span id="cb7-64"><a href="#cb7-64"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=3, local_rank=3, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-65"><a href="#cb7-65"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=9, local_rank=9, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-66"><a href="#cb7-66"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=11, local_rank=11, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-67"><a href="#cb7-67"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=1, local_rank=1, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-68"><a href="#cb7-68"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=2, local_rank=2, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-69"><a href="#cb7-69"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=4, local_rank=4, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-70"><a href="#cb7-70"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=5, local_rank=5, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-71"><a href="#cb7-71"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=6, local_rank=6, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-72"><a href="#cb7-72"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=7, local_rank=7, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-73"><a href="#cb7-73"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=13, local_rank=1, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-74"><a href="#cb7-74"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=8, local_rank=8, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-75"><a href="#cb7-75"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=10, local_rank=10, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-76"><a href="#cb7-76"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=0, local_rank=0, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-77"><a href="#cb7-77"></a><span class="ex">[2024-01-23</span> 00:02:19,889] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:668:init_distributed</span><span class="pp">]</span> Initializing TorchBackend in DeepSpeed with backend ccl</span>
+<span id="cb7-78"><a href="#cb7-78"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=15, local_rank=3, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-79"><a href="#cb7-79"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=17, local_rank=5, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-80"><a href="#cb7-80"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=19, local_rank=7, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-81"><a href="#cb7-81"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=21, local_rank=9, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-82"><a href="#cb7-82"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=12, local_rank=0, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-83"><a href="#cb7-83"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=14, local_rank=2, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-84"><a href="#cb7-84"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=16, local_rank=4, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-85"><a href="#cb7-85"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=18, local_rank=6, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-86"><a href="#cb7-86"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=20, local_rank=8, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-87"><a href="#cb7-87"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=22, local_rank=10, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-88"><a href="#cb7-88"></a><span class="ex">[2024-01-23</span> 00:02:19,888] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:702:mpi_discovery</span><span class="pp">]</span> Discovered MPI settings of world_rank=23, local_rank=11, world_size=24, master_addr=10.115.53.137, master_port=29500</span>
+<span id="cb7-89"><a href="#cb7-89"></a><span class="ex">[2024-01-23</span> 00:02:20]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:257</span><span class="pp">]</span> <span class="at">-</span> DistInfo={</span>
+<span id="cb7-90"><a href="#cb7-90"></a>    <span class="st">"DEVICE"</span><span class="ex">:</span> <span class="st">"xpu"</span>,</span>
+<span id="cb7-91"><a href="#cb7-91"></a>    <span class="st">"DEVICE_ID"</span><span class="ex">:</span> <span class="st">"xpu:0"</span>,</span>
+<span id="cb7-92"><a href="#cb7-92"></a>    <span class="st">"DISTRIBUTED_BACKEND"</span><span class="ex">:</span> <span class="st">"gloo"</span>,</span>
+<span id="cb7-93"><a href="#cb7-93"></a>    <span class="st">"GPUS_PER_NODE"</span><span class="ex">:</span> 12,</span>
+<span id="cb7-94"><a href="#cb7-94"></a>    <span class="st">"HOSTFILE"</span><span class="ex">:</span> <span class="st">"/var/spool/pbs/aux/604213.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb7-95"><a href="#cb7-95"></a>    <span class="st">"HOSTNAME"</span><span class="ex">:</span> <span class="st">"x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb7-96"><a href="#cb7-96"></a>    <span class="st">"HOSTS"</span><span class="ex">:</span> <span class="st">"['x4502c1s0b0n0', 'x4502c1s3b0n0']"</span>,</span>
+<span id="cb7-97"><a href="#cb7-97"></a>    <span class="st">"LOCAL_RANK"</span><span class="ex">:</span> 0,</span>
+<span id="cb7-98"><a href="#cb7-98"></a>    <span class="st">"MACHINE"</span><span class="ex">:</span> <span class="st">"Aurora"</span>,</span>
+<span id="cb7-99"><a href="#cb7-99"></a>    <span class="st">"NGPUS"</span><span class="ex">:</span> 24,</span>
+<span id="cb7-100"><a href="#cb7-100"></a>    <span class="st">"NODE_ID"</span><span class="ex">:</span> 0,</span>
+<span id="cb7-101"><a href="#cb7-101"></a>    <span class="st">"NUM_NODES"</span><span class="ex">:</span> 2,</span>
+<span id="cb7-102"><a href="#cb7-102"></a>    <span class="st">"RANK"</span><span class="ex">:</span> 0,</span>
+<span id="cb7-103"><a href="#cb7-103"></a>    <span class="st">"SCHEDULER"</span><span class="ex">:</span> <span class="st">"PBS"</span>,</span>
+<span id="cb7-104"><a href="#cb7-104"></a>    <span class="st">"WORLD_SIZE_IN_USE"</span><span class="ex">:</span> 24,</span>
+<span id="cb7-105"><a href="#cb7-105"></a>    <span class="st">"WORLD_SIZE_TOTAL"</span><span class="ex">:</span> 24</span>
+<span id="cb7-106"><a href="#cb7-106"></a><span class="er">}</span></span>
+<span id="cb7-107"><a href="#cb7-107"></a><span class="ex">[2024-01-23</span> 00:02:20,987] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb7-108"><a href="#cb7-108"></a><span class="ex">--------------------------------------------------</span></span>
+<span id="cb7-109"><a href="#cb7-109"></a><span class="ex">DeepSpeed</span> C++/CUDA extension op report</span>
+<span id="cb7-110"><a href="#cb7-110"></a><span class="ex">--------------------------------------------------</span></span>
+<span id="cb7-111"><a href="#cb7-111"></a><span class="ex">NOTE:</span> Ops not installed will be just-in-time <span class="er">(</span><span class="ex">JIT</span><span class="kw">)</span> <span class="ex">compiled</span> at</span>
+<span id="cb7-112"><a href="#cb7-112"></a>      <span class="ex">runtime</span> if needed. Op compatibility means that your system</span>
+<span id="cb7-113"><a href="#cb7-113"></a>      <span class="ex">meet</span> the required dependencies to JIT install the op.</span>
+<span id="cb7-114"><a href="#cb7-114"></a><span class="ex">--------------------------------------------------</span></span>
+<span id="cb7-115"><a href="#cb7-115"></a><span class="ex">JIT</span> compiled ops requires ninja</span>
+<span id="cb7-116"><a href="#cb7-116"></a><span class="ex">ninja</span> .................. <span class="pp">[</span><span class="ss">OKAY</span><span class="pp">]</span></span>
+<span id="cb7-117"><a href="#cb7-117"></a><span class="ex">--------------------------------------------------</span></span>
+<span id="cb7-118"><a href="#cb7-118"></a><span class="ex">op</span> name ................ installed .. compatible</span>
+<span id="cb7-119"><a href="#cb7-119"></a><span class="ex">--------------------------------------------------</span></span>
+<span id="cb7-120"><a href="#cb7-120"></a><span class="ex">[2024-01-23</span> 00:02:20]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">spawn:38</span><span class="pp">]</span> <span class="at">-</span> icx <span class="at">-Wno-unused-result</span> <span class="at">-Wsign-compare</span> <span class="at">-DNDEBUG</span> <span class="at">-fwrapv</span> <span class="at">-O2</span> <span class="at">-Wall</span> <span class="at">-fPIC</span> <span class="at">-O2</span> <span class="at">-isystem</span> /home/foremans/miniconda3/envs/anl_release_q4/include <span class="at">-fPIC</span> <span class="at">-O2</span> <span class="at">-isystem</span> /home/foremans/miniconda3/envs/anl_release_q4/include <span class="at">-fPIC</span> <span class="at">-c</span> /tmp/tmph01efr3s/test.c <span class="at">-o</span> /tmp/tmph01efr3s/test.o</span>
+<span id="cb7-121"><a href="#cb7-121"></a><span class="ex">WARNING:</span> TensorBoard writing requested but is not available <span class="er">(</span><span class="ex">are</span> you using PyTorch 1.1.0 or later<span class="pp">?</span><span class="kw">)</span><span class="ex">,</span> no TensorBoard logs will be written.</span>
+<span id="cb7-122"><a href="#cb7-122"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122507</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-123"><a href="#cb7-123"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122510</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-124"><a href="#cb7-124"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122515</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-125"><a href="#cb7-125"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-126"><a href="#cb7-126"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122507</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-127"><a href="#cb7-127"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-128"><a href="#cb7-128"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122508</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-129"><a href="#cb7-129"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-130"><a href="#cb7-130"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122509</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-131"><a href="#cb7-131"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-132"><a href="#cb7-132"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122511</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-133"><a href="#cb7-133"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-134"><a href="#cb7-134"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122512</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-135"><a href="#cb7-135"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-136"><a href="#cb7-136"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122513</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-137"><a href="#cb7-137"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-138"><a href="#cb7-138"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122514</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-139"><a href="#cb7-139"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-140"><a href="#cb7-140"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122516</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-141"><a href="#cb7-141"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-142"><a href="#cb7-142"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122517</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-143"><a href="#cb7-143"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-144"><a href="#cb7-144"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">122518</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-145"><a href="#cb7-145"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-146"><a href="#cb7-146"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141071</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-147"><a href="#cb7-147"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141072</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-148"><a href="#cb7-148"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141073</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-149"><a href="#cb7-149"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141075</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-150"><a href="#cb7-150"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141076</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-151"><a href="#cb7-151"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141078</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-152"><a href="#cb7-152"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141079</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-153"><a href="#cb7-153"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141081</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-154"><a href="#cb7-154"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141074</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-155"><a href="#cb7-155"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141077</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-156"><a href="#cb7-156"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141080</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb7-157"><a href="#cb7-157"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141071</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-158"><a href="#cb7-158"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-159"><a href="#cb7-159"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141075</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-160"><a href="#cb7-160"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-161"><a href="#cb7-161"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141078</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-162"><a href="#cb7-162"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-163"><a href="#cb7-163"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141081</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-164"><a href="#cb7-164"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-165"><a href="#cb7-165"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141072</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-166"><a href="#cb7-166"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-167"><a href="#cb7-167"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141073</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-168"><a href="#cb7-168"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-169"><a href="#cb7-169"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141074</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-170"><a href="#cb7-170"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-171"><a href="#cb7-171"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141076</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-172"><a href="#cb7-172"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-173"><a href="#cb7-173"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141077</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-174"><a href="#cb7-174"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-175"><a href="#cb7-175"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141079</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-176"><a href="#cb7-176"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-177"><a href="#cb7-177"></a><span class="ex">2024:01:23-00:02:21:</span><span class="er">(</span><span class="ex">141080</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb7-178"><a href="#cb7-178"></a><span class="ex">to</span> get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-179"><a href="#cb7-179"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-180"><a href="#cb7-180"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-181"><a href="#cb7-181"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-182"><a href="#cb7-182"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-183"><a href="#cb7-183"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-184"><a href="#cb7-184"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-185"><a href="#cb7-185"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-186"><a href="#cb7-186"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-187"><a href="#cb7-187"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-188"><a href="#cb7-188"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-189"><a href="#cb7-189"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-190"><a href="#cb7-190"></a><span class="op">&gt;</span>fused <span class="ex">kernel</span> is only supported in cuda, skip loading fused kernel</span>
+<span id="cb7-191"><a href="#cb7-191"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb7-192"><a href="#cb7-192"></a>  <span class="ex">File</span> <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/pretrain_llama.py"</span>, line 583, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb7-193"><a href="#cb7-193"></a>    <span class="ex">model</span> = main<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb7-194"><a href="#cb7-194"></a>  <span class="ex">File</span> <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/pretrain_llama.py"</span>, line 561, in main</span>
+<span id="cb7-195"><a href="#cb7-195"></a>    <span class="ex">model</span> = pretrain<span class="er">(</span></span>
+<span id="cb7-196"><a href="#cb7-196"></a>  <span class="ex">File</span> <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/megatron/training.py"</span>, line 136, in pretrain</span>
+<span id="cb7-197"><a href="#cb7-197"></a>    <span class="ex">torch.distributed.all_reduce</span><span class="er">(</span><span class="ex">start_time_tensor,</span></span>
+<span id="cb7-198"><a href="#cb7-198"></a>  <span class="ex">File</span> <span class="st">"/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torch/distributed/c10d_logger.py"</span>, line 47, in wrapper</span>
+<span id="cb7-199"><a href="#cb7-199"></a>    <span class="cf">return</span> <span class="ex">func</span><span class="er">(</span><span class="ex">*args,</span> <span class="pp">**</span>kwargs<span class="kw">)</span></span>
+<span id="cb7-200"><a href="#cb7-200"></a>  <span class="ex">File</span> <span class="st">"/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py"</span>, line 2050, in all_reduce</span>
+<span id="cb7-201"><a href="#cb7-201"></a>    <span class="ex">work</span> = group.allreduce<span class="er">(</span><span class="ex">[tensor],</span> opts<span class="kw">)</span></span>
+<span id="cb7-202"><a href="#cb7-202"></a></span>
+<span id="cb7-203"><a href="#cb7-203"></a><span class="ex">RuntimeError:</span> oneCCL: global.cpp:150 getenv_local_coord: EXCEPTION: to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb7-204"><a href="#cb7-204"></a></span>
+<span id="cb7-205"><a href="#cb7-205"></a><span class="op">&lt;</span>/details<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></details></li>
+<li><p><strong>Take 2</strong>: Trying with <code>CCL_ZE_IPC_EXCHANGE=sockets</code> (still no luck)</p>
+<details closed="">
+<summary>
+<p>Run:</p>
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">$</span> CCL_ZE_IPC_EXCHANGE=sockets !!</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">[...]</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">2024:01:23-00:03:41:</span><span class="er">(</span><span class="ex">123335</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">2024:01:23-00:03:41:</span><span class="er">(</span><span class="ex">123330</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">sockets</span> exchange mode is set. It may cause potential problem of <span class="st">'Too many open file descriptors'</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="ex">2024:01:23-00:03:41:</span><span class="er">(</span><span class="ex">123337</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">sockets</span> exchange mode is set. It may cause potential problem of <span class="st">'Too many open file descriptors'</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="ex">2024:01:23-00:03:41:</span><span class="er">(</span><span class="ex">123327</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">sockets</span> exchange mode is set. It may cause potential problem of <span class="st">'Too many open file descriptors'</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="ex">[...]</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="ex">RuntimeError:</span> oneCCL: global.cpp:150 getenv_local_coord: EXCEPTION: to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details></li>
+</ul>
+</section>
+</section>
+<section id="using-deepspeed" class="level2">
+<h2 class="anchored" data-anchor-id="using-deepspeed">Using <code>deepspeed</code></h2>
+<ul>
+<li><p>Setup:</p>
+<details closed="">
+<summary>
+<p>Setup:</p>
+</summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">$</span> cat <span class="va">$PBS_NODEFILE</span> <span class="op">&gt;</span> hostfile <span class="kw">;</span> <span class="fu">sed</span> <span class="at">-e</span> <span class="st">'s/$/ slots=12/'</span> <span class="at">-i</span> hostfile</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">$</span> echo <span class="st">"PATH=</span><span class="va">${PATH}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> .deepspeed_env <span class="kw">;</span> <span class="bu">echo</span> <span class="st">"LD_LIBRARY_PATH=</span><span class="va">${LD_LIBRARY_PATH}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> .deepspeed_env <span class="kw">;</span> <span class="bu">echo</span> <span class="st">"http_proxy=</span><span class="va">${http_proxy}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> .deepspeed_env <span class="kw">;</span> <span class="bu">echo</span> <span class="st">"https_proxy=</span><span class="va">${https_proxy}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> .deepspeed_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></details></li>
+<li><p>Run:</p>
+<ul>
+<li><p>Command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="ex">$</span> RANK=0 LOCAL_RANK=0 MASTER_ADDR=localhost deepspeed <span class="at">--hostfile</span> hostfile pretrain_llama.py <span class="at">--tensor-model-parallel-size</span> 1 <span class="at">--pipeline-model-parallel-size</span> 1 <span class="at">--num-layers</span> 32 <span class="at">--hidden-size</span> 4096 <span class="at">--ffn-hidden-size</span> 5504 <span class="at">--num-attention-heads</span> 32 <span class="at">--micro-batch-size</span> 1 <span class="at">--global-batch-size</span> 24 <span class="at">--seq-length</span> 2048 <span class="at">--max-position-embeddings</span> 2048 <span class="at">--train-iters</span> 250000 <span class="at">--save</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="at">--load</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="at">--data-path</span> <span class="at">--data-impl</span> mmap <span class="at">--tokenizer-type</span> GPTSentencePieceTokenizer <span class="at">--tokenizer-model</span> ./tmp/tokenizer.model <span class="at">--split</span> 949,50,1 <span class="at">--distributed-backend</span> ccl <span class="at">--lr</span> 3e-4 <span class="at">--lr-decay-style</span> cosine <span class="at">--min-lr</span> 3e-5 <span class="at">--weight-decay</span> 0.1 <span class="at">--clip-grad</span> 1 <span class="at">--lr-warmup-iters</span> 2000 <span class="at">--optimizer</span> adam <span class="at">--adam-beta1</span> 0.9 <span class="at">--adam-beta2</span> 0.95 <span class="at">--log-interval</span> 1 <span class="at">--save-interval</span> 10000 <span class="at">--eval-interval</span> 1000 <span class="at">--eval-iters</span> 10 <span class="at">--bf16</span> <span class="at">--no-query-key-layer-scaling</span> <span class="at">--attention-dropout</span> 0 <span class="at">--hidden-dropout</span> 0 <span class="at">--use-rotary-position-embeddings</span> <span class="at">--untie-embeddings-and-output-weights</span> <span class="at">--swiglu</span> <span class="at">--normalization</span> rmsnorm <span class="at">--disable-bias-linear</span> <span class="at">--num-key-value-heads</span> 4 <span class="at">--tensorboard-dir</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/outputs/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1/tensorboard <span class="at">--log-timers-to-tensorboard</span> <span class="at">--tensorboard-log-interval</span> 1 <span class="at">--data-path</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/BookCorpusDataset_text_document <span class="at">--vocab-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-vocab.json <span class="at">--merge-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-merges.txt <span class="at">--zero-stage</span><span class="op">=</span>3 <span class="at">--deepspeed_config</span><span class="op">=</span>/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/deepspeed.json <span class="at">--deepspeed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Output:</p>
+<details closed="">
+<summary>
+<p>Output</p>
+</summary>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">$</span> RANK=0 LOCAL_RANK=0 MASTER_ADDR=localhost deepspeed <span class="at">--hostfile</span> hostfile pretrain_llama.py <span class="at">--tensor-model-parallel-size</span> 1 <span class="at">--pipeline-model-parallel-size</span> 1 <span class="at">--num-layers</span> 32 <span class="at">--hidden-size</span> 4096 <span class="at">--ffn-hidden-size</span> 5504 <span class="at">--num-attention-heads</span> 32 <span class="at">--micro-batch-size</span> 1 <span class="at">--global-batch-size</span> 24 <span class="at">--seq-length</span> 2048 <span class="at">--max-position-embeddings</span> 2048 <span class="at">--train-iters</span> 250000 <span class="at">--save</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="at">--load</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1 <span class="at">--data-path</span> <span class="at">--data-impl</span> mmap <span class="at">--tokenizer-type</span> GPTSentencePieceTokenizer <span class="at">--tokenizer-model</span> ./tmp/tokenizer.model <span class="at">--split</span> 949,50,1 <span class="at">--distributed-backend</span> ccl <span class="at">--lr</span> 3e-4 <span class="at">--lr-decay-style</span> cosine <span class="at">--min-lr</span> 3e-5 <span class="at">--weight-decay</span> 0.1 <span class="at">--clip-grad</span> 1 <span class="at">--lr-warmup-iters</span> 2000 <span class="at">--optimizer</span> adam <span class="at">--adam-beta1</span> 0.9 <span class="at">--adam-beta2</span> 0.95 <span class="at">--log-interval</span> 1 <span class="at">--save-interval</span> 10000 <span class="at">--eval-interval</span> 1000 <span class="at">--eval-iters</span> 10 <span class="at">--bf16</span> <span class="at">--no-query-key-layer-scaling</span> <span class="at">--attention-dropout</span> 0 <span class="at">--hidden-dropout</span> 0 <span class="at">--use-rotary-position-embeddings</span> <span class="at">--untie-embeddings-and-output-weights</span> <span class="at">--swiglu</span> <span class="at">--normalization</span> rmsnorm <span class="at">--disable-bias-linear</span> <span class="at">--num-key-value-heads</span> 4 <span class="at">--tensorboard-dir</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/outputs/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1/tensorboard <span class="at">--log-timers-to-tensorboard</span> <span class="at">--tensorboard-log-interval</span> 1 <span class="at">--data-path</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/BookCorpusDataset_text_document <span class="at">--vocab-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-vocab.json <span class="at">--merge-file</span> /lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-merges.txt <span class="at">--zero-stage</span><span class="op">=</span>3 <span class="at">--deepspeed_config</span><span class="op">=</span>/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/deepspeed.json <span class="at">--deepspeed</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="ex">home/foremans/miniconda3/envs/anl_release_q4/bin/deepspeed:4:</span> DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="ex">__import__</span><span class="er">(</span><span class="st">'pkg_resources'</span><span class="kw">)</span><span class="ex">.require</span><span class="er">(</span><span class="st">'deepspeed==0.12.3+6ea44d02'</span><span class="kw">)</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="ex">/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torchvision/io/image.py:13:</span> UserWarning: Failed to load image Python extension: <span class="st">'If you dont plan on using image functionality from `torchvision.io`, you can igno re this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?'</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="ex">warn</span><span class="er">(</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="ex">My</span> guessed rank = 0</span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="ex">[2024-01-23</span> 00:09:56,016] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="ex">[2024-01-23</span> 00:10:00,790] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">runner.py:463:main</span><span class="pp">]</span> Using IP address of 10.115.53.137 for node x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov</span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="ex">[2024-01-23</span> 00:10:00,812] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">runner.py:559:main</span><span class="pp">]</span> deepspeed_env file = .deepspeed_env</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">[2024-01-23</span> 00:10:00,813] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">runner.py:559:main</span><span class="pp">]</span> deepspeed_env file = .deepspeed_env</span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="ex">[2024-01-23</span> 00:10:00,813] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">multinode_runner.py:72:get_cmd</span><span class="pp">]</span> Running on the following workers: x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov,x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov</span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="ex">[2024-01-23</span> 00:10:00,813] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">runner.py:570:main</span><span class="pp">]</span> cmd = pdsh <span class="at">-S</span> <span class="at">-f</span> 1024 <span class="at">-w</span> x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov,x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov export PYTHONSTARTUP=/etc/pythonstart<span class="kw">;</span> <span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span>/l</span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="ex">us/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed:/soft/compilers/oneapi/2023.12.15.001/oneapi/advisor/2024.0/pythonapi</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/home/ftartagl/graphics-compute-runtime/agama-ci-devel-736.9/u</span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="ex">sr/bin:/soft/tools/gpu_validation:/soft/libraries/khronos/clinfo/master-13ae34-2020.12.14/bin:/soft/libraries/intel-compute-samples/2021.27.01:/soft/libraries/intel-gpu-umd/stable_736_25_20231031/compiler/bin:/soft/libraries/intel-gpu-umd</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a><span class="ex">/stable_736_25_20231031/driver/bin:/soft/restricted/CNDA/updates/mpich/52.2/mpich-ofi-all-icc-default-pmix-gpu-drop52/bin:/soft/tools/mpi_wrapper_utils:/soft/compilers/oneapi/2023.12.15.001/oneapi/dpcpp-ct/2024.0/bin:/soft/compilers/oneap</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="ex">i/2023.12.15.001/oneapi/advisor/2024.0/bin64:/soft/compilers/oneapi/2023.12.15.001/oneapi/vtune/2024.0/bin64:/soft/compilers/oneapi/2023.12.15.001/oneapi/inspector/2024.0/bin64:/soft/compilers/oneapi/2023.12.15.001/oneapi/debugger/2024.0/</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="ex">opt/debugger/bin:/soft/compilers/oneapi/2023.12.15.001/oneapi/mkl/2024.0/bin:/soft/compilers/oneapi/2023.12.15.001/oneapi/compiler/2024.0/bin:/home/foremans/miniconda3/envs/anl_release_q4/bin:/home/foremans/miniconda3/condabin:/home/forem</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="ex">ans/.nvm/versions/node/v21.5.0/bin:/home/foremans/homebrew/bin:/home/foremans/homebrew/sbin:/opt/cray/pals/1.3.2/bin:/opt/cray/libfabric/1.15.2.0/bin:/opt/cray/pe/gcc/11.2.0/snos/bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/b</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a><span class="ex">in:/home/foremans/.local/bin:/home/foremans/bin:/usr/local/bin:/usr/bin:/bin:/opt/c3/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/opt/pbs/bin:/sbin:/home/foremans/.local/share/kitty-ssh-kitten/kitty/bin:/home/foremans/.cargo/bin:/home/foremans</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="ex">/.fzf/bin:/home/foremans/.luarocks/bin</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span>/home/ftartagl/graphics-compute-runtime/agama-ci-devel-736.9/usr/lib64/dri:/home/ftartagl/graphics-compute-runtime/agama-ci-devel-736.9/usr/lib64/mfx:/home/ftartagl/graphics-c</span>
+<span id="cb11-22"><a href="#cb11-22"></a><span class="ex">ompute-runtime/agama-ci-devel-736.9/usr/lib64/intel-opencl:/home/ftartagl/graphics-compute-runtime/agama-ci-devel-736.9/usr/lib64:/soft/libraries/khronos/loader/master-2022.05.18/lib64:/soft/libraries/intel-gpu-umd/stable_736_25_20231031/</span></span>
+<span id="cb11-23"><a href="#cb11-23"></a><span class="ex">compiler/lib64:/soft/libraries/intel-gpu-umd/stable_736_25_20231031/driver/lib64/intel-opencl:/soft/libraries/intel-gpu-umd/stable_736_25_20231031/driver/lib64:/soft/restricted/CNDA/updates/mpich/52.2/mpich-ofi-all-icc-default-pmix-gpu-dr</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="ex">op52/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/ipp/2021.10/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/ippcp/2021.9/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/dpl/2022.3/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/d</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="ex">ebugger/2024.0/opt/debugger/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/ccl/2021.11/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/dal/2024.0/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/dnnl/2024.0/lib:/soft/compilers/oneapi/2</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a><span class="ex">023.12.15.001/oneapi/tbb/2021.11/lib/intel64/gcc4.8:/soft/compilers/oneapi/2023.12.15.001/oneapi/mkl/2024.0/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/compiler/2024.0/opt/compiler/lib:/soft/compilers/oneapi/2023.12.15.001/oneapi/com</span></span>
+<span id="cb11-27"><a href="#cb11-27"></a><span class="ex">piler/2024.0/lib:/opt/cray/libfabric/1.15.2.0/lib64:/opt/cray/pe/gcc/11.2.0/snos/lib64</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">http_proxy</span><span class="op">=</span>http://proxy-01.pub.alcf.anl.gov:3128<span class="kw">;</span> <span class="bu">export</span> <span class="va">https_proxy</span><span class="op">=</span>http://proxy.alcf.anl.gov:3128<span class="kw">;</span>  <span class="bu">cd</span> /lus/gecko/projects/Aurora_deployment/</span>
+<span id="cb11-28"><a href="#cb11-28"></a><span class="ex">foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed</span><span class="kw">;</span> <span class="ex">/home/foremans/miniconda3/envs/anl_release_q4/bin/python3</span> <span class="at">-u</span> <span class="at">-m</span> deepspeed.launcher.launch <span class="at">--world_info</span><span class="op">=</span>eyJ4NDUwMmMxczBiMG4wLmhvc3RtZ210MjUwMi5jbS5hdXJvcmEuYWxjZi5hbmwuZ292IjogWzAsI</span>
+<span id="cb11-29"><a href="#cb11-29"></a><span class="ex">DEsIDIsIDMsIDQsIDUsIDYsIDcsIDgsIDksIDEwLCAxMV0sICJ4NDUwMmMxczNiMG4wLmhvc3RtZ210MjUwMi5jbS5hdXJvcmEuYWxjZi5hbmwuZ292IjogWzAsIDEsIDIsIDMsIDQsIDUsIDYsIDcsIDgsIDksIDEwLCAxMV19</span> <span class="at">--node_rank</span><span class="op">=</span>%n <span class="at">--master_addr</span><span class="op">=</span>10.115.53.137 <span class="at">--master_port</span><span class="op">=</span>29500 pre</span>
+<span id="cb11-30"><a href="#cb11-30"></a><span class="ex">train_llama.py</span> <span class="at">--tensor-model-parallel-size</span> <span class="st">'1'</span> <span class="at">--pipeline-model-parallel-size</span> <span class="st">'1'</span> <span class="at">--num-layers</span> <span class="st">'32'</span> <span class="at">--hidden-size</span> <span class="st">'4096'</span> <span class="at">--ffn-hidden-size</span> <span class="st">'5504'</span> <span class="at">--num-attention-heads</span> <span class="st">'32'</span> <span class="at">--micro-batch-size</span> <span class="st">'1'</span> <span class="at">--global-batch-size</span> <span class="st">'24'</span> <span class="at">--seq-length</span> <span class="st">'20</span></span>
+<span id="cb11-31"><a href="#cb11-31"></a><span class="st">48'</span> <span class="at">--max-position-embeddings</span> <span class="st">'2048'</span> <span class="at">--train-iters</span> <span class="st">'250000'</span> <span class="at">--save</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1'</span></span>
+<span id="cb11-32"><a href="#cb11-32"></a><span class="ex">--load</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/checkpoints/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1'</span> <span class="at">--data-path</span> <span class="at">--data-impl</span> <span class="st">'mmap'</span> <span class="at">--tokenizer-type</span> <span class="st">'GPTSentence</span></span>
+<span id="cb11-33"><a href="#cb11-33"></a><span class="st">PieceTokenizer'</span> <span class="at">--tokenizer-model</span> <span class="st">'./tmp/tokenizer.model'</span> <span class="at">--split</span> <span class="st">'949,50,1'</span> <span class="at">--distributed-backend</span> <span class="st">'ccl'</span> <span class="at">--lr</span> <span class="st">'3e-4'</span> <span class="at">--lr-decay-style</span> <span class="st">'cosine'</span> <span class="at">--min-lr</span> <span class="st">'3e-5'</span> <span class="at">--weight-decay</span> <span class="st">'0.1'</span> <span class="at">--clip-grad</span> <span class="st">'1'</span> <span class="at">--lr-warmup-iters</span> <span class="st">'2000'</span> <span class="at">--optimizer</span> <span class="st">'adam</span></span>
+<span id="cb11-34"><a href="#cb11-34"></a><span class="st">'</span> <span class="at">--adam-beta1</span> <span class="st">'0.9'</span> <span class="at">--adam-beta2</span> <span class="st">'0.95'</span> <span class="at">--log-interval</span> <span class="st">'1'</span> <span class="at">--save-interval</span> <span class="st">'10000'</span> <span class="at">--eval-interval</span> <span class="st">'1000'</span> <span class="at">--eval-iters</span> <span class="st">'10'</span> <span class="at">--bf16</span> <span class="at">--no-query-key-layer-scaling</span> <span class="at">--attention-dropout</span> <span class="st">'0'</span> <span class="at">--hidden-dropout</span> <span class="st">'0'</span> <span class="at">--use-rotary-position-embeddings</span></span>
+<span id="cb11-35"><a href="#cb11-35"></a> <span class="ex">--untie-embeddings-and-output-weights</span> <span class="at">--swiglu</span> <span class="at">--normalization</span> <span class="st">'rmsnorm'</span> <span class="at">--disable-bias-linear</span> <span class="at">--num-key-value-heads</span> <span class="st">'4'</span> <span class="at">--tensorboard-dir</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/ou</span></span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="st">tputs/LLAMA_7B_LLAMA_7B_z3_seqlen_mp1_pp1_sp24_nl32_hs4096_gb24_mb1/tensorboard'</span> <span class="at">--log-timers-to-tensorboard</span> <span class="at">--tensorboard-log-interval</span> <span class="st">'1'</span> <span class="at">--data-path</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-</span></span>
+<span id="cb11-37"><a href="#cb11-37"></a><span class="st">DeepSpeed/dataset/BookCorpusDataset_text_document'</span> <span class="at">--vocab-file</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-vocab.json'</span> <span class="at">--merge-file</span> <span class="st">'/lus/gecko/projects/Aurora_deployment/f</span></span>
+<span id="cb11-38"><a href="#cb11-38"></a><span class="st">oremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/dataset/gpt2-merges.txt'</span> <span class="at">--zero-stage</span><span class="op">=</span>3 <span class="at">--deepspeed_config</span><span class="op">=</span>/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/deepspeed.json <span class="at">--deepspeed</span></span>
+<span id="cb11-39"><a href="#cb11-39"></a><span class="ex">x4502c1s3b0n0:</span> Warning: Permanently added <span class="st">'x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov,10.115.53.138'</span> <span class="er">(</span><span class="ex">ECDSA</span><span class="kw">)</span> <span class="ex">to</span> the list of known hosts.</span>
+<span id="cb11-40"><a href="#cb11-40"></a></span>
+<span id="cb11-41"><a href="#cb11-41"></a><span class="ex">x4502c1s0b0n0:</span> /home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: <span class="st">''</span>If you don<span class="st">'t plan on using image functionality from `torchvision.io</span></span>
+<span id="cb11-42"><a href="#cb11-42"></a><span class="st">`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a><span class="st">x4502c1s0b0n0:   warn(</span></span>
+<span id="cb11-44"><a href="#cb11-44"></a><span class="st">x4502c1s3b0n0: /home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: ''If you don'</span>t plan on using image functionality from <span class="kw">`</span><span class="ex">torchvision.io</span><span class="kw">`</span>, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have <span class="kw">`</span><span class="ex">libjpeg</span><span class="kw">`</span> or <span class="kw">`</span><span class="ex">libpng</span><span class="kw">`</span> installed before building <span class="kw">`</span><span class="ex">torchvision</span><span class="kw">`</span> from source<span class="pp">?</span></span>
+<span id="cb11-45"><a href="#cb11-45"></a><span class="ex">x4502c1s3b0n0:</span>   warn<span class="er">(</span></span>
+<span id="cb11-46"><a href="#cb11-46"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:07,853] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb11-47"><a href="#cb11-47"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:08,419] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:145:main</span><span class="pp">]</span> WORLD INFO DICT: {<span class="st">'x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], <span class="st">'x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}</span>
+<span id="cb11-48"><a href="#cb11-48"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:08,419] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:151:main</span><span class="pp">]</span> nnodes=2, num_local_procs=12, node_rank=0</span>
+<span id="cb11-49"><a href="#cb11-49"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:08,419] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:162:main</span><span class="pp">]</span> global_rank_mapping=defaultdict<span class="er">(</span><span class="op">&lt;</span>class <span class="st">'list'</span><span class="op">&gt;</span>, <span class="ex">{</span><span class="st">'x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span><span class="ex">:</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], <span class="st">'x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}<span class="kw">)</span></span>
+<span id="cb11-50"><a href="#cb11-50"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:08,419] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:163:main</span><span class="pp">]</span> dist_world_size=24</span>
+<span id="cb11-51"><a href="#cb11-51"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:08,419] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:165:main</span><span class="pp">]</span> Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7,8,9,10,11</span>
+<span id="cb11-52"><a href="#cb11-52"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:08,885] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb11-53"><a href="#cb11-53"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:09,452] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:145:main</span><span class="pp">]</span> WORLD INFO DICT: {<span class="st">'x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], <span class="st">'x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]}</span>
+<span id="cb11-54"><a href="#cb11-54"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:09,452] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:151:main</span><span class="pp">]</span> nnodes=2, num_local_procs=12, node_rank=1</span>
+<span id="cb11-55"><a href="#cb11-55"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:09,452] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:162:main</span><span class="pp">]</span> global_rank_mapping=defaultdict<span class="er">(</span><span class="op">&lt;</span>class <span class="st">'list'</span><span class="op">&gt;</span>, <span class="ex">{</span><span class="st">'x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span><span class="ex">:</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], <span class="st">'x4502c1s3b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov'</span>: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}<span class="kw">)</span></span>
+<span id="cb11-56"><a href="#cb11-56"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:09,452] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:163:main</span><span class="pp">]</span> dist_world_size=24</span>
+<span id="cb11-57"><a href="#cb11-57"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:09,452] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">launch.py:165:main</span><span class="pp">]</span> Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7,8,9,10,11</span>
+<span id="cb11-58"><a href="#cb11-58"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 4</span>
+<span id="cb11-59"><a href="#cb11-59"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 9</span>
+<span id="cb11-60"><a href="#cb11-60"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 8</span>
+<span id="cb11-61"><a href="#cb11-61"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 0</span>
+<span id="cb11-62"><a href="#cb11-62"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 6</span>
+<span id="cb11-63"><a href="#cb11-63"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 7</span>
+<span id="cb11-64"><a href="#cb11-64"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 11</span>
+<span id="cb11-65"><a href="#cb11-65"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 5</span>
+<span id="cb11-66"><a href="#cb11-66"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 10</span>
+<span id="cb11-67"><a href="#cb11-67"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 3</span>
+<span id="cb11-68"><a href="#cb11-68"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 2</span>
+<span id="cb11-69"><a href="#cb11-69"></a><span class="ex">x4502c1s0b0n0:</span> My guessed rank = 1</span>
+<span id="cb11-70"><a href="#cb11-70"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 21</span>
+<span id="cb11-71"><a href="#cb11-71"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 18</span>
+<span id="cb11-72"><a href="#cb11-72"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 22</span>
+<span id="cb11-73"><a href="#cb11-73"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 20</span>
+<span id="cb11-74"><a href="#cb11-74"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 14</span>
+<span id="cb11-75"><a href="#cb11-75"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 12</span>
+<span id="cb11-76"><a href="#cb11-76"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 23</span>
+<span id="cb11-77"><a href="#cb11-77"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 16</span>
+<span id="cb11-78"><a href="#cb11-78"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 17</span>
+<span id="cb11-79"><a href="#cb11-79"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 19</span>
+<span id="cb11-80"><a href="#cb11-80"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 15</span>
+<span id="cb11-81"><a href="#cb11-81"></a><span class="ex">x4502c1s3b0n0:</span> My guessed rank = 13</span>
+<span id="cb11-82"><a href="#cb11-82"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:14,751] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb11-83"><a href="#cb11-83"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:19,225] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:161:init_deepspeed_backend</span><span class="pp">]</span> Initialize ccl backend</span>
+<span id="cb11-84"><a href="#cb11-84"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:19,225] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:637:init_distributed</span><span class="pp">]</span> cdb=None</span>
+<span id="cb11-85"><a href="#cb11-85"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:20,891] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:668:init_distributed</span><span class="pp">]</span> Initializing TorchBackend in DeepSpeed with backend ccl</span>
+<span id="cb11-86"><a href="#cb11-86"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:21]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:257</span><span class="pp">]</span> <span class="at">-</span> DistInfo={</span>
+<span id="cb11-87"><a href="#cb11-87"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"DEVICE"</span>: <span class="st">"xpu"</span>,</span>
+<span id="cb11-88"><a href="#cb11-88"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"DEVICE_ID"</span>: <span class="st">"xpu:0"</span>,</span>
+<span id="cb11-89"><a href="#cb11-89"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"DISTRIBUTED_BACKEND"</span>: <span class="st">"gloo"</span>,</span>
+<span id="cb11-90"><a href="#cb11-90"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"GPUS_PER_NODE"</span>: 12,</span>
+<span id="cb11-91"><a href="#cb11-91"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"HOSTFILE"</span>: <span class="st">"/var/spool/pbs/aux/604213.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb11-92"><a href="#cb11-92"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"HOSTNAME"</span>: <span class="st">"x4502c1s0b0n0.hostmgmt2502.cm.aurora.alcf.anl.gov"</span>,</span>
+<span id="cb11-93"><a href="#cb11-93"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"HOSTS"</span>: <span class="st">"['x4502c1s0b0n0', 'x4502c1s3b0n0']"</span>,</span>
+<span id="cb11-94"><a href="#cb11-94"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"LOCAL_RANK"</span>: 0,</span>
+<span id="cb11-95"><a href="#cb11-95"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"MACHINE"</span>: <span class="st">"Aurora"</span>,</span>
+<span id="cb11-96"><a href="#cb11-96"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"NGPUS"</span>: 24,</span>
+<span id="cb11-97"><a href="#cb11-97"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"NODE_ID"</span>: 0,</span>
+<span id="cb11-98"><a href="#cb11-98"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"NUM_NODES"</span>: 2,</span>
+<span id="cb11-99"><a href="#cb11-99"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"RANK"</span>: 0,</span>
+<span id="cb11-100"><a href="#cb11-100"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"SCHEDULER"</span>: <span class="st">"PBS"</span>,</span>
+<span id="cb11-101"><a href="#cb11-101"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"WORLD_SIZE_IN_USE"</span>: 1,</span>
+<span id="cb11-102"><a href="#cb11-102"></a><span class="ex">x4502c1s0b0n0:</span>     <span class="st">"WORLD_SIZE_TOTAL"</span>: 24</span>
+<span id="cb11-103"><a href="#cb11-103"></a><span class="ex">x4502c1s0b0n0:</span> }</span>
+<span id="cb11-104"><a href="#cb11-104"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:21,533] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">real_accelerator.py:158:get_accelerator</span><span class="pp">]</span> Setting ds_accelerator to xpu <span class="er">(</span><span class="ex">auto</span> detect<span class="kw">)</span></span>
+<span id="cb11-105"><a href="#cb11-105"></a><span class="ex">x4502c1s0b0n0:</span> <span class="at">--------------------------------------------------</span></span>
+<span id="cb11-106"><a href="#cb11-106"></a><span class="ex">x4502c1s0b0n0:</span> DeepSpeed C++/CUDA extension op report</span>
+<span id="cb11-107"><a href="#cb11-107"></a><span class="ex">x4502c1s0b0n0:</span> <span class="at">--------------------------------------------------</span></span>
+<span id="cb11-108"><a href="#cb11-108"></a><span class="ex">x4502c1s0b0n0:</span> NOTE: Ops not installed will be just-in-time <span class="er">(</span><span class="ex">JIT</span><span class="kw">)</span> <span class="ex">compiled</span> at</span>
+<span id="cb11-109"><a href="#cb11-109"></a><span class="ex">x4502c1s0b0n0:</span>       runtime if needed. Op compatibility means that your system</span>
+<span id="cb11-110"><a href="#cb11-110"></a><span class="ex">x4502c1s0b0n0:</span>       meet the required dependencies to JIT install the op.</span>
+<span id="cb11-111"><a href="#cb11-111"></a><span class="ex">x4502c1s0b0n0:</span> <span class="at">--------------------------------------------------</span></span>
+<span id="cb11-112"><a href="#cb11-112"></a><span class="ex">x4502c1s0b0n0:</span> JIT compiled ops requires ninja</span>
+<span id="cb11-113"><a href="#cb11-113"></a><span class="ex">x4502c1s0b0n0:</span> ninja .................. <span class="pp">[</span><span class="ss">OKAY</span><span class="pp">]</span></span>
+<span id="cb11-114"><a href="#cb11-114"></a><span class="ex">x4502c1s0b0n0:</span> <span class="at">--------------------------------------------------</span></span>
+<span id="cb11-115"><a href="#cb11-115"></a><span class="ex">x4502c1s0b0n0:</span> op name ................ installed .. compatible</span>
+<span id="cb11-116"><a href="#cb11-116"></a><span class="ex">x4502c1s0b0n0:</span> <span class="at">--------------------------------------------------</span></span>
+<span id="cb11-117"><a href="#cb11-117"></a><span class="ex">x4502c1s0b0n0:</span> [2024-01-23 06:10:21]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">spawn:38</span><span class="pp">]</span> <span class="at">-</span> gcc <span class="at">-pthread</span> <span class="at">-B</span> /home/foremans/miniconda3/envs/anl_release_q4/compiler_compat <span class="at">-Wno-unused-result</span> <span class="at">-Wsign-compare</span> <span class="at">-DNDEBUG</span> <span class="at">-fwrapv</span> <span class="at">-O2</span> <span class="at">-Wall</span> <span class="at">-fPIC</span> <span class="at">-O2</span> <span class="at">-isystem</span> /home/foremans/miniconda3/envs/anl_release_q4/include <span class="at">-fPIC</span> <span class="at">-O2</span> <span class="at">-isystem</span> /home/foremans/miniconda3/envs/anl_release_q4/include <span class="at">-fPIC</span> <span class="at">-c</span> /tmp/tmptqyph55g/test.c <span class="at">-o</span> /tmp/tmptqyph55g/test.o</span>
+<span id="cb11-118"><a href="#cb11-118"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:21,671] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:161:init_deepspeed_backend</span><span class="pp">]</span> Initialize ccl backend</span>
+<span id="cb11-119"><a href="#cb11-119"></a><span class="ex">x4502c1s3b0n0:</span> [2024-01-23 06:10:21,672] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">comm.py:637:init_distributed</span><span class="pp">]</span> cdb=None</span>
+<span id="cb11-120"><a href="#cb11-120"></a></span>
+<span id="cb11-121"><a href="#cb11-121"></a><span class="ex">[...]</span></span>
+<span id="cb11-122"><a href="#cb11-122"></a><span class="ex">x4502c1s0b0n0:</span> <span class="op">&gt;</span>fused kernel is only supported in cuda, skip loading fused kernel</span>
+<span id="cb11-123"><a href="#cb11-123"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153241</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">did</span> not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi</span>
+<span id="cb11-124"><a href="#cb11-124"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153241</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb11-125"><a href="#cb11-125"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153241</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb11-126"><a href="#cb11-126"></a><span class="ex">x4502c1s0b0n0:</span> to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb11-127"><a href="#cb11-127"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153242</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">did</span> not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi</span>
+<span id="cb11-128"><a href="#cb11-128"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153242</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb11-129"><a href="#cb11-129"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153242</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb11-130"><a href="#cb11-130"></a><span class="ex">x4502c1s0b0n0:</span> to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb11-131"><a href="#cb11-131"></a><span class="ex">x4502c1s3b0n0:</span>  <span class="op">&gt;</span> padded vocab <span class="er">(</span><span class="ex">size:</span> 50257<span class="kw">)</span> <span class="ex">with</span> 47 dummy tokens <span class="er">(</span><span class="ex">new</span> size: 50304<span class="kw">)</span></span>
+<span id="cb11-132"><a href="#cb11-132"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153237</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">did</span> not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi</span>
+<span id="cb11-133"><a href="#cb11-133"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153237</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb11-134"><a href="#cb11-134"></a><span class="ex">x4502c1s0b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">153237</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb11-135"><a href="#cb11-135"></a><span class="ex">x4502c1s0b0n0:</span> to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb11-136"><a href="#cb11-136"></a><span class="ex">x4502c1s0b0n0:</span>  <span class="op">&gt;</span> padded vocab <span class="er">(</span><span class="ex">size:</span> 50257<span class="kw">)</span> <span class="ex">with</span> 47 dummy tokens <span class="er">(</span><span class="ex">new</span> size: 50304<span class="kw">)</span></span>
+<span id="cb11-137"><a href="#cb11-137"></a><span class="ex">x4502c1s0b0n0:</span>  <span class="op">&gt;</span> padded vocab <span class="er">(</span><span class="ex">size:</span> 50257<span class="kw">)</span> <span class="ex">with</span> 47 dummy tokens <span class="er">(</span><span class="ex">new</span> size: 50304<span class="kw">)</span></span>
+<span id="cb11-138"><a href="#cb11-138"></a><span class="ex">x4502c1s3b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">129554</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">could</span> not get local_idx/count from environment variables, trying to get them from ATL</span>
+<span id="cb11-139"><a href="#cb11-139"></a><span class="ex">x4502c1s3b0n0:</span> 2024:01:23-06:12:16:<span class="er">(</span><span class="ex">129554</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_ERROR</span><span class="kw">|</span> <span class="ex">global.cpp:150</span> getenv_local_coord: condition global_data::env<span class="er">(</span><span class="kw">)</span><span class="ex">.ze_ipc_exchange</span> == ccl::ze::ipc_exchange_mode::sockets failed</span>
+<span id="cb11-140"><a href="#cb11-140"></a><span class="ex">x4502c1s3b0n0:</span> to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb11-141"><a href="#cb11-141"></a><span class="ex">x4502c1s3b0n0:</span> RuntimeError: oneCCL: global.cpp:150 getenv_local_coord: EXCEPTION: to get local_idx/count from ATL, set CCL_ZE_IPC_EXCHANGE=sockets explicitly</span>
+<span id="cb11-142"><a href="#cb11-142"></a><span class="ex">x4502c1s3b0n0:</span> Traceback <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb11-143"><a href="#cb11-143"></a><span class="ex">x4502c1s3b0n0:</span>   File <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/pretrain_llama.py"</span>, line 583, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb11-144"><a href="#cb11-144"></a><span class="ex">x4502c1s3b0n0:</span>     model = main<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb11-145"><a href="#cb11-145"></a><span class="ex">x4502c1s3b0n0:</span>   File <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/pretrain_llama.py"</span>, line 561, in main</span>
+<span id="cb11-146"><a href="#cb11-146"></a><span class="ex">x4502c1s3b0n0:</span>     model = pretrain<span class="er">(</span></span>
+<span id="cb11-147"><a href="#cb11-147"></a><span class="ex">x4502c1s3b0n0:</span>   File <span class="st">"/lus/gecko/projects/Aurora_deployment/foremans/anl_24_release_q4/llm.devkit/Megatron-DeepSpeed/megatron/training.py"</span>, line 136, in pretrain</span>
+<span id="cb11-148"><a href="#cb11-148"></a><span class="ex">x4502c1s3b0n0:</span>     torch.distributed.all_reduce<span class="er">(</span><span class="ex">start_time_tensor,</span></span>
+<span id="cb11-149"><a href="#cb11-149"></a><span class="ex">x4502c1s3b0n0:</span>   File <span class="st">"/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torch/distributed/c10d_logger.py"</span>, line 47, in wrapper</span>
+<span id="cb11-150"><a href="#cb11-150"></a><span class="ex">x4502c1s3b0n0:</span>     return func<span class="er">(</span><span class="ex">*args,</span> <span class="pp">**</span>kwargs<span class="kw">)</span></span>
+<span id="cb11-151"><a href="#cb11-151"></a><span class="ex">x4502c1s3b0n0:</span>   File <span class="st">"/home/foremans/miniconda3/envs/anl_release_q4/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py"</span>, line 2050, in all_reduce</span>
+<span id="cb11-152"><a href="#cb11-152"></a><span class="ex">x4502c1s3b0n0:</span>     work = group.allreduce<span class="er">(</span><span class="ex">[tensor],</span> opts<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details></li>
+</ul></li>
+</ul>
+
+
+
+</section>
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+</tr>
+</thead>
+<tbody class="list">
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
+  author = {Foreman, Sam},
+  title = {Megatron {DeepSpeed} on `Xpu`},
+  date = {2024-06-15},
+  url = {https://samforeman.me/qmd/aurora-gpt/megatron-ds-intel.html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Foreman, Sam. 2024. <span>“Megatron DeepSpeed on `Xpu`.”</span> June 15,
+2024. <a href="https://samforeman.me/qmd/aurora-gpt/megatron-ds-intel.html">https://samforeman.me/qmd/aurora-gpt/megatron-ds-intel.html</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/samforeman\.me");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/aurora-gpt/megatron-ds-intel.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/aurora-gpt/megatron-ds-intel.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -2,6 +2,7 @@
 date: ""
 author: ""
 keep-md: true
+toc: false
 site-url: "https://samforeman.me"
 citation:
    author: Sam Foreman
@@ -25,14 +26,30 @@ format-links: false
 editor:
    render-on-save: true
 listing:
-  - id: listing-posts
-    contents:
-      - "./qmd/**/*.qmd"
-      - "! ../qmd/partials/"
-    type: table
-    feed: true
-    sort: "date desc"
-
+  id: listing-posts
+  contents: "./posts/posts.yml"
+metadata-files: [posts/_metadata.yml]
+# listing:
+#   - id: listing-posts
+#     contents:
+#       - "/posts/**/*.qmd"
+#       - "/qmd/**/*.qmd"
+#       - "! /qmd/partials/"
+#       - "../aurora-gpt/megatron-ds-intel.qmd"
+#       - "../dope-slides/index.qmd"
+#       - "../startup-times/index.qmd"
+#       - "../flash-attn-sunspot/index.qmd"
+#       - "../l2hmc-qcd/diffusion/diffusion.qmd"
+#       - "../long-sequences/index.qmd"
+#       - "../mpi4py-reproducer/index.qmd"
+#       - "../determinstic-flash-attn/index.qmd"
+#     contents:
+#       - "./qmd/**/*.qmd"
+#       - "./posts/**/*.qmd"
+#       - "! ../qmd/partials/"
+#     type: table
+#     feed: true
+#     sort: "date desc"
 ---
 
 ::: {style="font-size:1.0em; text-align: center;"}
@@ -95,7 +112,7 @@ listing:
 
 {{< include qmd/partials/_experience.qmd >}}
 
-### 🎶 Playing
+### 🎶 Music
 
 {{< include qmd/partials/_now_playing.qmd >}}
 
@@ -109,12 +126,7 @@ now = datetime.datetime.now()
 day = now.strftime('%m/%d/%Y')
 time = now.strftime('%H:%M:%S')
 dtime = now.strftime("%Y-%m-%d-%H:%M:%S")
-# print(f"[dim]Last updated @ [/dim][#838383]{now}[/]")
-# print(' '.join([f"[dim][updated @ {time} on {day}[/]]"]))
-# print(' '.join([
-#   "[dim][updated @[/]",
-#   f"[#838383]{dtime}[/][dim]][/]"
-# ]))
+
 print(' '.join([
   "[dim][updated @[/]",
   f"[#838383]{time}[/]"
@@ -122,3 +134,4 @@ print(' '.join([
   f"[#838383]{day}[/][dim]][/]",
 ]))
 ```
+
