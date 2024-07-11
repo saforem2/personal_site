@@ -36,7 +36,109 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 ## 🧑🏻‍💻 About Me
 
-<div>
+<!-- ::: {layout="[ [50,-10,35] ]" style="display: flex; flex-direction: row; align-items: start; text-wrap: wrap"} -->
+<!-- ::: {.columns} -->
+<!---->
+<!-- ::: {.column width="50%" style="margin-right: 10%;"} -->
+
+<div class="flex-container">
+
+<div class="flex-container" style="margin-right: 2%;">
+
+- 💻 [Computational
+  scientist](https://alcf.anl.gov/about/people/sam-foreman) at Argonne
+  National Laboratory [(ALCF)](https://alcf.anl.gov)
+
+- 🧪 Interested in {AI, HPC} for science[^1]
+
+  - 🚀 working on scaling large (language, vision, multi-modal)
+    models[^2] *across thousands of GPUs*
+
+</div>
+
+<div class="flex-container"
+style="flex-direction: column; width: -webkit-fill-available; justify-content: flex-start; margin-left: 5%;">
+
+> [!TIP]
+>
+> ### 🎤 <span class="dim-text-11" style="font-size:1.0em!important;">Recent Talks</span>
+>
+> <span class="dim-text" style="font-size:1em;">live:
+> [here](qmd/talks/index.qmd) ( + how I [make
+> them](qmd/dope-slides/index.qmd)! )</span>
+
+> [!TIP]
+>
+> ### <span style="color:#D41109; margin:auto; padding: 1pt;">[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)](https://last.fm/user/saforem2)</span>
+>
+> <script>
+> /**
+>   Developed by Prashant Shrestha
+>   + https://prashant.me
+> */
+> var lastfmData = {
+>   baseURL:
+>     "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
+>   // Your Last.fm Username
+>   user: "saforem2",
+>   // Your API key
+>   api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
+>   additional: "&format=json&limit=1"
+> };
+> &#10;var getSetLastFM = function() {
+>   $.ajax({
+>     type: "GET",
+>     url:
+>       lastfmData.baseURL +
+>       lastfmData.user +
+>       "&api_key=" +
+>       lastfmData.api_key +
+>       lastfmData.additional,
+>     dataType: "json",
+>     success: function(resp) {
+>       var recentTrack = resp.recenttracks.track[0];
+>       var formatted =
+>         "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
+>       $("a#tracktitle")
+>         .html(formatted)
+>         .attr("href", recentTrack.url)
+>         .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
+>         .attr("target", "_blank");
+> &#10;      var artistFormatted =
+>         "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
+>       $("a#trackartist")
+>         .html(artistFormatted)
+>         .attr("title", "Artist : " + recentTrack.artist["#text"]);
+>       $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
+>     },
+>     error: function(resp) {
+>       $("a#tracktitle").html(
+>         "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
+>       );
+>       $("img#trackart").attr("src", "🧑🏻‍💻");
+>       var artistFormatted =
+>         "Sam Foreman";
+>       $("a#trackartist")
+>         .html(artistFormatted)
+>         .attr("href", "https://samforeman.me");
+>     }
+>   });
+> };
+> &#10;// Get the new one.
+> getSetLastFM();
+> // Start the countdown.
+> setInterval(getSetLastFM, 10 * 1000);
+> </script> <div class="nowplayingcard">
+> <div class="nowplayingcontainer-inner">
+> <img id="trackart" src="#">
+> <div class="trackInfo">
+> <a id="tracktitle"></a>
+> <a href="#" id="trackartist"></a>
+> </div>
+> </div>
+> </div>
+
+</div>
 
 </div>
 
@@ -54,7 +156,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
     As a member of the [AI / ML
     Group](https://www.alcf.anl.gov/about/people/group/506) at
-    [ALCF](https://alcf.anl.gov), I work on[^1]:
+    [ALCF](https://alcf.anl.gov), I work on[^3]:
 
     <div class="flex-container">
 
@@ -118,7 +220,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
     Resonators](https://aip.scitation.org/doi/10.1063/1.5009698) and was
     supervised by Professor [Alfred
     Hübler](https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler) within the
-    Center for Complex Systems Research at UIUC[^2].
+    Center for Complex Systems Research at UIUC[^4].
 
     </details>
 
@@ -541,15 +643,15 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 > ### <span class="dim-text-11">📊 GitHub Stats</span>
 >
 > <!-- [![](https://github-readme-streak-stats.herokuapp.com/?user=saforem2&theme=transparent&hide_border=true&include_all_commits=true&include_private=true&text_color=838383&color=838383)]{#img-stretch} -->
+> <!-- [![](https://raw.githubusercontent.com/saforem2/github-stats/41d7eeff7888a8c9918152ce46a268cf55d8eabb/generated/overview.svg)](https://github.com/saforem2/) -->
+> <!-- [![](https://github-readme-stats.vercel.app/api?username=saforem2&show_icons=true&theme=transparent&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true&rank_icon=percentile)](https://github.com/saforem2) -->
 >
 > <div class="columns"
 > style="display: flex; flex-direction: row; align-items: center; text-align:left;">
 >
 > <div class="column" style="text-align: left;width: 57%;">
 >
-> <!-- [![](https://raw.githubusercontent.com/saforem2/github-stats/41d7eeff7888a8c9918152ce46a268cf55d8eabb/generated/overview.svg)](https://github.com/saforem2/) -->
->
-> [![](https://github-readme-stats.vercel.app/api?username=saforem2&show_icons=true&theme=transparent&include_all_commits=true&text_color=838383&title_color=838383&hide_border=true&rank_icon=percentile.png)](https://github.com/saforem2)
+> [![](https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg)](https://github.com/saforem2/)
 >
 > </div>
 >
@@ -784,12 +886,19 @@ setInterval(getSetLastFM, 10 * 1000);
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">11:27:50</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">05</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">21:17:13</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">10</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
-[^1]: If this sounds like something you’d be interested in doing, please
+[^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
+    Generation, Drug Discovery), and Climate Modeling / Weather
+    Forecasting}
+
+[^2]: Mostly trying to get supercomputers to stop yelling at each other
+    🫠
+
+[^3]: If this sounds like something you’d be interested in doing, please
     feel free to [reach out to me](mailto:foremans@anl.gov)!
 
-[^2]: And resulted in a
+[^4]: And resulted in a
     [patent](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC)
     !!

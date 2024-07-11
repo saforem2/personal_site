@@ -367,6 +367,7 @@ a > code {
 .py-1 {
   color: $dim-text;
   opacity: 20% !important;
+  padding-top: 0.35rem!important;
 }
 
 // .table-striped {
@@ -1329,9 +1330,9 @@ body {
   max-width: 33%;
 }
 
-.img {
-  object-fit: contain !important;
-}
+// .img {
+//   object-fit: contain !important;
+// }
 
 div.quarto-about-trestles .about-entity .about-link {
   display: flow;
@@ -1498,6 +1499,12 @@ div.quarto-about-trestles {
 
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
+  .column {
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+  }
+
   .row {
     flex-direction: column;
   }
@@ -1525,13 +1532,13 @@ div.quarto-about-trestles {
   color: rgba(0, 0, 0, 0) !important;
 }
 
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: flex;
-    flex-direction: column !important;
-  }
-}
+// @media screen and (max-width: 600px) {
+//   .column {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column !important;
+//   }
+// }
 
 // @media screen and (max-width: 600px) {
 //     .quarto-about-trestles {
@@ -1600,9 +1607,6 @@ button.close {
 //   vertical-align: -.1em;
 // }
 
-.quarto-layout-cell img {
-  max-width: 100%;
-}
 
 // div.sourceCode {
 //     margin: auto;
@@ -2172,5 +2176,9 @@ p {
 }
 
 .quarto-layout-cell img {
-  contain: layout;
+  max-width: 100%;
+  overflow: unset;
+  overflow-clip-margin: unset;
+  // contain: layout;
+  object-fit: scale-down!important;
 }
