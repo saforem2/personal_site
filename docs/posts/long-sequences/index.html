@@ -1,64 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.1">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Sam Foreman ">
-<meta name="dcterms.date" content="2024-02-12">
-
-<title>🚂 Loooooooong Sequence Lengths – Sam Foreman</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
-
-
+<html lang="en"><head>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -66,9 +7,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../posts/aurora-gpt/megatron-ds-intel.html" rel="next">
+<link href="../../posts/startup-times/index.html" rel="prev">
 <link href="../.././favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -87,123 +28,409 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<script>
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><link href="../.././favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.1">
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
+  <meta name="author" content="Sam Foreman ">
+  <meta name="dcterms.date" content="2024-02-12">
+  <title>Sam Foreman – 🚂 Loooooooong Sequence Lengths</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
     }
-
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
     }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
-  })
-  </script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
-<!-- End Google Tag Manager -->
-<link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
       }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
-<link rel="stylesheet" href="../../css/default.css">
-<link rel="stylesheet" href="../../css/callouts.css">
+  <script type="text/javascript">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+  </script>
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 <meta property="og:title" content="Sam Foreman">
 <meta property="og:description" content="My ramblings about science and computers">
 <meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
@@ -234,310 +461,94 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
 <meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
 <meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022-05;,citation_cover_date=2022-05;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
+<meta property="og:title" content="Sam Foreman">
+<meta property="og:description" content="My ramblings about science and computers">
+<meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
+<meta property="og:site_name" content="Sam Foreman">
+<meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:description" content="My ramblings about science and computers">
+<meta name="twitter:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
+<meta name="twitter:creator" content="@saforem2">
+<meta name="twitter:site" content="@saforem2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Personal Website">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2024-02-12">
+<meta name="citation_cover_date" content="2024-02-12">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-02-12">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022-05;,citation_cover_date=2022-05;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
+<body class="quarto-light nav-sidebar fullcontent">
+  <div class="reveal page-columns page-full">
+    <div class="slides page-columns page-full">
 
-<body class="nav-fixed">
+<section id="title-slide" class="quarto-title-block center"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../posts/index.html">🪧 Posts</a></li><li class="breadcrumb-item"><a href="../../posts/long-sequences/index.html">🚂 Loooooooong Sequence Lengths</a></li></ol></nav>
+  <h1 class="title">🚂 Loooooooong Sequence Lengths</h1>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../.././favicon.svg" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Sam Foreman</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-posts" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">✏️ Posts</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-posts">    
-        <li>
-    <a class="dropdown-item" href="../../posts/index.html">
- <span class="dropdown-text">📬 All Posts</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/determinstic-flash-attn/index.html">
- <span class="dropdown-text">🎰 Deterministic Flash Attention</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/flash-attn-sunspot/index.html">
- <span class="dropdown-text">📸 <code>flash-attn</code> on Sunspot</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/mpi4py-reproducer/index.html">
- <span class="dropdown-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/l2hmc-qcd/diffusion/diffusion.html">
- <span class="dropdown-text">🎲 MCMC + Diffusion Sampling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/dope-slides/index.html">
- <span class="dropdown-text">💅 How to Make Dope Slides</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/startup-times/index.html">
- <span class="dropdown-text">⏰ Starting Up Distributed Training</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/long-sequences/index.html">
- <span class="dropdown-text">🚂 Loooooooong Sequence Lengths</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/aurora-gpt/megatron-ds-intel.html">
- <span class="dropdown-text">🏎️ <code>Megatron-DeepSpeed</code> + Intel XPU</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/2dU1/index.html">
- <span class="dropdown-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../posts/l2hmc-qcd/l2hmc/4dSU3/index.html">
- <span class="dropdown-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-talks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">🦜 Talks</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-talks">    
-        <li>
-    <a class="dropdown-item" href="../../qmd/talks/index.html">
- <span class="dropdown-text">📢 All Talks</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/parallel-training-slides/">
- <span class="dropdown-text">Parallel Training Techniques</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/llm-workshop-talk/">
- <span class="dropdown-text">LLMs from Scratch</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/LLM-tutorial">
- <span class="dropdown-text">Creating Small[~ish] LLMs</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/onapi-talk/#0">
- <span class="dropdown-text">Exascale Science on Aurora</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/llm-lunch-talk/">
- <span class="dropdown-text">LLM Lunch Talk</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/scaling4science">
- <span class="dropdown-text">Scaling LLMs for Science</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/lattice23">
- <span class="dropdown-text">MLMC (for LQCD)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/lqcd-pasc23">
- <span class="dropdown-text">Generative Modeling</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/deep-fridays">
- <span class="dropdown-text">Efficient Sampling for LGT</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/ai4sci-large-scale-training">
- <span class="dropdown-text">Large Scale Training</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/hparam-management-sdl2022">
- <span class="dropdown-text">Hyperparameter Management</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/ATPESC-StatisticalLearning">
- <span class="dropdown-text">Statistical Learning</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/anl-job-talk/">
- <span class="dropdown-text">Scientific Data Science</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
- <span class="dropdown-text">Machine Learning in HEP</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://bit.ly/mainz21">
- <span class="dropdown-text">DLHMC for Improved Gauge Generation</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">
- <span class="dropdown-text">ML for LQCD</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://bit.ly/mainz21_overview">
- <span class="dropdown-text">ML Techniques in LQCD</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
- <span class="dropdown-text">ML for HEP</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">📦 Projects</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
-        <li>
-    <a class="dropdown-item" href="../../qmd/projects/index.html">
- <span class="dropdown-text">📚 All Projects</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/ezpz">
- <span class="dropdown-text">🍋 <code>ezpz</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/l2hmc-qcd">
- <span class="dropdown-text">🟥 <code>l2hmc-qcd</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://github.com/argonne-lcf/Megatron-DeepSpeed)">
- <span class="dropdown-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/wordplay">
- <span class="dropdown-text">💬 <code>wordplay</code> 🎮</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://www.alcf.anl.gov/alcf-ai-science-training-series?">
- <span class="dropdown-text">🎓 <code>ai-science-training</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/enrich">
- <span class="dropdown-text">💸 <code>enrich</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/ambivalent">
- <span class="dropdown-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://saforem2.github.io/climate-analysis">
- <span class="dropdown-text">🌍 <code>climate-analysis</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://github.com/saforem2/glitz">
- <span class="dropdown-text">🎨 <code>glitz</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://github.com/saforem2/personal_site">
- <span class="dropdown-text">🙋🏻<code>personal_site</code></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://github.com/saforem2/notes-demo">
- <span class="dropdown-text">🗒️ <code>Notes-Demo</code></span></a>
-  </li>  
-    </ul>
-  </li>
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://twitter.com/saforem2"> 
-<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:twitter" aria-label="Icon twitter from line-md Iconify.design set." title="Icon twitter from line-md Iconify.design set."></iconify-icon></span></span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/saforem2/personal_site"> 
-<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://samforeman.me"><span class="dim-text">Sam Foreman</span> </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> 
 </div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#deepspeed4science-092023" id="toc-deepspeed4science-092023" class="nav-link active" data-scroll-target="#deepspeed4science-092023">DeepSpeed4Science (09/2023)</a>
-  <ul class="collapse">
-  <li><a href="#new-features" id="toc-new-features" class="nav-link" data-scroll-target="#new-features">New Features</a></li>
-  <li><a href="#new-optimizations" id="toc-new-optimizations" class="nav-link" data-scroll-target="#new-optimizations">New optimizations</a></li>
-  <li><a href="#initial-results" id="toc-initial-results" class="nav-link" data-scroll-target="#initial-results">Initial Results</a></li>
-  </ul></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
-  <ul class="collapse">
-  <li><a href="#using-install.sh" id="toc-using-install.sh" class="nav-link" data-scroll-target="#using-install.sh">Using <code>install.sh</code></a></li>
-  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step-by-Step</a></li>
-  </ul></li>
-  <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a></li>
-  <li><a href="#zero-offloading" id="toc-zero-offloading" class="nav-link" data-scroll-target="#zero-offloading">ZeRO Offloading</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">🚂 Loooooooong Sequence Lengths</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i></button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/posts/long-sequences/index.qmd">View Source</a></li></ul></div></div>
+<div class="quarto-title-author-email">
+<a href="mailto:foremans@anl.gov">foremans@anl.gov</a>
 </div>
-
-
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading"></div>
-  <div class="quarto-title-meta-heading"></div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://samforeman.me"><span class="dim-text">Sam Foreman</span> </a><a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
+        <p class="quarto-title-affiliation">
             <a href="https://alcf.anl.gov/about/people/sam-foreman">
             [ALCF]
             </a>
           </p>
-      </div>
-  </div>
-
-<div class="quarto-title-meta">
-
-      
-    <div>
-    <div class="quarto-title-meta-heading"></div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 12, 2024</p>
     </div>
-  </div>
-  
-    
-  </div>
-  
+</div>
 
+  <p class="date">2024-02-12</p>
+</section>
+<section class="slide level2">
 
-</header>
-
-
-<div id="fig-ds4sci" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<div id="fig-ds4sci" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft."><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="img-fluid figure-img"></a></span></p>
+<p><span class="stretch"><a href="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft."><img data-src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/ds4sci.svg" class="figure-img"></a></span></p>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ds4sci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in collaboration with Microsoft.
@@ -549,46 +560,38 @@ Figure&nbsp;1: This work was done as part of the DeepSpeed4Science project, in c
 <!-- > Additional details can be found in the -->
 <!-- > [📁 `DeepSpeed4Science`](https://github.com/microsoft/Megatron-DeepSpeed/examples_deepspeed/deepspeed4science/megatron_long_seq_support/README.md) -->
 <!-- > folder. -->
-<div class="callout callout-style-simple callout-note no-icon callout-titled" title="📓 Note:" style="width:100%; background: none!important; border: none!important; border-left: 2px solid var(--callout-note-color)!important; border-radius: 0pt!important; opacity: 100%;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<div title="📓 Note:" style="width:100%; background: none!important; border: none!important; border-left: 2px solid var(--callout-note-color)!important; border-radius: 0pt!important; opacity: 100%;">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>📓 Note:</strong></p>
 </div>
-<div class="callout-title-container flex-fill">
-📓 Note:
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
+<div class="callout-content">
 <p>Additional details can be found in the <a href="https://github.com/microsoft/Megatron-DeepSpeed/tree/main/examples_deepspeed/deepspeed4science/megatron_long_seq_support">📁 <code>DeepSpeed4Science</code></a> folder.</p>
 </div>
 </div>
 </div>
-<section id="deepspeed4science-092023" class="level2">
-<h2 class="anchored" data-anchor-id="deepspeed4science-092023"><a href="https://ai4science.azurewebsites.net/2023/09/18/model-showcase-genslms/">DeepSpeed4Science</a> (09/2023)</h2>
-<section id="new-features" class="level3">
-<h3 class="anchored" data-anchor-id="new-features">New Features</h3>
+</div>
+</section>
+<section id="deepspeed4science-092023" class="slide level2 page-columns page-full">
+<h2><a href="https://ai4science.azurewebsites.net/2023/09/18/model-showcase-genslms/">DeepSpeed4Science</a> (09/2023)</h2>
+<h3 id="new-features">New Features</h3>
 <ul>
 <li><p>Enabled Megatron-LM’s sequence parallel.</p></li>
 <li><p>Enabled rotary positional embedding.</p></li>
 <li><p>Enabled FlashAttention v1 and v2.</p></li>
 <li><p>Enabled new fused kernels from NVIDIA.</p></li>
 </ul>
-</section>
-<section id="new-optimizations" class="level3">
-<h3 class="anchored" data-anchor-id="new-optimizations">New optimizations</h3>
+<h3 id="new-optimizations">New optimizations</h3>
 <ul>
 <li><p>Enabled attention map memory optimization, where we first generated attention mask on CPU memory and then moved it into GPU memory to avoid out-of-memory errors when training with very large sequence lengths.</p></li>
 <li><p>Position embedding partitioning, where we split weights of position encoding across all GPUs when enabling sequence parallel to further reduce the memory footprint.</p></li>
 </ul>
-</section>
-<section id="initial-results" class="level3">
-<h3 class="anchored" data-anchor-id="initial-results">Initial Results</h3>
-<div id="tbl-results" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<h3 id="initial-results">Initial Results</h3>
+<div id="tbl-results" class="striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Long sequence length support<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> from <a href="https://github.com/microsoft/Megatron-DeepSpeed"><code>microsoft/Megatron-DeepSpeed</code></a>
+Table&nbsp;1: Long sequence length support<sup>1</sup> from <a href="https://github.com/microsoft/Megatron-DeepSpeed"><code>microsoft/Megatron-DeepSpeed</code></a>
 </figcaption>
 <div aria-describedby="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table-striped table-hover caption-top table">
@@ -650,102 +653,102 @@ Table&nbsp;1: Long sequence length support<a href="#fn1" class="footnote-ref" id
 </div>
 </figure>
 </div>
-<div id="343f67bb" class="cell" data-execution_count="2">
+<div id="611d8fb8" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Data</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>gpus <span class="op">=</span> (<span class="st">'32'</span>, <span class="st">'64'</span>, <span class="st">'128'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>colors <span class="op">=</span> {</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="st">'Old Megatron-DS'</span>: <span class="st">'#FF5252'</span>,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="st">'Megatron-LM'</span>: <span class="st">'#76b900'</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="st">'New Megatron-DS'</span>:  <span class="st">'#1A8FFF'</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>}</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>data <span class="op">=</span> {</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="st">'25B'</span>: {</span>
-<span id="cb1-11"><a href="#cb1-11"></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">36</span>, <span class="dv">42</span>, <span class="dv">42</span>]),</span>
-<span id="cb1-12"><a href="#cb1-12"></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">26</span>, <span class="dv">48</span>, <span class="dv">52</span>]),</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">192</span>, <span class="dv">448</span>, <span class="dv">512</span>]),</span>
-<span id="cb1-14"><a href="#cb1-14"></a>    },</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="st">'33B'</span>: {</span>
-<span id="cb1-16"><a href="#cb1-16"></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">32</span>]),</span>
-<span id="cb1-17"><a href="#cb1-17"></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">14</span>, <span class="dv">46</span>, <span class="dv">52</span>]),</span>
-<span id="cb1-18"><a href="#cb1-18"></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">128</span>, <span class="dv">384</span>, <span class="dv">448</span>]),</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    },</span>
-<span id="cb1-20"><a href="#cb1-20"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>gpus <span class="op">=</span> (<span class="st">'32'</span>, <span class="st">'64'</span>, <span class="st">'128'</span>)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>colors <span class="op">=</span> {</span>
+<span id="cb1-4"><a></a>    <span class="st">'Old Megatron-DS'</span>: <span class="st">'#FF5252'</span>,</span>
+<span id="cb1-5"><a></a>    <span class="st">'Megatron-LM'</span>: <span class="st">'#76b900'</span>,</span>
+<span id="cb1-6"><a></a>    <span class="st">'New Megatron-DS'</span>:  <span class="st">'#1A8FFF'</span>,</span>
+<span id="cb1-7"><a></a>}</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a>data <span class="op">=</span> {</span>
+<span id="cb1-10"><a></a>    <span class="st">'25B'</span>: {</span>
+<span id="cb1-11"><a></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">36</span>, <span class="dv">42</span>, <span class="dv">42</span>]),</span>
+<span id="cb1-12"><a></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">26</span>, <span class="dv">48</span>, <span class="dv">52</span>]),</span>
+<span id="cb1-13"><a></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">192</span>, <span class="dv">448</span>, <span class="dv">512</span>]),</span>
+<span id="cb1-14"><a></a>    },</span>
+<span id="cb1-15"><a></a>    <span class="st">'33B'</span>: {</span>
+<span id="cb1-16"><a></a>        <span class="st">'Old Megatron-DS'</span>: np.array([<span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">32</span>]),</span>
+<span id="cb1-17"><a></a>        <span class="st">'Megatron-LM'</span>: np.array([<span class="dv">14</span>, <span class="dv">46</span>, <span class="dv">52</span>]),</span>
+<span id="cb1-18"><a></a>        <span class="st">'New Megatron-DS'</span>: np.array([<span class="dv">128</span>, <span class="dv">384</span>, <span class="dv">448</span>]),</span>
+<span id="cb1-19"><a></a>    },</span>
+<span id="cb1-20"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <details class="code-fold">
 <summary>Make the plots</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(gpus))</span>
-<span id="cb2-2"><a href="#cb2-2"></a>width <span class="op">=</span> <span class="fl">0.25</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>multiplier <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>outdir <span class="op">=</span> Path(os.getcwd()).joinpath(<span class="st">'assets'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>outdir.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>, parents<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a>improvement <span class="op">=</span> {}</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">for</span> idx, (model_size, d) <span class="kw">in</span> <span class="bu">enumerate</span>(data.items()):</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    multiplier <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    figure, axes <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="dv">4</span>))</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    fig <span class="op">=</span> plt.gcf()</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    ax <span class="op">=</span> plt.gca()</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">for</span> label, value <span class="kw">in</span> d.items():</span>
-<span id="cb2-15"><a href="#cb2-15"></a>        offset <span class="op">=</span> width <span class="op">*</span> multiplier</span>
-<span id="cb2-16"><a href="#cb2-16"></a>        rects <span class="op">=</span> ax.barh(</span>
-<span id="cb2-17"><a href="#cb2-17"></a>          x <span class="op">+</span> offset,</span>
-<span id="cb2-18"><a href="#cb2-18"></a>          value,</span>
-<span id="cb2-19"><a href="#cb2-19"></a>          width,</span>
-<span id="cb2-20"><a href="#cb2-20"></a>          label<span class="op">=</span>label,</span>
-<span id="cb2-21"><a href="#cb2-21"></a>          color<span class="op">=</span>colors[label],</span>
-<span id="cb2-22"><a href="#cb2-22"></a>          alpha<span class="op">=</span><span class="fl">0.8</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>        )</span>
-<span id="cb2-24"><a href="#cb2-24"></a>        ax.bar_label(</span>
-<span id="cb2-25"><a href="#cb2-25"></a>          rects,</span>
-<span id="cb2-26"><a href="#cb2-26"></a>          padding<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb2-27"><a href="#cb2-27"></a>          color<span class="op">=</span>colors[label],</span>
-<span id="cb2-28"><a href="#cb2-28"></a>          family<span class="op">=</span><span class="st">'monospace'</span>,</span>
-<span id="cb2-29"><a href="#cb2-29"></a>          weight<span class="op">=</span><span class="st">'bold'</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a>        )</span>
-<span id="cb2-31"><a href="#cb2-31"></a>        multiplier <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a>    ax.set_ylabel(</span>
-<span id="cb2-33"><a href="#cb2-33"></a>        <span class="st">'GPUs'</span>,</span>
-<span id="cb2-34"><a href="#cb2-34"></a>        fontsize<span class="op">=</span><span class="dv">18</span>,</span>
-<span id="cb2-35"><a href="#cb2-35"></a>        family<span class="op">=</span><span class="st">'sans-serif'</span>,</span>
-<span id="cb2-36"><a href="#cb2-36"></a>        loc<span class="op">=</span><span class="st">'center'</span>,</span>
-<span id="cb2-37"><a href="#cb2-37"></a>    )</span>
-<span id="cb2-38"><a href="#cb2-38"></a>    ax.set_yticks(x <span class="op">+</span> width, gpus)</span>
-<span id="cb2-39"><a href="#cb2-39"></a>    plt.figtext(</span>
-<span id="cb2-40"><a href="#cb2-40"></a>        <span class="fl">0.005</span>, <span class="fl">0.93</span>, <span class="ss">f"</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">"</span>, fontsize<span class="op">=</span><span class="dv">24</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, ha<span class="op">=</span><span class="st">'left'</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a>    )</span>
-<span id="cb2-42"><a href="#cb2-42"></a>    ax.set_xlabel(</span>
-<span id="cb2-43"><a href="#cb2-43"></a>        <span class="st">'Sequence Length (k)'</span>, fontsize<span class="op">=</span><span class="dv">18</span>, loc<span class="op">=</span><span class="st">'center'</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a>    )</span>
-<span id="cb2-45"><a href="#cb2-45"></a>    ax.legend(</span>
-<span id="cb2-46"><a href="#cb2-46"></a>        bbox_to_anchor<span class="op">=</span>(<span class="fl">0.005</span>, <span class="fl">1.04</span>, <span class="fl">0.99</span>, <span class="fl">.098</span>),</span>
-<span id="cb2-47"><a href="#cb2-47"></a>        alignment<span class="op">=</span><span class="st">'center'</span>,</span>
-<span id="cb2-48"><a href="#cb2-48"></a>        edgecolor<span class="op">=</span><span class="st">"#83838320"</span>,</span>
-<span id="cb2-49"><a href="#cb2-49"></a>        frameon<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-50"><a href="#cb2-50"></a>        ncols<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb2-51"><a href="#cb2-51"></a>        fontsize<span class="op">=</span><span class="dv">13</span>,</span>
-<span id="cb2-52"><a href="#cb2-52"></a>        mode<span class="op">=</span><span class="st">"expand"</span>,</span>
-<span id="cb2-53"><a href="#cb2-53"></a>        borderaxespad<span class="op">=</span><span class="fl">0.01</span></span>
-<span id="cb2-54"><a href="#cb2-54"></a>    )</span>
-<span id="cb2-55"><a href="#cb2-55"></a>    save_figure(fname<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">'</span>, outdir<span class="op">=</span>outdir)</span>
-<span id="cb2-56"><a href="#cb2-56"></a>    _ <span class="op">=</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(gpus))</span>
+<span id="cb2-2"><a></a>width <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb2-3"><a></a>multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a>outdir <span class="op">=</span> Path(os.getcwd()).joinpath(<span class="st">'assets'</span>)</span>
+<span id="cb2-6"><a></a>outdir.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>, parents<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a>improvement <span class="op">=</span> {}</span>
+<span id="cb2-9"><a></a><span class="cf">for</span> idx, (model_size, d) <span class="kw">in</span> <span class="bu">enumerate</span>(data.items()):</span>
+<span id="cb2-10"><a></a>    multiplier <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-11"><a></a>    figure, axes <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">7.5</span>, <span class="dv">4</span>))</span>
+<span id="cb2-12"><a></a>    fig <span class="op">=</span> plt.gcf()</span>
+<span id="cb2-13"><a></a>    ax <span class="op">=</span> plt.gca()</span>
+<span id="cb2-14"><a></a>    <span class="cf">for</span> label, value <span class="kw">in</span> d.items():</span>
+<span id="cb2-15"><a></a>        offset <span class="op">=</span> width <span class="op">*</span> multiplier</span>
+<span id="cb2-16"><a></a>        rects <span class="op">=</span> ax.barh(</span>
+<span id="cb2-17"><a></a>          x <span class="op">+</span> offset,</span>
+<span id="cb2-18"><a></a>          value,</span>
+<span id="cb2-19"><a></a>          width,</span>
+<span id="cb2-20"><a></a>          label<span class="op">=</span>label,</span>
+<span id="cb2-21"><a></a>          color<span class="op">=</span>colors[label],</span>
+<span id="cb2-22"><a></a>          alpha<span class="op">=</span><span class="fl">0.8</span></span>
+<span id="cb2-23"><a></a>        )</span>
+<span id="cb2-24"><a></a>        ax.bar_label(</span>
+<span id="cb2-25"><a></a>          rects,</span>
+<span id="cb2-26"><a></a>          padding<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-27"><a></a>          color<span class="op">=</span>colors[label],</span>
+<span id="cb2-28"><a></a>          family<span class="op">=</span><span class="st">'monospace'</span>,</span>
+<span id="cb2-29"><a></a>          weight<span class="op">=</span><span class="st">'bold'</span></span>
+<span id="cb2-30"><a></a>        )</span>
+<span id="cb2-31"><a></a>        multiplier <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-32"><a></a>    ax.set_ylabel(</span>
+<span id="cb2-33"><a></a>        <span class="st">'GPUs'</span>,</span>
+<span id="cb2-34"><a></a>        fontsize<span class="op">=</span><span class="dv">18</span>,</span>
+<span id="cb2-35"><a></a>        family<span class="op">=</span><span class="st">'sans-serif'</span>,</span>
+<span id="cb2-36"><a></a>        loc<span class="op">=</span><span class="st">'center'</span>,</span>
+<span id="cb2-37"><a></a>    )</span>
+<span id="cb2-38"><a></a>    ax.set_yticks(x <span class="op">+</span> width, gpus)</span>
+<span id="cb2-39"><a></a>    plt.figtext(</span>
+<span id="cb2-40"><a></a>        <span class="fl">0.005</span>, <span class="fl">0.93</span>, <span class="ss">f"</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">"</span>, fontsize<span class="op">=</span><span class="dv">24</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, ha<span class="op">=</span><span class="st">'left'</span></span>
+<span id="cb2-41"><a></a>    )</span>
+<span id="cb2-42"><a></a>    ax.set_xlabel(</span>
+<span id="cb2-43"><a></a>        <span class="st">'Sequence Length (k)'</span>, fontsize<span class="op">=</span><span class="dv">18</span>, loc<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb2-44"><a></a>    )</span>
+<span id="cb2-45"><a></a>    ax.legend(</span>
+<span id="cb2-46"><a></a>        bbox_to_anchor<span class="op">=</span>(<span class="fl">0.005</span>, <span class="fl">1.04</span>, <span class="fl">0.99</span>, <span class="fl">.098</span>),</span>
+<span id="cb2-47"><a></a>        alignment<span class="op">=</span><span class="st">'center'</span>,</span>
+<span id="cb2-48"><a></a>        edgecolor<span class="op">=</span><span class="st">"#83838320"</span>,</span>
+<span id="cb2-49"><a></a>        frameon<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-50"><a></a>        ncols<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-51"><a></a>        fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb2-52"><a></a>        mode<span class="op">=</span><span class="st">"expand"</span>,</span>
+<span id="cb2-53"><a></a>        borderaxespad<span class="op">=</span><span class="fl">0.01</span></span>
+<span id="cb2-54"><a></a>    )</span>
+<span id="cb2-55"><a></a>    save_figure(fname<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>model_size<span class="sc">}</span><span class="ss">'</span>, outdir<span class="op">=</span>outdir)</span>
+<span id="cb2-56"><a></a>    _ <span class="op">=</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-seq-len" class="quarto-float quarto-figure quarto-figure-center anchored" style="background-color:none;">
+<div id="fig-seq-len" class="quarto-float quarto-figure quarto-figure-center" style="background-color:none;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-seq-len-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
 
 </div>
-<div id="2f4fcf45" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="3" data-layout-nrow="1">
+<div id="b0587339" class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-nrow="1" data-execution_count="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="GPT-25B Model"><img src="index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="GPT-25B Model"><img data-src="index_files/figure-html/cell-4-output-1.svg" class="figure-img"></a></p>
 <figcaption>GPT-<code>25B</code> Model</figcaption>
 </figure>
 </div>
@@ -753,7 +756,7 @@ Table&nbsp;1: Long sequence length support<a href="#fn1" class="footnote-ref" id
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="GPT-33B Model"><img src="index_files/figure-html/cell-4-output-2.svg" class="img-fluid figure-img"></a></p>
+<p><a href="index_files/figure-html/cell-4-output-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="GPT-33B Model"><img data-src="index_files/figure-html/cell-4-output-2.svg" class="figure-img"></a></p>
 <figcaption>GPT-<code>33B</code> Model</figcaption>
 </figure>
 </div>
@@ -766,74 +769,68 @@ Figure&nbsp;2: Pre-training with long sequence support across different model si
 </figcaption>
 </figure>
 </div>
-</section>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<section id="using-install.sh" class="level3">
-<h3 class="anchored" data-anchor-id="using-install.sh">Using <a href="https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh"><code>install.sh</code></a></h3>
-<div class="callout callout-style-simple callout-tip callout-titled" title="Installation" style="width:100%;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<aside><ol class="aside-footnotes"><li id="fn1"><p>The described experiments were performed on 4 NVIDIA DGX A100-40GB nodes, all using <code>TPSIZE=32</code>[^tpsize], connected through 8 HDR InfiniBand (200Gb/s per HDR).</p></li></ol></aside></section>
+<section id="installation" class="slide level2 page-columns page-full">
+<h2>Installation</h2>
+<h3 id="using-install.sh">Using <a href="https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh"><code>install.sh</code></a></h3>
+<div title="Installation" style="width:100%;">
+<div class="callout callout-tip callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Installation
+<p><strong>Installation</strong></p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
+<div class="callout-content">
 <p><strong>Important</strong><br> To install, simply:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM/</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">cd</span> GenSLM/examples/long-sequences/</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">./install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM/</span>
+<span id="cb3-2"><a></a><span class="bu">cd</span> GenSLM/examples/long-sequences/</span>
+<span id="cb3-3"><a></a><span class="ex">./install.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Explicitly, <a href="https://github.com/ramanathanlab/genslm/blob/foremans/ds4sci/examples/long-sequences/install.sh"><code>./install.sh</code></a> will:</p>
 <ol type="1">
 <li><strong>Automatically</strong> create a virtual environment <em>on top of</em> the latest <code>conda</code> module</li>
-<li>Install (+ update<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>) / build all the required <a href="#dependencies">dependencies</a> into this virtual environment</li>
+<li>Install (+ update<sup>1</sup>) / build all the required <a href="#/installation">dependencies</a> into this virtual environment</li>
 </ol>
 </div>
 </div>
 </div>
-</section>
-<section id="step-by-step" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step">Step-by-Step</h3>
+</div>
+<h3 id="step-by-step">Step-by-Step</h3>
 <p>For completeness, we describe below the steps for installing and building each of the dependencies.</p>
 <ol type="1">
 <li><p>Clone GitHub repo:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="fu">git</span> clone https://github.com/ramanthanlab/GenSLM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Load <code>conda</code> module:</p>
 <ul>
 <li><p>ThetaGPU:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># ThetaGPU:</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==theta*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"ThetaGPU"</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="ex">module</span> load conda/2023-01-11</span>
-<span id="cb5-6"><a href="#cb5-6"></a>    <span class="ex">conda</span> activate base</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co"># ThetaGPU:</span></span>
+<span id="cb5-2"><a></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==theta*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb5-3"><a></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"ThetaGPU"</span></span>
+<span id="cb5-4"><a></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
+<span id="cb5-5"><a></a>    <span class="ex">module</span> load conda/2023-01-11</span>
+<span id="cb5-6"><a></a>    <span class="ex">conda</span> activate base</span>
+<span id="cb5-7"><a></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Polaris:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Polaris:</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==x3*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"Polaris"</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>    <span class="ex">module</span> load conda/2023-01-10-unstable</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="ex">conda</span> activate base</span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># Polaris:</span></span>
+<span id="cb6-2"><a></a><span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">==x3*"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb6-3"><a></a>    <span class="bu">export</span> <span class="va">MACHINE</span><span class="op">=</span><span class="st">"Polaris"</span></span>
+<span id="cb6-4"><a></a>    <span class="bu">export</span> <span class="va">CONDA_DATE</span><span class="op">=</span><span class="st">"2023-01-10"</span></span>
+<span id="cb6-5"><a></a>    <span class="ex">module</span> load conda/2023-01-10-unstable</span>
+<span id="cb6-6"><a></a>    <span class="ex">conda</span> activate base</span>
+<span id="cb6-7"><a></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><p>Setup Virtual Environment<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">cd</span> ./genslm/examples/long-sequences</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># create a new virtual environment</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">python3</span> <span class="at">-m</span> venv <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span> <span class="at">--system-site-packages</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">source</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">/bin/activate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Setup Virtual Environment<sup>2</sup>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="bu">cd</span> ./genslm/examples/long-sequences</span>
+<span id="cb7-2"><a></a><span class="co"># create a new virtual environment</span></span>
+<span id="cb7-3"><a></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span></span>
+<span id="cb7-4"><a></a><span class="ex">python3</span> <span class="at">-m</span> venv <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">"</span> <span class="at">--system-site-packages</span></span>
+<span id="cb7-5"><a></a><span class="bu">source</span> <span class="st">"venvs/</span><span class="va">${MACHINE}</span><span class="st">/</span><span class="va">${CONDA_DATE}</span><span class="st">/bin/activate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Create a new folder (<code>genslm/examples/long-sequences/deps/${MACHINE}</code>) where we’ll installing dependencies locally:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">cd</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span>
+<span id="cb8-2"><a></a><span class="bu">cd</span> <span class="st">"deps/</span><span class="va">${MACHINE}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
-<section id="dependencies" class="level4">
-<h4 class="anchored" data-anchor-id="dependencies">Dependencies</h4>
+<h4 id="dependencies">Dependencies</h4>
 <p>We provide below the details needed to install each of the required dependencies.</p>
 <details>
 <summary>
@@ -841,7 +838,7 @@ Installation
 </summary>
 <ol type="1">
 <li><p><a href="https://github.com/saforem2/ezpz"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/ezpz</code></a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">"git+https://github.com/saforem2/ezpz.git#egg=ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">"git+https://github.com/saforem2/ezpz.git#egg=ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </details>
 <details>
@@ -850,9 +847,9 @@ Installation
 </summary>
 <ol start="2" type="1">
 <li><p><a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/DeepSpeed</code></a></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">cd</span> DeepSpeed</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="fu">git</span> clone https://github.com/microsoft/DeepSpeed.git</span>
+<span id="cb10-2"><a></a><span class="bu">cd</span> DeepSpeed</span>
+<span id="cb10-3"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </details>
 <details>
@@ -861,7 +858,7 @@ Installation
 </summary>
 <ol start="3" type="1">
 <li><p><a href="https://github.com/microsoft/Megatron-DeepSpeed"><i class="fa-brands fa-github" aria-label="github"></i> <code>Microsoft/Megatron-DeepSpeed</code></a>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> clone https://github.com/microsoft/Megatron-DeepSpeed.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="fu">git</span> clone https://github.com/microsoft/Megatron-DeepSpeed.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </details>
 <details>
@@ -870,9 +867,9 @@ Installation
 </summary>
 <ol start="4" type="1">
 <li><p><a href="https://github.com/NVIDIA/apex"><i class="fa-brands fa-github" aria-label="github"></i> <code>NVIDIA/apex</code></a></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">cd</span> ../apex/</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="ex">pip</span> install <span class="at">-v</span> <span class="at">--disable-pip-version-check</span> <span class="at">--no-cache-dir</span> <span class="at">--no-build-isolation</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cpp_ext"</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cuda_ext"</span> <span class="at">-e</span> ./</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a></a><span class="fu">git</span> clone https://github.com/NVIDIA/apex</span>
+<span id="cb12-2"><a></a><span class="bu">cd</span> ../apex/</span>
+<span id="cb12-3"><a></a><span class="ex">pip</span> install <span class="at">-v</span> <span class="at">--disable-pip-version-check</span> <span class="at">--no-cache-dir</span> <span class="at">--no-build-isolation</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cpp_ext"</span> <span class="at">--global-option</span><span class="op">=</span><span class="st">"--cuda_ext"</span> <span class="at">-e</span> ./</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </details>
 <details>
@@ -881,7 +878,7 @@ Installation
 </summary>
 <ol start="5" type="1">
 <li><p><a href="https://github.com/pybind/pybind11"><i class="fa-brands fa-github" aria-label="github"></i> <code>pybind/PyBind11</code></a></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">pip</span> install pybind11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a></a><span class="ex">pip</span> install pybind11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </details>
 <details>
@@ -890,18 +887,16 @@ Installation
 </summary>
 <ol start="6" type="1">
 <li><p><a href="https://github.com/Dao-AILab/flash-attention"><i class="fa-brands fa-github" aria-label="github"></i> <code>Dao-AILab/flash-attention</code></a>:</p>
-<div class="callout callout-style-simple callout-caution callout-titled" title="Flash Attention" style="font-size:0.8em; width:100%;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div title="Flash Attention" style="font-size:0.8em; width:100%;">
+<div class="callout callout-caution callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Flash Attention
+<p><strong>Flash Attention</strong></p>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<div class="callout-content">
 <ul>
 <li>The new release supports three different implementations of FlashAttention: (<code>v1.0.4</code>, <code>v2.x</code>, <code>triton</code>)</li>
 <li>FlashAttention <code>v2.x</code> may have numerical instability issues. For the best performance, we recommend using FlashAttention + Triton</li>
@@ -909,29 +904,33 @@ Flash Attention
 </div>
 </div>
 </div>
+</div>
 <ul>
 <li><p><code>v1.0.4</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install flash-attn==1.0.4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install flash-attn==1.0.4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>v2.x</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> clone https://github.com/Dao-AILab/flash-attention</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="bu">cd</span> flash-attention</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="ex">python3</span> setup.py install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a></a><span class="fu">git</span> clone https://github.com/Dao-AILab/flash-attention</span>
+<span id="cb15-2"><a></a><span class="bu">cd</span> flash-attention</span>
+<span id="cb15-3"><a></a><span class="ex">python3</span> setup.py install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>openai/triton</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> clone <span class="at">-b</span> legacy-backend https://github.com/openai/triton</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="bu">cd</span> triton/python</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="ex">python3</span> <span class="at">-m</span> pip install cmake</span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="ex">python3</span> <span class="at">-m</span> pip install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a></a><span class="fu">git</span> clone <span class="at">-b</span> legacy-backend https://github.com/openai/triton</span>
+<span id="cb16-2"><a></a><span class="bu">cd</span> triton/python</span>
+<span id="cb16-3"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install cmake</span>
+<span id="cb16-4"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 </ol>
 </details>
-</section>
-</section>
-</section>
-<section id="running" class="level2">
-<h2 class="anchored" data-anchor-id="running">Running</h2>
+<aside><ol class="aside-footnotes"><li id="fn2"><div class="line-block"></div>
+<ol start="2" type="1">
+<li><code>deepspeed-0.10.3</code></li>
+<li><code>pytorch==2.0.0+cu118</code></li>
+</ol>
+</li><li id="fn3"><p>Where <code>"${MACHINE}"</code> <span class="math inline">\(\in\)</span> <code>{"ThetaGPU", "Polaris"}</code> and <code>"${CONDA_DATE}"</code> <span class="math inline">\(\in\)</span> <code>{"2023-01-10", "2023-01-11"}</code></p></li></ol></aside></section>
+<section id="running" class="slide level2">
+<h2>Running</h2>
 <p>The <a href="./ALCF/"><code>ALCF/</code></a> directory contains shell scripts for setting up the environment and specifying the options to be used when launching.</p>
 <p>Various options can be specified dynamically at runtime by setting them in your environment, e.g.:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="va">MODEL_SIZE_KEY</span><span class="op">=</span><span class="st">"GPT25B"</span> <span class="va">SEQ_LEN</span><span class="op">=</span>128000 <span class="va">USE_FLASH_ATTN</span><span class="op">=</span>1 <span class="va">MICRO_BATCH</span><span class="op">=</span>1 <span class="va">GAS</span><span class="op">=</span>1 <span class="va">SP_TYPE</span><span class="op">=</span><span class="st">"megatron"</span> <span class="va">ZERO_STAGE</span><span class="op">=</span>1 <span class="ex">./ALCF/train-gpt3.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a></a><span class="va">MODEL_SIZE_KEY</span><span class="op">=</span><span class="st">"GPT25B"</span> <span class="va">SEQ_LEN</span><span class="op">=</span>128000 <span class="va">USE_FLASH_ATTN</span><span class="op">=</span>1 <span class="va">MICRO_BATCH</span><span class="op">=</span>1 <span class="va">GAS</span><span class="op">=</span>1 <span class="va">SP_TYPE</span><span class="op">=</span><span class="st">"megatron"</span> <span class="va">ZERO_STAGE</span><span class="op">=</span>1 <span class="ex">./ALCF/train-gpt3.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Explicitly:</p>
 <ul>
 <li><a href="./ALCF/train-gpt3.sh"><code>ALCF/train-gpt3.sh</code></a>: <strong>Main entry point for training</strong>
@@ -948,16 +947,16 @@ Flash Attention
 </ul></li>
 </ul>
 </section>
-<section id="zero-offloading" class="level2">
-<h2 class="anchored" data-anchor-id="zero-offloading">ZeRO Offloading</h2>
+<section id="zero-offloading" class="slide level2 page-columns page-full">
+<h2>ZeRO Offloading</h2>
 <p><a href="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking/reports/Looooooong-Sequences--Vmlldzo1MzI2NjA1">🚀 <strong>W&amp;B Report</strong>: <em>Looooooooong Sequences</em></a></p>
 <p>These newly introduced optimizations, in combination with <a href="https://www.deepspeed.ai/tutorials/zero-offload/">ZeRO-Offload</a> allows us to go even further.</p>
 <p>By employing ZeRO-Offloading, we are able to free up additional memory which can be used for <em>even longer</em> sequences.</p>
 <p>Though work is still ongoing, this is a promising direction that will allow us to consider significantly larger genomes than previously possible.</p>
 <p>We use <a href="https://wandb.ai">Weights &amp; Biases</a> to track these experiments, and have aggregated our initial results in the <a href="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking/reports/Looooooong-Sequences--Vmlldzo1MzI2NjA1">W&amp;B Report</a> below.</p>
 <p>We can evaluate the performance of our model by looking at two different metrics for throughput: <code>samples_per_sec</code> and <code>TFLOPS</code>.</p>
-<p>Explicitly, we see that we are able to scale up to significantly longer sequences (<code>420k / 128k ~ 3.3x</code>) with only a minimal impact on throughput performance (<code>81 / 105 ~ 77\%</code>)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<div id="tbl-seqlen" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<p>Explicitly, we see that we are able to scale up to significantly longer sequences (<code>420k / 128k ~ 3.3x</code>) with only a minimal impact on throughput performance (<code>81 / 105 ~ 77\%</code>)<sup>1</sup>.</p>
+<div id="tbl-seqlen" class="striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-seqlen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: Impact on TFLOPS as a function of increasing sequence length. Table from: <a href="https://api.wandb.ai/links/l2hmc-qcd/awklywn7"><code>throughput/TFLOPS</code></a>
@@ -1037,7 +1036,7 @@ Table&nbsp;2: Impact on TFLOPS as a function of increasing sequence length. Tabl
 </div>
 <!-- [^config]: Using: `{model_size: 25B, WORLD_SIZE: 32, micro_batch: 1}` -->
 <!-- <iframe src="https://wandb.ai/l2hmc-qcd/Megatron-DS-Benchmarking?workspace=user-saforem2" style="border:none;height:1024px;width:100%"> -->
-<div id="fig-wandb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-wandb" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wandb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div style="padding:0.5rem; border: 1px solid var(--dim-text); border-radius: 0.2rem;">
@@ -1051,716 +1050,442 @@ Figure&nbsp;3: Weights &amp; Biases Report
 </figure>
 </div>
 
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
-
-</section>
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-</tr>
-</thead>
-<tbody class="list">
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<aside><ol class="aside-footnotes"><li id="fn4"><p><a href="https://api.wandb.ai/links/l2hmc-qcd/awklywn7"><code>throughput/TFLOPS</code></a></p></li></ol></aside></section>
 
-<ol>
-<li id="fn1"><p>The described experiments were performed on 4 NVIDIA DGX A100-40GB nodes, all using <code>TPSIZE=32</code>[^tpsize], connected through 8 HDR InfiniBand (200Gb/s per HDR).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><div class="line-block"></div>
-<ol start="2" type="1">
-<li><code>deepspeed-0.10.3</code></li>
-<li><code>pytorch==2.0.0+cu118</code></li>
-</ol>
-<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn3"><p>Where <code>"${MACHINE}"</code> <span class="math inline">\in</span> <code>{"ThetaGPU", "Polaris"}</code> and <code>"${CONDA_DATE}"</code> <span class="math inline">\in</span> <code>{"2023-01-10", "2023-01-11"}</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><a href="https://api.wandb.ai/links/l2hmc-qcd/awklywn7"><code>throughput/TFLOPS</code></a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
-  author = {Foreman, Sam},
-  title = {Personal {Website}},
-  date = {2024-02-12},
-  url = {https://samforeman.me},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Foreman, Sam. 2024. <span>“Personal Website.”</span> February 12, 2024.
-<a href="https://samforeman.me">https://samforeman.me</a>.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = true;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/samforeman\.me");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-<p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-      &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
           }
         }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/samforeman\.me");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
       }
     });
-  
-  };
-  
-})();
-          </script>
+    </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
 
-
-
-
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

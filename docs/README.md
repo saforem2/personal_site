@@ -41,9 +41,9 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 <!---->
 <!-- ::: {.column width="50%" style="margin-right: 10%;"} -->
 
-<div class="flex-container">
+<div class="flex-container" style="width: 100%;">
 
-<div class="flex-container" style="margin-right: 1%; width:50%;">
+<div class="flex-container" style="margin-right: 5%; width:48%;">
 
 - 💻 [Computational
   scientist](https://alcf.anl.gov/about/people/sam-foreman) at Argonne
@@ -57,15 +57,15 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 </div>
 
 <div class="flex-container"
-style="flex-direction: column; justify-content: flex-start; width: 48%;">
+style="flex-direction: column; justify-content: flex-start; width: 40%;">
 
 > [!TIP]
 >
 > ### 🎤 <span class="dim-text-11" style="font-size:1.0em!important;">Recent Talks</span>
 >
 > <span class="dim-text" style="font-size:1em;">live:
-> [here](qmd/talks/index.qmd) ( + how I [make
-> them](qmd/dope-slides/index.qmd)! )</span>
+> [here](talks/index.qmd) ( + how I [make
+> them](./posts/dope-slides/index.qmd)! )</span>
 
 > [!TIP]
 >
@@ -886,7 +886,7 @@ setInterval(getSetLastFM, 10 * 1000);
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">10:19:09</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">12</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">11:39:21</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">17</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein

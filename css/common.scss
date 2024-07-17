@@ -5,10 +5,13 @@
 // @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Condensed");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
+// @import "dark";
+// @import "light";
+
 /*-- scss:defaults --*/
 
-$base-font-size: 18px !default;
-$code-block-font-size: 1rem !default;
+$base-font-size: 16px !default;
+$code-block-font-size: 0.875rem !default;
 
 $quarto-border-width: 1px !default;
 
@@ -37,6 +40,12 @@ $dropdown-item-padding-y: 0.25rem;
 //     border: 0.1px solid $code-block-border-color;
 
 $bs-nav-tabs-link-active-border-color: $border-transparent-color !default;
+
+$font-family-sans-serif: "IBM Plex Sans" !default;
+$font-family-monospace: "IBM Plex Mono", "Iosevka", !default;
+
+$light-bg-link-color: $link-color !default;
+$dark-bg-link-color: $link-color !default;
 
 // fonts
 $font-family-sans-serif:
@@ -207,6 +216,7 @@ $bs-table-striped-color: $dim-text;
   --callout-note-color: $callout-note-color;
   --callout-caution-color: $callout-caution-color;
   --red-sf: $myred;
+  --r-link-color: $link-color;
   --orange-sf: $myorange;
   --yellow-sf: $myyellow;
   --green-sf: $mygreen;
@@ -349,7 +359,7 @@ pre code {
 code {
   font-size: $code-block-font-size;
   color: $code-color;
-  background-color: $code-bg;
+  // background-color: $code-bg;
   border-radius: 0.25rem;
   padding: 0.125rem 0.25rem;
   font-family: $font-family-monospace;
@@ -382,9 +392,11 @@ a > code {
 //     color: $code-color;
 // }
 
-a {
+.reveal a, a {
   color: $link-color;
   border-radius: $link-border-radius;
+  text-decoration: underline;
+  text-underline-offset: 2pt;
 }
 
 .body p a:not(.img, .callout) {
@@ -427,7 +439,7 @@ h1 {
   opacity: 100%;
   color: $brighter-text;
   font-family: $font-family-headings;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 h2 {
@@ -439,23 +451,23 @@ h2 {
   margin-bottom: auto;
   // margin-top: 1em;
   font-family: $font-family-headings;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h3 {
   font-family: $font-family-headings;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-.h4 {
+h4 {
   font-family: $font-family-headings;
 }
 
-.h5 {
+h5 {
   font-family: $font-family-headings;
 }
 
-.h6 {
+h6 {
   font-family: $font-family-headings;
 }
 
@@ -466,7 +478,6 @@ dd {
 .flex-container {
   /* We first create a flex layout context */
   display: flex;
-
   /* Then we define the flow direction 
      and if we allow the items to wrap 
    * Remember this is the same as:
@@ -717,6 +728,7 @@ boxed {
 //     display: inline;
 //     font-size: $code-block-font-size
 // }
+// .reveal .callout.callout-style-simple:not(.no-icon) div.callout-icon-container,
 .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
   /* padding-top: .2em; */
   padding-right: 0.55em;
@@ -724,6 +736,7 @@ boxed {
   padding-top: 0.33rem;
 }
 
+// .reveal .callout-title-container,
 .callout-title-container {
   place-self: auto;
   padding-top: 0.1rem;
@@ -735,7 +748,7 @@ boxed {
     overflow-x:auto;
     line-height:normal;
     font-family: $font-family-monospace;
-    font-size: inherit;
+    // font-size: inherit;
 }
 
 .cell-output.cell-output-display {
@@ -949,26 +962,45 @@ th {
   margin: auto;
 }
 
-// p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
-//     background-color: $code-block-bg;
-//     color: $code-color;
-//     border-radius: .25rem;
-//     border: 0.1px solid $code-block-border-color;
+// p code:not(.sourceCode),
+// li code:not(.sourceCode),
+// td code:not(.sourceCode) {
+//   // background-color: $code-block-bg;
+//   color: $code-color;
+//   // border-radius: .15rem;
+//   // font-size: 0.5em;
+//   border-radius: 3px;
+//   // font-family: courier, monospace;
+//   padding: 0 3px;
 // }
+//
 
+.reveal p code:not(.sourceCode),
 p code:not(.sourceCode),
 li code:not(.sourceCode),
 td code:not(.sourceCode) {
-  background-color: $code-block-bg;
-  color: $code-color;
-  // border-radius: .15rem;
-  // font-size: 0.5em;
-  border-radius: 3px;
-  // font-family: courier, monospace;
-  padding: 0 3px;
-  border: 0.075x solid
-    rgba(red($dim-color), green($dim-color), blue($dim-color), 0.3);
+    // background-color: oklab(from $code-block-bg-color calc(1 * 1.15) c h / 0.1);
+    background: $code-block-bg-color;
+    border: 0.075x solid rgba(red($dim-color), green($dim-color), blue($dim-color), 0.3);
+    color: $code-color;
+    // white-space: pre-wrap;
+    border-radius: 3px;
+    padding: 0 3px;
+    font-size: .875em;
+    line-height: inherit;
+    letter-spacing: -0.75pt;
 }
+
+// .reveal p code:not(.sourceCode), p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+//     background: $code-block-bg-color;
+//     border: .075x solid rgba(184,184,184,.3);
+//     color: #a477f5;
+//     border-radius: 3px;
+//     padding: 0 3px;
+//     font-size: .875em;
+//     line-height: inherit;
+//     letter-spacing: -0.75pt;
+// }
 
 code span.kw {
   // color: #F06292;
@@ -1083,25 +1115,6 @@ code span.kw {
   border: solid 1px var(--dim-color);
   margin-bottom: 0;
   border-radius: 0.25rem;
-}
-
-.sourceCode {
-  // margin-top: 1rem;
-  // margin-bottom: 0.1rem;
-  // border: 1px solid rgba(0, 0, 0, 0.0);
-  border-radius: 0.25rem;
-  // box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
-  box-shadow: $code-block-block-shadow;
-}
-
-.sourceCode:hover {
-  // margin-top: 1rem;
-  // margin-bottom: 0.1rem;
-  border-radius: 0.25rem;
-  // box-shadow: RGBA(255, 255, 255, 0.15) 0px 2px 5px;
-  // border: 1px solid $dim-text;
-  // box-shadow: RGBA(0, 0, 0, 1.0) 0px 4px 10px;
-  box-shadow: $code-block-hover-box-shadow;
 }
 
 .myCard {
@@ -1252,19 +1265,6 @@ body {
   margin: 0 auto;
 }
 
-// #quarto-header>nav {
-//     margin-left: 10%;
-//     margin-right: 10%;
-//     padding-left: 1rem;
-//     padding-right: 1rem;
-// }
-
-// #title-block-header.quarto-title-block.default .quarto-title-meta {
-//     display: grid;
-//     grid-template-columns: repeat(2, 1fr);
-//     width: 33%;
-// }
-
 .callout.callout-titled .callout-body > :last-child:not(.sourceCode),
 .callout.callout-titled .callout-body > div > :last-child:not(.sourceCode) {
   margin-bottom: 0rem;
@@ -1354,8 +1354,6 @@ div.quarto-about-trestles .about-contents {
 #title-block-header.quarto-title-block.default .quarto-title-meta {
   display: inline-flex !important;
   flex-direction: row !important;
-  /* justify-content: flex-start; */
-  /* flex: 2em; */
 }
 
 #title-block-header.quarto-title-block.default .quarto-title-meta-contents {
@@ -1572,40 +1570,20 @@ div.quarto-about-trestles {
 //     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 // }
 
-// body {
-//   font-family: system-ui;
-//   background: #000;
-//   color: white;
-//   text-align: center;
+
+// button.close {
+//   position: relative;
+//   transition: 0.5s;
+//   outline: 0px;
+//   border: 0px;
+//   border-radius: 1px;
+//   background-color: hsl(172deg 18% 27% / 0%);
+//   font-size: 25px;
+//   top: 120px;
+//   text-align: right;
+//   color: blue;
+//   left: 200px;
 // }
-//
-// .text {
-//     position: relative;
-//     right: 10px;
-//     transition: 0.5s;
-//     outline: 0px;
-//     border: 0px;
-//     border-radius: 1px;
-//     background-color: hsl(172deg 18% 27% / 0%);
-//     font-size: 25px;
-//     top: 100px;
-//     text-align:center;
-//     color:red;
-// }
-//
-button.close {
-  position: relative;
-  transition: 0.5s;
-  outline: 0px;
-  border: 0px;
-  border-radius: 1px;
-  background-color: hsl(172deg 18% 27% / 0%);
-  font-size: 25px;
-  top: 120px;
-  text-align: right;
-  color: blue;
-  left: 200px;
-}
 
 // .emoji {
 //   display: inline-block;
@@ -1671,7 +1649,7 @@ div.sidebar-item-container .sidebar-link > code {
 .sidebar-navigation {
   font-family: $font-family-headings;
   line-height: 1.5rem;
-  overflow: scroll;
+  // overflow: scroll;
   // padding: 0.3rem;
 }
 
@@ -1753,7 +1731,6 @@ ol > li:not(:has(> p)) > ol {
 
 .sidebar-navigation li a {
   text-decoration: none;
-  overflow-x: scroll;
   text-wrap: balance;
 }
 
@@ -1861,7 +1838,15 @@ details > summary:hover {
 
 .sourceCode {
   overflow: scroll;
+  border-radius: 0.25rem;
+  box-shadow: $code-block-block-shadow;
 }
+
+.sourceCode:hover {
+  border-radius: 0.25rem;
+  box-shadow: $code-block-hover-box-shadow;
+}
+
 
 code span.cf {
   color: var(--myblue);
@@ -2188,4 +2173,95 @@ p {
   overflow-clip-margin: unset;
   // contain: layout;
   object-fit: scale-down!important;
+}
+
+.img-fluid {
+  object-fit: scale-down;
+}
+
+.navbar #quarto-search.type-overlay .aa-Autocomplete {
+    width: 0px;
+}
+
+.navbar #quarto-search {
+    margin-left: .25rem;
+    order: 999;
+    display: none;
+}
+
+// .reveal .callout.callout-style-default, .callout.callout-style-simple {
+//     padding: 0em 1em;
+//     border-left: 1px solid #2a2a2a;
+//     opacity: 100% !important;
+//     display: -webkit-inline-flex;
+// }
+
+.em {
+    font-style: italic;
+    color: $italic-color;
+    background-color: oklch(from $italic-color calc(l * 1.15) c h / 0.1);
+}
+.strong {
+    font-weight: bold;
+    color: $strong-color;
+    background: oklch(from $strong-color calc(l * 1.15) c h / 0.1);
+}
+
+.callout.callout-style-default, .callout.callout-style-simple {
+    padding: 0em 0em;
+    opacity: 100% !important;
+    display: -webkit-inline-flex;
+}
+
+tr {
+  vertical-align: -webkit-baseline-middle;
+}
+
+// .reveal p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+//     background-color: oklab(from $code-block-bg-color calc(1 * 1.15) c h / 0.1);
+//     white-space: pre-wrap;
+//     border-radius: 3px;
+//     padding: 0 3px;
+//     font-size: .8em;
+//     line-height: inherit;
+//     letter-spacing: -0.75pt;
+// }
+
+.paper-link {
+  display: inline!important;
+}
+
+#refs {
+  line-height: 1.25em;
+}
+
+.asciicast {
+  margin: auto!important;
+}
+
+.iframe {
+  margin: auto;
+  height: fit-content;
+}
+
+#slide {
+  height: 100%;
+}
+
+
+.reveal .callout.callout-style-default, .reveal .callout.callout-style-simple,
+.callout.callout-style-default, .callout.callout-style-simple {
+    padding: 0em 0em;
+    opacity: 100% !important;
+    // display: -webkit-inline-flex;
+    margin: auto;
+    padding: 0pt 8pt;
+}
+
+.reveal .callout.callout-style-default, .reveal .callout.callout-style-simple,
+.callout.callout-style-default, .callout.callout-style-simple {
+    padding: 0em 1em;
+    opacity: 100% !important;
+    // display: -webkit-inline-flex;
+    width: 100%;
 }
