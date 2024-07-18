@@ -1,7 +1,7 @@
 # 🍋 <code>ezpz</code> @ ALCF
 <span class="dim-text">Sam Foreman</span>
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-07-16
+2024-07-18
 
 - [Complete Example](#complete-example)
 
@@ -209,7 +209,7 @@
     Attempting uninstall: ezpz
       Found existing installation: ezpz 0.1
       Not uninstalling ezpz at /home/foremans/.local/polaris/conda/2024-04-29/lib/python3.11/site-packages, outside environment /home/foremans/tmp/foremans/2024-07-15-124441/venvs/2024-04-29
-      Can't uninstall 'ezpz'. No files were found to uninstall.
+      Cant uninstall 'ezpz'. No files were found to uninstall.
     Successfully installed ezpz pyinstrument-4.6.2
 
     [notice] A new release of pip is available: 24.0 -> 24.1.2
@@ -399,7 +399,7 @@ Installing collected packages: pyinstrument, ezpz
   Attempting uninstall: ezpz
     Found existing installation: ezpz 0.1
     Not uninstalling ezpz at /home/foremans/.local/polaris/conda/2024-04-29/lib/python3.11/site-packages, outside environment /home/foremans/tmp/foremans/2024-07-15-124441/venvs/2024-04-29
-    Can't uninstall 'ezpz'. No files were found to uninstall.
+    Cant uninstall 'ezpz'. No files were found to uninstall.
 Successfully installed ezpz pyinstrument-4.6.2
 
 [notice] A new release of pip is available: 24.0 -> 24.1.2

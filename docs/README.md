@@ -405,7 +405,15 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 #### 📆 2024
 
-<!-- ::: {.callout-tip icon=false aria-title="last.fm" title='[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)]{style="color:#D41109; font-size:1.1em;"}' collapse="true" style='max-width:60%; border: none!important; border: 2px solid rgba(212, 17, 9, 0.5)!important; background: rgba(212, 17, 9, 0.05); opacity: 100%;'} -->
+> [!TIP]
+>
+> ### <span class="dim-text">[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/#/section) @ [*Center for Scientific Foundation Models*, Summer School 24’](https://scifm.ai/summer_school.html) \[07/2024\]</span>
+>
+> <iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-on-polaris/#/section" title="LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
+> <p>
+> Your browser does not support iframes.
+> </p>
+> </iframe>
 
 > [!TIP]
 >
@@ -886,7 +894,7 @@ setInterval(getSetLastFM, 10 * 1000);
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">12:27:23</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">17</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">11:48:16</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">18</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
 </pre>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein

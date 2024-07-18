@@ -10,6 +10,14 @@
 
 /*-- scss:defaults --*/
 
+$myred:    #FF5252;
+$myorange: #FD971F;
+$myyellow: #FFCA27;
+$mygreen:  #63FF5b;
+$myblue:   #29b6f6;
+$mypurple: #AE81FF;
+$mypink:   #FF67FF;
+
 $base-font-size: 16px !default;
 $code-block-font-size: 0.875rem !default;
 
@@ -42,22 +50,18 @@ $dropdown-item-padding-y: 0.25rem;
 $bs-nav-tabs-link-active-border-color: $border-transparent-color !default;
 
 $font-family-sans-serif: "IBM Plex Sans" !default;
-$font-family-monospace: "IBM Plex Mono", "Iosevka", !default;
+$font-family-monospace: "IBM Plex Mono", !default;
+$monofont: "IBM Plex Mono"!default;
+  // , "Iosevka", "Iosevka Web", monospace, SFMono-Regular, Menlo, Monaco, Consolas!default;
 
 $light-bg-link-color: $link-color !default;
 $dark-bg-link-color: $link-color !default;
 
 // fonts
-$font-family-sans-serif:
-  "IBM Plex Sans",
-  "Source Sans Pro",
-  "Inter",
-  Open Sans,
-  Helvetica,
-  sans-serif !default;
-$font-family-headings: "IBM Plex Sans", "IBM Plex Sans Condensed", "Open Sans",
-  "Playfair Display", Helvetica, sans-serif, $font-family-sans-serif !default;
-$font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-sans-serif: "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif!default;
+$font-family-headings: "IBM Plex Sans", "IBM Plex Sans Condensed", "Open Sans", "Playfair Display", Helvetica, sans-serif, $font-family-sans-serif !default;
+// $font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-monospace: "IBM Plex Mono", !default;
 $presentation-font-family-line-height: 1em !default;
 $presentation-line-height: 1em !default;
 // $font-family-monospace: 'Iosevka Web', 'agave Nerd Font', Menlo, Monaco, Consolas, monospace !default;
@@ -162,6 +166,7 @@ $bs-table-striped-color: $dim-text;
 }
 
 :root {
+  --bs-font-monospace: 'IBM Plex Mono', monospace;
   --quarto-border-color: $quarto-border-color;
   --shadow-color: $shadow-color;
   --bg-transparent: $bg-transparent;
@@ -197,6 +202,7 @@ $bs-table-striped-color: $dim-text;
   --dark-bg-code-color: $dark-bg-code-color;
   --dark-bg-code-bg: $dark-bg-code-bg;
   --code-color: $dark-bg-code-color;
+  --code-line-number-color: $code-line-number-color;
   --code-bg: $dark-bg-code-bg;
   --blockquote-bg: $bg-transparent;
   --blockquote-border: $blockquote-border;
@@ -322,7 +328,7 @@ $bs-table-striped-color: $dim-text;
 // }
 
 .callout-title-container {
-  font-size: 1rem;
+  font-size: 0.925rem!important;
   // padding-top: 0.25rem;
 }
 
@@ -332,20 +338,21 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-monospace;
+  font-family: $monofont;
   font-size: 1em;
   direction: ltr /* rtl:ignore */;
   unicode-bidi: bidi-override;
 }
 
 pre {
-  font-family: $font-family-monospace !important;
+  // font-family: $font-family-monospace !important;
+  font-family: $monofont;
   color: $body-color;
-  display: contents !important;
+  // display: contents !important;
   background-color: $code-block-bg-color;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
   overflow: auto;
-  font-family: $font-family-monospace;
+  font-family: $monofont;
   padding: 0.5rem;
 }
 
@@ -353,7 +360,7 @@ pre code {
   background-color: inherit;
   color: inherit;
   word-break: normal;
-  font-family: $font-family-monospace;
+  font-family: $monofont;
 }
 
 code {
@@ -361,9 +368,19 @@ code {
   color: $code-color;
   // background-color: $code-bg;
   border-radius: 0.25rem;
-  padding: 0.125rem 0.25rem;
-  font-family: $font-family-monospace;
+  font-family: $monofont;
   word-wrap: break-word;
+}
+
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode) {
+  // color: $code-color;
+  // background: $code-block-bg-color;
+  // border: 0.075x solid rgba(red($dim-color), green($dim-color), blue($dim-color), 0.3);
+  // border-radius: 3px;
+  // padding: 0 3px;
+  padding: 0.125rem 0.25rem;
 }
 
 a > code {
@@ -626,11 +643,11 @@ boxed {
   // margin-top: -0.33rem;
 }
 
-.callout .callout-title-container {
-  // font-weight: 500;
-  font-size: 1rem !important;
-  // padding-top: 0.1rem;
-}
+// .callout .callout-title-container {
+//   // font-weight: 500;
+//   font-size: 1rem !important;
+//   // padding-top: 0.1rem;
+// }
 
 // .slide ul li, .slide ol li {
 //     margin-top: 0.2em!important;
@@ -747,18 +764,17 @@ boxed {
     white-space-collapse: collapse;
     overflow-x:auto;
     line-height:normal;
-    font-family: $font-family-monospace;
+    font-family: $monofont;
     // font-size: inherit;
 }
 
 .cell-output.cell-output-display {
   white-space: pre;
   overflow-x: auto;
-  font-family: $font-family-monospace;
+  font-family: $monofont;
   white-space-collapse: collapse;
   display: block;
   background-color: none;
-  font-size: $code-block-font-size;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.0);
   overflow: auto;
@@ -796,8 +812,7 @@ boxed {
 .cell-output.cell-output-display:hover {
     white-space-collapse: collapse;
     white-space: pre;
-    font-family: $font-family-monospace;
-    font-size: .9em;
+    // font-family: $font-family-monospace;
     overflow: auto;
     display: block;
     overflow-x: auto;
@@ -879,8 +894,8 @@ th {
 
 #quarto-appendix.default > .quarto-appendix-citeas {
   color: $code-color;
-  font-family: $font-family-monospace;
-  font-size: 0.95em;
+  // font-family: $font-family-monospace;
+  // font-size: 0.95em;
   display: list-item;
   cursor: pointer;
   text-align: left;
@@ -986,9 +1001,9 @@ td code:not(.sourceCode) {
     // white-space: pre-wrap;
     border-radius: 3px;
     padding: 0 3px;
-    font-size: .875em;
+    // font-size: .875em;
     line-height: inherit;
-    letter-spacing: -0.75pt;
+    // letter-spacing: -0.75pt;
 }
 
 // .reveal p code:not(.sourceCode), p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
@@ -1630,25 +1645,41 @@ div.quarto-about-trestles {
   // border-color: $dim-text;
 }
 
+.sidebar-item {
+  // padding-top: 0.00125rem;
+  // padding-bottom: 0.00125rem;
+  vertical-align: -webkit-baseline-middle;
+  padding-left: 2pt;
+  padding-right: 2pt;
+}
+
 div.sidebar-item-container .active,
 div.sidebar-item-container .show > .nav-link,
 div.sidebar-item-container .sidebar-link > code {
-  color: $link-color-hover;
-  background: rgba(
-    red($link-color-hover),
-    green($link-color-hover),
-    blue($link-color-hover),
-    0.07
-  );
+  color: $link-color;
+  line-height: normal;
+  font-size: inherit;
+  // background: rgba(
+  //   red($link-color-hover),
+  //   green($link-color-hover),
+  //   blue($link-color-hover),
+  //   0.07
+  // );
+  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  padding-bottom: 0.15rem;
+  padding-top: 0.15rem;
+  padding-left: 2pt;
+  padding-right: 2pt;
+  line-height: 1.2rem;
   border-radius: $link-border-radius;
-  border-left: 1pt solid $link-color-hover;
-  padding-left: 4pt;
-  font-weight: bold;
+  // border-left: 1pt solid $link-color-hover;
+  border-left: 2pt solid $link-color;
+  // padding-left: 4pt;
+  // font-weight: 500;
 }
 
 .sidebar-navigation {
   font-family: $font-family-headings;
-  line-height: 1.5rem;
   // overflow: scroll;
   // padding: 0.3rem;
 }
@@ -1662,9 +1693,9 @@ div.sidebar-item-container .sidebar-link > code {
   width: 100%;
 }
 
-.sidebar-navigation .sidebar-section .sidebar-item {
-  font-size: 0.875rem;
-}
+// .sidebar-navigation .sidebar-section .sidebar-item {
+//   font-size: 0.875rem;
+// }
 
 // .sidebar-item {
 //     margin-bottom:
@@ -1672,9 +1703,7 @@ div.sidebar-item-container .sidebar-link > code {
 // }
 
 .sidebar-section {
-  // padding-left: 1em;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
+  padding-left: 1em;
 }
 
 ul > li:not(:has(> p)) > ul,
@@ -1696,6 +1725,14 @@ ol > li:not(:has(> p)) > ol {
   // border: 1px solid $link-color-hover;
   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
   // padding: 0.1rem;
+}
+
+@media (min-width: 992px) {
+  .nav-page .nav-page-text, .sidebar-navigation .sidebar-section .sidebar-item {
+    font-size: 0.875rem;
+    line-height: normal;
+    /* font-size: .875rem; */
+  }
 }
 
 .tab-content {
@@ -1757,12 +1794,13 @@ ol > li:not(:has(> p)) > ol {
   border-radius: 0.25rem;
   box-shadow: $shadow-color 0px 2px 7px !important;
   border: 1px solid $link-color !important;
-  background: rgba(
-    red($link-color),
-    green($link-color),
-    blue($link-color),
-    0.07
-  );
+  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  // background: rgba(
+  //   red($link-color),
+  //   green($link-color),
+  //   blue($link-color),
+  //   0.07
+  // );
   color: $link-color;
 }
 
@@ -1836,15 +1874,17 @@ details > summary:hover {
   font-family: $font-family-headings;
 }
 
-.sourceCode {
+div.sourceCode {
   overflow: scroll;
   border-radius: 0.25rem;
   box-shadow: $code-block-block-shadow;
+  line-height: 1.0em;
 }
 
-.sourceCode:hover {
+div.sourceCode:hover {
   border-radius: 0.25rem;
   box-shadow: $code-block-hover-box-shadow;
+  line-height: 1.0em;
 }
 
 
@@ -1903,10 +1943,14 @@ nav.quarto-secondary-nav {
   // text-align: center;
   // display: flex;
   // position: absolute;
-  border-radius: 0.25rem;
-  color: $code-color;
+  // color: $code-color;
   // background: $rgba(red($code-color), green($code-color), blue($code-color), 0.05);
   width: 100%;
+  border: 1px solid rgba(0,0,0,0.0);
+  border-top-left-radius: 0pt;
+  border-top-right-radius: 0pt;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
   // margin-left: 5%;
   // margin-right: 5%;
   // min-width: max-content;
@@ -1923,8 +1967,12 @@ nav.quarto-secondary-nav {
 
 .navbar:hover {
   border-radius: 0.25rem;
-  color: $code-color;
   // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+  // border: 1px solid oklch(from $code-color calc(1 * 1.15) c  h / 0.9);
+  // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
+  // background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
+  // background: oklch(from $code-block-bg-color calc(l * 0.75) c h / 0.5);
+  color: $code-color;
   box-shadow: $shadow-color 0px 2px 4px !important;
   width: 100%;
   padding-left: 0.5rem;
@@ -1972,25 +2020,21 @@ nav.quarto-secondary-nav {
 
 .dropdown-item:hover,
 .dropdown-item:focus {
-  // color: $link-color-hover;
+  color: $link-color-hover;
   // background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
   border: 1px solid $link-color-hover !important;
-  background: rgba(
-    red($link-color-hover),
-    green($link-color-hover),
-    blue($link-color-hover),
-    0.07
-  );
+  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.085);
+  // background: rgba(
+  //   red($link-color-hover),
+  //   green($link-color-hover),
+  //   blue($link-color-hover),
+  //   0.07
+  // );
   color: $link-color-hover;
   // border: 1px solid $link-color-hover;
   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
   border-radius: $link-border-radius;
 }
-
-// .sidebar-item {
-//     margin-bottom:
-//
-// }
 
 //
 // .navbar-dark {
@@ -2283,4 +2327,144 @@ tr {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.callout.callout-titled .callout-body>:last-child:not(.sourceCode), .callout.callout-titled .callout-body>div>:last-child:not(.sourceCode) {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.code-copy-button>.bi::before {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    content: "";
+    vertical-align: -0.125em;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(94, 94, 94)" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+}
+
+.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// .code-copy-button {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     border: 0;
+//     margin-top: 5px;
+//     margin-right: 5px;
+//     background-color: rgba(0,0,0,0);
+//     z-index: 3;
+// }
+
+button {
+    appearance: auto;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    margin: 0em;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+.code-copy-button {
+    float: right;
+    color: var(--gray);
+    border-color: var(--dark);
+    background-color: var(--light);
+    opacity: 0;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: .3rem;
+    padding: .4rem;
+    transition: all .2s;
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+
+input, button, select, optgroup, textarea {
+    margin: 0;
+    // font-family: inherit;
+    // font-size: inherit;
+    // line-height: inherit;
+}
+
+pre.numberSource code > span > a:first-child::before {
+  color: $code-line-number-color;
+}
+
+pre > code.sourceCode {
+    white-space: pre;
+    position: relative;
+    font-family: $monofont;
+}
+
+sourceCode {
+  font-family: $monofont;
+}
+
+code {
+  font-family: $monofont;
+}
+
+code span.ex {
+    font-family: $monofont, 'IBM Plex Mono', monospace;
+}
+
+#quarto-appendix.default .quarto-appendix-bibtex {
+  border: none;
+}
+
+@media (min-width: 1020px) {
+.navbar-brand-container {
+  margin-right: 1em;
+}
+}
+
+@media (max-width: 1060px) and (min-width: 991.98px) {
+
+#navbarCollapse ul:last-of-type a.nav-link {
+  padding-left: .25em;
+  padding-right: .25em;
+}
+
+.navbar #quarto-search {
+  margin-left: .1em;
+}
+
+.navbar .bi-twitter,
+.navbar .bi-github,
+.navbar .bi-rss
+ {
+  font-size: .8em;
+}
 }
