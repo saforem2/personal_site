@@ -1,0 +1,126 @@
+# Parallelism Overview
+
+> _**Modern parallelism techniques** enable the training of large language models_
+
+::: aside
+See my slides on [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides/#/title-slide) for additional details
+:::
+
+# Parallelism Concepts {style="font-size: 0.9em;"}
+
+- **DataParallel (DP)**:
+  - The same setup is replicated multiple times, and each being fed a slice of
+    the data.
+
+  - The processing is done in parallel and all setups are synchronized at the
+    end of each training step.
+
+- **TensorParallel (TP)**:
+  - Each tensor is split up into multiple chunks.
+  - So, instead of having the whole tensor reside on a single gpu, each shard
+    of the tensor resides on its designated gpu.
+      - During processing each shard gets processed separately and in parallel
+        on different GPUs and the results are synced at the end of the step.
+      - This is what one may call horizontal parallelism, as he splitting
+        happens on horizontal level.
+
+::: aside
+
+[🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
+
+:::
+
+# Parallelism Concepts[^hf-mp1] {style="font-size: 0.9em;"}
+
+- **PipelineParallel (PP)**: 
+  - Model is split up vertically (layer-level) across multiple GPUs, so that
+    only one or several layers of the model are places on a single gpu.
+    - Each gpu processes in parallel different stages of the pipeline and
+      working on a small chunk of the batch.
+
+- **Zero Redundancy Optimizer (ZeRO)**: 
+  - Also performs sharding of the tensors somewhat similar to TP, except the
+    whole tensor gets reconstructed in time for a forward or backward
+    computation, therefore the model doesn’t need to be modified.
+  - It also supports various offloading techniques to compensate for limited
+    GPU memory.
+
+- **Sharded DDP**: 
+  - Another name for the foundational ZeRO concept as used by various other
+    implementations of ZeRO.
+
+[^hf-mp1]: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
+
+# Data Parallelism {style="font-size: 0.9em;"}
+
+- **Data Parallelism**:
+  - The simplest and most common parallelism technique.
+    Workers maintain _identical copies_ of the _complete_ model and work on a
+    _subset of the data_.
+  - `DDP` supported in PyTorch native.
+
+- ZeRO Data Parallel
+  -  ZeRO powered data parallelism is shown below[^zero-dp]
+
+
+::: {style="text-align: center;"}
+
+<img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" width="75%" />
+
+:::
+
+[^zero-dp]: [Blog Post](https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/)
+
+# Tensor Parallelism[^efficient-large-scale]
+
+- In **Tensor Paralleism** each GPU processes only a slice of a tensor and only aggregates the full tensor for operations that require the whole thing.
+
+  - The main building block of any transformer is a fully connected nn.Linear followed by a nonlinear activation GeLU.
+
+    - `Y = GeLU(XA)`, where X and Y are the input and output vectors, and A is the weight matrix.
+
+  - If we look at the computation in matrix form, it’s easy to see how the matrix multiplication can be split between multiple GPUs:
+
+[^efficient-large-scale]: [Efficient Large-Scale Language Model Training on GPU Clusters](https://arxiv.org/abs/2104.04473)
+
+# Tensor Parallelism {style="font-size: 0.9em;"}
+
+::: {style="text-align: center;"}
+
+<img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-tp-parallel_gemm.png" width="66%" style="text-align: center;" />
+
+:::
+
+::: footer
+
+This information is based on (the much more in-depth) [TP
+Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
+by [\@anton-l](https://github.com/anton-l)
+
+:::
+
+# 3D Parallelism {style="font-size:0.9em;"}
+
+- `DP` + `TP` + `PP` (3D) Parallelism
+
+::: {#fig-3dparallel-1 style="text-align:center!important; width:90%;"}
+![](https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png)
+
+3D Parallelism illustration. Figure from: [https://www.deepspeed.ai/](https://www.deepspeed.ai/)
+:::
+
+
+# 3D Parallelism
+
+- `DP` + `TP` + `PP` (3D) Parallelism
+
+
+::: {#fig-3dparallel style="text-align:center!important;"}
+
+![](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png)
+
+Figure taken from [3D parallelism: Scaling to trillion-parameter
+models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
+
+:::
+

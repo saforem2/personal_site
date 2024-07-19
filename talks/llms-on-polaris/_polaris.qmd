@@ -1,0 +1,188 @@
+# Polaris @ ALCF
+
+Refer to [Getting Started](https://docs.alcf.anl.gov/polaris/getting-started/)
+for additional information.
+
+- Login:
+
+  ```bash
+  ssh <username>@polaris.alcf.anl.gov
+  ```
+
+- Modules (+ using `conda`):
+
+  ```bash
+  module use /soft/modulefiles
+  module load conda
+  ```
+
+# Getting Started
+
+- [Running Jobs](https://docs.alcf.anl.gov/running-jobs/job-and-queue-scheduling/)
+  - [example job scripts](https://docs.alcf.anl.gov/running-jobs/example-job-scripts/)
+
+- [Proxy](https://docs.alcf.anl.gov/polaris/getting-started/#proxy):
+
+    ```bash
+    # proxy settings
+    export HTTP_PROXY="http://proxy.alcf.anl.gov:3128"
+    export HTTPS_PROXY="http://proxy.alcf.anl.gov:3128"
+    export http_proxy="http://proxy.alcf.anl.gov:3128"
+    export https_proxy="http://proxy.alcf.anl.gov:3128"
+    export ftp_proxy="http://proxy.alcf.anl.gov:3128"
+    export no_proxy="admin,polaris-adminvm-01,localhost,*.cm.polaris.alcf.anl.gov,polaris-*,*.polaris.alcf.anl.gov,*.alcf.anl.gov"
+    ```
+
+- Getting Help:
+
+  [support@alcf.anl.gov](mailto:support@alcf.anl.gov)
+
+# Polaris
+
+- Polaris is a 560 node HPE Apollo 6500 Gen 10+ based system.
+
+- Each node has a single 2.8 GHz AMD EPYC Milan 7543P 32 core CPU with:
+  - 512 GB of DDR4 RAM
+  - 4 (four) NVIDIA A100 GPUs connected via NVLink
+  - 2 (a pair) of local 1.6TB of SSDs in RAID0 for the users use
+  - 2 (a pair) of Slingshot 11 network adapters.
+
+- There are two nodes per chassis, seven chassis per rack, and 40 racks for a
+total of 560 nodes.
+
+# Polaris Compute Nodes
+
+| POLARIS COMPUTE | DESCRIPTION       | PER NODE |   AGGREGATE   |
+|-----------------|-------------------|----------|---------------|
+| Processor$^{1}$  | 2.8 GHz 7543P     |    1     |      560      |
+| Cores/Threads   | AMD Zen 3 (Milan) | 32/64    | 17,920/35,840 |
+| RAM$^{2}$       | DDR4              | 512 GiB  | 280 TiB       |
+| GPUS            | NVIDIA A100       |    4     |     2240      |
+| Local SSD       | 1.6 TB | 2/3.2 TB | 1120/1.8PB |
+
+: Details {.striped .hover}
+
+::: aside
+
+1. 256MB shared L3 cache, 512KB L2 cache per core, 32 KB L1 cache per core
+2. 8 memory channels rated at 204.8 GiB/s
+
+:::
+
+<!-- ::: -->
+
+# Polaris A100 GPU Information
+
+| DESCRIPTION | A100 PCIe | A100 HGX (Polaris) |
+|-------------|----------|-----------|
+| GPU Memory | 40 GiB HBM2 | 160 GiB HBM2 |
+| GPU Memory BW | 1.6 TB/s | 6.4 TB/s |
+| Interconnect | PCIe Gen4 64 GB/s | NVLink 600 GB/s |
+| FP 64 | 9.7 TF | 38.8 TF |
+| FP64 Tensor Core | 19.5 TF | 78 TF |
+| FP 32 | 19.5 TF | 78 TF |
+| BF16 Tensor Core | 312 TF | 1.3 PF |
+| FP16 Tensor Core | 312 TF | 1.3 PF |
+| INT8 Tensor Core | 624 TOPS | 2496 TOPS |
+| Max TDP Power | 250 W | 400 W |
+
+# Using Conda
+
+- Additional information in our [user guide](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/python/)
+- We provide prebuilt `conda` environment containing GPU-supported builds of:
+  - [Pytorch - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/frameworks/pytorch/)
+  - [DeepSped - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/frameworks/deepspeed/)
+  - [JAX - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/frameworks/jax/)
+  - [Tensorflow - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/frameworks/tensorflow/)
+
+- To activate / use: (either from an interactive job or inside a job script):
+
+    ```bash
+    $ module use /soft/modulefiles
+    $ module load conda; conda activate base
+    ```
+
+# Virtual Environments: `venv`
+
+- To install additional libraries, we can create a virtual environment using `venv`
+- Make sure you're currently inside the **base** `conda` environment:
+  - `module load conda; conda activate base`
+- Now, create `venv` **on top of** `base`:
+
+  ```bash
+  $ python3 -m venv /path/to/venv --system-site-packages
+  $ source /path/to/venv/bin/activate
+  $ which python3
+  /path/to/venv/bin/python3
+  $ # Now you can `python3 -m pip install ...` etc
+  ```
+
+  <!-- ::: {.callout-warning icon=false title="🚧 [Warning]{style='color:#fd971f!important;'}"} -->
+  <!-- ::: {.callout-tip icon=false aria-title="last.fm" title=collapse="true" style='border: none!important; border: 1px solid rgba(212, 17, 9, 0.0)!important; background: oklch(from #D41109 calc(l * 1.15) c h / 0.11);  margin-top: -0.1em; opacity: 100% width: 100%!important;'} -->
+
+  ::: {.callout-warning icon=false aria-title="Recent Talks" title="🚧 [Warning]{style='color:#fd971f!important;'}" collapse="false" style="text-align: left!important; width: 80%; opacity:100%;"}
+
+  1. `--system-site-packages` tells the `venv` to use system packages
+  2. You must replace the path `/path/to/venv` in the above commands with a suitably chosen directory which you are able to write to.
+
+  :::
+
+# Note about `venv`'s
+
+- The value of `--system-site-packages` can be changed by modifying its value in `/path/to/venv/pyvenv.cfg`
+- To install a **different** version of a package that is already installed in the base environment:
+
+  ```bash
+  $ python3 -m pip install --ignore-installed ... # or -I
+  ```
+
+- The shared `base` environment is not writable
+  - Impossible to remove or uninstall packages
+
+- If you need additional flexibility, we can **clone** the base environment
+
+# Clone base `conda` environment
+
+- If we need additional flexibility or to install packages which **require** a `conda` install, we can clone the base environment
+  - requires copying the entirety of the base environment
+  - **large storage requirement**, can get out of hand quickly
+- The shared `base` environment is not writable
+  - Impossible to remove or uninstall packages
+- This can be done by:
+
+  ```bash
+  $ module load conda
+  $ conda activate base
+  (base) $ conda create --clone base --prefix="/path/to/envs/base-clone"
+  ```
+
+# Containers on Polaris
+- Polaris uses Nvidia A100 GPUs -->
+  - We can take advantage of Nvidia optimized containers
+
+- The container system on Polaris is [`singularity`](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html):
+
+  ```bash
+  module avail singularity # see available
+  module load singularity  # load default version
+  # To load a specific version:
+  module load singularity/3.8.7
+  ```
+
+- Singularity: two options for creating containers:
+    1. Using Docker on local machine and publishing to DockerHub
+    2. Using a Singularity recipe file and building on a Polaris worker node
+
+- See also: [Containers - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/containers/containers/)
+
+<!-- [^1]: [Containers - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/containers/containers/) -->
+
+<!-- # Debugging Tools -->
+<!---->
+<!-- - [CUDA-GDB - ALCF User Guides](https://argonne-lcf.github.io/user-guides/polaris/debugging-tools/CUDA-GDB/) -->
+<!---->
+<!--   - `CUDA-GDB` is the Nvidia tool for debugging CUDA applications running on Polaris. -->
+<!--   - `CUDA-GDB` is an extension to `GDB`, the GNU Project debugger. -->
+<!--     - The tool provides developers with a mechanism for debugging CUDA applications running on actual hardware. -->
+<!--     - This enables developers to debug applications without the potential variations introduced by simulation and emulation environments -->
+

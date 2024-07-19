@@ -104,68 +104,15 @@
     ]
   },
   {
-    "objectID": "posts/AuroraGPT/long-sequences/index.html",
-    "href": "posts/AuroraGPT/long-sequences/index.html",
-    "title": "🚂 Loooooooong Sequence Lengths",
-    "section": "",
-    "text": "The new Megatron-DeepSpeed release contains a variety of improvements / optimizations to enable pre-training Transformer based architectures with significantly longer sequences than was previously possible.",
+    "objectID": "talks/llms-on-polaris/index.html#transformer-architecture",
+    "href": "talks/llms-on-polaris/index.html#transformer-architecture",
+    "title": "LLMs on Polaris",
+    "section": "Transformer Architecture",
+    "text": "Transformer Architecture\n\n\nFigure 10: Vaswani et al. (2017)",
     "crumbs": [
       "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🪧 Posts",
-      "🤖 AuroraGPT",
-      "🚂 Loooooooong Sequence Lengths"
-    ]
-  },
-  {
-    "objectID": "posts/AuroraGPT/long-sequences/index.html#deepspeed4science-092023",
-    "href": "posts/AuroraGPT/long-sequences/index.html#deepspeed4science-092023",
-    "title": "🚂 Loooooooong Sequence Lengths",
-    "section": "DeepSpeed4Science (09/2023)",
-    "text": "DeepSpeed4Science (09/2023)\n\nNew Features\n\nEnabled Megatron-LM’s sequence parallel.\nEnabled rotary positional embedding.\nEnabled FlashAttention v1 and v2.\nEnabled new fused kernels from NVIDIA.\n\n\n\nNew optimizations\n\nEnabled attention map memory optimization, where we first generated attention mask on CPU memory and then moved it into GPU memory to avoid out-of-memory errors when training with very large sequence lengths.\nPosition embedding partitioning, where we split weights of position encoding across all GPUs when enabling sequence parallel to further reduce the memory footprint.\n\n\n\nInitial Results\n\n\n\nTable 1: Long sequence length support1 from microsoft/Megatron-DeepSpeed\n\n\n\n\n\n\n\n\n\n\nSequence Length\nOld Megatron-DeepSpeed (TFLOPS)\nNew Megatron-DeepSpeed (TFLOPS)\n\n\n\n\n2k\n25\n68\n\n\n4k\n28\n80\n\n\n8k\nOOM\n86\n\n\n16k\nOOM\n92\n\n\n32k\nOOM\n100\n\n\n64k\nOOM\n106\n\n\n128k\nOOM\n119\n\n\n256k\nOOM\n94\n\n\n\n\n\n\n\n\nData\ngpus = ('32', '64', '128')\n\ncolors = {\n    'Old Megatron-DS': '#FF5252',\n    'Megatron-LM': '#76b900',\n    'New Megatron-DS':  '#1A8FFF',\n}\n\ndata = {\n    '25B': {\n        'Old Megatron-DS': np.array([36, 42, 42]),\n        'Megatron-LM': np.array([26, 48, 52]),\n        'New Megatron-DS': np.array([192, 448, 512]),\n    },\n    '33B': {\n        'Old Megatron-DS': np.array([28, 32, 32]),\n        'Megatron-LM': np.array([14, 46, 52]),\n        'New Megatron-DS': np.array([128, 384, 448]),\n    },\n}\n\n\n\nMake the plots\nx = np.arange(len(gpus))\nwidth = 0.25\nmultiplier = 0\n\noutdir = Path(os.getcwd()).joinpath('assets')\noutdir.mkdir(exist_ok=True, parents=True)\n\nimprovement = {}\nfor idx, (model_size, d) in enumerate(data.items()):\n    multiplier = 0\n    figure, axes = plt.subplots(figsize=(7.5, 4))\n    fig = plt.gcf()\n    ax = plt.gca()\n    for label, value in d.items():\n        offset = width * multiplier\n        rects = ax.barh(\n          x + offset,\n          value,\n          width,\n          label=label,\n          color=colors[label],\n          alpha=0.8\n        )\n        ax.bar_label(\n          rects,\n          padding=3,\n          color=colors[label],\n          family='monospace',\n          weight='bold'\n        )\n        multiplier += 1\n    ax.set_ylabel(\n        'GPUs',\n        fontsize=18,\n        family='sans-serif',\n        loc='center',\n    )\n    ax.set_yticks(x + width, gpus)\n    plt.figtext(\n        0.005, 0.93, f\"{model_size}\", fontsize=24, fontweight='bold', ha='left'\n    )\n    ax.set_xlabel(\n        'Sequence Length (k)', fontsize=18, loc='center'\n    )\n    ax.legend(\n        bbox_to_anchor=(0.005, 1.04, 0.99, .098),\n        alignment='center',\n        edgecolor=\"#83838320\",\n        frameon=True,\n        ncols=3,\n        fontsize=13,\n        mode=\"expand\",\n        borderaxespad=0.01\n    )\n    save_figure(fname=f'{model_size}', outdir=outdir)\n    _ = plt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\nGPT-25B Model\n\n\n\n\n\n\n\nGPT-33B Model\n\n\n\n\n\n\n\nFigure 2: Pre-training with long sequence support across different model sizes and numbers of GPUs. In each case, the new (current) implementation significantly outperforms both NVIDIA/Megatron-LM as well as our previous implementation.\n\n\n\n\n\n\nThe described experiments were performed on 4 NVIDIA DGX A100-40GB nodes, all using TPSIZE=32[^tpsize], connected through 8 HDR InfiniBand (200Gb/s per HDR).↩︎",
-    "crumbs": [
-      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🪧 Posts",
-      "🤖 AuroraGPT",
-      "🚂 Loooooooong Sequence Lengths"
-    ]
-  },
-  {
-    "objectID": "posts/AuroraGPT/long-sequences/index.html#installation",
-    "href": "posts/AuroraGPT/long-sequences/index.html#installation",
-    "title": "🚂 Loooooooong Sequence Lengths",
-    "section": "Installation",
-    "text": "Installation\n\nUsing install.sh\n\n\n\n\n\n\nInstallation\n\n\n\n\n\nImportant To install, simply:\ngit clone https://github.com/ramanthanlab/GenSLM/\ncd GenSLM/examples/long-sequences/\n./install.sh\nExplicitly, ./install.sh will:\n\nAutomatically create a virtual environment on top of the latest conda module\nInstall (+ update2) / build all the required dependencies into this virtual environment\n\n\n\n\n\n\n\n\n\ndeepspeed-0.10.3\npytorch==2.0.0+cu118\n\n↩︎\n\n\n\n\nStep-by-Step\nFor completeness, we describe below the steps for installing and building each of the dependencies.\n\nClone GitHub repo:\ngit clone https://github.com/ramanthanlab/GenSLM\nLoad conda module:\n\nThetaGPU:\n# ThetaGPU:\nif [[ \"$(hostname)==theta*\" ]]; then\n    export MACHINE=\"ThetaGPU\"\n    export CONDA_DATE=\"2023-01-10\"\n    module load conda/2023-01-11\n    conda activate base\nfi\nPolaris:\n# Polaris:\nif [[ \"$(hostname)==x3*\" ]]; then\n    export MACHINE=\"Polaris\"\n    export CONDA_DATE=\"2023-01-10\"\n    module load conda/2023-01-10-unstable\n    conda activate base\nfi\n\nSetup Virtual Environment3:\ncd ./genslm/examples/long-sequences\n# create a new virtual environment\nmkdir -p \"venvs/${MACHINE}/${CONDA_DATE}\"\npython3 -m venv \"venvs/${MACHINE}/${CONDA_DATE}\" --system-site-packages\nsource \"venvs/${MACHINE}/${CONDA_DATE}/bin/activate\"\nCreate a new folder (genslm/examples/long-sequences/deps/${MACHINE}) where we’ll installing dependencies locally:\nmkdir -p \"deps/${MACHINE}\"\ncd \"deps/${MACHINE}\"\n\n\nDependencies\nWe provide below the details needed to install each of the required dependencies.\n\n\n saforem2/ezpz\n\n\n saforem2/ezpz\npip install -e \"git+https://github.com/saforem2/ezpz.git#egg=ezpz\"\n\n\n\n\n Microsoft/DeepSpeed\n\n\n Microsoft/DeepSpeed\ngit clone https://github.com/microsoft/DeepSpeed.git\ncd DeepSpeed\npython3 -m pip install -e .\n\n\n\n\n Microsoft/Megatron-DeepSpeed\n\n\n Microsoft/Megatron-DeepSpeed:\ngit clone https://github.com/microsoft/Megatron-DeepSpeed.git\n\n\n\n\n NVIDIA/apex\n\n\n NVIDIA/apex\ngit clone https://github.com/NVIDIA/apex\ncd ../apex/\npip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --global-option=\"--cpp_ext\" --global-option=\"--cuda_ext\" -e ./\n\n\n\n\n pybind/PyBind11\n\n\n pybind/PyBind11\npip install pybind11\n\n\n\n\n Dao-AILab/flash-attention\n\n\n Dao-AILab/flash-attention:\n\n\n\n\n\n\nFlash Attention\n\n\n\n\n\n\nThe new release supports three different implementations of FlashAttention: (v1.0.4, v2.x, triton)\nFlashAttention v2.x may have numerical instability issues. For the best performance, we recommend using FlashAttention + Triton\n\n\n\n\n\nv1.0.4:\npython3 -m pip install flash-attn==1.0.4\nv2.x:\ngit clone https://github.com/Dao-AILab/flash-attention\ncd flash-attention\npython3 setup.py install\nopenai/triton:\ngit clone -b legacy-backend https://github.com/openai/triton\ncd triton/python\npython3 -m pip install cmake\npython3 -m pip install .\n\n\n\n\n\n\nWhere \"${MACHINE}\" \\in {\"ThetaGPU\", \"Polaris\"} and \"${CONDA_DATE}\" \\in {\"2023-01-10\", \"2023-01-11\"}↩︎",
-    "crumbs": [
-      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🪧 Posts",
-      "🤖 AuroraGPT",
-      "🚂 Loooooooong Sequence Lengths"
-    ]
-  },
-  {
-    "objectID": "posts/AuroraGPT/long-sequences/index.html#running",
-    "href": "posts/AuroraGPT/long-sequences/index.html#running",
-    "title": "🚂 Loooooooong Sequence Lengths",
-    "section": "Running",
-    "text": "Running\nThe ALCF/ directory contains shell scripts for setting up the environment and specifying the options to be used when launching.\nVarious options can be specified dynamically at runtime by setting them in your environment, e.g.:\nMODEL_SIZE_KEY=\"GPT25B\" SEQ_LEN=128000 USE_FLASH_ATTN=1 MICRO_BATCH=1 GAS=1 SP_TYPE=\"megatron\" ZERO_STAGE=1 ./ALCF/train-gpt3.sh\nExplicitly:\n\nALCF/train-gpt3.sh: Main entry point for training\n\nThis script will automatically source the rest of the required ALCF/*.sh scripts below\n\nALCF/models.sh: Contains some example model architectures for GPT3-style models\nALCF/args.sh: Logic for parsing / setting up runtime options for Megatron and DeepSpeed\nALCF/setup.sh: Locate and activate virtual environment to be used, ensure MPI variables are set properly\nALCF/launch.sh: Identify available resources and build the command to be executed\n\ni.e. figure out how many: {nodes, GPUs per node, GPUs total}, to pass to mpi{run,exec}\nthen, use this to build mpiexec &lt;mpiexec-args&gt; python3 pretrain_gpt.py",
-    "crumbs": [
-      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🪧 Posts",
-      "🤖 AuroraGPT",
-      "🚂 Loooooooong Sequence Lengths"
-    ]
-  },
-  {
-    "objectID": "posts/AuroraGPT/long-sequences/index.html#zero-offloading",
-    "href": "posts/AuroraGPT/long-sequences/index.html#zero-offloading",
-    "title": "🚂 Loooooooong Sequence Lengths",
-    "section": "ZeRO Offloading",
-    "text": "ZeRO Offloading\n🚀 W&B Report: Looooooooong Sequences\nThese newly introduced optimizations, in combination with ZeRO-Offload allows us to go even further.\nBy employing ZeRO-Offloading, we are able to free up additional memory which can be used for even longer sequences.\nThough work is still ongoing, this is a promising direction that will allow us to consider significantly larger genomes than previously possible.\nWe use Weights & Biases to track these experiments, and have aggregated our initial results in the W&B Report below.\nWe can evaluate the performance of our model by looking at two different metrics for throughput: samples_per_sec and TFLOPS.\nExplicitly, we see that we are able to scale up to significantly longer sequences (420k / 128k ~ 3.3x) with only a minimal impact on throughput performance (81 / 105 ~ 77\\%)4.\n\n\n\nTable 2: Impact on TFLOPS as a function of increasing sequence length. Table from: throughput/TFLOPS\n\n\n\n\n\n\n\n\n\n\n\n\nName\nSequence Length (k)\n(seq_len / min_seq_len)\nTFLOPS\nTFLOPS (% of peak)\n\n\n\n\nGPT25B\n420\n3.28125\n81.77225\n77.867\n\n\nGPT25B\n400\n3.125\n90.62\n86.297\n\n\nGPT25B\n360\n2.8125\n81.6325\n77.7348\n\n\nGPT25B\n360\n2.8125\n82.6824\n78.7346\n\n\nGPT25B\n192\n1.5\n115.8228\n110.2927\n\n\nGPT25B\n128\n1\n106.672\n101.5788\n\n\nGPT25B\n128\n1\n105.014\n100.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Weights & Biases Report\n\n\n\n\n\n\n\n\nthroughput/TFLOPS↩︎",
-    "crumbs": [
-      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🪧 Posts",
-      "🤖 AuroraGPT",
-      "🚂 Loooooooong Sequence Lengths"
+      "🦜 Talks",
+      "Polaris Overview + LLMs"
     ]
   },
   {
@@ -293,7 +240,7 @@
     "href": "talks/index.html",
     "title": "🦜 Recent Talks",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJul 18, 2024\n\n\nLLMs on Polaris\n\n\nSam Foreman\n\n\n\n\n\nNo matching items\n\n\n\n📆 2024\n\n\n\n\n\n\nLLMs on Polaris @ Center for Scientific Foundation Models, Summer School 24’ [07/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nParallel Training Techniques @ AI-4-Science Training Series [03/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nLLMs from Scratch @ LLM Tutorial Workshop [02/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2023\n\n\n\n\n\n\nCreating Small(-ish) LLMs @ LLM Tutorial Workshop (1) [11/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nExascale Science on Aurora @ Intel oneAPI Workshop @ UIC [10/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Lunch Talk @ ALCF Hands On HPC Workshop [10/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nScaling LLMs for Science @ Data-Intensive Computing + AI/ML at Scale [08/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nMLMC: Machine Learning Monte Carlo @ Lattice 2023 [07/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nGenerative Modeling and Efficient Sampling @ PASC23 [07/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nEfficient Sampling for LGT @ Deep Fridays @ U. Bologna [04/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2022\n\n\n\n\n\n\nLarge Scale Training @ AI4Science on Supercomputers (ALCF) [11/2022]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nHyperparameter Management @ ALCF SDL Workshop [10/2022]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nStatistical Learning @ ATPESC 2022 [08/2022]\n\n\n\n\n\n\n📕 accompanying notebook\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nScientific Data Science: An Emerging Symbiosis @ ANL (05/2022)\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nMachine Learning in HEP @ UNC Greensboro [03/2022]\n\n\n\n\n\n\nMachine Learning in HEP, at UNC Greensboro, March 2022\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2021\n\n\n\n\n\n\nAccelerated Sampling Methods for LGT, @ DWQ @ 25 [BNL] [12/2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nTraining Topological Samplers for LGT @ ML4HEP, ECT* Trento [09/2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nl2hmc-qcd @ MIT Lattice Group Seminar [2021]\n\n\n\n\n\nl2hmc-qcd at the MIT Lattice Group Seminar, 2021\n\n\n\n\n\n\n\n\n\nDeep Learning HMC for Improved Gauge Generation @ ML in LQCD Workshop [2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2020\n\n\n\n\n\n\nMachine Learning for Lattice QCD @ U. Iowa [2020]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\n Back to topCitationBibTeX citation:@online{foreman2024,\n  author = {Foreman, Sam},\n  title = {🦜 {Recent} {Talks}},\n  date = {2024-07-18},\n  url = {https://samforeman.me/talks/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nForeman, Sam. 2024. “🦜 Recent Talks.” July 18, 2024. https://samforeman.me/talks/.",
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJul 19, 2024\n\n\nLLMs on Polaris\n\n\nSam Foreman\n\n\n\n\n\nNo matching items\n\n\n\n📆 2024\n\n\n\n\n\n\nLLMs on Polaris @ Center for Scientific Foundation Models, Summer School 24’ [07/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nParallel Training Techniques @ AI-4-Science Training Series [03/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nLLMs from Scratch @ LLM Tutorial Workshop [02/2024]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2023\n\n\n\n\n\n\nCreating Small(-ish) LLMs @ LLM Tutorial Workshop (1) [11/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nExascale Science on Aurora @ Intel oneAPI Workshop @ UIC [10/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM Lunch Talk @ ALCF Hands On HPC Workshop [10/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nScaling LLMs for Science @ Data-Intensive Computing + AI/ML at Scale [08/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nMLMC: Machine Learning Monte Carlo @ Lattice 2023 [07/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nGenerative Modeling and Efficient Sampling @ PASC23 [07/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nEfficient Sampling for LGT @ Deep Fridays @ U. Bologna [04/2023]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2022\n\n\n\n\n\n\nLarge Scale Training @ AI4Science on Supercomputers (ALCF) [11/2022]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nHyperparameter Management @ ALCF SDL Workshop [10/2022]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nStatistical Learning @ ATPESC 2022 [08/2022]\n\n\n\n\n\n\n📕 accompanying notebook\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nScientific Data Science: An Emerging Symbiosis @ ANL (05/2022)\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nMachine Learning in HEP @ UNC Greensboro [03/2022]\n\n\n\n\n\n\nMachine Learning in HEP, at UNC Greensboro, March 2022\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2021\n\n\n\n\n\n\nAccelerated Sampling Methods for LGT, @ DWQ @ 25 [BNL] [12/2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nTraining Topological Samplers for LGT @ ML4HEP, ECT* Trento [09/2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\nl2hmc-qcd @ MIT Lattice Group Seminar [2021]\n\n\n\n\n\nl2hmc-qcd at the MIT Lattice Group Seminar, 2021\n\n\n\n\n\n\n\n\n\nDeep Learning HMC for Improved Gauge Generation @ ML in LQCD Workshop [2021]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n📆 2020\n\n\n\n\n\n\nMachine Learning for Lattice QCD @ U. Iowa [2020]\n\n\n\n\n\n\n&lt;p&gt;\nYour browser does not support iframes.\n&lt;/p&gt;\n\n\n\n\n\n\n\n\n\n\n Back to topCitationBibTeX citation:@online{foreman2024,\n  author = {Foreman, Sam},\n  title = {🦜 {Recent} {Talks}},\n  date = {2024-07-18},\n  url = {https://samforeman.me/talks/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nForeman, Sam. 2024. “🦜 Recent Talks.” July 18, 2024. https://samforeman.me/talks/.",
     "crumbs": [
       "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
       "🦜 Talks",
@@ -723,15 +670,68 @@
     ]
   },
   {
-    "objectID": "talks/llms-on-polaris/index.html#transformer-architecture",
-    "href": "talks/llms-on-polaris/index.html#transformer-architecture",
-    "title": "LLMs on Polaris",
-    "section": "Transformer Architecture",
-    "text": "Transformer Architecture\n\n\nFigure 10: Vaswani et al. (2017)",
+    "objectID": "posts/AuroraGPT/long-sequences/index.html",
+    "href": "posts/AuroraGPT/long-sequences/index.html",
+    "title": "🚂 Loooooooong Sequence Lengths",
+    "section": "",
+    "text": "The new Megatron-DeepSpeed release contains a variety of improvements / optimizations to enable pre-training Transformer based architectures with significantly longer sequences than was previously possible.",
     "crumbs": [
       "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
-      "🦜 Talks",
-      "Polaris Overview + LLMs"
+      "🪧 Posts",
+      "🤖 AuroraGPT",
+      "🚂 Loooooooong Sequence Lengths"
+    ]
+  },
+  {
+    "objectID": "posts/AuroraGPT/long-sequences/index.html#deepspeed4science-092023",
+    "href": "posts/AuroraGPT/long-sequences/index.html#deepspeed4science-092023",
+    "title": "🚂 Loooooooong Sequence Lengths",
+    "section": "DeepSpeed4Science (09/2023)",
+    "text": "DeepSpeed4Science (09/2023)\n\nNew Features\n\nEnabled Megatron-LM’s sequence parallel.\nEnabled rotary positional embedding.\nEnabled FlashAttention v1 and v2.\nEnabled new fused kernels from NVIDIA.\n\n\n\nNew optimizations\n\nEnabled attention map memory optimization, where we first generated attention mask on CPU memory and then moved it into GPU memory to avoid out-of-memory errors when training with very large sequence lengths.\nPosition embedding partitioning, where we split weights of position encoding across all GPUs when enabling sequence parallel to further reduce the memory footprint.\n\n\n\nInitial Results\n\n\n\nTable 1: Long sequence length support1 from microsoft/Megatron-DeepSpeed\n\n\n\n\n\n\n\n\n\n\nSequence Length\nOld Megatron-DeepSpeed (TFLOPS)\nNew Megatron-DeepSpeed (TFLOPS)\n\n\n\n\n2k\n25\n68\n\n\n4k\n28\n80\n\n\n8k\nOOM\n86\n\n\n16k\nOOM\n92\n\n\n32k\nOOM\n100\n\n\n64k\nOOM\n106\n\n\n128k\nOOM\n119\n\n\n256k\nOOM\n94\n\n\n\n\n\n\n\n\nData\ngpus = ('32', '64', '128')\n\ncolors = {\n    'Old Megatron-DS': '#FF5252',\n    'Megatron-LM': '#76b900',\n    'New Megatron-DS':  '#1A8FFF',\n}\n\ndata = {\n    '25B': {\n        'Old Megatron-DS': np.array([36, 42, 42]),\n        'Megatron-LM': np.array([26, 48, 52]),\n        'New Megatron-DS': np.array([192, 448, 512]),\n    },\n    '33B': {\n        'Old Megatron-DS': np.array([28, 32, 32]),\n        'Megatron-LM': np.array([14, 46, 52]),\n        'New Megatron-DS': np.array([128, 384, 448]),\n    },\n}\n\n\n\nMake the plots\nx = np.arange(len(gpus))\nwidth = 0.25\nmultiplier = 0\n\noutdir = Path(os.getcwd()).joinpath('assets')\noutdir.mkdir(exist_ok=True, parents=True)\n\nimprovement = {}\nfor idx, (model_size, d) in enumerate(data.items()):\n    multiplier = 0\n    figure, axes = plt.subplots(figsize=(7.5, 4))\n    fig = plt.gcf()\n    ax = plt.gca()\n    for label, value in d.items():\n        offset = width * multiplier\n        rects = ax.barh(\n          x + offset,\n          value,\n          width,\n          label=label,\n          color=colors[label],\n          alpha=0.8\n        )\n        ax.bar_label(\n          rects,\n          padding=3,\n          color=colors[label],\n          family='monospace',\n          weight='bold'\n        )\n        multiplier += 1\n    ax.set_ylabel(\n        'GPUs',\n        fontsize=18,\n        family='sans-serif',\n        loc='center',\n    )\n    ax.set_yticks(x + width, gpus)\n    plt.figtext(\n        0.005, 0.93, f\"{model_size}\", fontsize=24, fontweight='bold', ha='left'\n    )\n    ax.set_xlabel(\n        'Sequence Length (k)', fontsize=18, loc='center'\n    )\n    ax.legend(\n        bbox_to_anchor=(0.005, 1.04, 0.99, .098),\n        alignment='center',\n        edgecolor=\"#83838320\",\n        frameon=True,\n        ncols=3,\n        fontsize=13,\n        mode=\"expand\",\n        borderaxespad=0.01\n    )\n    save_figure(fname=f'{model_size}', outdir=outdir)\n    _ = plt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\nGPT-25B Model\n\n\n\n\n\n\n\nGPT-33B Model\n\n\n\n\n\n\n\nFigure 2: Pre-training with long sequence support across different model sizes and numbers of GPUs. In each case, the new (current) implementation significantly outperforms both NVIDIA/Megatron-LM as well as our previous implementation.\n\n\n\n\n\n\nThe described experiments were performed on 4 NVIDIA DGX A100-40GB nodes, all using TPSIZE=32[^tpsize], connected through 8 HDR InfiniBand (200Gb/s per HDR).↩︎",
+    "crumbs": [
+      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
+      "🪧 Posts",
+      "🤖 AuroraGPT",
+      "🚂 Loooooooong Sequence Lengths"
+    ]
+  },
+  {
+    "objectID": "posts/AuroraGPT/long-sequences/index.html#installation",
+    "href": "posts/AuroraGPT/long-sequences/index.html#installation",
+    "title": "🚂 Loooooooong Sequence Lengths",
+    "section": "Installation",
+    "text": "Installation\n\nUsing install.sh\n\n\n\n\n\n\nInstallation\n\n\n\n\n\nImportant To install, simply:\ngit clone https://github.com/ramanthanlab/GenSLM/\ncd GenSLM/examples/long-sequences/\n./install.sh\nExplicitly, ./install.sh will:\n\nAutomatically create a virtual environment on top of the latest conda module\nInstall (+ update2) / build all the required dependencies into this virtual environment\n\n\n\n\n\n\n\n\n\ndeepspeed-0.10.3\npytorch==2.0.0+cu118\n\n↩︎\n\n\n\n\nStep-by-Step\nFor completeness, we describe below the steps for installing and building each of the dependencies.\n\nClone GitHub repo:\ngit clone https://github.com/ramanthanlab/GenSLM\nLoad conda module:\n\nThetaGPU:\n# ThetaGPU:\nif [[ \"$(hostname)==theta*\" ]]; then\n    export MACHINE=\"ThetaGPU\"\n    export CONDA_DATE=\"2023-01-10\"\n    module load conda/2023-01-11\n    conda activate base\nfi\nPolaris:\n# Polaris:\nif [[ \"$(hostname)==x3*\" ]]; then\n    export MACHINE=\"Polaris\"\n    export CONDA_DATE=\"2023-01-10\"\n    module load conda/2023-01-10-unstable\n    conda activate base\nfi\n\nSetup Virtual Environment3:\ncd ./genslm/examples/long-sequences\n# create a new virtual environment\nmkdir -p \"venvs/${MACHINE}/${CONDA_DATE}\"\npython3 -m venv \"venvs/${MACHINE}/${CONDA_DATE}\" --system-site-packages\nsource \"venvs/${MACHINE}/${CONDA_DATE}/bin/activate\"\nCreate a new folder (genslm/examples/long-sequences/deps/${MACHINE}) where we’ll installing dependencies locally:\nmkdir -p \"deps/${MACHINE}\"\ncd \"deps/${MACHINE}\"\n\n\nDependencies\nWe provide below the details needed to install each of the required dependencies.\n\n\n saforem2/ezpz\n\n\n saforem2/ezpz\npip install -e \"git+https://github.com/saforem2/ezpz.git#egg=ezpz\"\n\n\n\n\n Microsoft/DeepSpeed\n\n\n Microsoft/DeepSpeed\ngit clone https://github.com/microsoft/DeepSpeed.git\ncd DeepSpeed\npython3 -m pip install -e .\n\n\n\n\n Microsoft/Megatron-DeepSpeed\n\n\n Microsoft/Megatron-DeepSpeed:\ngit clone https://github.com/microsoft/Megatron-DeepSpeed.git\n\n\n\n\n NVIDIA/apex\n\n\n NVIDIA/apex\ngit clone https://github.com/NVIDIA/apex\ncd ../apex/\npip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --global-option=\"--cpp_ext\" --global-option=\"--cuda_ext\" -e ./\n\n\n\n\n pybind/PyBind11\n\n\n pybind/PyBind11\npip install pybind11\n\n\n\n\n Dao-AILab/flash-attention\n\n\n Dao-AILab/flash-attention:\n\n\n\n\n\n\nFlash Attention\n\n\n\n\n\n\nThe new release supports three different implementations of FlashAttention: (v1.0.4, v2.x, triton)\nFlashAttention v2.x may have numerical instability issues. For the best performance, we recommend using FlashAttention + Triton\n\n\n\n\n\nv1.0.4:\npython3 -m pip install flash-attn==1.0.4\nv2.x:\ngit clone https://github.com/Dao-AILab/flash-attention\ncd flash-attention\npython3 setup.py install\nopenai/triton:\ngit clone -b legacy-backend https://github.com/openai/triton\ncd triton/python\npython3 -m pip install cmake\npython3 -m pip install .\n\n\n\n\n\n\nWhere \"${MACHINE}\" \\in {\"ThetaGPU\", \"Polaris\"} and \"${CONDA_DATE}\" \\in {\"2023-01-10\", \"2023-01-11\"}↩︎",
+    "crumbs": [
+      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
+      "🪧 Posts",
+      "🤖 AuroraGPT",
+      "🚂 Loooooooong Sequence Lengths"
+    ]
+  },
+  {
+    "objectID": "posts/AuroraGPT/long-sequences/index.html#running",
+    "href": "posts/AuroraGPT/long-sequences/index.html#running",
+    "title": "🚂 Loooooooong Sequence Lengths",
+    "section": "Running",
+    "text": "Running\nThe ALCF/ directory contains shell scripts for setting up the environment and specifying the options to be used when launching.\nVarious options can be specified dynamically at runtime by setting them in your environment, e.g.:\nMODEL_SIZE_KEY=\"GPT25B\" SEQ_LEN=128000 USE_FLASH_ATTN=1 MICRO_BATCH=1 GAS=1 SP_TYPE=\"megatron\" ZERO_STAGE=1 ./ALCF/train-gpt3.sh\nExplicitly:\n\nALCF/train-gpt3.sh: Main entry point for training\n\nThis script will automatically source the rest of the required ALCF/*.sh scripts below\n\nALCF/models.sh: Contains some example model architectures for GPT3-style models\nALCF/args.sh: Logic for parsing / setting up runtime options for Megatron and DeepSpeed\nALCF/setup.sh: Locate and activate virtual environment to be used, ensure MPI variables are set properly\nALCF/launch.sh: Identify available resources and build the command to be executed\n\ni.e. figure out how many: {nodes, GPUs per node, GPUs total}, to pass to mpi{run,exec}\nthen, use this to build mpiexec &lt;mpiexec-args&gt; python3 pretrain_gpt.py",
+    "crumbs": [
+      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
+      "🪧 Posts",
+      "🤖 AuroraGPT",
+      "🚂 Loooooooong Sequence Lengths"
+    ]
+  },
+  {
+    "objectID": "posts/AuroraGPT/long-sequences/index.html#zero-offloading",
+    "href": "posts/AuroraGPT/long-sequences/index.html#zero-offloading",
+    "title": "🚂 Loooooooong Sequence Lengths",
+    "section": "ZeRO Offloading",
+    "text": "ZeRO Offloading\n🚀 W&B Report: Looooooooong Sequences\nThese newly introduced optimizations, in combination with ZeRO-Offload allows us to go even further.\nBy employing ZeRO-Offloading, we are able to free up additional memory which can be used for even longer sequences.\nThough work is still ongoing, this is a promising direction that will allow us to consider significantly larger genomes than previously possible.\nWe use Weights & Biases to track these experiments, and have aggregated our initial results in the W&B Report below.\nWe can evaluate the performance of our model by looking at two different metrics for throughput: samples_per_sec and TFLOPS.\nExplicitly, we see that we are able to scale up to significantly longer sequences (420k / 128k ~ 3.3x) with only a minimal impact on throughput performance (81 / 105 ~ 77\\%)4.\n\n\n\nTable 2: Impact on TFLOPS as a function of increasing sequence length. Table from: throughput/TFLOPS\n\n\n\n\n\n\n\n\n\n\n\n\nName\nSequence Length (k)\n(seq_len / min_seq_len)\nTFLOPS\nTFLOPS (% of peak)\n\n\n\n\nGPT25B\n420\n3.28125\n81.77225\n77.867\n\n\nGPT25B\n400\n3.125\n90.62\n86.297\n\n\nGPT25B\n360\n2.8125\n81.6325\n77.7348\n\n\nGPT25B\n360\n2.8125\n82.6824\n78.7346\n\n\nGPT25B\n192\n1.5\n115.8228\n110.2927\n\n\nGPT25B\n128\n1\n106.672\n101.5788\n\n\nGPT25B\n128\n1\n105.014\n100.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Weights & Biases Report\n\n\n\n\n\n\n\n\nthroughput/TFLOPS↩︎",
+    "crumbs": [
+      "[{{< iconify line-md twitter >}}]{style='font-size: 1.15em;'}",
+      "🪧 Posts",
+      "🤖 AuroraGPT",
+      "🚂 Loooooooong Sequence Lengths"
     ]
   },
   {
