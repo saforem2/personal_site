@@ -61,7 +61,7 @@ style="flex-direction: column; justify-content: flex-start; width: 40%;">
 
 > [!TIP]
 >
-> ### 🎤 <span class="dim-text-11" style="font-size:1.0em!important;">Recent Talks</span>
+> ### 🎤 <span class="dim-text" style="font-size:1.0em!important;">Recent Talks</span>
 >
 > <span class="dim-text" style="font-size:1em;">live:
 > [here](talks/index.qmd) ( + how I [make
@@ -459,7 +459,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 > </iframe>
 
 <!---->
-<!-- ::: {.callout-tip icon="false" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF HPC Workshop](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;"}: -->
+<!-- ::: {.callout-tip icon="false" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF HPC Workshop](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}: -->
 <!---->
 <!-- <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"> -->
 <!--   <p>Your browser does not support iframes.</p> -->
@@ -895,8 +895,28 @@ setInterval(getSetLastFM, 10 * 1000);
 
 </div>
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">[</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f">updated @</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">12:01:03</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f"> on</span> <span style="color: #838383; text-decoration-color: #838383; font-weight: bold">07</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">19</span><span style="color: #838383; text-decoration-color: #838383">/</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold">2024</span><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-weight: bold">]</span>
+<details closed>
+<summary>
+📅 Updated @
+</summary>
+
+``` python
+import ezpz as ez
+print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
+```
+
+    [Sams-MacBook-Pro.local:55830] shmem: mmap: an error occurred while determining whether or not /var/folders/53/5t2nv83136j76rld14vgfh2h0000gq/T//ompi.Sams-MacBook-Pro.503/jf.0/3647537152/sm_segment.Sams-MacBook-Pro.503.d9690000.0 could be created.
+
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.361813</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">156</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>Setting logging level to <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'INFO'</span> on <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'RANK == 0'</span>
 </pre>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.363869</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">157</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>Setting logging level to <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'CRITICAL'</span> on all others <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'RANK != 0'</span>
+</pre>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.364490</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">160</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>To disable this behavior, and log from ALL ranks <span style="color: #ffffff; text-decoration-color: #ffffff; font-weight: bold">(</span>not recommended<span style="color: #ffffff; text-decoration-color: #ffffff; font-weight: bold">)</span>, set: <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'export LOG_FROM_ALL_RANKS=1'</span>  in your environment, and re-run.
+</pre>
+
+<span class="dim-text">2024-07-31 @ 15:53:12</span>
+
+</details>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
     Generation, Drug Discovery), and Climate Modeling / Weather

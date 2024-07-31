@@ -1,55 +1,20 @@
 ---
 date: ""
 author: ""
-# keep-md: true
 toc: false
 site-url: "https://samforeman.me"
-# citation:
-#    author: Sam Foreman
-#    type: webpage
-#    title: "Sam Foreman"
-#    url: https://samforeman.me
 sidebar: false
 format:
   html:
-    reference-location: document
     css:
       - css/profile.css
-      # - css/reveal/
-    # page-layout: full
-    # grid:
-    #   # body-width: 
-    #   sidebar-width: 0px
-    # # margin-width: 300px
-    #   margin-width: 0px
-    #   # gutter-width: 1.5em
+    grid:
+      body-width: 800px
   gfm:
     output-file: "README.md"
 format-links: false
 editor:
    render-on-save: true
-# listing:
-#   id: listing-posts
-#   type: table
-#   sort-ui: false
-#   filter-ui: false
-#   sort: "date desc"
-#   contents: 
-# contents: "./posts/posts.yml"
-# - "!posts/index.qmd"
-# - "posts/**/index.qmd"
-# contents: "./posts/posts.yml"
-# metadata-files: [posts/posts.yml]
-
-# listing: posts/posts.yml
-# listing:
-#   id: listing-posts
-#   sort: "date desc"
-#   filter-ui: false
-#   sort-ui: false
-#   type: table
-#   contents: posts/posts.yml
-# - posts/posts.yml
 listing:
   # contents: "posts/posts.yml"
   id: listing-posts
@@ -67,6 +32,7 @@ listing:
     - "!posts/l2hmc-qcd/l2hmc/index.qmd"
     - "!posts/jupyter/index.qmd"
 ---
+
 
 ::: {style="font-size:1.0em; text-align: center;"}
 
@@ -134,20 +100,12 @@ listing:
 
 :::
 
-```{python}
-#| echo: false
-import datetime
-from rich import print
-now = datetime.datetime.now()
-day = now.strftime('%m/%d/%Y')
-time = now.strftime('%H:%M:%S')
-dtime = now.strftime("%Y-%m-%d-%H:%M:%S")
+<details closed><summary>📅 Updated @</summary>
 
-print(' '.join([
-  "[dim][updated @[/]",
-  f"[#838383]{time}[/]"
-  f"[dim] on[/]",
-  f"[#838383]{day}[/][dim]][/]",
-]))
+```{python}
+#| output: asis
+import ezpz as ez
+print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
 ```
 
+</details>

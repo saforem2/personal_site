@@ -1,11 +1,514 @@
 # 🍋 <code>ezpz</code> @ ALCF
 <span class="dim-text">Sam Foreman</span>
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-07-18
+2024-07-24
 
 - [Complete Example](#complete-example)
+  - [📦 Clone Repo(s)](#-clone-repos)
+  - [🛜 Setup Job](#-setup-job)
+  - [🐍 Setup Python](#-setup-python)
+  - [📝 Test Setup](#-test-setup)
 
 ## Complete Example
+
+### 📦 Clone Repo(s)
+
+- [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed):
+
+  ``` bash
+  $ git clone https://github.com/argonne-lcf/Megatron-DeepSpeed
+  Cloning into 'Megatron-DeepSpeed'...
+  remote: Enumerating objects: 15538, done.
+  remote: Counting objects: 100% (21/21), done.
+  remote: Compressing objects: 100% (11/11), done.
+  remote: Total 15538 (delta 10), reused 18 (delta 10), pack-reused 15517
+  Receiving objects: 100% (15538/15538), 6.25 MiB | 32.32 MiB/s, done.
+  Resolving deltas: 100% (11482/11482), done.
+  Updating files: 100% (596/596), done.
+  ```
+
+- [`saforem2/ezpz`](https://github.com/saforem2/ezpz):
+
+  ``` bash
+  $ cd Megatron-DeepSpeed
+  $ git clone https://github.com/saforem2/ezpz deps/ezpz
+  Cloning into 'deps/ezpz'...
+  remote: Enumerating objects: 2161, done.
+  remote: Counting objects: 100% (390/390), done.
+  remote: Compressing objects: 100% (181/181), done.
+  remote: Total 2161 (delta 214), reused 285 (delta 151), pack-reused 1771
+  Receiving objects: 100% (2161/2161), 4.28 MiB | 25.35 MiB/s, done.
+  Resolving deltas: 100% (1134/1134), done.
+  ```
+
+### 🛜 Setup Job
+
+1.  Source
+    [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/utils.sh):
+
+    ``` bash
+    $ PBS_O_WORKDIR=$(pwd) source deps/ezpz/src/ezpz/bin/utils.sh
+    Using WORKING_DIR: /eagle/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed
+    ```
+
+2.  `ezpz_setup_alcf`:
+
+    ``` bash
+    $ ezpz_setup_alcf
+    [ezpz/bin/utils.sh]
+
+    [2024-07-23-221417]
+        • USER=foremans
+        • MACHINE=polaris
+        • HOST=x3006c0s25b1n0
+
+    [ezpz_get_pbs_env]: Caught 0 arguments
+        • hostfile: /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+        • jobenv_file: /home/foremans/.pbsenv
+
+    [ezpz_setup_host]
+        • Using hostfile: /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+        • Found in environment:
+            • HOSTFILE: /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+            • Writing PBS vars to: /home/foremans/.pbsenv
+
+    [ezpz_save_pbs_env]
+        • Setting:
+            • HOSTFILE: /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+            • JOBENV_FILE: /home/foremans/.pbsenv
+
+    [HOSTS]
+        • [host:0] - x3006c0s25b1n0.hsn.cm.polaris.alcf.anl.gov
+
+    [DIST INFO]
+        • HOSTFILE=/var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+        • NHOSTS=1
+        • NGPU_PER_HOST=4
+        • NGPUS=4
+        • DIST_LAUNCH=mpiexec --verbose --envall -n 4 -ppn 4 --hostfile /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov --cpu-bind depth -d 16
+
+    [LAUNCH]:
+        • To launch across all available GPUs, use: launch
+          launch = mpiexec --verbose --envall -n 4 -ppn 4 --hostfile /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov --cpu-bind depth -d 16
+    ```
+
+### 🐍 Setup Python
+
+- `ezpz_setup_python`:
+
+  ``` bash
+  $ ezpz_setup_python
+  No conda_prefix OR virtual_env found in environment...
+  Setting up conda...
+  Lmod is automatically replacing "nvhpc/23.9" with "gcc-native/12.3".
+  Lmod is automatically replacing "PrgEnv-nvhpc/8.5.0" with "PrgEnv-gnu/8.5.0".
+  Due to MODULEPATH changes, the following have been reloaded:
+    1) cray-mpich/8.1.28
+  Found conda at: /soft/applications/conda/2024-04-29/mconda3
+  No VIRTUAL_ENV found in environment!
+      - Trying to setup from /soft/applications/conda/2024-04-29/mconda3
+      - Using VENV_DIR=/eagle/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/venvs/2024-04-29
+      - Creating a new virtual env on top of 2024-04-29 in /eagle/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/venvs/2024-04-29
+  [python] Using /eagle/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/venvs/2024-04-29/bin/python3
+
+  $ which python3
+  /eagle/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/venvs/2024-04-29/bin/python3
+
+  $ python3 -m pip install -e deps/ezpz --require-virtualenv
+  Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+  Obtaining file:///lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/deps/ezpz
+    Installing build dependencies ... done
+    Checking if build backend supports build_editable ... done
+    Getting requirements to build editable ... done
+    Installing backend dependencies ... done
+    Preparing editable metadata (pyproject.toml) ... done
+  ```
+
+### 📝 Test Setup
+
+- [`ezpz/test_dist.py`](https://github.com/saforem2/ezpz/blob/main/ezpz/test_dist.py)
+
+  ``` bash
+  $ launch python3 -m ezpz.test_dist
+  ```
+
+  <details closed>
+  <summary>
+
+  Output
+
+  </summary>
+
+  ``` bash
+  [2024-07-23 22:21:37.972869][INFO][__init__:156] - Setting logging level to 'INFO' on 'RANK == 0'
+  [2024-07-23 22:21:37.975224][INFO][__init__:157] - Setting logging level to 'CRITICAL' on all others 'RANK != 0'
+  [2024-07-23 22:21:37.975718][INFO][__init__:160] - To disable this behavior, and log from ALL ranks (not recommended), set: 'export LOG_FROM_ALL_RANKS=1'  in your environment, and re-run.
+  [2024-07-23 22:21:39.790899][INFO][dist:358] - [device='cuda'][rank=1/3][local_rank=1/3][node=0/0]
+  [2024-07-23 22:21:39.790850][INFO][dist:358] - [device='cuda'][rank=2/3][local_rank=2/3][node=0/0]
+  [2024-07-23 22:21:39.791749][INFO][dist:358] - [device='cuda'][rank=3/3][local_rank=3/3][node=0/0]
+  [2024-07-23 22:21:39.797666][INFO][dist:95] -
+
+  [dist_info]:
+    • DEVICE=cuda
+    • DEVICE_ID=cuda:0
+    • DISTRIBUTED_BACKEND=nccl
+    • GPUS_PER_NODE=4
+    • HOSTS=['x3006c0s25b1n0.hsn.cm.polaris.alcf.anl.gov']
+    • HOSTFILE=/var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov
+    • HOSTNAME=x3006c0s25b1n0.hsn.cm.polaris.alcf.anl.gov
+    • LOCAL_RANK=0
+    • MACHINE=Polaris
+    • NUM_NODES=1
+    • NGPUS=4
+    • NGPUS_AVAILABLE=4
+    • NODE_ID=0
+    • RANK=0
+    • SCHEDULER=PBS
+    • WORLD_SIZE_TOTAL=4
+    • WORLD_SIZE_IN_USE=4
+    • LAUNCH_CMD=mpiexec --verbose --envall -n 4 -ppn 4 --hostfile /var/spool/pbs/aux/2036165.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov --cpu-bind depth -d 16
+
+
+  [2024-07-23 22:21:39.800519][INFO][dist:725] - [0/4] Using device='cuda' with backend='DDP' + 'nccl' for distributed training.
+  [2024-07-23 22:21:39.805001][INFO][dist:358] - [device='cuda'][rank=0/3][local_rank=0/3][node=0/0]
+  [2024-07-23 22:21:39.805513][WARNING][dist:364] - Using [4 / 4] available "cuda" devices !!
+  [2024-07-23 22:21:39.806121][INFO][dist:95] -
+
+  [timers_import]:
+    • os=1.062639057636261e-06
+    • logging=4.0046870708465576e-07
+    • typing=2.7157366275787354e-06
+    • pathlib=1.2516975402832031e-06
+    • ezpz=6.30505383014679e-07
+    • torch=2.555549144744873e-06
+    • torch_ddp=2.4745240807533264e-06
+    • wandb=6.44102692604065e-05
+    • total=7.550138980150223e-05
+
+
+  [2024-07-23 22:21:39.807221][INFO][dist:95] -
+
+  [CONFIG]:
+    • warmup=0
+    • log_freq=1
+    • batch_size=64
+    • input_size=128
+    • output_size=128
+    • dtype=torch.float32
+    • device=cuda
+    • world_size=4
+    • train_iters=100
+
+  [2024-07-23 22:21:41.373173][INFO][test_dist:183] - model=Network(
+    (layers): Sequential(
+      (0): Linear(in_features=128, out_features=1024, bias=True)
+      (1): Linear(in_features=1024, out_features=512, bias=True)
+      (2): Linear(in_features=512, out_features=256, bias=True)
+      (3): Linear(in_features=256, out_features=128, bias=True)
+      (4): Linear(in_features=128, out_features=128, bias=True)
+    )
+  )
+  [2024-07-23 22:21:43.625040][INFO][test_dist:274] - iter=1, loss=2039.91, sps=2.252e+04, dt=0.00284196, dtf=0.0009801, dtb=0.001862
+  [2024-07-23 22:21:43.628643][INFO][test_dist:274] - iter=2, loss=1424.54, sps=3.272e+04, dt=0.00195628, dtf=0.0005183, dtb=0.001438
+  [2024-07-23 22:21:43.631833][INFO][test_dist:274] - iter=3, loss=1159.38, sps=3.331e+04, dt=0.00192147, dtf=0.0006139, dtb=0.001308
+  [2024-07-23 22:21:43.634991][INFO][test_dist:274] - iter=4, loss=935.58, sps=3.343e+04, dt=0.00191451, dtf=0.0006113, dtb=0.001303
+  [2024-07-23 22:21:43.638092][INFO][test_dist:274] - iter=5, loss=851.468, sps=3.483e+04, dt=0.00183759, dtf=0.0005938, dtb=0.001244
+  [2024-07-23 22:21:43.641232][INFO][test_dist:274] - iter=6, loss=785.109, sps=3.409e+04, dt=0.00187757, dtf=0.0005972, dtb=0.00128
+  [2024-07-23 22:21:43.644367][INFO][test_dist:274] - iter=7, loss=772.966, sps=3.417e+04, dt=0.00187292, dtf=0.0005868, dtb=0.001286
+  [2024-07-23 22:21:43.647507][INFO][test_dist:274] - iter=8, loss=727.854, sps=3.411e+04, dt=0.00187638, dtf=0.0005814, dtb=0.001295
+  [2024-07-23 22:21:43.650561][INFO][test_dist:274] - iter=9, loss=725.773, sps=3.546e+04, dt=0.00180485, dtf=0.0005975, dtb=0.001207
+  [2024-07-23 22:21:43.653520][INFO][test_dist:274] - iter=10, loss=720.374, sps=3.785e+04, dt=0.00169078, dtf=0.0006108, dtb=0.00108
+  [2024-07-23 22:21:43.656564][INFO][test_dist:274] - iter=11, loss=717.926, sps=3.602e+04, dt=0.00177678, dtf=0.0005694, dtb=0.001207
+  [2024-07-23 22:21:43.659555][INFO][test_dist:274] - iter=12, loss=692.535, sps=3.682e+04, dt=0.00173814, dtf=0.0005557, dtb=0.001182
+  [2024-07-23 22:21:43.662596][INFO][test_dist:274] - iter=13, loss=679.509, sps=3.67e+04, dt=0.00174377, dtf=0.0005531, dtb=0.001191
+  [2024-07-23 22:21:43.665598][INFO][test_dist:274] - iter=14, loss=674.778, sps=3.727e+04, dt=0.00171741, dtf=0.0005496, dtb=0.001168
+  [2024-07-23 22:21:43.668593][INFO][test_dist:274] - iter=15, loss=673.873, sps=3.666e+04, dt=0.00174556, dtf=0.0005708, dtb=0.001175
+  [2024-07-23 22:21:43.671589][INFO][test_dist:274] - iter=16, loss=667.283, sps=3.694e+04, dt=0.00173238, dtf=0.0005453, dtb=0.001187
+  [2024-07-23 22:21:43.674599][INFO][test_dist:274] - iter=17, loss=660.292, sps=3.646e+04, dt=0.00175558, dtf=0.0005538, dtb=0.001202
+  [2024-07-23 22:21:43.677592][INFO][test_dist:274] - iter=18, loss=660.664, sps=3.696e+04, dt=0.00173169, dtf=0.0005441, dtb=0.001188
+  [2024-07-23 22:21:43.680559][INFO][test_dist:274] - iter=19, loss=676.161, sps=3.709e+04, dt=0.00172556, dtf=0.0005668, dtb=0.001159
+  [2024-07-23 22:21:43.683539][INFO][test_dist:274] - iter=20, loss=665.099, sps=3.702e+04, dt=0.0017287, dtf=0.0005281, dtb=0.001201
+  [2024-07-23 22:21:43.686527][INFO][test_dist:274] - iter=21, loss=626.671, sps=3.7e+04, dt=0.00172989, dtf=0.0005279, dtb=0.001202
+  [2024-07-23 22:21:43.689518][INFO][test_dist:274] - iter=22, loss=632.127, sps=3.702e+04, dt=0.00172883, dtf=0.0005085, dtb=0.00122
+  [2024-07-23 22:21:43.692469][INFO][test_dist:274] - iter=23, loss=657.324, sps=3.755e+04, dt=0.00170436, dtf=0.0005164, dtb=0.001188
+  [2024-07-23 22:21:43.695563][INFO][test_dist:274] - iter=24, loss=617.646, sps=3.558e+04, dt=0.00179856, dtf=0.0005767, dtb=0.001222
+  [2024-07-23 22:21:43.698537][INFO][test_dist:274] - iter=25, loss=618.284, sps=3.705e+04, dt=0.00172744, dtf=0.0005522, dtb=0.001175
+  [2024-07-23 22:21:43.701410][INFO][test_dist:274] - iter=26, loss=615.418, sps=3.961e+04, dt=0.00161577, dtf=0.0005298, dtb=0.001086
+  [2024-07-23 22:21:43.704427][INFO][test_dist:274] - iter=27, loss=599.058, sps=3.648e+04, dt=0.00175461, dtf=0.0005156, dtb=0.001239
+  [2024-07-23 22:21:43.707374][INFO][test_dist:274] - iter=28, loss=621.717, sps=3.778e+04, dt=0.00169387, dtf=0.0004899, dtb=0.001204
+  [2024-07-23 22:21:43.710390][INFO][test_dist:274] - iter=29, loss=597.588, sps=3.623e+04, dt=0.00176654, dtf=0.0005663, dtb=0.0012
+  [2024-07-23 22:21:43.713386][INFO][test_dist:274] - iter=30, loss=598.102, sps=3.71e+04, dt=0.00172484, dtf=0.0005497, dtb=0.001175
+  [2024-07-23 22:21:43.716530][INFO][test_dist:274] - iter=31, loss=586.188, sps=3.357e+04, dt=0.00190664, dtf=0.0005618, dtb=0.001345
+  [2024-07-23 22:21:43.719525][INFO][test_dist:274] - iter=32, loss=591.646, sps=3.672e+04, dt=0.00174293, dtf=0.000561, dtb=0.001182
+  [2024-07-23 22:21:43.722513][INFO][test_dist:274] - iter=33, loss=574.161, sps=3.668e+04, dt=0.00174487, dtf=0.0005502, dtb=0.001195
+  [2024-07-23 22:21:43.725524][INFO][test_dist:274] - iter=34, loss=586.41, sps=3.707e+04, dt=0.00172628, dtf=0.0005552, dtb=0.001171
+  [2024-07-23 22:21:43.728594][INFO][test_dist:274] - iter=35, loss=574.43, sps=3.605e+04, dt=0.00177526, dtf=0.000576, dtb=0.001199
+  [2024-07-23 22:21:43.731615][INFO][test_dist:274] - iter=36, loss=552.77, sps=3.642e+04, dt=0.00175741, dtf=0.0005588, dtb=0.001199
+  [2024-07-23 22:21:43.734574][INFO][test_dist:274] - iter=37, loss=567.612, sps=3.748e+04, dt=0.00170768, dtf=0.0005318, dtb=0.001176
+  [2024-07-23 22:21:43.737564][INFO][test_dist:274] - iter=38, loss=561.004, sps=3.706e+04, dt=0.00172686, dtf=0.0005489, dtb=0.001178
+  [2024-07-23 22:21:43.740578][INFO][test_dist:274] - iter=39, loss=555.718, sps=3.645e+04, dt=0.00175567, dtf=0.0005662, dtb=0.001189
+  [2024-07-23 22:21:43.743565][INFO][test_dist:274] - iter=40, loss=543.661, sps=3.708e+04, dt=0.00172613, dtf=0.0005363, dtb=0.00119
+  [2024-07-23 22:21:43.746561][INFO][test_dist:274] - iter=41, loss=537.186, sps=3.691e+04, dt=0.00173373, dtf=0.0005346, dtb=0.001199
+  [2024-07-23 22:21:43.749446][INFO][test_dist:274] - iter=42, loss=545.877, sps=3.998e+04, dt=0.00160083, dtf=0.000533, dtb=0.001068
+  [2024-07-23 22:21:43.752446][INFO][test_dist:274] - iter=43, loss=546.533, sps=3.681e+04, dt=0.00173875, dtf=0.0005124, dtb=0.001226
+  [2024-07-23 22:21:43.755384][INFO][test_dist:274] - iter=44, loss=545.989, sps=3.796e+04, dt=0.001686, dtf=0.0005054, dtb=0.001181
+  [2024-07-23 22:21:43.758389][INFO][test_dist:274] - iter=45, loss=531.344, sps=3.667e+04, dt=0.00174516, dtf=0.0005569, dtb=0.001188
+  [2024-07-23 22:21:43.761470][INFO][test_dist:274] - iter=46, loss=515.415, sps=3.69e+04, dt=0.00173432, dtf=0.000551, dtb=0.001183
+  [2024-07-23 22:21:43.764494][INFO][test_dist:274] - iter=47, loss=523.498, sps=3.634e+04, dt=0.00176121, dtf=0.0005524, dtb=0.001209
+  [2024-07-23 22:21:43.767522][INFO][test_dist:274] - iter=48, loss=515.942, sps=3.625e+04, dt=0.00176562, dtf=0.0005655, dtb=0.0012
+  [2024-07-23 22:21:43.770555][INFO][test_dist:274] - iter=49, loss=527.433, sps=3.62e+04, dt=0.00176783, dtf=0.0005579, dtb=0.00121
+  [2024-07-23 22:21:43.773467][INFO][test_dist:274] - iter=50, loss=520.038, sps=3.938e+04, dt=0.00162521, dtf=0.0005579, dtb=0.001067
+  [2024-07-23 22:21:43.776470][INFO][test_dist:274] - iter=51, loss=507.743, sps=3.68e+04, dt=0.00173934, dtf=0.0005378, dtb=0.001202
+  [2024-07-23 22:21:43.779466][INFO][test_dist:274] - iter=52, loss=505.372, sps=3.694e+04, dt=0.00173268, dtf=0.0005321, dtb=0.001201
+  [2024-07-23 22:21:43.782434][INFO][test_dist:274] - iter=53, loss=505.824, sps=3.736e+04, dt=0.00171324, dtf=0.0005403, dtb=0.001173
+  [2024-07-23 22:21:43.785426][INFO][test_dist:274] - iter=54, loss=498.697, sps=3.751e+04, dt=0.00170619, dtf=0.0005259, dtb=0.00118
+  [2024-07-23 22:21:43.788396][INFO][test_dist:274] - iter=55, loss=492.434, sps=3.719e+04, dt=0.00172085, dtf=0.0005036, dtb=0.001217
+  [2024-07-23 22:21:43.791354][INFO][test_dist:274] - iter=56, loss=486.032, sps=3.754e+04, dt=0.00170497, dtf=0.0005077, dtb=0.001197
+  [2024-07-23 22:21:43.794333][INFO][test_dist:274] - iter=57, loss=487.687, sps=3.803e+04, dt=0.00168299, dtf=0.0005009, dtb=0.001182
+  [2024-07-23 22:21:43.797238][INFO][test_dist:274] - iter=58, loss=481.011, sps=3.929e+04, dt=0.00162898, dtf=0.0005554, dtb=0.001074
+  [2024-07-23 22:21:43.800237][INFO][test_dist:274] - iter=59, loss=478.058, sps=3.692e+04, dt=0.00173365, dtf=0.0005374, dtb=0.001196
+  [2024-07-23 22:21:43.803250][INFO][test_dist:274] - iter=60, loss=476.983, sps=3.666e+04, dt=0.00174587, dtf=0.0005318, dtb=0.001214
+  [2024-07-23 22:21:43.806222][INFO][test_dist:274] - iter=61, loss=468.415, sps=3.716e+04, dt=0.00172234, dtf=0.0005256, dtb=0.001197
+  [2024-07-23 22:21:43.809230][INFO][test_dist:274] - iter=62, loss=461.661, sps=3.727e+04, dt=0.00171737, dtf=0.0005219, dtb=0.001195
+  [2024-07-23 22:21:43.812204][INFO][test_dist:274] - iter=63, loss=465.746, sps=3.688e+04, dt=0.00173519, dtf=0.0005067, dtb=0.001228
+  [2024-07-23 22:21:43.815192][INFO][test_dist:274] - iter=64, loss=470.95, sps=3.724e+04, dt=0.00171855, dtf=0.0004994, dtb=0.001219
+  [2024-07-23 22:21:43.818155][INFO][test_dist:274] - iter=65, loss=463.301, sps=3.774e+04, dt=0.00169586, dtf=0.0005053, dtb=0.001191
+  [2024-07-23 22:21:43.821161][INFO][test_dist:274] - iter=66, loss=450.195, sps=3.68e+04, dt=0.00173904, dtf=0.0005626, dtb=0.001176
+  [2024-07-23 22:21:43.824143][INFO][test_dist:274] - iter=67, loss=449.097, sps=3.662e+04, dt=0.00174746, dtf=0.0005578, dtb=0.00119
+  [2024-07-23 22:21:43.827103][INFO][test_dist:274] - iter=68, loss=447.465, sps=3.778e+04, dt=0.00169412, dtf=0.0005488, dtb=0.001145
+  [2024-07-23 22:21:43.830071][INFO][test_dist:274] - iter=69, loss=444.676, sps=3.835e+04, dt=0.00166873, dtf=0.0005467, dtb=0.001122
+  [2024-07-23 22:21:43.833030][INFO][test_dist:274] - iter=70, loss=429.532, sps=3.83e+04, dt=0.00167122, dtf=0.0005362, dtb=0.001135
+  [2024-07-23 22:21:43.836024][INFO][test_dist:274] - iter=71, loss=437.085, sps=3.711e+04, dt=0.00172438, dtf=0.0005086, dtb=0.001216
+  [2024-07-23 22:21:43.839009][INFO][test_dist:274] - iter=72, loss=436.272, sps=3.71e+04, dt=0.00172525, dtf=0.0005177, dtb=0.001208
+  [2024-07-23 22:21:43.841920][INFO][test_dist:274] - iter=73, loss=430.464, sps=3.893e+04, dt=0.00164403, dtf=0.0004874, dtb=0.001157
+  [2024-07-23 22:21:43.844806][INFO][test_dist:274] - iter=74, loss=426.483, sps=3.904e+04, dt=0.0016393, dtf=0.000449, dtb=0.00119
+  [2024-07-23 22:21:43.847771][INFO][test_dist:274] - iter=75, loss=413.371, sps=3.75e+04, dt=0.0017066, dtf=0.0005185, dtb=0.001188
+  [2024-07-23 22:21:43.850712][INFO][test_dist:274] - iter=76, loss=421.381, sps=3.77e+04, dt=0.00169769, dtf=0.000506, dtb=0.001192
+  [2024-07-23 22:21:43.853587][INFO][test_dist:274] - iter=77, loss=415.112, sps=3.988e+04, dt=0.0016047, dtf=0.000537, dtb=0.001068
+  [2024-07-23 22:21:43.856557][INFO][test_dist:274] - iter=78, loss=413.084, sps=3.729e+04, dt=0.0017161, dtf=0.0005459, dtb=0.00117
+  [2024-07-23 22:21:43.859518][INFO][test_dist:274] - iter=79, loss=412.671, sps=3.761e+04, dt=0.00170149, dtf=0.0005066, dtb=0.001195
+  [2024-07-23 22:21:43.862469][INFO][test_dist:274] - iter=80, loss=408.688, sps=3.776e+04, dt=0.00169481, dtf=0.0005446, dtb=0.00115
+  [2024-07-23 22:21:43.865521][INFO][test_dist:274] - iter=81, loss=400.914, sps=3.674e+04, dt=0.00174196, dtf=0.0005528, dtb=0.001189
+  [2024-07-23 22:21:43.868536][INFO][test_dist:274] - iter=82, loss=389.823, sps=3.655e+04, dt=0.00175112, dtf=0.000574, dtb=0.001177
+  [2024-07-23 22:21:43.871531][INFO][test_dist:274] - iter=83, loss=399.073, sps=3.686e+04, dt=0.00173618, dtf=0.0005504, dtb=0.001186
+  [2024-07-23 22:21:43.874511][INFO][test_dist:274] - iter=84, loss=385.773, sps=3.725e+04, dt=0.00171814, dtf=0.0005499, dtb=0.001168
+  [2024-07-23 22:21:43.877492][INFO][test_dist:274] - iter=85, loss=400.61, sps=3.739e+04, dt=0.00171182, dtf=0.000546, dtb=0.001166
+  [2024-07-23 22:21:43.880505][INFO][test_dist:274] - iter=86, loss=389.813, sps=3.673e+04, dt=0.00174226, dtf=0.0005734, dtb=0.001169
+  [2024-07-23 22:21:43.883515][INFO][test_dist:274] - iter=87, loss=385.995, sps=3.694e+04, dt=0.00173256, dtf=0.0005296, dtb=0.001203
+  [2024-07-23 22:21:43.886470][INFO][test_dist:274] - iter=88, loss=379.115, sps=3.774e+04, dt=0.00169591, dtf=0.0005467, dtb=0.001149
+  [2024-07-23 22:21:43.889422][INFO][test_dist:274] - iter=89, loss=378.738, sps=3.798e+04, dt=0.00168494, dtf=0.0005276, dtb=0.001157
+  [2024-07-23 22:21:43.892414][INFO][test_dist:274] - iter=90, loss=365.054, sps=3.675e+04, dt=0.00174164, dtf=0.000513, dtb=0.001229
+  [2024-07-23 22:21:43.895367][INFO][test_dist:274] - iter=91, loss=380.372, sps=3.772e+04, dt=0.00169654, dtf=0.000495, dtb=0.001201
+  [2024-07-23 22:21:43.898322][INFO][test_dist:274] - iter=92, loss=377.233, sps=3.852e+04, dt=0.00166155, dtf=0.000539, dtb=0.001123
+  [2024-07-23 22:21:43.901288][INFO][test_dist:274] - iter=93, loss=366.226, sps=3.788e+04, dt=0.00168959, dtf=0.0005446, dtb=0.001145
+  [2024-07-23 22:21:43.904284][INFO][test_dist:274] - iter=94, loss=366.221, sps=3.69e+04, dt=0.00173462, dtf=0.0005535, dtb=0.001181
+  [2024-07-23 22:21:43.907289][INFO][test_dist:274] - iter=95, loss=366.673, sps=3.662e+04, dt=0.00174759, dtf=0.0005328, dtb=0.001215
+  [2024-07-23 22:21:43.910260][INFO][test_dist:274] - iter=96, loss=362.985, sps=3.716e+04, dt=0.00172234, dtf=0.0005436, dtb=0.001179
+  [2024-07-23 22:21:43.913277][INFO][test_dist:274] - iter=97, loss=349.768, sps=3.668e+04, dt=0.00174469, dtf=0.000529, dtb=0.001216
+  [2024-07-23 22:21:43.916293][INFO][test_dist:274] - iter=98, loss=363.521, sps=3.675e+04, dt=0.0017416, dtf=0.0005412, dtb=0.0012
+  [2024-07-23 22:21:43.919280][INFO][test_dist:274] - iter=99, loss=345.533, sps=3.717e+04, dt=0.00172205, dtf=0.0005134, dtb=0.001209
+                              train/dt [2024-07-23-222143]
+        ┌───────────────────────────────────────────────────────────────────────┐
+  0.00284┤▘                                                                      │
+        │                                                                       │
+        │                                                                       │
+  0.00264┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  0.00243┤                                                                       │
+        │                                                                       │
+  0.00222┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  0.00201┤                                                                       │
+        │▗                                                                      │
+        │ ▝▘▗▗▖               ▝                                                 │
+  0.00181┤   ▘  ▖         ▗                                                      │
+        │       ▘▄ ▖▄▖▄▗▖ ▗▗ ▘ ▗▄▝▖▗▗▖▖▖▗▗▘▀ ▄    ▗▗ ▗  ▄   ▖     ▗▗▖ ▖▖ ▖  ▄ ▖▖│
+        │      ▝  ▝      ▘  ▝ ▘    ▘    ▖     ▝▘▀▗  ▘▘▝▘ ▘▄▝  ▘▘▝▘▘ ▝▝ ▝▗▝▗▘ ▝ ▝│
+  0.00160┤                  ▖          ▗     ▝     ▘          ▀ ▗                │
+        └┬─────────────────┬────────────────┬─────────────────┬────────────────┬┘
+        1.0              25.5             50.0              74.5            99.0
+  train/dt                                 iter
+  [2024-07-23 22:21:43.943086][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dt.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dt.txt
+                              train/dtf [2024-07-23-222143]
+        ┌───────────────────────────────────────────────────────────────────────┐
+  0.00098┤▘                                                                      │
+        │                                                                       │
+        │                                                                       │
+  0.00089┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  0.00080┤                                                                       │
+        │                                                                       │
+  0.00071┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  0.00063┤                                                                       │
+        │ ▝▘▄  ▞                                                                │
+        │    ▝▘ ▖  ▖  ▖  ▗   ▖   ▗  ▗      ▖                       ▗  ▖         │
+  0.00054┤        ▀▝ ▞▖    ▝   ▀▝▀ ▘▝ ▖▄ ▝▝▘▝▝▖▗   ▚     ▀▘▄    ▗▗ ▞ ▀▗ ▗  ▗▖▚▗ ▖│
+        │▝            ▝▝▖▖ ▚       ▘   ▖▖    ▝ ▘▄  ▝▘▚ ▖   ▗▘ ▘▖ ▖     ▘▝▖    ▘▗│
+        │                   ▝                    ▝    ▝      ▘           ▝      │
+  0.00045┤                                                    ▗                  │
+        └┬─────────────────┬────────────────┬─────────────────┬────────────────┬┘
+        1.0              25.5             50.0              74.5            99.0
+  train/dtf                                iter
+  [2024-07-23 22:21:43.952631][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dtf.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dtf.txt
+                              train/dtb [2024-07-23-222143]
+        ┌───────────────────────────────────────────────────────────────────────┐
+  0.00186┤▘                                                                      │
+        │                                                                       │
+        │                                                                       │
+  0.00173┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  0.00160┤                                                                       │
+        │                                                                       │
+  0.00146┤                                                                       │
+        │▗                                                                      │
+        │                                                                       │
+  0.00133┤                     ▗                                                 │
+        │ ▝▖ ▗▖                                                                 │
+        │   ▞              ▗                                                    │
+  0.00120┤      ▖▖   ▗ ▗▗▘▝  ▗▖  ▖▗▖   ▖▘  ▖▄ ▄  ▚ ▗▗▖▞▝    ▝▖    ▖     ▖ ▚  ▗ ▘▄│
+        │        ▀▗▘▘▘▖  ▘▝   ▘▝▝  ▀▝▘  ▀▝    ▝▘ ▝     ▘▀    ▞▘▘▝ ▞▝▚▗▖▗▗   ▘▝  │
+        │                                                ▘▞               ▗▘    │
+  0.00107┤      ▝           ▘          ▗     ▗     ▖            ▗                │
+        └┬─────────────────┬────────────────┬─────────────────┬────────────────┬┘
+        1.0              25.5             50.0              74.5            99.0
+  train/dtb                                iter
+  [2024-07-23 22:21:43.962230][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dtb.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/dtb.txt
+                              train/loss [2024-07-23-222143]
+        ┌────────────────────────────────────────────────────────────────────────┐
+  2039.9┤▘                                                                       │
+        │                                                                        │
+        │                                                                        │
+  1757.5┤                                                                        │
+        │                                                                        │
+        │                                                                        │
+  1475.1┤▗                                                                       │
+        │                                                                        │
+  1192.7┤                                                                        │
+        │ ▝                                                                      │
+        │                                                                        │
+  910.3┤  ▖                                                                     │
+        │   ▖                                                                    │
+        │   ▝▝▖▄▗                                                                │
+  627.9┤        ▘▀▘▀▝▘▚▗▖▄▖▗                                                    │
+        │                   ▘▝▘▀▝▘▚▝▄▗▖▄▗▖▄▗▖▖                                   │
+        │                                    ▝▘▀▝▘▀▝▘▚▖▚▗▖▄▗▖▄▗▗                 │
+  345.5┤                                                      ▘▝▘▀▝▘▀▝▀▝▘▞▝▖▄▗▖▄│
+        └┬─────────────────┬─────────────────┬────────────────┬─────────────────┬┘
+        1.0              25.5              50.0             74.5             99.0
+  train/loss                               iter
+  [2024-07-23 22:21:44.011096][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/loss.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/loss.txt
+                            train/iter [2024-07-23-222144]
+      ┌──────────────────────────────────────────────────────────────────────────┐
+  99.0┤                                                                      ▗▗▖▀│
+      │                                                                   ▄▝▘▘   │
+      │                                                              ▗▖▞▝▘       │
+  82.7┤                                                          ▄▗▘▀            │
+      │                                                      ▖▄▝▘                │
+      │                                                 ▗▗▖▀▝                    │
+  66.3┤                                              ▄▝▘▘                        │
+      │                                         ▗▖▞▝▘                            │
+  50.0┤                                     ▄▗▘▀                                 │
+      │                                 ▖▄▝▘                                     │
+      │                            ▗▗▖▀▝                                         │
+  33.7┤                         ▄▝▘▘                                             │
+      │                    ▗▖▞▝▘                                                 │
+      │                ▄▗▘▀                                                      │
+  17.3┤            ▖▄▝▘                                                          │
+      │       ▗▗▖▀▝                                                              │
+      │    ▄▝▘▘                                                                  │
+  1.0┤▖▞▝▘                                                                      │
+      └┬─────────────────┬──────────────────┬─────────────────┬─────────────────┬┘
+      1.0              25.5               50.0              74.5             99.0
+  train/iter                              iter
+  [2024-07-23 22:21:44.021040][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/iter.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/iter.txt
+                              train/sps [2024-07-23-222144]
+        ┌───────────────────────────────────────────────────────────────────────┐
+  39979.2┤                  ▖          ▝     ▗     ▖            ▝                │
+        │                                                 ▄  ▀            ▗     │
+        │      ▝  ▗      ▖  ▝      ▖    ▘     ▗▖▗▝   ▖▗▘ ▘    ▖▖▗▖▘ ▗▗ ▝▝▗ ▘    │
+  37069.3┤        ▚ ▖▚▘▀▝▘ ▝▗  ▘▗▞ ▖▝▗▘▘▘▗▝▖▖ ▀  ▘ ▝▗▘▝  ▚  ▝▘     ▝▗▘ ▖▘ ▘  ▚▝▖▀│
+        │      ▖▘        ▗   ▘   ▝         ▝                                    │
+        │   ▘                                                                   │
+  34159.4┤ ▗▖▝▝▘               ▗                                                 │
+        │▗                                                                      │
+  31249.4┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  28339.5┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  25429.6┤                                                                       │
+        │                                                                       │
+        │                                                                       │
+  22519.7┤▖                                                                      │
+        └┬─────────────────┬────────────────┬─────────────────┬────────────────┬┘
+        1.0              25.5             50.0              74.5            99.0
+  train/sps                                iter
+  [2024-07-23 22:21:44.030585][INFO][plot:156] - Appending plot to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/sps.txt
+  text saved in /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/test-dist-plots/train/sps.txt
+  ```
+
+        _     ._   __/__   _ _  _  _ _/_   Recorded: 22:21:41  Samples:  2223
+      /_//_/// /_\ / //_// / //_'/ //     Duration: 2.668     CPU time: 2.406
+      /   _/                      v4.6.2
+
+      Program: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/deps/ezpz/src/ezpz/test_dist.py
+
+      2.668 <module>  ezpz/test_dist.py:1
+      └─ 2.667 main  ezpz/test_dist.py:217
+        ├─ 2.106 build_model_and_optimizer  ezpz/test_dist.py:171
+        │  └─ 2.092 Adam.__init__  torch/optim/adam.py:15
+        │        [147 frames hidden]  torch, transformers, jax, huggingface...
+        ├─ 0.183 _forward_step  ezpz/test_dist.py:231
+        │  ├─ 0.137 DistributedDataParallel._wrapped_call_impl  torch/nn/modules/module.py:1528
+        │  │     [6 frames hidden]  torch
+        │  │        0.123 Network._call_impl  torch/nn/modules/module.py:1534
+        │  │        └─ 0.123 Network.forward  ezpz/test_dist.py:164
+        │  │           └─ 0.123 Sequential._wrapped_call_impl  torch/nn/modules/module.py:1528
+        │  │                 [7 frames hidden]  torch, <built-in>
+        │  └─ 0.046 calc_loss  ezpz/test_dist.py:168
+        ├─ 0.164 _backward_step  ezpz/test_dist.py:236
+        │  ├─ 0.103 wrapper  torch/optim/optimizer.py:374
+        │  │     [5 frames hidden]  torch
+        │  └─ 0.060 Tensor.backward  torch/_tensor.py:466
+        │        [4 frames hidden]  torch, <built-in>
+        ├─ 0.113 tplot_dict  ezpz/plot.py:136
+        │  └─ 0.082 show  plotext/_core.py:292
+        │        [5 frames hidden]  plotext
+        └─ 0.099 Logger.info  logging/__init__.py:1479
+              [6 frames hidden]  logging, rich
+                  0.099 RichHandler.emit  rich/logging.py:126
+                  └─ 0.099 Console.print  ezpz/log/console.py:79
+                    └─ 0.099 Console.print  rich/console.py:1624
+                          [5 frames hidden]  rich
+
+
+      [2024-07-23 22:21:44.231519][INFO][profile:115] - Saving pyinstrument profile output to: /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/ezpz_pyinstrument_profiles
+      [2024-07-23 22:21:44.232054][INFO][profile:123] - PyInstrument profile saved (as html) to:  /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/ezpz_pyinstrument_profiles/pyinstrument-profile-2024-07-23-222144.html
+      [2024-07-23 22:21:44.232619][INFO][profile:131] - PyInstrument profile saved (as text) to:  /lus/eagle/projects/argonne_tpc/foremans/projects/argonne-lcf/tmp/2024-07-23-221253/Megatron-DeepSpeed/ezpz_pyinstrument_profiles/pyinstrument-profile-2024-07-23-222144.txt
+      [2024-07-23 22:21:44.761876][INFO][profile:143] - Finished with pyinstrument profiler. Took: 2.66778s
+      [2024-07-23 22:21:44.762534][INFO][test_dist:318] - [0] runtime=6.785542s
+      ezpz-test-dist.log lines 216-359/359 (END)
+
+  </details>
+
+------------------------------------------------------------------------
+
+<details closed>
+<summary>
+Deprecated:
+</summary>
 
 1.  Download and source
     [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/utils.sh):
@@ -778,6 +1281,8 @@ Program: /home/foremans/tmp/foremans/2024-07-15-124441/venvs/2024-04-29/src/ezpz
 [2024-07-15 12:46:31.433122][INFO][test_dist:318] - [0] runtime=6.820802s
 Application 5ccc89be resources: utime=21s stime=21s maxrss=1383056KB inblock=8080 oublock=3456 minflt=659443 majflt=896 nvcsw=192077 nivcsw=672014
 ```
+
+</details>
 
 [^1]: If necessary, otherwise activate if already exists
 
