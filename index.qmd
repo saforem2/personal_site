@@ -1,11 +1,12 @@
 ---
 date: ""
 author: ""
-toc: false
 site-url: "https://samforeman.me"
+toc: false
 sidebar: false
 format:
   html:
+    page-layout: article
     css:
       - css/profile.css
     grid:
@@ -13,8 +14,8 @@ format:
   gfm:
     output-file: "README.md"
 format-links: false
-editor:
-   render-on-save: true
+# editor:
+#    render-on-save: true
 listing:
   # contents: "posts/posts.yml"
   id: listing-posts
@@ -32,7 +33,6 @@ listing:
     - "!posts/l2hmc-qcd/l2hmc/index.qmd"
     - "!posts/jupyter/index.qmd"
 ---
-
 
 ::: {style="font-size:1.0em; text-align: center;"}
 
@@ -104,6 +104,8 @@ listing:
 
 ```{python}
 #| output: asis
+import os
+os.environ["PYTHON_WARNINGS"] = "ignore"
 import ezpz as ez
 print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
 ```

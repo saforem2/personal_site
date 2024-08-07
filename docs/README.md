@@ -36,11 +36,6 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 ## 🧑🏻‍💻 About Me
 
-<!-- ::: {layout="[ [50,-10,35] ]" style="display: flex; flex-direction: row; align-items: start; text-wrap: wrap"} -->
-<!-- ::: {.columns} -->
-<!---->
-<!-- ::: {.column width="50%" style="margin-right: 10%;"} -->
-
 <div class="flex-container" style="width: 100%;">
 
 <div class="flex-container" style="margin-right: 5%; width:48%;">
@@ -127,7 +122,7 @@ style="flex-direction: column; justify-content: flex-start; width: 40%;">
 > &#10;// Get the new one.
 > getSetLastFM();
 > // Start the countdown.
-> setInterval(getSetLastFM, 10 * 1000);
+> setInterval(getSetLastFM, 10 * 100);
 > </script> <div class="nowplayingcard">
 > <div class="nowplayingcontainer-inner">
 > <img id="trackart" src="#">
@@ -878,7 +873,7 @@ var lastfmData = {
 &#10;// Get the new one.
 getSetLastFM();
 // Start the countdown.
-setInterval(getSetLastFM, 10 * 1000);
+setInterval(getSetLastFM, 10 * 100);
 </script> <div class="nowplayingcard">
 <div class="nowplayingcontainer-inner">
 <img id="trackart" src="#">
@@ -901,20 +896,13 @@ setInterval(getSetLastFM, 10 * 1000);
 </summary>
 
 ``` python
+import os
+os.environ["PYTHON_WARNINGS"] = "ignore"
 import ezpz as ez
 print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
 ```
 
-    [Sams-MacBook-Pro.local:55830] shmem: mmap: an error occurred while determining whether or not /var/folders/53/5t2nv83136j76rld14vgfh2h0000gq/T//ompi.Sams-MacBook-Pro.503/jf.0/3647537152/sm_segment.Sams-MacBook-Pro.503.d9690000.0 could be created.
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.361813</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">156</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>Setting logging level to <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'INFO'</span> on <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'RANK == 0'</span>
-</pre>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.363869</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">157</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>Setting logging level to <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'CRITICAL'</span> on all others <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'RANK != 0'</span>
-</pre>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #000000; text-decoration-color: #000000">[</span><span style="color: #000000; text-decoration-color: #000000">2024-07-31 </span><span style="color: #808080; text-decoration-color: #808080">15:53:12.364490</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">INFO</span><span style="color: #000000; text-decoration-color: #000000">][</span><span style="color: #000080; text-decoration-color: #000080; font-style: italic">__init__</span><span style="color: #0000ff; text-decoration-color: #0000ff">:</span><span style="color: #000000; text-decoration-color: #000000">160</span><span style="color: #000000; text-decoration-color: #000000">]</span><span style="color: #838383; text-decoration-color: #838383; font-weight: bold"> - </span>To disable this behavior, and log from ALL ranks <span style="color: #ffffff; text-decoration-color: #ffffff; font-weight: bold">(</span>not recommended<span style="color: #ffffff; text-decoration-color: #ffffff; font-weight: bold">)</span>, set: <span style="color: #00ff00; text-decoration-color: #00ff00; font-style: italic">'export LOG_FROM_ALL_RANKS=1'</span>  in your environment, and re-run.
-</pre>
-
-<span class="dim-text">2024-07-31 @ 15:53:12</span>
+<span class="dim-text">2024-08-07 @ 07:20:04</span>
 
 </details>
 

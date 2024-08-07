@@ -1,13 +1,7 @@
 # 🍋 <code>ezpz</code> @ ALCF
 <span class="dim-text">Sam Foreman</span>
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-07-24
-
-- [Complete Example](#complete-example)
-  - [📦 Clone Repo(s)](#-clone-repos)
-  - [🛜 Setup Job](#-setup-job)
-  - [🐍 Setup Python](#-setup-python)
-  - [📝 Test Setup](#-test-setup)
+2024-08-06
 
 ## Complete Example
 

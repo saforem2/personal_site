@@ -3,10 +3,6 @@
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-03-21
 
-- [Initialization Times](#initialization-times)
-  - [Measuring / Calculating Startup Time](#sec-measurements)
-- [Minimal Working Example](#minimal-working-example)
-
 ## Initialization Times
 
 <!-- ::: {.callout-info title='[ Startup Times (Perlmutter)]{.dim-text}' collapse="True"} -->

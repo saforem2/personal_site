@@ -1,0 +1,176 @@
+---
+title: "Training LLMs at Scale"
+toc: false
+date: today
+date-modified: last-modified
+author-title: ""
+affiliation-title: ""
+published-title: ""
+modified-title: ""
+title-block-categories: false
+number-sections: false
+ascii: true
+# bibliography: references.bib
+appendix-cite-as: display
+editor:
+  render-on-save: true
+twitter-card:
+  image: "https://raw.githubusercontent.com/saforem2/personal_site/main/talks/llms-on-polaris/assets/thumbnail.png"
+  site: "saforem2"
+  creator: "saforem2"
+  title: "Training LLMs at Scale"
+  description: "Training LLMs at Scale"
+open-graph:
+  title: "Training LLMs at Scale"
+  description: "Training LLMs at Scale"
+  image: "https://raw.githubusercontent.com/saforem2/personal_site/main/talks/llms-on-polaris/assets/thumbnail.png"
+author:
+  name: Sam Foreman
+  url: https://samforeman.me
+  orcid: 0000-0002-9981-0876
+  email: foremans@anl.gov
+  affiliation: Argonne National Laboratory
+  affiliation-url: https://alcf.anl.gov/about/people/sam-foreman
+citation:
+   author: Sam Foreman
+   type: speech
+   # genre: "Presentation at the 2023 International Symposium on Lattice Field Theory"
+   # container-title: https://indico.fnal.gov/event/57249/contributions/271305/
+   # title: "MLMC: Machine Learning Monte Carlo for Lattice Gauge Theory"
+   # url: https://saforem2.github.io/lattice23
+   # abstract: |
+   #   We present a trainable framework for efficiently generating gauge
+   #   configurations, and discuss ongoing work in this direction. In particular, we
+   #   consider the problem of sampling configurations from a 4D 𝑆𝑈(3) lattice gauge
+   #   theory, and consider a generalized leapfrog integrator in the molecular
+   #   dynamics update that can be trained to improve sampling efficiency.
+format:
+  revealjs:
+    code-line-numbers: true
+    code-link: false
+    code-copy: false
+    # callout-appearance: simple
+    # syntax-definitions:
+    #   - ./docs/python.xml
+    scrollable: true
+    title-block-style: none
+    slide-number: c
+    title-slide-style: default
+    chalkboard:
+      buttons: false
+    auto-animate: true
+    reference-location: section
+    touch: true
+    link-external-newwindow: true
+    pause: false
+    footnotes-hover: true
+    citations-hover: true
+    preview-links: auto
+    controls-tutorial: true
+    controls: false
+    logo: "https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl.svg"
+    history: false
+    highlight-style: "atom-one"
+    # theme: [css/dark.scss]
+    # callout-style: default
+    css:
+      # - ../../css/text.css
+      # - ../../css/default.css
+      - ../../css/custom.css
+      # - ../../css/reveal/_callouts.scss
+      # - ../../css/reveal/light/default.css
+      # - ../../css/reveal/light/callouts.css
+    theme:
+      # - ../../css/reveal/light/light.scss
+      # - white
+      # - white
+      - ../../css/reveal/reveal.scss
+      - ../../css/common.scss
+      - ../../css/light.scss
+      - ../../css/syntax-light.scss
+      - ../../css/callout-cards.scss
+    # css:
+    #   - ./theme/light/default.css
+    #   - ./theme/light/reset.css
+    # theme:
+    #   - default
+    #   - ./theme/light/common.scss
+    #   - ./theme/light/light.scss
+    #   - ./theme/light/syntax-light.scss
+    #   - ./theme/light/reveal.scss
+    # css:
+    #   - ./theme/dark/default.css
+    #   - ./theme/dark/callouts.css
+    # theme: dark
+    self-contained: false
+    embed-resources: false
+    self-contained-math: false
+    center: true
+    # background-color: #ffffff
+    default-image-extension: svg
+    code-overflow: scroll
+    html-math-method: katex
+    fig-align: center
+    mermaid:
+      theme: neutral
+  # gfm:
+  #   author: Sam Foreman
+  #   output-file: "README.md"
+---
+
+# {.centeredslide background-color="white" background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html" loading="lazy" background-color="#FFFFFF"}
+
+::: {style="background-color: #f5f5f5; opacity:0.97; border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
+[LLMs at Scale]{style="color:#333333; font-size:1.5em; font-weight: bold;"}
+[<br>&nbsp;]{style="padding-bottom: 0.5rem;"}  
+[🏡 Sam Foreman](https://samforeman.me)  
+[[ATPESC 2024](https://extremecomputingtraining.anl.gov/agenda-2024/)]{.dim-text style="font-size: 0.8em"}  
+:::
+
+::: footer
+[2024-08-09]{.dim-text}
+:::
+
+# 🧑🏻‍💻 About Me {background-color="#FFFFFF"}
+
+- Computational Scientist at Argonne National Laboratory (ALCF)
+- Interested in {AI, HPC} for science
+  - working on scaling large (language, vision, multi-modal) models
+
+- As a member of the [AI / ML Group](https://www.alcf.anl.gov/about/people/group/506) at
+  [ALCF](https://alcf.anl.gov), I work on:
+
+  ::: {.flex-container}
+
+  ::: {.flex-container}
+
+  - 🤖 🧪 [AI + Science](https://github.com/saforem2/)
+
+  - 🎲 [Building better sampling methods for Lattice QCD](https://github.com/saforem2/l2hmc-qcd)
+
+  - 🧬 [Genome-Scale Language Models](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2)
+
+      - [{{< iconify logos github-octocat >}} GenSLM](https://github.com/ramanathanlab/genslm)
+
+      - 🥇 [ACM Gordon Bell Special Prize](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
+
+  :::
+
+  ::: {.flex-container}
+
+  - 🌍 [Foundation models for long term climate forecasting](https://saforem2.github.io/climate-analysis)
+
+  - 🏃‍♂️ [Scaling Large Language Models](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+
+  - 🏎️ [Distributed training across thousands of GPUs](https://github.com/argonne-lcf/mlprof)
+
+  :::
+
+  :::
+
+{{< include partials/_parallel_training_techniques.qmd >}}
+
+{{< include partials/_llms.qmd >}}
+
+{{< include partials/_acknowledgements.qmd >}}
+
