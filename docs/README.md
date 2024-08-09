@@ -5,9 +5,10 @@
 <span class="profile-avatar"
 style="width: 100%; border: 0px solid var(--bg-border)!important;">![](./assets/avatar.png)</span>
 
-<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 500;"><span class="dim-text"
-style="font-family:'IBM Plex Sans', sans-serif;">👋 Hi, I’m Sam!</span>
-[<span class="orcid-green"
+<!-- [[👋 Hi, I'm Sam!]{.dim-text style="font-family:'IBM Plex Sans', sans-serif;"} [[]{.orcid-green style="background: none!important;"}](https://orcid.org/0000-0002-9981-0876)]{style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 500;"} -->
+
+<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 500;"><span class="dim-text">👋
+Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>](https://orcid.org/0000-0002-9981-0876)</span>
 
 <div style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; background-color: var(--link-bg-color);">
@@ -445,7 +446,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Exascale Science on Aurora**](https://samforeman.me/oneapi-talk/index.html#0) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) \[10/2023\]</span>
+> ### <span class="dim-text">[**Exascale Science on Aurora**](https://saforem2.github.io/oneapi-talk) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) \[10/2023\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" width="100%" align="center" height="500" frameborder="0" style="border-radius:0.25rem;border:none;align:center;">
 > <p>
@@ -896,14 +897,23 @@ setInterval(getSetLastFM, 10 * 100);
 </summary>
 
 ``` python
-import os
-os.environ["PYTHON_WARNINGS"] = "ignore"
-import ezpz as ez
-print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
+# import ezpz as ez
+# print(f"[{ez.get_timestamp('%Y-%m-%d @ %H:%M:%S')}]" + "{.dim-text}")
+import datetime
+from rich import print
+now = datetime.datetime.now()
+day = now.strftime('%m/%d/%Y')
+time = now.strftime('%H:%M:%S')
+print(' '.join([
+  "[dim italic]Last Updated[/]:",
+  f"[#F06292]{day}[/]",
+  f"[dim]@[/]",
+  f"[#1A8FFF]{time}[/]"
+]))
 ```
 
-<span class="dim-text">2024-08-07 @ 07:20:04</span>
-
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">20:55:08</span>
+</pre>
 </details>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein

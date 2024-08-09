@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="../.././favicon.svg" rel="icon" type="image/svg+xml">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -8,6 +8,8 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/roughnotation-0.5.1/rough-notation.iife.js"></script>
+<script src="../../site_libs/quarto-contrib/roughnotation-init-1.0.0/rough.js"></script>
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -17,7 +19,7 @@
   <meta name="generator" content="quarto-1.6.4">
 
   <meta name="author" content="Sam Foreman">
-  <meta name="dcterms.date" content="2024-08-07">
+  <meta name="dcterms.date" content="2024-08-08">
   <title>Sam Foreman – Training LLMs at Scale</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,6 +38,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #383a42;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #383a42; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #50a14f; } /* Annotation */
+    code span.at { color: #a626a4; } /* Attribute */
+    code span.bn { color: #986801; } /* BaseN */
+    code span.bu { color: #a626a4; } /* BuiltIn */
+    code span.cf { color: #a626a4; } /* ControlFlow */
+    code span.ch { color: #50a14f; } /* Char */
+    code span.cn { color: #986801; } /* Constant */
+    code span.co { color: #a0a1a7; font-style: italic; } /* Comment */
+    code span.cv { color: #e45649; font-style: italic; } /* CommentVar */
+    code span.do { color: #e45649; } /* Documentation */
+    code span.dt { color: #a626a4; } /* DataType */
+    code span.dv { color: #986801; } /* DecVal */
+    code span.er { color: #f44747; text-decoration: underline; } /* Error */
+    code span.ex { color: #4078f2; font-weight: bold; } /* Extension */
+    code span.fl { color: #986801; } /* Float */
+    code span.fu { color: #4078f2; } /* Function */
+    code span.im { color: #50a14f; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #a626a4; } /* Keyword */
+    code span.op { color: #a626a4; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #a626a4; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #0184bc; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #50a14f; } /* String */
+    code span.va { color: #e45649; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -392,10 +459,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Training LLMs at Scale">
 <meta name="citation_author" content="Sam Foreman">
-<meta name="citation_publication_date" content="2024-08-07">
-<meta name="citation_cover_date" content="2024-08-07">
+<meta name="citation_publication_date" content="2024-08-08">
+<meta name="citation_cover_date" content="2024-08-08">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-08-07">
+<meta name="citation_online_date" content="2024-08-08">
 <meta name="citation_fulltext_html_url" content="https://samforeman.me/talks/llms-at-scale/">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
@@ -447,17 +514,35 @@
     </div>
 </div>
 
-  <p class="date">2024-08-07</p>
+  <p class="date">2024-08-08</p>
 </section>
 <section id="section" class="title-slide slide level1 centeredslide center" data-background-color="#FFFFFF" data-background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html" loading="lazy">
 <h1></h1>
-<div style="background-color: #f5f5f5; opacity:0.97; border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;">
-<p><span style="color:#333333; font-size:1.5em; font-weight: bold;">LLMs at Scale</span> <span style="padding-bottom: 0.5rem;"><br>&nbsp;</span><br>
-<a href="https://samforeman.me">🏡 Sam Foreman</a><br>
-<span class="dim-text" style="font-size: 0.8em"><a href="https://extremecomputingtraining.anl.gov/agenda-2024/">ATPESC 2024</a></span></p>
+<div style="background-color: rgba(245,245,245, 0.875); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;">
+<!-- ::: {style="text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"} -->
+<!-- ::: {style="text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.6);"} -->
+<p><span style="color:#333333; font-size:1.5em; font-weight: 600; padding-bottom: 0.5rem;">Training LLMs</span><br>
+<span style="color:#444444; font-size:1.45em; font-weight: 500;">(at Scale)</span></p>
+<p><br></p>
+<!-- ::: -->
+<!-- [<br>&nbsp;]{style="padding-bottom: 0.5rem;"}   -->
+<!-- <br>&nbsp; -->
+<!-- [<br>&nbsp;]{style="padding-bottom: 0.5rem;"}   -->
+<!-- " text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"} -->
+<!-- ::: {style="background-color: rgba(245,245,245, 0.875); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"} -->
+<p><span style="color:#555555"><a href="https://samforeman.me">🏡</a> Sam Foreman</span><br>
+<span class="dim-text" style="font-size: 0.75em">@ <a href="https://extremecomputingtraining.anl.gov/agenda-2024/">ATPESC 2024</a></span><br>
+<span class="dim-text" style="font-size: 0.66em;">🗓️ 2024-08-09</span></p>
 </div>
+<p>&nbsp;<br></p>
+<!-- ::: {style="background-color: none; opacity:0.75; border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"} -->
+<!-- [[samforeman.me/talks/llms-at-scale](https://samforeman.me/talks/llms-at-scale)]{.dim-text style="font-size:0.6em;"}   -->
+<!-- ::: -->
 <div class="footer">
-<p><span class="dim-text">2024-08-09</span></p>
+<div style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center;">
+<p><span class="icon" style="font-size:1.5rem; padding-right: 0pt;"><a href="https://samforeman.me"><span class="icon" style="background-color:rgba(0,0,0,0.0);!important"><iconify-icon inline="" icon="ph:house-line-duotone" aria-label="Icon house-line-duotone from ph Iconify.design set." title="Icon house-line-duotone from ph Iconify.design set."></iconify-icon></span></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://github.com/saforem2"><iconify-icon inline="" icon="ph:github-logo-duotone" aria-label="Icon github-logo-duotone from ph Iconify.design set." title="Icon github-logo-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://www.twitter.com/saforem2"><iconify-icon inline="" icon="ph:twitter-logo-duotone" aria-label="Icon twitter-logo-duotone from ph Iconify.design set." title="Icon twitter-logo-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="mailto:///foremans@anl.gov"><iconify-icon inline="" icon="ph:envelope-open-duotone" aria-label="Icon envelope-open-duotone from ph Iconify.design set." title="Icon envelope-open-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&amp;hl=en"><iconify-icon inline="" icon="ph:graduation-cap-duotone" aria-label="Icon graduation-cap-duotone from ph Iconify.design set." title="Icon graduation-cap-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://open.spotify.com/user/saforem2"><iconify-icon inline="" icon="ph:spotify-logo-duotone" aria-label="Icon spotify-logo-duotone from ph Iconify.design set." title="Icon spotify-logo-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://www.last.fm/user/saforem2"><iconify-icon inline="" icon="ph:lastfm-logo-duotone" aria-label="Icon lastfm-logo-duotone from ph Iconify.design set." title="Icon lastfm-logo-duotone from ph Iconify.design set."></iconify-icon></a></span> <span class="icon" style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"><a href="https://linkedin.com/in/saforem2"><iconify-icon inline="" icon="ph:linkedin-logo-duotone" aria-label="Icon linkedin-logo-duotone from ph Iconify.design set." title="Icon linkedin-logo-duotone from ph Iconify.design set."></iconify-icon></a></span></p>
+</div>
+<p><a href="https://samforeman.me/talks/llms-at-scale"><span style="color:#137af5!important; background:oklch(from #137af5 calc(l * 1.15) c h / 0.085); border:0px solid #137af5!important; border-radius: 0.25rem;">samforeman.me/talks/llms-at-scale</span></a></p>
 </div>
 </section>
 
@@ -493,255 +578,318 @@
 </ul>
 </section>
 
-<section id="ai-compute" class="title-slide slide level1 centeredslide center scrollable" height="100%" data-background-color="#FFFFFF">
-<h1>AI 🤝 Compute</h1>
-<div id="fig-ai-and-copute-all" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ai-and-copute-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><a href="./assets/ai-and-compute-all.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: "><img data-src="./assets/ai-and-compute-all.png" style="width:70.0%"></a></p>
-<div class="dim-text" style="font-size: 0.55em;">
-<p>[…] since 2012, the amount of [AI] compute used has been increasing exponentially with a 3.4-month doubling time<sup>1</sup>, or [<strong>300,000</strong>x]. <a href="https://openai.com/research/ai-and-compute">Source.</a></p>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-ai-and-copute-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
-</figure>
-</div>
-<aside><ol class="aside-footnotes"></ol></aside></section>
+<section id="scaling-overview" class="title-slide slide level1 center scrollable" data-background-color="#FFFFFF">
+<h1>🚀 Scaling: Overview</h1>
+<ul>
+<li>✅ <strong>Goal</strong>:
+<ul>
+<li>📈 Maximize: Performance <!-- (⬆️  _maximize_) --></li>
+<li>📉 Minimize: Cost<sup>1</sup> <!-- (⬆️  _maximize_) -->
+<ul>
+<li>or, equivalently, 📈 <strong>maximize</strong> data throughput</li>
+</ul></li>
+</ul></li>
+</ul>
 
-<section id="ai-compute-modern-era" class="title-slide slide level1 centeredslide center" height="100%" data-background-color="#FFFFFF">
-<h1>AI 🤝 Compute [Modern Era]</h1>
-<div id="fig-ai-and-copute-modern" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-ai-and-copute-modern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><a href="./assets/ai-and-compute-modern-log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: "><img data-src="./assets/ai-and-compute-modern-log.png" style="width:70.0%"></a></p>
-<div class="dim-text" style="font-size: 0.55em;">
-<p>[<strong>300,000</strong>x since 2012] vs [7x for Moore’s Law]. <a href="https://openai.com/research/ai-and-compute">Source.</a></p>
+<aside><div>
+<p><strong>Note</strong>: See <a href="https://huggingface.co/docs/transformers/v4.17.0/en/performance">🤗 Performance and Scalability: How To Fit a Bigger Model and Train It Faster</a> for more details</p>
+</div><ol class="aside-footnotes"><li id="fn1"><p>Typically, the amount of time (💸) spent training</p></li></ol></aside></section>
+
+<section id="ai-compute-historical" class="title-slide slide level1 centeredslide smaller center" height="100%" data-background-color="#FFFFFF" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">AI 🤝 Compute [Historical]</h1>
+<div>
+
 </div>
+<div class="quarto-layout-panel" data-layout="[34,66]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 34.0%;justify-content: flex-start;">
+<ul>
+<li><strong>First Era</strong>:
+<ul>
+<li>[1960 – 2012]</li>
+<li><em>2 year</em> doubling (Moore’s law)
+<ul>
+<li><span class="math inline">\simeq 7\times</span> increase</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>&nbsp;<br></p>
+<ul>
+<li><strong>Modern Era</strong>:
+<ul>
+<li>[2012 – present]</li>
+<li><strong>3.4 month</strong> doubling
+<ul>
+<li><span class="math inline">\simeq \mathbf{300,000}\times</span> increase</li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-ai-and-copute-modern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2
-</figcaption>
+<div class="quarto-layout-cell" style="flex-basis: 66.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/ai-and-compute-all.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source."><img data-src="./assets/ai-and-compute-all.png" alt="Source."></a></p>
+<figcaption><a href="https://openai.com/research/ai-and-compute">Source.</a></figcaption>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </section>
 
-<section id="single-gpu-training" class="title-slide slide level1 centeredslide center" data-background-color="#FFFFFF">
-<h1>Single GPU Training</h1>
-<div id="fig-single-gpu" class="quarto-float quarto-figure quarto-figure-center" style="text-align: center;">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-single-gpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/single-gpu-step-1.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: SLOW !! model size limited by GPU memory"><img data-src="./assets/single-gpu-step-1.drawio.svg" style="width:90.0%"></a>
+<section id="ai-compute-historical-1" class="title-slide slide level1 centeredslide smaller center" height="100%" data-background-color="#FFFFFF" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">AI 🤝 Compute [Historical]</h1>
+<div>
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-gpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: <strong>SLOW</strong> !! model size limited by GPU memory
-</figcaption>
+<div class="quarto-layout-panel" data-layout="[34,66]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 34.0%;justify-content: flex-start;">
+<ul>
+<li><strong>First Era</strong>:
+<ul>
+<li>[1960 – 2012]</li>
+<li><em>2 year</em> doubling (Moore’s law)
+<ul>
+<li><span class="math inline">\simeq 7\times</span> increase</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>&nbsp;<br></p>
+<ul>
+<li><strong>Modern Era</strong>:
+<ul>
+<li>[2012 – present]</li>
+<li><strong>3.4 month</strong> doubling
+<ul>
+<li><span class="math inline">\simeq \mathbf{300,000}\times</span> increase</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 66.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/ai-and-compute-modern-log.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Source."><img data-src="./assets/ai-and-compute-modern-log.png" alt="Source."></a></p>
+<figcaption><a href="https://openai.com/research/ai-and-compute">Source.</a></figcaption>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </section>
 
-<section id="collective-communication" class="title-slide slide level1 smaller center" data-background-color="#FFFFFF">
-<h1>Collective Communication</h1>
-<p>Typically, we assign 1 <code>rank</code> to each GPU (or <code>accelerator</code>), i.e.&nbsp;<code>rank</code> <span class="math inline">\in</span> <code>[0, 1, ..., WORLD_SIZE-1]</code>.</p>
+<section id="parallelism-concepts" class="title-slide slide level1 centeredslide smaller center">
+<h1>Parallelism Concepts</h1>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>AllReduce</code></a></li><li><a href="#tabset-1-2"><code>Reduce</code></a></li><li><a href="#tabset-1-3"><code>Broadcast</code></a></li><li><a href="#tabset-1-4"><code>AllGather</code></a></li><li><a href="#tabset-1-5"><code>Scatter</code></a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Single GPU</a></li><li><a href="#tabset-1-2">DataParallel (DP)</a></li><li><a href="#tabset-1-3">TensorParallel (TP)</a></li><li><a href="#tabset-1-4">PipelineParallel (PP)</a></li><li><a href="#tabset-1-5"><iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO</a></li><li><a href="#tabset-1-6">FSDP</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<ul>
-<li>Perform <em>reductions</em> on data (e.g.&nbsp;<code>sum</code>, <code>min</code>, <code>max</code>) across ranks, send result back to everyone</li>
-</ul>
-<div id="fig-allreduce" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-single-gpu" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-allreduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: All-Reduce operation: each rank receives the reduction of input values across ranks."><img data-src="./assets/collective-allreduce-sum.drawio.svg" style="width:50.0%"></a>
+<div aria-describedby="fig-single-gpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/single-gpu-step-1.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;1: SLOW !! model size limited by GPU memory"><img data-src="./assets/single-gpu-step-1.drawio.svg"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: All-Reduce operation: each rank receives the reduction of input values across ranks.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-gpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
 </figcaption>
 </figure>
 </div>
 </div>
 <div id="tabset-1-2">
-<ul>
-<li>Perform a <em>reduction</em> on data across ranks, send to individual</li>
-</ul>
-<div id="fig-reduce" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-reduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values across ranks"><img data-src="./assets/collective-reduce-sum.drawio.svg" style="width:50.0%"></a>
+<div>
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values across ranks
+<div class="quarto-layout-panel" data-layout="[35,65]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
+<ul>
+<li><p>Multiple copies of <strong>the same setup</strong></p>
+<ul>
+<li>each copy gets fed <strong>unique</strong> data</li>
+<li>all copies compute gradients w.r.t local model</li>
+<li>everyone syncs up before updating weights</li>
+</ul></li>
+<li><p>The processing is done in parallel and all setups are synchronized at the end of each training step.</p></li>
+<li><p>🔗 See also:</p>
+<ul>
+<li><a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed Overview</a></li>
+<li><a href="https://pytorch.org/docs/master/notes/ddp.html">Distributed Data Parallel — PyTorch master documentation</a></li>
+<li><a href="https://huggingface.co/docs/transformers/en/perf_train_gpu_many">🤗 Efficient Training on Multiple GPUs</a></li>
+<li><a href="https://www.deepspeed.ai/getting-started/">Getting Started - DeepSpeed</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div id="fig-ddp-training" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-ddp-training-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/multi-gpu-ddp.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2: Data Parallel Training"><img data-src="./assets/multi-gpu-ddp.drawio.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ddp-training-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Data Parallel Training
 </figcaption>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="tabset-1-3">
-<ul>
-<li><code>broadcast</code> (<em>send</em>) a tensor <code><span class="math inline">x</span></code> from one rank to all ranks</li>
-</ul>
-<div id="fig-broadcast" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: "><img data-src="./assets/collective-broadcast.drawio.svg" style="width:50.0%"></a>
+<div>
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6
+<div class="quarto-layout-panel" data-layout="[35,65]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
+<ul>
+<li>Each tensor is split up into multiple chunks</li>
+<li>So, instead of having the whole tensor reside on a single gpu, each shard of the tensor resides on its designated gpu.
+<ul>
+<li>During processing each shard gets processed separately and in parallel on different GPUs and the results are synced at the end of the step.</li>
+<li>This is what one may call horizontal parallelism, as he splitting happens on horizontal level.</li>
+</ul></li>
+<li>see: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;3: Tensor Parallel Training"><img data-src="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Tensor Parallel Training
 </figcaption>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="tabset-1-4">
-<ul>
-<li>Gathers tensors from the whole group in a list.</li>
-</ul>
-<div id="fig-allgather" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-allgather.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: "><img data-src="./assets/collective-allgather.drawio.svg" style="width:50.0%"></a>
+<div>
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7
+<div class="quarto-layout-panel" data-layout="[35,65]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
+<ul>
+<li>Model is split up vertically (layer-level) across multiple GPUs, so that only one or several layers of the model are places on a single gpu.
+<ul>
+<li>Each gpu processes in parallel different stages of the pipeline and working on a small chunk of the batch.</li>
+</ul></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div id="fig-pipeline-parallelism" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-pipeline-parallelism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/pipeline_parallelism.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: Pipeline Parallelism"><img data-src="assets/pipeline_parallelism.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipeline-parallelism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <a href="https://www.deepspeed.ai/tutorials/pipeline/">Pipeline Parallelism</a>
 </figcaption>
 </figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="tabset-1-5">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[35,65]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
 <ul>
-<li>Scatters a list of tensors to the whole group</li>
+<li>Also performs sharding of the tensors somewhat similar to TP, except the whole tensor gets reconstructed in time for a forward or backward computation, therefore the model doesn’t need to be modified.</li>
+<li>It also supports various offloading techniques to compensate for limited GPU memory.</li>
 </ul>
-<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div id="fig-zero-offload" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-scatter.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: "><img data-src="./assets/collective-scatter.drawio.svg" style="width:50.0%"></a>
+<div aria-describedby="fig-zero-offload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/02/MSResearch_20200207_DeepZeroBlogGraphic_r2t3_1400x788-3.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5: DeepSpeed + ZeRO"><img data-src="https://www.microsoft.com/en-us/research/uploads/prod/2020/02/MSResearch_20200207_DeepZeroBlogGraphic_r2t3_1400x788-3.gif"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zero-offload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <a href="deepspeed.ai">DeepSpeed</a> + <code>ZeRO</code>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</section>
-
-<section id="collective-operations" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Collective Operations</h1>
-<div title="⌛ Timeouts">
-<div class="callout callout-warning no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>⌛ Timeouts</strong></p>
+<ul>
+<li>🔗 See also:
+<ul>
+<li><a href="https://www.deepspeed.ai/tutorials/zero-offload/"><iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO-Offload</a></li>
+</ul></li>
+</ul>
 </div>
-<div class="callout-content">
+<div id="tabset-1-6">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[35,65]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 35.0%;justify-content: flex-start;">
 <ul>
-<li>Collective operations have to be called for each <code>rank</code> to form a complete collective operation.
+<li>Instead of maintaining per-GPU copy of <code>{params, grads, opt_states}</code>, FSDP shards (distributes) these across data-parallel workers
 <ul>
-<li>Failure to do so will result in other ranks waiting <strong>indefinitely</strong></li>
+<li>can optionall offload the sharded model params to CPU</li>
+</ul></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 65.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="assets/fsdp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="FSDP Workflow. Source"><img data-src="assets/fsdp.png" alt="FSDP Workflow. Source"></a></p>
+<figcaption>FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/">Source</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>🔗 See also:
+<ul>
+<li><a href="https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/">Introducing PyTorch Fully Sharded Data Parallel (FSDP) API | PyTorch</a></li>
 </ul></li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 </section>
 
-<section id="why-distributed-training" class="title-slide slide level1 center scrollable" data-background-color="#FFFFFF">
-<h1>Why Distributed Training?</h1>
+<section>
+<section id="data-parallelism" class="title-slide slide level1 center scrollable" style="font-size: 0.9em;">
+<h1>Data Parallelism</h1>
 <ul>
-<li>Splitting data across workers <span class="math inline">\longrightarrow</span> larger batch size<sup>1</sup>
+<li><strong>Data Parallelism</strong>:
 <ul>
-<li>[<code>micro_batch_size = 1</code>] <span class="math inline">\times</span> [<code>N</code> GPUs] <span class="math inline">\rightarrow</span> [<b><code>global_batch_size = N</code></b>]</li>
+<li>The simplest and most common parallelism technique. Workers maintain <em>identical copies</em> of the <em>complete</em> model and work on a <em>subset of the data</em>.</li>
+<li><code>DDP</code> supported in PyTorch native.</li>
 </ul></li>
-<li>Smooth loss landscape</li>
-<li>Improved gradient estimators</li>
-<li>Less iterations needed for same number of epochs
+<li>ZeRO Data Parallel
 <ul>
-<li>May need to train for more epochs if another change is not made</li>
-<li>e.g.&nbsp;scaling learning rate</li>
+<li>ZeRO powered data parallelism is shown below<sup>1</sup></li>
 </ul></li>
-<li>See <a href="https://arxiv.org/abs/1708.03888">Large Batch Training of Convolutional Networks</a></li>
 </ul>
-<aside><ol class="aside-footnotes"></ol></aside></section>
+<div style="text-align: center;">
+<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" width="75%"></p>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p><a href="https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/">Blog Post</a></p></li></ol></aside></section>
+<section id="data-parallel-training" class="slide level2 centeredslide center" height="100%" data-background-color="#FFFFFF" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Data Parallel Training</h2>
+<div>
 
-<section id="recent-progress" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Recent Progress</h1>
-<div id="tbl-batch-scaling" class="striped hover quarto-float quarto-figure quarto-figure-center" style="font-size:0.7em; font-family: monospace;">
-<figure class="quarto-float quarto-float-tbl">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-batch-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Batch-Size-Scaling
-</figcaption>
-<div aria-describedby="tbl-batch-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table-striped table-hover caption-top">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 11%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 17%">
-<col style="width: 21%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Year</th>
-<th style="text-align: center;">Author</th>
-<th style="text-align: center;">Batch Size</th>
-<th style="text-align: center;">Processor</th>
-<th style="text-align: center;"># Processors</th>
-<th style="text-align: center;">Time</th>
-<th style="text-align: center;">Accuracy</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">2016</td>
-<td style="text-align: center;">He</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">Tesla P100</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">29 Hour</td>
-<td style="text-align: center;">75.30%</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2019</td>
-<td style="text-align: center;">Yamazaki</td>
-<td style="text-align: center;">81,920</td>
-<td style="text-align: center;">Tesla V100</td>
-<td style="text-align: center;"><span class="red">2048</span></td>
-<td style="text-align: center;"><span class="blue">1.2 Min</span></td>
-<td style="text-align: center;">75.08%</td>
-</tr>
-</tbody>
-</table>
 </div>
-</figure>
-</div>
-<!-- |                                 |             Goyal et al.             |               8192               |                 Tesla P100                  |             Caffe 2             |               1 Hour               |                            76.3%         | -->
-<!-- |                                 |             Smith et al.             |         8192 ->  16,384          |                full TPU pod                 |           TensorFlow            |              30 Mins               |                            76.1%         | -->
-<!-- |                                 |             Akiba et al.             |              32,768              |              Tesla P100 x1024               |             Chainer             |              15 Mins               |                            74.9%         | -->
-<!-- |                                 |              Jia et al.              |              65,536              |              Tesla P40  x2048               |           TensorFLow            |              6.6 Mins              |                            75.8%         | -->
-<!-- |                                 |             Ying et al.              |              65,536              |                TPU v3 x1024                 |           TensorFlow            |              1.8 Mins              |                            75.2%         | -->
-<!-- |                                 |            Mikami et al.             |              55,296              |              Tesla V100 x3456               |               NNL               |              2.0 Mins              |                           75.29%         | -->
-</section>
-
-<section id="data-parallel-training" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
-<div id="fig-multi-gpu-ddp" class="quarto-float quarto-figure quarto-figure-center" style="width:60%!important;">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-multi-gpu-ddp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/multi-gpu-ddp.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;9: Data Parallel Training"><img data-src="./assets/multi-gpu-ddp.drawio.svg" style="width:60%!important;"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multi-gpu-ddp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Data Parallel Training
-</figcaption>
-</figure>
-</div>
-</section>
-
-<section id="data-parallel-training-1" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
+<div class="quarto-layout-panel" data-layout="[45,-5,50]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
 <ul>
 <li>🔗 Links:
 <ul>
@@ -751,59 +899,66 @@ Figure&nbsp;9: Data Parallel Training
 <li><a href="https://www.deepspeed.ai/getting-started/">Getting Started - DeepSpeed</a></li>
 </ul></li>
 </ul>
-</section>
-
-<section id="data-parallel-training-2" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
-<div id="fig-data-parallel" class="quarto-float quarto-figure quarto-figure-center" width="60%">
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-data-parallel" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-data-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/data-parallel-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: "><img data-src="./assets/data-parallel-light.svg"></a>
+<a href="./assets/data-parallel-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;6: "><img data-src="./assets/data-parallel-light.svg" id="fig-data-parallel"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-data-parallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10
+Figure&nbsp;6
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="data-parallel-training-3" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
+<section id="data-parallel-training-1" class="slide level2 center" data-background-color="#FFFFFF" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Data Parallel Training</h2>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[45,-5,50]" style="display: flex; align-items:flex-end;">
-<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-panel" data-layout="[45,-5,50]">
+<div class="quarto-layout-row">
 <div class="col1 quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
 <ul>
-<li>Typically easier to implement</li>
-<li>Existing frameworks (<a href="https://horovod.readthedocs.io/en/stable/index.html">Horovod</a>, <a href="https://github.com/microsoft/DeepSpeed">DeepSpeed</a>, <a href="https://pytorch.org/docs/stable/notes/ddp.html">DDP</a>, etc)
+<li>Typically easier to implement
 <ul>
 <li>Relatively simple to get up and running (minor modifications to code)
 <ul>
 <li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz"><code>saforem2/ezpz</code></a></li>
 </ul></li>
 </ul></li>
-<li>Recent presentation on data-parallel training available on <a href="https://youtu.be/930yrXjNkgM">YouTube</a></li>
+<li>Existing frameworks:
+<ul>
+<li><a href="https://horovod.readthedocs.io/en/stable/index.html">Horovod</a></li>
+<li><a href="https://github.com/microsoft/DeepSpeed">DeepSpeed</a>,</li>
+<li><a href="https://pytorch.org/docs/stable/notes/ddp.html">DDP</a>, etc)</li>
+</ul></li>
+<li>Recent presentation on “<em>Parallel Training Techniques</em>” on <a href="https://youtu.be/930yrXjNkgM">🎬 YouTube</a></li>
 </ul>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 5.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg"></a></p>
+<p><a href="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg"></a></p>
 </div>
 </div>
 </div>
 </section>
-
-<section id="data-parallel-training-4" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
+<section id="data-parallel-training-2" class="slide level2 center" data-background-color="#FFFFFF" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Data Parallel Training</h2>
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[45,-5,50]" style="display: flex; align-items:flex-end;">
-<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-panel" data-layout="[45,-5,50]">
+<div class="quarto-layout-row">
 <div class="col1 quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
 <ul>
 <li>Each worker has <strong>copy of complete model</strong></li>
@@ -818,28 +973,27 @@ Figure&nbsp;10
 <p>&nbsp;</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><a href="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg"></a></p>
+<p><a href="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg"></a></p>
 </div>
 </div>
 </div>
 </section>
-
-<section id="data-parallel-training-5" class="title-slide slide level1 center" data-background-color="#FFFFFF" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Data Parallel Training</h1>
+<section id="data-parallel-training-3" class="slide level2 center" data-background-color="#FFFFFF" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Data Parallel Training</h2>
 <div id="fig-avgGrads" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-avgGrads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://saforem2.github.io/distributed-training-slides/assets/avgGrads.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;11: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/avgGrads.svg"></a>
+<a href="https://saforem2.github.io/distributed-training-slides/assets/avgGrads.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;7: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/avgGrads.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-avgGrads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11
+Figure&nbsp;7
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="deal-with-data" class="title-slide slide level1 center scrollable" data-background-color="#FFFFFF">
-<h1>Deal with Data</h1>
+<section id="deal-with-data" class="slide level2 center scrollable" data-background-color="#FFFFFF">
+<h2>Deal with Data</h2>
+<div style="width:98%;">
 <ul>
 <li><p>At each training step, we want to ensure that <strong>each worker receives unique data</strong></p></li>
 <li><p>This can be done in one of two ways:</p>
@@ -853,7 +1007,7 @@ Figure&nbsp;11
 <li>Each worker can see the full dataset</li>
 </ol></li>
 </ol>
-<div title="⚠️  Warning">
+<div title="⚠️  Warning" style="max-width:98%!important;">
 <div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -867,10 +1021,10 @@ Figure&nbsp;11
 </div>
 </div></li>
 </ul>
+</div>
 </section>
-
-<section id="broadcast-initial-state" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Broadcast Initial State</h1>
+<section id="broadcast-initial-state" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Broadcast Initial State</h2>
 <ul>
 <li><p>At the start of training (or when loading from a checkpoint), we want all of our workers to be initialized consistently</p>
 <ul>
@@ -895,9 +1049,8 @@ Figure&nbsp;11
 </div>
 </div>
 </section>
-
-<section id="best-practices" class="title-slide slide level1 smaller center" data-background-color="#FFFFFF">
-<h1>Best Practices</h1>
+<section id="best-practices" class="slide level2 smaller center" data-background-color="#FFFFFF">
+<h2>Best Practices</h2>
 <ul>
 <li>Use parallel IO whenever possible
 <ul>
@@ -935,46 +1088,135 @@ Figure&nbsp;11
 </ul></li>
 </ul>
 </section>
-
-<section id="model-parallel-training" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Model Parallel Training</h1>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[60,40]" style="display: flex; align-items:flex-end;">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div class="col1 quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<section id="why-distributed-training" class="slide level2 center scrollable" data-background-color="#FFFFFF">
+<h2>Why Distributed Training?</h2>
 <ul>
-<li><p>Split up network over multiple workers</p>
+<li>Splitting data across workers <span class="math inline">\longrightarrow</span> larger batch size<sup>1</sup>
 <ul>
-<li>Each receives disjoint subset</li>
-<li>All communication associated with subsets are distributed</li>
+<li>[<code>micro_batch_size = 1</code>] <span class="math inline">\times</span> [<code>N</code> GPUs] <span class="math inline">\rightarrow</span> [<b><code>global_batch_size = N</code></b>]</li>
 </ul></li>
-<li><p>Communication whenever dataflow between two subsets</p></li>
-<li><p>Typically <strong>more complicated</strong> to implement than data parallel training</p></li>
-<li><p>Suitable when the model is too large to fit onto a single device (CPU / GPU)</p></li>
-<li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a></p></li>
-<li><p>🤗 <a href="https://github.com/huggingface/nanotron"><code>huggingface/nanotron</code></a></p></li>
+<li>Smooth loss landscape</li>
+<li>Improved gradient estimators</li>
+<li>Less iterations needed for same number of epochs
+<ul>
+<li>May need to train for more epochs if another change is not made</li>
+<li>e.g.&nbsp;scaling learning rate</li>
+</ul></li>
+<li>See <a href="https://arxiv.org/abs/1708.03888">Large Batch Training of Convolutional Networks</a></li>
 </ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
-<div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<!-- ![](./assets/model-parallelism.svg) -->
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: <a href="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;12: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg"></a>
+<aside><ol class="aside-footnotes"><li id="fn3"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU</p></li></ol></aside></section>
+<section id="recent-progress" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Recent Progress</h2>
+<div id="tbl-batch-scaling" class="striped hover quarto-float quarto-figure quarto-figure-center" style="font-size:0.7em; font-family: monospace;">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-batch-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Batch-Size-Scaling
 </figcaption>
+<div aria-describedby="tbl-batch-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Year</th>
+<th style="text-align: center;">Author</th>
+<th style="text-align: center;">Batch Size</th>
+<th style="text-align: center;">Processor</th>
+<th style="text-align: center;"># Processors</th>
+<th style="text-align: center;">Time</th>
+<th style="text-align: center;">Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2016</td>
+<td style="text-align: center;">He</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">P100</td>
+<td style="text-align: center;"><span class="red-text">8</span></td>
+<td style="text-align: center;"><span class="red-text">29 Hour</span></td>
+<td style="text-align: center;">75.30%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2019</td>
+<td style="text-align: center;">Yamazaki</td>
+<td style="text-align: center;">81,920</td>
+<td style="text-align: center;">V100</td>
+<td style="text-align: center;"><span class="blue-text">2048</span></td>
+<td style="text-align: center;"><span class="blue-text">1.2 Min</span></td>
+<td style="text-align: center;">75.08%</td>
+</tr>
+</tbody>
+</table>
+</div>
 </figure>
 </div>
-</div>
-</div>
-</div>
 </section>
-
-<section id="model-parallel-training-example" class="title-slide slide level1 center scrollable" data-background-color="#FFFFFF">
-<h1>Model Parallel Training: Example</h1>
+<section id="deciding-on-a-parallelism-strategy" class="slide level2 center scrollable" data-background-color="#FFFFFF">
+<h2>Deciding on a Parallelism Strategy</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Single GPU</a></li><li><a href="#tabset-2-2">Single Node / Multi-GPU</a></li><li><a href="#tabset-2-3">Multi-Node / Multi-GPU</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ul>
+<li>Model fits onto a single GPU:
+<ul>
+<li>Normal use</li>
+</ul></li>
+<li>Model <strong>DOES NOT</strong> fit on a single GPU:
+<ul>
+<li><code>ZeRO</code> + Offload CPU (or, optionally, <code>NVMe</code>)</li>
+</ul></li>
+<li>Largest layer <strong>DOES NOT</strong> fit on a single GPU:
+<ul>
+<li><code>ZeRO</code> + Enable <a href="https://deepspeed.readthedocs.io/en/latest/zero3.html#memory-centric-tiling">Memory Centric Tiling (MCT)</a><sup>1</sup></li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-2-2">
+<ul>
+<li>Model fits onto a single GPU
+<ul>
+<li><a href="https://pytorch.org/docs/stable/notes/ddp.html"><code>DDP</code></a></li>
+<li><a href="https://deepspeed.readthedocs.io/en/latest/zero3.html"><code>ZeRO</code></a></li>
+</ul></li>
+<li>Model <strong>DOES NOT</strong> fit onto a single GPU<sup>2</sup>
+<ol type="1">
+<li><code>PP</code></li>
+<li><code>ZeRO</code></li>
+<li><code>TP</code></li>
+</ol></li>
+</ul>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li><p>When you have fast inter-node connectivity:</p>
+<ul>
+<li><code>ZeRO</code> (virtually <strong>NO</strong> modifications)</li>
+<li><code>PP</code> + <code>ZeRO</code> + <code>TP</code> + <code>DP</code> (less communication, at the cost of <strong>MAJOR</strong> modifications)
+<ul>
+<li><p>when you have slow inter-node connectivity and still low on GPU memory:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code></pre></div></li>
+</ul></li>
+<li><strong>NOTE</strong>: <code>TP</code> is almost <em>always</em> used within a single node, e.g.&nbsp;<code>TP &lt;= GPUS_PER_NODE</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4"><div class="line-block"></div>
+<p>Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.</p></li><li id="fn5"><div class="line-block"></div>
+<p>With sufficiently fast connectivity between nodes, these three strategies should be comparable. Otherwise, <code>PP</code> <span class="math inline">&gt;</span> <code>ZeRO</code> <span class="math inline">\simeq</span> <code>TP</code>.</p></li></ol></aside></section></section>
+<section>
+<section id="tensor-model-parallel-training-example" class="title-slide slide level1 center scrollable" data-background-color="#FFFFFF">
+<h1>Tensor (/ Model) Parallel Training: Example</h1>
 <p><span class="math display">y = \sum_{i} w_{i} * x_{i} = w_0 * x_0 + w_1 * x_1 + w_2 * x_2</span></p>
 <ol type="1">
 <li>Compute <span class="math inline">y_{0} = w_{0} * x_{0}</span> and send to <span class="math inline">\longrightarrow</span> <code>GPU1</code></li>
@@ -1009,46 +1251,231 @@ Figure&nbsp;12: <a href="https://saforem2.github.io/distributed-training-slides/
 </div>
 </div>
 </section>
+<section id="model-parallel-training" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Model Parallel Training</h2>
+<div>
 
-<section id="hands-on" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Hands-On</h1>
-<ul>
-<li><p><a href="https://github.com/argonne-lcf/ai-science-training-series/blob/main/06_parallel_training/README.md">Instructions</a></p>
-<ul>
-<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://saforem2.github.io/wordplay/"><code>saforem2/wordplay</code> 🎮💬</a> [<a href="https://saforem2.github.io/wordplay/">web</a>]</li>
-</ul></li>
-</ul>
-</section>
-
-<section id="large-language-models" class="title-slide slide level1 center">
-<h1>Large Language Models</h1>
-
-</section>
-
-<section id="status-of-large-language-models" class="title-slide slide level1 center scrollable">
-<h1>Status of Large Language Models</h1>
-<div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;13: Large Language Models have (LLM)s have taken the NLP community world by storm"><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>
+<div class="quarto-layout-panel" data-layout="[60,40]">
+<div class="quarto-layout-row">
+<div class="col1 quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<ul>
+<li>Split up network over multiple workers
+<ul>
+<li>Each receives disjoint subset</li>
+<li>All communication associated with subsets are distributed</li>
+</ul></li>
+<li>Communication whenever dataflow between two subsets</li>
+<li>Typically <strong>more complicated</strong> to implement than data parallel training</li>
+<li>Suitable when the model is too large to fit onto a single device (CPU / GPU)</li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a></li>
+<li>🤗 <a href="https://github.com/huggingface/nanotron"><code>huggingface/nanotron</code></a></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: flex-start;">
+<div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;8: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" id="fig-model-parallel-1"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8
 </figcaption>
 </figure>
 </div>
-<aside><ol class="aside-footnotes"></ol></aside></section>
-
-<section id="emergent-abilities" class="title-slide slide level1 center" data-background-color="#FBFBFD">
-<h1>Emergent Abilities</h1>
-<div width="66%" style="text-align: center;">
-<p><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/emergent-abilities.gif?raw=true" height="75%"></p>
-<p><a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span></p>
+</div>
+</div>
 </div>
 </section>
-
-<section id="training-llms" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Training LLMs</h1>
+<section id="tensor-model-parallelismefficient-large-scale" class="slide level2 center scrollable">
+<h2>Tensor (Model) Parallelism<sup>1</sup></h2>
+<ul>
+<li><p>In <strong>Tensor Paralleism</strong> each GPU processes only a slice of a tensor and only aggregates the full tensor for operations that require the whole thing.</p>
+<ul>
+<li><p>The main building block of any transformer is a fully connected nn.Linear followed by a nonlinear activation GeLU.</p>
+<ul>
+<li><code>Y = GeLU(XA)</code>, where X and Y are the input and output vectors, and A is the weight matrix.</li>
+</ul></li>
+<li><p>If we look at the computation in matrix form, it’s easy to see how the matrix multiplication can be split between multiple GPUs:</p></li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn6"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
+<section id="tensor-parallelism" class="slide level2 center" style="font-size: 0.9em;">
+<h2>Tensor Parallelism</h2>
+<div style="text-align: center;">
+<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-tp-parallel_gemm.png" width="66%" style="text-align: center;"></p>
+</div>
+<div class="footer">
+<p>This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a></p>
+</div>
+</section>
+<section id="d-parallelism" class="slide level2 center" style="font-size:0.9em;">
+<h2>3D Parallelism</h2>
+<ul>
+<li><code>DP</code> + <code>TP</code> + <code>PP</code> (3D) Parallelism</li>
+</ul>
+<div id="fig-3dparallel-1" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important; width:90%;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-3dparallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;9: 3D Parallelism illustration. Figure from: https://www.deepspeed.ai/"><img data-src="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: 3D Parallelism illustration. Figure from: <a href="https://www.deepspeed.ai/">https://www.deepspeed.ai/</a>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="d-parallelism-1" class="slide level2 center">
+<h2>3D Parallelism</h2>
+<ul>
+<li><code>DP</code> + <code>TP</code> + <code>PP</code> (3D) Parallelism</li>
+</ul>
+<div id="fig-3dparallel" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;10: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="collective-communication" class="title-slide slide level1 smaller center" data-background-color="#FFFFFF">
+<h1>Collective Communication</h1>
+<p>Typically, we assign 1 <code>rank</code> to each GPU (or <code>accelerator</code>), i.e.&nbsp;<code>rank</code> <span class="math inline">\in</span> <code>[0, 1, ..., WORLD_SIZE-1]</code>.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1"><code>AllReduce</code></a></li><li><a href="#tabset-3-2"><code>Reduce</code></a></li><li><a href="#tabset-3-3"><code>Broadcast</code></a></li><li><a href="#tabset-3-4"><code>AllGather</code></a></li><li><a href="#tabset-3-5"><code>Scatter</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<ul>
+<li>Perform <em>reductions</em> on data (e.g.&nbsp;<code>sum</code>, <code>min</code>, <code>max</code>) across ranks, send result back to everyone</li>
+</ul>
+<div id="fig-allreduce" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-allreduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;11: All-Reduce operation: each rank receives the reduction of input values across ranks."><img data-src="./assets/collective-allreduce-sum.drawio.svg" style="width:50.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: All-Reduce operation: each rank receives the reduction of input values across ranks.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<ul>
+<li>Perform a <em>reduction</em> on data across ranks, send to individual</li>
+</ul>
+<div id="fig-reduce" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-reduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;12: Reduce operation: one rank receives the reduction of input values across ranks"><img data-src="./assets/collective-reduce-sum.drawio.svg" style="width:50.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Reduce operation: one rank receives the reduction of input values across ranks
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-3">
+<ul>
+<li><code>broadcast</code> (<em>send</em>) a tensor <code><span class="math inline">x</span></code> from one rank to all ranks</li>
+</ul>
+<div id="fig-broadcast" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;13: "><img data-src="./assets/collective-broadcast.drawio.svg" style="width:50.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-4">
+<ul>
+<li>Gathers tensors from the whole group in a list.</li>
+</ul>
+<div id="fig-allgather" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-allgather.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;14: "><img data-src="./assets/collective-allgather.drawio.svg" style="width:50.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-3-5">
+<ul>
+<li>Scatters a list of tensors to the whole group</li>
+</ul>
+<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-scatter.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;15: "><img data-src="./assets/collective-scatter.drawio.svg" style="width:50.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="collective-operations" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Collective Operations</h2>
+<div title="⌛ Timeouts">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>⌛ Timeouts</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Collective operations have to be called for each <code>rank</code> to form a complete collective operation.
+<ul>
+<li>Failure to do so will result in other ranks waiting <strong>indefinitely</strong></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="large-language-models" class="title-slide slide level1 center">
+<h1>Large Language Models</h1>
+<blockquote>
+<p><em>Modern parallelism techniques enable the training of large language models</em></p>
+</blockquote>
+<p><span class="dim-text">See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</span></p>
+</section>
+<section id="status-of-large-language-models" class="slide level2 center scrollable">
+<h2>Status of Large Language Models</h2>
+<div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;16: Large Language Models have (LLM)s have taken the NLP community world by storm"><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>
+</figcaption>
+</figure>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn7"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a> <!-- [^slides-gh]: [ `saforem2/llm-lunch-talk`](https://github.com/Hannibal046/Awesome-LLM) [(slides)](https://saforem2.github.io/llm-lunch-talk) --></p></li></ol></aside></section>
+<section id="emergent-abilities" class="slide level2 center" data-background-color="#FBFBFD">
+<h2>Emergent Abilities</h2>
+<div width="66%" style="text-align: center;">
+<p><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/emergent-abilities.gif?raw=true" height="75%"></p>
+<p><a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/hands-on" role="doc-biblioref" onclick="">2023</a>)</span></p>
+</div>
+</section>
+<section id="training-llms" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Training LLMs</h2>
 <div>
 
 </div>
@@ -1058,23 +1485,22 @@ Figure&nbsp;13: Large Language Models have (LLM)s have taken the <del>NLP commun
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;14: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;17: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/thank-you" role="doc-biblioref" onclick="">2023</a>)</span>
+Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/hands-on" role="doc-biblioref" onclick="">2023</a>)</span>
 </figcaption>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 44.4%;justify-content: center;">
-<p><a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a></p>
+<p><a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a></p>
 </div>
 </div>
 </div>
 </section>
-
-<section id="recent-work-2017-now" class="title-slide slide level1 scrollable center" style="max-height: 95%; height: 100%; font-size: 0.75em;">
-<h1>Recent Work (2017 – Now)</h1>
+<section id="recent-work-2017-now" class="slide level2 scrollable center" style="max-height: 95%; height: 100%; font-size: 0.75em;">
+<h2>Recent Work (2017 – Now)</h2>
 <div style="font-size: 0.9em;">
 <table class="table-striped table-hover caption-top">
 <caption>Papers, 2017–*</caption>
@@ -1440,9 +1866,8 @@ Figure&nbsp;14: Visualization from <span class="citation" data-cites="yang2023ha
 </ol>
 </div>
 </section>
-
-<section id="life-cycle-of-the-llm" class="title-slide slide level1 center scrollable" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM</h1>
+<section id="life-cycle-of-the-llm" class="slide level2 center scrollable" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM</h2>
 <div>
 
 </div>
@@ -1469,48 +1894,45 @@ Figure&nbsp;14: Visualization from <span class="citation" data-cites="yang2023ha
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;18: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<sup>1</sup>.
+Figure&nbsp;18: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"></ol></aside></section>
-
-<section id="life-cycle-of-the-llm-pre-training" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM: Pre-training</h1>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
+<section id="life-cycle-of-the-llm-pre-training" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Pre-training</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;19: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+Figure&nbsp;19: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="life-cycle-of-the-llm-fine-tuning" class="title-slide slide level1 center scrollable" data-auto-animate="true" style="font-size: 0.8em;">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM: Fine-Tuning</h1>
+<section id="life-cycle-of-the-llm-fine-tuning" class="slide level2 center scrollable" data-auto-animate="true" style="font-size: 0.8em;">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Fine-Tuning</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;20: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+Figure&nbsp;20: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
 </figcaption>
 </figure>
 </div>
-<aside><ol class="aside-footnotes"></ol></aside></section>
-
-<section id="forward-pass" class="title-slide slide level1 center">
-<h1>Forward Pass</h1>
+<aside><ol class="aside-footnotes"><li id="fn9"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
+<section id="forward-pass" class="slide level2 center">
+<h2>Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1518,14 +1940,13 @@ Figure&nbsp;17: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually u
 </video>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
+Figure&nbsp;21: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="generating-text" class="title-slide slide level1 center">
-<h1>Generating Text</h1>
+<section id="generating-text" class="slide level2 center">
+<h2>Generating Text</h2>
 <div id="fig-generating-text" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1533,13 +1954,12 @@ Figure&nbsp;18: Language Model trained for causal language modeling. Video from:
 </video>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
+Figure&nbsp;22: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
 </figcaption>
 </figure>
 </div>
-</section>
-
-<section id="thank-you" class="title-slide slide level1 smaller scrollable" data-background-color="#FFFFFF">
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center" data-background-color="#FFFFFF">
 <h1>Thank you!</h1>
 <ul>
 <li><p>Organizers</p></li>
@@ -1559,6 +1979,21 @@ Figure&nbsp;19: Language Model trained for causal language modeling. Video from:
 </div>
 </div>
 </div>
+</section>
+
+<section id="hands-on" class="title-slide slide level1 smaller scrollable" data-background-color="#FFFFFF">
+<h1>Hands-On</h1>
+<ul>
+<li><p><a href="https://github.com/argonne-lcf/ai-science-training-series/blob/main/06_parallel_training/README.md">Instructions</a></p>
+<ul>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://saforem2.github.io/wordplay/"><code>saforem2/wordplay</code> 🎮💬</a> [<a href="https://saforem2.github.io/wordplay/">web</a>]</li>
+</ul></li>
+</ul>
+<!-- {{< include partials/_applications.qmd >}} -->
+<!-- {{< include partials/_parallel_training_techniques.qmd >}} -->
+<!-- {{< include partials/_scaling.qmd >}} -->
+<!-- {{< include partials/_data_parallel.qmd >}} -->
+<!-- {{< include partials/_model_parallel.qmd >}} -->
 
 <div class="quarto-auto-generated-content">
 <p><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl.svg" class="slide-logo"></p>
@@ -1575,6 +2010,8 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
 </div>
 </div>
 </section>
+
+
     </div>
   </div>
 
@@ -1897,7 +2334,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

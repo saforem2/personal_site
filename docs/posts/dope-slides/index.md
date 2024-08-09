@@ -1,7 +1,7 @@
 # 💅 How to Make Dope Slides
 <span class="dim-text">Sam Foreman</span>
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-07-31
+2024-08-07
 
 - [Quarto 🤝 Reveal.js](#quarto--revealjs)
 - [Getting Started](#getting-started)
@@ -32,6 +32,8 @@ For this post, I’ll focus on the slides I presented at last years
 [Lattice
 2023](https://indico.fnal.gov/event/57249/contributions/271305/), shown
 below:
+
+<!-- ::: {.callout-tip icon=false title="[[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/#/section) @ [_Center for Scientific Foundation Models_, Summer School 24'](https://scifm.ai/summer_school.html) \[07/2024\]]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"} -->
 
 > [!TIP]
 >
@@ -145,7 +147,7 @@ Reveal.js is the official documentation:
     - Example: `[This is *some text*]{.class key="val"}`
 
     - idk what I’m doing really, so I mostly find myself doing things
-      like `[blue   text]{style="color:#1E88E5;"}` which produces
+      like `[blue text]{style="color:#1E88E5;"}` which produces
       <span style="color:#1E88E5;">blue text</span>.
 
   - **`<div>`**’s: are created by wrapping text with a line consisting
@@ -305,9 +307,6 @@ relatively straightforward to construct.
 
 For single-column slides, constructing the content is as simple as
 writing it in Markdown:
-
-<!-- :::: {layout="[ [50, 50] ]" layout-valign="start" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start; overflow: scroll;"} -->
-<!-- :::: {.columns} -->
 
 <div class="panel-tabset">
 
@@ -496,11 +495,13 @@ and the site is published at
 - [ Quarto Clean
   Theme](https://github.com/grantmcdermott/quarto-revealjs-clean)
 
+<!-- ::: {.callout-tip icon=false aria-title="Recent Talks" title='🎤 [Recent Talks]{.dim-text style="font-size:1.0em!important;"}' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;"} -->
+
 > [!TIP]
 >
 > ### <span style="color: #FF5252;">❤️‍🩹 Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">07</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">31</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">19:22:50</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">07</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">17:46:47</span>
 > </pre>
 > <p align="center">
 > <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
