@@ -1,0 +1,159 @@
+# [{{< iconify line-md github-loop >}}`saforem2/wordplay` 🎮💬 ](https://github.com/saforem2/wordplay)
+
+<!-- - [{{< iconify mdi github-face >}} `saforem2/wordplay`](https://github.com/saforem2/wordplay) -->
+
+- Fork of Andrej Karpathy's `nanoGPT`
+
+::: {#fig-nanoGPT}
+
+![](https://github.com/saforem2/nanoGPT/raw/master/assets/nanogpt.jpg)
+
+The simplest, fastest repository for training / finetuning GPT based models.
+:::
+
+# [{{< iconify line-md github-loop >}}`saforem2/wordplay` 🎮💬 ](https://github.com/saforem2/wordplay)
+
+::: {#fig-compare layout="[[40,40]]" layout-valign="bottom" style="display: flex; align-items: flex-end;"}
+
+![`nanoGPT`](https://github.com/saforem2/wordplay/blob/main/assets/car.png?raw=true){#fig-nanogpt width="256px"}
+
+![`wordplay` 🎮 💬](https://github.com/saforem2/wordplay/blob/main/assets/robot.png?raw=true){#fig-wordplay width="150px"}
+
+`nanoGPT`, transformed.
+
+:::
+
+## Install
+
+```bash
+python3 -m pip install "git+https://github.com/saforem2/wordplay.git"
+python3 -c 'import wordplay; print(wordplay.__file__)'
+# ./wordplay/src/wordplay/__init__.py
+```
+
+## Dependencies
+
+- [`transformers`](https://github.com/huggingface/transformers) for
+  {{< iconify noto hugging-face >}} transformers (to load `GPT-2` checkpoints)
+- [`datasets`](https://github.com/huggingface/datasets) for {{< iconify noto
+  hugging-face >}} datasets (if you want to use OpenWebText)
+- [`tiktoken`](https://github.com/openai/tiktoken) for OpenAI's fast BPE code
+- [`wandb`](https://wandb.ai) for optional logging
+- [`tqdm`](https://github.com/tqdm/tqdm) for progress bars
+
+
+## Quick Start
+
+- We start with training a character-level GPT on the works of Shakespeare.
+
+  1. Downloading the data (~ 1MB) file
+  2. Convert raw text to one large stream of integers
+
+  ```bash
+  python3 data/shakespeare_char/prepare.py
+  ```
+
+  This will create `data/shakespeare_char/{train.bin, val.bin}`.
+
+# Model [{{< iconify fa-brands github >}} `model.py`](https://github.com/saforem2/wordplay/blob/master/src/wordplay/model.py) {height="100%"}
+
+::: {.panel-tabset style="font-size: 0.75em; width: 100%!important; height: 100%!important;"}
+
+### `CausalSelfAttention`
+
+```{.python include="model.py" code-line-numbers="true" start-line=64 end-line=155}
+```
+
+### `LayerNorm`
+
+```{.python include="model.py" code-line-numbers="true" start-line=43 end-line=62}
+```
+
+### `MLP`
+
+```{.python include="model.py" code-line-numbers="true" start-line=165 end-line=202}
+```
+
+### `Block`
+
+```{.python include="model.py" code-line-numbers="true" start-line=205 end-line=217}
+```
+
+### `GPT`
+
+```{.python include="model.py" code-line-numbers="true" start-line=220 end-line=525}
+```
+
+:::
+
+# Trainer [{{< iconify fa-brands github >}} `trainer.py`](https://github.com/saforem2/wordplay/blob/master/src/wordplay/trainer.py) {height="100%"}
+
+
+::: {.panel-tabset style="font-size: 0.75em; width: 100%; height: 100%;"}
+
+### `get_batch`
+
+```{.python include="trainer.py" code-line-numbers="true" start-line=446 end-line=474}
+```
+### `_forward_step`
+
+```{.python include="trainer.py" code-line-numbers="true" start-line=534 end-line=542}
+```
+
+### `_backward_step`
+
+```{.python include="trainer.py" code-line-numbers="true" start-line=544 end-line=569}
+```
+
+### `train_step`
+
+```{.python include="trainer.py" code-line-numbers="true" start-line=571 end-line=674}
+```
+
+### `estimate_loss`
+
+```{.python include="trainer.py" code-line-numbers="true" start-line=487 end-line=500}
+```
+:::
+
+# Hands-on Tutorial
+
+::: {layout="[ 60, -5, 25 ]" layout-valign="center"}
+
+::: {.panel-tabset style="font-size: 0.9em; width: 100%!important; height: 100%!important;"}
+
+#### 📒 Shakespeare
+
+- [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/saforem2/wordplay/blob/master/notebooks/shakespeare.ipynb)  
+- [`shakespeare.ipynb`](https://github.com/saforem2/wordplay/blob/main/notebooks/shakespeare.ipynb)
+
+#### 🔗 Links
+
+- [📊 [Slides](https://saforem2.github.io/llm-workshop-talk/#/llm-workshop-talk)]{style="background-color:#f8f8f8; padding: 2pt; border-radius: 6pt"}
+- [🏡 [Project Website](https://saforem2.github.io/wordplay)]{style="background-color:#f8f8f8; padding: 2pt; border-radius: 6pt"}
+- [💻 [`saforem2/wordplay`](https://github.com/saforem2/wordplay)]{style="background-color:#f8f8f8; padding: 2pt; border-radius: 6pt"}
+
+:::
+
+![(link to Colab Notebook)](https://github.com/saforem2/llm-workshop-talk/blob/main/assets/qrcode-colab.png?raw=true)
+
+:::
+
+# {background-iframe="https://saforem2.github.io/wordplay"}
+
+
+# Links
+
+1. [{{< fa brands github >}} Hannibal046/Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM/blob/main/README.md) [[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)]{.inline-image}
+2. [{{< fa brands github >}} Mooler0410/LLMsPracticalGuide](https://github.com/Mooler0410/LLMsPracticalGuide)
+3. [Large Language Models (in 2023)](https://docs.google.com/presentation/d/1636wKStYdT_yRPbJNrf8MLKpQghuWGDmyHinHhAKeXY/edit#slide=id.g238b2698243_0_734https://docs.google.com/presentation/d/1636wKStYdT_yRPbJNrf8MLKpQghuWGDmyHinHhAKeXY/edit#slide=id.g238b2698243_0_734)
+4. [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+5. [Generative AI Exists because of the Transformer](https://ig.ft.com/generative-ai/)
+6. [GPT in 60 Lines of Numpy](https://jaykmody.com/blog/gpt-from-scratch/)
+7. [Better Language Models and their Implications](https://openai.com/research/better-language-models)  
+8. [{{< fa solid flask-vial >}}]{.green-text} [Progress / Artefacts / Outcomes from 🌸 Bloom BigScience](https://bigscience.notion.site/ebe3760ae1724dcc92f2e6877de0938f?v=2faf85dc00794321be14bc892539dd4f)
+
+::: {.callout-note title="Acknowledgements"}
+This research used resources of the Argonne Leadership Computing Facility,  
+which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+:::

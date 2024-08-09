@@ -1,4 +1,4 @@
-# 🚀 Scaling: Overview  {background-color="#FFFFFF"}
+# 🚀 Scaling: Overview  {background-color="#FFF"}
 
 - ✅ **Goal**:
   - 📈 Maximize: Performance <!-- (⬆️  _maximize_) -->
@@ -13,7 +13,7 @@
 **Note**: See [🤗 Performance and Scalability: How To Fit a Bigger Model and Train It Faster](https://huggingface.co/docs/transformers/v4.17.0/en/performance) for more details
 :::
 
-# AI 🤝 Compute \[Historical\] {.centeredslide .smaller height="100%" background-color="#FFFFFF" auto-animate=true}
+## AI 🤝 Compute \[Historical\] {.centeredslide .smaller height="100%" background-color="#FFF"}
 
 ::: {layout="[34,66]"}
 
@@ -37,7 +37,7 @@
 
 :::
 
-# AI 🤝 Compute \[Historical\] {.centeredslide .smaller height="100%" background-color="#FFFFFF" auto-animate=true}
+## AI 🤝 Compute \[Historical\] {.centeredslide .smaller height="100%" background-color="#FFF"}
 
 ::: {layout="[34,66]"}
 
@@ -59,9 +59,9 @@
 
 :::
 
-# Parallelism Concepts {.centeredslide .smaller}
+# Parallelism Concepts {.centeredslide .smaller height="100%" style="height: 100%;"}
 
-::: {.panel-tabset}
+::: {.panel-tabset style="max-height: 100%;"}
 
 ### Single GPU
 
@@ -69,33 +69,34 @@
 
 ### DataParallel (DP)
 
-::: {layout="[35,65]"}
+<!-- ::: {layout="[45,50]"} -->
+::: {.flex-container}
 
-::: {.col1 style="font-size:0.75em;"}
-- Multiple copies of **the same setup**
-    - each copy gets fed **unique** data
-    - all copies compute gradients w.r.t local model
-    - everyone syncs up before updating weights
+::: {.col1 style="font-size: 0.85em; width:45%;"}
+- The simplest and most common parallelism technique
+
+- Workers maintain _identical copies_ of the _complete_ model and work on a
+  _subset of the data_
+
+  - Multiple copies of **the same setup**
+      - each copy gets fed **unique** data
+      - all copies compute gradients w.r.t local model
+      - everyone syncs up before updating weights
 
 - The processing is done in parallel and all setups are synchronized at the
   end of each training step.
 
-- 🔗 See also:
-  - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
-  - [Distributed Data Parallel — PyTorch master documentation](https://pytorch.org/docs/master/notes/ddp.html)
-  - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
-  - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
 :::
 
-![Data Parallel Training](./assets/multi-gpu-ddp.drawio.svg){#fig-ddp-training}
+![Data Parallel Training](./assets/multi-gpu-ddp.drawio.svg){#fig-ddp-training width="90%"}
 
 :::
 
 ### TensorParallel (TP)
 
-::: {layout="[35,65]"}
+::: {.flex-container}
 
-::: {.col1 style="font-size: 0.75em;"}
+::: {.col1 style="font-size: 0.85em; width:45%;"}
 - Each tensor is split up into multiple chunks
 - So, instead of having the whole tensor reside on a single gpu, each shard
   of the tensor resides on its designated gpu.
@@ -113,13 +114,13 @@
 
 ### PipelineParallel (PP)
 
-::: {layout="[35,65]"}
+::: {.flex-container}
 
-::: {.col1 style="font-size: 0.75em;"}
-  - Model is split up vertically (layer-level) across multiple GPUs, so that
-    only one or several layers of the model are places on a single gpu.
-    - Each gpu processes in parallel different stages of the pipeline and
-      working on a small chunk of the batch.
+::: {.col1 style="width:35%;"}
+- Model is split up vertically (layer-level) across multiple GPUs, so that
+  only one or several layers of the model are places on a single gpu.
+  - Each gpu processes in parallel different stages of the pipeline and
+    working on a small chunk of the batch.
 :::
 
 ![[Pipeline Parallelism](https://www.deepspeed.ai/tutorials/pipeline/)](assets/pipeline_parallelism.png){#fig-pipeline-parallelism}
@@ -128,22 +129,48 @@
 
 ### {{< iconify logos microsoft-icon >}} ZeRO
 
-::: {layout="[35,65]"}
+![[DeepSpeed](deepspeed.ai) + `ZeRO`](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png){#fig-zero-stages}
+
+::: {layout="[50, 50]" height="100%"}
 
 ::: {.col1 style="font-size: 0.75em;"}
-  - Also performs sharding of the tensors somewhat similar to TP, except the
-    whole tensor gets reconstructed in time for a forward or backward
-    computation, therefore the model doesn’t need to be modified.
-  - It also supports various offloading techniques to compensate for limited
-    GPU memory.
+
+- Shards tensors ( ~ similar to TP ), _except_:
+
+  - **whole tensor** gets reconstructed as needed
+
+  - doesn't require model modifications !!
+
+- Depending on the `ZeRO` stage (1, 2, 3), we can offload:
+
+  1. **Stage 1**: optimizer states
+
+  2. **Stage 2**: gradients + opt. states
+
+  3. **Stage 3**: model params + grads + opt. states
+
+  [with increasing `ZeRO` stage, we are able to free up increasing amounts of GPU memory]{.dim-text}
+
 :::
 
-![[DeepSpeed](deepspeed.ai) + `ZeRO`](https://www.microsoft.com/en-us/research/uploads/prod/2020/02/MSResearch_20200207_DeepZeroBlogGraphic_r2t3_1400x788-3.gif){#fig-zero-offload}
+::: {.col2 style="font-size: 0.75em;"}
 
-:::
+- ZeRO Data Parallel
+  -  ZeRO powered data parallelism is shown below
+
+
+- It also supports various offloading techniques to compensate for limited
+  GPU memory.
 
 - 🔗 See also:
-  - [{{< iconify logos microsoft-icon >}} ZeRO-Offload](https://www.deepspeed.ai/tutorials/zero-offload/)
+  - [ZeRO — DeepSpeed 0.14.5 documentation](https://deepspeed.readthedocs.io/en/latest/zero3.html)
+  - [ZeRO-Offload](https://www.deepspeed.ai/tutorials/zero-offload/)
+  - [ZeRO & DeepSpeed: New system optimizations enable training models with over 100 billion parameters - Microsoft Research](https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/)
+
+:::
+
+:::
+
 
 ### FSDP
 
@@ -151,7 +178,7 @@
 
 ::: {.col1 style="font-size:0.75em;"}
 - Instead of maintaining per-GPU copy of `{params, grads, opt_states}`, FSDP shards (distributes) these across data-parallel workers
-  - can optionall offload the sharded model params to CPU
+  - can optionally offload the sharded model params to CPU
 :::
 
 ![FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)](assets/fsdp.png)
@@ -164,76 +191,13 @@
 
 # Data Parallelism {style="font-size: 0.9em;"}
 
-- **Data Parallelism**:
-  - The simplest and most common parallelism technique.
-    Workers maintain _identical copies_ of the _complete_ model and work on a
-    _subset of the data_.
-  - `DDP` supported in PyTorch native.
+## Data Parallel Training {background-color="#FFF" auto-animate=true}
 
-- ZeRO Data Parallel
-  -  ZeRO powered data parallelism is shown below[^zero-dp]
-
-
-::: {style="text-align: center;"}
-
-<img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" width="75%" />
-
-:::
-
-[^zero-dp]: [Blog Post](https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/)
-
-## Data Parallel Training {.centeredslide height="100%" background-color="#FFFFFF" auto-animate=true}
-
-::: {layout="[45,-5,50]"}
-
-::: {.col1 style="font-size:0.75em;"}
-- 🔗 Links:
-  - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
-  - [Distributed Data Parallel — PyTorch master documentation](https://pytorch.org/docs/master/notes/ddp.html)
-  - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
-  - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
-:::
-
-![](./assets/data-parallel-light.svg){#fig-data-parallel}
-
-:::
-
-## Data Parallel Training {background-color="#FFFFFF" auto-animate=true}
-
-::: {layout="[45,-5,50]"}
-
-::: {.col1 style="font-size:0.75em;"}
 - Typically easier to implement
   - Relatively simple to get up and running (minor modifications to code)
     - {{< fa brands github >}} [`saforem2/ezpz`](https://github.com/saforem2/ezpz)
-- Existing frameworks:
-  - [Horovod](https://horovod.readthedocs.io/en/stable/index.html)
-  - [DeepSpeed](https://github.com/microsoft/DeepSpeed),
-  - [DDP](https://pytorch.org/docs/stable/notes/ddp.html), etc)
 
-- Recent presentation on "_Parallel Training Techniques_" on [🎬 YouTube](https://youtu.be/930yrXjNkgM)
-:::
-
-![](https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg)
-
-:::
-
-## Data Parallel Training {background-color="#FFFFFF" auto-animate=true}
-
-::: {layout="[45,-5,50]"}
-
-::: {.col1 style="font-size:0.75em;"}
-- Each worker has **copy of complete model**
-- Global batch of data split into multiple mini-batches
-  - Each worker computes the corresponding **loss and gradients from local data**
-- Before updating parameters, loss and gradients averaged across workers
-:::
-
-![](https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg)
-
-:::
-
-## Data Parallel Training {background-color="#FFFFFF" auto-animate=true}
+- Recent presentation on [🎬 _"Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
 
 ::: {#fig-avgGrads}
 
@@ -241,7 +205,7 @@
 
 :::
 
-## Deal with Data {background-color="#FFFFFF"}
+## Deal with Data {background-color="#FFF"}
 
 ::: {style="width:98%;"}
 - At each training step, we want to ensure that **each worker receives unique data**
@@ -262,7 +226,7 @@
 
 :::
 
-## Broadcast Initial State {background-color="#FFFFFF"}
+## Broadcast Initial State {background-color="#FFF"}
 
 - At the start of training (or when loading from a checkpoint), we want all of our workers to be
   initialized consistently
@@ -278,19 +242,40 @@
     0 --> N["GPU N"]
   ```
 
-## Best Practices {.smaller background-color="#FFFFFF"}
+
+<!-- ## Data Parallel Training {background-color="#FFF" auto-animate=true} -->
+<!---->
+<!-- ::: {layout="[45,-5,50]"} -->
+<!---->
+<!-- ::: {.col1 style="font-size:0.75em;"} -->
+<!-- - Typically easier to implement -->
+<!--   - Relatively simple to get up and running (minor modifications to code) -->
+<!--     - {{< fa brands github >}} [`saforem2/ezpz`](https://github.com/saforem2/ezpz) -->
+<!-- - Existing frameworks: -->
+<!--   - [Horovod](https://horovod.readthedocs.io/en/stable/index.html) -->
+<!--   - [DeepSpeed](https://github.com/microsoft/DeepSpeed), -->
+<!--   - [DDP](https://pytorch.org/docs/stable/notes/ddp.html), etc) -->
+<!---->
+<!-- - Recent presentation on "_Parallel Training Techniques_" on [🎬 YouTube](https://youtu.be/930yrXjNkgM) -->
+<!-- ::: -->
+<!---->
+<!-- ![](https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg) -->
+<!---->
+<!-- ::: -->
+
+## Best Practices {.smaller background-color="#FFF"}
+
+::: {.callout-important icon=false title="🤝 Keeping things in Sync"}
+**Computation stalls during communication !!**  
+
+Keeping the communication to computation ratio small is important for effective scaling.
+:::
 
 - Use parallel IO whenever possible
   - Feed each rank from different files
   - Use MPI IO to have each rank read its own batch from a file
   - Use several ranks to read data, MPI to scatter to remaining ranks
     - Most practical in big _at-scale_ training
-
-  ::: {.callout-important icon=false title="🤝 Keeping things in Sync"}
-  **Computation stalls during communication !!**  
-
-  Keeping the communication to computation ratio small is important for effective scaling.
-  :::
 
 - Take advantage of data storage
   - Use [striping on lustre](https://wiki.lustre.org/Configuring_Lustre_File_Striping)
@@ -300,7 +285,7 @@
   - Offloading to a GPU frees CPU cycles for loading the next batch of data
     - **minimize IO latency this way**
 
-## Why Distributed Training? {background-color="#FFFFFF"}
+## Why Distributed Training? {background-color="#FFF"}
 
 - Splitting data across workers $\longrightarrow$ larger batch size[^mbs]
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$ [<b><code>global_batch_size = N</code></b>]
@@ -313,7 +298,7 @@
 
 [^mbs]: `micro_batch_size` = batch_size **per** GPU
 
-## Recent Progress {background-color="#FFFFFF"}
+## Recent Progress {background-color="#FFF"}
 
 ::: {#tbl-batch-scaling style="font-size:0.7em; font-family: monospace;"}
 
@@ -326,7 +311,7 @@
 
 :::
 
-## Deciding on a Parallelism Strategy  {background-color="#FFFFFF"}
+# Deciding on a Parallelism Strategy {background-color="#FFF"}
 
 ::: {.panel-tabset}
 
@@ -374,7 +359,7 @@
     Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.
 
 
-# Tensor (/ Model) Parallel Training: Example {background-color="#FFFFFF"}
+# Tensor (/ Model) Parallel Training: Example {background-color="#FFF"}
 
 $$y = \sum_{i} w_{i} * x_{i} = w_0 * x_0 + w_1 * x_1 + w_2 * x_2$$
 
@@ -401,7 +386,7 @@ flowchart LR
   x["x0, x1, x2"] --> X0
 ```
 
-## Model Parallel Training {background-color="#FFFFFF"}
+## Model Parallel Training {background-color="#FFF"}
 
 ::: {layout="[60,40]"}
 
@@ -444,18 +429,6 @@ flowchart LR
 
 This information is based on (the much more in-depth) [TP Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [\@anton-l](https://github.com/anton-l)
-
-:::
-
-## 3D Parallelism {style="font-size:0.9em;"}
-
-- `DP` + `TP` + `PP` (3D) Parallelism
-
-::: {#fig-3dparallel-1 style="text-align:center!important; width:90%;"}
-
-![](https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png)
-
-3D Parallelism illustration. Figure from: [https://www.deepspeed.ai/](https://www.deepspeed.ai/)
 
 :::
 
