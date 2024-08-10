@@ -861,16 +861,17 @@ Figure&nbsp;5: <a href="deepspeed.ai">DeepSpeed</a> + <code>ZeRO</code>
 </section>
 <section id="data-parallel-training" class="slide level2 centeredslide center" data-background-color="#FFF" data-auto-animate="true" style="height: 100%; max-height: 100%;">
 <h2 data-id="quarto-animate-title">Data Parallel Training</h2>
-<ul>
-<li>Typically easier to implement
+<div class="flex-container">
+<div class="col1" style="font-size: 0.85em; width:45%;">
 <ul>
 <li>Relatively simple to get up and running (minor modifications to code)
 <ul>
 <li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz"><code>saforem2/ezpz</code></a></li>
+<li><a href="https://pytorch.org/docs/stable/notes/ddp.html">Distributed Data Parallel — PyTorch 2.4 documentation</a></li>
+<li><a href="https://www.deepspeed.ai/">{&lt;<iconify logos="" microsoft-icon="">&gt;} DeepSpeed</iconify></a></li>
 </ul></li>
-</ul></li>
-<li>Recent presentation on <a href="https://youtu.be/930yrXjNkgM">🎬 <em>“Parallel Training Techniques”</em></a></li>
 </ul>
+</div>
 <div id="fig-avgGrads" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-avgGrads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -881,7 +882,11 @@ Figure&nbsp;6: Data Parallelism
 </figcaption>
 </figure>
 </div>
-</section>
+</div>
+
+<aside><div>
+<p>Also see: <a href="https://youtu.be/930yrXjNkgM">🎬 “Parallel Training Techniques”_</a></p>
+</div></aside></section>
 <section id="deal-with-data" class="slide level2 center scrollable" data-background-color="#FFF">
 <h2>Deal with Data</h2>
 <div style="width:98%;">
@@ -1069,7 +1074,7 @@ Table&nbsp;1: Batch-Size-Scaling
 </figure>
 </div>
 </section></section>
-<section id="deciding-on-a-parallelism-strategy" class="title-slide slide level1 center scrollable" data-background-color="#FFF">
+<section id="deciding-on-a-parallelism-strategy" class="title-slide slide level1 smaller center scrollable" data-background-color="#FFF">
 <h1>Deciding on a Parallelism Strategy</h1>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Single GPU</a></li><li><a href="#tabset-2-2">Single Node / Multi-GPU</a></li><li><a href="#tabset-2-3">Multi-Node / Multi-GPU</a></li></ul>
@@ -1086,23 +1091,28 @@ Table&nbsp;1: Batch-Size-Scaling
 </ul></li>
 <li>Largest layer <strong>DOES NOT</strong> fit on a single GPU:
 <ul>
-<li><code>ZeRO</code> + Enable <a href="https://deepspeed.readthedocs.io/en/latest/zero3.html#memory-centric-tiling">Memory Centric Tiling (MCT)</a><sup>1</sup></li>
+<li><code>ZeRO</code> + Enable <a href="https://deepspeed.readthedocs.io/en/latest/zero3.html#memory-centric-tiling">Memory Centric Tiling (MCT)</a>
+<ul>
+<li>MCT Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.</li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
 <div id="tabset-2-2">
 <ul>
-<li>Model fits onto a single GPU
+<li><p>Model fits onto a single GPU</p>
 <ul>
 <li><a href="https://pytorch.org/docs/stable/notes/ddp.html"><code>DDP</code></a></li>
 <li><a href="https://deepspeed.readthedocs.io/en/latest/zero3.html"><code>ZeRO</code></a></li>
 </ul></li>
-<li>Model <strong>DOES NOT</strong> fit onto a single GPU<sup>2</sup>
+<li><p>Model <strong>DOES NOT</strong> fit onto a single GPU[^connectivity]</p>
 <ol type="1">
 <li><code>PP</code></li>
 <li><code>ZeRO</code></li>
 <li><code>TP</code></li>
 </ol></li>
+<li><p>With sufficiently fast connectivity between nodes, these three strategies should be comparable.</p>
+<p>Otherwise, <code>PP</code> <span class="math inline">&gt;</span> <code>ZeRO</code> <span class="math inline">\simeq</span> <code>TP</code>.</p></li>
 </ul>
 </div>
 <div id="tabset-2-3">
@@ -1121,9 +1131,7 @@ Table&nbsp;1: Batch-Size-Scaling
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><div class="line-block"></div>
-<p>Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.</p></li><li id="fn4"><div class="line-block"></div>
-<p>With sufficiently fast connectivity between nodes, these three strategies should be comparable. Otherwise, <code>PP</code> <span class="math inline">&gt;</span> <code>ZeRO</code> <span class="math inline">\simeq</span> <code>TP</code>.</p></li></ol></aside></section>
+</section>
 
 <section>
 <section id="tensor-model-parallel-training-example" class="title-slide slide level1 center scrollable" data-background-color="#FFF">
@@ -1210,7 +1218,7 @@ Figure&nbsp;7
 <li><p>If we look at the computation in matrix form, it’s easy to see how the matrix multiplication can be split between multiple GPUs:</p></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn5"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
 <section id="tensor-parallelism" class="slide level2 center" style="font-size: 0.9em;">
 <h2>Tensor Parallelism</h2>
 <div style="text-align: center;">
@@ -1357,7 +1365,7 @@ Figure&nbsp;14: Large Language Models have (LLM)s have taken the <del>NLP commun
 </figure>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn6"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a></p></li></ol></aside></section>
 <section id="emergent-abilities" class="slide level2 center" data-background-color="#FBFBFD">
 <h2>Emergent Abilities</h2>
 <div width="66%" style="text-align: center;">
@@ -1393,7 +1401,7 @@ Figure&nbsp;16: Visualization from <span class="citation" data-cites="yang2023ha
 </figure>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn7"><p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</p></li></ol></aside></section>
 <section id="recent-work-2017-now" class="slide level2 scrollable center" style="max-height: 95%; height: 100%; font-size: 0.75em;">
 <h2>Recent Work (2017 – Now)</h2>
 <div style="font-size: 0.9em;">
@@ -1799,7 +1807,7 @@ Figure&nbsp;17: <strong>Pre-training</strong>: Virtually all of the compute used
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn8"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
 <section id="forward-pass" class="slide level2 center">
 <h2>Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
@@ -1853,7 +1861,7 @@ Figure&nbsp;21: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually u
 </figcaption>
 </figure>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn9"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
 <section id="assistant-models" class="slide level2 centeredslide center" data-background-color="#181D29">
 <h2>Assistant Models</h2>
 <div id="fig-assistant-models" class="quarto-float quarto-figure quarto-figure-center">
@@ -2404,7 +2412,7 @@ Figure&nbsp;22
 </ul>
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" style="max-height: 90%!important;"></script>
 <p>Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP</p>
-<aside><ol class="aside-footnotes"><li id="fn10"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section>
 <section id="example-wordplay" class="title-slide slide level1 center">
 <h1>Example: <a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h1>
@@ -2740,7 +2748,7 @@ Figure&nbsp;23: The simplest, fastest repository for training / finetuning GPT b
 </ul>
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 90%!important;"></script>
 <p>Example: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay"><code>saforem2/wordplay</code> 🎮💬</a></p>
-<aside><ol class="aside-footnotes"><li id="fn11"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn9"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section id="thank-you" class="title-slide slide level1 center" data-background-color="#FFFFFF">
 <h1>Thank you!</h1>
 <ul>
@@ -3177,7 +3185,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

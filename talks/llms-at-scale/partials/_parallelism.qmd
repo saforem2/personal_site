@@ -193,13 +193,24 @@
 
 ## Data Parallel Training {.centeredslide background-color="#FFF" auto-animate=true style="height: 100%; max-height: 100%;"}
 
-- Typically easier to implement
-  - Relatively simple to get up and running (minor modifications to code)
-    - {{< fa brands github >}} [`saforem2/ezpz`](https://github.com/saforem2/ezpz)
+::: {.flex-container}
 
-- Recent presentation on [🎬 _"Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
+::: {.col1 style="font-size: 0.85em; width:45%;"}
+- Relatively simple to get up and running (minor modifications to code)
+  - {{< fa brands github >}} [`saforem2/ezpz`](https://github.com/saforem2/ezpz)
+  - [Distributed Data Parallel — PyTorch 2.4 documentation](https://pytorch.org/docs/stable/notes/ddp.html)
+  - [{<<iconify logos microsoft-icon >>} DeepSpeed](https://www.deepspeed.ai/)
+:::
 
 ![Data Parallelism](https://saforem2.github.io/distributed-training-slides/assets/avgGrads.svg){#fig-avgGrads}
+
+:::
+
+::: aside
+Also see: [🎬 "Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
+:::
+
+
 
 ## Deal with Data {background-color="#FFF"}
 
@@ -307,7 +318,7 @@ Keeping the communication to computation ratio small is important for effective 
 
 :::
 
-# Deciding on a Parallelism Strategy {background-color="#FFF"}
+# Deciding on a Parallelism Strategy {.smaller background-color="#FFF"}
 
 ::: {.panel-tabset}
 
@@ -318,7 +329,8 @@ Keeping the communication to computation ratio small is important for effective 
 - Model **DOES NOT** fit on a single GPU:
   - `ZeRO` + Offload CPU (or, optionally, `NVMe`)
 - Largest layer **DOES NOT** fit on a single GPU:
-  - `ZeRO` + Enable [Memory Centric Tiling (MCT)](https://deepspeed.readthedocs.io/en/latest/zero3.html#memory-centric-tiling)[^mct]
+  - `ZeRO` + Enable [Memory Centric Tiling (MCT)](https://deepspeed.readthedocs.io/en/latest/zero3.html#memory-centric-tiling)
+    - MCT Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.
 
 ### Single Node / Multi-GPU
 
@@ -330,6 +342,11 @@ Keeping the communication to computation ratio small is important for effective 
   1. `PP`
   2. `ZeRO`
   3. `TP`
+
+
+- With sufficiently fast connectivity between nodes, these three strategies should be comparable.
+
+  Otherwise, `PP` $>$ `ZeRO` $\simeq$ `TP`.
 
 ### Multi-Node / Multi-GPU
 
@@ -346,14 +363,6 @@ Keeping the communication to computation ratio small is important for effective 
   - **NOTE**: `TP` is almost _always_ used within a single node, e.g. `TP <= GPUS_PER_NODE`
 
 :::
-
-[^connectivity]:|
-    With sufficiently fast connectivity between nodes, these three strategies should be comparable.
-    Otherwise, `PP` $>$ `ZeRO` $\simeq$ `TP`.
-
-[^mct]:|
-    Allows running of arbitrarily large layers by automatically splitting them and executing them sequentially.
-
 
 # Tensor (/ Model) Parallel Training: Example {background-color="#FFF"}
 
