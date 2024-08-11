@@ -1,7 +1,7 @@
 # 💅 How to Make Dope Slides
 <span class="dim-text">Sam Foreman</span>
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-08-07
+2024-08-10
 
 - [Quarto 🤝 Reveal.js](#quarto--revealjs)
 - [Getting Started](#getting-started)
@@ -495,13 +495,11 @@ and the site is published at
 - [ Quarto Clean
   Theme](https://github.com/grantmcdermott/quarto-revealjs-clean)
 
-<!-- ::: {.callout-tip icon=false aria-title="Recent Talks" title='🎤 [Recent Talks]{.dim-text style="font-size:1.0em!important;"}' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;"} -->
-
 > [!TIP]
 >
 > ### <span style="color: #FF5252;">❤️‍🩹 Status</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">07</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">17:46:47</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">10</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">16:59:10</span>
 > </pre>
 > <p align="center">
 > <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
