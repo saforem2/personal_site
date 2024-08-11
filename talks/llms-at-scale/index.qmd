@@ -1,7 +1,7 @@
 ---
 title: "Training LLMs at Scale"
 toc: false
-date: today
+date: 2024-08-09
 date-modified: last-modified
 author-title: ""
 affiliation-title: ""
@@ -9,6 +9,7 @@ published-title: ""
 modified-title: ""
 title-block-categories: false
 number-sections: false
+ascii: true
 bibliography: ../../references.bib
 appendix-cite-as: display
 # keep-md: false
@@ -16,7 +17,6 @@ editor:
   render-on-save: true
 twitter-card:
   image: assets/thumbnail.png
-  # image: "https://raw.githubusercontent.com/saforem2/personal_site/main/talks/llms-on-polaris/assets/thumbnail.png"
   site: "saforem2"
   creator: "@saforem2"
   title: "Training LLMs at Scale"
@@ -26,7 +26,6 @@ open-graph:
   title: "Training LLMs at Scale"
   description: "Training LLMs at Scale"
   image: assets/thumbnail.png
-  # image: "/Users/samforeman/Desktop/ScreenShot-2024-08-10-121608.png"
 author:
   name: Sam Foreman
   url: https://samforeman.me
@@ -47,10 +46,6 @@ citation:
    #   consider the problem of sampling configurations from a 4D 𝑆𝑈(3) lattice gauge
    #   theory, and consider a generalized leapfrog integrator in the molecular
    #   dynamics update that can be trained to improve sampling efficiency.
-citations-hover: true
-footnotes-hover: true
-# filters:
-#   - roughnotation
 format:
   revealjs:
     # reference-location: section
@@ -68,7 +63,7 @@ format:
     chalkboard:
       buttons: false
     auto-animate: true
-    touch: true
+    # touch: true
     link-external-newwindow: true
     pause: false
     footnotes-hover: true
@@ -115,7 +110,7 @@ format:
     embed-resources: false
     self-contained-math: false
     center: true
-    # background-color: #ffffff
+    background-color: "#ffffff"
     default-image-extension: svg
     code-overflow: scroll
     html-math-method: katex
@@ -126,21 +121,12 @@ format:
   #   output-file: "llms-at-scale.md"
 ---
 
-
 # {.centeredslide background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html" loading="lazy" background-color="#1c1c1c"}
 
 ::: {style="background-color: rgba(245,245,245, 0.875); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
-<!-- ::: {style="text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"} -->
-<!-- ::: {style="text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.6);"} -->
 [Training LLMs]{style="color:#333333; font-size:1.75em; font-weight: 600; padding-bottom: 0.25rem;"}  
 [(at Scale)]{style="color:#444444; font-size:1.5em; font-weight: 500; padding-bottom: 1rem;"}  
 
-<!-- ::: -->
-<!-- [<br>&nbsp;]{style="padding-bottom: 0.5rem;"}   -->
-<!-- <br>&nbsp; -->
-<!-- [<br>&nbsp;]{style="padding-bottom: 0.5rem;"}   -->
-<!-- " text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"} -->
-<!-- ::: {style="background-color: rgba(245,245,245, 0.875); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"} -->
 [[🏡](https://samforeman.me) Sam Foreman]{style="color:#555555"}  
 [@ [ATPESC 2024](https://extremecomputingtraining.anl.gov/agenda-2024/)]{.dim-text style="font-size: 0.75em"}  
 [🗓️ 2024-08-09]{.dim-text style="font-size: 0.66em;"}  
@@ -148,13 +134,10 @@ format:
 
 &nbsp;<br>  
 
-<!-- ::: {style="background-color: none; opacity:0.75; border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"} -->
-<!-- [[samforeman.me/talks/llms-at-scale](https://samforeman.me/talks/llms-at-scale)]{.dim-text style="font-size:0.6em;"}   -->
-<!-- ::: -->
-
 ::: footer
 ::: {style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center;"}
-[[[{{< iconify ph house-line-duotone >}}]{.icon style="background-color:rgba(0,0,0,0.0);!important"}](https://samforeman.me)]{.icon style="font-size:1.5rem; padding-right: 0pt;"}
+
+[[{{< iconify ph house-line-duotone >}}](https://samforeman.me)]{.icon style="font-size:1.5rem; padding-right: 0pt;"}
 [[{{< iconify ph github-logo-duotone >}}](https://github.com/saforem2)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
 [[{{< iconify ph twitter-logo-duotone >}}](https://www.twitter.com/saforem2)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
 [[{{< iconify ph envelope-open-duotone >}}](mailto:///foremans@anl.gov)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
@@ -162,7 +145,9 @@ format:
 [[{{< iconify ph spotify-logo-duotone >}}](https://open.spotify.com/user/saforem2)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
 [[{{< iconify ph lastfm-logo-duotone >}}](https://www.last.fm/user/saforem2)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
 [[{{< iconify ph linkedin-logo-duotone >}}](https://linkedin.com/in/saforem2)]{.icon style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt"}
+
 :::
+
 [[samforeman.me/talks/llms-at-scale]{style="color:#137af5!important; background:oklch(from #137af5 calc(l * 1.15) c h / 0.085); border:0px solid #137af5!important; border-radius: 0.25rem; text-shadow: 1px 1px rgba(0, 0, 0, 0.25);"}](https://samforeman.me/talks/llms-at-scale)  
 :::
 
@@ -198,3 +183,4 @@ format:
 
 ::: {#refs}
 :::
+

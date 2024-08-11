@@ -3,7 +3,7 @@
 - ✅ **Goal**:
   - 📈 Maximize: Performance <!-- (⬆️  _maximize_) -->
   - 📉 Minimize: Cost[^cost] <!-- (⬆️  _maximize_) -->
-    - or, equivalently, 📈 **maximize** data throughput
+    - or, equivalently, 📈 **maximize** data throughput[^tput]
 
 
 [^cost]: Typically, the amount of time (💸) spent training
@@ -59,7 +59,7 @@
 
 :::
 
-# Parallelism Concepts {.centeredslide .smaller height="100%" style="height: 100%;"}
+# Parallelism Concepts {.centeredslide .smaller height="100%" style="height: 100%;" background-color="#FFF"}
 
 ::: {.panel-tabset style="max-height: 100%;"}
 
@@ -69,7 +69,6 @@
 
 ### DataParallel (DP)
 
-<!-- ::: {layout="[45,50]"} -->
 ::: {.flex-container}
 
 ::: {.col1 style="font-size: 0.85em; width:45%;"}
@@ -85,7 +84,6 @@
 
 - The processing is done in parallel and all setups are synchronized at the
   end of each training step.
-
 :::
 
 ![Data Parallel Training](./assets/multi-gpu-ddp.drawio.svg){#fig-ddp-training width="90%"}
@@ -109,7 +107,6 @@
 :::
 
 ![Tensor Parallel Training](https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg){#fig-model-parallel-1}
-
 :::
 
 ### PipelineParallel (PP)
@@ -171,7 +168,6 @@
 
 :::
 
-
 ### FSDP
 
 ::: {layout="[35,65]"}
@@ -182,14 +178,14 @@
 :::
 
 ![FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)](assets/fsdp.png)
-
 :::
 
 - 🔗 See also:
     - [Introducing PyTorch Fully Sharded Data Parallel (FSDP) API | PyTorch](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
+
 :::
 
-# Data Parallelism {style="font-size: 0.9em;"}
+# Data Parallelism {style="font-size: 0.9em;" background-color="#FFF"}
 
 ## Data Parallel Training {.centeredslide background-color="#FFF" auto-animate=true style="height: 100%; max-height: 100%;"}
 
@@ -211,10 +207,8 @@ Also see: [🎬 "Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
 :::
 
 
-
 ## Deal with Data {background-color="#FFF"}
 
-::: {style="width:98%;"}
 - At each training step, we want to ensure that **each worker receives unique data**
 
 - This can be done in one of two ways:
@@ -226,12 +220,12 @@ Also see: [🎬 "Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
         1. Each worker can see the full dataset
 
   ::: {.callout-warning icon=false title="⚠️  Warning" style="max-width:98%!important;"}
+
   Don't forget your seed!  
 
   When randomly selecting, it is important that each worker uses different seeds to ensure they receive unique data
-  :::
 
-:::
+  :::
 
 ## Broadcast Initial State {background-color="#FFF"}
 
@@ -249,26 +243,6 @@ Also see: [🎬 "Parallel Training Techniques"_](https://youtu.be/930yrXjNkgM)
     0 --> N["GPU N"]
   ```
 
-
-<!-- ## Data Parallel Training {background-color="#FFF" auto-animate=true} -->
-<!---->
-<!-- ::: {layout="[45,-5,50]"} -->
-<!---->
-<!-- ::: {.col1 style="font-size:0.75em;"} -->
-<!-- - Typically easier to implement -->
-<!--   - Relatively simple to get up and running (minor modifications to code) -->
-<!--     - {{< fa brands github >}} [`saforem2/ezpz`](https://github.com/saforem2/ezpz) -->
-<!-- - Existing frameworks: -->
-<!--   - [Horovod](https://horovod.readthedocs.io/en/stable/index.html) -->
-<!--   - [DeepSpeed](https://github.com/microsoft/DeepSpeed), -->
-<!--   - [DDP](https://pytorch.org/docs/stable/notes/ddp.html), etc) -->
-<!---->
-<!-- - Recent presentation on "_Parallel Training Techniques_" on [🎬 YouTube](https://youtu.be/930yrXjNkgM) -->
-<!-- ::: -->
-<!---->
-<!-- ![](https://saforem2.github.io/distributed-training-slides/assets/data-parallel.svg) -->
-<!---->
-<!-- ::: -->
 
 ## Best Practices {.smaller background-color="#FFF"}
 
@@ -410,7 +384,7 @@ flowchart LR
 
 :::
 
-## Tensor (Model) Parallelism[^efficient-large-scale]
+## Tensor (Model) Parallelism[^efficient-large-scale] {background-color="#FFF"}
 
 - In **Tensor Paralleism** each GPU processes only a slice of a tensor and only aggregates the full tensor for operations that require the whole thing.
 
@@ -422,7 +396,7 @@ flowchart LR
 
 [^efficient-large-scale]: [Efficient Large-Scale Language Model Training on GPU Clusters](https://arxiv.org/abs/2104.04473)
 
-## Tensor Parallelism {style="font-size: 0.9em;"}
+## Tensor Parallelism {style="font-size: 0.9em;" background-color="#FFF"}
 
 ::: {style="text-align: center;"}
 
@@ -437,7 +411,7 @@ by [\@anton-l](https://github.com/anton-l)
 
 :::
 
-## 3D Parallelism
+## 3D Parallelism {background-color="#FFF"}
 
 - `DP` + `TP` + `PP` (3D) Parallelism
 
