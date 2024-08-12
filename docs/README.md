@@ -855,17 +855,17 @@ setInterval(getSetLastFM, 10 * 100);
 import datetime
 from rich import print
 now = datetime.datetime.now()
-day = now.strftime('%m/%d/%Y')
-time = now.strftime('%H:%M:%S')
+day = now.strftime("%Y-%m-%d")
+time = now.strftime("%H:%M:%S")
 print(' '.join([
-  "[dim italic]Last Updated[/]:",
-  f"[#F06292]{day}[/]",
-  "[dim]@[/]",
-  f"[#1A8FFF]{time}[/]"
+    "[#838383]Last Updated[/]:",
+    f"[#E599F7]{day}[/]",
+    "[#838383]@[/]",
+    f"[#00CCFF]{time}[/]"
 ]))
 ```
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">08</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">11</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2024</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">15:04:43</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">16:15:41</span>
 </pre>
 </details>
 
