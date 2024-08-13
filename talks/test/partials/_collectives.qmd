@@ -1,0 +1,60 @@
+# Collective Communication {.smaller background-color="#FFFFFF"}
+
+Typically, we assign 1 `rank` to each GPU (or `accelerator`), i.e. `rank` $\in$ `[0, 1, ...,
+WORLD_SIZE-1]`.
+
+::: {.panel-tabset}
+
+### `AllReduce`
+
+- Perform _reductions_ on data (e.g. `sum`, `min`, `max`) across ranks, send result back to everyone
+
+::: {#fig-allreduce}
+![](./assets/collective-allreduce-sum.drawio.svg){width="50%"}
+
+All-Reduce operation: each rank receives the reduction of input values across ranks.
+:::
+
+### `Reduce`
+
+- Perform a _reduction_ on data across ranks, send to individual
+
+::: {#fig-reduce}
+![](./assets/collective-reduce-sum.drawio.svg){width="50%"}
+
+Reduce operation: one rank receives the reduction of input values across ranks
+:::
+
+
+### `Broadcast`
+
+- `broadcast` (_send_) a tensor <code>$x$</code> from one rank to all ranks
+
+::: {#fig-broadcast}
+![](./assets/collective-broadcast.drawio.svg){width="50%"}
+:::
+
+### `AllGather`
+
+- Gathers tensors from the whole group in a list.
+
+::: {#fig-allgather}
+![](./assets/collective-allgather.drawio.svg){width="50%"}
+:::
+
+### `Scatter`
+
+- Scatters a list of tensors to the whole group
+
+::: {#fig-scatter}
+![](./assets/collective-scatter.drawio.svg){width="50%"}
+:::
+
+:::
+
+## Collective Operations {background-color="#FFFFFF"}
+
+::: {.callout-warning icon=false title="⌛ Timeouts"}
+- Collective operations have to be called for each `rank` to form a complete collective operation.
+    - Failure to do so will result in other ranks waiting **indefinitely**
+:::

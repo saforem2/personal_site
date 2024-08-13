@@ -1,0 +1,134 @@
+# Loooooooooong Sequence Lengths {style="height:100%; font-size:0.9em;" auto-animate=true background-color=#1c1c1c}
+
+- Working with [{{< fa brands microsoft >}} Microsoft
+DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer
+sequence lengths (context windows) for LLMs
+
+::: {#fig-ds4sci layout="[[1], [1,1]]" style="text-align:center; margin-top:-3rem;"}
+
+![](./assets/deepspeed4science.light.svg){width="100%"}
+![25B](https://saforem2.github.io/qmd/dsblog_files/figure-html/cell-4-output-1.svg){width="49%"}
+![33B](https://saforem2.github.io/qmd/dsblog_files/figure-html/cell-4-output-2.svg){width="49%"}
+
+<!-- ![25B](https://raw.githubusercontent.com/f7433b22aef5b8f4215325a744029e8a78777c3c52b5531c3c16c514ed2efd23/68747470733a2f2f7361666f72656d322e6769746875622e696f2f716d642f6473626c6f675f66696c65732f6669677572652d68746d6c2f63656c6c2d342d6f75747075742d312e737667){width="44%"} -->
+<!-- $\hspace{30pt}$ -->
+<!-- ![33B](https://raw.githubusercontent.com/2cad0ad0029c8d10e99747660da569b1cb65dfe92336b1829636071f565ec0be/68747470733a2f2f7361666f72656d322e6769746875622e696f2f716d642f6473626c6f675f66696c65732f6669677572652d68746d6c2f63656c6c2d342d6f75747075742d322e737667){width="44%"} -->
+
+Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models [$[$WIP$]$]{.red-text} 
+:::
+
+::: footer
+
+::: {style="text-align:inherit"}
+
+[[[{{< fa brands github >}} `saforem2/`](https://github.com/saforem2/)]{style="border-bottom: 0.5px solid #00ccff;"}`{`[[`scaling4science`](https://github.com/saforem2/scaling4science)]{style="border-bottom: 0.5px solid #00ccff;"}, [[`Megatron-DS-Benchmarking`](https://github.com/saforem2/l2hmc-qcd)]{style="border-bottom: 0.5px solid #00ccff;"}`}`]{style="text-align:left;"}
+$\hspace{40pt}$
+[[{{< fa brands github >}} `microsoft/DeepSpeed-Megatron`](https://github.com/microsoft/DeepSpeed-Megatron)]{style="border-bottom: 0.5px solid #00ccff; text-align: right;"}
+
+:::
+
+
+:::
+
+
+# Loooooooooong Sequence Lengths {.centeredslide style="height:100%; font-size:0.8em;" auto-animate=true}
+
+- We can evaluate the performance of our model by looking at two different
+  metrics for throughput: `samples_per_sec` and `TFLOPS`.
+  - Explicitly, we see that we are able to scale up to significantly longer
+    sequences:  
+    (`420k / 128k ~ 3.3x`) with only a minimal impact on throughput  
+    performance: (`81 / 105 ~ 77%`)[^tflops-scaling].
+
+::: {style="font-size:0.8em;"}
+
+|  Name  | Sequence Length (k) | (`seq_len / min_seq_len`) |  TFLOPS  | TFLOPS (% of peak) |
+|:------:|:-------------------:|:-----------------------:|:--------:|:------------------:|
+| GPT25B |         420         |         [**3.28125**]{.blue-text}         | 81.77225 |       [**77.867**]{.blue-text}       |
+| GPT25B |         400         |          3.125          |  90.62   |       86.297       |
+| GPT25B |         360         |         2.8125          | 81.6325  |      77.7348       |
+| GPT25B |         360         |         2.8125          | 82.6824  |      78.7346       |
+| GPT25B |         192         |           1.5           | 115.8228 |      110.2927      |
+| GPT25B |         128         |            1            | 106.672  |      101.5788      |
+| GPT25B |         128         |            1            | 105.014  |       100.00       |
+
+: Impact on TFLOPS as a function of increasing sequence length. Table from: [`throughput/TFLOPS`](https://api.wandb.ai/links/l2hmc-qcd/awklywn7) {#tbl-seqlen .striped .hover}
+
+:::
+
+[^tflops-scaling]: [`throughput/TFLOPS`](https://api.wandb.ai/links/l2hmc-qcd/awklywn7)
+
+
+# [Ongoing Work \& Collaborations]{style="color: #1c1c1c"} {.centeredslide background-color=#FCFCFC style="color: #333333;"}
+
+::::::::::::::::::: {.columns}
+
+:::::: {.column width="50%"}
+
+::::: {.callout-note title="Scaling LLMs" collapse=false width="100%" style="background-color: #FFFFFF;"}
+
+- [{{< fa brands github >}} `saforem2/Megatron-DS-Benchmarking`](https://github.com/saforem2/scaling4science)
+
+:::::
+
+::: {.callout-tip icon=false title="🌍 Climate Modeling" collapse=false style="background-color: #FFFFFF!important; background: rgba(0,0,0,0.0)!important;"}
+
+- ViT for Climate Models [[WIP]]{.red-text}
+
+- [ClimRR: Climate Risk \& Resiliency Portal](https://disgeoportal.egs.anl.gov/ClimRR/)
+
+::: {.r-stack style="text-align:center;"}
+
+[![](./assets/globe_specific_hum_wind.gif){width="70%"}]{}
+
+[![](./assets/forecast1.png)]{.fragment width="100%" style="margin-top: 1em;"}
+
+[![](./assets/forecast2.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+[![](./assets/forecast3.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+[![](./assets/forecast-2-1.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+[![](./assets/forecast-2-2.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+[![](./assets/forecast-2-3.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+[![](./assets/climate-talk.png)]{.fragment width="100%" style="margin-top: 2em;"}
+
+:::
+
+:::
+
+::::::
+
+:::::: {.column width="50%"}
+
+::: {.callout-tip title="Lattice QCD" collapse=false style="width:100%!important;"}
+
+- [![](https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg){style="height:3.92rem; margin:unset;"}](https://saforem2.github.io/l2hmc-qcd)
+  - [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
+
+- [MLMC @ Lattice 23](https://saforem2.github.io/lattice23)
+  - [{{< fa brands github >}} `saforem2/lattice23`](https://github.com/saforem2/lattice23)
+- [LQCD @ PASC 23](https://saforem2.github.io/lqcd-pasc23)
+  - [{{< fa brands github >}} `saforem2/lqcd-pasc23`](https://github.com/saforem2/lattice23)
+
+
+
+![](https://saforem2.github.io/lattice23/assets/SU3/logdet_ridgeplot2.svg){width="90%" style="margin-top: -1rem;"}
+
+:::
+
+::::::
+
+:::::::::::::::::::
+
+
+::: footer
+
+::: {style="text-align:inherit; color: #222222;"}
+
+[[[{{< fa brands github >}} `saforem2/`](https://github.com/saforem2/)]{style="border-bottom: 0.5px solid #29B6F6; color: #F06292!important;"}`{`[[`scaling4science`](https://github.com/saforem2/scaling4science)]{style="border-bottom: 0.5px solid #29B6F6;"}, [[`l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)]{style="border-bottom: 0.5px solid #29B6F6;"}`}`]{style="text-align:left;"}
+:::
+
+:::

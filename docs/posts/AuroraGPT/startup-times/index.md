@@ -9,7 +9,7 @@
 
 > [!TIP]
 >
-> ### <span class="dim-text">{{\< iconify material-symbols attach-email-outline-rounded \>}} Application Startup Time</span>
+> ### <span class="dim-text"> Application Startup Time</span>
 >
 > - From Tanima:
 >
@@ -145,7 +145,7 @@
 
 > [!TIP]
 >
-> ### <span class="dim-text">{{\< iconify octicon stopwatch-16 \>}} Startup Times (Perlmutter)</span>
+> ### <span class="dim-text"> Startup Times (Perlmutter)</span>
 >
 > <div id="tbl-perlmutter-init">
 >

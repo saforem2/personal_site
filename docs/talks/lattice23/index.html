@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.4">
+
+  <meta name="author" content="Sam Foreman ">
+  <meta name="dcterms.date" content="2023-07-31">
+  <title>Sam Foreman – MLMC: Machine Learning Monte Carlo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/callouts.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+
+  <script type="text/javascript">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+  </script>
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Sam Foreman">
+<meta property="og:description" content="My ramblings about science and computers">
+<meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
+<meta property="og:site_name" content="Sam Foreman">
+<meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:description" content="My ramblings about science and computers">
+<meta name="twitter:image" content="https://github.com/saforem2/lattice23/blob/main/assets/thumbnail.png?raw=true">
+<meta name="twitter:creator" content="saforem2">
+<meta name="twitter:site" content="saforem2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="MLMC: Machine Learning Monte Carlo for Lattice Gauge Theory">
+<meta name="citation_abstract" content="We present a trainable framework for efficiently generating gauge
+configurations, and discuss ongoing work in this direction. In particular, we
+consider the problem of sampling configurations from a 4D 𝑆𝑈(3) lattice gauge
+theory, and consider a generalized leapfrog integrator in the molecular
+dynamics update that can be trained to improve sampling efficiency.
+">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2023-07-31">
+<meta name="citation_cover_date" content="2023-07-31">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-07-31">
+<meta name="citation_fulltext_html_url" content="https://saforem2.github.io/lattice23">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="https://indico.fnal.gov/event/57249/contributions/271305/">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022-05;,citation_cover_date=2022-05;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">MLMC: Machine Learning Monte Carlo</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://samforeman.me"></a><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:foremans@anl.gov">foremans@anl.gov</a>
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            ALCF
+            </a>
+          </p>
+    </div>
+</div>
+
+  <p class="date">2023-07-31</p>
+</section>
+<section id="section" class="title-slide slide level1 centeredslide center" data-background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy">
+<h1></h1>
+<div style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;">
+<p><span style="color:#939393; font-size:1.5em; font-weight: bold;">MLMC: Machine Learning Monte Carlo</span><br>
+<span style="color:#777777; font-size:1.2em; font-weight: bold;">for Lattice Gauge Theory</span><br>
+<span style="padding-bottom: 0.5rem;"><br>&nbsp;</span><br>
+<a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i></a> Sam Foreman<br>
+<span class="dim-text" style="font-size:0.8em;">Xiao-Yong Jin, James C. Osborn</span><br>
+<span style="font-size:0.8em;"><span style="border-bottom: 0.5px solid #00ccff;"><a href="https://github.com/saforem2/"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/</code></a></span><code>{</code><span style="border-bottom: 0.5px solid #00ccff;"><a href="https://github.com/saforem2/lattice23"><code>lattice23</code></a></span>, <span style="border-bottom: 0.5px solid #00ccff;"><a href="https://github.com/saforem2/l2hmc-qcd"><code>l2hmc-qcd</code></a></span><code>}</code></span></p>
+</div>
+<div class="footer">
+<p><span class="dim-text" style="&quot;text-align:left;'">2023-07-31 @ <a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a></span></p>
+</div>
+</section>
+
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
+<ol type="1">
+<li><a href="#/markov-chain-monte-carlo-mcmc-centeredslide">Background: <code>{MCMC,HMC}</code></a>
+<ul>
+<li><a href="#/leapfrog-integrator-hmc-centeredslide">Leapfrog Integrator</a></li>
+<li><a href="#/sec-issues-with-hmc">Issues with HMC</a></li>
+<li><a href="#/sec-can-we-do-better">Can we do better?</a></li>
+</ul></li>
+<li><a href="#/sec-l2hmc">L2HMC: Generalizing MD</a>
+<ul>
+<li><a href="#/sec-su3">4D <span class="math inline">SU(3)</span> Model</a></li>
+<li><a href="#/sec-results">Results</a></li>
+</ul></li>
+<li><a href="#/sec-references">References</a></li>
+<li><a href="#/sec-extras">Extras</a></li>
+</ol>
+</section>
+
+<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center">
+<h1>Markov Chain Monte Carlo (MCMC)</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="Goal" style="text-align:left;!important">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Goal</strong></p>
+</div>
+<div class="callout-content">
+<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
+<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
+</ul>
+</div><div class="column" style="width:49%;">
+<p><a href="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></a></p>
+</div></div>
+<p>If these were <span style="color:#00CCFF;">independent</span>, we could approximate: <span class="math inline">\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})</span><br>
+<span class="math display">\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)
+  \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}</span></p>
+<div class="footer">
+<p><a href="https://saforem2.github.io/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a></p>
+</div>
+<aside><ol class="aside-footnotes"></ol></aside></section>
+
+<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 centeredslide center">
+<h1>Markov Chain Monte Carlo (MCMC)</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="Goal" style="text-align:left;!important">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Goal</strong></p>
+</div>
+<div class="callout-content">
+<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<sup>1</sup> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
+<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
+</ul>
+</div><div class="column" style="width:49%;">
+<p><a href="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg"></a></p>
+</div></div>
+<p>Instead, nearby configs are <span class="red-text">correlated</span>, and we incur a factor of <span class="math inline">\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}</span>: <span class="math display">\sigma_{\mathcal{O}}^{2} =
+  \frac{\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O}
+  (x) \right]}</span></p>
+<div class="footer">
+<p><a href="https://github.com/saforem2/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a></p>
+</div>
+<aside><ol class="aside-footnotes"></ol></aside></section>
+
+<section>
+<section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
+<h1>Hamiltonian Monte Carlo (HMC)</h1>
+<ul>
+<li><p>Want to (sequentially) construct a chain of states: <span class="math display">x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}</span></p>
+<p>such that, as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
+\propto e^{-S(x)}</span></p></li>
+</ul>
+<div title="Trick" style="display:inline!important;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Trick</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Introduce <span class="green-text">fictitious</span> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span>
+<ul>
+<li>Normally distributed <strong>independent</strong> of <span class="math inline">x</span>, i.e. <span class="math display">\begin{align*}
+p(x, v) &amp;\textcolor{#02b875}{=} p(x)\,p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
+= e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
+\textcolor{#02b875}{=} e^{-H(x, v)}
+\end{align*}</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hamiltonian-monte-carlo-hmc-1" class="slide level2 centeredslide center">
+<h2>Hamiltonian Monte Carlo (HMC)</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li><p><span class="green-text"><strong>Idea</strong></span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\{x_{i}\}</span>❗</p></li>
+<li><p>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">
+p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
+</span></p></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div title="Hamiltonian Dynamics">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hamiltonian Dynamics</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow</span> <span class="math display">\dot{x} = +\partial_{v} H,
+\,\,\dot{v} = -\partial_{x} H</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+
+<img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;1: Overview of HMC algorithm
+</p></section>
+<section id="sec-leapfrog" class="slide level2 centeredslide center">
+<h2>Leapfrog Integrator (HMC)</h2>
+<div class="columns" style="text-align:center; font-size: 0.9em;" height="100%">
+<div class="column" style="width:48%;">
+<div title="Hamiltonian Dynamics">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hamiltonian Dynamics</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div title="Leapfrog Step">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Leapfrog Step</strong></p>
+</div>
+<div class="callout-content">
+<p><code>input</code> <span class="math inline">\,\left(x, v\right) \rightarrow \left(x', v'\right)\,</span> <code>output</code></p>
+<p><span class="math display">\begin{align*}
+\tilde{v} &amp;:= \textcolor{#F06292}{\Gamma}(x, v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+x' &amp;:= \textcolor{#FD971F}{\Lambda}(x, \tilde{v}) \, =  x + \varepsilon \, \tilde{v} \\
+v' &amp;:= \textcolor{#F06292}{\Gamma}(x', \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')
+\end{align*}</span></p>
+</div>
+</div>
+</div>
+</div>
+<div title="Warning!">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning!</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Resample <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span><br>
+at the <span class="yellow-text">beginning</span> of each trajectory</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div style="font-size:0.8em; margin-left:13%;">
+<p><span class="dim-text"><strong>Note</strong>: <span class="math inline">\partial_{x} S(x)</span> is the <em>force</em></span></p>
+</div>
+</div><div class="column" style="text-align:left; margin-left:2%;">
+<p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="./assets/hmc1/hmc-update-light.svg" style="width:60.0%"></a></p>
+</div></div>
+</section>
+<section id="hmc-update" class="slide level2 center">
+<h2>HMC Update</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<ul>
+<li><p>We build a trajectory of <span class="math inline">N_{\mathrm{LF}}</span> <strong>leapfrog steps</strong><sup>1</sup> <span class="math display">\begin{equation*}
+(x_{0}, v_{0})%
+\rightarrow (x_{1}, v_{1})\rightarrow \cdots%
+\rightarrow (x', v')
+\end{equation*}</span></p></li>
+<li><p>And propose <span class="math inline">x'</span> as the next state in our chain</p></li>
+</ul>
+<p><span class="math display">\begin{align*}
+  \textcolor{#F06292}{\Gamma}: (x, v) \textcolor{#F06292}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
+  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &amp;:= x + \varepsilon v
+\end{align*}</span></p>
+<ul>
+<li>We then accept / reject <span class="math inline">x'</span> using Metropolis-Hastings criteria,<br>
+<span class="math inline">A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}</span></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="./assets/hmc1/hmc-update-light.svg"></a></p>
+</div></div>
+
+<aside><div>
+<hr>
+<ol start="3">
+<li id="fn3"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim
+\mathcal{N}(0, \mathbb{1})</span><a href="#/fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section>
+<section id="hmc-demo" class="slide level2 centeredslide center">
+<h2>HMC Demo</h2>
+<div id="fig-hmc-demo" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-hmc-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="90%" height="500" title="l2hmc-qcd">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hmc-demo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: HMC Demo
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section id="sec-issues" class="title-slide slide level1 center" style="font-size:0.9em;">
+<h1>Issues with HMC</h1>
+<ul>
+<li>What do we want in a good sampler?
+<ul>
+<li><strong>Fast mixing</strong> (small autocorrelations)</li>
+<li><strong>Fast burn-in</strong> (quick convergence)</li>
+</ul></li>
+<li>Problems with HMC:
+<ul>
+<li>Energy levels selected randomly <span class="math inline">\rightarrow</span> <strong>slow mixing</strong></li>
+<li>Cannot easily traverse low-density zones <span class="math inline">\rightarrow</span> <strong>slow convergence</strong></li>
+</ul></li>
+</ul>
+<div id="fig-hmc-issues" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-hmc-issues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="HMC Samples with \varepsilon=0.25"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg"></a></p>
+<figcaption>HMC Samples with <span class="math inline">\varepsilon=0.25</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="HMC Samples with \varepsilon=0.5"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg"></a></p>
+<figcaption>HMC Samples with <span class="math inline">\varepsilon=0.5</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hmc-issues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math inline">\varepsilon</span>
+</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="topological-freezing" class="title-slide slide level1 centeredslide center">
+<h1>Topological Freezing</h1>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="text-align:left; font-size: 0.9em;">
+<p><strong>Topological Charge</strong>: <span class="math display">Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}</span></p>
+</div>
+<p><span class="dim-text" style="font-size:0.8em;"><strong>note:</strong> <span class="math inline">\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi
+\left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor</span></span></p>
+<div title="Critical Slowing Down" style="text-align:left;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Critical Slowing Down</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">Q</span> gets stuck!
+<ul>
+<li>as <span class="math inline">\beta\longrightarrow \infty</span>:
+<ul>
+<li><span class="math inline">Q \longrightarrow \text{const.}</span></li>
+<li><span class="math inline">\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}</span></li>
+</ul></li>
+<li># configs required to estimate errors<br>
+<strong>grows exponentially</strong>: <span class="red-text"><span class="math inline">\tau_{\mathrm{int}}^{Q} \longrightarrow \infty</span></span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Note \delta Q \rightarrow 0 at increasing \beta"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" style="width:80.0%" alt="Note \delta Q \rightarrow 0 at increasing \beta"></a></p>
+<figcaption>Note <span class="math inline">\delta Q \rightarrow 0</span> at increasing <span class="math inline">\beta</span></figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+
+<section id="sec-can-we-do-better" class="title-slide slide level1 center">
+<h1>Can we do better?</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Introduce two (<strong>invertible NNs</strong>) <code>vNet</code> and <code>xNet</code><sup>1</sup>:
+<ul>
+<li><span style="font-size:0.9em;"><code>vNet:</code> <span class="math inline">(x, F) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span><br>
+</li>
+<li><span style="font-size:0.9em;"><code>xNet:</code> <span class="math inline">(x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Use these <span class="math inline">(s, t, q)</span> in the <em>generalized</em> MD update:
+<ul>
+<li><span><span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> <span class="math inline">: ({x}, \textcolor{#07B875}{v}) \xrightarrow[]{\textcolor{#F06292}{s_{v}, t_{v}, q_{v}}} (x, \textcolor{#07B875}{v'})</span></span></li>
+<li><span><span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span> <span class="math inline">: (\textcolor{#AE81FF}{x}, v) \xrightarrow[]{\textcolor{#FD971F}{s_{x}, t_{x}, q_{x}}} (\textcolor{#AE81FF}{x'}, v)</span></span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:48%;">
+<div id="fig-mdupdate" class="quarto-float quarto-figure quarto-figure-center" style="width:85%; text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;4: Generalized MD update where \Lambda_{\theta}^{\pm}, \Gamma_{\theta}^{\pm} are invertible NNs"><img data-src="./assets/leapfrog-layer-2D-U1-vertical.light.svg" style="width:85%; text-align:center;"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span>, <span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> are <strong>invertible NNs</strong>
+</figcaption>
+</figure>
+</div>
+</div></div>
+<aside><ol class="aside-footnotes"></ol></aside></section>
+
+<section>
+<section id="sec-l2hmc" class="title-slide slide level1 centeredslide center">
+<h1>L2HMC: Generalizing the MD Update</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="L2HMC Update" style="font-size: 0.9em;">
+<div class="callout callout-none no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>L2HMC Update</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Introduce <span class="math inline">d \sim \mathcal{U}(\pm)</span> to determine the direction of our update</p>
+<ol type="1">
+<li><p><span><span class="math inline">\textcolor{#07B875}{v'} =</span> <span class="pink-text"><span class="math inline">\Gamma^{\pm}</span></span><span class="math inline">({x}, \textcolor{#07B875}{v})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{46pt}</span> update <span class="math inline">v</span></span></p></li>
+<li><p><span><span class="math inline">\textcolor{#AE81FF}{x'} =</span> <span class="blue-text"><span class="math inline">x_{B}</span></span><span class="math inline">\,+\,</span><span class="orange-text"><span class="math inline">\Lambda^{\pm}</span></span><span class="math inline">(</span><span class="red-text"><span class="math inline">x_{A}</span></span><span class="math inline">, {v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{10pt}</span> update first <strong>half</strong>: <span class="math inline">x_{A}</span></span></p></li>
+<li><p><span><span class="math inline">\textcolor{#AE81FF}{x''} =</span> <span class="red-text"><span class="math inline">x'_{A}</span></span><span class="math inline">\,+\,</span><span class="orange-text"><span class="math inline">\Lambda^{\pm}</span></span><span class="math inline">(</span><span class="blue-text"><span class="math inline">x'_{B}</span></span><span class="math inline">, {v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{8pt}</span> update other half: <span class="math inline">x_{B}</span></span></p></li>
+<li><p><span><span class="math inline">\textcolor{#07B875}{v''} =</span> <span class="pink-text"><span class="math inline">\Gamma^{\pm}</span></span><span class="math inline">({x''}, \textcolor{#07B875}{v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{36pt}</span> update <span class="math inline">v</span></span></p></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div title="🎲 Re-Sampling" style="text-align:left; font-size: 0.7em; line-height:1em;">
+<div class="callout callout-none no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🎲 Re-Sampling</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Resample both <span class="math inline">v\sim \mathcal{N}(0, 1)</span>, and <span class="math inline">d \sim \mathcal{U}(\pm)</span> at the beginning of each trajectory
+<ul>
+<li>To ensure ergodicity + reversibility, we split the <span class="purple-text"><span class="math inline">x</span></span> update into sequential (complementary) updates</li>
+</ul></li>
+<li>Introduce directional variable <span class="math inline">d \sim \mathcal{U}(\pm)</span>, resampled at the beginning of each trajectory:
+<ul>
+<li>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e. <span class="math display">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x,
+v)\right] = (x, v)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="fig-mdupdate" class="quarto-float quarto-figure quarto-figure-center" style="width:85%; text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;5: Generalized MD update with \Lambda_{\theta}^{\pm}, \Gamma_{\theta}^{\pm} invertible NNs"><img data-src="./assets/leapfrog-layer-2D-U1-vertical.light.svg" style="width:85%; text-align:center;"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span>, <span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> <strong>invertible NNs</strong>
+</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="l2hmc-leapfrog-layer" class="slide level2 centeredslide center">
+<h2>L2HMC: Leapfrog Layer</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg" class="absolute" style="top: 30px; width: 40%; "></a></p>
+</div><div class="column" style="width:65%;">
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg" style="width:100.0%"></a></p>
+</div></div>
+<p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="absolute" style="top: 440px; width: 100%; "></a></p>
+</section>
+<section id="l2hmc-update" class="slide level2 center" style="font-size: 0.775em;">
+<h2>L2HMC Update</h2>
+<div class="columns">
+<div class="column" style="font-size:0.99em;">
+<div title="Algorithm">
+<div class="callout callout-none no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Algorithm</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><p><code>input</code>: <span class="purple-text"><span class="math inline">x</span></span></p>
+<ul>
+<li>Resample: <span class="math inline">\textcolor{#07B875}{v} \sim \mathcal{N}(0, \mathbb{1})</span>; <span class="math inline">\,\,{d\sim\mathcal{U}(\pm)}</span></li>
+<li>Construct initial state: <span class="math inline">\textcolor{#939393}{\xi} =(\textcolor{#AE81FF}{x}, \textcolor{#07B875}{v}, {\pm})</span></li>
+</ul></li>
+<li><p><code>forward</code>: Generate <span style="color:#f8f8f8">proposal <span class="math inline">\xi'</span></span> by passing <span style="color:#939393">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers<br>
+<span class="math display">\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#f8f8f8}{\xi'} := (\textcolor{#AE81FF}{x''}, \textcolor{#07B875}{v''})</span></p>
+<ul>
+<li>Accept / Reject: <span class="math display">\begin{equation*}
+A({\textcolor{#f8f8f8}{\xi'}}|{\textcolor{#939393}{\xi}})=
+\mathrm{min}\left\{1,
+\frac{\pi(\textcolor{#f8f8f8}{\xi'})}{\pi(\textcolor{#939393}{\xi})} \left| \mathcal{J}\left(\textcolor{#f8f8f8}{\xi'},\textcolor{#939393}{\xi}\right)\right| \right\}
+\end{equation*}</span></li>
+</ul></li>
+<li><p><code>backward</code> (if training):</p>
+<ul>
+<li>Evaluate the <strong>loss function</strong><sup>1</sup> <span class="math inline">\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#f8f8f8}{\xi'}, \textcolor{#939393}{\xi})</span> and backprop</li>
+</ul></li>
+<li><p><code>return</code>: <span class="math inline">\textcolor{#AE81FF}{x}_{i+1}</span><br>
+Evaluate MH criteria <span class="math inline">(1)</span> and return accepted config, <span class="math display">\textcolor{#AE81FF}{{x}_{i+1}}\gets
+  \begin{cases}
+  \textcolor{#f8f8f8}{\textcolor{#AE81FF}{x''}} \small{\text{ w/ prob }} A(\textcolor{#f8f8f8}{\xi''}|\textcolor{#939393}{\xi}) \hspace{26pt} ✅ \\
+  \textcolor{#939393}{\textcolor{#AE81FF}{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#f8f8f8}{\xi''}|{\textcolor{#939393}{\xi}}) \hspace{10pt} 🚫
+  \end{cases}</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="fig-mdupdate" class="quarto-float quarto-figure quarto-figure-center" style="width:75%; text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;6: Leapfrog Layer used in generalized MD update"><img data-src="./assets/leapfrog-layer-2D-U1-vertical.light.svg" style="width:75%; text-align:center;"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <strong>Leapfrog Layer</strong> used in generalized MD update
+</figcaption>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<hr>
+<ol start="5">
+<li id="fn5"><p>For simple <span class="math inline">\mathbf{x} \in \mathbb{R}^{2}</span> example, <span class="math inline">\mathcal{L}_{\theta} =
+A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}</span><a href="#/fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section></section>
+<section>
+<section id="sec-su3" class="title-slide slide level1 centeredslide center" style="font-size: 0.9em;">
+<h1>4D <span class="math inline">SU(3)</span> Model</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="Link Variables" style="text-align:left;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Link Variables</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Write link variables <span class="math inline">U_{\mu}(x) \in SU(3)</span>:</p>
+<p><span class="math display"> \begin{align*}
+U_{\mu}(x) &amp;= \mathrm{exp}\left[{i\, \textcolor{#AE81FF}{\omega^{k}_{\mu}(x)} \lambda^{k}}\right]\\
+&amp;= e^{i \textcolor{#AE81FF}{Q}},\quad \text{with} \quad \textcolor{#AE81FF}{Q} \in \mathfrak{su}(3)
+\end{align*}</span></p>
+<p><span style="font-size:0.9em;">where <span class="purple-text"><span class="math inline">\omega^{k}_{\mu}(x)</span></span> <span class="math inline">\in \mathbb{R}</span>, and <span class="math inline">\lambda^{k}</span> are the generators of <span class="math inline">SU(3)</span></span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div title="Conjugate Momenta" style="text-align:left;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Conjugate Momenta</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Introduce <span class="green-text"><span class="math inline">P_{\mu}(x) = P^{k}_{\mu}(x) \lambda^{k}</span></span> conjugate to <span class="purple-text"><span class="math inline">\omega^{k}_{\mu}(x)</span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div title="Wilson Action" style="text-align:left;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wilson Action</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display"> S_{G} = -\frac{\beta}{6} \sum
+\mathrm{Tr}\left[U_{\mu\nu}(x)
++ U^{\dagger}_{\mu\nu}(x)\right] </span></p>
+<p>where <span class="math inline">U_{\mu\nu}(x) = U_{\mu}(x) U_{\nu}(x+\hat{\mu})
+U^{\dagger}_{\mu}(x+\hat{\nu}) U^{\dagger}_{\nu}(x)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div id="fig-4dlattice" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-4dlattice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/u1lattice.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;7: Illustration of the lattice"><img data-src="./assets/u1lattice.dark.svg" style="width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4dlattice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Illustration of the lattice
+</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="sec-hmcsu3" class="slide level2 center">
+<h2>HMC: 4D <span class="math inline">SU(3)</span></h2>
+<p>Hamiltonian: <span class="math inline">H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow</span></p>
+<div class="columns">
+<div class="column" style="font-size:0.9em; text-align: center;">
+<div style="text-align:left;">
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li><span style="border-bottom: 2px solid #AE81FF;"><span class="math inline">U</span> update</span>: <span class="purple-text" style="font-size:1.5em;"><span class="math inline">\frac{d\omega^{k}}{dt} = \frac{\partial H}{\partial P^{k}}</span></span> <span class="math display">\frac{d\omega^{k}}{dt}\lambda^{k} = P^{k}\lambda^{k} \Longrightarrow \frac{dQ}{dt} = P</span> <span class="math display">\begin{align*}
+Q(\textcolor{#FFEE58}{\varepsilon}) &amp;= Q(0) + \textcolor{#FFEE58}{\varepsilon} P(0)\Longrightarrow\\
+-i\, \log U(\textcolor{#FFEE58}{\varepsilon}) &amp;= -i\, \log U(0) + \textcolor{#FFEE58}{\varepsilon} P(0) \\
+U(\textcolor{#FFEE58}{\varepsilon}) &amp;= e^{i\,\textcolor{#FFEE58}{\varepsilon} P(0)} U(0)\Longrightarrow \\
+&amp;\hspace{1pt}\\
+\textcolor{#FD971F}{\Lambda}:\,\, U \longrightarrow U' &amp;:= e^{i\varepsilon P'} U
+\end{align*}</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div><div class="column" style="font-size:0.9em; text-align: center;">
+<div style="text-align:left;">
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li><span style="border-bottom: 2px solid #07B875;"><span class="math inline">P</span> update</span>: <span class="green-text" style="font-size:1.5em;"><span class="math inline">\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}</span></span> <span class="math display">\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}
+= -\frac{\partial H}{\partial Q} = -\frac{dS}{dQ}\Longrightarrow</span> <span class="math display">\begin{align*}
+P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \left.\frac{dS}{dQ}\right|_{t=0} \\
+&amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \,\textcolor{#E599F7}{F[U]} \\
+&amp;\hspace{1pt}\\
+\textcolor{#F06292}{\Gamma}:\,\, P \longrightarrow P' &amp;:= P - \frac{\varepsilon}{2} F[U]
+\end{align*}</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div></div>
+<aside><div>
+<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\textcolor{#FFEE58}{\varepsilon}</span> is the step size</span></p>
+</div><div>
+<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\textcolor{#E599F7}{F[U]}</span> is the force term</span></p>
+</div></aside></section>
+<section id="hmc-4d-su3" class="slide level2 centeredslide center">
+<h2>HMC: 4D <span class="math inline">SU(3)</span></h2>
+<div class="columns">
+<div class="column" style="text-align:left;">
+<ul>
+<li><p><span style="border-bottom: 2px solid #F06292;">Momentum Update</span>: <span class="math display">\textcolor{#F06292}{\Gamma}: P \longrightarrow P' := P - \frac{\varepsilon}{2} F[U]</span></p></li>
+<li><p><span style="border-bottom: 2px solid #FD971F;">Link Update</span>: <span class="math display">\textcolor{#FD971F}{\Lambda}: U \longrightarrow U' := e^{i\varepsilon P'} U\quad\quad</span></p></li>
+<li><p>We maintain a batch of <code>Nb</code> lattices, all updated in parallel</p>
+<ul>
+<li><span class="math inline">U</span><code>.dtype = complex128</code></li>
+<li><span class="math inline">U</span><code>.shape</code><br>
+<span style="font-size: 0.95em;"><code>= [Nb, 4, Nt, Nx, Ny, Nz, 3, 3]</code></span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="text-align:right;">
+<p><a href="./assets/hmc/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="./assets/hmc/hmc-update-light.svg" style="width:60.0%"></a></p>
+</div></div>
+</section></section>
+<section id="sec-su3networks" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Networks 4D <span class="math inline">SU(3)</span></h1>
+<div class="columns">
+<div class="column" style="font-size:0.9em;">
+<p>&nbsp;<br></p>
+<p>&nbsp;<br></p>
+<p><span class="purple-text"><span class="math inline">U</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)</span></span></p>
+<p>&nbsp;<br></p>
+<div style="border: 1px solid #1c1c1c; border-radius: 6px; padding:1%;">
+<p><span class="green-text"><span class="math inline">P</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)</span></span></p>
+</div>
+</div><div class="column" style="text-align:right;">
+<p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" style="width:80.0%"></a></p>
+</div></div>
+</section>
+
+<section>
+<section id="networks-4d-su3" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Networks 4D <span class="math inline">SU(3)</span></h1>
+<div class="columns">
+<div class="column" style="font-size:0.9em;">
+<p>&nbsp;<br></p>
+<p>&nbsp;<br></p>
+<p><span class="purple-text"><span class="math inline">U</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)</span></span></p>
+<p>&nbsp;<br></p>
+<div style="border: 1px solid #07B875; border-radius: 6px; padding:1%;">
+<p><span class="green-text"><span class="math inline">P</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)</span></span></p>
+</div>
+<p><span class="dim-text"><span class="math inline">\uparrow</span></span><br>
+<span class="dim-text" style="padding-top: 0.5em!important;">let’s look at this</span></p>
+</div><div class="column" style="text-align:right;">
+<p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" style="width:80.0%"></a></p>
+</div></div>
+</section>
+<section id="p-network-pt.-1" class="slide level2 center" style="font-size:0.95em;">
+<h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;1)</h2>
+<div style="text-align:center;">
+<p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.493);"><code>input</code><sup>1</sup>: <span class="math inline">\hspace{7pt}\left(U, F\right) := (e^{i Q}, F)</span></span> <span class="math display">\begin{align*}
+h_{0} &amp;= \sigma\left( w_{Q} Q + w_{F} F + b \right) \\
+h_{1} &amp;= \sigma\left( w_{1} h_{0} + b_{1} \right) \\
+&amp;\vdots \\
+h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
+\textcolor{#FF5252}{z} &amp; := \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow \\
+\end{align*}</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.5);"><code>output</code><sup>2</sup>: <span class="math inline">\hspace{7pt} (s_{P}, t_{P}, q_{P})</span></span></p>
+<ul>
+<li><span class="math inline">s_{P} = \lambda_{s} \tanh(w_s \textcolor{#FF5252}{z} + b_s)</span></li>
+<li><span class="math inline">t_{P} = w_{t} \textcolor{#FF5252}{z} + b_{t}</span></li>
+<li><span class="math inline">q_{P} = \lambda_{q} \tanh(w_{q} \textcolor{#FF5252}{z} + b_{q})</span></li>
+</ul></li>
+</ul>
+</div></div>
+
+<aside><div>
+<hr>
+<ol start="6">
+<li id="fn6"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function<a href="#/fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><span class="math inline">\lambda_{s}, \lambda_{q} \in \mathbb{R}</span>, trainable parameters<a href="#/fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section>
+<section id="p-network-pt.-2" class="slide level2 center" style="font-size:0.9em;">
+<h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;2)</h2>
+<div style="text-align:center;">
+<p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
+</div>
+<ul>
+<li><p>Use <span class="math inline">(s_{P}, t_{P}, q_{P})</span> to update <span class="math inline">\Gamma^{\pm}: (U, P) \rightarrow
+\left(U, P_{\pm}\right)</span><sup>1</sup>:</p>
+<ul>
+<li><p><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>: <span class="math display">\Gamma^{\textcolor{#FF5252}{+}}(U, P) := P_{\textcolor{#FF5252}{+}} = P \cdot e^{\frac{\varepsilon}{2} s_{P}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]</span></p></li>
+<li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}(U, P) := P_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{P}} \left\{P + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]\right\}</span></p></li>
+</ul></li>
+</ul>
+
+<aside><div>
+<hr>
+<ol start="8">
+<li id="fn8"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(U, P)\right] = \Gamma^{-}\left[\Gamma^{+}(U, P)\right] = (U, P)</span><a href="#/fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section></section>
+<section>
+<section id="sec-results" class="title-slide slide level1 centeredslide center">
+<h1>Results: 2D <span class="math inline">U(1)</span></h1>
+<div class="columns">
+<div class="column" style="align:top;">
+<p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg" style="width:90.0%"></a></p>
+</div><div class="column" style="text-align:left; padding-top: 5%;">
+<div title="Improvement" style="text-align:left!important;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Improvement</strong></p>
+</div>
+<div class="callout-content">
+<p>We can measure the performance by comparing <span class="math inline">\tau_{\mathrm{int}}</span> for the <span style="color:#FF2052;"><strong>trained model</strong></span> vs. <span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
+<p><strong>Note</strong>: <span style="color:#FF2052;">lower</span> is better</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg" class="absolute" style="margin-bottom: 1em;margin-top: 1em;top: 400px; left: 0px; width: 100%; "></a></p>
+</section>
+<section id="sec-interpretation" class="slide level2 centeredslide center">
+<h2>Interpretation</h2>
+<div class="columns" style="margin-left:1pt;">
+<div class="column" style="width:36%;">
+<p><span class="dim-text" style="text-align:center; font-size:0.8em">Deviation in <span class="math inline">x_{P}</span></span></p>
+</div><div class="column" style="width:30%;">
+<p><span class="dim-text" style="text-align:right; font-size:0.8em">Topological charge mixing</span></p>
+</div><div class="column" style="width:32%;">
+<p><span class="dim-text" style="text-align:right!important; font-size:0.8em;">Artificial influx of energy</span></p>
+</div></div>
+<div id="fig-interpretation" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-interpretation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;8: Illustration of how different observables evolve over a single L2HMC trajectory."><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpretation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Illustration of how different observables evolve over a single L2HMC trajectory.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="interpretation" class="slide level2 centeredslide center">
+<h2>Interpretation</h2>
+<div id="fig-energy-ridgeplot" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-energy-ridgeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Average plaquette: \langle x_{P}\rangle vs LF step"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg"></a></p>
+<figcaption>Average plaquette: <span class="math inline">\langle x_{P}\rangle</span> vs LF step</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Average energy: H - \sum\log|\mathcal{J}|"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg"></a></p>
+<figcaption>Average energy: <span class="math inline">H - \sum\log|\mathcal{J}|</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-energy-ridgeplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: The trained model artifically increases the energy towards the middle of the trajectory, allowing the sampler to tunnel between isolated sectors.
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="sec-su3results" class="title-slide slide level1 center">
+<h1>4D <span class="math inline">SU(3)</span> Results</h1>
+<ul>
+<li>Distribution of <span class="math inline">\log|\mathcal{J}|</span> over all chains, at each <em>leapfrog step</em>, <span class="math inline">N_{\mathrm{LF}}</span> (<span class="math inline">= 0, 1, \ldots, 8</span>) during training:</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[ [30, 30, 30] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-ridgeplot1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-ridgeplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/SU3/logdet_ridgeplot1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;10: 100 train iters"><img data-src="./assets/SU3/logdet_ridgeplot1.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ridgeplot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: <code>100</code> train iters
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-ridgeplot2" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-ridgeplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/SU3/logdet_ridgeplot2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;11: 500 train iters"><img data-src="./assets/SU3/logdet_ridgeplot2.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ridgeplot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: <code>500</code> train iters
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-ridgeplot3" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-ridgeplot3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/SU3/logdet_ridgeplot3.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;12: 1000 train iters"><img data-src="./assets/SU3/logdet_ridgeplot3.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ridgeplot3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: <code>1000</code> train iters
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-su3-results-delta-u_munu" class="slide level2 center">
+<h2>4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
+<div id="fig-pdiff" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-pdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/SU3/pdiff.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;13: The difference in the average plaquette \left|\delta U_{\mu\nu}\right|^{2} between the trained model and HMC"><img data-src="./assets/SU3/pdiff.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: The difference in the average plaquette <span class="math inline">\left|\delta U_{\mu\nu}\right|^{2}</span> between the trained model and HMC
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="d-su3-results-delta-u_munu-1" class="slide level2 center">
+<h2>4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
+<div id="fig-pdiff-robust" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-pdiff-robust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/SU3/pdiff-robust.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;14: The difference in the average plaquette \left|\delta U_{\mu\nu}\right|^{2} between the trained model and HMC"><img data-src="./assets/SU3/pdiff-robust.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdiff-robust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: The difference in the average plaquette <span class="math inline">\left|\delta U_{\mu\nu}\right|^{2}</span> between the trained model and HMC
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="sec-next-steps" class="title-slide slide level1 center">
+<h1>Next Steps</h1>
+<ul>
+<li><p>Further code development</p>
+<ul>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/l2hmc-qcd"><code>saforem2/l2hmc-qcd</code></a></li>
+</ul></li>
+<li><p>Continue to use / test different network architectures</p>
+<ul>
+<li>Gauge equivariant NNs for <span class="math inline">U_{\mu}(x)</span> update</li>
+</ul></li>
+<li><p>Continue to test different loss functions for training</p></li>
+<li><p>Scaling:</p>
+<ul>
+<li>Lattice volume</li>
+<li>Network size</li>
+<li>Batch size</li>
+<li># of GPUs</li>
+</ul></li>
+</ul>
+</section>
+<section id="sec-thank-you" class="slide level2 center">
+<h2>Thank you!</h2>
+<p>&nbsp;<br></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="4" style="text-align:left; font-size:0.8em;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<p><span style="font-size:0.8em;"><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i> <code>samforeman.me</code></a></span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<p><span style="font-size:0.8em;"><a href="https://github.com/saforem2"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2</code></a></span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<p><span style="font-size:0.8em;"><a href="https://www.twitter.com/saforem2"><i class="fa-brands fa-twitter" aria-label="twitter"></i> <code>@saforem2</code></a></span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<p><span style="font-size:0.8em;"><a href="mailto:///foremans@anl.gov"><i class="fa-regular fa-paper-plane" aria-label="paper-plane"></i> <code>foremans@anl.gov</code></a></span></p>
+</div>
+</div>
+</div>
+<div title="Acknowledgements">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Acknowledgements</strong></p>
+</div>
+<div class="callout-content">
+<p>This research used resources of the Argonne Leadership Computing Facility,<br>
+which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-l2hmc-gh" class="slide level2 center">
+<h2></h2>
+<div style="text-align:center;">
+<p><a href="https://github.com/saforem2/l2hmc-qcd"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg"></a></p>
+<p><a href="https://hits.seeyoufarm.com"><img alt="hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsaforem2%2Fl2hmc-qcd&amp;count_bg=%2300CCFF&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23111111&amp;title=👋&amp;edge_flat=false"></a> <a href="https://github.com/saforem2/l2hmc-qcd/"><img alt="l2hmc-qcd" src="https://img.shields.io/badge/-l2hmc--qcd-252525?style=flat&amp;logo=github&amp;labelColor=gray"></a> <a href="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd"><img alt="codefactor" src="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd/badge"></a></p>
+<p><a href="https://arxiv.org/abs/2112.01582"><img alt="arxiv" src="http://img.shields.io/badge/arXiv-2112.01582-B31B1B.svg"></a> <a href="https://arxiv.org/abs/2105.03418"><img alt="arxiv" src="http://img.shields.io/badge/arXiv-2105.03418-B31B1B.svg"></a></p>
+<p><a href="https://hydra.cc"><img alt="hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"></a> <a href="https://pytorch.org/get-started/locally/"><img alt="pyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&amp;logoColor=white"></a> <a href="https://www.tensorflow.org"><img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&amp;logo=TensorFlow&amp;logoColor=white"></a> <a href="https://wandb.ai/l2hmc-qcd/l2hmc-qcd"><img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Weights &amp; Biases monitoring" height="20"></a></p>
+</div>
+</section>
+<section id="sec-acknowledgements" class="slide level2 center">
+<h2>Acknowledgements</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Links</strong>:
+<ul>
+<li><a href="https://github.com/saforem2/l2hmc-qcd"><i class="fa-brands fa-github" aria-label="github"></i> Link to github</a></li>
+<li><a href="mailto:foremans@anl.gov"><i class="fa-solid fa-paper-plane" aria-label="paper-plane"></i> reach out!</a></li>
+</ul></li>
+<li><strong>References</strong>:
+<ul>
+<li><a href="https://saforem2.github.io/lattice23/">Link to slides</a>
+<ul>
+<li><a href="https://github.com/saforem2/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> link to github with slides</a></li>
+</ul></li>
+<li><i class="fa-solid fa-book" aria-label="book"></i> <span class="citation" data-cites="Foreman:2021ljl Foreman:2021rhs Foreman:2021ixr">(<a href="#/references-1" role="doc-biblioref" onclick="">Foreman et al. 2022</a>; <a href="#/references-1" role="doc-biblioref" onclick="">Foreman, Jin, and Osborn 2022</a>, <a href="#/references-1" role="doc-biblioref" onclick="">2021</a>)</span></li>
+<li><i class="fa-solid fa-book" aria-label="book"></i> <span class="citation" data-cites="Boyda:2022nmh Shanahan:2022ifi">(<a href="#/references-1" role="doc-biblioref" onclick="">Boyda et al. 2022</a>; <a href="#/references-1" role="doc-biblioref" onclick="">Shanahan et al. 2022</a>)</span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Huge thank you to:
+<ul>
+<li>Yannick Meurice</li>
+<li>Norman Christ</li>
+<li>Akio Tomiya</li>
+<li>Nobuyuki Matsumoto</li>
+<li>Richard Brower</li>
+<li>Luchang Jin</li>
+<li>Chulwoo Jung</li>
+<li>Peter Boyle</li>
+<li>Taku Izubuchi</li>
+<li>Denis Boyda</li>
+<li>Dan Hackett</li>
+<li>ECP-CSD group</li>
+<li><span class="red-text"><strong>ALCF Staff + Datascience Group</strong></span></li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="sec-references" class="slide level2 center">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="links">Links</h3>
+<ul>
+<li><p><a href="https://github.com/saforem2/l2hmc-qcd"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/l2hmc-qcd</code></a></p></li>
+<li><p><a href="https://saforem2.github.io/lattice23">📊 slides</a> (Github: <a href="https://github.com/saforem2/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a>)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://saforem2.github.io/grid-worms-animation/">Title Slide Background (worms) animation</a>
+<ul>
+<li>Github: <a href="https://github.com/saforem2/grid-worms-animation"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/grid-worms-animation</code></a></li>
+</ul></li>
+<li><a href="https://chi-feng.github.io/mcmc-demo/app.html">Link to HMC demo</a></li>
+</ul>
+</div></div>
+</section>
+<section id="references-1" class="slide level2 smaller scrollable" style="line-height:1.2em;">
+<h2>References</h2>
+<p>(I don’t know why this is broken 🤷🏻‍♂️ )</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Boyda:2022nmh" class="csl-entry" role="listitem">
+Boyda, Denis et al. 2022. <span>“<span class="nocase">Applications of Machine Learning to Lattice Quantum Field Theory</span>.”</span> In <em><span>Snowmass 2021</span></em>. <a href="https://arxiv.org/abs/2202.05838">https://arxiv.org/abs/2202.05838</a>.
+</div>
+<div id="ref-Foreman:2021ljl" class="csl-entry" role="listitem">
+Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C. Osborn, and Akio Tomiya. 2022. <span>“<span class="nocase">HMC with Normalizing Flows</span>.”</span> <em>PoS</em> LATTICE2021: 073. <a href="https://doi.org/10.22323/1.396.0073">https://doi.org/10.22323/1.396.0073</a>.
+</div>
+<div id="ref-Foreman:2021ixr" class="csl-entry" role="listitem">
+Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2021. <span>“<span>Deep Learning Hamiltonian Monte Carlo</span>.”</span> In <em><span class="nocase">9th International Conference on Learning Representations</span></em>. <a href="https://arxiv.org/abs/2105.03418">https://arxiv.org/abs/2105.03418</a>.
+</div>
+<div id="ref-Foreman:2021rhs" class="csl-entry" role="listitem">
+———. 2022. <span>“<span class="nocase">LeapfrogLayers: A Trainable Framework for Effective Topological Sampling</span>.”</span> <em>PoS</em> LATTICE2021 (May): 508. <a href="https://doi.org/10.22323/1.396.0508">https://doi.org/10.22323/1.396.0508</a>.
+</div>
+<div id="ref-Shanahan:2022ifi" class="csl-entry" role="listitem">
+Shanahan, Phiala et al. 2022. <span>“<span>Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning</span>,”</span> September. <a href="https://arxiv.org/abs/2209.07559">https://arxiv.org/abs/2209.07559</a>.
+</div>
+</div>
+</section></section>
+<section>
+<section id="sec-extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
+
+</section>
+<section id="integrated-autocorrelation-time" class="slide level2 centeredslide center">
+<h2>Integrated Autocorrelation Time</h2>
+<div id="fig-iat" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-iat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;15: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale)."><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-iat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Plot of the integrated autocorrelation time for both the trained model (colored) and HMC (greyscale).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="comparison" class="slide level2 center">
+<h2>Comparison</h2>
+<div id="fig-comparison" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-eval" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-eval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg" class="lightbox" data-gallery="fig-comparison" title="Figure&nbsp;16&nbsp;(a): Trained model"><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg" data-ref-parent="fig-comparison"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-eval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Trained model
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-hmc" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-hmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg" class="lightbox" data-gallery="fig-comparison" title="Figure&nbsp;16&nbsp;(b): Generic HMC"><img data-src="https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg" data-ref-parent="fig-comparison"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Generic HMC
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison" class="quarto-xref">Figure&nbsp;16 (a)</a> vs.&nbsp;HMC <a href="#/comparison" class="quarto-xref">Figure&nbsp;16 (b)</a>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="plaquette-analysis-x_p" class="slide level2 centeredslide center">
+<h2>Plaquette analysis: <span class="math inline">x_{P}</span></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="dim-text" style="text-align:center; font-size:0.9em;">Deviation from <span class="math inline">V\rightarrow\infty</span> limit, <span class="math inline">x_{P}^{\ast}</span></span></p>
+</div><div class="column" style="width:45%;">
+<p><span class="dim-text" style="text-align:right!important; font-size:0.9em;">Average <span class="math inline">\langle x_{P}\rangle</span>, with <span class="math inline">x_{P}^{\ast}</span> (dotted-lines)</span></p>
+</div></div>
+<div id="fig-avg-plaq" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-avg-plaq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;17: Plot showing how average plaquette, \left\langle x_{P}\right\rangle varies over a single trajectory for models trained at different \beta, with varying trajectory lengths N_{\mathrm{LF}}"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" style="width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-avg-plaq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="loss-function" class="slide level2 center">
+<h2>Loss Function</h2>
+<ul>
+<li><p>Want to maximize the <em>expected</em> squared charge difference<sup>1</sup>: <span class="math display">\begin{equation*}
+\mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) =
+{\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}
+\left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
+\end{equation*}</span></p></li>
+<li><p>Where:</p>
+<ul>
+<li><p><span class="math inline">\delta Q</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
+\textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
+\end{equation*}</span></p></li>
+<li><p><span class="math inline">A(\xi^{\ast}|\xi)</span> is the probability<sup>2</sup> of accepting the proposal <span class="math inline">\xi^{\ast}</span>: <span class="math display">\begin{equation*}
+A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
+\frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial
+\xi^{T}}\right|\right)
+\end{equation*}</span></p></li>
+</ul></li>
+</ul>
+
+<aside><div>
+<hr>
+<ol start="9">
+<li id="fn9"><p>Where <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)<a href="#/fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>And <span class="math inline">\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|</span> is the Jacobian of the transformation from <span class="math inline">\xi \rightarrow \xi^{\ast}</span><a href="#/fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section>
+<section id="networks-2d-u1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Networks 2D <span class="math inline">U(1)</span></h2>
+<ul>
+<li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
+<p><span class="math display"> x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]</span></p>
+<p>with <code>shape</code><span class="math inline">\left(x_{\mu}\right)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\in \mathbb{R}</span></p></li>
+<li><p><span class="math inline">x</span>-Network:</p>
+<ul>
+<li><span class="purple-text"><span class="math inline">\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+</ul></li>
+<li><p><span class="math inline">v</span>-Network:</p>
+<ul>
+<li><span class="green-text"><span class="math inline">\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span> <span class="dim-text"><span class="math inline">\hspace{2pt}\longleftarrow</span> lets look at this</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="v-updatereverse" class="slide level2 center">
+<h2><span class="math inline">v</span>-Update<sup>1</sup></h2>
+<ul>
+<li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
+</ul>
+<p><span class="math display">\Gamma^{\textcolor{#FF5252}{+}}: (x, v) \rightarrow v' := v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]</span></p>
+<ul>
+<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>:</li>
+</ul>
+<p><span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}: (x, v) \rightarrow v' := e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p>
+
+<aside><div>
+<hr>
+<ol start="11">
+<li id="fn11"><p><span style="font-size:0.8em;">Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></span><a href="#/fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</div><ol class="aside-footnotes"></ol></aside></section>
+<section id="x-update" class="slide level2 center">
+<h2><span class="math inline">x</span>-Update</h2>
+<ul>
+<li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
+</ul>
+<p><span class="math display">\Lambda^{\textcolor{#FF5252}{+}}(x, v) = x \cdot e^{\frac{\varepsilon}{2} s_{x}} - \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]</span></p>
+<ul>
+<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>:</li>
+</ul>
+<p><span class="math display">\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left\{x + \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\right\}</span></p>
+</section>
+<section id="lattice-gauge-theory-2d-u1" class="slide level2 centeredslide center">
+<h2>Lattice Gauge Theory (2D <span class="math inline">U(1)</span>)</h2>
+<div class="columns" data-layout-valign="top">
+<div class="column" style="width:50%;">
+<div style="text-align:center;">
+<div title="Link Variables">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Link Variables</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad</span> <span class="math display">x_{\mu}(n) \in [-\pi,\pi)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div title="Wilson Action">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wilson Action</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},</span></p>
+<p><span class="math display">\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})
+- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\right]</span></p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="dim-text" style="font-size:0.8em;"><strong>Note</strong>: <span class="math inline">\textcolor{#00CCFF}{x_{P}}</span> is the product of links around <span class="math inline">1\times 1</span> square, called a <span class="blue-text">“plaquette”</span></span></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="2D Lattice"><img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg" style="width:80.0%" alt="2D Lattice"></a></p>
+<figcaption>2D Lattice</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="section-1" class="slide level2 center" data-background-color="white">
+<h2></h2>
+<div id="fig-notebook" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-notebook-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Jupyter Notebook
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="annealing-schedule" class="slide level2 center">
+<h2>Annealing Schedule</h2>
+<ul>
+<li><p>Introduce an <em>annealing schedule</em> during the training phase:</p>
+<p><span class="math display">\left\{ \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},
+\ldots, \gamma_{N-1}, \gamma_{N} \right\}</span></p>
+<p>where <span class="math inline">\gamma_{0} &lt; \gamma_{1} &lt; \cdots &lt; \gamma_{N} \equiv 1</span>, and <span class="math inline">\left|\gamma_{t+1} - \gamma_{t}\right| \ll 1</span></p></li>
+<li><p><span class="green-text"><strong>Note</strong></span>:</p>
+<ul>
+<li>for <span class="math inline">\left|\gamma_{t}\right| &lt; 1</span>, this rescaling helps to reduce the height of the energy barriers <span class="math inline">\Longrightarrow</span></li>
+<li>easier for our sampler to explore previously inaccessible regions of the phase space</li>
+</ul></li>
+</ul>
+</section>
+<section id="networks-2d-u1-1" class="slide level2 center">
+<h2>Networks 2D <span class="math inline">U(1)</span></h2>
+<ul>
+<li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
+<p><span class="math display"> x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]</span></p>
+<p>with <code>shape</code><span class="math inline">\left(x_{\mu}\right)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\in \mathbb{R}</span></p></li>
+<li><p><span class="math inline">x</span>-Network:</p>
+<ul>
+<li><span class="purple-text"><span class="math inline">\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+</ul></li>
+<li><p><span class="math inline">v</span>-Network:</p>
+<ul>
+<li><span class="green-text"><span class="math inline">\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span></li>
+</ul></li>
+</ul>
+</section>
+<section id="toy-example-gmm-in-mathbbr2" class="slide level2 centeredslide center">
+<h2>Toy Example: GMM <span class="math inline">\in \mathbb{R}^{2}</span></h2>
+
+<img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg" id="fig-gmm" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;19
+</p></section>
+<section id="physical-quantities" class="slide level2 center">
+<h2>Physical Quantities</h2>
+<ul>
+<li>To estimate physical quantities, we:
+<ul>
+<li>Calculate physical observables at <strong>increasing</strong> spatial resolution</li>
+<li>Perform extrapolation to continuum limit</li>
+</ul></li>
+</ul>
+<div id="fig-continuum" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-continuum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;20: Increasing the physical resolution (a \rightarrow 0) allows us to make predictions about numerical values of physical quantities in the continuum limit."><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-continuum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a \rightarrow 0</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section id="extra" class="title-slide slide level1 center">
+<h1>Extra</h1>
+<p><span class="preview-image" style="text-align:center; margin-left:auto; margin-right: auto;"><img data-src="./assets/thumbnail.png"></span></p>
+
+<div class="quarto-auto-generated-content">
+<p><img src="https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: false,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/samforeman\.me");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>
