@@ -1,5 +1,5 @@
 # ⏰ Starting Up Distributed Training
-<span class="dim-text">Sam Foreman</span>
+[Sam Foreman](https://samforeman.me)
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-03-21
 
@@ -9,7 +9,7 @@
 
 > [!TIP]
 >
-> ### <span class="dim-text"> Application Startup Time</span>
+> ### <span class="dim-text">{{\< iconify material-symbols attach-email-outline-rounded \>}} Application Startup Time</span>
 >
 > - From Tanima:
 >
@@ -145,7 +145,7 @@
 
 > [!TIP]
 >
-> ### <span class="dim-text"> Startup Times (Perlmutter)</span>
+> ### <span class="dim-text">{{\< iconify octicon stopwatch-16 \>}} Startup Times (Perlmutter)</span>
 >
 > <div id="tbl-perlmutter-init">
 >

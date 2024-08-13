@@ -1,5 +1,5 @@
 # 🎰 Deterministic `flash-attn`
-<span class="dim-text">Sam Foreman</span>
+[Sam Foreman](https://samforeman.me)
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-06-17
 
