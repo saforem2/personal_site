@@ -221,7 +221,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -443,7 +443,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="https://github.com/saforem2/personal_site" aria-current="page"> 
-<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon role="img" inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -657,7 +657,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/AuroraGPT/startup-times/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">⏰ Starting Up Distributed Training</span></a>
+ <span class="menu-text">⏰ Starting Up Distributed Training on Aurora</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -815,7 +815,27 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#deepspeed4science-092023" id="toc-deepspeed4science-092023" class="nav-link active" data-scroll-target="#deepspeed4science-092023">DeepSpeed4Science (09/2023)</a>
+  <ul class="collapse">
+  <li><a href="#new-features" id="toc-new-features" class="nav-link" data-scroll-target="#new-features">New Features</a></li>
+  <li><a href="#new-optimizations" id="toc-new-optimizations" class="nav-link" data-scroll-target="#new-optimizations">New optimizations</a></li>
+  <li><a href="#initial-results" id="toc-initial-results" class="nav-link" data-scroll-target="#initial-results">Initial Results</a></li>
+  </ul></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
+  <ul class="collapse">
+  <li><a href="#using-install.sh" id="toc-using-install.sh" class="nav-link" data-scroll-target="#using-install.sh">Using <code>install.sh</code></a></li>
+  <li><a href="#step-by-step" id="toc-step-by-step" class="nav-link" data-scroll-target="#step-by-step">Step-by-Step</a></li>
+  </ul></li>
+  <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a></li>
+  <li><a href="#zero-offloading" id="toc-zero-offloading" class="nav-link" data-scroll-target="#zero-offloading">ZeRO Offloading</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_size/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <!-- Google Tag Manager (noscript) -->
@@ -2024,8 +2044,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/AuroraGPT/startup-times/index.html" class="pagination-link" aria-label="⏰ Starting Up Distributed Training">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">⏰ Starting Up Distributed Training</span>
+      <a href="../../../posts/AuroraGPT/startup-times/index.html" class="pagination-link" aria-label="⏰ Starting Up Distributed Training on Aurora">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">⏰ Starting Up Distributed Training on Aurora</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -2042,13 +2062,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_size/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/AuroraGPT/long-sequences/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_size/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

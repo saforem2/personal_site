@@ -1,31 +1,30 @@
 ---
 # sidebar: false
-title: "⏰ Starting Up Distributed Training"
+title: "⏰ Starting Up Distributed Training on Aurora"
 date: "2024-03-21"
 callout-appearance: simple
-title-block-banner: false
 citeproc: true
-citation:
-   author: Sam Foreman
-   type: webpage
-   title: "Starting Up Distributed Training"
-   url: https://samforeman.me/qmd/ezpz/ezpz
+# citation:
+#    author: Sam Foreman
+#    type: webpage
+#    title: "Starting Up Distributed Training"
+#    url: https://samforeman.me/qmd/ezpz/ezpz
 # https://www.anl.gov/sites/www/files/2021-09/CPA_RESIZE_Climate%20Resilience%20Images_01_1920x1080.jpg
 editor:
    render-on-save: true
 execute:
    freeze: auto
-lightbox: auto
+# lightbox: auto
 twitter-card:
     image: "./assets/thumbnail.png"
-    creator: "@saforem2"
-    site: "@saforem2"
+    creator: "saforem2"
+    site: "saforem2"
 open-graph:
     image: "./assets/thumbnail.png"
 format:
   html: default
   gfm:
-    output_file: "ezpz.md"
+    output_file: "startup-times.md"
 #   # html:
 #   html:
 #     callout-appearance: simple
@@ -71,13 +70,9 @@ format:
 #   #   output-file: "ezpz.md"
 ---
 
-## Initialization Times
+::: {.callout-tip icon=false title='[{{< iconify material-symbols attach-email-outline-rounded >}} Application Startup Time]{.dim-text}' collapse="false" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); background: rgba(0,0,0, 0.0)!important;"}
 
-<!-- ::: {.callout-info title='[{{< iconify material-symbols attach-email-outline-rounded >}} Startup Times (Perlmutter)]{.dim-text}' collapse="True"} -->
-
-::: {.callout-tip icon=false title='[{{< iconify material-symbols attach-email-outline-rounded >}} Application Startup Time]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;"}
-
-- From Tanima:
+- Request:
 
   > Hi Sam and Corey,  
   > 
@@ -133,12 +128,10 @@ format:
   >    ```
   >
   >    If you have any other scenarios, please feel free to suggest.
-  >
-  > Thanks,
-  > Tanima.
 
 :::
 
+## Response
 
 1. In [Measuring / Calculating Startup Time](#sec-measurements),I provide a
    summary of how the startup time is identified and calculated.
@@ -166,7 +159,12 @@ format:
 
   - $t_{0}$ is the time stamp at the _very_ beginning of the shell script
     (defined [here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/657bb3e312e793d7b503f475b59e44c1aee44205/ALCF/train-gpt3.sh#L3))
-    which then launches `mpiexec <mpi-args> python3 [...]`.
+    which then launches 
+
+    ```bash
+    mpiexec ${mpi-args} python3 [...]
+    ```
+
 
     - $t_{0}$ appears in the logfile as:
 
@@ -206,7 +204,7 @@ format:
     Job started at: 2023-11-02-192739 on x3108c0s25b1n0
   ```
 
-::: {.callout-tip icon=false title='[{{< iconify octicon stopwatch-16 >}} Startup Times (Perlmutter)]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); opacity:100%;"}
+::: {.callout-tip icon=false title='[{{< iconify octicon stopwatch-16 >}} Startup Times (Perlmutter)]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); background: rgba(0, 0, 0, 0.0)!important;"}
 
 ::: {#tbl-perlmutter-init style="font-size: 0.8em;"}
 

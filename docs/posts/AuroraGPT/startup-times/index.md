@@ -1,17 +1,13 @@
-# ⏰ Starting Up Distributed Training
+# ⏰ Starting Up Distributed Training on Aurora
 [Sam Foreman](https://samforeman.me)
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-03-21
-
-## Initialization Times
-
-<!-- ::: {.callout-info title='[ Startup Times (Perlmutter)]{.dim-text}' collapse="True"} -->
 
 > [!TIP]
 >
 > ### <span class="dim-text"> Application Startup Time</span>
 >
-> - From Tanima:
+> - Request:
 >
 >   > Hi Sam and Corey,
 >   >
@@ -69,8 +65,8 @@
 >   >     ```
 >   >
 >   >     If you have any other scenarios, please feel free to suggest.
->   >
->   > Thanks, Tanima.
+
+## Response
 
 1.  In [Measuring / Calculating Startup Time](#sec-measurements),I
     provide a summary of how the startup time is identified and
@@ -102,7 +98,11 @@
   - $t_{0}$ is the time stamp at the *very* beginning of the shell
     script (defined
     [here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/657bb3e312e793d7b503f475b59e44c1aee44205/ALCF/train-gpt3.sh#L3))
-    which then launches `mpiexec <mpi-args> python3 [...]`.
+    which then launches
+
+    ``` bash
+    mpiexec ${mpi-args} python3 [...]
+    ```
 
     - $t_{0}$ appears in the logfile as:
 
