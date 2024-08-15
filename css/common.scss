@@ -465,7 +465,7 @@ $themes: (
 .callout.callout-style-simple .callout-body {
   font-weight: 400;
   margin-right: 0.5rem;
-  margin-left: -1rem;
+  // margin-left: -1rem;
   // margin-bottom: 0.5em;
 }
 
@@ -2163,6 +2163,11 @@ nav.quarto-secondary-nav {
   border-radius: $link-border-radius;
 }
 
+.navbar .dropdown-item:hover {
+  color: $link-color-hover;
+  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.085);
+}
+
 .dropdown-item {
   display: block;
   width: 100%;
@@ -2954,4 +2959,20 @@ td code:not(.sourceCode) {
   text-align: center;
   max-width: 100%;
   max-height: 100%;
+}
+
+.reveal .callout.callout-style-default .callout-body,
+.reveal .callout.callout-style-simple .callout-body,
+.callout.callout-style-default .callout-body,
+.callout.callout-style-simple .callout-body {
+  font-weight: 400;
+  width: 100%;
+}
+
+.callout.callout-style-simple .callout-body,
+.callout.callout-style-default .callout-body,
+.callout.callout-style-simple div.callout-caption,
+.callout.callout-style-default div.callout-caption {
+  font-size: inherit;
+  margin: auto;
 }
