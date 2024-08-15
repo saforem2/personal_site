@@ -32,6 +32,17 @@ format:
     # grid:
     #   body-width: 800px
   revealjs:
+    slides-url: https://samforeman.me/talks/lattice23/slides.html
+    # template-partials:
+    #   - ./title-slide.html
+      # - ./title-fancy/title-slide.html
+      # - ./title_slide_template.html
+      # - ../../title-slide.html
+    title-slide-attributes:
+      data-background-iframe: https://saforem2.github.io/grid-worms-animation/
+      data-background-size: contain
+      data-background-color: "#1c1c1c"
+      background-color: "#1c1c1c"
     title-block-style: none
     slide-number: c
     title-slide-style: default
@@ -49,20 +60,46 @@ format:
     logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"
     history: false
     # theme: [css/dark.scss]
-    # callot-style: simple
+    callout-style: simple
     # css: [css/default.css, css/callouts.css]
     fig-align: center
     css:
-      - css/default.css
+      # - css/default.css
       - ../../css/custom.css
     theme:
-      - css/dark.scss
-      # - ./title-fancy/title-slide-template.scss
+      # - light:
+      - white
+      - ../../css/title-slide-template.scss
       - ../../css/reveal/reveal.scss
       - ../../css/common.scss
       - ../../css/dark.scss
-      - ../../css/syntax-dark.scsss
+      - ../../css/syntax-dark.scss
       - ../../css/callout-cards.scss
+    # callout-style: simple
+    # css:
+    #   # - css/default.css
+    #   - ../../css/custom.css
+    # theme:
+    #   # - light:
+    #   # - css/dark.scss
+    #   - ../../css/title-slide-template.scss
+    #   - ../../css/reveal/reveal.scss
+    #   - ../../css/common.scss
+    #   - ../../css/dark.scss
+    #   - ../../css/syntax-dark.scss
+    #   - ../../css/callout-cards.scss
+    # css:
+    #   # - css/default.css
+    #   - ../../css/custom.css
+    # theme:
+    #   # - black
+    #   # - ./title-fancy/title-slide-template.scss
+    #   - ../../css/reveal/reveal.scss
+    #   - ../../css/common.scss
+    #   - ../../css/dark.scss
+    #   - ../../css/syntax-dark.scss
+    #   - ../../css/callout-cards.scss
+    #   - css/dark.scss
     self-contained: false
     embed-resources: false
     self-contained-math: false
@@ -70,16 +107,18 @@ format:
     highlight-style: "atom-one"
     default-image-extension: svg
     code-line-numbers: true
+    data-background-color: "#1c1c1c"
+    background-color: "#1c1c1c"
     code-overflow: scroll
     html-math-method: katex
     output-file: "slides.html"
     mermaid:
-      theme: dark
+      theme: neutral
   # gfm:
   #   output-file: "lattice23.md"
 ---
 
-# {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
+# {.title-slide background-color="#1c1c1c" background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}
 
 ::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}
 <span style="color:#939393; font-size:1.5em; font-weight: bold;">MLMC: Machine Learning Monte Carlo</span>  
@@ -94,7 +133,7 @@ format:
 [2023-07-31 @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)]{.dim-text style="text-align:left;'}
 :::
 
-# Overview
+# Overview {background-color="#1c1c1c"}
 
 1. [Background: `{MCMC,HMC}`](#markov-chain-monte-carlo-mcmc-centeredslide)
     - [Leapfrog Integrator](#leapfrog-integrator-hmc-centeredslide)
@@ -107,7 +146,7 @@ format:
 4. [Extras](#sec-extras)
 
 
-# Markov Chain Monte Carlo (MCMC) {.centeredslide}
+# Markov Chain Monte Carlo (MCMC) {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -141,7 +180,7 @@ If these were <span style="color:#00CCFF;">independent</span>, we could approxim
 [{{< fa brands github >}} `saforem2/lattice23`](https://saforem2.github.io/lattice23)
 :::
 
-# Markov Chain Monte Carlo (MCMC) {.centeredslide}
+# Markov Chain Monte Carlo (MCMC) {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -176,7 +215,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
 [{{< fa brands github >}} `saforem2/lattice23`](https://github.com/saforem2/lattice23)
 :::
 
-# Hamiltonian Monte Carlo (HMC) {.centeredslide}
+# Hamiltonian Monte Carlo (HMC) {.centeredslide background-color="#1c1c1c"}
 
 - Want to (sequentially) construct a chain of states:
   $$x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$
@@ -195,7 +234,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
   \end{align*}$$
 :::
 
-## Hamiltonian Monte Carlo (HMC) {.centeredslide}
+## Hamiltonian Monte Carlo (HMC) {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -228,7 +267,7 @@ $$\dot{x} = +\partial_{v} H,
 Overview of HMC algorithm
 :::
 
-## Leapfrog Integrator (HMC) {#sec-leapfrog .centeredslide}
+## Leapfrog Integrator (HMC) {#sec-leapfrog background-color="#1c1c1c"}
 
 :::: {.columns style="text-align:center; font-size: 0.9em;" height="100%"}
 
@@ -268,7 +307,7 @@ at the [beginning]{.yellow-text} of each trajectory
 
 ::::
 
-## HMC Update
+## HMC Update {background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -303,7 +342,7 @@ $$\begin{align*}
 [^v0]: We **always** start by resampling the momentum, $v_{0} \sim
 \mathcal{N}(0, \mathbb{1})$
 
-## HMC Demo {.centeredslide}
+## HMC Demo {.centeredslide background-color="#1c1c1c"}
 
 ::: {#fig-hmc-demo}
 
@@ -312,7 +351,7 @@ $$\begin{align*}
 HMC Demo
 :::
 
-# Issues with HMC {#sec-issues style="font-size:0.9em;"}
+# Issues with HMC {#sec-issues style="font-size:0.9em;" background-color="#1c1c1c"}
 
 - What do we want in a good sampler?
   - **Fast mixing** (small autocorrelations)
@@ -330,7 +369,7 @@ HMC Demo
 HMC Samples generated with varying step sizes $\varepsilon$
 :::
 
-# Topological Freezing {.centeredslide}
+# Topological Freezing {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -365,7 +404,7 @@ $\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets
 
 ::::
 
-# Can we do better? {#sec-can-we-do-better}
+# Can we do better? {#sec-can-we-do-better background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -401,7 +440,7 @@ Generalized MD update where [$\Lambda_{\theta}^{\pm}$]{.orange-text},
 [^l2hmc]: [L2HMC: ](https://github.com/saforem2/l2hmc-qcd) {{< fa solid book >}}
 [@Foreman:2021ixr; @Foreman:2021rhs]
 
-# L2HMC: Generalizing the MD Update {#sec-l2hmc .centeredslide}
+# L2HMC: Generalizing the MD Update {#sec-l2hmc .centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -450,7 +489,7 @@ Generalized MD update with [$\Lambda_{\theta}^{\pm}$]{.orange-text}, [$\Gamma_{\
 
 ::::
 
-## L2HMC: Leapfrog Layer {.centeredslide}
+## L2HMC: Leapfrog Layer {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -465,7 +504,7 @@ Generalized MD update with [$\Lambda_{\theta}^{\pm}$]{.orange-text}, [$\Gamma_{\
 
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg){.absolute top=440 width="100%"}
 
-## L2HMC Update {style="font-size: 0.775em;"}
+## L2HMC Update {style="font-size: 0.775em;" background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -521,7 +560,7 @@ $$\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ la
     A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}$
 
 
-# 4D $SU(3)$ Model {#sec-su3 .centeredslide style="font-size: 0.9em;"}
+# 4D $SU(3)$ Model {#sec-su3 .centeredslide style="font-size: 0.9em;" background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -575,7 +614,7 @@ Illustration of the lattice
 
 ::::
 
-## HMC: 4D $SU(3)$ {#sec-hmcsu3}
+## HMC: 4D $SU(3)$ {#sec-hmcsu3 background-color="#1c1c1c"}
 
 Hamiltonian: $H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow$
 
@@ -626,7 +665,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 ::::
 
 
-## HMC: 4D $SU(3)$ {.centeredslide}
+## HMC: 4D $SU(3)$ {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -653,7 +692,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 
 ::::
 
-# Networks 4D $SU(3)$ {#sec-su3networks .centeredslide auto-animate="true"}
+# Networks 4D $SU(3)$ {#sec-su3networks .centeredslide auto-animate="true" background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -688,7 +727,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 
 ::::
 
-# Networks 4D $SU(3)$ {.centeredslide auto-animate="true"}
+# Networks 4D $SU(3)$ {.centeredslide auto-animate="true" background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -725,7 +764,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 
 ::::
 
-## $P$-`Network` (pt. 1) {style="font-size:0.95em;"}
+## $P$-`Network` (pt. 1) {style="font-size:0.95em;" background-color="#1c1c1c"}
 
 ::: {style="text-align:center;"}
 
@@ -763,7 +802,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 [^sigma]: $\sigma(\cdot)$ denotes an activation function
 [^lambda1]: $\lambda_{s}, \lambda_{q} \in \mathbb{R}$, trainable parameters
 
-## $P$-`Network` (pt. 2) {style="font-size:0.9em;"}
+## $P$-`Network` (pt. 2) {style="font-size:0.9em;" background-color="#1c1c1c"}
 
 ::: {style="text-align:center;"}
 
@@ -783,7 +822,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 
 [^inverse]: Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left[\Gamma^{-}(U, P)\right] = \Gamma^{-}\left[\Gamma^{+}(U, P)\right] = (U, P)$
 
-# Results: 2D $U(1)$ {#sec-results .centeredslide}
+# Results: 2D $U(1)$ {#sec-results .centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -808,7 +847,7 @@ We can measure the performance by comparing $\tau_{\mathrm{int}}$ for the
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg){.absolute top=400 left=0 width="100%" style="margin-bottom: 1em;margin-top: 1em;"}
 
 
-## Interpretation {#sec-interpretation .centeredslide}
+## Interpretation {#sec-interpretation .centeredslide background-color="#1c1c1c"}
 
 :::: {.columns style="margin-left:1pt;"}
 
@@ -841,7 +880,7 @@ trajectory.
 :::
 
 
-## Interpretation {.centeredslide}
+## Interpretation {.centeredslide background-color="#1c1c1c"}
 
 ::: {#fig-energy-ridgeplot layout-ncol=2 layout-valign="top"}
 
@@ -855,7 +894,7 @@ sectors.
 :::
 
 
-# 4D $SU(3)$ Results {#sec-su3results}
+# 4D $SU(3)$ Results {#sec-su3results background-color="#1c1c1c"}
 
 
 - Distribution of $\log|\mathcal{J}|$ over all chains, at each _leapfrog step_,  $N_{\mathrm{LF}}$
@@ -872,7 +911,7 @@ during training:
 
 :::
 
-## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$
+## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$ {background-color="#1c1c1c"}
 
 ::: {#fig-pdiff}
 
@@ -883,7 +922,7 @@ between the trained model and HMC
 
 :::
 
-## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$
+## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$ {background-color="#1c1c1c"}
 
 ::: {#fig-pdiff-robust}
 
@@ -894,7 +933,7 @@ between the trained model and HMC
 
 :::
 
-# Next Steps {#sec-next-steps}
+# Next Steps {#sec-next-steps background-color="#1c1c1c"}
 
 - Further code development
   - {{< fa brands github >}} [`saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
@@ -910,7 +949,7 @@ between the trained model and HMC
   - Batch size
   - \# of GPUs
 
-## Thank you! {#sec-thank-you}
+## Thank you! {#sec-thank-you background-color="#1c1c1c"}
 
 &nbsp;<br>  
 
@@ -934,7 +973,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 :::
 
 
-## {#sec-l2hmc-gh}
+## {#sec-l2hmc-gh background-color="#1c1c1c"}
 
 ::: {style="text-align:center;"}
 
@@ -951,7 +990,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 :::
 
 
-## Acknowledgements {#sec-acknowledgements}
+## Acknowledgements {#sec-acknowledgements background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -992,13 +1031,13 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 ::::
 
 
-## {#sec-references}
+## {#sec-references background-color="#1c1c1c"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-### Links
+### Links {background-color="#1c1c1c"}
 
 - [{{< fa brands github >}} `saforem2/l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)
 
@@ -1008,7 +1047,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 
 ::: {.column width="50%"}
 
-### References
+### References {background-color="#1c1c1c"}
 
 - [Title Slide Background (worms) animation](https://saforem2.github.io/grid-worms-animation/)
   - Github: [{{< fa brands github >}} `saforem2/grid-worms-animation`](https://github.com/saforem2/grid-worms-animation)
@@ -1020,16 +1059,16 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 ::::
 
 
-## References {style="line-height:1.2em;"}
+## References {style="line-height:1.2em;" background-color="#1c1c1c"}
 
 (I don't know why this is broken 🤷🏻‍♂️ )
 
 ::: {#refs}
 :::
 
-# Extras {#sec-extras}
+# Extras {#sec-extras background-color="#1c1c1c"}
 
-## Integrated Autocorrelation Time {.centeredslide}
+## Integrated Autocorrelation Time {.centeredslide background-color="#1c1c1c"}
 
 ::: {#fig-iat}
 ![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg){width="100%"}
@@ -1038,7 +1077,7 @@ Plot of the integrated autocorrelation time for both the trained model
 (colored) and HMC (greyscale).
 :::
 
-## Comparison
+## Comparison background-color="#1c1c1c" 
 
 ::: {#fig-comparison layout-ncol=2}
 
@@ -1050,7 +1089,7 @@ Comparison of $\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}$
 trained model [@fig-eval] vs. HMC [@fig-hmc]
 :::
 
-## Plaquette analysis: $x_{P}$ {.centeredslide}
+## Plaquette analysis: $x_{P}$ {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
@@ -1075,7 +1114,7 @@ varies over a single trajectory for models trained at different $\beta$, with
 varying trajectory lengths $N_{\mathrm{LF}}$
 :::
 
-## Loss Function
+## Loss Function {background-color="#1c1c1c"}
 
 - Want to maximize the _expected_ squared charge difference[^charge-diff]:
   $$\begin{equation*}
@@ -1102,7 +1141,7 @@ Accept / Reject)
 [^jacobian]: And $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the
 Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$
 
-## Networks 2D $U(1)$ {auto-animate=true}
+## Networks 2D $U(1)$ {auto-animate=true background-color="#1c1c1c"}
 
 - Stack gauge links as `shape`$\left(U_{\mu}\right)$` =[Nb, 2, Nt, Nx]` $\in \mathbb{C}$
 
@@ -1116,7 +1155,7 @@ Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$
 - $v$-Network:
   - [$\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$]{.green-text} [$\hspace{2pt}\longleftarrow$ lets look at this]{.dim-text}
 
-## $v$-Update[^reverse]
+## $v$-Update[^reverse] {background-color="#1c1c1c"}
 
 - [forward]{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:  
 
@@ -1128,7 +1167,7 @@ $$\Gamma^{\textcolor{#1A8FFF}{-}}: (x, v) \rightarrow v' := e^{-\frac{\varepsilo
 
 [^reverse]: [Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)$]{style="font-size:0.8em;"}
 
-## $x$-Update
+## $x$-Update {background-color="#1c1c1c"}
 
 - [forward]{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:
 
@@ -1139,7 +1178,7 @@ $$\Lambda^{\textcolor{#FF5252}{+}}(x, v) = x \cdot e^{\frac{\varepsilon}{2} s_{x
 $$\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left\{x + \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\right\}$$
 
 
-## Lattice Gauge Theory (2D $U(1)$) {.centeredslide}
+## Lattice Gauge Theory (2D $U(1)$) {.centeredslide background-color="#1c1c1c"}
 
 :::: {.columns layout-valign="top"}
 
@@ -1188,8 +1227,8 @@ Jupyter Notebook
 
 :::
 
-## Annealing Schedule
-
+## Annealing Schedule {#sec-annealing-schedule background-color="#1c1c1c"}
+ 
 - Introduce an _annealing schedule_ during the training phase:
 
   $$\left\{ \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},
@@ -1203,7 +1242,7 @@ Jupyter Notebook
     - easier for our sampler to explore previously inaccessible regions of the phase space
 
 
-## Networks 2D $U(1)$
+## Networks 2D $U(1)$ {#sec-networks-2dU1 background-color="#1c1c1c"}
 
 - Stack gauge links as `shape`$\left(U_{\mu}\right)$` =[Nb, 2, Nt, Nx]` $\in \mathbb{C}$
 
@@ -1217,11 +1256,11 @@ Jupyter Notebook
 - $v$-Network:
     - [$\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$]{.green-text}
 
-## Toy Example: GMM $\in \mathbb{R}^{2}$ {.centeredslide}
+## Toy Example: GMM $\in \mathbb{R}^{2}$ {.centeredslide background-color="#1c1c1c"}
 
 ![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg){#fig-gmm .r-stretch}
 
-## Physical Quantities
+## Physical Quantities {background-color="#1c1c1c"}
 
 - To estimate physical quantities, we:
   - Calculate physical observables at **increasing** spatial resolution
@@ -1237,7 +1276,7 @@ limit.
 
 :::
 
-# Extra
+# Extra {#sec-extra background-color="#1c1c1c"}
 
 [![](./assets/thumbnail.png)]{.preview-image style="text-align:center; margin-left:auto; margin-right: auto;"}
 

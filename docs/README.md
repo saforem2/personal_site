@@ -398,13 +398,13 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 ### 🦜 Talks
 
-### 📆 2024
+#### 📆 2024
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Training LLMs at Scale**](https://samforeman.me/talks/llms-at-scale/#/section) @ [*ATPESC*, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) \[08/2024\]</span>
+> ### <span class="dim-text">[**Training LLMs at Scale**](https://samforeman.me/talks/llms-at-scale) @ [*ATPESC*, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) \[08/2024\]</span>
 >
-> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
+> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
 > [!TIP]
 >
@@ -424,7 +424,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >
 > <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
-### 📆 2023
+#### 📆 2023
 
 > [!TIP]
 >
@@ -470,7 +470,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >
 > <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
-### 📆 2022
+#### 📆 2022
 
 > [!TIP]
 >
@@ -509,7 +509,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >
 > <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width:100%!important; border:none;border-radius:0.25rem;"></iframe></span>
 
-### 📆 2021
+#### 📆 2021
 
 > [!TIP]
 >
@@ -537,7 +537,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 > <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://bit.ly/mainz21" title="Deep Learning HMC for Improved Gauge Generation" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen >
 > </iframe></span>
 
-### 📆 2020
+#### 📆 2020
 
 > [!TIP]
 >
@@ -830,7 +830,7 @@ print(' '.join([
 ]))
 ```
 
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">14</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:19:08</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">15</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:27:22</span>
 </pre>
 </details>
 

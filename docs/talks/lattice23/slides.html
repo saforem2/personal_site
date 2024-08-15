@@ -60,8 +60,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="css/default.css">
-  <link rel="stylesheet" href="css/callouts.css">
+  <link rel="stylesheet" href="../../css/custom.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -378,6 +377,10 @@
       margin-right: 0; 
     }
   </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+  <!-- End Google Tag Manager -->
+  <link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
 <meta property="og:title" content="Sam Foreman">
 <meta property="og:description" content="My ramblings about science and computers">
 <meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
@@ -412,10 +415,13 @@ dynamics update that can be trained to improve sampling efficiency.
 <meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
 </head>
 <body class="quarto-dark">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" background-color="#1c1c1c" data-background-color="#1c1c1c" data-background-iframe="https://saforem2.github.io/grid-worms-animation/" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">MLMC: Machine Learning Monte Carlo</h1>
 
 <div class="quarto-title-authors">
@@ -436,7 +442,7 @@ dynamics update that can be trained to improve sampling efficiency.
 
   <p class="date">2023-07-31</p>
 </section>
-<section id="section" class="title-slide slide level1 centeredslide center" data-background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy">
+<section id="section" class="title-slide slide level1 center" data-background-color="#1c1c1c" data-background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy">
 <h1></h1>
 <div style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;">
 <p><span style="color:#939393; font-size:1.5em; font-weight: bold;">MLMC: Machine Learning Monte Carlo</span><br>
@@ -451,7 +457,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 </section>
 
-<section id="overview" class="title-slide slide level1 center">
+<section id="overview" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>Overview</h1>
 <ol type="1">
 <li><a href="#/markov-chain-monte-carlo-mcmc-centeredslide">Background: <code>{MCMC,HMC}</code></a>
@@ -470,7 +476,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </ol>
 </section>
 
-<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center">
+<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -504,7 +510,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 <aside><ol class="aside-footnotes"></ol></aside></section>
 
-<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 centeredslide center">
+<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -539,7 +545,7 @@ dynamics update that can be trained to improve sampling efficiency.
 <aside><ol class="aside-footnotes"></ol></aside></section>
 
 <section>
-<section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center">
+<section id="hamiltonian-monte-carlo-hmc" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>Hamiltonian Monte Carlo (HMC)</h1>
 <ul>
 <li><p>Want to (sequentially) construct a chain of states: <span class="math display">x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}</span></p>
@@ -571,7 +577,7 @@ p(x, v) &amp;\textcolor{#02b875}{=} p(x)\,p(v) \propto e^{-S{(x)}} e^{-\frac{1}{
 </div>
 </div>
 </section>
-<section id="hamiltonian-monte-carlo-hmc-1" class="slide level2 centeredslide center">
+<section id="hamiltonian-monte-carlo-hmc-1" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Hamiltonian Monte Carlo (HMC)</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -603,7 +609,7 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 <img data-src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg" class="r-stretch quarto-figure-center"><p class="caption">
 Figure&nbsp;1: Overview of HMC algorithm
 </p></section>
-<section id="sec-leapfrog" class="slide level2 centeredslide center">
+<section id="sec-leapfrog" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Leapfrog Integrator (HMC)</h2>
 <div class="columns" style="text-align:center; font-size: 0.9em;" height="100%">
 <div class="column" style="width:48%;">
@@ -667,7 +673,7 @@ at the <span class="yellow-text">beginning</span> of each trajectory</li>
 <p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="./assets/hmc1/hmc-update-light.svg" style="width:60.0%"></a></p>
 </div></div>
 </section>
-<section id="hmc-update" class="slide level2 center">
+<section id="hmc-update" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>HMC Update</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
@@ -698,7 +704,7 @@ at the <span class="yellow-text">beginning</span> of each trajectory</li>
 \mathcal{N}(0, \mathbb{1})</span><a href="#/fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section>
-<section id="hmc-demo" class="slide level2 centeredslide center">
+<section id="hmc-demo" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>HMC Demo</h2>
 <div id="fig-hmc-demo" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -712,7 +718,7 @@ Figure&nbsp;2: HMC Demo
 </figure>
 </div>
 </section></section>
-<section id="sec-issues" class="title-slide slide level1 center" style="font-size:0.9em;">
+<section id="sec-issues" class="title-slide slide level1 center" style="font-size:0.9em;" data-background-color="#1c1c1c">
 <h1>Issues with HMC</h1>
 <ul>
 <li>What do we want in a good sampler?
@@ -755,7 +761,7 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 </div>
 </section>
 
-<section id="topological-freezing" class="title-slide slide level1 centeredslide center">
+<section id="topological-freezing" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>Topological Freezing</h1>
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -800,7 +806,7 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 </div></div>
 </section>
 
-<section id="sec-can-we-do-better" class="title-slide slide level1 center">
+<section id="sec-can-we-do-better" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>Can we do better?</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -835,7 +841,7 @@ Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class
 <aside><ol class="aside-footnotes"></ol></aside></section>
 
 <section>
-<section id="sec-l2hmc" class="title-slide slide level1 centeredslide center">
+<section id="sec-l2hmc" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>L2HMC: Generalizing the MD Update</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -894,7 +900,7 @@ Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class=
 </div>
 </div></div>
 </section>
-<section id="l2hmc-leapfrog-layer" class="slide level2 centeredslide center">
+<section id="l2hmc-leapfrog-layer" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>L2HMC: Leapfrog Layer</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
@@ -904,7 +910,7 @@ Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class=
 </div></div>
 <p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="absolute" style="top: 440px; width: 100%; "></a></p>
 </section>
-<section id="l2hmc-update" class="slide level2 center" style="font-size: 0.775em;">
+<section id="l2hmc-update" class="slide level2 center" style="font-size: 0.775em;" data-background-color="#1c1c1c">
 <h2>L2HMC Update</h2>
 <div class="columns">
 <div class="column" style="font-size:0.99em;">
@@ -966,7 +972,7 @@ A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}</span><a 
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section></section>
 <section>
-<section id="sec-su3" class="title-slide slide level1 centeredslide center" style="font-size: 0.9em;">
+<section id="sec-su3" class="title-slide slide level1 centeredslide center" style="font-size: 0.9em;" data-background-color="#1c1c1c">
 <h1>4D <span class="math inline">SU(3)</span> Model</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1041,7 +1047,7 @@ Figure&nbsp;7: Illustration of the lattice
 </div>
 </div></div>
 </section>
-<section id="sec-hmcsu3" class="slide level2 center">
+<section id="sec-hmcsu3" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>HMC: 4D <span class="math inline">SU(3)</span></h2>
 <p>Hamiltonian: <span class="math inline">H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow</span></p>
 <div class="columns">
@@ -1089,7 +1095,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 </div><div>
 <p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\textcolor{#E599F7}{F[U]}</span> is the force term</span></p>
 </div></aside></section>
-<section id="hmc-4d-su3" class="slide level2 centeredslide center">
+<section id="hmc-4d-su3" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>HMC: 4D <span class="math inline">SU(3)</span></h2>
 <div class="columns">
 <div class="column" style="text-align:left;">
@@ -1107,7 +1113,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 <p><a href="./assets/hmc/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="./assets/hmc/hmc-update-light.svg" style="width:60.0%"></a></p>
 </div></div>
 </section></section>
-<section id="sec-su3networks" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
+<section id="sec-su3networks" class="title-slide slide level1 centeredslide center" data-auto-animate="true" data-background-color="#1c1c1c">
 <h1 data-id="quarto-animate-title">Networks 4D <span class="math inline">SU(3)</span></h1>
 <div class="columns">
 <div class="column" style="font-size:0.9em;">
@@ -1126,7 +1132,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 </section>
 
 <section>
-<section id="networks-4d-su3" class="title-slide slide level1 centeredslide center" data-auto-animate="true">
+<section id="networks-4d-su3" class="title-slide slide level1 centeredslide center" data-auto-animate="true" data-background-color="#1c1c1c">
 <h1 data-id="quarto-animate-title">Networks 4D <span class="math inline">SU(3)</span></h1>
 <div class="columns">
 <div class="column" style="font-size:0.9em;">
@@ -1145,7 +1151,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 <p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" style="width:80.0%"></a></p>
 </div></div>
 </section>
-<section id="p-network-pt.-1" class="slide level2 center" style="font-size:0.95em;">
+<section id="p-network-pt.-1" class="slide level2 center" style="font-size:0.95em;" data-background-color="#1c1c1c">
 <h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;1)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
@@ -1179,7 +1185,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 <li id="fn7"><p><span class="math inline">\lambda_{s}, \lambda_{q} \in \mathbb{R}</span>, trainable parameters<a href="#/fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section>
-<section id="p-network-pt.-2" class="slide level2 center" style="font-size:0.9em;">
+<section id="p-network-pt.-2" class="slide level2 center" style="font-size:0.9em;" data-background-color="#1c1c1c">
 <h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;2)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
@@ -1200,7 +1206,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section></section>
 <section>
-<section id="sec-results" class="title-slide slide level1 centeredslide center">
+<section id="sec-results" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
 <h1>Results: 2D <span class="math inline">U(1)</span></h1>
 <div class="columns">
 <div class="column" style="align:top;">
@@ -1225,7 +1231,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 </div></div>
 <p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg" class="absolute" style="margin-bottom: 1em;margin-top: 1em;top: 400px; left: 0px; width: 100%; "></a></p>
 </section>
-<section id="sec-interpretation" class="slide level2 centeredslide center">
+<section id="sec-interpretation" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Interpretation</h2>
 <div class="columns" style="margin-left:1pt;">
 <div class="column" style="width:36%;">
@@ -1246,7 +1252,7 @@ Figure&nbsp;8: Illustration of how different observables evolve over a single L2
 </figure>
 </div>
 </section>
-<section id="interpretation" class="slide level2 centeredslide center">
+<section id="interpretation" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Interpretation</h2>
 <div id="fig-energy-ridgeplot" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig">
@@ -1277,7 +1283,7 @@ Figure&nbsp;9: The trained model artifically increases the energy towards the mi
 </div>
 </section></section>
 <section>
-<section id="sec-su3results" class="title-slide slide level1 center">
+<section id="sec-su3results" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>4D <span class="math inline">SU(3)</span> Results</h1>
 <ul>
 <li>Distribution of <span class="math inline">\log|\mathcal{J}|</span> over all chains, at each <em>leapfrog step</em>, <span class="math inline">N_{\mathrm{LF}}</span> (<span class="math inline">= 0, 1, \ldots, 8</span>) during training:</li>
@@ -1326,7 +1332,7 @@ Figure&nbsp;12: <code>1000</code> train iters
 </div>
 </div>
 </section>
-<section id="d-su3-results-delta-u_munu" class="slide level2 center">
+<section id="d-su3-results-delta-u_munu" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
 <div id="fig-pdiff" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1339,7 +1345,7 @@ Figure&nbsp;13: The difference in the average plaquette <span class="math inline
 </figure>
 </div>
 </section>
-<section id="d-su3-results-delta-u_munu-1" class="slide level2 center">
+<section id="d-su3-results-delta-u_munu-1" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
 <div id="fig-pdiff-robust" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1353,7 +1359,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 </div>
 </section></section>
 <section>
-<section id="sec-next-steps" class="title-slide slide level1 center">
+<section id="sec-next-steps" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>Next Steps</h1>
 <ul>
 <li><p>Further code development</p>
@@ -1374,7 +1380,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 </ul></li>
 </ul>
 </section>
-<section id="sec-thank-you" class="slide level2 center">
+<section id="sec-thank-you" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Thank you!</h2>
 <p>&nbsp;<br></p>
 <div>
@@ -1413,7 +1419,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 </div>
 </div>
 </section>
-<section id="sec-l2hmc-gh" class="slide level2 center">
+<section id="sec-l2hmc-gh" class="slide level2 center" data-background-color="#1c1c1c">
 <h2></h2>
 <div style="text-align:center;">
 <p><a href="https://github.com/saforem2/l2hmc-qcd"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg"></a></p>
@@ -1422,7 +1428,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 <p><a href="https://hydra.cc"><img alt="hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"></a> <a href="https://pytorch.org/get-started/locally/"><img alt="pyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&amp;logoColor=white"></a> <a href="https://www.tensorflow.org"><img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&amp;logo=TensorFlow&amp;logoColor=white"></a> <a href="https://wandb.ai/l2hmc-qcd/l2hmc-qcd"><img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Weights &amp; Biases monitoring" height="20"></a></p>
 </div>
 </section>
-<section id="sec-acknowledgements" class="slide level2 center">
+<section id="sec-acknowledgements" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Acknowledgements</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1463,17 +1469,17 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 </ul>
 </div></div>
 </section>
-<section id="sec-references" class="slide level2 center">
+<section id="sec-references" class="slide level2 center" data-background-color="#1c1c1c">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="links">Links</h3>
+<h3 data-background-color="#1c1c1c" id="links">Links</h3>
 <ul>
 <li><p><a href="https://github.com/saforem2/l2hmc-qcd"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/l2hmc-qcd</code></a></p></li>
 <li><p><a href="https://saforem2.github.io/lattice23">📊 slides</a> (Github: <a href="https://github.com/saforem2/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a>)</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h3 id="references">References</h3>
+<h3 data-background-color="#1c1c1c" id="references">References</h3>
 <ul>
 <li><a href="https://saforem2.github.io/grid-worms-animation/">Title Slide Background (worms) animation</a>
 <ul>
@@ -1483,7 +1489,7 @@ which is a DOE Office of Science User Facility supported under Contract DE-AC02-
 </ul>
 </div></div>
 </section>
-<section id="references-1" class="slide level2 smaller scrollable" style="line-height:1.2em;">
+<section id="references-1" class="slide level2 smaller scrollable" style="line-height:1.2em;" data-background-color="#1c1c1c">
 <h2>References</h2>
 <p>(I don’t know why this is broken 🤷🏻‍♂️ )</p>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1505,11 +1511,11 @@ Shanahan, Phiala et al. 2022. <span>“<span>Snowmass 2021 Computational Frontie
 </div>
 </section></section>
 <section>
-<section id="sec-extras" class="title-slide slide level1 center">
+<section id="sec-extras" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>Extras</h1>
 
 </section>
-<section id="integrated-autocorrelation-time" class="slide level2 centeredslide center">
+<section id="integrated-autocorrelation-time" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Integrated Autocorrelation Time</h2>
 <div id="fig-iat" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1522,8 +1528,8 @@ Figure&nbsp;15: Plot of the integrated autocorrelation time for both the trained
 </figure>
 </div>
 </section>
-<section id="comparison" class="slide level2 center">
-<h2>Comparison</h2>
+<section id="comparison-background-color1c1c1c" class="slide level2 center">
+<h2>Comparison background-color=“#1c1c1c”</h2>
 <div id="fig-comparison" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1555,12 +1561,12 @@ Figure&nbsp;15: Plot of the integrated autocorrelation time for both the trained
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison" class="quarto-xref">Figure&nbsp;16 (a)</a> vs.&nbsp;HMC <a href="#/comparison" class="quarto-xref">Figure&nbsp;16 (b)</a>
+Figure&nbsp;16: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#/comparison-background-color1c1c1c" class="quarto-xref">Figure&nbsp;16 (a)</a> vs.&nbsp;HMC <a href="#/comparison-background-color1c1c1c" class="quarto-xref">Figure&nbsp;16 (b)</a>
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="plaquette-analysis-x_p" class="slide level2 centeredslide center">
+<section id="plaquette-analysis-x_p" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Plaquette analysis: <span class="math inline">x_{P}</span></h2>
 <div class="columns">
 <div class="column" style="width:55%;">
@@ -1579,7 +1585,7 @@ Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class
 </figure>
 </div>
 </section>
-<section id="loss-function" class="slide level2 center">
+<section id="loss-function" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Loss Function</h2>
 <ul>
 <li><p>Want to maximize the <em>expected</em> squared charge difference<sup>1</sup>: <span class="math display">\begin{equation*}
@@ -1607,7 +1613,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 <li id="fn10"><p>And <span class="math inline">\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|</span> is the Jacobian of the transformation from <span class="math inline">\xi \rightarrow \xi^{\ast}</span><a href="#/fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section>
-<section id="networks-2d-u1" class="slide level2 center" data-auto-animate="true">
+<section id="networks-2d-u1" class="slide level2 center" data-auto-animate="true" data-background-color="#1c1c1c">
 <h2 data-id="quarto-animate-title">Networks 2D <span class="math inline">U(1)</span></h2>
 <ul>
 <li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
@@ -1623,7 +1629,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </ul></li>
 </ul>
 </section>
-<section id="v-updatereverse" class="slide level2 center">
+<section id="v-updatereverse" class="slide level2 center" data-background-color="#1c1c1c">
 <h2><span class="math inline">v</span>-Update<sup>1</sup></h2>
 <ul>
 <li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
@@ -1640,7 +1646,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 <li id="fn11"><p><span style="font-size:0.8em;">Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></span><a href="#/fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section>
-<section id="x-update" class="slide level2 center">
+<section id="x-update" class="slide level2 center" data-background-color="#1c1c1c">
 <h2><span class="math inline">x</span>-Update</h2>
 <ul>
 <li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
@@ -1651,7 +1657,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </ul>
 <p><span class="math display">\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left\{x + \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\right\}</span></p>
 </section>
-<section id="lattice-gauge-theory-2d-u1" class="slide level2 centeredslide center">
+<section id="lattice-gauge-theory-2d-u1" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Lattice Gauge Theory (2D <span class="math inline">U(1)</span>)</h2>
 <div class="columns" data-layout-valign="top">
 <div class="column" style="width:50%;">
@@ -1715,7 +1721,7 @@ Figure&nbsp;18: Jupyter Notebook
 </figure>
 </div>
 </section>
-<section id="annealing-schedule" class="slide level2 center">
+<section id="sec-annealing-schedule" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Annealing Schedule</h2>
 <ul>
 <li><p>Introduce an <em>annealing schedule</em> during the training phase:</p>
@@ -1729,7 +1735,7 @@ Figure&nbsp;18: Jupyter Notebook
 </ul></li>
 </ul>
 </section>
-<section id="networks-2d-u1-1" class="slide level2 center">
+<section id="sec-networks-2dU1" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Networks 2D <span class="math inline">U(1)</span></h2>
 <ul>
 <li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
@@ -1745,13 +1751,13 @@ Figure&nbsp;18: Jupyter Notebook
 </ul></li>
 </ul>
 </section>
-<section id="toy-example-gmm-in-mathbbr2" class="slide level2 centeredslide center">
+<section id="toy-example-gmm-in-mathbbr2" class="slide level2 centeredslide center" data-background-color="#1c1c1c">
 <h2>Toy Example: GMM <span class="math inline">\in \mathbb{R}^{2}</span></h2>
 
 <img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg" id="fig-gmm" class="r-stretch quarto-figure-center"><p class="caption">
 Figure&nbsp;19
 </p></section>
-<section id="physical-quantities" class="slide level2 center">
+<section id="physical-quantities" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Physical Quantities</h2>
 <ul>
 <li>To estimate physical quantities, we:
@@ -1771,7 +1777,7 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
 </figure>
 </div>
 </section></section>
-<section id="extra" class="title-slide slide level1 center">
+<section id="sec-extra" class="title-slide slide level1 center" data-background-color="#1c1c1c">
 <h1>Extra</h1>
 <p><span class="preview-image" style="text-align:center; margin-left:auto; margin-right: auto;"><img data-src="./assets/thumbnail.png"></span></p>
 
@@ -2162,7 +2168,7 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
