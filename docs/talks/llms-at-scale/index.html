@@ -1140,9 +1140,11 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="parallelism-concepts" class="level1 scroll-container smaller" data-background-color="white" data-scrollable="true" style="max-height: 700px; overflow-y: scroll;">
+<section id="parallelism-concepts" class="level1 scroll-container smaller page-columns page-full" data-background-color="white" data-scrollable="true" style="max-height: 700px; overflow-y: scroll;">
 <h1 class="scroll-container smaller" data-background-color="white" data-scrollable="true" style="max-height: 700px; overflow-y: scroll;">Parallelism Concepts</h1>
-<div class="tabset-margin-container"></div><div class="panel-tabset" style="font-size: 0.9em;">
+<div class="tabset-margin-container page-columns page-full"><div class="no-row-height column-margin column-container"><div class="margin-aside tabset-margin-content tabset-1-3-tab-margin-content collapse">
+<p>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</p>
+</div></div></div><div class="panel-tabset" style="font-size: 0.9em;">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Single GPU</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data Parallel (DP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tensor Parallel (TP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Pipeline Parallel (PP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false"><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">FSDP</a></li></ul>
 <div class="tab-content" style="font-size: 0.9em;">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
@@ -1196,7 +1198,6 @@ Figure&nbsp;2: Data Parallel Training
 <li>During processing each shard gets processed separately and in parallel on different GPUs and the results are synced at the end of the step.</li>
 <li>This is what one may call horizontal parallelism, as the splitting happens on horizontal level.</li>
 </ul></li>
-<li>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
 </ul>
 </div>
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1210,6 +1211,7 @@ Figure&nbsp;3: Tensor Parallel Training
 </figure>
 </div>
 </div>
+
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <div class="flex-container">
@@ -1899,14 +1901,10 @@ Figure&nbsp;18: Visualization from <span class="citation" data-cites="yang2023ha
 <!---->
 <!-- ::: -->
 </section>
-<section id="life-cycle-of-the-llm" class="level2" data-auto-animate="true" data-background-color="white">
-<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm">Life-Cycle of the LLM</h2>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[ 45, 55 ]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="column-one" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
+<section id="life-cycle-of-the-llm" class="level2 page-columns page-full" data-auto-animate="true" data-background-color="white" style="max-width: 100%;">
+<h2 data-auto-animate="true" data-background-color="white" style="max-width: 100%;" class="anchored" data-anchor-id="life-cycle-of-the-llm">Life-Cycle of the LLM</h2>
+<div class="flex-container" style="align-items: flex-end;">
+<div class="col1" style="width: 40%;">
 <ol type="1">
 <li><p>Data collection + preprocessing</p></li>
 <li><p><strong>Pre-training</strong></p>
@@ -1923,23 +1921,23 @@ Figure&nbsp;18: Visualization from <span class="citation" data-cites="yang2023ha
 <li><p>Deploy (+ monitor, re-evaluate, etc.)</p></li>
 </ol>
 </div>
-<div id="column-two" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
-<div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pretrain-two" class="col2 quarto-float quarto-figure quarto-figure-center anchored" style="width: 55%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;19: Pre-training: Virtually all of the compute used during pretraining phase."><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;19: Pre-training: Virtually all of the compute used during pre-training"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.
+Figure&nbsp;19: <strong>Pre-training</strong>: Virtually <em>all of the compute</em> used during pre-training
 </figcaption>
 </figure>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="forward-pass" class="level2">
-<h2 class="anchored" data-anchor-id="forward-pass">Forward Pass</h2>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p>
+</div></div></section>
+<section id="forward-pass" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="forward-pass">Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center anchored" style="width: 100%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1952,8 +1950,8 @@ Figure&nbsp;20: Language Model trained for causal language modeling. Video from:
 </figure>
 </div>
 </section>
-<section id="generating-text" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="generating-text">Generating Text</h2>
+<section id="generating-text" class="level2 page-columns page-full" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="generating-text">Generating Text</h2>
 <div id="fig-generating-text" class="quarto-float quarto-figure quarto-figure-center anchored" style="width: 100%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1970,20 +1968,20 @@ Figure&nbsp;21: Language Model trained for causal language modeling.
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a></p>
 </div></div></section>
-<section id="life-cycle-of-the-llm-pre-training" class="level2" data-auto-animate="true">
-<h2 data-auto-animate="true" class="anchored" data-anchor-id="life-cycle-of-the-llm-pre-training">Life-Cycle of the LLM: Pre-training</h2>
+<section id="life-cycle-of-the-llm-pre-training" class="level2" data-auto-animate="true" data-background-color="white">
+<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm-pre-training">Life-Cycle of the LLM: Pre-training</h2>
 <p><a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid"></a></p>
 <p><strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase</p>
 </section>
-<section id="life-cycle-of-the-llm-fine-tuning" class="level2" data-auto-animate="true" style="font-size: 0.8em;">
-<h2 data-auto-animate="true" style="font-size: 0.8em;" class="anchored" data-anchor-id="life-cycle-of-the-llm-fine-tuning">Life-Cycle of the LLM: Fine-Tuning</h2>
+<section id="life-cycle-of-the-llm-fine-tuning" class="level2" data-auto-animate="true" data-background-color="white" style="font-size: 0.8em;">
+<h2 data-auto-animate="true" data-background-color="white" style="font-size: 0.8em;" class="anchored" data-anchor-id="life-cycle-of-the-llm-fine-tuning">Life-Cycle of the LLM: Fine-Tuning</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;22: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: <strong>Fine-tuning</strong><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+Figure&nbsp;22: <strong>Fine-tuning</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
 </figcaption>
 </figure>
 </div>
@@ -2522,7 +2520,7 @@ Figure&nbsp;23
 <section id="example-ezpz" class="level2" data-background-color="white" style="max-height: 700px!important;">
 <h2 data-background-color="white" style="max-height: 700px!important;" class="anchored" data-anchor-id="example-ezpz">Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h2>
 <ul>
-<li>Link<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> to <a href="https://asciinema.org/a/668460">video</a></li>
+<li>Link<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> to <a href="https://asciinema.org/a/668460">video</a></li>
 </ul>
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" height="600px" style="max-height: 600px!important;"></script>
 <p>Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP</p>
@@ -2857,7 +2855,7 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 <section id="wordplay" class="level2" data-backgound-color="white">
 <h2 data-backgound-color="white" class="anchored" data-anchor-id="wordplay"><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
 <ul>
-<li>Link<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> to <a href="https://asciinema.org/a/668462">video</a></li>
+<li>Link<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> to <a href="https://asciinema.org/a/668462">video</a></li>
 </ul>
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 600px!important;"></script>
 <p>Example: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay"><code>saforem2/wordplay</code> 🎮💬</a></p>
@@ -2982,9 +2980,8 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
 <li id="fn5"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2024,
   author = {Foreman, Sam},
@@ -3627,7 +3624,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </footer>
 <script>videojs(video_shortcode_videojs_video1);</script>
 <script>videojs(video_shortcode_videojs_video2);</script>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
