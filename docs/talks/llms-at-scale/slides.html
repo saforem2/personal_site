@@ -534,11 +534,20 @@
 <section id="links" class="slide level2 center" data-background-color="white">
 <h2>🔗 Links</h2>
 <ul>
-<li>🏡 <a href="https://samforeman.me">samforeman.me</a>
+<li><p>🏡 <a href="https://samforeman.me">samforeman.me</a>:</p>
 <ul>
-<li><a href="https://samforeman.me/talks/llms-at-scale">LLMs at Scale</a>
+<li>🦜 <a href="https://samforeman.me/talks/">Talks</a>:
 <ul>
-<li>[<a href="https://samforeman.me/talks/llms-at-scale/slides.html">slides</a>]</li>
+<li><a href="https://samforeman.me/talks/llms-at-scale/">Training LLMs at Scale</a> [<a href="https://samforeman.me/talks/llms-at-scale/slides.html">slides</a>]</li>
+</ul></li>
+<li>📦 <a href="https://github.com/saforem2/">Repos</a>:
+<ul>
+<li><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
+<span class="dim-text">Train your model across any number of arbitrary devices, ezpz.</span></li>
+<li><a href="https://github.com/saforem2/wordplay">💬 <code>saforem2/wordplay</code></a><br>
+<span class="dim-text">Playing with words.</span></li>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
+<span class="dim-text">For only the largest of large language models.</span> <!-- - \[[slides](https://samforeman.me/talks/llms-at-scale/slides.html)\] --></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -618,7 +627,7 @@
 <aside><div>
 <p><strong>Note</strong>: See <a href="https://huggingface.co/docs/transformers/v4.17.0/en/performance">🤗 Performance and Scalability: How To Fit a Bigger Model and Train It Faster</a> for more details</p>
 </div><ol class="aside-footnotes"><li id="fn1"><p>Typically, the amount of time (💸) spent training</p></li><li id="fn2"><p>Typically want to utilize as much of GPU as possible</p></li></ol></aside></section>
-<section id="ai-compute-historical" class="slide level2 center" data-background-color="white">
+<section id="ai-compute-historical" class="slide level2 centeredslide smaller center" data-background-color="white">
 <h2>AI 🤝 Compute [Historical]</h2>
 <div class="flex-container">
 <div class="col1" style="font-size: 0.85em; width:35%;">
@@ -688,11 +697,11 @@
 </div>
 </div>
 </section></section>
-<section id="parallelism-concepts" class="title-slide slide level1 smaller center scrollable" data-background-color="white" data-scrollable="true">
+<section id="parallelism-concepts" class="title-slide slide level1 scroll-container smaller center scrollable" data-background-color="white" data-scrollable="true" style="max-height: 700px; overflow-y: scroll;">
 <h1>Parallelism Concepts</h1>
-<div class="panel-tabset scroll-container" style="overflow-y: scroll;">
+<div class="panel-tabset" style="font-size: 0.9em;">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Single GPU</a></li><li><a href="#tabset-1-2">Data Parallel (DP)</a></li><li><a href="#tabset-1-3">Tensor Parallel (TP)</a></li><li><a href="#tabset-1-4">Pipeline Parallel (PP)</a></li><li><a href="#tabset-1-5"><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO</a></li><li><a href="#tabset-1-6">FSDP</a></li></ul>
-<div class="tab-content scroll-container" style="overflow-y: scroll;">
+<div class="tab-content" style="font-size: 0.9em;">
 <div id="tabset-1-1">
 <div id="fig-single-gpu" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -744,7 +753,6 @@ Figure&nbsp;2: Data Parallel Training
 <li>During processing each shard gets processed separately and in parallel on different GPUs and the results are synced at the end of the step.</li>
 <li>This is what one may call horizontal parallelism, as the splitting happens on horizontal level.</li>
 </ul></li>
-<li>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
 </ul>
 </div>
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
@@ -758,6 +766,7 @@ Figure&nbsp;3: Tensor Parallel Training
 </figure>
 </div>
 </div>
+
 </div>
 <div id="tabset-1-4">
 <div class="flex-container">
@@ -852,7 +861,9 @@ Figure&nbsp;5: <a href="deepspeed.ai">DeepSpeed</a> + <code>ZeRO</code>
 </div>
 </div>
 </div>
-</section>
+<aside><div>
+<p>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</p>
+</div></aside></section>
 
 <section>
 <section id="data-parallelism" class="title-slide slide level1 center" data-background-color="white">
@@ -1491,7 +1502,7 @@ Figure&nbsp;19: <strong>Pre-training</strong>: Virtually all of the compute used
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn7"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
-<section id="forward-pass" class="slide level2 center">
+<section id="forward-pass" class="slide level2 center" data-background-color="white">
 <h2>Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center" style="width: 100%;">
 <figure class="quarto-float quarto-float-fig">
@@ -1505,7 +1516,7 @@ Figure&nbsp;20: Language Model trained for causal language modeling. Video from:
 </figure>
 </div>
 </section>
-<section id="generating-text" class="slide level2 center">
+<section id="generating-text" class="slide level2 center" data-background-color="white">
 <h2>Generating Text</h2>
 <div id="fig-generating-text" class="quarto-float quarto-figure quarto-figure-center" style="width: 100%;">
 <figure class="quarto-float quarto-float-fig">
@@ -1523,12 +1534,12 @@ Figure&nbsp;21: Language Model trained for causal language modeling.
 <aside><div>
 <p>Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a></p>
 </div></aside></section>
-<section id="life-cycle-of-the-llm-pre-training" class="slide level2 center" data-auto-animate="true">
+<section id="life-cycle-of-the-llm-pre-training" class="slide level2 center" data-auto-animate="true" data-background-color="white">
 <h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Pre-training</h2>
 <p><a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a></p>
-<p><strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase :::</p>
+<p><strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase</p>
 </section>
-<section id="life-cycle-of-the-llm-fine-tuning" class="slide level2 center scrollable" data-auto-animate="true" style="font-size: 0.8em;">
+<section id="life-cycle-of-the-llm-fine-tuning" class="slide level2 center scrollable" data-auto-animate="true" data-background-color="white" style="font-size: 0.8em;">
 <h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Fine-Tuning</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -2073,14 +2084,13 @@ Figure&nbsp;23
 <span id="cb6-39"><a></a><span class="ex">wandb:</span> 🚀 View run vibrant-river-284 at: https://wandb.ai/aurora_gpt/ezpz.test_dist/runs/p49rzxtv</span>
 <span id="cb6-40"><a></a><span class="ex">wandb:</span> Find logs at: wandb/run-20240717_073532-p49rzxtv/logs</span>
 <span id="cb6-41"><a></a><span class="ex">Application</span> cff755ee resources: utime=25s stime=23s maxrss=1434396KB inblock=32 oublock=4320 minflt=670179 majflt=864 nvcsw=195893 nivcsw=1331214</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
 </section>
-<section id="example-ezpz" class="slide level2 centeredslide center scrollable" data-background-color="white">
+<section id="example-ezpz" class="slide level2 center scrollable" data-background-color="white" style="max-height: 700px!important;">
 <h2>Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h2>
 <ul>
 <li>Link<sup>1</sup> to <a href="https://asciinema.org/a/668460">video</a></li>
 </ul>
-<script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" style="max-height: 600px%!important;"></script>
+<script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" height="600px" style="max-height: 600px!important;"></script>
 <p>Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP</p>
 <aside><ol class="aside-footnotes"><li id="fn9"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section>
@@ -2416,7 +2426,7 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 <ul>
 <li>Link<sup>1</sup> to <a href="https://asciinema.org/a/668462">video</a></li>
 </ul>
-<script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 650px!important;"></script>
+<script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 600px!important;"></script>
 <p>Example: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay"><code>saforem2/wordplay</code> 🎮💬</a></p>
 <aside><ol class="aside-footnotes"><li id="fn10"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section id="thank-you" class="title-slide slide level1 center" data-background-color="white">
@@ -2441,8 +2451,13 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 </div>
 </section>
 
-<section id="deepspeed-zero-offloading" class="title-slide slide level1 center" data-background-color="white">
-<h1><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed <code>ZeRO</code> Offloading</h1>
+<section>
+<section id="extras" class="title-slide slide level1 center" data-background-color="white">
+<h1>🎁 Extras</h1>
+
+</section>
+<section id="deepspeed-zero-offloading" class="slide level2 center" data-background-color="white">
+<h2><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed <code>ZeRO</code> Offloading</h2>
 <div id="fig-zero-stages" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-zero-stages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2459,9 +2474,8 @@ Figure&nbsp;25
 </figure>
 </div>
 </section>
-
-<section id="deepspeed-zero-offloading-1" class="title-slide slide level1 center" data-background-color="white">
-<h1><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed <code>ZeRO</code> Offloading</h1>
+<section id="deepspeed-zero-offloading-1" class="slide level2 center" data-background-color="white">
+<h2><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed <code>ZeRO</code> Offloading</h2>
 <div id="fig-ds-video" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-ds-video-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2482,17 +2496,15 @@ Figure&nbsp;26
 </figure>
 </div>
 </section>
-
-<section id="hands-on" class="title-slide slide level1 center" data-background-color="white">
-<h1>Hands-On</h1>
+<section id="hands-on" class="slide level2 center" data-background-color="white">
+<h2>Hands-On</h2>
 <ul>
 <li><p><a href="https://github.com/argonne-lcf/ai-science-training-series/blob/main/06_parallel_training/README.md">Instructions</a></p>
 <ul>
 <li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://saforem2.github.io/wordplay/"><code>saforem2/wordplay</code> 🎮💬</a> [<a href="https://saforem2.github.io/wordplay/">web</a>]</li>
 </ul></li>
 </ul>
-</section>
-
+</section></section>
 <section>
 <section id="references" class="title-slide slide level1 center" data-background-color="white">
 <h1>References</h1>
@@ -2915,7 +2927,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
     </script>
     <script>videojs(video_shortcode_videojs_video1);</script>
     <script>videojs(video_shortcode_videojs_video2);</script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

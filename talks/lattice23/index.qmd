@@ -153,7 +153,7 @@ format:
 
 ::: {.column width="50%"}
 
-::: {.callout-note icon=false title="🥅 Goal" style="text-align:left;!important"}
+::: {.callout-note collapse=false icon=false title="🎯 Goal" style="text-align:left;!important; width: 100%!important;"}
 Generate **independent** samples $\{x_{i}\}$, such that[^notation1]
 $$\{x_{i}\} \sim p(x) \propto e^{-S(x)}$$
 where $S(x)$ is the _action_ (or potential energy)
@@ -187,7 +187,7 @@ If these were <span style="color:#00CCFF;">independent</span>, we could approxim
 
 ::: {.column width="50%"}
 
-::: {.callout-note icon=false title="🎯 Goal" style="text-align:left;!important"}
+::: {.callout-note collapse=false icon=false title="🎯 Goal" style="text-align:left;!important; width: 100%!important;"}
 Generate **independent** samples $\{x_{i}\}$, such that[^notation2]
 $$\{x_{i}\} \sim p(x) \propto e^{-S(x)}$$
 where $S(x)$ is the _action_ (or potential energy)
@@ -225,7 +225,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
   $$\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
   \propto e^{-S(x)}$$
 
-::: {.callout-tip icon=false title="🪄 Trick" style="display:inline!important;"}
+::: {.callout-tip icon=false collapse=false title="🪄 Trick" style="display:inline!important; width: 100%!important;"}
   - Introduce [fictitious]{.green-text} momentum $v \sim \mathcal{N}(0, \mathbb{1})$
     - Normally distributed **independent** of $x$, i.e.
   $$\begin{align*}
@@ -251,7 +251,7 @@ $\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:
 
 ::: {.column width="45%"}
 
-::: {.callout-tip icon=false title="🔋 Hamiltonian Dynamics"}
+::: {.callout-tip collapse=false icon=false title="🔋 Hamiltonian Dynamics" style="width:100%!important;"}
 $H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow$
 $$\dot{x} = +\partial_{v} H,
 \,\,\dot{v} = -\partial_{x} H$$
@@ -274,11 +274,11 @@ Overview of HMC algorithm
 
 ::: {.column width="40%"}
 
-::: {.callout-tip icon=false title="🔋 Hamiltonian Dynamics"}
+::: {.callout-tip collapse=false icon=false title="🔋 Hamiltonian Dynamics" style="width:100%!important;"}
 $\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$
 :::
 
-::: {.callout-note icon=false title="🐸 Leapfrog Step"}
+::: {.callout-note collapse=false icon=false title="🐸 Leapfrog Step" style="width:100%!important;"}
 `input` $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ `output`
 
 $$\begin{align*}
@@ -289,7 +289,7 @@ v' &:= \textcolor{#F06292}{\Gamma}(x', \tilde{v}) = \tilde{v} - \frac{\varepsilo
 
 :::
 
-::: {.callout-warning icon=false title="⚠️ Warning!"}
+::: {.callout-warning collapse=false icon=false title="⚠️ Warning!" style="width:100%!important;"}
 - Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$  
 at the [beginning]{.yellow-text} of each trajectory
 :::
@@ -383,7 +383,7 @@ $$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$
 \left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor$]{.dim-text style="font-size:0.8em;"}
 
 
-::: {.callout-important icon=false title="⏳ Critical Slowing Down" style="text-align:left;"}
+::: {.callout-important collapse=false icon=false title="⏳ Critical Slowing Down" style="text-align:left; width:100%!important;"}
 - $Q$ gets stuck!
     - as $\beta\longrightarrow \infty$:
         - $Q \longrightarrow \text{const.}$
@@ -513,9 +513,9 @@ Generalized MD update with [$\Lambda_{\theta}^{\pm}$]{.orange-text}, [$\Gamma_{\
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size:0.99em;"}
+::: {.column width="65%" style="font-size:0.7em;"}
 
-::: {.callout title="Algorithm"}
+::: {.callout-important collapse=false icon=false title="👨‍💻 Algorithm" style="text-align:left; width: 100%!important;"}
 
 1. `input`: [$x$]{.purple-text}
 
@@ -547,7 +547,7 @@ $$\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ la
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 ::: {#fig-mdupdate}
 
@@ -565,13 +565,13 @@ $$\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ la
     A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}$
 
 
-# 4D $SU(3)$ Model {#sec-su3 .centeredslide style="font-size: 0.9em;" background-color="#1c1c1c"}
+# 4D $SU(3)$ Model {#sec-su3 .centeredslide background-color="#1c1c1c"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-::: {.callout-note icon=false title="🔗 Link Variables" style="text-align:left;"}
+::: {.callout-note collapse=false icon=false title="🔗 Link Variables" style="text-align:left; width: 100%!important;"}
 
 - Write link variables $U_{\mu}(x) \in SU(3)$:
 
@@ -585,14 +585,14 @@ $$\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ la
 
 :::
 
-::: {.callout-tip icon=false title="🏃‍♂️‍➡️ Conjugate Momenta" style="text-align:left;"}
+::: {.callout-tip collapse=false icon=false title="🏃‍♂️‍➡️ Conjugate Momenta" style="text-align:left; width:100%!important;"}
 
 - Introduce [$P_{\mu}(x) = P^{k}_{\mu}(x) \lambda^{k}$]{.green-text} conjugate to
 [$\omega^{k}_{\mu}(x)$]{.purple-text}
 
 :::
 
-::: {.callout-important icon=false title="🟥 Wilson Action" style="text-align:left;"}
+::: {.callout-important collapse=false icon=false title="🟥 Wilson Action" style="text-align:left; width:100%!important;"}
 
 $$ S_{G} = -\frac{\beta}{6} \sum
 \mathrm{Tr}\left[U_{\mu\nu}(x)
@@ -627,7 +627,7 @@ Hamiltonian: $H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow$
 
 ::: {.column style="font-size:0.9em; text-align: center;"}
 
-::: {.callout style="text-align:left;"}
+::: {.callout collapse=false style="text-align:left; width: 100%!important;"}
 
 - [$U$ update]{style="border-bottom: 2px solid #AE81FF;"}:
 [$\frac{d\omega^{k}}{dt} = \frac{\partial H}{\partial P^{k}}$]{.purple-text style="font-size:1.5em;"}
@@ -649,7 +649,7 @@ U(\textcolor{#FFEE58}{\varepsilon}) &= e^{i\,\textcolor{#FFEE58}{\varepsilon} P(
 :::
 
 ::: {.column style="font-size:0.9em; text-align: center;"}
-::: {.callout style="text-align:left;"}
+::: {.callout collapse=false style="text-align:left; width: 100%!important;"}
 - [$P$ update]{style="border-bottom: 2px solid #07B875;"}:
 [$\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}$]{.green-text style="font-size:1.5em;"} 
 $$\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}
@@ -837,7 +837,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &= P(0) - \textcolor{#FFEE58}{\varepsilon} \
 
 ::: {.column width="33%" style="text-align:left; padding-top: 5%;"}
 
-::: {.callout-important title="Improvement" style="text-align:left!important;"}
+::: {.callout-important icon=false collapse=false title="📈 Improvement" style="text-align:left!important; width: 100%!important;"}
 We can measure the performance by comparing $\tau_{\mathrm{int}}$ for the
 [**trained model**]{style="color:#FF2052;"} vs.
 [**HMC**]{style="color:#9F9F9F;"}.  
@@ -970,7 +970,7 @@ between the trained model and HMC
 
 :::
 
-::: {.callout-note title="Acknowledgements"}
+::: {.callout-note icon=false collapse=false title="🙏 Acknowledgements" style="width: 100%!important;"}
 
 This research used resources of the Argonne Leadership Computing Facility,  
 which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
@@ -1191,14 +1191,14 @@ $$\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \lef
 
 ::: {style="text-align:center;"}
 
-::: {.callout-note title="Link Variables"}
+::: {.callout-note icon=false collapse=false title="🔗 Link Variables" style="width:100%!important; text-align:left;"}
 $$U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad$$
 $$x_{\mu}(n) \in [-\pi,\pi)$$
 :::
 
 ::: {}
 
-::: {.callout-important title="Wilson Action"}
+::: {.callout-important icon=false collapse=false title="🫸 Wilson Action" style="width:100%!important; text-align:left;"}
 $$S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},$$
 
 $$\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})
@@ -1281,8 +1281,7 @@ limit.
 
 :::
 
-# Extra {#sec-extra background-color="#1c1c1c"}
+## Extra {#sec-extra background-color="#1c1c1c"}
 
 [![](./assets/thumbnail.png)]{.preview-image style="text-align:center; margin-left:auto; margin-right: auto;"}
-
 
