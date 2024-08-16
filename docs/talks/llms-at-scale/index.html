@@ -144,6 +144,18 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 </script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 <meta name="mermaid-theme" content="neutral">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
@@ -197,6 +209,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../../css/fonts.css">
 <link rel="stylesheet" href="../../css/default.css">
 <link rel="stylesheet" href="../../css/custom.css">
 <meta property="og:title" content="Training LLMs at Scale">
@@ -1115,11 +1128,11 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="parallelism-concepts" class="level1 scroll-container" data-background-color="white" data-scrollable="true" style="overflow-y: scroll; font-size: 0.8em;">
-<h1 class="scroll-container" data-background-color="white" data-scrollable="true" style="overflow-y: scroll; font-size: 0.8em;">Parallelism Concepts</h1>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
+<section id="parallelism-concepts" class="level1 smaller" data-background-color="white" data-scrollable="true">
+<h1 class="smaller" data-background-color="white" data-scrollable="true">Parallelism Concepts</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset scroll-container" style="overflow-y: scroll;">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Single GPU</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data Parallel (DP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Tensor Parallel (TP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Pipeline Parallel (PP)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false"><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">FSDP</a></li></ul>
-<div class="tab-content">
+<div class="tab-content scroll-container" style="overflow-y: scroll;">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div id="fig-single-gpu" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1528,13 +1541,13 @@ Figure&nbsp;6: Data Parallelism
 </div>
 </div>
 </section>
-<section id="tensor-model-parallel-training-example" class="level1" data-background-color="white">
-<h1 data-background-color="white">Tensor (/ Model) Parallel Training: Example</h1>
+<section id="tensor-model-parallel-training-example" class="level1 smaller" data-background-color="white">
+<h1 class="smaller" data-background-color="white">Tensor (/ Model) Parallel Training: Example</h1>
 <p><span class="math display">
-\begin{align}
+\begin{align*}
 y &amp;= \sum_{i} w_{i} * x_{i} \\
 &amp;= w_0 * x_0 + w_1 * x_1 + w_2 * x_2
-\end{align}
+\end{align*}
 </span></p>
 <ol type="1">
 <li>Compute <span class="math inline">y_{0} = w_{0} * x_{0}</span> and send to <span class="math inline">\longrightarrow</span> <code>GPU1</code></li>
@@ -1617,8 +1630,8 @@ Figure&nbsp;7
 </ul></li>
 </ul>
 </section>
-<section id="tensor-parallelism" class="level2 center" data-background-color="white">
-<h2 class="center anchored" data-background-color="white" data-anchor-id="tensor-parallelism">Tensor Parallelism</h2>
+<section id="tensor-parallelism" class="level2 scrollable center" data-background-color="white" style="max-height: 100%;">
+<h2 class="scrollable center anchored" data-background-color="white" style="max-height: 100%;" data-anchor-id="tensor-parallelism">Tensor Parallelism</h2>
 <div id="fig-parallel-gemm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-parallel-gemm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1874,8 +1887,8 @@ Figure&nbsp;18: Visualization from <span class="citation" data-cites="yang2023ha
 <!---->
 <!-- ::: -->
 </section>
-<section id="life-cycle-of-the-llm" class="level2" data-auto-animate="true">
-<h2 data-auto-animate="true" class="anchored" data-anchor-id="life-cycle-of-the-llm">Life-Cycle of the LLM</h2>
+<section id="life-cycle-of-the-llm" class="level2" data-auto-animate="true" data-background-color="white">
+<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm">Life-Cycle of the LLM</h2>
 <div>
 
 </div>
@@ -1979,9 +1992,8 @@ Figure&nbsp;23
 </section>
 <section id="ezpz" class="level1 centeredslide" data-background-color="white">
 <h1 class="centeredslide" data-background-color="white">🍋 <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a></h1>
-<section id="clone-repos" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="clone-repos">Clone Repo(s)</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
+<section id="clone-repos" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="clone-repos">Clone Repo(s)</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#[⭐][07:33:08 AM][foremans@x3101c0s13b0n0][~/tmp]</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ex">$</span> mkdir ~/tmp/polaris-talk</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -2011,11 +2023,9 @@ Figure&nbsp;23
 <span id="cb2-27"><a href="#cb2-27"></a><span class="ex">remote:</span> Total 869 <span class="er">(</span><span class="ex">delta</span> 29<span class="kw">)</span><span class="ex">,</span> reused 56 <span class="er">(</span><span class="ex">delta</span> 23<span class="kw">)</span><span class="ex">,</span> pack-reused 797</span>
 <span id="cb2-28"><a href="#cb2-28"></a><span class="ex">Receiving</span> objects: 100% <span class="er">(</span><span class="ex">869/869</span><span class="kw">)</span><span class="ex">,</span> 14.36 MiB <span class="kw">|</span> <span class="ex">46.54</span> MiB/s, done.</span>
 <span id="cb2-29"><a href="#cb2-29"></a><span class="ex">Resolving</span> deltas: 100% <span class="er">(</span><span class="ex">395/395</span><span class="kw">)</span><span class="ex">,</span> done.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="setup-python" class="level2 scrollable" data-background-color="white">
-<h2 class="scrollable anchored" data-background-color="white" data-anchor-id="setup-python">Setup Python</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
+<section id="setup-python" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="setup-python">Setup Python</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#[⭐][07:33:53 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="ex">$</span> source ezpz/src/ezpz/bin/utils.sh <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_python</span> <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_alcf</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="ex">Unable</span> to detect PBS or SLURM working directory info...</span>
@@ -2065,11 +2075,9 @@ Figure&nbsp;23
 <span id="cb3-47"><a href="#cb3-47"></a><span class="ex">[LAUNCH]:</span></span>
 <span id="cb3-48"><a href="#cb3-48"></a>    <span class="ex">•</span> To launch across all available GPUs, use: launch</span>
 <span id="cb3-49"><a href="#cb3-49"></a>      <span class="ex">launch</span> = mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 4 <span class="at">-ppn</span> 4 <span class="at">--hostfile</span> /var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="install-ezpz-wordplay" class="level2 scrollable" data-background-color="white">
-<h2 class="scrollable anchored" data-background-color="white" data-anchor-id="install-ezpz-wordplay">Install <code>{ezpz, wordplay}</code></h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
+<section id="install-ezpz-wordplay" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="install-ezpz-wordplay">Install <code>{ezpz, wordplay}</code></h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#[⭐][07:34:13 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-e</span> ezpz wordplay <span class="at">--require-virtualenv</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="ex">Looking</span> in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com</span>
@@ -2109,11 +2117,9 @@ Figure&nbsp;23
 <span id="cb4-37"><a href="#cb4-37"></a><span class="ex">Successfully</span> installed wandb-0.17.4</span>
 <span id="cb4-38"><a href="#cb4-38"></a><span class="ex">[notice]</span> A new release of pip is available: 24.0 <span class="at">-</span><span class="op">&gt;</span> 24.1.2</span>
 <span id="cb4-39"><a href="#cb4-39"></a><span class="ex">[notice]</span> To update, run: pip install <span class="at">--upgrade</span> pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="launch-ezpz.test_dist" class="level2 scrollable" data-background-color="white">
-<h2 class="scrollable anchored" data-background-color="white" data-anchor-id="launch-ezpz.test_dist">Launch <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz.test_dist</code></a></h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
+<section id="launch-ezpz.test_dist" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="launch-ezpz.test_dist">Launch <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz.test_dist</code></a></h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#(👻 2024-04-29)</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#[⭐][07:34:07 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327][⏱ 7s]</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="ex">$</span> which launch</span>
@@ -2456,11 +2462,9 @@ Figure&nbsp;23
 <span id="cb5-340"><a href="#cb5-340"></a><span class="ex">train/sps</span>                                iter</span>
 <span id="cb5-341"><a href="#cb5-341"></a><span class="ex">[2024-07-17</span> 07:35:37.681268]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">plot:156</span><span class="pp">]</span> <span class="at">-</span> Appending plot to: /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt</span>
 <span id="cb5-342"><a href="#cb5-342"></a><span class="ex">text</span> saved in /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="pyinstrument-profile" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="pyinstrument-profile">PyInstrument Profile</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
+<section id="pyinstrument-profile" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="pyinstrument-profile">PyInstrument Profile</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">Recorded:</span> 07:35:34  Samples:  2227</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="ex">Duration:</span> 2.948     CPU time: 5.441</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="ex">PyInstrument:</span> v4.6.2</span>
@@ -2502,7 +2506,7 @@ Figure&nbsp;23
 <span id="cb6-39"><a href="#cb6-39"></a><span class="ex">wandb:</span> 🚀 View run vibrant-river-284 at: https://wandb.ai/aurora_gpt/ezpz.test_dist/runs/p49rzxtv</span>
 <span id="cb6-40"><a href="#cb6-40"></a><span class="ex">wandb:</span> Find logs at: wandb/run-20240717_073532-p49rzxtv/logs</span>
 <span id="cb6-41"><a href="#cb6-41"></a><span class="ex">Application</span> cff755ee resources: utime=25s stime=23s maxrss=1434396KB inblock=32 oublock=4320 minflt=670179 majflt=864 nvcsw=195893 nivcsw=1331214</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>:::</p>
 </section>
 <section id="example-ezpz" class="level2 centeredslide" data-background-color="white">
 <h2 class="centeredslide anchored" data-background-color="white" data-anchor-id="example-ezpz">Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h2>
@@ -2839,8 +2843,8 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb8-295"><a href="#cb8-295"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="wordplay" class="level2 centeredslide" data-backgound-color="white">
-<h2 class="centeredslide anchored" data-backgound-color="white" data-anchor-id="wordplay"><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
+<section id="wordplay" class="level2" data-backgound-color="white">
+<h2 data-backgound-color="white" class="anchored" data-anchor-id="wordplay"><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
 <ul>
 <li>Link<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> to <a href="https://asciinema.org/a/668462">video</a></li>
 </ul>
@@ -3609,7 +3613,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </footer>
 <script>videojs(video_shortcode_videojs_video1);</script>
 <script>videojs(video_shortcode_videojs_video2);</script>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

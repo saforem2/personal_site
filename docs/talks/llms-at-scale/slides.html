@@ -160,6 +160,18 @@
   <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <script type="application/json" class="js-hypothesis-config">
+  {
+    "theme": "clean",
+    "openSidebar": false
+  }
+  </script>
+  <script async="" src="https://hypothes.is/embed.js"></script>
+  <script>
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      document.body.classList.add('hypothesis-enabled');
+    });
+  </script>
   <style type="text/css">
 
   .callout {
@@ -606,7 +618,7 @@
 <aside><div>
 <p><strong>Note</strong>: See <a href="https://huggingface.co/docs/transformers/v4.17.0/en/performance">🤗 Performance and Scalability: How To Fit a Bigger Model and Train It Faster</a> for more details</p>
 </div><ol class="aside-footnotes"><li id="fn1"><p>Typically, the amount of time (💸) spent training</p></li><li id="fn2"><p>Typically want to utilize as much of GPU as possible</p></li></ol></aside></section>
-<section id="ai-compute-historical" class="slide level2 center scrollable" data-background-color="white">
+<section id="ai-compute-historical" class="slide level2 center" data-background-color="white">
 <h2>AI 🤝 Compute [Historical]</h2>
 <div class="flex-container">
 <div class="col1" style="font-size: 0.85em; width:35%;">
@@ -639,14 +651,7 @@
 </figure>
 </div>
 </div>
-
-<aside><div>
-<hr>
-<ol>
-
-
-</ol>
-</div></aside></section>
+</section>
 <section id="ai-compute-modern" class="slide level2 centeredslide smaller center" data-background-color="white">
 <h2>AI 🤝 Compute [Modern]</h2>
 <div class="flex-container">
@@ -683,11 +688,11 @@
 </div>
 </div>
 </section></section>
-<section id="parallelism-concepts" class="title-slide slide level1 scroll-container center scrollable" data-background-color="white" data-scrollable="true" style="overflow-y: scroll; font-size: 0.8em;">
+<section id="parallelism-concepts" class="title-slide slide level1 smaller center scrollable" data-background-color="white" data-scrollable="true">
 <h1>Parallelism Concepts</h1>
-<div class="panel-tabset">
+<div class="panel-tabset scroll-container" style="overflow-y: scroll;">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Single GPU</a></li><li><a href="#tabset-1-2">Data Parallel (DP)</a></li><li><a href="#tabset-1-3">Tensor Parallel (TP)</a></li><li><a href="#tabset-1-4">Pipeline Parallel (PP)</a></li><li><a href="#tabset-1-5"><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> ZeRO</a></li><li><a href="#tabset-1-6">FSDP</a></li></ul>
-<div class="tab-content">
+<div class="tab-content scroll-container" style="overflow-y: scroll;">
 <div id="tabset-1-1">
 <div id="fig-single-gpu" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -991,13 +996,7 @@ Figure&nbsp;6: Data Parallelism
 </ul></li>
 <li>See <a href="https://arxiv.org/abs/1708.03888">Large Batch Training of Convolutional Networks</a></li>
 </ul>
-
-<aside><div>
-<hr>
-<ol start="3">
-<li id="fn3"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU<a href="#/fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU</p></li></ol></aside></section>
 <section id="recent-progress" class="slide level2 center" data-background-color="white">
 <h2>Recent Progress</h2>
 <div style="display: -webkit-inline-box; max-width: -webkit-fill-available; overflow: auto; font-size: 0.7em; font-family: monospace;">
@@ -1105,13 +1104,13 @@ Figure&nbsp;6: Data Parallelism
 </section>
 
 <section>
-<section id="tensor-model-parallel-training-example" class="title-slide slide level1 center scrollable" data-background-color="white">
+<section id="tensor-model-parallel-training-example" class="title-slide slide level1 smaller center scrollable" data-background-color="white">
 <h1>Tensor (/ Model) Parallel Training: Example</h1>
 <p><span class="math display">
-\begin{align}
+\begin{align*}
 y &amp;= \sum_{i} w_{i} * x_{i} \\
 &amp;= w_0 * x_0 + w_1 * x_1 + w_2 * x_2
-\end{align}
+\end{align*}
 </span></p>
 <ol type="1">
 <li>Compute <span class="math inline">y_{0} = w_{0} * x_{0}</span> and send to <span class="math inline">\longrightarrow</span> <code>GPU1</code></li>
@@ -1194,14 +1193,8 @@ Figure&nbsp;7
 <li><p>If we look at the computation in matrix form, it’s easy to see how the matrix multiplication can be split between multiple GPUs:</p></li>
 </ul></li>
 </ul>
-
-<aside><div>
-<hr>
-<ol start="4">
-<li id="fn4"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a><a href="#/fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section>
-<section id="tensor-parallelism" class="slide level2 center" data-background-color="white">
+<aside><ol class="aside-footnotes"><li id="fn4"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
+<section id="tensor-parallelism" class="slide level2 scrollable center" data-background-color="white" style="max-height: 100%;">
 <h2>Tensor Parallelism</h2>
 <div id="fig-parallel-gemm" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1352,7 +1345,7 @@ Figure&nbsp;15: Large Language Models have (LLM)s have taken the <del>NLP commun
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn5"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a></p></li></ol></aside></section>
-<section id="emergent-abilities" class="slide level2 center scrollable" data-background-color="#FBFBFD">
+<section id="emergent-abilities" class="slide level2 center" data-background-color="#FBFBFD">
 <h2>Emergent Abilities</h2>
 <div id="fig-emergent-abilities" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1365,13 +1358,7 @@ Figure&nbsp;16: <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of
 </figure>
 </div>
 <!-- <img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/emergent-abilities.gif?raw=true" max-height="650px" /> -->
-
-<aside><div>
-<hr>
-<ol start="5">
-
-</ol>
-</div></aside></section>
+</section>
 <section id="training-llms" class="slide level2 center scrollable" data-background-color="white">
 <h2>Training LLMs</h2>
 <!-- [Modern parallelism techniques[^parallelism-slides] enable the training of large language models]{style="font-size: 0.8em;"} -->
@@ -1464,14 +1451,8 @@ Figure&nbsp;18: Visualization from <span class="citation" data-cites="yang2023ha
 <!-- 1. [ Hannibal046/Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM/blob/main/README.md) [[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)]{.inline-image} -->
 <!---->
 <!-- ::: -->
-
-<aside><div>
-<hr>
-<ol start="6">
-<li id="fn6"><p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details<a href="#/fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section>
-<section id="life-cycle-of-the-llm" class="slide level2 center scrollable" data-auto-animate="true">
+<aside><ol class="aside-footnotes"><li id="fn6"><p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</p></li></ol></aside></section>
+<section id="life-cycle-of-the-llm" class="slide level2 center scrollable" data-auto-animate="true" data-background-color="white">
 <h2 data-id="quarto-animate-title">Life-Cycle of the LLM</h2>
 <div>
 
@@ -1509,13 +1490,7 @@ Figure&nbsp;19: <strong>Pre-training</strong>: Virtually all of the compute used
 </div>
 </div>
 </div>
-
-<aside><div>
-<hr>
-<ol start="7">
-<li id="fn7"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a><a href="#/fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
 <section id="forward-pass" class="slide level2 center">
 <h2>Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center" style="width: 100%;">
@@ -1565,13 +1540,7 @@ Figure&nbsp;22: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually u
 </figcaption>
 </figure>
 </div>
-
-<aside><div>
-<hr>
-<ol start="8">
-<li id="fn8"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a><a href="#/fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
 <section id="assistant-models" class="slide level2 centeredslide center" data-background-color="#181D29">
 <h2>Assistant Models</h2>
 <div id="fig-assistant-models" class="quarto-float quarto-figure quarto-figure-center">
@@ -1590,9 +1559,8 @@ Figure&nbsp;23
 <h1>🍋 <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a></h1>
 
 </section>
-<section id="clone-repos" class="slide level2 center" data-background-color="white">
+<section id="clone-repos" class="slide level2 smaller center" data-background-color="white">
 <h2>Clone Repo(s)</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="co">#[⭐][07:33:08 AM][foremans@x3101c0s13b0n0][~/tmp]</span></span>
 <span id="cb2-2"><a></a><span class="ex">$</span> mkdir ~/tmp/polaris-talk</span>
 <span id="cb2-3"><a></a></span>
@@ -1622,11 +1590,9 @@ Figure&nbsp;23
 <span id="cb2-27"><a></a><span class="ex">remote:</span> Total 869 <span class="er">(</span><span class="ex">delta</span> 29<span class="kw">)</span><span class="ex">,</span> reused 56 <span class="er">(</span><span class="ex">delta</span> 23<span class="kw">)</span><span class="ex">,</span> pack-reused 797</span>
 <span id="cb2-28"><a></a><span class="ex">Receiving</span> objects: 100% <span class="er">(</span><span class="ex">869/869</span><span class="kw">)</span><span class="ex">,</span> 14.36 MiB <span class="kw">|</span> <span class="ex">46.54</span> MiB/s, done.</span>
 <span id="cb2-29"><a></a><span class="ex">Resolving</span> deltas: 100% <span class="er">(</span><span class="ex">395/395</span><span class="kw">)</span><span class="ex">,</span> done.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="setup-python" class="slide level2 scrollable center" data-background-color="white">
+<section id="setup-python" class="slide level2 smaller center" data-background-color="white">
 <h2>Setup Python</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="co">#[⭐][07:33:53 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb3-2"><a></a><span class="ex">$</span> source ezpz/src/ezpz/bin/utils.sh <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_python</span> <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_alcf</span></span>
 <span id="cb3-3"><a></a><span class="ex">Unable</span> to detect PBS or SLURM working directory info...</span>
@@ -1676,11 +1642,9 @@ Figure&nbsp;23
 <span id="cb3-47"><a></a><span class="ex">[LAUNCH]:</span></span>
 <span id="cb3-48"><a></a>    <span class="ex">•</span> To launch across all available GPUs, use: launch</span>
 <span id="cb3-49"><a></a>      <span class="ex">launch</span> = mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 4 <span class="at">-ppn</span> 4 <span class="at">--hostfile</span> /var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="install-ezpz-wordplay" class="slide level2 scrollable center" data-background-color="white">
+<section id="install-ezpz-wordplay" class="slide level2 smaller center" data-background-color="white">
 <h2>Install <code>{ezpz, wordplay}</code></h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="co">#[⭐][07:34:13 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb4-2"><a></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-e</span> ezpz wordplay <span class="at">--require-virtualenv</span></span>
 <span id="cb4-3"><a></a><span class="ex">Looking</span> in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com</span>
@@ -1720,11 +1684,9 @@ Figure&nbsp;23
 <span id="cb4-37"><a></a><span class="ex">Successfully</span> installed wandb-0.17.4</span>
 <span id="cb4-38"><a></a><span class="ex">[notice]</span> A new release of pip is available: 24.0 <span class="at">-</span><span class="op">&gt;</span> 24.1.2</span>
 <span id="cb4-39"><a></a><span class="ex">[notice]</span> To update, run: pip install <span class="at">--upgrade</span> pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="launch-ezpz.test_dist" class="slide level2 scrollable center" data-background-color="white">
+<section id="launch-ezpz.test_dist" class="slide level2 smaller center" data-background-color="white">
 <h2>Launch <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz.test_dist</code></a></h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="co">#(👻 2024-04-29)</span></span>
 <span id="cb5-2"><a></a><span class="co">#[⭐][07:34:07 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327][⏱ 7s]</span></span>
 <span id="cb5-3"><a></a><span class="ex">$</span> which launch</span>
@@ -2067,11 +2029,9 @@ Figure&nbsp;23
 <span id="cb5-340"><a></a><span class="ex">train/sps</span>                                iter</span>
 <span id="cb5-341"><a></a><span class="ex">[2024-07-17</span> 07:35:37.681268]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">plot:156</span><span class="pp">]</span> <span class="at">-</span> Appending plot to: /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt</span>
 <span id="cb5-342"><a></a><span class="ex">text</span> saved in /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="pyinstrument-profile" class="slide level2 center" data-background-color="white">
+<section id="pyinstrument-profile" class="slide level2 smaller center" data-background-color="white">
 <h2>PyInstrument Profile</h2>
-<div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="ex">Recorded:</span> 07:35:34  Samples:  2227</span>
 <span id="cb6-2"><a></a><span class="ex">Duration:</span> 2.948     CPU time: 5.441</span>
 <span id="cb6-3"><a></a><span class="ex">PyInstrument:</span> v4.6.2</span>
@@ -2113,7 +2073,7 @@ Figure&nbsp;23
 <span id="cb6-39"><a></a><span class="ex">wandb:</span> 🚀 View run vibrant-river-284 at: https://wandb.ai/aurora_gpt/ezpz.test_dist/runs/p49rzxtv</span>
 <span id="cb6-40"><a></a><span class="ex">wandb:</span> Find logs at: wandb/run-20240717_073532-p49rzxtv/logs</span>
 <span id="cb6-41"><a></a><span class="ex">Application</span> cff755ee resources: utime=25s stime=23s maxrss=1434396KB inblock=32 oublock=4320 minflt=670179 majflt=864 nvcsw=195893 nivcsw=1331214</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>:::</p>
 </section>
 <section id="example-ezpz" class="slide level2 centeredslide center scrollable" data-background-color="white">
 <h2>Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h2>
@@ -2122,13 +2082,7 @@ Figure&nbsp;23
 </ul>
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" style="max-height: 600px%!important;"></script>
 <p>Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP</p>
-
-<aside><div>
-<hr>
-<ol start="9">
-<li id="fn9"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)<a href="#/fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn9"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section>
 <section id="example-wordplay" class="title-slide slide level1 center" data-background-color="white">
 <h1>Example: <a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h1>
@@ -2457,20 +2411,14 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb8-295"><a></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="wordplay" class="slide level2 centeredslide center scrollable" data-backgound-color="white">
+<section id="wordplay" class="slide level2 center scrollable" data-backgound-color="white">
 <h2><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
 <ul>
 <li>Link<sup>1</sup> to <a href="https://asciinema.org/a/668462">video</a></li>
 </ul>
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 650px!important;"></script>
 <p>Example: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay"><code>saforem2/wordplay</code> 🎮💬</a></p>
-
-<aside><div>
-<hr>
-<ol start="10">
-<li id="fn10"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)<a href="#/fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</div><ol class="aside-footnotes"></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn10"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section></section>
 <section id="thank-you" class="title-slide slide level1 center" data-background-color="white">
 <h1>Thank you!</h1>
 <ul>
@@ -2584,6 +2532,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
 </div>
 </div>
 </section></section>
+
     </div>
   </div>
 
@@ -2966,7 +2915,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
     </script>
     <script>videojs(video_shortcode_videojs_video1);</script>
     <script>videojs(video_shortcode_videojs_video2);</script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
