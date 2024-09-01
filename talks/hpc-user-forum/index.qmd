@@ -1,0 +1,647 @@
+---
+# title: "[Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/slides.html)"
+title: "AuroraGPT"
+# navbar: default
+# sidebar: false
+cookie-consent: true
+location: '[HPC User Forum Fall 24](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/)'
+date: 2024-09-04
+# date-modified: last-modified
+number-sections: false
+bibliography: ../../references.bib
+editor:
+  render-on-save: true
+  freeze: auto
+twitter-card:
+  image: assets/thumbnail.png
+  site: "saforem2"
+  creator: "saforem2"
+  title: "AuroraGPT"
+  description: "Overview of AuroraGPT"
+  card-style: summary
+open-graph:
+  title: "AuroraGPT"
+  description: "Overview of AuroraGPT"
+  image: assets/thumbnail.png
+citation:
+   author: Sam Foreman
+   type: speech
+   url: https://samforeman.me/talks/hpc-user-forum
+format:
+  # html: default
+  # page-layout: full
+  # # grid:
+  # #  body-width: 1050px
+  html:
+    # reference-location: section
+    # toc-title: Contents
+    # toc-location: right-body
+    page-layout: full
+    # grid:
+    #   # body-width: 800px
+    #   # sidebar-width: 0px
+    #   margin-width: 0px
+    #   # gutter-width: 1.5em
+    # grid:
+    #   body-width: 800px
+  revealjs:
+    footer: "[https://samforeman.me/talks/hpc-user-forum/slides.html](https://samforeman.me/talks/hpc-user-forum)"
+    slides-url: https://samforeman.me/talks/hpc-user-forum/slides.html
+    template-partials:
+      - title-slide.html
+      # - ./title-fancy/title-slide.html
+      # - ./title_slide_template.html
+      # - ../../title-slide.html
+    title-slide-attributes:
+      data-background-iframe: https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html
+      data-background-size: contain
+      data-background-color: white
+      background-color: white
+    mermaid:
+      theme: neutral
+    scrollable: true
+    background-color: white
+    output-file: "slides.html"
+    navigation-mode: linear
+    # title-block-style: none
+    slide-number: c
+    # title-slide-style: default
+    chalkboard:
+      buttons: false
+    auto-animate: true
+    # reference-location: section
+    touch: true
+    pause: false
+    footnotes-hover: true
+    citations-hover: true
+    preview-links: true
+    controls-tutorial: true
+    controls: false
+    logo: "/assets/anl.svg"
+    history: false
+    highlight-style: "atom-one"
+    center: true
+    default-image-extension: svg
+    code-overflow: scroll
+    html-math-method: katex
+    fig-align: center
+    # css:
+    #   # - css/text.css
+    #   # - css/bulma.css
+    #   # - css/color_font.css
+    #   - ../../css/fonts.css
+    #   - ../../css/default.css
+    #   - ../../css/custom.css
+    #   - ../../css/_highlighter.css
+    #   # - css/lastfm.css
+    #   # - css/quarto-callouts.css
+    #   # - css/fonts.css
+    #   # - css/callouts.css
+    #   # - css/obsidian.css
+    #   # - css/markdown.css
+    #   # - css/profile.css
+    # theme:
+    #   # - pandoc
+    #   # - cosmo
+    #   # - pandoc
+    #   # - css/quarto.scss
+    #   - white
+    #   - ../../css/global.scss
+    #   - ../../css/now_playing.scss
+    #   # - css/_sketchy.scss
+    #   - ../../css/common.scss
+    #   - ../../css/light.scss
+    #   - ../../css/syntax-light.scss
+    #   - ../../css/callout-cards.scss
+    css:
+      # - css/default.css
+      - ../../css/fonts.css
+      - ../../css/default.css
+      - ../../css/custom.css
+      - ../../css/_highlighter.css
+      - ../../css/custom.css
+    theme:
+      # - light:
+      - white
+      - ../../css/title-slide-template.scss
+      - ../../css/reveal/reveal.scss
+      - ../../css/common.scss
+      - ../../css/light.scss
+      - ../../css/syntax-light.scss
+      - ../../css/callout-cards.scss
+      - ../../css/global.scss
+      # - dark:
+    #   #   - black
+    #   #   - ./title-fancy/title-slide-template.scss
+    #   #   - ../../css/reveal/reveal.scss
+    #   #   - ../../css/common.scss
+    #   #   - ../../css/dark.scss
+    #   #   - ../../css/syntax-dark.scss
+    #   #   - ../../css/callout-cards.scss
+    # # theme: [title-fancy/title-slide-template.scss]
+    # callout-style: simple
+    # css: [css/default.css, css/callouts.css]
+---
+
+# 🦜 LLMs at ANL
+
+## 📄 Overview
+
+- **AuroraGPT**: _General purpose scientific foundation model_
+    - Model Sizes: {7B, 70B, ~ 1T}
+
+- Broadly trained on general corpora of:
+    - scientific text
+    - structured data
+
+- Multi-lingual: English, Japanese, French, German, Spanish, Italian
+
+- Safe, with a focus on:
+    - trustworthiness, safety, robustness, privacy, machine ethics
+
+- Multi-modal:
+
+  :::: {.flex-container style="text-align: left; width: 100%; justify-content: flex-start;"}
+  ::: {.col1}
+    - images
+    - tables
+    - equations
+    - proofs
+  :::
+
+  ::: {.col2}
+    - sequences
+    - time-series
+    - graphs
+    - fields
+  :::
+
+  ::::
+
+
+## 🔍 Details
+
+- Llama Style Architecture:
+    - trained using: [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+    <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) -->
+- Performant training implementations of Llama2 architecture for
+    - Aurora, Polaris, Cerebras? and SambaNova?
+<!-- - Pre-training tests on Aurora and Polaris (1B tokens) -->
+- Workflow to capture:
+    - snapshots, checkpoints
+    - loss curves
+    - scaling / performance data
+- Training runs for AuroraGPT-7B
+    - Baseline (Dolma) @ Aurora and @ Polaris (twins for debugging)
+    - Baseline + SciencePUBs @ Aurora
+- Trained raw models 📮 delivered to post-pretraining team
+    - AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S  
+      (A=`aurora`, P=`Polaris`, S=`science`)
+
+<!-- ## Models / Training -->
+<!---->
+<!-- ::: {.callout-note collapse=false icon=false title="🧞‍♂️Want" style="width:100%!important;"} -->
+<!---->
+<!-- Train, entirely from scratch, a series of models trained on publicly available data. -->
+<!---->
+<!-- ::: -->
+
+## 🤔 Why? {.smaller}
+
+
+- **For Science**!
+
+- Data-{sets, pipelines} for preparing scientific training data
+- Infrastructure to {train, eval, deploy} LLMs for science
+    - Comparative analysis across: {models, tasks, languages, contexts, ...}
+- Augment text data from the web with:
+    - full text papers
+    - structured scientific data[^tough]
+- Safety-driven, publicly-visible, open-source approach:
+    - Distribution of research grade artifacts (models, checkpoints, etc.)
+    - International collaborations on AGI for science
+
+[^tough]: Can be much more difficult than text (or even image) data
+
+## 👥 Teams: Who Does What? {auto-animate=true background-color="white"}
+
+:::: {.columns}
+
+::: {.column}
+
+1. **Planning**
+2. **Data Prep**
+    - Accumulate 20+ T tokens of high-quality scientific text and structured data
+3. [**Models / Training**[^me]]{style="background: oklch(from #00CCFF calc(l * 1.15) c h / 0.1); border: 1px solid #00CCFF; border-radius: 0.25px;"}
+    - Train (entirely from scratch) a series of models on publicly available data
+4. **Evaluation**
+    - Skills, trustworthiness, safety, robustness, privacy, machine ethics
+
+[^me]: Co-led by: Venkat Vishwanath, Sam Foreman
+
+:::
+
+::: {.column}
+
+5. **Post-Training**
+    - Fine-tuning, alignment
+6. **Inference**
+    - Model serving, API development / public-facing web services
+7. **Distribution**
+    - Licensing, generating and distributing artifacts for public consumption
+8. **Communication**
+
+:::
+
+::::
+
+<!-- ## Data Prep -->
+<!---->
+<!-- ::: {.callout-note collapse=false icon=false title="🎯 Goal" style="width:100%!important;"} -->
+<!---->
+<!-- Accumulate 20+ **T tokens** of high-quality scientific text and structured data with: -->
+<!---->
+<!-- - strong quality control -->
+<!-- - de-duplication -->
+<!-- - provenance -->
+<!-- - subsetting -->
+<!---->
+<!-- ::: -->
+
+# 🤖 Aurora: System Overview
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+- 166 Racks
+- 10,624 Nodes
+- 21,248 CPUs
+- 63,744 GPUs
+- 84,992 NICs
+- 8 PB HBM
+- 10 PB DDR5c
+
+:::
+
+::: {.column width="70%"}
+
+![](./assets/aurora.png)
+
+:::
+
+::::
+
+# 🦙 Large Language Models {background-color="white"}
+
+::: {#fig-llms}
+
+![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)
+
+Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].  
+
+:::
+
+[^llm-animation]: [{{< fa brands github >}} `Hannibal046/Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
+
+## 🍎 Training LLMs {.smaller background-color="white"}
+
+:::: {.columns style="display:flex; align-items: flex-end;"}
+
+::: {.column width="30%"}
+
+::: {#fig-it-hungers}
+
+![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
+
+It's hungry!
+:::
+
+:::
+
+::: {.column width="65%"}
+
+::: {#fig-evolution}
+
+![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
+
+Visualization from @yang2023harnessing
+
+:::
+
+:::
+
+::::
+
+## ♻️  Life Cycle of the LLM
+
+::: {.panel-tabset}
+
+### 📝 Pre-training {auto-animate=true background-color="white"}
+
+::: {#fig-pretrain-one style="text-align: left;"}
+
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+**Pre-training**: Virtually all of the compute used during pretraining phase
+
+:::
+
+### 🎀 Fine-Tuning {auto-animate=true background-color="white"}
+
+::: {#fig-pretrain-two style="text-align: left;"}
+
+[![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)](http://jalammar.github.io/illustrated-transformer/)
+
+**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.
+
+:::
+
+:::
+
+## 🦜 Model Training {.centeredslide}
+
+<!-- :::: {.columns} -->
+:::: {.flex-container style="text-align: left; width: 100%; justify-content: center;"}
+
+::: {.col1 width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 6pt; padding: 10pt; margin-right: 1%"}
+
+✅ [**Want**]{style="color: #03BD00;"}
+
+- Training runs at scale to be:
+    - Efficient
+    - Stable
+    - Reproducible
+
+:::
+
+::: {.col2 width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 6pt; padding: 10pt; margin-left: 1%;"}
+
+❌ [**Difficulties**]{style="color: #E90102;"}
+
+- LLMs take a _long time_ to train
+- Stability particularly important
+    - Failures are **expensive**
+        - stragglers common at scale
+- Jobs are:
+    - **fragile**
+    - one bad worker can crash job
+
+:::
+
+::::
+
+## 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
+
+::: {.flex-container style="text-align: center; align-items: center;"}
+
+![](../../assets/anl.svg)
+
+[{{< iconify ph arrows-left-right >}}]{style="font-size: 2.0em; padding-left: 15pt;"}
+
+![](../../assets/deepspeed-logo-transparent.svg)
+
+:::
+
+<!-- - Working with [{{< fa brands microsoft >}} Microsoft -->
+<!-- DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer -->
+<!-- sequence lengths (context windows) for LLMs -->
+
+::: {#fig-long-seq}
+
+::: {.flex-container}
+
+![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+
+![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+
+:::
+
+Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+
+:::
+
+::: aside
+[{{< fa brands github >}} `scaling4science`](https://github.com/saforem2/scaling4science)  
+[{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
+:::
+
+## 💬 Evaluation
+
+## 💾 Checkpoints
+
+```python
+from typing import Optional
+import os
+from pathlib import Path
+
+from transformers import LlamaForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7B-hf")
+
+def load_model(ckpt_dir) -> LlamaForCausalLM:
+    return LlamaForCausalLM.from_pretrained(ckpt_dir)
+
+def eval_model(model, max_length: int, prompt: str) -> str:
+    return (
+        tokenizer.batch_decode(
+            model.generate(
+                **tokenizer(prompt, return_tensors="pt"),
+                 max_length=max_length,
+            ),
+            clean_up_tokenization_spaces=True,
+            skip_special_tokens=True,
+        )[0]
+    )
+
+def load_and_eval_model_from_checkpoint(
+        step: int,
+        max_length: int = 64,
+        prompt: Optional[str] = None,
+        ckpt_root: Optional[os.PathLike | Path | str] = None,
+) -> str:
+    print(f"Loading model from checkpoint at global step: {step}")
+    prompt = "What is it like in there?" if prompt is None else prompt
+    ckpt_root = Path("checkpoints") if ckpt_root is None else Path(ckpt_root)
+    ckpt_dir = ckpt_root.joinpath(f"global_step{step}")
+    return (
+        eval_model(
+            model=load_model(ckpt_dir.as_posix())
+            max_length=max_length,
+            prompt=prompt,
+        )
+    )
+```
+
+## 🎙️ Model Evaluations
+
+::: {.panel-tabset}
+
+### 7000
+
+Tokens: 88B
+
+```python
+>>> print(load_checkpoint(7000))
+Loading model from checkpoint at global step: 7000
+"What is it like in there?"
+"""
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it's a good idea to use a different name for the same thing.
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it's a good idea to use a different name for the same thing.
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it
+"""
+```
+
+### 12000
+
+Tokens: 150B
+
+```python
+>>> print(load_checkpoint(12000))
+Loading model from checkpoint at global step: 12000
+"What is it like in there?"
+"""
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+"""
+```
+
+### 17000
+
+Tokens: 215B
+
+```python
+>>> print(load_checkpoint(17000))
+Loading model from checkpoint at global step: 17000
+"What is it like in there?"
+"""
+I’m not sure what to expect. I’m not sure what to expect from the people I’m
+with. I’m not sure what to expect from the people I’m with. I’m not sure what
+to expect from the people I’m with. I’m not sure what to expect from the people
+I’m with.
+I’m not sure what to expect from the people I’m with.
+I’m not sure what to expect from the people I’m with.
+I’m not sure what to expect from the people
+"""
+```
+
+### 22000
+
+Tokens: 277B
+
+```python
+>>> print(load_checkpoint(22000))
+Loading model from checkpoint at global step: 22000
+"What is it like in there?"
+"""
+I’m a 20 year old guy from the UK. I’m a student at the University of
+Manchester, studying Computer Science. I’m a big fan of the band, The Beatles,
+and I’m a huge fan of the movie, The Wizard of Oz. I’m a huge fan of the band,
+The Beatles, and I’m a huge fan of the movie, The Wizard of Oz.
+I’m a big fan of the band, The Beatles, and I’m a huge fan of the movie
+"""
+```
+
+### 32000
+
+Tokens: 400B
+
+```python
+>>> print(load_checkpoint(32000))
+Loading model from checkpoint at global step: 32000
+"What is it like in there?"
+"""
+I've been to the US and I've been to Canada.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's
+"""
+```
+
+### 40000
+
+Tokens: 503B
+
+```python
+>>> print(load_checkpoint(40000))
+Loading model from checkpoint at global step: 40000
+"What is it like in there?"
+"""
+The first thing you notice when you enter the room is the size. It’s huge. It’s
+like a football field. It’s a lot of space.
+The second thing you notice is the light. It’s bright. It’s bright.
+The third thing you notice is the sound. It’s loud. It’s loud.
+The fourth thing you notice is the smell. It’s a lot of smells. It’s a lot of smells.
+The fifth thing you notice is the temperature. It’s hot.
+"""
+```
+
+:::
+
+# 🔗 Links  {background-color="white"}
+
+- 🏡 [samforeman.me](https://samforeman.me):
+
+  - 🦜 [Talks](https://samforeman.me/talks/):
+    - [HPC User Forum](https://samforeman.me/talks/hpc-user-forum/) \[[slides](https://samforeman.me/talks/hpc-user-forum/slides.html)\]
+
+  - 📦 [Repos](https://github.com/saforem2/):
+    - [🏎️ `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+      [For only the largest of large language models.]{.dim-text}
+    - [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
+      [Train your model across any number of arbitrary devices, ezpz.]{.dim-text}
+
+## 📓 References {background-color="white"}
+
+- Animations from [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+
+- 🔗 See also:
+  - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
+  - [Distributed Data Parallel — PyTorch master documentation](https://pytorch.org/docs/master/notes/ddp.html)
+  - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
+  - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
+
+- See my slides on:
+  - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides) for additional details
+  - [{{< fa brands github >}} `saforem2/llm-lunch-talk`](https://github.com/Hannibal046/Awesome-LLM) [(slides)](https://saforem2.github.io/llm-lunch-talk)
+
+## 🙏 Thank you! {background-color="white"}
+
+- Organizers
+- ALCF Data Science & Operations
+
+- Feel free to reach out!
+  <split even >
+
+    [<i class="fas fa-home"></i>](https://samforeman.me)
+    [<i class="far fa-paper-plane"></i>](mailto:///foremans@anl.gov)
+    [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
+     </split>
+
+::: {.callout-note icon=false title="🙏 Acknowledgements"}
+This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+:::
+
+## 📗 Bibliography {background-color="white"}
+
+- Refs:
+    - @wei2022emergentabilitieslargelanguage
+
+::: {#refs}
+:::

@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.7">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sam Foreman ">
+<meta name="dcterms.date" content="2024-09-04">
+
+<title>AuroraGPT – Sam Foreman</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8e2d43e36bcde2bd62820324304bd551.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d7fd31d925c6308c20a103df65665387.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-63cd88ea2befb8a6122b1932b24b508b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": true,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+<!-- End Google Tag Manager -->
+<link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/fonts.css">
+<link rel="stylesheet" href="../../css/default.css">
+<link rel="stylesheet" href="../../css/custom.css">
+<link rel="stylesheet" href="../../css/_highlighter.css">
+<meta property="og:title" content="AuroraGPT">
+<meta property="og:description" content="Overview of AuroraGPT">
+<meta property="og:image" content="https://samforeman.me/talks/hpc-user-forum/assets/thumbnail.png">
+<meta property="og:site_name" content="Sam Foreman">
+<meta name="twitter:title" content="AuroraGPT">
+<meta name="twitter:description" content="Overview of AuroraGPT">
+<meta name="twitter:image" content="https://samforeman.me/talks/hpc-user-forum/assets/thumbnail.png">
+<meta name="twitter:creator" content="saforem2">
+<meta name="twitter:site" content="saforem2">
+<meta name="twitter:card" content="summary">
+<meta name="citation_title" content="AuroraGPT">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2024-09-04">
+<meta name="citation_cover_date" content="2024-09-04">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-09-04">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/talks/hpc-user-forum">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022-05;,citation_cover_date=2022-05;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
+</head>
+
+<body class="nav-sidebar floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/signature12.svg" alt="Sam Foreman" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-codetalkscode" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><code>talks</code></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-codetalkscode">    
+        <li>
+    <a class="dropdown-item" href="../../talks/index.html">
+ <span class="dropdown-text">📢 All Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../talks/llms-at-scale/index.html">
+ <span class="dropdown-text">Training LLMs at Scale</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../talks/llms-on-polaris/index.html">
+ <span class="dropdown-text">Polaris Overview + LLMs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/parallel-training-slides/">
+ <span class="dropdown-text">Parallel Training Techniques</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-workshop-talk/">
+ <span class="dropdown-text">LLMs from Scratch</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/LLM-tutorial">
+ <span class="dropdown-text">Creating Small[~ish] LLMs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/onapi-talk/#0">
+ <span class="dropdown-text">Exascale Science on Aurora</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/llm-lunch-talk/">
+ <span class="dropdown-text">LLM Lunch Talk</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/scaling4science">
+ <span class="dropdown-text">Scaling LLMs for Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lattice23">
+ <span class="dropdown-text">MLMC (for LQCD)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/lqcd-pasc23">
+ <span class="dropdown-text">Generative Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/deep-fridays">
+ <span class="dropdown-text">Efficient Sampling for LGT</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ai4sci-large-scale-training">
+ <span class="dropdown-text">Large Scale Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/hparam-management-sdl2022">
+ <span class="dropdown-text">Hyperparameter Management</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ATPESC-StatisticalLearning">
+ <span class="dropdown-text">Statistical Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/anl-job-talk/">
+ <span class="dropdown-text">Scientific Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">Machine Learning in HEP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21">
+ <span class="dropdown-text">DLHMC for Improved Gauge Generation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://slides.com/samforeman/l2hmc-qcd-93bc0c">
+ <span class="dropdown-text">ML for LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bit.ly/mainz21_overview">
+ <span class="dropdown-text">ML Techniques in LQCD</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/physicsSeminar">
+ <span class="dropdown-text">ML for HEP</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-codepostscode" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><code>posts</code></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-codepostscode">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.html">
+ <span class="dropdown-text">📬 All Posts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/ezpz-at-alcf/index.html">
+ <span class="dropdown-text">🍋 <code>ezpz</code> at ALCF</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/determinstic-flash-attn/index.html">
+ <span class="dropdown-text">🎰 Deterministic Flash Attention</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/flash-attn-sunspot/index.html">
+ <span class="dropdown-text">📸 <code>flash-attn</code> on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/mpi4py-reproducer/index.html">
+ <span class="dropdown-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/ai-for-physics/diffusion/index.html">
+ <span class="dropdown-text">🎲 MCMC + Diffusion Sampling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/dope-slides/index.html">
+ <span class="dropdown-text">💅 How to Make Dope Slides</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/startup-times/index.html">
+ <span class="dropdown-text">⏰ Starting Up Distributed Training</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/long-sequences/index.html">
+ <span class="dropdown-text">🚂 Loooooooong Sequence Lengths</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/AuroraGPT/aurora-gpt/index.html">
+ <span class="dropdown-text">🏎️ <code>Megatron-DeepSpeed</code> + Intel XPU</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/ai-for-physics/l2hmc-qcd/2dU1/index.html">
+ <span class="dropdown-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html">
+ <span class="dropdown-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-codeprojectscode" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><code>projects</code></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-codeprojectscode">    
+        <li>
+    <a class="dropdown-item" href="../../qmd/projects/index.html">
+ <span class="dropdown-text">📚 All Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ezpz">
+ <span class="dropdown-text">🍋 <code>ezpz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/l2hmc-qcd">
+ <span class="dropdown-text">🟥 <code>l2hmc-qcd</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/argonne-lcf/Megatron-DeepSpeed)">
+ <span class="dropdown-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/wordplay">
+ <span class="dropdown-text">💬 <code>wordplay</code> 🎮</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.alcf.anl.gov/alcf-ai-science-training-series?">
+ <span class="dropdown-text">🎓 <code>ai-science-training</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/enrich">
+ <span class="dropdown-text">💸 <code>enrich</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ambivalent">
+ <span class="dropdown-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/climate-analysis">
+ <span class="dropdown-text">🌍 <code>climate-analysis</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/glitz">
+ <span class="dropdown-text">🎨 <code>glitz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/personal_site">
+ <span class="dropdown-text">🙋🏻<code>personal_site</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/notes-demo">
+ <span class="dropdown-text">🗒️ <code>Notes-Demo</code></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="https://github.com/saforem2/personal_site" aria-current="page"> 
+<span class="menu-text"><span style="font-size: 1.15em;"><iconify-icon role="img" inline="" icon="line-md:github-loop" aria-label="Icon github-loop from line-md Iconify.design set." title="Icon github-loop from line-md Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">AuroraGPT</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text"><code>talks</code></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../talks/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📢 All Talks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../talks/llms-on-polaris/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polaris Overview + LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/parallel-training-slides/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parallel Training Techniques</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/llm-workshop-talk/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLMs from Scratch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/LLM-tutorial" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating Small[~ish] LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/onapi-talk/#0" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exascale Science on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/llm-lunch-talk/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLM Lunch Talk</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/scaling4science" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scaling LLMs for Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/lattice23" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLMC (for LQCD)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/lqcd-pasc23" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generative Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/deep-fridays" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Efficient Sampling for LGT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/ai4sci-large-scale-training" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Large Scale Training</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/hparam-management-sdl2022" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hyperparameter Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/ATPESC-StatisticalLearning" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/anl-job-talk/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scientific Data Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/physicsSeminar" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine Learning in HEP</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://bit.ly/mainz21" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DLHMC for Improved Gauge Generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://slides.com/samforeman/l2hmc-qcd-93bc0c" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ML for LQCD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://bit.ly/mainz21_overview" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ML Techniques in LQCD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/physicsSeminar" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ML for HEP</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../posts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>posts</code></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ezpz-at-alcf/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🍋 <code>ezpz</code> @ ALCF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💅 How to Make Dope Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">🤖 AuroraGPT</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/aurora-gpt/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏎️ Megatron-DeepSpeed on Intel XPU</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/determinstic-flash-attn/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎰 Deterministic <code>flash-attn</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/flash-attn-sunspot/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📸 <code>flash-attn</code> on Sunspot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/mpi4py-reproducer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/startup-times/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">⏰ Starting Up Distributed Training on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/AuroraGPT/long-sequences/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚂 Loooooooong Sequence Lengths</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">⚛️ AI for Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ai-for-physics/diffusion/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎲 MCMC + Diffusion Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">🎢 L2HMC for LQCD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ai-for-physics/l2hmc-qcd/2dU1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">📗 Jupyter</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text"><code>projects</code></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📚 All Projects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/ezpz" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🍋 <code>ezpz</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/l2hmc-qcd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🟥 <code>l2hmc-qcd</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed)" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/wordplay" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💬 <code>wordplay</code> 🎮</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://www.alcf.anl.gov/alcf-ai-science-training-series?" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎓 <code>ai-science-training</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/enrich" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💸 <code>enrich</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/ambivalent" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://saforem2.github.io/climate-analysis" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🌍 <code>climate-analysis</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/saforem2/glitz" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎨 <code>glitz</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/saforem2/personal_site" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🙋🏻<code>personal_site</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://github.com/saforem2/notes-demo" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🗒️ <code>Notes-Demo</code></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#llms-at-anl" id="toc-llms-at-anl" class="nav-link active" data-scroll-target="#llms-at-anl">🦜 LLMs at ANL</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">📄 Overview</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">🔍 Details</a></li>
+  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">🤔 Why?</a></li>
+  <li><a href="#teams-who-does-what" id="toc-teams-who-does-what" class="nav-link" data-scroll-target="#teams-who-does-what">👥 Teams: Who Does What?</a></li>
+  </ul></li>
+  <li><a href="#aurora-system-overview" id="toc-aurora-system-overview" class="nav-link" data-scroll-target="#aurora-system-overview">🤖 Aurora: System Overview</a></li>
+  <li><a href="#large-language-models" id="toc-large-language-models" class="nav-link" data-scroll-target="#large-language-models">🦙 Large Language Models</a>
+  <ul class="collapse">
+  <li><a href="#training-llms" id="toc-training-llms" class="nav-link" data-scroll-target="#training-llms">🍎 Training LLMs</a></li>
+  <li><a href="#life-cycle-of-the-llm" id="toc-life-cycle-of-the-llm" class="nav-link" data-scroll-target="#life-cycle-of-the-llm">♻️ Life Cycle of the LLM</a></li>
+  <li><a href="#model-training" id="toc-model-training" class="nav-link" data-scroll-target="#model-training">🦜 Model Training</a></li>
+  <li><a href="#loooooooooong-sequence-lengths" id="toc-loooooooooong-sequence-lengths" class="nav-link" data-scroll-target="#loooooooooong-sequence-lengths">🚂 Loooooooooong Sequence Lengths</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">💬 Evaluation</a></li>
+  <li><a href="#checkpoints" id="toc-checkpoints" class="nav-link" data-scroll-target="#checkpoints">💾 Checkpoints</a></li>
+  <li><a href="#model-evaluations" id="toc-model-evaluations" class="nav-link" data-scroll-target="#model-evaluations">🎙️ Model Evaluations</a></li>
+  </ul></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">🔗 Links</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📓 References</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">🙏 Thank you!</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">📗 Bibliography</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/talks/hpc-user-forum/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/talks/hpc-user-forum/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_size/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">AuroraGPT</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/talks/hpc-user-forum/index.qmd"><i class="bi"></i></button></div></div>
+</div>
+
+
+<div class="quarto-title-meta-author column-body">
+  <div class="quarto-title-meta-heading"></div>
+  <div class="quarto-title-meta-heading"></div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://samforeman.me"></a><a href="https://samforeman.me">Sam Foreman</a> <a href="https://orcid.org/0000-0002-9981-0876"><span class="orcid-green"><i class="ai  ai-orcid"></i></span></a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            ALCF
+            </a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta column-body">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 4, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="llms-at-anl" class="level1">
+<h1>🦜 LLMs at ANL</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">📄 Overview</h2>
+<ul>
+<li><p><strong>AuroraGPT</strong>: <em>General purpose scientific foundation model</em></p>
+<ul>
+<li>Model Sizes: {7B, 70B, ~ 1T}</li>
+</ul></li>
+<li><p>Broadly trained on general corpora of:</p>
+<ul>
+<li>scientific text</li>
+<li>structured data</li>
+</ul></li>
+<li><p>Multi-lingual: English, Japanese, French, German, Spanish, Italian</p></li>
+<li><p>Safe, with a focus on:</p>
+<ul>
+<li>trustworthiness, safety, robustness, privacy, machine ethics</li>
+</ul></li>
+<li><p>Multi-modal:</p>
+<div class="flex-container" style="text-align: left; width: 100%; justify-content: flex-start;">
+<div class="col1">
+<ul>
+<li>images</li>
+<li>tables</li>
+<li>equations</li>
+<li>proofs</li>
+</ul>
+</div>
+<div class="col2">
+<ul>
+<li>sequences</li>
+<li>time-series</li>
+<li>graphs</li>
+<li>fields</li>
+</ul>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="details" class="level2">
+<h2 class="anchored" data-anchor-id="details">🔍 Details</h2>
+<ul>
+<li>Llama Style Architecture:
+<ul>
+<li>trained using: <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a> <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) --></li>
+</ul></li>
+<li>Performant training implementations of Llama2 architecture for
+<ul>
+<li>Aurora, Polaris, Cerebras? and SambaNova? <!-- - Pre-training tests on Aurora and Polaris (1B tokens) --></li>
+</ul></li>
+<li>Workflow to capture:
+<ul>
+<li>snapshots, checkpoints</li>
+<li>loss curves</li>
+<li>scaling / performance data</li>
+</ul></li>
+<li>Training runs for AuroraGPT-7B
+<ul>
+<li>Baseline (Dolma) @ Aurora and @ Polaris (twins for debugging)</li>
+<li>Baseline + SciencePUBs @ Aurora</li>
+</ul></li>
+<li>Trained raw models 📮 delivered to post-pretraining team
+<ul>
+<li>AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S<br>
+(A=<code>aurora</code>, P=<code>Polaris</code>, S=<code>science</code>)</li>
+</ul></li>
+</ul>
+<!-- ## Models / Training -->
+<!---->
+<!-- ::: {.callout-note collapse=false icon=false title="🧞‍♂️Want" style="width:100%!important;"} -->
+<!---->
+<!-- Train, entirely from scratch, a series of models trained on publicly available data. -->
+<!---->
+<!-- ::: -->
+</section>
+<section id="why" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="why">🤔 Why?</h2>
+<ul>
+<li><p><strong>For Science</strong>!</p></li>
+<li><p>Data-{sets, pipelines} for preparing scientific training data</p></li>
+<li><p>Infrastructure to {train, eval, deploy} LLMs for science</p>
+<ul>
+<li>Comparative analysis across: {models, tasks, languages, contexts, …}</li>
+</ul></li>
+<li><p>Augment text data from the web with:</p>
+<ul>
+<li>full text papers</li>
+<li>structured scientific data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul></li>
+<li><p>Safety-driven, publicly-visible, open-source approach:</p>
+<ul>
+<li>Distribution of research grade artifacts (models, checkpoints, etc.)</li>
+<li>International collaborations on AGI for science</li>
+</ul></li>
+</ul>
+</section>
+<section id="teams-who-does-what" class="level2" data-auto-animate="true" data-background-color="white">
+<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="teams-who-does-what">👥 Teams: Who Does What?</h2>
+<div class="columns">
+<div class="column">
+<ol type="1">
+<li><strong>Planning</strong></li>
+<li><strong>Data Prep</strong>
+<ul>
+<li>Accumulate 20+ T tokens of high-quality scientific text and structured data</li>
+</ul></li>
+<li><span style="background: oklch(from #00CCFF calc(l * 1.15) c h / 0.1); border: 1px solid #00CCFF; border-radius: 0.25px;"><strong>Models / Training</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></span>
+<ul>
+<li>Train (entirely from scratch) a series of models on publicly available data</li>
+</ul></li>
+<li><strong>Evaluation</strong>
+<ul>
+<li>Skills, trustworthiness, safety, robustness, privacy, machine ethics</li>
+</ul></li>
+</ol>
+</div><div class="column">
+<ol start="5" type="1">
+<li><strong>Post-Training</strong>
+<ul>
+<li>Fine-tuning, alignment</li>
+</ul></li>
+<li><strong>Inference</strong>
+<ul>
+<li>Model serving, API development / public-facing web services</li>
+</ul></li>
+<li><strong>Distribution</strong>
+<ul>
+<li>Licensing, generating and distributing artifacts for public consumption</li>
+</ul></li>
+<li><strong>Communication</strong></li>
+</ol>
+</div>
+</div>
+<!-- ## Data Prep -->
+<!---->
+<!-- ::: {.callout-note collapse=false icon=false title="🎯 Goal" style="width:100%!important;"} -->
+<!---->
+<!-- Accumulate 20+ **T tokens** of high-quality scientific text and structured data with: -->
+<!---->
+<!-- - strong quality control -->
+<!-- - de-duplication -->
+<!-- - provenance -->
+<!-- - subsetting -->
+<!---->
+<!-- ::: -->
+</section>
+</section>
+<section id="aurora-system-overview" class="level1">
+<h1>🤖 Aurora: System Overview</h1>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>166 Racks</li>
+<li>10,624 Nodes</li>
+<li>21,248 CPUs</li>
+<li>63,744 GPUs</li>
+<li>84,992 NICs</li>
+<li>8 PB HBM</li>
+<li>10 PB DDR5c</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><a href="./assets/aurora.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./assets/aurora.png" class="img-fluid"></a></p>
+</div>
+</div>
+</section>
+<section id="large-language-models" class="level1 page-columns page-full" data-background-color="white">
+<h1 data-background-color="white">🦙 Large Language Models</h1>
+<div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;1: Large Language Models have (LLM)s have taken the NLP community world by storm."><img src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
+</figcaption>
+</figure>
+</div>
+<section id="training-llms" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="training-llms">🍎 Training LLMs</h2>
+<div class="columns" style="display:flex; align-items: flex-end;">
+<div class="column" style="width:30%;">
+<div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2: It’s hungry!"><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: It’s hungry!
+</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:65%;">
+<div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;3: Visualization from @yang2023harnessing"><img src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#ref-yang2023harnessing" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="life-cycle-of-the-llm" class="level2">
+<h2 class="anchored" data-anchor-id="life-cycle-of-the-llm">♻️ Life Cycle of the LLM</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">📝 Pre-training</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🎀 Fine-Tuning</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="fig-pretrain-one" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align: left;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pretrain-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: Pre-training: Virtually all of the compute used during pretraining phase"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align: left;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><a href="http://jalammar.github.io/illustrated-transformer/"><span class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="img-fluid figure-img"></span></a></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-training" class="level2 centeredslide">
+<h2 class="centeredslide anchored" data-anchor-id="model-training">🦜 Model Training</h2>
+<!-- :::: {.columns} -->
+<div class="flex-container" style="text-align: left; width: 100%; justify-content: center;">
+<div class="col1" width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 6pt; padding: 10pt; margin-right: 1%">
+<p>✅ <span style="color: #03BD00;"><strong>Want</strong></span></p>
+<ul>
+<li>Training runs at scale to be:
+<ul>
+<li>Efficient</li>
+<li>Stable</li>
+<li>Reproducible</li>
+</ul></li>
+</ul>
+</div>
+<div class="col2" width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 6pt; padding: 10pt; margin-left: 1%;">
+<p>❌ <span style="color: #E90102;"><strong>Difficulties</strong></span></p>
+<ul>
+<li>LLMs take a <em>long time</em> to train</li>
+<li>Stability particularly important
+<ul>
+<li>Failures are <strong>expensive</strong>
+<ul>
+<li>stragglers common at scale</li>
+</ul></li>
+</ul></li>
+<li>Jobs are:
+<ul>
+<li><strong>fragile</strong></li>
+<li>one bad worker can crash job</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="loooooooooong-sequence-lengths" class="level2 smaller page-columns page-full" data-background-color="#1c1c1c">
+<h2 class="smaller anchored" data-background-color="#1c1c1c" data-anchor-id="loooooooooong-sequence-lengths">🚂 Loooooooooong Sequence Lengths</h2>
+<div class="flex-container" style="text-align: center; align-items: center;">
+<p><a href="../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="../../assets/anl.svg" class="img-fluid"></a></p>
+<p><span style="font-size: 2.0em; padding-left: 15pt;"><iconify-icon role="img" inline="" icon="ph:arrows-left-right" aria-label="Icon arrows-left-right from ph Iconify.design set." title="Icon arrows-left-right from ph Iconify.design set."></iconify-icon></span></p>
+<p><a href="../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="../../assets/deepspeed-logo-transparent.svg" class="img-fluid"></a></p>
+</div>
+<!-- - Working with [ Microsoft -->
+<!-- DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer -->
+<!-- sequence lengths (context windows) for LLMs -->
+<div id="fig-long-seq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="flex-container">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="25B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="img-fluid figure-img"></a></p>
+<figcaption>25B</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="33B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="img-fluid figure-img"></a></p>
+<figcaption>33B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models
+</figcaption>
+</figure>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p><a href="https://github.com/saforem2/scaling4science"><i class="fa-brands fa-github" aria-label="github"></i> <code>scaling4science</code></a><br>
+<a href="https://github.com/saforem2/Megatron-DS-Benchmarking"><i class="fa-brands fa-github" aria-label="github"></i> <code>Megatron-DS-Benchmarking</code></a></p>
+</div></div></section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">💬 Evaluation</h2>
+</section>
+<section id="checkpoints" class="level2">
+<h2 class="anchored" data-anchor-id="checkpoints">💾 Checkpoints</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> os</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> transformers <span class="im">import</span> LlamaForCausalLM, AutoTokenizer</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained<span class="op">(</span><span class="st">"meta-llama/Llama-2-7B-hf"</span><span class="op">)</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">def</span> load_model<span class="op">(</span>ckpt_dir<span class="op">)</span> <span class="op">-&gt;</span> LlamaForCausalLM:</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">return</span> LlamaForCausalLM.from_pretrained<span class="op">(</span>ckpt_dir<span class="op">)</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="kw">def</span> eval_model<span class="op">(</span>model, max_length: <span class="bu">int</span>, prompt: <span class="bu">str</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">return</span> <span class="op">(</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>        tokenizer.batch_decode<span class="op">(</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>            model.generate<span class="op">(</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>                <span class="op">**</span>tokenizer<span class="op">(</span>prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span><span class="op">)</span>,</span>
+<span id="cb1-17"><a href="#cb1-17"></a>                 max_length<span class="op">=</span>max_length,</span>
+<span id="cb1-18"><a href="#cb1-18"></a>            <span class="op">)</span>,</span>
+<span id="cb1-19"><a href="#cb1-19"></a>            clean_up_tokenization_spaces<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-20"><a href="#cb1-20"></a>            skip_special_tokens<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="op">)[</span><span class="dv">0</span><span class="op">]</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="op">)</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="kw">def</span> load_and_eval_model_from_checkpoint<span class="op">(</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>        step: <span class="bu">int</span>,</span>
+<span id="cb1-26"><a href="#cb1-26"></a>        max_length: <span class="bu">int</span> <span class="op">=</span> <span class="dv">64</span>,</span>
+<span id="cb1-27"><a href="#cb1-27"></a>        prompt: Optional<span class="op">[</span><span class="bu">str</span><span class="op">]</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb1-28"><a href="#cb1-28"></a>        ckpt_root: Optional<span class="op">[</span>os.PathLike <span class="op">|</span> Path <span class="op">|</span> <span class="bu">str</span><span class="op">]</span> <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="bu">print</span><span class="op">(</span><span class="ss">f"Loading model from checkpoint at global step: </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">"</span><span class="op">)</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    prompt <span class="op">=</span> <span class="st">"What is it like in there?"</span> <span class="cf">if</span> prompt <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> prompt</span>
+<span id="cb1-32"><a href="#cb1-32"></a>    ckpt_root <span class="op">=</span> Path<span class="op">(</span><span class="st">"checkpoints"</span><span class="op">)</span> <span class="cf">if</span> ckpt_root <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> Path<span class="op">(</span>ckpt_root<span class="op">)</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    ckpt_dir <span class="op">=</span> ckpt_root.joinpath<span class="op">(</span><span class="ss">f"global_step</span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">"</span><span class="op">)</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>    <span class="cf">return</span> <span class="op">(</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>        eval_model<span class="op">(</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>            model<span class="op">=</span>load_model<span class="op">(</span>ckpt_dir.as_posix<span class="op">())</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>            max_length<span class="op">=</span>max_length,</span>
+<span id="cb1-38"><a href="#cb1-38"></a>            prompt<span class="op">=</span>prompt,</span>
+<span id="cb1-39"><a href="#cb1-39"></a>        <span class="op">)</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="model-evaluations" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluations">🎙️ Model Evaluations</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">7000</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">12000</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">17000</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">22000</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">32000</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-6" role="tab" aria-controls="tabset-2-6" aria-selected="false">40000</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Tokens: 88B</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">7000</span><span class="op">))</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">7000</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">"""</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">I'm not sure if it's a good idea to use a different name for the same thing,</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">but I'm sure it's a good idea to use a different name for the same thing.</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">I'm not sure if it's a good idea to use a different name for the same thing,</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">but I'm sure it's a good idea to use a different name for the same thing.</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">I'm not sure if it's a good idea to use a different name for the same thing,</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">but I'm sure it</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Tokens: 150B</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">12000</span><span class="op">))</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">12000</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">"""</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">The people are very friendly and helpful.</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">The people are very friendly and helpful.</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">The people are very friendly and helpful.</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">The people are very friendly and helpful.</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">The people are very friendly and helpful.</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">What is it like in there?</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Tokens: 215B</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">17000</span><span class="op">))</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">17000</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">"""</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">I’m not sure what to expect. I’m not sure what to expect from the people I’m</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">with. I’m not sure what to expect from the people I’m with. I’m not sure what</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">to expect from the people I’m with. I’m not sure what to expect from the people</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">I’m with.</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">I’m not sure what to expect from the people I’m with.</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">I’m not sure what to expect from the people I’m with.</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">I’m not sure what to expect from the people</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>Tokens: 277B</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">22000</span><span class="op">))</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">22000</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">"""</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">I’m a 20 year old guy from the UK. I’m a student at the University of</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">Manchester, studying Computer Science. I’m a big fan of the band, The Beatles,</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">and I’m a huge fan of the movie, The Wizard of Oz. I’m a huge fan of the band,</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">The Beatles, and I’m a huge fan of the movie, The Wizard of Oz.</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">I’m a big fan of the band, The Beatles, and I’m a huge fan of the movie</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<p>Tokens: 400B</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">32000</span><span class="op">))</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">32000</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">"""</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">I've been to the US and I've been to Canada.</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">In the US, it's a lot like the US.</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">In Canada, it's a lot like the US.</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">In the US, it's a lot like the US.</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">In Canada, it's a lot like the US.</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">In the US, it's a lot like the US.</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">In Canada, it's a lot like the US.</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">In the US, it's</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
+<p>Tokens: 503B</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span><span class="op">(</span>load_checkpoint<span class="op">(</span><span class="dv">40000</span><span class="op">))</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>Loading model <span class="im">from</span> checkpoint at <span class="kw">global</span> step: <span class="dv">40000</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">"What is it like in there?"</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">"""</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">The first thing you notice when you enter the room is the size. It’s huge. It’s</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">like a football field. It’s a lot of space.</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">The second thing you notice is the light. It’s bright. It’s bright.</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">The third thing you notice is the sound. It’s loud. It’s loud.</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">The fourth thing you notice is the smell. It’s a lot of smells. It’s a lot of smells.</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">The fifth thing you notice is the temperature. It’s hot.</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="links" class="level1" data-background-color="white">
+<h1 data-background-color="white">🔗 Links</h1>
+<ul>
+<li><p>🏡 <a href="https://samforeman.me">samforeman.me</a>:</p>
+<ul>
+<li>🦜 <a href="https://samforeman.me/talks/">Talks</a>:
+<ul>
+<li><a href="https://samforeman.me/talks/hpc-user-forum/">HPC User Forum</a> [<a href="https://samforeman.me/talks/hpc-user-forum/slides.html">slides</a>]</li>
+</ul></li>
+<li>📦 <a href="https://github.com/saforem2/">Repos</a>:
+<ul>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
+<span class="dim-text">For only the largest of large language models.</span></li>
+<li><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
+<span class="dim-text">Train your model across any number of arbitrary devices, ezpz.</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="references" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="references">📓 References</h2>
+<ul>
+<li><p>Animations from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li>
+<li><p>🔗 See also:</p>
+<ul>
+<li><a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed Overview</a></li>
+<li><a href="https://pytorch.org/docs/master/notes/ddp.html">Distributed Data Parallel — PyTorch master documentation</a></li>
+<li><a href="https://huggingface.co/docs/transformers/en/perf_train_gpu_many">🤗 Efficient Training on Multiple GPUs</a></li>
+<li><a href="https://www.deepspeed.ai/getting-started/">Getting Started - DeepSpeed</a></li>
+</ul></li>
+<li><p>See my slides on:</p>
+<ul>
+<li><a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</li>
+<li><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/llm-lunch-talk</code></a> <a href="https://saforem2.github.io/llm-lunch-talk">(slides)</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="thank-you" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="thank-you">🙏 Thank you!</h2>
+<ul>
+<li><p>Organizers</p></li>
+<li><p>ALCF Data Science &amp; Operations</p></li>
+<li><p>Feel free to reach out! <split even=""></split></p>
+<p><a href="https://samforeman.me"><i class="fas fa-home"></i></a> <a href="mailto:///foremans@anl.gov"><i class="far fa-paper-plane"></i></a> <a href="https://www.twitter.com/saforem2"><i class="fab fa-twitter"></i></a> </p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="🙏 Acknowledgements">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🙏 Acknowledgements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="bibliography">📗 Bibliography</h2>
+<ul>
+<li>Refs:
+<ul>
+<li><span class="citation" data-cites="wei2022emergentabilitieslargelanguage">Wei et al. (<a href="#ref-wei2022emergentabilitieslargelanguage" role="doc-biblioref">2022</a>)</span></li>
+</ul></li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry" role="listitem">
+Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian Borgeaud, Dani Yogatama, et al. 2022. <span>“Emergent Abilities of Large Language Models.”</span> <a href="https://arxiv.org/abs/2206.07682">https://arxiv.org/abs/2206.07682</a>.
+</div>
+<div id="ref-yang2023harnessing" class="csl-entry" role="listitem">
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming Jiang, Bing Yin, and Xia Hu. 2023. <span>“Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond.”</span> <a href="https://arxiv.org/abs/2304.13712">https://arxiv.org/abs/2304.13712</a>.
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Can be much more difficult than text (or even image) data<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Co-led by: Venkat Vishwanath, Sam Foreman<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2024,
+  author = {Foreman, Sam},
+  title = {AuroraGPT},
+  date = {2024-09-04},
+  url = {https://samforeman.me/talks/hpc-user-forum},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Foreman, Sam. 2024. <span>“AuroraGPT.”</span> September 4. <a href="https://samforeman.me/talks/hpc-user-forum">https://samforeman.me/talks/hpc-user-forum</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/samforeman\.me");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"><br><br> © Copyright <a href="https://samforeman.me">Sam Foreman</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/talks/hpc-user-forum/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/talks/hpc-user-forum/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_size/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
