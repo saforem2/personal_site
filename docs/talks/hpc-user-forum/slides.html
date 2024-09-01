@@ -127,7 +127,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-55f41418eb408473345ccdb809ced6d9.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-90e3a44e88b6532551bcd0a9eb73e601.css">
   <link rel="stylesheet" href="../../css/fonts.css">
   <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/custom.css">
@@ -467,7 +467,6 @@
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
   <!-- End Google Tag Manager -->
-  <link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
 <meta property="og:title" content="AuroraGPT">
 <meta property="og:description" content="Overview of AuroraGPT">
 <meta property="og:image" content="https://samforeman.me/talks/hpc-user-forum/assets/thumbnail.png">
@@ -696,8 +695,47 @@
 </div></div>
 </section></section>
 <section>
-<section id="large-language-models" class="title-slide slide level1 center scrollable" data-background-color="white">
+<section id="large-language-models" class="title-slide slide level1 center" data-background-color="white">
 <h1>🦙 Large Language Models</h1>
+
+</section>
+<section id="model-training" class="slide level2 centeredslide center">
+<h2>🦜 Model Training</h2>
+<!-- :::: {.columns} -->
+<div class="flex-container" style="text-align: left; width: 100%; justify-content: center;">
+<div class="col1" width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 6pt; padding: 10pt; margin-right: 1%">
+<p>✅ <span style="color: #03BD00;"><strong>Want</strong></span></p>
+<ul>
+<li>Training runs at scale to be:
+<ul>
+<li>Efficient</li>
+<li>Stable</li>
+<li>Reproducible</li>
+</ul></li>
+</ul>
+</div>
+<div class="col2" width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 6pt; padding: 10pt; margin-left: 1%;">
+<p>❌ <span style="color: #E90102;"><strong>Difficulties</strong></span></p>
+<ul>
+<li>LLMs take a <em>long time</em> to train</li>
+<li>Stability particularly important
+<ul>
+<li>Failures are <strong>expensive</strong>
+<ul>
+<li>stragglers common at scale</li>
+</ul></li>
+</ul></li>
+<li>Jobs are:
+<ul>
+<li><strong>fragile</strong></li>
+<li>one bad worker can crash job</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ℹ-llms-overview" class="slide level2 center scrollable">
+<h2>ℹ️ LLMs: Overview</h2>
 <div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -765,41 +803,6 @@ Figure&nbsp;5: <strong>Fine-tuning</strong>: Fine-tuning actually updates the mo
 </figure>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="model-training" class="slide level2 centeredslide center">
-<h2>🦜 Model Training</h2>
-<!-- :::: {.columns} -->
-<div class="flex-container" style="text-align: left; width: 100%; justify-content: center;">
-<div class="col1" width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 6pt; padding: 10pt; margin-right: 1%">
-<p>✅ <span style="color: #03BD00;"><strong>Want</strong></span></p>
-<ul>
-<li>Training runs at scale to be:
-<ul>
-<li>Efficient</li>
-<li>Stable</li>
-<li>Reproducible</li>
-</ul></li>
-</ul>
-</div>
-<div class="col2" width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 6pt; padding: 10pt; margin-left: 1%;">
-<p>❌ <span style="color: #E90102;"><strong>Difficulties</strong></span></p>
-<ul>
-<li>LLMs take a <em>long time</em> to train</li>
-<li>Stability particularly important
-<ul>
-<li>Failures are <strong>expensive</strong>
-<ul>
-<li>stragglers common at scale</li>
-</ul></li>
-</ul></li>
-<li>Jobs are:
-<ul>
-<li><strong>fragile</strong></li>
-<li>one bad worker can crash job</li>
-</ul></li>
-</ul>
 </div>
 </div>
 </section></section>
@@ -1459,7 +1462,7 @@ Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
