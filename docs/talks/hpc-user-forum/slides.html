@@ -127,7 +127,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-90e3a44e88b6532551bcd0a9eb73e601.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ae7a88b9a2f1d7b808a911189000ee65.css">
   <link rel="stylesheet" href="../../css/fonts.css">
   <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/custom.css">
@@ -628,8 +628,8 @@
 </ul></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Can be much more difficult than text (or even image) data</p></li></ol></aside></section>
-<section id="teams-who-does-what" class="slide level2 center scrollable" data-auto-animate="true" data-background-color="white">
-<h2 data-id="quarto-animate-title">👥 Teams: Who Does What?</h2>
+<section id="teams" class="slide level2 center scrollable" data-auto-animate="true" data-background-color="white">
+<h2 data-id="quarto-animate-title">👥 Teams</h2>
 <div class="columns">
 <div class="column">
 <ol type="1">
@@ -711,6 +711,15 @@
 <li>Efficient</li>
 <li>Stable</li>
 <li>Reproducible</li>
+</ul></li>
+<li>This requires:
+<ul>
+<li>Overlapping communication + computation</li>
+<li>{network, filesystem, machine} stability</li>
+</ul></li>
+<li>For larger models:
+<ul>
+<li>Effective, performant parallelism strategies</li>
 </ul></li>
 </ul>
 </div>
@@ -808,8 +817,27 @@ Figure&nbsp;5: <strong>Fine-tuning</strong>: Fine-tuning actually updates the mo
 </section></section>
 <section>
 <section id="acknowledgements" class="title-slide slide level1 center">
-<h1>Acknowledgements</h1>
+<h1>🙏 Acknowledgements</h1>
 
+</section>
+<section id="links" class="slide level2 center" data-background-color="white">
+<h2>🔗 Links</h2>
+<ul>
+<li><p>🏡 <a href="https://samforeman.me">samforeman.me</a>:</p>
+<ul>
+<li>🦜 <a href="https://samforeman.me/talks/">Talks</a>:
+<ul>
+<li><a href="https://samforeman.me/talks/hpc-user-forum/">HPC User Forum</a> [<a href="https://samforeman.me/talks/hpc-user-forum/slides.html">slides</a>]</li>
+</ul></li>
+<li>📦 <a href="https://github.com/saforem2/">Repos</a>:
+<ul>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
+<span class="dim-text">For only the largest of large language models.</span></li>
+<li><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
+<span class="dim-text">Train your model across any number of arbitrary devices, ezpz.</span></li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 <section id="references" class="slide level2 center" data-background-color="white">
 <h2>📓 References</h2>
@@ -830,18 +858,19 @@ Figure&nbsp;5: <strong>Fine-tuning</strong>: Fine-tuning actually updates the mo
 </ul>
 </section>
 <section id="thank-you" class="slide level2 center" data-background-color="white">
-<h2>🙏 Thank you!</h2>
+<h2>❤️ Thank you!</h2>
 <ul>
 <li><p>Organizers</p></li>
-<li><p>ALCF Data Science &amp; Operations</p></li>
-<li><p>Feel free to reach out! <split even=""></split></p>
-<p><a href="https://samforeman.me"><i class="fas fa-home"></i></a> <a href="mailto:///foremans@anl.gov"><i class="far fa-paper-plane"></i></a> <a href="https://www.twitter.com/saforem2"><i class="fab fa-twitter"></i></a> </p></li>
+<li><p>Feel free to reach out!</p>
+<p><split even=""></split></p>
+<p><a href="https://samforeman.me"><i class="fas fa-home"></i></a> <a href="mailto:///foremans@anl.gov"><i class="far fa-paper-plane"></i></a> <a href="https://www.twitter.com/saforem2"><i class="fab fa-twitter"></i></a></p>
+<p></p></li>
 </ul>
-<div title="🙏 Acknowledgements">
+<div title="💰 Funding">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>🙏 Acknowledgements</strong></p>
+<p><strong>💰 Funding</strong></p>
 </div>
 <div class="callout-content">
 <p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
@@ -910,11 +939,8 @@ Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
 <p><a href="https://github.com/saforem2/scaling4science"><i class="fa-brands fa-github" aria-label="github"></i> <code>scaling4science</code></a><br>
 <a href="https://github.com/saforem2/Megatron-DS-Benchmarking"><i class="fa-brands fa-github" aria-label="github"></i> <code>Megatron-DS-Benchmarking</code></a></p>
 </div></aside></section>
-<section id="evaluation" class="slide level2 center">
-<h2>💬 Evaluation</h2>
-</section>
-<section id="checkpoints" class="slide level2 center">
-<h2>💾 Checkpoints</h2>
+<section id="evaluating-checkpoints" class="slide level2 center">
+<h2>💾 Evaluating Checkpoints</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
 <span id="cb1-2"><a></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -1054,25 +1080,6 @@ Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
 </div>
 </div>
 </div>
-</section>
-<section id="links" class="slide level2 center" data-background-color="white">
-<h2>🔗 Links</h2>
-<ul>
-<li><p>🏡 <a href="https://samforeman.me">samforeman.me</a>:</p>
-<ul>
-<li>🦜 <a href="https://samforeman.me/talks/">Talks</a>:
-<ul>
-<li><a href="https://samforeman.me/talks/hpc-user-forum/">HPC User Forum</a> [<a href="https://samforeman.me/talks/hpc-user-forum/slides.html">slides</a>]</li>
-</ul></li>
-<li>📦 <a href="https://github.com/saforem2/">Repos</a>:
-<ul>
-<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
-<span class="dim-text">For only the largest of large language models.</span></li>
-<li><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
-<span class="dim-text">Train your model across any number of arbitrary devices, ezpz.</span></li>
-</ul></li>
-</ul></li>
-</ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../assets/anl.svg" class="slide-logo"></p>
@@ -1462,7 +1469,7 @@ Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
