@@ -92,13 +92,13 @@ format:
       - ../../css/global.scss
 ---
 
-# 🦜 AuroraGPT @ ALCF {background-color="white"}
+# AuroraGPT @ ALCF {background-color="white"}
 
 ::: {#fig-llms-at-anl}
 
 [![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/)
 
-Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm
+Large Language Models (LLMs) have taken the world by storm
 
 :::
 
@@ -143,9 +143,9 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 ## 🔍 Details {background-color="white"}
 
 - Llama Style Architecture:
-    - trained using: [{{< iconify ph github-logo-duotone >}} `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+    - [{{< iconify ph github-logo-duotone >}} `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
     <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) -->
-- Performant training implementations of Llama2 architecture for
+- Performant training implementations of AuroraGPT architecture on
     - {Aurora, Polaris, Cerebras, SambaNova}
 - Workflow to capture:
     - loss curves
@@ -201,7 +201,6 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 
 :::
 
-
 <!-- ## Data Prep -->
 <!---->
 <!-- ::: {.callout-note collapse=false icon=false title="🎯 Goal" style="width:100%!important;"} -->
@@ -242,7 +241,7 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 [^aurora]:|
     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/)
 
-# 🦙 Large Language Models {background-color="white"}
+# 🦙 LLMs {background-color="white"}
 
 ## 🦜 Model Training {background-color="white"}
 
@@ -250,19 +249,20 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 
 ::: {.col1 width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%"}
 
-✅ [**Want**]{style="color: #03BD00;"}
+✅ [**Goals**]{style="color: #03BD00;"}
 
-- Training runs at scale to be:
+- Want training runs _at scale_ to be:
     - Efficient
     - Stable
     - Reproducible
 
 - This requires:
-    - Overlapping communication + computation
-    - {network, filesystem, machine} stability
+    - Robust data pipelines / file IO
+    - Effectively overlapping compute with communication
+    - Stability across {network, filesystem, machine}
 
 - For larger models:
-    - Effective, performant parallelism strategies
+    - Multi-dimensional parallelism strategies
 
 :::
 
@@ -270,13 +270,17 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 
 ❌ [**Difficulties**]{style="color: #E90102;"}
 
-- LLMs take a _long time_ to train
-- Stability particularly important
-    - Failures are **expensive**
-        - stragglers common at scale
-- Jobs are:
+- _Looong time_ to train
+
+- Stability issues
+    - Failures are **expensive** [(and unavoidable)]{.dim-text}
+    - stragglers common at scale
+
+- Individual jobs are:
     - **fragile**
-    - one bad worker can crash job
+    - only as good as the worst rank
+    - one hang or bad worker can crash job
+    - network / filesystem / other-user(s) dependent
 
 :::
 
@@ -315,15 +319,19 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
   - 🦜 [Talks](https://samforeman.me/talks/):
     - [HPC User Forum](https://samforeman.me/talks/hpc-user-forum/) \[[slides](https://samforeman.me/talks/hpc-user-forum/slides.html)\]
 
-  - 📦 [Repos](https://github.com/saforem2/):
-    - [🏎️ `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
-      [For only the largest of large language models.]{.dim-text}
-    - [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
-      [Train your model across any number of arbitrary devices, ezpz.]{.dim-text}
+- [🏎️ `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+    [For the largest of large language models.]{.dim-text}
+- [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
+    [Distributed training, ezpz.]{.dim-text}
 
 ## 📓 References {background-color="white"}
 
-- Animations from [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+- See my slides on:
+    - [LLMs from Scratch](https://saforem2.github.io/llm-workshop-talk)
+    - [Creating Small(\~ish) LLMs](https://saforem2.github.io/LLM-tutorial)
+    - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides) for additional details
+    - [LLMs on Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
+    - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
 
 - 🔗 See also:
   - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
@@ -331,9 +339,7 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
   - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
   - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
 
-- See my slides on:
-  - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides) for additional details
-  - [{{< fa brands github >}} `saforem2/llm-lunch-talk`](https://github.com/Hannibal046/Awesome-LLM) [(slides)](https://saforem2.github.io/llm-lunch-talk)
+- Animations from [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
 
 ## ❤️  Thank you! {background-color="white"}
 
@@ -361,18 +367,6 @@ This research used resources of the Argonne Leadership Computing Facility, which
 :::
 
 # 🍭 Extras {background-color="white"}
-
-## ℹ️ LLMs: Overview {background-color="white"}
-
-::: {#fig-llms}
-
-![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)
-
-Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].  
-
-:::
-
-[^llm-animation]: [{{< fa brands github >}} `Hannibal046/Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
 
 ## 🍎 Training LLMs {.smaller background-color="white"}
 

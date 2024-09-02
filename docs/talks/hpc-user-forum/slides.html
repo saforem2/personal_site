@@ -127,7 +127,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-b3f64df8d8d6fe11523107d0d9521137.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-6139d6cc469e59d852ad1b20d31d0a4e.css">
   <link rel="stylesheet" href="../../css/fonts.css">
   <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/custom.css">
@@ -536,10 +536,10 @@
 </section>
 <section>
 <section id="auroragpt-alcf" class="title-slide slide level1 center" data-background-color="white">
-<h1>🦜 AuroraGPT @ ALCF</h1>
+<h1>AuroraGPT @ ALCF</h1>
 
 <img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm
+Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 </p></section>
 <section id="overview" class="slide level2 center scrollable" data-background-color="white">
 <h2>📄 Overview</h2>
@@ -586,9 +586,9 @@ Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP communi
 <ul>
 <li>Llama Style Architecture:
 <ul>
-<li>trained using: <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><iconify-icon role="img" inline="" icon="ph:github-logo-duotone" aria-label="Icon github-logo-duotone from ph Iconify.design set." title="Icon github-logo-duotone from ph Iconify.design set."></iconify-icon> <code>argonne-lcf/Megatron-DeepSpeed</code></a> <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) --></li>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><iconify-icon role="img" inline="" icon="ph:github-logo-duotone" aria-label="Icon github-logo-duotone from ph Iconify.design set." title="Icon github-logo-duotone from ph Iconify.design set."></iconify-icon> <code>argonne-lcf/Megatron-DeepSpeed</code></a> <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) --></li>
 </ul></li>
-<li>Performant training implementations of Llama2 architecture for
+<li>Performant training implementations of AuroraGPT architecture on
 <ul>
 <li>{Aurora, Polaris, Cerebras, SambaNova}</li>
 </ul></li>
@@ -703,17 +703,17 @@ Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP communi
 <aside><ol class="aside-footnotes"><li id="fn5"><div class="line-block"></div>
 <p><a href="https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/">The Computer That Will Change Everything – Chicago Magazine</a></p></li></ol></aside></section></section>
 <section>
-<section id="large-language-models" class="title-slide slide level1 center" data-background-color="white">
-<h1>🦙 Large Language Models</h1>
+<section id="llms" class="title-slide slide level1 center" data-background-color="white">
+<h1>🦙 LLMs</h1>
 
 </section>
 <section id="model-training" class="slide level2 center" data-background-color="white">
 <h2>🦜 Model Training</h2>
 <div class="flex-container" style="text-align: left; width: 100%; justify-content: center;">
 <div class="col1" width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%">
-<p>✅ <span style="color: #03BD00;"><strong>Want</strong></span></p>
+<p>✅ <span style="color: #03BD00;"><strong>Goals</strong></span></p>
 <ul>
-<li>Training runs at scale to be:
+<li>Want training runs <em>at scale</em> to be:
 <ul>
 <li>Efficient</li>
 <li>Stable</li>
@@ -721,30 +721,31 @@ Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP communi
 </ul></li>
 <li>This requires:
 <ul>
-<li>Overlapping communication + computation</li>
-<li>{network, filesystem, machine} stability</li>
+<li>Robust data pipelines / file IO</li>
+<li>Effectively overlapping compute with communication</li>
+<li>Stability across {network, filesystem, machine}</li>
 </ul></li>
 <li>For larger models:
 <ul>
-<li>Effective, performant parallelism strategies</li>
+<li>Multi-dimensional parallelism strategies</li>
 </ul></li>
 </ul>
 </div>
 <div class="col2" width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 1%;">
 <p>❌ <span style="color: #E90102;"><strong>Difficulties</strong></span></p>
 <ul>
-<li>LLMs take a <em>long time</em> to train</li>
-<li>Stability particularly important
+<li><p><em>Looong time</em> to train</p></li>
+<li><p>Stability issues</p>
 <ul>
-<li>Failures are <strong>expensive</strong>
-<ul>
+<li>Failures are <strong>expensive</strong> <span class="dim-text">(and unavoidable)</span></li>
 <li>stragglers common at scale</li>
 </ul></li>
-</ul></li>
-<li>Jobs are:
+<li><p>Individual jobs are:</p>
 <ul>
 <li><strong>fragile</strong></li>
-<li>one bad worker can crash job</li>
+<li>only as good as the worst rank</li>
+<li>one hang or bad worker can crash job</li>
+<li>network / filesystem / other-user(s) dependent</li>
 </ul></li>
 </ul>
 </div>
@@ -792,32 +793,32 @@ Figure&nbsp;3: <strong>Fine-tuning</strong>: Fine-tuning actually updates the mo
 <ul>
 <li><a href="https://samforeman.me/talks/hpc-user-forum/">HPC User Forum</a> [<a href="https://samforeman.me/talks/hpc-user-forum/slides.html">slides</a>]</li>
 </ul></li>
-<li>📦 <a href="https://github.com/saforem2/">Repos</a>:
-<ul>
-<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
-<span class="dim-text">For only the largest of large language models.</span></li>
-<li><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
-<span class="dim-text">Train your model across any number of arbitrary devices, ezpz.</span></li>
 </ul></li>
-</ul></li>
+<li><p><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">🏎️ <code>argonne-lcf/Megatron-DeepSpeed</code></a><br>
+<span class="dim-text">For the largest of large language models.</span></p></li>
+<li><p><a href="https://github.com/saforem2/ezpz">🍋 <code>saforem2/ezpz</code></a><br>
+<span class="dim-text">Distributed training, ezpz.</span></p></li>
 </ul>
 </section>
 <section id="references" class="slide level2 center" data-background-color="white">
 <h2>📓 References</h2>
 <ul>
-<li><p>Animations from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li>
-<li><p>🔗 See also:</p>
+<li>See my slides on:
+<ul>
+<li><a href="https://saforem2.github.io/llm-workshop-talk">LLMs from Scratch</a></li>
+<li><a href="https://saforem2.github.io/LLM-tutorial">Creating Small(~ish) LLMs</a></li>
+<li><a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</li>
+<li><a href="https://samforeman.me/talks/llms-on-polaris/#/title-slide">LLMs on Polaris</a></li>
+<li><a href="https://samforeman.me/talks/llms-at-scale/">Training LLMs at Scale</a></li>
+</ul></li>
+<li>🔗 See also:
 <ul>
 <li><a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed Overview</a></li>
 <li><a href="https://pytorch.org/docs/master/notes/ddp.html">Distributed Data Parallel — PyTorch master documentation</a></li>
 <li><a href="https://huggingface.co/docs/transformers/en/perf_train_gpu_many">🤗 Efficient Training on Multiple GPUs</a></li>
 <li><a href="https://www.deepspeed.ai/getting-started/">Getting Started - DeepSpeed</a></li>
 </ul></li>
-<li><p>See my slides on:</p>
-<ul>
-<li><a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a> for additional details</li>
-<li><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/llm-lunch-talk</code></a> <a href="https://saforem2.github.io/llm-lunch-talk">(slides)</a></li>
-</ul></li>
+<li>Animations from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
 </ul>
 </section>
 <section id="thank-you" class="slide level2 center" data-background-color="white">
@@ -867,19 +868,6 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 <h1>🍭 Extras</h1>
 
 </section>
-<section id="ℹ-llms-overview" class="slide level2 center scrollable" data-background-color="white">
-<h2>ℹ️ LLMs: Overview</h2>
-<div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
-</figcaption>
-</figure>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn6"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a></p></li></ol></aside></section>
 <section id="training-llms" class="slide level2 smaller center" data-background-color="white">
 <h2>🍎 Training LLMs</h2>
 <div class="flex-container" style="align-items: flex-end;">
@@ -887,10 +875,10 @@ Figure&nbsp;4: Large Language Models have (LLM)s have taken the <del>NLP communi
 <div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: It’s hungry!
+Figure&nbsp;4: It’s hungry!
 </figcaption>
 </figure>
 </div>
@@ -899,10 +887,10 @@ Figure&nbsp;5: It’s hungry!
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;6: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
+Figure&nbsp;5: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -912,9 +900,9 @@ Figure&nbsp;6: Visualization from <span class="citation" data-cites="yang2023har
 <section id="loooooooooong-sequence-lengths" class="slide level2 smaller center" data-background-color="#1c1c1c">
 <h2>🚂 Loooooooooong Sequence Lengths</h2>
 <div class="flex-container" style="text-align: center; align-items: center;">
-<p><a href="../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/anl.svg" style="width:48%;"></a></p>
+<p><a href="../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/anl.svg" style="width:48%;"></a></p>
 <p><span class="dim-text" style="font-size: 2.0em; padding-left: 15pt;"><iconify-icon role="img" inline="" icon="ph:arrows-left-right" aria-label="Icon arrows-left-right from ph Iconify.design set." title="Icon arrows-left-right from ph Iconify.design set."></iconify-icon></span></p>
-<p><a href="../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="../../assets/deepspeed-logo-transparent.svg" style="width: 60%"></a></p>
+<p><a href="../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/deepspeed-logo-transparent.svg" style="width: 60%"></a></p>
 </div>
 <!-- - Working with [ Microsoft -->
 <!-- DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer -->
@@ -925,20 +913,20 @@ Figure&nbsp;6: Visualization from <span class="citation" data-cites="yang2023har
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
 <figcaption>25B</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
 <figcaption>33B</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>)
+Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>)
 </figcaption>
 </figure>
 </div>
@@ -1477,7 +1465,7 @@ Figure&nbsp;7: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
