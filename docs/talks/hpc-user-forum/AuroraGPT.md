@@ -71,7 +71,14 @@
 
 ### 🎯 Project Goals
 
-![](./assets/AuroraGPT.drawio.svg)
+<div id="fig-project-goals">
+
+![](./assets/AuroraGPT.svg)
+
+
+Figure 1: Overview of AuroraGPT Project
+
+</div>
 
 ### 👥 Teams
 
@@ -136,7 +143,7 @@
 ### 🦜 Model Training
 
 <div class="flex-container"
-style="text-align: left; width: 100%; justify-content: center;">
+style="text-align: left; width: 100%; justify-content: center; line-height: 1em;">
 
 <div class="col1" width="49%"
 style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%">
@@ -192,7 +199,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-Figure 1: Complete re-write <span class="dim-text">(parallel,
+Figure 2: Complete re-write <span class="dim-text">(parallel,
 async)</span> of original data input pipeline gives *significant*
 improvements
 
@@ -229,22 +236,25 @@ improvements
 
 #### 📝 Pre-training
 
-<div class="col1"
-style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<div id="fig-pretraining">
 
-![**Pre-training**: Virtually all of the compute used during pretraining
-phase](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+
+Figure 3: **Pre-training**: Virtually all of the compute used during
+pretraining phase
 
 </div>
 
 #### 🎀 Fine-Tuning
 
-<div class="col1"
-style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<div id="fig-fine-tuning">
 
-![**Fine-tuning**: Fine-tuning actually updates the model’s weights to
-make the model better at a certain
-task.](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+
+Figure 4: **Fine-tuning**: Fine-tuning actually updates the model’s
+weights to make the model better at a certain task.
 
 </div>
 
@@ -405,7 +415,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
 
-Figure 2: It’s hungry!
+Figure 5: It’s hungry!
 
 </div>
 
@@ -418,7 +428,7 @@ Figure 2: It’s hungry!
 ![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
 
 
-Figure 3: Visualization from Yang et al. (2023)
+Figure 6: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -454,7 +464,7 @@ style="width: 60%" />
 
 </div>
 
-Figure 4: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+Figure 7: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
 (See: Song et al. (2023))
 
 </div>
