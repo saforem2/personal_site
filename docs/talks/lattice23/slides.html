@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-213365ee3aa8c1631bc08cadce7510bb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2d9718c933debafcce942f9b212640bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -61,8 +61,11 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1313250ea73370a2b3e8a20d85413ad5.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-b19d958aa913e330a976facb05c90190.css">
+  <link rel="stylesheet" href="../../css/fonts.css">
+  <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/custom.css">
+  <link rel="stylesheet" href="../../css/_highlighter.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -333,6 +336,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -445,7 +449,7 @@ dynamics update that can be trained to improve sampling efficiency.
 <meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
 <meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -488,7 +492,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 </section>
 
-<section id="overview" class="title-slide slide level1 center" data-background-color="#1c1c1c">
+<section id="overview" class="title-slide slide level1 center scrollable" data-background-color="#1c1c1c">
 <h1>Overview</h1>
 <ol type="1">
 <li><a href="#/markov-chain-monte-carlo-mcmc-centeredslide">Background: <code>{MCMC,HMC}</code></a>
@@ -507,7 +511,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </ol>
 </section>
 
-<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
+<section id="markov-chain-monte-carlo-mcmc" class="title-slide slide level1 centeredslide center scrollable" data-background-color="#1c1c1c">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -538,7 +542,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 <aside><ol class="aside-footnotes"></ol></aside></section>
 
-<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 centeredslide center" data-background-color="#1c1c1c">
+<section id="markov-chain-monte-carlo-mcmc-1" class="title-slide slide level1 centeredslide center scrollable" data-background-color="#1c1c1c">
 <h1>Markov Chain Monte Carlo (MCMC)</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -683,7 +687,7 @@ at the <span class="yellow-text">beginning</span> of each trajectory</li>
 <p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="./assets/hmc1/hmc-update-light.svg" style="width:60.0%"></a></p>
 </div></div>
 </section>
-<section id="hmc-update" class="slide level2 center" data-background-color="#1c1c1c">
+<section id="hmc-update" class="slide level2 center scrollable" data-background-color="#1c1c1c">
 <h2>HMC Update</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
@@ -813,7 +817,7 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 </div>
 </section>
 
-<section id="sec-can-we-do-better" class="title-slide slide level1 center" data-background-color="#1c1c1c">
+<section id="sec-can-we-do-better" class="title-slide slide level1 center scrollable" data-background-color="#1c1c1c">
 <h1>Can we do better?</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -848,12 +852,10 @@ Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class
 <aside><ol class="aside-footnotes"></ol></aside></section>
 
 <section>
-<section id="sec-l2hmc" class="title-slide slide level1 smaller centeredslide center" data-background-color="#1c1c1c">
+<section id="sec-l2hmc" class="title-slide slide level1 smaller centeredslide center scrollable" data-background-color="#1c1c1c">
 <h1>L2HMC: Generalizing the MD Update</h1>
-<!-- :::: {.columns} -->
 <div class="flex-container" style="text-align: left; width: 100%">
 <div class="col1" style="width:45%; font-size: 0.8em;">
-<!-- ::: {.callout-tip icon=false aria-title="L2HMC Update" title='L2HMC Update' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; background: rgba(131, 131, 131, 0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;"} -->
 <div style="border:1px solid red;">
 <ul>
 <li><p>Introduce <span class="math inline">d \sim \mathcal{U}(\pm)</span> to determine the direction of our update</p>
@@ -865,8 +867,6 @@ Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class
 </ol></li>
 </ul>
 </div>
-<!-- ::: {.callout-tip icon=false aria-title="🎲 Re-Sampling" title='🎲 Re-Sampling' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; background: rgba(131, 131, 131, 0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;"} -->
-<!-- ::: {.callout-tip icon=false aria-title="🎲 Re-Sampling" title='🎲 Re-Sampling' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; background: rgba(131, 131, 131, 0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;"} -->
 <div style="border:1px solid red;">
 <ul>
 <li>Resample both <span class="math inline">v\sim \mathcal{N}(0, 1)</span>, and <span class="math inline">d \sim \mathcal{U}(\pm)</span> at the beginning of each trajectory
@@ -905,7 +905,7 @@ Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class=
 </div><p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg" class="absolute" style="top: 440px; width: 100%; "></a></p>
 </div>
 </section>
-<section id="l2hmc-update" class="slide level2 center" style="font-size: 0.775em;" data-background-color="#1c1c1c">
+<section id="l2hmc-update" class="slide level2 center scrollable" style="font-size: 0.775em;" data-background-color="#1c1c1c">
 <h2>L2HMC Update</h2>
 <div class="columns">
 <div class="column" style="font-size:0.7em;">
@@ -1137,7 +1137,7 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 <p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" style="width:80.0%"></a></p>
 </div></div>
 </section>
-<section id="p-network-pt.-1" class="slide level2 center" style="font-size:0.95em;" data-background-color="#1c1c1c">
+<section id="p-network-pt.-1" class="slide level2 center scrollable" style="font-size:0.95em;" data-background-color="#1c1c1c">
 <h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;1)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
@@ -1171,7 +1171,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 <li id="fn7"><p><span class="math inline">\lambda_{s}, \lambda_{q} \in \mathbb{R}</span>, trainable parameters<a href="#/fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </div><ol class="aside-footnotes"></ol></aside></section>
-<section id="p-network-pt.-2" class="slide level2 center" style="font-size:0.9em;" data-background-color="#1c1c1c">
+<section id="p-network-pt.-2" class="slide level2 center scrollable" style="font-size:0.9em;" data-background-color="#1c1c1c">
 <h2><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;2)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="./assets/SU3/PNetwork.light.svg"></a></p>
@@ -1369,7 +1369,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="4" style="text-align:left; font-size:0.8em;">
+<div class="quarto-layout-panel" style="text-align:left; font-size:0.8em;" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <p><span style="font-size:0.8em;"><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i> <code>samforeman.me</code></a></span></p>
@@ -1565,7 +1565,7 @@ Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class
 </figure>
 </div>
 </section>
-<section id="loss-function" class="slide level2 center" data-background-color="#1c1c1c">
+<section id="loss-function" class="slide level2 center scrollable" data-background-color="#1c1c1c">
 <h2>Loss Function</h2>
 <ul>
 <li><p>Want to maximize the <em>expected</em> squared charge difference<sup>1</sup>: <span class="math display">\begin{equation*}
@@ -1609,7 +1609,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </ul></li>
 </ul>
 </section>
-<section id="v-updatereverse" class="slide level2 center" data-background-color="#1c1c1c">
+<section id="v-updatereverse" class="slide level2 center scrollable" data-background-color="#1c1c1c">
 <h2><span class="math inline">v</span>-Update<sup>1</sup></h2>
 <ul>
 <li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
@@ -2142,7 +2142,7 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

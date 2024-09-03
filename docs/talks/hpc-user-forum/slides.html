@@ -127,7 +127,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2c14e689032bf86faa163d9ce613dc67.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-dbd78ba67913d5f0cd7d36979100ead7.css">
   <link rel="stylesheet" href="../../css/fonts.css">
   <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/custom.css">
@@ -548,102 +548,63 @@
             </div>
 </section>
 <section>
-<section id="auroragpt-alcf" class="title-slide slide level1 center" data-background-color="white">
-<h1>AuroraGPT @ ALCF</h1>
-
-<img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
-</p></section>
-<section id="overview" class="slide level2 center scrollable" data-background-color="white">
-<h2>📄 Overview</h2>
-<ul>
-<li><p><strong>AuroraGPT</strong>: <em>General purpose scientific foundation model</em></p>
-<ul>
-<li>Model Sizes: {7B, 70B, ~ 1T}</li>
-</ul></li>
-<li><p>Safe, with a focus on:</p>
-<ul>
-<li>trustworthiness, safety, robustness, privacy, machine ethics</li>
-</ul></li>
-<li><p>Multi-lingual: {🇺🇸, 🇯🇵<sup>1</sup>, 🇫🇷, 🇩🇪, 🇪🇸, 🇮🇹}</p>
-<ul>
-<li>Institutional Partnerships through TPC<sup>2</sup></li>
-</ul></li>
-<li><p>Multi-modal:</p>
-<div class="flex-container" style="text-align: left; width: 100%; justify-content: flex-start;">
+<section id="overview" class="title-slide slide level1 smaller center scrollable" data-background-color="white">
+<h1>📄 Overview</h1>
+<div class="flex-container">
 <div class="col1">
-<ul>
-<li>scientific text</li>
-<li>images</li>
-<li>tables</li>
-<li>equations</li>
-<li>proofs</li>
-</ul>
+<div class="blue-card" style="margin-bottom: 0.5em;">
+<p><strong>AuroraGPT</strong>: <em>General purpose scientific foundation model</em></p>
 </div>
-<div class="col2" style="margin-left: 10%;">
 <ul>
-<li>structured data</li>
-<li>sequences</li>
-<li>time-series</li>
-<li>graphs</li>
-<li>fields</li>
+<li><iconify-icon role="img" inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>Megatron-DeepSpeed</code></a>
+<ul>
+<li>✅ {Intel, NVIDIA, AMD}</li>
+</ul></li>
+<li>Model sizes:
+<ul>
+<li>{<code>7B</code>, <code>70B</code>, <code>1T</code>}</li>
+</ul></li>
 </ul>
+<!-- - Safe, with a focus on: robustness, privacy, ethics -->
+</div>
+<div class="col2" style="width:75%;">
+<p><a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/"><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a></p>
+</div>
+</div>
+<ul>
+<li><p>Trained on:</p>
+<div class="flex-container" style="flex-direction:row; justify-content: space-around;">
+<div class="flex-container" style="flex-direction:column;">
+<p>🇺🇸English<br>
+🇯🇵日本語<sup>1</sup><br>
+🇫🇷French<br>
+🇩🇪Deutsch<br>
+🇪🇸Español<sup>2</sup><br>
+🇮🇹Italian</p>
+</div>
+<div class="flex-container" style="flex-direction:column;">
+<p>🧪 scientific text<br>
+🖼️ images<br>
+📊 tables<br>
+➕ equations<br>
+📖 proofs</p>
+</div>
+<div class="flex-container" style="flex-direction:column;">
+<p>📆 structured data<br>
+⛓️ sequences<br>
+⏰ time-series<br>
+📈 graphs<br>
+🌀 fields</p>
 </div>
 </div></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><div class="line-block"></div>
 <p><a href="https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science">Argonne and RIKEN sign a MOU in support of AI for science</a></p></li><li id="fn2"><div class="line-block"></div>
-<p><a href="https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for">New international consortium for generative AI models for science</a></p></li></ol></aside></section>
-<section id="details" class="slide level2 center" data-background-color="white">
-<h2>🔍 Details</h2>
-<ul>
-<li>Llama Style Architecture:
-<ul>
-<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><iconify-icon role="img" inline="" icon="ph:github-logo-duotone" aria-label="Icon github-logo-duotone from ph Iconify.design set." title="Icon github-logo-duotone from ph Iconify.design set."></iconify-icon> <code>argonne-lcf/Megatron-DeepSpeed</code></a> <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) --></li>
-</ul></li>
-<li>Performant training implementations of AuroraGPT architecture on
-<ul>
-<li>{Aurora, Polaris, Cerebras, SambaNova}</li>
-</ul></li>
-<li>Workflow to capture:
-<ul>
-<li>loss curves</li>
-<li>snapshots, checkpoints</li>
-<li>scaling / performance data</li>
-</ul></li>
-<li>Training runs for AuroraGPT-7B <span class="dim-text">(ongoing)</span>
-<ul>
-<li>Baseline (Dolma) @ {Aurora, Polaris} <span class="dim-text">(twins for debugging)</span></li>
-<li>Baseline + Science @ Aurora</li>
-</ul></li>
-<li>Trained raw models 📮 delivered to post-pretraining team
-<ul>
-<li>AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S<br>
-(A=<code>Aurora</code>, P=<code>Polaris</code>, S=<code>Science</code>)</li>
-</ul></li>
-</ul>
+<p>Collaborations with Barcelona Supercomputing Center</p></li></ol></aside></section>
+<section id="project-goals" class="slide level2 center">
+<h2>🎯 Project Goals</h2>
+<p><a href="./assets/AuroraGPT.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./assets/AuroraGPT.drawio.svg"></a></p>
 </section>
-<section id="why" class="slide level2 center scrollable" data-background-color="white">
-<h2>🤔 Why?</h2>
-<ul>
-<li><strong>For Science!</strong></li>
-<li>Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data</li>
-<li>Infrastructure to {train, eval, deploy} LLMs for science
-<ul>
-<li>Comparative analysis across: {models, tasks, languages, contexts, …}</li>
-</ul></li>
-<li>Augment text data from the web with:
-<ul>
-<li>full text papers</li>
-<li>structured scientific data<sup>1</sup></li>
-</ul></li>
-<li>Safety-driven, publicly-visible, open-source approach:
-<ul>
-<li>Distribution of research grade artifacts (models, checkpoints, etc.)</li>
-<li>International collaborations on AGI for science</li>
-</ul></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>Can be much more difficult than text (or even image) data</p></li></ol></aside></section>
 <section id="teams" class="slide level2 center scrollable" data-auto-animate="true" data-background-color="white">
 <h2 data-id="quarto-animate-title">👥 Teams</h2>
 <div class="flex-container">
@@ -682,21 +643,9 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 </ul>
 </div>
 </div>
-<!-- ## Data Prep -->
-<!---->
-<!-- ::: {.callout-note collapse=false icon=false title="🎯 Goal" style="width:100%!important;"} -->
-<!---->
-<!-- Accumulate 20+ **T tokens** of high-quality scientific text and structured data with: -->
-<!---->
-<!-- - strong quality control -->
-<!-- - de-duplication -->
-<!-- - provenance -->
-<!-- - subsetting -->
-<!---->
-<!-- ::: -->
-<aside><ol class="aside-footnotes"><li id="fn4"><p>Co-led by: Venkat Vishwanath, Sam Foreman</p></li></ol></aside></section>
-<section id="auroraaurora-system-overview" class="slide level2 center scrollable" data-background-color="white">
-<h2>🤖 Aurora<sup>1</sup>: System Overview</h2>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Co-led by: Venkat Vishwanath, Sam Foreman</p></li></ol></aside></section>
+<section id="auroraaurora" class="slide level2 center scrollable" data-background-color="white">
+<h2>🤖 Aurora<sup>1</sup></h2>
 <div class="flex-container">
 <div class="col1" style="width:30%;">
 <ul>
@@ -713,7 +662,7 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 <p><a href="./assets/aurora.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="./assets/aurora.png"></a></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5"><div class="line-block"></div>
+<aside><ol class="aside-footnotes"><li id="fn4"><div class="line-block"></div>
 <p><a href="https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/">The Computer That Will Change Everything – Chicago Magazine</a></p></li></ol></aside></section></section>
 <section>
 <section id="llms" class="title-slide slide level1 center" data-background-color="white">
@@ -764,7 +713,33 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 </div>
 </div>
 </section>
-<section id="training-at-scale" class="slide level2 center">
+<section id="data-pipeline" class="slide level2 center">
+<h2>📊 Data Pipeline</h2>
+<div id="fig-data-pipeline" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="flex-container">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/blendable.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Time spent building BlendableDataset"><img data-src="./assets/blendable.svg"></a></p>
+<figcaption>Time spent building <code>BlendableDataset</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/gpt.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Time spent building GPTDataset"><img data-src="./assets/gpt.svg"></a></p>
+<figcaption>Time spent building <code>GPTDataset</code></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Complete re-write <span class="dim-text">(parallel, async)</span> of original data input pipeline gives <em>significant</em> improvements
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="training-at-scale" class="slide level2 center" data-background-color="white">
 <h2>🚀 Training at Scale</h2>
 <div class="flex-container">
 <div class="col1">
@@ -797,7 +772,7 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 <div class="col1" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" alt="Pre-training: Virtually all of the compute used during pretraining phase"></a></p>
+<p><a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" alt="Pre-training: Virtually all of the compute used during pretraining phase"></a></p>
 <figcaption><strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase</figcaption>
 </figure>
 </div>
@@ -807,7 +782,7 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 <div class="col1" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" alt="Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."></a></p>
+<p><a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" alt="Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."></a></p>
 <figcaption><strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.</figcaption>
 </figure>
 </div>
@@ -848,6 +823,7 @@ Figure&nbsp;1: Large Language Models (LLMs) have taken the world by storm
 <span class="dim-text">Distributed training, ezpz.</span></li>
 <li>👀 See also:
 <ul>
+<li><a href="https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for">New international consortium for generative AI models for science</a></li>
 <li><a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed Overview</a></li>
 <li><a href="https://pytorch.org/docs/master/notes/ddp.html">Distributed Data Parallel — PyTorch master documentation</a></li>
 <li><a href="https://huggingface.co/docs/transformers/en/perf_train_gpu_many">🤗 Efficient Training on Multiple GPUs</a></li>
@@ -902,9 +878,59 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 </section></section>
 <section>
 <section id="extras" class="title-slide slide level1 center" data-background-color="white">
-<h1>🍭 Extras</h1>
+<h1>🎁 Extras</h1>
 
 </section>
+<section id="details" class="slide level2 center" data-background-color="white">
+<h2>🔍 Details</h2>
+<ul>
+<li>Llama Style Architecture:
+<ul>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><iconify-icon role="img" inline="" icon="ph:github-logo-duotone" aria-label="Icon github-logo-duotone from ph Iconify.design set." title="Icon github-logo-duotone from ph Iconify.design set."></iconify-icon> <code>argonne-lcf/Megatron-DeepSpeed</code></a></li>
+</ul></li>
+<li>Performant training implementations of AuroraGPT architecture on
+<ul>
+<li>{Aurora, Polaris, Cerebras, SambaNova}</li>
+</ul></li>
+<li>Workflow to capture:
+<ul>
+<li>loss curves</li>
+<li>snapshots, checkpoints</li>
+<li>scaling / performance data</li>
+</ul></li>
+<li>Training runs for AuroraGPT-7B <span class="dim-text">(ongoing)</span>
+<ul>
+<li>Baseline (Dolma) @ {Aurora, Polaris} <span class="dim-text">(twins for debugging)</span></li>
+<li>Baseline + Science @ Aurora</li>
+</ul></li>
+<li>Trained raw models 📮 delivered to post-pretraining team
+<ul>
+<li>AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S<br>
+(A=<code>Aurora</code>, P=<code>Polaris</code>, S=<code>Science</code>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="why" class="slide level2 center scrollable" data-background-color="white">
+<h2>🤔 Why?</h2>
+<ul>
+<li><strong>For Science!</strong></li>
+<li>Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data</li>
+<li>Infrastructure to {train, eval, deploy} LLMs for science
+<ul>
+<li>Comparative analysis across: {models, tasks, languages, contexts, …}</li>
+</ul></li>
+<li>Augment text data from the web with:
+<ul>
+<li>full text papers</li>
+<li>structured scientific data<sup>1</sup></li>
+</ul></li>
+<li>Safety-driven, publicly-visible, open-source approach:
+<ul>
+<li>Distribution of research grade artifacts (models, checkpoints, etc.)</li>
+<li>International collaborations on AGI for science</li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>Can be much more difficult than text (or even image) data</p></li></ol></aside></section>
 <section id="training-llms" class="slide level2 smaller center" data-background-color="white">
 <h2>🍎 Training LLMs</h2>
 <div class="flex-container" style="align-items: flex-end;">
@@ -912,7 +938,7 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 <div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;2: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: It’s hungry!
@@ -924,7 +950,7 @@ Figure&nbsp;2: It’s hungry!
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;3: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;3: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
@@ -937,9 +963,9 @@ Figure&nbsp;3: Visualization from <span class="citation" data-cites="yang2023har
 <section id="loooooooooong-sequence-lengths" class="slide level2 smaller center" data-background-color="#1c1c1c">
 <h2>🚂 Loooooooooong Sequence Lengths</h2>
 <div class="flex-container" style="text-align: center; align-items: center;">
-<p><a href="../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="../../assets/anl.svg" style="width:48%;"></a></p>
+<p><a href="../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="../../assets/anl.svg" style="width:48%;"></a></p>
 <p><span class="dim-text" style="font-size: 2.0em; padding-left: 15pt;"><iconify-icon role="img" inline="" icon="ph:arrows-left-right" aria-label="Icon arrows-left-right from ph Iconify.design set." title="Icon arrows-left-right from ph Iconify.design set."></iconify-icon></span></p>
-<p><a href="../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="../../assets/deepspeed-logo-transparent.svg" style="width: 60%"></a></p>
+<p><a href="../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="../../assets/deepspeed-logo-transparent.svg" style="width: 60%"></a></p>
 </div>
 <!-- - Working with [ Microsoft -->
 <!-- DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer -->
@@ -950,13 +976,13 @@ Figure&nbsp;3: Visualization from <span class="citation" data-cites="yang2023har
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
 <figcaption>25B</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
 <figcaption>33B</figcaption>
 </figure>
 </div>
@@ -1502,7 +1528,7 @@ Figure&nbsp;4: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

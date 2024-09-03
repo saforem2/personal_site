@@ -30,8 +30,6 @@ citation:
    url: https://samforeman.me/talks/hpc-user-forum/slides
 # toc-expand: true
 format:
-  html:
-    shift-heading-level-by: 1
   revealjs:
     footer: "[[samforeman.me/talks/hpc-user-forum/slides](https://samforeman.me/talks/hpc-user-forum/slides)]{.small}"
     slides-url: https://samforeman.me/talks/hpc-user-forum/slides.html
@@ -42,90 +40,83 @@ format:
       data-background-size: contain
       # data-background-color: dark
       # background-color: dark
+    shift-heading-level-by: -1
+  html:
+    shift-heading-level-by: -1
 ---
 
-# AuroraGPT @ ALCF {background-color="white"}
+## 📄 Overview {.smaller background-color="white"}
 
-::: {#fig-llms-at-anl}
+::: {.flex-container}
 
+::: {.col1}
+::: {.blue-card style="margin-bottom: 0.5em;"}
+**AuroraGPT**: _General purpose scientific foundation model_
+:::
+
+- {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+    - ✅ {Intel, NVIDIA, AMD}
+
+- Model sizes:
+    - {`7B`, `70B`, `1T`}
+
+<!-- - Safe, with a focus on: robustness, privacy, ethics -->
+:::
+
+::: {.col2 style="width:75%;"}
 [![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/)
-
-Large Language Models (LLMs) have taken the world by storm
+:::
 
 :::
 
-## 📄 Overview {background-color="white"}
+- Trained on:
 
-- **AuroraGPT**: _General purpose scientific foundation model_
-    - Model Sizes: {7B, 70B, ~ 1T}
+  :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
 
-- Safe, with a focus on:
-    - trustworthiness, safety, robustness, privacy, machine ethics
+  ::: {.flex-container style="flex-direction:column;"}
 
-- Multi-lingual: {🇺🇸, 🇯🇵[^riken], 🇫🇷, 🇩🇪, 🇪🇸, 🇮🇹}
-    - Institutional Partnerships through TPC[^tpc]
+   🇺🇸English  
+   🇯🇵日本語[^riken]  
+   🇫🇷French  
+   🇩🇪Deutsch  
+   🇪🇸Español[^bsc]  
+   🇮🇹Italian  
 
-- Multi-modal:
-
-  :::: {.flex-container style="text-align: left; width: 100%; justify-content: flex-start;"}
-  ::: {.col1}
-    - scientific text
-    - images
-    - tables
-    - equations
-    - proofs
   :::
 
-  ::: {.col2 style="margin-left: 10%;"}
-    - structured data
-    - sequences
-    - time-series
-    - graphs
-    - fields
+  ::: {.flex-container style="flex-direction:column;"}
+
+  🧪 scientific text  
+  🖼️ images  
+  📊 tables  
+  ➕ equations  
+  📖 proofs
+
+  :::
+
+  ::: {.flex-container style="flex-direction:column;"}
+
+  📆 structured data  
+  ⛓️ sequences  
+  ⏰ time-series  
+  📈 graphs  
+  🌀 fields
+
   :::
 
   ::::
 
-[^tpc]:|
-    [New international consortium for generative AI models for science](https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for)
-
 [^riken]:|
     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
 
-## 🔍 Details {background-color="white"}
+[^bsc]:|
+    Collaborations with Barcelona Supercomputing Center
 
-- Llama Style Architecture:
-    - [{{< iconify ph github-logo-duotone >}} `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-    <!-- - FLASH attention.  Focus on Llama2 for Year 1 (7B and 70B targets) -->
-- Performant training implementations of AuroraGPT architecture on
-    - {Aurora, Polaris, Cerebras, SambaNova}
-- Workflow to capture:
-    - loss curves
-    - snapshots, checkpoints
-    - scaling / performance data
-- Training runs for AuroraGPT-7B [(ongoing)]{.dim-text}
-    - Baseline (Dolma) @ {Aurora, Polaris} [(twins for debugging)]{.dim-text}
-    - Baseline + Science @ Aurora
-- Trained raw models 📮 delivered to post-pretraining team
-    - AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S  
-      (A=`Aurora`, P=`Polaris`, S=`Science`)
+### 🎯 Project Goals
 
-## 🤔 Why? {background-color="white"}
+![](./assets/AuroraGPT.drawio.svg)
 
-- **For Science!**
-- Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data
-- Infrastructure to {train, eval, deploy} LLMs for science
-    - Comparative analysis across: {models, tasks, languages, contexts, ...}
-- Augment text data from the web with:
-    - full text papers
-    - structured scientific data[^tough]
-- Safety-driven, publicly-visible, open-source approach:
-    - Distribution of research grade artifacts (models, checkpoints, etc.)
-    - International collaborations on AGI for science
-
-[^tough]: Can be much more difficult than text (or even image) data
-
-## 👥 Teams {auto-animate=true background-color="white"}
+### 👥 Teams {auto-animate=true background-color="white"}
 
 ::: {.flex-container}
 
@@ -153,20 +144,7 @@ Large Language Models (LLMs) have taken the world by storm
 
 :::
 
-<!-- ## Data Prep -->
-<!---->
-<!-- ::: {.callout-note collapse=false icon=false title="🎯 Goal" style="width:100%!important;"} -->
-<!---->
-<!-- Accumulate 20+ **T tokens** of high-quality scientific text and structured data with: -->
-<!---->
-<!-- - strong quality control -->
-<!-- - de-duplication -->
-<!-- - provenance -->
-<!-- - subsetting -->
-<!---->
-<!-- ::: -->
-
-## 🤖 Aurora[^aurora]: System Overview {background-color="white"}
+### 🤖 Aurora[^aurora] {background-color="white"}
 
 :::: {.flex-container}
 
@@ -193,9 +171,9 @@ Large Language Models (LLMs) have taken the world by storm
 [^aurora]:|
     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/)
 
-# 🦙 LLMs {background-color="white"}
+## 🦙 LLMs {background-color="white"}
 
-## 🦜 Model Training {background-color="white"}
+### 🦜 Model Training {background-color="white"}
 
 :::: {.flex-container style="text-align: left; width: 100%; justify-content: center;"}
 
@@ -238,7 +216,23 @@ Large Language Models (LLMs) have taken the world by storm
 
 ::::
 
-## 🚀 Training at Scale
+### 📊 Data Pipeline
+
+::: {#fig-data-pipeline}
+
+::: {.flex-container}
+
+![Time spent building `BlendableDataset`](./assets/blendable.svg)
+
+![Time spent building `GPTDataset`](./assets/gpt.svg)
+
+:::
+
+Complete re-write [(parallel, async)]{.dim-text} of original data input pipeline gives _significant_ improvements
+
+:::
+
+### 🚀 Training at Scale {background-color="white"}
 
 ::: {.flex-container}
 
@@ -259,18 +253,18 @@ Large Language Models (LLMs) have taken the world by storm
 
 :::
 
-## ♻️  Life Cycle of the LLM {background-color="white"}
+### ♻️  Life Cycle of the LLM {background-color="white"}
 
 ::: {.panel-tabset style="text-align:center"}
 
-### 📝 Pre-training {background-color="white"}
+#### 📝 Pre-training {background-color="white"}
 
 
 ::: {.col1 style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
 ![**Pre-training**: Virtually all of the compute used during pretraining phase](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
 :::
 
-### 🎀 Fine-Tuning {background-color="white"}
+#### 🎀 Fine-Tuning {background-color="white"}
 
 ::: {.col1 style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
 ![**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
@@ -278,7 +272,7 @@ Large Language Models (LLMs) have taken the world by storm
 
 :::
 
-# 🔗 Links  {background-color="white"}
+## 🔗 Links  {background-color="white"}
 
 ::: {.flex-container}
 
@@ -302,16 +296,17 @@ Large Language Models (LLMs) have taken the world by storm
 - [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
     [Distributed training, ezpz.]{.dim-text}
 - 👀 See also:
-  - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
-  - [Distributed Data Parallel — PyTorch master documentation](https://pytorch.org/docs/master/notes/ddp.html)
-  - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
-  - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
+    - [New international consortium for generative AI models for science](https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for)
+    - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
+    - [Distributed Data Parallel — PyTorch master documentation](https://pytorch.org/docs/master/notes/ddp.html)
+    - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
+    - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
 
 :::
 
 :::
 
-## ❤️  Thank you! {background-color="white"}
+### ❤️  Thank you! {background-color="white"}
 
 - Organizers
 - Feel free to reach out!
@@ -332,7 +327,7 @@ DE-AC02-06CH11357.
 
 :::
 
-## 📗 Bibliography {background-color="white"}
+### 📗 Bibliography {background-color="white"}
 
 - Refs:
     - @wei2022emergentabilitieslargelanguage
@@ -341,9 +336,42 @@ DE-AC02-06CH11357.
 ::: {#refs}
 :::
 
-# 🍭 Extras {background-color="white"}
+## 🎁 Extras {background-color="white"}
 
-## 🍎 Training LLMs {.smaller background-color="white"}
+### 🔍 Details {background-color="white"}
+
+- Llama Style Architecture:
+    - [{{< iconify ph github-logo-duotone >}} `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+- Performant training implementations of AuroraGPT architecture on
+    - {Aurora, Polaris, Cerebras, SambaNova}
+- Workflow to capture:
+    - loss curves
+    - snapshots, checkpoints
+    - scaling / performance data
+- Training runs for AuroraGPT-7B [(ongoing)]{.dim-text}
+    - Baseline (Dolma) @ {Aurora, Polaris} [(twins for debugging)]{.dim-text}
+    - Baseline + Science @ Aurora
+- Trained raw models 📮 delivered to post-pretraining team
+    - AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S  
+      (A=`Aurora`, P=`Polaris`, S=`Science`)
+
+### 🤔 Why? {background-color="white"}
+
+- **For Science!**
+- Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data
+- Infrastructure to {train, eval, deploy} LLMs for science
+    - Comparative analysis across: {models, tasks, languages, contexts, ...}
+- Augment text data from the web with:
+    - full text papers
+    - structured scientific data[^tough]
+- Safety-driven, publicly-visible, open-source approach:
+    - Distribution of research grade artifacts (models, checkpoints, etc.)
+    - International collaborations on AGI for science
+
+[^tough]: Can be much more difficult than text (or even image) data
+
+
+### 🍎 Training LLMs {.smaller background-color="white"}
 
 :::: {.flex-container style="align-items: flex-end;"}
 
@@ -372,7 +400,7 @@ Visualization from @yang2023harnessing
 
 ::::
 
-## 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
+### 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
 
 ::: {.flex-container style="text-align: center; align-items: center;"}
 
@@ -407,7 +435,7 @@ Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds
 [{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 :::
 
-## 💾 Evaluating Checkpoints
+### 💾 Evaluating Checkpoints
 
 ```python
 from typing import Optional
@@ -452,11 +480,11 @@ def load_and_eval_model_from_checkpoint(
     )
 ```
 
-## 🚀 Model Evaluations
+### 🚀 Model Evaluations
 
 ::: {.panel-tabset}
 
-### 7000
+#### 7000
 
 Tokens: 88B
 
@@ -474,7 +502,7 @@ but I'm sure it
 """
 ```
 
-### 12000
+#### 12000
 
 Tokens: 150B
 
@@ -497,7 +525,7 @@ What is it like in there?
 """
 ```
 
-### 17000
+#### 17000
 
 Tokens: 215B
 
@@ -516,7 +544,7 @@ I’m not sure what to expect from the people
 """
 ```
 
-### 22000
+#### 22000
 
 Tokens: 277B
 
@@ -533,7 +561,7 @@ I’m a big fan of the band, The Beatles, and I’m a huge fan of the movie
 """
 ```
 
-### 32000
+#### 32000
 
 Tokens: 400B
 
@@ -553,7 +581,7 @@ In the US, it's
 """
 ```
 
-### 40000
+#### 40000
 
 Tokens: 503B
 
@@ -572,4 +600,3 @@ The fifth thing you notice is the temperature. It’s hot.
 ```
 
 :::
-

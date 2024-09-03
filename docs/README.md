@@ -37,6 +37,8 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 ## 🧑🏻‍💻 About Me
 
+<!-- <iframe src="https://lastfmstats.com/user/saforem2/charts" style="border: none;" width="50%" height="500"></iframe> -->
+
 <div class="flex-container" style="width: 100%;">
 
 <div class="flex-container" style="margin-right: 5%; width:48%;">
@@ -402,9 +404,15 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**AuroraGPT**](https://samforeman.me/talks/llms-at-scale) @ [*HPC User Forum*, 2024](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/) \[09/2024\]</span>
+>
+> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/hpc-user-forum/slides" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**Training LLMs at Scale**](https://samforeman.me/talks/llms-at-scale) @ [*ATPESC*, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) \[08/2024\]</span>
 >
-> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
+> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
 > [!TIP]
 >
@@ -814,15 +822,13 @@ setInterval(getSetLastFM, 10 * 100);
 >
 > ### <span class="dim-text">🧾 Last Update</span>
 >
-> <!-- <details closed><summary>🧾 Updated @</summary> -->
->
 > <span class="highlight">test highlight</span>
 >
-> <span class="green-highlight">test green-highlight</span>
->
-> <span class="pink-highlight">test pink-highlight</span>
->
-> <span class="blue-highlight">test blue-highlight</span>
+> <!--
+> [test green-highlight]{.green-highlight}
+> &#10;[test pink-highlight]{.pink-highlight}
+> &#10;[test blue-highlight]{.blue-highlight}
+> -->
 >
 > ``` python
 > import datetime
@@ -838,9 +844,8 @@ setInterval(getSetLastFM, 10 * 100);
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:51:30</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:47:27</span>
 > </pre>
-> <!-- </details> -->
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
     Generation, Drug Discovery), and Climate Modeling / Weather
