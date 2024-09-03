@@ -3,7 +3,7 @@
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-09-04
 
-## 💬 LLMs at ALCF
+## AuroraGPT
 
 <div class="flex-container">
 
@@ -15,10 +15,11 @@
 
 </div>
 
-- Model sizes:
-  - {`7B`, `70B`, `1T`}
+- Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow
+
 - 
   [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+
   - ✅ {Intel, NVIDIA, AMD}
 
 </div>
@@ -31,21 +32,21 @@
 
 </div>
 
-- Trained on:
+- Being trained on:
 
   <div class="flex-container"
   style="flex-direction:row; justify-content: space-around;">
 
-  <div class="flex-container" style="flex-direction:column;">
-
-  🇺🇸English  
-  🇯🇵日本語[^1]  
-  🇫🇷French  
-  🇩🇪Deutsch  
-  🇪🇸Español[^2]  
-  🇮🇹Italian
-
-  </div>
+  <!-- ::: {.flex-container style="flex-direction:column;"} -->
+  <!---->
+  <!--  🇺🇸English   -->
+  <!--  🇯🇵日本語   -->
+  <!--  🇫🇷French   -->
+  <!--  🇩🇪Deutsch   -->
+  <!--  🇪🇸Español[^bsc]   -->
+  <!--  🇮🇹Italian   -->
+  <!---->
+  <!-- ::: -->
 
   <div class="flex-container" style="flex-direction:column;">
 
@@ -69,7 +70,10 @@
 
   </div>
 
-### 🎯 Project Goals
+<!-- [^riken]:| -->
+<!--     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science) -->
+
+## 🎯 Project Goals
 
 <div id="fig-project-goals">
 
@@ -80,7 +84,131 @@ Figure 1: Overview of AuroraGPT Project
 
 </div>
 
-### 👥 Teams
+## Team Leads
+
+<div class="flex-container" style="text-align: center">
+
+**Planning**
+
+<img src="./assets/team/rick-stevens.png" style="height:1.04167in"
+alt="Rick Stevens" />  
+Rick Stevens[^1]
+
+<img src="./assets/team/ian-foster.png" style="height:1.04167in"
+alt="Ian Foster" />  
+Ian Foster
+
+<img src="./assets/team/rinku-gupta.png" style="height:1.04167in"
+alt="Rinku Gupta" />  
+Rinku Gupta
+
+<img src="./assets/team/mike-papka.png" style="height:1.04167in"
+alt="Mike Papka" />  
+Mike Papka
+
+<img src="./assets/team/arvind-ramanathan.png" style="height:1.04167in"
+alt="Arvind Ramanathan" />  
+Arvind Ramanathan
+
+<img src="./assets/team/fangfang-xia.png" style="height:1.04167in"
+alt="FangFang Xia" />  
+FangFang Xia
+
+</div>
+
+<div class="flex-container"
+style="text-align: center; max-height: 100%; font-size: 0.8em;">
+
+<div class="col2">
+
+**Data**
+
+<img src="./assets/team/ian-foster.png" style="height:1.04167in" />  
+Ian Foster
+
+<img src="./assets/team/robert-underwood.png"
+style="height:1.04167in" />  
+Robert Underwood
+
+</div>
+
+<div class="col2">
+
+**Models**
+
+<img src="./assets/team/venkat-vishwanath.png"
+style="height:1.04167in" />  
+Venkat Vishwanath
+
+<img src="./assets/team/samforeman.png" style="height:1.04167in" />  
+<span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1);">Sam
+Foreman</span>
+
+</div>
+
+<div class="col2">
+
+**Evaluation**
+
+<img src="./assets/team/franck-cappello.png" style="height:1.04167in" />  
+Franck Cappello
+
+<img src="./assets/team/sandeep-madireddy.png"
+style="height:1.04167in" />  
+Sandeep Madireddy
+
+<img src="./assets/team/bo-li.png" style="height:1.04167in" />  
+Bo Li
+
+</div>
+
+<div class="col2">
+
+**Post**
+
+<img src="./assets/team/eliu-huerta.png" style="height:1.04167in"
+alt="Eliu Huerta" />  
+Eliu Huerta
+
+<img src="./assets/team/azton-wells.png" style="height:1.04167in"
+alt="Azton Wells" />  
+Azton Wells
+
+</div>
+
+<div class="col2">
+
+**Inference**
+
+<img src="./assets/team/rajeev-thakur.png" style="height:1.04167in" />  
+Rajeev Thakur
+
+</div>
+
+<div class="col2">
+
+**Comms**
+
+<img src="./assets/team/charlie-catlett.png" style="height:1.04167in" />  
+Charlie Catlett
+
+<img src="./assets/team/david-martin.png" style="height:1.04167in" />  
+David Martin
+
+</div>
+
+<div class="col2">
+
+**Distribution**
+
+<img src="./assets/team/brad-ullrich.png" style="height:1.04167in" />  
+Brad Ullrich
+
+</div>
+
+</div>
+
+## Teams
 
 <div class="flex-container">
 
@@ -91,7 +219,7 @@ Figure 1: Overview of AuroraGPT Project
   - Accumulate 20+ T tokens of high-quality scientific text and
     structured data
 - <span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;">**Models
-  / Training**</span>[^3]
+  / Training**</span>[^2]
   - Train (entirely from scratch) a series of models on publicly
     available data
 - **Evaluation**
@@ -114,7 +242,7 @@ Figure 1: Overview of AuroraGPT Project
 
 </div>
 
-### 🤖 Aurora[^4]
+## Aurora
 
 <div class="flex-container">
 
@@ -138,9 +266,10 @@ Figure 1: Overview of AuroraGPT Project
 
 </div>
 
-## 🦜 Training
+<!-- [^aurora]:| -->
+<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
 
-### 🎓 Model Training
+## 🎓 Model Training
 
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: center; line-height: 1em;">
@@ -187,11 +316,40 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-### 📊 Data Pipeline
+<div class="notes">
 
-<div id="fig-data-pipeline">
+- Since training takes ~ weeks, want to be sure we’re using the time
+  wisely
+- This is difficult due to issues beyond our control
+- What can we do?
 
-<div class="flex-container">
+</div>
+
+## 📊 Fixing Data Bottlenecks
+
+<div class="flex-container"
+style="font-size: 70%; flex-direction: column;">
+
+<div class="col1">
+
+- To train a fixed model on trillions of tokens requires:
+  - Aggregating data from multiple different *corpora* (e.g. Reddit,
+    StackExchange, GitHub, etc.)
+  - Sampling *each training batch* according to a fixed distribution
+    across corpora
+  - Building indices that map batches of tokens into these files
+    (indexing)
+    <!-- - Build a set of indices that map training iterations to batches of tokens (and their location on the filesystem) -->
+- The original implementation was slow, and designed to run on a single
+  device
+  - Major bottleneck when debugging data pipeline at scale
+- [x] Completely re-wrote an asynchronous, distributed implementation
+  that *significantly* improves performance
+
+</div>
+
+<div class="flex-container center"
+style="text-align:center; font-size: 75%; width: 90%">
 
 ![Time spent building `BlendableDataset`](./assets/blendable.svg)
 
@@ -199,13 +357,12 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-Figure 2: Complete re-write <span class="dim-text">(parallel,
-async)</span> of original data input pipeline gives *significant*
-improvements
-
 </div>
 
-### 🚀 Training at Scale
+## 🚀 Training at Scale
+
+- TODO:
+  - …here’s what we’re exploring…
 
 <div class="flex-container">
 
@@ -225,36 +382,6 @@ improvements
 - Second order optimizers
 - State space models
 - Sub-quadratic attention (?)
-
-</div>
-
-</div>
-
-### ♻️ Life Cycle of the LLM
-
-<div class="panel-tabset" style="text-align:center">
-
-#### 📝 Pre-training
-
-<div id="fig-pretraining">
-
-![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
-
-
-Figure 3: **Pre-training**: Virtually all of the compute used during
-pretraining phase
-
-</div>
-
-#### 🎀 Fine-Tuning
-
-<div id="fig-fine-tuning">
-
-![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
-
-
-Figure 4: **Fine-tuning**: Fine-tuning actually updates the model’s
-weights to make the model better at a certain task.
 
 </div>
 
@@ -399,10 +526,40 @@ in Practice: A Survey on ChatGPT and Beyond.”
   - Comparative analysis across: {models, tasks, languages, contexts, …}
 - Augment text data from the web with:
   - full text papers
-  - structured scientific data[^5]
+  - structured scientific data[^3]
 - Safety-driven, publicly-visible, open-source approach:
   - Distribution of research grade artifacts (models, checkpoints, etc.)
   - International collaborations on AGI for science
+
+### ♻️ Life Cycle of the LLM
+
+<div class="panel-tabset" style="text-align:center">
+
+#### 📝 Pre-training
+
+<div id="fig-pretraining">
+
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+
+Figure 2: **Pre-training**: Virtually all of the compute used during
+pretraining phase
+
+</div>
+
+#### 🎀 Fine-Tuning
+
+<div id="fig-fine-tuning">
+
+![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+
+Figure 3: **Fine-tuning**: Fine-tuning actually updates the model’s
+weights to make the model better at a certain task.
+
+</div>
+
+</div>
 
 ### 🍎 Training LLMs
 
@@ -415,7 +572,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
 
-Figure 5: It’s hungry!
+Figure 4: It’s hungry!
 
 </div>
 
@@ -428,7 +585,7 @@ Figure 5: It’s hungry!
 ![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
 
 
-Figure 6: Visualization from Yang et al. (2023)
+Figure 5: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -464,7 +621,7 @@ style="width: 60%" />
 
 </div>
 
-Figure 7: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+Figure 6: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
 (See: Song et al. (2023))
 
 </div>
@@ -643,20 +800,8 @@ The fifth thing you notice is the temperature. It’s hot.
 
 </div>
 
-[^1]:
+[^1]: Lead
 
-    [Argonne and RIKEN sign a MOU in support of AI for
-    science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
+[^2]: Co-led by: Venkat Vishwanath, Sam Foreman
 
-[^2]:
-
-    Collaborations with Barcelona Supercomputing Center
-
-[^3]: Co-led by: Venkat Vishwanath, Sam Foreman
-
-[^4]:
-
-    [The Computer That Will Change Everything – Chicago
-    Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/)
-
-[^5]: Can be much more difficult than text (or even image) data
+[^3]: Can be much more difficult than text (or even image) data

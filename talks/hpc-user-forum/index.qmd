@@ -1,13 +1,10 @@
 ---
-# title: "[Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/slides.html)"
 title: "AuroraGPT"
-# navbar: default
-# sidebar: false
+institute: "Argonne Leadership Computing Facility"
 cookie-consent: true
 location: "[HPC User Forum Fall '24](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/)"
 date: 2024-09-04
 # fig-cap-location: top
-# date-modified: last-modified
 number-sections: false
 bibliography: ../../references.bib
 editor:
@@ -31,8 +28,9 @@ citation:
 # toc-expand: true
 format:
   revealjs:
+    center: true
     footer: "[[samforeman.me/talks/hpc-user-forum/slides](https://samforeman.me/talks/hpc-user-forum/slides)]{.small}"
-    slides-url: https://samforeman.me/talks/hpc-user-forum/slides.html
+    slide-url: https://samforeman.me/talks/hpc-user-forum/slides.html
     template-partials:
       - title-slide.html
     title-slide-attributes:
@@ -47,7 +45,7 @@ format:
         output-file: "AuroraGPT.md"
 ---
 
-## 💬 LLMs at ALCF {.smaller background-color="white"}
+## AuroraGPT{.smaller background-color="white"}
 
 ::: {.flex-container}
 
@@ -56,8 +54,7 @@ format:
 **AuroraGPT**: _General purpose scientific foundation model_
 :::
 
-- Model sizes:
-    - {`7B`, `70B`, `1T`}
+- Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow
 
 - {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
     - ✅ {Intel, NVIDIA, AMD}
@@ -70,20 +67,20 @@ format:
 
 :::
 
-- Trained on:
+- Being trained on:
 
   :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
 
-  ::: {.flex-container style="flex-direction:column;"}
-
-   🇺🇸English  
-   🇯🇵日本語[^riken]  
-   🇫🇷French  
-   🇩🇪Deutsch  
-   🇪🇸Español[^bsc]  
-   🇮🇹Italian  
-
-  :::
+  <!-- ::: {.flex-container style="flex-direction:column;"} -->
+  <!---->
+  <!--  🇺🇸English   -->
+  <!--  🇯🇵日本語   -->
+  <!--  🇫🇷French   -->
+  <!--  🇩🇪Deutsch   -->
+  <!--  🇪🇸Español[^bsc]   -->
+  <!--  🇮🇹Italian   -->
+  <!---->
+  <!-- ::: -->
 
   ::: {.flex-container style="flex-direction:column;"}
 
@@ -107,22 +104,136 @@ format:
 
   ::::
 
-[^riken]:|
-    [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
+<!-- [^riken]:| -->
+<!--     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science) -->
 
 [^bsc]:|
     Collaborations with Barcelona Supercomputing Center
 
-### 🎯 Project Goals {background-color="white"}
+## 🎯 Project Goals {background-color="white"}
 
-::: {#fig-project-goals}
+::: {#fig-project-goals style="vertical-align:center;"}
 
 ![](./assets/AuroraGPT.svg)
 
 Overview of AuroraGPT Project
 :::
 
-### 👥 Teams {auto-animate=true background-color="white"}
+## Team Leads {.smaller background-color="white"}
+
+::: {.flex-container style="text-align: center"}
+
+**Planning**
+
+![Rick Stevens](./assets/team/rick-stevens.png){height="75pt"}  
+Rick Stevens[^lead]
+
+![Ian Foster](./assets/team/ian-foster.png){height="75pt"}  
+Ian Foster
+
+![Rinku Gupta](./assets/team/rinku-gupta.png){height="75pt"}  
+Rinku Gupta
+
+![Mike Papka](./assets/team/mike-papka.png){height="75pt"}  
+Mike Papka
+
+![Arvind Ramanathan](./assets/team/arvind-ramanathan.png){height="75pt"}  
+Arvind Ramanathan
+
+![FangFang Xia](./assets/team/fangfang-xia.png){height="75pt"}  
+FangFang Xia
+
+:::
+
+::: {.flex-container style="text-align: center; max-height: 100%; font-size: 0.8em;"}
+
+::: {.col2}
+
+**Data**
+
+![](./assets/team/ian-foster.png){height="75pt"}  
+Ian Foster
+
+![](./assets/team/robert-underwood.png){height="75pt"}  
+Robert Underwood
+
+:::
+
+::: {.col2}
+
+**Models**
+
+![](./assets/team/venkat-vishwanath.png){height="75pt"}  
+Venkat Vishwanath
+
+![](./assets/team/samforeman.png){height="75pt"}  
+[Sam Foreman]{style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1);"}
+
+:::
+
+::: {.col2}
+
+**Evaluation**
+
+![](./assets/team/franck-cappello.png){height="75pt"}  
+Franck Cappello
+
+![](./assets/team/sandeep-madireddy.png){height="75pt"}  
+Sandeep Madireddy
+
+![](./assets/team/bo-li.png){height="75pt"}  
+Bo Li
+
+:::
+
+::: {.col2}
+
+**Post**
+
+![Eliu Huerta](./assets/team/eliu-huerta.png){height="75pt"}  
+Eliu Huerta
+
+![Azton Wells](./assets/team/azton-wells.png){height="75pt"}  
+Azton Wells
+
+:::
+
+::: {.col2}
+
+**Inference**
+
+![](./assets/team/rajeev-thakur.png){height="75pt"}  
+Rajeev Thakur
+
+:::
+
+
+::: {.col2}
+
+**Comms**
+
+![](./assets/team/charlie-catlett.png){height="75pt"}  
+Charlie Catlett
+
+![](./assets/team/david-martin.png){height="75pt"}  
+David Martin
+
+:::
+
+::: {.col2}
+
+**Distribution**
+
+![](./assets/team/brad-ullrich.png){height="75pt"}  
+Brad Ullrich
+
+:::
+
+:::
+
+[^lead]: Lead
+
+## Teams {auto-animate=true background-color="white"}
 
 ::: {.flex-container}
 
@@ -150,7 +261,7 @@ Overview of AuroraGPT Project
 
 :::
 
-### 🤖 Aurora[^aurora] {background-color="white"}
+## Aurora {background-color="white"}
 
 :::: {.flex-container}
 
@@ -174,12 +285,10 @@ Overview of AuroraGPT Project
 
 ::::
 
-[^aurora]:|
-    [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/)
+<!-- [^aurora]:| -->
+<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
 
-## 🦜 Training {background-color="white"}
-
-### 🎓 Model Training {background-color="white"}
+## 🎓 Model Training {background-color="white"}
 
 :::: {.flex-container style="text-align: left; width: 100%; justify-content: center; line-height: 1em;"}
 
@@ -222,11 +331,34 @@ Overview of AuroraGPT Project
 
 ::::
 
-### 📊 Data Pipeline {background-color="white"}
+::: notes
 
-::: {#fig-data-pipeline}
+- Since training takes ~ weeks, want to be sure we're using the time wisely
+- This is difficult due to issues beyond our control
+- What can we do?
 
-::: {.flex-container}
+:::
+
+## 📊 Fixing Data Bottlenecks {background-color="white"}
+
+::: {.flex-container style="font-size: 70%; flex-direction: column;"}
+
+::: {.col1}
+
+- To train a fixed model on trillions of tokens requires:
+    - Aggregating data from multiple different _corpora_ (e.g. Reddit, StackExchange, GitHub, etc.)
+    - Sampling _each training batch_ according to a fixed distribution across corpora
+    - Building indices that map batches of tokens into these files (indexing)
+    <!-- - Build a set of indices that map training iterations to batches of tokens (and their location on the filesystem) -->
+
+- The original implementation was slow, and designed to run on a single device
+    - Major bottleneck when debugging data pipeline at scale
+
+- [x] Completely re-wrote an asynchronous, distributed implementation that _significantly_ improves performance
+
+:::
+
+::: {.flex-container .center style="text-align:center; font-size: 75%; width: 90%"}
 
 ![Time spent building `BlendableDataset`](./assets/blendable.svg)
 
@@ -234,11 +366,13 @@ Overview of AuroraGPT Project
 
 :::
 
-Complete re-write [(parallel, async)]{.dim-text} of original data input pipeline gives _significant_ improvements
 
 :::
 
-### 🚀 Training at Scale {background-color="white"}
+## 🚀 Training at Scale {background-color="white"}
+
+- TODO:
+    - ...here's what we're exploring...
 
 ::: {.flex-container}
 
@@ -255,31 +389,6 @@ Complete re-write [(parallel, async)]{.dim-text} of original data input pipeline
 - Second order optimizers
 - State space models
 - Sub-quadratic attention (?)
-:::
-
-:::
-
-### ♻️  Life Cycle of the LLM {background-color="white"}
-
-::: {.panel-tabset style="text-align:center"}
-
-#### 📝 Pre-training {background-color="white"}
-
-
-::: {#fig-pretraining style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
-
-![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
-
-**Pre-training**: Virtually all of the compute used during pretraining phase
-:::
-
-#### 🎀 Fine-Tuning {background-color="white"}
-
-::: {#fig-fine-tuning style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
-
-![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
-
-**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.
 :::
 
 :::
@@ -381,6 +490,32 @@ DE-AC02-06CH11357.
     - International collaborations on AGI for science
 
 [^tough]: Can be much more difficult than text (or even image) data
+
+### ♻️  Life Cycle of the LLM {background-color="white"}
+
+::: {.panel-tabset style="text-align:center"}
+
+#### 📝 Pre-training {background-color="white"}
+
+
+::: {#fig-pretraining style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+**Pre-training**: Virtually all of the compute used during pretraining phase
+:::
+
+#### 🎀 Fine-Tuning {background-color="white"}
+
+::: {#fig-fine-tuning style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.
+:::
+
+:::
+
 
 
 ### 🍎 Training LLMs {.smaller background-color="white"}

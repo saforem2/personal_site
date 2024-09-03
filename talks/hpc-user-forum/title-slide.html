@@ -1,6 +1,6 @@
 <section id="$idprefix$title-slide" $for(title-slide-attributes/pairs)$ $it.key$="$it.value$" $endfor$
     class="quarto-title-block">
-    <div class="quarto-title-container" style="background-color: rgba(34,34,34, 0.275);
+    <div class="quarto-title-container" style="background-color: oklch(from #A482ED calc(l * 1.15) c h / 0.1);
         border-radius: 10px;
         text-align:center;
         padding: 0px;
@@ -17,21 +17,25 @@
         $if(subtitle)$
         <p class="subtitle">$subtitle$</p>
         $endif$
-        $for(author)$
-        <p class="author" style="text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);">$author$</p>
-        $endfor$
-        $for(institute)$
-        <p class="institute">$institute$</p>
-        $endfor$
-        $if(date)$
-        <p class="date" style="color:#FFFFFF; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);">$date$</p>
-        $endif$
         $if(location)$
-        <p class="location" style="color:#cccccc; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);">@</span> $location$
+        <p class="location" style="color:#cccccc; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 80%;">@</span>
+            $location$
         </p>
         $endif$
-        $if(site-url)$
-        <p class="slide-url">$slide-url$</p>
+        $for(author)$
+        <p class="author" style="text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 85%; margin-top: 0.5em;">$author$
+        </p>
+        $endfor$
+        $for(institute)$
+        <p class="institute" style="color: hsl(0, 0%, 80%); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 75%;">
+            $institute$</p>
+        $endfor$
+        $if(date)$
+        <p class="date" style="color: hsl(0, 0%, 60%); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 66%">$date$
+        </p>
         $endif$
+        <!-- $if(site-url)$ -->
+        <!-- <p class="slide-url">$slide-url$</p> -->
+        <!-- $endif$ -->
     </div>
 </section>

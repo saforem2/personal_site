@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d7fd31d925c6308c20a103df65665387.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-63aa707baead83bafc3666ef076ddfe2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1d621506b845ea43a008711fdb44a26a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -877,19 +877,14 @@ window.Quarto = {
     <h2 id="toc-title">📦 Contents</h2>
    
   <ul>
-  <li><a href="#llms-at-alcf" id="toc-llms-at-alcf" class="nav-link active" data-scroll-target="#llms-at-alcf">💬 LLMs at ALCF</a>
-  <ul class="collapse">
+  <li><a href="#auroragpt" id="toc-auroragpt" class="nav-link active" data-scroll-target="#auroragpt">AuroraGPT</a></li>
   <li><a href="#project-goals" id="toc-project-goals" class="nav-link" data-scroll-target="#project-goals">🎯 Project Goals</a></li>
-  <li><a href="#teams" id="toc-teams" class="nav-link" data-scroll-target="#teams">👥 Teams</a></li>
-  <li><a href="#auroraaurora" id="toc-auroraaurora" class="nav-link" data-scroll-target="#auroraaurora">🤖 Aurora</a></li>
-  </ul></li>
-  <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training">🦜 Training</a>
-  <ul class="collapse">
+  <li><a href="#team-leads" id="toc-team-leads" class="nav-link" data-scroll-target="#team-leads">Team Leads</a></li>
+  <li><a href="#teams" id="toc-teams" class="nav-link" data-scroll-target="#teams">Teams</a></li>
+  <li><a href="#aurora" id="toc-aurora" class="nav-link" data-scroll-target="#aurora">Aurora</a></li>
   <li><a href="#model-training" id="toc-model-training" class="nav-link" data-scroll-target="#model-training">🎓 Model Training</a></li>
-  <li><a href="#data-pipeline" id="toc-data-pipeline" class="nav-link" data-scroll-target="#data-pipeline">📊 Data Pipeline</a></li>
+  <li><a href="#fixing-data-bottlenecks" id="toc-fixing-data-bottlenecks" class="nav-link" data-scroll-target="#fixing-data-bottlenecks">📊 Fixing Data Bottlenecks</a></li>
   <li><a href="#training-at-scale" id="toc-training-at-scale" class="nav-link" data-scroll-target="#training-at-scale">🚀 Training at Scale</a></li>
-  <li><a href="#life-cycle-of-the-llm" id="toc-life-cycle-of-the-llm" class="nav-link" data-scroll-target="#life-cycle-of-the-llm">♻️ Life Cycle of the LLM</a></li>
-  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📓 References</a>
   <ul class="collapse">
   <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">❤️ Thank you!</a></li>
@@ -899,6 +894,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">🔍 Details</a></li>
   <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">🤔 Why?</a></li>
+  <li><a href="#life-cycle-of-the-llm" id="toc-life-cycle-of-the-llm" class="nav-link" data-scroll-target="#life-cycle-of-the-llm">♻️ Life Cycle of the LLM</a></li>
   <li><a href="#training-llms" id="toc-training-llms" class="nav-link" data-scroll-target="#training-llms">🍎 Training LLMs</a></li>
   <li><a href="#loooooooooong-sequence-lengths" id="toc-loooooooooong-sequence-lengths" class="nav-link" data-scroll-target="#loooooooooong-sequence-lengths">🚂 Loooooooooong Sequence Lengths</a></li>
   <li><a href="#evaluating-checkpoints" id="toc-evaluating-checkpoints" class="nav-link" data-scroll-target="#evaluating-checkpoints">💾 Evaluating Checkpoints</a></li>
@@ -909,6 +905,13 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content page-columns page-full column-body" id="quarto-document-content">
+<link rel="stylesheet" href="plugin/highlight/monokai.css">
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    plugins: [RevealHighlight],
+  });
+</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -932,6 +935,9 @@ window.Quarto = {
             ALCF
             </a>
           </p>
+        <p class="affiliation">
+            Argonne Leadership Computing Facility
+          </p>
       </div>
   </div>
 
@@ -953,19 +959,16 @@ window.Quarto = {
 </header>
 
 
-<section id="llms-at-alcf" class="level1 smaller" data-background-color="white">
-<h1 class="smaller" data-background-color="white">💬 LLMs at ALCF</h1>
+<section id="auroragpt" class="level1 smaller" data-background-color="white">
+<h1 class="smaller" data-background-color="white">AuroraGPT</h1>
 <div class="flex-container">
 <div class="col1">
 <div class="blue-card" style="margin-bottom: 0.5em;">
 <p><strong>AuroraGPT</strong>: <em>General purpose scientific foundation model</em></p>
 </div>
 <ul>
-<li>Model sizes:
-<ul>
-<li>{<code>7B</code>, <code>70B</code>, <code>1T</code>}</li>
-</ul></li>
-<li><iconify-icon role="img" inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>Megatron-DeepSpeed</code></a>
+<li><p>Model sizes: <code>7B</code> initially, {<code>70B</code>, ~ <code>1T</code>} to follow</p></li>
+<li><p><iconify-icon role="img" inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>Megatron-DeepSpeed</code></a></p>
 <ul>
 <li>✅ {Intel, NVIDIA, AMD}</li>
 </ul></li>
@@ -976,16 +979,18 @@ window.Quarto = {
 </div>
 </div>
 <ul>
-<li><p>Trained on:</p>
+<li><p>Being trained on:</p>
 <div class="flex-container" style="flex-direction:row; justify-content: space-around;">
-<div class="flex-container" style="flex-direction:column;">
-<p>🇺🇸English<br>
-🇯🇵日本語<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><br>
-🇫🇷French<br>
-🇩🇪Deutsch<br>
-🇪🇸Español<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><br>
-🇮🇹Italian</p>
-</div>
+<!-- ::: {.flex-container style="flex-direction:column;"} -->
+<!---->
+<!--  🇺🇸English   -->
+<!--  🇯🇵日本語   -->
+<!--  🇫🇷French   -->
+<!--  🇩🇪Deutsch   -->
+<!--  🇪🇸Español[^bsc]   -->
+<!--  🇮🇹Italian   -->
+<!---->
+<!-- ::: -->
 <div class="flex-container" style="flex-direction:column;">
 <p>🧪 scientific text<br>
 🖼️ images<br>
@@ -1002,9 +1007,12 @@ window.Quarto = {
 </div>
 </div></li>
 </ul>
-<section id="project-goals" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="project-goals">🎯 Project Goals</h2>
-<div id="fig-project-goals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<!-- [^riken]:| -->
+<!--     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science) -->
+</section>
+<section id="project-goals" class="level1" data-background-color="white">
+<h1 data-background-color="white">🎯 Project Goals</h1>
+<div id="fig-project-goals" class="quarto-float quarto-figure quarto-figure-center anchored" style="vertical-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-project-goals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Overview of AuroraGPT Project"><img src="./assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
@@ -1015,8 +1023,75 @@ Figure&nbsp;1: Overview of AuroraGPT Project
 </figure>
 </div>
 </section>
-<section id="teams" class="level2" data-auto-animate="true" data-background-color="white">
-<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="teams">👥 Teams</h2>
+<section id="team-leads" class="level1 smaller" data-background-color="white">
+<h1 class="smaller" data-background-color="white">Team Leads</h1>
+<div class="flex-container" style="text-align: center">
+<p><strong>Planning</strong></p>
+<p><img src="./assets/team/rick-stevens.png" style="height:1.04167in" alt="Rick Stevens"><br>
+Rick Stevens<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><img src="./assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster"><br>
+Ian Foster</p>
+<p><img src="./assets/team/rinku-gupta.png" style="height:1.04167in" alt="Rinku Gupta"><br>
+Rinku Gupta</p>
+<p><img src="./assets/team/mike-papka.png" style="height:1.04167in" alt="Mike Papka"><br>
+Mike Papka</p>
+<p><img src="./assets/team/arvind-ramanathan.png" style="height:1.04167in" alt="Arvind Ramanathan"><br>
+Arvind Ramanathan</p>
+<p><img src="./assets/team/fangfang-xia.png" style="height:1.04167in" alt="FangFang Xia"><br>
+FangFang Xia</p>
+</div>
+<div class="flex-container" style="text-align: center; max-height: 100%; font-size: 0.8em;">
+<div class="col2">
+<p><strong>Data</strong></p>
+<p><img src="./assets/team/ian-foster.png" style="height:1.04167in"><br>
+Ian Foster</p>
+<p><img src="./assets/team/robert-underwood.png" style="height:1.04167in"><br>
+Robert Underwood</p>
+</div>
+<div class="col2">
+<p><strong>Models</strong></p>
+<p><img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in"><br>
+Venkat Vishwanath</p>
+<p><img src="./assets/team/samforeman.png" style="height:1.04167in"><br>
+<span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1);">Sam Foreman</span></p>
+</div>
+<div class="col2">
+<p><strong>Evaluation</strong></p>
+<p><img src="./assets/team/franck-cappello.png" style="height:1.04167in"><br>
+Franck Cappello</p>
+<p><img src="./assets/team/sandeep-madireddy.png" style="height:1.04167in"><br>
+Sandeep Madireddy</p>
+<p><img src="./assets/team/bo-li.png" style="height:1.04167in"><br>
+Bo Li</p>
+</div>
+<div class="col2">
+<p><strong>Post</strong></p>
+<p><img src="./assets/team/eliu-huerta.png" style="height:1.04167in" alt="Eliu Huerta"><br>
+Eliu Huerta</p>
+<p><img src="./assets/team/azton-wells.png" style="height:1.04167in" alt="Azton Wells"><br>
+Azton Wells</p>
+</div>
+<div class="col2">
+<p><strong>Inference</strong></p>
+<p><img src="./assets/team/rajeev-thakur.png" style="height:1.04167in"><br>
+Rajeev Thakur</p>
+</div>
+<div class="col2">
+<p><strong>Comms</strong></p>
+<p><img src="./assets/team/charlie-catlett.png" style="height:1.04167in"><br>
+Charlie Catlett</p>
+<p><img src="./assets/team/david-martin.png" style="height:1.04167in"><br>
+David Martin</p>
+</div>
+<div class="col2">
+<p><strong>Distribution</strong></p>
+<p><img src="./assets/team/brad-ullrich.png" style="height:1.04167in"><br>
+Brad Ullrich</p>
+</div>
+</div>
+</section>
+<section id="teams" class="level1" data-auto-animate="true" data-background-color="white">
+<h1 data-auto-animate="true" data-background-color="white">Teams</h1>
 <div class="flex-container">
 <div class="col1">
 <ul>
@@ -1025,7 +1100,7 @@ Figure&nbsp;1: Overview of AuroraGPT Project
 <ul>
 <li>Accumulate 20+ T tokens of high-quality scientific text and structured data</li>
 </ul></li>
-<li><span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"><strong>Models / Training</strong></span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+<li><span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"><strong>Models / Training</strong></span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 <ul>
 <li>Train (entirely from scratch) a series of models on publicly available data</li>
 </ul></li>
@@ -1054,8 +1129,8 @@ Figure&nbsp;1: Overview of AuroraGPT Project
 </div>
 </div>
 </section>
-<section id="auroraaurora" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="auroraaurora">🤖 Aurora<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
+<section id="aurora" class="level1" data-background-color="white">
+<h1 data-background-color="white">Aurora</h1>
 <div class="flex-container">
 <div class="col1" style="width:30%;">
 <ul>
@@ -1072,12 +1147,11 @@ Figure&nbsp;1: Overview of AuroraGPT Project
 <p><a href="./assets/aurora.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="./assets/aurora.png" class="img-fluid"></a></p>
 </div>
 </div>
+<!-- [^aurora]:| -->
+<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
 </section>
-</section>
-<section id="training" class="level1" data-background-color="white">
-<h1 data-background-color="white">🦜 Training</h1>
-<section id="model-training" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="model-training">🎓 Model Training</h2>
+<section id="model-training" class="level1" data-background-color="white">
+<h1 data-background-color="white">🎓 Model Training</h1>
 <div class="flex-container" style="text-align: left; width: 100%; justify-content: center; line-height: 1em;">
 <div class="col1" width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%">
 <p>✅ <span style="color: #03BD00;"><strong>Goals</strong></span></p>
@@ -1119,35 +1193,56 @@ Figure&nbsp;1: Overview of AuroraGPT Project
 </ul>
 </div>
 </div>
+<div class="notes">
+<ul>
+<li>Since training takes ~ weeks, want to be sure we’re using the time wisely</li>
+<li>This is difficult due to issues beyond our control</li>
+<li>What can we do?</li>
+</ul>
+</div>
 </section>
-<section id="data-pipeline" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="data-pipeline">📊 Data Pipeline</h2>
-<div id="fig-data-pipeline" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-data-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="flex-container">
+<section id="fixing-data-bottlenecks" class="level1" data-background-color="white">
+<h1 data-background-color="white">📊 Fixing Data Bottlenecks</h1>
+<div class="flex-container" style="font-size: 70%; flex-direction: column;">
+<div class="col1">
+<ul>
+<li>To train a fixed model on trillions of tokens requires:
+<ul>
+<li>Aggregating data from multiple different <em>corpora</em> (e.g.&nbsp;Reddit, StackExchange, GitHub, etc.)</li>
+<li>Sampling <em>each training batch</em> according to a fixed distribution across corpora</li>
+<li>Building indices that map batches of tokens into these files (indexing) <!-- - Build a set of indices that map training iterations to batches of tokens (and their location on the filesystem) --></li>
+</ul></li>
+<li>The original implementation was slow, and designed to run on a single device
+<ul>
+<li>Major bottleneck when debugging data pipeline at scale</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Completely re-wrote an asynchronous, distributed implementation that <em>significantly</em> improves performance</label></li>
+</ul>
+</div>
+<div class="flex-container center" style="text-align:center; font-size: 75%; width: 90%">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/blendable.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Time spent building BlendableDataset"><img src="./assets/blendable.svg" class="img-fluid figure-img"></a></p>
+<p><a href="./assets/blendable.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Time spent building BlendableDataset"><img src="./assets/blendable.svg" class="img-fluid figure-img" alt="Time spent building BlendableDataset"></a></p>
 <figcaption>Time spent building <code>BlendableDataset</code></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/gpt.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Time spent building GPTDataset"><img src="./assets/gpt.svg" class="img-fluid figure-img"></a></p>
+<p><a href="./assets/gpt.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Time spent building GPTDataset"><img src="./assets/gpt.svg" class="img-fluid figure-img" alt="Time spent building GPTDataset"></a></p>
 <figcaption>Time spent building <code>GPTDataset</code></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Complete re-write <span class="dim-text">(parallel, async)</span> of original data input pipeline gives <em>significant</em> improvements
-</figcaption>
-</figure>
-</div>
 </section>
-<section id="training-at-scale" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="training-at-scale">🚀 Training at Scale</h2>
+<section id="training-at-scale" class="level1" data-background-color="white">
+<h1 data-background-color="white">🚀 Training at Scale</h1>
+<ul>
+<li>TODO:
+<ul>
+<li>…here’s what we’re exploring…</li>
+</ul></li>
+</ul>
 <div class="flex-container">
 <div class="col1">
 <ul>
@@ -1169,39 +1264,6 @@ Figure&nbsp;2: Complete re-write <span class="dim-text">(parallel, async)</span>
 </ul>
 </div>
 </div>
-</section>
-<section id="life-cycle-of-the-llm" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm">♻️ Life Cycle of the LLM</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset" style="text-align:center">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">📝 Pre-training</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🎀 Fine-Tuning</a></li></ul>
-<div class="tab-content" style="text-align:center">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="fig-pretraining" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;3: Pre-training: Virtually all of the compute used during pretraining phase"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
-</figcaption>
-</figure>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="fig-fine-tuning" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="references" class="level1" data-background-color="white">
 <h1 data-background-color="white">📓 References</h1>
@@ -1334,7 +1396,7 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 <li>Augment text data from the web with:
 <ul>
 <li>full text papers</li>
-<li>structured scientific data<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li>structured scientific data<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ul></li>
 <li>Safety-driven, publicly-visible, open-source approach:
 <ul>
@@ -1343,6 +1405,38 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 </ul></li>
 </ul>
 </section>
+<section id="life-cycle-of-the-llm" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm">♻️ Life Cycle of the LLM</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset" style="text-align:center">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">📝 Pre-training</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">🎀 Fine-Tuning</a></li></ul>
+<div class="tab-content" style="text-align:center">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="fig-pretraining" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2: Pre-training: Virtually all of the compute used during pretraining phase"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-fine-tuning" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;3: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="training-llms" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="training-llms">🍎 Training LLMs</h2>
 <div class="flex-container" style="align-items: flex-end;">
@@ -1350,10 +1444,10 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 <div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5: It’s hungry!"><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="img-fluid figure-img"></a>
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;4: It’s hungry!"><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: It’s hungry!
+Figure&nbsp;4: It’s hungry!
 </figcaption>
 </figure>
 </div>
@@ -1362,10 +1456,10 @@ Figure&nbsp;5: It’s hungry!
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;6: Visualization from @yang2023harnessing"><img src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="img-fluid figure-img"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;5: Visualization from @yang2023harnessing"><img src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#ref-yang2023harnessing" role="doc-biblioref">2023</a>)</span>
+Figure&nbsp;5: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#ref-yang2023harnessing" role="doc-biblioref">2023</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -1401,7 +1495,7 @@ Figure&nbsp;6: Visualization from <span class="citation" data-cites="yang2023har
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#ref-song2023ds4sci" role="doc-biblioref">2023</a>)</span>)
+Figure&nbsp;6: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#ref-song2023ds4sci" role="doc-biblioref">2023</a>)</span>)
 </figcaption>
 </figure>
 </div>
@@ -1560,14 +1654,9 @@ Figure&nbsp;7: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</cod
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><div class="line-block"></div>
-<p><a href="https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science">Argonne and RIKEN sign a MOU in support of AI for science</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><div class="line-block"></div>
-<p>Collaborations with Barcelona Supercomputing Center<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Co-led by: Venkat Vishwanath, Sam Foreman<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><div class="line-block"></div>
-<p><a href="https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/">The Computer That Will Change Everything – Chicago Magazine</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Can be much more difficult than text (or even image) data<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Lead<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Co-led by: Venkat Vishwanath, Sam Foreman<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Can be much more difficult than text (or even image) data<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2024,
   author = {Foreman, Sam},
@@ -2208,7 +2297,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
