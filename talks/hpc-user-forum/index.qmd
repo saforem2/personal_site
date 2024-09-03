@@ -43,6 +43,8 @@ format:
     shift-heading-level-by: -1
   html:
     shift-heading-level-by: -1
+  gfm:
+        output-file: "AuroraGPT.md"
 ---
 
 ## 📄 Overview {.smaller background-color="white"}
@@ -54,13 +56,12 @@ format:
 **AuroraGPT**: _General purpose scientific foundation model_
 :::
 
-- {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-    - ✅ {Intel, NVIDIA, AMD}
-
 - Model sizes:
     - {`7B`, `70B`, `1T`}
 
-<!-- - Safe, with a focus on: robustness, privacy, ethics -->
+- {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+    - ✅ {Intel, NVIDIA, AMD}
+
 :::
 
 ::: {.col2 style="width:75%;"}
@@ -114,7 +115,12 @@ format:
 
 ### 🎯 Project Goals
 
-![](./assets/AuroraGPT.drawio.svg)
+::: {#fig-project-goals}
+
+![](./assets/AuroraGPT.svg)
+
+Overview of AuroraGPT Project
+:::
 
 ### 👥 Teams {auto-animate=true background-color="white"}
 
@@ -124,7 +130,7 @@ format:
 - **Planning**
 - **Data Prep**
     - Accumulate 20+ T tokens of high-quality scientific text and structured data
-- [**Models / Training**[^me]]{style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"}
+- [**Models / Training**]{style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"}[^me]
     - Train (entirely from scratch) a series of models on publicly available data
 - **Evaluation**
     - Skills, trustworthiness, safety, robustness, privacy, machine ethics
@@ -175,7 +181,7 @@ format:
 
 ### 🦜 Model Training {background-color="white"}
 
-:::: {.flex-container style="text-align: left; width: 100%; justify-content: center;"}
+:::: {.flex-container style="text-align: left; width: 100%; justify-content: center; line-height: 1em;"}
 
 ::: {.col1 width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%"}
 
@@ -216,7 +222,7 @@ format:
 
 ::::
 
-### 📊 Data Pipeline
+### 📊 Data Pipeline {background-color="white"}
 
 ::: {#fig-data-pipeline}
 
@@ -260,14 +266,20 @@ Complete re-write [(parallel, async)]{.dim-text} of original data input pipeline
 #### 📝 Pre-training {background-color="white"}
 
 
-::: {.col1 style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
-![**Pre-training**: Virtually all of the compute used during pretraining phase](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+::: {#fig-pretraining style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+**Pre-training**: Virtually all of the compute used during pretraining phase
 :::
 
 #### 🎀 Fine-Tuning {background-color="white"}
 
-::: {.col1 style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
-![**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+::: {#fig-fine-tuning style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.
 :::
 
 :::
@@ -338,7 +350,7 @@ DE-AC02-06CH11357.
 
 ## 🎁 Extras {background-color="white"}
 
-### 🔍 Details {background-color="white"}
+### 🔍 Details {.smaller background-color="white"}
 
 - Llama Style Architecture:
     - [{{< iconify ph github-logo-duotone >}} `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
@@ -355,7 +367,7 @@ DE-AC02-06CH11357.
     - AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S  
       (A=`Aurora`, P=`Polaris`, S=`Science`)
 
-### 🤔 Why? {background-color="white"}
+### 🤔 Why? {.smaller background-color="white"}
 
 - **For Science!**
 - Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data
@@ -435,7 +447,7 @@ Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds
 [{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 :::
 
-### 💾 Evaluating Checkpoints
+### 💾 Evaluating Checkpoints {background-color="white"}
 
 ```python
 from typing import Optional
@@ -480,7 +492,7 @@ def load_and_eval_model_from_checkpoint(
     )
 ```
 
-### 🚀 Model Evaluations
+### 🚀 Model Evaluations {background-color="white"}
 
 ::: {.panel-tabset}
 
