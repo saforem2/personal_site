@@ -3,7 +3,7 @@
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-09-04
 
-## 📄 Overview
+## 💬 LLMs at ALCF
 
 <div class="flex-container">
 
@@ -138,9 +138,9 @@ Figure 1: Overview of AuroraGPT Project
 
 </div>
 
-## 🦙 LLMs
+## 🦜 Training
 
-### 🦜 Model Training
+### 🎓 Model Training
 
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: center; line-height: 1em;">
@@ -260,7 +260,7 @@ weights to make the model better at a certain task.
 
 </div>
 
-## 🔗 Links
+## 📓 References
 
 <div class="flex-container">
 
@@ -330,7 +330,7 @@ weights to make the model better at a certain task.
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-### 📗 Bibliography
+### 📑 Bibliography
 
 - Refs:
   - Wei et al. (2022)
