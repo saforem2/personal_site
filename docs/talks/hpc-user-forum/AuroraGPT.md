@@ -54,6 +54,26 @@ Figure 1: Credit to the entire AuroraGPT team for slides
 
 </div>
 
+<div class="notes">
+
+- Here to talk about AuroraGPT, Argonne’s internal effort to build a
+  general purpose scientific LLM, broadly trained on a general corpora
+  of text + scientific {papers, text, data}
+
+- As part of this effort, we plan to…
+
+  - Explore pathways, build with international partners, multi-{lingual,
+    modal}
+
+- Rough timeline of the project and deliverables:
+
+  - 202{3,4}: text-only models, plan to release a series of {7B, 70B,
+    1T} models
+  - 202{4,5}: Basic multi-modal models
+  - 202{5,6}: Advanced scientific multimodal models
+
+</div>
+
 ## AuroraGPT: Open Science Foundation Models
 
 <div id="fig-project-goals">
@@ -62,6 +82,42 @@ Figure 1: Credit to the entire AuroraGPT team for slides
 
 
 Figure 2
+
+</div>
+
+<div class="notes">
+
+- AuroraGPT will be a publicly distributed, open source foundation model
+  for open science
+- Is being trained on:
+  - Scientific / engineering structured data
+  - General text, media, news, etc.
+  - Large amounts of low to medium quality data
+  - Much less high quality data (that is publicly available for use)
+- This data is then cleaned, processed, de-duplicated and used for the
+  initial pre-training phase of the model
+- The vast majority of the overall compute is spent during this initial
+  pre-training phase
+  - This is the group I help to lead and will be talking a bit about
+    today
+- The initial pre-training phase is currently underway
+  - Eventually, given a bit of time, effort and magic, the model will be
+    ready for fine-tuning and additional training for a variety of
+    downstream tasks
+- The pretrained model will then be handed off for additional
+  fine-tuning on a variety of downstream tasks
+  - Scientific discovery
+  - Accelerate scientific tasks
+  - Digital twins
+  - Inverse design
+  - Code optimization
+  - Accelerated simulations
+  - Autonomous experiments
+  - Co-design
+- Becoming increasingly clear that LLMs have the potential to
+  drastically accelerate computational science
+  - We’ve seen this already for {GenSLMs, Weather / Climate / Earth
+    Systems Modeling, Particle Physics, etc.}
 
 </div>
 
@@ -81,8 +137,36 @@ Figure 2
   adaptation for downstream uses
 - **Promotion of responsible AI** best practices where we can figure
   them out
-- **International Collaborations** around the long term foal of *AGI for
+- **International Collaborations** around the long term goal of *AGI for
   science*
+
+<div class="notes">
+
+- Deliverables:
+
+  - datasets, pipelines
+  - software infrastructure, workflows to interface with science
+    applications
+  - checkpoints, models, logs, workbook, insights, etc.
+
+- Hope to understand:
+
+  - How different state-of-the-art models perform at different
+    scientific tasks
+  - where deep data may have an impact
+  - feasibility of generically augmenting text with scientific
+    structured data
+
+- Huge undertaking that will require large international collaborations
+  around long term goal of AGI for science
+
+- Extra points:
+
+  - Well known that LLMs are good for non-consequential tasks
+  - Known to “hallucinate” and create false information
+  - Can this be mitigated reliably
+
+</div>
 
 ## Aurora
 
