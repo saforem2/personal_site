@@ -1,6 +1,6 @@
 ---
 title: "AuroraGPT"
-institute: "Argonne Leadership Computing Facility"
+# institute: "Argonne Leadership Computing Facility"
 cookie-consent: true
 location: "[HPC User Forum Fall '24](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/)"
 date: 2024-09-04
@@ -28,6 +28,7 @@ citation:
 # toc-expand: true
 format:
   revealjs:
+    pdf-separate-fragments: true
     center: true
     footer: "[samforeman.me/talks/hpc-user-forum/slides](https://samforeman.me/talks/hpc-user-forum/slides)"
     slide-url: https://samforeman.me/talks/hpc-user-forum/slides.html
@@ -65,24 +66,24 @@ Broadly trained on a general corpora plus scientific {papers, texts, data}
 - **Multilingual** English, 日本語, French, German, Spanish
 - **Multimodal**: images, tables, equations, proofs, time series,  graphs, fields, sequences , etc
 
-<!-- - Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow -->
-
-<!-- - {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed) -->
-<!--     - ✅ {Intel, NVIDIA, AMD} -->
-
 :::
 
-::: {.col2 style="width:75%;"}
-[![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/)
+::: {.col2 style="width:75%; text-align: center;"}
+![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)
+
+[Image from {{< iconify fa github >}} [`Hannibal046/Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)]{.dim-text style="font-size: 75%;"}
 :::
 
 :::
 
-![](./assets/timelines.png){width="75%" style="margin-left:auto;margin-right:auto;"}
+::: {#fig-timeline}
 
+![](./assets/timelines.png){width="66%" style="margin-left:auto;margin-right:auto;"}
+
+Credit to the entire AuroraGPT team for slides
 :::
 
-[**Credit to the entire AuroraGPT team for slides**]{.center}
+:::
 
 ## AuroraGPT: Open Science Foundation Models {background-color="white"}
 
@@ -326,42 +327,38 @@ Brad Ullrich
 
 ## Model Training {.smaller background-color="white"}
 
-:::: {.flex-container .scrollable style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;"}
+:::: {.flex-container style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;"}
 
 ::: {.col1 width="48%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;"}
 
 ✅ [**Goals**]{style="color: #03BD00;"}
 
-- Want training runs at scale to be
+- Want training runs at scale to be:
     - efficient
     - stable
     - reproducible
-- This requires
+- This requires:
     - robust data pipelines / file IO
     - effectively overlapping compute with communication
     - stability across {network, filesystem, machine}
-- For larger models
-    - 3D Parallelism
-    - multi-dimensional parallelism strategies
-- _Highly optimized GPU kernels_
-
-<!--
-- State space models
+- 3D / Multi-dimensional Parallelism strategies
 - Large batch training
-- Sub-quadratic attention
 - Second order optimizers
--->
+- Sub-quadratic attention
+- State space models
+- _Highly optimized GPU kernels_
 
 :::
 
 ::: {.col2 width="48%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;"}
 
-❌ [**Difficulties**]{style="color: #E90102;"}
+❌ [**Challenges**]{style="color: #E90102;"}
 
-- _Looong time_ to train
-
-- Stability issues
-    - failures are **expensive** (and unavoidable)
+- _Looong time_ to train, can be:
+    - weeks (even months) of continuous training
+    - order of magnitude longer than typical NN training jobs
+- Stability issues:
+    - failures are expensive (but inevitable)
     - stragglers common at scale
 - Individual jobs are:
     - **fragile**
