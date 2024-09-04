@@ -29,7 +29,7 @@ citation:
 format:
   revealjs:
     center: true
-    footer: "[[samforeman.me/talks/hpc-user-forum/slides](https://samforeman.me/talks/hpc-user-forum/slides)]{.small}"
+    footer: "[samforeman.me/talks/hpc-user-forum/slides](https://samforeman.me/talks/hpc-user-forum/slides)"
     slide-url: https://samforeman.me/talks/hpc-user-forum/slides.html
     template-partials:
       - title-slide.html
@@ -39,25 +39,36 @@ format:
       # data-background-color: dark
       # background-color: dark
     shift-heading-level-by: -1
-  html:
-    shift-heading-level-by: -1
+  html: default
+    # shift-heading-level-by: -1
   gfm:
         output-file: "AuroraGPT.md"
 ---
 
-## AuroraGPT{.smaller background-color="white"}
 
-::: {.flex-container}
+## AuroraGPT Goals {.smaller background-color="white"}
+
+<!-- ::: {.flex-container style="flex-direction: column;"} -->
+
+::: {.flex-container style="flex-direction: column; justify-content: space-around;"}
+
+::: {.flex-container style="flex-direction: row; justify-content: space-around; align-items:center;"}
 
 ::: {.col1}
 ::: {.blue-card style="margin-bottom: 0.5em;"}
-**AuroraGPT**: _General purpose scientific foundation model_
+**AuroraGPT**: _General purpose scientific LLM_  
+Broadly trained on a general corpora plus scientific {papers, texts, data}
 :::
 
-- Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow
+- **Explore pathways** towards a "Scientific Assistant" model
+- **Build with international partners** (RIKEN, BSC, others)
+- **Multilingual** English, 日本語, French, German, Spanish
+- **Multimodal**: images, tables, equations, proofs, time series,  graphs, fields, sequences , etc
 
-- {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-    - ✅ {Intel, NVIDIA, AMD}
+<!-- - Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow -->
+
+<!-- - {{< iconify fa github >}} [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed) -->
+<!--     - ✅ {Intel, NVIDIA, AMD} -->
 
 :::
 
@@ -67,20 +78,29 @@ format:
 
 :::
 
+![](./assets/timelines.png){width="75%" style="margin-left:auto;margin-right:auto;"}
+
+:::
+
+[**Credit to the entire AuroraGPT team for slides**]{.center}
+
+<!-- ::: -->
+
+<!--
 - Being trained on:
 
   :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
 
-  <!-- ::: {.flex-container style="flex-direction:column;"} -->
-  <!---->
-  <!--  🇺🇸English   -->
-  <!--  🇯🇵日本語   -->
-  <!--  🇫🇷French   -->
-  <!--  🇩🇪Deutsch   -->
-  <!--  🇪🇸Español[^bsc]   -->
-  <!--  🇮🇹Italian   -->
-  <!---->
-  <!-- ::: -->
+  ::: {.flex-container style="flex-direction:column;"}
+
+   🇺🇸English  
+   🇯🇵日本語  
+   🇫🇷French  
+   🇩🇪Deutsch  
+   🇪🇸Español[^bsc]  
+   🇮🇹Italian  
+
+  :::
 
   ::: {.flex-container style="flex-direction:column;"}
 
@@ -104,24 +124,111 @@ format:
 
   ::::
 
-<!-- [^riken]:| -->
-<!--     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science) -->
+[^riken]:|
+    [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
 
 [^bsc]:|
     Collaborations with Barcelona Supercomputing Center
 
-## 🎯 Project Goals {background-color="white"}
+-->
+
+## AuroraGPT: Open Science Foundation Models {background-color="white"}
 
 ::: {#fig-project-goals style="vertical-align:center;"}
 
 ![](./assets/AuroraGPT.svg)
 
-Overview of AuroraGPT Project
+:::
+
+## AuroraGPT Outcomes
+
+- **Datasets and data pipelines** for preparing science training data
+- **Software infrastructure and workflows** to train, evaluate and deploy LLMs at scale for scientific resarch purposes
+- **Evaluation of state-of-the-art LLM Models** to determine where they fall short in deep scientific tasks and where deep data may have an impact
+- **Assessment of the approach** of augmenting web training data with two forms of data specific to science
+    - Full text scientific papers
+    - Structured scientific datasets (suitably mapped to narrative form)
+- **Research grade artifacts** (**models**) for scientific community for adaptation for downstream uses
+- **Promotion of responsible AI** best practices where we can figure them out
+- **International Collaborations** around the long term foal of _AGI for science_
+
+## Aurora {.smaller background-color="white"}
+
+:::: {.flex-container}
+
+| <!-- --> | <!-- --> |
+|----------|:--------:|
+| Racks    |    166   |
+| Nodes    |  10,624  |
+| CPUs     |  21,248  |
+| GPUs     |  63,744  |
+| NICs     |  84,992  |
+| HBM      |   8 PB   |
+| DDR5c    |   10 PB  |
+| <!-- --> | <!-- --> |
+: Aurora Specs {#tbl-aurora}
+
+::: {#fig-aurora style="width:50%;"}
+
+![](./assets/aurora.png)
+
+[Aurora Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)
+:::
+
+::::
+
+<!--
+::: {style="width:40%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](./assets/aurora-tunnel.jpg)
+
+:::
+-->
+
+## ALCF AI Testbed {background-color="white"}
+
+ALCF AI Testbed Systems are in production and [available for allocations](https://accounts.alcf.anl.gov/#/allocationRequests) to the research community
+
+- [NAIRR Pilot](https://nairrpilot.org/)
+
+::: {.flex-container style="height: -webkit-fill-available;"}
+
+::: {#fig-sambanova style="height:120px;"}
+
+![](./assets/sambanova.jpeg)
+
+SambaNova SN-30: 2nd Gen, 8 nodes with 64 AI Accelerators
+:::
+
+::: {#fig-graphcore style="height:120px;"}
+
+![](./assets/graphcore.png)
+
+Graphcore Bow generation accelerators: Pod-64 configuration with 64 accelerators
+:::
+
+::: {#fig-cerebras  style="height:120px;"}
+
+![](./assets/cerebras.jpeg)
+
+Cerebras, 2x CS-2 WSE with Memory-X and Swarm-X technologies
+:::
+
+::: {#fig-groq style="height:120px;"}
+
+![](./assets/groq.jpeg)
+
+GroqRack - nine nodes, with eight GroqChip v1.5 Tensor streaming processors accelerators per node
+:::
+
+
 :::
 
 ## Team Leads {.smaller background-color="white"}
 
-::: {.flex-container style="text-align: center"}
+::: {style="font-size: 70%;"}
+
+::: {.flex-container style="text-align: center; align-items: center;"}
 
 **Planning**
 
@@ -140,12 +247,12 @@ Mike Papka
 ![Arvind Ramanathan](./assets/team/arvind-ramanathan.png){height="75pt"}  
 Arvind Ramanathan
 
-![FangFang Xia](./assets/team/fangfang-xia.png){height="75pt"}  
-FangFang Xia
+![Fangfang Xia](./assets/team/fangfang-xia.png){height="75pt"}  
+Fangfang Xia
 
 :::
 
-::: {.flex-container style="text-align: center; max-height: 100%; font-size: 0.8em;"}
+::: {.flex-container style="text-align: center;"}
 
 ::: {.col2}
 
@@ -161,7 +268,7 @@ Robert Underwood
 
 ::: {.col2}
 
-**Models**
+**Models / Training**
 
 ![](./assets/team/venkat-vishwanath.png){height="75pt"}  
 Venkat Vishwanath
@@ -233,6 +340,8 @@ Brad Ullrich
 
 [^lead]: Lead
 
+:::
+
 ## Teams {auto-animate=true background-color="white"}
 
 ::: {.flex-container}
@@ -261,71 +370,54 @@ Brad Ullrich
 
 :::
 
-## Aurora {background-color="white"}
+## Model Training {.smaller background-color="white"}
 
-:::: {.flex-container}
+:::: {.flex-container .scrollable style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;"}
 
-::: {.col1 style="width:30%;"}
-
-- 166 Racks
-- 10,624 Nodes
-- 21,248 CPUs
-- 63,744 GPUs
-- 84,992 NICs
-- 8 PB HBM
-- 10 PB DDR5c
-
-:::
-
-::: {.col2 style="width:70%;"}
-
-![](./assets/aurora.png)
-
-:::
-
-::::
-
-<!-- [^aurora]:| -->
-<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
-
-## 🎓 Model Training {background-color="white"}
-
-:::: {.flex-container style="text-align: left; width: 100%; justify-content: center; line-height: 1em;"}
-
-::: {.col1 width="49%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%"}
+::: {.col1 width="48%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;"}
 
 ✅ [**Goals**]{style="color: #03BD00;"}
 
-- Want training runs _at scale_ to be:
-    - Efficient
-    - Stable
-    - Reproducible
+- Want training runs at scale to be
+    - efficient
+    - stable
+    - reproducible
+- This requires
+    - robust data pipelines / file IO
+    - effectively overlapping compute with communication
+    - stability across {network, filesystem, machine}
+- For larger models
+    - 3D Parallelism
+    - multi-dimensional parallelism strategies
+- _Highly optimized GPU kernels_
 
-- This requires:
-    - Robust data pipelines / file IO
-    - Effectively overlapping compute with communication
-    - Stability across {network, filesystem, machine}
-
-- For larger models:
-    - Multi-dimensional parallelism strategies
+<!--
+- State space models
+- Large batch training
+- Sub-quadratic attention
+- Second order optimizers
+-->
 
 :::
 
-::: {.col2 width="49%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 1%;"}
+::: {.col2 width="48%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;"}
 
 ❌ [**Difficulties**]{style="color: #E90102;"}
 
 - _Looong time_ to train
 
 - Stability issues
-    - Failures are **expensive** [(and unavoidable)]{.dim-text}
+    - failures are **expensive** (and unavoidable)
     - stragglers common at scale
-
 - Individual jobs are:
     - **fragile**
     - only as good as the worst rank
     - one hang or bad worker can crash job
     - network / filesystem / other-user(s) dependent
+- Cost / benefits of different collective communication algorithms
+    - depend on optimized / efficient implementations
+- Network performance
+- _Highly optimized GPU kernels_
 
 :::
 
@@ -339,7 +431,7 @@ Brad Ullrich
 
 :::
 
-## 📊 Fixing Data Bottlenecks {background-color="white"}
+## Accelerating Dataset Processing at Scale for Training {background-color="white"}
 
 ::: {.flex-container style="font-size: 70%; flex-direction: column;"}
 
@@ -358,7 +450,7 @@ Brad Ullrich
 
 :::
 
-::: {.flex-container .center style="text-align:center; font-size: 75%; width: 90%"}
+::: {.flex-container .center style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-right: auto;"}
 
 ![Time spent building `BlendableDataset`](./assets/blendable.svg)
 
@@ -369,10 +461,8 @@ Brad Ullrich
 
 :::
 
-## 🚀 Training at Scale {background-color="white"}
-
-- TODO:
-    - ...here's what we're exploring...
+<!--
+## Training at Scale {background-color="white"}
 
 ::: {.flex-container}
 
@@ -392,8 +482,9 @@ Brad Ullrich
 :::
 
 :::
+-->
 
-## 📓 References  {background-color="white"}
+## References  {.smaller background-color="white"}
 
 ::: {.flex-container}
 
@@ -404,7 +495,7 @@ Brad Ullrich
 - See my other slides on:
     - [LLMs from Scratch](https://saforem2.github.io/llm-workshop-talk)
     - [Creating Small(\~ish) LLMs](https://saforem2.github.io/LLM-tutorial)
-    - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides) for additional details
+    - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides)
     - [LLMs on Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
     - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
 :::
@@ -412,7 +503,7 @@ Brad Ullrich
 <!-- ## 📓 References {background-color="white"} -->
 
 ::: {.col2}
-- [🏎️ `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+- [🏎️ `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
     [For the largest of large language models.]{.dim-text}
 - [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
     [Distributed training, ezpz.]{.dim-text}
@@ -627,7 +718,7 @@ def load_and_eval_model_from_checkpoint(
     )
 ```
 
-### 🚀 Model Evaluations {background-color="white"}
+### Model Evaluations {background-color="white"}
 
 ::: {.panel-tabset}
 

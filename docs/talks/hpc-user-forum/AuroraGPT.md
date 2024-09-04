@@ -3,24 +3,35 @@
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-09-04
 
-## AuroraGPT
+## AuroraGPT Goals
 
-<div class="flex-container">
+<!-- ::: {.flex-container style="flex-direction: column;"} -->
+
+<div class="flex-container"
+style="flex-direction: column; justify-content: space-around;">
+
+<div class="flex-container"
+style="flex-direction: row; justify-content: space-around; align-items:center;">
 
 <div class="col1">
 
 <div class="blue-card" style="margin-bottom: 0.5em;">
 
-**AuroraGPT**: *General purpose scientific foundation model*
+**AuroraGPT**: *General purpose scientific LLM*  
+Broadly trained on a general corpora plus scientific {papers, texts,
+data}
 
 </div>
 
-- Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow
+- **Explore pathways** towards a “Scientific Assistant” model
+- **Build with international partners** (RIKEN, BSC, others)
+- **Multilingual** English, 日本語, French, German, Spanish
+- **Multimodal**: images, tables, equations, proofs, time series,
+  graphs, fields, sequences , etc
 
-- 
-  [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-
-  - ✅ {Intel, NVIDIA, AMD}
+<!-- - Model sizes: `7B` initially, {`70B`, ~ `1T`} to follow -->
+<!-- -  [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed) -->
+<!--     - ✅ {Intel, NVIDIA, AMD} -->
 
 </div>
 
@@ -32,67 +43,187 @@
 
 </div>
 
+<img src="./assets/timelines.png"
+style="margin-left:auto;margin-right:auto;;width:75.0%" />
+
+</div>
+
+<span class="center">**Credit to the entire AuroraGPT team for
+slides**</span>
+
+<!-- ::: -->
+<!--
 - Being trained on:
-
-  <div class="flex-container"
-  style="flex-direction:row; justify-content: space-around;">
-
-  <!-- ::: {.flex-container style="flex-direction:column;"} -->
-  <!---->
-  <!--  🇺🇸English   -->
-  <!--  🇯🇵日本語   -->
-  <!--  🇫🇷French   -->
-  <!--  🇩🇪Deutsch   -->
-  <!--  🇪🇸Español[^bsc]   -->
-  <!--  🇮🇹Italian   -->
-  <!---->
-  <!-- ::: -->
-
-  <div class="flex-container" style="flex-direction:column;">
-
-  🧪 scientific text  
+&#10;  :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
+&#10;  ::: {.flex-container style="flex-direction:column;"}
+&#10;   🇺🇸English  
+   🇯🇵日本語  
+   🇫🇷French  
+   🇩🇪Deutsch  
+   🇪🇸Español[^bsc]  
+   🇮🇹Italian  
+&#10;  :::
+&#10;  ::: {.flex-container style="flex-direction:column;"}
+&#10;  🧪 scientific text  
   🖼️ images  
   📊 tables  
   ➕ equations  
   📖 proofs
-
-  </div>
-
-  <div class="flex-container" style="flex-direction:column;">
-
-  📆 structured data  
+&#10;  :::
+&#10;  ::: {.flex-container style="flex-direction:column;"}
+&#10;  📆 structured data  
   ⛓️ sequences  
   ⏰ time-series  
   🕸️ graphs  
   🌀 fields
+&#10;  :::
+&#10;  ::::
+&#10;[^riken]:|
+    [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
+&#10;[^bsc]:|
+    Collaborations with Barcelona Supercomputing Center
+&#10;-->
 
-  </div>
-
-  </div>
-
-<!-- [^riken]:| -->
-<!--     [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science) -->
-
-## 🎯 Project Goals
+## AuroraGPT: Open Science Foundation Models
 
 <div id="fig-project-goals">
 
 ![](./assets/AuroraGPT.svg)
 
 
-Figure 1: Overview of AuroraGPT Project
+Figure 1
+
+</div>
+
+## AuroraGPT Outcomes
+
+- **Datasets and data pipelines** for preparing science training data
+- **Software infrastructure and workflows** to train, evaluate and
+  deploy LLMs at scale for scientific resarch purposes
+- **Evaluation of state-of-the-art LLM Models** to determine where they
+  fall short in deep scientific tasks and where deep data may have an
+  impact
+- **Assessment of the approach** of augmenting web training data with
+  two forms of data specific to science
+  - Full text scientific papers
+  - Structured scientific datasets (suitably mapped to narrative form)
+- **Research grade artifacts** (**models**) for scientific community for
+  adaptation for downstream uses
+- **Promotion of responsible AI** best practices where we can figure
+  them out
+- **International Collaborations** around the long term foal of *AGI for
+  science*
+
+## Aurora
+
+<div class="flex-container">
+
+<!--
+::: {.blue-card style="width:30%;"}
+&#10;166 Racks  
+10,624 Nodes  
+21,248 CPUs  
+63,744 GPUs  
+84,992 NICs  
+8 PB HBM  
+10 PB DDR5c
+&#10;:::
+-->
+<div id="tbl-aurora">
+
+Table 1: Aurora Specs
+
+| <!-- --> | <!-- --> |
+|----------|:--------:|
+| Racks    |   166    |
+| Nodes    |  10,624  |
+| CPUs     |  21,248  |
+| GPUs     |  63,744  |
+| NICs     |  84,992  |
+| HBM      |   8 PB   |
+| DDR5c    |  10 PB   |
+| <!-- --> | <!-- --> |
+
+</div>
+<div id="fig-aurora">
+
+![](./assets/aurora.png)
+
+
+Figure 2: [Aurora Fact
+Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)
+
+</div>
+
+</div>
+
+<div style="width:40%; text-align: center; margin-left: auto; margin-right: auto;">
+
+![](./assets/aurora-tunnel.jpg)
+
+<!-- [Aurora Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf) -->
+
+</div>
+
+<!-- [^aurora]:| -->
+<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
+
+## ALCF AI Testbed
+
+ALCF AI Testbed Systems are in production and [available for
+allocations](https://accounts.alcf.anl.gov/#/allocationRequests) to the
+research community[^1]
+
+<div class="flex-container" style="height: -webkit-fill-available;">
+
+<div id="fig-sambanova">
+
+![](./assets/sambanova.jpeg)
+
+
+Figure 3: SambaNova SN-30: 2nd Gen, 8 nodes with 64 AI Accelerators
+
+</div>
+<div id="fig-graphcore">
+
+![](./assets/graphcore.png)
+
+
+Figure 4: Graphcore Bow generation accelerators: Pod-64 configuration
+with 64 accelerators
+
+</div>
+<div id="fig-cerebras">
+
+![](./assets/cerebras.jpeg)
+
+
+Figure 5: Cerebras, 2x CS-2 WSE with Memory-X and Swarm-X technologies
+
+</div>
+<div id="fig-groq">
+
+![](./assets/groq.jpeg)
+
+
+Figure 6: GroqRack - nine nodes, with eight GroqChip v1.5 Tensor
+streaming processors accelerators per node
+
+</div>
 
 </div>
 
 ## Team Leads
 
-<div class="flex-container" style="text-align: center">
+<div style="font-size: 70%;">
+
+<div class="flex-container" style="text-align: center;">
 
 **Planning**
 
 <img src="./assets/team/rick-stevens.png" style="height:1.04167in"
 alt="Rick Stevens" />  
-Rick Stevens[^1]
+Rick Stevens[^2]
 
 <img src="./assets/team/ian-foster.png" style="height:1.04167in"
 alt="Ian Foster" />  
@@ -111,13 +242,12 @@ alt="Arvind Ramanathan" />
 Arvind Ramanathan
 
 <img src="./assets/team/fangfang-xia.png" style="height:1.04167in"
-alt="FangFang Xia" />  
-FangFang Xia
+alt="Fangfang Xia" />  
+Fangfang Xia
 
 </div>
 
-<div class="flex-container"
-style="text-align: center; max-height: 100%; font-size: 0.8em;">
+<div class="flex-container" style="text-align: center;">
 
 <div class="col2">
 
@@ -134,7 +264,7 @@ Robert Underwood
 
 <div class="col2">
 
-**Models**
+**Models / Training**
 
 <img src="./assets/team/venkat-vishwanath.png"
 style="height:1.04167in" />  
@@ -208,6 +338,8 @@ Brad Ullrich
 
 </div>
 
+</div>
+
 ## Teams
 
 <div class="flex-container">
@@ -219,7 +351,7 @@ Brad Ullrich
   - Accumulate 20+ T tokens of high-quality scientific text and
     structured data
 - <span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;">**Models
-  / Training**</span>[^2]
+  / Training**</span>[^3]
   - Train (entirely from scratch) a series of models on publicly
     available data
 - **Evaluation**
@@ -242,58 +374,40 @@ Brad Ullrich
 
 </div>
 
-## Aurora
+## Model Training
 
-<div class="flex-container">
+<div class="flex-container scrollable"
+style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;">
 
-<div class="col1" style="width:30%;">
-
-- 166 Racks
-- 10,624 Nodes
-- 21,248 CPUs
-- 63,744 GPUs
-- 84,992 NICs
-- 8 PB HBM
-- 10 PB DDR5c
-
-</div>
-
-<div class="col2" style="width:70%;">
-
-![](./assets/aurora.png)
-
-</div>
-
-</div>
-
-<!-- [^aurora]:| -->
-<!--     [The Computer That Will Change Everything – Chicago Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/) -->
-
-## 🎓 Model Training
-
-<div class="flex-container"
-style="text-align: left; width: 100%; justify-content: center; line-height: 1em;">
-
-<div class="col1" width="49%"
-style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-right: 1%">
+<div class="col1" width="48%"
+style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
 
 ✅ <span style="color: #03BD00;">**Goals**</span>
 
-- Want training runs *at scale* to be:
-  - Efficient
-  - Stable
-  - Reproducible
-- This requires:
-  - Robust data pipelines / file IO
-  - Effectively overlapping compute with communication
-  - Stability across {network, filesystem, machine}
-- For larger models:
-  - Multi-dimensional parallelism strategies
+- Want training runs at scale to be
+  - efficient
+  - stable
+  - reproducible
+- This requires
+  - robust data pipelines / file IO
+  - effectively overlapping compute with communication
+  - stability across {network, filesystem, machine}
+- For larger models
+  - 3D Parallelism
+  - multi-dimensional parallelism strategies
+- *Highly optimized GPU kernels*
+
+<!--
+- State space models
+- Large batch training
+- Sub-quadratic attention
+- Second order optimizers
+-->
 
 </div>
 
-<div class="col2" width="49%"
-style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 1%;">
+<div class="col2" width="48%"
+style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
 
 ❌ <span style="color: #E90102;">**Difficulties**</span>
 
@@ -301,8 +415,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 - Stability issues
 
-  - Failures are **expensive** <span class="dim-text">(and
-    unavoidable)</span>
+  - failures are **expensive** (and unavoidable)
   - stragglers common at scale
 
 - Individual jobs are:
@@ -311,6 +424,14 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
   - only as good as the worst rank
   - one hang or bad worker can crash job
   - network / filesystem / other-user(s) dependent
+
+- Cost / benefits of different collective communication algorithms
+
+  - depend on optimized / efficient implementations
+
+- Network performance
+
+- *Highly optimized GPU kernels*
 
 </div>
 
@@ -325,7 +446,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-## 📊 Fixing Data Bottlenecks
+## Accelerating Dataset Processing at Scale for Training
 
 <div class="flex-container"
 style="font-size: 70%; flex-direction: column;">
@@ -349,7 +470,7 @@ style="font-size: 70%; flex-direction: column;">
 </div>
 
 <div class="flex-container center"
-style="text-align:center; font-size: 75%; width: 90%">
+style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-right: auto;">
 
 ![Time spent building `BlendableDataset`](./assets/blendable.svg)
 
@@ -359,35 +480,26 @@ style="text-align:center; font-size: 75%; width: 90%">
 
 </div>
 
-## 🚀 Training at Scale
-
-- TODO:
-  - …here’s what we’re exploring…
-
-<div class="flex-container">
-
-<div class="col1">
-
+<!--
+## Training at Scale {background-color="white"}
+&#10;::: {.flex-container}
+&#10;::: {.col1}
 - 3D Parallelism
 - Highly optimized GPU kernels
 - Network performance
 - Cost / benefits of different collective communication algorithms
-  - depend on optimized / efficient implementations
-
-</div>
-
-<div class="col2">
-
+    - depend on optimized / efficient implementations
+:::
+&#10;::: {.col2}
 - Large batch training
 - Second order optimizers
 - State space models
 - Sub-quadratic attention (?)
+:::
+&#10;:::
+-->
 
-</div>
-
-</div>
-
-## 📓 References
+## References
 
 <div class="flex-container">
 
@@ -401,8 +513,7 @@ style="text-align:center; font-size: 75%; width: 90%">
   - [LLMs from Scratch](https://saforem2.github.io/llm-workshop-talk)
   - [Creating Small(~ish) LLMs](https://saforem2.github.io/LLM-tutorial)
   - [Parallel Training
-    Techniques](https://saforem2.github.io/parallel-training-slides) for
-    additional details
+    Techniques](https://saforem2.github.io/parallel-training-slides)
   - [LLMs on
     Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
   - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
@@ -414,7 +525,7 @@ style="text-align:center; font-size: 75%; width: 90%">
 <div class="col2">
 
 - [🏎️
-  `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+  `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
   <span class="dim-text">For the largest of large language
   models.</span>
 - [🍋 `saforem2/ezpz`](https://github.com/saforem2/ezpz)  
@@ -526,7 +637,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
   - Comparative analysis across: {models, tasks, languages, contexts, …}
 - Augment text data from the web with:
   - full text papers
-  - structured scientific data[^3]
+  - structured scientific data[^4]
 - Safety-driven, publicly-visible, open-source approach:
   - Distribution of research grade artifacts (models, checkpoints, etc.)
   - International collaborations on AGI for science
@@ -542,7 +653,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
 ![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
 
 
-Figure 2: **Pre-training**: Virtually all of the compute used during
+Figure 7: **Pre-training**: Virtually all of the compute used during
 pretraining phase
 
 </div>
@@ -554,7 +665,7 @@ pretraining phase
 ![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
 
 
-Figure 3: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 8: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task.
 
 </div>
@@ -572,7 +683,7 @@ weights to make the model better at a certain task.
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
 
-Figure 4: It’s hungry!
+Figure 9: It’s hungry!
 
 </div>
 
@@ -585,7 +696,7 @@ Figure 4: It’s hungry!
 ![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
 
 
-Figure 5: Visualization from Yang et al. (2023)
+Figure 10: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -621,8 +732,8 @@ style="width: 60%" />
 
 </div>
 
-Figure 6: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
-(See: Song et al. (2023))
+Figure 11: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
+models (See: Song et al. (2023))
 
 </div>
 
@@ -679,7 +790,7 @@ def load_and_eval_model_from_checkpoint(
     )
 ```
 
-### 🚀 Model Evaluations
+### Model Evaluations
 
 <div class="panel-tabset">
 
@@ -800,8 +911,10 @@ The fifth thing you notice is the temperature. It’s hot.
 
 </div>
 
-[^1]: Lead
+[^1]: https://nairrpilot.org
 
-[^2]: Co-led by: Venkat Vishwanath, Sam Foreman
+[^2]: Lead
 
-[^3]: Can be much more difficult than text (or even image) data
+[^3]: Co-led by: Venkat Vishwanath, Sam Foreman
+
+[^4]: Can be much more difficult than text (or even image) data
