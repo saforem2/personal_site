@@ -1734,11 +1734,51 @@ div.quarto-about-trestles {
 //     background-color: #222222;
 // }
 
+.embedded-slide {
+  border-radius: 0.25rem;
+  border: none;
+  text-align: center;
+}
+
+.embedded-slide iframe {
+  margin-bottom: unset;
+  max-height: min-content;
+  width: 100%;
+  height: 500px;
+  margin-bottom: -0.5em;
+}
+
+div.sourceCode>iframe {
+  width: 100%;
+  height: 500px;
+  margin-bottom: -0.5em;
+}
+
 /* Medium screens */
 @media all and (max-width: 800px) {
   .flex-container {
     /* When on medium sized screens, we center it by evenly distributing empty space around items */
     justify-content: space-between;
+  }
+
+  .embedded-slide {
+    border-radius: 0.25rem;
+    border: none;
+    text-align: center;
+  }
+
+  .embedded-slide iframe {
+    margin-bottom: unset;
+    max-height: min-content;
+    width: 100%;
+    height: 500px;
+    margin-bottom: -0.5em;
+  }
+
+  div.sourceCode>iframe {
+    width: 100%;
+    height: 500px;
+    margin-bottom: -0.5em;
   }
 }
 
@@ -1751,6 +1791,26 @@ div.quarto-about-trestles {
 
   .reveal .flex-container {
     flex-direction: row;
+  }
+
+  .embedded-slide {
+    border-radius: 0.25rem;
+    border: none;
+    text-align: center;
+  }
+
+  .embedded-slide iframe {
+    margin-bottom: unset;
+    max-height: min-content;
+    width: 100%;
+    height: 300px;
+    margin-bottom: -0.5em;
+  }
+
+  div.sourceCode>iframe {
+    width: 100%;
+    height: 300px;
+    margin-bottom: -0.5em;
   }
 }
 
@@ -2519,6 +2579,7 @@ tr {
 .iframe {
   margin: auto;
   height: fit-content;
+  width: -webkit-fill-available;
 }
 
 #slide {
@@ -2911,21 +2972,6 @@ td code:not(.sourceCode) {
   border: .075x solid $quarto-border-color;
   color: $code-fg;
   border-radius: 0.25rem;
-}
-
-.embedded-slide {
-  width: 100%;
-  border-radius: 0.25rem;
-  border: none;
-  text-align: center;
-  max-height: 500pt !important;
-}
-
-
-.embedded-slide iframe {
-  margin-bottom: unset;
-  width: 100%;
-  height: 500px;
 }
 
 .callout-title-container {
