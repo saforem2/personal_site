@@ -3,7 +3,7 @@
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
 2024-09-04
 
-## AuroraGPT Goals
+## 🎯 AuroraGPT Goals
 
 <!-- ::: {.flex-container style="flex-direction: column;"} -->
 
@@ -48,7 +48,7 @@ data}
 style="margin-left:auto;margin-right:auto;;width:66.0%" />
 
 
-Figure 1: Credit to the entire AuroraGPT team for slides
+Figure 1: Credit to the entire AuroraGPT team for slides.
 
 </div>
 
@@ -74,14 +74,11 @@ Figure 1: Credit to the entire AuroraGPT team for slides
 
 </div>
 
-## AuroraGPT: Open Science Foundation Models
+## 🧪 AuroraGPT: Open Science Foundation Models
 
-<div id="fig-project-goals">
+<div style="vertical-align:center;">
 
 ![](./assets/AuroraGPT.svg)
-
-
-Figure 2
 
 </div>
 
@@ -121,7 +118,7 @@ Figure 2
 
 </div>
 
-## AuroraGPT Outcomes
+## 📊 AuroraGPT Outcomes
 
 - **Datasets and data pipelines** for preparing science training data
 - **Software infrastructure and workflows** to train, evaluate and
@@ -164,11 +161,11 @@ Figure 2
 
   - Well known that LLMs are good for non-consequential tasks
   - Known to “hallucinate” and create false information
-  - Can this be mitigated reliably
+  - Can this be mitigated reliably ??
 
 </div>
 
-## Aurora
+## 🌌 Aurora
 
 <div class="flex-container">
 
@@ -198,14 +195,14 @@ Table 1: Aurora Specs
 ![](./assets/aurora.png)
 
 
-Figure 3: [Aurora Fact
+Figure 2: [Aurora Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)
 
 </div>
 
 </div>
 
-## ALCF AI Testbed
+## 🤖 ALCF AI Testbed
 
 - ALCF AI Testbed Systems are in production and [available for
   allocations](https://accounts.alcf.anl.gov/#/allocationRequests) to
@@ -228,7 +225,7 @@ efficiency
 ![](./assets/sambanova.jpeg)
 
 
-Figure 4: **SambaNova SN-30**: 2nd Gen, 8 nodes with 64 AI Accelerators
+Figure 3: **SambaNova SN-30**: 2nd Gen, 8 nodes with 64 AI Accelerators
 
 </div>
 <div id="fig-graphcore">
@@ -236,7 +233,7 @@ Figure 4: **SambaNova SN-30**: 2nd Gen, 8 nodes with 64 AI Accelerators
 ![](./assets/graphcore.png)
 
 
-Figure 5: **Graphcore Bow**: generation accelerators: Pod-64
+Figure 4: **Graphcore Bow**: generation accelerators: Pod-64
 configuration with 64 accelerators
 
 </div>
@@ -245,7 +242,7 @@ configuration with 64 accelerators
 ![](./assets/cerebras.jpeg)
 
 
-Figure 6: **Cerebras**: 2x CS-2 WSE with Memory-X and Swarm-X
+Figure 5: **Cerebras**: 2x CS-2 WSE with Memory-X and Swarm-X
 technologies
 
 </div>
@@ -254,16 +251,36 @@ technologies
 ![](./assets/groq.jpeg)
 
 
-Figure 7: **GroqRack**: 9 nodes, 8 GroqChip v1.5 Tensor streaming
+Figure 6: **GroqRack**: 9 nodes, 8 GroqChip v1.5 Tensor streaming
 processors accelerators per node
 
 </div>
 
 </div>
 
-## Team Leads
+## 👥 Team Leads
 
-<div style="font-size: 70%;">
+<!--
+&#10;| Team                  | Lead(s)           |                                                            |
+| :----:                | :--------         | :--------------------------------------------------------: |
+| **Planning**          | Rick Stevens      | ![](./assets/team/rick-stevens.png){height="40pt"}         |
+|                       | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
+|                       | Rinku Gupta       | ![](./assets/team/rinku-gupta.png){height="40pt"}          |
+|                       | Mike Papka        | ![](./assets/team/mike-papka.png){height="40pt"}           |
+|                       | Fangfang Xia      | ![](./assets/team/fangfang-xia.png){height="40pt"}         |
+| **Data**              | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
+|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"} |
+| **Models + Training** | Venkat Vishwanath | ![](./assets/team/venkat.jpg){height="40pt"}               |
+|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
+|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
+| **Inference**         | Eliu Huerta       | ![](./assets/team/eliu-huerta.png){height="40pt"}          |
+|                       | Azton Wells       | ![](./assets/team/azton-wells.png){height="40pt"}          |
+: Team Leads {#tbl-team-leads}
+| **Models / Training** | Venkat Vishwanath | ![](./assets/team/venkat-vishwanath.png){height="40pt"} |
+|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"}     |
+-->
+
+<div style="font-size: 66%;">
 
 <div class="flex-container"
 style="text-align: center; align-items: center;">
@@ -271,28 +288,22 @@ style="text-align: center; align-items: center;">
 **Planning**
 
 <img src="./assets/team/rick-stevens.png" style="height:1.04167in"
-alt="Rick Stevens" />  
-Rick Stevens[^1]
+alt="Rick Stevens" />
 
 <img src="./assets/team/ian-foster.png" style="height:1.04167in"
-alt="Ian Foster" />  
-Ian Foster
+alt="Ian Foster" />
 
 <img src="./assets/team/rinku-gupta.png" style="height:1.04167in"
-alt="Rinku Gupta" />  
-Rinku Gupta
+alt="Rinku Gupta" />
 
 <img src="./assets/team/mike-papka.png" style="height:1.04167in"
-alt="Mike Papka" />  
-Mike Papka
+alt="Mike Papka" />
 
 <img src="./assets/team/arvind-ramanathan.png" style="height:1.04167in"
-alt="Arvind Ramanathan" />  
-Arvind Ramanathan
+alt="Arvind Ramanathan" />
 
 <img src="./assets/team/fangfang-xia.png" style="height:1.04167in"
-alt="Fangfang Xia" />  
-Fangfang Xia
+alt="Fangfang Xia" />
 
 </div>
 
@@ -302,26 +313,23 @@ Fangfang Xia
 
 **Data**
 
-<img src="./assets/team/ian-foster.png" style="height:1.04167in" />  
-Ian Foster
+<img src="./assets/team/ian-foster.png" style="height:1.04167in"
+alt="Ian Foster" />
 
-<img src="./assets/team/robert-underwood.png"
-style="height:1.04167in" />  
-Robert Underwood
+<img src="./assets/team/robert-underwood.png" style="height:1.04167in"
+alt="Robert Underwood" />
 
 </div>
 
-<div class="col2" style="font-size: 95%;">
+<div class="col2">
 
 **Models / Training**
 
-<img src="./assets/team/venkat-vishwanath.png"
-style="height:1.04167in" />  
-Venkat Vishwanath
+<img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in"
+alt="Venkat Vishwanath" />
 
-<img src="./assets/team/samforeman.png" style="height:1.04167in" />  
-<span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1);">Sam
-Foreman</span>
+<img src="./assets/team/sam-foreman.png" style="height:1.04167in"
+alt="Sam Foreman" />
 
 </div>
 
@@ -329,15 +337,14 @@ Foreman</span>
 
 **Evaluation**
 
-<img src="./assets/team/franck-cappello.png" style="height:1.04167in" />  
-Franck Cappello
+<img src="./assets/team/franck-cappello.png" style="height:1.05556in"
+alt="Franck Cappello" />
 
-<img src="./assets/team/sandeep-madireddy.png"
-style="height:1.04167in" />  
-Sandeep Madireddy
+<img src="./assets/team/sandeep-madireddy.png" style="height:1.04167in"
+alt="Sandeep Madireddy" />
 
-<img src="./assets/team/bo-li.png" style="height:1.04167in" />  
-Bo Li
+<img src="./assets/team/bo-li.png" style="height:1.04167in"
+alt="Bo Li" />
 
 </div>
 
@@ -346,12 +353,10 @@ Bo Li
 **Post**
 
 <img src="./assets/team/eliu-huerta.png" style="height:1.04167in"
-alt="Eliu Huerta" />  
-Eliu Huerta
+alt="Eliu Huerta" />
 
 <img src="./assets/team/azton-wells.png" style="height:1.04167in"
-alt="Azton Wells" />  
-Azton Wells
+alt="Azton Wells" />
 
 </div>
 
@@ -359,8 +364,8 @@ Azton Wells
 
 **Inference**
 
-<img src="./assets/team/rajeev-thakur.png" style="height:1.04167in" />  
-Rajeev Thakur
+<img src="./assets/team/rajeev-thakur.png" style="height:1.04167in"
+alt="Rajeev Thakur" />
 
 </div>
 
@@ -368,11 +373,11 @@ Rajeev Thakur
 
 **Comms**
 
-<img src="./assets/team/charlie-catlett.png" style="height:1.04167in" />  
-Charlie Catlett
+<img src="./assets/team/charlie-catlett.png" style="height:1.04167in"
+alt="Charlie Catlett" />
 
-<img src="./assets/team/david-martin.png" style="height:1.04167in" />  
-David Martin
+<img src="./assets/team/david-martin.png" style="height:1.04167in"
+alt="David Martin" />
 
 </div>
 
@@ -380,8 +385,8 @@ David Martin
 
 **Distribution**
 
-<img src="./assets/team/brad-ullrich.png" style="height:1.04167in" />  
-Brad Ullrich
+<img src="./assets/team/brad-ullrich.png" style="height:1.04167in"
+alt="Brad Ullrich" />
 
 </div>
 
@@ -389,7 +394,7 @@ Brad Ullrich
 
 </div>
 
-## Teams
+## 🤝 Teams
 
 <div class="flex-container">
 
@@ -400,7 +405,7 @@ Brad Ullrich
   - Accumulate 20+ T tokens of high-quality scientific text and
     structured data
 - <span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;">**Models
-  / Training**</span>[^2]
+  / Training**</span>[^1]
   - Train (entirely from scratch) a series of models on publicly
     available data
 - **Evaluation**
@@ -423,7 +428,7 @@ Brad Ullrich
 
 </div>
 
-## Model Training
+## 🦜 Model Training
 
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;">
@@ -475,9 +480,13 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-<!-- ::: {.content-hidden when-format="revealjs"} -->
+<div class="aside">
 
-## Accelerating Dataset Processing at Scale for Training
+[`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+
+</div>
+
+## 🚀 Accelerating Dataset Processing at Scale for Training
 
 <div class="flex-container"
 style="font-size: 70%; flex-direction: column;">
@@ -491,7 +500,6 @@ style="font-size: 70%; flex-direction: column;">
     across corpora
   - Building indices that map batches of tokens into these files
     (indexing)
-    <!-- - Build a set of indices that map training iterations to batches of tokens (and their location on the filesystem) -->
 - The original implementation was slow, and designed to run on a single
   device
   - Major bottleneck when debugging data pipeline at scale
@@ -511,28 +519,9 @@ style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-
 
 </div>
 
-<!--
-## Training at Scale {background-color="white"}
-&#10;::: {.flex-container}
-&#10;::: {.col1}
-- 3D Parallelism
-- Highly optimized GPU kernels
-- Network performance
-- Cost / benefits of different collective communication algorithms
-    - depend on optimized / efficient implementations
-:::
-&#10;::: {.col2}
-- Large batch training
-- Second order optimizers
-- State space models
-- Sub-quadratic attention (?)
-:::
-&#10;:::
--->
+## 📓 References
 
-## References
-
-<div class="flex-container">
+<div class="flex-container" style="gap: 1em;">
 
 <div class="col1">
 
@@ -550,8 +539,6 @@ style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-
   - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
 
 </div>
-
-<!-- ## 📓 References {background-color="white"} -->
 
 <div class="col2">
 
@@ -577,7 +564,7 @@ style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-
 
 </div>
 
-### Thank you!
+### ❤️ Thank you!
 
 - Organizers
 
@@ -627,39 +614,71 @@ Large Language Models.” <https://arxiv.org/abs/2206.07682>.
 
 </div>
 
+<div id="ref-yang2023harnessing" class="csl-entry">
+
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng,
+Haoming Jiang, Bing Yin, and Xia Hu. 2023. “Harnessing the Power of LLMs
+in Practice: A Survey on ChatGPT and Beyond.”
+<https://arxiv.org/abs/2304.13712>.
+
+</div>
+
 </div>
 
 ## 🎁 Extras
 
+### 🚂 Loooooooooong Sequence Lengths
+
+<!-- ::: {.flex-container style="text-align: center; align-items: center;"} -->
+<!-- ![](../../assets/anl.svg){style="width:48%;"} -->
+
+<div class="flex-container"
+style="align-items: center; justify-content: center;">
+
+<img src="../../assets/anl.svg" style="height:50pt;" />
+
+<span class="dim-text" style="font-size: 2.0em;"></span>
+
+<img src="../../assets/deepspeed-logo-transparent.svg"
+style="height:50pt;" />
+
+</div>
+
 <!--
-&#10;### 🔍 Details {.smaller background-color="white"}
-&#10;- Llama Style Architecture:
-    - [ `argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-- Performant training implementations of AuroraGPT architecture on
-    - {Aurora, Polaris, Cerebras, SambaNova}
-- Workflow to capture:
-    - loss curves
-    - snapshots, checkpoints
-    - scaling / performance data
-- Training runs for AuroraGPT-7B [(ongoing)]{.dim-text}
-    - Baseline (Dolma) @ {Aurora, Polaris} [(twins for debugging)]{.dim-text}
-    - Baseline + Science @ Aurora
-- Trained raw models 📮 delivered to post-pretraining team
-    - AuroraGPT-7B-A, AuroraGPT-7B-P, AuroraGPT-7B-S  
-      (A=`Aurora`, P=`Polaris`, S=`Science`)
-&#10;### 🤔 Why? {.smaller background-color="white"}
-&#10;- **For Science!**
-- Data-{sets, pipelines} for {preparing, aggregating, parsing, analyzing} scientific data
-- Infrastructure to {train, eval, deploy} LLMs for science
-    - Comparative analysis across: {models, tasks, languages, contexts, ...}
-- Augment text data from the web with:
-    - full text papers
-    - structured scientific data[^tough]
-- Safety-driven, publicly-visible, open-source approach:
-    - Distribution of research grade artifacts (models, checkpoints, etc.)
-    - International collaborations on AGI for science
-&#10;[^tough]: Can be much more difficult than text (or even image) data
-&#10;-->
+[]{.dim-text style="font-size: 2.0em; padding-left: 15pt;"}
+![](../../assets/deepspeed-logo-transparent.svg){style="width: 60%"}
+:::
+-->
+
+- Working with [
+  Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed) team to
+  enable longer sequence lengths (context windows) for LLMs
+  - See my [blog
+    post](https://samforeman.me/posts/auroragpt/long-sequences/) for
+    additional details
+
+<div id="fig-long-seq">
+
+<div class="flex-container">
+
+![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+
+![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+
+</div>
+
+Figure 7: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+(See: Song et al. (2023))
+
+</div>
+
+<div class="aside">
+
+[ `scaling4science`](https://github.com/saforem2/scaling4science)  
+[
+`Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
+
+</div>
 
 ### ♻️ Life Cycle of the LLM
 
@@ -691,62 +710,35 @@ weights to make the model better at a certain task.
 
 </div>
 
-<!--
-&#10;### 🍎 Training LLMs {.smaller background-color="white"}
-&#10;:::: {.flex-container style="align-items: flex-end;"}
-&#10;::: {.col1 style="width:33%;"}
-&#10;::: {#fig-it-hungers}
-&#10;![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
-&#10;It's hungry!
-:::
-&#10;:::
-&#10;::: {.col2 style="width:60%;"}
-&#10;::: {#fig-evolution}
-&#10;![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
-&#10;Visualization from @yang2023harnessing
-&#10;:::
-&#10;:::
-&#10;::::
-&#10;-->
+### 🍎 Training LLMs
 
-### 🚂 Loooooooooong Sequence Lengths
+<div class="flex-container" style="align-items: flex-end;">
 
-<div class="flex-container"
-style="text-align: center; align-items: center;">
+<div class="col1" style="width:33%;">
 
-<img src="../../assets/anl.svg" style="width:48%;" />
+<div id="fig-it-hungers">
 
-<span class="dim-text"
-style="font-size: 2.0em; padding-left: 15pt;"></span>
+![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
-<img src="../../assets/deepspeed-logo-transparent.svg"
-style="width: 60%" />
+
+Figure 10: It’s hungry!
 
 </div>
 
-<!-- - Working with [ Microsoft -->
-<!-- DeepSpeed](https://github.com/microsoft/DeepSpeed) team to enable longer -->
-<!-- sequence lengths (context windows) for LLMs -->
-<div id="fig-long-seq">
+</div>
 
-<div class="flex-container">
+<div class="col2" style="width:60%;">
 
-![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+<div id="fig-evolution">
 
-![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
+
+
+Figure 11: Visualization from Yang et al. (2023)
 
 </div>
 
-Figure 10: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
-models (See: Song et al. (2023))
-
 </div>
-
-<div class="aside">
-
-[ `scaling4science`](https://github.com/saforem2/scaling4science)  
-[
-`Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 
 </div>
 
@@ -923,6 +915,4 @@ The fifth thing you notice is the temperature. It’s hot.
     Collaborations with Barcelona Supercomputing Center
 &#10;-->
 
-[^1]: Lead
-
-[^2]: Co-led by: Venkat Vishwanath, Sam Foreman
+[^1]: Co-led by: Venkat Vishwanath, Sam Foreman

@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d7fd31d925c6308c20a103df65665387.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-443e43f47d258d8bd39042ef742f96c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-82b80a5aa177564cf2a182a61b4db473.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
@@ -131,6 +131,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-listing-posts'] = new List('listing-listing-posts', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing-talks .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-location','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing-talks'] = new List('listing-listing-talks', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -238,7 +266,7 @@ window.Quarto = {
 <link rel="stylesheet" href="css/custom.css">
 <link rel="stylesheet" href="css/_highlighter.css">
 <link rel="stylesheet" href="css/profile.css">
-<link rel="alternate" type="application/rss+xml" title="Sam Foreman" href="index.xml" data-external="1"><meta property="og:title" content="Sam Foreman">
+<meta property="og:title" content="Sam Foreman">
 <meta property="og:description" content="My ramblings about science and computers">
 <meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
 <meta property="og:site_name" content="Sam Foreman">
@@ -520,8 +548,8 @@ window.Quarto = {
     
 <!-- main -->
 <main class="content" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/saforem2/personal_site/blob/main/index.qmd"><i class="bi"></i></button></div></div>
-<link rel="stylesheet" href="plugin/highlight/monokai.css">
-<script src="plugin/highlight/highlight.js"></script>
+<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+<script src="./plugin/highlight/highlight.js"></script>
 <script>
   Reveal.initialize({
     plugins: [RevealHighlight],
@@ -545,7 +573,7 @@ window.Quarto = {
 <section id="about-me" class="level2">
 <h2 class="anchored" data-anchor-id="about-me">🧑🏻‍💻 About Me</h2>
 <!-- <iframe src="https://lastfmstats.com/user/saforem2/charts" style="border: none;" width="50%" height="500"></iframe> -->
-<div class="flex-container" style="width: 100%;">
+<div class="flex-container" style="width: 100%; justify-content: space-between;">
 <div class="flex-container" style="margin-right: 5%; width:48%;">
 <ul>
 <li><p>💻 <a href="https://alcf.anl.gov/about/people/sam-foreman">Computational scientist</a> at Argonne National Laboratory <a href="https://alcf.anl.gov">(ALCF)</a></p></li>
@@ -555,7 +583,7 @@ window.Quarto = {
 </ul></li>
 </ul>
 </div>
-<div class="flex-container" style="flex-direction: column; justify-content: flex-start; width: 40%;">
+<div class="flex-container" style="flex-direction: column; justify-content: flex-start; width: 40%">
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Recent Talks" title="🎤 [Recent Talks]{.dim-text style=&quot;font-size:1.0em!important;&quot;}" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.0)!important; margin-top: -1em; opacity:100%;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -572,87 +600,19 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="last.fm" title="[[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)](https://last.fm/user/saforem2)]{style=&quot;color:#D41109; margin:auto; padding: 1pt;&quot;}" style="border: none!important; border: 1px solid rgba(212, 17, 9, 0.0)!important; background-color: oklch(from #D41109 calc(l * 1.15) c h / 0.11)!important;  margin-top: -0.1em; opacity: 100% width: 100%!important;">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" aria-title="Now Playing" title="[![](/assets/spotify-green.svg){.ineline-icon style=&quot;height:1em;&quot;} Now Playing]{style=&quot;color:#1CD760; margin:auto; padding: 1pt;&quot;}" style="border: none!important; background-color: oklch(from #1CD760 calc(l * 1.15) c h / 0.11)!important; opacity: 100% width: -webkit-fill-available!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span style="color:#D41109; margin:auto; padding: 1pt;"><a href="https://last.fm/user/saforem2"><img src="https://api.iconify.design/logos:lastfm.svg?color=%23888888" class="img-fluid"></a></span>
+<span style="color:#1CD760; margin:auto; padding: 1pt;"><img src="./assets/spotify-green.svg" class="ineline-icon img-fluid" style="height:1em;"> Now Playing</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<script>
-/**
-  Developed by Prashant Shrestha
-  + https://prashant.me
-*/
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "saforem2",
-  // Your API key
-  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-  additional: "&format=json&limit=1"
-};
-
-var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-        "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-        .attr("target", "_blank");
-
-      var artistFormatted =
-        "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-    error: function(resp) {
-      $("a#tracktitle").html(
-        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
-      );
-      $("img#trackart").attr("src", "🧑🏻‍💻");
-      var artistFormatted =
-        "Sam Foreman";
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("href", "https://samforeman.me");
-    }
-  });
-};
-
-// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 100);
-</script> <div class="nowplayingcard">
-<div class="nowplayingcontainer-inner">
-<img id="trackart" src="#">
-<div class="trackInfo">
-<a id="tracktitle"></a>
-<a href="#" id="trackartist"></a>
-</div>
-</div>
-</div>
+<p><a href="https://lastfm.com/user/saforem2"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;theme=novatorem&amp;show_offline=false&amp;background_color=none&amp;interchange=true.svg" class="img-fluid"></a></p>
 </div>
 </div>
 </div>
@@ -822,6 +782,86 @@ setInterval(getSetLastFM, 10 * 100);
 </ul>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="listing-listing-talks" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table table-striped table-hover">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+location
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1725426000000" data-listing-file-modified-sort="1725846766531" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3389" data-listing-title-sort="AuroraGPT" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./talks/hpc-user-forum/index.html" class="title listing-title">AuroraGPT</a>
+</td>
+<td>
+<span class="listing-location"><a href="https://www.hpcuserforum.com/hpc-user-forum-fall-2024/">HPC User Forum Fall ’24</a></span>
+</td>
+<td>
+<span class="listing-date">2024-09-04</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1723179600000" data-listing-file-modified-sort="1725485520711" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="168" data-listing-title-sort="Training LLMs at Scale" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./talks/llms-at-scale/index.html" class="title listing-title">Training LLMs at Scale</a>
+</td>
+<td>
+<span class="listing-location"><a href="https://extremecomputingtraining.anl.gov/agenda-2024/">ATPESC 2024</a></span>
+</td>
+<td>
+<span class="listing-date">2024-08-09</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1721192400000" data-listing-file-modified-sort="1725845844430" data-listing-date-modified-sort="1725845844000" data-listing-reading-time-sort="1" data-listing-word-count-sort="173" data-listing-title-sort="LLMs on Polaris" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./talks/llms-on-polaris/index.html" class="title listing-title">LLMs on Polaris</a>
+</td>
+<td>
+<span class="listing-location"><a href="https://scifm.ai/summer_school.html">SciFM Summer School ’24</a></span>
+</td>
+<td>
+<span class="listing-date">2024-07-17</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1690779600000" data-listing-file-modified-sort="1725485531408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3092" data-listing-title-sort="MLMC: Machine Learning Monte Carlo" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="./talks/lattice23/index.html" class="title listing-title">MLMC: Machine Learning Monte Carlo</a>
+</td>
+<td>
+<span class="listing-location"><a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a></span>
+</td>
+<td>
+<span class="listing-date">2023-07-31</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+<!-- :::: {.feature} -->
+<!---->
+<!-- ::: {.feature-top} -->
+<!---->
+<!-- ::: {#listing-talks} -->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
 <section id="section" class="level4">
 <h4 class="anchored" data-anchor-id="section">📆 2024</h4>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**AuroraGPT**](https://samforeman.me/talks/llms-at-scale) @ [_HPC User Forum_, 2024](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/) [09/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; border:1px solid rgba(131,131,131,0.2)!important;">
@@ -1212,139 +1252,112 @@ Date
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1725150486655" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./drafts/posts/AuroraGPT/hf-checkpoints/index.qmd" class="title listing-title">&nbsp;</a>
-</td>
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1724162026488" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./drafts/posts/dpo_training/index.qmd" class="title listing-title">&nbsp;</a>
-</td>
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1723925336940" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="./drafts/posts/q2-drop/index.qmd" class="title listing-title">&nbsp;</a>
-</td>
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1723567514000" data-listing-file-modified-sort="1723567514008" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1907" data-listing-title-sort="💅 How to Make Dope Slides" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-listing-date-sort="1723567514000" data-listing-file-modified-sort="1723567514008" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1907" data-listing-title-sort="💅 How to Make Dope Slides" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/dope-slides/index.html" class="title listing-title">💅 How to Make Dope Slides</a>
 </td>
 <td>
-<span class="listing-date">Aug 13, 2024</span>
+<span class="listing-date">2024-08-13</span>
 </td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1723469657000" data-listing-file-modified-sort="1723469657248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="121" data-listing-word-count-sort="24147" data-listing-title-sort="🍋 <code>ezpz</code> @ ALCF" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-listing-date-sort="1723469657000" data-listing-file-modified-sort="1723469657248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="121" data-listing-word-count-sort="24147" data-listing-title-sort="🍋 <code>ezpz</code> @ ALCF" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/ezpz-at-alcf/index.html" class="title listing-title">🍋 <code>ezpz</code> @ ALCF</a>
 </td>
 <td>
-<span class="listing-date">Aug 12, 2024</span>
+<span class="listing-date">2024-08-12</span>
 </td>
 </tr>
-<tr data-index="5" data-listing-date-sort="1718636738000" data-listing-file-modified-sort="1718636738128" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153" data-listing-title-sort="🎰 Deterministic `flash-attn`" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-listing-date-sort="1718636738000" data-listing-file-modified-sort="1718636738128" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153" data-listing-title-sort="🎰 Deterministic `flash-attn`" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/determinstic-flash-attn/index.html" class="title listing-title">🎰 Deterministic <code>flash-attn</code></a>
 </td>
 <td>
-<span class="listing-date">Jun 17, 2024</span>
+<span class="listing-date">2024-06-17</span>
 </td>
 </tr>
-<tr data-index="6" data-listing-date-sort="1718600400000" data-listing-file-modified-sort="1721322095657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1100" data-listing-title-sort="📸 `flash-attn` on Sunspot" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-listing-date-sort="1718600400000" data-listing-file-modified-sort="1721322095657" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1100" data-listing-title-sort="📸 `flash-attn` on Sunspot" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/flash-attn-sunspot/index.html" class="title listing-title">📸 <code>flash-attn</code> on Sunspot</a>
 </td>
 <td>
-<span class="listing-date">Jun 17, 2024</span>
+<span class="listing-date">2024-06-17</span>
 </td>
 </tr>
-<tr data-index="7" data-listing-date-sort="1718427600000" data-listing-file-modified-sort="1721849515804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6589" data-listing-title-sort="🏎️ Megatron-DeepSpeed on Intel XPU" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-listing-date-sort="1718427600000" data-listing-file-modified-sort="1721849515804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="33" data-listing-word-count-sort="6589" data-listing-title-sort="🏎️ Megatron-DeepSpeed on Intel XPU" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/aurora-gpt/index.html" class="title listing-title">🏎️ Megatron-DeepSpeed on Intel XPU</a>
 </td>
 <td>
-<span class="listing-date">Jun 15, 2024</span>
+<span class="listing-date">2024-06-15</span>
 </td>
 </tr>
-<tr data-index="8" data-listing-date-sort="1716613200000" data-listing-file-modified-sort="1721317748036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="271" data-listing-title-sort="🐛 `mpi4py` bug on Sunspot" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-listing-date-sort="1716613200000" data-listing-file-modified-sort="1721317748036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="271" data-listing-title-sort="🐛 `mpi4py` bug on Sunspot" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/mpi4py-reproducer/index.html" class="title listing-title">🐛 <code>mpi4py</code> bug on Sunspot</a>
 </td>
 <td>
-<span class="listing-date">May 25, 2024</span>
+<span class="listing-date">2024-05-25</span>
 </td>
 </tr>
-<tr data-index="9" data-listing-date-sort="1713157200000" data-listing-file-modified-sort="1721322327965" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7347" data-listing-title-sort="🎲 MCMC + Diffusion Sampling" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-listing-date-sort="1713157200000" data-listing-file-modified-sort="1721322327965" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="37" data-listing-word-count-sort="7347" data-listing-title-sort="🎲 MCMC + Diffusion Sampling" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/ai-for-physics/diffusion/index.html" class="title listing-title">🎲 MCMC + Diffusion Sampling</a>
 </td>
 <td>
-<span class="listing-date">Apr 15, 2024</span>
+<span class="listing-date">2024-04-15</span>
 </td>
 </tr>
-<tr data-index="10" data-listing-date-sort="1710997200000" data-listing-file-modified-sort="1723579872997" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="46" data-listing-word-count-sort="9125" data-listing-title-sort="⏰ Starting Up Distributed Training on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-listing-date-sort="1710997200000" data-listing-file-modified-sort="1723579872997" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="46" data-listing-word-count-sort="9125" data-listing-title-sort="⏰ Starting Up Distributed Training on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/startup-times/index.html" class="title listing-title">⏰ Starting Up Distributed Training on Aurora</a>
 </td>
 <td>
-<span class="listing-date">Mar 21, 2024</span>
+<span class="listing-date">2024-03-21</span>
 </td>
 </tr>
-<tr data-index="11" data-listing-date-sort="1707717600000" data-listing-file-modified-sort="1720103107778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2731" data-listing-title-sort="🚂 Loooooooong Sequence Lengths" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="8" data-listing-date-sort="1707717600000" data-listing-file-modified-sort="1720103107778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2731" data-listing-title-sort="🚂 Loooooooong Sequence Lengths" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/AuroraGPT/long-sequences/index.html" class="title listing-title">🚂 Loooooooong Sequence Lengths</a>
 </td>
 <td>
-<span class="listing-date">Feb 12, 2024</span>
+<span class="listing-date">2024-02-12</span>
 </td>
 </tr>
-<tr data-index="12" data-listing-date-sort="1707717600000" data-listing-file-modified-sort="1723567831057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="158" data-listing-word-count-sort="31578" data-listing-title-sort="`l2hmc` Example: 2D $U(1)$" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="9" data-listing-date-sort="1707717600000" data-listing-file-modified-sort="1723567831057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="158" data-listing-word-count-sort="31578" data-listing-title-sort="`l2hmc` Example: 2D $U(1)$" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/jupyter/test/index.html" class="title listing-title"><code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></a>
 </td>
 <td>
-<span class="listing-date">Feb 12, 2024</span>
+<span class="listing-date">2024-02-12</span>
 </td>
 </tr>
-<tr data-index="13" data-listing-date-sort="1702533600000" data-listing-file-modified-sort="1720149691560" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6635" data-listing-title-sort="🎢 <code>l2hmc-qcd</code> Example: 2D U(1)" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="10" data-listing-date-sort="1702533600000" data-listing-file-modified-sort="1720149691560" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6635" data-listing-title-sort="🎢 <code>l2hmc-qcd</code> Example: 2D U(1)" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/ai-for-physics/l2hmc-qcd/2dU1/index.html" class="title listing-title">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</a>
 </td>
 <td>
-<span class="listing-date">Dec 14, 2023</span>
+<span class="listing-date">2023-12-14</span>
 </td>
 </tr>
-<tr data-index="14" data-listing-date-sort="1701842400000" data-listing-file-modified-sort="1720189964594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="25" data-listing-word-count-sort="4918" data-listing-title-sort="🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="11" data-listing-date-sort="1701842400000" data-listing-file-modified-sort="1720189964594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="25" data-listing-word-count-sort="4918" data-listing-title-sort="🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="./posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html" class="title listing-title">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</a>
 </td>
 <td>
-<span class="listing-date">Dec 6, 2023</span>
+<span class="listing-date">2023-12-06</span>
 </td>
 </tr>
 </tbody>
@@ -1560,77 +1573,19 @@ Table&nbsp;2: 🎓 Education
 </section>
 </div>
 <div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
-<script>
-/**
-  Developed by Prashant Shrestha
-  + https://prashant.me
-*/
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "saforem2",
-  // Your API key
-  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-  additional: "&format=json&limit=1"
-};
-
-var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-        "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-        .attr("target", "_blank");
-
-      var artistFormatted =
-        "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-    error: function(resp) {
-      $("a#tracktitle").html(
-        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
-      );
-      $("img#trackart").attr("src", "🧑🏻‍💻");
-      var artistFormatted =
-        "Sam Foreman";
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("href", "https://samforeman.me");
-    }
-  });
-};
-
-// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 100);
-</script> <div class="nowplayingcard">
-<div class="nowplayingcontainer-inner">
-<img id="trackart" src="#">
-<div class="trackInfo">
-<a id="tracktitle"></a>
-<a href="#" id="trackartist"></a>
-</div>
-</div>
-</div>
+<!-- {{< include about/_now_playing.qmd >}} -->
+<div class="flex-container" style="align-items: baseline;">
+<p><a href="https://github.com/kittinan/spotify-github-profile"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;theme=default&amp;show_offline=false&amp;background_color=1c1c1c&amp;interchange=false.svg" class="img-fluid"></a></p>
 <p><span class="stretch"><a href="https://last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2"></a></span></p>
+</div>
+<!-- #### [Last.fm](https://www.last.fm/user/saforem2) -->
+<!-- {{< include about/_lastfm.qmd >}} -->
 <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" ></a> -->
+<!--
+#### Spotify
+
+[![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=true&bar_color=53b14f&bar_color_cover=false)](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&redirect=true)
+-->
 </div>
 </div>
 </div>
@@ -1646,14 +1601,12 @@ setInterval(getSetLastFM, 10 * 100);
 </div>
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="highlight">test highlight</span></p>
-<!--
+<p><span class="highlight">test highlight</span> <!--
 [test green-highlight]{.green-highlight}
-
 [test pink-highlight]{.pink-highlight}
 
 [test blue-highlight]{.blue-highlight}
--->
+--></p>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> datetime</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>now <span class="op">=</span> datetime.datetime.now<span class="op">()</span></span>
@@ -1665,7 +1618,7 @@ setInterval(getSetLastFM, 10 * 100);
 <span id="cb1-9"><a href="#cb1-9"></a>    <span class="st">"[#838383]@[/]"</span>,</span>
 <span id="cb1-10"><a href="#cb1-10"></a>    <span class="ss">f"[#00CCFF]</span><span class="sc">{</span>time<span class="sc">}</span><span class="ss">[/]"</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="op">]))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:46:00</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:46:15</span>
 </pre>
 </div>
 </div>
@@ -2321,7 +2274,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

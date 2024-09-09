@@ -39,7 +39,8 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 <!-- <iframe src="https://lastfmstats.com/user/saforem2/charts" style="border: none;" width="50%" height="500"></iframe> -->
 
-<div class="flex-container" style="width: 100%;">
+<div class="flex-container"
+style="width: 100%; justify-content: space-between;">
 
 <div class="flex-container" style="margin-right: 5%; width:48%;">
 
@@ -55,7 +56,7 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 </div>
 
 <div class="flex-container"
-style="flex-direction: column; justify-content: flex-start; width: 40%;">
+style="flex-direction: column; justify-content: flex-start; width: 40%">
 
 > [!TIP]
 >
@@ -67,74 +68,10 @@ style="flex-direction: column; justify-content: flex-start; width: 40%;">
 
 > [!TIP]
 >
-> ### <span style="color:#D41109; margin:auto; padding: 1pt;">[![](https://api.iconify.design/logos:lastfm.svg?color=%23888888)](https://last.fm/user/saforem2)</span>
+> ### <span style="color:#1CD760; margin:auto; padding: 1pt;"><img src="./assets/spotify-green.svg" class="ineline-icon"
+> style="height:1em;" /> Now Playing</span>
 >
-> <script>
-> /**
->   Developed by Prashant Shrestha
->   + https://prashant.me
-> */
-> var lastfmData = {
->   baseURL:
->     "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
->   // Your Last.fm Username
->   user: "saforem2",
->   // Your API key
->   api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
->   additional: "&format=json&limit=1"
-> };
-> &#10;var getSetLastFM = function() {
->   $.ajax({
->     type: "GET",
->     url:
->       lastfmData.baseURL +
->       lastfmData.user +
->       "&api_key=" +
->       lastfmData.api_key +
->       lastfmData.additional,
->     dataType: "json",
->     success: function(resp) {
->       var recentTrack = resp.recenttracks.track[0];
->       var formatted =
->         "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
->       $("a#tracktitle")
->         .html(formatted)
->         .attr("href", recentTrack.url)
->         .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
->         .attr("target", "_blank");
-> &#10;      var artistFormatted =
->         "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
->       $("a#trackartist")
->         .html(artistFormatted)
->         .attr("title", "Artist : " + recentTrack.artist["#text"]);
->       $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
->     },
->     error: function(resp) {
->       $("a#tracktitle").html(
->         "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
->       );
->       $("img#trackart").attr("src", "🧑🏻‍💻");
->       var artistFormatted =
->         "Sam Foreman";
->       $("a#trackartist")
->         .html(artistFormatted)
->         .attr("href", "https://samforeman.me");
->     }
->   });
-> };
-> &#10;// Get the new one.
-> getSetLastFM();
-> // Start the countdown.
-> setInterval(getSetLastFM, 10 * 100);
-> </script> <div class="nowplayingcard">
-> <div class="nowplayingcontainer-inner">
-> <img id="trackart" src="#">
-> <div class="trackInfo">
-> <a id="tracktitle"></a>
-> <a href="#" id="trackartist"></a>
-> </div>
-> </div>
-> </div>
+> [![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true.png)](https://lastfm.com/user/saforem2)
 
 </div>
 
@@ -399,6 +336,21 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
   *2018*</span>
 
 ### 🦜 Talks
+
+<div id="listing-talks">
+
+</div>
+
+<!-- :::: {.feature} -->
+<!---->
+<!-- ::: {.feature-top} -->
+<!---->
+<!-- ::: {#listing-talks} -->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
 
 #### 📆 2024
 
@@ -745,76 +697,23 @@ Table 2: 🎓 Education
 
 ### 🎶 Music
 
-<script>
-/**
-  Developed by Prashant Shrestha
-  + https://prashant.me
-*/
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "saforem2",
-  // Your API key
-  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-  additional: "&format=json&limit=1"
-};
-&#10;var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-        "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-        .attr("target", "_blank");
-&#10;      var artistFormatted =
-        "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-    error: function(resp) {
-      $("a#tracktitle").html(
-        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
-      );
-      $("img#trackart").attr("src", "🧑🏻‍💻");
-      var artistFormatted =
-        "Sam Foreman";
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("href", "https://samforeman.me");
-    }
-  });
-};
-&#10;// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 100);
-</script> <div class="nowplayingcard">
-<div class="nowplayingcontainer-inner">
-<img id="trackart" src="#">
-<div class="trackInfo">
-<a id="tracktitle"></a>
-<a href="#" id="trackartist"></a>
-</div>
-</div>
-</div>
+<!-- {{< include about/_now_playing.qmd >}} -->
+
+<div class="flex-container" style="align-items: baseline;">
+
+[![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png)](https://github.com/kittinan/spotify-github-profile)
 
 <span class="stretch">[<img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" >](https://last.fm/user/saforem2)</span>
 
+</div>
+
+<!-- #### [Last.fm](https://www.last.fm/user/saforem2) -->
+<!-- {{< include about/_lastfm.qmd >}} -->
 <!-- <a href="https://www.last.fm/user/saforem2"><img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" ></a> -->
+<!--
+#### Spotify
+&#10;[![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=true&bar_color=53b14f&bar_color_cover=false)](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&redirect=true)
+-->
 
 </div>
 
@@ -822,12 +721,11 @@ setInterval(getSetLastFM, 10 * 100);
 >
 > ### <span class="dim-text">🧾 Last Update</span>
 >
-> <span class="highlight">test highlight</span>
->
-> <!--
+> <span class="highlight">test highlight</span> <!--
 > [test green-highlight]{.green-highlight}
-> &#10;[test pink-highlight]{.pink-highlight}
-> &#10;[test blue-highlight]{.blue-highlight}
+> [test pink-highlight]{.pink-highlight}
+>
+> [test blue-highlight]{.blue-highlight}
 > -->
 >
 > ``` python
@@ -844,7 +742,7 @@ setInterval(getSetLastFM, 10 * 100);
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:21:51</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:46:32</span>
 > </pre>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein

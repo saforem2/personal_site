@@ -16,28 +16,79 @@ format:
     output-file: "README.md"
 format-links: false
 # editor:
-#    render-on-save: true
+#   render-on-save: true
 listing:
   # contents: "posts/posts.yml"
-  id: listing-posts
-  sort: "date desc"
-  filter-ui: false
-  sort-ui: false
-  type: table
-  table-striped: true
-  table-hover: true
-  fields: [title, date]
-  contents:
-    - "posts/**/index.qmd"
-    - "!./posts/AuroraGPT/index.qmd"
-    - "!./posts/ai-for-physics/index.qmd"
-    - "!./posts/ai-for-physics/l2hmc-qcd/index.qmd"
-    - "!posts/index.qmd"
-    - "!posts/l2hmc-qcd/index.qmd"
-    - "!posts/l2hmc-qcd/l2hmc/index.qmd"
-    - "!posts/jupyter/index.qmd"
-  feed:
-    items: 10
+  - id: listing-posts
+    sort: "date desc"
+    filter-ui: false
+    sort-ui: false
+    type: table
+    date-format: iso
+    table-striped: true
+    table-hover: true
+    fields: [title, date]
+    contents:
+        - "posts/**/index.qmd"
+        - "!./posts/AuroraGPT/index.qmd"
+        - "!./posts/ai-for-physics/index.qmd"
+        - "!./posts/ai-for-physics/l2hmc-qcd/index.qmd"
+        - "!posts/index.qmd"
+        - "!posts/l2hmc-qcd/index.qmd"
+        - "!posts/l2hmc-qcd/l2hmc/index.qmd"
+        - "!posts/jupyter/index.qmd"
+        - "!drafts/"
+  # feed:
+  #   items: 10
+  - id: listing-talks
+    sort: "date desc"
+    filter-ui: false
+    sort-ui: false
+    date-format: iso
+    type: table
+    # image-height: 75pt
+    table-hover: true
+    table-striped: true
+    # fields: [title, location, date, image]
+    # fields: [image, title, location, date]
+    fields: [title, location, date]
+    # field-display-names: false
+
+    # type: table
+    # table-hover: true
+    # table-striped: true
+    # fields: [image, title, location, date]
+    contents:
+        - "!talks/test/"
+        - "!talks/index.qmd"
+        - "talks/**/index.qmd"
+        - "!./drafts/"
+
+  # - id: listing-talks-default
+  #   sort: "date desc"
+  #   filter-ui: false
+  #   sort-ui: false
+  #   date-format: iso
+  #   type: default
+  #   # image-height: 75px
+  #   table-hover: true
+  #   table-striped: true
+  #   fields: [title, location, date, image]
+  #   # field-display-names:
+  #   #     title: "What"
+  #   #     location: "Where"
+  #   #     date: "When"
+  #
+  #   # type: table
+  #   # table-hover: true
+  #   # table-striped: true
+  #   # fields: [image, title, location, date]
+  #   contents:
+  #       - "!talks/test/"
+  #       - "!talks/index.qmd"
+  #       - "talks/**/index.qmd"
+  #       - "!./drafts/"
+
   # id: listing-talks
   # sort: "date desc"
   # filter-ui: false
@@ -54,6 +105,7 @@ listing:
   #   - "!posts/l2hmc-qcd/l2hmc/index.qmd"
   #   - "!posts/jupyter/index.qmd"
 ---
+
 
 ::: {style="font-size:1.0em; text-align: center;"}
 
@@ -83,11 +135,26 @@ listing:
 
 ::: {.panel-tabset}
 
+
 ### 📝 Work
 
 {{< include about/_work.qmd >}}
 
 ### 🦜 Talks
+
+::: {#listing-talks}
+:::
+
+<!-- :::: {.feature} -->
+<!---->
+<!-- ::: {.feature-top} -->
+<!---->
+<!-- ::: {#listing-talks} -->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- :::: -->
 
 {{< include talks/_talks.qmd >}}
 
@@ -114,17 +181,16 @@ listing:
 
 ### 🎶 Music
 
-{{< include about/_now_playing.qmd >}}
+<!-- {{< include about/_now_playing.qmd >}} -->
+{{< include about/_music.qmd >}}
 
 :::
 
 ::: {.callout-tip icon=false aria-title="Last Update" title='[🧾 Last Update]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.3)!important; opacity:100%;"}
 
 [test highlight]{.highlight}
-
 <!--
 [test green-highlight]{.green-highlight}
-
 [test pink-highlight]{.pink-highlight}
 
 [test blue-highlight]{.blue-highlight}

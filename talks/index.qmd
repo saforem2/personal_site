@@ -17,22 +17,44 @@ format:
 #     grid:
 #       body-width: 800px
 listing:
-  table-striped: true
-  id: listing-talks
-  sort: "date desc"
-  filter-ui: false
-  sort-ui: false
-  type: table
-  contents:
-    - "../talks/**/index.qmd"
-    - "!../talks/index.qmd"
+  # - id: listing-talks
+  #   table-striped: true
+  #   sort: "date desc"
+  #   filter-ui: false
+  #   sort-ui: false
+  #   type: table
+  #   contents:
+  #       - "../talks/**/index.qmd"
+  #       - "!../talks/index.qmd"
+  - id: listing-talks-default
+    sort: "date desc"
+    filter-ui: false
+    sort-ui: false
+    date-format: iso
+    type: grid
+    grid-item-align: center
+    # image-height: 80px
+    image-align: left
+    # image-height: 75px
+    table-hover: true
+    table-striped: true
+    fields: [image, title, location, date]
+    contents:
+        - "../talks/**/index.qmd"
+        - "!../talks/test/index.qmd"
+        - "!../talks/index.qmd"
+    field-display-names:
+        title: ""
+        author: ""
+        date: ""
+        location: "@"
+        # location: ""
+        # title: "What"
+        # location: "Where"
+        # date: "When"
 ---
 
-::: {.feature}
-
-::: {#listing-talks}
+::: {#listing-talks-default}
 :::
 
 {{< include _talks.qmd >}}
-
-:::
