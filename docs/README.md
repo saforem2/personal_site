@@ -361,13 +361,13 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >
 > ### <span class="dim-text">[**Training LLMs at Scale**](https://samforeman.me/talks/llms-at-scale/slides) @ [*ATPESC*, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) \[08/2024\]</span>
 >
-> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
+> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-at-scale/slides" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/#/section) @ [*Center for Scientific Foundation Models*, Summer School 24’](https://scifm.ai/summer_school.html) \[07/2024\]</span>
+> ### <span class="dim-text">[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/slides) @ [*Center for Scientific Foundation Models*, Summer School 24’](https://scifm.ai/summer_school.html) \[07/2024\]</span>
 >
-> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-on-polaris/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
+> <span class="embedded-slide"><iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/llms-on-polaris/slides" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe></span>
 
 > [!TIP]
 >
@@ -815,7 +815,7 @@ Table 2: 🎓 Education
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:49:55</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:20:08</span>
 > </pre>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
