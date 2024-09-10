@@ -37,6 +37,13 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 ## 🧑🏻‍💻 About Me
 
+<!--
+[highlight]{.highlight}
+[highlight]{.hlight-pink}
+[highlight]{.hlight-yellow}
+[highlight]{.hlight-green}
+[highlight]{.hlight-blue}
+-->
 <!-- <iframe src="https://lastfmstats.com/user/saforem2/charts" style="border: none;" width="50%" height="500"></iframe> -->
 
 <div class="flex-container"
@@ -45,13 +52,14 @@ style="width: 100%; justify-content: space-between;">
 <div class="flex-container" style="width:50%;">
 
 - 💻 [Computational
-  scientist](https://alcf.anl.gov/about/people/sam-foreman) at Argonne
-  National Laboratory [(ALCF)](https://alcf.anl.gov)
+  scientist](https://alcf.anl.gov/about/people/sam-foreman)  
+  @ Argonne National Laboratory [(ALCF)](https://alcf.anl.gov)
 
-- 🧪 Interested in {AI, HPC} for science[^1]
+- 🧪 Interested in:
 
-  - 🚀 working on scaling large (language, vision, multi-modal)
-    models[^2] *across thousands of GPUs*
+  - {AI, HPC} for science[^1]
+
+  - 🚀 scaling large models across[^2] thousands of GPUs
 
 </div>
 
@@ -690,7 +698,7 @@ Table 2: 🎓 Education
 
 [![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png)](https://github.com/kittinan/spotify-github-profile)
 
-<div class="flex-container">
+<div class="flex-container" style="flex-direction: column;">
 
 > [!TIP]
 >
@@ -783,13 +791,15 @@ Table 2: 🎓 Education
 >
 > ### <span class="dim-text">🧾 Last Update</span>
 >
-> <span class="highlight">test highlight</span>
+> <span class="highlight">highlight yellow</span>
 >
-> <!--
-> [test green-highlight]{.green-highlight}
-> [test pink-highlight]{.pink-highlight}
-> [test blue-highlight]{.blue-highlight}
-> -->
+> <span class="highlight-pink">highlight pink</span>
+>
+> <span class="highlight-green">highlight green</span>
+>
+> <span class="highlight-blue">highlight-blue</span>
+>
+> <span class="circle-sketch-highlight">circle sketch highlight</span>
 >
 > ``` python
 > import datetime
@@ -805,7 +815,7 @@ Table 2: 🎓 Education
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">07:11:32</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:49:55</span>
 > </pre>
 
 [^1]: So far, for: {Lattice QCD, Quantum Mechanics, Biology (Protein
