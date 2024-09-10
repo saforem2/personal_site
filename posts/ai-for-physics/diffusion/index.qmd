@@ -1,7 +1,17 @@
 ---
 title: "🎲 MCMC + Diffusion Sampling"
 date: "2024-04-15"
+lightbox: auto
 toc: true
+image: "./assets/qdist.svg"
+open-graph:
+  title: "🎲 MCMC + Diffusion Sampling"
+  image: "./assets/qdist.svg"
+twitter-card:
+  site: "saforem2"
+  creator: "saforem2"
+  title: "🎲 MCMC + Diffusion Sampling"
+  image: "./assets/qdist.svg"
 # format:
 #   html:
 #     output-file: "diffusion.html"
@@ -27,11 +37,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 ```
-
 :::
 
 ::: {#707c54d9-1cee-4452-a9e8-beab67f6bb5e .cell .code execution_count="2" execution="{'iopub.execute_input':'2023-09-21T17:23:27.398552Z','iopub.status.busy':'2023-09-21T17:23:27.398037Z','iopub.status.idle':'2023-09-21T17:23:29.370420Z','shell.execute_reply':'2023-09-21T17:23:29.370048Z','shell.execute_reply.started':'2023-09-21T17:23:27.398512Z'}"}
-
 ``` python
 from ezpz.dist import setup_torch
 
@@ -43,31 +51,23 @@ RANK = setup_torch(
     port=f"{port}"
 )
 ```
-
 :::
 
-::: {.cell-output .cell-output-display}
-```{=html}
-    Using port: 5561
-```
-:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
+
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
+Using port: 5561
+
 Using DDP for distributed training
-</pre>
-```
-:::
 
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Global Rank: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span> <span style="color: #800080; text-decoration-color: #800080">/</span> <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>
 </pre>
 ```
+
 :::
-:::
+
 
 ::: {#b55dfeab-27a1-4322-af80-44380adbaadf .cell .code execution_count="3" execution="{\"iopub.execute_input\":\"2023-09-21T17:23:29.371628Z\",\"iopub.status.busy\":\"2023-09-21T17:23:29.371422Z\",\"iopub.status.idle\":\"2023-09-21T17:23:30.756041Z\",\"shell.execute_reply\":\"2023-09-21T17:23:30.755862Z\",\"shell.execute_reply.started\":\"2023-09-21T17:23:29.371616Z\"}" jukit_cell_id="ZlqRKELWeh"}
 ``` python
@@ -96,32 +96,20 @@ if console.is_jupyter:
     console.is_jupyter = False
 print(console.is_jupyter)
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Using device: cpu
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
 Failed to download font: Source Sans Pro, skipping!
 Failed to download font: Titillium WebRoboto Condensed, skipping!
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 True
+False
 </pre>
 ```
 :::
 
-::: {.cell-output .cell-output-display}
-False
-:::
-:::
 
 ::: {#a6523472-488a-49e9-bfd6-6ca8fb953650 .cell .code execution_count="5" execution="{\"iopub.execute_input\":\"2023-09-21T17:23:30.954621Z\",\"iopub.status.busy\":\"2023-09-21T17:23:30.954289Z\",\"iopub.status.idle\":\"2023-09-21T17:23:31.061599Z\",\"shell.execute_reply\":\"2023-09-21T17:23:31.058688Z\",\"shell.execute_reply.started\":\"2023-09-21T17:23:30.954598Z\"}"}
 ``` python
@@ -164,10 +152,10 @@ overrides = {
 }
 OVERRIDES = dict_to_list_of_overrides(overrides)
 ```
-
-::: {.cell-output .cell-output-display}
-    seed = 1675333995
 :::
+
+::: {.output .cell-output .cell-output-display}
+seed = 1675333995
 :::
 
 ::: {#5ae7bc5d .cell .code execution_count="7" execution="{\"iopub.execute_input\":\"2023-09-21T17:23:53.284515Z\",\"iopub.status.busy\":\"2023-09-21T17:23:53.284077Z\",\"iopub.status.idle\":\"2023-09-21T17:23:53.362789Z\",\"shell.execute_reply\":\"2023-09-21T17:23:53.362643Z\",\"shell.execute_reply.started\":\"2023-09-21T17:23:53.284485Z\"}" jukit_cell_id="iKzpP0xANE"}
@@ -188,22 +176,15 @@ PLOTS_DIR = OUTDIR.joinpath('plots')
 PLOTS_DIR.mkdir(exist_ok=True, parents=True)
 console.print(f"Saving figures to: {PLOTS_DIR}")
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 OUTDIR: l2hmc-diffusion-2dU1/<span style="color: #2094f3; text-decoration-color: #2094f3">2023</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">09</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">21</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Saving figures to: l2hmc-diffusion-2dU1/<span style="color: #2094f3; text-decoration-color: #2094f3">2023</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">09</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">21</span>/plots
 </pre>
 ```
-:::
 :::
 
 ::: {#4ca95dea .cell .code execution_count="8" execution="{\"iopub.execute_input\":\"2023-09-21T17:23:55.013350Z\",\"iopub.status.busy\":\"2023-09-21T17:23:55.012634Z\",\"iopub.status.idle\":\"2023-09-21T17:24:09.645580Z\",\"shell.execute_reply\":\"2023-09-21T17:24:09.645178Z\",\"shell.execute_reply.started\":\"2023-09-21T17:23:55.013316Z\"}" jukit_cell_id="lHICETmP7j"}
@@ -218,11 +199,12 @@ exp = build_experiment(
     ]
 )
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 
 ```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal; margin-bottom:0;">
 [09/21/23 12:23:55][INFO][dist.py:226] - Caught MASTER_PORT:5561 from environment!
 [09/21/23 12:23:55][INFO][dist.py:338] - Global Rank: 0 / 0
 [09/21/23 12:23:58][INFO][experiment.py:251] - Creating outputs/2023-09-21-122358/pytorch/train
@@ -239,7 +221,6 @@ exp = build_experiment(
 [09/21/23 12:24:09][WARNING][trainer.py:250] - logging with freq 50 for wandb.watch
 </pre>
 ```
-:::
 :::
 
 ::: {#de33e6c7 .cell .code execution_count="10" execution="{\"iopub.execute_input\":\"2023-09-21T17:24:11.069316Z\",\"iopub.status.busy\":\"2023-09-21T17:24:11.067417Z\",\"iopub.status.idle\":\"2023-09-21T17:24:11.148435Z\",\"shell.execute_reply\":\"2023-09-21T17:24:11.148240Z\",\"shell.execute_reply.started\":\"2023-09-21T17:24:11.069247Z\"}" jukit_cell_id="9XP3KbsEEH"}
@@ -271,40 +252,39 @@ outputs['hmc'] = exp.trainer.eval(
 )
 #hdset = exp.save_dataset(job_type='hmc', nchains=1)
 ```
-
-::: {.cell-output .cell-output-display}
-    [09/21/23 12:24:21][WARNING][trainer.py:437] - Step size `eps` not specified for HMC! Using default: 0.1000 for generic HMC
-    [09/21/23 12:24:21][WARNING][trainer.py:437] - x.shape (original): torch.Size([16, 2, 32, 32])
-    [09/21/23 12:24:21][WARNING][trainer.py:437] - x[:nchains].shape: torch.Size([16, 2, 32, 32])
-    [09/21/23 12:24:21][INFO][trainer.py:1058] - eps=0.1
-    beta=6.0
-    nlog=10
-    table=<rich.table.Table object at 0x2e1b98520>
-    nprint=100
-    eval_steps=1000
-    nleapfrog=20
 :::
 
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/fa5ecb88f2753cbd4123a5c4bd20a87fbfd4d143.svg)
-:::
+::: {.output .cell-output .cell-output-display}
 
-::: {.cell-output .cell-output-display}
-    [09/21/23 12:24:24][INFO][trainer.py:1188] - hstep=0 dt=0.024 beta=6.000 loss=3.410 dQsin=0.125 dQint=0.000 energy=1586.502 logprob=1586.502 logdet=0.000 acc=0.472 sumlogdet=0.000 acc_mask=0.500 plaqs=0.909 intQ=0.000 sinQ=0.051
-    [09/21/23 12:24:27][INFO][trainer.py:1188] - hstep=100 dt=0.026 beta=6.000 loss=2.876 dQsin=0.163 dQint=0.000 energy=1555.800 logprob=1555.800 logdet=0.000 acc=0.593 sumlogdet=0.000 acc_mask=0.688 plaqs=0.912 intQ=-0.125 sinQ=-0.159
-    [09/21/23 12:24:31][INFO][trainer.py:1188] - hstep=200 dt=0.025 beta=6.000 loss=4.678 dQsin=0.088 dQint=0.063 energy=1569.994 logprob=1569.994 logdet=0.000 acc=0.451 sumlogdet=0.000 acc_mask=0.250 plaqs=0.912 intQ=-0.187 sinQ=-0.149
-    [09/21/23 12:24:34][INFO][trainer.py:1188] - hstep=300 dt=0.024 beta=6.000 loss=14.041 dQsin=0.094 dQint=0.000 energy=1554.118 logprob=1554.118 logdet=0.000 acc=0.438 sumlogdet=0.000 acc_mask=0.438 plaqs=0.914 intQ=-0.125 sinQ=-0.114
-    [09/21/23 12:24:38][INFO][trainer.py:1188] - hstep=400 dt=0.024 beta=6.000 loss=-0.739 dQsin=0.199 dQint=0.000 energy=1566.516 logprob=1566.516 logdet=0.000 acc=0.509 sumlogdet=0.000 acc_mask=0.562 plaqs=0.912 intQ=-0.437 sinQ=-0.452
-    [09/21/23 12:24:41][INFO][trainer.py:1188] - hstep=500 dt=0.045 beta=6.000 loss=1.545 dQsin=0.100 dQint=0.000 energy=1570.837 logprob=1570.837 logdet=0.000 acc=0.448 sumlogdet=0.000 acc_mask=0.562 plaqs=0.911 intQ=0.125 sinQ=0.189
-    [09/21/23 12:24:45][INFO][trainer.py:1188] - hstep=600 dt=0.025 beta=6.000 loss=3.780 dQsin=0.094 dQint=0.000 energy=1568.012 logprob=1568.012 logdet=0.000 acc=0.463 sumlogdet=0.000 acc_mask=0.500 plaqs=0.913 intQ=0.438 sinQ=0.466
-    [09/21/23 12:24:50][INFO][trainer.py:1188] - hstep=700 dt=0.023 beta=6.000 loss=-0.902 dQsin=0.113 dQint=0.000 energy=1563.778 logprob=1563.778 logdet=0.000 acc=0.475 sumlogdet=0.000 acc_mask=0.375 plaqs=0.913 intQ=0.688 sinQ=0.628
-    [09/21/23 12:24:53][INFO][trainer.py:1188] - hstep=800 dt=0.024 beta=6.000 loss=11.416 dQsin=0.061 dQint=0.000 energy=1561.427 logprob=1561.427 logdet=0.000 acc=0.339 sumlogdet=0.000 acc_mask=0.438 plaqs=0.913 intQ=0.813 sinQ=0.755
-    [09/21/23 12:24:57][INFO][trainer.py:1188] - hstep=900 dt=0.028 beta=6.000 loss=1.114 dQsin=0.127 dQint=0.000 energy=1564.465 logprob=1564.465 logdet=0.000 acc=0.699 sumlogdet=0.000 acc_mask=0.625 plaqs=0.913 intQ=0.938 sinQ=0.893
-:::
+```{=html}
+<pre style="white-space:pre;overflow-x:auto;">
+[09/21/23 12:24:21][WARNING][trainer.py:437] - Step size `eps` not specified for HMC! Using default: 0.1000 for generic HMC
+[09/21/23 12:24:21][WARNING][trainer.py:437] - x.shape (original): torch.Size([16, 2, 32, 32])
+[09/21/23 12:24:21][WARNING][trainer.py:437] - x[:nchains].shape: torch.Size([16, 2, 32, 32])
+[09/21/23 12:24:21][INFO][trainer.py:1058] - eps=0.1
+beta=6.0
+nlog=10
+table=<rich.table.Table object at 0x2e1b98520>
+nprint=100
+eval_steps=1000
+nleapfrog=20
 
-::: {.cell-output .cell-output-display}
+
+[09/21/23 12:24:24][INFO][trainer.py:1188] - hstep=0 dt=0.024 beta=6.000 loss=3.410 dQsin=0.125 dQint=0.000 energy=1586.502 logprob=1586.502 logdet=0.000 acc=0.472 sumlogdet=0.000 acc_mask=0.500 plaqs=0.909 intQ=0.000 sinQ=0.051
+[09/21/23 12:24:27][INFO][trainer.py:1188] - hstep=100 dt=0.026 beta=6.000 loss=2.876 dQsin=0.163 dQint=0.000 energy=1555.800 logprob=1555.800 logdet=0.000 acc=0.593 sumlogdet=0.000 acc_mask=0.688 plaqs=0.912 intQ=-0.125 sinQ=-0.159
+[09/21/23 12:24:31][INFO][trainer.py:1188] - hstep=200 dt=0.025 beta=6.000 loss=4.678 dQsin=0.088 dQint=0.063 energy=1569.994 logprob=1569.994 logdet=0.000 acc=0.451 sumlogdet=0.000 acc_mask=0.250 plaqs=0.912 intQ=-0.187 sinQ=-0.149
+[09/21/23 12:24:34][INFO][trainer.py:1188] - hstep=300 dt=0.024 beta=6.000 loss=14.041 dQsin=0.094 dQint=0.000 energy=1554.118 logprob=1554.118 logdet=0.000 acc=0.438 sumlogdet=0.000 acc_mask=0.438 plaqs=0.914 intQ=-0.125 sinQ=-0.114
+[09/21/23 12:24:38][INFO][trainer.py:1188] - hstep=400 dt=0.024 beta=6.000 loss=-0.739 dQsin=0.199 dQint=0.000 energy=1566.516 logprob=1566.516 logdet=0.000 acc=0.509 sumlogdet=0.000 acc_mask=0.562 plaqs=0.912 intQ=-0.437 sinQ=-0.452
+[09/21/23 12:24:41][INFO][trainer.py:1188] - hstep=500 dt=0.045 beta=6.000 loss=1.545 dQsin=0.100 dQint=0.000 energy=1570.837 logprob=1570.837 logdet=0.000 acc=0.448 sumlogdet=0.000 acc_mask=0.562 plaqs=0.911 intQ=0.125 sinQ=0.189
+[09/21/23 12:24:45][INFO][trainer.py:1188] - hstep=600 dt=0.025 beta=6.000 loss=3.780 dQsin=0.094 dQint=0.000 energy=1568.012 logprob=1568.012 logdet=0.000 acc=0.463 sumlogdet=0.000 acc_mask=0.500 plaqs=0.913 intQ=0.438 sinQ=0.466
+[09/21/23 12:24:50][INFO][trainer.py:1188] - hstep=700 dt=0.023 beta=6.000 loss=-0.902 dQsin=0.113 dQint=0.000 energy=1563.778 logprob=1563.778 logdet=0.000 acc=0.475 sumlogdet=0.000 acc_mask=0.375 plaqs=0.913 intQ=0.688 sinQ=0.628
+[09/21/23 12:24:53][INFO][trainer.py:1188] - hstep=800 dt=0.024 beta=6.000 loss=11.416 dQsin=0.061 dQint=0.000 energy=1561.427 logprob=1561.427 logdet=0.000 acc=0.339 sumlogdet=0.000 acc_mask=0.438 plaqs=0.913 intQ=0.813 sinQ=0.755
+[09/21/23 12:24:57][INFO][trainer.py:1188] - hstep=900 dt=0.028 beta=6.000 loss=1.114 dQsin=0.127 dQint=0.000 energy=1564.465 logprob=1564.465 logdet=0.000 acc=0.699 sumlogdet=0.000 acc_mask=0.625 plaqs=0.913 intQ=0.938 sinQ=0.893
+</pre>
+```
+
 ![](assets/diffusion/4291d2280ebb3b7d7fd410b6fbd5a7999b28d1e6.svg)
-:::
+
 :::
 
 ::: {#a62b5515-1fbe-4a78-9330-a4e675adc55d .cell .code execution_count="12" execution="{\"iopub.execute_input\":\"2023-09-21T17:25:05.409303Z\",\"iopub.status.busy\":\"2023-09-21T17:25:05.408268Z\",\"iopub.status.idle\":\"2023-09-21T17:25:33.378971Z\",\"shell.execute_reply\":\"2023-09-21T17:25:33.378687Z\",\"shell.execute_reply.started\":\"2023-09-21T17:25:05.409256Z\"}" scrolled="true"}
@@ -315,84 +295,37 @@ sns.set_context('notebook')
 hdataset = outputs['hmc']['history'].get_dataset()
 plot_dataset(hdataset, outdir=PLOTS_DIR, job_type='HMC')
 ```
-
-::: {.cell-output .cell-output-display}
-    [09/21/23 12:25:06][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/energy_ridgeplot.svg
-    [09/21/23 12:25:09][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/logprob_ridgeplot.svg
-    [09/21/23 12:25:11][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/logdet_ridgeplot.svg
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
+
+```{=html}
+<pre style="white-space:pre;overflow-x:auto;line-height:normal; margin-bottom:0; margin-bottom: 0;">
+[09/21/23 12:25:06][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/energy_ridgeplot.svg
+[09/21/23 12:25:09][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/logprob_ridgeplot.svg
+[09/21/23 12:25:11][INFO][plot_helpers.py:1049] - Saving figure to: l2hmc-diffusion-2dU1/2023-09-21/plots/ridgeplots/svgs/logdet_ridgeplot.svg
+</pre>
+```
+
 ![](assets/diffusion/68eb7a87933506e4ea9f017913c8f1eb3d474f82.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/91f9822f7846afea800b646ef6d7f00adbe10a41.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/c51d8b2dcc6ec0e2de63ff069d3730bb571457b0.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/f4712af7b26ced3d77075d986993d9ed41e01438.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/52754b8f1d67eb90a526f91bf820f0ab6f00f3e6.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/150b885c11a3eb085ac620b73b278b467bf2accf.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/eee837b584211a155df0693c80ab0f74ef3df2d9.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/d7f0c56ea62b31af4a43a53d6eb9d0e46a0d0979.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/79d781dfd4250c92dd76a8d8d3185ef5f4bf0edb.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/ba6c79eb08e2df2807d207201f4260fcfb41a55d.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/be9f0e6e22b1f8d41ba35ef1c2e7c53026cdd606.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/acbf03bb04c361e167eefed84a13de13ef8ee37c.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/c919c93d92e6aec85e840c2ad8cb47eb30a8b015.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/7e5ffe849dbd6a7b8314042e953d762ab9e4286b.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/713d68e5d1fdd22fb92855cc3e25255035f0770c.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/368f5610bb37915389764b0b7392edd577eaf415.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/86fc3f47b8b4020e2b94ff74e79fdb3558c43f80.svg)
-:::
-
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/835139501cc9fcf6442be81e0033045b8f33ae74.svg)
-:::
+
 :::
 
 ::: {#80a4cca0-19fd-43aa-83a5-8bd9c18da011 .cell .code execution_count="13" execution="{\"iopub.execute_input\":\"2023-09-21T17:26:40.599785Z\",\"iopub.status.busy\":\"2023-09-21T17:26:40.598293Z\",\"iopub.status.idle\":\"2023-09-21T17:27:07.102561Z\",\"shell.execute_reply\":\"2023-09-21T17:27:07.101951Z\",\"shell.execute_reply.started\":\"2023-09-21T17:26:40.599694Z\"}" scrolled="true"}
@@ -408,7 +341,6 @@ NSAMPLES = 1000
 for idx in range(NSAMPLES + int(0.1 * NSAMPLES)):
     if idx % 100 == 0:
         console.print(f"step: {idx}")
-        
     x, metrics = exp.trainer.hmc_step((x, beta))
     if idx > int((0.1 * NSAMPLES)):
         initial_states.append(x)
@@ -416,104 +348,35 @@ for idx in range(NSAMPLES + int(0.1 * NSAMPLES)):
 initial_states = torch.stack(initial_states).squeeze()
 initial_states_np = initial_states.detach().cpu().numpy()
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">100</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">200</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">300</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">400</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">500</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">600</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">700</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">800</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">900</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 step: <span style="color: #2094f3; text-decoration-color: #2094f3">1000</span>
 </pre>
 ```
-:::
 :::
 
 ::: {#b3874832-0782-4b49-a025-742be370675d .cell .code execution_count="14" execution="{\"iopub.execute_input\":\"2023-09-21T17:27:37.023220Z\",\"iopub.status.busy\":\"2023-09-21T17:27:37.022568Z\",\"iopub.status.idle\":\"2023-09-21T17:27:37.170197Z\",\"shell.execute_reply\":\"2023-09-21T17:27:37.169976Z\",\"shell.execute_reply.started\":\"2023-09-21T17:27:37.023184Z\"}"}
 ``` python
 initial_states_np.shape
 ```
-
-::: {.output .execute_result execution_count="14"}
-    (999, 16, 2048)
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="14"}
+    (999, 16, 2048)
 :::
 
 ::: {#46eea215-ac24-46ed-b334-648ab0f082b0 .cell .code execution_count="15" execution="{\"iopub.execute_input\":\"2023-09-21T17:27:45.524060Z\",\"iopub.status.busy\":\"2023-09-21T17:27:45.523874Z\",\"iopub.status.idle\":\"2023-09-21T17:27:45.610750Z\",\"shell.execute_reply\":\"2023-09-21T17:27:45.610562Z\",\"shell.execute_reply.started\":\"2023-09-21T17:27:45.524045Z\"}"}
@@ -523,22 +386,17 @@ tmp_ = x_[:, 0, ...]
 console.print(f'{x_.shape}')
 console.print(f'{tmp_.shape}')
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+
+::: {.output .cell-output .cell-output-display}
+
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 <span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">999</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">16</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">2</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span><span style="font-weight: bold">)</span>
-</pre>
-```
-:::
-
-::: {.cell-output .cell-output-display}
-```{=html}
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 <span style="font-weight: bold">(</span><span style="color: #2094f3; text-decoration-color: #2094f3">999</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">2</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span><span style="font-weight: bold">)</span>
 </pre>
 ```
-:::
 :::
 
 ::: {#00862566-256a-4e1b-b96f-b289e146ed65 .cell .code execution_count="16" execution="{\"iopub.execute_input\":\"2023-09-21T17:28:23.005041Z\",\"iopub.status.busy\":\"2023-09-21T17:28:23.004835Z\",\"iopub.status.idle\":\"2023-09-21T17:28:41.019060Z\",\"shell.execute_reply\":\"2023-09-21T17:28:41.018864Z\",\"shell.execute_reply.started\":\"2023-09-21T17:28:23.005025Z\"}"}
@@ -567,14 +425,14 @@ savefig(
     tstamp=True,
 )
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
     Saving hmc_samples-1000-2023-09-21-122840 to l2hmc-diffusion-2dU1/2023-09-21/plots
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/70234c6bf6df3cbd32f9de96e36e740eda0ed20d.svg)
-:::
 :::
 
 ::: {#544a477a-05cd-4e1f-b11f-5f9d29c61918 .cell .code execution_count="28" execution="{\"iopub.execute_input\":\"2023-09-21T18:03:31.911850Z\",\"iopub.status.busy\":\"2023-09-21T18:03:31.910702Z\",\"iopub.status.idle\":\"2023-09-21T18:03:32.065942Z\",\"shell.execute_reply\":\"2023-09-21T18:03:32.065721Z\",\"shell.execute_reply.started\":\"2023-09-21T18:03:31.911790Z\"}"}
@@ -656,10 +514,10 @@ class Diffusion:
 ``` python
 initial_states.shape
 ```
-
-::: {.output .execute_result execution_count="29"}
-    torch.Size([999, 16, 2048])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="29"}
+    torch.Size([999, 16, 2048])
 :::
 
 ::: {#dcfb6322-b8d5-4f4a-8c74-6a9e1f9eb2c3 .cell .markdown}
@@ -752,7 +610,7 @@ run_name = 'diffusion2dU1'
 :::
 
 ::: {#27fcd372-259b-4be5-830d-167a396aeac1 .cell .code execution_count="21" execution="{\"iopub.execute_input\":\"2023-09-21T17:29:54.637896Z\",\"iopub.status.busy\":\"2023-09-21T17:29:54.634898Z\",\"iopub.status.idle\":\"2023-09-21T17:45:06.940844Z\",\"shell.execute_reply\":\"2023-09-21T17:45:06.940627Z\",\"shell.execute_reply.started\":\"2023-09-21T17:29:54.637847Z\"}" scrolled="true"}
-``` python
+```python
 from torch import optim
 device = 'cpu'
 #dataloader = get_data(args)
@@ -799,7 +657,9 @@ for epoch in range(config['num_epochs']):
     torch.save(model.state_dict(), MODEL_FILE)
 ```
 
-::: {.cell-output .cell-output-display}
+:::
+
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Starting epoch <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>:
@@ -807,13 +667,13 @@ Starting epoch <span style="color: #2094f3; text-decoration-color: #2094f3">0</s
 ```
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ``` json
 {"model_id":"19b415c346b24bef8b60336d7f7bc355","version_major":2,"version_minor":0}
 ```
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 epoch: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>, loss: <span style="color: #2094f3; text-decoration-color: #2094f3">0.6023472547531128</span>
@@ -821,21 +681,21 @@ epoch: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>, lo
 ```
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ``` json
 {"model_id":"eea24504754f4cb9ab4d9925a6225c10","version_major":2,"version_minor":0}
 ```
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/e90001ab4bbbe38f50cca429a69bc2b212ed8a4d.svg)
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
     Saving sampled_image_epoch0-2023-09-21-124506 to l2hmc-diffusion-2dU1/2023-09-21/plots
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Saving model checkpoint to: l2hmc-diffusion-2dU1/<span style="color: #2094f3; text-decoration-color: #2094f3">2023</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">09</span>-<span style="color: #2094f3; text-decoration-color: #2094f3">21</span>/models/unet-diffusion-epoch0.pt
@@ -843,10 +703,10 @@ Saving model checkpoint to: l2hmc-diffusion-2dU1/<span style="color: #2094f3; te
 ```
 :::
 
-::: {.cell-output .cell-output-display}
-    <Figure size 640x480 with 0 Axes>
+::: {.output .cell-output .cell-output-display}
+<Figure size 640x480 with 0 Axes>
 :::
-:::
+
 
 ::: {#c4ae942b-4617-4f1e-a837-68e95d6ddabc .cell .code execution_count="22" execution="{\"iopub.execute_input\":\"2023-09-21T18:01:57.860377Z\",\"iopub.status.busy\":\"2023-09-21T18:01:57.859019Z\",\"iopub.status.idle\":\"2023-09-21T18:01:58.250584Z\",\"shell.execute_reply\":\"2023-09-21T18:01:58.250409Z\",\"shell.execute_reply.started\":\"2023-09-21T18:01:57.860309Z\"}"}
 ``` python
@@ -864,7 +724,7 @@ _ = ax[1].set_title(r"$U_{1}$", loc='center')
 _ = fig.suptitle('HMC Samples', y=0.8)
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/85261feb8c9ba70c38f9f40eb69b7b3bc4c670b0.svg)
 :::
 :::
@@ -880,7 +740,7 @@ sampled_images_history_ = torch.stack(sampled_images_history)
 sampled_images_history_.shape
 ```
 
-::: {.output .execute_result execution_count="24"}
+::: {.output .cell-output .cell-output-display .execute_result execution_count="24"}
     torch.Size([1, 5, 2, 32, 32])
 :::
 :::
@@ -900,7 +760,7 @@ _ = ax[1].set_title(r"$U_{1}$", loc='center')
 _ = fig.suptitle('Diffusion Samples', y=0.85)
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/b2807643bf74b33689a17754209e56554bfe1f52.svg)
 :::
 :::
@@ -911,14 +771,14 @@ for idx in range(sampled_images_history_.shape[0]):
     q = exp.trainer.lattice.charges(x=sampled_images_history_[idx])
     console.print(f'{idx}: {q}')
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>: <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">Charges</span><span style="font-weight: bold">(</span><span style="color: #7d8697; text-decoration-color: #7d8697">intQ</span>=<span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">tensor</span><span style="font-weight: bold">([</span> <span style="color: #2094f3; text-decoration-color: #2094f3">5.0000e+00</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">-4.0000e+00</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">-6.0000e+00</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">-4.5535e-07</span>,  <span style="color: #2094f3; text-decoration-color: #2094f3">1.0000e+00</span><span style="font-weight: bold">])</span>, <span style="color: #7d8697; text-decoration-color: #7d8697">sinQ</span>=<span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">tensor</span><span style="font-weight: bold">([</span> <span style="color: #2094f3; text-decoration-color: #2094f3">1.6426</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">-1.7244</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">-4.4651</span>,  <span style="color: #2094f3; text-decoration-color: #2094f3">0.5680</span>,  <span style="color: #2094f3; text-decoration-color: #2094f3">0.7046</span><span style="font-weight: bold">]))</span>
 </pre>
 ```
-:::
 :::
 
 ::: {#e8f0fae1-63eb-4522-8342-2d051f4705c4 .cell .markdown}
@@ -947,10 +807,10 @@ combined_samples = {}
 ``` python
 global_step
 ```
-
-::: {.output .execute_result execution_count="33"}
-    0
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="33"}
+    0
 :::
 
 ::: {#d3d35fc8-5067-4d51-8cc0-8136b34669a3 .cell .code execution_count="35" execution="{\"iopub.execute_input\":\"2023-09-21T18:09:58.481960Z\",\"iopub.status.busy\":\"2023-09-21T18:09:58.480609Z\",\"iopub.status.idle\":\"2023-09-21T18:12:28.387917Z\",\"shell.execute_reply\":\"2023-09-21T18:12:28.387487Z\",\"shell.execute_reply.started\":\"2023-09-21T18:09:58.481905Z\"}" scrolled="true"}
@@ -1053,114 +913,88 @@ for retrain_iter in range(2):
             }
         )
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 retrain_iter: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>
-</pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"17132d7ca8624fa387ee9467e4f1fa4d","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 sample idx: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"0ed1080fdebd4f7b9aae80db0d36b96b","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Retraining<span style="color: #808000; text-decoration-color: #808000">...</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 retrain_iter: <span style="color: #2094f3; text-decoration-color: #2094f3">1</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"d0346019e21b4d2a9b624dc59e84015b","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 sample idx: <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 rand: <span style="color: #2094f3; text-decoration-color: #2094f3">0.05506106760134255</span> &lt; <span style="color: #2094f3; text-decoration-color: #2094f3">0.1</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"c02b09d53ada46a194a47921f0ab3cba","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 rand: <span style="color: #2094f3; text-decoration-color: #2094f3">0.07860283644524213</span> &lt; <span style="color: #2094f3; text-decoration-color: #2094f3">0.1</span>
 </pre>
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"184df3f1c9714ece9756866b2617ed02","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ``` json
 {"model_id":"eaa0d84229c04618b7a2bffe2a4b1739","version_major":2,"version_minor":0}
 ```
-:::
 
-::: {.cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 Retraining<span style="color: #808000; text-decoration-color: #808000">...</span>
 </pre>
 ```
-:::
 :::
 
 ::: {#a83cf9fb-9c2c-430e-957a-d42eaed79401 .cell .code execution_count="36" execution="{\"iopub.execute_input\":\"2023-09-21T18:12:32.389697Z\",\"iopub.status.busy\":\"2023-09-21T18:12:32.389127Z\",\"iopub.status.idle\":\"2023-09-21T18:12:32.627601Z\",\"shell.execute_reply\":\"2023-09-21T18:12:32.627412Z\",\"shell.execute_reply.started\":\"2023-09-21T18:12:32.389644Z\"}" scrolled="true"}
 ``` python
 console.print('\n'.join([f"{i.shape}" for i in samples[:100]]))
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">torch.Size</span><span style="font-weight: bold">([</span><span style="color: #2094f3; text-decoration-color: #2094f3">16</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">2048</span><span style="font-weight: bold">])</span>
@@ -1195,7 +1029,6 @@ console.print('\n'.join([f"{i.shape}" for i in samples[:100]]))
 <span style="color: #ff00ff; text-decoration-color: #ff00ff; font-weight: bold">torch.Size</span><span style="font-weight: bold">([</span><span style="color: #2094f3; text-decoration-color: #2094f3">16</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">2</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span>, <span style="color: #2094f3; text-decoration-color: #2094f3">32</span><span style="font-weight: bold">])</span>
 </pre>
 ```
-:::
 :::
 
 ::: {#4b0e9e7c-9585-4f50-81c7-4c9dd37e18ce .cell .code execution_count="37" execution="{\"iopub.execute_input\":\"2023-09-21T18:12:38.701814Z\",\"iopub.status.busy\":\"2023-09-21T18:12:38.699745Z\",\"iopub.status.idle\":\"2023-09-21T18:12:38.789521Z\",\"shell.execute_reply\":\"2023-09-21T18:12:38.789359Z\",\"shell.execute_reply.started\":\"2023-09-21T18:12:38.701745Z\"}"}
@@ -1204,7 +1037,7 @@ samples_ = torch.stack([i.reshape(-1, 2, 32, 32) for i in samples])
 samples_.shape
 ```
 
-::: {.output .execute_result execution_count="37"}
+::: {.output .cell-output .cell-output-display .execute_result execution_count="37"}
     torch.Size([30, 16, 2, 32, 32])
 :::
 :::
@@ -1213,10 +1046,10 @@ samples_.shape
 ``` python
 len(hmc_samples)
 ```
-
-::: {.output .execute_result execution_count="38"}
-    28
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="38"}
+    28
 :::
 
 ::: {#a2279e49-e463-4a3a-a08e-14b1a636222f .cell .code execution_count="41" execution="{\"iopub.execute_input\":\"2023-09-21T18:13:00.841115Z\",\"iopub.status.busy\":\"2023-09-21T18:13:00.840869Z\",\"iopub.status.idle\":\"2023-09-21T18:13:00.912440Z\",\"shell.execute_reply\":\"2023-09-21T18:13:00.912247Z\",\"shell.execute_reply.started\":\"2023-09-21T18:13:00.841101Z\"}"}
@@ -1224,7 +1057,7 @@ len(hmc_samples)
 len(diffusion_samples)
 ```
 
-::: {.output .execute_result execution_count="41"}
+::: {.output .cell-output .cell-output-display .execute_result execution_count="41"}
     2
 :::
 :::
@@ -1243,7 +1076,7 @@ diffusion_samples_ = torch.stack(
 hmc_samples_.shape
 ```
 
-::: {.output .execute_result execution_count="44"}
+::: {.output .cell-output .cell-output-display .execute_result execution_count="44"}
     torch.Size([28, 16, 2, 32, 32])
 :::
 :::
@@ -1252,20 +1085,20 @@ hmc_samples_.shape
 ``` python
 diffusion_samples_.shape
 ```
-
-::: {.output .execute_result execution_count="45"}
-    torch.Size([2, 16, 2, 32, 32])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="45"}
+    torch.Size([2, 16, 2, 32, 32])
 :::
 
 ::: {#bee61425-74d1-4faa-9447-ef4c6c71a8ba .cell .code execution_count="46" execution="{\"iopub.execute_input\":\"2023-09-21T18:13:15.683862Z\",\"iopub.status.busy\":\"2023-09-21T18:13:15.683665Z\",\"iopub.status.idle\":\"2023-09-21T18:13:15.753128Z\",\"shell.execute_reply\":\"2023-09-21T18:13:15.752924Z\",\"shell.execute_reply.started\":\"2023-09-21T18:13:15.683847Z\"}"}
 ``` python
 samples_.shape
 ```
-
-::: {.output .execute_result execution_count="46"}
-    torch.Size([30, 16, 2, 32, 32])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="46"}
+    torch.Size([30, 16, 2, 32, 32])
 :::
 
 ::: {#c637a290-4dc3-42f6-abeb-ee807b991ffd .cell .code execution_count="47" execution="{\"iopub.execute_input\":\"2023-09-21T18:13:29.661939Z\",\"iopub.status.busy\":\"2023-09-21T18:13:29.661388Z\",\"iopub.status.idle\":\"2023-09-21T18:13:29.751394Z\",\"shell.execute_reply\":\"2023-09-21T18:13:29.751170Z\",\"shell.execute_reply.started\":\"2023-09-21T18:13:29.661915Z\"}"}
@@ -1298,10 +1131,10 @@ def calc_sinQ(x):
 samples_init_ = initial_states.reshape(-1, initial_states.shape[1], 2, 32, 32)
 samples_init_.shape
 ```
-
-::: {.output .execute_result execution_count="64"}
-    torch.Size([999, 16, 2, 32, 32])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="64"}
+    torch.Size([999, 16, 2, 32, 32])
 :::
 
 ::: {#8542582c-65ae-40b5-b5b9-70292acc2c81 .cell .code execution_count="65" execution="{\"iopub.execute_input\":\"2023-09-21T18:17:43.351050Z\",\"iopub.status.busy\":\"2023-09-21T18:17:43.347957Z\",\"iopub.status.idle\":\"2023-09-21T18:17:43.699383Z\",\"shell.execute_reply\":\"2023-09-21T18:17:43.699177Z\",\"shell.execute_reply.started\":\"2023-09-21T18:17:43.350913Z\"}"}
@@ -1336,18 +1169,19 @@ metrics_diffusion_ = {
 ``` python
 metrics_['plaqs'].shape
 ```
-
-::: {.output .execute_result execution_count="49"}
-    torch.Size([30, 16])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="49"}
+    torch.Size([30, 16])
 :::
 
 ::: {#59f33ef8-cfad-41d5-bfdd-0717c8700376 .cell .code execution_count="52" execution="{\"iopub.execute_input\":\"2023-09-21T18:14:16.986650Z\",\"iopub.status.busy\":\"2023-09-21T18:14:16.985673Z\",\"iopub.status.idle\":\"2023-09-21T18:14:17.106591Z\",\"shell.execute_reply\":\"2023-09-21T18:14:17.105464Z\",\"shell.execute_reply.started\":\"2023-09-21T18:14:16.986586Z\"}"}
 ``` python
 console.print('\n'.join([f"{k}: {v}" for k, v in watcher.items()]))
 ```
+:::
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ```{=html}
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;">
 <span style="color: #2094f3; text-decoration-color: #2094f3">0</span>: HMC
@@ -1383,7 +1217,6 @@ console.print('\n'.join([f"{k}: {v}" for k, v in watcher.items()]))
 </pre>
 ```
 :::
-:::
 
 ::: {#4e5d7c22-e454-4368-ba7e-599f1d68fa19 .cell .code execution_count="54" execution="{\"iopub.execute_input\":\"2023-09-21T18:14:41.427638Z\",\"iopub.status.busy\":\"2023-09-21T18:14:41.427237Z\",\"iopub.status.idle\":\"2023-09-21T18:14:41.629492Z\",\"shell.execute_reply\":\"2023-09-21T18:14:41.629312Z\",\"shell.execute_reply.started\":\"2023-09-21T18:14:41.427623Z\"}"}
 ``` python
@@ -1396,10 +1229,10 @@ _ = ax.plot(metrics_diffusion_['plaqs'][:, 0], label='Diffusion')
 #_ = ax.plot(metrics_diff_['plaqs'], label='Diffusion')
 _ = ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1.00))
 ```
-
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/4509936f2dbb7e69226f3d2851bc462cf8046e8e.svg)
 :::
+
+::: {.output .cell-output .cell-output-display}
+![](assets/diffusion/4509936f2dbb7e69226f3d2851bc462cf8046e8e.svg)
 :::
 
 ::: {#ce6ca162-689d-4673-b093-261e465eefc7 .cell .code execution_count="66" execution="{\"iopub.execute_input\":\"2023-09-21T18:18:08.961955Z\",\"iopub.status.busy\":\"2023-09-21T18:18:08.961699Z\",\"iopub.status.idle\":\"2023-09-21T18:18:10.065123Z\",\"shell.execute_reply\":\"2023-09-21T18:18:10.064912Z\",\"shell.execute_reply.started\":\"2023-09-21T18:18:08.961923Z\"}"}
@@ -1414,7 +1247,7 @@ for idx, (key, val) in enumerate(metrics_init_.items()):
 _ = fig.suptitle(f"Initial HMC States", y=0.92)
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/9d36e3726eb2a63bcae157590b44c3710847442f.svg)
 :::
 :::
@@ -1430,10 +1263,10 @@ for idx, (key, val) in enumerate(metrics_.items()):
 
 _ = fig.suptitle(f"Combined Samples", y=0.92)
 ```
-
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/6ba854aa0d42fd2eae98f6d82c0d6566005c421b.svg)
 :::
+
+::: {.output .cell-output .cell-output-display}
+![](assets/diffusion/6ba854aa0d42fd2eae98f6d82c0d6566005c421b.svg)
 :::
 
 ::: {#c348510d-9ec3-41c7-b04e-654b5ba0bd3d .cell .code execution_count="71" execution="{\"iopub.execute_input\":\"2023-09-21T18:19:01.490764Z\",\"iopub.status.busy\":\"2023-09-21T18:19:01.490310Z\",\"iopub.status.idle\":\"2023-09-21T18:19:01.844808Z\",\"shell.execute_reply\":\"2023-09-21T18:19:01.844643Z\",\"shell.execute_reply.started\":\"2023-09-21T18:19:01.490733Z\"}"}
@@ -1446,7 +1279,7 @@ for idx, (key, val) in enumerate(metrics_hmc_.items()):
 _ = fig.suptitle(f"Generated HMC States", y=0.92)
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/9d3a4133b6d0c2bf60da7558af21452baab7d5c3.svg)
 :::
 :::
@@ -1461,7 +1294,7 @@ for idx, (key, val) in enumerate(metrics_diffusion_.items()):
 _ = fig.suptitle(f"Generated Diffusion States", y=0.92)
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/02d2b941bf240ac2a6659c37519a6e2ebec63b41.svg)
 :::
 :::
@@ -1471,10 +1304,10 @@ _ = fig.suptitle(f"Generated Diffusion States", y=0.92)
 from l2hmc.lattice.u1.pytorch.lattice import plaq_exact
 plaq_exact(torch.tensor(6.0))
 ```
-
-::: {.output .execute_result execution_count="74"}
-    tensor(0.9124)
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="74"}
+    tensor(0.9124)
 :::
 
 ::: {#0646c637-546c-49df-876b-4dfb7abb9497 .cell .code execution_count="78" execution="{\"iopub.execute_input\":\"2023-09-21T18:19:41.898242Z\",\"iopub.status.busy\":\"2023-09-21T18:19:41.898063Z\",\"iopub.status.idle\":\"2023-09-21T18:19:42.092250Z\",\"shell.execute_reply\":\"2023-09-21T18:19:42.092113Z\",\"shell.execute_reply.started\":\"2023-09-21T18:19:41.898226Z\"}"}
@@ -1502,7 +1335,7 @@ _ = ax.set_xlabel(r"$Q$", loc='center')
 _ = ax.set_title('Topological Charge ($Q$) Distribution', loc='center')
 ```
 
-::: {.cell-output .cell-output-display}
+::: {.output .cell-output .cell-output-display}
 ![](assets/diffusion/3f9d006e6a51dac62b80daab5d4bb4ac70596db2.svg)
 :::
 :::
@@ -1516,10 +1349,10 @@ _ = ax.legend(loc='best', frameon=True, edgecolor='#666666', ncols=2)
 _ = ax.set_ylabel(r"$\left\langle U_{\mu\nu}\right\rangle $", loc='center')
 _ = ax.set_xlabel(f"Draw", loc='center')
 ```
-
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/88b5366a0686ecb675259d3e1459d08d6c39e750.svg)
 :::
+
+::: {.output .cell-output .cell-output-display}
+![](assets/diffusion/88b5366a0686ecb675259d3e1459d08d6c39e750.svg)
 :::
 
 ::: {#c0574a41-5d7e-45d9-97e9-0d81a0a6fa84 .cell .code execution_count="80" execution="{\"iopub.execute_input\":\"2023-09-21T18:19:53.009094Z\",\"iopub.status.busy\":\"2023-09-21T18:19:53.008705Z\",\"iopub.status.idle\":\"2023-09-21T18:19:53.084368Z\",\"shell.execute_reply\":\"2023-09-21T18:19:53.084175Z\",\"shell.execute_reply.started\":\"2023-09-21T18:19:53.009076Z\"}"}
@@ -1555,10 +1388,10 @@ wldiff = torch.stack(wloops['diffusion']).squeeze()
 ``` python
 wlhmc.shape
 ```
-
-::: {.output .execute_result execution_count="82"}
-    torch.Size([28, 16, 32, 32])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="82"}
+    torch.Size([28, 16, 32, 32])
 :::
 
 ::: {#3e408fed-abb8-486c-a560-3af19f121179 .cell .code execution_count="85" execution="{\"iopub.execute_input\":\"2023-09-21T18:20:23.993243Z\",\"iopub.status.busy\":\"2023-09-21T18:20:23.992854Z\",\"iopub.status.idle\":\"2023-09-21T18:20:24.334498Z\",\"shell.execute_reply\":\"2023-09-21T18:20:24.334319Z\",\"shell.execute_reply.started\":\"2023-09-21T18:20:23.993216Z\"}"}
@@ -1575,18 +1408,12 @@ for idx in range(2):
         _ = ax_.set_xticklabels([])
         _ = ax_.set_yticklabels([])
 ```
-
-::: {.cell-output .cell-output-display}
-    <Figure size 640x480 with 0 Axes>
 :::
 
-::: {.cell-output .cell-output-display}
+::: {.flex-container .output .cell-output .cell-output-display}
 ![](assets/diffusion/292acc374ca58b3045c07221e75d5ad20d83a646.svg)
-:::
 
-::: {.cell-output .cell-output-display}
 ![](assets/diffusion/3b6a02bc8d6489b5a0147b59009b8a3be270ba14.svg)
-:::
 :::
 
 ::: {#ff7b6cca-0327-4be2-aab6-aaa8df6ce2bc .cell .code execution_count="87" execution="{\"iopub.execute_input\":\"2023-09-21T18:20:36.056148Z\",\"iopub.status.busy\":\"2023-09-21T18:20:36.055543Z\",\"iopub.status.idle\":\"2023-09-21T18:20:36.149377Z\",\"shell.execute_reply\":\"2023-09-21T18:20:36.149190Z\",\"shell.execute_reply.started\":\"2023-09-21T18:20:36.056103Z\"}"}
@@ -1595,10 +1422,10 @@ qhmc = metrics_hmc_['intQ']
 qdiff = metrics_diffusion_['intQ']
 qhmc.shape
 ```
-
-::: {.output .execute_result execution_count="87"}
-    torch.Size([28, 16])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="87"}
+    torch.Size([28, 16])
 :::
 
 ::: {#5230a441-1e1b-4901-b4d0-aacf5413ff35 .cell .code execution_count="88" execution="{\"iopub.execute_input\":\"2023-09-21T18:20:39.115417Z\",\"iopub.status.busy\":\"2023-09-21T18:20:39.114730Z\",\"iopub.status.idle\":\"2023-09-21T18:20:39.197664Z\",\"shell.execute_reply\":\"2023-09-21T18:20:39.197492Z\",\"shell.execute_reply.started\":\"2023-09-21T18:20:39.115373Z\"}"}
@@ -1607,20 +1434,20 @@ phmc = torch.stack(plaqs['hmc']).squeeze()
 pdiff = torch.stack(plaqs['diffusion']).squeeze()
 phmc.shape
 ```
-
-::: {.output .execute_result execution_count="88"}
-    torch.Size([28, 16])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="88"}
+    torch.Size([28, 16])
 :::
 
 ::: {#1af88db9-f706-4b58-8e81-a54cf92f144d .cell .code execution_count="89" execution="{\"iopub.execute_input\":\"2023-09-21T18:20:39.947370Z\",\"iopub.status.busy\":\"2023-09-21T18:20:39.946997Z\",\"iopub.status.idle\":\"2023-09-21T18:20:40.026391Z\",\"shell.execute_reply\":\"2023-09-21T18:20:40.026205Z\",\"shell.execute_reply.started\":\"2023-09-21T18:20:39.947336Z\"}"}
 ``` python
 pdiff.shape
 ```
-
-::: {.output .execute_result execution_count="89"}
-    torch.Size([2, 16])
 :::
+
+::: {.output .cell-output .cell-output-display .execute_result execution_count="89"}
+    torch.Size([2, 16])
 :::
 
 ::: {#1eeaeb30-abd1-47e9-8752-42d26873629b .cell .code execution_count="90" execution="{\"iopub.execute_input\":\"2023-09-21T18:20:40.855087Z\",\"iopub.status.busy\":\"2023-09-21T18:20:40.854732Z\",\"iopub.status.idle\":\"2023-09-21T18:20:41.041979Z\",\"shell.execute_reply\":\"2023-09-21T18:20:41.041831Z\",\"shell.execute_reply.started\":\"2023-09-21T18:20:40.855068Z\"}"}
@@ -1664,10 +1491,10 @@ _ = ax.legend(
 )
 _ = ax.set_title('Plaquette Distribution', loc='center')
 ```
-
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/b8adc3f97c471460069de45c953d36d2a16fc858.svg)
 :::
+
+::: {.output .cell-output .cell-output-display .cell-output .cell-output-display}
+![](assets/diffusion/b8adc3f97c471460069de45c953d36d2a16fc858.svg)
 :::
 
 ::: {#b40d5264-8818-40d6-9b6f-1a8e5c62f8a0 .cell .code execution_count="92" execution="{\"iopub.execute_input\":\"2023-09-21T18:21:00.286255Z\",\"iopub.status.busy\":\"2023-09-21T18:21:00.285869Z\",\"iopub.status.idle\":\"2023-09-21T18:21:00.480910Z\",\"shell.execute_reply\":\"2023-09-21T18:21:00.480726Z\",\"shell.execute_reply.started\":\"2023-09-21T18:21:00.286225Z\"}"}
@@ -1711,10 +1538,6 @@ _ = ax.legend(
 )
 _ = ax.set_title('Charge Distribution', loc='center')
 ```
-
-::: {.cell-output .cell-output-display}
-![](assets/diffusion/4b3eef08cf385e5b80c7fc02de9bb1764f32f9f8.svg)
-:::
 :::
 
 ::: {#667c0f58-fbcf-4268-9193-4d475fbbe01b .cell .code}
@@ -1872,11 +1695,6 @@ for i, t in enumerate(tqdm(timesteps)):
 ```
 :::
 
-::: {#d7d4b80b-17e1-4e3a-b642-ba2bc1f83e9c .cell .code}
-``` python
-```
-:::
-
 ::: {#014d60bf-7f4b-48f6-a0e0-20b73392446d .cell .markdown jp-MarkdownHeadingCollapsed="true"}
 ## Alternate
 :::
@@ -1887,47 +1705,10 @@ diffusion_ = DiffusionAlt(img_size=64, device='cpu')
 ```
 :::
 
-::: {#a3916da7-d377-460c-8334-61ac3eb806f9 .cell .code}
-``` python
-unet
-```
-:::
-
 ::: {#88d31f53-1808-4a91-b26d-61b6328b824f .cell .code}
 ``` python
 image = torch.rand(1, 2, 64, 64)
 t = diffusion_.sample_timesteps(image.shape[0]).to('cpu')
 unet(image, t)
-```
-:::
-
-::: {#eb1d6b2b-dc4b-4325-882f-f10f44a40faf .cell .code}
-``` python
-diffusion_.sample(
-```
-:::
-
-::: {#62370eb1-36eb-4d46-ae21-62f5c740b809 .cell .code}
-``` python
-```
-:::
-
-::: {#1d2e9f49-59d0-4a5b-8bdd-74b1af09f7e5 .cell .code}
-``` python
-```
-:::
-
-::: {#8f45bcd5-8b41-4c45-8bd7-6c4a1c6253fe .cell .code}
-``` python
-```
-:::
-
-::: {#c9596b30-6030-4034-8ad0-2a254289153d .cell .code}
-``` python
-```
-:::
-
-::: {#831cbe57-69ea-43af-aa23-f4e880ec4659 .cell .code}
-``` python
 ```
 :::

@@ -450,13 +450,29 @@ section.has-light-background h6 {
 }
 
 :root {
+  --red-text: $red-text;
+  --orange-text: $myorange;
+  --yellow-text: $yellow-text;
+  --green-text: $green-text;
+  --blue-text: $myblue;
+  --purple-text: $mypurple;
+  --pink-text: $mypink;
+  --hypothesis-other-content-color: $yellow-text;
+  --hypothesis-other-content-secondColor: $green-text;
+  --hypothesis-other-content-thirdColor: $pink-text;
+  --hypothesis-user-annotations-color: $blue-text;
+  --hypothesis-user-annotations-secondColor: $yellow-text;
+  --hypothesis-user-annotations-thirdColor: $pink-text;
+  --hypothesis-user-highlights-color: $pink-text;
+  --hypothesis-user-highlights-secondColor: $mypurple;
+  --hypothesis-user-highlights-thirdColor: $mypink;
   --quarto-font-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", " Courier New", monospace;
   --bs-font-monospace: 'IBM Plex Mono', monospace;
-  --quarto-border-color: var($quarto-border-color);
-  --shadow-color: var($shadow-color);
-  --bg-transparent: var($bg-transparent);
-  --bs-table-striped-color: ($bs-table-striped-color);
-  --brighter-text: ($brighter-text);
+  --quarto-border-color: $quarto-border-color;
+  --shadow-color: $shadow-color;
+  --bg-transparent: $bg-transparent;
+  --bs-table-striped-color: $bs-table-striped-color;
+  --brighter-text: $brighter-text;
   --bright-text: $bright-text;
   --alt-text: $alt-text;
   --dim-text: $dim-text;
@@ -2533,10 +2549,6 @@ figure>figcaption.quarto-float-caption-bottom {
   object-fit: scale-down !important;
 }
 
-.img-fluid {
-  object-fit: scale-down;
-}
-
 .navbar #quarto-search.type-overlay .aa-Autocomplete {
   width: 0px;
 }
@@ -2911,9 +2923,24 @@ pre.cell-output {
 //   // box-shadow: $code-block-hover-box-shadow;
 // }
 
+
+.img-fluid {
+  object-fit: scale-down;
+  border-radius: 0.25rem;
+}
+
+img {
+  border: 1px solid rgba(0, 0, 0, 0.0);
+  border-radius: 0.25rem;
+}
+
+img:hover,
+.img-fluid:hover,
 .reveal img:hover {
+  border-radius: 0.25rem;
   // border: 1px solid $code-fg;
   box-shadow: $code-block-hover-box-shadow;
+  border: 1px solid $code-fg;
 }
 
 // .reveal callout:hover {
@@ -3187,59 +3214,30 @@ td code:not(.sourceCode) {
   // grid-column-gap: 1em;
 }
 
-//
-// .highlighted {
-//   background-position: top left;
-//   background-repeat: no-repeat;
-//   background-size: 100% auto;
-//   transition: background-size .5s;
-// }
-//
-// .highlighted .yellow {
-//   background-image: linear-gradient(to top, yellow 60%, transparent 0);
-// }
-//
-// .highlighted .pink {
-//   background-image: linear-gradient(to top, pink 60%, transparent 0);
-// }
-//
-// .highlighted .animating {
-//   background-size: 0 auto;
-// }
 
-// .hl {
-//   background: oklch(from $my calc(l * 1.15) c h/0.1);
-// }
+.hypothesis-highlights-always-on .hypothesis-highlight {
+  color: $highlight-text-color !important;
+  cursor: pointer;
+}
 
-// .hl {
-//   &.theme-light {
-//     background: oklch(from $highlight-bg-light calc(l * 1.15) c h / 0.1);
-//     color: $highlight-bg-light;
-//   }
-//
-//   &.theme-dark {
-//     background: oklch(from $highlight-bg-dark calc(l * 1.15) c h / 0.1);
-//     color: $highlight-bg-dark;
-//   }
-// }
+.hypothesis-highlights-always-on .hypothesis-highlight {
+  font-weight: 500;
+  background-color: $hypothesis-highlight !important;
+  cursor: pointer;
+}
 
-//
-// .hlight {
-//   position: relative;
-//   // background: oklch(from $highlight-bg calc(l * 1.15) c h / 0.1);
-//   // color: $highlight-bg;
-// }
-//
-// .hlight:before {
-//   // background: oklch(from $highlight-bg calc(l * 1.15) c h / 0.1);
-//   background: oklch(from $highlight-bg calc(l * 1.15) c h / 0.1);
-//   content: "";
-//   position: absolute;
-//   width: calc(100% + 4px);
-//   height: 60%;
-//   left: -2px;
-//   bottom: 0;
-//   z-index: -1;
-//   transform: rotate(-2deg);
-// }
-//
+.hypothesis-highlights-always-on .hypothesis-highlight {
+  cursor: pointer;
+  // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
+  background-color: $hypothesis-highlight !important;
+}
+
+.hypothesis-highlights-always-on {
+  // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
+  background-color: $hypothesis-highlight !important;
+}
+
+.hypothesis-highlight:before {
+  // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
+  background-color: $hypothesis-highlight !important;
+}

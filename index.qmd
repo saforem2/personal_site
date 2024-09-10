@@ -5,6 +5,8 @@ site-url: "https://samforeman.me"
 # title: "Sam Foreman"
 toc: false
 sidebar: false
+filters:
+  - pyodide
 format:
   html:
     page-layout: article
@@ -160,6 +162,25 @@ print(' '.join([
     f"[#00CCFF]{time}[/]"
 ]))
 ```
+
+<!--
+
+```{pyodide-python}
+#| output: asis
+import datetime
+from rich import print
+now = datetime.datetime.now()
+day = now.strftime("%Y-%m-%d")
+time = now.strftime("%H:%M:%S")
+print(' '.join([
+    "[#838383]Last Updated[/]:",
+    f"[#E599F7]{day}[/]",
+    "[#838383]@[/]",
+    f"[#00CCFF]{time}[/]"
+]))
+```
+
+-->
 
 :::
 
