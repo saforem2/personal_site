@@ -488,8 +488,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 ## 🚀 Accelerating Dataset Processing at Scale for Training
 
-<div class="flex-container"
-style="font-size: 70%; flex-direction: column;">
+<div class="flex-container" style="flex-direction: column;">
 
 <div class="col1">
 
