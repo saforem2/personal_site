@@ -1,15 +1,20 @@
 # 🍋 <code>ezpz</code> @ ALCF
 [Sam Foreman](https://samforeman.me)
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-08-12
+2024-09-11
 
 - [Complete Example](#complete-example)
+  - [Gist](#gist)
   - [📦 Clone Repo(s)](#-clone-repos)
   - [🛜 Setup Job](#-setup-job)
   - [🐍 Setup Python](#-setup-python)
   - [📝 Test Setup](#-test-setup)
 
 ## Complete Example
+
+### Gist
+
+<script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script>
 
 ### 📦 Clone Repo(s)
 

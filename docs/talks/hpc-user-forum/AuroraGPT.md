@@ -5,8 +5,6 @@
 
 ## 🎯 AuroraGPT Goals
 
-<!-- ::: {.flex-container style="flex-direction: column;"} -->
-
 <div class="flex-container"
 style="flex-direction: column; justify-content: space-around;">
 
@@ -488,10 +486,6 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 ## 🚀 Accelerating Dataset Processing at Scale for Training
 
-<div class="flex-container" style="flex-direction: column;">
-
-<div class="col1">
-
 - To train a fixed model on trillions of tokens requires:
   - Aggregating data from multiple different *corpora* (e.g. Reddit,
     StackExchange, GitHub, etc.)
@@ -505,12 +499,20 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance
 
-</div>
+## 🚀 Accelerating Dataset Processing at Scale for Training
 
-<div class="flex-container center"
-style="text-align:center; font-size: 75%; width: 88%; margin-left: auto; margin-right: auto;">
+- [x] Completely re-wrote an asynchronous, distributed implementation
+  that *significantly* improves performance
+
+<div class="columns">
+
+<div class="column">
 
 ![Time spent building `BlendableDataset`](./assets/blendable.svg)
+
+</div>
+
+<div class="column">
 
 ![Time spent building `GPTDataset`](./assets/gpt.svg)
 
