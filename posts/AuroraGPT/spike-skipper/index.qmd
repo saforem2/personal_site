@@ -1,19 +1,40 @@
-# 🏔️ Spike Skipper
-[Sam Foreman](https://samforeman.me)
-[<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-09-17
+---
+title: "🏔️ Spike Skipper"
+toc: true
+date: 2024-09-17
+date-modified: last-modified
+lightbox: auto
+tbl-cap-location: bottom
+citation:
+   author: Sam Foreman
+   type: webpage
+   title: "Spike Skipper"
+   url: https://samforeman.me/posts/AuroraGPT/spike-skipper
+open-graph:
+  title: "Spike Skipper"
+  # description: "Details of how I create my slides, with Quarto + Reveal.js"
+  image: "./assets/spike-skipper.png"
+twitter-card:
+  site: "saforem2"
+  creator: "saforem2"
+  title: "How to Make Dope Slides"
+  image: "./assets/spike-skipper.png"
+  # description: "Details of how I create my slides, with Quarto + Reveal.js"
+format:
+  html: default
+  gfm:
+    output_file: "spike-skipper.md"
+# twitter-card:                      
+#     image: "./assets/thumbnail.png"
+#     creator: "@saforem2"           
+#     site: "@saforem2"              
+# open-graph:                        
+#     image: "./assets/thumbnail.png"
+---
 
-- [📝 Example](#-example)
-- [🧪 Implementation](#-implementation)
-- [✅ Sanity Check](#-sanity-check)
-  - [🔍 Details](#-details)
-
-> [!CAUTION]
->
-> ### Details
->
-> We describe below our implementation for skipping individual steps
-> during training.
+::: {.callout-caution title="Details" style="width:100%"}
+We describe below our implementation for skipping individual steps during training.
+:::
 
 ## 📝 Example
 
@@ -21,78 +42,70 @@ Suppose we observe a large spike in our loss curve, as shown below:
 
 ![spike-skipper](./assets/spike-skipper.png)
 
-Seemingly, this spike is being caused by a batch of “bad data”. In order
-to prevent this “bad data” sample from corrupting our training, we would
-like to “skip” that particular training step.
+Seemingly, this spike is being caused by a batch of "bad data".
+In order to prevent this "bad data" sample from corrupting our
+training, we would like to "skip" that particular training step.  
 
 This can be accomplished by passing the keyword argument
 `--train-range-to-skip` and specifying the endpoints of the ranges to be
 skipped.
 
-e.g., if you would like to skip all steps from `[10, 20]` and from
-`[25, 30]`, we would specify:
+e.g., if you would like to skip all steps from `[10, 20]` and from `[25, 30]`,
+we would specify:
 
-``` bash
+```bash
 PBS_O_WORKDIR=$(pwd) bash train_aGPT_7B.sh --train-range-to-skip 10 20 25 30
 ```
 
 ## 🧪 Implementation
 
-We discuss below the details of the implementation, and provide some
-simple results to confirm things are behaving how we expect.
+We discuss below the details of the implementation, and provide some simple
+results to confirm things are behaving how we expect.
 
-1.  Check if `args.train_range_to_skip is not None`
-    \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1032)\]
+1. Check if `args.train_range_to_skip is not None`
+   \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1032)\]
 
-    - Assert `len(args.train_range_to_skip) % 2 == 0`
+    - Assert
+      `len(args.train_range_to_skip) % 2 == 0`
       \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1033-L1037)\]
 
-      <div class="aside">
+      ::: aside
+      Must be even since we're specifying the _endpoint**s**_ of intervals to skip
+      :::
 
-      Must be even since we’re specifying the *endpoint**s*** of
-      intervals to skip
+    - Zip these up into pairs \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1038-L1043)\]:
 
-      </div>
-
-    - Zip these up into pairs
-      \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1038-L1043)\]:
-
-      ``` python
+      ```python
       ranges_to_skip = list(zip(args.train_range_to_skip[::2], args.train_range_to_skip[1::2]))
       ```
 
-2.  If current iteration is in any of these pairs
-    \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1066-L1085)\]
+2. If current iteration is in any of these pairs \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1066-L1085)\]
 
-    - For each `micro_step` in `range(gradient_accumulation_steps)`,
-      explicitly:
+    - For each `micro_step` in `range(gradient_accumulation_steps)`, explicitly:
+        - draw a new batch of data
+          \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1074-L1076)\]
+          from our `train_data_iterator` 
+        - immediately discard it (instead of propagating it through the network)
 
-      - draw a new batch of data
-        \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1074-L1076)\]
-        from our `train_data_iterator`
-      - immediately discard it (instead of propagating it through the
-        network)
+    - Increment \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1087-L1094)\]:
 
-    - Increment
-      \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1087-L1094)\]:
-
-      - [`DeepSpeedEngine.skipped_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1090)
-      - [`DeepSpeedEngine.global_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1091)
-      - [`DeepSpeedEngine.micro_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1092)
-      - [`DeepSpeedEngine.global_samples`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1093)
-      - [`lr_scheduler`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1094)
+       - [`DeepSpeedEngine.skipped_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1090)
+       - [`DeepSpeedEngine.global_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1091)
+       - [`DeepSpeedEngine.micro_steps`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1092)
+       - [`DeepSpeedEngine.global_samples`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1093)
+       - [`lr_scheduler`](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1094)
 
 ## ✅ Sanity Check
 
-In order to confirm things are behaving as expected, we can explicitly
-look at the tokens drawn for each step, and ensure that they are the
-same regardless of whether or not that iteration was skipped.
+In order to confirm things are behaving as expected, we can explicitly look at
+the tokens drawn for each step, and ensure that they are the same regardless of
+whether or not that iteration was skipped.
 
 - In particular, we see that:
 
   - test 1:
 
-    ``` bash
+    ```bash
     [2024-09-16 23:09:09.059118][INFO][training:1083] - iteration=2 [0/8]: (torch.Size([4, 4097]))
     _tokens[:10]=tensor([[ 1858,  3851, 29889,  ...,   500,    13,    13],
       [  349,  6156,  1650,  ...,  5806, 28557,  3519],
@@ -107,7 +120,7 @@ same regardless of whether or not that iteration was skipped.
 
   - test 2:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:59:27.752277][INFO][pretrain_gpt_alcf:198] - args.iteration=2:
     data['text'][:10]=tensor([[ 1858,  3851, 29889,  ...,   500,    13,    13],
       [  349,  6156,  1650,  ...,  5806, 28557,  3519],
@@ -119,6 +132,7 @@ same regardless of whether or not that iteration was skipped.
       [  367,   766,  4752,  ...,     1, 29871, 30143],
       [29899,   855,  1503,  ...,  3786, 29892,  5100],
       [  465,  1974,   289,  ..., 21588,   533,   304]])
+
     ```
 
   as expected.
@@ -127,16 +141,11 @@ same regardless of whether or not that iteration was skipped.
 
 - First 4 steps:
 
-  <details closed>
-  <summary>
-
-  <code>tokens</code>:
-
-  </summary>
+  <details closed><summary><code>tokens</code>:</summary>
 
   - Iteration 0:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:58:50.168667][INFO][pretrain_gpt_alcf:198] - args.iteration=0: data['text'][:10]=tensor([[  304,  7344,  5146,  ...,  9776, 29914, 26419],
             [29889,    13,  4706,  ...,  9280, 30004,    13],
             [29943, 20774, 29908,  ...,   304, 27391,   322],
@@ -173,7 +182,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 1:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:59:19.287338][INFO][training_log:661] -  iteration=       1/  635782 | consumed_samples=         768 | consumed_tokens=     3145728 | elapsed_time_per_iteration_ms=29570.0 | learning_rate=9.4372e-09 | global_batch_size=768 | lm loss=11.167250 | loss_scale=1.0 | grad_norm=6.363 | actual_seqlen= 4096 | number_of_skipped_iterations=  0 | number_of_nan_iterations=  0 | samples_per_second=25.972 | tokens_per_gpu_per_second_tgs=4432.597 | [LM]TFLOPs=20.30 | [DS]TFLOPs=26.18 |
     [2024-09-16 22:59:19.289582][INFO][utils:207] - [Rank 0] (after 1 iterations) memory (MB) | allocated: 1894.57666015625 | max allocated: 9752.35498046875 | reserved: 11342.0 | max reserved: 11342.0
     (min, max) time across ranks (ms):
@@ -213,11 +222,12 @@ same regardless of whether or not that iteration was skipped.
           [12058,  5446, 29892,  ..., 29889,  8246,  3310],
           [ 7483,   310,   278,  ...,   402,  9851,  4423],
           [ 8041,   813,   322,  ...,  3303,  3900,   393]])
+
     ```
 
   - Iteration 2:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:59:27.744603][INFO][training_log:661] -  iteration=       2/  635782 | consumed_samples=        1536 | consumed_tokens=     6291456 | elapsed_time_per_iteration_ms=8457.2 | learning_rate=1.88744e-08 | global_batch_size=768 | lm loss=11.164009 | loss_scale=1.0 | grad_norm=6.271 | actual_seqlen= 4096 | number_of_skipped_iterations=  0 | number_of_nan_iterations=  0 | samples_per_second=90.810 | tokens_per_gpu_per_second_tgs=15498.234 | [LM]TFLOPs=70.98| [DS]TFLOPs=91.53 |
     (min, max) time across ranks (ms):
       forward-backward ...............................: (8384.83, 8385.57)
@@ -265,7 +275,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 3:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:59:34.881265][INFO][training_log:661] -  iteration=       3/  635782 | consumed_samples=        2304 | consumed_tokens=     9437184 | elapsed_time_per_iteration_ms=7136.5 | learning_rate=2.83116e-08 | global_batch_size=768 | lm loss=11.164038 | loss_scale=1.0 | grad_norm=6.279 | actual_seqlen= 4096 | number_of_skipped_iterations=  0 | number_of_nan_iterations=  0 | samples_per_second=107.615 | tokens_per_gpu_per_second_tgs=18366.372 | [LM]TFLOPs=84.12 | [DS]TFLOPs=108.46 |
     (min, max) time across ranks (ms):
       forward-backward ...............................: (7078.48, 7079.28)
@@ -308,7 +318,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 4:
 
-    ``` bash
+    ```bash
     [2024-09-16 22:59:42.028460][INFO][training_log:661] -  iteration=       4/  635782 | consumed_samples=        3072 | consumed_tokens=    12582912 | elapsed_time_per_iteration_ms=7147.0 | learning_rate=3.77488e-08 | global_batch_size=768 | lm loss=11.171233 | loss_scale=1.0 | grad_norm=6.272 | actual_seqlen= 4096 | number_of_skipped_iterations=  0 | number_of_nan_iterations=  0 | samples_per_second=107.458 | tokens_per_gpu_per_second_tgs=18339.524 | [LM]TFLOPs=84.00 | [DS]TFLOPs=108.31 |
     (min, max) time across ranks (ms):
       forward-backward ...............................: (7091.77, 7092.56)
@@ -351,16 +361,11 @@ same regardless of whether or not that iteration was skipped.
 
 - Skipping steps `[2, 3]`:
 
-  <details closed>
-  <summary>
-
-  <code>tokens</code>:
-
-  </summary>
+  <details closed><summary><code>tokens</code>:</summary>
 
   - Iteration 0:
 
-    ``` bash
+    ```bash
     [2024-09-16 23:08:47.749839][INFO][pretrain_gpt_alcf:198] - args.iteration=0: data['text'][:10]=tensor([[  304,  7344,  5146,  ...,  9776, 29914, 26419],
       [29889,    13,  4706,  ...,  9280, 30004,    13],
       [29943, 20774, 29908,  ...,   304, 27391,   322],
@@ -397,7 +402,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 1:
 
-    ``` bash
+    ```bash
     [2024-09-16 23:09:08.943867][INFO][training_log:661] -  iteration=       1/  635782 | consumed_samples=         768 | consumed_tokens=     3145728 | elapsed_time_per_iteration_ms=21224.4 | learning_rate=9.4372e-09 | global_batch_size=768 | lm loss=11.167250 | loss_scale=1.0 | grad_norm=6.363 | actual_seqlen= 4096 | number_of_skipped_iterations=  0 | number_of_nan_iterations=  0 | samples_per_second=36.185 | tokens_per_gpu_per_second_tgs=6175.523 | [LM]TFLOPs=28.29 | [DS]TFLOPs=36.47 |
     [2024-09-16 23:09:08.953432][INFO][training:1083] - iteration=1 [0/8]: (torch.Size([4, 4097]))
     _tokens[:10]=tensor([[ 1472, 29892,   408,  ..., 29892,  1584,   363],
@@ -443,7 +448,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 2:
 
-    ``` bash
+    ```bash
     [2024-09-16 23:09:09.050766][INFO][training_log:661] -  iteration=       2/  635782 | consumed_samples=        1536 | consumed_tokens=     6291456 | elapsed_time_per_iteration_ms=106.8 | learning_rate=1.88744e-08 | global_batch_size=  768 | loss_scale=1.0 | grad_norm=6.363 | actual_seqlen= 4096 | number_of_skipped_iterations=  1 | number_of_nan_iterations=  0 | samples_per_second=7190.781 | tokens_per_gpu_per_second_tgs=1227226.651 | [LM]TFLOPs=5620.92 | [DS]TFLOPs=7247.49 |
     [2024-09-16 23:09:09.055864][INFO][training:1069] - Caught 3 in 'ranges_to_skip', skipping!
     [2024-09-16 23:09:09.057929][INFO][training:1082] - torch.Size([4, 4097]), len(train_data_iterator)=490723200
@@ -491,7 +496,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 3:
 
-    ``` bash
+    ```bash
     [2024-09-16 23:09:09.135651][INFO][training_log:661] - iteration= 3/ 635782 | consumed_samples= 2304 | consumed_tokens= 9437184 | elapsed_time_per_iteration_ms=84.7 | learning_rate=2.83116e-08 | global_batch_size= 768 | loss_scale=1.0 | grad_norm=6.363 | actual_seqlen= 4096 | number_of_skipped_iterations= 1 | number_of_nan_iterations= 0 | samples_per_second=9070.783 | tokens_per_gpu_per_second_tgs=1548080.271 | [LM]TFLOPs=7090.49 | [DS]TFLOPs=9142.31 |
     [2024-09-16 23:09:09.143511][INFO][pretrain_gpt_alcf:198] - args.iteration=3: data['text'][:10]=tensor([[496,   313, 29941,  ...,  1316,   408,  4857],
       [29899,  3204, 29889,  ...,  1074,   330,  2547],
@@ -528,3 +533,4 @@ same regardless of whether or not that iteration was skipped.
     ```
 
   </details>
+
