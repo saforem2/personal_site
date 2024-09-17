@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d7fd31d925c6308c20a103df65665387.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-42ad23331396f177b136db314ed66ed4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-ba87fba2cbdd13aa31a0e58323426074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
@@ -190,6 +190,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../../../css/hljs-github-dark.css">
 <link rel="stylesheet" href="../../../css/fonts.css">
 <link rel="stylesheet" href="../../../css/default.css">
 <link rel="stylesheet" href="../../../css/custom.css">
@@ -697,6 +698,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../posts/AuroraGPT/spike-skipper/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏔️ Spike Skipper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../posts/AuroraGPT/startup-times/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">⏰ Starting Up Distributed Training on Aurora</span></a>
   </div>
@@ -861,13 +868,6 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
-<link rel="stylesheet" href="../../../plugin/highlight/monokai.css">
-<script src="../../../plugin/highlight/highlight.js"></script>
-<script>
-  Reveal.initialize({
-    plugins: [RevealHighlight],
-  });
-</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -920,7 +920,7 @@ window.Quarto = {
 <p>Simple tests to confirm the loss is exactly reproducible across independent runs (when launched with the same seed).</p>
 <ul>
 <li><p>In particular, we set:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>output <span class="op">=</span> flash_attn_func<span class="op">(</span>q, k, v, <span class="va">None</span>, <span class="va">self</span>.causal, deterministic<span class="op">=</span><span class="va">True</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>output <span class="op">=</span> flash_attn_func(q, k, v, <span class="va">None</span>, <span class="va">self</span>.causal, deterministic<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>in all the <code>flash_attn_func(...)</code> calls from <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/main/megatron/model/transformer.py"><code>megatron/model/transformer.py</code></a></p></li>
 <li><p>All experiments ran on Polaris @ ALCF, using:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">machine</span><span class="kw">:</span><span class="at"> Polaris</span></span>
@@ -1600,7 +1600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
