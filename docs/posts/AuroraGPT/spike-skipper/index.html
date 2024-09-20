@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.10">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d7fd31d925c6308c20a103df65665387.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-b573de2cf230c4e70ccf862cb6b77451.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d7b189879cc63db78e12a77c092140ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
@@ -93,7 +93,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "overlay",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -194,6 +194,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../../css/fonts.css">
 <link rel="stylesheet" href="../../../css/default.css">
 <link rel="stylesheet" href="../../../css/custom.css">
+<link rel="stylesheet" href="../../../css/min-bs-dark.css">
 <link rel="stylesheet" href="../../../css/_highlighter.css">
 <meta property="og:title" content="Spike Skipper">
 <meta property="og:description" content="My ramblings about science and computers">
@@ -962,7 +963,8 @@ Details
 <p>Seemingly, this spike is being caused by a batch of “bad data”. In order to prevent this “bad data” sample from corrupting our training, we would like to “skip” that particular training step.</p>
 <p>This can be accomplished by passing the keyword argument <code>--train-range-to-skip</code> and specifying the endpoints of the ranges to be skipped.</p>
 <p>e.g., if you would like to skip all steps from <code>[10, 20]</code> and from <code>[25, 30]</code>, we would specify:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="fu">bash</span> train_aGPT_7B.sh <span class="at">--train-range-to-skip</span> 10 20 25 30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="fu">bash</span> train_aGPT_7B.sh <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="at">--train-range-to-skip</span> 10 20 25 30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="implementation" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="implementation">🧪 Implementation</h2>
@@ -973,7 +975,12 @@ Details
 <li><p>Assert <code>len(args.train_range_to_skip) % 2 == 0</code> [<a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1033-L1037">here</a>]</p>
 </li>
 <li><p>Zip these up into pairs [<a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1038-L1043">here</a>]:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>ranges_to_skip <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(args.train_range_to_skip[::<span class="dv">2</span>], args.train_range_to_skip[<span class="dv">1</span>::<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>ranges_to_skip <span class="op">=</span> <span class="bu">list</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="bu">zip</span>(</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        args.train_range_to_skip[::<span class="dv">2</span>],</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        args.train_range_to_skip[<span class="dv">1</span>::<span class="dv">2</span>]</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    )</span>
+<span id="cb2-6"><a href="#cb2-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><p>If current iteration is in any of these pairs [<a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1066-L1085">here</a>]</p>
 <ul>
@@ -1002,28 +1009,36 @@ Details
 <li><p>In particular, we see that:</p>
 <ul>
 <li><p>test 1:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">[2024-09-16</span> 23:09:09.059118]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">training:1083</span><span class="pp">]</span> <span class="at">-</span> iteration=2 <span class="pp">[</span><span class="ss">0/8</span><span class="pp">]</span>: <span class="er">(</span><span class="ex">torch.Size</span><span class="er">(</span><span class="ex">[4,</span> 4097]<span class="kw">))</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="va">_tokens</span><span class="op">[</span>:10<span class="op">]=</span>tensor<span class="kw">([[</span> 1858,  3851, 29889,  <span class="er">...,</span>   <span class="ex">500,</span>    13,    13],</span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="bu">[</span>  349,  6156,  1650,  <span class="er">...,</span>  <span class="ex">5806,</span> 28557,  3519],</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="ex">[16554,</span>   304,  1653,  ...,   322,  6934, 14722],</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="bu">[</span> 4955,   310, 10465,  <span class="er">...,</span>  <span class="ex">1438,</span>  3841, 29892]]<span class="kw">)</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="ex">[2024-09-16</span> 23:09:09.061999]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">training:1083</span><span class="pp">]</span> <span class="at">-</span> iteration=2 <span class="pp">[</span><span class="ss">1/8</span><span class="pp">]</span>: <span class="er">(</span><span class="ex">torch.Size</span><span class="er">(</span><span class="ex">[4,</span> 4097]<span class="kw">))</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="va">_tokens</span><span class="op">[</span>:10<span class="op">]=</span>tensor<span class="kw">([[</span>  363,  1302, 16453,  <span class="er">...,</span>  <span class="ex">7967,</span> 29891,   484],</span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="bu">[</span>  367,   766,  4752,  <span class="er">...,</span>     <span class="ex">1,</span> 29871, 30143],</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="ex">[29899,</span>   855,  1503,  ...,  3786, 29892,  5100],</span>
-<span id="cb3-10"><a href="#cb3-10"></a>  <span class="bu">[</span>  465,  1974,   289,  <span class="er">...,</span> <span class="ex">21588,</span>   533,   304]]<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># [2024-09-16 23:09:09.059118][INFO][training:1083] - iteration=2 [0/8]: (torch.Size([4, 4097]))</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>_tokens[:<span class="dv">10</span>]<span class="op">=</span>tensor(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    [[ <span class="dv">1858</span>,  <span class="dv">3851</span>, <span class="dv">29889</span>,  ...,   <span class="dv">500</span>,    <span class="dv">13</span>,    <span class="dv">13</span>],</span>
+<span id="cb3-4"><a href="#cb3-4"></a>     [  <span class="dv">349</span>,  <span class="dv">6156</span>,  <span class="dv">1650</span>,  ...,  <span class="dv">5806</span>, <span class="dv">28557</span>,  <span class="dv">3519</span>],</span>
+<span id="cb3-5"><a href="#cb3-5"></a>     [<span class="dv">16554</span>,   <span class="dv">304</span>,  <span class="dv">1653</span>,  ...,   <span class="dv">322</span>,  <span class="dv">6934</span>, <span class="dv">14722</span>],</span>
+<span id="cb3-6"><a href="#cb3-6"></a>     [ <span class="dv">4955</span>,   <span class="dv">310</span>, <span class="dv">10465</span>,  ...,  <span class="dv">1438</span>,  <span class="dv">3841</span>, <span class="dv">29892</span>]]</span>
+<span id="cb3-7"><a href="#cb3-7"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># [2024-09-16 23:09:09.061999][INFO][training:1083] - iteration=2 [1/8]: (torch.Size([4, 4097]))</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>_tokens[:<span class="dv">10</span>]<span class="op">=</span>tensor(</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    [[  <span class="dv">363</span>,  <span class="dv">1302</span>, <span class="dv">16453</span>,  ...,  <span class="dv">7967</span>, <span class="dv">29891</span>,   <span class="dv">484</span>],</span>
+<span id="cb3-11"><a href="#cb3-11"></a>     [  <span class="dv">367</span>,   <span class="dv">766</span>,  <span class="dv">4752</span>,  ...,     <span class="dv">1</span>, <span class="dv">29871</span>, <span class="dv">30143</span>],</span>
+<span id="cb3-12"><a href="#cb3-12"></a>     [<span class="dv">29899</span>,   <span class="dv">855</span>,  <span class="dv">1503</span>,  ...,  <span class="dv">3786</span>, <span class="dv">29892</span>,  <span class="dv">5100</span>],</span>
+<span id="cb3-13"><a href="#cb3-13"></a>     [  <span class="dv">465</span>,  <span class="dv">1974</span>,   <span class="dv">289</span>,  ..., <span class="dv">21588</span>,   <span class="dv">533</span>,   <span class="dv">304</span>]]</span>
+<span id="cb3-14"><a href="#cb3-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>test 2:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">[2024-09-16</span> 22:59:27.752277]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">pretrain_gpt_alcf:198</span><span class="pp">]</span> <span class="at">-</span> args.iteration=2:</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="va">data</span><span class="op">[</span><span class="st">'text'</span><span class="op">][</span>:10<span class="op">]=</span>tensor<span class="kw">([[</span> 1858,  3851, 29889,  <span class="er">...,</span>   <span class="ex">500,</span>    13,    13],</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="bu">[</span>  349,  6156,  1650,  <span class="er">...,</span>  <span class="ex">5806,</span> 28557,  3519],</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="ex">[16554,</span>   304,  1653,  ...,   322,  6934, 14722],</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="bu">[</span> 4955,   310, 10465,  <span class="er">...,</span>  <span class="ex">1438,</span>  3841, 29892]]<span class="kw">)</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">[2024-09-16</span> 22:59:27,755] <span class="pp">[</span><span class="ss">INFO</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">profiler.py:81:start_profile</span><span class="pp">]</span> Flops profiler started</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="ex">[2024-09-16</span> 22:59:28.568805]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">pretrain_gpt_alcf:198</span><span class="pp">]</span> <span class="at">-</span> args.iteration=2:</span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="va">data</span><span class="op">[</span><span class="st">'text'</span><span class="op">][</span>:10<span class="op">]=</span>tensor<span class="kw">(</span><span class="ex">[[363,</span>  1302, 16453,  ...,  7967, 29891,   484],</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="bu">[</span>  367,   766,  4752,  <span class="er">...,</span>     <span class="ex">1,</span> 29871, 30143],</span>
-<span id="cb4-10"><a href="#cb4-10"></a>  <span class="ex">[29899,</span>   855,  1503,  ...,  3786, 29892,  5100],</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="bu">[</span>  465,  1974,   289,  <span class="er">...,</span> <span class="ex">21588,</span>   533,   304]]<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># [2024-09-16 22:59:27.752277][INFO][pretrain_gpt_alcf:198] - args.iteration=2:</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>data[<span class="st">'text'</span>][:<span class="dv">10</span>]<span class="op">=</span>tensor(</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    [[ <span class="dv">1858</span>,  <span class="dv">3851</span>, <span class="dv">29889</span>,  ...,   <span class="dv">500</span>,    <span class="dv">13</span>,    <span class="dv">13</span>],</span>
+<span id="cb4-4"><a href="#cb4-4"></a>     [  <span class="dv">349</span>,  <span class="dv">6156</span>,  <span class="dv">1650</span>,  ...,  <span class="dv">5806</span>, <span class="dv">28557</span>,  <span class="dv">3519</span>],</span>
+<span id="cb4-5"><a href="#cb4-5"></a>     [<span class="dv">16554</span>,   <span class="dv">304</span>,  <span class="dv">1653</span>,  ...,   <span class="dv">322</span>,  <span class="dv">6934</span>, <span class="dv">14722</span>],</span>
+<span id="cb4-6"><a href="#cb4-6"></a>     [ <span class="dv">4955</span>,   <span class="dv">310</span>, <span class="dv">10465</span>,  ...,  <span class="dv">1438</span>,  <span class="dv">3841</span>, <span class="dv">29892</span>]]</span>
+<span id="cb4-7"><a href="#cb4-7"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># [2024-09-16 22:59:27,755] [INFO] [profiler.py:81:start_profile] Flops profiler started</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># [2024-09-16 22:59:28.568805][INFO][pretrain_gpt_alcf:198] - args.iteration=2:</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>data[<span class="st">'text'</span>][:<span class="dv">10</span>]<span class="op">=</span>tensor(</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    [[<span class="dv">363</span>,  <span class="dv">1302</span>, <span class="dv">16453</span>,  ...,  <span class="dv">7967</span>, <span class="dv">29891</span>,   <span class="dv">484</span>],</span>
+<span id="cb4-12"><a href="#cb4-12"></a>     [  <span class="dv">367</span>,   <span class="dv">766</span>,  <span class="dv">4752</span>,  ...,     <span class="dv">1</span>, <span class="dv">29871</span>, <span class="dv">30143</span>],</span>
+<span id="cb4-13"><a href="#cb4-13"></a>     [<span class="dv">29899</span>,   <span class="dv">855</span>,  <span class="dv">1503</span>,  ...,  <span class="dv">3786</span>, <span class="dv">29892</span>,  <span class="dv">5100</span>],</span>
+<span id="cb4-14"><a href="#cb4-14"></a>     [  <span class="dv">465</span>,  <span class="dv">1974</span>,   <span class="dv">289</span>,  ..., <span class="dv">21588</span>,   <span class="dv">533</span>,   <span class="dv">304</span>]]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <p>as expected.</p></li>
 </ul>
@@ -1037,7 +1052,7 @@ Details
 </summary>
 <ul>
 <li><p>Iteration 0:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">[2024-09-16</span> 22:58:50.168667]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">pretrain_gpt_alcf:198</span><span class="pp">]</span> <span class="at">-</span> args.iteration=0: data<span class="pp">[</span><span class="st">'text'</span><span class="pp">][</span><span class="ss">:10</span><span class="pp">]</span>=tensor<span class="er">(</span><span class="kw">[[</span>  304,  7344,  5146,  <span class="er">...,</span>  <span class="ex">9776,</span> 29914, 26419],</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">[2024-09-16</span> 22:58:50.168667]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">pretrain_gpt_alcf:198</span><span class="pp">]</span> <span class="at">-</span> args.iteration=0: data<span class="pp">[</span><span class="st">'text'</span><span class="pp">][</span><span class="ss">:10</span><span class="pp">]</span>=tensor<span class="er">(</span><span class="kw">[[</span>  304,  7344,  5146,  <span class="er">...,</span>  <span class="ex">9776,</span> 29914, 26419],</span>
 <span id="cb5-2"><a href="#cb5-2"></a>        <span class="ex">[29889,</span>    13,  4706,  ...,  9280, 30004,    13],</span>
 <span id="cb5-3"><a href="#cb5-3"></a>        <span class="ex">[29943,</span> 20774, 29908,  ...,   304, 27391,   322],</span>
 <span id="cb5-4"><a href="#cb5-4"></a>        <span class="bu">[</span> 2645,   445, 29871,  <span class="er">...,</span> <span class="ex">16888,</span>  4656, 10070]]<span class="kw">)</span></span>
@@ -2049,7 +2064,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

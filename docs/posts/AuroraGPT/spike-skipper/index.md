@@ -33,7 +33,8 @@ e.g., if you would like to skip all steps from `[10, 20]` and from
 `[25, 30]`, we would specify:
 
 ``` bash
-PBS_O_WORKDIR=$(pwd) bash train_aGPT_7B.sh --train-range-to-skip 10 20 25 30
+PBS_O_WORKDIR=$(pwd) bash train_aGPT_7B.sh \
+    --train-range-to-skip 10 20 25 30
 ```
 
 ## 🧪 Implementation
@@ -58,7 +59,12 @@ simple results to confirm things are behaving how we expect.
       \[[here](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/295fcb3d57a40ec513a521aa8814d99a5c8827b8/megatron/training.py#L1038-L1043)\]:
 
       ``` python
-      ranges_to_skip = list(zip(args.train_range_to_skip[::2], args.train_range_to_skip[1::2]))
+      ranges_to_skip = list(
+          zip(
+              args.train_range_to_skip[::2],
+              args.train_range_to_skip[1::2]
+          )
+      )
       ```
 
 2.  If current iteration is in any of these pairs
@@ -92,33 +98,41 @@ same regardless of whether or not that iteration was skipped.
 
   - test 1:
 
-    ``` bash
-    [2024-09-16 23:09:09.059118][INFO][training:1083] - iteration=2 [0/8]: (torch.Size([4, 4097]))
-    _tokens[:10]=tensor([[ 1858,  3851, 29889,  ...,   500,    13,    13],
-      [  349,  6156,  1650,  ...,  5806, 28557,  3519],
-      [16554,   304,  1653,  ...,   322,  6934, 14722],
-      [ 4955,   310, 10465,  ...,  1438,  3841, 29892]])
-      [2024-09-16 23:09:09.061999][INFO][training:1083] - iteration=2 [1/8]: (torch.Size([4, 4097]))
-    _tokens[:10]=tensor([[  363,  1302, 16453,  ...,  7967, 29891,   484],
-      [  367,   766,  4752,  ...,     1, 29871, 30143],
-      [29899,   855,  1503,  ...,  3786, 29892,  5100],
-      [  465,  1974,   289,  ..., 21588,   533,   304]])
+    ``` python
+    # [2024-09-16 23:09:09.059118][INFO][training:1083] - iteration=2 [0/8]: (torch.Size([4, 4097]))
+    _tokens[:10]=tensor(
+        [[ 1858,  3851, 29889,  ...,   500,    13,    13],
+         [  349,  6156,  1650,  ...,  5806, 28557,  3519],
+         [16554,   304,  1653,  ...,   322,  6934, 14722],
+         [ 4955,   310, 10465,  ...,  1438,  3841, 29892]]
+    )
+    # [2024-09-16 23:09:09.061999][INFO][training:1083] - iteration=2 [1/8]: (torch.Size([4, 4097]))
+    _tokens[:10]=tensor(
+        [[  363,  1302, 16453,  ...,  7967, 29891,   484],
+         [  367,   766,  4752,  ...,     1, 29871, 30143],
+         [29899,   855,  1503,  ...,  3786, 29892,  5100],
+         [  465,  1974,   289,  ..., 21588,   533,   304]]
+    )
     ```
 
   - test 2:
 
-    ``` bash
-    [2024-09-16 22:59:27.752277][INFO][pretrain_gpt_alcf:198] - args.iteration=2:
-    data['text'][:10]=tensor([[ 1858,  3851, 29889,  ...,   500,    13,    13],
-      [  349,  6156,  1650,  ...,  5806, 28557,  3519],
-      [16554,   304,  1653,  ...,   322,  6934, 14722],
-      [ 4955,   310, 10465,  ...,  1438,  3841, 29892]])
-    [2024-09-16 22:59:27,755] [INFO] [profiler.py:81:start_profile] Flops profiler started
-    [2024-09-16 22:59:28.568805][INFO][pretrain_gpt_alcf:198] - args.iteration=2:
-    data['text'][:10]=tensor([[363,  1302, 16453,  ...,  7967, 29891,   484],
-      [  367,   766,  4752,  ...,     1, 29871, 30143],
-      [29899,   855,  1503,  ...,  3786, 29892,  5100],
-      [  465,  1974,   289,  ..., 21588,   533,   304]])
+    ``` python
+    # [2024-09-16 22:59:27.752277][INFO][pretrain_gpt_alcf:198] - args.iteration=2:
+    data['text'][:10]=tensor(
+        [[ 1858,  3851, 29889,  ...,   500,    13,    13],
+         [  349,  6156,  1650,  ...,  5806, 28557,  3519],
+         [16554,   304,  1653,  ...,   322,  6934, 14722],
+         [ 4955,   310, 10465,  ...,  1438,  3841, 29892]]
+    )
+    # [2024-09-16 22:59:27,755] [INFO] [profiler.py:81:start_profile] Flops profiler started
+    # [2024-09-16 22:59:28.568805][INFO][pretrain_gpt_alcf:198] - args.iteration=2:
+    data['text'][:10]=tensor(
+        [[363,  1302, 16453,  ...,  7967, 29891,   484],
+         [  367,   766,  4752,  ...,     1, 29871, 30143],
+         [29899,   855,  1503,  ...,  3786, 29892,  5100],
+         [  465,  1974,   289,  ..., 21588,   533,   304]]
+    )
     ```
 
   as expected.
@@ -136,7 +150,7 @@ same regardless of whether or not that iteration was skipped.
 
   - Iteration 0:
 
-    ``` bash
+    ``` sh
     [2024-09-16 22:58:50.168667][INFO][pretrain_gpt_alcf:198] - args.iteration=0: data['text'][:10]=tensor([[  304,  7344,  5146,  ...,  9776, 29914, 26419],
             [29889,    13,  4706,  ...,  9280, 30004,    13],
             [29943, 20774, 29908,  ...,   304, 27391,   322],

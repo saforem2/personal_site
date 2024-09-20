@@ -5,8 +5,6 @@
 <span class="profile-avatar"
 style="width: 100%; border: 0px solid var(--bg-border)!important;">![](./assets/avatar.webp)</span>
 
-<!-- [[👋 Hi, I'm Sam!]{.dim-text style="font-family:'IBM Plex Sans', sans-serif;"} [[]{.orcid-green style="background: none!important;"}](https://orcid.org/0000-0002-9981-0876)]{style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 500;"} -->
-
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 500;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>](https://orcid.org/0000-0002-9981-0876)</span>
@@ -37,13 +35,6 @@ style="font-size:1.5rem; padding-left: 0pt; padding-right: 0pt">[](https://linke
 
 ## 🧑🏻‍💻 About Me
 
-<!--
-[highlight]{.highlight}
-[highlight]{.hlight-pink}
-[highlight]{.hlight-yellow}
-[highlight]{.hlight-green}
-[highlight]{.hlight-blue}
--->
 <!-- <iframe src="https://lastfmstats.com/user/saforem2/charts" style="border: none;" width="50%" height="500"></iframe> -->
 
 <div class="flex-container"
@@ -76,8 +67,8 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 
 > [!TIP]
 >
-> ### <span style="color:#1CD760; margin:auto; padding: 1pt;"><img src="./assets/spotify-green.svg" class="ineline-icon"
-> style="height:1em;" /> Now Playing</span>
+> ### <span style="color:#1CD760; margin:auto; padding: 1pt;"><img src="./assets/spotify-green.svg" class="inline-icon"
+> style="height:1.125rem; vertical-align: text-bottom;" /> Now Playing</span>
 >
 > [![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true.png)](https://lastfm.com/user/saforem2)
 
@@ -916,10 +907,10 @@ Table 2: 🎓 Education
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:26:13</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">18</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:19:01</span>
 > </pre>
 > <!--
-> ```mlzgkbpojlpxnmyu
+> ```ohmtobisjtpucefs
 > #| output: asis
 > import datetime
 > from rich import print

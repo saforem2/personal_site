@@ -1,7 +1,7 @@
 # 🍋 <code>ezpz</code> @ ALCF
 [Sam Foreman](https://samforeman.me)
 [<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
-2024-09-11
+2024-08-23
 
 - [Complete Example](#complete-example)
   - [Gist](#gist)
@@ -12,9 +12,26 @@
 
 ## Complete Example
 
+<!-- ### Broken -->
+<!---->
+<!-- ::: {.gist user=saforem2 gist_id=2f2549894d9c65ed2edcfe6b1dbe6a70 } -->
+<!-- ::: -->
+<!---->
+<!---->
+<!-- ### Tweets -->
+<!---->
+<!-- ::: {.twitter user=pandoc_tips status_id=1576105972103516160 } -->
+<!-- ::: -->
+
 ### Gist
 
-<script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script>
+> [!TIP]
+>
+> ### <span class="dim-text" style="font-weight: normal;"> <code>saforem2/ezpz.md</code></span>
+>
+> <script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script>
+
+<!-- <script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script> -->
 
 ### 📦 Clone Repo(s)
 
