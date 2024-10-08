@@ -348,8 +348,9 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 >
 > <div class="reveal-full-page">
 >
-> <iframe loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/hpc-user-forum/slides" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+> <iframe class="slide-deck" loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/hpc-user-forum/slides" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio: 1.5;">
 > </iframe>
+> <!-- <iframe loading="lazy" allow="picture-in-picture" src="/docs/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe> -->
 >
 > </div>
 
@@ -881,7 +882,7 @@ Table 2: 🎓 Education
 
 > [!TIP]
 >
-> ### <span class="dim-text">🧾 Last Update</span>
+> ### <span class="dim-text">❤️‍🩹 Status</span>
 >
 > <span class="highlight">highlight yellow</span>
 >
@@ -907,10 +908,10 @@ Table 2: 🎓 Education
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">23</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:02:01</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">18:17:16</span>
 > </pre>
 > <!--
-> ```ydsluobccexvtgjm
+> ```zwmxzhgvjarinkva
 > #| output: asis
 > import datetime
 > from rich import print
