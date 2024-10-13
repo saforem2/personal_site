@@ -2,7 +2,15 @@
 date: ""
 author: ""
 site-url: "https://samforeman.me"
+appendix-site-as: false
+repo-actions: false
+# footer: false
+body-footer: |
+    <img src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%23838383&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false'>
+code-tools: false
+citation: false
 toc: false
+reference-location: block
 sidebar: false
 # filters:
   # - pyodide
@@ -12,7 +20,7 @@ format:
     css:
       - css/profile.css
     grid:
-      body-width: 800px
+      body-width: 850px
   gfm:
     output-file: "README.md"
 format-links: false
@@ -85,11 +93,48 @@ listing:
 
 :::
 
-## 🧑🏻‍💻 About Me {#sec-about}
+<br>
+
+::: {.panel-tabset style="justify-content: center;"}
+
+### 🧑🏻‍💻 About {#sec-about}
 
 {{< include about/_about.qmd >}}
 
-::: {.panel-tabset}
+::: {.callout-tip icon=false aria-title="Status" title='[❤️‍🩹 Status]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.0); opacity:100%;"}
+
+
+[yellow]{.highlight} [pink]{.highlight-pink}
+[green]{.highlight-green} [blue]{.highlight-blue}
+[circle]{.circle-sketch-highlight}
+
+
+<!--
+```{pyodide-python}
+-->
+
+```{python}
+#| output: asis
+import datetime
+from rich import print
+now = datetime.datetime.now()
+day = now.strftime("%Y-%m-%d")
+time = now.strftime("%H:%M:%S")
+print(' '.join([
+    "[#838383]Last Updated[/]:",
+    f"[#E599F7]{day}[/]",
+    "[#838383]@[/]",
+    f"[#00CCFF]{time}[/]"
+]))
+```
+
+::: {style="text-align:center;"}
+[© Copyright [Sam Foreman](https://samforeman.me)]{.dim-text}
+
+<img src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%23838383&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false'>
+:::
+
+:::
 
 ### 📝 Work
 
@@ -127,58 +172,11 @@ listing:
 
 {{< include about/_music.qmd >}}
 
-:::
-
 <!-- ```{=html} -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script> -->
 <!-- <script>hljs.highlightAll();</script> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> -->
 <!-- ``` -->
-
-::: {.callout-tip icon=false aria-title="Status" title='[❤️‍🩹 Status]{.dim-text}' collapse="true" style="text-align: left!important; width:100%; background-color:rgba(131,131,131,0.05)!important; border: 1px solid rgba(131,131,131,0.0); opacity:100%;"}
-
-
-[highlight yellow]{.highlight}
-
-[highlight pink]{.highlight-pink}
-
-[highlight green]{.highlight-green}
-
-[highlight-blue]{.highlight-blue}
-
-[circle sketch highlight]{.circle-sketch-highlight}
-
-```{python}
-#| output: asis
-import datetime
-from rich import print
-now = datetime.datetime.now()
-day = now.strftime("%Y-%m-%d")
-time = now.strftime("%H:%M:%S")
-print(' '.join([
-    "[#838383]Last Updated[/]:",
-    f"[#E599F7]{day}[/]",
-    "[#838383]@[/]",
-    f"[#00CCFF]{time}[/]"
-]))
-```
-
-<!--
-```{pyodide-python}
-#| output: asis
-import datetime
-from rich import print
-now = datetime.datetime.now()
-day = now.strftime("%Y-%m-%d")
-time = now.strftime("%H:%M:%S")
-print(' '.join([
-    "[#838383]Last Updated[/]:",
-    f"[#E599F7]{day}[/]",
-    "[#838383]@[/]",
-    f"[#00CCFF]{time}[/]"
-]))
-```
--->
 
 :::
 

@@ -1,12 +1,11 @@
 # 🏔️ Spike Skipper
-[Sam Foreman](https://samforeman.me)
-[<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
+Sam Foreman
 2024-09-17
 
-- [📝 Example](#-example)
-- [🧪 Implementation](#-implementation)
-- [✅ Sanity Check](#-sanity-check)
-  - [🔍 Details](#-details)
+- [📝 Example](#pencil-example)
+- [🧪 Implementation](#test_tube-implementation)
+- [✅ Sanity Check](#white_check_mark-sanity-check)
+  - [🔍 Details](#mag-details)
 
 > [!CAUTION]
 >
@@ -142,6 +141,7 @@ same regardless of whether or not that iteration was skipped.
 - First 4 steps:
 
   <details closed>
+
   <summary>
 
   <code>tokens</code>:
@@ -366,6 +366,7 @@ same regardless of whether or not that iteration was skipped.
 - Skipping steps `[2, 3]`:
 
   <details closed>
+
   <summary>
 
   <code>tokens</code>:

@@ -1,6 +1,5 @@
 # AuroraGPT
-[Sam Foreman](https://samforeman.me)
-[<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
+Sam Foreman
 2024-09-04
 
 ## 🎯 AuroraGPT Goals
@@ -44,7 +43,6 @@ data}
 
 <img src="./assets/timelines.png"
 style="margin-left:auto;margin-right:auto;;width:66.0%" />
-
 
 Figure 1: Credit to the entire AuroraGPT team for slides.
 
@@ -192,7 +190,6 @@ Table 1: Aurora Specs
 
 ![](./assets/aurora.png)
 
-
 Figure 2: [Aurora Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)
 
@@ -222,32 +219,31 @@ efficiency
 
 ![](./assets/sambanova.jpeg)
 
-
 Figure 3: **SambaNova SN-30**: 2nd Gen, 8 nodes with 64 AI Accelerators
 
 </div>
+
 <div id="fig-graphcore">
 
 ![](./assets/graphcore.png)
-
 
 Figure 4: **Graphcore Bow**: generation accelerators: Pod-64
 configuration with 64 accelerators
 
 </div>
+
 <div id="fig-cerebras">
 
 ![](./assets/cerebras.jpeg)
-
 
 Figure 5: **Cerebras**: 2x CS-2 WSE with Memory-X and Swarm-X
 technologies
 
 </div>
+
 <div id="fig-groq">
 
 ![](./assets/groq.jpeg)
-
 
 Figure 6: **GroqRack**: 9 nodes, 8 GroqChip v1.5 Tensor streaming
 processors accelerators per node
@@ -631,6 +627,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
 ### 🚂 Loooooooooong Sequence Lengths
 
 <!-- ::: {.flex-container style="text-align: center; align-items: center;"} -->
+
 <!-- ![](../../assets/anl.svg){style="width:48%;"} -->
 
 <div class="flex-container"
@@ -691,7 +688,6 @@ Figure 7: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
 
 ![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
 
-
 Figure 8: **Pre-training**: Virtually all of the compute used during
 pretraining phase
 
@@ -702,7 +698,6 @@ pretraining phase
 <div id="fig-fine-tuning">
 
 ![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
-
 
 Figure 9: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task.
@@ -721,7 +716,6 @@ weights to make the model better at a certain task.
 
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
-
 Figure 10: It’s hungry!
 
 </div>
@@ -733,7 +727,6 @@ Figure 10: It’s hungry!
 <div id="fig-evolution">
 
 ![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
-
 
 Figure 11: Visualization from Yang et al. (2023)
 
@@ -883,7 +876,9 @@ The fifth thing you notice is the temperature. It’s hot.
 ```
 &#10;:::
 -->
+
 <!-- ::: -->
+
 <!--
 - Being trained on:
 &#10;  :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}

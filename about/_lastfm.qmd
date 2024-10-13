@@ -30,7 +30,8 @@ var getSetLastFM = function() {
     success: function(resp) {
       var recentTrack = resp.recenttracks.track[0];
       var formatted =
-        "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
+        // "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
+        "🎶 " + recentTrack.name;
       $("a#tracktitle")
         .html(formatted)
         .attr("href", recentTrack.url)
@@ -38,7 +39,8 @@ var getSetLastFM = function() {
         .attr("target", "_blank");
 
       var artistFormatted =
-        "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
+        // "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
+        "🗣️ " + recentTrack.artist["#text"];
       $("a#trackartist")
         .html(artistFormatted)
         .attr("title", "Artist : " + recentTrack.artist["#text"]);
@@ -61,7 +63,7 @@ var getSetLastFM = function() {
 // Get the new one.
 getSetLastFM();
 // Start the countdown.
-setInterval(getSetLastFM, 10 * 100);
+setInterval(getSetLastFM, 10 * 5000);
 </script> <div class="nowplayingcard">
 <div class="nowplayingcontainer-inner">
 <img id="trackart" src="#">

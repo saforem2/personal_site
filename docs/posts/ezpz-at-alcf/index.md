@@ -1,26 +1,34 @@
 # 🍋 <code>ezpz</code> @ ALCF
-[Sam Foreman](https://samforeman.me)
-[<span class="orcid-green"></span>](https://orcid.org/0000-0002-9981-0876)
+Sam Foreman
 2024-08-23
 
 - [Complete Example](#complete-example)
   - [Gist](#gist)
-  - [📦 Clone Repo(s)](#-clone-repos)
-  - [🛜 Setup Job](#-setup-job)
-  - [🐍 Setup Python](#-setup-python)
-  - [📝 Test Setup](#-test-setup)
+  - [📦 Clone Repo(s)](#package-clone-repos)
+  - [🛜 Setup Job](#wireless-setup-job)
+  - [🐍 Setup Python](#snake-setup-python)
+  - [📝 Test Setup](#pencil-test-setup)
 
 ## Complete Example
 
 <!-- ### Broken -->
+
 <!---->
+
 <!-- ::: {.gist user=saforem2 gist_id=2f2549894d9c65ed2edcfe6b1dbe6a70 } -->
+
 <!-- ::: -->
+
 <!---->
+
 <!---->
+
 <!-- ### Tweets -->
+
 <!---->
+
 <!-- ::: {.twitter user=pandoc_tips status_id=1576105972103516160 } -->
+
 <!-- ::: -->
 
 ### Gist
@@ -155,6 +163,7 @@
   ```
 
   <details closed>
+
   <summary>
 
   Output
@@ -482,6 +491,7 @@
   ```
 
   <details closed>
+
   <summary>
 
   PyInstrument Profile:
@@ -533,12 +543,15 @@
   ```
 
   </details>
+
   </details>
 
 ------------------------------------------------------------------------
 
 <details closed>
+
 <summary>
+
 Deprecated:
 </summary>
 
@@ -627,6 +640,7 @@ Deprecated:
     ```
 
     <details closed>
+
     <summary>
 
     output
