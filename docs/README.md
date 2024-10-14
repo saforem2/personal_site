@@ -404,7 +404,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 > <span class="circle-sketch-highlight">circle</span>
 >
 > <!--
-> ```euxclmhostlcogwn
+> ```bjlffmpqvkcawxye
 > -->
 >
 > ``` python
@@ -421,7 +421,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:53:58</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">14</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:10:22</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -812,17 +812,21 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*</span>.
 
 ### 📬 Posts
 
-<div class="feature">
+<!-- :::: {.feature} -->
 
-<div class="feature-top">
+<!---->
+
+<!-- ::: {.feature-top} -->
 
 <div id="listing-posts">
 
 </div>
 
-</div>
+<!-- ::: -->
 
-</div>
+<!---->
+
+<!-- :::: -->
 
 ### 📦 Projects
 
@@ -1038,7 +1042,7 @@ Table 2: 🎓 Education
 
 [![](https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png)](https://github.com/kittinan/spotify-github-profile)
 
-<div class="flex-container" style="flex-direction: column;">
+<div class="flex-container" style="flex-direction: column; width: 50%;">
 
 > [!TIP]
 >
