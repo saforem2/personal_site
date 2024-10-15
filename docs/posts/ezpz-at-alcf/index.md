@@ -11,26 +11,6 @@ Sam Foreman
 
 ## Complete Example
 
-<!-- ### Broken -->
-
-<!---->
-
-<!-- ::: {.gist user=saforem2 gist_id=2f2549894d9c65ed2edcfe6b1dbe6a70 } -->
-
-<!-- ::: -->
-
-<!---->
-
-<!---->
-
-<!-- ### Tweets -->
-
-<!---->
-
-<!-- ::: {.twitter user=pandoc_tips status_id=1576105972103516160 } -->
-
-<!-- ::: -->
-
 ### Gist
 
 > [!TIP]
@@ -38,8 +18,6 @@ Sam Foreman
 > ### <span class="dim-text" style="font-weight: normal;"> <code>saforem2/ezpz.md</code></span>
 >
 > <script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script>
-
-<!-- <script src="https://gist.github.com/saforem2/2f2549894d9c65ed2edcfe6b1dbe6a70.js"></script> -->
 
 ### 📦 Clone Repo(s)
 

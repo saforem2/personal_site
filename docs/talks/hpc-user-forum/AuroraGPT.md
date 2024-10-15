@@ -171,16 +171,16 @@ Figure 1: Credit to the entire AuroraGPT team for slides.
 
 Table 1: Aurora Specs
 
-| <!-- --> | <!-- --> |
-|----------|:--------:|
-| Racks    |   166    |
-| Nodes    |  10,624  |
-| CPUs     |  21,248  |
-| GPUs     |  63,744  |
-| NICs     |  84,992  |
-| HBM      |   8 PB   |
-| DDR5c    |  10 PB   |
-| <!-- --> | <!-- --> |
+|       |        |
+|-------|:------:|
+| Racks |  166   |
+| Nodes | 10,624 |
+| CPUs  | 21,248 |
+| GPUs  | 63,744 |
+| NICs  | 84,992 |
+| HBM   |  8 PB  |
+| DDR5c | 10 PB  |
+|       |        |
 
 </div>
 
@@ -253,26 +253,6 @@ processors accelerators per node
 </div>
 
 ## 👥 Team Leads
-
-<!--
-&#10;| Team                  | Lead(s)           |                                                            |
-| :----:                | :--------         | :--------------------------------------------------------: |
-| **Planning**          | Rick Stevens      | ![](./assets/team/rick-stevens.png){height="40pt"}         |
-|                       | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
-|                       | Rinku Gupta       | ![](./assets/team/rinku-gupta.png){height="40pt"}          |
-|                       | Mike Papka        | ![](./assets/team/mike-papka.png){height="40pt"}           |
-|                       | Fangfang Xia      | ![](./assets/team/fangfang-xia.png){height="40pt"}         |
-| **Data**              | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
-|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"} |
-| **Models + Training** | Venkat Vishwanath | ![](./assets/team/venkat.jpg){height="40pt"}               |
-|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
-|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
-| **Inference**         | Eliu Huerta       | ![](./assets/team/eliu-huerta.png){height="40pt"}          |
-|                       | Azton Wells       | ![](./assets/team/azton-wells.png){height="40pt"}          |
-: Team Leads {#tbl-team-leads}
-| **Models / Training** | Venkat Vishwanath | ![](./assets/team/venkat-vishwanath.png){height="40pt"} |
-|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"}     |
--->
 
 <div style="font-size: 66%;">
 
@@ -626,10 +606,6 @@ in Practice: A Survey on ChatGPT and Beyond.”
 
 ### 🚂 Loooooooooong Sequence Lengths
 
-<!-- ::: {.flex-container style="text-align: center; align-items: center;"} -->
-
-<!-- ![](../../assets/anl.svg){style="width:48%;"} -->
-
 <div class="flex-container"
 style="align-items: center; justify-content: center;">
 
@@ -641,12 +617,6 @@ style="align-items: center; justify-content: center;">
 style="height:50pt;" />
 
 </div>
-
-<!--
-[]{.dim-text style="font-size: 2.0em; padding-left: 15pt;"}
-![](../../assets/deepspeed-logo-transparent.svg){style="width: 60%"}
-:::
--->
 
 - Working with [
   Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed) team to
@@ -735,180 +705,5 @@ Figure 11: Visualization from Yang et al. (2023)
 </div>
 
 </div>
-
-<!--
-### 💾 Evaluating Checkpoints {background-color="white"}
-&#10;```python
-from typing import Optional
-import os
-from pathlib import Path
-&#10;from transformers import LlamaForCausalLM, AutoTokenizer
-&#10;tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7B-hf")
-&#10;def load_model(ckpt_dir) -> LlamaForCausalLM:
-    return LlamaForCausalLM.from_pretrained(ckpt_dir)
-&#10;def eval_model(model, max_length: int, prompt: str) -> str:
-    return (
-        tokenizer.batch_decode(
-            model.generate(
-                **tokenizer(prompt, return_tensors="pt"),
-                 max_length=max_length,
-            ),
-            clean_up_tokenization_spaces=True,
-            skip_special_tokens=True,
-        )[0]
-    )
-&#10;def load_and_eval_model_from_checkpoint(
-        step: int,
-        max_length: int = 64,
-        prompt: Optional[str] = None,
-        ckpt_root: Optional[os.PathLike | Path | str] = None,
-) -> str:
-    print(f"Loading model from checkpoint at global step: {step}")
-    prompt = "What is it like in there?" if prompt is None else prompt
-    ckpt_root = Path("checkpoints") if ckpt_root is None else Path(ckpt_root)
-    ckpt_dir = ckpt_root.joinpath(f"global_step{step}")
-    return (
-        eval_model(
-            model=load_model(ckpt_dir.as_posix())
-            max_length=max_length,
-            prompt=prompt,
-        )
-    )
-```
-&#10;### Model Evaluations {background-color="white"}
-&#10;::: {.panel-tabset}
-&#10;#### 7000
-&#10;Tokens: 88B
-&#10;```python
->>> print(load_checkpoint(7000))
-Loading model from checkpoint at global step: 7000
-"What is it like in there?"
-"""
-I'm not sure if it's a good idea to use a different name for the same thing,
-but I'm sure it's a good idea to use a different name for the same thing.
-I'm not sure if it's a good idea to use a different name for the same thing,
-but I'm sure it's a good idea to use a different name for the same thing.
-I'm not sure if it's a good idea to use a different name for the same thing,
-but I'm sure it
-"""
-```
-&#10;#### 12000
-&#10;Tokens: 150B
-&#10;```python
->>> print(load_checkpoint(12000))
-Loading model from checkpoint at global step: 12000
-"What is it like in there?"
-"""
-What is it like in there?
-The people are very friendly and helpful.
-What is it like in there?
-The people are very friendly and helpful.
-What is it like in there?
-The people are very friendly and helpful.
-What is it like in there?
-The people are very friendly and helpful.
-What is it like in there?
-The people are very friendly and helpful.
-What is it like in there?
-"""
-```
-&#10;#### 17000
-&#10;Tokens: 215B
-&#10;```python
->>> print(load_checkpoint(17000))
-Loading model from checkpoint at global step: 17000
-"What is it like in there?"
-"""
-I’m not sure what to expect. I’m not sure what to expect from the people I’m
-with. I’m not sure what to expect from the people I’m with. I’m not sure what
-to expect from the people I’m with. I’m not sure what to expect from the people
-I’m with.
-I’m not sure what to expect from the people I’m with.
-I’m not sure what to expect from the people I’m with.
-I’m not sure what to expect from the people
-"""
-```
-&#10;#### 22000
-&#10;Tokens: 277B
-&#10;```python
->>> print(load_checkpoint(22000))
-Loading model from checkpoint at global step: 22000
-"What is it like in there?"
-"""
-I’m a 20 year old guy from the UK. I’m a student at the University of
-Manchester, studying Computer Science. I’m a big fan of the band, The Beatles,
-and I’m a huge fan of the movie, The Wizard of Oz. I’m a huge fan of the band,
-The Beatles, and I’m a huge fan of the movie, The Wizard of Oz.
-I’m a big fan of the band, The Beatles, and I’m a huge fan of the movie
-"""
-```
-&#10;#### 32000
-&#10;Tokens: 400B
-&#10;```python
->>> print(load_checkpoint(32000))
-Loading model from checkpoint at global step: 32000
-"What is it like in there?"
-"""
-I've been to the US and I've been to Canada.
-In the US, it's a lot like the US.
-In Canada, it's a lot like the US.
-In the US, it's a lot like the US.
-In Canada, it's a lot like the US.
-In the US, it's a lot like the US.
-In Canada, it's a lot like the US.
-In the US, it's
-"""
-```
-&#10;#### 40000
-&#10;Tokens: 503B
-&#10;```python
->>> print(load_checkpoint(40000))
-Loading model from checkpoint at global step: 40000
-"What is it like in there?"
-"""
-The first thing you notice when you enter the room is the size. It’s huge. It’s
-like a football field. It’s a lot of space.
-The second thing you notice is the light. It’s bright. It’s bright.
-The third thing you notice is the sound. It’s loud. It’s loud.
-The fourth thing you notice is the smell. It’s a lot of smells. It’s a lot of smells.
-The fifth thing you notice is the temperature. It’s hot.
-"""
-```
-&#10;:::
--->
-
-<!-- ::: -->
-
-<!--
-- Being trained on:
-&#10;  :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
-&#10;  ::: {.flex-container style="flex-direction:column;"}
-&#10;   🇺🇸English  
-   🇯🇵日本語  
-   🇫🇷French  
-   🇩🇪Deutsch  
-   🇪🇸Español[^bsc]  
-   🇮🇹Italian  
-&#10;  :::
-&#10;  ::: {.flex-container style="flex-direction:column;"}
-&#10;  🧪 scientific text  
-  🖼️ images  
-  📊 tables  
-  ➕ equations  
-  📖 proofs
-&#10;  :::
-&#10;  ::: {.flex-container style="flex-direction:column;"}
-&#10;  📆 structured data  
-  ⛓️ sequences  
-  ⏰ time-series  
-  🕸️ graphs  
-  🌀 fields
-&#10;  :::
-&#10;  ::::
-&#10;[^riken]:|
-    [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
-&#10;[^bsc]:|
-    Collaborations with Barcelona Supercomputing Center
-&#10;-->
 
 [^1]: Co-led by: Venkat Vishwanath, Sam Foreman

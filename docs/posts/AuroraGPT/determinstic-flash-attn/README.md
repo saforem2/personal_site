@@ -2,12 +2,8 @@
 Sam Foreman
 2024-06-17
 
-<!-- ::: {.callout-tip icon="false" title="📒 [W\&B Report](https://api.wandb.ai/links/aurora_gpt/nqjjhzd5)" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0);border:1px solid rgba(131,131,131,0.2)!important;"} -->
-
 > \[**NOTE**\]: For additional details, refer to the [W&B
 > Report](https://api.wandb.ai/links/aurora_gpt/nqjjhzd5).
-
-<!-- ::: -->
 
 Simple tests to confirm the loss is exactly reproducible across
 independent runs (when launched with the same seed).
@@ -43,7 +39,3 @@ Figure 1: Plot of the loss curve for 3 independent runs with
 `deterministic=True`
 
 </div>
-
-<!-- <iframe src="https://wandb.ai/aurora_gpt/AuroraGPT/workspace?nw=nwuserforemans" style="border:none;width:100%"> -->
-
-<!-- <iframe src="https://wandb.ai/aurora_gpt/AuroraGPT/reports/Deterministic-Flash-Attention--Vmlldzo4MzU0OTQ0?accessToken=y1r4ftxjkxhhgpwhttag4g0rgqhxvqpi0hc1fbribk97brozbtjhrkbtc8wqkh5r" style="border:none;height:1024px;width:100%"> -->
