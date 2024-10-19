@@ -30,7 +30,7 @@ data}
 
 <div class="col2" style="width:75%; text-align: center;">
 
-![](https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif)
+![](./assets/llms.gif)
 
 <span class="dim-text" style="font-size: 75%;">Image from
 [`Hannibal046/Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)</span>
