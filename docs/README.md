@@ -165,7 +165,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 
     </summary>
 
-    As a member of the [AI / ML Group] at [ALCF][(ALCF)], I work on[^1]:
+    As a member of the [AI / ML Group] at [ALCF][(ALCF)], I work on:
 
     <div class="flex-container">
 
@@ -252,7 +252,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">18</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:19:54</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">19</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:34:18</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -858,9 +858,6 @@ Table 2: 🎓 Education
 
 </div>
 
-[^1]: If this sounds like something you’d be interested in doing, please
-    feel free to [reach out to me]!
-
   [ALCF]: https://alcf.anl.gov/about/people/sam-foreman
   [1]: ./assets/avatar.webp
   [<span class="orcid-green" style="background: none!important;"></span>]:
@@ -1027,4 +1024,3 @@ Table 2: 🎓 Education
   [Math]: https://math.illinois.edu/
   [62]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
   [63]: https://github.com/kittinan/spotify-github-profile
-  [reach out to me]: mailto:foremans@anl.gov
