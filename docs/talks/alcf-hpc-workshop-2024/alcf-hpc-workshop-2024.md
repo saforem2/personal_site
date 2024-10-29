@@ -351,8 +351,7 @@ Figure 14
 ## Tensor (/ Model) Parallel Training: Example
 
 Want to compute:
-$y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$
-
+$y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
 where each GPU only has only its portion of the full weights as shown
 below
 
@@ -396,13 +395,10 @@ Figure 15
 - In **Tensor Paralleism** each GPU processes only a slice of a tensor
   and only aggregates the full tensor for operations that require the
   whole thing.
-
   - The main building block of any transformer is a fully connected
     `nn.Linear` followed by a nonlinear activation GeLU.
-
     - `Y = GeLU(XA)`, where X and Y are the input and output vectors,
       and A is the weight matrix.
-
   - If we look at the computation in matrix form, it’s easy to see how
     the matrix multiplication can be split between multiple GPUs:
 
@@ -634,6 +630,9 @@ Figure 26
 </div>
 
 # Hands On
+
+[ALCF_Hands_on_HPC_Workshop /
+ml-at-scale](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/master/ml-at-scale#hands-on)
 
 ## 🌱 Clone Repositories
 

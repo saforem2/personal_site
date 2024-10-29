@@ -422,15 +422,14 @@ Tensor Parallel Training
 
 ## Tensor (/ Model) Parallel Training: Example {background-color="white"}
 
-Want to compute: $y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$
-
+Want to compute: $y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
 where each GPU only has only its portion of the full weights as shown below
 
 1. Compute: $y_{0} = x_{0} * W_{0}\rightarrow$ `GPU1`
 2. Compute: $y_{1} = y_{0} + x_{1} * W_{1}\rightarrow$ `GPU2`
 3. Compute: $y = y_{1} + x_{2} * W_{2} = \sum_{i} x_{i} W_{i}$ ✅
 
-::: {#fig-tensor-parallel-example .r-stretch}
+::: {#fig-tensor-parallel-example style="width:75%; margin-left: auto; margin-right: auto; text-align:center;"}
 
 ```{mermaid}
 flowchart LR
@@ -462,12 +461,9 @@ flowchart LR
 
 - In **Tensor Paralleism** each GPU processes only a slice of a tensor and only
 aggregates the full tensor for operations that require the whole thing.
-
   - The main building block of any transformer is a fully connected
   `nn.Linear` followed by a nonlinear activation GeLU.
-
     - `Y = GeLU(XA)`, where X and Y are the input and output vectors, and A is the weight matrix.
-
   - If we look at the computation in matrix form, it’s easy to see how the matrix multiplication can be split between multiple GPUs:
 
 [^efficient-large-scale]: [Efficient Large-Scale Language Model Training on GPU Clusters](https://arxiv.org/abs/2104.04473)
@@ -475,6 +471,7 @@ aggregates the full tensor for operations that require the whole thing.
 ## Tensor Parallelism {background-color="white"}
 
 ::: {#fig-parallel-gemm}
+
 ![](assets/parallelism-tp-parallel_gemm.png){.r-stretch}
 
 Tensor Parallel GEMM. This information is based on (the much more in-depth)
@@ -679,6 +676,8 @@ Language Model trained for causal language modeling[^generating-text-source].
 
 # Hands On {background-color="white"}
 
+{{< fa brands github >}} [ALCF_Hands_on_HPC_Workshop / ml-at-scale](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/master/ml-at-scale#hands-on)
+
 ## 🌱 Clone Repositories {background-color="white"}
 
 1. {{< fa brands github >}} [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
@@ -693,7 +692,6 @@ Language Model trained for causal language modeling[^generating-text-source].
     ```bash
     git clone https://github.com/saforem2/ezpz deps/ezpz
     ```
-
 
 ## 🐍 Setup Python {background-color="white"}
 
