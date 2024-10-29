@@ -244,7 +244,7 @@ Scatters a list of tensors to the whole group
 
 [^mbs]: `micro_batch_size` = batch_size **per** GPU
 
-## Why Distributed Training? {background-color="white"}
+## Why Distributed Training? Speedup! {background-color="white"}
 
 ::: {#tbl-recent-progress}
 
@@ -297,7 +297,6 @@ To ensure all workers have the same copies, we load on `RANK==0` and
 ::: {.flex-container}
 
 ::: {.column style="width:50%;"}
-
 - Use parallel IO whenever possible
   - Feed each rank from different files
   - Use MPI IO to have each rank read its own batch from a file
@@ -306,7 +305,6 @@ To ensure all workers have the same copies, we load on `RANK==0` and
 :::
 
 ::: {.column style="width:50%;"}
-
 - Take advantage of data storage
   - Use [striping on lustre](https://wiki.lustre.org/Configuring_Lustre_File_Striping)
 - Use the right optimizations for Aurora, Polaris, etc.
@@ -343,7 +341,8 @@ Keeping the communication to computation ratio small is important for effective 
 
 ## Fully Sharded Data Parallel (FSDP) {.smaller background-color="white"}
 
-- Instead of maintaining per-GPU copy of `{params, grads, opt_states}`, FSDP shards (distributes) these across data-parallel workers
+- Instead of maintaining per-GPU copy of `{params, grads, opt_states}`, FSDP
+  shards (distributes) these across data-parallel workers
   - can optionally offload the sharded model params to CPU
 - [Introducing PyTorch Fully Sharded Data Parallel (FSDP) API | PyTorch](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 
@@ -510,14 +509,22 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ### Single Node / Multi-GPU
 
+::: {.flex-container}
+
+::: {.column}
 - Model fits onto a single GPU
   - [`DDP`](https://pytorch.org/docs/stable/notes/ddp.html)
   - [`ZeRO`](https://deepspeed.readthedocs.io/en/latest/zero3.html)
+:::
 
+::: {.column}
 - Model **DOES NOT** fit onto a single GPU
   1. [Pipeline Parallelism (`PP`)](https://www.deepspeed.ai/tutorials/pipeline/)
   2. [`ZeRO`](https://deepspeed.readthedocs.io/en/latest/zero3.html)
   3. [Tensor Parallelism (`TP`)](https://pytorch.org/docs/stable/distributed.tensor.parallel.html)
+:::
+
+:::
 
 - With sufficiently fast connectivity between nodes, these three strategies should be comparable.
 
@@ -535,14 +542,15 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
       DP + PP + TP + ZeRO-1
       ```
 
-  - **NOTE**: `TP` is almost _always_ used within a single node, e.g. `TP <= GPUS_PER_NODE`
+  - **NOTE**: `TP` is almost _always_ used within a single node, e.g.  
+    `TP <= GPUS_PER_NODE`
 
 :::
 
-# Large Language Models {.smaller background-color="white"}
+# Large Language Models {background-color="white"}
 
-::: {#fig-llms}
-![](./assets/llms.gif){.r-stretch}
+::: {#fig-llms .r-stretch}
+![](./assets/llms.gif)
 
 Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].  
 :::

@@ -7,14 +7,14 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6c0a4ed62fb080ae80cab75e570f85b8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-fc6d358c97f25a8ea829b86655043430.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.29">
+  <meta name="generator" content="quarto-1.6.32">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2024-10-29">
@@ -731,8 +731,8 @@ Figure&nbsp;8: Scatters a list of tensors to the whole group
 <li>See: <a href="https://arxiv.org/abs/1708.03888">Large Batch Training of Convolutional Networks</a></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU</p></li></ol></aside></section>
-<section id="why-distributed-training-1" class="slide level2 center" data-background-color="white">
-<h2>Why Distributed Training?</h2>
+<section id="why-distributed-training-speedup" class="slide level2 center" data-background-color="white">
+<h2>Why Distributed Training? Speedup!</h2>
 <div id="tbl-recent-progress" class="responsive striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-recent-progress-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1133,18 +1133,26 @@ Figure&nbsp;17: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 </ul>
 </div>
 <div id="tabset-1-2">
+<div class="flex-container">
+<div class="column">
 <ul>
-<li><p>Model fits onto a single GPU</p>
+<li>Model fits onto a single GPU
 <ul>
 <li><a href="https://pytorch.org/docs/stable/notes/ddp.html"><code>DDP</code></a></li>
 <li><a href="https://deepspeed.readthedocs.io/en/latest/zero3.html"><code>ZeRO</code></a></li>
 </ul></li>
-<li><p>Model <strong>DOES NOT</strong> fit onto a single GPU</p>
+</ul>
+</div><div class="column">
+<ul>
+<li>Model <strong>DOES NOT</strong> fit onto a single GPU
 <ol type="1">
 <li><a href="https://www.deepspeed.ai/tutorials/pipeline/">Pipeline Parallelism (<code>PP</code>)</a></li>
 <li><a href="https://deepspeed.readthedocs.io/en/latest/zero3.html"><code>ZeRO</code></a></li>
 <li><a href="https://pytorch.org/docs/stable/distributed.tensor.parallel.html">Tensor Parallelism (<code>TP</code>)</a></li>
 </ol></li>
+</ul>
+</div></div>
+<ul>
 <li><p>With sufficiently fast connectivity between nodes, these three strategies should be comparable.</p>
 <ul>
 <li>Otherwise, <code>PP</code> <span class="math inline">&gt;</span> <code>ZeRO</code> <span class="math inline">\simeq</span> <code>TP</code>.</li>
@@ -1161,7 +1169,8 @@ Figure&nbsp;17: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <li><p>when you have slow inter-node connectivity and still low on GPU memory:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><strong>NOTE</strong>: <code>TP</code> is almost <em>always</em> used within a single node, e.g.&nbsp;<code>TP &lt;= GPUS_PER_NODE</code></li>
+<li><strong>NOTE</strong>: <code>TP</code> is almost <em>always</em> used within a single node, e.g.<br>
+<code>TP &lt;= GPUS_PER_NODE</code></li>
 </ul></li>
 </ul>
 </div>
@@ -1169,12 +1178,12 @@ Figure&nbsp;17: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 </div>
 </section></section>
 <section>
-<section id="large-language-models" class="title-slide slide level1 smaller center" data-background-color="white">
+<section id="large-language-models" class="title-slide slide level1 center" data-background-color="white">
 <h1>Large Language Models</h1>
 <div id="fig-llms" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;18: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif" class="r-stretch img-fluid"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;18: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif" class="img-fluid"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
@@ -2556,7 +2565,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

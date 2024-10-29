@@ -167,7 +167,7 @@ Figure 8: Scatters a list of tensors to the whole group
 - See: [Large Batch Training of Convolutional
   Networks](https://arxiv.org/abs/1708.03888)
 
-## Why Distributed Training?
+## Why Distributed Training? Speedup!
 
 <div id="tbl-recent-progress">
 
@@ -466,18 +466,28 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ### Single Node / Multi-GPU
 
-- Model fits onto a single GPU
+<div class="flex-container">
 
+<div class="column">
+
+- Model fits onto a single GPU
   - [`DDP`](https://pytorch.org/docs/stable/notes/ddp.html)
   - [`ZeRO`](https://deepspeed.readthedocs.io/en/latest/zero3.html)
 
-- Model **DOES NOT** fit onto a single GPU
+</div>
 
+<div class="column">
+
+- Model **DOES NOT** fit onto a single GPU
   1.  [Pipeline Parallelism
       (`PP`)](https://www.deepspeed.ai/tutorials/pipeline/)
   2.  [`ZeRO`](https://deepspeed.readthedocs.io/en/latest/zero3.html)
   3.  [Tensor Parallelism
       (`TP`)](https://pytorch.org/docs/stable/distributed.tensor.parallel.html)
+
+</div>
+
+</div>
 
 - With sufficiently fast connectivity between nodes, these three
   strategies should be comparable.
@@ -497,8 +507,8 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
       ``` bash
       DP + PP + TP + ZeRO-1
       ```
-  - **NOTE**: `TP` is almost *always* used within a single node,
-    e.g. `TP <= GPUS_PER_NODE`
+  - **NOTE**: `TP` is almost *always* used within a single node, e.g.  
+    `TP <= GPUS_PER_NODE`
 
 </div>
 
@@ -506,7 +516,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 <div id="fig-llms">
 
-<img src="./assets/llms.gif" class="r-stretch" />
+![](./assets/llms.gif)
 
 Figure 18: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
