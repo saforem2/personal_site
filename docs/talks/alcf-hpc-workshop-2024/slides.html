@@ -10,7 +10,6 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6c0a4ed62fb080ae80cab75e570f85b8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -526,7 +525,7 @@
 
   <p class="date">2024-10-29</p>
 </section>
-<section id="section" class="title-slide slide level1 centeredslide center" data-background-image="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/image2.png?raw=true" loading="lazy">
+<section id="section" class="title-slide slide level1 center" data-background-image="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/refs/heads/main/docs/assets/image2.png" loading="lazy">
 <h1></h1>
 <div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
 <div style="display:flex;">
@@ -534,11 +533,6 @@
 </div>
 <p><span style="font-size: 3.0em; font-weight: 700; color: white">ALCF Hands-on</span><br>
 <span style="font-size: 3.0em; font-weight: 700; color: #FFFFFF">HPC Workshop</span></p>
-</div>
-<div class="footer">
-<div style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;">
-<p><a href="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides"><span style="color: #757575"><i class="bi-easel " style="" role="img" aria-hidden="true"></i> Machine Learning and Foundation Models at Scale</span></a> <span class="dim-text">@</span> <a href="https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop"><span style="color: #757575"><i class="bi-building " style="" role="img" aria-hidden="true"></i> ALCF Hands-on HPC Workshop</span></a></p>
-</div>
 </div>
 </section>
 
@@ -947,9 +941,11 @@ Figure&nbsp;11: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 <div class="flex-container" style="place-content: end space-evenly;">
 <div class="column" style="width:35%;">
 <ul>
-<li>Model is split up vertically (layer-level) across multiple GPUs, so that only one or several layers of the model are places on a single GPU
+<li>Model is split up vertically (layer-level) across multiple GPUs</li>
+<li>Each GPU:
 <ul>
-<li>Each GPU processes in parallel different stages of the pipeline and working on a small chunk of the batch.</li>
+<li>has a portion of the full model</li>
+<li>processes <em>in parallel</em> different stages of the pipeline (on a small chunk of the batch)</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:55%;">
@@ -2560,7 +2556,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

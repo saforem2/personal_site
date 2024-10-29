@@ -86,14 +86,7 @@ format:
     output-file: "alcf-hpc-workshop-2024.md"
 ---
 
-# {.centeredslide background-image="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/image2.png?raw=true" loading="lazy"}
-
-<!-- # {.centerdslide background-image="https://www.alcf.anl.gov/sites/default/files/2023-08/ALCF-HandsOnHPCWksp-LL.png?itok=6qi5GY6y" height="80%"} -->
-<!-- # {.centeredslide background-image="./assets/massstar_science_highlights_2017_01.png" loading="lazy"} -->
-<!-- # {.centeredslide background-image="./assets/p62_cover-edit_CMYK.jpg" loading="lazy"} -->
-<!-- # {.centeredslide background-image="./assets/tribology_cover_test_image_06m.png" loading="lazy"} -->
-<!-- # {.centeredslide background-image="./assets/6120702714_c9a4cf5d78_o.jpg" loading="lazy"} -->
-<!-- # {.centeredslide background-image="./assets/ccm_s23-50_Ye_03B.png" loading="lazy"} -->
+# {background-image="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/refs/heads/main/docs/assets/image2.png" loading="lazy"}
 
 ::: {style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;"}
 
@@ -108,15 +101,13 @@ format:
 
 :::
 
-::: footer
-
-::: {style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;"}
-
-[[{{< bi easel >}} Machine Learning and Foundation Models at Scale]{style="color: #757575"}](https://samforeman.me/talks/alcf-hpc-workshop-2024/slides) [\@]{.dim-text} [[{{< bi building >}} ALCF Hands-on HPC Workshop]{style="color: #757575"}](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)
-
-:::
-
-:::
+<!-- ::: footer -->
+<!-- ::: {style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;"} -->
+<!---->
+<!-- [[{{< bi easel >}} Machine Learning and Foundation Models at Scale]{style="color: #757575"}](https://samforeman.me/talks/alcf-hpc-workshop-2024/slides) [\@]{.dim-text} [[{{< bi building >}} ALCF Hands-on HPC Workshop]{style="color: #757575"}](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop) -->
+<!---->
+<!-- ::: -->
+<!-- ::: -->
 
 # Overview {background-color="white"}
 
@@ -143,7 +134,11 @@ format:
 See [🤗 Methods and tools for efficient training on a single
 GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
 
-![**SLOW** !! model size limited by GPU memory](./assets/single-gpu-step-1.drawio.svg){#fig-single-gpu .r-stretch}
+::: {#fig-single-gpu}
+![](./assets/single-gpu-step-1.drawio.svg){.r-stretch}
+
+**SLOW** !! model size limited by GPU memory
+:::
 
 ## Data Parallel Training {background-color="white"}
 
@@ -363,11 +358,11 @@ FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-shard
 ::: {.flex-container style="place-content: end space-evenly;"}
 
 ::: {.column style="width:35%;"}
-
-- Model is split up vertically (layer-level) across multiple GPUs, so that
-  only one or several layers of the model are places on a single GPU
-  - Each GPU processes in parallel different stages of the pipeline and
-    working on a small chunk of the batch.
+- Model is split up vertically (layer-level) across multiple GPUs
+- Each GPU:
+  - has a portion of the full model
+  - processes _in parallel_ different stages of the pipeline
+    (on a small chunk of the batch)
 :::
 
 ::: {.column style="width:55%;"}
@@ -376,13 +371,11 @@ FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-shard
 
 :::
 
-
 ## Tensor Parallel (TP) {background-color="white"}
 
 ::: {layout="[50,50]"}
 
 ::: {.column}
-
 - Each tensor is split up into multiple chunks
 - Each shard of the tensor resides on its designated GPU
 - During processing each shard gets processed separately (and in parallel) on
@@ -428,29 +421,6 @@ Tensor Parallel Training
 :::
 
 :::
-
-<!--
-
-## Model Parallel Training {background-color="white"}
-
-::: {layout="[60,40]"}
-
-::: {.column}
-- Split up network over multiple workers
-  - Each receives disjoint subset
-  - All communication associated with subsets are distributed
-- Communication whenever dataflow between two subsets
-- Typically **more complicated** to implement than data parallel training
-- Suitable when the model is too large to fit onto a single device (CPU / GPU)
-- {{< fa brands github >}} [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-- 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron)
-:::
-
-![](./assets/model-parallel.svg){#fig-model-parallel-1}
-
-:::
-
--->
 
 ## Tensor (/ Model) Parallel Training: Example {background-color="white"}
 

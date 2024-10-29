@@ -100,7 +100,6 @@ div.csl-indent {
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -610,19 +609,14 @@ window.Quarto = {
 </header>
 
 
-<section id="section" class="level2 centeredslide" data-background-image="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/image2.png?raw=true" loading="lazy">
-<h2 class="centeredslide anchored" data-background-image="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/image2.png?raw=true" loading="lazy" data-anchor-id="section"></h2>
+<section id="section" class="level2" data-background-image="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/refs/heads/main/docs/assets/image2.png" loading="lazy">
+<h2 data-background-image="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/refs/heads/main/docs/assets/image2.png" loading="lazy" class="anchored" data-anchor-id="section"></h2>
 <div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
 <div style="display:flex;">
 <p><span style="font-size: 1.75em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8">October 29 – 31, 2024 <span class="math inline">\hspace{5pt}</span> <i class="fa-solid fa-shapes" aria-label="shapes"></i></span> <span style="display:inline-block;"><img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg" class="img-fluid"></span></p>
 </div>
 <p><span style="font-size: 3.0em; font-weight: 700; color: white">ALCF Hands-on</span><br>
 <span style="font-size: 3.0em; font-weight: 700; color: #FFFFFF">HPC Workshop</span></p>
-</div>
-<div class="footer">
-<div style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;">
-<p><a href="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides"><span style="color: #757575"><i class="bi-easel " style="" role="img" aria-hidden="true"></i> Machine Learning and Foundation Models at Scale</span></a> <span class="dim-text">@</span> <a href="https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop"><span style="color: #757575"><i class="bi-building " style="" role="img" aria-hidden="true"></i> ALCF Hands-on HPC Workshop</span></a></p>
-</div>
 </div>
 </section>
 <section id="overview" class="level2" data-background-color="white">
@@ -1090,9 +1084,11 @@ Figure&nbsp;11: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 <div class="flex-container" style="place-content: end space-evenly;">
 <div class="column" style="width:35%;">
 <ul>
-<li>Model is split up vertically (layer-level) across multiple GPUs, so that only one or several layers of the model are places on a single GPU
+<li>Model is split up vertically (layer-level) across multiple GPUs</li>
+<li>Each GPU:
 <ul>
-<li>Each GPU processes in parallel different stages of the pipeline and working on a small chunk of the batch.</li>
+<li>has a portion of the full model</li>
+<li>processes <em>in parallel</em> different stages of the pipeline (on a small chunk of the batch)</li>
 </ul></li>
 </ul>
 </div>
@@ -2928,7 +2924,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <input type="hidden" id="giscus-base-theme" value="dark">
 <input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

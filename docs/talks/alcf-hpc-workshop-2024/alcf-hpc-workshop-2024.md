@@ -21,20 +21,6 @@ Workshop</span>
 
 </div>
 
-<div class="footer">
-
-<div style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;">
-
-[<span style="color: #757575"> Machine Learning and Foundation Models at
-Scale</span>](https://samforeman.me/talks/alcf-hpc-workshop-2024/slides)
-<span class="dim-text">@</span> [<span style="color: #757575"> ALCF
-Hands-on HPC
-Workshop</span>](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)
-
-</div>
-
-</div>
-
 # Overview
 
 - [ALCF Hands-on HPC
@@ -318,11 +304,11 @@ Figure 11: FSDP Workflow.
 
 <div class="column" style="width:35%;">
 
-- Model is split up vertically (layer-level) across multiple GPUs, so
-  that only one or several layers of the model are places on a single
-  GPU
-  - Each GPU processes in parallel different stages of the pipeline and
-    working on a small chunk of the batch.
+- Model is split up vertically (layer-level) across multiple GPUs
+- Each GPU:
+  - has a portion of the full model
+  - processes *in parallel* different stages of the pipeline (on a small
+    chunk of the batch)
 
 </div>
 
