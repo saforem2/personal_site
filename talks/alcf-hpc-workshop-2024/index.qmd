@@ -7,6 +7,7 @@ date: 2024-10-29
 # fig-cap-location: top
 number-sections: false
 image: ./assets/thumbnail.png
+lightbox: auto
 bibliography: ../../references.bib
 editor:
   render-on-save: true
@@ -299,11 +300,10 @@ To ensure all workers have the same copies, we load on `RANK==0` and
 Keeping the communication to computation ratio small is important for effective scaling.
 :::
 
-## Data Parallelism
+## Data Parallelism {background-color="white"}
 
 - Useful when model fits on single GPU
     - ultimately limited by GPU memory
-
 - When model does not fit on a single GPU:
     - {{< iconify logos microsoft-icon >}} `DeepSpeed` + [`ZeRO`](https://www.deepspeed.ai/tutorials/zero/)
     - [PyTorch + FSDP](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
@@ -348,7 +348,7 @@ FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-shard
 :::
 
 
-## Tensor Parallel (TP) {.smaller background-color="white"}
+## Tensor Parallel (TP) {background-color="white"}
 
 ::: {layout="[50,50]"}
 
@@ -498,7 +498,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 :::
 
-## Deciding on a Parallelism Strategy {.smaller background-color="white"}
+## Deciding on a Parallelism Strategy {background-color="white"}
 
 ::: {.panel-tabset}
 
@@ -684,17 +684,19 @@ Language Model trained for causal language modeling[^generating-text-source].
 
 ## 🌱 Clone Repositories {background-color="white"}
 
-1. {{< fa brands github >}} [`saforem2/ezpz/`](https://github.com/saforem2/ezpz)
-
-    ```bash
-    git clone https://github.com/saforem2/ezpz
-    ```
-
-2. {{< fa brands github >}} [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
+1. {{< fa brands github >}} [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
 
     ```bash
     git clone https://github.com/saforem2/wordplay
+    cd wordplay
     ```
+
+1. {{< fa brands github >}} [`saforem2/ezpz/`](https://github.com/saforem2/ezpz)
+
+    ```bash
+    git clone https://github.com/saforem2/ezpz deps/ezpz
+    ```
+
 
 ## 🐍 Setup Python {background-color="white"}
 

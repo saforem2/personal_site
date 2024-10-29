@@ -37,7 +37,7 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 </div>
 
-## Data Parallel Training (DP)
+## Data Parallel Training
 
 <div>
 
@@ -45,29 +45,7 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 ## Data Parallel Training
 
-<div class="flex-container">
-
-<div class="column" style="width:45%;">
-
-- Relatively simple to get up and running (minor modifications to code)
--  [`saforem2/ezpz`](https://github.com/saforem2/ezpz)
-- [PyTorch – DDP](https://pytorch.org/docs/stable/notes/ddp.html)
-- [ DeepSpeed](https://www.deepspeed.ai/)
-- [🎬 “Parallel Training Techniques”](https://youtu.be/930yrXjNkgM)
-
-</div>
-
-<div class="column" style="width: 50%;">
-
-<div id="fig-avgGrads">
-
-![](./assets/multi-gpu-ddp.drawio.svg)
-
-Figure 3: Data Parallel Training
-
-</div>
-
-</div>
+<div>
 
 </div>
 
@@ -257,6 +235,15 @@ Figure 9: To ensure all workers have the same copies, we load on
 > Keeping the communication to computation ratio small is important for
 > effective scaling.
 
+## Data Parallelism
+
+- Useful when model fits on single GPU
+  - ultimately limited by GPU memory
+- When model does not fit on a single GPU:
+  -  `DeepSpeed` + [`ZeRO`](https://www.deepspeed.ai/tutorials/zero/)
+  - [PyTorch +
+    FSDP](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
+
 ## Going beyond Data Parallelism:  ZeRO
 
 - Depending on the `ZeRO` stage (1, 2, 3), we can offload:
@@ -409,7 +396,7 @@ Figure 15
   whole thing.
 
   - The main building block of any transformer is a fully connected
-    nn.Linear followed by a nonlinear activation GeLU.
+    \`nn.Linear\`\` followed by a nonlinear activation GeLU.
 
     - `Y = GeLU(XA)`, where X and Y are the input and output vectors,
       and A is the weight matrix.
@@ -648,16 +635,17 @@ Figure 26
 
 ## 🌱 Clone Repositories
 
-1.   [`saforem2/ezpz/`](https://github.com/saforem2/ezpz)
-
-    ``` bash
-    git clone https://github.com/saforem2/ezpz
-    ```
-
-2.   [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
+1.   [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
 
     ``` bash
     git clone https://github.com/saforem2/wordplay
+    cd wordplay
+    ```
+
+2.   [`saforem2/ezpz/`](https://github.com/saforem2/ezpz)
+
+    ``` bash
+    git clone https://github.com/saforem2/ezpz deps/ezpz
     ```
 
 ## 🐍 Setup Python
