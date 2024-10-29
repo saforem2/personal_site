@@ -2,6 +2,39 @@
 Sam Foreman
 2024-10-29
 
+# 
+
+<div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
+
+<div style="display:flex;">
+
+<span style="font-size: 1.75em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8">October
+29 – 31, 2024 $\hspace{5pt}$ </span>
+<span style="display:inline-block;">![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg)</span>
+
+</div>
+
+<span style="font-size: 3.0em; font-weight: 700; color: white">ALCF
+Hands-on</span>  
+<span style="font-size: 3.0em; font-weight: 700; color: #FFFFFF">HPC
+Workshop</span>
+
+</div>
+
+<div class="footer">
+
+<div style="text-shadow: 2px 2px 3px rgba(0,0,0,0.8); color: #FFFFFF; text-align: left; margin-left: 11%; font-size: 0.9em;">
+
+[<span style="color: #757575"> Machine Learning and Foundation Models at
+Scale</span>](https://samforeman.me/talks/alcf-hpc-workshop-2024/slides)
+<span class="dim-text">@</span> [<span style="color: #757575"> ALCF
+Hands-on HPC
+Workshop</span>](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)
+
+</div>
+
+</div>
+
 # Overview
 
 - [ALCF Hands-on HPC
