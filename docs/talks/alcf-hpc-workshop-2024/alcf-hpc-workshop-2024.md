@@ -10,6 +10,8 @@ Sam Foreman
     [`argonne-lcf/ALCF_Hands_on_HPC_Workshop`](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)
 - Slides @
   [samforeman.me/talks/alcf-hpc-workshop-2024/slides](https://samforeman.me/talks/alcf-hpc-workshop-2024/slides)
+  - HTML Version:
+    [samforeman.me/talks/alcf-hpc-workshop-2024](https://samforeman.me/talks/alcf-hpc-workshop-2024)
 
 # 🚀 Scaling: Overview
 
