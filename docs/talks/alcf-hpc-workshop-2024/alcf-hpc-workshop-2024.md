@@ -240,7 +240,7 @@ Figure 9: To ensure all workers have the same copies, we load on
 - Useful when model fits on single GPU
   - ultimately limited by GPU memory
 - When model does not fit on a single GPU:
-  - {{ iconify logos microsoft-icon \>}} `DeepSpeed` + `ZeRO`
+  -  `DeepSpeed` + `ZeRO`
   - Py
 
 ## Going beyond Data Parallelism:  ZeRO
