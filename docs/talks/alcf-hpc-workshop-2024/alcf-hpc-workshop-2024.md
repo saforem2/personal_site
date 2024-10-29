@@ -1468,7 +1468,7 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
-## [`wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[video](https://asciinema.org/a/668462)\]
+## [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
 <div id="fig-wordplay-asciinema">
 

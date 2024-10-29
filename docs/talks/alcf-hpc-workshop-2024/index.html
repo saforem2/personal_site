@@ -556,7 +556,7 @@ window.Quarto = {
   <li><a href="#install-wordplay" id="toc-install-wordplay" class="nav-link" data-scroll-target="#install-wordplay">Install <code>wordplay</code> 🎮💬</a></li>
   <li><a href="#prepare-data" id="toc-prepare-data" class="nav-link" data-scroll-target="#prepare-data">Prepare Data</a></li>
   <li><a href="#launch-training-ddp" id="toc-launch-training-ddp" class="nav-link" data-scroll-target="#launch-training-ddp">Launch Training (DDP)</a></li>
-  <li><a href="#wordplay-video" id="toc-wordplay-video" class="nav-link" data-scroll-target="#wordplay-video"><code>wordplay</code> 🎮💬 [video]</a></li>
+  <li><a href="#wordplay-example-video" id="toc-wordplay-example-video" class="nav-link" data-scroll-target="#wordplay-example-video"><code>wordplay</code>: Example [video]</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -1103,12 +1103,14 @@ Figure&nbsp;12: <a href="https://www.deepspeed.ai/tutorials/pipeline/">Pipeline 
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
 <li>Each tensor is split up into multiple chunks</li>
-<li>So, instead of having the whole tensor reside on a single GPU, each shard of the tensor resides on its designated GPU
+<li>Each shard of the tensor resides on its designated GPU</li>
+<li>During processing each shard gets processed separately (and in parallel) on different GPUs
 <ul>
-<li>During processing each shard gets processed separately and in parallel on different GPUs and the results are synced at the end of the step.</li>
-<li>This is what one may call horizontal parallelism, as the splitting happens on horizontal level. See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
+<li>synced at the end of the step</li>
 </ul></li>
+<li>This is what one may call <em>horizontal parallelism</em></li>
 </ul>
+<p>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</p>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2286,8 +2288,8 @@ Figure&nbsp;28: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb11-302"><a href="#cb11-302"></a><span class="st">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714</span></span>
 <span id="cb11-303"><a href="#cb11-303"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="wordplay-video" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="wordplay-video"><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a> [<a href="https://asciinema.org/a/668462">video</a>]</h3>
+<section id="wordplay-example-video" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="wordplay-example-video"><a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h3>
 <div id="fig-wordplay-asciinema" class="asciinema quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wordplay-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2300,7 +2302,7 @@ Figure&nbsp;29: Example: Training a LLM to talk like Shakespeare using <a href="
 </div>
 </section>
 </section>
-<section id="references" class="level2">
+<section id="references" class="level2" data-background-color="white">
 
 
 
@@ -2909,7 +2911,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <input type="hidden" id="giscus-base-theme" value="dark">
 <input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

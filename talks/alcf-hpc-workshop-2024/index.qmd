@@ -352,13 +352,13 @@ FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-shard
 ::: {.column}
 
 - Each tensor is split up into multiple chunks
-- So, instead of having the whole tensor reside on a single GPU, each shard
-  of the tensor resides on its designated GPU
-  - During processing each shard gets processed separately and in parallel
-      on different GPUs and the results are synced at the end of the step.
-  - This is what one may call horizontal parallelism, as the splitting
-      happens on horizontal level.
-  See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details
+- Each shard of the tensor resides on its designated GPU
+- During processing each shard gets processed separately (and in parallel) on
+  different GPUs
+    - synced at the end of the step
+- This is what one may call _horizontal parallelism_
+
+See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details
 :::
 
 ::: {.column}
@@ -1510,15 +1510,13 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
-## [`wordplay` 🎮💬](https://github.com/saforem2/wordplay) \[[video](https://asciinema.org/a/668462)\] {background-color="white"}
+## [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\] {background-color="white"}
 
 ::: {#fig-wordplay-asciinema .asciinema}
-
-<!-- <iframe data-src="https://asciinema.org/a/668462/iframe?" id="asciicast-iframe-668462" name="asciicast-iframe-668462" scrolling="no" allowfullscreen="true" style="overflow: hidden; margin: 0px; border: 0px; display: inline-block; width: 100%; float: none; visibility: visible; height: 560px;"></iframe> -->
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
 Example: Training a LLM to talk like Shakespeare using [`saforem2/wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 :::
 
-# References
+# References {background-color="white"}

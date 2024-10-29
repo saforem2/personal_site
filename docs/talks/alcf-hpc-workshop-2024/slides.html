@@ -958,12 +958,14 @@ Figure&nbsp;12: <a href="https://www.deepspeed.ai/tutorials/pipeline/">Pipeline 
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
 <li>Each tensor is split up into multiple chunks</li>
-<li>So, instead of having the whole tensor reside on a single GPU, each shard of the tensor resides on its designated GPU
+<li>Each shard of the tensor resides on its designated GPU</li>
+<li>During processing each shard gets processed separately (and in parallel) on different GPUs
 <ul>
-<li>During processing each shard gets processed separately and in parallel on different GPUs and the results are synced at the end of the step.</li>
-<li>This is what one may call horizontal parallelism, as the splitting happens on horizontal level. See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
+<li>synced at the end of the step</li>
 </ul></li>
+<li>This is what one may call <em>horizontal parallelism</em></li>
 </ul>
+<p>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</p>
 </div><div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -2119,8 +2121,8 @@ Figure&nbsp;28: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb11-302"><a></a><span class="st">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714</span></span>
 <span id="cb11-303"><a></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="wordplay-video" class="slide level2 center" data-background-color="white">
-<h2><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a> [<a href="https://asciinema.org/a/668462">video</a>]</h2>
+<section id="wordplay-example-video" class="slide level2 center" data-background-color="white">
+<h2><a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h2>
 <div id="fig-wordplay-asciinema" class="asciinema quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-wordplay-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2132,7 +2134,7 @@ Figure&nbsp;29: Example: Training a LLM to talk like Shakespeare using <a href="
 </figure>
 </div>
 </section></section>
-<section id="references" class="title-slide slide level1 smaller scrollable">
+<section id="references" class="title-slide slide level1 smaller scrollable" data-background-color="white">
 <h1>References</h1>
 
 
@@ -2541,7 +2543,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
