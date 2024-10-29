@@ -250,7 +250,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">26</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">15:21:35</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">29</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:33:39</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -352,6 +352,18 @@ publications on my [Google Scholar][5]*</span>.
 </div>
 
 #### 📆 2024
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**Machine Learning and Foundation Models at Scale**] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck" loading="lazy" allow="picture-in-picture" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio: 1.5;">
+>
+> </iframe>
+>
+> </div>
 
 > [!TIP]
 >
@@ -925,6 +937,8 @@ Table 2: 🎓 Education
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
+  [**Machine Learning and Foundation Models at Scale**]: https://samforeman.me/talks/alcf-hpc-workshop-2024/slides
+  [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**AuroraGPT**]: https://samforeman.me/talks/hpc-user-forum/slides
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [**Training LLMs at Scale**]: https://samforeman.me/talks/llms-at-scale/slides
