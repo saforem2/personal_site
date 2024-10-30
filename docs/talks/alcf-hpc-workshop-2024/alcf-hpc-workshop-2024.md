@@ -1508,6 +1508,28 @@ Figure 29: Example: Training a LLM to talk like Shakespeare using
 
 </div>
 
+# ❤️ Thank you!
+
+- Organizers
+
+- Feel free to reach out!
+
+  <split even>
+
+  [<i class="fas fa-home"></i>](https://samforeman.me)
+  [<i class="far fa-paper-plane"></i>](mailto:///foremans@anl.gov)
+  [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
+
+  </split>
+
+> [!NOTE]
+>
+> ### 🙏 Acknowledgements
+>
+> This research used resources of the Argonne Leadership Computing
+> Facility, which is a DOE Office of Science User Facility supported
+> under Contract DE-AC02-06CH11357.
+
 # References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
