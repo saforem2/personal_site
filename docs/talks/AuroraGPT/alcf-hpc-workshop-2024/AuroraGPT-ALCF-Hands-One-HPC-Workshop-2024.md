@@ -169,7 +169,7 @@ Figure 3: AuroraGPT: Overview
 
 # 🌌 Aurora
 
-<div class="flex-container" style="align-items: flex-end;">
+<div class="flex-container" style="align-items: center;">
 
 <div class="column" style="width:5%;">
 
@@ -480,7 +480,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance
 
-# 🚀 Accelerating Dataset Processing at Scale for Training: Results
+# 🚀 Accelerating Dataset Processing: Results
 
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance (~~60 min~~ $\rightarrow$ 4
