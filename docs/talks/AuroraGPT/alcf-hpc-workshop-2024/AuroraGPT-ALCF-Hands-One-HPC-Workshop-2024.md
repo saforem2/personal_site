@@ -480,10 +480,11 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance
 
-# 🚀 Accelerating Dataset Processing at Scale for Training
+# 🚀 Accelerating Dataset Processing at Scale for Training: Results
 
 - [x] Completely re-wrote an asynchronous, distributed implementation
-  that *significantly* improves performance
+  that *significantly* improves performance (~~60 min~~ $\rightarrow$ 4
+  min)
 
 <div class="flex-container">
 
@@ -507,7 +508,7 @@ Figure 10: Time spent building `GPTDataset`
 
 # 📓 References
 
-<div class="flex-container" style="gap: 1em;">
+<div class="flex-container" style="gap: 5pt;">
 
 <div class="column">
 
@@ -520,17 +521,17 @@ Figure 10: Time spent building `GPTDataset`
   - [LLMs on
     Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
   - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
-
-</div>
-
-<div class="col2">
-
 - 
   [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
   <span class="dim-text">For the largest of large language
   models.</span>
 -  [`saforem2/ezpz`](https://github.com/saforem2/ezpz)  
   <span class="dim-text">Distributed training, ezpz. 🍋</span>
+
+</div>
+
+<div class="column">
+
 - 👀 See also:
   - [New international consortium for generative AI models for
     science](https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for)
@@ -686,7 +687,7 @@ weights to make the model better at a certain task.
 
 <div class="flex-container" style="align-items: flex-end;">
 
-<div class="col1" style="width:33%;">
+<div class="column" style="width:33%;">
 
 <div id="fig-it-hungers">
 
@@ -698,7 +699,7 @@ Figure 14: It’s hungry!
 
 </div>
 
-<div class="col2" style="width:60%;">
+<div class="column" style="width:60%;">
 
 <div id="fig-evolution">
 
