@@ -80,7 +80,8 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
 
 ![](./assets/AuroraGPT.svg)
 
-Figure 3: AuroraGPT: Overview
+Figure 3:
+[`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 </div>
 
