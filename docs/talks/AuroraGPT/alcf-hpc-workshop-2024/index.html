@@ -114,6 +114,49 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 <link href="https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css" rel="stylesheet" type="text/css">
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../css/custom.css">
 <meta property="og:title" content="AuroraGPT @ ALCF Hands-On HPC Workshop 2024">
@@ -501,8 +544,8 @@ gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="auroragpt-goals">🎯 AuroraGPT Goals</h2>
 <div class="flex-container" style="flex-direction: column; justify-content: space-around;">
 <div class="flex-container" style="flex-direction: row; justify-content: space-around; align-items:center;">
-<div class="col1">
-<div class="blue-card" style="margin-bottom: 0.5em;">
+<div class="column" style="width: 55%">
+<div class="blue-card">
 <p><strong>AuroraGPT</strong>: <em>General purpose scientific LLM</em><br>
 Broadly trained on a general corpora plus scientific {papers, texts, data}</p>
 </div>
@@ -510,10 +553,10 @@ Broadly trained on a general corpora plus scientific {papers, texts, data}</p>
 <li><strong>Explore pathways</strong> towards a “Scientific Assistant” model</li>
 <li><strong>Build with international partners</strong> (RIKEN, BSC, others)</li>
 <li><strong>Multilingual</strong> English, 日本語, French, German, Spanish</li>
-<li><strong>Multimodal</strong>: images, tables, equations, proofs, time series, graphs, fields, sequences , etc</li>
+<li><strong>Multimodal</strong>: images, tables, equations, proofs, time series, graphs, fields, sequences, etc</li>
 </ul>
 </div>
-<div class="col2" style="width:75%; text-align: center;">
+<div class="column" style="text-align: center;">
 <div id="fig-awesome-llm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -558,10 +601,10 @@ Figure&nbsp;2: Credit to the entire AuroraGPT team for slides.
 <div id="fig-aurora-gpt" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored" style="vertical-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: "><img src="./assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
+<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: AuroraGPT: Overview"><img src="./assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: AuroraGPT: Overview
 </figcaption>
 </figure>
 </div>
@@ -643,60 +686,59 @@ Figure&nbsp;3
 </section>
 <section id="aurora" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="aurora">🌌 Aurora</h2>
-<div class="flex-container">
-<div class="col1">
-<div id="tbl-aurora" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="flex-container" style="align-items: flex-end;">
+<div class="column" style="width:5%;">
+<div id="tbl-aurora" class="responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Aurora Specs
 </figcaption>
 <div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
+<div class="table-responsive">
+<table class="table-striped table-hover caption-top table">
 <thead>
 <tr class="header">
-<th></th>
-<th style="text-align: center;"></th>
+<th style="text-align: right;"></th>
+<th style="text-align: left;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Racks</td>
-<td style="text-align: center;">166</td>
+<td style="text-align: right;">Racks</td>
+<td style="text-align: left;">166</td>
 </tr>
 <tr class="even">
-<td>Nodes</td>
-<td style="text-align: center;">10,624</td>
+<td style="text-align: right;">Nodes</td>
+<td style="text-align: left;">10,624</td>
 </tr>
 <tr class="odd">
-<td>CPUs</td>
-<td style="text-align: center;">21,248</td>
+<td style="text-align: right;">CPUs</td>
+<td style="text-align: left;">21,248</td>
 </tr>
 <tr class="even">
-<td>GPUs</td>
-<td style="text-align: center;">63,744</td>
+<td style="text-align: right;">GPUs</td>
+<td style="text-align: left;">63,744</td>
 </tr>
 <tr class="odd">
-<td>NICs</td>
-<td style="text-align: center;">84,992</td>
+<td style="text-align: right;">NICs</td>
+<td style="text-align: left;">84,992</td>
 </tr>
 <tr class="even">
-<td>HBM</td>
-<td style="text-align: center;">8 PB</td>
+<td style="text-align: right;">HBM</td>
+<td style="text-align: left;">8 PB</td>
 </tr>
 <tr class="odd">
-<td>DDR5c</td>
-<td style="text-align: center;">10 PB</td>
-</tr>
-<tr class="even">
-<td></td>
-<td style="text-align: center;"></td>
+<td style="text-align: right;">DDR5c</td>
+<td style="text-align: left;">10 PB</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 </figure>
 </div>
 </div>
+<div class="column">
 <div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -708,6 +750,7 @@ Figure&nbsp;4: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aur
 </figure>
 </div>
 </div>
+</div>
 </section>
 <section id="alcf-ai-testbed" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="alcf-ai-testbed">🤖 ALCF AI Testbed</h2>
@@ -717,7 +760,7 @@ Figure&nbsp;4: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aur
 <li><a href="https://nairrpilot.org/">NAIRR Pilot</a></li>
 </ul>
 <div class="red-card" style="color: #FF5252; font-size:90%;">
-<p>Up to 25X improvement for genomic foundation models with 6.5X energy efficiency</p>
+<p>Up to <strong>25</strong><span class="math inline">\times</span> improvement for genomic foundation models with <strong>6.5</strong><span class="math inline">\times</span> energy efficiency</p>
 </div>
 <div class="flex-container" style="align-items: flex-end;">
 <div id="fig-sambanova" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -730,7 +773,7 @@ Figure&nbsp;5: <strong>SambaNova SN-30</strong>: 2nd Gen, 8 nodes with 64 AI Acc
 </figcaption>
 </figure>
 </div>
-<div id="fig-graphcore" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<div id="fig-graphcore" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-graphcore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/graphcore.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Graphcore Bow: generation accelerators: Pod-64 configuration with 64 accelerators"><img src="./assets/graphcore.png" class="img-fluid figure-img"></a>
@@ -740,7 +783,7 @@ Figure&nbsp;6: <strong>Graphcore Bow</strong>: generation accelerators: Pod-64 c
 </figcaption>
 </figure>
 </div>
-<div id="fig-cerebras" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<div id="fig-cerebras" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cerebras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/cerebras.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Cerebras: 2x CS-2 WSE with Memory-X and Swarm-X technologies"><img src="./assets/cerebras.jpeg" class="img-fluid figure-img"></a>
@@ -750,7 +793,7 @@ Figure&nbsp;7: <strong>Cerebras</strong>: 2x CS-2 WSE with Memory-X and Swarm-X 
 </figcaption>
 </figure>
 </div>
-<div id="fig-groq" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<div id="fig-groq" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-groq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/groq.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: GroqRack: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node"><img src="./assets/groq.jpeg" class="img-fluid figure-img"></a>
@@ -764,7 +807,6 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </section>
 <section id="team-leads" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="team-leads">👥 Team Leads</h2>
-<div style="font-size: 66%;">
 <div class="flex-container" style="text-align: center; align-items: center;">
 <p><strong>Planning</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -805,7 +847,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </div>
 </div>
 <div class="flex-container" style="text-align: center;">
-<div class="col2">
+<div class="column">
 <p><strong>Data</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -820,8 +862,8 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
-<p><strong>Models / Training</strong></p>
+<div class="column">
+<p><strong>Training</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="./assets/team/venkat-vishwanath.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Venkat Vishwanath"><img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in" alt="Venkat Vishwanath" class="figure-img"></a></p>
@@ -835,7 +877,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
+<div class="column">
 <p><strong>Evaluation</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -856,7 +898,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
+<div class="column">
 <p><strong>Post</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -871,7 +913,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
+<div class="column">
 <p><strong>Inference</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -880,7 +922,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
+<div class="column">
 <p><strong>Comms</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -895,7 +937,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </figure>
 </div>
 </div>
-<div class="col2">
+<div class="column">
 <p><strong>Distribution</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -905,12 +947,11 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="teams" class="level2" data-auto-animate="true" data-background-color="white">
 <h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="teams">🤝 Teams</h2>
 <div class="flex-container">
-<div class="col1">
+<div class="column">
 <ul>
 <li><strong>Planning</strong></li>
 <li><strong>Data Prep</strong>
@@ -927,7 +968,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </ul></li>
 </ul>
 </div>
-<div class="col2">
+<div class="column">
 <ul>
 <li><strong>Post-Training</strong>
 <ul>
@@ -948,8 +989,8 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </section>
 <section id="model-training" class="level2 smaller page-columns page-full" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="model-training">🦜 Model Training</h2>
-<div class="flex-container" style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;">
-<div class="col1" width="48%" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
+<div class="flex-container" style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
+<div class="column" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;">
 <p>✅ <span style="color: #03BD00;"><strong>Goals</strong></span></p>
 <ul>
 <li>Want training runs at scale to be:
@@ -972,7 +1013,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <li><em>Highly optimized GPU kernels</em></li>
 </ul>
 </div>
-<div class="col2" width="48%" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
+<div class="column" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;">
 <p>❌ <span style="color: #E90102;"><strong>Challenges</strong></span></p>
 <ul>
 <li><em>Looong time</em> to train, can be:
@@ -1052,10 +1093,9 @@ Figure&nbsp;10: Time spent building <code>GPTDataset</code>
 <section id="references" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="references">📓 References</h2>
 <div class="flex-container" style="gap: 1em;">
-<div class="col1">
+<div class="column">
 <ul>
-<li>🏡 <a href="https://samforeman.me">samforeman.me</a>: </li>
-<li>See my other slides on:
+<li>See my other slides at <a href="https://samforeman.me/talks">samforeman.me/talks</a>
 <ul>
 <li><a href="https://saforem2.github.io/llm-workshop-talk">LLMs from Scratch</a></li>
 <li><a href="https://saforem2.github.io/LLM-tutorial">Creating Small(~ish) LLMs</a></li>

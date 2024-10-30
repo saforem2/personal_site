@@ -10,9 +10,9 @@ style="flex-direction: column; justify-content: space-around;">
 <div class="flex-container"
 style="flex-direction: row; justify-content: space-around; align-items:center;">
 
-<div class="col1">
+<div class="column" style="width: 55%">
 
-<div class="blue-card" style="margin-bottom: 0.5em;">
+<div class="blue-card">
 
 **AuroraGPT**: *General purpose scientific LLM*  
 Broadly trained on a general corpora plus scientific {papers, texts,
@@ -24,11 +24,11 @@ data}
 - **Build with international partners** (RIKEN, BSC, others)
 - **Multilingual** English, 日本語, French, German, Spanish
 - **Multimodal**: images, tables, equations, proofs, time series,
-  graphs, fields, sequences , etc
+  graphs, fields, sequences, etc
 
 </div>
 
-<div class="col2" style="width:75%; text-align: center;">
+<div class="column" style="text-align: center;">
 
 <div id="fig-awesome-llm">
 
@@ -80,7 +80,7 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
 
 ![](./assets/AuroraGPT.svg)
 
-Figure 3
+Figure 3: AuroraGPT: Overview
 
 </div>
 
@@ -169,28 +169,29 @@ Figure 3
 
 # 🌌 Aurora
 
-<div class="flex-container">
+<div class="flex-container" style="align-items: flex-end;">
 
-<div class="col1">
+<div class="column" style="width:5%;">
 
 <div id="tbl-aurora">
 
 Table 1: Aurora Specs
 
 |       |        |
-|-------|:------:|
-| Racks |  166   |
+|------:|:-------|
+| Racks | 166    |
 | Nodes | 10,624 |
-| CPUs  | 21,248 |
-| GPUs  | 63,744 |
-| NICs  | 84,992 |
-| HBM   |  8 PB  |
+|  CPUs | 21,248 |
+|  GPUs | 63,744 |
+|  NICs | 84,992 |
+|   HBM | 8 PB   |
 | DDR5c | 10 PB  |
-|       |        |
 
 </div>
 
 </div>
+
+<div class="column">
 
 <div id="fig-aurora">
 
@@ -198,6 +199,8 @@ Table 1: Aurora Specs
 
 Figure 4: [Aurora Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)
+
+</div>
 
 </div>
 
@@ -214,8 +217,8 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 <div class="red-card" style="color: #FF5252; font-size:90%;">
 
-Up to 25X improvement for genomic foundation models with 6.5X energy
-efficiency
+Up to **25**$\times$ improvement for genomic foundation models with
+**6.5**$\times$ energy efficiency
 
 </div>
 
@@ -260,8 +263,6 @@ processors accelerators per node
 
 # 👥 Team Leads
 
-<div style="font-size: 66%;">
-
 <div class="flex-container"
 style="text-align: center; align-items: center;">
 
@@ -289,7 +290,7 @@ alt="Fangfang Xia" />
 
 <div class="flex-container" style="text-align: center;">
 
-<div class="col2">
+<div class="column">
 
 **Data**
 
@@ -301,9 +302,9 @@ alt="Robert Underwood" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
-**Models / Training**
+**Training**
 
 <img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in"
 alt="Venkat Vishwanath" />
@@ -313,7 +314,7 @@ alt="Sam Foreman" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 **Evaluation**
 
@@ -328,7 +329,7 @@ alt="Bo Li" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 **Post**
 
@@ -340,7 +341,7 @@ alt="Azton Wells" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 **Inference**
 
@@ -349,7 +350,7 @@ alt="Rajeev Thakur" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 **Comms**
 
@@ -361,7 +362,7 @@ alt="David Martin" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 **Distribution**
 
@@ -372,13 +373,11 @@ alt="Brad Ullrich" />
 
 </div>
 
-</div>
-
 # 🤝 Teams
 
 <div class="flex-container">
 
-<div class="col1">
+<div class="column">
 
 - **Planning**
 - **Data Prep**
@@ -393,7 +392,7 @@ alt="Brad Ullrich" />
 
 </div>
 
-<div class="col2">
+<div class="column">
 
 - **Post-Training**
   - Fine-tuning, alignment
@@ -411,10 +410,10 @@ alt="Brad Ullrich" />
 # 🦜 Model Training
 
 <div class="flex-container"
-style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em;">
+style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
 
-<div class="col1" width="48%"
-style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
+<div class="column"
+style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;">
 
 ✅ <span style="color: #03BD00;">**Goals**</span>
 
@@ -435,8 +434,8 @@ style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-<div class="col2" width="48%"
-style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt; margin-left: 5pt; margin-right: 5pt;">
+<div class="column"
+style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;">
 
 ❌ <span style="color: #E90102;">**Challenges**</span>
 
@@ -510,10 +509,10 @@ Figure 10: Time spent building `GPTDataset`
 
 <div class="flex-container" style="gap: 1em;">
 
-<div class="col1">
+<div class="column">
 
-- 🏡 [samforeman.me](https://samforeman.me):
-- See my other slides on:
+- See my other slides at
+  [samforeman.me/talks](https://samforeman.me/talks)
   - [LLMs from Scratch](https://saforem2.github.io/llm-workshop-talk)
   - [Creating Small(~ish) LLMs](https://saforem2.github.io/LLM-tutorial)
   - [Parallel Training
