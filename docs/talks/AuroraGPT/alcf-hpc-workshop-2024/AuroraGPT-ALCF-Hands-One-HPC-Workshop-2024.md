@@ -508,7 +508,7 @@ Figure 10: Time spent building `GPTDataset`
 
 # 📓 References
 
-<div class="flex-container" style="gap: 5pt;">
+<div class="flex-container" style="gap: 2pt;">
 
 <div class="column">
 
