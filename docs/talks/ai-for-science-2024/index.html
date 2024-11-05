@@ -96,7 +96,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-e62be3cb6129fbb76f50bbe2eac19e65.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c220379ba834edb645af9bb385095acb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-819d0340cf829646ffc2bfd854fdf621.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -201,7 +201,7 @@ window.Quarto = {
 <meta property="og:description" content="My ramblings about science and computers">
 <meta property="og:image" content="https://samforeman.me/talks/ai-for-science-2024/assets/thumbnail.png">
 <meta property="og:site_name" content="Sam Foreman">
-<meta property="og:image:height" content="2566">
+<meta property="og:image:height" content="2572">
 <meta property="og:image:width" content="4112">
 <meta name="twitter:title" content="Parallel Training Methods for AI">
 <meta name="twitter:description" content="My ramblings about science and computers">
@@ -209,7 +209,7 @@ window.Quarto = {
 <meta name="twitter:creator" content="saforem2">
 <meta name="twitter:site" content="saforem2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="2566">
+<meta name="twitter:image-height" content="2572">
 <meta name="twitter:image-width" content="4112">
 <meta name="citation_title" content="Parallel Training Methods">
 <meta name="citation_author" content="Sam Foreman">
@@ -544,7 +544,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#additional-parallelism-strategies" id="toc-additional-parallelism-strategies" class="nav-link" data-scroll-target="#additional-parallelism-strategies">Additional Parallelism Strategies</a>
   <ul class="collapse">
-  <li><a href="#pipeline-parallel-pp" id="toc-pipeline-parallel-pp" class="nav-link" data-scroll-target="#pipeline-parallel-pp">Pipeline Parallel (PP)</a></li>
+  <li><a href="#pipeline-parallelism-pp" id="toc-pipeline-parallelism-pp" class="nav-link" data-scroll-target="#pipeline-parallelism-pp">Pipeline Parallelism (PP)</a></li>
   <li><a href="#tensor-parallel-tp" id="toc-tensor-parallel-tp" class="nav-link" data-scroll-target="#tensor-parallel-tp">Tensor Parallel (TP)</a></li>
   <li><a href="#tensor-parallel-tp-1" id="toc-tensor-parallel-tp-1" class="nav-link" data-scroll-target="#tensor-parallel-tp-1">Tensor Parallel (TP)</a></li>
   <li><a href="#tensor-model-parallel-training-example" id="toc-tensor-model-parallel-training-example" class="nav-link" data-scroll-target="#tensor-model-parallel-training-example">Tensor (/ Model) Parallel Training: Example</a></li>
@@ -632,9 +632,9 @@ window.Quarto = {
 <section id="overview" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="overview">Overview</h2>
 <ul>
-<li><a href="https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop">ALCF Hands-on HPC Workshop</a>
+<li><a href="https://www.alcf.anl.gov/alcf-ai-science-training-series">ALCF: Intro to AI-driven Science on Supercomputers: A Student Training Series</a>
 <ul>
-<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop"><code>argonne-lcf/ALCF_Hands_on_HPC_Workshop</code></a></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/ai-science-training-series"><code>argonne-lcf/ai-science-training-series</code></a></li>
 </ul></li>
 <li>Slides @ <a href="https://samforeman.me/talks/ai-for-science-2024/slides">samforeman.me/talks/ai-for-science-2024/slides</a>
 <ul>
@@ -1885,10 +1885,10 @@ Figure&nbsp;16: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 </div>
 </section>
 </section>
-<section id="additional-parallelism-strategies" class="level2" data-background-color="white">
+<section id="additional-parallelism-strategies" class="level2 page-columns page-full" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="additional-parallelism-strategies">Additional Parallelism Strategies</h2>
-<section id="pipeline-parallel-pp" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="pipeline-parallel-pp">Pipeline Parallel (PP)</h3>
+<section id="pipeline-parallelism-pp" class="level3 page-columns page-full" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="pipeline-parallelism-pp">Pipeline Parallelism (PP)</h3>
 <div class="flex-container" style="place-content: end space-evenly;">
 <div class="column" style="width:35%;">
 <ul>
@@ -1897,6 +1897,11 @@ Figure&nbsp;16: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 <ul>
 <li>has a portion of the full model</li>
 <li>processes <em>in parallel</em> different stages of the pipeline (on a small chunk of the batch)</li>
+</ul></li>
+<li>See:
+<ul>
+<li>🔥 <a href="https://pytorch.org/docs/main/distributed.pipelining.html">PyTorch / Pipeline Parallelism</a></li>
+<li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://deepspeed.readthedocs.io/en/latest/pipeline.html">DeepSpeed / Pipeline Parallelism</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1949,7 +1954,10 @@ Figure&nbsp;17: Pipeline Parallelism
 </div>
 </div>
 </div>
-</section>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+
+</div></div></section>
 <section id="tensor-parallel-tp" class="level3" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="tensor-parallel-tp">Tensor Parallel (TP)</h3>
 <div>
@@ -1965,9 +1973,8 @@ Figure&nbsp;17: Pipeline Parallelism
 <ul>
 <li>synced at the end of the step</li>
 </ul></li>
-<li>This is what one may call <em>horizontal parallelism</em></li>
+<li>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
 </ul>
-<p>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</p>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2034,13 +2041,14 @@ Figure&nbsp;18: Tensor Parallel Training
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
-<li>Each tensor is split up into multiple chunks</li>
-<li>Each shard of the tensor resides on its designated GPU</li>
-<li>During processing each shard gets processed separately (and in parallel) on different GPUs
+<li>Suitable when the model is too large to fit onto a single device (CPU / GPU)</li>
+<li>Typically <strong>more complicated</strong> to implement than data parallel training
 <ul>
-<li>synced at the end of the step</li>
-</ul></li>
 <li>This is what one may call <em>horizontal parallelism</em></li>
+<li>Communication whenever dataflow between two subsets</li>
+</ul></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a></li>
+<li>🤗 <a href="https://github.com/huggingface/nanotron"><code>huggingface/nanotron</code></a></li>
 </ul>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -2132,29 +2140,27 @@ where each GPU only has only its portion of the full weights as shown below</p>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  subgraph X0["`GPU0`"]
-    direction TB
-    a("`W₀`")
-    a0["`x₀ W₀`"]
+  subgraph X2["`GPU2`"]
+    direction LR
+    c("`W₂`")
   end
   subgraph X1["`GPU1`"]
     direction TB
     b("`W₁`")
-    b0["`x₁ W₁ + x₂ W₂`"]
   end
-  subgraph X2["`GPU2`"]
-    direction TB
-    c("`W₂`")
-    c0["`∑ xₙ Wₙ`"]
+  subgraph X0["`GPU0`"]
+    a("`W₀`")
   end
-  a0 --&gt; X1
-  b0 --&gt; X2
-  t0("`x₀`") --&gt; a
-  t1("`x₁`") --&gt; b
-  t2("`x₂`") --&gt; c
-  a -.-&gt; a0
-  b -.-&gt; b0
-  c -.-&gt; c0
+  X0 &lt;-.-&gt; X1
+  X1 &lt;-.-&gt; X2
+  t0("`x₀`") --&gt; X0
+  t1("`x₁`") --&gt; X1
+  t2("`x₂`") --&gt; X2
+classDef redText fill:#CCCCCC02,stroke:#FF8181,stroke-width:2px,color:#838383,font-weight:500
+classDef orangeText fill:#CCCCCC02,stroke:#FFC47F,stroke-width:2px,color:#838383
+classDef yellowText fill:#CCCCCC02,stroke:#FFFF7F,stroke-width:2px,color:#838383
+classDef blueText fill:#CCCCCC02,stroke:#7DCAff,stroke-width:2px,color:#838383
+classDef greenText fill:#CCCCCC02,stroke:#98E6A5,stroke-width:2px,color:#838383
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
 classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
@@ -2164,9 +2170,12 @@ classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class a, red
-class b, orange
-class c, yellow
-class X0,X1,X2,t0,t1,t2, block
+class b, green
+class c, blue
+class X0,X1,X2, block
+class t0, redText
+class t1, greenText
+class t2, blueText
 class a0,b0,c0, text
 </pre>
 </div>
@@ -2524,7 +2533,7 @@ Figure&nbsp;32
 </section>
 <section id="hands-on" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="hands-on">Hands On</h2>
-<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/master/ml-at-scale#hands-on">ALCF_Hands_on_HPC_Workshop / ml-at-scale</a></p>
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on">ai-science-training-series / 06_parallel_training</a></p>
 <section id="clone-repositories" class="level3" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="clone-repositories">🌱 Clone Repositories</h3>
 <ol type="1">

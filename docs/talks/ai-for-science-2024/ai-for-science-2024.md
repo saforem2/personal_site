@@ -4,10 +4,11 @@ Sam Foreman
 
 # Overview
 
-- [ALCF Hands-on HPC
-  Workshop](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)
+- [ALCF: Intro to AI-driven Science on Supercomputers: A Student
+  Training
+  Series](https://www.alcf.anl.gov/alcf-ai-science-training-series)
   - 
-    [`argonne-lcf/ALCF_Hands_on_HPC_Workshop`](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop)
+    [`argonne-lcf/ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
 - Slides @
   [samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)
   - HTML Version:
@@ -916,7 +917,7 @@ Figure 16: FSDP Workflow.
 
 # Additional Parallelism Strategies
 
-## Pipeline Parallel (PP)
+## Pipeline Parallelism (PP)
 
 <div class="flex-container" style="place-content: end space-evenly;">
 
@@ -927,6 +928,11 @@ Figure 16: FSDP Workflow.
   - has a portion of the full model
   - processes *in parallel* different stages of the pipeline (on a small
     chunk of the batch)
+- See:
+  - 🔥 [PyTorch / Pipeline
+    Parallelism](https://pytorch.org/docs/main/distributed.pipelining.html)
+  -  [DeepSpeed / Pipeline
+    Parallelism](https://deepspeed.readthedocs.io/en/latest/pipeline.html)
 
 </div>
 
@@ -968,6 +974,10 @@ Figure 17: Pipeline Parallelism
 </div>
 
 </div>
+
+</div>
+
+<div class="aside">
 
 </div>
 
@@ -1018,29 +1028,27 @@ below
 
 ``` mermaid
 flowchart LR
-  subgraph X0["`GPU0`"]
-    direction TB
-    a("`W₀`")
-    a0["`x₀ W₀`"]
+  subgraph X2["`GPU2`"]
+    direction LR
+    c("`W₂`")
   end
   subgraph X1["`GPU1`"]
     direction TB
     b("`W₁`")
-    b0["`x₁ W₁ + x₂ W₂`"]
   end
-  subgraph X2["`GPU2`"]
-    direction TB
-    c("`W₂`")
-    c0["`∑ xₙ Wₙ`"]
+  subgraph X0["`GPU0`"]
+    a("`W₀`")
   end
-  a0 --> X1
-  b0 --> X2
-  t0("`x₀`") --> a
-  t1("`x₁`") --> b
-  t2("`x₂`") --> c
-  a -.-> a0
-  b -.-> b0
-  c -.-> c0
+  X0 <-.-> X1
+  X1 <-.-> X2
+  t0("`x₀`") --> X0
+  t1("`x₁`") --> X1
+  t2("`x₂`") --> X2
+classDef redText fill:#CCCCCC02,stroke:#FF8181,stroke-width:2px,color:#838383,font-weight:500
+classDef orangeText fill:#CCCCCC02,stroke:#FFC47F,stroke-width:2px,color:#838383
+classDef yellowText fill:#CCCCCC02,stroke:#FFFF7F,stroke-width:2px,color:#838383
+classDef blueText fill:#CCCCCC02,stroke:#7DCAff,stroke-width:2px,color:#838383
+classDef greenText fill:#CCCCCC02,stroke:#98E6A5,stroke-width:2px,color:#838383
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
 classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
@@ -1050,9 +1058,12 @@ classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class a, red
-class b, orange
-class c, yellow
-class X0,X1,X2,t0,t1,t2, block
+class b, green
+class c, blue
+class X0,X1,X2, block
+class t0, redText
+class t1, greenText
+class t2, blueText
 class a0,b0,c0, text
 ```
 
@@ -1377,8 +1388,8 @@ Figure 32
 
 # Hands On
 
-[ALCF_Hands_on_HPC_Workshop /
-ml-at-scale](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/master/ml-at-scale#hands-on)
+[ai-science-training-series /
+06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
 
 ## 🌱 Clone Repositories
 
