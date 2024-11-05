@@ -2,17 +2,29 @@
 Sam Foreman
 2024-11-05
 
-## Overview
+## 👀 Overview
 
-- [ALCF: Intro to AI-driven Science on Supercomputers: A Student
-  Training
-  Series](https://www.alcf.anl.gov/alcf-ai-science-training-series)
-  - 
-    [`argonne-lcf/ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
-- Slides @
+- 📊 Slides @
   [samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)
-  - HTML Version:
+  - 📄 HTML version:
     [samforeman.me/talks/ai-for-science-2024](https://samforeman.me/talks/ai-for-science-2024)
+- Course:
+  - 📂 [ALCF: Intro to AI-driven Science on
+    Supercomputers](https://www.alcf.anl.gov/alcf-ai-science-training-series)
+    - 
+      [`argonne-lcf/ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
+
+## 📑 Outline
+
+1.  [Scaling: Overview](#scaling-overview)
+2.  [Data Parallel Training](#data-parallel-training)
+    1.  [Communication](#communication)
+    2.  [Why Distributed Training?](#why-distributed-training)
+3.  [Beyond Data Parallelism](#going-beyond-data-parallelism)
+    1.  [Additional Parallelism
+        Strategies](#additional-parallelism-strategies)
+4.  [Large Language Models](#large-language-models)
+5.  [Hands On](#hands-on)
 
 ## 🚀 Scaling: Overview
 
@@ -424,8 +436,8 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 ## 🗣️ Communication
 
 - Need mechanism(s) for communicating across GPUs:
-  - [`torch.distributed`](https://pytorch.org/docs/stable/distributed.html)
   - [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html)
+  - [`torch.distributed`](https://pytorch.org/docs/stable/distributed.html)
 - Collective Communication:
   - [Nvidia Collective Communications Library
     (NCCL)](https://developer.nvidia.com/nccl)
