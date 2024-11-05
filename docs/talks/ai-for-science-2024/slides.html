@@ -505,7 +505,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="dark" data-background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html" data-background-size="contain" class="quarto-title-block center">
+<section id="title-slide" data-background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html" data-background-size="contain" class="quarto-title-block center">
     <div class="quarto-title-container" style="background-color: oklch(from #C16FAD calc(l * 1.15) c h / 0.1);
         border-radius: 10px;
         text-align:center;
@@ -1065,6 +1065,10 @@ Figure&nbsp;7: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <li>🤗 <a href="https://huggingface.co/docs/transformers/accelerate">HF / <code>Accelerate</code></a></li>
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://www.deepspeed.ai/">Microsoft / <code>DeepSpeed</code></a></li>
 </ul></li>
+<li>Requires <strong>global</strong> communication
+<ul>
+<li>every rank <em>must participate</em> (collective communication) !!</li>
+</ul></li>
 </ul>
 </div><div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-avgGrads" class="quarto-float quarto-figure quarto-figure-center">
@@ -1075,28 +1079,27 @@ Figure&nbsp;7: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">flowchart TD
     subgraph D["`Data`"]
-        direction TB
+        direction LR
         x("`x₀`")
         x1("`x₁`")
         x2("`x₂`")
     end
-    direction LR
     subgraph G0["`GPU0`"]
-        direction LR
+        direction TB
         subgraph N0["`NN`"]
         end
         L0["`L₀`"]
     end
     subgraph G1["`GPU1`"]
-        direction LR
+        direction TB
         subgraph N1["`NN`"]
         end
         L1["`L₁`"]
     end
     subgraph G2["`GPU2`"]
-        direction LR
+        direction TB
         subgraph N2["`NN`"]
         end
         L2["`L₂`"]
@@ -1808,11 +1811,14 @@ Figure&nbsp;16: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md">DeepSpeed Ulysses</a></li>
 <li><a href="https://arxiv.org/abs/2405.07719v3">Unified Sequence Parallel (USP)</a>
 <ul>
-<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/feifeibear/long-context-attention"><code>feifeibear/long-context-attention</code></a></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/feifeibear/long-context-attention">feifeibear/<code>long-context-attention</code></a></li>
 </ul></li>
 <li><a href="https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html">Megatron / Context Parallelism</a></li>
 </ul></li>
-<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a> Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
+<li>✅ All above:
+<ul>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a> Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
+</ul></li>
 </ul>
 </section>
 <section id="pipeline-parallelism-pp" class="slide level2 center" data-background-color="white">
@@ -2236,7 +2242,7 @@ Figure&nbsp;22: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <div id="fig-llms" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;23: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;23: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif" class="r-stretch"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
@@ -2794,7 +2800,7 @@ Figure&nbsp;34: Example: Training a LLM to talk like Shakespeare using <a href="
 </section>
 
 <section id="references" class="title-slide slide level1 smaller scrollable" data-background-color="white">
-<h1>References</h1>
+<h1>📓 References</h1>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

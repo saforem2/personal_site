@@ -578,7 +578,7 @@ window.Quarto = {
   <li><a href="#wordplay-example-video" id="toc-wordplay-example-video" class="nav-link" data-scroll-target="#wordplay-example-video"><code>wordplay</code>: Example [video]</a></li>
   </ul></li>
   <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">❤️ Thank you!</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📓 References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="ai-for-science-2024.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
     </div>
@@ -1152,6 +1152,10 @@ Figure&nbsp;7: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <li>🤗 <a href="https://huggingface.co/docs/transformers/accelerate">HF / <code>Accelerate</code></a></li>
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://www.deepspeed.ai/">Microsoft / <code>DeepSpeed</code></a></li>
 </ul></li>
+<li>Requires <strong>global</strong> communication
+<ul>
+<li>every rank <em>must participate</em> (collective communication) !!</li>
+</ul></li>
 </ul>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1163,28 +1167,27 @@ Figure&nbsp;7: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">flowchart TD
     subgraph D["`Data`"]
-        direction TB
+        direction LR
         x("`x₀`")
         x1("`x₁`")
         x2("`x₂`")
     end
-    direction LR
     subgraph G0["`GPU0`"]
-        direction LR
+        direction TB
         subgraph N0["`NN`"]
         end
         L0["`L₀`"]
     end
     subgraph G1["`GPU1`"]
-        direction LR
+        direction TB
         subgraph N1["`NN`"]
         end
         L1["`L₁`"]
     end
     subgraph G2["`GPU2`"]
-        direction LR
+        direction TB
         subgraph N2["`NN`"]
         end
         L2["`L₂`"]
@@ -1911,11 +1914,14 @@ Figure&nbsp;16: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md">DeepSpeed Ulysses</a></li>
 <li><a href="https://arxiv.org/abs/2405.07719v3">Unified Sequence Parallel (USP)</a>
 <ul>
-<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/feifeibear/long-context-attention"><code>feifeibear/long-context-attention</code></a></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/feifeibear/long-context-attention">feifeibear/<code>long-context-attention</code></a></li>
 </ul></li>
 <li><a href="https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html">Megatron / Context Parallelism</a></li>
 </ul></li>
-<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a> Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
+<li>✅ All above:
+<ul>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a> Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
+</ul></li>
 </ul>
 <section id="pipeline-parallelism-pp" class="level3 page-columns page-full" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="pipeline-parallelism-pp">Pipeline Parallelism (PP)</h3>
@@ -2344,7 +2350,7 @@ Figure&nbsp;22: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <div id="fig-llms" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;23: Large Language Models have (LLM)s have taken the NLP community world by storm."><img src="./assets/llms.gif" class="img-fluid figure-img"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;23: Large Language Models have (LLM)s have taken the NLP community world by storm."><img src="./assets/llms.gif" class="r-stretch img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
@@ -2924,7 +2930,7 @@ Figure&nbsp;34: Example: Training a LLM to talk like Shakespeare using <a href="
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">📓 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry" role="listitem">
 Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian Borgeaud, Dani Yogatama, et al. 2022. <span>“Emergent Abilities of Large Language Models.”</span> <a href="https://arxiv.org/abs/2206.07682">https://arxiv.org/abs/2206.07682</a>.
 </div>

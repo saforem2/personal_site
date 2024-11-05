@@ -930,11 +930,13 @@ Figure 16: FSDP Workflow.
   - [Unified Sequence Parallel
     (USP)](https://arxiv.org/abs/2405.07719v3)
     - 
-      [`feifeibear/long-context-attention`](https://github.com/feifeibear/long-context-attention)
+      [feifeibear/`long-context-attention`](https://github.com/feifeibear/long-context-attention)
   - [Megatron / Context
     Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
-- [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-  Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
+- ✅ All above:
+  - 
+    [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+    Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
 ### Pipeline Parallelism (PP)
 
@@ -1208,7 +1210,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 <div id="fig-llms">
 
-![](./assets/llms.gif)
+<img src="./assets/llms.gif" class="r-stretch" />
 
 Figure 23: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
@@ -1783,7 +1785,7 @@ Figure 34: Example: Training a LLM to talk like Shakespeare using
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-## References
+## 📓 References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
