@@ -415,20 +415,13 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
 
-<div class="aside">
-
-See: [PyTorch / Distributed Data
-Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
-
-</div>
-
 ### Data Parallel Training
 
 <div>
 
 </div>
 
-## Communication
+## 🗣️ Communication
 
 - Need mechanism(s) for communicating across GPUs:
   - [`torch.distributed`](https://pytorch.org/docs/stable/distributed.html)
@@ -773,10 +766,10 @@ Figure 13: Scatters a list of tensors to the whole group
 - `N` workers each processing unique batch[^1] of data:
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$
     \[<b><code>global_batch_size = N</code></b>\]
-- Smooth loss landscape
-  - Improved gradient estimators
-- Less iterations needed for same number of epochs
-  - common to scale learning rate `lr *= sqrt(N)`
+- Improved gradient estimators
+  - Smooth loss landscape
+  - Less iterations needed for same number of epochs
+    - common to scale learning rate `lr *= sqrt(N)`
 - See: [Large Batch Training of Convolutional
   Networks](https://arxiv.org/abs/1708.03888)
 
@@ -879,8 +872,9 @@ Figure 14: To ensure all workers have the same copies, we load on
   - model performance limited by size
 - ❌ When model does not fit on a single GPU:
   - Offloading:
-    -  [`ZeRO`](https://www.deepspeed.ai/tutorials/zero/), or 🔥
-      [FSDP](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
+    -  [DeepSpeed + `ZeRO`](https://www.deepspeed.ai/tutorials/zero/)
+    - 🔥 [PyTorch +
+      `FSDP`](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
   - Or, resort to additional parallelism strategies…
 
 ### Going beyond Data Parallelism:  DeepSpeed + `ZeRO`
@@ -920,17 +914,17 @@ Figure 16: FSDP Workflow.
 
 ## Additional Parallelism Strategies
 
-- Tensor (/ Model) Parallelism (`TP`)
+- **Tensor (/ Model) Parallelism** (`TP`):
   - 🤗 [Tensor
     Parallelism](https://huggingface.co/docs/text-generation-inference/en/conceptual/tensor_parallelism)
   - 🔥 [Large Scale Transformer model training with Tensor Parallel
     (TP)](https://pytorch.org/tutorials/intermediate/TP_tutorial.html)
-- Pipeline Parallelism (`PP`)
+- **Pipeline Parallelism** (`PP`):
   - 🔥
     [PyTorch](https://pytorch.org/docs/main/distributed.pipelining.html)
   - 
     [DeepSpeed](https://deepspeed.readthedocs.io/en/latest/pipeline.html)
-- Sequence Parallelism (`SP`)
+- **Sequence Parallelism** (`SP`):
   -  [DeepSpeed
     Ulysses](https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md)
   - [Unified Sequence Parallel
@@ -939,6 +933,8 @@ Figure 16: FSDP Workflow.
       [`feifeibear/long-context-attention`](https://github.com/feifeibear/long-context-attention)
   - [Megatron / Context
     Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
+- [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+  Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
 ### Pipeline Parallelism (PP)
 
@@ -1261,7 +1257,7 @@ Figure 26: It’s hungry! Wei et al. (2022)
 
 </div>
 
-### Life-Cycle of the LLM
+### ♻️ Life-Cycle of the LLM
 
 <div class="flex-container">
 
@@ -1292,7 +1288,7 @@ pre-training[^4].
 
 </div>
 
-### Life-Cycle of the LLM
+### 🎀 Life-Cycle of the LLM
 
 <div class="flex-container">
 
