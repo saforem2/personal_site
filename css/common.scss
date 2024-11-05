@@ -145,7 +145,8 @@ $mermaid-node-bg-color: oklch(from $mermaid-accent calc(l * 1.15) c h / 0.1) !de
 $mermaid-node-fg-color: $mermaid-accent !default;
 $mermaid-label-bg-color: RGBA(100, 100, 100, 0.1) !default;
 $mermaid-label-fg-color: $mermaid-accent;
-$mermaid-font-family: $font-family-monospace;
+// $mermaid-font-family: $font-family-monospace;
+$mermaid-font-family: "IBM Plex Mono", "IBM Plex Sans", monospace !default;
 
 // $mermaid-font-family: $font-family-sans-serif !default;
 // $mermaid-label-bg-color: none !default;
@@ -365,7 +366,6 @@ div.sourceCode {
 
 .cluster-label>p {
   max-width: auto;
-  font-weight: 500;
 
 }
 
@@ -388,16 +388,23 @@ div.sourceCode {
 .label {
   font-size: calc(0.8 * var(--bs-main-font-size));
   text-align: -webkit-center !important;
-  font-weight: 500;
 }
 
 .node .label,
 .cluster-label,
 .nodeLabel {
   text-align: -webkit-center !important;
-  font-weight: 500;
+  font-family: $mermaid-font-family!important;
 }
 
+.cluster span {
+  font-family: $mermaid-font-family;
+}
+
+.reveal .node .label, .cluster-label, .nodeLabel {
+  text-align: -webkit-center !important;
+  font-family: $mermaid-font-family;
+}
 
 // .reveal img,
 // .reveal video,
