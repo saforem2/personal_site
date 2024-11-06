@@ -37,7 +37,7 @@ format:
     image: "./assets/thumbnail.png"
     width: 1024
     height: 768
-    presentation-font-size-root: 32pt
+    presentation-font-size: 32pt
     max-scale: 4.0
     min-scale: 0.1
     pdf-separate-fragments: true
@@ -116,7 +116,6 @@ format:
 
 # 👀 Overview {background-color="white"}
 
-
 - 📊 Slides @ [samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)
   - 📄 HTML version: [samforeman.me/talks/ai-for-science-2024](https://samforeman.me/talks/ai-for-science-2024)
 
@@ -186,6 +185,8 @@ class N0,D,G0,n0 block
 
 **SLOW** !! model size limited by GPU memory
 :::
+
+::: {.content-visible when-format="revealjs" unless-format="html"}
 
 # Single GPU {background-color="white"}
 
@@ -267,6 +268,8 @@ class N0,D,G0,n0 block
 **SLOW** !! model size limited by GPU memory
 :::
 
+:::
+
 # Data Parallel Training {background-color="white"}
 
 ::: {#fig-ddp-training-mermaid .flex-container}
@@ -275,7 +278,6 @@ class N0,D,G0,n0 block
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        %%xp("`xₙ₊₁`")
         x("`x₀`")
         x1("`x₁`")
         x2("`x₂`")
@@ -1429,7 +1431,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 :::
 
-# Deciding on a Parallelism Strategy {background-color="white"}
+## Deciding on a Parallelism Strategy {background-color="white"}
 
 ::: {.panel-tabset}
 
@@ -1610,21 +1612,11 @@ Language Model trained for causal language modeling[^generating-text-source].
 
 [^generating-text-source]: Video from: [🤗 Generation with LLMs](https://huggingface.co/docs/transformers/main/en/llm_tutorial)
 
-## Assistant Models {.centeredslide background-color="#181D29"}
-
-::: {#fig-assistant-models}
-
-[![](./assets/jailbreak.jpeg)]{.preview-image style="text-align:center; margin-left:auto; margin-right: auto;"}
-
-:::
-
-<!-- # 🍋 [`ezpz`](https://github.com/saforem2/ezpz) {background-color="white"} -->
-
 # 👋 Hands On {background-color="white"}
 
 {{< fa brands github >}} [ai-science-training-series / 06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
 
-## 🛠️ Hands On: Getting Started {background-color="white"}
+## 🧑‍💻 Hands On: Getting Started {background-color="white"}
 
 1. 🌱 Clone Repo(s):
 
@@ -1640,7 +1632,7 @@ Language Model trained for causal language modeling[^generating-text-source].
         ```bash
         git clone https://github.com/saforem2/ezpz deps/ezpz
         ```
-1. 🐍 Python:
+1. 🐍 Setup Python:
 
     ```bash
     export PBS_O_WORKDIR=$(pwd) && source deps/ezpz/src/ezpz/bin/utils.sh
@@ -1672,9 +1664,10 @@ Language Model trained for causal language modeling[^generating-text-source].
     mpirun -n "${NGPUS}" python3 -m ezpz.test_dist
     ```
 
-    See: [`ezpz/test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
+    See: 🍋 [`ezpz/test_dist.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 
-## 🍋 [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\] {background-color="white"}
+
+## {{< fa brands github >}} [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\] {background-color="#121314"}
 
 ::: {#fig-ezpz-asciinema}
 
@@ -1690,25 +1683,26 @@ to train a small model using DDP
 ![](./assets/nanogpt.jpg)
 
 The simplest, fastest repository for training / finetuning GPT based models.
+Figure from [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 :::
 
 ## Prepare Data {background-color="white"}
 
 ```bash
-$ python3 wordplay/data/shakespeare_char/prepare.py
-Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
-length of dataset in characters: 1,115,394
-all the unique characters:
- !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-vocab size: 65
-train has 1,003,854 tokens
-val has 111,540 tokens
+python3 wordplay/data/shakespeare_char/prepare.py
+# Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
+# length of dataset in characters: 1,115,394
+# all the unique characters:
+#  !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+# vocab size: 65
+# train has 1,003,854 tokens
+# val has 111,540 tokens
 ```
 
 ## Launch Training (DDP) {background-color="white"}
 
 ```bash
-$ launch python3 -m wordplay \
+launch python3 -m wordplay \
     train.backend=DDP \
     train.eval_interval=100 \
     data=shakespeare \
@@ -1719,7 +1713,13 @@ $ launch python3 -m wordplay \
     train.log_interval=10 \
     train.compile=false \
     | tee wordplay-gpt2-DDP.log
+```
 
+## Training: Example Output {background-color="white"}
+
+```` {.java}
+
+```bash
 [2024-07-17 07:42:11.746540][INFO][__init__:156] - Setting logging level to 'INFO' on 'RANK == 0'
 [2024-07-17 07:42:11.748763][INFO][__init__:157] - Setting logging level to 'CRITICAL' on all others 'RANK != 0'
 [2024-07-17 07:42:11.749453][INFO][__init__:160] - To disable this behavior, and log from ALL ranks (not recommended), set: 'export LOG_FROM_ALL_RANKS=1'  in your environment, and re-run.
@@ -2012,14 +2012,15 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
+````
 
-## [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\] {background-color="white"}
+## {{< fa brands github >}} [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\] {background-color="#121314"}
 
 ::: {#fig-wordplay-asciinema .asciinema}
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Example: Training a LLM to talk like Shakespeare using [`saforem2/wordplay` 🎮💬](https://github.com/saforem2/wordplay)
+Training a LLM to talk like Shakespeare using [saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 :::
 
 # ❤️ Thank you! {background-color="white"}
@@ -2030,18 +2031,22 @@ Example: Training a LLM to talk like Shakespeare using [`saforem2/wordplay` 🎮
     <split even>
 
     [<i class="fas fa-home"></i>](https://samforeman.me)
-    [<i class="far fa-paper-plane"></i>](mailto:///foremans@anl.gov)
+    [<i class="far fa-paper-plane"></i>](mailto:foremans@anl.gov)
     [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
 
     </split>
 
-::: {.callout-note icon=false title="🙏 Acknowledgements" collapse="false"}
+::: {.callout-note icon=false title="Acknowledgements" collapse="false"}
 
 This research used resources of the Argonne Leadership Computing Facility,
 which is a DOE Office of Science User Facility supported under Contract
-DE-AC02-06CH11357.
+DE-AC02-06CH11357
+
 
 :::
 
 
 # 📓 References {background-color="white"}
+
+- Title slide (Tetris animation) from: <https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html>
+

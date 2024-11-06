@@ -81,90 +81,6 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 </div>
 
-## Single GPU
-
-- See [🤗 Methods and tools for efficient training on a single
-  GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
-
-<div id="fig-single-gpu-2">
-
-``` mermaid
-flowchart LR
-    subgraph G0["`GPU0`"]
-        subgraph N0["`Network`"]
-        end
-        L0("`Loss`")
-    end
-    subgraph D["`Data`"]
-        x("`x₁`")
-        x1("`x₂`")
-        x2("`x₃`")
-    end
-    x --> N0
-    N0 --> L0
-    L0 --> N0
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class x,L0 green
-class x1, blue
-class x2, yellow
-class x3, grey
-class N0,D,G0,n0 block
-```
-
-Figure 2: **SLOW** !! model size limited by GPU memory
-
-</div>
-
-## Single GPU
-
-- See [🤗 Methods and tools for efficient training on a single
-  GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
-
-<div id="fig-single-gpu-3">
-
-``` mermaid
-flowchart LR
-    subgraph G0["`GPU0`"]
-        subgraph N0["`Network`"]
-        end
-        L0("`Loss`")
-    end
-    subgraph D["`Data`"]
-        x("`x₂`")
-        x1("`x₃`")
-        x2("`x₄`")
-    end
-    x --> N0
-    N0 --> L0
-    L0 --> N0
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class x,L0 blue
-class x1, yellow
-class x2, purple
-class x3, grey
-class N0,D,G0,n0 block
-```
-
-Figure 3: **SLOW** !! model size limited by GPU memory
-
-</div>
-
 ## Data Parallel Training
 
 <div id="fig-ddp-training-mermaid">
@@ -173,7 +89,6 @@ Figure 3: **SLOW** !! model size limited by GPU memory
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        %%xp("`xₙ₊₁`")
         x("`x₀`")
         x1("`x₁`")
         x2("`x₂`")
@@ -222,7 +137,7 @@ class AR block
 class bc text
 ```
 
-Figure 4: Each GPU receives **unique** data at each step
+Figure 2: Each GPU receives **unique** data at each step
 
 </div>
 
@@ -290,7 +205,7 @@ class AR block
 class bc text
 ```
 
-Figure 5: Average gradients across all GPUs
+Figure 3: Average gradients across all GPUs
 
 </div>
 
@@ -354,7 +269,7 @@ class BC block
 class bc text
 ```
 
-Figure 6: Send global updates back to each GPU
+Figure 4: Send global updates back to each GPU
 
 </div>
 
@@ -422,7 +337,7 @@ class AR block
 class bc text
 ```
 
-Figure 7: See: [PyTorch / Distributed Data
+Figure 5: See: [PyTorch / Distributed Data
 Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
@@ -513,7 +428,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 9: All-Reduce operation: each rank receives the reduction of
+Figure 7: All-Reduce operation: each rank receives the reduction of
 input values across ranks.
 
 </div>
@@ -574,7 +489,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 10: Reduce operation: one rank receives the reduction of input
+Figure 8: Reduce operation: one rank receives the reduction of input
 values across ranks
 
 </div>
@@ -623,7 +538,7 @@ class x2,xp0,xp1,xp2,xp3 blue
 class xp, text
 ```
 
-Figure 11: `broadcast` (send) a tensor <code>$x$</code> from one rank to
+Figure 9: `broadcast` (send) a tensor <code>$x$</code> from one rank to
 all ranks
 
 </div>
@@ -706,7 +621,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 12: Gathers tensors from the whole group in a list.
+Figure 10: Gathers tensors from the whole group in a list.
 
 </div>
 
@@ -769,7 +684,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 13: Scatters a list of tensors to the whole group
+Figure 11: Scatters a list of tensors to the whole group
 
 </div>
 
@@ -834,7 +749,7 @@ classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class 0,1,2,3,N,X,CKPT block
 ```
 
-Figure 14: To ensure all workers have the same copies, we load on
+Figure 12: To ensure all workers have the same copies, we load on
 `RANK==0` and `broadcast`
 
 </div>
@@ -902,7 +817,7 @@ Figure 14: To ensure all workers have the same copies, we load on
 
 <img src="./assets/zero.png" class="r-stretch" />
 
-Figure 15: [DeepSpeed](deepspeed.ai) +
+Figure 13: [DeepSpeed](deepspeed.ai) +
 [`ZeRO`](https://www.deepspeed.ai/tutorials/zero-offload/)
 
 </div>
@@ -919,7 +834,7 @@ Figure 15: [DeepSpeed](deepspeed.ai) +
 
 ![](assets/fsdp.png)
 
-Figure 16: FSDP Workflow.
+Figure 14: FSDP Workflow.
 [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 
 </div>
@@ -1002,7 +917,7 @@ class a1, blue
 class b1, yellow
 ```
 
-Figure 17: Pipeline Parallelism
+Figure 15: Pipeline Parallelism
 
 </div>
 
@@ -1107,7 +1022,7 @@ class X0,X1,X2, block
 class a0,b0,c0, text
 ```
 
-Figure 20: Simple example of tensor parallelism
+Figure 18: Simple example of tensor parallelism
 
 </div>
 
@@ -1133,7 +1048,7 @@ Figure 20: Simple example of tensor parallelism
 
 <img src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch" />
 
-Figure 21: Tensor Parallel GEMM. This information is based on (the much
+Figure 19: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1148,13 +1063,13 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 22: Figure taken from [3D parallelism: Scaling to
+Figure 20: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
 </div>
 
-## Deciding on a Parallelism Strategy
+### Deciding on a Parallelism Strategy
 
 <div class="panel-tabset">
 
@@ -1224,7 +1139,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 <img src="./assets/llms.gif" class="r-stretch" />
 
-Figure 23: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 21: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1235,7 +1150,7 @@ community~~ **world** by storm[^3].
 
 <img src="./assets/emergent-abilities.gif" class="r-stretch" />
 
-Figure 24: [Emergent abilities of Large Language
+Figure 22: [Emergent abilities of Large Language
 Models](https://arxiv.org/abs/2206.07682) Yao et al. (2023)
 
 </div>
@@ -1251,7 +1166,7 @@ style="align-items: flex-end; width:90%; text-align:center;">
 
 <img src="./assets/evolution.gif" class="r-stretch" />
 
-Figure 25: Visualization from Yang et al. (2023)
+Figure 23: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -1263,7 +1178,7 @@ Figure 25: Visualization from Yang et al. (2023)
 
 <img src="./assets/it_hungers.jpeg" class="r-stretch" />
 
-Figure 26: It’s hungry! Wei et al. (2022)
+Figure 24: It’s hungry! Wei et al. (2022)
 
 </div>
 
@@ -1293,7 +1208,7 @@ Figure 26: It’s hungry! Wei et al. (2022)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 27: **Pre-training**: Virtually *all of the compute* used during
+Figure 25: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1324,7 +1239,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 28: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 26: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1339,7 +1254,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 29: Language Model trained for causal language modeling[^6].
+Figure 27: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1349,18 +1264,7 @@ Figure 29: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 30: Language Model trained for causal language modeling[^7].
-
-</div>
-
-### Assistant Models
-
-<div id="fig-assistant-models">
-
-<span class="preview-image"
-style="text-align:center; margin-left:auto; margin-right: auto;">![](./assets/jailbreak.jpeg)</span>
-
-Figure 31
+Figure 28: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1369,7 +1273,7 @@ Figure 31
 [ai-science-training-series /
 06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
 
-### 🛠️ Hands On: Getting Started
+### 🧑‍💻 Hands On: Getting Started
 
 1.  🌱 Clone Repo(s):
 
@@ -1386,7 +1290,7 @@ Figure 31
       git clone https://github.com/saforem2/ezpz deps/ezpz
       ```
 
-2.  🐍 Python:
+2.  🐍 Setup Python:
 
     ``` bash
     export PBS_O_WORKDIR=$(pwd) && source deps/ezpz/src/ezpz/bin/utils.sh
@@ -1417,16 +1321,16 @@ Figure 31
     mpirun -n "${NGPUS}" python3 -m ezpz.test_dist
     ```
 
-    See:
-    [`ezpz/test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
+    See: 🍋
+    [`ezpz/test_dist.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 
-### 🍋 [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
+###  [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
 
 <div id="fig-ezpz-asciinema">
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 32: Example: using [🍋
+Figure 29: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1438,28 +1342,29 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 33: The simplest, fastest repository for training / finetuning
-GPT based models.
+Figure 30: The simplest, fastest repository for training / finetuning
+GPT based models. Figure from
+[karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
 </div>
 
 ### Prepare Data
 
 ``` bash
-$ python3 wordplay/data/shakespeare_char/prepare.py
-Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
-length of dataset in characters: 1,115,394
-all the unique characters:
- !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-vocab size: 65
-train has 1,003,854 tokens
-val has 111,540 tokens
+python3 wordplay/data/shakespeare_char/prepare.py
+# Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
+# length of dataset in characters: 1,115,394
+# all the unique characters:
+#  !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+# vocab size: 65
+# train has 1,003,854 tokens
+# val has 111,540 tokens
 ```
 
 ### Launch Training (DDP)
 
 ``` bash
-$ launch python3 -m wordplay \
+launch python3 -m wordplay \
     train.backend=DDP \
     train.eval_interval=100 \
     data=shakespeare \
@@ -1470,7 +1375,13 @@ $ launch python3 -m wordplay \
     train.log_interval=10 \
     train.compile=false \
     | tee wordplay-gpt2-DDP.log
+```
 
+### Training: Example Output
+
+```` java
+
+```bash
 [2024-07-17 07:42:11.746540][INFO][__init__:156] - Setting logging level to 'INFO' on 'RANK == 0'
 [2024-07-17 07:42:11.748763][INFO][__init__:157] - Setting logging level to 'CRITICAL' on all others 'RANK != 0'
 [2024-07-17 07:42:11.749453][INFO][__init__:160] - To disable this behavior, and log from ALL ranks (not recommended), set: 'export LOG_FROM_ALL_RANKS=1'  in your environment, and re-run.
@@ -1763,15 +1674,16 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
+````
 
-### [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
+###  [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
 <div id="fig-wordplay-asciinema">
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Figure 34: Example: Training a LLM to talk like Shakespeare using
-[`saforem2/wordplay` 🎮💬](https://github.com/saforem2/wordplay)
+Figure 31: Training a LLM to talk like Shakespeare using
+[saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>
 
@@ -1784,20 +1696,23 @@ Figure 34: Example: Training a LLM to talk like Shakespeare using
   <split even>
 
   [<i class="fas fa-home"></i>](https://samforeman.me)
-  [<i class="far fa-paper-plane"></i>](mailto:///foremans@anl.gov)
+  [<i class="far fa-paper-plane"></i>](mailto:foremans@anl.gov)
   [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
 
   </split>
 
 > [!NOTE]
 >
-> #### 🙏 Acknowledgements
+> #### Acknowledgements
 >
 > This research used resources of the Argonne Leadership Computing
 > Facility, which is a DOE Office of Science User Facility supported
-> under Contract DE-AC02-06CH11357.
+> under Contract DE-AC02-06CH11357
 
 ## 📓 References
+
+- Title slide (Tetris animation) from:
+  <https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html>
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
