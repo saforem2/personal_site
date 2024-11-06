@@ -20,6 +20,7 @@
 
 $right-arrow: "\2192"; // Unicode character for right arrow
 $presentation-heading-font: "IBM Plex Sans Condensed", "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif, $font-family-sans-serif !default;
+$heading-font: "IBM Plex Sans Condensed"$font-family-sans-serif !default;
 
 $myred: #FF5252;
 $myorange: #FD971F;
@@ -29,12 +30,12 @@ $myblue: #29b6f6;
 $mypurple: #AE81FF;
 $mypink: #FF67FF;
 
-$base-font-size: 17px !default;
+$base-font-size: 16px !default;
 $code-block-font-size: 14px !default;
 //
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
-$font-size-root: 17px;
+$font-size-root: 1rem;
 $font-size-base: 16px; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * .875;
 $font-size-lg: $font-size-base * 1.25;
@@ -146,7 +147,9 @@ $mermaid-node-fg-color: $mermaid-accent !default;
 $mermaid-label-bg-color: RGBA(100, 100, 100, 0.1) !default;
 $mermaid-label-fg-color: $mermaid-accent;
 // $mermaid-font-family: $font-family-monospace;
-$mermaid-font-family: "IBM Plex Mono", "IBM Plex Sans", monospace !default;
+$mermaid-font-family: "IBM Plex Mono",
+  "IBM Plex Sans",
+  monospace !default;
 
 // $mermaid-font-family: $font-family-sans-serif !default;
 // $mermaid-label-bg-color: none !default;
@@ -354,6 +357,12 @@ $themes: (
   padding: 0;
 }
 
+.callout.callout-titled .callout-body> :last-child:not(.sourceCode),
+.callout.callout-titled .callout-body>div> :last-child:not(.sourceCode) {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 div.sourceCode {
   white-space: pre;
   font-family: $monofont;
@@ -394,14 +403,16 @@ div.sourceCode {
 .cluster-label,
 .nodeLabel {
   text-align: -webkit-center !important;
-  font-family: $mermaid-font-family!important;
+  font-family: $mermaid-font-family !important;
 }
 
 .cluster span {
   font-family: $mermaid-font-family;
 }
 
-.reveal .node .label, .cluster-label, .nodeLabel {
+.reveal .node .label,
+.cluster-label,
+.nodeLabel {
   text-align: -webkit-center !important;
   font-family: $mermaid-font-family;
 }
@@ -592,13 +603,15 @@ a:hover {
 .reveal a img:hover,
 a img:hover {
   color: $link-color-hover;
-  background: none!important;
+  background: none !important;
   border-radius: $link-border-radius;
 }
 
-a img:hover, .img-fluid:hover, .reveal img:hover {
-	border-radius: .25rem;
-	background: none !important;
+a img:hover,
+.img-fluid:hover,
+.reveal img:hover {
+  border-radius: .25rem;
+  background: none !important;
 }
 
 // .reveal a:hover,
@@ -835,30 +848,30 @@ td a code:not(.sourceCode) {
 nav p code:not(.sourceCode),
 nav li code:not(.sourceCode),
 nav td code:not(.sourceCode) {
-  background-color: rgba(0, 0, 0, 0)!important;
+  background-color: rgba(0, 0, 0, 0) !important;
   padding: 0;
-  color: inherit!important;
+  color: inherit !important;
 }
 
 .reveal a>code,
 a>code {
-  color: $link-color!important;
-  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1)!important;
-  border-radius: $link-border-radius!important;
+  color: $link-color !important;
+  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1) !important;
+  border-radius: $link-border-radius !important;
   font-size: 1em;
   padding: 0pt 2pt;
   // font-size: inherit;
 
   &:hover {
     background: none;
-    color: $link-color-hover!important;
-    background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1)!important;
+    color: $link-color-hover !important;
+    background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1) !important;
     transition: background .3s ease-in-out;
   }
 }
 
 a>img:hover {
-  background-color: none!important;
+  background-color: none !important;
 }
 
 // .reveal a>code,
@@ -1171,6 +1184,7 @@ div.callout-important.callout-style-default .callout-title {
 .card:hover {
   color: $link-color-hover;
 }
+
 // @media screen and (-webkit-min-device-pixel-ratio: 2),
 // screen and (min-resolution: 2dppx) {
 //   body {
@@ -1343,9 +1357,9 @@ section.has-dark-background h6 {
 }
 
 .quarto-grid-item .card-title {
-	color: inherit;
-	margin-top: auto;
-	margin-bottom: auto;
+  color: inherit;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 
@@ -1504,6 +1518,8 @@ section.has-light-background h6 {
 }
 
 :root {
+  --code-bg: $code-bg;
+  --bs-table-striped-bg: $code-bg;
   --callout-simple-color: rgba(90, 90, 90, 20);
   --callout-simple-title-color: rgba(90, 90, 90, 100);
   --callout-border-hover-color: rgba(229, 153, 247, 100);
@@ -1705,7 +1721,7 @@ h1 {
   opacity: 100%;
   color: $heading-color;
   font-family: $font-family-headings;
-  margin-block: 1rem;
+  margin-block: 1.25rem;
   // margin-bottom: 0.5rem;
 }
 
@@ -1717,7 +1733,7 @@ h2 {
   padding-bottom: unset;
   // margin-top: 0.25rem;
   // margin-bottom: 0.25rem;
-  margin-block: 0.5rem;
+  margin-block: 0.75rem;
   // border-bottom: 1px solid rgba(100,100,100,0.
   // font-weight: 500;
 }
@@ -1725,8 +1741,8 @@ h2 {
 h3 {
   color: $heading-color;
   font-family: $font-family-headings;
-  margin-top: 0.1rem;
-  margin-bottom: 0.1rem;
+  margin-block: 0.5rem;
+  opacity: 100%
 }
 
 h4 {
@@ -1869,7 +1885,7 @@ div.aside,
 aside,
 .column-margin {
   color: $grey-ambivalent;
-  font-size: 0.9rem;
+  // font-size: 0.9rem;
 }
 
 .panel-caption,
@@ -2192,6 +2208,7 @@ body {
   // padding-top: 2rem;
   // padding-bottom: 2rem;
   box-sizing: border-box;
+  font-size: $base-font-size;
 }
 
 .card {
@@ -2596,9 +2613,11 @@ div.quarto-about-trestles {
   .reveal .flex-container {
     flex-direction: row;
   }
+
   .reveal .column {
     width: auto;
   }
+
   .reveal .quarto-layout-row {
     flex-direction: row;
   }
@@ -2842,11 +2861,18 @@ div.sidebar-item-container .sidebar-link>code {
 //   padding-left: 1em;
 // }
 
+// ul>li:not(:has(> p))>ul,
+// ol>li:not(:has(> p))>ul,
+// ul>li:not(:has(> p))>ol,
+// ol>li:not(:has(> p))>ol {
+//   margin-bottom: 1em;
+// }
+
 ul>li:not(:has(> p))>ul,
 ol>li:not(:has(> p))>ul,
 ul>li:not(:has(> p))>ol,
 ol>li:not(:has(> p))>ol {
-  margin-bottom: 1em;
+  margin-bottom: auto;
 }
 
 ul.task-list {
@@ -3502,6 +3528,7 @@ pre.sourceCode {
   max-height: $code-block-height;
   overflow-y: scroll;
 }
+
 //
 // pre.numberSource {
 //   margin-left: 3rem;
@@ -3980,7 +4007,7 @@ div.code {
 
 @media screen and (max-width: 800px) {
   .reveal .footer {
-    display: none!important;
+    display: none !important;
     // font-size: x-small !important;
     // bottom: 12px;
   }

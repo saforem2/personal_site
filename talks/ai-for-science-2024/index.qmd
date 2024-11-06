@@ -34,10 +34,12 @@ format:
       useMaxWidth: true
       layout: elk
   revealjs:
+    resources:
+      - ./tetris/
     image: "./assets/thumbnail.png"
-    width: 1024
-    height: 768
-    presentation-font-size: 32pt
+    # width: 1024
+    # height: 768
+    # presentation-font-size: 32pt
     max-scale: 4.0
     min-scale: 0.1
     pdf-separate-fragments: true
@@ -51,7 +53,6 @@ format:
     #   layout: elk
     # minScale: 0.7
     # maxScale: 1
-    # min-scale: 0.1
     # max-scale: 2.0
     # width: 1050
     # margin: 0.1
@@ -550,7 +551,7 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 ## Data Parallel Training {background-color="white"}
 
-::: {layout="[50,50]"}
+::: {layout="[55,45]"}
 
 ::: {.column}
 - Each GPU:
@@ -1127,17 +1128,15 @@ FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-shard
     - 🤗 [Tensor Parallelism](https://huggingface.co/docs/text-generation-inference/en/conceptual/tensor_parallelism)
     - 🔥 [Large Scale Transformer model training with Tensor Parallel (TP)](https://pytorch.org/tutorials/intermediate/TP_tutorial.html)
 - **Pipeline Parallelism** (`PP`):
-    - 🔥 [PyTorch](https://pytorch.org/docs/main/distributed.pipelining.html)
-    - {{<iconify logos microsoft-icon >}} [DeepSpeed](https://deepspeed.readthedocs.io/en/latest/pipeline.html)
+    - 🔥 [PyTorch](https://pytorch.org/docs/main/distributed.pipelining.html), {{<iconify logos microsoft-icon >}} [DeepSpeed](https://deepspeed.readthedocs.io/en/latest/pipeline.html)
 - **Sequence Parallelism** (`SP`):
     - {{< iconify logos microsoft-icon >}} [DeepSpeed Ulysses](https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md)
+    - [Megatron / Context Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
     - [Unified Sequence Parallel (USP)](https://arxiv.org/abs/2405.07719v3)
         - {{< fa brands github >}} [feifeibear/`long-context-attention`](https://github.com/feifeibear/long-context-attention)
-    - [Megatron / Context Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
 
-- ✅ All above:
-  - {{< fa brands github >}} [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-    Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
+- [x] {{< fa brands github >}} [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+  - Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
 
 ## Pipeline Parallelism (PP) {background-color="white"}
@@ -1332,7 +1331,6 @@ See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/p
 
 ## Tensor (/ Model) Parallel Training: Example {background-color="white"}
 
-
 ::: {.flex-container}
 
 ::: {.column style="width: 60%;"}
@@ -1345,9 +1343,7 @@ where each GPU only has only its portion of the full weights as shown below
 3. Compute: $y = \sum_{i} x_{i} W_{i}$ ✅
 :::
 
-::: {.column}
-
-::: {#fig-tensor-parallel-example-mermaid}
+::: {.column style="width: 25%;"}
 
 ```{mermaid}
 flowchart TD
@@ -1389,13 +1385,10 @@ class X0,X1,X2, block
 %%class t2, blueText
 class a0,b0,c0, text
 ```
-Simple example of tensor parallelism
-:::
 
 :::
 
 :::
-
 
 ## Tensor (Model) Parallelism[^efficient-large-scale] {background-color="white"}
 
