@@ -848,22 +848,20 @@ Figure 14: FSDP Workflow.
     (TP)](https://pytorch.org/tutorials/intermediate/TP_tutorial.html)
 - **Pipeline Parallelism** (`PP`):
   - 🔥
-    [PyTorch](https://pytorch.org/docs/main/distributed.pipelining.html)
-  - 
+    [PyTorch](https://pytorch.org/docs/main/distributed.pipelining.html),
     [DeepSpeed](https://deepspeed.readthedocs.io/en/latest/pipeline.html)
 - **Sequence Parallelism** (`SP`):
   -  [DeepSpeed
     Ulysses](https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md)
+  - [Megatron / Context
+    Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
   - [Unified Sequence Parallel
     (USP)](https://arxiv.org/abs/2405.07719v3)
     - 
       [feifeibear/`long-context-attention`](https://github.com/feifeibear/long-context-attention)
-  - [Megatron / Context
-    Parallelism](https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html)
-- ✅ All above:
-  - 
-    [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-    Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
+- [x]
+  [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+  - Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
 ### Pipeline Parallelism (PP)
 
@@ -977,9 +975,7 @@ GPU only has only its portion of the full weights as shown below
 
 </div>
 
-<div class="column">
-
-<div id="fig-tensor-parallel-example-mermaid">
+<div class="column" style="width: 25%;">
 
 ``` mermaid
 flowchart TD
@@ -1022,10 +1018,6 @@ class X0,X1,X2, block
 class a0,b0,c0, text
 ```
 
-Figure 18: Simple example of tensor parallelism
-
-</div>
-
 </div>
 
 </div>
@@ -1048,7 +1040,7 @@ Figure 18: Simple example of tensor parallelism
 
 <img src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch" />
 
-Figure 19: Tensor Parallel GEMM. This information is based on (the much
+Figure 18: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1063,7 +1055,7 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 20: Figure taken from [3D parallelism: Scaling to
+Figure 19: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
@@ -1139,7 +1131,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 <img src="./assets/llms.gif" class="r-stretch" />
 
-Figure 21: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 20: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1150,7 +1142,7 @@ community~~ **world** by storm[^3].
 
 <img src="./assets/emergent-abilities.gif" class="r-stretch" />
 
-Figure 22: [Emergent abilities of Large Language
+Figure 21: [Emergent abilities of Large Language
 Models](https://arxiv.org/abs/2206.07682) Yao et al. (2023)
 
 </div>
@@ -1166,7 +1158,7 @@ style="align-items: flex-end; width:90%; text-align:center;">
 
 <img src="./assets/evolution.gif" class="r-stretch" />
 
-Figure 23: Visualization from Yang et al. (2023)
+Figure 22: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -1178,7 +1170,7 @@ Figure 23: Visualization from Yang et al. (2023)
 
 <img src="./assets/it_hungers.jpeg" class="r-stretch" />
 
-Figure 24: It’s hungry! Wei et al. (2022)
+Figure 23: It’s hungry! Wei et al. (2022)
 
 </div>
 
@@ -1208,7 +1200,7 @@ Figure 24: It’s hungry! Wei et al. (2022)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 25: **Pre-training**: Virtually *all of the compute* used during
+Figure 24: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1239,7 +1231,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 26: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 25: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1254,7 +1246,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 27: Language Model trained for causal language modeling[^6].
+Figure 26: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1264,7 +1256,7 @@ Figure 27: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 28: Language Model trained for causal language modeling[^7].
+Figure 27: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1330,7 +1322,7 @@ Figure 28: Language Model trained for causal language modeling[^7].
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 29: Example: using [🍋
+Figure 28: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1342,7 +1334,7 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 30: The simplest, fastest repository for training / finetuning
+Figure 29: The simplest, fastest repository for training / finetuning
 GPT based models. Figure from
 [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
@@ -1682,7 +1674,7 @@ At lie my lord with the me an arms be a s
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Figure 31: Training a LLM to talk like Shakespeare using
+Figure 30: Training a LLM to talk like Shakespeare using
 [saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>

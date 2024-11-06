@@ -122,7 +122,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-b2acd1ad29174f8118dce7738df18c6b.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-c5070f18aa9ee3e2cbcd6a05ecfa72b3.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -959,9 +959,9 @@ Figure&nbsp;5: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[50,50]">
+<div class="quarto-layout-panel" data-layout="[55,45]">
 <div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="column quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
 <ul>
 <li>Each GPU:
 <ul>
@@ -980,7 +980,7 @@ Figure&nbsp;5: See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tuto
 <li>every rank <em>must participate</em> (collective communication) !!</li>
 </ul></li>
 </ul>
-</div><div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+</div><div class="column quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
 <div id="fig-avgGrads" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-avgGrads-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1713,21 +1713,20 @@ Figure&nbsp;14: FSDP Workflow. <a href="https://pytorch.org/blog/introducing-pyt
 </ul></li>
 <li><strong>Pipeline Parallelism</strong> (<code>PP</code>):
 <ul>
-<li>🔥 <a href="https://pytorch.org/docs/main/distributed.pipelining.html">PyTorch</a></li>
-<li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://deepspeed.readthedocs.io/en/latest/pipeline.html">DeepSpeed</a></li>
+<li>🔥 <a href="https://pytorch.org/docs/main/distributed.pipelining.html">PyTorch</a>, <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://deepspeed.readthedocs.io/en/latest/pipeline.html">DeepSpeed</a></li>
 </ul></li>
 <li><strong>Sequence Parallelism</strong> (<code>SP</code>):
 <ul>
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://github.com/microsoft/DeepSpeed/blob/master/blogs/deepspeed-ulysses/README.md">DeepSpeed Ulysses</a></li>
+<li><a href="https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html">Megatron / Context Parallelism</a></li>
 <li><a href="https://arxiv.org/abs/2405.07719v3">Unified Sequence Parallel (USP)</a>
 <ul>
 <li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/feifeibear/long-context-attention">feifeibear/<code>long-context-attention</code></a></li>
 </ul></li>
-<li><a href="https://docs.nvidia.com/megatron-core/developer-guide/latest/api-guide/context_parallel.html">Megatron / Context Parallelism</a></li>
 </ul></li>
-<li>✅ All above:
+<li><label><input type="checkbox" checked=""><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a></label>
 <ul>
-<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/<code>Megatron-DeepSpeed</code></a> Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
+<li>Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
 </ul></li>
 </ul>
 </section>
@@ -1980,10 +1979,7 @@ Figure&nbsp;17: Tensor Parallel Training
 <li>Compute: <span class="math inline">x_{0} W_{0} + x_{1} W_{1}\rightarrow</span> <code>GPU2</code></li>
 <li>Compute: <span class="math inline">y = \sum_{i} x_{i} W_{i}</span> ✅</li>
 </ol>
-</div><div class="column">
-<div id="fig-tensor-parallel-example-mermaid" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-tensor-parallel-example-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</div><div class="column" style="width: 25%;">
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -2033,12 +2029,6 @@ class a0,b0,c0, text
 </div>
 </div>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tensor-parallel-example-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: Simple example of tensor parallelism
-</figcaption>
-</figure>
-</div>
 </div></div>
 </section>
 <section id="tensor-model-parallelismefficient-large-scale" class="slide level2 center" data-background-color="white">
@@ -2058,7 +2048,7 @@ Figure&nbsp;18: Simple example of tensor parallelism
 <h2>Tensor Parallelism</h2>
 
 <img data-src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch quarto-figure-center" id="fig-parallel-gemm"><p class="caption">
-Figure&nbsp;19: Tensor Parallel GEMM. This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a>
+Figure&nbsp;18: Tensor Parallel GEMM. This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a>
 </p></section>
 <section id="d-parallelism" class="slide level2 center" data-background-color="white">
 <h2>3D Parallelism</h2>
@@ -2068,10 +2058,10 @@ Figure&nbsp;19: Tensor Parallel GEMM. This information is based on (the much mor
 <div id="fig-3dparallel" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;20: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="assets/parallelism-deepspeed-3d.png"></a>
+<a href="assets/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;19: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="assets/parallelism-deepspeed-3d.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
+Figure&nbsp;19: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
 </figcaption>
 </figure>
 </div>
@@ -2151,10 +2141,10 @@ Figure&nbsp;20: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <div id="fig-llms" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;21: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif" class="r-stretch"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;20: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="./assets/llms.gif" class="r-stretch"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
+Figure&nbsp;20: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
@@ -2163,7 +2153,7 @@ Figure&nbsp;21: Large Language Models have (LLM)s have taken the <del>NLP commun
 <h2>Emergent Abilities</h2>
 
 <img data-src="./assets/emergent-abilities.gif" class="r-stretch quarto-figure-center" id="fig-emergent-abilities"><p class="caption">
-Figure&nbsp;22: <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>
+Figure&nbsp;21: <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>
 </p></section>
 <section id="training-llms" class="slide level2 r-stretch center" data-background-color="white">
 <h2>Training LLMs</h2>
@@ -2172,10 +2162,10 @@ Figure&nbsp;22: <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of
 <div id="fig-evolution" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/evolution.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;23: Visualization from @yang2023harnessing"><img data-src="./assets/evolution.gif" class="r-stretch"></a>
+<a href="./assets/evolution.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;22: Visualization from @yang2023harnessing"><img data-src="./assets/evolution.gif" class="r-stretch"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>
+Figure&nbsp;22: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -2183,10 +2173,10 @@ Figure&nbsp;23: Visualization from <span class="citation" data-cites="yang2023ha
 <div id="fig-it-hungers" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/it_hungers.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;24: It’s hungry! @wei2022emergentabilitieslargelanguage"><img data-src="./assets/it_hungers.jpeg" class="r-stretch"></a>
+<a href="./assets/it_hungers.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;23: It’s hungry! @wei2022emergentabilitieslargelanguage"><img data-src="./assets/it_hungers.jpeg" class="r-stretch"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: It’s hungry! <span class="citation" data-cites="wei2022emergentabilitieslargelanguage">Wei et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>
+Figure&nbsp;23: It’s hungry! <span class="citation" data-cites="wei2022emergentabilitieslargelanguage">Wei et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -2213,10 +2203,10 @@ Figure&nbsp;24: It’s hungry! <span class="citation" data-cites="wei2022emergen
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;25: Pre-training: Virtually all of the compute used during pre-training."><img data-src="./assets/gpt3-training-step-back-prop.gif"></a>
+<a href="./assets/gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;24: Pre-training: Virtually all of the compute used during pre-training."><img data-src="./assets/gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: <strong>Pre-training</strong>: Virtually <em>all of the compute</em> used during pre-training<sup>1</sup>.
+Figure&nbsp;24: <strong>Pre-training</strong>: Virtually <em>all of the compute</em> used during pre-training<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
@@ -2243,10 +2233,10 @@ Figure&nbsp;25: <strong>Pre-training</strong>: Virtually <em>all of the compute<
 <div id="fig-finetune-lifecycle" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-finetune-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;26: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="./assets/gpt3-fine-tuning.gif"></a>
+<a href="./assets/gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;25: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="./assets/gpt3-fine-tuning.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-finetune-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;26: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task<sup>1</sup>.
+Figure&nbsp;25: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
@@ -2257,10 +2247,10 @@ Figure&nbsp;26: <strong>Fine-tuning</strong>: Fine-tuning actually updates the m
 <div id="fig-hf-assisted-generation" class="quarto-float quarto-figure quarto-figure-center" style="width:100%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-hf-assisted-generation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/hf_assisted_generation.mov" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;27: Language Model trained for causal language modeling."><video data-src="./assets/hf_assisted_generation.mov" controls=""></video></a><a href="./assets/hf_assisted_generation.mov">Video</a>
+<a href="./assets/hf_assisted_generation.mov" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;26: Language Model trained for causal language modeling."><video data-src="./assets/hf_assisted_generation.mov" controls=""></video></a><a href="./assets/hf_assisted_generation.mov">Video</a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hf-assisted-generation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27: Language Model trained for causal language modeling<sup>1</sup>.
+Figure&nbsp;26: Language Model trained for causal language modeling<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
@@ -2270,10 +2260,10 @@ Figure&nbsp;27: Language Model trained for causal language modeling<sup>1</sup>.
 <div id="fig-generating-text" class="quarto-float quarto-figure quarto-figure-center" style="width: 100%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/hf_assisted_generation2.mov" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;28: Language Model trained for causal language modeling."><video data-src="./assets/hf_assisted_generation2.mov" controls=""></video></a><a href="./assets/hf_assisted_generation2.mov">Video</a>
+<a href="./assets/hf_assisted_generation2.mov" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;27: Language Model trained for causal language modeling."><video data-src="./assets/hf_assisted_generation2.mov" controls=""></video></a><a href="./assets/hf_assisted_generation2.mov">Video</a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;28: Language Model trained for causal language modeling<sup>1</sup>.
+Figure&nbsp;27: Language Model trained for causal language modeling<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
@@ -2324,7 +2314,7 @@ Figure&nbsp;28: Language Model trained for causal language modeling<sup>1</sup>.
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ezpz-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;29: Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP
+Figure&nbsp;28: Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP
 </figcaption>
 </figure>
 </div>
@@ -2334,10 +2324,10 @@ Figure&nbsp;29: Example: using <a href="https://github.com/saforem2/ezpz/blob/ma
 <div id="fig-nanoGPT" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-nanoGPT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/nanogpt.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;30: The simplest, fastest repository for training / finetuning GPT based models. Figure from karpathy/nanoGPT"><img data-src="./assets/nanogpt.jpg"></a>
+<a href="./assets/nanogpt.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;29: The simplest, fastest repository for training / finetuning GPT based models. Figure from karpathy/nanoGPT"><img data-src="./assets/nanogpt.jpg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nanoGPT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;30: The simplest, fastest repository for training / finetuning GPT based models. Figure from <a href="https://github.com/karpathy/nanoGPT">karpathy/<code>nanoGPT</code></a>
+Figure&nbsp;29: The simplest, fastest repository for training / finetuning GPT based models. Figure from <a href="https://github.com/karpathy/nanoGPT">karpathy/<code>nanoGPT</code></a>
 </figcaption>
 </figure>
 </div>
@@ -2672,7 +2662,7 @@ Figure&nbsp;30: The simplest, fastest repository for training / finetuning GPT b
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wordplay-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;31: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay">saforem2/<code>wordplay</code> 🎮💬</a>
+Figure&nbsp;30: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay">saforem2/<code>wordplay</code> 🎮💬</a>
 </figcaption>
 </figure>
 </div>
@@ -2904,9 +2894,9 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1024,
+        width: 1050,
 
-        height: 768,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
