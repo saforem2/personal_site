@@ -8,11 +8,10 @@ Sam Foreman
   [samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)
   - 📄 HTML version:
     [samforeman.me/talks/ai-for-science-2024](https://samforeman.me/talks/ai-for-science-2024)
-- Course:
-  - 📂 [ALCF: Intro to AI-driven Science on
-    Supercomputers](https://www.alcf.anl.gov/alcf-ai-science-training-series)
-    - 
-      [`argonne-lcf/ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
+- 
+  [argonne-lcf/`ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
+  - [Series
+    Page](https://www.alcf.anl.gov/alcf-ai-science-training-series)
 
 ## 📑 Outline
 
@@ -39,7 +38,7 @@ Sam Foreman
   > Scalability](https://huggingface.co/docs/transformers/v4.46.0/performance)
   > for more details
 
-## Single GPU
+## 🐢 Training on a Single GPU
 
 - See [🤗 Methods and tools for efficient training on a single
   GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
@@ -81,7 +80,7 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 </div>
 
-## Data Parallel Training
+## 🏎️ Training on Multiple GPUs: Data Parallelism
 
 <div id="fig-ddp-training-mermaid">
 
@@ -141,7 +140,7 @@ Figure 2: Each GPU receives **unique** data at each step
 
 </div>
 
-### Data Parallel Training: Forward Pass
+### Data Parallel: Forward Pass
 
 <div id="fig-ddp-training-mermaid-allreduce">
 
@@ -209,9 +208,9 @@ Figure 3: Average gradients across all GPUs
 
 </div>
 
-### Data Parallel Training: Backward Pass
+### Data Parallel: Backward Pass
 
-<div id="fig-ddp-training-broadcast">
+<div id="fig-ddp-backward-mermaid">
 
 ``` mermaid
 flowchart RL
@@ -273,7 +272,7 @@ Figure 4: Send global updates back to each GPU
 
 </div>
 
-### Data Parallel Training
+### Data Parallel: Full Setup
 
 <div id="fig-ddp-training">
 
@@ -342,7 +341,7 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
 
-### Data Parallel Training
+### Data Parallel: Training
 
 <div>
 
@@ -688,7 +687,7 @@ Figure 11: Scatters a list of tensors to the whole group
 
 </div>
 
-## Why Distributed Training?
+## ⚡ Why Distributed Training?
 
 - `N` workers each processing unique batch[^1] of data:
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$
@@ -792,17 +791,18 @@ Figure 12: To ensure all workers have the same copies, we load on
 
 </div>
 
-## Going Beyond Data Parallelism
+### Going Beyond Data Parallelism
 
 - ✅ Useful when model fits on single GPU:
   - ultimately **limited by GPU memory**
   - model performance limited by size
-- ❌ When model does not fit on a single GPU:
-  - Offloading:
+- ⚠️ When model does not fit on a single GPU:
+  - Offloading (can only get you so far…):
     -  [DeepSpeed + `ZeRO`](https://www.deepspeed.ai/tutorials/zero/)
     - 🔥 [PyTorch +
       `FSDP`](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
-  - Or, resort to additional parallelism strategies…
+  - Otherwise, resort to [model parallelism
+    strategies](#additional-parallelism-strategies)
 
 ### Going beyond Data Parallelism:  DeepSpeed + `ZeRO`
 
@@ -839,7 +839,7 @@ Figure 14: FSDP Workflow.
 
 </div>
 
-## Additional Parallelism Strategies
+## 🕸️ Additional Parallelism Strategies
 
 - **Tensor (/ Model) Parallelism** (`TP`):
   - 🤗 [Tensor
@@ -1100,6 +1100,13 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 </div>
 
+#### Mermaid
+
+``` mermaid
+flowchart LR
+    A --> B
+```
+
 </div>
 
 - With sufficiently fast connectivity between nodes, these three
@@ -1125,7 +1132,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 </div>
 
-## Large Language Models
+## 🦙 Large Language Models
 
 <div id="fig-llms">
 
@@ -1142,17 +1149,15 @@ community~~ **world** by storm[^3].
 
 <img src="./assets/emergent-abilities.gif" class="r-stretch" />
 
-Figure 21: [Emergent abilities of Large Language
-Models](https://arxiv.org/abs/2206.07682) Yao et al. (2023)
+Figure 21: Wei et al. (2022) Yao et al. (2023)
 
 </div>
 
 ### Training LLMs
 
-<div class="flex-container"
-style="align-items: flex-end; width:90%; text-align:center;">
+<div class="flex-container">
 
-<div class="column" style="width: 60%;">
+<div class="column">
 
 <div id="fig-evolution">
 
@@ -1164,7 +1169,7 @@ Figure 22: Visualization from Yang et al. (2023)
 
 </div>
 
-<div class="column" style="width:40%;">
+<div class="column">
 
 <div id="fig-it-hungers">
 

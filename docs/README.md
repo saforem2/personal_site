@@ -1,5 +1,5 @@
 Sam Foreman
-2024-11-06
+2024-11-07
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -42,7 +42,7 @@ style="font-size: 1.5rem; padding-right:0pt;"></span>][9]
 <div class="flex-container"
 style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
-<div class="flex-container" style="width:50%;">
+<div class="column">
 
 - [Computational scientist][ALCF] @ Argonne National Laboratory [(ALCF)]
 - Working on:
@@ -51,8 +51,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-<div class="flex-container"
-style="flex-direction: column; justify-content: flex-start; width: 45%">
+<div class="column">
 
 > [!TIP]
 >
@@ -247,7 +246,7 @@ style="flex-direction: column; justify-content: flex-start; width: 45%">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">06</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:52:50</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">06</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:16:30</span>
 > </pre>
 >
 > <div style="text-align:center;">
