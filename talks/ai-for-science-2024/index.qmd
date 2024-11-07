@@ -46,6 +46,7 @@ format:
     center: true
     auto-stretch: true
     callout-style: simple
+    mermaid-format: png
     mermaid:
       useMaxWidth: true
       layout: elk
@@ -120,9 +121,8 @@ format:
 - 📊 Slides @ [samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)
   - 📄 HTML version: [samforeman.me/talks/ai-for-science-2024](https://samforeman.me/talks/ai-for-science-2024)
 
-- Course:
-  - 📂 [ALCF: Intro to AI-driven Science on Supercomputers](https://www.alcf.anl.gov/alcf-ai-science-training-series)
-    - {{< fa brands github >}} [`argonne-lcf/ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
+- {{< fa brands github >}} [argonne-lcf/`ai-science-training-series`](https://github.com/argonne-lcf/ai-science-training-series)
+    - [Series Page](https://www.alcf.anl.gov/alcf-ai-science-training-series)
 
 # 📑 Outline {background-color="white"}
 
@@ -147,7 +147,8 @@ format:
   for more details
   :::
 
-# Single GPU {background-color="white"}
+
+# 🐢 Training on a Single GPU {background-color="white"}
 
 - See [🤗 Methods and tools for efficient training on a single GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
 
@@ -271,9 +272,11 @@ class N0,D,G0,n0 block
 
 :::
 
-# Data Parallel Training {background-color="white"}
+# 🏎️ Training on Multiple GPUs: Data Parallelism {background-color="white"}
 
-::: {#fig-ddp-training-mermaid .flex-container}
+<!--::: {.panel-tabset}-->
+
+::: {#fig-ddp-training-mermaid}
 
 ```{mermaid}
 flowchart LR
@@ -330,7 +333,7 @@ class bc text
 Each GPU receives **unique** data at each step
 :::
 
-## Data Parallel Training: Forward Pass {background-color="white"}
+## Data Parallel: Forward Pass
 
 ::: {#fig-ddp-training-mermaid-allreduce}
 
@@ -397,10 +400,9 @@ class bc text
 Average gradients across all GPUs
 :::
 
+## Data Parallel: Backward Pass
 
-## Data Parallel Training: Backward Pass {background-color="white"}
-
-::: {#fig-ddp-training-broadcast}
+::: {#fig-ddp-backward-mermaid}
 
 ```{mermaid}
 flowchart RL
@@ -461,28 +463,8 @@ class bc text
 Send global updates back to each GPU
 :::
 
-## Data Parallel Training {background-color="white"}
 
-<!--
-::: {layout="[40, 60]"}
-
-::: {.column}
-- The simplest and most common parallelism technique
-
-- Each GPU:
-  - has identical copy of model
-  - works on a **unique** subset of data
-
-- Multiple copies of **the same setup**
-  - each copy gets fed **unique** data
-  - all copies compute gradients w.r.t local model
-  - everyone syncs up before updating weights
-
-- See: [Distributed Data Parallel — PyTorch](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
-:::
-
-::: {.column}
--->
+## Data Parallel: Full Setup
 
 ::: {#fig-ddp-training}
 
@@ -549,7 +531,7 @@ class bc text
 See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 :::
 
-## Data Parallel Training {background-color="white"}
+## Data Parallel: Training {background-color="white"}
 
 ::: {layout="[55,45]"}
 
@@ -993,7 +975,7 @@ Scatters a list of tensors to the whole group
 :::
 -->
 
-# Why Distributed Training? {background-color="white"}
+# ⚡ Why Distributed Training? {background-color="white"}
 
 - `N` workers each processing unique batch[^mbs] of data:
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$ [<b><code>global_batch_size = N</code></b>]
@@ -1086,19 +1068,17 @@ Keeping the communication to computation ratio small is important for effective 
 
 :::
 
-# Going Beyond Data Parallelism {background-color="white"}
+## Going Beyond Data Parallelism {background-color="white"}
 
 - ✅ Useful when model fits on single GPU:
   - ultimately **limited by GPU memory**
   - model performance limited by size
 
-- ❌ When model does not fit on a single GPU:
-  - Offloading:
+- ⚠️ When model does not fit on a single GPU:
+  - Offloading (can only get you so far...):
     - {{< iconify logos microsoft-icon >}} [DeepSpeed + `ZeRO`](https://www.deepspeed.ai/tutorials/zero/)
     - 🔥 [PyTorch + `FSDP`](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
-  - Or, resort to additional parallelism strategies...
-
-
+  - Otherwise, resort to [model parallelism strategies](#additional-parallelism-strategies)
 
 ## Going beyond Data Parallelism: {{< iconify logos microsoft-icon >}} DeepSpeed + `ZeRO` {background-color="white"}
 
@@ -1122,7 +1102,7 @@ Keeping the communication to computation ratio small is important for effective 
 FSDP Workflow. [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 :::
 
-# Additional Parallelism Strategies {background-color="white"}
+# 🕸️ Additional Parallelism Strategies {background-color="white"}
 
 - **Tensor (/ Model) Parallelism** (`TP`):
     - 🤗 [Tensor Parallelism](https://huggingface.co/docs/text-generation-inference/en/conceptual/tensor_parallelism)
@@ -1455,6 +1435,13 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
   3. [Tensor Parallelism (`TP`)](https://pytorch.org/docs/stable/distributed.tensor.parallel.html)
 :::
 
+### Mermaid
+
+```{mermaid}
+flowchart LR
+    A --> B
+```
+
 :::
 
 - With sufficiently fast connectivity between nodes, these three strategies should be comparable.
@@ -1478,7 +1465,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 :::
 
-# Large Language Models {background-color="white"}
+# 🦙 Large Language Models {background-color="white"}
 
 ::: {#fig-llms}
 ![](./assets/llms.gif){.r-stretch}
@@ -1491,19 +1478,24 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 ## Emergent Abilities {background-color="#FBFBFD"}
 
 ::: {#fig-emergent-abilities}
+
 ![](./assets/emergent-abilities.gif){.r-stretch}
 
-[Emergent abilities of Large Language Models](https://arxiv.org/abs/2206.07682) @yao2023tree
+@wei2022emergentabilitieslargelanguage @yao2023tree
 :::
 
 
 ## Training LLMs {.r-stretch background-color="white"}
 
+::: {.flex-container}
+
+::: {.column}
+
 <!-- > Modern parallelism techniques[^parallelism-slides] enable the training of large language models -->
 
-::: {.flex-container style="align-items: flex-end; width:90%; text-align:center;"}
+<!-- ::: {.flex-container style="align-items: flex-end; width:90%; text-align:center;"} -->
 
-::: {.column style="width: 60%;"}
+<!-- ::: {.column style="width: 60%;"} -->
 
 ::: {#fig-evolution}
 ![](./assets/evolution.gif){.r-stretch}
@@ -1513,7 +1505,7 @@ Visualization from @yang2023harnessing
 
 :::
 
-::: {.column style="width:40%;"}
+::: {.column}
 
 ::: {#fig-it-hungers}
 ![](./assets/it_hungers.jpeg){.r-stretch}
