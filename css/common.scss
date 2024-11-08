@@ -72,8 +72,8 @@ $callout-color-note: #4582ec;
 $callout-color-info: #B695FF;
 $callout-color-info: #B695FF;
 
-$callout-caution-color: #e599f7;
-$callout-color-caution: #e599f7;
+$callout-caution-color: #FF3BD3;
+$callout-color-caution: #FF3BD3;
 
 $border-transparent-color: rgba(131, 131, 131, 0.7);
 $quarto-border-color: $border-transparent-color !default;
@@ -84,7 +84,7 @@ $dark-bg-link-color: $callout-note-color !default;
 $link-color: rgba(19, 122, 245, 1.0) !default;
 $link-bg-color: rgba(19, 122, 245, .062745098);
 $dark-bg-link-color: #137af5 !default;
-$link-border-radius: 0.25rem;
+$link-border-radius: 0.05rem;
 $light-bg-link-color: #1A8FFF !default;
 
 $nav-link-padding-x: 5px;
@@ -312,35 +312,35 @@ $themes: (
 
 /*-- scss:functions --*/
 
-@function colorToRGB($color) {
-  @return "rgb("+red($color)+", "+green($color)+", "+blue($color)+")";
-}
+// @function colorToRGB($color) {
+//   @return "rgb("+red($color)+", "+green($color)+", "+blue($color)+")";
+// }
 
-@function tint-color($color, $weight) {
-  @return mix(white, $color, $weight);
-}
+// @function tint-color($color, $weight) {
+//   @return mix(white, $color, $weight);
+// }
 
-@function shade-color($color, $weight) {
-  @return mix(black, $color, $weight);
-}
+// @function shade-color($color, $weight) {
+//   @return mix(black, $color, $weight);
+// }
 
-@function shift-color($color, $weight) {
-  @return if($weight > 0,
-    shade-color($color, $weight),
-    tint-color($color, -$weight));
-}
+// @function shift-color($color, $weight) {
+//   @return if($weight > 0,
+//     shade-color($color, $weight),
+//     tint-color($color, -$weight));
+// }
 
 /*-- scss:mixins --*/
 
-@mixin shift_to_dark($property, $color) {
-  @if (sass-color.blackness($backgroundColor) > $code-block-theme-dark-threshhold ) {
-    #{$property}: shift-color($color, 70%);
-  }
-
-  @else {
-    #{$property}: $color;
-  }
-}
+// @mixin shift_to_dark($property, $color) {
+//   @if (sass-color.blackness($backgroundColor) > $code-block-theme-dark-threshhold ) {
+//     #{$property}: shift-color($color, 70%);
+//   }
+//
+//   @else {
+//     #{$property}: $color;
+//   }
+// }
 
 /*-- scss:rules --*/
 * {
@@ -355,6 +355,13 @@ $themes: (
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body p code:not(.sourceCode),
+body li code:not(.sourceCode),
+body td code:not(.sourceCode) {
+  padding: 1px 2px;
+  /* padding: .2em; */
 }
 
 .callout.callout-titled .callout-body> :last-child:not(.sourceCode),
@@ -428,7 +435,7 @@ a:not(#lightbox):hover,
 .reveal a:not(#lightbox):hover {
   color: $code-fg;
   // background: oklch(from $code-fg calc(l * 1.15) c h/0.1);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   // border: 1px solid $code-fg !important;
 }
 
@@ -488,12 +495,12 @@ a img {
 
 .img-fluid {
   object-fit: scale-down;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 img {
   // border: 1px solid rgba(0, 0, 0, 0.0);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 .reveal a {
@@ -519,7 +526,7 @@ img {
 a img:hover,
 .img-fluid:hover,
 .reveal img:hover {
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   background: none !important;
   // border: 1px solid $code-fg;
   // box-shadow: $code-block-hover-box-shadow;
@@ -550,6 +557,16 @@ a img:hover,
   border-radius: $link-border-radius;
 }
 
+// .figure:hover {
+//   filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
+//   border: 1px solid #000000;
+// }
+
+.quarto-figure-center>figure>p,
+.quarto-figure-center>figure>div {
+  text-align: center;
+}
+
 .quarto-figure-default:hover,
 .reveal .quarto-figure-default:hover {
   filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
@@ -568,10 +585,14 @@ a img:hover,
 // }
 
 img:hover,
+.img:hover,
+.figure:hover,
 .img-fluid:hover,
-.reveal img:hover {
+.reveal img:hover,
+.quarto-figure-center:hover,
+.quarto-figure-default:hover {
   border-radius: .25rem;
-  filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
+  filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
   background: none;
   transition: background .3s ease-in-out;
 }
@@ -1289,6 +1310,13 @@ section.has-dark-background h6 {
 
 }
 
+// .card-body {
+// 	flex: 1 1 auto;
+// 	-webkit-flex: 1 1 auto;
+// 	padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+// 	color: var(--bs-card-color);
+// }
+
 .card {
   background: oklch(from $cardbg calc(l * 1.15) c h / 0.1);
   border: 1px solid $cardbg;
@@ -1518,6 +1546,8 @@ section.has-light-background h6 {
 }
 
 :root {
+  --bs-card-spacer-x: 0pt;
+  --bs-card-spacer-y: 0pt;
   --code-bg: $code-bg;
   --bs-table-striped-bg: $code-bg;
   --callout-simple-color: rgba(90, 90, 90, 20);
@@ -1666,7 +1696,7 @@ pre code {
 
 code {
   color: $code-color;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   font-family: $monofont;
   word-wrap: break-word;
   background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
@@ -1936,7 +1966,7 @@ boxed {
   // box-shadow: inset 0 0 5px $dim-text;
   // border-left: 1px solid $code-block-bg-color;
   // border-radius:
-  // border-radius: 0.25rem;
+  // border-radius: 0.05rem;
   // border-left: 1px solid $dim-color;
 }
 
@@ -2025,7 +2055,7 @@ th {
   padding: 1em;
   border: solid 1px var(--dim-color);
   margin-bottom: 1em;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 #quarto-appendix.default>.quarto-appendix-citeas:first-of-type {
@@ -2050,14 +2080,9 @@ th {
 p code:not(a, .sourceCode),
 li code:not(a, .sourceCode),
 td code:not(a, .sourceCode) {
-  // background-color: oklab(from $code-block-bg-color calc(1 * 1.15) c h / 0.1);
-  // background: $code-block-bg-color;
-  // border: 0.075x solid rgba(red($dim-color), green($dim-color), blue($dim-color), 0.3);
+  /* border: 1px solid rgba(255,26,143, 0.1); */
   color: $code-color;
-  // white-space: pre-wrap;
-  border-radius: 3px;
-  padding: 0 3px;
-  // letter-spacing: -0.75pt;
+  border-radius: 0.05rem;
 }
 
 // .reveal p code:not(.sourceCode), p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
@@ -2164,20 +2189,20 @@ td code:not(a, .sourceCode) {
   padding: 1em;
   border: solid 1px var(--dim-color);
   margin-bottom: 0;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 .myCard {
   // margin-top: 1rem;
   // margin-bottom: 0.1rem;
   border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
 }
 
 .myCard:hover {
   border: 1px solid $dim-text;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
 }
 
@@ -2517,7 +2542,7 @@ div.quarto-about-trestles {
 // }
 
 // .embedded-slide {
-//   border-radius: 0.25rem;
+//   border-radius: 0.05rem;
 //   border: none;
 //   text-align: center;
 //   height: 500px;
@@ -2841,33 +2866,9 @@ div.sidebar-item-container .sidebar-link>code {
   // padding: 0.3rem;
 }
 
-// .sidebar-navigation li {
-//     padding: 0.2rem;
-//     // border: 1px solid rgba(0, 0, 0, 0.0);
-// }
-
 .sidebar-item-text {
   width: 100%;
 }
-
-// .sidebar-navigation .sidebar-section .sidebar-item {
-// }
-
-// .sidebar-item {
-//     margin-bottom:
-//
-// }
-
-// .sidebar-section {
-//   padding-left: 1em;
-// }
-
-// ul>li:not(:has(> p))>ul,
-// ol>li:not(:has(> p))>ul,
-// ul>li:not(:has(> p))>ol,
-// ol>li:not(:has(> p))>ol {
-//   margin-bottom: 1em;
-// }
 
 ul>li:not(:has(> p))>ul,
 ol>li:not(:has(> p))>ul,
@@ -2890,7 +2891,7 @@ ul.task-list {
   // border: 1px solid $link-color-hover;
   color: $link-color-hover;
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
-  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+  box-ghadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
   // padding: 0.1rem;
 }
 
@@ -2932,7 +2933,7 @@ ul.task-list {
   margin-top: 1px;
   cursor: pointer;
   // border: 1px dotted rgba(80, 80, 80, 0.1);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 .nav-tabs .nav-link.active,
@@ -2952,7 +2953,7 @@ ul.task-list {
 .nav-tabs .nav-link {
   // margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
   // border: 1px $link-color solid rgba(0, 0, 0, 0);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   // border-top-left-radius: var(--bs-nav-tabs-border-radius);
   // border-top-right-radius: var(--bs-nav-tabs-border-radius);
 }
@@ -2960,7 +2961,7 @@ ul.task-list {
 .nav-tabs .nav-link:hover {
   // margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
   border: 1px $link-color-hover solid rgba(0, 0, 0, 0);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   color: $link-color-hover;
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   // border-top-left-radius: var(--bs-nav-tabs-border-radius);
@@ -2970,7 +2971,7 @@ ul.task-list {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   // box-shadow: 0px 5px 15px 0px $shadow-color;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   box-shadow: $shadow-color 0px 2px 5px;
   border: 2px solid $link-color !important;
   background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
@@ -2991,7 +2992,7 @@ ul.task-list {
 
 details>summary {
   text-align: left;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   color: $code-color;
   // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
   background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
@@ -3006,7 +3007,7 @@ details>summary {
 
 details>summary:hover {
   text-align: left;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   color: $code-color;
   // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
   background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
@@ -3053,12 +3054,12 @@ details>summary:hover {
 
 div.sourceCode {
   overflow: auto;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   box-shadow: $code-block-block-shadow;
 }
 
 div.sourceCode:hover {
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   box-shadow: $code-block-hover-box-shadow;
 }
 
@@ -3263,7 +3264,7 @@ nav.quarto-secondary-nav {
 //     // border-bottom-left-radius: 0%;
 //     // border-bottom-right-radius: 0%;
 //
-//     border-radius: 0.25rem;
+//     border-radius: 0.05rem;
 //     color: $code-color!important;
 //     // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
 //     box-shadow: $shadow-color 0px 2px 4px!important;
@@ -3316,7 +3317,7 @@ nav.quarto-secondary-nav {
   // background-color: $code-block-bg-color;
   border: none !important;
   // border-bottom: 1px dashed $dim-text!important;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   // box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
   // color: $dim-text!important;
   // font-weight: 400;
@@ -3377,7 +3378,7 @@ figure>figcaption.quarto-float-caption-bottom {
   margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
   border: 1px solid rgba(red($dim-text), green($dim-text), blue($dim-text), 0.075);
   // background: rgba(red($link-color-hover), green($link-color-hover), blue($link-color-hover), 0.07);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   color: var(--dim-text);
 }
 
@@ -3706,7 +3707,7 @@ pre.cell-output {
 //   // margin-bottom: -1px;
 //   // border: 1px solid oklch(from $code-block-bg-color calc(l * 1.15) c h / 0.1);
 //   border: 2px solid $link-color-hover;
-//   // border-radius: 0.25rem;
+//   // border-radius: 0.05rem;
 //   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1) !important;
 // }
 
@@ -3726,7 +3727,7 @@ pre.cell-output {
 //   // display: inline-block;
 //   // margin-bottom: -1px;
 //   border: 1px solid oklch(from $code-block-bg-color calc(l * 1.15) c h / 0.1);
-//   border-radius: 0.25rem;
+//   border-radius: 0.05rem;
 //
 //   // background: oklch(from #838383 calc(l * 1.15) c h / 0.1);
 // }
@@ -3786,7 +3787,7 @@ td code:not(a, .sourceCode) {
   // background: $code-bg;
   border: .075x solid $quarto-border-color;
   color: $code-fg;
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
 }
 
 .reveal .date {
@@ -3797,7 +3798,7 @@ td code:not(a, .sourceCode) {
   color: $dim-text;
   color: $link-color;
   background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
-  border-radius: 0.25rem;
+  border-radius: 0.05rem;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
 }
 
@@ -4142,7 +4143,7 @@ html.print-pdf .reveal .slide-chalkboard-buttons {
 .nav-tabs {
   --bs-nav-tabs-border-width: 1px;
   --bs-nav-tabs-border-color: rgba(80, 80, 80, 0.1);
-  --bs-nav-tabs-border-radius: 0.25rem;
+  --bs-nav-tabs-border-radius: 0.05rem;
   --bs-nav-tabs-link-hover-border-color: $link-color;
   --bs-nav-tabs-link-active-color: $code-fg;
   --bs-nav-tabs-link-active-bg: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);

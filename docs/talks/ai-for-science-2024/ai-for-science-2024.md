@@ -34,11 +34,13 @@ Sam Foreman
 
   > [!NOTE]
   >
+  > #### 📑 Note
+  >
   > See [🤗 Performance and
   > Scalability](https://huggingface.co/docs/transformers/v4.46.0/performance)
   > for more details
 
-## 🐢 Training on a Single GPU
+## 🐢 Training on a Single Device
 
 - See [🤗 Methods and tools for efficient training on a single
   GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
@@ -1143,7 +1145,7 @@ community~~ **world** by storm[^3].
 
 </div>
 
-### Emergent Abilities
+### 🔮 Emergent Abilities
 
 <div id="fig-emergent-abilities">
 
@@ -1153,9 +1155,9 @@ Figure 21: Wei et al. (2022) Yao et al. (2023)
 
 </div>
 
-### Training LLMs
+### 🦜 Training LLMs
 
-<div class="flex-container">
+<div class="flex-container" style="align-items: flex-end;">
 
 <div class="column">
 
@@ -1245,7 +1247,7 @@ weights to make the model better at a certain task[^5].
 
 </div>
 
-### Forward Pass
+### ⏩ Forward Pass
 
 <div id="fig-hf-assisted-generation">
 
@@ -1255,7 +1257,7 @@ Figure 26: Language Model trained for causal language modeling[^6].
 
 </div>
 
-### Generating Text
+### 💬 Generating Text
 
 <div id="fig-generating-text">
 

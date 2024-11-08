@@ -2,11 +2,34 @@
 Sam Foreman
 2024-10-17
 
-- [HF to Meg-DS](#hf-to-meg-ds)
+- [MDS –\> HF](#mds--hf)
+- [🚧 HF to Meg-DS](#construction-hf-to-meg-ds)
   - [2024-10-17](#2024-10-17)
   - [Older](#older)
 
-# HF to Meg-DS
+## MDS –\> HF
+
+``` bash
+convert_mds_to_hf() {
+ # GLOBAL_STEP=$1
+ CKPT_ROOT=$2
+
+ CKPT_ROOT="/flare/Aurora_deployment/AuroraGPT-Testing/foremans/rollback-41k8/Megatron-DeepSpeed-41800/checkpoints/ws768_ds_stage1_nl32_hs4096_mb4_seq4096_gb3072_sp1_pp1_tp1_bf16_optadamw_lr0.00020_lwf0.05/";
+ SRC="${CKPT_ROOT}/global_step${GLOBAL_STEP}"
+ if [[ -d "${SRC}" ]]; then
+        echo "Converting checkpoint @ global step ${GLOBAL_STEP}"
+        echo "\tsrc=${SRC}"
+        DST="/flare/Aurora_deployment/AuroraGPT-Checkpoints/Megatron-DeepSpeed/checkpoints-to-convert/ws768_ds_stage1_nl32_hs4096_mb4_seq4096_gb3072_sp1_pp1_tp1_bf16_optadamw_lr0.00020_lwf0.05/global_step${GLOBAL_STEP}_hf"
+        echo "\tdst=${DST}"
+        python3 mds_to_hf.py --mds_checkpoint "${SRC}/mp_rank_00_model_states.pt" --output_dir "${DST}" --cache_dir "./.cache"
+ else
+        echo "Unable to locate directory ${SRC}. Exiting"
+        exit 1
+ fi
+}
+```
+
+# 🚧 HF to Meg-DS
 
 ## 2024-10-17
 
