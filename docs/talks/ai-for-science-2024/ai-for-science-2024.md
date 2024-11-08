@@ -1149,21 +1149,21 @@ community~~ **world** by storm[^3].
 
 <div id="fig-emergent-abilities">
 
-<img src="./assets/emergent-abilities.gif" class="r-stretch" />
+![](./assets/emergent-abilities.gif)
 
-Figure 21: Wei et al. (2022) Yao et al. (2023)
+Figure 21: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
 ### 🦜 Training LLMs
 
-<div class="flex-container" style="align-items: flex-end;">
+<div class="flex-container" style="align-items: flex-end;width: 100%;">
 
 <div class="column">
 
 <div id="fig-evolution">
 
-<img src="./assets/evolution.gif" class="r-stretch" />
+![](./assets/evolution.gif)
 
 Figure 22: Visualization from Yang et al. (2023)
 
@@ -1175,7 +1175,7 @@ Figure 22: Visualization from Yang et al. (2023)
 
 <div id="fig-it-hungers">
 
-<img src="./assets/it_hungers.jpeg" class="r-stretch" />
+![](./assets/it_hungers.jpeg)
 
 Figure 23: It’s hungry! Wei et al. (2022)
 
