@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:01:45</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:47:43</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -264,9 +264,6 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <span style="color:#4582ec;">You can find a full list of my
 > publications on my [Google Scholar][5]</span>
-
-\[**NOTE**\]: <span class="dim-text">*You can find a full list of my
-publications on my [Google Scholar][5]*</span>.
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects]  
@@ -373,19 +370,19 @@ publications on my [Google Scholar][5]*</span>.
 >
 > <div class="column" style="text-align: left;width: 57%;">
 >
-> [![][16]][2]
+> <a href="https://github.com/saforem2/"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a>
 >
 > </div>
 >
 > <div class="column" style="text-align: left; width: 43%">
 >
-> [![][17]][18]
+> [![][16]][17]
 >
 > </div>
 >
 > </div>
 >
-> [![][19]][20] <img
+> [![][18]][19] <img
 > src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&amp;theme=minimal&amp;bg_color=00000000&amp;line=838383&amp;color=838383&amp;days=30&amp;point=838383&amp;hide_border=true&amp;hide_title=true&amp;area=true.png"
 > id="img-stretch" />
 >
@@ -403,11 +400,11 @@ publications on my [Google Scholar][5]*</span>.
 > Wakatime
 > </summary>
 >
-> [![][21]][2]
+> [![][20]][2]
 >
 > </details>
 >
-> ![][22]
+> <img loading="lazy" src="https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg">
 >
 > </details>
 
@@ -418,11 +415,13 @@ publications on my [Google Scholar][5]*</span>.
 > <div class="grid"
 > style="grid-template-columns: repeat(var(--bs-columns, 2), 1fr);">
 >
-> [![][23]][Building better sampling methods for Lattice QCD]
+> [![][21]][Building better sampling methods for Lattice QCD]
 >
-> [![][24]][25]
+> [![][22]][23]
 >
-> [![][26]][Scaling Large Language Models]
+> [![][24]][Scaling Large Language Models]
+>
+> [![][25]][26]
 >
 > [![][27]][28]
 >
@@ -438,9 +437,9 @@ publications on my [Google Scholar][5]*</span>.
 >
 > [![][39]][40]
 >
-> [![][41]][42]
+> [![][33]][34]
 >
-> [![][35]][36]
+> [![][41]][42]
 >
 > [![][43]][44]
 >
@@ -454,13 +453,11 @@ publications on my [Google Scholar][5]*</span>.
 >
 > [![][53]][54]
 >
-> [![][55]][56]
+> [![][55]][Distributed training across thousands of GPUs]
 >
-> [![][57]][Distributed training across thousands of GPUs]
+> [![][56]][57]
 >
-> [![][58]][59]
->
-> [![][60]][30]
+> [![][58]][28]
 >
 > </div>
 
@@ -502,7 +499,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][61] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][59] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 </div>
@@ -511,13 +508,13 @@ Table 2: 🎓 Education
 
 <div class="flex-container" style="align-items: baseline;">
 
-[![][62]][63]
+[![][60]][61]
 
 <div class="flex-container" style="flex-direction: column; width: 50%;">
 
 > [!TIP]
 >
-> ### <span style="color:#D41109;">[![][12]][13]</span>
+> ### <span style="color:#D41109;">[![][62]][13]</span>
 >
 > <script>
 > /**
@@ -588,7 +585,7 @@ Table 2: 🎓 Education
 > </div>
 > </div>
 
-<span class="stretch">[<img src="https://lastfm-recently-played.vercel.app/api?user=saforem2" >][13]</span>
+<span class="stretch">[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" >][13]</span>
 
 </div>
 
@@ -667,52 +664,50 @@ Table 2: 🎓 Education
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Recent Talks]: ./talks/index.qmd
-  [16]: https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg
-  [17]: https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383.png
-  [18]: https://github.com/saforem2/github-readme-stats
-  [19]: https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383
-  [20]: https://git.io/streak-stats
-  [21]: https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png
-  [22]: https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg
+  [16]: https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383.png
+  [17]: https://github.com/saforem2/github-readme-stats
+  [18]: https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383
+  [19]: https://git.io/streak-stats
+  [20]: https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
-  [23]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [24]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [25]: https://github.com/saforem2/ezpz
-  [26]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [27]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [28]: https://github.com/saforem2/wordplay
-  [29]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [30]: https://github.com/saforem2/personal_site
-  [31]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [32]: https://github.com/saforem2/ambivalent
-  [33]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [34]: https://github.com/saforem2/enrich
-  [35]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [36]: https://github.com/saforem2/public
-  [37]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=lattice23&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [38]: https://github.com/saforem2/lattice23
-  [39]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=llm-workshop-talk&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [40]: https://github.com/saforem2/llm-workshop-talk
-  [41]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [42]: https://github.com/saforem2/quarto-site-template
-  [43]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=nvim&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [44]: https://github.com/saforem2/nvim
-  [45]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [46]: https://github.com/saforem2/glitz
-  [47]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=saforem2&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [48]: https://github.com/saforem2/saforem2
-  [49]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=awesome-stars&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [50]: https://github.com/saforem2/awesome-stars
-  [51]: https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [52]: https://github.com/nftqcd/fthmc
-  [53]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383.png
-  [54]: https://github.com/argonne-lcf/CompPerfWorkshop
-  [55]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [56]: https://github.com/argonne-lcf/ai-science-training-series
-  [57]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [58]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [59]: https://github.com/argonne-lcf/user-guides
-  [60]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383.png
+  [21]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [22]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [23]: https://github.com/saforem2/ezpz
+  [24]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [25]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [26]: https://github.com/saforem2/wordplay
+  [27]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [28]: https://github.com/saforem2/personal_site
+  [29]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [30]: https://github.com/saforem2/ambivalent
+  [31]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [32]: https://github.com/saforem2/enrich
+  [33]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [34]: https://github.com/saforem2/public
+  [35]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=lattice23&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [36]: https://github.com/saforem2/lattice23
+  [37]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=llm-workshop-talk&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [38]: https://github.com/saforem2/llm-workshop-talk
+  [39]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [40]: https://github.com/saforem2/quarto-site-template
+  [41]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=nvim&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [42]: https://github.com/saforem2/nvim
+  [43]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [44]: https://github.com/saforem2/glitz
+  [45]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=saforem2&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [46]: https://github.com/saforem2/saforem2
+  [47]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=awesome-stars&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [48]: https://github.com/saforem2/awesome-stars
+  [49]: https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [50]: https://github.com/nftqcd/fthmc
+  [51]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383.png
+  [52]: https://github.com/argonne-lcf/CompPerfWorkshop
+  [53]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [54]: https://github.com/argonne-lcf/ai-science-training-series
+  [55]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [56]: https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [57]: https://github.com/argonne-lcf/user-guides
+  [58]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383.png
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -721,8 +716,9 @@ Table 2: 🎓 Education
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [61]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [59]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [62]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
-  [63]: https://github.com/kittinan/spotify-github-profile
+  [60]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
+  [61]: https://github.com/kittinan/spotify-github-profile
+  [62]: ./assets/last-fm-logo.svg
