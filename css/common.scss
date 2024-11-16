@@ -19,8 +19,31 @@
 /*-- scss:defaults --*/
 
 $right-arrow: "\2192"; // Unicode character for right arrow
-$presentation-heading-font: "IBM Plex Sans Condensed", "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-serif, $font-family-sans-serif !default;
-$heading-font: "IBM Plex Sans Condensed"$font-family-sans-serif !default;
+
+$heading-font: "IBM Plex Sans Condensed" !default;
+// $font-family-monospace: "Iosevka Fixed", "IBM Plex Mono", !default;
+$font-family-monospace: "IBM Plex Mono", !default;
+$monofont: $font-family-monospace !default;
+$presentation-heading-font: "IBM Plex Sans Condensed", "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-sserif !default;
+
+$font-family-sans-serif: "IBM Plex Sans",
+  "Source Sans Pro",
+  "Inter",
+  Open Sans,
+  Helvetica,
+  sans-serif !default;
+$font-family-headings: "IBM Plex Sans Condensed",
+  "IBM Plex Sans",
+  "Open Sans",
+  "Playfair Display",
+  Helvetica,
+  sans-serif,
+  $font-family-sans-serif !default;
+// $font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$mermaid-font-family: "IBM Plex Mono",
+  "IBM Plex Sans",
+  monospace !default;
+
 
 $myred: #FF5252;
 $myorange: #FD971F;
@@ -95,10 +118,6 @@ $dropdown-item-padding-y: 0.25rem;
 $bs-nav-tabs-link-active-border-color: $border-transparent-color !default;
 $bs-nav-tabs-border-color: rgba(0, 0, 0, 0.2) !default;
 
-$font-family-sans-serif: "IBM Plex Sans" !default;
-$font-family-monospace: "IBM Plex Mono", !default;
-$monofont: $font-family-monospace !default;
-
 $presentation-font-size-root: 28px !default;
 // $code-font-size: $presentation-font-size-root !default;
 $code-block-font-size: (
@@ -109,20 +128,6 @@ $code-block-height: calc(0.33 * 100vh) !default;
 // , "Iosevka", "Iosevka Web", monospace, SFMono-Regular, Menlo, Monaco, Consolas!default;
 
 // fonts
-$font-family-sans-serif: "IBM Plex Sans",
-  "Source Sans Pro",
-  "Inter",
-  Open Sans,
-  Helvetica,
-  sans-serif !default;
-$font-family-headings: "IBM Plex Sans Condensed" "IBM Plex Sans",
-  "Open Sans",
-  "Playfair Display",
-  Helvetica,
-  sans-serif,
-  $font-family-sans-serif !default;
-// $font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-monospace: "IBM Plex Mono" !default;
 $presentation-font-family-line-height: 1em !default;
 $presentation-line-height: 1em !default;
 // $font-family-monospace: 'Iosevka Web', 'agave Nerd Font', Menlo, Monaco, Consolas, monospace !default;
@@ -147,10 +152,6 @@ $mermaid-node-fg-color: $mermaid-accent !default;
 $mermaid-label-bg-color: RGBA(100, 100, 100, 0.1) !default;
 $mermaid-label-fg-color: $mermaid-accent;
 // $mermaid-font-family: $font-family-monospace;
-$mermaid-font-family: "IBM Plex Mono",
-  "IBM Plex Sans",
-  monospace !default;
-
 // $mermaid-font-family: $font-family-sans-serif !default;
 // $mermaid-label-bg-color: none !default;
 // // $mermaid-label-fg-color: $primary !default;
@@ -343,6 +344,7 @@ $themes: (
 // }
 
 /*-- scss:rules --*/
+
 * {
   // margin: 0;
   // padding: 0;
@@ -351,11 +353,162 @@ $themes: (
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
   // -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --bs-card-spacer-x: 0pt;
+  --bs-card-spacer-y: 0pt;
+  --code-bg: $code-bg;
+  --bs-table-striped-bg: $code-bg;
+  --callout-simple-color: rgba(90, 90, 90, 20);
+  --callout-simple-title-color: rgba(90, 90, 90, 100);
+  --callout-border-hover-color: rgba(229, 153, 247, 100);
+  --tight-code-line-height: 1rem;
+  --tight-code-padding-top: 5px;
+  --callout-color-info: $callout-color-info;
+  --callout-color-caution: $callout-color-caution;
+  --callout-color-error: $callout-color-error;
+  --callout-color-warning: $callout-color-warning;
+  --callout-color-tip: $callout-color-tip;
+  --mermaid-label-bg-color: $body-bg;
+  --bs-nav-tabs-border-color: $bs-nav-tabs-border-color;
+  --callout-color-info: $callout-color-info;
+  --callout-color-tip: $callout-color-tip;
+  --callout-color-warning: $callout-color-warning;
+  --callout-color-caution: $callout-color-caution;
+  --callout-color-important: $callout-color-important;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  --red-text: $red-text;
+  --orange-text: $myorange;
+  --yellow-text: $yellow-text;
+  --green-text: $green-text;
+  --blue-text: $myblue;
+  --purple-text: $mypurple;
+  --pink-text: $mypink;
+  --hypothesis-other-content-color: $yellow-text;
+  --hypothesis-other-content-secondColor: $green-text;
+  --hypothesis-other-content-thirdColor: $pink-text;
+  --hypothesis-user-annotations-color: $blue-text;
+  --hypothesis-user-annotations-secondColor: $yellow-text;
+  --hypothesis-user-annotations-thirdColor: $pink-text;
+  --hypothesis-user-highlights-color: $pink-text;
+  --hypothesis-user-highlights-secondColor: $mypurple;
+  --hypothesis-user-highlights-thirdColor: $mypink;
+  --quarto-font-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", " Courier New", monospace;
+  --bs-font-monospace: 'IBM Plex Mono', monospace;
+  --quarto-border-color: $quarto-border-color;
+  --shadow-color: $shadow-color;
+  --bg-transparent: $bg-transparent;
+  --bs-table-striped-color: $bs-table-striped-color;
+  --brighter-text: $brighter-text;
+  --bright-text: $bright-text;
+  --alt-text: $alt-text;
+  --dim-text: $dim-text;
+  --dim-color: $dim-color;
+  --callout-tip-color: $callout-tip-color;
+  --callout-note-color: $callout-note-color;
+  --callout-note-color: $callout-note-color;
+  --callout-warning-color: $callout-warning-color;
+  --callout-important-color: $callout-important-color;
+  --callout-caution-color: $callout-caution-color;
+  --green-text: $green-text;
+  --red-text: $red-text;
+  --blue-text: $blue-text;
+  --body-bg: $body-bg;
+  --alt-bg: $alt-bg;
+  --body-color: $body-color;
+  --link-color: $link-color;
+  --link-bg-color: $link-bg-color;
+  --link-border-radius: $link-border-radius;
+  --italic-color: $italic-color;
+  --strong-color: $strong-color;
+  --selection-bg: $selection-bg;
+  --selection-color: $selection-color;
+  --code-fg: $code-fg;
+  --code-block-bg-color: $code-block-bg-color;
+  --code-block-bg: $code-block-bg;
+  --code-block-border-color: $code-block-border-color;
+  --code-block-block-shadow: $code-block-block-shadow;
+  --code-block-hover-box-shadow: $code-block-hover-box-shadow;
+  --dark-bg-code-color: $dark-bg-code-color;
+  --dark-bg-code-bg: $dark-bg-code-bg;
+  --code-color: $dark-bg-code-color;
+  --code-line-number-color: $code-line-number-color;
+  --code-bg: $dark-bg-code-bg;
+  --blockquote-bg: $bg-transparent;
+  --blockquote-border: $blockquote-border;
+  --blockquote-text: $blockquote-text;
+  --nav-link-padding-y: $bs-nav-link-padding-y;
+  --nav-link-padding-x: $bs-nav-link-padding-x;
+  --navbar-bg: $navbar-bg;
+  --navbar-fg: $navbar-fg;
+  --font-family-headings: $font-family-headings;
+  --code-bg: $code-bg;
+  --code-fg: $code-color;
+  --link-color: $link-color;
+  --link-bg-color: $link-bg-color;
+  --red-sf: $myred;
+  --r-link-color: $link-color;
+  --orange-sf: $myorange;
+  --yellow-sf: $myyellow;
+  --green-sf: $mygreen;
+  --blue-sf: $myblue;
+  --purple-sf: $mypurple;
+  --pink-sf: $mypink;
+  --dim-sf: $dim-text;
+  --bright-sf: $bright-text;
+  --card-height: 33vh;
+  --card-height: 33vh;
+  --card-width: 50%;
+  // -webkit-font-smoothing: antialiased;
+  // --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+pre,
+code,
+kbd,
+samp {
+  font-family: $monofont;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+pre {
+  // font-family: $font-family-monospace !important;
+  color: $body-color;
+  font-weight: 400;
+  // display: contents !important;
+  // background-color: $code-block-bg-color;
+  background: oklch(from $code-block-bg-color calc(l * 1.15) c h / 0.1);
+  // margin-bottom: 1rem;
+  overflow: auto;
+  line-height: 1rem;
+  font-family: $monofont;
+  font-size: inherit;
+  // padding: 0.5rem;
+}
+
+pre code {
+  background-color: inherit;
+  color: inherit;
+  word-break: normal;
+  font-family: $monofont;
+}
+
+code {
+  color: $code-color;
+  border-radius: 0.05rem;
+  font-family: $monofont;
+  word-wrap: break-word;
+  background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
+}
+
 
 :where(html) {
   --hue-red: 25;
@@ -1263,6 +1416,8 @@ div.callout-important.callout-style-default .callout-title {
 strong,
 b {
   font-weight: 600;
+  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
 }
 
 section.has-dark-background,
@@ -1579,163 +1734,6 @@ section.has-light-background h6 {
 
 .pink-text {
   color: $mypink;
-}
-
-:root {
-  --bs-card-spacer-x: 0pt;
-  --bs-card-spacer-y: 0pt;
-  --code-bg: $code-bg;
-  --bs-table-striped-bg: $code-bg;
-  --callout-simple-color: rgba(90, 90, 90, 20);
-  --callout-simple-title-color: rgba(90, 90, 90, 100);
-  --callout-border-hover-color: rgba(229, 153, 247, 100);
-  --tight-code-line-height: 1rem;
-  --tight-code-padding-top: 5px;
-  --callout-color-info: $callout-color-info;
-  --callout-color-caution: $callout-color-caution;
-  --callout-color-error: $callout-color-error;
-  --callout-color-warning: $callout-color-warning;
-  --callout-color-tip: $callout-color-tip;
-  --mermaid-label-bg-color: $body-bg;
-  --bs-nav-tabs-border-color: $bs-nav-tabs-border-color;
-  --callout-color-info: $callout-color-info;
-  --callout-color-tip: $callout-color-tip;
-  --callout-color-warning: $callout-color-warning;
-  --callout-color-caution: $callout-color-caution;
-  --callout-color-important: $callout-color-important;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  --red-text: $red-text;
-  --orange-text: $myorange;
-  --yellow-text: $yellow-text;
-  --green-text: $green-text;
-  --blue-text: $myblue;
-  --purple-text: $mypurple;
-  --pink-text: $mypink;
-  --hypothesis-other-content-color: $yellow-text;
-  --hypothesis-other-content-secondColor: $green-text;
-  --hypothesis-other-content-thirdColor: $pink-text;
-  --hypothesis-user-annotations-color: $blue-text;
-  --hypothesis-user-annotations-secondColor: $yellow-text;
-  --hypothesis-user-annotations-thirdColor: $pink-text;
-  --hypothesis-user-highlights-color: $pink-text;
-  --hypothesis-user-highlights-secondColor: $mypurple;
-  --hypothesis-user-highlights-thirdColor: $mypink;
-  --quarto-font-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", " Courier New", monospace;
-  --bs-font-monospace: 'IBM Plex Mono', monospace;
-  --quarto-border-color: $quarto-border-color;
-  --shadow-color: $shadow-color;
-  --bg-transparent: $bg-transparent;
-  --bs-table-striped-color: $bs-table-striped-color;
-  --brighter-text: $brighter-text;
-  --bright-text: $bright-text;
-  --alt-text: $alt-text;
-  --dim-text: $dim-text;
-  --dim-color: $dim-color;
-  --callout-tip-color: $callout-tip-color;
-  --callout-note-color: $callout-note-color;
-  --callout-note-color: $callout-note-color;
-  --callout-warning-color: $callout-warning-color;
-  --callout-important-color: $callout-important-color;
-  --callout-caution-color: $callout-caution-color;
-  --green-text: $green-text;
-  --red-text: $red-text;
-  --blue-text: $blue-text;
-  --body-bg: $body-bg;
-  --alt-bg: $alt-bg;
-  --body-color: $body-color;
-  --link-color: $link-color;
-  --link-bg-color: $link-bg-color;
-  --link-border-radius: $link-border-radius;
-  --italic-color: $italic-color;
-  --strong-color: $strong-color;
-  --selection-bg: $selection-bg;
-  --selection-color: $selection-color;
-  --code-fg: $code-fg;
-  --code-block-bg-color: $code-block-bg-color;
-  --code-block-bg: $code-block-bg;
-  --code-block-border-color: $code-block-border-color;
-  --code-block-block-shadow: $code-block-block-shadow;
-  --code-block-hover-box-shadow: $code-block-hover-box-shadow;
-  --dark-bg-code-color: $dark-bg-code-color;
-  --dark-bg-code-bg: $dark-bg-code-bg;
-  --code-color: $dark-bg-code-color;
-  --code-line-number-color: $code-line-number-color;
-  --code-bg: $dark-bg-code-bg;
-  --blockquote-bg: $bg-transparent;
-  --blockquote-border: $blockquote-border;
-  --blockquote-text: $blockquote-text;
-  --nav-link-padding-y: $bs-nav-link-padding-y;
-  --nav-link-padding-x: $bs-nav-link-padding-x;
-  --navbar-bg: $navbar-bg;
-  --navbar-fg: $navbar-fg;
-  --font-family-headings: $font-family-headings;
-  --code-bg: $code-bg;
-  --code-fg: $code-color;
-  --link-color: $link-color;
-  --link-bg-color: $link-bg-color;
-  --red-sf: $myred;
-  --r-link-color: $link-color;
-  --orange-sf: $myorange;
-  --yellow-sf: $myyellow;
-  --green-sf: $mygreen;
-  --blue-sf: $myblue;
-  --purple-sf: $mypurple;
-  --pink-sf: $mypink;
-  --dim-sf: $dim-text;
-  --bright-sf: $bright-text;
-  --card-height: 33vh;
-  --card-height: 33vh;
-  --card-width: 50%;
-  // -webkit-font-smoothing: antialiased;
-  // --card-width: calc(var(--card-height) / 1.5);
-}
-
-
-// ---------------------------------------------------------------------------------------------
-
-//
-
-// ---------------------------------------------------------------------------------------------
-
-
-pre,
-code,
-kbd,
-samp {
-  font-family: $monofont;
-  direction: ltr;
-  unicode-bidi: bidi-override;
-}
-
-pre {
-  // font-family: $font-family-monospace !important;
-  color: $body-color;
-  font-weight: 400;
-  // display: contents !important;
-  // background-color: $code-block-bg-color;
-  background: oklch(from $code-block-bg-color calc(l * 1.15) c h / 0.1);
-  // margin-bottom: 1rem;
-  overflow: auto;
-  line-height: 1rem;
-  font-family: $monofont;
-  font-size: inherit;
-  // padding: 0.5rem;
-}
-
-pre code {
-  background-color: inherit;
-  color: inherit;
-  word-break: normal;
-  font-family: $monofont;
-}
-
-code {
-  color: $code-color;
-  border-radius: 0.05rem;
-  font-family: $monofont;
-  word-wrap: break-word;
-  background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
 }
 
 // code {
