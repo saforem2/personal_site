@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -58,12 +92,12 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3fd99608e2dc5d603d1ae8aec1d0ebe6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-33a05523a9104d412ef486f6ff90aedd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dbe441038757de0b8401de50da411c2f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-fe55281ebc4a8c168e67c8db83db0381.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fb6bb2ac537c024da967ae6e23248169.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-520130b231bd30c6854368cc56a23f61.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-25a4128efa1587df4d431c0cb51dbb0f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e0799ebac147c05d44c895eb5681ec73.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -534,7 +568,7 @@ dynamics update that can be trained to improve sampling efficiency.
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MLMC: Machine Learning Monte Carlo</h1>
+<div class="quarto-title-block"><div><h1 class="title">MLMC: Machine Learning Monte Carlo</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -1406,7 +1440,7 @@ Figure&nbsp;9: The trained model artifically increases the energy towards the mi
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;" data-layout="[ [30, 30, 30] ]">
+<div class="quarto-layout-panel" data-layout="[ [30, 30, 30] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div id="fig-ridgeplot1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1499,7 +1533,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="4" style="text-align:left; font-size:0.8em;">
+<div class="quarto-layout-panel" style="text-align:left; font-size:0.8em;" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <p><span style="font-size:0.8em;"><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i> <code>samforeman.me</code></a></span></p>
@@ -1898,6 +1932,7 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
 <p><span class="preview-image" style="text-align:center; margin-left:auto; margin-right: auto;"><img src="./assets/thumbnail.png" class="img-fluid"></span></p>
 
 
+
 </section>
 </section>
 
@@ -2160,6 +2195,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
     clipboardModal.on('success', onCopySuccess);
   }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/samforeman\.me");
@@ -2176,6 +2262,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -2493,7 +2584,1292 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://giscus.app/client.js" data-repo="saforem2/personal_site" data-repo-id="R_kgDOGbjyRw" data-category="General" data-category-id="DIC_kwDOGbjyR84CjWfk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" crossorigin="anonymous" async="">
 </script>
 <input type="hidden" id="giscus-base-theme" value="dark">
-<input type="hidden" id="giscus-alt-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "MLMC: Machine Learning Monte Carlo"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="an">location:</span><span class="co"> "[Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)"</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="an">image:</span><span class="co"> "https://github.com/saforem2/lattice23/blob/main/assets/thumbnail.png?raw=true"</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="an">date:</span><span class="co"> 2023-07-31</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># date-modified: last-modified</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="an">title-block-categories:</span><span class="co"> false</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="an">number-sections:</span><span class="co"> false</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="an">appendix-cite-as:</span><span class="co"> display</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="an">favicon:</span><span class="co"> "./assets/favicon.svg"</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="an">callout-style:</span><span class="co"> simple</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="an">twitter-card:</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">  image: "https://github.com/saforem2/lattice23/blob/main/assets/thumbnail.png?raw=true"</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">  site: "saforem2"</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">  creator: "saforem2"</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="an">citation:</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">   author: Sam Foreman</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">   type: speech</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">   genre: "Presentation at the 2023 International Symposium on Lattice Field Theory"</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">   container-title: https://indico.fnal.gov/event/57249/contributions/271305/</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">   title: "MLMC: Machine Learning Monte Carlo for Lattice Gauge Theory"</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">   url: https://saforem2.github.io/lattice23</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">   abstract: | </span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co">     We present a trainable framework for efficiently generating gauge</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co">     configurations, and discuss ongoing work in this direction. In particular, we</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">     consider the problem of sampling configurations from a 4D 𝑆𝑈(3) lattice gauge</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">     theory, and consider a generalized leapfrog integrator in the molecular</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">     dynamics update that can be trained to improve sampling efficiency.</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="an">format:</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">  html:</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">    # reference-location: section</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co">    # toc-location: right</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co">    page-layout: full</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">    # grid:</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co">    #   body-width: 800px</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co">  revealjs:</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co">    slides-url: https://samforeman.me/talks/lattice23/slides.html</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co">    # template-partials:</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">    #   - ./title-slide.html</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co">      # - ./title-fancy/title-slide.html</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co">      # - ./title_slide_template.html</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="co">      # - ../../title-slide.html</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co">    title-slide-attributes:</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co">      data-background-iframe: https://saforem2.github.io/grid-worms-animation/</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co">      data-background-size: contain</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co">      data-background-color: "#1c1c1c"</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="co">      background-color: "#1c1c1c"</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co">    title-block-style: none</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="co">    slide-number: c</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="co">    title-slide-style: default</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co">    chalkboard:</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="co">      buttons: false</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="co">    auto-animate: true</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="co">    reference-location: section</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a><span class="co">    touch: true</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="co">    pause: false</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a><span class="co">    footnotes-hover: true</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a><span class="co">    citations-hover: true</span></span>
+<span id="cb1-60"><a href="#cb1-60"></a><span class="co">    preview-links: true</span></span>
+<span id="cb1-61"><a href="#cb1-61"></a><span class="co">    controls-tutorial: true</span></span>
+<span id="cb1-62"><a href="#cb1-62"></a><span class="co">    controls: false</span></span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="co">    logo: "https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a><span class="co">    history: false</span></span>
+<span id="cb1-65"><a href="#cb1-65"></a><span class="co">    # theme: [css/dark.scss]</span></span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="co">    callout-style: simple</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="co">    # css: [css/default.css, css/callouts.css]</span></span>
+<span id="cb1-68"><a href="#cb1-68"></a><span class="co">    fig-align: center</span></span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="co">    css:</span></span>
+<span id="cb1-70"><a href="#cb1-70"></a><span class="co">      # - css/default.css</span></span>
+<span id="cb1-71"><a href="#cb1-71"></a><span class="co">      - ../../css/custom.css</span></span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="co">    theme:</span></span>
+<span id="cb1-73"><a href="#cb1-73"></a><span class="co">      # - light:</span></span>
+<span id="cb1-74"><a href="#cb1-74"></a><span class="co">      - white</span></span>
+<span id="cb1-75"><a href="#cb1-75"></a><span class="co">      - ../../css/title-slide-template.scss</span></span>
+<span id="cb1-76"><a href="#cb1-76"></a><span class="co">      - ../../css/reveal/reveal.scss</span></span>
+<span id="cb1-77"><a href="#cb1-77"></a><span class="co">      - ../../css/common.scss</span></span>
+<span id="cb1-78"><a href="#cb1-78"></a><span class="co">      - ../../css/dark.scss</span></span>
+<span id="cb1-79"><a href="#cb1-79"></a><span class="co">      - ../../css/syntax-dark.scss</span></span>
+<span id="cb1-80"><a href="#cb1-80"></a><span class="co">      - ../../css/callout-cards.scss</span></span>
+<span id="cb1-81"><a href="#cb1-81"></a><span class="co">    # callout-style: simple</span></span>
+<span id="cb1-82"><a href="#cb1-82"></a><span class="co">    # css:</span></span>
+<span id="cb1-83"><a href="#cb1-83"></a><span class="co">    #   # - css/default.css</span></span>
+<span id="cb1-84"><a href="#cb1-84"></a><span class="co">    #   - ../../css/custom.css</span></span>
+<span id="cb1-85"><a href="#cb1-85"></a><span class="co">    # theme:</span></span>
+<span id="cb1-86"><a href="#cb1-86"></a><span class="co">    #   # - light:</span></span>
+<span id="cb1-87"><a href="#cb1-87"></a><span class="co">    #   # - css/dark.scss</span></span>
+<span id="cb1-88"><a href="#cb1-88"></a><span class="co">    #   - ../../css/title-slide-template.scss</span></span>
+<span id="cb1-89"><a href="#cb1-89"></a><span class="co">    #   - ../../css/reveal/reveal.scss</span></span>
+<span id="cb1-90"><a href="#cb1-90"></a><span class="co">    #   - ../../css/common.scss</span></span>
+<span id="cb1-91"><a href="#cb1-91"></a><span class="co">    #   - ../../css/dark.scss</span></span>
+<span id="cb1-92"><a href="#cb1-92"></a><span class="co">    #   - ../../css/syntax-dark.scss</span></span>
+<span id="cb1-93"><a href="#cb1-93"></a><span class="co">    #   - ../../css/callout-cards.scss</span></span>
+<span id="cb1-94"><a href="#cb1-94"></a><span class="co">    # css:</span></span>
+<span id="cb1-95"><a href="#cb1-95"></a><span class="co">    #   # - css/default.css</span></span>
+<span id="cb1-96"><a href="#cb1-96"></a><span class="co">    #   - ../../css/custom.css</span></span>
+<span id="cb1-97"><a href="#cb1-97"></a><span class="co">    # theme:</span></span>
+<span id="cb1-98"><a href="#cb1-98"></a><span class="co">    #   # - black</span></span>
+<span id="cb1-99"><a href="#cb1-99"></a><span class="co">    #   # - ./title-fancy/title-slide-template.scss</span></span>
+<span id="cb1-100"><a href="#cb1-100"></a><span class="co">    #   - ../../css/reveal/reveal.scss</span></span>
+<span id="cb1-101"><a href="#cb1-101"></a><span class="co">    #   - ../../css/common.scss</span></span>
+<span id="cb1-102"><a href="#cb1-102"></a><span class="co">    #   - ../../css/dark.scss</span></span>
+<span id="cb1-103"><a href="#cb1-103"></a><span class="co">    #   - ../../css/syntax-dark.scss</span></span>
+<span id="cb1-104"><a href="#cb1-104"></a><span class="co">    #   - ../../css/callout-cards.scss</span></span>
+<span id="cb1-105"><a href="#cb1-105"></a><span class="co">    #   - css/dark.scss</span></span>
+<span id="cb1-106"><a href="#cb1-106"></a><span class="co">    self-contained: false</span></span>
+<span id="cb1-107"><a href="#cb1-107"></a><span class="co">    embed-resources: false</span></span>
+<span id="cb1-108"><a href="#cb1-108"></a><span class="co">    self-contained-math: false</span></span>
+<span id="cb1-109"><a href="#cb1-109"></a><span class="co">    center: true</span></span>
+<span id="cb1-110"><a href="#cb1-110"></a><span class="co">    highlight-style: "atom-one"</span></span>
+<span id="cb1-111"><a href="#cb1-111"></a><span class="co">    default-image-extension: svg</span></span>
+<span id="cb1-112"><a href="#cb1-112"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb1-113"><a href="#cb1-113"></a><span class="co">    data-background-color: "#1c1c1c"</span></span>
+<span id="cb1-114"><a href="#cb1-114"></a><span class="co">    background-color: "#1c1c1c"</span></span>
+<span id="cb1-115"><a href="#cb1-115"></a><span class="co">    code-overflow: scroll</span></span>
+<span id="cb1-116"><a href="#cb1-116"></a><span class="co">    html-math-method: katex</span></span>
+<span id="cb1-117"><a href="#cb1-117"></a><span class="co">    output-file: "slides.html"</span></span>
+<span id="cb1-118"><a href="#cb1-118"></a><span class="co">    mermaid:</span></span>
+<span id="cb1-119"><a href="#cb1-119"></a><span class="co">      theme: neutral</span></span>
+<span id="cb1-120"><a href="#cb1-120"></a><span class="co">  # gfm:</span></span>
+<span id="cb1-121"><a href="#cb1-121"></a><span class="co">  #   output-file: "lattice23.md"</span></span>
+<span id="cb1-122"><a href="#cb1-122"></a><span class="co">---</span></span>
+<span id="cb1-123"><a href="#cb1-123"></a></span>
+<span id="cb1-124"><a href="#cb1-124"></a><span class="fu"># {.title-slide background-color="#1c1c1c" background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span>
+<span id="cb1-125"><a href="#cb1-125"></a></span>
+<span id="cb1-126"><a href="#cb1-126"></a>::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}</span>
+<span id="cb1-127"><a href="#cb1-127"></a>&lt;span style="color:#939393; font-size:1.5em; font-weight: bold;"&gt;MLMC: Machine Learning Monte Carlo&lt;/span&gt;  </span>
+<span id="cb1-128"><a href="#cb1-128"></a>&lt;span style="color:#777777; font-size:1.2em; font-weight: bold;"&gt;for Lattice Gauge Theory&lt;/span&gt;  </span>
+<span id="cb1-129"><a href="#cb1-129"></a><span class="co">[</span><span class="ot">&lt;br&gt;&amp;nbsp;</span><span class="co">]</span>{style="padding-bottom: 0.5rem;"}  </span>
+<span id="cb1-130"><a href="#cb1-130"></a><span class="co">[</span><span class="ot">{{&lt; fa solid home &gt;}}</span><span class="co">](https://samforeman.me)</span> Sam Foreman  </span>
+<span id="cb1-131"><a href="#cb1-131"></a><span class="co">[</span><span class="ot">Xiao-Yong Jin, James C. Osborn</span><span class="co">]</span>{.dim-text style="font-size:0.8em;"}  </span>
+<span id="cb1-132"><a href="#cb1-132"></a>[[<span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/`</span><span class="co">](https://github.com/saforem2/)</span>]{style="border-bottom: 0.5px solid #00ccff;"}<span class="in">`{`</span>[<span class="co">[</span><span class="ot">`lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span>]{style="border-bottom: 0.5px solid #00ccff;"}, [<span class="co">[</span><span class="ot">`l2hmc-qcd`</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span>]{style="border-bottom: 0.5px solid #00ccff;"}<span class="in">`}`</span>]{style="font-size:0.8em;"}</span>
+<span id="cb1-133"><a href="#cb1-133"></a>:::</span>
+<span id="cb1-134"><a href="#cb1-134"></a></span>
+<span id="cb1-135"><a href="#cb1-135"></a>::: footer</span>
+<span id="cb1-136"><a href="#cb1-136"></a><span class="co">[</span><span class="ot">2023-07-31 @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)</span><span class="co">]</span>{.dim-text style="text-align:left;'}</span>
+<span id="cb1-137"><a href="#cb1-137"></a>:::</span>
+<span id="cb1-138"><a href="#cb1-138"></a></span>
+<span id="cb1-139"><a href="#cb1-139"></a><span class="fu"># Overview {background-color="#1c1c1c"}</span></span>
+<span id="cb1-140"><a href="#cb1-140"></a></span>
+<span id="cb1-141"><a href="#cb1-141"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Background: `{MCMC,HMC}`</span><span class="co">](#markov-chain-monte-carlo-mcmc-centeredslide)</span></span>
+<span id="cb1-142"><a href="#cb1-142"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Leapfrog Integrator</span><span class="co">](#leapfrog-integrator-hmc-centeredslide)</span></span>
+<span id="cb1-143"><a href="#cb1-143"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Issues with HMC</span><span class="co">](#sec-issues-with-hmc)</span></span>
+<span id="cb1-144"><a href="#cb1-144"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Can we do better?</span><span class="co">](#sec-can-we-do-better)</span></span>
+<span id="cb1-145"><a href="#cb1-145"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">L2HMC: Generalizing MD</span><span class="co">](#sec-l2hmc)</span></span>
+<span id="cb1-146"><a href="#cb1-146"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">4D $SU(3)$ Model</span><span class="co">](#sec-su3)</span></span>
+<span id="cb1-147"><a href="#cb1-147"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Results</span><span class="co">](#sec-results)</span></span>
+<span id="cb1-148"><a href="#cb1-148"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">References</span><span class="co">](#sec-references)</span></span>
+<span id="cb1-149"><a href="#cb1-149"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">Extras</span><span class="co">](#sec-extras)</span></span>
+<span id="cb1-150"><a href="#cb1-150"></a></span>
+<span id="cb1-151"><a href="#cb1-151"></a></span>
+<span id="cb1-152"><a href="#cb1-152"></a><span class="fu"># Markov Chain Monte Carlo (MCMC) {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-153"><a href="#cb1-153"></a></span>
+<span id="cb1-154"><a href="#cb1-154"></a>:::: {.columns}</span>
+<span id="cb1-155"><a href="#cb1-155"></a></span>
+<span id="cb1-156"><a href="#cb1-156"></a>::: {.column width="50%"}</span>
+<span id="cb1-157"><a href="#cb1-157"></a></span>
+<span id="cb1-158"><a href="#cb1-158"></a>::: {.callout-note collapse=false icon=false title="🎯 Goal" style="text-align:left;!important; width: 100%!important;"}</span>
+<span id="cb1-159"><a href="#cb1-159"></a>Generate **independent** samples $<span class="sc">\{</span>x_{i}<span class="sc">\}</span>$, such that<span class="ot">[^notation1]</span></span>
+<span id="cb1-160"><a href="#cb1-160"></a>$$<span class="sc">\{</span>x_{i}<span class="sc">\}</span> \sim p(x) \propto e^{-S(x)}$$</span>
+<span id="cb1-161"><a href="#cb1-161"></a>where $S(x)$ is the _action_ (or potential energy)</span>
+<span id="cb1-162"><a href="#cb1-162"></a>:::</span>
+<span id="cb1-163"><a href="#cb1-163"></a></span>
+<span id="cb1-164"><a href="#cb1-164"></a><span class="ss">- </span>Want to calculate observables $\mathcal{O}$:  </span>
+<span id="cb1-165"><a href="#cb1-165"></a>  $\left\langle \mathcal{O}\right\rangle \propto \int \left<span class="co">[</span><span class="ot">\mathcal{D}x\right</span><span class="co">]</span>\hspace{4pt} {\mathcal{O}(x)\, p(x)}$</span>
+<span id="cb1-166"><a href="#cb1-166"></a></span>
+<span id="cb1-167"><a href="#cb1-167"></a>:::</span>
+<span id="cb1-168"><a href="#cb1-168"></a></span>
+<span id="cb1-169"><a href="#cb1-169"></a>::: {.column width="49%"}</span>
+<span id="cb1-170"><a href="#cb1-170"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)</span></span>
+<span id="cb1-171"><a href="#cb1-171"></a>:::</span>
+<span id="cb1-172"><a href="#cb1-172"></a></span>
+<span id="cb1-173"><a href="#cb1-173"></a>::::</span>
+<span id="cb1-174"><a href="#cb1-174"></a></span>
+<span id="cb1-175"><a href="#cb1-175"></a>If these were &lt;span style="color:#00CCFF;"&gt;independent&lt;/span&gt;, we could approximate:</span>
+<span id="cb1-176"><a href="#cb1-176"></a>  $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$  </span>
+<span id="cb1-177"><a href="#cb1-177"></a>  $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)</span>
+<span id="cb1-178"><a href="#cb1-178"></a>  \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$</span>
+<span id="cb1-179"><a href="#cb1-179"></a></span>
+<span id="cb1-180"><a href="#cb1-180"></a><span class="ot">[^notation1]: </span>Here, $\sim$ means "is distributed according to"</span>
+<span id="cb1-181"><a href="#cb1-181"></a></span>
+<span id="cb1-182"><a href="#cb1-182"></a>::: footer</span>
+<span id="cb1-183"><a href="#cb1-183"></a><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/lattice23`</span><span class="co">](https://saforem2.github.io/lattice23)</span></span>
+<span id="cb1-184"><a href="#cb1-184"></a>:::</span>
+<span id="cb1-185"><a href="#cb1-185"></a></span>
+<span id="cb1-186"><a href="#cb1-186"></a><span class="fu"># Markov Chain Monte Carlo (MCMC) {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-187"><a href="#cb1-187"></a></span>
+<span id="cb1-188"><a href="#cb1-188"></a>:::: {.columns}</span>
+<span id="cb1-189"><a href="#cb1-189"></a></span>
+<span id="cb1-190"><a href="#cb1-190"></a>::: {.column width="50%"}</span>
+<span id="cb1-191"><a href="#cb1-191"></a></span>
+<span id="cb1-192"><a href="#cb1-192"></a>::: {.callout-note collapse=false icon=false title="🎯 Goal" style="text-align:left;!important; width: 100%!important;"}</span>
+<span id="cb1-193"><a href="#cb1-193"></a>Generate **independent** samples $<span class="sc">\{</span>x_{i}<span class="sc">\}</span>$, such that<span class="ot">[^notation2]</span></span>
+<span id="cb1-194"><a href="#cb1-194"></a>$$<span class="sc">\{</span>x_{i}<span class="sc">\}</span> \sim p(x) \propto e^{-S(x)}$$</span>
+<span id="cb1-195"><a href="#cb1-195"></a>where $S(x)$ is the _action_ (or potential energy)</span>
+<span id="cb1-196"><a href="#cb1-196"></a>:::</span>
+<span id="cb1-197"><a href="#cb1-197"></a></span>
+<span id="cb1-198"><a href="#cb1-198"></a><span class="ss">- </span>Want to calculate observables $\mathcal{O}$:  </span>
+<span id="cb1-199"><a href="#cb1-199"></a>  $\left\langle \mathcal{O}\right\rangle \propto \int \left<span class="co">[</span><span class="ot">\mathcal{D}x\right</span><span class="co">]</span>\hspace{4pt} {\mathcal{O}(x)\, p(x)}$</span>
+<span id="cb1-200"><a href="#cb1-200"></a></span>
+<span id="cb1-201"><a href="#cb1-201"></a>:::</span>
+<span id="cb1-202"><a href="#cb1-202"></a></span>
+<span id="cb1-203"><a href="#cb1-203"></a>::: {.column width="49%"}</span>
+<span id="cb1-204"><a href="#cb1-204"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)</span></span>
+<span id="cb1-205"><a href="#cb1-205"></a>:::</span>
+<span id="cb1-206"><a href="#cb1-206"></a></span>
+<span id="cb1-207"><a href="#cb1-207"></a>::::</span>
+<span id="cb1-208"><a href="#cb1-208"></a></span>
+<span id="cb1-209"><a href="#cb1-209"></a>Instead, nearby configs are <span class="co">[</span><span class="ot">correlated</span><span class="co">]</span>{.red-text}, and we incur a factor of</span>
+<span id="cb1-210"><a href="#cb1-210"></a>$\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}$:</span>
+<span id="cb1-211"><a href="#cb1-211"></a>  $$\sigma_{\mathcal{O}}^{2} =</span>
+<span id="cb1-212"><a href="#cb1-212"></a>  \frac{\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O}</span>
+<span id="cb1-213"><a href="#cb1-213"></a>  (x) \right]}$$</span>
+<span id="cb1-214"><a href="#cb1-214"></a></span>
+<span id="cb1-215"><a href="#cb1-215"></a><span class="ot">[^notation2]: </span>Here, $\sim$ means "is distributed according to"</span>
+<span id="cb1-216"><a href="#cb1-216"></a></span>
+<span id="cb1-217"><a href="#cb1-217"></a>::: footer</span>
+<span id="cb1-218"><a href="#cb1-218"></a><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
+<span id="cb1-219"><a href="#cb1-219"></a>:::</span>
+<span id="cb1-220"><a href="#cb1-220"></a></span>
+<span id="cb1-221"><a href="#cb1-221"></a><span class="fu"># Hamiltonian Monte Carlo (HMC) {.center background-color="#1c1c1c"}</span></span>
+<span id="cb1-222"><a href="#cb1-222"></a></span>
+<span id="cb1-223"><a href="#cb1-223"></a><span class="ss">- </span>Want to (sequentially) construct a chain of states:</span>
+<span id="cb1-224"><a href="#cb1-224"></a>  $$x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}$$</span>
+<span id="cb1-225"><a href="#cb1-225"></a></span>
+<span id="cb1-226"><a href="#cb1-226"></a>  such that, as $N \rightarrow \infty$:</span>
+<span id="cb1-227"><a href="#cb1-227"></a>  $$\left<span class="sc">\{</span>x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right<span class="sc">\}</span> \xrightarrow[]{N\rightarrow\infty} p(x)</span>
+<span id="cb1-228"><a href="#cb1-228"></a>  \propto e^{-S(x)}$$</span>
+<span id="cb1-229"><a href="#cb1-229"></a></span>
+<span id="cb1-230"><a href="#cb1-230"></a>::: {.callout-tip icon=false collapse=false title="🪄 Trick" style="display:inline!important; width: 100%!important;"}</span>
+<span id="cb1-231"><a href="#cb1-231"></a><span class="ss">  - </span>Introduce <span class="co">[</span><span class="ot">fictitious</span><span class="co">]</span>{.green-text} momentum $v \sim \mathcal{N}(0, \mathbb{1})$</span>
+<span id="cb1-232"><a href="#cb1-232"></a><span class="ss">    - </span>Normally distributed **independent** of $x$, i.e.</span>
+<span id="cb1-233"><a href="#cb1-233"></a>  $$\begin{align*}</span>
+<span id="cb1-234"><a href="#cb1-234"></a>    p(x, v) &amp;\textcolor{#02b875}{=} p(x)\,p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}</span>
+<span id="cb1-235"><a href="#cb1-235"></a>    = e^{-\left<span class="co">[</span><span class="ot">S(x) + \frac{1}{2} v^{T}{v}\right</span><span class="co">]</span>}</span>
+<span id="cb1-236"><a href="#cb1-236"></a>    \textcolor{#02b875}{=} e^{-H(x, v)}</span>
+<span id="cb1-237"><a href="#cb1-237"></a>  \end{align*}$$</span>
+<span id="cb1-238"><a href="#cb1-238"></a>:::</span>
+<span id="cb1-239"><a href="#cb1-239"></a></span>
+<span id="cb1-240"><a href="#cb1-240"></a><span class="fu">## Hamiltonian Monte Carlo (HMC) {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-241"><a href="#cb1-241"></a></span>
+<span id="cb1-242"><a href="#cb1-242"></a>:::: {.columns}</span>
+<span id="cb1-243"><a href="#cb1-243"></a></span>
+<span id="cb1-244"><a href="#cb1-244"></a>::: {.column width="55%"}</span>
+<span id="cb1-245"><a href="#cb1-245"></a></span>
+<span id="cb1-246"><a href="#cb1-246"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**Idea**</span><span class="co">]</span>{.green-text}: Evolve the $(\dot{x}, \dot{v})$ system to get new states $<span class="sc">\{</span>x_{i}<span class="sc">\}</span>$❗</span>
+<span id="cb1-247"><a href="#cb1-247"></a></span>
+<span id="cb1-248"><a href="#cb1-248"></a><span class="ss">- </span>Write the **joint distribution** $p(x, v)$:</span>
+<span id="cb1-249"><a href="#cb1-249"></a>  $$</span>
+<span id="cb1-250"><a href="#cb1-250"></a>  p(x, v) \propto e^{-S<span class="co">[</span><span class="ot">x</span><span class="co">]</span>} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}</span>
+<span id="cb1-251"><a href="#cb1-251"></a>  $$</span>
+<span id="cb1-252"><a href="#cb1-252"></a>:::</span>
+<span id="cb1-253"><a href="#cb1-253"></a></span>
+<span id="cb1-254"><a href="#cb1-254"></a>::: {.column width="45%"}</span>
+<span id="cb1-255"><a href="#cb1-255"></a></span>
+<span id="cb1-256"><a href="#cb1-256"></a>::: {.callout-tip collapse=false icon=false title="🔋 Hamiltonian Dynamics" style="width:100%!important;"}</span>
+<span id="cb1-257"><a href="#cb1-257"></a>$H = S<span class="co">[</span><span class="ot">x</span><span class="co">]</span> + \frac{1}{2} v^{T} v \Longrightarrow$</span>
+<span id="cb1-258"><a href="#cb1-258"></a>$$\dot{x} = +\partial_{v} H,</span>
+<span id="cb1-259"><a href="#cb1-259"></a>\,\,\dot{v} = -\partial_{x} H$$</span>
+<span id="cb1-260"><a href="#cb1-260"></a>:::</span>
+<span id="cb1-261"><a href="#cb1-261"></a></span>
+<span id="cb1-262"><a href="#cb1-262"></a>:::</span>
+<span id="cb1-263"><a href="#cb1-263"></a></span>
+<span id="cb1-264"><a href="#cb1-264"></a>::::</span>
+<span id="cb1-265"><a href="#cb1-265"></a></span>
+<span id="cb1-266"><a href="#cb1-266"></a>::: {#fig-hmc-traj}</span>
+<span id="cb1-267"><a href="#cb1-267"></a></span>
+<span id="cb1-268"><a href="#cb1-268"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/hmc1.svg)</span>{.r-stretch}</span>
+<span id="cb1-269"><a href="#cb1-269"></a></span>
+<span id="cb1-270"><a href="#cb1-270"></a>Overview of HMC algorithm</span>
+<span id="cb1-271"><a href="#cb1-271"></a>:::</span>
+<span id="cb1-272"><a href="#cb1-272"></a></span>
+<span id="cb1-273"><a href="#cb1-273"></a><span class="fu">## Leapfrog Integrator (HMC) {#sec-leapfrog background-color="#1c1c1c"}</span></span>
+<span id="cb1-274"><a href="#cb1-274"></a></span>
+<span id="cb1-275"><a href="#cb1-275"></a>:::: {.columns style="font-size: 0.9em;" height="100%"}</span>
+<span id="cb1-276"><a href="#cb1-276"></a></span>
+<span id="cb1-277"><a href="#cb1-277"></a>::: {.column width="40%"}</span>
+<span id="cb1-278"><a href="#cb1-278"></a></span>
+<span id="cb1-279"><a href="#cb1-279"></a>::: {.callout-tip collapse=false icon=false title="🔋 Hamiltonian Dynamics" style="width:100%!important;"}</span>
+<span id="cb1-280"><a href="#cb1-280"></a>$\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)$</span>
+<span id="cb1-281"><a href="#cb1-281"></a>:::</span>
+<span id="cb1-282"><a href="#cb1-282"></a></span>
+<span id="cb1-283"><a href="#cb1-283"></a>::: {.callout-note collapse=false icon=false title="🐸 Leapfrog Step" style="width:100%!important;"}</span>
+<span id="cb1-284"><a href="#cb1-284"></a><span class="in">`input`</span> $\,\left(x, v\right) \rightarrow \left(x', v'\right)\,$ <span class="in">`output`</span></span>
+<span id="cb1-285"><a href="#cb1-285"></a></span>
+<span id="cb1-286"><a href="#cb1-286"></a>$$\begin{align*}</span>
+<span id="cb1-287"><a href="#cb1-287"></a>\tilde{v} &amp;:= \textcolor{#F06292}{\Gamma}(x, v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) <span class="sc">\\</span></span>
+<span id="cb1-288"><a href="#cb1-288"></a>x' &amp;:= \textcolor{#FD971F}{\Lambda}(x, \tilde{v}) \, =  x + \varepsilon \, \tilde{v} <span class="sc">\\</span></span>
+<span id="cb1-289"><a href="#cb1-289"></a>v' &amp;:= \textcolor{#F06292}{\Gamma}(x', \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')</span>
+<span id="cb1-290"><a href="#cb1-290"></a>\end{align*}$$</span>
+<span id="cb1-291"><a href="#cb1-291"></a></span>
+<span id="cb1-292"><a href="#cb1-292"></a>:::</span>
+<span id="cb1-293"><a href="#cb1-293"></a></span>
+<span id="cb1-294"><a href="#cb1-294"></a>::: {.callout-warning collapse=false icon=false title="⚠️ Warning!" style="width:100%!important;"}</span>
+<span id="cb1-295"><a href="#cb1-295"></a><span class="ss">- </span>Resample $v_{0} \sim \mathcal{N}(0, \mathbb{1})$  </span>
+<span id="cb1-296"><a href="#cb1-296"></a>at the <span class="co">[</span><span class="ot">beginning</span><span class="co">]</span>{.yellow-text} of each trajectory</span>
+<span id="cb1-297"><a href="#cb1-297"></a>:::</span>
+<span id="cb1-298"><a href="#cb1-298"></a></span>
+<span id="cb1-299"><a href="#cb1-299"></a>::: {style="font-size:0.8em; margin-left:13%;"}</span>
+<span id="cb1-300"><a href="#cb1-300"></a><span class="co">[</span><span class="ot">**Note**: $\partial_{x} S(x)$ is the _force_</span><span class="co">]</span>{.dim-text}</span>
+<span id="cb1-301"><a href="#cb1-301"></a>:::</span>
+<span id="cb1-302"><a href="#cb1-302"></a></span>
+<span id="cb1-303"><a href="#cb1-303"></a>:::</span>
+<span id="cb1-304"><a href="#cb1-304"></a></span>
+<span id="cb1-305"><a href="#cb1-305"></a>::: {.column width="55%" style="text-align:left;"}</span>
+<span id="cb1-306"><a href="#cb1-306"></a></span>
+<span id="cb1-307"><a href="#cb1-307"></a><span class="al">![](./assets/hmc1/hmc-update-light.svg)</span>{width=60%}</span>
+<span id="cb1-308"><a href="#cb1-308"></a></span>
+<span id="cb1-309"><a href="#cb1-309"></a>:::</span>
+<span id="cb1-310"><a href="#cb1-310"></a></span>
+<span id="cb1-311"><a href="#cb1-311"></a>::::</span>
+<span id="cb1-312"><a href="#cb1-312"></a></span>
+<span id="cb1-313"><a href="#cb1-313"></a><span class="fu">## HMC Update {background-color="#1c1c1c"}</span></span>
+<span id="cb1-314"><a href="#cb1-314"></a></span>
+<span id="cb1-315"><a href="#cb1-315"></a>:::: {.columns}</span>
+<span id="cb1-316"><a href="#cb1-316"></a></span>
+<span id="cb1-317"><a href="#cb1-317"></a>::: {.column width="65%"}</span>
+<span id="cb1-318"><a href="#cb1-318"></a><span class="ss">- </span>We build a trajectory of $N_{\mathrm{LF}}$ **leapfrog steps**<span class="ot">[^v0]</span></span>
+<span id="cb1-319"><a href="#cb1-319"></a>  $$\begin{equation*}</span>
+<span id="cb1-320"><a href="#cb1-320"></a>  (x_{0}, v_{0})%</span>
+<span id="cb1-321"><a href="#cb1-321"></a>  \rightarrow (x_{1}, v_{1})\rightarrow \cdots%</span>
+<span id="cb1-322"><a href="#cb1-322"></a>  \rightarrow (x', v')</span>
+<span id="cb1-323"><a href="#cb1-323"></a>  \end{equation*}$$</span>
+<span id="cb1-324"><a href="#cb1-324"></a></span>
+<span id="cb1-325"><a href="#cb1-325"></a><span class="ss">- </span>And propose $x'$ as the next state in our chain</span>
+<span id="cb1-326"><a href="#cb1-326"></a></span>
+<span id="cb1-327"><a href="#cb1-327"></a>$$\begin{align*}</span>
+<span id="cb1-328"><a href="#cb1-328"></a>  \textcolor{#F06292}{\Gamma}: (x, v) \textcolor{#F06292}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) <span class="sc">\\</span></span>
+<span id="cb1-329"><a href="#cb1-329"></a>  \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &amp;:= x + \varepsilon v</span>
+<span id="cb1-330"><a href="#cb1-330"></a>\end{align*}$$</span>
+<span id="cb1-331"><a href="#cb1-331"></a></span>
+<span id="cb1-332"><a href="#cb1-332"></a><span class="ss">- </span>We then accept / reject $x'$ using Metropolis-Hastings criteria,  </span>
+<span id="cb1-333"><a href="#cb1-333"></a>  $A(x'|x) = \min\left<span class="sc">\{</span>1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right<span class="sc">\}</span>$</span>
+<span id="cb1-334"><a href="#cb1-334"></a></span>
+<span id="cb1-335"><a href="#cb1-335"></a>:::</span>
+<span id="cb1-336"><a href="#cb1-336"></a></span>
+<span id="cb1-337"><a href="#cb1-337"></a>::: {.column width="30%"}</span>
+<span id="cb1-338"><a href="#cb1-338"></a></span>
+<span id="cb1-339"><a href="#cb1-339"></a><span class="al">![](./assets/hmc1/hmc-update-light.svg)</span></span>
+<span id="cb1-340"><a href="#cb1-340"></a></span>
+<span id="cb1-341"><a href="#cb1-341"></a>:::</span>
+<span id="cb1-342"><a href="#cb1-342"></a></span>
+<span id="cb1-343"><a href="#cb1-343"></a>::::</span>
+<span id="cb1-344"><a href="#cb1-344"></a></span>
+<span id="cb1-345"><a href="#cb1-345"></a><span class="ot">[^v0]: </span>We **always** start by resampling the momentum, $v_{0} \sim</span>
+<span id="cb1-346"><a href="#cb1-346"></a>\mathcal{N}(0, \mathbb{1})$</span>
+<span id="cb1-347"><a href="#cb1-347"></a></span>
+<span id="cb1-348"><a href="#cb1-348"></a><span class="fu">## HMC Demo {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-349"><a href="#cb1-349"></a></span>
+<span id="cb1-350"><a href="#cb1-350"></a>::: {#fig-hmc-demo}</span>
+<span id="cb1-351"><a href="#cb1-351"></a></span>
+<span id="cb1-352"><a href="#cb1-352"></a>&lt;iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="90%" height="500" title="l2hmc-qcd"&gt;&lt;/iframe&gt;</span>
+<span id="cb1-353"><a href="#cb1-353"></a></span>
+<span id="cb1-354"><a href="#cb1-354"></a>HMC Demo</span>
+<span id="cb1-355"><a href="#cb1-355"></a>:::</span>
+<span id="cb1-356"><a href="#cb1-356"></a></span>
+<span id="cb1-357"><a href="#cb1-357"></a><span class="fu"># Issues with HMC {#sec-issues style="font-size:0.9em;" background-color="#1c1c1c"}</span></span>
+<span id="cb1-358"><a href="#cb1-358"></a></span>
+<span id="cb1-359"><a href="#cb1-359"></a><span class="ss">- </span>What do we want in a good sampler?</span>
+<span id="cb1-360"><a href="#cb1-360"></a><span class="ss">  - </span>**Fast mixing** (small autocorrelations)</span>
+<span id="cb1-361"><a href="#cb1-361"></a><span class="ss">  - </span>**Fast burn-in** (quick convergence)</span>
+<span id="cb1-362"><a href="#cb1-362"></a></span>
+<span id="cb1-363"><a href="#cb1-363"></a><span class="ss">- </span>Problems with HMC:</span>
+<span id="cb1-364"><a href="#cb1-364"></a><span class="ss">  - </span>Energy levels selected randomly $\rightarrow$ **slow mixing**</span>
+<span id="cb1-365"><a href="#cb1-365"></a><span class="ss">  - </span>Cannot easily traverse low-density zones $\rightarrow$ **slow convergence**</span>
+<span id="cb1-366"><a href="#cb1-366"></a></span>
+<span id="cb1-367"><a href="#cb1-367"></a>::: {#fig-hmc-issues layout-ncol=2}</span>
+<span id="cb1-368"><a href="#cb1-368"></a><span class="al">![HMC Samples with $\varepsilon=0.25$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg)</span></span>
+<span id="cb1-369"><a href="#cb1-369"></a></span>
+<span id="cb1-370"><a href="#cb1-370"></a><span class="al">![HMC Samples with $\varepsilon=0.5$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg)</span></span>
+<span id="cb1-371"><a href="#cb1-371"></a></span>
+<span id="cb1-372"><a href="#cb1-372"></a>HMC Samples generated with varying step sizes $\varepsilon$</span>
+<span id="cb1-373"><a href="#cb1-373"></a>:::</span>
+<span id="cb1-374"><a href="#cb1-374"></a></span>
+<span id="cb1-375"><a href="#cb1-375"></a><span class="fu"># Topological Freezing {.center background-color="#1c1c1c"}</span></span>
+<span id="cb1-376"><a href="#cb1-376"></a></span>
+<span id="cb1-377"><a href="#cb1-377"></a>:::: {.flex-container style="text-align: center; width: 100%"}</span>
+<span id="cb1-378"><a href="#cb1-378"></a></span>
+<span id="cb1-379"><a href="#cb1-379"></a>::: {.col1 width="45%" style="text-align: left; font-size: 0.9em;"}</span>
+<span id="cb1-380"><a href="#cb1-380"></a></span>
+<span id="cb1-381"><a href="#cb1-381"></a>**Topological Charge**:</span>
+<span id="cb1-382"><a href="#cb1-382"></a>$$Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}$$</span>
+<span id="cb1-383"><a href="#cb1-383"></a></span>
+<span id="cb1-384"><a href="#cb1-384"></a>[**note:** $\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi</span>
+<span id="cb1-385"><a href="#cb1-385"></a>\left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor$]{.dim-text style="font-size:0.8em;"}</span>
+<span id="cb1-386"><a href="#cb1-386"></a></span>
+<span id="cb1-387"><a href="#cb1-387"></a></span>
+<span id="cb1-388"><a href="#cb1-388"></a>::: {.callout-important collapse=false icon=false title="⏳ Critical Slowing Down" style="text-align:left; width:100%!important;"}</span>
+<span id="cb1-389"><a href="#cb1-389"></a><span class="ss">- </span>$Q$ gets stuck!</span>
+<span id="cb1-390"><a href="#cb1-390"></a><span class="ss">    - </span>as $\beta\longrightarrow \infty$:</span>
+<span id="cb1-391"><a href="#cb1-391"></a><span class="ss">        - </span>$Q \longrightarrow \text{const.}$</span>
+<span id="cb1-392"><a href="#cb1-392"></a><span class="ss">        - </span>$\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}$</span>
+<span id="cb1-393"><a href="#cb1-393"></a><span class="ss">    - </span><span class="sc">\#</span> configs required to estimate errors  </span>
+<span id="cb1-394"><a href="#cb1-394"></a>    **grows exponentially**:</span>
+<span id="cb1-395"><a href="#cb1-395"></a>    <span class="co">[</span><span class="ot">$\tau_{\mathrm{int}}^{Q} \longrightarrow \infty$</span><span class="co">]</span>{.red-text}</span>
+<span id="cb1-396"><a href="#cb1-396"></a>:::</span>
+<span id="cb1-397"><a href="#cb1-397"></a></span>
+<span id="cb1-398"><a href="#cb1-398"></a>:::</span>
+<span id="cb1-399"><a href="#cb1-399"></a></span>
+<span id="cb1-400"><a href="#cb1-400"></a>::: {.flex-container width="45%"}</span>
+<span id="cb1-401"><a href="#cb1-401"></a></span>
+<span id="cb1-402"><a href="#cb1-402"></a>![Note $\delta Q \rightarrow 0$ at increasing</span>
+<span id="cb1-403"><a href="#cb1-403"></a>$\beta$](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg){width="80%"}</span>
+<span id="cb1-404"><a href="#cb1-404"></a></span>
+<span id="cb1-405"><a href="#cb1-405"></a>:::</span>
+<span id="cb1-406"><a href="#cb1-406"></a></span>
+<span id="cb1-407"><a href="#cb1-407"></a>::::</span>
+<span id="cb1-408"><a href="#cb1-408"></a></span>
+<span id="cb1-409"><a href="#cb1-409"></a><span class="fu"># Can we do better? {#sec-can-we-do-better background-color="#1c1c1c"}</span></span>
+<span id="cb1-410"><a href="#cb1-410"></a></span>
+<span id="cb1-411"><a href="#cb1-411"></a>:::: {.columns}</span>
+<span id="cb1-412"><a href="#cb1-412"></a></span>
+<span id="cb1-413"><a href="#cb1-413"></a>::: {.column width="50%"}</span>
+<span id="cb1-414"><a href="#cb1-414"></a></span>
+<span id="cb1-415"><a href="#cb1-415"></a><span class="ss">- </span>Introduce two (**invertible NNs**) <span class="in">`vNet`</span> and <span class="in">`xNet`</span><span class="ot">[^l2hmc]</span>:</span>
+<span id="cb1-416"><a href="#cb1-416"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">`vNet: ` $(x, F) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}  </span>
+<span id="cb1-417"><a href="#cb1-417"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">`xNet: ` $(x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}</span>
+<span id="cb1-418"><a href="#cb1-418"></a></span>
+<span id="cb1-419"><a href="#cb1-419"></a><span class="dv">&amp;nbsp;</span>  </span>
+<span id="cb1-420"><a href="#cb1-420"></a></span>
+<span id="cb1-421"><a href="#cb1-421"></a><span class="ss">- </span>Use these $(s, t, q)$ in the _generalized_ MD update:</span>
+<span id="cb1-422"><a href="#cb1-422"></a><span class="ss">  - </span>[<span class="co">[</span><span class="ot">$\Gamma_{\theta}^{\pm}$</span><span class="co">]</span>{.pink-text} $: ({x}, \textcolor{#07B875}{v}) \xrightarrow[]{\textcolor{#F06292}{s_{v}, t_{v}, q_{v}}} (x, \textcolor{#07B875}{v'})$]{}</span>
+<span id="cb1-423"><a href="#cb1-423"></a><span class="ss">  - </span>[<span class="co">[</span><span class="ot">$\Lambda_{\theta}^{\pm}$</span><span class="co">]</span>{.orange-text} $: (\textcolor{#AE81FF}{x}, v) \xrightarrow[]{\textcolor{#FD971F}{s_{x}, t_{x}, q_{x}}} (\textcolor{#AE81FF}{x'}, v)$]{}</span>
+<span id="cb1-424"><a href="#cb1-424"></a></span>
+<span id="cb1-425"><a href="#cb1-425"></a>:::</span>
+<span id="cb1-426"><a href="#cb1-426"></a></span>
+<span id="cb1-427"><a href="#cb1-427"></a>::: {.column width="48%"}</span>
+<span id="cb1-428"><a href="#cb1-428"></a></span>
+<span id="cb1-429"><a href="#cb1-429"></a>::: {#fig-mdupdate}</span>
+<span id="cb1-430"><a href="#cb1-430"></a></span>
+<span id="cb1-431"><a href="#cb1-431"></a><span class="al">![](./assets/leapfrog-layer-2D-U1-vertical.light.svg)</span>{style="width:85%; text-align:center;"}</span>
+<span id="cb1-432"><a href="#cb1-432"></a></span>
+<span id="cb1-433"><a href="#cb1-433"></a>Generalized MD update where <span class="co">[</span><span class="ot">$\Lambda_{\theta}^{\pm}$</span><span class="co">]</span>{.orange-text},</span>
+<span id="cb1-434"><a href="#cb1-434"></a><span class="co">[</span><span class="ot">$\Gamma_{\theta}^{\pm}$</span><span class="co">]</span>{.pink-text} are **invertible NNs**</span>
+<span id="cb1-435"><a href="#cb1-435"></a></span>
+<span id="cb1-436"><a href="#cb1-436"></a>:::</span>
+<span id="cb1-437"><a href="#cb1-437"></a></span>
+<span id="cb1-438"><a href="#cb1-438"></a>:::</span>
+<span id="cb1-439"><a href="#cb1-439"></a></span>
+<span id="cb1-440"><a href="#cb1-440"></a>::::</span>
+<span id="cb1-441"><a href="#cb1-441"></a></span>
+<span id="cb1-442"><a href="#cb1-442"></a><span class="ot">[^l2hmc]: </span><span class="co">[</span><span class="ot">L2HMC: </span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span> {{&lt; fa solid book &gt;}}</span>
+<span id="cb1-443"><a href="#cb1-443"></a><span class="co">[</span><span class="ot">@Foreman:2021ixr; @Foreman:2021rhs</span><span class="co">]</span></span>
+<span id="cb1-444"><a href="#cb1-444"></a></span>
+<span id="cb1-445"><a href="#cb1-445"></a><span class="fu"># L2HMC: Generalizing the MD Update {#sec-l2hmc .smaller .centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-446"><a href="#cb1-446"></a></span>
+<span id="cb1-447"><a href="#cb1-447"></a>:::: {.flex-container style="text-align: left; width: 100%"}</span>
+<span id="cb1-448"><a href="#cb1-448"></a></span>
+<span id="cb1-449"><a href="#cb1-449"></a>::: {.col1 style="width:45%; font-size: 0.8em;"}</span>
+<span id="cb1-450"><a href="#cb1-450"></a></span>
+<span id="cb1-451"><a href="#cb1-451"></a>::: {style="border:1px solid red;"}</span>
+<span id="cb1-452"><a href="#cb1-452"></a></span>
+<span id="cb1-453"><a href="#cb1-453"></a><span class="ss">- </span>Introduce $d \sim \mathcal{U}(\pm)$ to determine the direction of our update</span>
+<span id="cb1-454"><a href="#cb1-454"></a></span>
+<span id="cb1-455"><a href="#cb1-455"></a><span class="ss">  1. </span><span class="co">[</span><span class="ot">$\textcolor{#07B875}{v'} =$ [$\Gamma^{\pm}$]{.pink-text}$({x}, \textcolor{#07B875}{v})$</span><span class="co">]</span>{} <span class="co">[</span><span class="ot">$\hspace{46pt}$ update $v$</span><span class="co">]</span>{.dim-text style="font-size:0.9em;"}</span>
+<span id="cb1-456"><a href="#cb1-456"></a></span>
+<span id="cb1-457"><a href="#cb1-457"></a><span class="ss">  2. </span><span class="co">[</span><span class="ot">$\textcolor{#AE81FF}{x'} =$ [$x_{B}$]{.blue-text}$\,+\,$[$\Lambda^{\pm}$]{.orange-text}$($[$x_{A}$]{.red-text}$, {v'})$</span><span class="co">]</span>{} <span class="co">[</span><span class="ot">$\hspace{10pt}$ update first **half**: $x_{A}$</span><span class="co">]</span>{.dim-text style="font-size:0.9em;"}</span>
+<span id="cb1-458"><a href="#cb1-458"></a></span>
+<span id="cb1-459"><a href="#cb1-459"></a><span class="ss">  3. </span><span class="co">[</span><span class="ot">$\textcolor{#AE81FF}{x''} =$ [$x'_{A}$]{.red-text}$\,+\,$[$\Lambda^{\pm}$]{.orange-text}$($[$x'_{B}$]{.blue-text}$, {v'})$</span><span class="co">]</span>{} <span class="co">[</span><span class="ot">$\hspace{8pt}$ update other half: $x_{B}$</span><span class="co">]</span>{.dim-text style="font-size:0.9em;"}</span>
+<span id="cb1-460"><a href="#cb1-460"></a></span>
+<span id="cb1-461"><a href="#cb1-461"></a><span class="ss">  4. </span><span class="co">[</span><span class="ot">$\textcolor{#07B875}{v''} =$ [$\Gamma^{\pm}$]{.pink-text}$({x''}, \textcolor{#07B875}{v'})$</span><span class="co">]</span>{} <span class="co">[</span><span class="ot">$\hspace{36pt}$ update $v$</span><span class="co">]</span>{.dim-text style="font-size:0.9em;"}</span>
+<span id="cb1-462"><a href="#cb1-462"></a></span>
+<span id="cb1-463"><a href="#cb1-463"></a>:::</span>
+<span id="cb1-464"><a href="#cb1-464"></a></span>
+<span id="cb1-465"><a href="#cb1-465"></a>::: {style="border:1px solid red;"}</span>
+<span id="cb1-466"><a href="#cb1-466"></a></span>
+<span id="cb1-467"><a href="#cb1-467"></a><span class="ss">- </span>Resample both $v\sim \mathcal{N}(0, 1)$, and $d \sim \mathcal{U}(\pm)$ at the</span>
+<span id="cb1-468"><a href="#cb1-468"></a>beginning of each trajectory</span>
+<span id="cb1-469"><a href="#cb1-469"></a><span class="ss">  - </span>To ensure ergodicity + reversibility, we split the <span class="co">[</span><span class="ot">$x$</span><span class="co">]</span>{.purple-text}</span>
+<span id="cb1-470"><a href="#cb1-470"></a>  update into sequential (complementary) updates</span>
+<span id="cb1-471"><a href="#cb1-471"></a><span class="ss">- </span>Introduce directional variable $d \sim \mathcal{U}(\pm)$, resampled at the</span>
+<span id="cb1-472"><a href="#cb1-472"></a>beginning of each trajectory:</span>
+<span id="cb1-473"><a href="#cb1-473"></a><span class="ss">  - </span>Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e.</span>
+<span id="cb1-474"><a href="#cb1-474"></a>  $$\Gamma^{+}\left<span class="co">[</span><span class="ot">\Gamma^{-}(x, v)\right</span><span class="co">]</span> = \Gamma^{-}\left[\Gamma^{+}(x,</span>
+<span id="cb1-475"><a href="#cb1-475"></a>  v)\right] = (x, v)$$</span>
+<span id="cb1-476"><a href="#cb1-476"></a></span>
+<span id="cb1-477"><a href="#cb1-477"></a>:::</span>
+<span id="cb1-478"><a href="#cb1-478"></a></span>
+<span id="cb1-479"><a href="#cb1-479"></a>:::</span>
+<span id="cb1-480"><a href="#cb1-480"></a></span>
+<span id="cb1-481"><a href="#cb1-481"></a>::: {.col2 style="width:55%;"}</span>
+<span id="cb1-482"><a href="#cb1-482"></a></span>
+<span id="cb1-483"><a href="#cb1-483"></a>::: {#fig-mdupdate}</span>
+<span id="cb1-484"><a href="#cb1-484"></a></span>
+<span id="cb1-485"><a href="#cb1-485"></a><span class="al">![](./assets/leapfrog-layer-2D-U1-vertical.light.svg)</span>{style="width:85%; text-align:center;"}</span>
+<span id="cb1-486"><a href="#cb1-486"></a></span>
+<span id="cb1-487"><a href="#cb1-487"></a>Generalized MD update with <span class="co">[</span><span class="ot">$\Lambda_{\theta}^{\pm}$</span><span class="co">]</span>{.orange-text}, <span class="co">[</span><span class="ot">$\Gamma_{\theta}^{\pm}$</span><span class="co">]</span>{.pink-text} **invertible NNs**</span>
+<span id="cb1-488"><a href="#cb1-488"></a>:::</span>
+<span id="cb1-489"><a href="#cb1-489"></a></span>
+<span id="cb1-490"><a href="#cb1-490"></a>:::</span>
+<span id="cb1-491"><a href="#cb1-491"></a></span>
+<span id="cb1-492"><a href="#cb1-492"></a>::::</span>
+<span id="cb1-493"><a href="#cb1-493"></a></span>
+<span id="cb1-494"><a href="#cb1-494"></a><span class="fu">## L2HMC: Leapfrog Layer {.center width="100%" background-color="#1c1c1c"}</span></span>
+<span id="cb1-495"><a href="#cb1-495"></a></span>
+<span id="cb1-496"><a href="#cb1-496"></a>:::: {.flex-container}</span>
+<span id="cb1-497"><a href="#cb1-497"></a></span>
+<span id="cb1-498"><a href="#cb1-498"></a>::: {.column style="width: 35%;"}</span>
+<span id="cb1-499"><a href="#cb1-499"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/update_steps.svg)</span>{.absolute  top="30" width="40%"}</span>
+<span id="cb1-500"><a href="#cb1-500"></a>:::</span>
+<span id="cb1-501"><a href="#cb1-501"></a></span>
+<span id="cb1-502"><a href="#cb1-502"></a>::: {.column style="width:65%;"}</span>
+<span id="cb1-503"><a href="#cb1-503"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/leapfrog_layer_dark2.svg)</span>{width="100%"}</span>
+<span id="cb1-504"><a href="#cb1-504"></a>:::</span>
+<span id="cb1-505"><a href="#cb1-505"></a></span>
+<span id="cb1-506"><a href="#cb1-506"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/drawio/network_functions.svg)</span>{.absolute top=440 width="100%"}</span>
+<span id="cb1-507"><a href="#cb1-507"></a></span>
+<span id="cb1-508"><a href="#cb1-508"></a>::::</span>
+<span id="cb1-509"><a href="#cb1-509"></a></span>
+<span id="cb1-510"><a href="#cb1-510"></a><span class="fu">## L2HMC Update {style="font-size: 0.775em;" background-color="#1c1c1c"}</span></span>
+<span id="cb1-511"><a href="#cb1-511"></a></span>
+<span id="cb1-512"><a href="#cb1-512"></a>:::: {.columns}</span>
+<span id="cb1-513"><a href="#cb1-513"></a></span>
+<span id="cb1-514"><a href="#cb1-514"></a>::: {.column width="65%" style="font-size:0.7em;"}</span>
+<span id="cb1-515"><a href="#cb1-515"></a></span>
+<span id="cb1-516"><a href="#cb1-516"></a>::: {.callout-important collapse=false icon=false title="👨‍💻 Algorithm" style="text-align:left; width: 100%!important;"}</span>
+<span id="cb1-517"><a href="#cb1-517"></a></span>
+<span id="cb1-518"><a href="#cb1-518"></a><span class="ss">1. </span><span class="in">`input`</span>: <span class="co">[</span><span class="ot">$x$</span><span class="co">]</span>{.purple-text}</span>
+<span id="cb1-519"><a href="#cb1-519"></a></span>
+<span id="cb1-520"><a href="#cb1-520"></a><span class="ss">    - </span>Resample: $\textcolor{#07B875}{v} \sim \mathcal{N}(0, \mathbb{1})$; $\,\,{d\sim\mathcal{U}(\pm)}$</span>
+<span id="cb1-521"><a href="#cb1-521"></a><span class="ss">    - </span>Construct initial state:</span>
+<span id="cb1-522"><a href="#cb1-522"></a>     $\textcolor{#939393}{\xi} =(\textcolor{#AE81FF}{x}, \textcolor{#07B875}{v}, {\pm})$</span>
+<span id="cb1-523"><a href="#cb1-523"></a></span>
+<span id="cb1-524"><a href="#cb1-524"></a><span class="ss">2. </span><span class="in">`forward`</span>: Generate <span class="co">[</span><span class="ot">proposal $\xi'$</span><span class="co">]</span>{style="color:#f8f8f8"} by passing <span class="co">[</span><span class="ot">initial $\xi$</span><span class="co">]</span>{style="color:#939393"} through $N_{\mathrm{LF}}$ leapfrog layers  </span>
+<span id="cb1-525"><a href="#cb1-525"></a>$$\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#f8f8f8}{\xi'} := (\textcolor{#AE81FF}{x''}, \textcolor{#07B875}{v''})$$</span>
+<span id="cb1-526"><a href="#cb1-526"></a></span>
+<span id="cb1-527"><a href="#cb1-527"></a><span class="ss">    - </span>Accept / Reject:</span>
+<span id="cb1-528"><a href="#cb1-528"></a>      $$\begin{equation*}</span>
+<span id="cb1-529"><a href="#cb1-529"></a>      A({\textcolor{#f8f8f8}{\xi'}}|{\textcolor{#939393}{\xi}})=</span>
+<span id="cb1-530"><a href="#cb1-530"></a>      \mathrm{min}\left<span class="sc">\{</span>1,</span>
+<span id="cb1-531"><a href="#cb1-531"></a>      \frac{\pi(\textcolor{#f8f8f8}{\xi'})}{\pi(\textcolor{#939393}{\xi})} \left| \mathcal{J}\left(\textcolor{#f8f8f8}{\xi'},\textcolor{#939393}{\xi}\right)\right| \right<span class="sc">\}</span></span>
+<span id="cb1-532"><a href="#cb1-532"></a>      \end{equation*}$$</span>
+<span id="cb1-533"><a href="#cb1-533"></a></span>
+<span id="cb1-534"><a href="#cb1-534"></a><span class="ss">5. </span><span class="in">`backward`</span> (if training):  </span>
+<span id="cb1-535"><a href="#cb1-535"></a><span class="ss">    - </span>Evaluate the **loss function**<span class="ot">[^loss]</span> $\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#f8f8f8}{\xi'}, \textcolor{#939393}{\xi})$ and backprop</span>
+<span id="cb1-536"><a href="#cb1-536"></a><span class="ss">6. </span><span class="in">`return`</span>: $\textcolor{#AE81FF}{x}_{i+1}$  </span>
+<span id="cb1-537"><a href="#cb1-537"></a>  Evaluate MH criteria $(1)$ and return accepted config, </span>
+<span id="cb1-538"><a href="#cb1-538"></a>  $$\textcolor{#AE81FF}{{x}_{i+1}}\gets</span>
+<span id="cb1-539"><a href="#cb1-539"></a>  \begin{cases}</span>
+<span id="cb1-540"><a href="#cb1-540"></a>  \textcolor{#f8f8f8}{\textcolor{#AE81FF}{x''}} \small{\text{ w/ prob }} A(\textcolor{#f8f8f8}{\xi''}|\textcolor{#939393}{\xi}) \hspace{26pt} ✅ <span class="sc">\\</span></span>
+<span id="cb1-541"><a href="#cb1-541"></a>  \textcolor{#939393}{\textcolor{#AE81FF}{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#f8f8f8}{\xi''}|{\textcolor{#939393}{\xi}}) \hspace{10pt} 🚫</span>
+<span id="cb1-542"><a href="#cb1-542"></a>  \end{cases}$$</span>
+<span id="cb1-543"><a href="#cb1-543"></a></span>
+<span id="cb1-544"><a href="#cb1-544"></a>:::</span>
+<span id="cb1-545"><a href="#cb1-545"></a></span>
+<span id="cb1-546"><a href="#cb1-546"></a>:::</span>
+<span id="cb1-547"><a href="#cb1-547"></a></span>
+<span id="cb1-548"><a href="#cb1-548"></a>::: {.column width="35%"}</span>
+<span id="cb1-549"><a href="#cb1-549"></a></span>
+<span id="cb1-550"><a href="#cb1-550"></a>::: {#fig-mdupdate}</span>
+<span id="cb1-551"><a href="#cb1-551"></a></span>
+<span id="cb1-552"><a href="#cb1-552"></a><span class="al">![](./assets/leapfrog-layer-2D-U1-vertical.light.svg)</span>{style="width:75%; text-align:center;"}</span>
+<span id="cb1-553"><a href="#cb1-553"></a></span>
+<span id="cb1-554"><a href="#cb1-554"></a>**Leapfrog Layer** used in generalized MD update</span>
+<span id="cb1-555"><a href="#cb1-555"></a>:::</span>
+<span id="cb1-556"><a href="#cb1-556"></a></span>
+<span id="cb1-557"><a href="#cb1-557"></a>:::</span>
+<span id="cb1-558"><a href="#cb1-558"></a></span>
+<span id="cb1-559"><a href="#cb1-559"></a>::::</span>
+<span id="cb1-560"><a href="#cb1-560"></a></span>
+<span id="cb1-561"><a href="#cb1-561"></a><span class="ot">[^loss]</span>: </span>
+<span id="cb1-562"><a href="#cb1-562"></a>    For simple $\mathbf{x} \in \mathbb{R}^{2}$ example, $\mathcal{L}_{\theta} =</span>
+<span id="cb1-563"><a href="#cb1-563"></a>    A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}$</span>
+<span id="cb1-564"><a href="#cb1-564"></a></span>
+<span id="cb1-565"><a href="#cb1-565"></a></span>
+<span id="cb1-566"><a href="#cb1-566"></a><span class="fu"># 4D $SU(3)$ Model {#sec-su3 .centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-567"><a href="#cb1-567"></a></span>
+<span id="cb1-568"><a href="#cb1-568"></a>:::: {.columns}</span>
+<span id="cb1-569"><a href="#cb1-569"></a></span>
+<span id="cb1-570"><a href="#cb1-570"></a>::: {.column width="50%"}</span>
+<span id="cb1-571"><a href="#cb1-571"></a></span>
+<span id="cb1-572"><a href="#cb1-572"></a>::: {.callout-note collapse=false icon=false title="🔗 Link Variables" style="text-align:left; width: 100%!important;"}</span>
+<span id="cb1-573"><a href="#cb1-573"></a></span>
+<span id="cb1-574"><a href="#cb1-574"></a><span class="ss">- </span>Write link variables $U_{\mu}(x) \in SU(3)$:</span>
+<span id="cb1-575"><a href="#cb1-575"></a></span>
+<span id="cb1-576"><a href="#cb1-576"></a>  $$ \begin{align*} </span>
+<span id="cb1-577"><a href="#cb1-577"></a>  U_{\mu}(x) &amp;= \mathrm{exp}\left[{i\, \textcolor{#AE81FF}{\omega^{k}_{\mu}(x)} \lambda^{k}}\right]<span class="sc">\\</span></span>
+<span id="cb1-578"><a href="#cb1-578"></a>  &amp;= e^{i \textcolor{#AE81FF}{Q}},\quad \text{with} \quad \textcolor{#AE81FF}{Q} \in \mathfrak{su}(3)</span>
+<span id="cb1-579"><a href="#cb1-579"></a>  \end{align*}$$ </span>
+<span id="cb1-580"><a href="#cb1-580"></a></span>
+<span id="cb1-581"><a href="#cb1-581"></a>  <span class="co">[</span><span class="ot">where [$\omega^{k}_{\mu}(x)$</span><span class="co">]</span>{.purple-text} $\in \mathbb{R}$, and $\lambda^{k}$ are</span>
+<span id="cb1-582"><a href="#cb1-582"></a>  the generators of $SU(3)$]{style="font-size:0.9em;"}</span>
+<span id="cb1-583"><a href="#cb1-583"></a></span>
+<span id="cb1-584"><a href="#cb1-584"></a>:::</span>
+<span id="cb1-585"><a href="#cb1-585"></a></span>
+<span id="cb1-586"><a href="#cb1-586"></a>::: {.callout-tip collapse=false icon=false title="🏃‍♂️‍➡️ Conjugate Momenta" style="text-align:left; width:100%!important;"}</span>
+<span id="cb1-587"><a href="#cb1-587"></a></span>
+<span id="cb1-588"><a href="#cb1-588"></a><span class="ss">- </span>Introduce <span class="co">[</span><span class="ot">$P_{\mu}(x) = P^{k}_{\mu}(x) \lambda^{k}$</span><span class="co">]</span>{.green-text} conjugate to</span>
+<span id="cb1-589"><a href="#cb1-589"></a><span class="co">[</span><span class="ot">$\omega^{k}_{\mu}(x)$</span><span class="co">]</span>{.purple-text}</span>
+<span id="cb1-590"><a href="#cb1-590"></a></span>
+<span id="cb1-591"><a href="#cb1-591"></a>:::</span>
+<span id="cb1-592"><a href="#cb1-592"></a></span>
+<span id="cb1-593"><a href="#cb1-593"></a>::: {.callout-important collapse=false icon=false title="🟥 Wilson Action" style="text-align:left; width:100%!important;"}</span>
+<span id="cb1-594"><a href="#cb1-594"></a></span>
+<span id="cb1-595"><a href="#cb1-595"></a>$$ S_{G} = -\frac{\beta}{6} \sum</span>
+<span id="cb1-596"><a href="#cb1-596"></a>\mathrm{Tr}\left[U_{\mu\nu}(x)</span>
+<span id="cb1-597"><a href="#cb1-597"></a><span class="ss">+ </span>U^{\dagger}_{\mu\nu}(x)\right] $$</span>
+<span id="cb1-598"><a href="#cb1-598"></a></span>
+<span id="cb1-599"><a href="#cb1-599"></a>where $U_{\mu\nu}(x) = U_{\mu}(x) U_{\nu}(x+\hat{\mu})</span>
+<span id="cb1-600"><a href="#cb1-600"></a>U^{\dagger}_{\mu}(x+\hat{\nu}) U^{\dagger}_{\nu}(x)$</span>
+<span id="cb1-601"><a href="#cb1-601"></a></span>
+<span id="cb1-602"><a href="#cb1-602"></a>:::</span>
+<span id="cb1-603"><a href="#cb1-603"></a></span>
+<span id="cb1-604"><a href="#cb1-604"></a></span>
+<span id="cb1-605"><a href="#cb1-605"></a>:::</span>
+<span id="cb1-606"><a href="#cb1-606"></a></span>
+<span id="cb1-607"><a href="#cb1-607"></a>::: {.column width="45%"}</span>
+<span id="cb1-608"><a href="#cb1-608"></a></span>
+<span id="cb1-609"><a href="#cb1-609"></a>::: {#fig-4dlattice}</span>
+<span id="cb1-610"><a href="#cb1-610"></a></span>
+<span id="cb1-611"><a href="#cb1-611"></a><span class="al">![](./assets/u1lattice.dark.svg)</span>{width="90%"}</span>
+<span id="cb1-612"><a href="#cb1-612"></a></span>
+<span id="cb1-613"><a href="#cb1-613"></a>Illustration of the lattice</span>
+<span id="cb1-614"><a href="#cb1-614"></a>:::</span>
+<span id="cb1-615"><a href="#cb1-615"></a></span>
+<span id="cb1-616"><a href="#cb1-616"></a>:::</span>
+<span id="cb1-617"><a href="#cb1-617"></a></span>
+<span id="cb1-618"><a href="#cb1-618"></a>::::</span>
+<span id="cb1-619"><a href="#cb1-619"></a></span>
+<span id="cb1-620"><a href="#cb1-620"></a><span class="fu">## HMC: 4D $SU(3)$ {#sec-hmcsu3 background-color="#1c1c1c"}</span></span>
+<span id="cb1-621"><a href="#cb1-621"></a></span>
+<span id="cb1-622"><a href="#cb1-622"></a>Hamiltonian: $H<span class="co">[</span><span class="ot">P, U</span><span class="co">]</span> = \frac{1}{2} P^{2} + S<span class="co">[</span><span class="ot">U</span><span class="co">]</span> \Longrightarrow$</span>
+<span id="cb1-623"><a href="#cb1-623"></a></span>
+<span id="cb1-624"><a href="#cb1-624"></a>:::: {.columns}</span>
+<span id="cb1-625"><a href="#cb1-625"></a></span>
+<span id="cb1-626"><a href="#cb1-626"></a>::: {.column style="font-size:0.9em; text-align: center;"}</span>
+<span id="cb1-627"><a href="#cb1-627"></a></span>
+<span id="cb1-628"><a href="#cb1-628"></a>::: {.callout collapse=false style="text-align:left; width: 100%!important;"}</span>
+<span id="cb1-629"><a href="#cb1-629"></a></span>
+<span id="cb1-630"><a href="#cb1-630"></a><span class="ss">- </span><span class="co">[</span><span class="ot">$U$ update</span><span class="co">]</span>{style="border-bottom: 2px solid #AE81FF;"}:</span>
+<span id="cb1-631"><a href="#cb1-631"></a><span class="co">[</span><span class="ot">$\frac{d\omega^{k}}{dt} = \frac{\partial H}{\partial P^{k}}$</span><span class="co">]</span>{.purple-text style="font-size:1.5em;"}</span>
+<span id="cb1-632"><a href="#cb1-632"></a>$$\frac{d\omega^{k}}{dt}\lambda^{k} = P^{k}\lambda^{k} \Longrightarrow \frac{dQ}{dt} = P$$</span>
+<span id="cb1-633"><a href="#cb1-633"></a>$$\begin{align*}</span>
+<span id="cb1-634"><a href="#cb1-634"></a>Q(\textcolor{#FFEE58}{\varepsilon}) &amp;= Q(0) + \textcolor{#FFEE58}{\varepsilon} P(0)\Longrightarrow<span class="sc">\\</span></span>
+<span id="cb1-635"><a href="#cb1-635"></a>-i\, \log U(\textcolor{#FFEE58}{\varepsilon}) &amp;= -i\, \log U(0) + \textcolor{#FFEE58}{\varepsilon} P(0) <span class="sc">\\</span></span>
+<span id="cb1-636"><a href="#cb1-636"></a>U(\textcolor{#FFEE58}{\varepsilon}) &amp;= e^{i\,\textcolor{#FFEE58}{\varepsilon} P(0)} U(0)\Longrightarrow <span class="sc">\\</span></span>
+<span id="cb1-637"><a href="#cb1-637"></a>&amp;\hspace{1pt}<span class="sc">\\</span></span>
+<span id="cb1-638"><a href="#cb1-638"></a>\textcolor{#FD971F}{\Lambda}:\,\, U \longrightarrow U' &amp;:= e^{i\varepsilon P'} U</span>
+<span id="cb1-639"><a href="#cb1-639"></a>\end{align*}$$</span>
+<span id="cb1-640"><a href="#cb1-640"></a></span>
+<span id="cb1-641"><a href="#cb1-641"></a>:::</span>
+<span id="cb1-642"><a href="#cb1-642"></a></span>
+<span id="cb1-643"><a href="#cb1-643"></a>::: aside</span>
+<span id="cb1-644"><a href="#cb1-644"></a><span class="co">[</span><span class="ot">$\textcolor{#FFEE58}{\varepsilon}$ is the step size</span><span class="co">]</span>{.dim-text style="font-size:0.8em;"}</span>
+<span id="cb1-645"><a href="#cb1-645"></a>:::</span>
+<span id="cb1-646"><a href="#cb1-646"></a></span>
+<span id="cb1-647"><a href="#cb1-647"></a>:::</span>
+<span id="cb1-648"><a href="#cb1-648"></a></span>
+<span id="cb1-649"><a href="#cb1-649"></a>::: {.column style="font-size:0.9em; text-align: center;"}</span>
+<span id="cb1-650"><a href="#cb1-650"></a>::: {.callout collapse=false style="text-align:left; width: 100%!important;"}</span>
+<span id="cb1-651"><a href="#cb1-651"></a><span class="ss">- </span><span class="co">[</span><span class="ot">$P$ update</span><span class="co">]</span>{style="border-bottom: 2px solid #07B875;"}:</span>
+<span id="cb1-652"><a href="#cb1-652"></a><span class="co">[</span><span class="ot">$\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}$</span><span class="co">]</span>{.green-text style="font-size:1.5em;"} </span>
+<span id="cb1-653"><a href="#cb1-653"></a>$$\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}</span>
+<span id="cb1-654"><a href="#cb1-654"></a>= -\frac{\partial H}{\partial Q} = -\frac{dS}{dQ}\Longrightarrow$$</span>
+<span id="cb1-655"><a href="#cb1-655"></a>$$\begin{align*}</span>
+<span id="cb1-656"><a href="#cb1-656"></a>P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \left.\frac{dS}{dQ}\right|_{t=0} <span class="sc">\\</span></span>
+<span id="cb1-657"><a href="#cb1-657"></a>&amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \,\textcolor{#E599F7}{F<span class="co">[</span><span class="ot">U</span><span class="co">]</span>} <span class="sc">\\</span></span>
+<span id="cb1-658"><a href="#cb1-658"></a>&amp;\hspace{1pt}<span class="sc">\\</span></span>
+<span id="cb1-659"><a href="#cb1-659"></a>\textcolor{#F06292}{\Gamma}:\,\, P \longrightarrow P' &amp;:= P - \frac{\varepsilon}{2} F<span class="co">[</span><span class="ot">U</span><span class="co">]</span></span>
+<span id="cb1-660"><a href="#cb1-660"></a>\end{align*}$$</span>
+<span id="cb1-661"><a href="#cb1-661"></a>:::</span>
+<span id="cb1-662"><a href="#cb1-662"></a></span>
+<span id="cb1-663"><a href="#cb1-663"></a>::: aside</span>
+<span id="cb1-664"><a href="#cb1-664"></a><span class="co">[</span><span class="ot">$\textcolor{#E599F7}{F[U]}$ is the force term</span><span class="co">]</span>{.dim-text style="font-size:0.8em;"}</span>
+<span id="cb1-665"><a href="#cb1-665"></a>:::</span>
+<span id="cb1-666"><a href="#cb1-666"></a>:::</span>
+<span id="cb1-667"><a href="#cb1-667"></a></span>
+<span id="cb1-668"><a href="#cb1-668"></a>::::</span>
+<span id="cb1-669"><a href="#cb1-669"></a></span>
+<span id="cb1-670"><a href="#cb1-670"></a></span>
+<span id="cb1-671"><a href="#cb1-671"></a><span class="fu">## HMC: 4D $SU(3)$ {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-672"><a href="#cb1-672"></a></span>
+<span id="cb1-673"><a href="#cb1-673"></a>:::: {.columns}</span>
+<span id="cb1-674"><a href="#cb1-674"></a></span>
+<span id="cb1-675"><a href="#cb1-675"></a>::: {.column width="47%" style="text-align:left;"}</span>
+<span id="cb1-676"><a href="#cb1-676"></a></span>
+<span id="cb1-677"><a href="#cb1-677"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Momentum Update</span><span class="co">]</span>{style="border-bottom: 2px solid #F06292;"}:</span>
+<span id="cb1-678"><a href="#cb1-678"></a>  $$\textcolor{#F06292}{\Gamma}: P \longrightarrow P' := P - \frac{\varepsilon}{2} F<span class="co">[</span><span class="ot">U</span><span class="co">]</span>$$</span>
+<span id="cb1-679"><a href="#cb1-679"></a></span>
+<span id="cb1-680"><a href="#cb1-680"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Link Update</span><span class="co">]</span>{style="border-bottom: 2px solid #FD971F;"}:</span>
+<span id="cb1-681"><a href="#cb1-681"></a>  $$\textcolor{#FD971F}{\Lambda}: U \longrightarrow U' := e^{i\varepsilon P'} U\quad\quad$$</span>
+<span id="cb1-682"><a href="#cb1-682"></a></span>
+<span id="cb1-683"><a href="#cb1-683"></a><span class="ss">- </span>We maintain a batch of <span class="in">`Nb`</span> lattices, all updated in parallel</span>
+<span id="cb1-684"><a href="#cb1-684"></a><span class="ss">  - </span>$U$<span class="in">`.dtype = complex128`</span></span>
+<span id="cb1-685"><a href="#cb1-685"></a><span class="ss">  - </span>$U$<span class="in">`.shape`</span>  </span>
+<span id="cb1-686"><a href="#cb1-686"></a>    <span class="co">[</span><span class="ot">`= [Nb, 4, Nt, Nx, Ny, Nz, 3, 3]`</span><span class="co">]</span>{style="font-size: 0.95em;"}</span>
+<span id="cb1-687"><a href="#cb1-687"></a></span>
+<span id="cb1-688"><a href="#cb1-688"></a>:::</span>
+<span id="cb1-689"><a href="#cb1-689"></a></span>
+<span id="cb1-690"><a href="#cb1-690"></a>::: {.column width="47%" style="text-align:right;"}</span>
+<span id="cb1-691"><a href="#cb1-691"></a></span>
+<span id="cb1-692"><a href="#cb1-692"></a><span class="al">![](./assets/hmc/hmc-update-light.svg)</span>{width=60%}</span>
+<span id="cb1-693"><a href="#cb1-693"></a></span>
+<span id="cb1-694"><a href="#cb1-694"></a>:::</span>
+<span id="cb1-695"><a href="#cb1-695"></a></span>
+<span id="cb1-696"><a href="#cb1-696"></a>::::</span>
+<span id="cb1-697"><a href="#cb1-697"></a></span>
+<span id="cb1-698"><a href="#cb1-698"></a><span class="fu"># Networks 4D $SU(3)$ {#sec-su3networks .centeredslide auto-animate="true" background-color="#1c1c1c"}</span></span>
+<span id="cb1-699"><a href="#cb1-699"></a></span>
+<span id="cb1-700"><a href="#cb1-700"></a>:::: {.columns}</span>
+<span id="cb1-701"><a href="#cb1-701"></a></span>
+<span id="cb1-702"><a href="#cb1-702"></a>::: {.column width="54%" style="font-size:0.9em;"}</span>
+<span id="cb1-703"><a href="#cb1-703"></a></span>
+<span id="cb1-704"><a href="#cb1-704"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-705"><a href="#cb1-705"></a></span>
+<span id="cb1-706"><a href="#cb1-706"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-707"><a href="#cb1-707"></a></span>
+<span id="cb1-708"><a href="#cb1-708"></a><span class="co">[</span><span class="ot">$U$</span><span class="co">]</span>{.purple-text}-Network:</span>
+<span id="cb1-709"><a href="#cb1-709"></a></span>
+<span id="cb1-710"><a href="#cb1-710"></a>  <span class="co">[</span><span class="ot">`UNet: ` $(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}</span>
+<span id="cb1-711"><a href="#cb1-711"></a></span>
+<span id="cb1-712"><a href="#cb1-712"></a></span>
+<span id="cb1-713"><a href="#cb1-713"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-714"><a href="#cb1-714"></a></span>
+<span id="cb1-715"><a href="#cb1-715"></a>::: {style="border: 1px solid #1c1c1c; border-radius: 6px; padding:1%;"}</span>
+<span id="cb1-716"><a href="#cb1-716"></a></span>
+<span id="cb1-717"><a href="#cb1-717"></a><span class="co">[</span><span class="ot">$P$</span><span class="co">]</span>{.green-text}-Network:</span>
+<span id="cb1-718"><a href="#cb1-718"></a></span>
+<span id="cb1-719"><a href="#cb1-719"></a>  <span class="co">[</span><span class="ot">`PNet: ` $(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}  </span>
+<span id="cb1-720"><a href="#cb1-720"></a></span>
+<span id="cb1-721"><a href="#cb1-721"></a>:::</span>
+<span id="cb1-722"><a href="#cb1-722"></a></span>
+<span id="cb1-723"><a href="#cb1-723"></a>:::</span>
+<span id="cb1-724"><a href="#cb1-724"></a></span>
+<span id="cb1-725"><a href="#cb1-725"></a>::: {.column width="45%" style="text-align:right;"}</span>
+<span id="cb1-726"><a href="#cb1-726"></a></span>
+<span id="cb1-727"><a href="#cb1-727"></a><span class="al">![](./assets/leapfrog-layer-4D-SU3-vertical.light.svg)</span>{width="80%"}</span>
+<span id="cb1-728"><a href="#cb1-728"></a></span>
+<span id="cb1-729"><a href="#cb1-729"></a>:::</span>
+<span id="cb1-730"><a href="#cb1-730"></a></span>
+<span id="cb1-731"><a href="#cb1-731"></a>::::</span>
+<span id="cb1-732"><a href="#cb1-732"></a></span>
+<span id="cb1-733"><a href="#cb1-733"></a><span class="fu"># Networks 4D $SU(3)$ {.centeredslide auto-animate="true" background-color="#1c1c1c"}</span></span>
+<span id="cb1-734"><a href="#cb1-734"></a></span>
+<span id="cb1-735"><a href="#cb1-735"></a>:::: {.columns}</span>
+<span id="cb1-736"><a href="#cb1-736"></a></span>
+<span id="cb1-737"><a href="#cb1-737"></a>::: {.column width="54%" style="font-size:0.9em;"}</span>
+<span id="cb1-738"><a href="#cb1-738"></a></span>
+<span id="cb1-739"><a href="#cb1-739"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-740"><a href="#cb1-740"></a></span>
+<span id="cb1-741"><a href="#cb1-741"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-742"><a href="#cb1-742"></a></span>
+<span id="cb1-743"><a href="#cb1-743"></a><span class="co">[</span><span class="ot">$U$</span><span class="co">]</span>{.purple-text}-Network:</span>
+<span id="cb1-744"><a href="#cb1-744"></a></span>
+<span id="cb1-745"><a href="#cb1-745"></a>  <span class="co">[</span><span class="ot">`UNet: ` $(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}</span>
+<span id="cb1-746"><a href="#cb1-746"></a></span>
+<span id="cb1-747"><a href="#cb1-747"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-748"><a href="#cb1-748"></a></span>
+<span id="cb1-749"><a href="#cb1-749"></a>::: {style="border: 1px solid #07B875; border-radius: 6px; padding:1%;"}</span>
+<span id="cb1-750"><a href="#cb1-750"></a></span>
+<span id="cb1-751"><a href="#cb1-751"></a><span class="co">[</span><span class="ot">$P$</span><span class="co">]</span>{.green-text}-Network:</span>
+<span id="cb1-752"><a href="#cb1-752"></a></span>
+<span id="cb1-753"><a href="#cb1-753"></a>  <span class="co">[</span><span class="ot">`PNet: ` $(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}  </span>
+<span id="cb1-754"><a href="#cb1-754"></a></span>
+<span id="cb1-755"><a href="#cb1-755"></a>:::</span>
+<span id="cb1-756"><a href="#cb1-756"></a></span>
+<span id="cb1-757"><a href="#cb1-757"></a><span class="co">[</span><span class="ot">$\uparrow$</span><span class="co">]</span>{.dim-text}  </span>
+<span id="cb1-758"><a href="#cb1-758"></a><span class="co">[</span><span class="ot">let's look at this</span><span class="co">]</span>{.dim-text style="padding-top: 0.5em!important;"}</span>
+<span id="cb1-759"><a href="#cb1-759"></a></span>
+<span id="cb1-760"><a href="#cb1-760"></a>:::</span>
+<span id="cb1-761"><a href="#cb1-761"></a></span>
+<span id="cb1-762"><a href="#cb1-762"></a>::: {.column width="45%" style="text-align:right;"}</span>
+<span id="cb1-763"><a href="#cb1-763"></a></span>
+<span id="cb1-764"><a href="#cb1-764"></a><span class="al">![](./assets/leapfrog-layer-4D-SU3-vertical.light.svg)</span>{width="80%"}</span>
+<span id="cb1-765"><a href="#cb1-765"></a></span>
+<span id="cb1-766"><a href="#cb1-766"></a>:::</span>
+<span id="cb1-767"><a href="#cb1-767"></a></span>
+<span id="cb1-768"><a href="#cb1-768"></a>::::</span>
+<span id="cb1-769"><a href="#cb1-769"></a></span>
+<span id="cb1-770"><a href="#cb1-770"></a><span class="fu">## $P$-`Network` (pt. 1) {style="font-size:0.95em;" background-color="#1c1c1c"}</span></span>
+<span id="cb1-771"><a href="#cb1-771"></a></span>
+<span id="cb1-772"><a href="#cb1-772"></a>::: {style="text-align:center;"}</span>
+<span id="cb1-773"><a href="#cb1-773"></a></span>
+<span id="cb1-774"><a href="#cb1-774"></a><span class="al">![](./assets/SU3/PNetwork.light.svg)</span></span>
+<span id="cb1-775"><a href="#cb1-775"></a></span>
+<span id="cb1-776"><a href="#cb1-776"></a>:::</span>
+<span id="cb1-777"><a href="#cb1-777"></a></span>
+<span id="cb1-778"><a href="#cb1-778"></a>:::: {.columns}</span>
+<span id="cb1-779"><a href="#cb1-779"></a></span>
+<span id="cb1-780"><a href="#cb1-780"></a>::: {.column width="50%"}</span>
+<span id="cb1-781"><a href="#cb1-781"></a></span>
+<span id="cb1-782"><a href="#cb1-782"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`input`[^sigma]: $\hspace{7pt}\left(U, F\right) := (e^{i Q}, F)$</span><span class="co">]</span>{style="border-bottom: 2px solid rgba(131, 131, 131, 0.493);"}</span>
+<span id="cb1-783"><a href="#cb1-783"></a>  $$\begin{align*}</span>
+<span id="cb1-784"><a href="#cb1-784"></a>  h_{0} &amp;= \sigma\left( w_{Q} Q + w_{F} F + b \right) <span class="sc">\\</span></span>
+<span id="cb1-785"><a href="#cb1-785"></a>  h_{1} &amp;= \sigma\left( w_{1} h_{0} + b_{1} \right) <span class="sc">\\</span></span>
+<span id="cb1-786"><a href="#cb1-786"></a>  &amp;\vdots <span class="sc">\\</span></span>
+<span id="cb1-787"><a href="#cb1-787"></a>  h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) <span class="sc">\\</span></span>
+<span id="cb1-788"><a href="#cb1-788"></a>  \textcolor{#FF5252}{z} &amp; := \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow <span class="sc">\\</span></span>
+<span id="cb1-789"><a href="#cb1-789"></a>  \end{align*}$$</span>
+<span id="cb1-790"><a href="#cb1-790"></a></span>
+<span id="cb1-791"><a href="#cb1-791"></a>:::</span>
+<span id="cb1-792"><a href="#cb1-792"></a></span>
+<span id="cb1-793"><a href="#cb1-793"></a>::: {.column width="50%"}</span>
+<span id="cb1-794"><a href="#cb1-794"></a></span>
+<span id="cb1-795"><a href="#cb1-795"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`output`[^lambda1]: $\hspace{7pt} (s_{P}, t_{P}, q_{P})$</span><span class="co">]</span>{style="border-bottom: 2px solid rgba(131, 131, 131, 0.5);"}</span>
+<span id="cb1-796"><a href="#cb1-796"></a></span>
+<span id="cb1-797"><a href="#cb1-797"></a><span class="ss">  - </span>$s_{P} = \lambda_{s} \tanh(w_s \textcolor{#FF5252}{z} + b_s)$</span>
+<span id="cb1-798"><a href="#cb1-798"></a><span class="ss">  - </span>$t_{P} = w_{t} \textcolor{#FF5252}{z} + b_{t}$</span>
+<span id="cb1-799"><a href="#cb1-799"></a><span class="ss">  - </span>$q_{P} = \lambda_{q} \tanh(w_{q} \textcolor{#FF5252}{z} + b_{q})$</span>
+<span id="cb1-800"><a href="#cb1-800"></a></span>
+<span id="cb1-801"><a href="#cb1-801"></a>:::</span>
+<span id="cb1-802"><a href="#cb1-802"></a></span>
+<span id="cb1-803"><a href="#cb1-803"></a>::::</span>
+<span id="cb1-804"><a href="#cb1-804"></a></span>
+<span id="cb1-805"><a href="#cb1-805"></a><span class="ot">[^sigma]: </span>$\sigma(\cdot)$ denotes an activation function</span>
+<span id="cb1-806"><a href="#cb1-806"></a><span class="ot">[^lambda1]: </span>$\lambda_{s}, \lambda_{q} \in \mathbb{R}$, trainable parameters</span>
+<span id="cb1-807"><a href="#cb1-807"></a></span>
+<span id="cb1-808"><a href="#cb1-808"></a><span class="fu">## $P$-`Network` (pt. 2) {style="font-size:0.9em;" background-color="#1c1c1c"}</span></span>
+<span id="cb1-809"><a href="#cb1-809"></a></span>
+<span id="cb1-810"><a href="#cb1-810"></a>::: {style="text-align:center;"}</span>
+<span id="cb1-811"><a href="#cb1-811"></a></span>
+<span id="cb1-812"><a href="#cb1-812"></a><span class="al">![](./assets/SU3/PNetwork.light.svg)</span></span>
+<span id="cb1-813"><a href="#cb1-813"></a></span>
+<span id="cb1-814"><a href="#cb1-814"></a>:::</span>
+<span id="cb1-815"><a href="#cb1-815"></a></span>
+<span id="cb1-816"><a href="#cb1-816"></a><span class="ss">- </span>Use $(s_{P}, t_{P}, q_{P})$ to update $\Gamma^{\pm}: (U, P) \rightarrow</span>
+<span id="cb1-817"><a href="#cb1-817"></a>\left(U, P_{\pm}\right)$<span class="ot">[^inverse]</span>:</span>
+<span id="cb1-818"><a href="#cb1-818"></a></span>
+<span id="cb1-819"><a href="#cb1-819"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">forward</span><span class="co">]</span>{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:</span>
+<span id="cb1-820"><a href="#cb1-820"></a>    $$\Gamma^{\textcolor{#FF5252}{+}}(U, P) := P_{\textcolor{#FF5252}{+}} = P \cdot e^{\frac{\varepsilon}{2} s_{P}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]$$</span>
+<span id="cb1-821"><a href="#cb1-821"></a></span>
+<span id="cb1-822"><a href="#cb1-822"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">backward</span><span class="co">]</span>{style="color:#1A8FFF;"} $(d = \textcolor{#1A8FFF}{-})$: </span>
+<span id="cb1-823"><a href="#cb1-823"></a>    $$\Gamma^{\textcolor{#1A8FFF}{-}}(U, P) := P_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{P}} \left\{P + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]\right<span class="sc">\}</span>$$</span>
+<span id="cb1-824"><a href="#cb1-824"></a></span>
+<span id="cb1-825"><a href="#cb1-825"></a></span>
+<span id="cb1-826"><a href="#cb1-826"></a><span class="ot">[^inverse]: </span>Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left<span class="co">[</span><span class="ot">\Gamma^{-}(U, P)\right</span><span class="co">]</span> = \Gamma^{-}\left<span class="co">[</span><span class="ot">\Gamma^{+}(U, P)\right</span><span class="co">]</span> = (U, P)$</span>
+<span id="cb1-827"><a href="#cb1-827"></a></span>
+<span id="cb1-828"><a href="#cb1-828"></a><span class="fu"># Results: 2D $U(1)$ {#sec-results .centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-829"><a href="#cb1-829"></a></span>
+<span id="cb1-830"><a href="#cb1-830"></a>:::: {.columns}</span>
+<span id="cb1-831"><a href="#cb1-831"></a></span>
+<span id="cb1-832"><a href="#cb1-832"></a>::: {.column width=50% style="align:top;"}</span>
+<span id="cb1-833"><a href="#cb1-833"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg)</span>{width="90%"}</span>
+<span id="cb1-834"><a href="#cb1-834"></a>:::</span>
+<span id="cb1-835"><a href="#cb1-835"></a></span>
+<span id="cb1-836"><a href="#cb1-836"></a>::: {.column width="33%" style="text-align:left; padding-top: 5%;"}</span>
+<span id="cb1-837"><a href="#cb1-837"></a></span>
+<span id="cb1-838"><a href="#cb1-838"></a>::: {.callout-important icon=false collapse=false title="📈 Improvement" style="text-align:left!important; width: 100%!important;"}</span>
+<span id="cb1-839"><a href="#cb1-839"></a>We can measure the performance by comparing $\tau_{\mathrm{int}}$ for the</span>
+<span id="cb1-840"><a href="#cb1-840"></a><span class="co">[</span><span class="ot">**trained model**</span><span class="co">]</span>{style="color:#FF2052;"} vs.</span>
+<span id="cb1-841"><a href="#cb1-841"></a><span class="co">[</span><span class="ot">**HMC**</span><span class="co">]</span>{style="color:#9F9F9F;"}.  </span>
+<span id="cb1-842"><a href="#cb1-842"></a>  </span>
+<span id="cb1-843"><a href="#cb1-843"></a>**Note**: <span class="co">[</span><span class="ot">lower</span><span class="co">]</span>{style="color:#FF2052;"} is better</span>
+<span id="cb1-844"><a href="#cb1-844"></a>:::</span>
+<span id="cb1-845"><a href="#cb1-845"></a></span>
+<span id="cb1-846"><a href="#cb1-846"></a>:::</span>
+<span id="cb1-847"><a href="#cb1-847"></a></span>
+<span id="cb1-848"><a href="#cb1-848"></a>::::</span>
+<span id="cb1-849"><a href="#cb1-849"></a></span>
+<span id="cb1-850"><a href="#cb1-850"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/charge_histories.svg)</span>{.absolute top=400 left=0 width="100%" style="margin-bottom: 1em;margin-top: 1em;"}</span>
+<span id="cb1-851"><a href="#cb1-851"></a></span>
+<span id="cb1-852"><a href="#cb1-852"></a></span>
+<span id="cb1-853"><a href="#cb1-853"></a><span class="fu">## Interpretation {#sec-interpretation .centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-854"><a href="#cb1-854"></a></span>
+<span id="cb1-855"><a href="#cb1-855"></a>:::: {.columns style="margin-left:1pt;"}</span>
+<span id="cb1-856"><a href="#cb1-856"></a></span>
+<span id="cb1-857"><a href="#cb1-857"></a>::: {.column width="36%"}</span>
+<span id="cb1-858"><a href="#cb1-858"></a></span>
+<span id="cb1-859"><a href="#cb1-859"></a><span class="co">[</span><span class="ot">Deviation in $x_{P}$</span><span class="co">]</span>{.dim-text style="text-align:center; font-size:0.8em"}</span>
+<span id="cb1-860"><a href="#cb1-860"></a></span>
+<span id="cb1-861"><a href="#cb1-861"></a>:::</span>
+<span id="cb1-862"><a href="#cb1-862"></a></span>
+<span id="cb1-863"><a href="#cb1-863"></a>::: {.column width="30%"}</span>
+<span id="cb1-864"><a href="#cb1-864"></a></span>
+<span id="cb1-865"><a href="#cb1-865"></a><span class="co">[</span><span class="ot">Topological charge mixing</span><span class="co">]</span>{.dim-text style="text-align:right; font-size:0.8em"}</span>
+<span id="cb1-866"><a href="#cb1-866"></a></span>
+<span id="cb1-867"><a href="#cb1-867"></a>:::</span>
+<span id="cb1-868"><a href="#cb1-868"></a></span>
+<span id="cb1-869"><a href="#cb1-869"></a>::: {.column width="32%"}</span>
+<span id="cb1-870"><a href="#cb1-870"></a></span>
+<span id="cb1-871"><a href="#cb1-871"></a><span class="co">[</span><span class="ot">Artificial influx of energy</span><span class="co">]</span>{.dim-text style="text-align:right!important; font-size:0.8em;"}</span>
+<span id="cb1-872"><a href="#cb1-872"></a></span>
+<span id="cb1-873"><a href="#cb1-873"></a>:::</span>
+<span id="cb1-874"><a href="#cb1-874"></a></span>
+<span id="cb1-875"><a href="#cb1-875"></a>::::</span>
+<span id="cb1-876"><a href="#cb1-876"></a></span>
+<span id="cb1-877"><a href="#cb1-877"></a>::: {#fig-interpretation}</span>
+<span id="cb1-878"><a href="#cb1-878"></a></span>
+<span id="cb1-879"><a href="#cb1-879"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/ridgeplots.svg)</span>{width="100%"}</span>
+<span id="cb1-880"><a href="#cb1-880"></a></span>
+<span id="cb1-881"><a href="#cb1-881"></a>Illustration of how different observables evolve over a single L2HMC</span>
+<span id="cb1-882"><a href="#cb1-882"></a>trajectory.</span>
+<span id="cb1-883"><a href="#cb1-883"></a>:::</span>
+<span id="cb1-884"><a href="#cb1-884"></a></span>
+<span id="cb1-885"><a href="#cb1-885"></a></span>
+<span id="cb1-886"><a href="#cb1-886"></a><span class="fu">## Interpretation {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-887"><a href="#cb1-887"></a></span>
+<span id="cb1-888"><a href="#cb1-888"></a>::: {#fig-energy-ridgeplot layout-ncol=2 layout-valign="top"}</span>
+<span id="cb1-889"><a href="#cb1-889"></a></span>
+<span id="cb1-890"><a href="#cb1-890"></a><span class="al">![Average plaquette: $\langle x_{P}\rangle$ vs LF step](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg)</span></span>
+<span id="cb1-891"><a href="#cb1-891"></a></span>
+<span id="cb1-892"><a href="#cb1-892"></a><span class="al">![Average energy: $H - \sum\log|\mathcal{J}|$](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg)</span></span>
+<span id="cb1-893"><a href="#cb1-893"></a></span>
+<span id="cb1-894"><a href="#cb1-894"></a>The trained model artifically increases the energy towards</span>
+<span id="cb1-895"><a href="#cb1-895"></a>the middle of the trajectory, allowing the sampler to tunnel between isolated</span>
+<span id="cb1-896"><a href="#cb1-896"></a>sectors.</span>
+<span id="cb1-897"><a href="#cb1-897"></a>:::</span>
+<span id="cb1-898"><a href="#cb1-898"></a></span>
+<span id="cb1-899"><a href="#cb1-899"></a></span>
+<span id="cb1-900"><a href="#cb1-900"></a><span class="fu"># 4D $SU(3)$ Results {#sec-su3results background-color="#1c1c1c"}</span></span>
+<span id="cb1-901"><a href="#cb1-901"></a></span>
+<span id="cb1-902"><a href="#cb1-902"></a></span>
+<span id="cb1-903"><a href="#cb1-903"></a><span class="ss">- </span>Distribution of $\log|\mathcal{J}|$ over all chains, at each _leapfrog step_,  $N_{\mathrm{LF}}$</span>
+<span id="cb1-904"><a href="#cb1-904"></a>($= 0, 1, \ldots, 8$)</span>
+<span id="cb1-905"><a href="#cb1-905"></a>during training:</span>
+<span id="cb1-906"><a href="#cb1-906"></a></span>
+<span id="cb1-907"><a href="#cb1-907"></a>::: {layout="[ <span class="co">[</span><span class="ot">30, 30, 30</span><span class="co">]</span> ]" layout-valign="center" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;"}</span>
+<span id="cb1-908"><a href="#cb1-908"></a></span>
+<span id="cb1-909"><a href="#cb1-909"></a><span class="al">![`100` train iters](./assets/SU3/logdet_ridgeplot1.svg)</span>{#fig-ridgeplot1}</span>
+<span id="cb1-910"><a href="#cb1-910"></a></span>
+<span id="cb1-911"><a href="#cb1-911"></a><span class="al">![`500` train iters](./assets/SU3/logdet_ridgeplot2.svg)</span>{#fig-ridgeplot2}</span>
+<span id="cb1-912"><a href="#cb1-912"></a></span>
+<span id="cb1-913"><a href="#cb1-913"></a><span class="al">![`1000` train iters](./assets/SU3/logdet_ridgeplot3.svg)</span>{#fig-ridgeplot3}</span>
+<span id="cb1-914"><a href="#cb1-914"></a></span>
+<span id="cb1-915"><a href="#cb1-915"></a>:::</span>
+<span id="cb1-916"><a href="#cb1-916"></a></span>
+<span id="cb1-917"><a href="#cb1-917"></a><span class="fu">## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$ {background-color="#1c1c1c"}</span></span>
+<span id="cb1-918"><a href="#cb1-918"></a></span>
+<span id="cb1-919"><a href="#cb1-919"></a>::: {#fig-pdiff}</span>
+<span id="cb1-920"><a href="#cb1-920"></a></span>
+<span id="cb1-921"><a href="#cb1-921"></a><span class="al">![](./assets/SU3/pdiff.svg)</span></span>
+<span id="cb1-922"><a href="#cb1-922"></a></span>
+<span id="cb1-923"><a href="#cb1-923"></a>The difference in the average plaquette $\left|\delta U_{\mu\nu}\right|^{2}$</span>
+<span id="cb1-924"><a href="#cb1-924"></a>between the trained model and HMC</span>
+<span id="cb1-925"><a href="#cb1-925"></a></span>
+<span id="cb1-926"><a href="#cb1-926"></a>:::</span>
+<span id="cb1-927"><a href="#cb1-927"></a></span>
+<span id="cb1-928"><a href="#cb1-928"></a><span class="fu">## 4D $SU(3)$ Results: $\delta U_{\mu\nu}$ {background-color="#1c1c1c"}</span></span>
+<span id="cb1-929"><a href="#cb1-929"></a></span>
+<span id="cb1-930"><a href="#cb1-930"></a>::: {#fig-pdiff-robust}</span>
+<span id="cb1-931"><a href="#cb1-931"></a></span>
+<span id="cb1-932"><a href="#cb1-932"></a><span class="al">![](./assets/SU3/pdiff-robust.svg)</span></span>
+<span id="cb1-933"><a href="#cb1-933"></a></span>
+<span id="cb1-934"><a href="#cb1-934"></a>The difference in the average plaquette $\left|\delta U_{\mu\nu}\right|^{2}$</span>
+<span id="cb1-935"><a href="#cb1-935"></a>between the trained model and HMC</span>
+<span id="cb1-936"><a href="#cb1-936"></a></span>
+<span id="cb1-937"><a href="#cb1-937"></a>:::</span>
+<span id="cb1-938"><a href="#cb1-938"></a></span>
+<span id="cb1-939"><a href="#cb1-939"></a><span class="fu"># Next Steps {#sec-next-steps background-color="#1c1c1c"}</span></span>
+<span id="cb1-940"><a href="#cb1-940"></a></span>
+<span id="cb1-941"><a href="#cb1-941"></a><span class="ss">- </span>Further code development</span>
+<span id="cb1-942"><a href="#cb1-942"></a><span class="ss">  - </span>{{&lt; fa brands github &gt;}} <span class="co">[</span><span class="ot">`saforem2/l2hmc-qcd`</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span></span>
+<span id="cb1-943"><a href="#cb1-943"></a></span>
+<span id="cb1-944"><a href="#cb1-944"></a><span class="ss">- </span>Continue to use / test different network architectures</span>
+<span id="cb1-945"><a href="#cb1-945"></a><span class="ss">  - </span>Gauge equivariant NNs for $U_{\mu}(x)$ update</span>
+<span id="cb1-946"><a href="#cb1-946"></a></span>
+<span id="cb1-947"><a href="#cb1-947"></a><span class="ss">- </span>Continue to test different loss functions for training</span>
+<span id="cb1-948"><a href="#cb1-948"></a></span>
+<span id="cb1-949"><a href="#cb1-949"></a><span class="ss">- </span>Scaling:</span>
+<span id="cb1-950"><a href="#cb1-950"></a><span class="ss">  - </span>Lattice volume</span>
+<span id="cb1-951"><a href="#cb1-951"></a><span class="ss">  - </span>Network size</span>
+<span id="cb1-952"><a href="#cb1-952"></a><span class="ss">  - </span>Batch size</span>
+<span id="cb1-953"><a href="#cb1-953"></a><span class="ss">  - </span><span class="sc">\#</span> of GPUs</span>
+<span id="cb1-954"><a href="#cb1-954"></a></span>
+<span id="cb1-955"><a href="#cb1-955"></a><span class="fu">## Thank you! {#sec-thank-you background-color="#1c1c1c"}</span></span>
+<span id="cb1-956"><a href="#cb1-956"></a></span>
+<span id="cb1-957"><a href="#cb1-957"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
+<span id="cb1-958"><a href="#cb1-958"></a></span>
+<span id="cb1-959"><a href="#cb1-959"></a>::: {layout-ncol=4 style="text-align:left; font-size:0.8em;"}</span>
+<span id="cb1-960"><a href="#cb1-960"></a></span>
+<span id="cb1-961"><a href="#cb1-961"></a>[<span class="co">[</span><span class="ot">{{&lt; fa solid home &gt;}} `samforeman.me`</span><span class="co">](https://samforeman.me)</span>]{style="font-size:0.8em;"}</span>
+<span id="cb1-962"><a href="#cb1-962"></a></span>
+<span id="cb1-963"><a href="#cb1-963"></a>[<span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2`</span><span class="co">](https://github.com/saforem2)</span>]{style="font-size:0.8em;"}</span>
+<span id="cb1-964"><a href="#cb1-964"></a></span>
+<span id="cb1-965"><a href="#cb1-965"></a>[<span class="co">[</span><span class="ot">{{&lt; fa brands twitter &gt;}} `@saforem2`</span><span class="co">](https://www.twitter.com/saforem2)</span>]{style="font-size:0.8em;"}</span>
+<span id="cb1-966"><a href="#cb1-966"></a></span>
+<span id="cb1-967"><a href="#cb1-967"></a>[<span class="co">[</span><span class="ot">{{&lt; fa regular paper-plane &gt;}} `foremans@anl.gov`</span><span class="co">](mailto:///foremans@anl.gov)</span>]{style="font-size:0.8em;"}</span>
+<span id="cb1-968"><a href="#cb1-968"></a></span>
+<span id="cb1-969"><a href="#cb1-969"></a>:::</span>
+<span id="cb1-970"><a href="#cb1-970"></a></span>
+<span id="cb1-971"><a href="#cb1-971"></a>::: {.callout-note icon=false collapse=false title="🙏 Acknowledgements" style="width: 100%!important;"}</span>
+<span id="cb1-972"><a href="#cb1-972"></a></span>
+<span id="cb1-973"><a href="#cb1-973"></a>This research used resources of the Argonne Leadership Computing Facility,  </span>
+<span id="cb1-974"><a href="#cb1-974"></a>which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</span>
+<span id="cb1-975"><a href="#cb1-975"></a></span>
+<span id="cb1-976"><a href="#cb1-976"></a>:::</span>
+<span id="cb1-977"><a href="#cb1-977"></a></span>
+<span id="cb1-978"><a href="#cb1-978"></a></span>
+<span id="cb1-979"><a href="#cb1-979"></a><span class="fu">## {#sec-l2hmc-gh background-color="#1c1c1c"}</span></span>
+<span id="cb1-980"><a href="#cb1-980"></a></span>
+<span id="cb1-981"><a href="#cb1-981"></a>::: {style="text-align:center;"}</span>
+<span id="cb1-982"><a href="#cb1-982"></a></span>
+<span id="cb1-983"><a href="#cb1-983"></a><span class="co">[</span><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg)</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span></span>
+<span id="cb1-984"><a href="#cb1-984"></a></span>
+<span id="cb1-985"><a href="#cb1-985"></a>&lt;a href="https://hits.seeyoufarm.com"&gt;&lt;img alt="hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsaforem2%2Fl2hmc-qcd&amp;count_bg=%2300CCFF&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23111111&amp;title=👋&amp;edge_flat=false"&gt;&lt;/a&gt;</span>
+<span id="cb1-986"><a href="#cb1-986"></a>&lt;a href="https://github.com/saforem2/l2hmc-qcd/"&gt;&lt;img alt="l2hmc-qcd" src="https://img.shields.io/badge/-l2hmc--qcd-252525?style=flat&amp;logo=github&amp;labelColor=gray"&gt;&lt;/a&gt; &lt;a href="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd"&gt;&lt;img alt="codefactor" src="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd/badge"&gt;&lt;/a&gt;  </span>
+<span id="cb1-987"><a href="#cb1-987"></a></span>
+<span id="cb1-988"><a href="#cb1-988"></a>&lt;a href="https://arxiv.org/abs/2112.01582"&gt;&lt;img alt="arxiv" src="http://img.shields.io/badge/arXiv-2112.01582-B31B1B.svg"&gt;&lt;/a&gt; &lt;a href="https://arxiv.org/abs/2105.03418"&gt;&lt;img alt="arxiv" src="http://img.shields.io/badge/arXiv-2105.03418-B31B1B.svg"&gt;&lt;/a&gt;  </span>
+<span id="cb1-989"><a href="#cb1-989"></a></span>
+<span id="cb1-990"><a href="#cb1-990"></a>&lt;a href="https://hydra.cc"&gt;&lt;img alt="hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"&gt;&lt;/a&gt; &lt;a href="https://pytorch.org/get-started/locally/"&gt;&lt;img alt="pyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&amp;logoColor=white"&gt;&lt;/a&gt; &lt;a href="https://www.tensorflow.org"&gt;&lt;img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&amp;logo=TensorFlow&amp;logoColor=white"&gt;&lt;/a&gt; </span>
+<span id="cb1-991"><a href="#cb1-991"></a><span class="co">[</span><span class="ot">&lt;img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Weights &amp; Biases monitoring" height=20&gt;</span><span class="co">](https://wandb.ai/l2hmc-qcd/l2hmc-qcd)</span></span>
+<span id="cb1-992"><a href="#cb1-992"></a></span>
+<span id="cb1-993"><a href="#cb1-993"></a>:::</span>
+<span id="cb1-994"><a href="#cb1-994"></a></span>
+<span id="cb1-995"><a href="#cb1-995"></a></span>
+<span id="cb1-996"><a href="#cb1-996"></a><span class="fu">## Acknowledgements {#sec-acknowledgements background-color="#1c1c1c"}</span></span>
+<span id="cb1-997"><a href="#cb1-997"></a></span>
+<span id="cb1-998"><a href="#cb1-998"></a>:::: {.columns}</span>
+<span id="cb1-999"><a href="#cb1-999"></a></span>
+<span id="cb1-1000"><a href="#cb1-1000"></a></span>
+<span id="cb1-1001"><a href="#cb1-1001"></a>::: {.column width="50%"}</span>
+<span id="cb1-1002"><a href="#cb1-1002"></a></span>
+<span id="cb1-1003"><a href="#cb1-1003"></a><span class="ss">- </span>**Links**:</span>
+<span id="cb1-1004"><a href="#cb1-1004"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} Link to github</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span></span>
+<span id="cb1-1005"><a href="#cb1-1005"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">{{&lt; fa solid paper-plane &gt;}} reach out!</span><span class="co">](mailto:foremans@anl.gov)</span></span>
+<span id="cb1-1006"><a href="#cb1-1006"></a></span>
+<span id="cb1-1007"><a href="#cb1-1007"></a><span class="ss">- </span>**References**:</span>
+<span id="cb1-1008"><a href="#cb1-1008"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Link to slides</span><span class="co">](https://saforem2.github.io/lattice23/)</span></span>
+<span id="cb1-1009"><a href="#cb1-1009"></a><span class="ss">        - </span><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} link to github with slides</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
+<span id="cb1-1010"><a href="#cb1-1010"></a><span class="ss">   - </span>{{&lt; fa solid book &gt;}} <span class="co">[</span><span class="ot">@Foreman:2021ljl; @Foreman:2021rhs; @Foreman:2021ixr</span><span class="co">]</span></span>
+<span id="cb1-1011"><a href="#cb1-1011"></a><span class="ss">   - </span>{{&lt; fa solid book &gt;}} <span class="co">[</span><span class="ot">@Boyda:2022nmh; @Shanahan:2022ifi</span><span class="co">]</span></span>
+<span id="cb1-1012"><a href="#cb1-1012"></a></span>
+<span id="cb1-1013"><a href="#cb1-1013"></a>:::</span>
+<span id="cb1-1014"><a href="#cb1-1014"></a></span>
+<span id="cb1-1015"><a href="#cb1-1015"></a>::: {.column width="50%"}</span>
+<span id="cb1-1016"><a href="#cb1-1016"></a></span>
+<span id="cb1-1017"><a href="#cb1-1017"></a><span class="ss">- </span>Huge thank you to:</span>
+<span id="cb1-1018"><a href="#cb1-1018"></a><span class="ss">  - </span>Yannick Meurice</span>
+<span id="cb1-1019"><a href="#cb1-1019"></a><span class="ss">  - </span>Norman Christ</span>
+<span id="cb1-1020"><a href="#cb1-1020"></a><span class="ss">  - </span>Akio Tomiya</span>
+<span id="cb1-1021"><a href="#cb1-1021"></a><span class="ss">  - </span>Nobuyuki Matsumoto</span>
+<span id="cb1-1022"><a href="#cb1-1022"></a><span class="ss">  - </span>Richard Brower</span>
+<span id="cb1-1023"><a href="#cb1-1023"></a><span class="ss">  - </span>Luchang Jin</span>
+<span id="cb1-1024"><a href="#cb1-1024"></a><span class="ss">  - </span>Chulwoo Jung</span>
+<span id="cb1-1025"><a href="#cb1-1025"></a><span class="ss">  - </span>Peter Boyle</span>
+<span id="cb1-1026"><a href="#cb1-1026"></a><span class="ss">  - </span>Taku Izubuchi</span>
+<span id="cb1-1027"><a href="#cb1-1027"></a><span class="ss">  - </span>Denis Boyda</span>
+<span id="cb1-1028"><a href="#cb1-1028"></a><span class="ss">  - </span>Dan Hackett</span>
+<span id="cb1-1029"><a href="#cb1-1029"></a><span class="ss">  - </span>ECP-CSD group</span>
+<span id="cb1-1030"><a href="#cb1-1030"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">**ALCF Staff + Datascience Group**</span><span class="co">]</span>{.red-text}</span>
+<span id="cb1-1031"><a href="#cb1-1031"></a></span>
+<span id="cb1-1032"><a href="#cb1-1032"></a>:::</span>
+<span id="cb1-1033"><a href="#cb1-1033"></a></span>
+<span id="cb1-1034"><a href="#cb1-1034"></a>::::</span>
+<span id="cb1-1035"><a href="#cb1-1035"></a></span>
+<span id="cb1-1036"><a href="#cb1-1036"></a></span>
+<span id="cb1-1037"><a href="#cb1-1037"></a><span class="fu">## {#sec-references background-color="#1c1c1c"}</span></span>
+<span id="cb1-1038"><a href="#cb1-1038"></a></span>
+<span id="cb1-1039"><a href="#cb1-1039"></a>:::: {.columns}</span>
+<span id="cb1-1040"><a href="#cb1-1040"></a></span>
+<span id="cb1-1041"><a href="#cb1-1041"></a>::: {.column width="50%"}</span>
+<span id="cb1-1042"><a href="#cb1-1042"></a></span>
+<span id="cb1-1043"><a href="#cb1-1043"></a><span class="fu">### Links {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1044"><a href="#cb1-1044"></a></span>
+<span id="cb1-1045"><a href="#cb1-1045"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/l2hmc-qcd`</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span></span>
+<span id="cb1-1046"><a href="#cb1-1046"></a></span>
+<span id="cb1-1047"><a href="#cb1-1047"></a><span class="ss">- </span><span class="co">[</span><span class="ot">📊 slides</span><span class="co">](https://saforem2.github.io/lattice23)</span> (Github: <span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span>)</span>
+<span id="cb1-1048"><a href="#cb1-1048"></a></span>
+<span id="cb1-1049"><a href="#cb1-1049"></a>:::</span>
+<span id="cb1-1050"><a href="#cb1-1050"></a></span>
+<span id="cb1-1051"><a href="#cb1-1051"></a>::: {.column width="50%"}</span>
+<span id="cb1-1052"><a href="#cb1-1052"></a></span>
+<span id="cb1-1053"><a href="#cb1-1053"></a><span class="fu">### References {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1054"><a href="#cb1-1054"></a></span>
+<span id="cb1-1055"><a href="#cb1-1055"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Title Slide Background (worms) animation</span><span class="co">](https://saforem2.github.io/grid-worms-animation/)</span></span>
+<span id="cb1-1056"><a href="#cb1-1056"></a><span class="ss">  - </span>Github: <span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/grid-worms-animation`</span><span class="co">](https://github.com/saforem2/grid-worms-animation)</span></span>
+<span id="cb1-1057"><a href="#cb1-1057"></a></span>
+<span id="cb1-1058"><a href="#cb1-1058"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Link to HMC demo</span><span class="co">](https://chi-feng.github.io/mcmc-demo/app.html)</span></span>
+<span id="cb1-1059"><a href="#cb1-1059"></a></span>
+<span id="cb1-1060"><a href="#cb1-1060"></a>:::</span>
+<span id="cb1-1061"><a href="#cb1-1061"></a></span>
+<span id="cb1-1062"><a href="#cb1-1062"></a>::::</span>
+<span id="cb1-1063"><a href="#cb1-1063"></a></span>
+<span id="cb1-1064"><a href="#cb1-1064"></a></span>
+<span id="cb1-1065"><a href="#cb1-1065"></a><span class="fu">## References {style="line-height:1.2em;" background-color="#1c1c1c"}</span></span>
+<span id="cb1-1066"><a href="#cb1-1066"></a></span>
+<span id="cb1-1067"><a href="#cb1-1067"></a>(I don't know why this is broken 🤷🏻‍♂️ )</span>
+<span id="cb1-1068"><a href="#cb1-1068"></a></span>
+<span id="cb1-1069"><a href="#cb1-1069"></a>::: {#refs}</span>
+<span id="cb1-1070"><a href="#cb1-1070"></a>:::</span>
+<span id="cb1-1071"><a href="#cb1-1071"></a></span>
+<span id="cb1-1072"><a href="#cb1-1072"></a><span class="fu"># Extras {#sec-extras background-color="#1c1c1c"}</span></span>
+<span id="cb1-1073"><a href="#cb1-1073"></a></span>
+<span id="cb1-1074"><a href="#cb1-1074"></a><span class="fu">## Integrated Autocorrelation Time {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-1075"><a href="#cb1-1075"></a></span>
+<span id="cb1-1076"><a href="#cb1-1076"></a>::: {#fig-iat}</span>
+<span id="cb1-1077"><a href="#cb1-1077"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/tint1.svg)</span>{width="100%"}</span>
+<span id="cb1-1078"><a href="#cb1-1078"></a></span>
+<span id="cb1-1079"><a href="#cb1-1079"></a>Plot of the integrated autocorrelation time for both the trained model</span>
+<span id="cb1-1080"><a href="#cb1-1080"></a>(colored) and HMC (greyscale).</span>
+<span id="cb1-1081"><a href="#cb1-1081"></a>:::</span>
+<span id="cb1-1082"><a href="#cb1-1082"></a></span>
+<span id="cb1-1083"><a href="#cb1-1083"></a><span class="fu">## Comparison {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1084"><a href="#cb1-1084"></a></span>
+<span id="cb1-1085"><a href="#cb1-1085"></a>::: {#fig-comparison layout-ncol=2}</span>
+<span id="cb1-1086"><a href="#cb1-1086"></a></span>
+<span id="cb1-1087"><a href="#cb1-1087"></a><span class="al">![Trained model](https://saforem2.github.io/anl-job-talk/assets/dQint_eval.svg)</span>{#fig-eval}</span>
+<span id="cb1-1088"><a href="#cb1-1088"></a></span>
+<span id="cb1-1089"><a href="#cb1-1089"></a><span class="al">![Generic HMC](https://saforem2.github.io/anl-job-talk/assets/dQint_hmc.svg)</span>{#fig-hmc}</span>
+<span id="cb1-1090"><a href="#cb1-1090"></a></span>
+<span id="cb1-1091"><a href="#cb1-1091"></a>Comparison of $\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}$ for the</span>
+<span id="cb1-1092"><a href="#cb1-1092"></a>trained model <span class="co">[</span><span class="ot">@fig-eval</span><span class="co">]</span> vs. HMC <span class="co">[</span><span class="ot">@fig-hmc</span><span class="co">]</span></span>
+<span id="cb1-1093"><a href="#cb1-1093"></a>:::</span>
+<span id="cb1-1094"><a href="#cb1-1094"></a></span>
+<span id="cb1-1095"><a href="#cb1-1095"></a><span class="fu">## Plaquette analysis: $x_{P}$ {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-1096"><a href="#cb1-1096"></a></span>
+<span id="cb1-1097"><a href="#cb1-1097"></a>:::: {.columns}</span>
+<span id="cb1-1098"><a href="#cb1-1098"></a></span>
+<span id="cb1-1099"><a href="#cb1-1099"></a>::: {.column width="55%"}</span>
+<span id="cb1-1100"><a href="#cb1-1100"></a></span>
+<span id="cb1-1101"><a href="#cb1-1101"></a><span class="co">[</span><span class="ot">Deviation from $V\rightarrow\infty$ limit,  $x_{P}^{\ast}$</span><span class="co">]</span>{.dim-text style="text-align:center; font-size:0.9em;"}</span>
+<span id="cb1-1102"><a href="#cb1-1102"></a>:::</span>
+<span id="cb1-1103"><a href="#cb1-1103"></a></span>
+<span id="cb1-1104"><a href="#cb1-1104"></a>::: {.column width="45%"}</span>
+<span id="cb1-1105"><a href="#cb1-1105"></a></span>
+<span id="cb1-1106"><a href="#cb1-1106"></a><span class="co">[</span><span class="ot">Average $\langle x_{P}\rangle$, with $x_{P}^{\ast}$ (dotted-lines)</span><span class="co">]</span>{.dim-text style="text-align:right!important; font-size:0.9em;"}</span>
+<span id="cb1-1107"><a href="#cb1-1107"></a>:::</span>
+<span id="cb1-1108"><a href="#cb1-1108"></a></span>
+<span id="cb1-1109"><a href="#cb1-1109"></a>::::</span>
+<span id="cb1-1110"><a href="#cb1-1110"></a></span>
+<span id="cb1-1111"><a href="#cb1-1111"></a>::: {#fig-avg-plaq}</span>
+<span id="cb1-1112"><a href="#cb1-1112"></a></span>
+<span id="cb1-1113"><a href="#cb1-1113"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg)</span>{width="100%"}</span>
+<span id="cb1-1114"><a href="#cb1-1114"></a></span>
+<span id="cb1-1115"><a href="#cb1-1115"></a>Plot showing how **average plaquette**, $\left\langle x_{P}\right\rangle$</span>
+<span id="cb1-1116"><a href="#cb1-1116"></a>varies over a single trajectory for models trained at different $\beta$, with</span>
+<span id="cb1-1117"><a href="#cb1-1117"></a>varying trajectory lengths $N_{\mathrm{LF}}$</span>
+<span id="cb1-1118"><a href="#cb1-1118"></a>:::</span>
+<span id="cb1-1119"><a href="#cb1-1119"></a></span>
+<span id="cb1-1120"><a href="#cb1-1120"></a><span class="fu">## Loss Function {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1121"><a href="#cb1-1121"></a></span>
+<span id="cb1-1122"><a href="#cb1-1122"></a><span class="ss">- </span>Want to maximize the _expected_ squared charge difference<span class="ot">[^charge-diff]</span>:</span>
+<span id="cb1-1123"><a href="#cb1-1123"></a>  $$\begin{equation*}</span>
+<span id="cb1-1124"><a href="#cb1-1124"></a>  \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) =</span>
+<span id="cb1-1125"><a href="#cb1-1125"></a>  {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}</span>
+<span id="cb1-1126"><a href="#cb1-1126"></a>  \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]</span>
+<span id="cb1-1127"><a href="#cb1-1127"></a>  \end{equation*}$$</span>
+<span id="cb1-1128"><a href="#cb1-1128"></a></span>
+<span id="cb1-1129"><a href="#cb1-1129"></a><span class="ss">- </span>Where:</span>
+<span id="cb1-1130"><a href="#cb1-1130"></a><span class="ss">    - </span>$\delta Q$ is the _tunneling rate_:</span>
+<span id="cb1-1131"><a href="#cb1-1131"></a>      $$\begin{equation*}</span>
+<span id="cb1-1132"><a href="#cb1-1132"></a>      \textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|</span>
+<span id="cb1-1133"><a href="#cb1-1133"></a>      \end{equation*}$$</span>
+<span id="cb1-1134"><a href="#cb1-1134"></a></span>
+<span id="cb1-1135"><a href="#cb1-1135"></a><span class="ss">    - </span>$A(\xi^{\ast}|\xi)$ is the probability<span class="ot">[^jacobian]</span> of accepting the proposal $\xi^{\ast}$:</span>
+<span id="cb1-1136"><a href="#cb1-1136"></a>      $$\begin{equation*}</span>
+<span id="cb1-1137"><a href="#cb1-1137"></a>      A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,</span>
+<span id="cb1-1138"><a href="#cb1-1138"></a>      \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial</span>
+<span id="cb1-1139"><a href="#cb1-1139"></a>      \xi^{T}}\right|\right)</span>
+<span id="cb1-1140"><a href="#cb1-1140"></a>      \end{equation*}$$</span>
+<span id="cb1-1141"><a href="#cb1-1141"></a></span>
+<span id="cb1-1142"><a href="#cb1-1142"></a><span class="ot">[^charge-diff]: </span>Where $\xi^{\ast}$ is the _proposed_ configuration (prior to</span>
+<span id="cb1-1143"><a href="#cb1-1143"></a>Accept / Reject)</span>
+<span id="cb1-1144"><a href="#cb1-1144"></a><span class="ot">[^jacobian]: </span>And $\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|$ is the</span>
+<span id="cb1-1145"><a href="#cb1-1145"></a>Jacobian of the transformation from $\xi \rightarrow \xi^{\ast}$</span>
+<span id="cb1-1146"><a href="#cb1-1146"></a></span>
+<span id="cb1-1147"><a href="#cb1-1147"></a><span class="fu">## Networks 2D $U(1)$ {auto-animate=true background-color="#1c1c1c"}</span></span>
+<span id="cb1-1148"><a href="#cb1-1148"></a></span>
+<span id="cb1-1149"><a href="#cb1-1149"></a><span class="ss">- </span>Stack gauge links as <span class="in">`shape`</span>$\left(U_{\mu}\right)$<span class="in">` =[Nb, 2, Nt, Nx]`</span> $\in \mathbb{C}$</span>
+<span id="cb1-1150"><a href="#cb1-1150"></a></span>
+<span id="cb1-1151"><a href="#cb1-1151"></a>  $$ x_{\mu}(n) ≔ \left<span class="co">[</span><span class="ot">\cos(x), \sin(x)\right</span><span class="co">]</span>$$</span>
+<span id="cb1-1152"><a href="#cb1-1152"></a></span>
+<span id="cb1-1153"><a href="#cb1-1153"></a>  with <span class="in">`shape`</span>$\left(x_{\mu}\right)$<span class="in">` = [Nb, 2, Nt, Nx, 2]`</span> $\in \mathbb{R}$</span>
+<span id="cb1-1154"><a href="#cb1-1154"></a></span>
+<span id="cb1-1155"><a href="#cb1-1155"></a><span class="ss">- </span>$x$-Network:</span>
+<span id="cb1-1156"><a href="#cb1-1156"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">$\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)$</span><span class="co">]</span>{.purple-text}</span>
+<span id="cb1-1157"><a href="#cb1-1157"></a></span>
+<span id="cb1-1158"><a href="#cb1-1158"></a><span class="ss">- </span>$v$-Network:</span>
+<span id="cb1-1159"><a href="#cb1-1159"></a><span class="ss">  - </span><span class="co">[</span><span class="ot">$\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$</span><span class="co">]</span>{.green-text} <span class="co">[</span><span class="ot">$\hspace{2pt}\longleftarrow$ lets look at this</span><span class="co">]</span>{.dim-text}</span>
+<span id="cb1-1160"><a href="#cb1-1160"></a></span>
+<span id="cb1-1161"><a href="#cb1-1161"></a><span class="fu">## $v$-Update[^reverse] {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1162"><a href="#cb1-1162"></a></span>
+<span id="cb1-1163"><a href="#cb1-1163"></a><span class="ss">- </span><span class="co">[</span><span class="ot">forward</span><span class="co">]</span>{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:  </span>
+<span id="cb1-1164"><a href="#cb1-1164"></a></span>
+<span id="cb1-1165"><a href="#cb1-1165"></a>$$\Gamma^{\textcolor{#FF5252}{+}}: (x, v) \rightarrow v' := v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left<span class="co">[</span><span class="ot"> F \cdot e^{\varepsilon q_{v}} + t_{v} \right</span><span class="co">]</span>$$</span>
+<span id="cb1-1166"><a href="#cb1-1166"></a></span>
+<span id="cb1-1167"><a href="#cb1-1167"></a><span class="ss">- </span><span class="co">[</span><span class="ot">backward</span><span class="co">]</span>{style="color:#1A8FFF;"} $(d = \textcolor{#1A8FFF}{-})$:</span>
+<span id="cb1-1168"><a href="#cb1-1168"></a></span>
+<span id="cb1-1169"><a href="#cb1-1169"></a>$$\Gamma^{\textcolor{#1A8FFF}{-}}: (x, v) \rightarrow v' := e^{-\frac{\varepsilon}{2} s_{v}} \left<span class="sc">\{</span>v + \frac{\varepsilon}{2}\left<span class="co">[</span><span class="ot"> F \cdot e^{\varepsilon q_{v}} + t_{v} \right</span><span class="co">]</span>\right<span class="sc">\}</span>$$</span>
+<span id="cb1-1170"><a href="#cb1-1170"></a></span>
+<span id="cb1-1171"><a href="#cb1-1171"></a><span class="ot">[^reverse]: </span><span class="co">[</span><span class="ot">Note that $\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}$, i.e. $\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)$</span><span class="co">]</span>{style="font-size:0.8em;"}</span>
+<span id="cb1-1172"><a href="#cb1-1172"></a></span>
+<span id="cb1-1173"><a href="#cb1-1173"></a><span class="fu">## $x$-Update {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1174"><a href="#cb1-1174"></a></span>
+<span id="cb1-1175"><a href="#cb1-1175"></a><span class="ss">- </span><span class="co">[</span><span class="ot">forward</span><span class="co">]</span>{style="color:#FF5252"} $(d = \textcolor{#FF5252}{+})$:</span>
+<span id="cb1-1176"><a href="#cb1-1176"></a></span>
+<span id="cb1-1177"><a href="#cb1-1177"></a>$$\Lambda^{\textcolor{#FF5252}{+}}(x, v) = x \cdot e^{\frac{\varepsilon}{2} s_{x}} - \frac{\varepsilon}{2}\left<span class="co">[</span><span class="ot"> v \cdot e^{\varepsilon q_{x}} + t_{x} \right</span><span class="co">]</span>$$</span>
+<span id="cb1-1178"><a href="#cb1-1178"></a></span>
+<span id="cb1-1179"><a href="#cb1-1179"></a><span class="ss">- </span><span class="co">[</span><span class="ot">backward</span><span class="co">]</span>{style="color:#1A8FFF;"} $(d = \textcolor{#1A8FFF}{-})$:</span>
+<span id="cb1-1180"><a href="#cb1-1180"></a></span>
+<span id="cb1-1181"><a href="#cb1-1181"></a>$$\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left<span class="sc">\{</span>x + \frac{\varepsilon}{2}\left<span class="co">[</span><span class="ot"> v \cdot e^{\varepsilon q_{x}} + t_{x} \right</span><span class="co">]</span>\right<span class="sc">\}</span>$$</span>
+<span id="cb1-1182"><a href="#cb1-1182"></a></span>
+<span id="cb1-1183"><a href="#cb1-1183"></a></span>
+<span id="cb1-1184"><a href="#cb1-1184"></a><span class="fu">## Lattice Gauge Theory (2D $U(1)$) {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-1185"><a href="#cb1-1185"></a></span>
+<span id="cb1-1186"><a href="#cb1-1186"></a>:::: {.columns layout-valign="top"}</span>
+<span id="cb1-1187"><a href="#cb1-1187"></a></span>
+<span id="cb1-1188"><a href="#cb1-1188"></a>::: {.column width="50%"}</span>
+<span id="cb1-1189"><a href="#cb1-1189"></a></span>
+<span id="cb1-1190"><a href="#cb1-1190"></a>::: {style="text-align:center;"}</span>
+<span id="cb1-1191"><a href="#cb1-1191"></a></span>
+<span id="cb1-1192"><a href="#cb1-1192"></a>::: {.callout-note icon=false collapse=false title="🔗 Link Variables" style="width:100%!important; text-align:left;"}</span>
+<span id="cb1-1193"><a href="#cb1-1193"></a>$$U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad$$</span>
+<span id="cb1-1194"><a href="#cb1-1194"></a>$$x_{\mu}(n) \in [-\pi,\pi)$$</span>
+<span id="cb1-1195"><a href="#cb1-1195"></a>:::</span>
+<span id="cb1-1196"><a href="#cb1-1196"></a></span>
+<span id="cb1-1197"><a href="#cb1-1197"></a>::: {}</span>
+<span id="cb1-1198"><a href="#cb1-1198"></a></span>
+<span id="cb1-1199"><a href="#cb1-1199"></a>::: {.callout-important icon=false collapse=false title="🫸 Wilson Action" style="width:100%!important; text-align:left;"}</span>
+<span id="cb1-1200"><a href="#cb1-1200"></a>$$S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},$$</span>
+<span id="cb1-1201"><a href="#cb1-1201"></a></span>
+<span id="cb1-1202"><a href="#cb1-1202"></a>$$\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})</span>
+<span id="cb1-1203"><a href="#cb1-1203"></a><span class="ss">- </span>x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\right]$$</span>
+<span id="cb1-1204"><a href="#cb1-1204"></a>:::</span>
+<span id="cb1-1205"><a href="#cb1-1205"></a></span>
+<span id="cb1-1206"><a href="#cb1-1206"></a>[**Note**: $\textcolor{#00CCFF}{x_{P}}$ is the product of</span>
+<span id="cb1-1207"><a href="#cb1-1207"></a>links around $1\times 1$ square, called a <span class="co">[</span><span class="ot">"plaquette"</span><span class="co">]</span>{.blue-text}]{.dim-text style=font-size:0.8em;}</span>
+<span id="cb1-1208"><a href="#cb1-1208"></a>:::</span>
+<span id="cb1-1209"><a href="#cb1-1209"></a></span>
+<span id="cb1-1210"><a href="#cb1-1210"></a>:::</span>
+<span id="cb1-1211"><a href="#cb1-1211"></a></span>
+<span id="cb1-1212"><a href="#cb1-1212"></a>:::</span>
+<span id="cb1-1213"><a href="#cb1-1213"></a></span>
+<span id="cb1-1214"><a href="#cb1-1214"></a>::: {.column width="50%"}</span>
+<span id="cb1-1215"><a href="#cb1-1215"></a></span>
+<span id="cb1-1216"><a href="#cb1-1216"></a><span class="al">![2D Lattice](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/u1lattice.dark.svg)</span>{width="80%"}</span>
+<span id="cb1-1217"><a href="#cb1-1217"></a></span>
+<span id="cb1-1218"><a href="#cb1-1218"></a>:::</span>
+<span id="cb1-1219"><a href="#cb1-1219"></a></span>
+<span id="cb1-1220"><a href="#cb1-1220"></a>::::</span>
+<span id="cb1-1221"><a href="#cb1-1221"></a></span>
+<span id="cb1-1222"><a href="#cb1-1222"></a></span>
+<span id="cb1-1223"><a href="#cb1-1223"></a><span class="fu">## {background-color="white"}</span></span>
+<span id="cb1-1224"><a href="#cb1-1224"></a></span>
+<span id="cb1-1225"><a href="#cb1-1225"></a>::: {#fig-notebook}</span>
+<span id="cb1-1226"><a href="#cb1-1226"></a></span>
+<span id="cb1-1227"><a href="#cb1-1227"></a>&lt;iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"&gt;&lt;/iframe&gt;</span>
+<span id="cb1-1228"><a href="#cb1-1228"></a></span>
+<span id="cb1-1229"><a href="#cb1-1229"></a>Jupyter Notebook</span>
+<span id="cb1-1230"><a href="#cb1-1230"></a></span>
+<span id="cb1-1231"><a href="#cb1-1231"></a>:::</span>
+<span id="cb1-1232"><a href="#cb1-1232"></a></span>
+<span id="cb1-1233"><a href="#cb1-1233"></a><span class="fu">## Annealing Schedule {#sec-annealing-schedule background-color="#1c1c1c"}</span></span>
+<span id="cb1-1234"><a href="#cb1-1234"></a> </span>
+<span id="cb1-1235"><a href="#cb1-1235"></a><span class="ss">- </span>Introduce an _annealing schedule_ during the training phase:</span>
+<span id="cb1-1236"><a href="#cb1-1236"></a></span>
+<span id="cb1-1237"><a href="#cb1-1237"></a>  $$\left<span class="sc">\{</span> \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},</span>
+<span id="cb1-1238"><a href="#cb1-1238"></a>  \ldots, \gamma_{N-1}, \gamma_{N} \right<span class="sc">\}</span>$$</span>
+<span id="cb1-1239"><a href="#cb1-1239"></a></span>
+<span id="cb1-1240"><a href="#cb1-1240"></a>  where $\gamma_{0} &lt; \gamma_{1} &lt; \cdots &lt; \gamma_{N} \equiv 1$, and $\left|\gamma_{t+1} - \gamma_{t}\right| \ll 1$  </span>
+<span id="cb1-1241"><a href="#cb1-1241"></a></span>
+<span id="cb1-1242"><a href="#cb1-1242"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**Note**</span><span class="co">]</span>{.green-text}: </span>
+<span id="cb1-1243"><a href="#cb1-1243"></a><span class="ss">    - </span>for $\left|\gamma_{t}\right| &lt; 1$, this rescaling helps to reduce the</span>
+<span id="cb1-1244"><a href="#cb1-1244"></a>      height of the energy barriers $\Longrightarrow$</span>
+<span id="cb1-1245"><a href="#cb1-1245"></a><span class="ss">    - </span>easier for our sampler to explore previously inaccessible regions of the phase space</span>
+<span id="cb1-1246"><a href="#cb1-1246"></a></span>
+<span id="cb1-1247"><a href="#cb1-1247"></a></span>
+<span id="cb1-1248"><a href="#cb1-1248"></a><span class="fu">## Networks 2D $U(1)$ {#sec-networks-2dU1 background-color="#1c1c1c"}</span></span>
+<span id="cb1-1249"><a href="#cb1-1249"></a></span>
+<span id="cb1-1250"><a href="#cb1-1250"></a><span class="ss">- </span>Stack gauge links as <span class="in">`shape`</span>$\left(U_{\mu}\right)$<span class="in">` =[Nb, 2, Nt, Nx]`</span> $\in \mathbb{C}$</span>
+<span id="cb1-1251"><a href="#cb1-1251"></a></span>
+<span id="cb1-1252"><a href="#cb1-1252"></a>  $$ x_{\mu}(n) ≔ \left<span class="co">[</span><span class="ot">\cos(x), \sin(x)\right</span><span class="co">]</span>$$</span>
+<span id="cb1-1253"><a href="#cb1-1253"></a></span>
+<span id="cb1-1254"><a href="#cb1-1254"></a>  with <span class="in">`shape`</span>$\left(x_{\mu}\right)$<span class="in">` = [Nb, 2, Nt, Nx, 2]`</span> $\in \mathbb{R}$</span>
+<span id="cb1-1255"><a href="#cb1-1255"></a></span>
+<span id="cb1-1256"><a href="#cb1-1256"></a><span class="ss">- </span>$x$-Network:</span>
+<span id="cb1-1257"><a href="#cb1-1257"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">$\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)$</span><span class="co">]</span>{.purple-text}</span>
+<span id="cb1-1258"><a href="#cb1-1258"></a></span>
+<span id="cb1-1259"><a href="#cb1-1259"></a><span class="ss">- </span>$v$-Network:</span>
+<span id="cb1-1260"><a href="#cb1-1260"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">$\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)$</span><span class="co">]</span>{.green-text}</span>
+<span id="cb1-1261"><a href="#cb1-1261"></a></span>
+<span id="cb1-1262"><a href="#cb1-1262"></a><span class="fu">## Toy Example: GMM $\in \mathbb{R}^{2}$ {.centeredslide background-color="#1c1c1c"}</span></span>
+<span id="cb1-1263"><a href="#cb1-1263"></a></span>
+<span id="cb1-1264"><a href="#cb1-1264"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/iso_gmm_chains.svg)</span>{#fig-gmm .r-stretch}</span>
+<span id="cb1-1265"><a href="#cb1-1265"></a></span>
+<span id="cb1-1266"><a href="#cb1-1266"></a><span class="fu">## Physical Quantities {background-color="#1c1c1c"}</span></span>
+<span id="cb1-1267"><a href="#cb1-1267"></a></span>
+<span id="cb1-1268"><a href="#cb1-1268"></a><span class="ss">- </span>To estimate physical quantities, we:</span>
+<span id="cb1-1269"><a href="#cb1-1269"></a><span class="ss">  - </span>Calculate physical observables at **increasing** spatial resolution</span>
+<span id="cb1-1270"><a href="#cb1-1270"></a><span class="ss">  - </span>Perform extrapolation to continuum limit</span>
+<span id="cb1-1271"><a href="#cb1-1271"></a></span>
+<span id="cb1-1272"><a href="#cb1-1272"></a>::: {#fig-continuum}</span>
+<span id="cb1-1273"><a href="#cb1-1273"></a></span>
+<span id="cb1-1274"><a href="#cb1-1274"></a><span class="al">![](https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg)</span></span>
+<span id="cb1-1275"><a href="#cb1-1275"></a></span>
+<span id="cb1-1276"><a href="#cb1-1276"></a>Increasing the physical resolution ($a \rightarrow 0$) allows us to make</span>
+<span id="cb1-1277"><a href="#cb1-1277"></a>predictions about numerical values of physical quantities in the continuum</span>
+<span id="cb1-1278"><a href="#cb1-1278"></a>limit.</span>
+<span id="cb1-1279"><a href="#cb1-1279"></a></span>
+<span id="cb1-1280"><a href="#cb1-1280"></a>:::</span>
+<span id="cb1-1281"><a href="#cb1-1281"></a></span>
+<span id="cb1-1282"><a href="#cb1-1282"></a><span class="fu">## Extra {#sec-extra background-color="#1c1c1c"}</span></span>
+<span id="cb1-1283"><a href="#cb1-1283"></a></span>
+<span id="cb1-1284"><a href="#cb1-1284"></a><span class="co">[</span><span class="al">![](./assets/thumbnail.png)</span><span class="co">]</span>{.preview-image style="text-align:center; margin-left:auto; margin-right: auto;"}</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {

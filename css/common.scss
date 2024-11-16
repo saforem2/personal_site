@@ -382,7 +382,7 @@ $themes: (
   --callout-color-caution: $callout-color-caution;
   --callout-color-important: $callout-color-important;
   // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: antialiased;
   --red-text: $red-text;
   --orange-text: $myorange;
   --yellow-text: $yellow-text;
@@ -499,6 +499,7 @@ pre code {
   color: inherit;
   word-break: normal;
   font-family: $monofont;
+  font-weight: normal;
 }
 
 code {
@@ -545,6 +546,12 @@ code {
   --color-bright: oklch(65% .3 var(--color-hue, 0))
 }
 
+#title-block-header .quarto-title-block>div>button {
+  flex-shrink: 0;
+  margin-top: 0;
+  font-family: var(--bs-font-monospace);
+}
+
 body p code:not(.sourceCode),
 body li code:not(.sourceCode),
 body td code:not(.sourceCode) {
@@ -556,6 +563,13 @@ body td code:not(.sourceCode) {
 .callout.callout-titled .callout-body>div> :last-child:not(.sourceCode) {
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+.callout .callout-title-container {
+  overflow-wrap: anywhere;
+  font-weight: 401;
+  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
 }
 
 div.sourceCode {
@@ -1411,14 +1425,14 @@ div.callout-important.callout-style-default .callout-title {
 //   font-weight: 600;
 // }
 //
-.reveal strong,
-.reveal b,
-strong,
-b {
-  font-weight: 600;
-  -moz-osx-font-smoothing: grayscale;
-  // -webkit-font-smoothing: antialiased;
-}
+
+// .reveal strong,
+// .reveal b,
+// strong,
+// b {
+//   -moz-osx-font-smoothing: grayscale;
+//   -webkit-font-smoothing: antialiased;
+// }
 
 section.has-dark-background,
 section.has-dark-background h1,

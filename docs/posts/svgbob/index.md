@@ -1807,6 +1807,8 @@ Sam Foreman
   <line x1="24" y1="1560" x2="12" y2="1560" class="solid end_marked_open_circle"></line>
   <polygon points="24,1556 32,1560 24,1564" class="filled"></polygon>
   <text x="42" y="1564" >Grids</text>
+  <text x="42" y="1660" >{r}</text>
+  <text x="42" y="1724" >{g}</text>
   <line x1="24" y1="2024" x2="12" y2="2024" class="solid end_marked_open_circle"></line>
   <polygon points="24,2020 32,2024 24,2028" class="filled"></polygon>
   <text x="42" y="2028" >Graphics</text>

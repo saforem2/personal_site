@@ -1,5 +1,5 @@
 Sam Foreman
-2024-11-15
+2024-11-16
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">15</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:31:25</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">01:21:10</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -342,6 +342,195 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   Blockade]  
   <span class="dim-text">**S. Foreman** et al., *J. Appl. Phys*,
   *2018*</span>
+
+> [!TIP]
+>
+> ### <span style="color:#03A669;">📓 References</span>
+>
+> - References:
+>   - (Sam Foreman et al. 2018), (Hubler et al. 2018), (Samuel Foreman
+>     et al. 2018a), (Samuel Foreman et al. 2018b), (S. A. Foreman
+>     2019), (Sam Foreman, Jin, and Osborn 2020), (Sam Foreman, Jin, and
+>     Osborn 2021b), (Sam Foreman et al. 2021), (Sam Foreman, Jin, and
+>     Osborn 2021a), (Liu et al. 2017), (Boyda et al. 2022), (Kronfeld
+>     et al. 2022), (Zvyagin et al. 2023), (Sam Foreman, Jin, and
+>     Osborn), (**daemont2014superconductivity?**), (Emani et al. 2023),
+>     (Song et al. 2023), (Dharuman et al. 2023), (Shanahan, Terao, and
+>     Whiteson 2022), (Cheng et al. 2024), (Parete-Koon et al. 2024)
+>
+> <div id="refs" class="references csl-bib-body hanging-indent"
+> entry-spacing="0">
+>
+> <div id="ref-boyda2022applications" class="csl-entry">
+>
+> Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
+> Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
+> Learning to Lattice Quantum Field Theory.” *arXiv Preprint
+> arXiv:2202.05838*.
+>
+> </div>
+>
+> <div id="ref-cheng2024thorough" class="csl-entry">
+>
+> Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
+> Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
+> 2024. “Thorough Characterization and Analysis of Large Transformer
+> Model Training at-Scale.” *Proceedings of the ACM on Measurement and
+> Analysis of Computing Systems* 8 (1): 1–25.
+>
+> </div>
+>
+> <div id="ref-dharuman2023protein" class="csl-entry">
+>
+> Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan
+> Gokdemir, Sam Foreman, Murali Emani, et al. 2023. “Protein Generation
+> via Genome-Scale Language Models with Bio-Physical Scoring.” In
+> *Proceedings of the SC’23 Workshops of the International Conference on
+> High Performance Computing, Network, Storage, and Analysis*, 95–101.
+>
+> </div>
+>
+> <div id="ref-emani2023comprehensive" class="csl-entry">
+>
+> Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
+> Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and
+> Michael E Papka. 2023. “A Comprehensive Performance Study of Large
+> Language Models on Novel AI Accelerators.” *arXiv Preprint
+> arXiv:2310.04607*.
+>
+> </div>
+>
+> <div id="ref-foreman2018rg" class="csl-entry">
+>
+> Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “RG-Inspired Machine Learning for Lattice Field Theory.” In *EPJ
+> Web of Conferences*, 175:11025. EDP Sciences.
+>
+> </div>
+>
+> <div id="ref-foreman2021hmc" class="csl-entry">
+>
+> Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C
+> Osborn, and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv
+> Preprint arXiv:2112.01586*.
+>
+> </div>
+>
+> <div id="ref-foreman2023mlmc" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James Osborn. “MLMC: Machine Learning
+> Monte Carlo for Lattice Gauge Theory.” In *40th International
+> Symposium on Lattice Field Theory (Lattice 2023) (Batavia, IL, United
+> States, 07/31/2023 - 08/04/2023)*.
+>
+> </div>
+>
+> <div id="ref-foreman2020machine" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine
+> Learning and Neural Networks for Field Theory.”
+>
+> </div>
+>
+> <div id="ref-foreman2021leapfroglayers" class="csl-entry">
+>
+> ———. 2021a. “LeapfrogLayers: A Trainable Framework for Effective
+> Topological Sampling.” *arXiv Preprint arXiv:2112.01582*.
+>
+> </div>
+>
+> <div id="ref-foreman2021deep" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2021b. “Deep
+> Learning Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
+>
+> </div>
+>
+> <div id="ref-foreman2019learning" class="csl-entry">
+>
+> Foreman, Samuel Alfred. 2019. “Learning Better Physics: A Machine
+> Learning Approach to Lattice Gauge Theory.” PhD thesis, University of
+> Iowa.
+>
+> </div>
+>
+> <div id="ref-foreman2018examples" class="csl-entry">
+>
+> Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018a. “Examples of Renormalization Group Transformations for Image
+> Sets.” *Physical Review E* 98 (5): 052129.
+>
+> </div>
+>
+> <div id="ref-foreman2018machine" class="csl-entry">
+>
+> ———. 2018b. “Machine Learning Inspired Analysis of the Ising Model
+> Transition.” In *Lattice 2018*.
+>
+> </div>
+>
+> <div id="ref-hubler2018large" class="csl-entry">
+>
+> Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
+> Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.”
+> *Journal of Applied Physics* 123 (10).
+>
+> </div>
+>
+> <div id="ref-kronfeld2022lattice" class="csl-entry">
+>
+> Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H
+> Christ, Carleton DeTar, William Detmold, Robert Edwards, et al. 2022.
+> “Lattice QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
+>
+> </div>
+>
+> <div id="ref-liu2017energy" class="csl-entry">
+>
+> Liu, Jiaqi, Alfred W Hubler, Samuel Alfred Foreman, and Katharina Ott.
+> 2017. “Energy Storage in Quantum Resonators.”
+>
+> </div>
+>
+> <div id="ref-parete2024intro" class="csl-entry">
+>
+> Parete-Koon, Suzanne, Michael Sandoval, Kellen Leland, Subil Abraham,
+> Mary Ann Leung, Rebecca Hartman-Baker, Paige Kinsley, et al. 2024.
+> “Intro to HPC Bootcamp: Engaging New Communities Through Energy
+> Justice Projects.” *Journal of Computational Science Education* 15
+> (1).
+>
+> </div>
+>
+> <div id="ref-shanahan2022snowmass" class="csl-entry">
+>
+> Shanahan, Phiala, Kazuhiro Terao, and Daniel Whiteson. 2022. “Snowmass
+> 2021 Computational Frontier CompF03 Topical Group Report: Machine
+> Learning.” *arXiv Preprint arXiv:2209.07559*.
+>
+> </div>
+>
+> <div id="ref-song2023deepspeed4science" class="csl-entry">
+>
+> Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
+> Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023.
+> “DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+> Discovery Through Sophisticated AI System Technologies.” *arXiv
+> Preprint arXiv:2310.04610*.
+>
+> </div>
+>
+> <div id="ref-zvyagin2023genslms" class="csl-entry">
+>
+> Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
+> Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
+> Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
+> *The International Journal of High Performance Computing Applications*
+> 37 (6): 683–705.
+>
+> </div>
+>
+> </div>
 
 ### 🦜 Talks
 
