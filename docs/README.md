@@ -57,7 +57,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### 🎤   <span class="dim-text" style="font-size:1.0em!important;">Recent Talks</span>
 >
-> <span class="dim-text" style="font-size:1em;">📊 [here] ( + how I
+> <span class="dim-text" style="font-size:1em;">\[[here]\] ( + how I
 > [make them]! )</span>
 
 > [!TIP]
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">01:21:10</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">23:30:29</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -536,7 +536,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!NOTE]
 >
-> See ’em all, live: [All Talks]
+> See ’em all, live: [Talks]
 
 > [!TIP]
 >
@@ -560,7 +560,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck" loading="lazy" allow="picture-in-picture" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" allow="picture-in-picture" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -1004,13 +1004,13 @@ Table 2: 🎓 Education
 
 <div class="flex-container" style="align-items: baseline;">
 
-[![][61]][62]
+<span class="lazy">[![][61]][62]</span>
 
 <div class="flex-container" style="flex-direction: column; width: 50%;">
 
 > [!TIP]
 >
-> ### <span style="color:#D41109;">[![][63]][13]</span>
+> ### <span loading="lazy" style="color:#D41109;">[![][63]][13]</span>
 >
 > <script>
 > /**
@@ -1159,7 +1159,7 @@ Table 2: 🎓 Education
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
-  [All Talks]: ./talks/index.qmd
+  [Talks]: ./talks/index.qmd
   [**Parallel Training Methods**]: https://samforeman.me/talks/ai-for-science-2024/slides
   [*AI-for-Science on Supercomputers*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**AuroraGPT**]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides
