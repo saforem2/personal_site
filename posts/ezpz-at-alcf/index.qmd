@@ -1,5 +1,9 @@
 ---
 title: "🍋 <code>ezpz</code> @ ALCF"
+categories:
+  - ezpz
+  - ML
+  - ai4science
 toc: true
 date: 2024-08-23
 date-modified: last-modified
@@ -7,7 +11,7 @@ lightbox: auto
 tbl-cap-location: bottom
 citation:
    author: Sam Foreman
-   type: webpage
+   type: article-journal
    title: "🍋 ezpz at ALCF"
    url: https://samforeman.me/posts/ezpz-at-alcf
 open-graph:
@@ -20,6 +24,8 @@ twitter-card:
   title: "🍋 ezpz @ ALCF"
   image: "./assets/thumbnail.png"
   description: "🍋 `ezpz` at ALCF"
+  issued: 2022-10-01
+# csl: iso690-numeric-en.csl
 # code-tools: true
 # filters:
 #   - collapse-social-embeds
@@ -34,6 +40,660 @@ format:
 # open-graph:                        
 #     image: "./assets/thumbnail.png"
 ---
+
+> _Work smarter, not harder_.
+
+## 🐣 Getting Started
+
+There are two main, distinct components of `ezpz`:
+
+1. 🐚 [Shell Utilities](#shell)
+2. 🐍 [Python Library](#python)
+
+## 🐚 Shell {#shell}
+
+> [!IMPORTANT]<br>
+> We provide a variety of helper functions designed to make your life easier.
+>
+> They're entirely self-contained in 
+> [**`utils.sh`**](/ezpz/src/ezpz/bin/utils.sh)
+> and are all prefixed with `ezpz_`
+>
+
+
+To take advantage of these helper functions we need to `source` this
+[`utils.sh`](/ezpz/src/ezpz/bin/utils.sh).
+
+This can be done by:
+
+```bash
+PBS_O_WORKDIR=$(pwd) source /dev/stdin <<< $(curl 'https://raw.githubusercontent.com/saforem2/ezpz/refs/heads/main/src/ezpz/bin/utils.sh')
+```
+
+Now, there are a few functions in particular worth elaborating on.
+
+1. `ezpz_setup_python`: This is done in two parts.
+
+   1. `ezpz_setup_conda`: Will first attempt to load and activate a suitable
+      `conda` environment.
+
+      Depending on where we're running from, this will behave slightly differently:
+
+      - **ALCF**[^alcf]: Automatically load
+        the most recent `conda` module and activate the base environment.
+
+         [^alcf]: Any of {Aurora, Polaris, Sophia, Sunspot, Sirius}
+
+      - **Frontier**: Load the appropriate AMD modules (e.g. `rocm`,
+        `RCCL`, etc.), and activate base `conda`
+
+      - **Perlmutter**: Load the appropriate `pytorch` module and activate environment
+
+      - **Unknown**: In this case, we will look for a `conda`, `mamba`, or
+        `micromamba` executable, and if found, use that to activate the base
+        environment.
+
+   2. `ezpz_setup_venv`: Ideally, we are now inside a suitable `conda` environment.
+
+      Next, we will look for a virtual environment located in:
+
+      ```bash
+      venvs/${CONDA_NAME}
+      ```
+
+      If this exists, activate it and continue.
+      Otherwise, we will create a new `venv` via:
+      virtual
+
+      ```bash
+      python3 -m venv venvs/${CONDA_NAME} --system-site-packages
+      ```
+
+      where we've pulled in the `--system-site-packages` from conda.
+
+2. `ezpz_setup_job`
+3. `ezpz_setup_env`
+
+    ```bash
+    git clone https://github.com/saforem2/ezpz deps/ezpz
+    export PBS_O_WORKDIR=$(pwd)
+    source deps/ezpz/src/ezpz/bin/utils.sh
+    ezpz_setup_python
+    ezpz_setup_job
+    ```
+
+<!--
+    on ALCF:
+    setup conda + venv (creating if needed)
+    from inside a {PBS, SLURM} job, this will:
+    - do some sleuthing to determine specifics of active job 
+    - number of nodes available
+    - how many GPUs are on each of them
+    - what type of GPUs they are
+    - what machine am I on
+    - etc.
+    then, with this information, we can fill in the details of the
+    {mpirun,  mpiexec, srun} command that we will use to launch our
+    executable (`python3`, in this case) across all the accelerators in our job.
+-->
+
+> [!WARNING]
+>
+> _Some_ of the `ezpz_*` functions
+> (e.g. `ezpz_setup_python`),
+> will try to create / look for certain directories.
+>
+> In an effort to be explicit,
+> these directories will be defined
+> **relative to** a `WORKING_DIR`
+> (e.g. `"${WORKING_DIR}/venvs/"`)
+>
+> This `WORKING_DIR` will be assigned to the first non-zero match found below:
+>
+> 1. `PBS_O_WORKDIR`: If found in environment, paths will be relative to this
+> 2. `SLURM_SUBMIT_DIR`: Next in line. If not @ ALCF, maybe using `slurm`...
+> 3. `$(pwd)`: Otherwise, no worries. Use your _actual_ working directory.
+
+---
+
+## 🐍 Python {#python}
+
+To install[^require-venv]:
+
+```bash
+python3 -m pip install -e "git+https://github.com/saforem2/ezpz#egg=ezpz" --require-virtualenv
+```
+
+[^require-venv]: Note the `--require-virtualenv` isn't _strictly_ required, but
+    I highly recommend to always try and work within a virtual environment,
+    when possible.
+
+<!--
+- Clone repo[^location]:
+
+   ```bash
+   git clone https://github.com/saforem2/ezpz deps/ezpz
+   ```
+
+[^location]: _Where_, specifically, you clone it into (e.g. `deps/ezpz` here),
+    isn't terribly important.
+
+    I usually choose to nest it inside a `deps/` directory to avoid the case
+    where you have installed `ezpz` as a python library but you've additionally got
+    a folder named `ezpz` in your working directory.
+
+    For example:
+
+    ```bash
+    $ cd /path/to/your/project
+    $ PBS_O_WORKDIR=$(pwd) source /dev/stdin <<< $(curl 'https://raw.githubusercontent.com/saforem2/ezpz/refs/heads/main/src/ezpz/bin/utils.sh')
+    $ ezpz_setup_env  # just chains ezpz_setup_python + ezpz_setup_job
+    (venv) $ python3 -m pip install -e "git+https://github.com/saforem2/ezpz#egg=ezpz" --require-virtualenv
+    ```
+
+    ```bash
+    $ git clone https://github.com/saforem2/ezpz
+    $ python3 -m pip install -e ezpz
+    ```
+-->
+
+```bash
+📂 /ezpz/src/ezpz/
+┣━━ 📂 bin/
+┃   ┣━━ 📄 affinity.sh
+┃   ┣━━ 📄 getjobenv
+┃   ┣━━ 📄 savejobenv
+┃   ┣━━ 📄 saveslurmenv
+┃   ┣━━ 📄 setup.sh
+┃   ┣━━ 📄 train.sh
+┃   ┗━━ 📄 utils.sh
+┣━━ 📂 conf/
+┃   ┣━━ 📂 hydra/
+┃   ┃   ┗━━ 📂 job_logging/
+┃   ┃       ┣━━ ⚙️ colorlog1.yaml
+┃   ┃       ┣━━ ⚙️ custom.yaml
+┃   ┃       ┗━━ ⚙️ enrich.yaml
+┃   ┣━━ 📂 logdir/
+┃   ┃   ┗━━ ⚙️ default.yaml
+┃   ┣━━ ⚙️ config.yaml
+┃   ┣━━ 📄 ds_config.json
+┃   ┗━━ ⚙️ ds_config.yaml
+┣━━ 📂 log/
+┃   ┣━━ 📂 conf/
+┃   ┃   ┗━━ 📂 hydra/
+┃   ┃       ┗━━ 📂 job_logging/
+┃   ┃           ┗━━ ⚙️ enrich.yaml
+┃   ┣━━ 🐍 __init__.py
+┃   ┣━━ 🐍 __main__.py
+┃   ┣━━ 🐍 config.py
+┃   ┣━━ 🐍 console.py
+┃   ┣━━ 🐍 handler.py
+┃   ┣━━ 🐍 style.py
+┃   ┣━━ 🐍 test.py
+┃   ┗━━ 🐍 test_log.py
+┣━━ 🐍 __about__.py
+┣━━ 🐍 __init__.py
+┣━━ 🐍 __main__.py
+┣━━ 🐍 configs.py
+┣━━ 🐍 cria.py
+┣━━ 🐍 dist.py
+┣━━ 🐍 history.py
+┣━━ 🐍 jobs.py
+┣━━ 🐍 loadjobenv.py
+┣━━ 🐍 model.py
+┣━━ 🐍 plot.py
+┣━━ 🐍 profile.py
+┣━━ 🐍 runtime.py
+┣━━ 🐍 savejobenv.py
+┣━━ 🐍 test.py
+┣━━ 🐍 test_dist.py
+┣━━ 🐍 train.py
+┣━━ 🐍 trainer.py
+┗━━ 🐍 utils.py
+```
+
+---
+
+<details closed><summary><b>Old <code>README</code>s</b></summary>
+
+<details closed><summary><code>README</code> (old)</summary>
+
+# `ezpz` 🍋
+
+[Sam Foreman](https://samforeman.me)  
+_2024-05-14_
+
+### 👀 Overview
+
+> **`ezpz` 🍋**
+>
+> Launch, train and communicate across all your accelerators, `ezpz`.
+>
+> _Full support for your favorite framework + backend combo ❤️_.
+>
+> `ezpz` simplifies the process of:
+>
+> - Setting up + launching distributed training:
+>
+>   - `import ezpz as ez`
+>
+>     - `RANK =`
+>       [`ez.setup_torch(backend=backend)`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L551)
+>       <span class="dim-text">for `backend` $\in$ {`DDP`, `deepspeed`,
+>       `horovod`}</span>
+>
+>     - `RANK =`
+>       [`ez.get_rank()`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#396)
+>
+>     - `LOCAL_RANK =`
+>       [`ez.get_local_rank()`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#448)
+>
+>     - `WORLD_SIZE =`
+>       [`ez.get_world_size()`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L417)
+>
+>     <span class="dim-text">(see
+>     [`ezpz/dist.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py)
+>     for more details).</span>
+>
+> - Writing device agnostic code:
+>
+>   - <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L332"><code>ezpz.get_torch_device()</code></a>
+>
+>     ``` python
+>     >>> import ezpz as ez
+>     >>> DEVICE = ez.get_torch_device()
+>     >>> model = torch.nn.Linear(10, 10)
+>     >>> model.to(DEVICE)
+>     >>> x = torch.randn((10, 10), device=DEVICE)
+>     >>> y = model(x)
+>     >>> y.device
+>     device(type='mps', index=0)
+>     ```
+>
+> - **Full support** for any {`device` + `framework` + `backend`}:
+>   - device: {`GPU`, `XPU`, `MPS`, `CPU`}
+>   - framework: {`torch`, `deepspeed`, `horovod`, `tensorflow`}
+>   - backend: {`DDP`, `deepspeed`, `horovod`}
+
+## [`test_dist.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
+
+```python
+import os
+import logging
+import time
+from typing import Optional
+import torch
+import ezpz as ez
+
+# backend can be any of DDP, deespepeed, horovod
+RANK = ez.setup_torch(
+  backend=(
+      backend := os.environ.get('BACKEND', 'DDP')
+  ),
+  port=(
+      port := os.environ.get("MASTER_PORT", "29500")
+  )
+)
+# RANK = DIST_INIT['rank']
+# WORLD_SIZE = DIST_INIT['world_size']
+# LOCAL_RANK = DIST_INIT['local_rank']
+# if DEVICE == "cuda" and torch.cuda.is_available():
+#     torch.cuda.set_device(LOCAL_RANK)
+DEVICE = ez.get_torch_device()
+WORLD_SIZE = ez.get_world_size()
+LOCAL_RANK = ez.get_local_rank()
+DEVICE_ID = f"{DEVICE}:{LOCAL_RANK}"
+
+
+# log only from RANK == 0
+logger = logging.getLogger(__name__)
+logger.setLevel("INFO") if RANK == 0 else logger.setLevel("CRITICAL")
+
+BATCH_SIZE = int(os.environ.get("BATCH_SIZE", 64))  # 64
+INPUT_SIZE = int(os.environ.get("INPUT_SIZE", 128))  # 128
+OUTPUT_SIZE = int(os.environ.get("OUTPUT_SIZE", 128))  # 128
+DTYPE = os.environ.get("DTYPE", torch.get_default_dtype())
+TRAIN_ITERS = int(os.environ.get("TRAIN_ITERS", 50))
+
+# logger.info(f"{DIST_INIT=}")
+
+
+class Network(torch.nn.Module):
+  def __init__(
+          self,
+          input_dim: int = 128,
+          output_dim: int = 128,
+          sizes: Optional[list[int]] = None,
+  ):
+      super(Network, self).__init__()
+      if sizes is None:
+          self.layers = torch.nn.Linear(input_dim, output_dim)
+      elif len(sizes) > 0:
+          layers = [torch.nn.Linear(input_dim, sizes[0])]
+          for idx, size in enumerate(sizes[1:]):
+              layers.append(
+                  torch.nn.Linear(sizes[idx], size)
+              )
+          layers.append(torch.nn.Linear(sizes[-1], output_dim))
+          self.layers = torch.nn.Sequential(*layers)
+
+  def forward(self, x: torch.Tensor) -> torch.Tensor:
+      return self.layers(x)
+
+
+def calc_loss(x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+  return (y - x).pow(2).sum()
+
+
+def plot_losses(losses: dict) -> None:
+  import plotext as pltx
+  # y = list(losses.values())
+  pltx.theme('clear')
+  pltx.scatter(list(losses.values()))
+  pltx.show()
+  pltx.save_fig("test_dist_losses.txt")
+  pltx.ylabel("loss")
+  pltx.xlabel("iteration")
+
+
+def main():
+  model = Network(
+      input_dim=INPUT_SIZE,
+      output_dim=OUTPUT_SIZE,
+      sizes=[1024, 512, 256, 128]
+  )
+  model.to(DEVICE)
+  model.to(DEVICE_ID)
+  logger.info(f'{model=}')
+  optimizer = torch.optim.Adam(model.parameters())
+  if backend.lower() == 'ddp':
+      if WORLD_SIZE > 1:
+          from torch.nn.parallel import DistributedDataParallel as DDP
+          model = DDP(
+              model,
+              device_ids=[]
+          )
+  elif backend.lower() in ('ds', 'deepspeed'):
+      import deepspeed
+      # config = ez.load_ds_config().update(
+      #     {"train_micro_batch_size_per_gpu": BATCH_SIZE}
+      # )
+      import argparse
+      parser = argparse.ArgumentParser(
+          description='My training script.'
+      )
+      parser.add_argument(
+          '--local_rank',
+          required=False,
+          type=int,
+          default=-1,
+          # default=ez.get_local_rank()),
+          help='local rank passed from distributed launcher',
+      )
+      # Include DeepSpeed configuration arguments
+      parser = deepspeed.add_config_arguments(parser)
+      cmd_args = parser.parse_args()
+      logger.info(f'{cmd_args=}')
+      model, optimizer, *_ = deepspeed.initialize(
+          args=cmd_args,
+          model=model,
+          optimizer=optimizer,
+      )
+
+  losses = {}
+  for iter in range(TRAIN_ITERS):
+      t0 = time.perf_counter()
+      x = torch.rand((BATCH_SIZE, INPUT_SIZE), dtype=DTYPE).to(DEVICE)
+      y = model(x)
+      loss = calc_loss(x, y)
+      losses[iter] = loss
+      dtf = ((t1 := time.perf_counter()) - t0)
+      if backend == 'deepspeed':
+          model.backward(loss)
+          model.step(loss)
+      else:
+          loss.backward()
+          optimizer.step()
+      optimizer.zero_grad()
+      dtb = time.perf_counter() - t1
+      logger.info(
+          ', '.join([
+              f'{iter=}',
+              f'loss={loss.item():.5f}',
+              f'dt={dtf+dtb:.3f}',
+              f'{dtf=:.3f}',
+              f'{dtb=:.3f}'
+          ])
+      )
+  if RANK == 0:
+      plot_losses(losses)
+
+
+if __name__ == '__main__':
+  main()
+```
+
+</details>
+
+<details closed><summary><code>README</code> (grandparent)</summary>
+
+## ezpz
+
+<img alt="pyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
+<a href="https://www.tensorflow.org"><img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&logo=TensorFlow&logoColor=white"></a> 
+
+Simplifies the process of setting up distributed training for:
+
+- `pytorch` + `{DDP, deepspeed, horovod}`
+
+- `tensorflow` + `horovod`
+
+### Setup
+
+- Install:
+
+  ```bash
+  git clone https://github.com/saforem2/ezpz
+  python3 -m pip install -e ezpz
+  ```
+
+- Determine available resources:
+  ```bash
+  [ "$(hostname)==theta*" ] && HOSTFILE="${COBALT_NODEFILE}"  # ThetaGPU @ ALCF
+  [ "$(hostname)==x3*" ] && HOSTFILE="${PBS_NODEFILE}"        # Polaris @ ALCF
+  [ "$(hostname)==nid*" ] && HOSTFILE="${SLURM_NODELIST}"     # Perlmutter @ NERSC
+  NHOSTS=$(wc -l < "${HOSTFILE}")
+  NGPU_PER_HOST=$(nvidia-smi -L | wc -l)
+  NGPUS="$((${NHOSTS}*${NGPU_PER_HOST}))";
+  echo $NHOSTS $NGPU_PER_HOST $NGPUS
+  2 4 8
+  ```
+
+- Example `python` script:
+
+  ```python
+  """
+  ezpz/test.py
+  """
+  from ezpz import setup_torch, setup_tensorflow
+  
+  
+  def test(
+          framework: str = 'pytorch',
+          backend: str = 'deepspeed',
+          port: int | str = '5432'
+  ):
+      if framework == 'pytorch':
+          _ = setup_torch(
+              backend=backend,
+              port=port,
+          )
+      elif framework == 'tensorflow':
+          _ = setup_tensorflow()
+      else:
+          raise ValueError  
+  
+  if __name__ == '__main__':
+      import sys
+      try:
+          framework = sys.argv[1]
+      except IndexError:
+          framework = 'pytorch'
+      try:
+          backend = sys.argv[2]
+      except IndexError:
+          backend = 'deepspeed'
+      try:
+          port = sys.argv[3]
+      except IndexError:
+          port = '5432'
+      test(framework=framework, backend=backend, port=port)
+  ```
+
+### Tests
+
+You can test a `{framework, backend}` combination by:
+
+
+```bash
+mpiexec --verbose --envall -n "${NGPUS}" --ppn "${NGPU_PER_HOST}" python3 test.py framework backend
+```
+
+for `framework` $\in$ `{pytorch, tensorflow}` and `backend` $\in$ `{horovod, deepspeed, DDP}`[^1]
+
+[^1]: `deepspeed`, `DDP` only support `pytorch`
+
+- ✅ PyTorch + DDP:
+
+  ```bash
+  mpiexec --verbose --envall -n "${NGPUS}" --ppn "${NGPU_PER_HOST}" python3 test.py pytorch DDP
+  ```
+
+- ✅ PyTorch + DeepSpeed:
+
+  ```bash
+  mpiexec --verbose --envall -n "${NGPUS}" --ppn "${NGPU_PER_HOST}" python3 test.py pytorch deepspeed
+  ```
+
+- ✅ PyTorch + Horovod:
+
+  ```bash
+  mpiexec --verbose --envall -n "${NGPUS}" --ppn "${NGPU_PER_HOST}" python3 test.py pytorch horovod
+  ```
+- ✅ TensorFlow + Horovod:
+
+  ```bash
+  mpiexec --verbose --envall -n "${NGPUS}" --ppn "${NGPU_PER_HOST}" python3 test.py tensorflow
+  ```
+
+### Helper Utilities
+
+- [`src/ezpz/bin/savejobenv`](./src/ezpz/bin/savejobenv): Shell script to save
+  relevant job related environment variables to a file which can be sourced
+  from new login instances.
+
+- [`src/ezpz/bin/getjobenv`](./src/ezpz/bin/getjobenv): Shell script that, when
+  sourced, will populate the current environment with the necessary job-related
+  variables.
+
+1. Launch a job, clone (or navigate into) `ezpz`, and run [`src/ezpz/bin/savejobenv`](./src/ezpz/bin/savejobenv):
+
+   ```bash
+   (thetalogin5) $ qsub-gpu -A datascience -n 4 -q full-node --attrs="filesystems=home,grand,eagle,theta-fs0:ssds=required" -t 12:00 -I
+   (thetagpu13) $ git clone https://github.com/saforem2/ezpz
+   (thetagpu13) $ cd ezpz/src/ezpz
+   (thetagpu13) $ ./bin/savejobenv
+   ┌──────────────────────────────────────────────────────────────────┐
+   │ [DIST INFO]:
+   │   • Writing Job info to /home/foremans/.cobaltenv
+   │       • NHOSTS: 4
+   │       • NGPU_PER_HOST: 8
+   │       • NGPUS = (NHOSTS * NGPU_PER_HOST) = 32
+   └──────────────────────────────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────────────────────────┐
+   │ Saving COBALT env to /home/foremans/.cobaltenv from thetagpu13
+   │ Writing COBALT vars to /home/foremans/.cobaltenv                 │
+   └──────────────────────────────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────────────────────────┐
+   │ Copying COBALT_NODEFILE to clipboard...
+   │ COBALT_NODEFILE: /var/tmp/cobalt.10154591
+   │ [Hosts]:
+   │   thetagpu13 thetagpu12 thetagpu19 thetagpu18
+   └──────────────────────────────────────────────────────────────────┘
+   ┌───────────────────────────────────────────────────────────────────────┐
+   │ Run 'source getjobenv' in a NEW SHELL to automatically set env vars   │
+   └───────────────────────────────────────────────────────────────────────┘
+   ```
+
+2. now, in a **NEW SHELL**
+
+    ```bash
+    (localhost) $ ssh foremans@theta
+    (thetalogin5) $ ssh thetagpu18
+    (thetagpu18) $ module load conda/2023-01-11; cond activate base
+    (thetagpu18) $ cd ezpz
+    (thetagpu18) $ mkdir -p venvs/thetaGPU/2023-01-11
+    (thetagpu18) $ python3 -m venv venvs/thetaGPU/2023-01-11 --system-site-packages
+    (thetagpu18) $ source venvs/thetaGPU/2023-01-11/bin/activate
+    (thetagpu18) $ python3 -m pip install -e .
+    (thetagpu18) $ cd ezpz/src/ezpz
+    (thetagpu18) $ source bin/getjobenv
+    RUNNING_JOB_FILE: /var/tmp/cobalt-running-job
+    JOBID: 10154591
+    Loading job env from: /home/foremans/.cobaltenv
+    Defining alias mpilaunch: mpilaunch: aliased to mpirun -n 32 -N 8 --hostfile /var/tmp/cobalt.10154591 -x PATH -x LD_LIBRARY_PATH
+    HOSTFILE: /var/tmp/cobalt.10154591
+    NHOSTS: 4
+    NGPU_PER_HOST: 8
+    NGPUS (NHOSTS x NGPU_PER_HOST): 32
+    HOSTS: thetagpu13 thetagpu12 thetagpu19 thetagpu18
+    (thetagpu18) $ mpilaunch python3 -m ezpz pytorch DDP
+    Using DDP for distributed training
+    RANK: 0 / 31
+    RANK: 25 / 31
+    RANK: 24 / 31
+    RANK: 15 / 31
+    RANK: 26 / 31
+    RANK: 31 / 31
+    RANK: 2 / 31
+    RANK: 12 / 31
+    RANK: 1 / 31
+    RANK: 28 / 31
+    RANK: 3 / 31
+    RANK: 14 / 31
+    RANK: 4 / 31
+    RANK: 10 / 31
+    RANK: 27 / 31
+    RANK: 5 / 31
+    RANK: 30 / 31
+    RANK: 29 / 31
+    RANK: 9 / 31
+    RANK: 7 / 31
+    RANK: 6 / 31
+    RANK: 13 / 31
+    RANK: 8 / 31
+    RANK: 11 / 31
+    RANK: 18 / 31
+    RANK: 16 / 31
+    RANK: 21 / 31
+    RANK: 20 / 31
+    RANK: 22 / 31
+    RANK: 19 / 31
+    RANK: 17 / 31
+    RANK: 23 / 31
+    ```
+
+   while this example looked at ThetaGPU, the exact same process will work on any
+   of `{ThetaGPU, Polaris, Perlmutter}`.
+
+   2ez
+
+</details>
+
+</details>
+
+
+<details closed><summary>Deprecated:</summary>
 
 ## Complete Example
 
@@ -1329,3 +1989,4 @@ Application 5ccc89be resources: utime=21s stime=21s maxrss=1383056KB inblock=808
 
 </details>
 
+</details>

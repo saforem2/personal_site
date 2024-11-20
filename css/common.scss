@@ -106,9 +106,12 @@ $dark-bg-link-color: $callout-note-color !default;
 
 $link-color: rgba(19, 122, 245, 1.0) !default;
 $link-bg-color: rgba(19, 122, 245, .062745098);
-$dark-bg-link-color: #137af5 !default;
-$link-border-radius: 0.05rem;
 $light-bg-link-color: #1A8FFF !default;
+
+$dark-bg-link-color: #137af5 !default;
+
+$link-border-radius: 0.05rem;
+
 
 $nav-link-padding-x: 5px;
 $nav-link-padding-y: 2px;
@@ -123,7 +126,8 @@ $presentation-font-size-root: 28px !default;
 $code-block-font-size: (
   $code-font-size * 0.55) !default;
 // $code-block-height: 500px !default;
-$code-block-height: calc(0.33 * 100vh) !default;
+$code-block-height: calc(0.80 * 100vh) !default;
+$code-block-height-reveal: calc(0.33 * 100vh) !default;
 // $code-inline-font-size: $code-font-size !default;
 // , "Iosevka", "Iosevka Web", monospace, SFMono-Regular, Menlo, Monaco, Consolas!default;
 
@@ -570,6 +574,7 @@ body td code:not(.sourceCode) {
   overflow-wrap: anywhere;
   font-weight: bold;
   -moz-osx-font-smoothing: grayscale;
+  margin-block-end: 6pt;
   // -webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -1068,8 +1073,13 @@ li a code:not(.sourceCode),
 td a code:not(.sourceCode) {
   // border: .075x solid rgba(131, 131, 131, .7);
   color: $link-color;
-  border-radius: .25rem;
+  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  // border-radius: .25rem;
 }
+// .reveal p a code:not(.sourceCode), p a code:not(.sourceCode), li a code:not(.sourceCode), td a code:not(.sourceCode) {
+// 	color: #137af5;
+// 	border-radius: .25rem;
+// }
 
 nav p code:not(.sourceCode),
 nav li code:not(.sourceCode),
@@ -3586,6 +3596,13 @@ pre.sourceCode {
   // overflow: visible !important;
   padding: .4em;
   max-height: $code-block-height;
+  overflow-y: scroll;
+}
+
+reveal pre.sourceCode {
+  border: none;
+  padding: .4em;
+  max-height: $code-block-height-reveal;
   overflow-y: scroll;
 }
 
