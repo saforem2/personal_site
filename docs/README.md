@@ -1,5 +1,5 @@
 Sam Foreman
-2024-11-16
+2024-11-19
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -55,7 +55,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### 🎤   <span class="dim-text" style="font-size:1.0em!important;">Recent Talks</span>
+> ### 🎤 <span class="dim-text" style="font-size:1.0em!important;">Recent Talks</span>
 >
 > <span class="dim-text" style="font-size:1em;">\[[here]\] ( + how I
 > [make them]! )</span>
@@ -63,7 +63,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > [!TIP]
 >
 > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon"
-> style="height:1.33rem; vertical-align: text-bottom;" /> Now Playing</span>
+> style="height:1.25rem; vertical-align: text-bottom;" /> Now Playing</span>
 >
 > [![][10]][11]
 >
@@ -144,87 +144,87 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-- <details closed>
-
-  <summary>
-
-  👀 <strong>If you’re curious</strong>
-  </summary>
-
-  - <details closed>
-
-    <summary>
-
-    🔥 What I work on
-
-    </summary>
-
-    As a member of the [AI / ML Group] at [ALCF][(ALCF)], I work on:
-
-    <div class="flex-container">
-
-    <div class="flex-container">
-
-    - 🤖 🧪 [AI + Science][2]
-
-    - 🎲 [Building better sampling methods for Lattice QCD]
-
-    - 🧬 [Genome-Scale Language Models]
-
-      - [ GenSLM]
-
-      - 🥇 [ACM Gordon Bell Special Prize]
-
-    </div>
-
-    <div class="flex-container">
-
-    - 🌍 [Foundation models for long term climate forecasting]
-
-    - 🏃‍♂️ [Scaling Large Language Models]
-
-    - 🏎️ [Distributed training across thousands of GPUs]
-
-    </div>
-
-    </div>
-
-    </details>
-
-  - <details closed>
-
-    <summary>
-
-    📍 How I got here
-
-    </summary>
-
-    My [current research] focuses on using deep generative modeling to
-    help build better sampling algorithms in lattice gauge theory. In
-    particular, I’m interested in building gauge equivariant neural
-    network architectures and using inductive priors to incorporate
-    physical symmetries into machine learning models.
-
-    I received my PhD in Physics from the University of Iowa in 2019 and
-    my thesis was on [Learning Better Physics: A Machine Learning
-    Approach to Lattice Gauge Theory].
-
-    Prior to this, I completed two bachelors degrees (Engineering
-    Physics and Applied Mathematics, 2015) at The University of Illinois
-    at Urbana-Champaign. My undergraduate dissertation was titled
-    [Energy Storage in Quantum Resonators] and was supervised by
-    Professor [Alfred Hübler] within the Center for Complex Systems
-    Research at UIUC.
-
-    This work ultimately resulted in a [patent] !!
-
-    </details>
-
-</details>
-
 > [!TIP]
 >
 > ### <span class="dim-text">❤️‍🩹 Status</span>
+>
+> - <details closed>
+>
+>   <summary>
+>
+>   👀 <strong>If you’re curious</strong>
+>   </summary>
+>
+>   - <details closed>
+>
+>     <summary>
+>
+>     🔥 What I work on
+>
+>     </summary>
+>
+>     As a member of the [AI / ML Group] at [ALCF][(ALCF)], I work on:
+>
+>     <div class="flex-container">
+>
+>     <div class="flex-container">
+>
+>     - 🤖 🧪 [AI + Science][2]
+>
+>     - 🎲 [Building better sampling methods for Lattice QCD]
+>
+>     - 🧬 [Genome-Scale Language Models]
+>
+>       - [ GenSLM]
+>
+>       - 🥇 [ACM Gordon Bell Special Prize]
+>
+>     </div>
+>
+>     <div class="flex-container">
+>
+>     - 🌍 [Foundation models for long term climate forecasting]
+>
+>     - 🏃‍♂️ [Scaling Large Language Models]
+>
+>     - 🏎️ [Distributed training across thousands of GPUs]
+>
+>     </div>
+>
+>     </div>
+>
+>     </details>
+>
+>   - <details closed>
+>
+>     <summary>
+>
+>     📍 How I got here
+>
+>     </summary>
+>
+>     My [current research] focuses on using deep generative modeling to
+>     help build better sampling algorithms in lattice gauge theory. In
+>     particular, I’m interested in building gauge equivariant neural
+>     network architectures and using inductive priors to incorporate
+>     physical symmetries into machine learning models.
+>
+>     I received my PhD in Physics from the University of Iowa in 2019
+>     and my thesis was on [Learning Better Physics: A Machine Learning
+>     Approach to Lattice Gauge Theory].
+>
+>     Prior to this, I completed two bachelors degrees (Engineering
+>     Physics and Applied Mathematics, 2015) at The University of
+>     Illinois at Urbana-Champaign. My undergraduate dissertation was
+>     titled [Energy Storage in Quantum Resonators] and was supervised
+>     by Professor [Alfred Hübler] within the Center for Complex Systems
+>     Research at UIUC.
+>
+>     This work ultimately resulted in a [patent] !!
+>
+>     </details>
+>
+> </details>
 >
 > <span class="highlight">yellow</span>
 > <span class="highlight-pink">pink</span>
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">23:30:29</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">19</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">19:09:11</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -260,10 +260,10 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 ### 📝 Work
 
-- > [!NOTE]
-  >
-  > <span style="color:#4582ec;">You can find a full list of my
-  > publications on my [Google Scholar][5]</span>
+> [!NOTE]
+>
+> <span style="color:#4582ec;">You can find a full list of my
+> publications on my [Google Scholar][5]</span>
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects]  
@@ -348,15 +348,27 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ### <span style="color:#03A669;">📓 References</span>
 >
 > - References:
->   - (Sam Foreman et al. 2018), (Hubler et al. 2018), (Samuel Foreman
->     et al. 2018a), (Samuel Foreman et al. 2018b), (S. A. Foreman
->     2019), (Sam Foreman, Jin, and Osborn 2020), (Sam Foreman, Jin, and
->     Osborn 2021b), (Sam Foreman et al. 2021), (Sam Foreman, Jin, and
->     Osborn 2021a), (Liu et al. 2017), (Boyda et al. 2022), (Kronfeld
->     et al. 2022), (Zvyagin et al. 2023), (Sam Foreman, Jin, and
->     Osborn), (**daemont2014superconductivity?**), (Emani et al. 2023),
->     (Song et al. 2023), (Dharuman et al. 2023), (Shanahan, Terao, and
->     Whiteson 2022), (Cheng et al. 2024), (Parete-Koon et al. 2024)
+>   - (Sam Foreman et al. 2018)
+>   - (Hubler et al. 2018)
+>   - (Samuel Foreman et al. 2018a)
+>   - (Samuel Foreman et al. 2018b)
+>   - (S. A. Foreman 2019)
+>   - (Sam Foreman, Jin, and Osborn 2020)
+>   - (Sam Foreman, Jin, and Osborn 2021b)
+>   - (Sam Foreman et al. 2021)
+>   - (Sam Foreman, Jin, and Osborn 2021a)
+>   - (Liu et al. 2017)
+>   - (Boyda et al. 2022)
+>   - (Kronfeld et al. 2022)
+>   - (Zvyagin et al. 2023)
+>   - (Sam Foreman, Jin, and Osborn)
+>   - (**daemont2014superconductivity?**)
+>   - (Emani et al. 2023)
+>   - (Song et al. 2023)
+>   - (Dharuman et al. 2023)
+>   - (Shanahan, Terao, and Whiteson 2022)
+>   - (Cheng et al. 2024)
+>   - (Parete-Koon et al. 2024)
 >
 > <div id="refs" class="references csl-bib-body hanging-indent"
 > entry-spacing="0">

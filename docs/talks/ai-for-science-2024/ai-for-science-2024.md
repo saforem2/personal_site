@@ -674,7 +674,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S1,S2,S3, block
+class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S0,S1,S2,S3, block
 class x0,xp0, red
 class x1,xp1, green
 class x2,xp2, blue

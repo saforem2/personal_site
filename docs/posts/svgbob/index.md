@@ -2,6 +2,9 @@
 Sam Foreman
 2024-11-15
 
+Playing with [ivanceras/`svgbob`](https://github.com/ivanceras/svgbob)
+as an alternative to Mermaid
+
 <svg xmlns="http://www.w3.org/2000/svg" width="456" height="304" class="svgbob">
   <style>.svgbob line, .svgbob path, .svgbob circle, .svgbob rect, .svgbob polygon {
   stroke: #838383;
