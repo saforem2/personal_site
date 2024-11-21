@@ -1338,15 +1338,15 @@ GPT based models. Figure from
 
 ### Prepare Data
 
-``` bash
-python3 wordplay/data/shakespeare_char/prepare.py
-# Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
-# length of dataset in characters: 1,115,394
-# all the unique characters:
-#  !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-# vocab size: 65
-# train has 1,003,854 tokens
-# val has 111,540 tokens
+``` console
+$ python3 wordplay/data/shakespeare_char/prepare.py
+Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
+length of dataset in characters: 1,115,394
+all the unique characters:
+ !$&\',-.3:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+vocab size: 65
+train has 1,003,854 tokens
+val has 111,540 tokens
 ```
 
 ### Launch Training (DDP)
@@ -1367,7 +1367,18 @@ launch python3 -m wordplay \
 
 ### Training: Example Output
 
-``` java
+``` console
+$ launch python3 -m wordplay \
+    train.backend=DDP \
+    train.eval_interval=100 \
+    data=shakespeare \
+    train.dtype=bf16 \
+    model.batch_size=64 \
+    model.block_size=1024 \
+    train.max_iters=1000 \
+    train.log_interval=10 \
+    train.compile=false \
+    | tee wordplay-gpt2-DDP.log
 [2024-07-17 07:42:11.746540][INFO][__init__:156] - Setting logging level to 'INFO' on 'RANK == 0'
 [2024-07-17 07:42:11.748763][INFO][__init__:157] - Setting logging level to 'CRITICAL' on all others 'RANK != 0'
 [2024-07-17 07:42:11.749453][INFO][__init__:160] - To disable this behavior, and log from ALL ranks (not recommended), set: 'export LOG_FROM_ALL_RANKS=1'  in your environment, and re-run.
