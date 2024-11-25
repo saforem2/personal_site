@@ -20,30 +20,70 @@
 
 $right-arrow: "\2192"; // Unicode character for right arrow
 
-$heading-font: "IBM Plex Sans Condensed" !default;
-// $font-family-monospace: "Iosevka Fixed", "IBM Plex Mono", !default;
-$font-family-monospace: "IBM Plex Mono", !default;
-$monofont: $font-family-monospace !default;
-$presentation-heading-font: "IBM Plex Sans Condensed", "IBM Plex Sans", "Source Sans Pro", "Inter", Open Sans, Helvetica, sans-sserif !default;
-
+// $font-family-monospace: "Iosevka Custom Web",
+//   "IosevkaSansTerminalss15Custom Web"
+//   // "IBM Plex Mono",
+//   "Iosevka Term",
+//   "Iosevka Fixed" !default;
+// // "SFMono-Regular",
+// // "Menlo",
+// // monospace !default;
+// // $font-family-monospace: "Iosevka Fixed", "IBM Plex Mono", !default;
+$font-family-monospace: "Iosevka Term SS15 Web",
+  "IosevkaSansTerminalss15Custom Web" !default;
 $font-family-sans-serif: "IBM Plex Sans",
-  "Source Sans Pro",
-  "Inter",
-  Open Sans,
-  Helvetica,
+  "IosevkaAileSansQPss15 Web",
+  "Iosevka Aile Web",
+  "Iosevka Web",
+  "Iosevka",
+  "Iosevka Fixed",
+  "Iosevka Slab",
   sans-serif !default;
-$font-family-headings: "IBM Plex Sans Condensed",
+// "SFSerif-Regular",
+// "IBM Plex Sans",
+// "Iosevka Web",
+// "Iosevka Aile",
+$heading-font: "IBM Plex Sans Condensed",
+  "Iosevka  Etoile Web",
+  "IosevkaAileSansQPSS15 Web",
+  "Iosevka Custom Web",
+  "Iosevka Web",
+  "Iosevka Etoile",
+  "Iosevka Aile",
+  "IBM Plex Sans Condensed",
   "IBM Plex Sans",
-  "Open Sans",
-  "Playfair Display",
-  Helvetica,
-  sans-serif,
-  $font-family-sans-serif !default;
-// $font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$mermaid-font-family: "IBM Plex Mono",
-  "IBM Plex Sans",
-  monospace !default;
+  "Iosevka Slab",
+  "Iosevka",
+  sans-serif !default;
 
+$monofont: $font-family-monospace !default;
+$presentation-heading-font: $heading-font !default;
+// $presentation-heading-font: "IBM Plex Sans Condensed",
+//   "IBM Plex Sans",
+//   "Source Sans Pro",
+//   "Inter",
+//   Open Sans,
+//   Helvetica,
+//   sans-serif !default;
+
+$font-family-headings: $heading-font !default;
+// $font-family-headings: "IBM Plex Sans Condensed",
+//   "IBM Plex Sans",
+//   // "Open Sans",
+//   // "Playfair Display",
+//   // Helvetica,
+//   // sans-serif,
+//   // $font-family-sans-serif !default;
+// $font-family-monospace: "Iosevka IBM", "IBM Plex Mono", "Iosevka Web", "agave Nerd Font", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// $mermaid-font-family: "Iosevka Custom Web",
+//   "IBM Plex Mono",
+//   "IBM Plex Sans",
+//   monospace !default;
+
+$mermaid-font-family: $font-family-monospace !default;
+// $font-family-sans-serif,
+// monospace,
+// sans-serif !default;
 
 $myred: #FF5252;
 $myorange: #FD971F;
@@ -141,7 +181,7 @@ $presentation-line-height: 1em !default;
 //
 //
 $line-height-sm: 1.0 !default;
-$font-family-code: "IBM Plex Mono" !default;
+$font-family-code: $font-family-monospace !default;
 $kbd-padding-y: 0rem !default;
 
 $mermaid-bg-color: $body-bg !default;
@@ -211,8 +251,9 @@ $code-fg-light-bg: #FF1A8F;
 $code-block-bg-light-bg: #fafafa;
 //
 $cardbg: rgba(131, 131, 131, 0.05) !default;
-$highlight-bg-light: #FFCA27;
-$highlight-bg-dark: #FFFF00;
+$highlight-bg-light: #FFCA27 !default;
+// $highlight-bg-dark: #FFFF00;
+$highlight-text-color: $highlight-bg-light !default;
 
 $themes: (
   light: (bg: #ffffff,
@@ -365,9 +406,11 @@ $themes: (
 }
 
 :root {
+  font-family: $font-family-sans-serif;
   --bs-card-spacer-x: 0pt;
   --bs-card-spacer-y: 0pt;
   --code-bg: $code-bg;
+  --bs-body-font-family: $font-family-sans-serif;
   --bs-table-striped-bg: $code-bg;
   --callout-simple-color: rgba(90, 90, 90, 20);
   --callout-simple-title-color: rgba(90, 90, 90, 100);
@@ -404,8 +447,10 @@ $themes: (
   --hypothesis-user-highlights-color: $pink-text;
   --hypothesis-user-highlights-secondColor: $mypurple;
   --hypothesis-user-highlights-thirdColor: $mypink;
-  --quarto-font-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", " Courier New", monospace;
-  --bs-font-monospace: 'IBM Plex Mono', monospace;
+  // --quarto-font-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", " Courier New", monospace;
+  // --bs-font-monospace: 'IBM Plex Mono', monospace;
+  --quarto-font-monospace: $font-family-monospace;
+  --bs-font-monospace: $font-family-monospace;
   --quarto-border-color: $quarto-border-color;
   --shadow-color: $shadow-color;
   --bg-transparent: $bg-transparent;
@@ -564,18 +609,58 @@ body td code:not(.sourceCode) {
   /* padding: .2em; */
 }
 
+.py-1 {
+  padding: 0;
+
+}
+
+.pe-0 {
+  padding: 0;
+}
+
+.ps-1 {
+  margin-top: 5pt;
+}
+
+.reveal body p code:not(.sourceCode),
+body li code:not(.sourceCode),
+body td code:not(.sourceCode) {
+  font-size: 1em !important;
+  /* font-size: .875rem; */
+}
+
+// body p code:not(.sourceCode),
+// body li code:not(.sourceCode),
+// body td code:not(.sourceCode) {
+//   font-size: 1em;
+// }
+
 .callout.callout-titled .callout-body> :last-child:not(.sourceCode),
 .callout.callout-titled .callout-body>div> :last-child:not(.sourceCode) {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
+.callout:not(.callout-titled) .callout-body> :last-child,
+.callout:not(.callout-titled) .callout-body>div> :last-child {
+  /* margin-block: 0.25rem; */
+  font-size: 1rem;
+  opacity: 100%;
+  display: inline-block;
+  padding-inline: unset;
+}
+
 .callout .callout-title-container {
   overflow-wrap: anywhere;
   font-weight: bold;
   -moz-osx-font-smoothing: grayscale;
-  margin-block-end: 6pt;
+  // margin-block-end: 6pt;
   // -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
+  padding-top: 0pt;
+  padding-right: 0.55em;
 }
 
 div.sourceCode {
@@ -662,6 +747,95 @@ a {
   }
 }
 
+// a img:hover, .img-fluid:hover, .reveal img:hover {
+// 	border-radius: .25rem;
+// 	/* background: none !important; */
+// 	/* border: 1px solid #ff1a8f; */
+// 	filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
+// }
+//
+
+// .reveal a:not(#lightbox):hover,
+// a:not(#lightbox, .img, .img-fluid):hover {
+//   color: $link-color-hover;
+//   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+//   border-radius: $link-border-radius;
+//   // border: 1px solid $link-color-hover;
+//   //
+// }
+
+.reveal a:hover,
+a:hover {
+  color: $link-color-hover;
+  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  border-radius: $link-border-radius;
+}
+
+.reveal a img:hover,
+a img:hover {
+  color: $link-color-hover;
+  background: none !important;
+  border-radius: $link-border-radius;
+}
+
+a img:hover,
+.img-fluid:hover,
+.reveal img:hover {
+  border-radius: .25rem;
+  background: none !important;
+}
+
+.reveal a:hover,
+a:hover {
+  color: $link-color-hover !important;
+  background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
+  border-radius: .05rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2pt;
+  text-decoration-color: $link-color-hover;
+  transition: 0.5s ease all;
+}
+
+
+.reveal a>code,
+a>code {
+  color: $link-color !important;
+  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1) !important;
+  border-radius: $link-border-radius !important;
+  // font-size: 1em;
+  padding: 0pt 2pt;
+  // font-size: inherit;
+
+  &:hover {
+    background: none;
+    color: $link-color-hover !important;
+    background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1) !important;
+    transition: background .3s ease-in-out;
+  }
+}
+
+.reveal a:hover>img,
+.reveal a:hover>img-fluid,
+a:hover>img,
+a:hover>img-fluid {
+  background: none;
+}
+
+
+.sidebar nav[role="doc-toc"] ul>li>a:hover,
+.sidebar nav[role="doc-toc"] ul>li>ul>li>a:hover {
+  // padding-left: .6rem;
+  color: $link-color-hover !important;
+  border-radius: 0pt !important;
+  transition: background .3s ease-in-out;
+}
+
+a:not(#lightbox):hover,
+.reveal a:not(#lightbox):hover {
+  color: $link-color-hover !important;
+  border-radius: .05rem;
+}
+
 // a,
 // .underlined {
 //   text-decoration: none;
@@ -682,7 +856,7 @@ a {
 // a:not(#lightbox, .img):hover {
 .reveal a .img:hover,
 a img:hover {
-  background-color: none !important;
+  // background-color: none !important;
   // background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   // border: 1px solid oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
 
@@ -694,13 +868,13 @@ a img:hover {
 }
 
 
-a img {
-  // border: 1px solid rgba(0, 0, 0, 0.0);
-}
+// a img {
+//   // border: 1px solid rgba(0, 0, 0, 0.0);
+// }
 
-.navbar-logo {
-  // border: 1px solid rgba(0, 0, 0, 0.0);
-}
+// .navbar-logo {
+//   // border: 1px solid rgba(0, 0, 0, 0.0);
+// }
 
 
 .img-fluid {
@@ -807,43 +981,13 @@ img:hover,
   transition: background .3s ease-in-out;
 }
 
-// a img:hover, .img-fluid:hover, .reveal img:hover {
-// 	border-radius: .25rem;
-// 	/* background: none !important; */
-// 	/* border: 1px solid #ff1a8f; */
-// 	filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
-// }
-//
-
-// .reveal a:not(#lightbox):hover,
-// a:not(#lightbox, .img, .img-fluid):hover {
-//   color: $link-color-hover;
-//   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
-//   border-radius: $link-border-radius;
-//   // border: 1px solid $link-color-hover;
-//   //
-// }
-
-.reveal a:hover,
-a:hover {
-  color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
-  border-radius: $link-border-radius;
+body p code:not(.sourceCode),
+body li code:not(.sourceCode),
+body td code:not(.sourceCode) {
+  // padding: 1px 2px;
+  font-size: 0.875rem;
 }
 
-.reveal a img:hover,
-a img:hover {
-  color: $link-color-hover;
-  background: none !important;
-  border-radius: $link-border-radius;
-}
-
-a img:hover,
-.img-fluid:hover,
-.reveal img:hover {
-  border-radius: .25rem;
-  background: none !important;
-}
 
 // .reveal a:hover,
 // p a:hover>img,
@@ -994,14 +1138,6 @@ a img:hover,
   }
 }
 
-.sidebar nav[role="doc-toc"] ul>li>a:hover,
-.sidebar nav[role="doc-toc"] ul>li>ul>li>a:hover {
-  // padding-left: .6rem;
-  color: $link-color-hover !important;
-  border-radius: 0pt !important;
-  transition: background .3s ease-in-out;
-}
-
 // .reveal ol,
 // .reveal dl,
 // .reveal ul {
@@ -1076,6 +1212,7 @@ td a code:not(.sourceCode) {
   background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1);
   // border-radius: .25rem;
 }
+
 // .reveal p a code:not(.sourceCode), p a code:not(.sourceCode), li a code:not(.sourceCode), td a code:not(.sourceCode) {
 // 	color: #137af5;
 // 	border-radius: .25rem;
@@ -1089,26 +1226,9 @@ nav td code:not(.sourceCode) {
   color: inherit !important;
 }
 
-.reveal a>code,
-a>code {
-  color: $link-color !important;
-  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1) !important;
-  border-radius: $link-border-radius !important;
-  // font-size: 1em;
-  padding: 0pt 2pt;
-  // font-size: inherit;
-
-  &:hover {
-    background: none;
-    color: $link-color-hover !important;
-    background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1) !important;
-    transition: background .3s ease-in-out;
-  }
-}
-
-a>img:hover {
-  background-color: none !important;
-}
+// a>img:hover {
+//   // background-color: none !important;
+// }
 
 // .reveal a>code,
 // a:hover>code {
@@ -1117,13 +1237,6 @@ a>img:hover {
 //   color: $link-color-hover;
 //   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
 // }
-
-.reveal a:hover>img,
-.reveal a:hover>img-fluid,
-a:hover>img,
-a:hover>img-fluid {
-  background: none;
-}
 
 // .reveal a>code,
 // a>code {
@@ -1136,13 +1249,13 @@ a:hover>img-fluid {
 //   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
 // }
 
-a>img {
-  background-color: none !important;
-}
-
-a>img:hover {
-  background-color: none !important;
-}
+// a>img {
+//   background-color: none !important;
+// }
+//
+// a>img:hover {
+//   background-color: none !important;
+// }
 
 .callout {
   margin-block: 0.5rem;
@@ -1160,6 +1273,26 @@ a>img:hover {
 .callout.callout-titled>.callout-header {
   padding-top: 0;
   /* margin-bottom: -0.2em; */
+}
+
+// .callout.callout-titled>.callout-header {
+//   padding-top: .2em;
+//   margin-bottom: -0.2em;
+//   outline: 1px solid green;
+//   display: inline-flex;
+//   align-items: center;
+// }
+
+.callout.callout-titled>.callout-header {
+  /* padding-top: .2em; */
+  /* margin-bottom: -0.2em; */
+  // outline: 1px solid red;
+  display: inline-flex !important;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 2pt;
 }
 
 // .reveal section.has-light-background code:not(.sourceCode),
@@ -1203,7 +1336,8 @@ a>img:hover {
   border-top: none !important;
   border-bottom: none !important;
   // padding: 2pt 5pt 0pt 5pt;
-  padding: 0.2em 0.7em;
+  // padding: 0.2em 0.7em;
+  padding: 0 5pt;
 }
 
 div.callout-tip.callout {
@@ -2014,7 +2148,7 @@ boxed {
   font-family: $font-family-monospace !important;
   white-space-collapse: collapse;
   display: block;
-  background-color: none;
+  // background-color: none;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.0);
   overflow: auto;
@@ -2044,13 +2178,13 @@ boxed {
 
 .cell-output.cell-output-display:hover {
   white-space-collapse: collapse;
-  font-family: "IBM Plex Mono", $font-family-monospace !important;
+  font-family: $font-family-monospace !important;
   white-space: pre;
   // font-family: $font-family-monospace;
   overflow: auto;
   display: block;
   overflow-x: auto;
-  background-color: none;
+  // background-color: none;
   border-radius: 2px;
   border: 1px solid $code-color;
   white-space-collapse: collapse;
@@ -2938,7 +3072,7 @@ div.sidebar-item-container .sidebar-link>code {
 
 main ul,
 main ol {
-  margin-block: 0.25rem;
+  margin-block: 0pt;
 }
 
 ul>li:not(:has(> p))>ul,
@@ -2962,7 +3096,7 @@ ul.task-list {
   // border: 1px solid $link-color-hover;
   color: $link-color-hover;
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
-  box-ghadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
   // padding: 0.1rem;
 }
 
@@ -3064,9 +3198,9 @@ ul.task-list {
 details>summary {
   text-align: left;
   border-radius: 0.05rem;
-  color: $code-color;
+  color: $link-color;
   // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
-  background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
+  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
   min-width: max-content;
   max-width: min-content;
   width: fit-content;
@@ -3079,9 +3213,9 @@ details>summary {
 details>summary:hover {
   text-align: left;
   border-radius: 0.05rem;
-  color: $code-color;
+  color: $link-color-hover;
   // background: rgba(red($code-color), green($code-color), blue($code-color), 0.05);
-  background: oklch(from $code-color calc(l * 1.15) c h / 0.1);
+  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   // box-shadow: 0px 5px 15px 0px $shadow-color;
   box-shadow: $shadow-color 0px 2px 5px !important;
   min-width: max-content;
@@ -3661,9 +3795,9 @@ code {
   font-family: $monofont;
 }
 
-code span.ex {
-  font-family: $monofont, 'IBM Plex Mono', monospace;
-}
+// code span.ex {
+//   font-family: $monofont, 'IBM Plex Mono', monospace;
+// }
 
 #quarto-appendix.default .quarto-appendix-bibtex {
   border: none;
@@ -4045,30 +4179,30 @@ td code:not(.sourceCode) {
 
 
 .hypothesis-highlights-always-on .hypothesis-highlight {
-  color: $highlight-text-color !important;
+  color: $highlight-text-color;
   cursor: pointer;
 }
 
 .hypothesis-highlights-always-on .hypothesis-highlight {
   // font-weight: 500;
-  background-color: $hypothesis-highlight !important;
+  background-color: $hypothesis-highlight;
   cursor: pointer;
 }
 
 .hypothesis-highlights-always-on .hypothesis-highlight {
   cursor: pointer;
   // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
-  background-color: $hypothesis-highlight !important;
+  background-color: $hypothesis-highlight;
 }
 
 .hypothesis-highlights-always-on {
   // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
-  background-color: $hypothesis-highlight !important;
+  background-color: $hypothesis-highlight;
 }
 
 .hypothesis-highlight:before {
   // background-color: oklab(from $highlight-text-color calc(1 * 1.15) c h / 0.1) !important;
-  background-color: $hypothesis-highlight !important;
+  background-color: $hypothesis-highlight;
 }
 
 .reveal .scrollable {

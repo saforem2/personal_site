@@ -25,14 +25,41 @@ twitter-card:
   image: "./assets/thumbnail.png"
   description: "🍋 `ezpz` at ALCF"
   issued: 2022-10-01
+format:
+  html: default
+  # gfm: default
+
 # csl: iso690-numeric-en.csl
 # code-tools: true
 # filters:
 #   - collapse-social-embeds
-format:
-  html: default
-  gfm:
-    output_file: "ezpz-at-alcf.md"
+# format:
+#   # gfm:
+#   #   output_file: "ezpz-at-alcf.md"
+#   html: default
+#   # revealjs:
+#   #   slide-url: https://samforeman.me/posts/ezpz-at-alcf/slides.html
+
+  # revealjs:
+  #   width: 1024
+  #   height: 768
+  #   max-scale: 4.0
+  #   min-scale: 0.1
+  #   # title: "AuroraGPT"
+  #   pdf-separate-fragments: true
+  #   center: false
+  #   footer: "[samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides](https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides)"
+  #   slide-url: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html
+  #   template-partials:
+  #     - title-slide.html
+  #   title-slide-attributes:
+  #     # data-background-iframe: "file:///iframes/center-of-universe/index.html"
+  #     # data-background-image: "https://raw.githubusercontent.com/saforem3/llm-lunch-talk/refs/heads/main/docs/assets/image2.png"
+  #     data-background-size: cover
+  #     data-background-iframe: https://emilhvitfeldt.github.io/quarto-iframe-examples/stars/index.html
+  #     # background-color: dark
+  #     # data-background-color: dark
+  #   # shift-heading-level-by: -1
 # twitter-card:                      
 #     image: "./assets/thumbnail.png"
 #     creator: "@saforem2"           
@@ -47,20 +74,21 @@ format:
 
 There are two main, distinct components of `ezpz`:
 
-1. 🐍 [**Python Library**](#python-libraryy)
-
-1. 🐚 [**Shell Utilities**](#shell-utilities):
-   1. [Setup Environment](#setup-environment):
-      1. [Setup Python](#setup-python):
-         1. [Setup Conda](#setup-conda)
-         1. [Setup Virtual Environment](#setup-virtual-environment)
-      1. [Setup Job](#setup-job):
-
+1. 🐍 [**Python Library**](#python-library)
+1. 🐚 [**Shell Utilities**](#shell-utilities)
 
 ## 🐚 Shell Utilities
 
+The Shell Utilities can be roughly broken up further into two main components
 
-we provide a variety of helper functions designed to make your life easier
+1. [Setup Environment](#setup-environment):
+  1. [Setup Python](#setup-python):
+      1. [Setup Conda](#setup-conda)
+      1. [Setup Virtual Environment](#setup-virtual-environment)
+  1. [Setup Job](#setup-job):
+
+
+We provide a variety of helper functions designed to make your life easier
 when working with job schedulers (e.g. `PBS Pro` @ ALCF or `slurm` elsewhere).
 
 **All** of these functions are:
@@ -75,7 +103,7 @@ export PBS_O_WORKDIR=$(pwd) # if on ALCF
 source /dev/stdin <<< $(curl 'https://raw.githubusercontent.com/saforem2/ezpz/refs/heads/main/src/ezpz/bin/utils.sh')
 ```
 
-### Setup Environment
+### ⚙️ Setup Environment
 
 We would like to write our application in such a way that it is able to take
 full advantage of the resources allocated by the job scheduler.
@@ -98,8 +126,10 @@ In particular, we need mechanisms for:
    (`NGPU_PER_HOST`)
 
 This allows us to calculate the total number of accelerators (GPUs) as:
+$N_{\mathrm{GPU}} = N_{\mathrm{HOST}} \times n_{\mathrm{GPU}}$
 
-$$\mathrm{NGPUS} = \mathrm{NHOSTS} \times \mathrm{NGPU\_PER\_HOST}$$
+where $n_{\mathrm{GPU}} = N_{\mathrm{GPU}} / N_{\mathrm{HOST}}$ is the number
+of GPUs per host.
 
 With this we have everything we need to build the appropriate {`mpi`{`run`,
 `exec`}, `slurm`} command for launching our python application across them.
@@ -108,13 +138,13 @@ Now, there are a few functions in particular worth elaborating on.
 
 ::: {#tbl-shell-fns}
 
-| &nbsp;                                                  | Function                     |
-| :------------------------------------------------------- | :--------------------------- |
-| [Setup Environment](#setup-environment)                 | `ezpz_setup_env`             |
-| [Setup Job](#setup-job)                                 | `ezpz_setup_job`             |
-| [Setup Python](#setup-python)                           | `ezpz_setup_python`          |
-| [Setup Conda](#setup-conda)                             | `ezpz_setup_conda`           |
-| [Setup Virtual Environment](#setup-virtual-environment) | `ezpz_setup_venv_from_conda` |
+| &nbsp;                                                   | Function                     | Description                                                                               |
+| :------------------------------------------------------ | :--------------------------  | :-----------                                                                              |
+| [Setup Environment](#setup-environment)                  | `ezpz_setup_env`             | Wrapper around `ezpz_setup_python && ezpz_setup_job`                                      |
+| [Setup Job](#setup-job)                                  | `ezpz_setup_job`             | Determine {`NGPUS`, `NGPU_PER_HOST`, `NHOSTS`}, build `launch` command alias              |
+| [Setup Python](#setup-python)                            | `ezpz_setup_python`          | Load python modules and activate virtual environment                                      |
+| [Setup Conda](#setup-conda)                              | `ezpz_setup_conda`           | Identify appropriate `conda` module to load                                               |
+| [Setup Virtual Environment](#setup-virtual-environment)  | `ezpz_setup_venv_from_conda` | From `${CONDA_NAME}`, build or activate the virtual env located in `venvs/${CONDA_NAME}/` |
 
 : Shell Functions {.responsive .striped .hover}
 :::
@@ -150,7 +180,7 @@ This `WORKING_DIR` will be assigned to the first non-zero match found below:
 
 :::
 
-#### Setup Python
+#### 🛠️ Setup Python
 
 ```bash
 ezpz_setup_python
@@ -176,12 +206,24 @@ This will:
      `micromamba` executable, and if found, use that to activate the base
      environment.
 
+
+   ::: {.callout-tip title="Using your own `conda`"}
+
+   If you are already in a conda environment when calling
+   `ezpz_setup_python` then it will try and use this instead.
+
+   For example, if you have a custom `conda` env at `~/conda/envs/custom`, then
+   this would bootstrap the `custom` conda environment and create the virtual
+   env in `venvs/custom/`
+
+   :::
+
 2. Build (or activate, if found) a virtual environment on top of (the active) base `conda` environment.
 
    By default, it will try looking in:
 
    - `$PBS_O_WORKDIR`, otherwise
-   - '${SLURM_SUBMIT_DIR}', otherwise
+   - `${SLURM_SUBMIT_DIR}`, otherwise
    - `$(pwd)`
 
    for a nested folder named `"venvs/${CONDA_NAME}"`.
@@ -195,7 +237,11 @@ This will:
 
    (where we've pulled in the `--system-site-packages` from conda).
 
-#### Setup Job
+#### 🧰 Setup Job
+
+```bash
+ezpz_setup_job
+```
 
 <!-- Now, we are in a suitable python environment with the necessary pre-requisites -->
 <!-- installed (e.g. `torch`, `mpi4py`, `deepspeed` (optional)). -->
@@ -217,17 +263,34 @@ To do this, we need a few things:
 With this information, we can then use `mpi{exec,run}` or `srun` to launch
 python across all of our accelerators.
 
-Again, how this is done will vary from machine to machine.
+Again, how this is done will vary from machine to machine and will depend on
+the job scheduler in use.
+
+To identify where we are, we look at our `$(hostname)` and see if we're running
+on one of the known machines:
+
+- **ALCF**[^node-names]: Using PBS Pro via `qsub` and `mpiexec` / `mpirun`.
+  - `x4*`: **Aurora**
+  - **Aurora**: `x4*` (or `aurora*` on login nodes)
+  - **Sunspot**: `x1*` (or `uan*`)
+  - **Sophia**: `sophia-*`
+  - **Polaris** / **Sirius**: `x3*`
+    - to determine between the two, we look at `"${PBS_O_HOST}"`
 
 
-To identify where we are, we look at our `$(hostname)` and see if:
+[^node-names]: At ALCF, if our `$(hostname)` starts with `x*`, we're on a
+    compute node.
 
-- `x*`: ALCF
-  - Aurora: `x4*` (or `aurora*`)
-  - Sunspot: `x1*` (or `uan*`)
-  - Polaris / Sirius: `x3*`
-    - to determine, we look at `"${PBS_O_HOST}"`
-  - `sophia*`: Sophia
+- **OLCF**: Using Slurm via `sbatch` / `srun`.
+
+  - `frontier*`: **Frontier**, using Slurm
+  - `nid*`: Perlmutter, using Slurm
+
+
+- Unknown machine: If `$(hostname)` does not match one of these patterns we
+  assume that we are running on an unknown machine and will try to use `mpirun`
+  as our generic launch command
+
 
   Once we have this, we can:
 
@@ -253,14 +316,12 @@ To identify where we are, we look at our `$(hostname)` and see if:
         jobid=$(ezpz_qsme_running | grep "$(hostname)" | awk '{print $1}')
         prefix=/var/spool/pbs/aux
         match=$(/bin/ls "${prefix}" | grep "${jobid}")
-        hostfile="${prefix}/${match}""
+        hostfile="${prefix}/${match}"
         ```
+
 
   2. Identify number of available accelerators:
 
-### Setup Environment
-
----
 
 ## 🐍 Python Library
 

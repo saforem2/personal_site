@@ -7,14 +7,14 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-722b7ecd703fa194e825a0d619ad685e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-697306ee647f3aecb60be57249203282.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.36">
+  <meta name="generator" content="quarto-1.6.37">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2024-10-29">
@@ -122,9 +122,13 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ee3adf711b9a411eb337d03e37e923dc.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-01e766465f6b205c89ee05538e734700.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
+  <link rel="stylesheet" href="../../css/ibm-plex.css">
+  <link rel="stylesheet" href="../../static/fonts/IosevkaAileSansQPss15/IosevkaAileSansQPss15.css">
+  <link rel="stylesheet" href="../../static/fonts/IosevkaSansTerminalss15Custom/IosevkaSansTerminalss15Custom.css">
+  <link rel="stylesheet" href="../../static/fonts/iosevka-custom/iosevka-custom.css">
   <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML-fullkatex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -252,6 +256,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+  <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
   <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
 <meta property="og:title" content="Deep Learning and Foundation Models at Scale">
@@ -516,10 +521,17 @@ Figure&nbsp;3: Data Parallel Training
 <section id="allreduce" class="slide level2 center" data-background-color="white">
 <h2>AllReduce</h2>
 <p>Perform <em>reductions</em> on data (e.g.&nbsp;<code>sum</code>, <code>min</code>, <code>max</code>) across ranks, send result back to everyone.</p>
-
-<img data-src="./assets/collective-allreduce-sum.drawio.svg" class="r-stretch img-fluid quarto-figure-center" id="fig-all-reduce"><p class="caption">
+<div id="fig-all-reduce" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-all-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-allreduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: All-Reduce operation: each rank receives the reduction of input values across ranks."><img data-src="./assets/collective-allreduce-sum.drawio.svg" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-all-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: All-Reduce operation: each rank receives the reduction of input values across ranks.
-</p><div class="footer">
+</figcaption>
+</figure>
+</div>
+<div class="footer">
 
 </div>
 </section>
@@ -528,22 +540,43 @@ Figure&nbsp;4: All-Reduce operation: each rank receives the reduction of input v
 <ul>
 <li>Perform a <em>reduction</em> on data across ranks, send to individual</li>
 </ul>
-
-<img data-src="./assets/collective-reduce-sum.drawio.svg" class="r-stretch img-fluid quarto-figure-center" id="fig-reduce"><p class="caption">
+<div id="fig-reduce" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-reduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values across ranks"><img data-src="./assets/collective-reduce-sum.drawio.svg" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values across ranks
-</p></section>
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="broadcast" class="slide level2 center" data-background-color="white">
 <h2>Broadcast</h2>
-
-<img data-src="./assets/collective-broadcast.drawio.svg" class="r-stretch img-fluid quarto-figure-center" id="fig-broadcast"><p class="caption">
+<div id="fig-broadcast" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: broadcast (send) a tensor x from one rank to all ranks"><img data-src="./assets/collective-broadcast.drawio.svg" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: <code>broadcast</code> (<em>send</em>) a tensor <code><span class="math inline">x</span></code> from one rank to all ranks
-</p></section>
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="allgather" class="slide level2 center" data-background-color="white">
 <h2>AllGather</h2>
-
-<img data-src="./assets/collective-allgather.drawio.svg" class="r-stretch img-fluid quarto-figure-center" id="fig-allgather"><p class="caption">
+<div id="fig-allgather" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/collective-allgather.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Gathers tensors from the whole group in a list."><img data-src="./assets/collective-allgather.drawio.svg" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Gathers tensors from the whole group in a list.
-</p></section>
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="scatter" class="slide level2 center" data-background-color="white">
 <h2>Scatter</h2>
 
@@ -566,9 +599,10 @@ Figure&nbsp;8: Scatters a list of tensors to the whole group
 </ul></li>
 <li>See: <a href="https://arxiv.org/abs/1708.03888">Large Batch Training of Convolutional Networks</a></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU</p></li></ol></aside></section>
-<section id="why-distributed-training-speedup" class="slide level2 center" data-background-color="white">
-<h2>Why Distributed Training? Speedup!</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><code>micro_batch_size</code> = batch_size <strong>per</strong> GPU</p></li></ol></aside></section></section>
+<section>
+<section id="why-distributed-training-speedup" class="title-slide slide level1 center" data-background-color="white">
+<h1>Why Distributed Training? Speedup!</h1>
 <div id="tbl-recent-progress" class="responsive striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-recent-progress-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -924,10 +958,17 @@ Figure&nbsp;15
 <aside><ol class="aside-footnotes"><li id="fn2"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
 <section id="tensor-parallelism" class="slide level2 center" data-background-color="white">
 <h2>Tensor Parallelism</h2>
-
-<img data-src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch img-fluid quarto-figure-center" id="fig-parallel-gemm"><p class="caption">
+<div id="fig-parallel-gemm" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-parallel-gemm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/parallelism-tp-parallel_gemm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;16: Tensor Parallel GEMM. This information is based on (the much more in-depth) TP Overview by @anton-l"><img data-src="assets/parallelism-tp-parallel_gemm.png" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parallel-gemm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: Tensor Parallel GEMM. This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a>
-</p></section>
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="d-parallelism" class="slide level2 center" data-background-color="white">
 <h2>3D Parallelism</h2>
 <ul>
@@ -1029,10 +1070,17 @@ Figure&nbsp;18: Large Language Models have (LLM)s have taken the <del>NLP commun
 <aside><ol class="aside-footnotes"><li id="fn3"><p>Source: <a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a></p></li></ol></aside></section>
 <section id="emergent-abilities" class="slide level2 center" data-background-color="#FBFBFD">
 <h2>Emergent Abilities</h2>
-
-<img data-src="./assets/emergent-abilities.gif" class="r-stretch img-fluid quarto-figure-center" id="fig-emergent-abilities"><p class="caption">
+<div id="fig-emergent-abilities" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-emergent-abilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/emergent-abilities.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;19: Emergent abilities of Large Language Models @yao2023tree"><img data-src="./assets/emergent-abilities.gif" class="img-fluid"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-emergent-abilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19: <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>
-</p></section>
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="training-llms" class="slide level2 r-stretch center" data-background-color="white">
 <h2>Training LLMs</h2>
 <div class="flex-container" style="align-items: flex-end; width:90%; text-align:center;">
@@ -2216,9 +2264,9 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1024,
 
-        height: 700,
+        height: 768,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -2226,7 +2274,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
         // Bounds for smallest/largest possible scale to apply to content
         minScale: 0.1,
 
-        maxScale: 2,
+        maxScale: 3,
 
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,

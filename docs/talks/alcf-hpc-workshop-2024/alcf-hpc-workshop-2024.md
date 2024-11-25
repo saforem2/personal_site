@@ -2,7 +2,7 @@
 Sam Foreman
 2024-10-29
 
-# 
+## 
 
 <div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
 
@@ -21,7 +21,7 @@ Workshop</span>
 
 </div>
 
-# Overview
+## Overview
 
 - [ALCF Hands-on HPC
   Workshop](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)
@@ -32,7 +32,7 @@ Workshop</span>
   - HTML Version:
     [samforeman.me/talks/alcf-hpc-workshop-2024](https://samforeman.me/talks/alcf-hpc-workshop-2024)
 
-# 🚀 Scaling: Overview
+## 🚀 Scaling: Overview
 
 - ✅ **Goal**:
   - Minimize: <span class="highlight-red">Cost</span> (i.e. amount of
@@ -45,7 +45,7 @@ Workshop</span>
   > Scalability](https://huggingface.co/docs/transformers/v4.46.0/performance)
   > for more details
 
-## Single GPU
+### Single GPU
 
 See [🤗 Methods and tools for efficient training on a single
 GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
@@ -58,19 +58,19 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 </div>
 
-## Data Parallel Training
+### Data Parallel Training
 
 <div>
 
 </div>
 
-## Data Parallel Training
+### Data Parallel Training
 
 <div>
 
 </div>
 
-## Communication
+### Communication
 
 - Need mechanism(s) for communicating across GPUs:
   - [`torch.distributed`](https://pytorch.org/docs/stable/distributed.html)
@@ -90,15 +90,14 @@ Figure 1: **SLOW** !! model size limited by GPU memory
   >   - Failure to do so will result in other ranks waiting
   >     **indefinitely**
 
-## AllReduce
+### AllReduce
 
 Perform *reductions* on data (e.g. `sum`, `min`, `max`) across ranks,
 send result back to everyone.
 
 <div id="fig-all-reduce">
 
-<img src="./assets/collective-allreduce-sum.drawio.svg"
-class="r-stretch" />
+![](./assets/collective-allreduce-sum.drawio.svg)
 
 Figure 4: All-Reduce operation: each rank receives the reduction of
 input values across ranks.
@@ -109,42 +108,41 @@ input values across ranks.
 
 </div>
 
-## Reduce
+### Reduce
 
 - Perform a *reduction* on data across ranks, send to individual
 
 <div id="fig-reduce">
 
-<img src="./assets/collective-reduce-sum.drawio.svg"
-class="r-stretch" />
+![](./assets/collective-reduce-sum.drawio.svg)
 
 Figure 5: Reduce operation: one rank receives the reduction of input
 values across ranks
 
 </div>
 
-## Broadcast
+### Broadcast
 
 <div id="fig-broadcast">
 
-<img src="./assets/collective-broadcast.drawio.svg" class="r-stretch" />
+![](./assets/collective-broadcast.drawio.svg)
 
 Figure 6: `broadcast` (*send*) a tensor <code>$x$</code> from one rank
 to all ranks
 
 </div>
 
-## AllGather
+### AllGather
 
 <div id="fig-allgather">
 
-<img src="./assets/collective-allgather.drawio.svg" class="r-stretch" />
+![](./assets/collective-allgather.drawio.svg)
 
 Figure 7: Gathers tensors from the whole group in a list.
 
 </div>
 
-## Scatter
+### Scatter
 
 <div id="fig-scatter">
 
@@ -154,7 +152,7 @@ Figure 8: Scatters a list of tensors to the whole group
 
 </div>
 
-## Why Distributed Training?
+### Why Distributed Training?
 
 - `N` workers each processing unique batch[^1] of data:
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$
@@ -180,7 +178,7 @@ Table 1: Recent progress
 
 </div>
 
-## Dealing with Data
+### Dealing with Data
 
 - At each training step, we want to ensure that **each worker receives
   unique data**
@@ -194,7 +192,7 @@ Table 1: Recent progress
       - ⚠️ When randomly selecting, it is important that each worker
         uses different seeds to ensure they receive unique data
 
-## Broadcast Initial State
+### Broadcast Initial State
 
 - At the start of training (or when loading from a checkpoint), we want
   all of our workers to be initialized consistently
@@ -217,7 +215,7 @@ Figure 9: To ensure all workers have the same copies, we load on
 
 </div>
 
-## Best Practices
+### Best Practices
 
 <div class="flex-container">
 
@@ -256,7 +254,7 @@ Figure 9: To ensure all workers have the same copies, we load on
 > Keeping the communication to computation ratio small is important for
 > effective scaling.
 
-## Data Parallelism
+### Data Parallelism
 
 - Useful when model fits on single GPU
   - ultimately limited by GPU memory
@@ -265,7 +263,7 @@ Figure 9: To ensure all workers have the same copies, we load on
   - [PyTorch +
     FSDP](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 
-## Going beyond Data Parallelism:  ZeRO
+### Going beyond Data Parallelism:  ZeRO
 
 - Depending on the `ZeRO` stage (1, 2, 3), we can offload:
   1.  **Stage 1**: optimizer states
@@ -281,7 +279,7 @@ Figure 10: [DeepSpeed](deepspeed.ai) +
 
 </div>
 
-## Fully Sharded Data Parallel (FSDP)
+### Fully Sharded Data Parallel (FSDP)
 
 - Instead of maintaining per-GPU copy of `{params, grads, opt_states}`,
   FSDP shards (distributes) these across data-parallel workers
@@ -298,7 +296,7 @@ Figure 11: FSDP Workflow.
 
 </div>
 
-## Pipeline Parallel (PP)
+### Pipeline Parallel (PP)
 
 <div class="flex-container" style="place-content: end space-evenly;">
 
@@ -327,13 +325,13 @@ Parallelism](https://www.deepspeed.ai/tutorials/pipeline/)
 
 </div>
 
-## Tensor Parallel (TP)
+### Tensor Parallel (TP)
 
 <div>
 
 </div>
 
-## Model Parallel Training
+### Model Parallel Training
 
 <div class="flex-container">
 
@@ -367,7 +365,7 @@ Figure 14
 
 </div>
 
-## Tensor (/ Model) Parallel Training: Example
+### Tensor (/ Model) Parallel Training: Example
 
 Want to compute:
 $y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
@@ -409,7 +407,7 @@ Figure 15
 
 </div>
 
-## Tensor (Model) Parallelism[^2]
+### Tensor (Model) Parallelism[^2]
 
 - In **Tensor Paralleism** each GPU processes only a slice of a tensor
   and only aggregates the full tensor for operations that require the
@@ -421,11 +419,11 @@ Figure 15
   - If we look at the computation in matrix form, it’s easy to see how
     the matrix multiplication can be split between multiple GPUs:
 
-## Tensor Parallelism
+### Tensor Parallelism
 
 <div id="fig-parallel-gemm">
 
-<img src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch" />
+![](assets/parallelism-tp-parallel_gemm.png)
 
 Figure 16: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
@@ -434,7 +432,7 @@ by [@anton-l](https://github.com/anton-l)
 
 </div>
 
-## 3D Parallelism
+### 3D Parallelism
 
 - `DP` + `TP` + `PP` (3D) Parallelism
 
@@ -448,11 +446,11 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 </div>
 
-## Deciding on a Parallelism Strategy
+### Deciding on a Parallelism Strategy
 
 <div class="panel-tabset">
 
-### Single GPU
+#### Single GPU
 
 - Model fits onto a single GPU:
   - Normal use
@@ -464,7 +462,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
     - MCT Allows running of arbitrarily large layers by automatically
       splitting them and executing them sequentially.
 
-### Single Node / Multi-GPU
+#### Single Node / Multi-GPU
 
 <div class="flex-container">
 
@@ -494,7 +492,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
   - Otherwise, `PP` $>$ `ZeRO` $\simeq$ `TP`.
 
-### Multi-Node / Multi-GPU
+#### Multi-Node / Multi-GPU
 
 - When you have fast inter-node connectivity:
 
@@ -512,7 +510,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 </div>
 
-# Large Language Models
+## Large Language Models
 
 <div id="fig-llms">
 
@@ -523,18 +521,18 @@ community~~ **world** by storm[^3].
 
 </div>
 
-## Emergent Abilities
+### Emergent Abilities
 
 <div id="fig-emergent-abilities">
 
-<img src="./assets/emergent-abilities.gif" class="r-stretch" />
+![](./assets/emergent-abilities.gif)
 
 Figure 19: [Emergent abilities of Large Language
 Models](https://arxiv.org/abs/2206.07682) Yao et al. (2023)
 
 </div>
 
-## Training LLMs
+### Training LLMs
 
 <div class="flex-container"
 style="align-items: flex-end; width:90%; text-align:center;">
@@ -565,7 +563,7 @@ Figure 21: It’s hungry! Wei et al. (2022)
 
 </div>
 
-## Life-Cycle of the LLM
+### Life-Cycle of the LLM
 
 <div class="flex-container">
 
@@ -596,7 +594,7 @@ pre-training[^4].
 
 </div>
 
-## Life-Cycle of the LLM
+### Life-Cycle of the LLM
 
 <div class="flex-container">
 
@@ -627,7 +625,7 @@ weights to make the model better at a certain task[^5].
 
 </div>
 
-## Forward Pass
+### Forward Pass
 
 <div id="fig-hf-assisted-generation">
 
@@ -637,7 +635,7 @@ Figure 24: Language Model trained for causal language modeling[^6].
 
 </div>
 
-## Generating Text
+### Generating Text
 
 <div id="fig-generating-text">
 
@@ -647,7 +645,7 @@ Figure 25: Language Model trained for causal language modeling[^7].
 
 </div>
 
-## Assistant Models
+### Assistant Models
 
 <div id="fig-assistant-models">
 
@@ -658,12 +656,12 @@ Figure 26
 
 </div>
 
-# Hands On
+## Hands On
 
 [ALCF_Hands_on_HPC_Workshop /
 ml-at-scale](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/master/ml-at-scale#hands-on)
 
-## 🌱 Clone Repositories
+### 🌱 Clone Repositories
 
 1.   [`saforem2/wordplay/`](https://github.com/saforem2/wordplay)
 
@@ -678,7 +676,7 @@ ml-at-scale](https://github.com/argonne-lcf/ALCF_Hands_on_HPC_Workshop/tree/mast
     git clone https://github.com/saforem2/ezpz deps/ezpz
     ```
 
-## 🐍 Setup Python
+### 🐍 Setup Python
 
 ``` bash
 $ export PBS_O_WORKDIR=$(pwd) && source deps/ezpz/src/ezpz/bin/utils.sh
@@ -706,7 +704,7 @@ No VIRTUAL_ENV found in environment!
 [python] Using /eagle/argonne_tpc/foremans/tmp/2024-10-26-094746/venvs/2024-04-29/bin/python3
 ```
 
-## Setup Job
+### Setup Job
 
 ``` bash
 $ ezpz_setup_job
@@ -749,7 +747,7 @@ $ ezpz_setup_job
       launch = mpiexec --verbose --envall -n 8 -ppn 4 --hostfile /var/spool/pbs/aux/3061463.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov --cpu-bind depth -d 8
 ```
 
-## 📦 Install `{ezpz, wordplay}`
+### 📦 Install `{ezpz, wordplay}`
 
 1.  [`saforem2/ezpz`](https://github.com/saforem2/ezpz):
 
@@ -764,7 +762,7 @@ $ ezpz_setup_job
     python3 -m pip install -e . --require-virtualenv
     ```
 
-## 🚀 Launch [`ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
+### 🚀 Launch [`ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 
 ``` bash
 $ unset NCCL_COLLNET_ENABLE NCCL_CROSS_NIC NCCL_NET NCCL_NET_GDR_LEVEL
@@ -1107,7 +1105,7 @@ train/sps                                iter
 text saved in /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt
 ```
 
-## PyInstrument Profile
+### PyInstrument Profile
 
 ``` bash
 Recorded: 07:35:34  Samples:  2227
@@ -1153,7 +1151,7 @@ wandb: Find logs at: wandb/run-20240717_073532-p49rzxtv/logs
 Application cff755ee resources: utime=25s stime=23s maxrss=1434396KB inblock=32 oublock=4320 minflt=670179 majflt=864 nvcsw=195893 nivcsw=1331214
 ```
 
-## 🍋 [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
+### 🍋 [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
 
 <div id="fig-ezpz-asciinema">
 
@@ -1165,7 +1163,7 @@ to train a small model using DDP
 
 </div>
 
-## Install [`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
+### Install [`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 <div id="fig-nanoGPT">
 
@@ -1176,7 +1174,7 @@ GPT based models.
 
 </div>
 
-## Prepare Data
+### Prepare Data
 
 ``` bash
 $ python3 wordplay/data/shakespeare_char/prepare.py
@@ -1189,7 +1187,7 @@ train has 1,003,854 tokens
 val has 111,540 tokens
 ```
 
-## Launch Training (DDP)
+### Launch Training (DDP)
 
 ``` bash
 $ launch python3 -m wordplay \
@@ -1497,7 +1495,7 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
-## [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
+### [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
 <div id="fig-wordplay-asciinema">
 
@@ -1508,7 +1506,7 @@ Figure 29: Example: Training a LLM to talk like Shakespeare using
 
 </div>
 
-# ❤️ Thank you!
+## ❤️ Thank you!
 
 - Organizers
 
@@ -1530,7 +1528,7 @@ Figure 29: Example: Training a LLM to talk like Shakespeare using
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-# References
+## References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">

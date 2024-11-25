@@ -1,5 +1,5 @@
 Sam Foreman
-2024-11-21
+2024-11-25
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">21</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:17:06</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">25</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:00:01</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1172,14 +1172,14 @@ Table 2: 🎓 Education
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Talks]: ./talks/index.qmd
-  [**Parallel Training Methods**]: https://samforeman.me/talks/ai-for-science-2024/slides
+  [**Parallel Training Methods**]: ./ai-for-science-2024/
   [*AI-for-Science on Supercomputers*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
-  [**AuroraGPT**]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides
+  [**AuroraGPT**]: ./AuroraGPT/alcf-hpc-workshop-2024/
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
-  [**Machine Learning and Foundation Models at Scale**]: https://samforeman.me/talks/alcf-hpc-workshop-2024/slides
-  [16]: https://samforeman.me/talks/hpc-user-forum/slides
+  [**Machine Learning and Foundation Models at Scale**]: ./alcf-hpc-workshop-2024/
+  [16]: ./hpc-user-forum/
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
-  [**Training LLMs at Scale**]: https://samforeman.me/talks/llms-at-scale/slides
+  [**Training LLMs at Scale**]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
   [**LLMs on Polaris**]: https://samforeman.me/talks/llms-on-polaris/slides
   [*Center for Scientific Foundation Models*, Summer School 24’]: https://scifm.ai/summer_school.html

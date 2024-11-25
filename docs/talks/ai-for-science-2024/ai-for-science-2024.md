@@ -1036,7 +1036,7 @@ class a0,b0,c0, text
 
 <div id="fig-parallel-gemm">
 
-<img src="assets/parallelism-tp-parallel_gemm.png" class="r-stretch" />
+![](assets/parallelism-tp-parallel_gemm.png)
 
 Figure 18: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
@@ -1338,7 +1338,7 @@ GPT based models. Figure from
 
 ### Prepare Data
 
-``` console
+``` bash
 $ python3 wordplay/data/shakespeare_char/prepare.py
 Using HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface
 length of dataset in characters: 1,115,394
