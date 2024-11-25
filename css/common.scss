@@ -530,7 +530,7 @@ samp {
 }
 
 pre {
-  // font-family: $font-family-monospace !important;
+  font-family: $font-family-monospace !important;
   color: $body-color;
   font-weight: 400;
   // display: contents !important;
@@ -539,7 +539,7 @@ pre {
   // margin-bottom: 1rem;
   overflow: auto;
   line-height: 1rem;
-  font-family: $monofont;
+  // font-family: $monofont!important;
   font-size: inherit;
   // padding: 0.5rem;
 }
@@ -611,7 +611,8 @@ body td code:not(.sourceCode) {
 
 .py-1 {
   padding: 0;
-
+  padding-top: 2pt !important;
+  padding-bottom: 0 !important;
 }
 
 .pe-0 {
@@ -619,7 +620,9 @@ body td code:not(.sourceCode) {
 }
 
 .ps-1 {
-  margin-top: 5pt;
+  // margin-top: 5pt;
+  margin: 0;
+  padding: 0;
 }
 
 .reveal body p code:not(.sourceCode),
@@ -641,19 +644,32 @@ body td code:not(.sourceCode) {
   margin-bottom: 0;
 }
 
+// .callout:not(.callout-titled) .callout-body> :last-child,
+// .callout:not(.callout-titled) .callout-body>div> :last-child {
+//   /* margin-block: 0.25rem; */
+//   font-size: 1rem;
+//   opacity: 100%;
+//   display: inline-block;
+//   padding-inline: unset;
+// }
+
 .callout:not(.callout-titled) .callout-body> :last-child,
 .callout:not(.callout-titled) .callout-body>div> :last-child {
-  /* margin-block: 0.25rem; */
   font-size: 1rem;
   opacity: 100%;
   display: inline-block;
-  padding-inline: unset;
+  padding-inline: 2pt;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-block: 2pt;
 }
 
 .callout .callout-title-container {
   overflow-wrap: anywhere;
   font-weight: bold;
   -moz-osx-font-smoothing: grayscale;
+  // padding-bottom: 1pt;
+  margin-block: 4pt;
   // margin-block-end: 6pt;
   // -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -1041,10 +1057,10 @@ body td code:not(.sourceCode) {
 // }
 
 
-.img,
-.img-fluid {
-  // border: 1px solid rgba(0, 0, 0, 0.0);
-}
+// .img,
+// .img-fluid {
+//   // border: 1px solid rgba(0, 0, 0, 0.0);
+// }
 
 .lightbox {
   background: none;
@@ -1289,10 +1305,10 @@ nav td code:not(.sourceCode) {
   // outline: 1px solid red;
   display: inline-flex !important;
   align-items: center;
+  // padding-block: 2pt;
   width: 100%;
   padding: 0;
   margin: 0;
-  padding-bottom: 2pt;
 }
 
 // .reveal section.has-light-background code:not(.sourceCode),

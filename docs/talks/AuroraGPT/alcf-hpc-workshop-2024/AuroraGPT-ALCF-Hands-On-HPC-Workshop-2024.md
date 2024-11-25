@@ -2,7 +2,7 @@
 Sam Foreman
 2024-10-30
 
-# 🎯 AuroraGPT Goals
+## 🎯 AuroraGPT Goals
 
 <div class="flex-container"
 style="flex-direction: column; justify-content: space-around;">
@@ -74,7 +74,7 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
 
 </div>
 
-# 🧪 AuroraGPT: Open Science Foundation Models
+## 🧪 AuroraGPT: Open Science Foundation Models
 
 <div id="fig-aurora-gpt">
 
@@ -121,7 +121,7 @@ Figure 3:
 
 </div>
 
-# 📊 AuroraGPT Outcomes
+## 📊 AuroraGPT Outcomes
 
 - **Datasets and data pipelines** for preparing science training data
 - **Software infrastructure and workflows** to train, evaluate and
@@ -168,7 +168,7 @@ Figure 3:
 
 </div>
 
-# 🌌 Aurora
+## 🌌 Aurora
 
 <div class="flex-container" style="align-items: center;">
 
@@ -207,7 +207,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 </div>
 
-# 🤖 ALCF AI Testbed
+## 🤖 ALCF AI Testbed
 
 - ALCF AI Testbed Systems are in production and [available for
   allocations](https://accounts.alcf.anl.gov/#/allocationRequests) to
@@ -262,7 +262,9 @@ processors accelerators per node
 
 </div>
 
-# 👥 Team Leads
+## 👥 Team Leads
+
+<div style="font-size: 100%;">
 
 <div class="flex-container"
 style="text-align: center; align-items: center;">
@@ -291,7 +293,7 @@ alt="Fangfang Xia" />
 
 <div class="flex-container" style="text-align: center;">
 
-<div class="column">
+<div class="col">
 
 **Data**
 
@@ -303,7 +305,7 @@ alt="Robert Underwood" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Training**
 
@@ -315,11 +317,11 @@ alt="Sam Foreman" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Evaluation**
 
-<img src="./assets/team/franck-cappello.png" style="height:1.05556in"
+<img src="./assets/team/franck-cappello.png" style="height:1.04167in"
 alt="Franck Cappello" />
 
 <img src="./assets/team/sandeep-madireddy.png" style="height:1.04167in"
@@ -330,7 +332,7 @@ alt="Bo Li" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Post**
 
@@ -342,7 +344,7 @@ alt="Azton Wells" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Inference**
 
@@ -351,7 +353,7 @@ alt="Rajeev Thakur" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Comms**
 
@@ -363,7 +365,7 @@ alt="David Martin" />
 
 </div>
 
-<div class="column">
+<div class="col">
 
 **Distribution**
 
@@ -374,7 +376,9 @@ alt="Brad Ullrich" />
 
 </div>
 
-# 🤝 Teams
+</div>
+
+## 🤝 Teams
 
 <div class="flex-container">
 
@@ -408,7 +412,7 @@ alt="Brad Ullrich" />
 
 </div>
 
-# 🦜 Model Training
+## 🦜 Model Training
 
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
@@ -462,11 +466,12 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 <div class="aside">
 
-[`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+[argonne-lcf /
+`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 </div>
 
-# 🚀 Accelerating Dataset Processing at Scale for Training
+## 🚀 Accelerating Dataset Processing at Scale for Training
 
 - To train a fixed model on trillions of tokens requires:
   - Aggregating data from multiple different *corpora* (e.g. Reddit,
@@ -481,7 +486,7 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance
 
-# 🚀 Accelerating Dataset Processing: Results
+## 🚀 Accelerating Dataset Processing: Results
 
 - [x] Completely re-wrote an asynchronous, distributed implementation
   that *significantly* improves performance (~~60 min~~ $\rightarrow$ 4
@@ -507,7 +512,7 @@ Figure 10: Time spent building `GPTDataset`
 
 </div>
 
-# 📓 References
+## 📓 References
 
 <div class="flex-container" style="gap: 2pt;">
 
@@ -549,7 +554,7 @@ Figure 10: Time spent building `GPTDataset`
 
 </div>
 
-# ❤️ Thank you!
+## ❤️ Thank you!
 
 - Organizers
 
@@ -571,7 +576,7 @@ Figure 10: Time spent building `GPTDataset`
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-# 📑 Bibliography
+## 📑 Bibliography
 
 - Refs:
   - Wei et al. (2022)
@@ -610,9 +615,9 @@ in Practice: A Survey on ChatGPT and Beyond.”
 
 </div>
 
-# 🎁 Extras
+## 🎁 Extras
 
-## 🚂 Loooooooooong Sequence Lengths
+### 🚂 Loooooooooong Sequence Lengths
 
 <div class="flex-container"
 style="align-items: center; justify-content: center;">
@@ -656,7 +661,7 @@ models (See: Song et al. (2023))
 
 </div>
 
-## ♻️ Life Cycle of the LLM
+### ♻️ Life Cycle of the LLM
 
 <div class="panel-tabset" style="text-align:center">
 
@@ -684,7 +689,7 @@ weights to make the model better at a certain task.
 
 </div>
 
-## 🍎 Training LLMs
+### 🍎 Training LLMs
 
 <div class="flex-container" style="align-items: flex-end;">
 

@@ -63,7 +63,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > [!TIP]
 >
 > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon"
-> style="height:1.25rem; vertical-align: text-bottom;" /> Now Playing</span>
+> style="height:1.25rem;vertical-align:text-bottom;" /> Now Playing</span>
 >
 > [![][10]][11]
 >
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">25</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:00:01</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">25</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">15:00:17</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1172,7 +1172,7 @@ Table 2: 🎓 Education
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Talks]: ./talks/index.qmd
-  [**Parallel Training Methods**]: ./ai-for-science-2024/
+  [**Parallel Training Methods**]: ./talks/ai-for-science-2024/index.html
   [*AI-for-Science on Supercomputers*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**AuroraGPT**]: ./AuroraGPT/alcf-hpc-workshop-2024/
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
