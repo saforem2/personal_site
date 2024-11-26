@@ -94,7 +94,7 @@ $mypurple: #AE81FF;
 $mypink: #FF67FF;
 
 $base-font-size: 16px !default;
-$code-block-font-size: 14px !default;
+$code-block-font-size: 15px !default;
 //
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
@@ -520,6 +520,42 @@ $themes: (
   // --card-width: calc(var(--card-height) / 1.5);
 }
 
+p {
+  text-wrap: pretty;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+body p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+body li p {
+  margin-bottom: 0;
+}
+
+
+body ol,
+body ul,
+body dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+body ol p,
+body ul p,
+body dl p {
+  margin-bottom: 0;
+}
+
+ul>li:not(:has(> p))>ul,
+ol>li:not(:has(> p))>ul,
+ul>li:not(:has(> p))>ol,
+ol>li:not(:has(> p))>ol {
+  margin-bottom: 0;
+}
+
 
 pre,
 code,
@@ -610,7 +646,9 @@ code {
 body p code:not(.sourceCode),
 body li code:not(.sourceCode),
 body td code:not(.sourceCode) {
-  padding: 1px 2px;
+  // padding: 1px 2px;
+  padding: 0pt;
+  font-size: inherit;
   /* padding: .2em; */
 }
 
@@ -630,9 +668,7 @@ body td code:not(.sourceCode) {
   padding: 0;
 }
 
-.reveal body p code:not(.sourceCode),
-body li code:not(.sourceCode),
-body td code:not(.sourceCode) {
+.reveal body p code:not(.sourceCode) {
   font-size: 1em !important;
   /* font-size: .875rem; */
 }
@@ -689,7 +725,7 @@ body td code:not(.sourceCode) {
 div.sourceCode {
   white-space: pre;
   font-family: $monofont;
-  padding: 5pt 1pt;
+  // padding: 5pt 1pt;
 }
 
 .edgeLabel>p {
@@ -1004,12 +1040,12 @@ img:hover,
   transition: background .3s ease-in-out;
 }
 
-body p code:not(.sourceCode),
-body li code:not(.sourceCode),
-body td code:not(.sourceCode) {
-  // padding: 1px 2px;
-  font-size: 0.875rem;
-}
+// body p code:not(.sourceCode),
+// body li code:not(.sourceCode),
+// body td code:not(.sourceCode) {
+//   // padding: 1px 2px;
+//   font-size: 0.875rem;
+// }
 
 
 // .reveal a:hover,
@@ -2239,6 +2275,13 @@ th {
   border-bottom: $bs-table-border-color;
 }
 
+table {
+  caption-side: bottom;
+  border-collapse: collapse;
+  word-wrap: anywhere;
+  white-space: nowrap;
+}
+
 // .reveal .table-hover>tbody>tr:hover>*,
 // .table-hover>tbody>tr:hover>* {
 //   --bs-table-accent-bg: var(--bs-table-hover-bg) !important;
@@ -3093,10 +3136,10 @@ div.sidebar-item-container .sidebar-link>code {
   width: 100%;
 }
 
-main ul,
-main ol {
-  margin-block: 0pt;
-}
+// main ul,
+// main ol {
+//   margin-block: 0pt;
+// }
 
 ul>li:not(:has(> p))>ul,
 ol>li:not(:has(> p))>ul,

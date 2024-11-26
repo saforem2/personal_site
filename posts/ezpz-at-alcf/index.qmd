@@ -82,11 +82,10 @@ There are two main, distinct components of `ezpz`:
 The Shell Utilities can be roughly broken up further into two main components
 
 1. [Setup Environment](#setup-environment):
-  1. [Setup Python](#setup-python):
+   1. [Setup Python](#setup-python):
       1. [Setup Conda](#setup-conda)
       1. [Setup Virtual Environment](#setup-virtual-environment)
-  1. [Setup Job](#setup-job):
-
+   1. [Setup Job](#setup-job):
 
 We provide a variety of helper functions designed to make your life easier
 when working with job schedulers (e.g. `PBS Pro` @ ALCF or `slurm` elsewhere).
@@ -140,13 +139,14 @@ Now, there are a few functions in particular worth elaborating on.
 
 | &nbsp;                                                   | Function                     | Description                                                                               |
 | :------------------------------------------------------ | :--------------------------  | :-----------                                                                              |
-| [Setup Environment](#setup-environment)                  | `ezpz_setup_env`             | Wrapper around `ezpz_setup_python && ezpz_setup_job`                                      |
+| [Setup Environment](#setup-environment)                  | `ezpz_setup_env`             | Wrapper around `ezpz_setup_python` `&&` `ezpz_setup_job`                                      |
 | [Setup Job](#setup-job)                                  | `ezpz_setup_job`             | Determine {`NGPUS`, `NGPU_PER_HOST`, `NHOSTS`}, build `launch` command alias              |
 | [Setup Python](#setup-python)                            | `ezpz_setup_python`          | Load python modules and activate virtual environment                                      |
 | [Setup Conda](#setup-conda)                              | `ezpz_setup_conda`           | Identify appropriate `conda` module to load                                               |
 | [Setup Virtual Environment](#setup-virtual-environment)  | `ezpz_setup_venv_from_conda` | From `${CONDA_NAME}`, build or activate the virtual env located in `venvs/${CONDA_NAME}/` |
 
 : Shell Functions {.responsive .striped .hover}
+
 :::
 
 <!--1. Setup Environment: `ezpz_setup_env`.-->
@@ -163,14 +163,11 @@ Now, there are a few functions in particular worth elaborating on.
 
 ::: {.callout-warning collapse=false title="Where am I?"}
 
-_Some_ of the `ezpz_*` functions
-(e.g. `ezpz_setup_python`),
-will try to create / look for certain directories.
+_Some_ of the `ezpz_*` functions (e.g. `ezpz_setup_python`), will try to create
+/ look for certain directories.
 
-In an effort to be explicit,
-these directories will be defined
-**relative to** a `WORKING_DIR`
-(e.g. `"${WORKING_DIR}/venvs/"`)
+In an effort to be explicit, these directories will be defined **relative to**
+a `WORKING_DIR` (e.g. `"${WORKING_DIR}/venvs/"`)
 
 This `WORKING_DIR` will be assigned to the first non-zero match found below:
 
@@ -195,8 +192,6 @@ This will:
    - **ALCF**[^alcf]: Automatically load
      the most recent `conda` module and activate the base environment.
 
-     [^alcf]: Any of {Aurora, Polaris, Sophia, Sunspot, Sirius}
-
    - **Frontier**: Load the appropriate AMD modules (e.g. `rocm`,
      `RCCL`, etc.), and activate base `conda`
 
@@ -217,6 +212,8 @@ This will:
    env in `venvs/custom/`
 
    :::
+
+[^alcf]: Any of {Aurora, Polaris, Sophia, Sunspot, Sirius}
 
 2. Build (or activate, if found) a virtual environment on top of (the active) base `conda` environment.
 
@@ -319,7 +316,6 @@ on one of the known machines:
         hostfile="${prefix}/${match}"
         ```
 
-
   2. Identify number of available accelerators:
 
 
@@ -365,19 +361,19 @@ python3 -m pip install -e "git+https://github.com/saforem2/ezpz#egg=ezpz" --requ
 -->
 
 
-- 📂 [`bin/`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/):
-  - [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/utils.sh): Common utilities for EZPZ
-- 📂 [`conf/`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/):
-  - ⚙️ [`conf/config.yaml`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/config.yaml):  Default `TrainConfig` object
-  - ⚙️ [`conf/ds_config.json`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/ds_config.json): DeepSpeed configuration
-- 📂 [`log/`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/log/): Logging configuration.
+- 📂 [bin/](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/):
+  - [ezpz/bin/`utils.sh`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/bin/utils.sh): Common utilities for EZPZ
+- 📂 [conf/](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/):
+  - ⚙️ [conf/`config.yaml`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/config.yaml):  Default `TrainConfig` object
+  - ⚙️ [conf/`ds_config.json`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/conf/ds_config.json): DeepSpeed configuration
+- 📂 [log/](https://github.com/saforem2/ezpz/blob/main/src/ezpz/log/): Logging configuration.
 - 🐍 [`__about__.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/__about__.py): Version information
 - 🐍 [`__init__.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/__init__.py): Main module
 - 🐍 [`__main__.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/__main__.py): Entry point
 - 🐍 [`configs.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/configs.py): Configuration module
 - 🐍[`cria.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/create.py): Baby Llama
 - 🐍[**`dist.py`**](https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py): Distributed training module
-- 🐍[_`history.py`_](https://github.com/saforem2/ezpz/blob/main/src/ezpz/history.py): History module
+- 🐍[`history.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/history.py): History module
 - 🐍[`jobs.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/jobs.py): Jobs module
 - 🐍[`model.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/model.py): Model module
 - 🐍[`plot.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/plot.py): Plot modul
