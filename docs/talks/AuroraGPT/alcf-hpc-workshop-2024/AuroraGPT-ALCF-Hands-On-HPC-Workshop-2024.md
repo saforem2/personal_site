@@ -527,11 +527,11 @@ Figure 10: Time spent building `GPTDataset`
   - [LLMs on
     Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
   - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
-- 
-  [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+-  [argonne-lcf /
+  `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
   <span class="dim-text">For the largest of large language
   models.</span>
--  [`saforem2/ezpz`](https://github.com/saforem2/ezpz)  
+-  [saforem2 / `ezpz`](https://github.com/saforem2/ezpz)  
   <span class="dim-text">Distributed training, ezpz. 🍋</span>
 
 </div>

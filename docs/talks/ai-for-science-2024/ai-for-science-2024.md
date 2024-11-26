@@ -345,7 +345,92 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 ### Data Parallel: Training
 
-<div>
+<div class="flex-container">
+
+<div class="column" style="width:55%;">
+
+- Each GPU:
+  - has **identical copy** of model
+  - works on a **unique** subset of data
+- Easy to get started (minor modifications to code):
+  -  [saforem2/`ezpz`](https://github.com/saforem2/ezpz)
+  - 🔥 [PyTorch / `DDP`](https://pytorch.org/docs/stable/notes/ddp.html)
+  - 🤗 [HF /
+    `Accelerate`](https://huggingface.co/docs/transformers/accelerate)
+  -  [Microsoft / `DeepSpeed`](https://www.deepspeed.ai/)
+- Requires **global** communication
+  - every rank *must participate* (collective communication) !!
+
+</div>
+
+<div class="column">
+
+<div id="fig-avgGrads">
+
+``` mermaid
+flowchart TD
+    subgraph D["`Data`"]
+        direction LR
+        x("`x₀`")
+        x1("`x₁`")
+        x2("`x₂`")
+    end
+    subgraph G0["`GPU0`"]
+        direction TB
+        subgraph N0["`NN`"]
+        end
+        L0["`L₀`"]
+    end
+    subgraph G1["`GPU1`"]
+        direction TB
+        subgraph N1["`NN`"]
+        end
+        L1["`L₁`"]
+    end
+    subgraph G2["`GPU2`"]
+        direction TB
+        subgraph N2["`NN`"]
+        end
+        L2["`L₂`"]
+    end
+    subgraph AR["`Average Grads`"]
+        direction TB
+        ar("`(1/n) ∑ gₙ`")
+        bc("`Update Weights`")
+        ar --> bc
+    end
+    x --> G0
+    x1 --> G1
+    x2 --> G2
+    N0 --> L0
+    N1 --> L1
+    N2 --> L2
+    G0 <-.-> AR
+    G1 <-.-> AR
+    G2 <-.-> AR
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,y0,L0 red
+class x1,L1 green
+class x2,L2 blue
+class x3,ar grey
+class D,N0,N1,N2,G0,G1,G2,GU block
+class AR block
+class bc text
+```
+
+Figure 6
+
+</div>
+
+</div>
 
 </div>
 
@@ -1127,7 +1212,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 <div id="fig-llms">
 
-<img src="./assets/llms.gif" class="r-stretch" />
+![](./assets/llms.gif)
 
 Figure 20: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
@@ -1367,7 +1452,7 @@ launch python3 -m wordplay \
 
 ### Training: Example Output
 
-``` console
+``` bash
 $ launch python3 -m wordplay \
     train.backend=DDP \
     train.eval_interval=100 \

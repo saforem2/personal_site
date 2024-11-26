@@ -2,25 +2,6 @@
 Sam Foreman
 2024-10-29
 
-## 
-
-<div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
-
-<div style="display:flex;">
-
-<span style="font-size: 1.75em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8">October
-29 – 31, 2024 $\hspace{5pt}$ </span>
-<span style="display:inline-block;">![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg)</span>
-
-</div>
-
-<span style="font-size: 3.0em; font-weight: 700; color: white">ALCF
-Hands-on</span>  
-<span style="font-size: 3.0em; font-weight: 700; color: #FFFFFF">HPC
-Workshop</span>
-
-</div>
-
 ## Overview
 
 - [ALCF Hands-on HPC

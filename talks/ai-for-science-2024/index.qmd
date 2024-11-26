@@ -43,15 +43,15 @@ format:
       max-scale: 4.0
       min-scale: 0.1
       pdf-separate-fragments: true
-      center: true
+      center: false
       auto-stretch: true
       callout-style: simple
       mermaid-format: png
       mermaid:
         # format: png
         useMaxWidth: true
-        # layout: elk
-        # mermaid:
+        layout: elk
+      #   # mermaid:
       #   layout: elk
       # minScale: 0.7
       # maxScale: 1
@@ -536,9 +536,11 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 ## Data Parallel: Training {background-color="white"}
 
-::: {layout="[55,45]"}
+<!--::: {layout="[55,45]"}-->
 
-::: {.column}
+::: {.flex-container}
+
+::: {.column style="width:55%;"}
 - Each GPU:
   - has **identical copy** of model
   - works on a **unique** subset of data
@@ -556,7 +558,7 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 ::: {.column}
 
-::: {#fig-avgGrads}
+::: {#fig-avgGrads .r-stretch}
 
 ```{mermaid}
 flowchart TD
@@ -1460,7 +1462,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 # 🦙 Large Language Models {background-color="white"}
 
 ::: {#fig-llms}
-![](./assets/llms.gif){.r-stretch}
+![](./assets/llms.gif)
 
 Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].  
 :::
@@ -1695,7 +1697,7 @@ launch python3 -m wordplay \
 
 ## Training: Example Output {background-color="white"}
 
-```console
+```bash
 $ launch python3 -m wordplay \
     train.backend=DDP \
     train.eval_interval=100 \

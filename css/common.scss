@@ -504,6 +504,7 @@ $themes: (
   --link-bg-color: $link-bg-color;
   --red-sf: $myred;
   --r-link-color: $link-color;
+  --r-code-font: $font-family-monospace;
   --orange-sf: $myorange;
   --yellow-sf: $myyellow;
   --green-sf: $mygreen;
@@ -558,6 +559,10 @@ code {
   font-family: $monofont;
   word-wrap: break-word;
   background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
+}
+
+.reveal code {
+  font-family: $font-family-monospace
 }
 
 
@@ -668,8 +673,10 @@ body td code:not(.sourceCode) {
   overflow-wrap: anywhere;
   font-weight: bold;
   -moz-osx-font-smoothing: grayscale;
+  margin-block-start: 2pt;
+  margin-block-end: 4pt;
   // padding-bottom: 1pt;
-  margin-block: 4pt;
+  // margin-block: 4pt;
   // margin-block-end: 6pt;
   // -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -3606,7 +3613,8 @@ figure>figcaption.quarto-float-caption-bottom {
 }
 
 .quarto-layout-cell img {
-  max-width: 100%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: unset;
   overflow-clip-margin: unset;
   // contain: layout;
@@ -4237,11 +4245,17 @@ div.code {
 //   font-weight: normal;
 // }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1020px) {
   .reveal .footer {
     display: none !important;
     // font-size: x-small !important;
     // bottom: 12px;
+  }
+
+  .reveal img {
+    max-width: 90%;
+    // max-height: 90%;
+    max-height: calc(0.995 * 100vh);
   }
 }
 
