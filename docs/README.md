@@ -1,5 +1,5 @@
 Sam Foreman
-2024-11-26
+2024-12-01
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">26</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">00:23:38</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:57:30</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -873,26 +873,23 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text-11">📊 GitHub Stats</span>
 >
-> <div class="columns"
-> style="display: flex; flex-direction: row; align-items: center; text-align:left;">
->
-> <div class="column" style="text-align: left;width: 57%;">
->
-> <a href="https://github.com/saforem2/"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a>
->
-> </div>
->
-> <div class="column" style="text-align: left; width: 43%">
+> <div class="flex-container" style="flex-flow: wrap;">
 >
 > [![][18]][19]
 >
-> </div>
+> [![][20]][21]
 >
 > </div>
 >
-> [![][20]][21] <img
+> <div style="width: 100%; text-align: center;">
+>
+> [<img
+> src="https://github-readme-streak-stats.herokuapp.com?user=saforem2&amp;theme=transparent&amp;hide_border=true&amp;card_width=800&amp;card_height=200&amp;stroke=838383&amp;currStreakNum=838383&amp;dates=838383&amp;currStreakLabel=838383&amp;background=EB545400&amp;border=83838300&amp;ring=8383836F&amp;fire=FF5252&amp;sideNums=838383&amp;sideLabels=838383"
+> id="img-stretch" />] <img
 > src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&amp;theme=minimal&amp;bg_color=00000000&amp;line=838383&amp;color=838383&amp;days=30&amp;point=838383&amp;hide_border=true&amp;hide_title=true&amp;area=true.png"
 > id="img-stretch" />
+>
+> </div>
 >
 > <details closed>
 >
@@ -920,8 +917,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text-11">📂 [`saforem2/`]</span>
 >
-> <div class="grid"
-> style="grid-template-columns: repeat(var(--bs-columns, 2), 1fr);">
+> <div class="flex-container" style="flex-flow: wrap;">
 >
 > [![][23]][Building better sampling methods for Lattice QCD]
 >
@@ -1014,11 +1010,11 @@ Table 2: 🎓 Education
 
 ### 🎶 Music
 
-<div class="flex-container" style="align-items: baseline;">
+<div class="flex-container" style="align-items: flex-start;">
 
 <span class="lazy">[![][61]][62]</span>
 
-<div class="flex-container" style="flex-direction: column; width: 50%;">
+<div class="flex-container" style="flex-flow: wrap;">
 
 > [!TIP]
 >
@@ -1093,7 +1089,7 @@ Table 2: 🎓 Education
 > </div>
 > </div>
 
-<span class="stretch">[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" >][13]</span>
+[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" width="100%" align="center" >][13]
 
 </div>
 
@@ -1216,10 +1212,13 @@ Table 2: 🎓 Education
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
-  [18]: https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383.png
-  [19]: https://github.com/saforem2/github-readme-stats
-  [20]: https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383
-  [21]: https://git.io/streak-stats
+  [18]: https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg
+  [19]: https;//github.com/saforem2
+  [20]: https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383.png
+  [21]: https://github.com/saforem2/github-readme-stats
+  [<img
+  src="https://github-readme-streak-stats.herokuapp.com?user=saforem2&amp;theme=transparent&amp;hide_border=true&amp;card_width=800&amp;card_height=200&amp;stroke=838383&amp;currStreakNum=838383&amp;dates=838383&amp;currStreakLabel=838383&amp;background=EB545400&amp;border=83838300&amp;ring=8383836F&amp;fire=FF5252&amp;sideNums=838383&amp;sideLabels=838383"
+  id="img-stretch" />]: https://git.io/streak-stats
   [22]: https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
   [23]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
