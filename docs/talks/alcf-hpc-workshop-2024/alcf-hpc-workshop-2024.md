@@ -2,6 +2,63 @@
 Sam Foreman
 2024-10-29
 
+- [Overview](#overview)
+- [🚀 Scaling: Overview](#rocket-scaling-overview)
+  - [Single GPU](#single-gpu)
+  - [Data Parallel Training](#data-parallel-training)
+  - [Data Parallel Training](#data-parallel-training-1)
+  - [Communication](#communication)
+  - [AllReduce](#allreduce)
+  - [Reduce](#reduce)
+  - [Broadcast](#broadcast)
+  - [AllGather](#allgather)
+  - [Scatter](#scatter)
+  - [Why Distributed Training?](#why-distributed-training)
+- [Why Distributed Training?
+  Speedup!](#why-distributed-training-speedup)
+  - [Dealing with Data](#dealing-with-data)
+  - [Broadcast Initial State](#broadcast-initial-state)
+  - [Best Practices](#best-practices)
+  - [Data Parallelism](#data-parallelism)
+  - [Going beyond Data Parallelism:
+    ZeRO](#going-beyond-data-parallelism----zero)
+  - [Fully Sharded Data Parallel
+    (FSDP)](#fully-sharded-data-parallel-fsdp)
+  - [Pipeline Parallel (PP)](#pipeline-parallel-pp)
+  - [Tensor Parallel (TP)](#tensor-parallel-tp)
+  - [Model Parallel Training](#model-parallel-training)
+  - [Tensor (/ Model) Parallel Training:
+    Example](#tensor--model-parallel-training-example)
+  - [Tensor (Model)
+    Parallelism](#tensor-model-parallelismefficient-large-scale)
+  - [Tensor Parallelism](#tensor-parallelism)
+  - [3D Parallelism](#3d-parallelism)
+  - [Deciding on a Parallelism
+    Strategy](#deciding-on-a-parallelism-strategy)
+- [Large Language Models](#large-language-models)
+  - [Emergent Abilities](#emergent-abilities)
+  - [Training LLMs](#training-llms)
+  - [Life-Cycle of the LLM](#life-cycle-of-the-llm)
+  - [Life-Cycle of the LLM](#life-cycle-of-the-llm-1)
+  - [Forward Pass](#forward-pass)
+  - [Generating Text](#generating-text)
+  - [Assistant Models](#assistant-models)
+- [Hands On](#hands-on)
+  - [🌱 Clone Repositories](#seedling-clone-repositories)
+  - [🐍 Setup Python](#snake-setup-python)
+  - [Setup Job](#setup-job)
+  - [📦 Install `{ezpz, wordplay}`](#package-install-ezpz-wordplay)
+  - [🚀 Launch `ezpz.test_dist`](#rocket-launch-ezpztest_dist)
+  - [PyInstrument Profile](#pyinstrument-profile)
+  - [🍋 `ezpz`: Example \[video\]](#lemon-ezpz-example-video)
+  - [Install `wordplay`
+    🎮💬](#install-wordplay-video_gamespeech_balloon)
+  - [Prepare Data](#prepare-data)
+  - [Launch Training (DDP)](#launch-training-ddp)
+  - [`wordplay`: Example \[video\]](#wordplay-example-video)
+- [❤️ Thank you!](#heart-thank-you)
+- [References](#references)
+
 ## Overview
 
 - [ALCF Hands-on HPC

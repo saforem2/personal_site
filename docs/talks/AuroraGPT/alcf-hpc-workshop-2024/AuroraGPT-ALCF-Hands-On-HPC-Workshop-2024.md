@@ -2,6 +2,28 @@
 Sam Foreman
 2024-10-30
 
+- [🎯 AuroraGPT Goals](#dart-auroragpt-goals)
+- [🧪 AuroraGPT: Open Science Foundation
+  Models](#test_tube-auroragpt-open-science-foundation-models)
+- [📊 AuroraGPT Outcomes](#bar_chart-auroragpt-outcomes)
+- [🌌 Aurora](#milky_way-aurora)
+- [🤖 ALCF AI Testbed](#robot-alcf-ai-testbed)
+- [👥 Team Leads](#busts_in_silhouette-team-leads)
+- [🤝 Teams](#handshake-teams)
+- [🦜 Model Training](#parrot-model-training)
+- [🚀 Accelerating Dataset Processing at Scale for
+  Training](#rocket-accelerating-dataset-processing-at-scale-for-training)
+- [🚀 Accelerating Dataset Processing:
+  Results](#rocket-accelerating-dataset-processing-results)
+- [📓 References](#notebook-references)
+- [❤️ Thank you!](#heart-thank-you)
+- [📑 Bibliography](#bookmark_tabs-bibliography)
+- [🎁 Extras](#gift-extras)
+  - [🚂 Loooooooooong Sequence
+    Lengths](#steam_locomotive-loooooooooong-sequence-lengths)
+  - [♻️ Life Cycle of the LLM](#recycle-life-cycle-of-the-llm)
+  - [🍎 Training LLMs](#apple-training-llms)
+
 ## 🎯 AuroraGPT Goals
 
 <div class="flex-container"

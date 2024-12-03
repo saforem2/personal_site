@@ -2,6 +2,10 @@
 Sam Foreman
 2024-03-21
 
+- [Response](#response)
+  - [Measuring / Calculating Startup Time](#sec-measurements)
+- [Minimal Working Example](#minimal-working-example)
+
 > [!TIP]
 >
 > ### <span class="dim-text"> Application Startup Time</span>

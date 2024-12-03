@@ -2,6 +2,67 @@
 Sam Foreman
 2024-11-05
 
+- [👀 Overview](#eyes-overview)
+- [📑 Outline](#bookmark_tabs-outline)
+- [🚀 Scaling: Overview](#rocket-scaling-overview)
+- [🐢 Training on a Single Device](#turtle-training-on-a-single-device)
+- [🏎️ Training on Multiple GPUs: Data
+  Parallelism](#racing_car-training-on-multiple-gpus-data-parallelism)
+  - [Data Parallel: Forward Pass](#data-parallel-forward-pass)
+  - [Data Parallel: Backward Pass](#data-parallel-backward-pass)
+  - [Data Parallel: Full Setup](#data-parallel-full-setup)
+  - [Data Parallel: Training](#data-parallel-training)
+- [🗣️ Communication](#speaking_head-communication)
+  - [AllReduce](#allreduce)
+  - [Reduce](#reduce)
+  - [Broadcast](#broadcast)
+  - [AllGather](#allgather)
+  - [Scatter](#scatter)
+- [⚡ Why Distributed Training?](#zap-why-distributed-training)
+  - [Why Distributed Training?
+    Speedup!](#why-distributed-training-speedup)
+  - [Dealing with Data](#dealing-with-data)
+  - [Broadcast Initial State](#broadcast-initial-state)
+  - [Best Practices](#best-practices)
+  - [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
+  - [Going beyond Data Parallelism: DeepSpeed +
+    `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+  - [Fully Sharded Data Parallel: 🔥 PyTorch +
+    `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
+- [🕸️ Additional Parallelism
+  Strategies](#spider_web-additional-parallelism-strategies)
+  - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
+  - [Tensor Parallel (TP)](#tensor-parallel-tp)
+  - [Tensor Parallel (TP)](#tensor-parallel-tp-1)
+  - [Tensor (/ Model) Parallel Training:
+    Example](#tensor--model-parallel-training-example)
+  - [Tensor (Model)
+    Parallelism](#tensor-model-parallelismefficient-large-scale)
+  - [Tensor Parallelism](#tensor-parallelism)
+  - [3D Parallelism](#3d-parallelism)
+  - [Deciding on a Parallelism
+    Strategy](#deciding-on-a-parallelism-strategy)
+- [🦙 Large Language Models](#llama-large-language-models)
+  - [🔮 Emergent Abilities](#crystal_ball-emergent-abilities)
+  - [🦜 Training LLMs](#parrot-training-llms)
+  - [♻️ Life-Cycle of the LLM](#recycle-life-cycle-of-the-llm)
+  - [🎀 Life-Cycle of the LLM](#ribbon-life-cycle-of-the-llm)
+  - [⏩ Forward Pass](#fast_forward-forward-pass)
+  - [💬 Generating Text](#speech_balloon-generating-text)
+- [👋 Hands On](#wave-hands-on)
+  - [🧑‍💻 Hands On: Getting
+    Started](#technologist-hands-on-getting-started)
+  - [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
+  - [ `ezpz`: Example \[video\]](#---ezpz-example-video)
+  - [Install `wordplay`
+    🎮💬](#install-wordplay-video_gamespeech_balloon)
+  - [Prepare Data](#prepare-data)
+  - [Launch Training (DDP)](#launch-training-ddp)
+  - [Training: Example Output](#training-example-output)
+  - [ `wordplay`: Example \[video\]](#---wordplay-example-video)
+- [❤️ Thank you!](#heart-thank-you)
+- [📓 References](#notebook-references)
+
 ## 👀 Overview
 
 - 📊 Slides @
@@ -598,23 +659,23 @@ flowchart TD
   subgraph AR["` `"]
     xp["`broadcast(x2, 2)`"]
   end
-  subgraph AR3["`Rank 3`"]
-    xp3("`x2`")
-  end
-  subgraph AR2["`Rank 2`"]
-    xp2("`x2`")
+  subgraph AR0["`Rank 0`"]
+    xp0("`x2`")
   end
   subgraph AR1["`Rank 1`"]
     xp1("`x2`")
   end
-  subgraph AR0["`Rank 0`"]
-    xp0("`x2`")
+  subgraph AR2["`Rank 2`"]
+    xp2("`x2`")
+  end
+  subgraph AR3["`Rank 3`"]
+    xp3("`x2`")
   end
   x2 --> AR
-  AR --> AR3
-  AR --> AR2
-  AR --> AR1
   AR --> AR0
+  AR --> AR1
+  AR --> AR2
+  AR --> AR3
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
@@ -826,8 +887,8 @@ CKPT --> 0
 0 --Model + Optim. State-->3["GPU 3"]
 0 --> X["`...`"]
 0 --> N["GPU N"]
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 class 0,1,2,3,N,X,CKPT block
 ```
 

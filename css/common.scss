@@ -677,7 +677,7 @@ body p code:not(.sourceCode),
 body li code:not(.sourceCode),
 body td code:not(.sourceCode) {
   // padding: 1px 2px;
-  padding: 0pt;
+  padding: 0pt 2pt;
   font-size: inherit;
   /* padding: .2em; */
 }
@@ -2026,6 +2026,10 @@ section.has-light-background h6 {
 //     color: $code-color;
 // }
 
+pre>code.sourceCode>span {
+  line-height: 1.1rem;
+  font-size: inherit;
+}
 
 
 
@@ -2943,6 +2947,17 @@ div.quarto-about-trestles {
     flex-direction: row;
   }
 
+  .navbar-logo {
+    /* max-height: 24px; */
+    width: auto;
+    padding: 0pt;
+    margin: 0;
+    padding-left: 18pt;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center !important;
+  }
+
   // div.sourceCode>iframe {
   //   width: 100%;
   //   margin-bottom: -0.5em;
@@ -3330,10 +3345,17 @@ details>summary:hover {
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   color: $dim-text;
   opacity: 1;
+  // margin-left: 0.5rem;
+  vertical-align: text-top;
+}
+
+.navbar .navbar-container>.navbar-brand-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .navbar {
@@ -3695,14 +3717,45 @@ figure>figcaption.quarto-float-caption-bottom {
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete {
-  width: 0px;
+  width: auto;
+  /* width: 40px; */
+}
+
+.navbar-brand.navbar-brand-logo {
+  margin-right: 0;
+  /* margin-right: 4px; */
+  /* display: inline-flex; */
 }
 
 .navbar #quarto-search {
-  margin-left: .25rem;
-  order: 999;
-  display: none;
+  // order: 4;
+  margin-left: 0;
+  padding-left: 5pt;
 }
+
+.px-1 {
+  padding-right: 5pt !important;
+  padding-left: 5pt !important;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-left: 5pt;
+  padding-right: 5pt;
+}
+
+// .navbar #quarto-search {
+//   order: 3;
+// }
+
+// .navbar #quarto-search.type-overlay .aa-Autocomplete {
+//   width: 0px;
+// }
+//
+// .navbar #quarto-search {
+//   margin-left: .25rem;
+//   order: 999;
+//   display: none;
+// }
 
 .em {
   font-style: italic;
@@ -3913,9 +3966,9 @@ code {
     padding-right: .25em;
   }
 
-  .navbar #quarto-search {
-    margin-left: .1em;
-  }
+  // .navbar #quarto-search {
+  //   margin-left: .1em;
+  // }
 
   .navbar .bi-twitter,
   .navbar .bi-github,

@@ -778,23 +778,23 @@ flowchart TD
   subgraph AR["` `"]
     xp["`broadcast(x2, 2)`"]
   end
-  subgraph AR3["`Rank 3`"]
-    xp3("`x2`")
-  end
-  subgraph AR2["`Rank 2`"]
-    xp2("`x2`")
+  subgraph AR0["`Rank 0`"]
+    xp0("`x2`")
   end
   subgraph AR1["`Rank 1`"]
     xp1("`x2`")
   end
-  subgraph AR0["`Rank 0`"]
-    xp0("`x2`")
+  subgraph AR2["`Rank 2`"]
+    xp2("`x2`")
+  end
+  subgraph AR3["`Rank 3`"]
+    xp3("`x2`")
   end
   x2 --> AR
-  AR --> AR3
-  AR --> AR2
-  AR --> AR1
   AR --> AR0
+  AR --> AR1
+  AR --> AR2
+  AR --> AR3
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
@@ -1031,8 +1031,8 @@ CKPT --> 0
 0 --Model + Optim. State-->3["GPU 3"]
 0 --> X["`...`"]
 0 --> N["GPU N"]
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 class 0,1,2,3,N,X,CKPT block
 ```
 
