@@ -44,7 +44,7 @@ Sam Foreman
     Strategy](#deciding-on-a-parallelism-strategy)
 - [🦙 Large Language Models](#llama-large-language-models)
   - [🔮 Emergent Abilities](#crystal_ball-emergent-abilities)
-  - [🦜 Training LLMs](#parrot-training-llms)
+  - [🚂 Training LLMs](#steam_locomotive-training-llms)
   - [♻️ Life-Cycle of the LLM](#recycle-life-cycle-of-the-llm)
   - [🎀 Life-Cycle of the LLM](#ribbon-life-cycle-of-the-llm)
   - [⏩ Forward Pass](#fast_forward-forward-pass)
@@ -406,10 +406,6 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 ### Data Parallel: Training
 
-<div class="flex-container">
-
-<div class="column" style="width:55%;">
-
 - Each GPU:
   - has **identical copy** of model
   - works on a **unique** subset of data
@@ -421,79 +417,6 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
   -  [Microsoft / `DeepSpeed`](https://www.deepspeed.ai/)
 - Requires **global** communication
   - every rank *must participate* (collective communication) !!
-
-</div>
-
-<div class="column">
-
-<div id="fig-avgGrads">
-
-``` mermaid
-flowchart TD
-    subgraph D["`Data`"]
-        direction LR
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
-    end
-    subgraph G0["`GPU0`"]
-        direction TB
-        subgraph N0["`NN`"]
-        end
-        L0["`L₀`"]
-    end
-    subgraph G1["`GPU1`"]
-        direction TB
-        subgraph N1["`NN`"]
-        end
-        L1["`L₁`"]
-    end
-    subgraph G2["`GPU2`"]
-        direction TB
-        subgraph N2["`NN`"]
-        end
-        L2["`L₂`"]
-    end
-    subgraph AR["`Average Grads`"]
-        direction TB
-        ar("`(1/n) ∑ gₙ`")
-        bc("`Update Weights`")
-        ar --> bc
-    end
-    x --> G0
-    x1 --> G1
-    x2 --> G2
-    N0 --> L0
-    N1 --> L1
-    N2 --> L2
-    G0 <-.-> AR
-    G1 <-.-> AR
-    G2 <-.-> AR
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class x,y0,L0 red
-class x1,L1 green
-class x2,L2 blue
-class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
-class AR block
-class bc text
-```
-
-Figure 6
-
-</div>
-
-</div>
-
-</div>
 
 ## 🗣️ Communication
 
@@ -575,7 +498,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 7: All-Reduce operation: each rank receives the reduction of
+Figure 6: All-Reduce operation: each rank receives the reduction of
 input values across ranks.
 
 </div>
@@ -636,7 +559,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 8: Reduce operation: one rank receives the reduction of input
+Figure 7: Reduce operation: one rank receives the reduction of input
 values across ranks
 
 </div>
@@ -685,7 +608,7 @@ class x2,xp0,xp1,xp2,xp3 blue
 class xp, text
 ```
 
-Figure 9: `broadcast` (send) a tensor <code>$x$</code> from one rank to
+Figure 8: `broadcast` (send) a tensor <code>$x$</code> from one rank to
 all ranks
 
 </div>
@@ -705,49 +628,34 @@ flowchart LR
   subgraph R2["`Rank 2`"]
     x2("`x2`")
   end
-  subgraph R3["`Rank 3`"]
-    x3("`x3`")
-  end
   subgraph AG["`Allgather`"]
     %%xp0["`z=[empty_like(x) for _ in range(4)]`"]
     %%xp1["`dist.all_gather(z, x)`"]
-  end
-  subgraph AG3["`Rank 3`"]
-    direction TB
-    xp03("`x0`")
-    xp13("`x1`")
-    xp23("`x2`")
-    xp33("`x3`")
   end
   subgraph AG2["`Rank 2`"]
     direction TB
     xp02("`x0`")
     xp12("`x1`")
     xp22("`x2`")
-    xp32("`x3`")
   end
   subgraph AG1["`Rank 1`"]
     direction TB
     xp01("`x0`")
     xp11("`x1`")
     xp21("`x2`")
-    xp31("`x3`")
   end
   subgraph AG0["`Rank 0`"]
     direction TB
     xp00("`x0`")
     xp10("`x1`")
     xp20("`x2`")
-    xp30("`x3`")
   end
   x0 --> AG
   x1 --> AG
   x2 --> AG
-  x3 --> AG
   AG --> AG0
   AG --> AG1
   AG --> AG2
-  AG --> AG3
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
 classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
@@ -768,7 +676,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 10: Gathers tensors from the whole group in a list.
+Figure 9: Gathers tensors from the whole group in a list.
 
 </div>
 
@@ -827,7 +735,7 @@ class x2,xp2, blue
 class x3,xp3, yellow
 ```
 
-Figure 11: Scatters a list of tensors to the whole group
+Figure 10: Scatters a list of tensors to the whole group
 
 </div>
 
@@ -892,7 +800,7 @@ classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,co
 class 0,1,2,3,N,X,CKPT block
 ```
 
-Figure 12: To ensure all workers have the same copies, we load on
+Figure 11: To ensure all workers have the same copies, we load on
 `RANK==0` and `broadcast`
 
 </div>
@@ -961,7 +869,7 @@ Figure 12: To ensure all workers have the same copies, we load on
 
 <img src="./assets/zero.png" class="r-stretch" />
 
-Figure 13: [DeepSpeed](deepspeed.ai) +
+Figure 12: [DeepSpeed](deepspeed.ai) +
 [`ZeRO`](https://www.deepspeed.ai/tutorials/zero-offload/)
 
 </div>
@@ -978,7 +886,7 @@ Figure 13: [DeepSpeed](deepspeed.ai) +
 
 ![](assets/fsdp.png)
 
-Figure 14: FSDP Workflow.
+Figure 13: FSDP Workflow.
 [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 
 </div>
@@ -1059,7 +967,7 @@ class a1, blue
 class b1, yellow
 ```
 
-Figure 15: Pipeline Parallelism
+Figure 14: Pipeline Parallelism
 
 </div>
 
@@ -1184,7 +1092,7 @@ class a0,b0,c0, text
 
 ![](assets/parallelism-tp-parallel_gemm.png)
 
-Figure 18: Tensor Parallel GEMM. This information is based on (the much
+Figure 17: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1199,7 +1107,7 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 19: Figure taken from [3D parallelism: Scaling to
+Figure 18: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
@@ -1275,7 +1183,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ![](./assets/llms.gif)
 
-Figure 20: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 19: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1286,37 +1194,13 @@ community~~ **world** by storm[^3].
 
 ![](./assets/emergent-abilities.gif)
 
-Figure 21: See Wei et al. (2022), Yao et al. (2023)
+Figure 20: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
-### 🦜 Training LLMs
+### 🚂 Training LLMs
 
-<div class="flex-container" style="align-items: flex-end;width: 100%;">
-
-<div class="column">
-
-<div id="fig-evolution">
-
-![](./assets/evolution.gif)
-
-Figure 22: Visualization from Yang et al. (2023)
-
-</div>
-
-</div>
-
-<div class="column">
-
-<div id="fig-it-hungers">
-
-![](./assets/it_hungers.jpeg)
-
-Figure 23: It’s hungry! Wei et al. (2022)
-
-</div>
-
-</div>
+<div>
 
 </div>
 
@@ -1342,7 +1226,7 @@ Figure 23: It’s hungry! Wei et al. (2022)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 24: **Pre-training**: Virtually *all of the compute* used during
+Figure 21: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1373,7 +1257,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 25: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 22: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1388,7 +1272,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 26: Language Model trained for causal language modeling[^6].
+Figure 23: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1398,7 +1282,7 @@ Figure 26: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 27: Language Model trained for causal language modeling[^7].
+Figure 24: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1464,7 +1348,7 @@ Figure 27: Language Model trained for causal language modeling[^7].
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 28: Example: using [🍋
+Figure 25: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1476,7 +1360,7 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 29: The simplest, fastest repository for training / finetuning
+Figure 26: The simplest, fastest repository for training / finetuning
 GPT based models. Figure from
 [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
@@ -1824,7 +1708,7 @@ At lie my lord with the me an arms be a s
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Figure 30: Training a LLM to talk like Shakespeare using
+Figure 27: Training a LLM to talk like Shakespeare using
 [saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>
@@ -1864,15 +1748,6 @@ entry-spacing="0">
 Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph,
 Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
 Large Language Models.” <https://arxiv.org/abs/2206.07682>.
-
-</div>
-
-<div id="ref-yang2023harnessing" class="csl-entry">
-
-Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng,
-Haoming Jiang, Bing Yin, and Xia Hu. 2023. “Harnessing the Power of LLMs
-in Practice: A Survey on ChatGPT and Beyond.”
-<https://arxiv.org/abs/2304.13712>.
 
 </div>
 

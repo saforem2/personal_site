@@ -42,16 +42,17 @@ format:
       # width: 1024
       # height: 768
       # presentation-font-size: 32pt
-      max-scale: 4.0
-      min-scale: 0.1
+      # max-scale: 4.0
+      # min-scale: 0.1
       pdf-separate-fragments: true
-      center: false
+      center: true
       # auto-stretch: true
       callout-style: simple
+      mermaid-format: png
       mermaid:
+        format: png
         layout: elk
         useMaxWidth: true
-      # mermaid-format: png
       # mermaid:
       #   # format: png
       #   useMaxWidth: true
@@ -541,9 +542,6 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 ## Data Parallel: Training {background-color="white"}
 
-::: {.flex-container}
-
-::: {.column style="width:55%;"}
 - Each GPU:
   - has **identical copy** of model
   - works on a **unique** subset of data
@@ -556,77 +554,6 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 - Requires **global** communication
   - every rank _must participate_ (collective communication) !!
-
-:::
-
-::: {.column}
-
-::: {#fig-avgGrads style="max-width: 80%;"}
-
-```{mermaid}
-flowchart TD
-    subgraph D["`Data`"]
-        direction LR
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
-    end
-    subgraph G0["`GPU0`"]
-        direction TB
-        subgraph N0["`NN`"]
-        end
-        L0["`L₀`"]
-    end
-    subgraph G1["`GPU1`"]
-        direction TB
-        subgraph N1["`NN`"]
-        end
-        L1["`L₁`"]
-    end
-    subgraph G2["`GPU2`"]
-        direction TB
-        subgraph N2["`NN`"]
-        end
-        L2["`L₂`"]
-    end
-    subgraph AR["`Average Grads`"]
-        direction TB
-        ar("`(1/n) ∑ gₙ`")
-        bc("`Update Weights`")
-        ar --> bc
-    end
-    x --> G0
-    x1 --> G1
-    x2 --> G2
-    N0 --> L0
-    N1 --> L1
-    N2 --> L2
-    G0 <-.-> AR
-    G1 <-.-> AR
-    G2 <-.-> AR
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class x,y0,L0 red
-class x1,L1 green
-class x2,L2 blue
-class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
-class AR block
-class bc text
-```
-
-:::
-
-:::
-
-:::
 
 # 🗣️ Communication {background-color="white"}
 
@@ -806,13 +733,12 @@ class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR, block
 class x2,xp0,xp1,xp2,xp3 blue
 class xp, text
 ```
-
 `broadcast` (send) a tensor <code>$x$</code> from one rank to all ranks
 :::
 
 ## AllGather {background-color="white"}
 
-::: {#fig-allgather-mermaid style="width:66%; text-align:center; margin-left: auto; margin-right: auto;"}
+::: {#fig-allgather-mermaid}
 
 ```{mermaid}
 flowchart LR
@@ -825,49 +751,34 @@ flowchart LR
   subgraph R2["`Rank 2`"]
     x2("`x2`")
   end
-  subgraph R3["`Rank 3`"]
-    x3("`x3`")
-  end
   subgraph AG["`Allgather`"]
     %%xp0["`z=[empty_like(x) for _ in range(4)]`"]
     %%xp1["`dist.all_gather(z, x)`"]
-  end
-  subgraph AG3["`Rank 3`"]
-    direction TB
-    xp03("`x0`")
-    xp13("`x1`")
-    xp23("`x2`")
-    xp33("`x3`")
   end
   subgraph AG2["`Rank 2`"]
     direction TB
     xp02("`x0`")
     xp12("`x1`")
     xp22("`x2`")
-    xp32("`x3`")
   end
   subgraph AG1["`Rank 1`"]
     direction TB
     xp01("`x0`")
     xp11("`x1`")
     xp21("`x2`")
-    xp31("`x3`")
   end
   subgraph AG0["`Rank 0`"]
     direction TB
     xp00("`x0`")
     xp10("`x1`")
     xp20("`x2`")
-    xp30("`x3`")
   end
   x0 --> AG
   x1 --> AG
   x2 --> AG
-  x3 --> AG
   AG --> AG0
   AG --> AG1
   AG --> AG2
-  AG --> AG3
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
 classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
@@ -1481,38 +1392,13 @@ Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by 
 See @wei2022emergentabilitieslargelanguage, @yao2023tree
 :::
 
-## 🦜 Training LLMs {background-color="white"}
 
-::: {.flex-container style="align-items: flex-end;width: 100%;"}
+## 🚂 Training LLMs {.smaller background-color="white"}
 
-::: {.column}
-
-<!-- > Modern parallelism techniques[^parallelism-slides] enable the training of large language models -->
-
-<!-- ::: {.flex-container style="align-items: flex-end; width:90%; text-align:center;"} -->
-
-<!-- ::: {.column style="width: 60%;"} -->
-
-::: {#fig-evolution}
-
-![](./assets/evolution.gif)
-
-Visualization from @yang2023harnessing
-:::
-
-:::
-
-::: {.column}
-
-::: {#fig-it-hungers}
+::: {layout="[15,-2,10]" layout-valign="bottom"}
+![Visualization from [Hannibal046/Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM)](./assets/evolution.gif)
 
 ![](./assets/it_hungers.jpeg)
-
-It's hungry! @wei2022emergentabilitieslargelanguage
-:::
-
-:::
-
 :::
 
 ## ♻️ Life-Cycle of the LLM {auto-animate=true background-color="white"}
@@ -2037,4 +1923,3 @@ DE-AC02-06CH11357
 # 📓 References {background-color="white"}
 
 - Title slide (Tetris animation) from: <https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html>
-
