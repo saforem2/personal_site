@@ -1,5 +1,5 @@
 Sam Foreman
-2024-12-03
+2024-12-24
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:57:30</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:56:54</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -362,7 +362,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >   - (Kronfeld et al. 2022)
 >   - (Zvyagin et al. 2023)
 >   - (Sam Foreman, Jin, and Osborn)
->   - (**daemont2014superconductivity?**)
+>   - (Deamont and Foreman 2014)
 >   - (Emani et al. 2023)
 >   - (Song et al. 2023)
 >   - (Dharuman et al. 2023)
@@ -389,6 +389,13 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > 2024. “Thorough Characterization and Analysis of Large Transformer
 > Model Training at-Scale.” *Proceedings of the ACM on Measurement and
 > Analysis of Computing Systems* 8 (1): 1–25.
+>
+> </div>
+>
+> <div id="ref-deamont2014superconductivity" class="csl-entry">
+>
+> Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and
+> Sn Samples.”
 >
 > </div>
 >
@@ -992,6 +999,8 @@ Table 1: 📟 Experience
 | Postdoc                                   |      ALCF      | 2019  | 2022 |
 | Graduate Researcher                       |     [ANL]      | 2018  | 2019 |
 
+📟 Experience
+
 </div>
 
 #### 🍎 School
@@ -1005,6 +1014,8 @@ Table 2: 🎓 Education
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
 | B.Sc   | [Physics][60] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
+
+🎓 Education
 
 </div>
 
