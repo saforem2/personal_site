@@ -1,12 +1,12 @@
 Sam Foreman
-2024-12-29
+2024-12-30
 
 <div style="font-size:1.0em; text-align: center;">
 
 <span class="profile-avatar"
 style="width: 100%; border: 0px solid var(--bg-border)!important;">![][1]</span>
 
-<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-family: 'IBM Plex Sans Condensed'; font-weight: 400;"><span class="dim-text">👋
+<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-weight: 400;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">29</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">18:53:18</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">30</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">00:35:42</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1021,7 +1021,7 @@ Table 2: 🎓 Education
 
 <div class="flex-container" style="align-items: flex-start;">
 
-<span class="lazy">[![][22]][23]</span>
+<span loading="lazy">[![][22]][23]</span>
 
 <div class="flex-container" style="flex-flow: wrap;">
 
