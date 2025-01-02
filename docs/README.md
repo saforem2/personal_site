@@ -246,7 +246,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2024</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">30</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">23:58:46</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:31:31</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -264,6 +264,13 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <span style="color:#4582ec;">You can find a full list of my
 > publications on my [Google Scholar][5]</span>
+
+- [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
+  Design Workflows with Direct Preference Optimization]
+  <span class="dim-text">G. Dharuman, K. Hippe, A. Brace, **S.
+  Foreman**, et al. @ [SC’24]</span>
+
+  -  [2024 Gordon Bell Finalist]
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects]  
@@ -300,7 +307,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">**S. Foreman**, [Intro to HPC Bootcamp @
   NERSC], *08/2023*</span>
 
-- 🏆 [**GenSLMs: Genome-scale language models reveal SARS-Cov-2
+-  [**GenSLMs: Genome-scale language models reveal SARS-Cov-2
   evolutionary dynamics**]  
   <span class="dim-text">@ SC’22 *10/2022*</span>
 
@@ -343,32 +350,33 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">**S. Foreman** et al., *J. Appl. Phys*,
   *2018*</span>
 
+## References
+
 > [!TIP]
 >
 > ### <span style="color:#03A669;">📓 References</span>
 >
 > - References:
->   - (Sam Foreman et al. 2018)
->   - (Hubler et al. 2018)
->   - (Samuel Foreman et al. 2018a)
->   - (Samuel Foreman et al. 2018b)
->   - (S. A. Foreman 2019)
->   - (Sam Foreman, Jin, and Osborn 2020)
->   - (Sam Foreman, Jin, and Osborn 2021b)
->   - (Sam Foreman et al. 2021)
->   - (Sam Foreman, Jin, and Osborn 2021a)
->   - (Liu et al. 2017)
->   - (Boyda et al. 2022)
->   - (Kronfeld et al. 2022)
+>   - (Dharuman et al. 2024)
+>   - (Parete-Koon et al. 2024)
+>   - (Cheng et al. 2024)
 >   - (Zvyagin et al. 2023)
->   - (Sam Foreman, Jin, and Osborn)
->   - (Deamont and Foreman 2014)
+>   - (Dharuman et al. 2023)
 >   - (Emani et al. 2023)
 >   - (Song et al. 2023)
->   - (Dharuman et al. 2023)
+>   - (Sam Foreman, Jin, and Osborn)
+>   - (Boyda et al. 2022)
+>   - (Kronfeld et al. 2022)
 >   - (Shanahan, Terao, and Whiteson 2022)
->   - (Cheng et al. 2024)
->   - (Parete-Koon et al. 2024)
+>   - (S. Foreman, Jin, and Osborn 2022)
+>   - (Sam Foreman et al. 2021)
+>   - (Sam Foreman, Jin, and Osborn 2020)
+>   - (S. A. Foreman 2019)
+>   - (Sam Foreman et al. 2018)
+>   - (Hubler et al. 2018)
+>   - (Samuel Foreman et al. 2018)
+>   - (Liu et al. 2017)
+>   - (Deamont and Foreman 2014)
 >
 > <div id="refs" class="references csl-bib-body hanging-indent"
 > entry-spacing="0">
@@ -396,6 +404,17 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and
 > Sn Samples.”
+>
+> </div>
+>
+> <div id="ref-dharuman2024mprot" class="csl-entry">
+>
+> Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinä
+> Hatanpää, Varuni K Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+> Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
+> with Direct Preference Optimization.” In *2024 SC24: International
+> Conference for High Performance Computing, Networking, Storage and
+> Analysis SC*, 74–86. IEEE Computer Society.
 >
 > </div>
 >
@@ -451,20 +470,6 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 >
-> <div id="ref-foreman2021leapfroglayers" class="csl-entry">
->
-> ———. 2021a. “LeapfrogLayers: A Trainable Framework for Effective
-> Topological Sampling.” *arXiv Preprint arXiv:2112.01582*.
->
-> </div>
->
-> <div id="ref-foreman2021deep" class="csl-entry">
->
-> Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2021b. “Deep
-> Learning Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
->
-> </div>
->
 > <div id="ref-foreman2019learning" class="csl-entry">
 >
 > Foreman, Samuel Alfred. 2019. “Learning Better Physics: A Machine
@@ -476,15 +481,18 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > <div id="ref-foreman2018examples" class="csl-entry">
 >
 > Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
-> 2018a. “Examples of Renormalization Group Transformations for Image
+> 2018. “Examples of Renormalization Group Transformations for Image
 > Sets.” *Physical Review E* 98 (5): 052129.
 >
 > </div>
 >
-> <div id="ref-foreman2018machine" class="csl-entry">
+> <div id="ref-2022slft.confE.508F" class="csl-entry">
 >
-> ———. 2018b. “Machine Learning Inspired Analysis of the Ising Model
-> Transition.” In *Lattice 2018*.
+> Foreman, S., X. y. Jin, and J. Osborn. 2022.
+> “<span class="nocase">LeapfrogLayers: A Trainable Framework for
+> Effective Topological Sampling</span>.” In *The 38th International
+> Symposium on Lattice Field Theory*, 508.
+> <https://doi.org/10.22323/1.396.0508>.
 >
 > </div>
 >
@@ -887,12 +895,12 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 >
-> –\> –\>
->
 > <div style="width: 100%; text-align: center;">
 >
 > <a href="https://git.io/streak-stats"><img loading="lazy" src="https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383"></a>
-> <img loading="lazy" src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true">
+>
+> <span loading="lazy" style="width:100%;">![Github
+> Contributions]</span>
 >
 > </div>
 >
@@ -910,7 +918,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Wakatime
 > </summary>
 >
-> [![][18]][2]
+> <a href="https://github.com/saforem2/"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383"></a>
 >
 > </details>
 >
@@ -946,11 +954,9 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <a href="https://github.com/saforem2/quarto-site-template"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> –\>
->
 > <a href="https://github.com/saforem2/starter"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=starter&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> [![][19]][20]
+> [![][18]][19]
 >
 > <a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
@@ -1010,7 +1016,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][21] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][20] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 🎓 Education
@@ -1021,13 +1027,13 @@ Table 2: 🎓 Education
 
 <div class="flex-container" style="align-items: flex-start;">
 
-<span loading="lazy">[![][22]][23]</span>
+<span loading="lazy">[![][21]][22]</span>
 
 <div class="flex-container" style="flex-flow: wrap;">
 
 > [!TIP]
 >
-> ### <span loading="lazy" style="color:#D41109;">[![][24]][13]</span>
+> ### <span loading="lazy" style="color:#D41109;">[![][23]][13]</span>
 >
 > <script>
 > /**
@@ -1142,6 +1148,10 @@ Table 2: 🎓 Education
   [Energy Storage in Quantum Resonators]: https://aip.scitation.org/doi/10.1063/1.5009698
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
+  [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization]:
+    https://doi.org/10.1109/SC41406.2024.00013
+  [SC’24]: https://sc24.supercomputing.org/
+  [2024 Gordon Bell Finalist]: https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/
   [Intro to HPC Bootcamp: Engaging New Communities Through Energy Justice Projects]:
     https://jocse.org/downloads/jocse-15-1-10.pdf
   [Thorough Characterization and Analysis of Large Transformer Model Training At-Scale]:
@@ -1221,10 +1231,10 @@ Table 2: 🎓 Education
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
-  [18]: https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383.png
+  [Github Contributions]: https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
-  [19]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [20]: https://github.com/saforem2/glitz
+  [18]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
+  [19]: https://github.com/saforem2/glitz
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1233,9 +1243,9 @@ Table 2: 🎓 Education
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [21]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [20]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [22]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
-  [23]: https://github.com/kittinan/spotify-github-profile
-  [24]: ./assets/last-fm-logo.svg
+  [21]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
+  [22]: https://github.com/kittinan/spotify-github-profile
+  [23]: ./assets/last-fm-logo.svg
