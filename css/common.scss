@@ -10,8 +10,8 @@
 // @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap&family=IBM+Plex+Sans+Condensed&display=swap&family=IBM+Plex+Sans&display=swap");
 // @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-// @import url("https://unpkg.com/open-props/colors-oklch.min.css");
 // @import url("https://unpkg.com/open-props/oklch-hues.min.css");
+// @import url("https://unpkg.com/open-props/colors-oklch.min.css");
 
 // @import "dark";
 // @import "light";
@@ -42,11 +42,17 @@ $right-arrow: "\2192"; // Unicode character for right arrow
   // "Courier New",
   // monospace !default;
 
-$font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
-$font-family-sans-serif: "Iosevka Sans QP Web", "IBM Plex Sans", system-ui, -apple-system, Arial, "Iosevka", sans-serif !default;
-$heading-font: "Iosevka Sans QP Web", "IBM Plex Sans Condensed", sans-serif !default;
+// $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
+// $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
+// $font-family-monospace: "IosevkaKitty Web", ui-monospace, monospace !default;
+$font-family-monospace: "IosevkaTerm Web" !default;
+// $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
+$font-family-sans-serif: "Iosevka Sans QP SF Web" !default;
+// , "IBM Plex Sans", system-ui, -apple-system, Arial, "Iosevka", sans-serif !default;
+$heading-font: "Iosevka Sans QP SF Web" !default;
 $monofont: $font-family-monospace !default;
-$presentation-heading-font: $heading-font !default;
+// $presentation-heading-font: $heading-font!default;
+$presentation-heading-font: "Iosevka Sans QP SF Web", sans-serif !default;
 $font-family-headings: $heading-font !default;
 $mermaid-font-family: $font-family-monospace !default;
 // $font-family-serif: "Iosevka Slab QP", "IBM Plex Sans", system-ui, -apple-system, Arial, "Iosevka", serif !default;
@@ -484,7 +490,7 @@ $themes: (
 .reveal b,
 strong, b {
   -moz-osx-font-smoothing: grayscale;
-  // -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
@@ -602,6 +608,7 @@ strong, b {
   // -webkit-font-smoothing: antialiased;
   // --card-width: calc(var(--card-height) / 1.5);
 }
+
 
 p {
   text-wrap: pretty;
@@ -770,7 +777,7 @@ code {
 #title-block-header .quarto-title-block>div>button {
   flex-shrink: 0;
   margin-top: 0;
-  font-family: font-family-monospace;
+  font-family: $font-family-monospace;
   // font-family: var(--bs-font-monospace);
 }
 
@@ -838,14 +845,14 @@ body td code:not(.sourceCode) {
 
 .callout .callout-title-container {
   overflow-wrap: anywhere;
-  font-weight: bold;
-  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
   margin-block-start: 2pt;
   margin-block-end: 4pt;
   // padding-bottom: 1pt;
   // margin-block: 4pt;
   // margin-block-end: 6pt;
-  // -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
