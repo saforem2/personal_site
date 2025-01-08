@@ -45,14 +45,14 @@ $right-arrow: "\2192"; // Unicode character for right arrow
 // $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
 // $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
 // $font-family-monospace: "IosevkaKitty Web", ui-monospace, monospace !default;
-$font-family-monospace: "IosevkaTerm Web" !default;
+$font-family-monospace: "IosevkaTerm Web", ui-monospace, monospace !default;
 // $font-family-monospace: "IosevkaSansTerminalss15Custom Web", ui-monospace, monospace !default;
-$font-family-sans-serif: "IosevkaSans Web" !default;
-// , "IBM Plex Sans", system-ui, -apple-system, Arial, "Iosevka", sans-serif !default;
-$heading-font: "IosevkaSans Web" !default;
+$font-family-sans-serif: "IosevkaQP Web", "IosevkaTerm Web", sans-serif !default;
+// , "IBM Plex QP", system-ui, -apple-system, Arial, "Iosevka", sans-serif !default;
+$heading-font: "IosevkaQP Web", sans-serif !default;
 $monofont: $font-family-monospace !default;
 // $presentation-heading-font: $heading-font!default;
-$presentation-heading-font: "IosevkaSans Web", sans-serif !default;
+$presentation-heading-font: "IosevkaQP Web", sans-serif !default;
 $font-family-headings: $heading-font !default;
 $mermaid-font-family: $font-family-monospace !default;
 // $font-family-serif: "Iosevka Slab QP", "IBM Plex Sans", system-ui, -apple-system, Arial, "Iosevka", serif !default;
@@ -164,7 +164,7 @@ $mypurple: #AE81FF;
 $mypink: #FF67FF;
 
 $base-font-size: 16px !default;
-$code-block-font-size: 15px !default;
+$code-block-font-size: 16px !default;
 //
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
@@ -486,12 +486,18 @@ $themes: (
 //   -moz-osx-font-smoothing: grayscale;
 //   -webkit-font-smoothing: antialiased;
 // }
-.reveal strong,
-.reveal b,
 strong, b {
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 900;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: bold;
+  // color: lighten(var(--bs-body-color),
+}
+
+.reveal strong,
+.reveal b {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: bolder;
 }
 
 :root {
@@ -500,6 +506,7 @@ strong, b {
   --bs-card-spacer-x: 0pt;
   --bs-card-spacer-y: 0pt;
   --code-bg: $code-bg;
+  --bs-body-font-weight: 400;
   --bs-body-font-family: $font-family-sans-serif;
   --bs-table-striped-bg: $code-bg;
   --callout-simple-color: rgba(90, 90, 90, 20);
