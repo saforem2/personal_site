@@ -210,8 +210,6 @@ Table 1: Aurora Specs
 |   HBM | 8 PB   |
 | DDR5c | 10 PB  |
 
-Aurora Specs
-
 </div>
 
 </div>

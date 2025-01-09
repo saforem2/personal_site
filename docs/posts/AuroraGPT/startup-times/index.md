@@ -276,8 +276,6 @@ Sam Foreman
 > | `foremans-nid008321-nhosts2-ngpu8-2023-11-02-154438.log` | GPT1T_2L | 8 | 2023-11-02-154438 | 2023-11-02-154949 | 154438 | 154949 | 511 |
 > | `foremans-nid008192-nhosts128-ngpu512-2023-11-04-001717.log` | GPT1T_128L | 512 | 2023-11-04-001717 | 2023-11-04-002124 | 1717 | 2124 | 407 |
 >
-> Startup times on Perlmutter
->
 > </div>
 
 ## Minimal Working Example

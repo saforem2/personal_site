@@ -125,13 +125,9 @@ flowchart LR
     L0 --> N0
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
 class x1, green
 class x2, blue
@@ -972,10 +968,6 @@ Figure 14: Pipeline Parallelism
 </div>
 
 </div>
-
-</div>
-
-<div class="aside">
 
 </div>
 
