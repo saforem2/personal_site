@@ -1,5 +1,5 @@
 Sam Foreman
-2025-01-08
+2025-01-14
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -1003,6 +1003,8 @@ Table 1: 📟 Experience
 | Postdoc                                   |      ALCF      | 2019  | 2022 |
 | Graduate Researcher                       |     [ANL]      | 2018  | 2019 |
 
+📟 Experience
+
 </div>
 
 #### 🍎 School
@@ -1016,6 +1018,8 @@ Table 2: 🎓 Education
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
 | B.Sc   | [Physics][18] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
+
+🎓 Education
 
 </div>
 
