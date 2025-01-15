@@ -116,9 +116,9 @@ flowchart LR
         L0("`Loss`")
     end
     subgraph D["`Data`"]
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     x --> N0
     N0 --> L0
