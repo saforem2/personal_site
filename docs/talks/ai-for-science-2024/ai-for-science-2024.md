@@ -709,10 +709,7 @@ flowchart TD
   subgraph S0["`Rank 0`"]
     x0("`x0`")
   end
-  %%R0 --> S
   R1 --> S
-  %%R2 --> S
-  %%R3 --> S
   S --> S0
   S --> S1
   S --> S2
@@ -785,12 +782,12 @@ Table 1: Recent progress
 
 ``` mermaid
 flowchart TD
-0["GPU0"] --> 1["GPU 1"]
-CKPT --> 0
-0 --> 2["GPU 2"]
-0 --Model + Optim. State-->3["GPU 3"]
-0 --> X["`...`"]
-0 --> N["GPU N"]
+  0["GPU0"] --> 1["GPU 1"]
+  CKPT --> 0
+  0 --> 2["GPU 2"]
+  0 --Model + Optim. State-->3["GPU 3"]
+  0 --> X["`...`"]
+  0 --> N["GPU N"]
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 class 0,1,2,3,N,X,CKPT block
