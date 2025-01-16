@@ -338,6 +338,7 @@ $themes: (
   light: (bg: #ffffff,
     cardbg: $cardbg,
     text: #222222,
+    bs-nav-link-color: #838383,
     strong-fg: #F06292,
     italic-fg: rgba(54, 206, 94, 1.0),
     strong-color: #F06292,
@@ -406,6 +407,7 @@ $themes: (
   ),
   dark: (bg: #1c1c1c,
     // $highlight-bg: #FFFF00,
+    bs-nav-link-color: #cccccc,
     cardbg: $cardbg,
     text: #a9a9b3,
     strong-fg: #D0BFFF,
@@ -510,6 +512,7 @@ strong, b {
 }
 
 :root {
+  --bs-nav-link-color: $bs-nav-link-color;
   --r-main-font: $font-family-sans-serif;
   font-family: $font-family-sans-serif;
   --bs-card-spacer-x: 0pt;
@@ -3489,6 +3492,15 @@ details>summary:hover {
 .navbar-dark .navbar-nav .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.active {
   color: $dim-text;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  text-underline-offset: 3px;
+  text-decoration: underline;
+  color: $link-color-hover;
+  text-decoration-thickness: 2pt;
+	// color: $link-color-hover;
+	// background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.085);
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {

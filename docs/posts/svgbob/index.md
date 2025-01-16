@@ -126,11 +126,9 @@ as an alternative to Mermaid
   <path d="M 400,240 A 16,16 0,0,1 400,256" class="nofill"></path>
   <text x="34" y="28" >Data</text>
   <text x="138" y="28" >GPU0</text>
-  <polygon points="296,36 288,40 296,44" class="filled"></polygon>
   <text x="42" y="60" >x0</text>
   <polygon points="136,52 144,56 136,60" class="filled"></polygon>
   <line x1="92" y1="64" x2="92" y2="144" class="solid"></line>
-  <polygon points="272,68 280,72 272,76" class="filled"></polygon>
   <text x="138" y="124" >GPU1</text>
   <polygon points="296,132 288,136 296,140" class="filled"></polygon>
   <text x="42" y="156" >x1</text>
@@ -142,6 +140,11 @@ as an alternative to Mermaid
   <text x="42" y="252" >x2</text>
   <polygon points="136,244 144,248 136,252" class="filled"></polygon>
   <polygon points="272,260 280,264 272,268" class="filled"></polygon>
+  <polygon points="256,36 248,40 256,44" class="filled"></polygon>
+  <line x1="256" y1="40" x2="308" y2="40" class="solid end_marked_open_circle"></line>
+  <line x1="264" y1="56" x2="252" y2="56" class="solid end_marked_open_circle"></line>
+  <line x1="264" y1="56" x2="312" y2="56" class="solid"></line>
+  <polygon points="312,52 320,56 312,60" class="filled"></polygon>
   <g>
     <path d="M 8,8 A 4,4 0,0,0 4,12" class="nofill"></path>
     <line x1="4" y1="12" x2="4" y2="276" class="solid"></line>
@@ -174,20 +177,6 @@ as an alternative to Mermaid
     <path d="M 20,68 A 4,4 0,0,0 24,72" class="nofill"></path>
     <line x1="24" y1="72" x2="72" y2="72" class="solid"></line>
     <path d="M 76,68 A 4,4 0,0,1 72,72" class="nofill"></path>
-  </g>
-  <g>
-    <path d="M 272,40 A 8,8 0,0,0 266,44" class="nofill"></path>
-    <line x1="266" y1="44" x2="264" y2="48" class="solid"></line>
-    <path d="M 264,48 A 16,16 0,0,0 264,64" class="nofill"></path>
-    <line x1="264" y1="64" x2="266" y2="68" class="solid"></line>
-    <path d="M 266,68 A 8,8 0,0,0 272,72" class="nofill"></path>
-  </g>
-  <g>
-    <path d="M 296,40 A 8,8 0,0,1 302,44" class="nofill"></path>
-    <line x1="302" y1="44" x2="304" y2="48" class="solid"></line>
-    <path d="M 304,48 A 16,16 0,0,1 304,64" class="nofill"></path>
-    <line x1="304" y1="64" x2="302" y2="68" class="solid"></line>
-    <path d="M 302,68 A 8,8 0,0,1 296,72" class="nofill"></path>
   </g>
   <g>
     <path d="M 128,104 A 4,4 0,0,0 124,108" class="nofill"></path>

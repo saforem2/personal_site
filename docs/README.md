@@ -1,5 +1,5 @@
 Sam Foreman
-2025-01-15
+2025-01-16
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -44,10 +44,11 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 <div class="column">
 
-- [Computational scientist][ALCF] @ Argonne National Laboratory [(ALCF)]
+- [Computational scientist][ALCF] @ Argonne National Laboratory
+  - AI / ML [Group] @ [ALCF][10]
 - Working on:
-  - 🧪 {AI, HPC} for science
-  - 🚀 training large models on [supercomputers]
+  - 🧪 {AI, HPC} for [science]
+  - 🚀 [training large models] on [supercomputers]
 
 </div>
 
@@ -69,7 +70,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > > [!TIP]
 > >
-> > ### <span style="color:#D41109;">[![][10]][11]</span>
+> > ### <span style="color:#D41109;">[![][11]][12]</span>
 > >
 > > <script>
 > > /**
@@ -146,7 +147,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">✏️ Status</span>
+> ### <span class="dim-text">👀 More</span>
 >
 > - <details closed>
 >
@@ -163,7 +164,8 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >     </summary>
 >
->     As a member of the [AI / ML Group] at [ALCF][(ALCF)], I work on:
+>     As a member of the [AI / ML Group][Group] at [ALCF][10], I work
+>     on:
 >
 >     <div class="flex-container">
 >
@@ -246,7 +248,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:44:56</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">15</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:52:03</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -290,7 +292,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">@ SC’23, *11/2023*</span>
 
 -  [**DeepSpeed4Science Initiative**: Enabling Large-Scale Scientific
-  Discovery \[…\]][12]  
+  Discovery \[…\]][13]  
   <span class="dim-text">@ [NeurIPS 2023 AI For Science Workshop],
   *10/2023*</span>
 
@@ -327,7 +329,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 - [HMC with Normalizing Flows][] \[[slides]\]  
   <span class="dim-text">**S. Foreman** et al., [Lattice,
-  *2021*][13]</span>
+  *2021*][14]</span>
 
 - [Deep Learning Hamiltonian Monte Carlo][] \[[+ poster]\]  
   <span class="dim-text">**S. Foreman**, X.Y. Jin, & J.C. Osborn, @
@@ -587,7 +589,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -599,7 +601,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -611,7 +613,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -619,9 +621,9 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**AuroraGPT**][14] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+> ### <span class="dim-text">[**AuroraGPT**][15] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 
@@ -629,7 +631,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[**Training LLMs at Scale**] @ [*ATPESC*, 2024][] \[08/2024\]</span>
 >
-> <iframe class="slide-deck" loading="lazy" src="/talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="/talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 
@@ -637,7 +639,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[**LLMs on Polaris**] @ [*Center for Scientific Foundation Models*, Summer School 24’][] \[07/2024\]</span>
 >
-> <iframe class="slide-deck" loading="lazy" src="/talks/llms-on-polaris/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="/talks/llms-on-polaris/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 
@@ -647,7 +649,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -659,7 +661,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -673,7 +675,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen allowfullscreen>
 >
 > </iframe>
 >
@@ -685,7 +687,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen>
 >
 > </iframe>
 >
@@ -697,7 +699,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -709,7 +711,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -721,7 +723,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -733,7 +735,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -745,7 +747,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -759,7 +761,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -771,7 +773,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -785,7 +787,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -797,7 +799,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -811,7 +813,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width:100%!important; border:none;border-radius:0.25rem;" style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="width:100%!important; border:none;border-radius:0.25rem;" style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -821,11 +823,11 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][15] \[12/2021\]</span>
+> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][16] \[12/2021\]</span>
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -837,7 +839,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -856,7 +858,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -870,7 +872,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -932,17 +934,19 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="flex-container" style="flex-flow: wrap;">
 >
-> <a href="https://github.com/saforem2/l2hmc-qcd"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/saforem2/ezpz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
->
-> <a href="https://github.com/saforem2/wordplay"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
->
-> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+> <a href="https://github.com/saforem2/mmm"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=mmm&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/saforem2/ambivalent"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/l2hmc-qcd"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/wordplay"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/saforem2/enrich"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
@@ -956,7 +960,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <a href="https://github.com/saforem2/starter"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=starter&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> [![][16]][17]
+> <a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
@@ -964,15 +968,13 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <a href="https://github.com/nftqcd/fthmc"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> <a href="https://github.com/argonne-lcf/CompPerfWorkshop"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383"></a>
+> <a href="https://github.com/argonne-lcf/CompPerfWorkshop"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/argonne-lcf/ai-science-training-series"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/argonne-lcf/mlprof"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/argonne-lcf/user-guides"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
->
-> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383"></a>
 >
 > </div>
 
@@ -997,11 +999,11 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 Table 1: 📟 Experience
 
-| Position                                  |       @        | Start | End  |
-|:------------------------------------------|:--------------:|:-----:|:----:|
-| [Assistant Computational Scientist][ALCF] | [ALCF][(ALCF)] | 2022  |  –   |
-| Postdoc                                   |      ALCF      | 2019  | 2022 |
-| Graduate Researcher                       |     [ANL]      | 2018  | 2019 |
+| Position                                  |     @      | Start | End  |
+|:------------------------------------------|:----------:|:-----:|:----:|
+| [Assistant Computational Scientist][ALCF] | [ALCF][10] | 2022  |  –   |
+| Postdoc                                   |    ALCF    | 2019  | 2022 |
+| Graduate Researcher                       |   [ANL]    | 2018  | 2019 |
 
 📟 Experience
 
@@ -1016,7 +1018,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][18] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][17] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 🎓 Education
@@ -1025,15 +1027,9 @@ Table 2: 🎓 Education
 
 ### 🎶 Music
 
-<div class="flex-container" style="align-items: flex-start;">
-
-<span loading="lazy">[![][19]][20]</span>
-
-<div class="flex-container" style="flex-flow: wrap;">
-
 > [!TIP]
 >
-> ### <span loading="lazy" style="color:#D41109;">[![][21]][11]</span>
+> ### <span loading="lazy" style="color:#D41109;">[![][18]][12]</span>
 >
 > <script>
 > /**
@@ -1104,7 +1100,13 @@ Table 2: 🎓 Education
 > </div>
 > </div>
 
-[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" width="100%" align="center" >][11]
+<div class="flex-container" style="align-items: flex-start;">
+
+<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false"></a>
+
+<div class="flex-container" style="flex-flow: wrap;">
+
+[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" width="100%" align="center" >][12]
 
 </div>
 
@@ -1126,13 +1128,15 @@ Table 2: 🎓 Education
   [7]: https://www.last.fm/user/saforem2
   [8]: https://linkedin.com/in/saforem2
   [9]: https://outlook.office.com/bookwithme/user/450ab3e5d58a4e7f84c802cc4c7205e6@anl.gov?anonymous&ep=plink
-  [(ALCF)]: https://alcf.anl.gov
+  [Group]: https://www.alcf.anl.gov/about/people/group/506
+  [10]: https://alcf.anl.gov
+  [science]: https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=vV_1zDwAAAAJ
+  [training large models]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html
   [supercomputers]: https://www.alcf.anl.gov/aurora
   [here]: talks/index.qmd
   [make them]: ./posts/dope-slides/index.qmd
-  [10]: https://api.iconify.design/logos:lastfm.svg?color=%23888888
-  [11]: https://last.fm/user/saforem2
-  [AI / ML Group]: https://www.alcf.anl.gov/about/people/group/506
+  [11]: https://api.iconify.design/logos:lastfm.svg?color=%23888888
+  [12]: https://last.fm/user/saforem2
   [Building better sampling methods for Lattice QCD]: https://github.com/saforem2/l2hmc-qcd
   [Genome-Scale Language Models]: https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2
   [GenSLM]: https://github.com/ramanathanlab/genslm
@@ -1158,7 +1162,7 @@ Table 2: 🎓 Education
   [Lattice, 2023 (Proceedings)]: https://indico.fnal.gov/event/57249/
   [Protein Generation via Genome-scale Language Models with Bio-physical Scoring]:
     https://dl.acm.org/doi/abs/10.1145/3624062.3626087
-  [12]: https://arxiv.org/abs/2310.04610
+  [13]: https://arxiv.org/abs/2310.04610
   [NeurIPS 2023 AI For Science Workshop]: https://ai4sciencecommunity.github.io/neurips23.html
   [DeepSpeed4Science.ai Blog Post]: https://deepspeed4science.ai/2023/09/18/model-showcase-genslms/
   [Loooooooong Sequence Lengths]: ./posts/AuroraGPT/long-sequences/index.qmd
@@ -1173,7 +1177,7 @@ Table 2: 🎓 Education
   [Lattice, *2021*]: https://indico.cern.ch/event/1006302
   [HMC with Normalizing Flows]: https://arxiv.org/abs/2112.01586
   [slides]: https://indico.cern.ch/event/1006302/contributions/4380743/
-  [13]: https://indico.cern.ch/event/1006302/
+  [14]: https://indico.cern.ch/event/1006302/
   [Deep Learning Hamiltonian Monte Carlo]: https://arxiv.org/abs/2105.03418
   [+ poster]: https://simdl.github.io/posters/57-supp_DLHMC_Foreman_SimDL-ICLR2021_poster1.pdf
   [SimDL Workshop @ ICLR]: https://simdl.github.io/
@@ -1190,7 +1194,7 @@ Table 2: 🎓 Education
   [**AuroraGPT**]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**Machine Learning and Foundation Models at Scale**]: ./talks/alcf-hpc-workshop-2024/index.html
-  [14]: ./talks/hpc-user-forum/index.html
+  [15]: ./talks/hpc-user-forum/index.html
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [**Training LLMs at Scale**]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
@@ -1223,7 +1227,7 @@ Table 2: 🎓 Education
   [**Scientific Data Science: An Emerging Symbiosis**]: https://saforem2.github.io/anl-job-talk/
   [**Machine Learning in HEP**]: https://saforem2.github.io/physicsSeminar
   [**Accelerated Sampling Methods for LGT**]: https://saforem2.github.io/l2hmc-dwq25/
-  [15]: https://indico.bnl.gov/event/13576/
+  [16]: https://indico.bnl.gov/event/13576/
   [**Training Topological Samplers for LGT**]: https://saforem2.github.io/l2hmc_talk_ect2021
   [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
@@ -1231,8 +1235,6 @@ Table 2: 🎓 Education
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
   [Github Contributions]: https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
-  [16]: https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383.png
-  [17]: https://github.com/saforem2/glitz
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1241,9 +1243,7 @@ Table 2: 🎓 Education
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [18]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [17]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [19]: https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false.png
-  [20]: https://github.com/kittinan/spotify-github-profile
-  [21]: ./assets/last-fm-logo.svg
+  [18]: ./assets/last-fm-logo.svg
