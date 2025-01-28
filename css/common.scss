@@ -1,6 +1,6 @@
 // @import "cards";
 // @import "pop";
-// @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed+IBM+Plex+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed+IBM+Plex+Mono&display=swap");
 // write a line of css to import source sans pro frmo Google Fonts API
 // @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 //
@@ -8,7 +8,7 @@
 // @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono");
 // @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Condensed");
 // @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap&family=IBM+Plex+Sans+Condensed&display=swap&family=IBM+Plex+Sans&display=swap");
-// @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 // @import url("https://unpkg.com/open-props/oklch-hues.min.css");
 // @import url("https://unpkg.com/open-props/colors-oklch.min.css");
@@ -46,7 +46,8 @@ $font-family-monospace: "IosevkaTerm Web" !default;
 $font-family-sans-serif: "IosevkaQP Web" !default;
 $heading-font: "IosevkaQP Web" !default;
 $monofont: $font-family-monospace !default;
-$presentation-heading-font: "IosevkaQP Web" !default;
+$presentation-heading-font: "IBM Plex Sans Condensed" !default;
+$presentation-main-font: "IBM Plex Sans" !default;
 $font-family-headings: "IosevkaQP Web" !default;
 $mermaid-font-family: "IosevkaTerm Web", monospace, !default;
 
@@ -472,6 +473,10 @@ $themes: (
 
 /*-- scss:rules --*/
 
+html {
+  color-scheme: light dark;
+}
+
 // body a {
 //   white-space: break-spaces;
 // }
@@ -504,17 +509,21 @@ strong, b {
   // color: lighten(var(--bs-body-color),
 }
 
-.reveal strong,
-.reveal b {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-weight: bolder;
-}
+// .reveal {
+//   -webkit-font-smoothing: antialiased;
+// }
+
+// .reveal strong,
+// .reveal b {
+//   // -moz-osx-font-smoothing: grayscale;
+//   // -webkit-font-smoothing: subpixel-antialiased;
+//   font-weight: bolder;
+// }
 
 :root {
   --bs-nav-link-color: $bs-nav-link-color;
-  --r-main-font: $font-family-sans-serif;
-  font-family: $font-family-sans-serif;
+  --r-main-font: $presentation-main-font;
+  // font-family: $font-family-sans-serif;
   --bs-card-spacer-x: 0pt;
   --bs-card-spacer-y: 0pt;
   --code-bg: $code-bg;
@@ -627,6 +636,20 @@ strong, b {
   --card-width: 50%;
   // -webkit-font-smoothing: antialiased;
   // --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+.reveal {
+  font-family: $presentation-main-font;
+}
+
+.reveal.has-light-background .sourceCode,
+.reveal.has-dark-background .sourceCode {
+	font-size: min(calc(0.75 * var(--r-main-font-size)), 18pt);
+}
+
+body {
+  font-family: $font-family-sans-serif;
 }
 
 
@@ -864,6 +887,7 @@ body td code:not(.sourceCode) {
 }
 
 .callout .callout-title-container {
+  font-stretch: semi-condensed;
   overflow-wrap: anywhere;
   // font-weight: 500;
   margin-block-start: 2pt;
@@ -873,6 +897,7 @@ body td code:not(.sourceCode) {
   // margin-block-end: 6pt;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: bold;
 }
 
 .callout.callout-style-simple:not(.no-icon) div.callout-icon-container {
@@ -1964,7 +1989,14 @@ section.has-dark-background h6 {
 .reveal h3,
 .reveal h4,
 .reveal h5,
-.reveal h6,
+.reveal h6 {
+  margin-top: auto;
+  margin-bottom: auto;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
+  // font-strech: semi-condensed;
+}
+
 h1,
 h2,
 h3,
@@ -1974,7 +2006,7 @@ h6 {
   margin-top: auto;
   margin-bottom: auto;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -webkit-font-smoothing: subpixel-antialiased;
   // font-strech: semi-condensed;
 }
 

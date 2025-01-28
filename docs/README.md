@@ -1,5 +1,5 @@
 Sam Foreman
-2025-01-16
+2025-01-28
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -66,7 +66,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon"
 > style="height:1.25rem;vertical-align:text-bottom;" /> Now Playing</span>
 >
-> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
+> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=natemoo-re&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
 >
 > > [!TIP]
 > >
@@ -248,7 +248,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">15</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:52:03</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">27</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:49:34</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -899,7 +899,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div style="width: 100%; text-align: center;">
 >
-> <a href="https://git.io/streak-stats"><img loading="lazy" src="https://github-readme-streak-stats.herokuapp.com?user=saforem2&theme=transparent&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&background=EB545400&border=83838300&ring=8383836F&fire=FF5252&sideNums=838383&sideLabels=838383"></a>
+> [![][17]][18]
 >
 > <span loading="lazy" style="width:100%;">![Github
 > Contributions]</span>
@@ -944,7 +944,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <a href="https://github.com/saforem2/l2hmc-qcd"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
-> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&icon_color=838383&title_color=838383"></a>
+> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
 > <a href="https://github.com/saforem2/wordplay"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
 >
@@ -1018,7 +1018,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][17] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][19] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 🎓 Education
@@ -1029,7 +1029,7 @@ Table 2: 🎓 Education
 
 > [!TIP]
 >
-> ### <span loading="lazy" style="color:#D41109;">[![][18]][12]</span>
+> ### <span loading="lazy" style="color:#D41109;">[![][20]][12]</span>
 >
 > <script>
 > /**
@@ -1233,6 +1233,8 @@ Table 2: 🎓 Education
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
+  [17]: https://streak-stats.demolab.com?user=saforem2&hide_border=true&date_format=n%2Fj%5B%2FY%5D&border=EB545400&stroke=838383&currStreakNum=838383&ring=838383&currStreakLabel=838383&fire=FF5252&sideNums=838383&sideLabels=838383&dates=838383&excludeDaysLabel=838383&background=EB545400
+  [18]: https://git.io/streak-stats
   [Github Contributions]: https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1243,7 +1245,7 @@ Table 2: 🎓 Education
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [17]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [19]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [18]: ./assets/last-fm-logo.svg
+  [20]: ./assets/last-fm-logo.svg
