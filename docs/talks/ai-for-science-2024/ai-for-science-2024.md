@@ -997,15 +997,15 @@ below
 flowchart LR
     subgraph X0["`GPU0`"]
         direction LR
-        a("`W₀`")
+        a("`W0`")
     end
     subgraph X1["`GPU1`"]
         direction LR
-        b("`W₁`")
+        b("`W1`")
     end
     subgraph X2["`GPU2`"]
         direction LR
-        c("`W₂`")
+        c("`W2`")
     end
   t0("`x₀`")-->X0
   X0 -->|"`x₀ W₀`"|X1
@@ -1017,8 +1017,6 @@ flowchart LR
 Figure 17
 
 </div>
-
-X0 –\> X1 –\> X2 –\>
 
 ### Tensor (Model) Parallelism[^2]
 
