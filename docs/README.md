@@ -248,7 +248,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">27</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:49:34</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:18:04</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1233,7 +1233,7 @@ Table 2: 🎓 Education
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
-  [17]: https://streak-stats.demolab.com?user=saforem2&hide_border=true&date_format=n%2Fj%5B%2FY%5D&border=EB545400&stroke=838383&currStreakNum=838383&ring=838383&currStreakLabel=838383&fire=FF5252&sideNums=838383&sideLabels=838383&dates=838383&excludeDaysLabel=838383&background=EB545400
+  [17]: https://streak-stats.demolab.com?user=saforem2&card_width=800&card_height=200&hide_border=true&date_format=n%2Fj%5B%2FY%5D&border=EB545400&stroke=838383&currStreakNum=838383&ring=838383&currStreakLabel=838383&fire=FF5252&sideNums=838383&sideLabels=838383&dates=838383&excludeDaysLabel=838383&background=EB545400
   [18]: https://git.io/streak-stats
   [Github Contributions]: https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories

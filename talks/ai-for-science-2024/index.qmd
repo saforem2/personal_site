@@ -8,7 +8,6 @@ date: 2024-11-05
 number-sections: false
 image: ./assets/thumbnail.png
 lightbox: auto
-bibliography: ../../references.bib
 editor:
   render-on-save: true
   freeze: auto
@@ -32,15 +31,6 @@ format:
   html:
       shift-heading-level-by: 1
       image: "./assets/thumbnail.png"
-      # mermaid-format: png
-      # mermaid:
-      #   format: png
-      # mermaid-format: js
-      # page-layout: full
-      # mermaid:
-      #   # format: svg
-      #   # useMaxWidth: true
-      #   layout: elk
   gfm:
     shift-heading-level-by: 1
     output-file: "ai-for-science-2024.md"
@@ -48,42 +38,14 @@ format:
       resources:
         - ./tetris/
       image: "./assets/thumbnail.png"
-      # width: 1024
-      # height: 768
-      # presentation-font-size: 32pt
-      # max-scale: 4.0
-      # min-scale: 0.1
-      # auto-stretch: true
       pdf-separate-fragments: true
       center: true
       callout-style: simple
-      # mermaid-format: png
       mermaid:
         format: png
         layout: elk
         useMaxWidth: true
-      # mermaid:
-      #   # format: png
-      #   useMaxWidth: true
-      #   layout: elk
-      #   # mermaid:
-      #   layout: elk
-      # minScale: 0.7
-      # maxScale: 1
-      # max-scale: 2.0
-      # width: 1050
-      # margin: 0.1
-      # height: 768
-      # fig-responsive: true
-      # mainfont: "IBM Plex Sans"
-      # monofont: "IBM Plex Mono"
-      # font-family-monospace: "'IBM Plex Mono', monospace"
-      # font-family-sans-serif: "'IBM Plex Sans', sans-serif"
       highlight-style: atom-one
-      # theme:
-      #     white
-      # pdf-separate-fragments: true
-      # center: true
       footer: "[samforeman.me/talks/ai-for-science-2024/slides](https://samforeman.me/talks/ai-for-science-2024/slides)"
       slide-url: https://samforeman.me/talks/ai-for-science-2024/slides.html
       template-partials:
@@ -91,45 +53,6 @@ format:
       title-slide-attributes:
         data-background-size: contain
         data-background-iframe: "./tetris/index.html"
-      # background-color: dark
-      # include-in-header:
-      #     - text: |
-      #         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.css">
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-      #         <!-- and it's easy to individually load additional languages -->
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/markdown.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python-repl.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/plaintext.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/scss.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/less.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/latex.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/julia.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lua.min.js"></script>
-      #         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/vim.min.js"></script>
-      #         <script>hljs.highlightAll();</script>
-      # shift-heading-level-by: -1
-      # include-before-body:
-      #   # flowchart: { useMaxWidth: true, htmlLabels: true, defaultRenderer: 'elk', width: 100% },
-      #   - text: |
-      #      <script>
-      #      window.callback = function () {
-      #          alert('A callback was triggered');
-      #      };
-      #      const config = {
-      #          startOnLoad: true,
-      #          flowchart: { defaultRenderer: 'elk' },
-      #          securityLevel: 'loose',
-      #      };
-      #      mermaid.initialize(config);
-      #      </script>
 ---
 
 # 👀 Overview {background-color="white"}
@@ -1151,7 +1074,6 @@ Tensor Parallel Training
 
 ## Tensor Parallel (TP) {background-color="white"}
 
-
 ::: {layout="[50,50]"}
 
 ::: {.column}
@@ -1208,77 +1130,56 @@ Tensor Parallel Training
 
 :::
 
-::: notes
-- Split up network over multiple workers
-  - Each receives disjoint subset
-  - All communication associated with subsets are distributed
-- Communication whenever dataflow between two subsets
-- Typically **more complicated** to implement than data parallel training
-- Suitable when the model is too large to fit onto a single device (CPU / GPU)
-- {{< fa brands github >}} [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-- 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron)
+<!-- ::: footnote -->
+<!---->
+<!-- - {{< fa brands github >}} [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed) -->
+<!-- - 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron) -->
+<!---->
+<!-- See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details -->
+<!-- ::: -->
+<!---->
+<!-- ::: {.notes} -->
+<!---->
+<!-- - Split up network over multiple workers -->
+<!--   - Each receives disjoint subset -->
+<!--   - All communication associated with subsets are distributed -->
+<!-- - Communication whenever dataflow between two subsets -->
+<!-- - Typically **more complicated** to implement than data parallel training -->
+<!-- - Suitable when the model is too large to fit onto a single device (CPU / GPU) -->
+<!---->
+<!-- ::: -->
 
-See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details
-:::
+# Tensor (/ Model) Parallel Training: Example {background-color="white"}
 
-## Tensor (/ Model) Parallel Training: Example {background-color="white"}
-
-::: {.flex-container}
-
-::: {.column style="width: 60%;"}
-Want to compute:
-$$y = \sum_{i} x_{i} W_{i} = x_0 W_0 + x_1 W_1 + x_2 W_2$$
+Want to compute: $y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
 where each GPU only has only its portion of the full weights as shown below
 
-1. Compute: $x_{0} W_{0}\rightarrow$ `GPU1`
-2. Compute: $x_{0} W_{0} + x_{1} W_{1}\rightarrow$ `GPU2`
-3. Compute: $y = \sum_{i} x_{i} W_{i}$ ✅
-:::
+1. Compute: $y_{0} = x_{0} * W_{0}\rightarrow$ `GPU1`
+2. Compute: $y_{1} = y_{0} + x_{1} * W_{1}\rightarrow$ `GPU2`
+3. Compute: $y = y_{1} + x_{2} * W_{2} = \sum_{i} x_{i} W_{i}$ ✅
 
-::: {.column style="width: 25%;"}
+::: {#fig-tensor-parallel-example style="width:75%; margin-left: auto; margin-right: auto; text-align:center;"}
 
 ```{mermaid}
-flowchart TD
-  subgraph X2["`GPU2`"]
-    direction LR
-    c("`W₂`")
-  end
-  subgraph X1["`GPU1`"]
-    direction TB
-    b("`W₁`")
-  end
-  subgraph X0["`GPU0`"]
-    a("`W₀`")
-  end
-  X0 <-.-> X1
-  X1 <-.-> X2
-  t0("`x₀`") --> X0
+flowchart LR
+    subgraph X0["`GPU0`"]
+        direction LR
+        a("`W0`")
+    end
+    subgraph X1["`GPU1`"]
+        direction LR
+        b("`W1`")
+    end
+    subgraph X2["`GPU2`"]
+        direction LR
+        c("`W2`")
+    end
+  t0("`x₀`")-->X0
+  X0 -->|"`x₀ W₀`"|X1
+  X1 -->|"`x₀ W₀ <br>+ x₁ W₁`"|X2
   t1("`x₁`") --> X1
   t2("`x₂`") --> X2
-classDef redText fill:#CCCCCC02,stroke:#FF8181,stroke-width:2px,color:#838383,font-weight:500
-classDef orangeText fill:#CCCCCC02,stroke:#FFC47F,stroke-width:2px,color:#838383
-classDef yellowText fill:#CCCCCC02,stroke:#FFFF7F,stroke-width:2px,color:#838383
-classDef blueText fill:#CCCCCC02,stroke:#7DCAff,stroke-width:2px,color:#838383
-classDef greenText fill:#CCCCCC02,stroke:#98E6A5,stroke-width:2px,color:#838383
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class a, red
-class b, green
-class c, blue
-class X0,X1,X2, block
-%%class t0, redText
-%%class t1, greenText
-%%class t2, blueText
-class a0,b0,c0, text
 ```
-
-:::
 
 :::
 

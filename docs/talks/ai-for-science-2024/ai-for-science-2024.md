@@ -34,8 +34,8 @@ Sam Foreman
   - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
   - [Tensor Parallel (TP)](#tensor-parallel-tp)
   - [Tensor Parallel (TP)](#tensor-parallel-tp-1)
-  - [Tensor (/ Model) Parallel Training:
-    Example](#tensor--model-parallel-training-example)
+- [Tensor (/ Model) Parallel Training:
+  Example](#tensor--model-parallel-training-example)
   - [Tensor (Model)
     Parallelism](#tensor-model-parallelismefficient-large-scale)
   - [Tensor Parallelism](#tensor-parallelism)
@@ -980,88 +980,45 @@ Figure 14: Pipeline Parallelism
 
 </div>
 
-<div class="notes">
-
-- Split up network over multiple workers
-  - Each receives disjoint subset
-  - All communication associated with subsets are distributed
-- Communication whenever dataflow between two subsets
-- Typically **more complicated** to implement than data parallel
-  training
-- Suitable when the model is too large to fit onto a single device (CPU
-  / GPU)
-- 
-  [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
-- 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron)
-
-See: [🤗 Model
-Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
-for additional details
-
-</div>
-
-### Tensor (/ Model) Parallel Training: Example
-
-<div class="flex-container">
-
-<div class="column" style="width: 60%;">
+## Tensor (/ Model) Parallel Training: Example
 
 Want to compute:
-$$y = \sum_{i} x_{i} W_{i} = x_0 W_0 + x_1 W_1 + x_2 W_2$$ where each
-GPU only has only its portion of the full weights as shown below
+$y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
+where each GPU only has only its portion of the full weights as shown
+below
 
-1.  Compute: $x_{0} W_{0}\rightarrow$ `GPU1`
-2.  Compute: $x_{0} W_{0} + x_{1} W_{1}\rightarrow$ `GPU2`
-3.  Compute: $y = \sum_{i} x_{i} W_{i}$ ✅
+1.  Compute: $y_{0} = x_{0} * W_{0}\rightarrow$ `GPU1`
+2.  Compute: $y_{1} = y_{0} + x_{1} * W_{1}\rightarrow$ `GPU2`
+3.  Compute: $y = y_{1} + x_{2} * W_{2} = \sum_{i} x_{i} W_{i}$ ✅
 
-</div>
-
-<div class="column" style="width: 25%;">
+<div id="fig-tensor-parallel-example">
 
 ``` mermaid
-flowchart TD
-  subgraph X2["`GPU2`"]
-    direction LR
-    c("`W₂`")
-  end
-  subgraph X1["`GPU1`"]
-    direction TB
-    b("`W₁`")
-  end
-  subgraph X0["`GPU0`"]
-    a("`W₀`")
-  end
-  X0 <-.-> X1
-  X1 <-.-> X2
-  t0("`x₀`") --> X0
+flowchart LR
+    subgraph X0["`GPU0`"]
+        direction LR
+        a("`W₀`")
+    end
+    subgraph X1["`GPU1`"]
+        direction LR
+        b("`W₁`")
+    end
+    subgraph X2["`GPU2`"]
+        direction LR
+        c("`W₂`")
+    end
+  t0("`x₀`")-->X0
+  X0 -->|"`x₀ W₀`"|X1
+  X1 -->|"`x₀ W₀ <br>+ x₁ W₁`"|X2
   t1("`x₁`") --> X1
   t2("`x₂`") --> X2
-classDef redText fill:#CCCCCC02,stroke:#FF8181,stroke-width:2px,color:#838383,font-weight:500
-classDef orangeText fill:#CCCCCC02,stroke:#FFC47F,stroke-width:2px,color:#838383
-classDef yellowText fill:#CCCCCC02,stroke:#FFFF7F,stroke-width:2px,color:#838383
-classDef blueText fill:#CCCCCC02,stroke:#7DCAff,stroke-width:2px,color:#838383
-classDef greenText fill:#CCCCCC02,stroke:#98E6A5,stroke-width:2px,color:#838383
-classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
-classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
-classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
-classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
-classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class a, red
-class b, green
-class c, blue
-class X0,X1,X2, block
-%%class t0, redText
-%%class t1, greenText
-%%class t2, blueText
-class a0,b0,c0, text
 ```
 
-</div>
+Figure 17
 
 </div>
+
+X0 –\> X1 –\> X2 –\>
 
 ### Tensor (Model) Parallelism[^2]
 
@@ -1081,7 +1038,7 @@ class a0,b0,c0, text
 
 ![](assets/parallelism-tp-parallel_gemm.png)
 
-Figure 17: Tensor Parallel GEMM. This information is based on (the much
+Figure 18: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1096,7 +1053,7 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 18: Figure taken from [3D parallelism: Scaling to
+Figure 19: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
@@ -1172,7 +1129,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ![](./assets/llms.gif)
 
-Figure 19: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 20: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1183,7 +1140,7 @@ community~~ **world** by storm[^3].
 
 ![](./assets/emergent-abilities.gif)
 
-Figure 20: See Wei et al. (2022), Yao et al. (2023)
+Figure 21: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
@@ -1215,7 +1172,7 @@ Figure 20: See Wei et al. (2022), Yao et al. (2023)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 21: **Pre-training**: Virtually *all of the compute* used during
+Figure 22: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1246,7 +1203,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 22: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 23: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1261,7 +1218,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 23: Language Model trained for causal language modeling[^6].
+Figure 24: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1271,7 +1228,7 @@ Figure 23: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 24: Language Model trained for causal language modeling[^7].
+Figure 25: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1337,7 +1294,7 @@ Figure 24: Language Model trained for causal language modeling[^7].
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 25: Example: using [🍋
+Figure 26: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1349,7 +1306,7 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 26: The simplest, fastest repository for training / finetuning
+Figure 27: The simplest, fastest repository for training / finetuning
 GPT based models. Figure from
 [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
@@ -1697,7 +1654,7 @@ At lie my lord with the me an arms be a s
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Figure 27: Training a LLM to talk like Shakespeare using
+Figure 28: Training a LLM to talk like Shakespeare using
 [saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>
