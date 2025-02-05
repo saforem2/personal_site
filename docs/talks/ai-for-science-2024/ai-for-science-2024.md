@@ -18,7 +18,7 @@ Sam Foreman
   - [Broadcast](#broadcast)
   - [AllGather](#allgather)
   - [Scatter](#scatter)
-- [⚡ Why Distributed Training?](#zap-why-distributed-training)
+- [Why Distributed Training?](#why-distributed-training)
   - [Why Distributed Training?
     Speedup!](#why-distributed-training-speedup)
   - [Dealing with Data](#dealing-with-data)
@@ -732,7 +732,7 @@ Figure 10: Scatters a list of tensors to the whole group
 
 </div>
 
-## ⚡ Why Distributed Training?
+## Why Distributed Training?
 
 - `N` workers each processing unique batch[^1] of data:
   - \[`micro_batch_size = 1`\] $\times$ \[`N` GPUs\] $\rightarrow$

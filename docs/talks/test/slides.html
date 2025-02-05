@@ -121,7 +121,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a0aea81958326e091fa33928b21c3219.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-781bf6f8cf7935e75330ecea56c65242.css">
   <link rel="stylesheet" href="../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
@@ -246,10 +246,6 @@
       margin-right: 0; 
     }
   </style>
-  <meta name="mermaid-theme" content="neutral">
-  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
   <!-- End Google Tag Manager -->
@@ -603,7 +599,7 @@ Figure&nbsp;5: <a href="deepspeed.ai">DeepSpeed</a> + <code>ZeRO</code>
 <div>
 
 </div>
-<div class="quarto-layout-panel" height="100%" data-layout="[50, 50]">
+<div class="quarto-layout-panel" data-layout="[50, 50]" height="100%">
 <div class="quarto-layout-row">
 <div class="col1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <ul>
@@ -743,18 +739,12 @@ Figure&nbsp;6: Data Parallelism
 <li><strong>Broadcast</strong> the model and optimizer states from <code>rank() == 0</code> worker</li>
 </ul></li>
 </ul>
-<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">  flowchart TD
-    0["GPU0"] --&gt; 1["GPU 1"]
-    0 --&gt; 2["GPU 2"]
-    0 --&gt;|Model + Optimizer State| 3["GPU 3"]
-    0 --&gt; ...
-    0 --&gt; N["GPU N"]
-</pre>
+<p><a href="index_files/figure-revealjs/mermaid-figure-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="index_files/figure-revealjs/mermaid-figure-1.png" style="width:7.38in;height:2.06in"></a></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -940,28 +930,12 @@ Table&nbsp;1: Batch-Size-Scaling
 <li>Compute <span class="math inline">y_{1} = y_{0} + w_{1} * x_{1}</span> and send to <span class="math inline">\longrightarrow</span> <code>GPU2</code></li>
 <li>Compute <span class="math inline">y = y_{1} + w_{2} * x_{2}</span> ✅</li>
 </ol>
-<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
-  subgraph X0["GPU0"]
-    direction LR
-    a["w0"]
-  end
-  subgraph X1["GPU1"]
-    direction LR
-    b["w1"]
-  end
-  subgraph X2["GPU2"]
-    direction LR
-    c["w2"]
-  end
-  X1 &amp; X0 &lt;--&gt; X2
-  X0 &lt;--&gt; X1
-  x["x0, x1, x2"] --&gt; X0
-</pre>
+<p><a href="index_files/figure-revealjs/mermaid-figure-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="index_files/figure-revealjs/mermaid-figure-2.png" style="width:7.94in;height:1.96in"></a></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -993,7 +967,7 @@ Table&nbsp;1: Batch-Size-Scaling
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;7: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" id="fig-model-parallel-1"></a>
+<a href="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;7: "><img data-src="https://saforem2.github.io/distributed-training-slides/assets/model-parallel.svg" id="fig-model-parallel-1"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7
@@ -1022,7 +996,7 @@ Figure&nbsp;7
 <div id="fig-parallel-gemm" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-parallel-gemm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/parallelism-tp-parallel_gemm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;8: Tensor Parallel GEMM. This information is based on (the much more in-depth) TP Overview by @anton-l"><img data-src="assets/parallelism-tp-parallel_gemm.png"></a>
+<a href="assets/parallelism-tp-parallel_gemm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;8: Tensor Parallel GEMM. This information is based on (the much more in-depth) TP Overview by @anton-l"><img data-src="assets/parallelism-tp-parallel_gemm.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-parallel-gemm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Tensor Parallel GEMM. This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a>
@@ -1038,7 +1012,7 @@ Figure&nbsp;8: Tensor Parallel GEMM. This information is based on (the much more
 <div id="fig-3dparallel" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="assets/parallelism-deepspeed-3d.png"></a>
+<a href="assets/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;9: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="assets/parallelism-deepspeed-3d.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
@@ -1060,7 +1034,7 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <div id="fig-allreduce" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-allreduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: All-Reduce operation: each rank receives the reduction of input values across ranks."><img data-src="./assets/collective-allreduce-sum.drawio.svg" style="width:50.0%"></a>
+<a href="./assets/collective-allreduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;10: All-Reduce operation: each rank receives the reduction of input values across ranks."><img data-src="./assets/collective-allreduce-sum.drawio.svg" style="width:50.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: All-Reduce operation: each rank receives the reduction of input values across ranks.
@@ -1075,7 +1049,7 @@ Figure&nbsp;10: All-Reduce operation: each rank receives the reduction of input 
 <div id="fig-reduce" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-reduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: Reduce operation: one rank receives the reduction of input values across ranks"><img data-src="./assets/collective-reduce-sum.drawio.svg" style="width:50.0%"></a>
+<a href="./assets/collective-reduce-sum.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;11: Reduce operation: one rank receives the reduction of input values across ranks"><img data-src="./assets/collective-reduce-sum.drawio.svg" style="width:50.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: Reduce operation: one rank receives the reduction of input values across ranks
@@ -1090,7 +1064,7 @@ Figure&nbsp;11: Reduce operation: one rank receives the reduction of input value
 <div id="fig-broadcast" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;12: "><img data-src="./assets/collective-broadcast.drawio.svg" style="width:50.0%"></a>
+<a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;12: "><img data-src="./assets/collective-broadcast.drawio.svg" style="width:50.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12
@@ -1105,7 +1079,7 @@ Figure&nbsp;12
 <div id="fig-allgather" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-allgather.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;13: "><img data-src="./assets/collective-allgather.drawio.svg" style="width:50.0%"></a>
+<a href="./assets/collective-allgather.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;13: "><img data-src="./assets/collective-allgather.drawio.svg" style="width:50.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-allgather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13
@@ -1120,7 +1094,7 @@ Figure&nbsp;13
 <div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/collective-scatter.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;14: "><img data-src="./assets/collective-scatter.drawio.svg" style="width:50.0%"></a>
+<a href="./assets/collective-scatter.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;14: "><img data-src="./assets/collective-scatter.drawio.svg" style="width:50.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14
@@ -1158,7 +1132,7 @@ Figure&nbsp;14
 <div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;15: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a>
+<a href="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;15: Large Language Models have (LLM)s have taken the NLP community world by storm."><img data-src="https://github.com/Hannibal046/Awesome-LLM/raw/main/resources/image8.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;15: Large Language Models have (LLM)s have taken the <del>NLP community</del> <strong>world</strong> by storm<sup>1</sup>.
@@ -1181,7 +1155,7 @@ Figure&nbsp;15: Large Language Models have (LLM)s have taken the <del>NLP commun
 <div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Figure&nbsp;16: It’s hungry! @wei2022emergentabilitieslargelanguage"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;16: It’s hungry! @wei2022emergentabilitieslargelanguage"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;16: It’s hungry! <span class="citation" data-cites="wei2022emergentabilitieslargelanguage">Wei et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2022</a>)</span>
@@ -1191,7 +1165,7 @@ Figure&nbsp;16: It’s hungry! <span class="citation" data-cites="wei2022emergen
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;17: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;17: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
@@ -1228,7 +1202,7 @@ Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023ha
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;18: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;18: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;18: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<sup>1</sup>.
@@ -1272,7 +1246,7 @@ Figure&nbsp;20: Language Model trained for causal language modeling. Video from:
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;21: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;21: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
@@ -1285,7 +1259,7 @@ Figure&nbsp;21: <strong>Pre-training</strong>: Virtually all of the compute used
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;22: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;22: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
@@ -1298,7 +1272,7 @@ Figure&nbsp;22: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually u
 <div id="fig-assistant-models" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-assistant-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p><span class="preview-image" style="text-align:center; margin-left:auto; margin-right: auto;"><a href="https://github.com/saforem2/LLM-tutorial/blob/main/docs/assets/jailbreak.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;23: "><img data-src="https://github.com/saforem2/LLM-tutorial/blob/main/docs/assets/jailbreak.jpeg?raw=true"></a></span></p>
+<p><span class="preview-image" style="text-align:center; margin-left:auto; margin-right: auto;"><a href="https://github.com/saforem2/LLM-tutorial/blob/main/docs/assets/jailbreak.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Figure&nbsp;23: "><img data-src="https://github.com/saforem2/LLM-tutorial/blob/main/docs/assets/jailbreak.jpeg?raw=true"></a></span></p>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-assistant-models-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;23
@@ -1850,7 +1824,7 @@ Figure&nbsp;23
 <div id="fig-nanoGPT" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-nanoGPT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/nanoGPT/raw/master/assets/nanogpt.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT based models."><img data-src="https://github.com/saforem2/nanoGPT/raw/master/assets/nanogpt.jpg"></a>
+<a href="https://github.com/saforem2/nanoGPT/raw/master/assets/nanogpt.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT based models."><img data-src="https://github.com/saforem2/nanoGPT/raw/master/assets/nanogpt.jpg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nanoGPT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT based models.
@@ -2209,7 +2183,7 @@ Figure&nbsp;24: The simplest, fastest repository for training / finetuning GPT b
 <div aria-describedby="fig-zero-stages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="ZeRO Offloading Stages"><img data-src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png"></a></p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="ZeRO Offloading Stages"><img data-src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png"></a></p>
 <figcaption>ZeRO Offloading Stages</figcaption>
 </figure>
 </div>
@@ -2320,7 +2294,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       Reveal.initialize({
 'controlsAuto': false,
 'previewLinksAuto': true,
-'pdfSeparateFragments': false,
+'pdfSeparateFragments': true,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
