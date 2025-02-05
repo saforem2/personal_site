@@ -1682,7 +1682,7 @@ Figure 28: Training a LLM to talk like Shakespeare using
 ## 📓 References
 
 - Title slide (Tetris animation) from:
-  <https://emilhvitfeldt.github.io/quarto-iframe-examples/tetris/index.html>
+  [emilhvitfeldt/quarto-iframe-examples](https://github.com/emilhvitfeldt/quarto-iframe-examples)
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
