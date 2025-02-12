@@ -626,12 +626,13 @@ Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 ## 🧬 MProt-DPO: Scaling Results
 
-<div class="flex-container" style="align-items: center;">
+<div class="flex-container"
+style="align-items: center; text-align: center; max-width: 80%;">
 
 <div id="fig-mprot-3p5B-scaling1">
 
 <img src="./assets/mprot-3p5B-scaling-2.svg"
-style="text-align:center; margin-left:auto;margin-right:auto;;width:70.0%" />
+style="text-align:center;" />
 
 Figure 10: `3.5B` Model
 
