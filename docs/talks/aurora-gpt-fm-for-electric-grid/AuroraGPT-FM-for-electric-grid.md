@@ -24,8 +24,6 @@ Sam Foreman
   - [⚖️ Evaluating FM Skills for Science:
     Criteria](#balance_scale-evaluating-fm-skills-for-science-criteria)
 - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
-- [🕸️ Generative AI for Dynamic
-  Graphs](#spider_web-generative-ai-for-dynamic-graphs)
 - [📓 References](#notebook-references)
 - [❤️ Thank you!](#heart-thank-you)
 - [📑 Bibliography](#bookmark_tabs-bibliography)
@@ -48,7 +46,8 @@ style="flex-direction: row; justify-content: space-around; align-items:center;">
 
 <div class="blue-card">
 
-**AuroraGPT**: *General purpose scientific LLM*  
+[**AuroraGPT**](https://auroragpt.anl.gov): *General purpose scientific
+LLM*  
 Broadly trained on a general corpora plus scientific {papers, texts,
 data}
 
@@ -627,24 +626,17 @@ Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 ## 🧬 MProt-DPO: Scaling Results
 
 <div class="flex-container"
-style="align-items: center; text-align: center; max-width: 80%;">
+style="align-items: center; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;">
 
 <div id="fig-mprot-3p5B-scaling1">
 
-<img src="./assets/mprot-3p5B-scaling-2.svg"
-style="text-align:center;" />
+![](./assets/mprot-3p5B-scaling-2.svg)
 
-Figure 10: `3.5B` Model
-
-</div>
+Figure 10: Scaling results for `3.5B` Model
 
 </div>
 
-## 🕸️ Generative AI for Dynamic Graphs
-
-- [Quality Measures for Dynamic Graph Generative
-  Models](https://openreview.net/forum?id=8bjspmAMBk)  
-  (Hosseini et al. 2025)
+</div>
 
 ## 📓 References
 
@@ -681,6 +673,9 @@ Figure 10: `3.5B` Model
     GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
   - [Getting Started -
     DeepSpeed](https://www.deepspeed.ai/getting-started/)
+  - 🕸️ [Quality Measures for Dynamic Graph Generative
+    Models](https://openreview.net/forum?id=8bjspmAMBk)  
+    (Hosseini et al. 2025)
 
 </div>
 
