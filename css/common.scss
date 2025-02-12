@@ -477,18 +477,32 @@ body li p {
   white-space: break-spaces;
 }
 
-
-
-
-
-
-
 body ol,
 body ul,
 body dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0;
+  // margin-top: 0;
+  // margin-bottom: 1rem;
 }
+
+.reveal ul.task-list {
+  padding-left: inherit;
+  margin: auto;
+}
+
+.reveal ul.task-list li input[type="checkbox"] {
+	width: 2em;
+	height: 2em;
+	margin: auto;
+	vertical-align: baseline;
+	margin-inline-end: 8pt;
+}
+
+// body ol:last-child,
+// body ul:last-child,
+// body dl:last-child {
+//   margin-bottom: 0.5rem;
+// }
 
 body ol p,
 body ul p,
@@ -1247,20 +1261,6 @@ div.callout-important.callout-style-default .callout-title {
 
 
 
-
-section.has-dark-background,
-section.has-dark-background h1,
-section.has-dark-background h2,
-section.has-dark-background h3,
-section.has-dark-background h4,
-section.has-dark-background h5,
-section.has-dark-background h6 {
-  color: $dim-text;
-}
-
-
-
-
 #title-block-header {
 
   position: relative;
@@ -1306,6 +1306,11 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  & ol:last-child,
+  & body ul:last-child,
+  & body dl:last-child {
+    margin-bottom: 0;
+  }
 
   &.bg-light {
     background: oklch (from #efefef calc(l * 1.15) c h / 0.1);
@@ -1324,6 +1329,10 @@ section.has-dark-background h6 {
 .card {
   background: oklch(from $cardbg calc(l * 1.15) c h / 0.1);
   border: 1px solid $cardbg;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .red-card {
@@ -1332,6 +1341,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .orange-card {
@@ -1340,6 +1353,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .yellow-card {
@@ -1348,6 +1365,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .green-card {
@@ -1356,6 +1377,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .blue-card {
@@ -1364,6 +1389,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .pink-card {
@@ -1372,6 +1401,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .purple-card {
@@ -1380,6 +1413,10 @@ section.has-dark-background h6 {
   border-radius: 0.25em;
   padding: 3pt 8pt;
   margin: auto;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .card-title {
@@ -1392,72 +1429,6 @@ section.has-dark-background h6 {
   margin-top: auto;
   margin-bottom: auto;
 }
-
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
-  margin-top: auto;
-  margin-bottom: auto;
-
-
-
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: auto;
-  margin-bottom: auto;
-  -moz-osx-font-smoothing: grayscale;
-
-
-}
-
-
-
-
-
-
-
-
-
-h1.title,
-.title.h1 {
-  margin-top: 0pt;
-  margin-bottom: 0pt;
-}
-
-section.has-dark-background,
-section.has-dark-background h1,
-section.has-dark-background h2,
-section.has-dark-background h3,
-section.has-dark-background h4,
-section.has-dark-background h5,
-section.has-dark-background h6 {
-  color: $heading-color;
-}
-
-section.has-light-background,
-section.has-light-background h1,
-section.has-light-background h2,
-section.has-light-background h3,
-section.has-light-background h4,
-section.has-light-background h5,
-section.has-light-background h6 {
-  color: $heading-color;
-}
-
-
-
-
-
-
 .invisible-text {
   color: rgba(0, 0, 0, 0) !important;
 }
@@ -1546,39 +1517,74 @@ section.has-light-background h6 {
   color: $mypink;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 pre>code.sourceCode>span {
   line-height: 1.1rem;
   font-size: inherit;
 }
 
+section.has-dark-background,
+section.has-dark-background h1,
+section.has-dark-background h2,
+section.has-dark-background h3,
+section.has-dark-background h4,
+section.has-dark-background h5,
+section.has-dark-background h6 {
+  color: $dim-text;
+}
+
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -moz-osx-font-smoothing: grayscale;
+  margin-block-start: 0.5rem;
+  line-height: unset;
+}
+
+h1.title,
+.title.h1 {
+  margin-top: 0pt;
+  margin-bottom: 0pt;
+}
+
+section.has-dark-background,
+section.has-dark-background h1,
+section.has-dark-background h2,
+section.has-dark-background h3,
+section.has-dark-background h4,
+section.has-dark-background h5,
+section.has-dark-background h6 {
+  color: $heading-color;
+}
+
+section.has-light-background,
+section.has-light-background h1,
+section.has-light-background h2,
+section.has-light-background h3,
+section.has-light-background h4,
+section.has-light-background h5,
+section.has-light-background h6 {
+  color: $heading-color;
+}
 
 h1 {
   opacity: 100%;
   color: $heading-color;
   font-family: $font-family-headings;
-  margin-bottom: 0.75rem;
-
-
+  font-weight: 800;
 }
 
 h2 {
@@ -1587,18 +1593,17 @@ h2 {
   border-bottom: none;
   font-family: $font-family-headings;
   padding-bottom: unset;
-
-
-  margin-bottom: 0.5rem;
-
-
+  margin-bottom: unset;
+  font-weight: 700;
 }
 
 h3 {
   color: $heading-color;
   font-family: $font-family-headings;
-  margin-bottom: 0.25rem;
-  opacity: 100%
+  opacity: 100%;
+  margin-top: unset;
+  margin-bottom: unset;
+  font-weight: 600;
 }
 
 h4 {
@@ -1635,62 +1640,23 @@ dd {
    */
   flex-flow: row;
   /* Then we define how is distributed the remaining space */
-
   justify-content: space-evenly;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 blockquote {
   display: block;
-
-
-
   background: $blockquote-bg;
-
   color: $blockquote-text !important;
   border-left: 4px solid $blockquote-border !important;
-
-
-
 }
 
 blockquote:hover {
   display: block;
-
-
-
-
   color: $code-color;
-
   background: $blockquote-bg;
-
-
   border-left: 4px solid $code-color !important;
   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
-
-
 }
-
-
 
 small * {
   vertical-align: baseline !important;
@@ -1749,43 +1715,23 @@ boxed {
   font-family: $font-family-monospace !important;
   white-space-collapse: collapse;
   display: block;
-
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.0);
   overflow: auto;
   overflow: auto;
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
 
 .cell-output.cell-output-display:hover {
   white-space-collapse: collapse;
   font-family: $font-family-monospace !important;
   white-space: pre;
-
   overflow: auto;
   display: block;
   overflow-x: auto;
-
   border-radius: 2px;
   border: 1px solid $code-color;
   white-space-collapse: collapse;
 }
-
-
-
 
 thead,
 tbody,
@@ -1798,7 +1744,9 @@ th {
   border-width: 0;
 }
 
-.table {
+.table,
+.reveal table,
+.reveal .table {
   --bs-table-hover-bg: RGBA(3, 195, 255, 0.5) !important;
   --bs-table-hover-color: #000000;
   border-top: $bs-table-border-color;

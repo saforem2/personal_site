@@ -1,5 +1,5 @@
 Sam Foreman
-2025-02-05
+2025-02-07
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -248,7 +248,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:18:04</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:41:15</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -581,11 +581,25 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
+#### 📆 2025
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**AuroraGPT: Foundation Models for Science**] @ [*Foundation Models for the Electric Grid*][] \[11/2024\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/auroragpt-fm-for-electric-grid/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
 #### 📆 2024
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Parallel Training Methods**] @ [*AI-for-Science on Supercomputers*][] \[11/2024\]</span>
+> ### <span class="dim-text">[**Parallel Training Methods**] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -1189,8 +1203,9 @@ Table 2: 🎓 Education
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Talks]: ./talks/index.qmd
+  [**AuroraGPT: Foundation Models for Science**]: ./talks/auroragpt-fm-for-electric-grid/index.html
+  [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**Parallel Training Methods**]: ./talks/ai-for-science-2024/index.html
-  [*AI-for-Science on Supercomputers*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**AuroraGPT**]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**Machine Learning and Foundation Models at Scale**]: ./talks/alcf-hpc-workshop-2024/index.html

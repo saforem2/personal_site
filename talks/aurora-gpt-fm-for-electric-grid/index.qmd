@@ -1,0 +1,970 @@
+---
+title: "AuroraGPT"
+subtitle: "Foundation Models for Science"
+date: 2025-02-12
+number-sections: false
+# cookie-consent: true
+location: "[Foundation Models for the Electric Grid](https://events.cels.anl.gov/event/601/)"
+location-url: "https://events.cels.anl.gov/event/601/"
+image: ./assets/thumbnail.png
+bibliography: ../../references.bib
+editor:
+  render-on-save: true
+  freeze: auto
+twitter-card:
+  image: ./assets/thumbnail.png
+  creator: "saforem2"
+  site: "saforem2"
+  title: "AuroraGPT: Foundation Models for Science"
+  description: "Presented at the 3rd In-Person Workshop: Foundation Models for the Electric Grid"
+  card-style: summary
+open-graph:
+  title: "AuroraGPT: Foundation Models for Science"
+  description: "Presented at the 3rd In-Person Workshop: Foundation Models for the Electric Grid"
+  image: ./assets/thumbnail.png
+citation:
+   author: Sam Foreman
+   type: speech
+   url: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/slides
+format:
+  revealjs:
+    logo: "/assets/anl_logos/anl-wireframe-ambivalent.svg"
+    max-scale: 6.0
+    min-scale: 0.1
+    shift-heading-level-by: -1
+    center: true
+    footer: "[samforeman.me/talks/aurora-gpt-fm-for-electric-grid/slides](https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/slides)"
+    slide-url: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/slides.html
+    template-partials:
+      - title-slide.html
+    title-slide-attributes:
+      data-background-size: cover
+      data-background-iframe: https://emilhvitfeldt.github.io/quarto-iframe-examples/stars/index.html
+    # shift-heading-level-by: -1
+  html: default
+  gfm:
+    output-file: "AuroraGPT-FM-for-electric-grid.md"
+---
+
+## 🎯 AuroraGPT: Goals {.smaller background-color="white"}
+
+::: {.flex-container style="flex-direction: column; justify-content: space-around;"}
+
+::: {.flex-container style="flex-direction: row; justify-content: space-around; align-items:center;"}
+
+::: {.column style="width: 55%"}
+
+::: {.blue-card}
+**AuroraGPT**: _General purpose scientific LLM_  
+Broadly trained on a general corpora plus scientific {papers, texts, data}
+:::
+
+- **Explore pathways** towards a "Scientific Assistant" model
+- **Build with international partners** (RIKEN, BSC, others)
+- **Multilingual** English, 日本語, French, German, Spanish
+- **Multimodal**: images, tables, equations, proofs, time series,  graphs, fields, sequences, etc
+:::
+
+::: {.column style="text-align: center;"}
+
+::: {#fig-awesome-llm}
+![](./assets/llms.gif)
+
+Image from {{< iconify fa github >}} [Hannibal046 / `Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
+:::
+
+:::
+
+:::
+
+::: {#fig-timeline}
+![](./assets/timelines.png){width="75%" style="margin-left:auto;margin-right:auto;"}
+
+Credit to the entire AuroraGPT team for slides.
+:::
+
+:::
+
+::: {.notes}
+- Here to talk about AuroraGPT, Argonne's internal effort to build a general
+  purpose scientific LLM, broadly trained on a general corpora of text +
+  scientific {papers, text, data}
+- As part of this effort, we plan to...
+    - Explore pathways, build with international partners, multi-{lingual, modal}
+- Rough timeline of the project and deliverables:
+    - 202{3,4}: text-only models, plan to release a series of {7B, 70B, 1T} models
+    - 202{4,5}: Basic multi-modal models
+    - 202{5,6}: Advanced scientific multimodal models
+:::
+
+## 🦙 Issues with "Publicly Available" LLMs {background-color="white"}
+
+- **Trust** and **Safety**:
+  - Skepticisim about deployment in critical infrastructure
+  - Correctness and reliability of model outputs
+
+- **Transparency**:
+  - Data governance, what was used for pre-training? fine-tuning?
+    - **generally unknown**
+  - What is _open source_?
+    - Model weights?
+    - Pre-training \{code, logs, metrics\} ?
+
+## 🧪 AuroraGPT: Open Science Foundation Model {background-color="white"}
+
+::: {#fig-aurora-gpt .r-stretch style="vertical-align:center;"}
+![](./assets/AuroraGPT.svg)
+
+High-level overview of AuroraGPT project
+:::
+
+::: {.notes}
+- AuroraGPT will be a publicly distributed, open source foundation model for
+open science
+- Is being trained on:
+  - Scientific / engineering structured data
+  - General text, media, news, etc.
+  - Large amounts of low to medium quality data
+  - Much less high quality data (that is publicly available for use)
+- This data is then cleaned, processed, de-duplicated and used for the initial
+pre-training phase of the model
+- The vast majority of the overall compute is spent during this initial
+pre-training phase
+    - This is the group I help to lead and will be talking a bit about today
+- The initial pre-training phase is currently underway
+    - Eventually, given a bit of time, effort and magic, the model will be
+    ready for fine-tuning and additional training for a variety of downstream
+    tasks
+- The pretrained model will then be handed off for additional fine-tuning on a
+variety of downstream tasks
+    - Scientific discovery
+    - Accelerate scientific tasks
+    - Digital twins
+    - Inverse design
+    - Code optimization
+    - Accelerated simulations
+    - Autonomous experiments
+    - Co-design
+- Becoming increasingly clear that LLMs have the potential to drastically
+accelerate computational science
+    - We've seen this already for {GenSLMs, Weather / Climate / Earth Systems
+    Modeling, Particle Physics, etc.}
+:::
+
+## 📊 AuroraGPT: Outcomes {background-color="white"}
+
+- **Datasets and data pipelines** for preparing science training data
+- **Software infrastructure and workflows** to train, evaluate and deploy LLMs
+  at scale for scientific resarch purposes
+
+    - {{< fa brands github >}} [argonne-lcf/Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+      [End-to-end training and inference, on _any_ GPU cluster]{.dim-text}
+    - {{< fa brands github >}} [argonne-lcf/inference-endpoints](https://github.com/argonne-lcf/inference-endpoints)[^globus]  
+      [Inference endpoints for LLMs, hosted @ ALCF]{.dim-text}
+
+[^globus]: Relies _heavily_ on [Globus](https://globus.org) (next talk!)
+
+- **Evaluation of state-of-the-art LLM Models**:
+    - Determine where they fall short in deep scientific tasks
+    - Where deep data may have an impact
+
+## 📚 What do we hope to get? {background-color="white"}
+
+- **Assessment of the approach** of augmenting web training data with two forms
+  of data specific to science:
+    - Full text scientific papers
+    - Structured scientific datasets (suitably mapped to narrative form)
+- **Research grade artifacts** (**models**) for scientific community for
+  adaptation for downstream uses[^mprot-dpo]
+- **Promotion of responsible AI** best practices where we can figure them out
+- **International Collaborations** around the long term goal of _AGI for science_
+
+[^mprot-dpo]:|
+    🔔 Gordon Bell Finalist: [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024]
+
+::: {.notes}
+- Deliverables:
+    - datasets, pipelines
+    - software infrastructure, workflows to interface with science applications
+    - checkpoints, models, logs, workbook, insights, etc.
+- Hope to understand:
+    - How different state-of-the-art models perform at different scientific tasks
+    - where deep data may have an impact
+    - feasibility of generically augmenting text with scientific structured data
+- Huge undertaking that will require large international collaborations around
+  long term goal of AGI for science
+- Extra points:
+    - Well known that LLMs are good for non-consequential tasks
+    - Known to "hallucinate" and create false information
+    - Can this be mitigated reliably ??
+:::
+
+## 🌌 Aurora {background-color="white"}
+
+::: {.flex-container style="align-items: center;"}
+
+::: {.column style="width:5%;"}
+
+::: {#tbl-aurora}
+
+| <!-- --> | <!-- --> |
+|---------:|:--------|
+| Racks    |    166   |
+| Nodes    |  10,624  |
+| CPUs     |  21,248  |
+| GPUs     |  63,744  |
+| NICs     |  84,992  |
+| HBM      |   8 PB   |
+| DDR5c    |   10 PB  |
+
+Aurora Specs {.responsive .striped .hover}
+
+:::
+
+:::
+
+::: {.column style="text-align:center"}
+
+::: {#fig-aurora .r-stretch}
+![](./assets/aurora.png)
+
+Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
+:::
+
+🏆 [Fastest AI system in the world](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
+
+:::
+
+:::
+
+<!--
+> Argonne's exascale system will be used to dramatically advance scientific
+> discovery and innovation.
+-->
+
+## 🤖 ALCF AI Testbed {background-color="white"}
+
+- ALCF AI Testbed Systems are in production and
+  [available for allocations](https://accounts.alcf.anl.gov/#/allocationRequests)
+  to the research community
+- Significant improvement in time-to-solution and energy-efficiency for diverse
+  AI for science applications.
+- [NAIRR Pilot](https://nairrpilot.org/)
+
+::: {.red-card style="color: #FF5252; font-size:90%;"}
+Up to $≈$ **25**$\times$ throughput improvement for genomic FMs
+with **6.5**$\times$ energy efficiency
+:::
+
+::: {.flex-container style="align-items: flex-start; gap: 2pt; text-align:left;"}
+
+::: {#fig-sambanova .column style="width:22%; text-align: left;"}
+![](./assets/sambanova.jpeg)
+
+**SambaNova SN-30** 2nd Gen, 8 nodes with 64 AI Accelerators
+:::
+
+::: {#fig-graphcore .column style="width:22%; text-align:left;"}
+![](./assets/graphcore.png)
+
+**Graphcore Bow**: Pod-64 configuration with 64 accelerators
+:::
+
+::: {#fig-cerebras .column style="width:22%; text-align:left;"}
+![](./assets/cerebras.jpeg)
+
+**Cerebras**: 2x CS-2 WSE with Memory-X and Swarm-X technologies
+:::
+
+::: {#fig-groq .column style="width:22%; text-align:left;"}
+![](./assets/groq.jpeg)
+
+**GroqRack**: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node
+:::
+
+:::
+
+## 👥 Team Leads {.smaller background-color="white"}
+
+<!--
+
+| Team                  | Lead(s)           |                                                            |
+| :----:                | :--------         | :--------------------------------------------------------: |
+| **Planning**          | Rick Stevens      | ![](./assets/team/rick-stevens.png){height="40pt"}         |
+|                       | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
+|                       | Rinku Gupta       | ![](./assets/team/rinku-gupta.png){height="40pt"}          |
+|                       | Mike Papka        | ![](./assets/team/mike-papka.png){height="40pt"}           |
+|                       | Fangfang Xia      | ![](./assets/team/fangfang-xia.png){height="40pt"}         |
+| **Data**              | Ian Foster        | ![](./assets/team/ian-foster.png){height="40pt"}           |
+|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"} |
+| **Models + Training** | Venkat Vishwanath | ![](./assets/team/venkat.jpg){height="40pt"}               |
+|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
+|                       | Sam Foreman       | ![](./assets/team/sam-foreman.png){height="40pt"}          |
+| **Inference**         | Eliu Huerta       | ![](./assets/team/eliu-huerta.png){height="40pt"}          |
+|                       | Azton Wells       | ![](./assets/team/azton-wells.png){height="40pt"}          |
+: Team Leads {#tbl-team-leads}
+| **Models / Training** | Venkat Vishwanath | ![](./assets/team/venkat-vishwanath.png){height="40pt"} |
+|                       | Robert Underwood  | ![](./assets/team/robert-underwood.png){height="40pt"}     |
+-->
+
+::: {style="font-size: 100%;"}
+
+::: {.flex-container style="text-align: center; align-items: center;"}
+**Planning**
+
+![Rick Stevens[^lead]](./assets/team/rick-stevens.png){height="75pt"}
+
+![Ian Foster](./assets/team/ian-foster.png){height="75pt"}
+
+![Rinku Gupta](./assets/team/rinku-gupta.png){height="75pt"}
+
+![Mike Papka](./assets/team/mike-papka.png){height="75pt"}
+
+![Arvind Ramanathan](./assets/team/arvind-ramanathan.png){height="75pt"}
+
+![Fangfang Xia](./assets/team/fangfang-xia.png){height="75pt"}
+:::
+
+::: {.flex-container style="text-align: center;"}
+::: {.col}
+**Data**
+
+![Ian Foster](./assets/team/ian-foster.png){height="75pt"}
+
+![Robert Underwood](./assets/team/robert-underwood.png){height="75pt"}
+:::
+
+::: {.col}
+**Training**
+
+![Venkat Vishwanath](./assets/team/venkat-vishwanath.png){height="75pt"}  
+
+![[Sam Foreman]{style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); font-weight: 500;"}](./assets/team/sam-foreman.png){height="75pt"}
+:::
+
+::: {.col}
+**Evaluation**
+
+![Franck Cappello](./assets/team/franck-cappello.png){height="75pt"}
+
+![Sandeep Madireddy](./assets/team/sandeep-madireddy.png){height="75pt"}  
+
+![Bo Li](./assets/team/bo-li.png){height="75pt"}
+:::
+
+::: {.col}
+**Post**
+
+![Eliu Huerta](./assets/team/eliu-huerta.png){height="75pt"}
+
+![Azton Wells](./assets/team/azton-wells.png){height="75pt"}
+:::
+
+::: {.col}
+**Inference**
+
+![Rajeev Thakur](./assets/team/rajeev-thakur.png){height="75pt"}
+:::
+
+::: {.col}
+**Comms**
+
+![Charlie Catlett](./assets/team/charlie-catlett.png){height="75pt"}
+
+![David Martin](./assets/team/david-martin.png){height="75pt"}
+:::
+
+::: {.col}
+**Distribution**
+
+![Brad Ullrich](./assets/team/brad-ullrich.png){height="75pt"}
+:::
+
+:::
+
+:::
+
+[^lead]: Lead
+
+## 🤝 Teams {auto-animate=true background-color="white"}
+
+::: {.flex-container}
+
+::: {.column}
+- **Planning**
+- **Data Prep**
+    - Accumulate 20+ T tokens of high-quality scientific text and structured data
+- [**Models / Training**]{style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"}[^me]
+    - Train (entirely from scratch) a series of models on publicly available data
+- **Evaluation**
+    - Skills, trustworthiness, safety, robustness, privacy, machine ethics
+
+[^me]: Co-led by: Venkat Vishwanath, **Sam Foreman**
+:::
+
+::: {.column}
+- **Post-Training**
+    - Fine-tuning, alignment
+- **Inference**
+    - Model serving, API development / public-facing web services
+- **Distribution**
+    - Licensing, generating and distributing artifacts for public consumption
+- **Communication**
+:::
+
+:::
+
+## 📚 Data {background-color="white"}
+
+::: {.green-card}
+✅ **Goal**: Assemble a large corpus of documents (general and scientific) to
+train and fine-tune AuroraGPT models
+:::
+
+- **Challenges**: Avoid / detect contamination with benchmarks
+    - Respect copyright (ACM Digital Library), privacy, and ethical
+      considerations
+- **Performance Challenges**: _High throughput_ data processing
+    - Converting PDF $\rightarrow$ text (math formula, figures)
+    - Convert science information (data) into text (narratives)
+    - De-duplication (syntactic and semantic) of scientific documents (to avoid
+      memorization, bias)
+- **Quantity**: Considering 20+ Trillion tokens $\rightarrow$ $\approx$
+  100M papers
+- **Domains**: All (long-term) scientific domains, starting with:
+    - Material science, Physics, Biology, Computer Science, Climate Science
+
+## ⏱️  Dataset Processing {background-color="white"}
+
+- To train a fixed model on trillions of tokens requires:
+    1. **Aggregating** data from multiple different _corpora_  
+       (e.g. ArXiv, Reddit, StackExchange, GitHub, Wikipedia, etc.)
+    1. **Sampling** _each training batch_ according to a fixed distribution
+       across corpora
+    1. **Building** indices that map batches of tokens into these files
+       (indexing)
+
+  ::: {.red-card}
+  The original implementation was _slow_:
+
+  - Designed to run _serially_ on a **single device**
+  - **Major bottleneck** when debugging data pipeline at scale
+  :::
+
+### 🚀 Accelerating Dataset Processing: Results {background-color="white"}
+
+::: {.flex-container style="padding: 10pt; justify-content: space-around; align-items: flex-start;"}
+
+::: {.column style="width:25%;"}
+
+- Original implementation:
+  - **Slow**!
+  - [🐌 \~ 1 hr]{.dim-text}/2T tokens
+
+- [x] Fix:
+  - Wrote _asynchronous_, **distributed** implementation
+  - _significantly_ improves performance (**30x** !!)
+  - 🏎️💨 [\~ **2 min**]{style="color:#2296F3;"}/2T tokens
+
+
+<!--
+::: {style="text-align:center; margin-block-start: 1rem;"}
+🐌 [~~1 hr~~]{.dim-text} $\longrightarrow$ $\approx$ **2 min**]{style="background: oklch(from #2296F3 calc(l * 1.15) c h / 0.1); border: 1px solid #2296F3; border-radius: 0.25px; color:#2296F3;"} 🏎️💨
+:::
+-->
+
+:::
+
+::: {.column}
+![Time spent preparing 2T tokens](./assets/data-processing.svg){#fig-data-processing .r-stretch}
+:::
+
+:::
+
+## 🦜 Model Training {.smaller background-color="white"}
+
+:::: {.flex-container style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;"}
+
+::: {.column style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;"}
+✅ [**Goals**]{style="color: #03BD00;"}
+
+- Want training runs at scale to be:
+    - efficient
+    - stable
+    - reproducible
+- This requires:
+    - robust data pipelines / file IO
+    - effectively overlapping compute with communication
+    - stability across {network, filesystem, machine}
+- 3D / Multi-dimensional Parallelism strategies
+- Large batch training
+- Second order optimizers
+- Sub-quadratic attention
+- State space models
+- _Highly optimized GPU kernels_
+:::
+
+::: {.column style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;"}
+❌ [**Challenges**]{style="color: #E90102;"}
+
+- _Looong time_ to train, can be:
+    - weeks (even months) of continuous training
+    - order of magnitude longer than typical NN training jobs
+- Stability issues:
+    - failures are expensive (but inevitable)
+    - stragglers common at scale
+- Individual jobs are:
+    - **fragile**
+    - only as good as the worst rank
+    - one hang or bad worker can crash job
+    - network / filesystem / other-user(s) dependent
+- Cost / benefits of different collective communication algorithms
+    - depend on optimized / efficient implementations
+- Network performance
+- _Highly optimized GPU kernels_
+:::
+
+::::
+
+::: aside
+{{< iconify fa github >}} [argonne-lcf / Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+:::
+
+## 📉 Loss Curve {background-color="white"}
+
+::: {.content-visible when-format="html" unless-format="revealjs"}
+::: {#fig-loss-curve}
+![](./assets/train-val-loss-vs-tokens-wide.svg){.width="90%" style="margin-left:auto;margin-right:auto;"}
+
+Loss curve during training on 2T tokens.
+:::
+:::
+
+::: {.content-visible when-format="revealjs"}
+::: {#fig-loss-curve}
+![](./assets/train-val-loss-vs-tokens-medium.svg){width="90%" style="margin-left:auto;margin-right:auto;"}
+
+Loss curve during training on 2T tokens.
+:::
+:::
+
+## 🤔 Evaluating FM Skills for Science {background-color="white"}
+
+- What to measure?
+  - **Knowledge Extraction, Retrieval, Distillation, Synthesis**: LLM is
+    provided a question or instruction and a truthful answer is expected
+  - **Text Grounded**: Answers are expected to be fully grounded on
+    peer-reviewed references to support responses
+  - **Reasoning**: LLMs are expected to solve deductive (prove a theory or
+    hypothesis from formal logic and observations), inductive (validate /
+    explain observations from theories) problems
+  - **Creativity**: A creative answer is expected from a question or
+    instruction
+      - thoughtful dialogue, coding, etc.
+
+### ⚖️  Evaluating FM Skills for Science: Criteria {background-color="white"}
+
+- Criteria for all of the above:
+  - **Correctness** of facts
+  - **Accuracy** of solutions and inferences
+  - **Reliability** consistently good in quality or performance
+  - **Speed** how fast to produce a response
+  - **\# shots** how many examples are needed for good quality
+    - Extent of _prompt engineering_
+
+## 🧬 MProt-DPO: Scaling Results {background-color="white"}
+
+::: {.flex-container style="align-items: center;"}
+
+![`3.5B` Model](./assets/mprot-3p5B-scaling-2.svg){#fig-mprot-3p5B-scaling1 width="70%" style="text-align:center; margin-left:auto;margin-right:auto;"}
+
+:::
+
+## 🕸️ Generative AI for Dynamic Graphs {background-color="white"}
+
+- [Quality Measures for Dynamic Graph Generative Models](https://openreview.net/forum?id=8bjspmAMBk)  
+  [@hosseini2025quality]
+
+## 📓 References  {background-color="white"}
+
+::: {.flex-container style="gap: 2pt;"}
+
+::: {.column}
+- {{< fa brands github >}} [argonne-lcf / `Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
+    [For the largest of large language models.]{.dim-text}
+- {{< fa brands github >}} [saforem2 / `ezpz`](https://github.com/saforem2/ezpz)  
+    [Distributed training, ezpz. 🍋]{.dim-text}
+- 📊 See my other slides at [samforeman.me/talks](https://samforeman.me/talks):
+    - [LLMs from Scratch](https://saforem2.github.io/llm-workshop-talk)
+    - [Creating Small(\~ish) LLMs](https://saforem2.github.io/LLM-tutorial)
+    - [Parallel Training Techniques](https://saforem2.github.io/parallel-training-slides)
+    - [LLMs on Polaris](https://samforeman.me/talks/llms-on-polaris/#/title-slide)
+    - [Training LLMs at Scale](https://samforeman.me/talks/llms-at-scale/)
+:::
+
+::: {.column}
+- 👀 See also:
+    - [New international consortium for generative AI models for science](https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for)
+    - [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
+    - [🤗 Efficient Training on Multiple GPUs](https://huggingface.co/docs/transformers/en/perf_train_gpu_many)
+    - [Getting Started - DeepSpeed](https://www.deepspeed.ai/getting-started/)
+:::
+
+:::
+
+## ❤️ Thank you! {background-color="white"}
+
+- Organizers
+- Feel free to reach out!
+
+    <split even>
+
+    [<i class="fas fa-home"></i>](https://samforeman.me)
+    [<i class="far fa-paper-plane"></i>](mailto:///foremans@anl.gov)
+    [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
+
+    </split>
+
+::: {.callout-note icon=false title="🙏 Acknowledgements" collapse="false"}
+
+This research used resources of the Argonne Leadership Computing Facility,
+which is a DOE Office of Science User Facility supported under Contract
+DE-AC02-06CH11357.
+
+:::
+
+## 📑 Bibliography {background-color="white"}
+
+- Refs:
+    - @wei2022emergentabilitieslargelanguage
+    - Animations from [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/)
+
+::: {#refs}
+:::
+
+## 🎁 Extras {background-color="white"}
+
+### 🧬 MProt-DPO: Scaling Results {background-color="#1c1c1c"}
+
+::: {.columns}
+
+::: {.column #fig-mprot-3p5B-scaling}
+
+![](./assets/mprot-3p5B-scaling-2.svg)
+
+`3.5B` model
+:::
+
+::: {.column #fig-mprot-7B-scaling}
+
+![](./assets/mprot-7B-scaling-2.svg)
+
+`7B` model
+:::
+
+:::
+
+### 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
+
+::: {.flex-container style="align-items: center; justify-content: center;"}
+
+![](/assets/anl.svg){style="height:50pt;"}
+
+[{{< iconify ic baseline-plus >}}]{.dim-text style="font-size: 2.0em;"}
+
+![](/assets/deepspeed-logo-transparent.svg){style="height:50pt;"}
+
+:::
+
+- Working with
+  [{{< fa brands microsoft >}} Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed)
+  team to enable longer sequence lengths (context windows) for LLMs
+    - See my [blog post](https://samforeman.me/posts/auroragpt/long-sequences/) for additional details
+
+::: {#fig-long-seq}
+
+::: {.flex-container}
+
+![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+
+![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+
+:::
+
+Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds4sci)
+
+:::
+
+::: aside
+[{{< fa brands github >}} `scaling4science`](https://github.com/saforem2/scaling4science)  
+[{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
+:::
+
+### ♻️  Life Cycle of the LLM {background-color="white"}
+
+::: {.panel-tabset style="text-align:center"}
+
+### 📝 Pre-training {background-color="white"}
+
+
+::: {#fig-pretraining style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
+
+**Pre-training**: Virtually all of the compute used during pretraining phase
+:::
+
+### 🎀 Fine-Tuning {background-color="white"}
+
+::: {#fig-fine-tuning style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
+
+**Fine-tuning**: Fine-tuning actually updates the model's weights to make the model better at a certain task.
+:::
+
+:::
+
+### 🍎 Training LLMs {.smaller background-color="white"}
+
+:::: {.flex-container style="align-items: flex-end;"}
+
+::: {.column style="width:33%;"}
+
+::: {#fig-it-hungers}
+
+![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
+
+It's hungry!
+:::
+
+:::
+
+::: {.column style="width:60%;"}
+
+::: {#fig-evolution}
+
+![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
+
+Visualization from @yang2023harnessing
+:::
+
+:::
+
+::::
+
+<!--
+### 💾 Evaluating Checkpoints {background-color="white"}
+
+```python
+from typing import Optional
+import os
+from pathlib import Path
+
+from transformers import LlamaForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7B-hf")
+
+def load_model(ckpt_dir) -> LlamaForCausalLM:
+    return LlamaForCausalLM.from_pretrained(ckpt_dir)
+
+def eval_model(model, max_length: int, prompt: str) -> str:
+    return (
+        tokenizer.batch_decode(
+            model.generate(
+                **tokenizer(prompt, return_tensors="pt"),
+                 max_length=max_length,
+            ),
+            clean_up_tokenization_spaces=True,
+            skip_special_tokens=True,
+        )[0]
+    )
+
+def load_and_eval_model_from_checkpoint(
+        step: int,
+        max_length: int = 64,
+        prompt: Optional[str] = None,
+        ckpt_root: Optional[os.PathLike | Path | str] = None,
+) -> str:
+    print(f"Loading model from checkpoint at global step: {step}")
+    prompt = "What is it like in there?" if prompt is None else prompt
+    ckpt_root = Path("checkpoints") if ckpt_root is None else Path(ckpt_root)
+    ckpt_dir = ckpt_root.joinpath(f"global_step{step}")
+    return (
+        eval_model(
+            model=load_model(ckpt_dir.as_posix())
+            max_length=max_length,
+            prompt=prompt,
+        )
+    )
+```
+
+### Model Evaluations {background-color="white"}
+
+::: {.panel-tabset}
+
+#### 7000
+
+Tokens: 88B
+
+```python
+>>> print(load_checkpoint(7000))
+Loading model from checkpoint at global step: 7000
+"What is it like in there?"
+"""
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it's a good idea to use a different name for the same thing.
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it's a good idea to use a different name for the same thing.
+I'm not sure if it's a good idea to use a different name for the same thing,
+but I'm sure it
+"""
+```
+
+#### 12000
+
+Tokens: 150B
+
+```python
+>>> print(load_checkpoint(12000))
+Loading model from checkpoint at global step: 12000
+"What is it like in there?"
+"""
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+The people are very friendly and helpful.
+What is it like in there?
+"""
+```
+
+#### 17000
+
+Tokens: 215B
+
+```python
+>>> print(load_checkpoint(17000))
+Loading model from checkpoint at global step: 17000
+"What is it like in there?"
+"""
+I’m not sure what to expect. I’m not sure what to expect from the people I’m
+with. I’m not sure what to expect from the people I’m with. I’m not sure what
+to expect from the people I’m with. I’m not sure what to expect from the people
+I’m with.
+I’m not sure what to expect from the people I’m with.
+I’m not sure what to expect from the people I’m with.
+I’m not sure what to expect from the people
+"""
+```
+
+#### 22000
+
+Tokens: 277B
+
+```python
+>>> print(load_checkpoint(22000))
+Loading model from checkpoint at global step: 22000
+"What is it like in there?"
+"""
+I’m a 20 year old guy from the UK. I’m a student at the University of
+Manchester, studying Computer Science. I’m a big fan of the band, The Beatles,
+and I’m a huge fan of the movie, The Wizard of Oz. I’m a huge fan of the band,
+The Beatles, and I’m a huge fan of the movie, The Wizard of Oz.
+I’m a big fan of the band, The Beatles, and I’m a huge fan of the movie
+"""
+```
+
+#### 32000
+
+Tokens: 400B
+
+```python
+>>> print(load_checkpoint(32000))
+Loading model from checkpoint at global step: 32000
+"What is it like in there?"
+"""
+I've been to the US and I've been to Canada.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's a lot like the US.
+In Canada, it's a lot like the US.
+In the US, it's
+"""
+```
+
+#### 40000
+
+Tokens: 503B
+
+```python
+>>> print(load_checkpoint(40000))
+Loading model from checkpoint at global step: 40000
+"What is it like in there?"
+"""
+The first thing you notice when you enter the room is the size. It’s huge. It’s
+like a football field. It’s a lot of space.
+The second thing you notice is the light. It’s bright. It’s bright.
+The third thing you notice is the sound. It’s loud. It’s loud.
+The fourth thing you notice is the smell. It’s a lot of smells. It’s a lot of smells.
+The fifth thing you notice is the temperature. It’s hot.
+"""
+```
+
+:::
+-->
+
+<!-- ::: -->
+
+<!--
+- Being trained on:
+
+  :::: {.flex-container style="flex-direction:row; justify-content: space-around;"}
+
+  ::: {.flex-container style="flex-direction:column;"}
+
+   🇺🇸English  
+   🇯🇵日本語  
+   🇫🇷French  
+   🇩🇪Deutsch  
+   🇪🇸Español[^bsc]  
+   🇮🇹Italian  
+
+  :::
+
+  ::: {.flex-container style="flex-direction:column;"}
+
+  🧪 scientific text  
+  🖼️ images  
+  📊 tables  
+  ➕ equations  
+  📖 proofs
+
+  :::
+
+  ::: {.flex-container style="flex-direction:column;"}
+
+  📆 structured data  
+  ⛓️ sequences  
+  ⏰ time-series  
+  🕸️ graphs  
+  🌀 fields
+
+  :::
+
+  ::::
+
+[^riken]:|
+    [Argonne and RIKEN sign a MOU in support of AI for science](https://www.anl.gov/article/argonne-and-riken-sign-a-memorandum-of-understanding-in-support-of-ai-for-science)
+
+[^bsc]:|
+    Collaborations with Barcelona Supercomputing Center
+
+-->
