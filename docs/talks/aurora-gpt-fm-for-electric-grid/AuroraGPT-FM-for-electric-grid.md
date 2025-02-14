@@ -115,6 +115,24 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
     - Model weights?
     - Pre-training {code, logs, metrics} ?
 
+<div class="notes">
+
+- Why are we doing this?
+- What is the issue with current LLMs?
+  - **Trust and safety**
+    - Hallucinations, false confidence
+    - Can this be reliably mitigated?
+    - Scaling up inference compute seems to help
+      - reasoning models, TTT, etc.
+  - **Transparency**
+    - Different frontier labs have different definitions of “open
+      source”
+    - e.g. Llama no longer releases base models
+      - Libgen ??
+    - AllenAI institute, olmo models good example
+
+</div>
+
 ## 🧪 AuroraGPT: Open Science Foundation Model
 
 <div id="fig-aurora-gpt">
