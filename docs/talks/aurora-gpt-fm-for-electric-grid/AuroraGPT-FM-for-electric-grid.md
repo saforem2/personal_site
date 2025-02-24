@@ -18,7 +18,6 @@ Sam Foreman
   - [🚀 Accelerating Dataset Processing:
     Results](#rocket-accelerating-dataset-processing-results)
 - [🦜 Model Training](#parrot-model-training)
-- [📉 Loss Curve](#chart_with_downwards_trend-loss-curve)
 - [🤔 Evaluating FM Skills for
   Science](#thinking-evaluating-fm-skills-for-science)
   - [⚖️ Evaluating FM Skills for Science:
@@ -614,8 +613,6 @@ style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px sol
 Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 </div>
-
-## 📉 Loss Curve
 
 ## 🤔 Evaluating FM Skills for Science
 
