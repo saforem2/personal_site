@@ -57,12 +57,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-fdce4c53272f65b67407d2e5f9031c6d.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-10d5c671f91978af2ff313dff6efdfd2.css">
   <link rel="stylesheet" href="../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaTerm/IosevkaTerm.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaQP/IosevkaQP.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaTerm/IosevkaTerm.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaQP/IosevkaQP.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
   <script type="text/javascript">
@@ -1074,6 +1074,7 @@ Figure&nbsp;11: Visualization from <span class="citation" data-cites="yang2023ha
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1242,9 +1243,27 @@ Figure&nbsp;11: Visualization from <span class="citation" data-cites="yang2023ha
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

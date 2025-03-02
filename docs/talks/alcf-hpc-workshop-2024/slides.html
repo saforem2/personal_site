@@ -122,28 +122,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-fdce4c53272f65b67407d2e5f9031c6d.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-10d5c671f91978af2ff313dff6efdfd2.css">
   <link rel="stylesheet" href="../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaTerm/IosevkaTerm.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaQP/IosevkaQP.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaTerm/IosevkaTerm.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaQP/IosevkaQP.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
   <script type="text/javascript">
@@ -364,7 +348,7 @@
 <h1></h1>
 <div style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 1.5rem; margin-left: auto; margin-right: auto; line-height: 1.5em!important;">
 <div style="display:flex;">
-<p><span style="font-size: 1.75em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8">October 29 – 31, 2024 <span class="math inline">\hspace{5pt}</span> <i class="fa-solid fa-shapes" aria-label="shapes"></i></span> <span style="display:inline-block;"><img data-src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg" class="img-fluid"></span></p>
+<p><span style="font-size: 1.75em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8">October 29 – 31, 2024 <span class="math inline">\(\hspace{5pt}\)</span> <i class="fa-solid fa-shapes" aria-label="shapes"></i></span> <span style="display:inline-block;"><img data-src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg" class="img-fluid"></span></p>
 </div>
 <p><span style="font-size: 3.0em; font-weight: 700; color: white">ALCF Hands-on</span><br>
 <span style="font-size: 3.0em; font-weight: 700; color: #FFFFFF">HPC Workshop</span></p>
@@ -553,7 +537,7 @@ Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values
 <a href="./assets/collective-broadcast.drawio.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: broadcast (send) a tensor x from one rank to all ranks"><img data-src="./assets/collective-broadcast.drawio.svg" class="img-fluid"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-broadcast-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: <code>broadcast</code> (<em>send</em>) a tensor <code><span class="math inline">x</span></code> from one rank to all ranks
+Figure&nbsp;6: <code>broadcast</code> (<em>send</em>) a tensor <code><span class="math inline">\(x\)</span></code> from one rank to all ranks
 </figcaption>
 </figure>
 </div>
@@ -582,7 +566,7 @@ Figure&nbsp;8: Scatters a list of tensors to the whole group
 <ul>
 <li><code>N</code> workers each processing unique batch<sup>1</sup> of data:
 <ul>
-<li>[<code>micro_batch_size = 1</code>] <span class="math inline">\times</span> [<code>N</code> GPUs] <span class="math inline">\rightarrow</span> [<b><code>global_batch_size = N</code></b>]</li>
+<li>[<code>micro_batch_size = 1</code>] <span class="math inline">\(\times\)</span> [<code>N</code> GPUs] <span class="math inline">\(\rightarrow\)</span> [<b><code>global_batch_size = N</code></b>]</li>
 </ul></li>
 <li>Smooth loss landscape</li>
 <li>Improved gradient estimators</li>
@@ -882,12 +866,12 @@ Figure&nbsp;14
 </section>
 <section id="tensor-model-parallel-training-example" class="slide level2 center" data-background-color="white">
 <h2>Tensor (/ Model) Parallel Training: Example</h2>
-<p>Want to compute: <span class="math inline">y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2</span><br>
+<p>Want to compute: <span class="math inline">\(y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2\)</span><br>
 where each GPU only has only its portion of the full weights as shown below</p>
 <ol type="1">
-<li>Compute: <span class="math inline">y_{0} = x_{0} * W_{0}\rightarrow</span> <code>GPU1</code></li>
-<li>Compute: <span class="math inline">y_{1} = y_{0} + x_{1} * W_{1}\rightarrow</span> <code>GPU2</code></li>
-<li>Compute: <span class="math inline">y = y_{1} + x_{2} * W_{2} = \sum_{i} x_{i} W_{i}</span> ✅</li>
+<li>Compute: <span class="math inline">\(y_{0} = x_{0} * W_{0}\rightarrow\)</span> <code>GPU1</code></li>
+<li>Compute: <span class="math inline">\(y_{1} = y_{0} + x_{1} * W_{1}\rightarrow\)</span> <code>GPU2</code></li>
+<li>Compute: <span class="math inline">\(y = y_{1} + x_{2} * W_{2} = \sum_{i} x_{i} W_{i}\)</span> ✅</li>
 </ol>
 <div id="fig-tensor-parallel-example" class="quarto-float quarto-figure quarto-figure-center" style="width:75%; margin-left: auto; margin-right: auto; text-align:center;">
 <figure class="quarto-float quarto-float-fig">
@@ -1002,7 +986,7 @@ Figure&nbsp;17: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <ul>
 <li><p>With sufficiently fast connectivity between nodes, these three strategies should be comparable.</p>
 <ul>
-<li>Otherwise, <code>PP</code> <span class="math inline">&gt;</span> <code>ZeRO</code> <span class="math inline">\simeq</span> <code>TP</code>.</li>
+<li>Otherwise, <code>PP</code> <span class="math inline">\(&gt;\)</span> <code>ZeRO</code> <span class="math inline">\(\simeq\)</span> <code>TP</code>.</li>
 </ul></li>
 </ul>
 </div>
@@ -2073,6 +2057,7 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -2241,9 +2226,27 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

@@ -57,28 +57,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-fdce4c53272f65b67407d2e5f9031c6d.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-10d5c671f91978af2ff313dff6efdfd2.css">
   <link rel="stylesheet" href="../../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../../css/custom.css">
   <link rel="stylesheet" href="../../../css/svgbob.css">
-  <link rel="stylesheet" href="../../../static/fonts/IosevkaTerm/IosevkaTerm.css">
-  <link rel="stylesheet" href="../../../static/fonts/IosevkaQP/IosevkaQP.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link rel="stylesheet" href="../../../static/fonts-iosevka/IosevkaTerm/IosevkaTerm.css">
+  <link rel="stylesheet" href="../../../static/fonts-iosevka/IosevkaQP/IosevkaQP.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
   <script type="text/javascript">
@@ -554,7 +538,7 @@ Figure&nbsp;4: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aur
 <li><a href="https://nairrpilot.org/">NAIRR Pilot</a></li>
 </ul>
 <div class="red-card" style="color: #FF5252; font-size:90%;">
-<p>Up to <strong>25</strong><span class="math inline">\times</span> improvement for genomic foundation models with <strong>6.5</strong><span class="math inline">\times</span> energy efficiency</p>
+<p>Up to <strong>25</strong><span class="math inline">\(\times\)</span> improvement for genomic foundation models with <strong>6.5</strong><span class="math inline">\(\times\)</span> energy efficiency</p>
 </div>
 <div class="flex-container" style="align-items: flex-end;">
 <div id="fig-sambanova" class="quarto-float quarto-figure quarto-figure-center">
@@ -859,7 +843,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <section id="accelerating-dataset-processing-results" class="title-slide slide level1 center" data-background-color="white">
 <h1>🚀 Accelerating Dataset Processing: Results</h1>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Completely re-wrote an asynchronous, distributed implementation that <em>significantly</em> improves performance (<del>60 min</del> <span class="math inline">\rightarrow</span> 4 min)</label></li>
+<li><label><input type="checkbox" checked="">Completely re-wrote an asynchronous, distributed implementation that <em>significantly</em> improves performance (<del>60 min</del> <span class="math inline">\(\rightarrow\)</span> 4 min)</label></li>
 </ul>
 <div class="flex-container">
 <div id="fig-data-blendable" class="r-stretch quarto-float quarto-figure quarto-figure-center">
@@ -1092,6 +1076,7 @@ Figure&nbsp;15: Visualization from <span class="citation" data-cites="yang2023ha
   <script src="../../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1265,9 +1250,27 @@ Figure&nbsp;15: Visualization from <span class="citation" data-cites="yang2023ha
 
         maxScale: 4,
 
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

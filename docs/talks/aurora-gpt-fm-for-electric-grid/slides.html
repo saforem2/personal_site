@@ -57,28 +57,12 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-fdce4c53272f65b67407d2e5f9031c6d.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-10d5c671f91978af2ff313dff6efdfd2.css">
   <link rel="stylesheet" href="../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaTerm/IosevkaTerm.css">
-  <link rel="stylesheet" href="../../static/fonts/IosevkaQP/IosevkaQP.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaTerm/IosevkaTerm.css">
+  <link rel="stylesheet" href="../../static/fonts-iosevka/IosevkaQP/IosevkaQP.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
 
   <script type="text/javascript">
@@ -633,7 +617,7 @@ Figure&nbsp;4: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/202
 <li><a href="https://nairrpilot.org/">NAIRR Pilot</a></li>
 </ul>
 <div class="red-card" style="color: #FF5252; font-size:90%;">
-<p>Up to <span class="math inline">≈</span> <strong>25</strong><span class="math inline">\times</span> throughput improvement for genomic FMs with <strong>6.5</strong><span class="math inline">\times</span> energy efficiency</p>
+<p>Up to <span class="math inline">\(≈\)</span> <strong>25</strong><span class="math inline">\(\times\)</span> throughput improvement for genomic FMs with <strong>6.5</strong><span class="math inline">\(\times\)</span> energy efficiency</p>
 </div>
 <div class="flex-container" style="align-items: flex-start; gap: 2pt; text-align:left;">
 <div id="fig-sambanova" class="column quarto-float quarto-figure quarto-figure-center" style="width:22%; text-align: left;">
@@ -871,11 +855,11 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 </ul></li>
 <li><strong>Performance Challenges</strong>: <em>High throughput</em> data processing
 <ul>
-<li>Converting PDF <span class="math inline">\rightarrow</span> text (math formula, figures)</li>
+<li>Converting PDF <span class="math inline">\(\rightarrow\)</span> text (math formula, figures)</li>
 <li>Convert science information (data) into text (narratives)</li>
 <li>De-duplication (syntactic and semantic) of scientific documents (to avoid memorization, bias)</li>
 </ul></li>
-<li><strong>Quantity</strong>: Considering 20+ Trillion tokens <span class="math inline">\rightarrow</span> <span class="math inline">\approx</span> 100M papers</li>
+<li><strong>Quantity</strong>: Considering 20+ Trillion tokens <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\approx\)</span> 100M papers</li>
 <li><strong>Domains</strong>: All (long-term) scientific domains, starting with:
 <ul>
 <li>Material science, Physics, Biology, Computer Science, Climate Science</li>
@@ -1276,6 +1260,7 @@ Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023ha
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1449,9 +1434,27 @@ Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023ha
 
         maxScale: 6,
 
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
+          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
