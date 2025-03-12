@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-70bd1f30c3a59ca6a24e2c33a6f93f72.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-eb39fb945852af7cf8c724fd4fe8e3a6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6b8e730f91921ffa42ac34ccae1a3e78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ab2e730af365f467207ebf9b5cc0bda1.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -105,21 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E72QE53WSY"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 </script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -432,7 +446,7 @@ window.Quarto = {
 <ul>
 <li><code>import ezpz as ez</code>
 <ul>
-<li><p><code>RANK =</code> <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L551"><code>ez.setup_torch(backend=backend)</code></a> <span class="dim-text">for <code>backend</code> <span class="math inline">\(\in\)</span> {<code>DDP</code>, <code>deepspeed</code>, <code>horovod</code>}</span></p></li>
+<li><p><code>RANK =</code> <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L551"><code>ez.setup_torch(backend=backend)</code></a> <span class="dim-text">for <code>backend</code> <span class="math inline">\in</span> {<code>DDP</code>, <code>deepspeed</code>, <code>horovod</code>}</span></p></li>
 <li><p><code>RANK =</code> <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#396"><code>ez.get_rank()</code></a></p></li>
 <li><p><code>LOCAL_RANK =</code> <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#448"><code>ez.get_local_rank()</code></a></p></li>
 <li><p><code>WORLD_SIZE =</code> <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/dist.py#L417"><code>ez.get_world_size()</code></a></p></li>
@@ -673,7 +687,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="tests">Tests</h3>
 <p>You can test a <code>{framework, backend}</code> combination by:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">mpiexec</span> <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> <span class="at">--ppn</span> <span class="st">"</span><span class="va">${NGPU_PER_HOST}</span><span class="st">"</span> python3 test.py framework backend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>for <code>framework</code> <span class="math inline">\(\in\)</span> <code>{pytorch, tensorflow}</code> and <code>backend</code> <span class="math inline">\(\in\)</span> <code>{horovod, deepspeed, DDP}</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>for <code>framework</code> <span class="math inline">\in</span> <code>{pytorch, tensorflow}</code> and <code>backend</code> <span class="math inline">\in</span> <code>{horovod, deepspeed, DDP}</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <ul>
 <li><p>✅ PyTorch + DDP:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">mpiexec</span> <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> <span class="at">--ppn</span> <span class="st">"</span><span class="va">${NGPU_PER_HOST}</span><span class="st">"</span> python3 test.py pytorch DDP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>

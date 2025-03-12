@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-70bd1f30c3a59ca6a24e2c33a6f93f72.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-eb39fb945852af7cf8c724fd4fe8e3a6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6b8e730f91921ffa42ac34ccae1a3e78.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-ab2e730af365f467207ebf9b5cc0bda1.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -106,21 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XVM2Y822Y1"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E72QE53WSY"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-XVM2Y822Y1', { 'anonymize_ip': true});
+gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 </script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -339,7 +353,7 @@ window.Quarto = {
   <ul>
   <li><a href="#denoising-diffusion-probabilistic-models" id="toc-denoising-diffusion-probabilistic-models" class="nav-link active" data-scroll-target="#denoising-diffusion-probabilistic-models">Denoising Diffusion Probabilistic Models</a></li>
   <li><a href="#imports--setup" id="toc-imports--setup" class="nav-link" data-scroll-target="#imports--setup">Imports / Setup</a></li>
-  <li><a href="#2d-u1" id="toc-2d-u1" class="nav-link" data-scroll-target="#2d-u1">2D <span class="math inline">\(U(1)\)</span></a></li>
+  <li><a href="#2d-u1" id="toc-2d-u1" class="nav-link" data-scroll-target="#2d-u1">2D <span class="math inline">U(1)</span></a></li>
   <li><a href="#train-diffusion-model" id="toc-train-diffusion-model" class="nav-link" data-scroll-target="#train-diffusion-model">Train Diffusion Model</a></li>
   <li><a href="#build-diffusion-model-with-unet-architecure" id="toc-build-diffusion-model-with-unet-architecure" class="nav-link" data-scroll-target="#build-diffusion-model-with-unet-architecure">Build Diffusion Model with UNet Architecure</a></li>
   <li><a href="#perform-initial-training-on-hmc-samples" id="toc-perform-initial-training-on-hmc-samples" class="nav-link" data-scroll-target="#perform-initial-training-on-hmc-samples">Perform initial training on HMC samples</a></li>
@@ -480,7 +494,7 @@ False
 </section>
 <div id="3c521572" class="cell markdown">
 <section id="2d-u1" class="level2">
-<h2 class="anchored" data-anchor-id="2d-u1">2D <span class="math inline">\(U(1)\)</span></h2>
+<h2 class="anchored" data-anchor-id="2d-u1">2D <span class="math inline">U(1)</span></h2>
 </section>
 </div>
 <div id="b853ba57" class="cell code" data-execution_count="6" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-21T17:23:46.575842Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-21T17:23:46.575002Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-21T17:23:46.644400Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-21T17:23:46.644215Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-21T17:23:46.575810Z&quot;}" data-jukit_cell_id="x8zCEYjYIg">

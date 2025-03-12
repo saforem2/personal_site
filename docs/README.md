@@ -1,5 +1,5 @@
 Sam Foreman
-2025-03-04
+2025-03-12
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -35,7 +35,8 @@ style="font-size: 1.5rem; padding-right:0pt;"></span>][9]
 
 </div>
 
-<div class="panel-tabset" style="justify-content: center;">
+<div class="panel-tabset"
+style="justify-content: center; loading='lazy'">
 
 ### 🧑🏻‍💻 About
 
@@ -153,110 +154,80 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >   <summary>
 >
->   👀 <strong>If you’re curious</strong>
+>   🔥 What I work on
+>
 >   </summary>
 >
->   - <details closed>
+>   As a member of the [AI / ML Group][Group] at [ALCF][10], I work on:
 >
->     <summary>
+>   <div class="flex-container">
 >
->     🔥 What I work on
+>   <div class="flex-container">
 >
->     </summary>
+>   - 🤖 🧪 [AI + Science][2]
 >
->     As a member of the [AI / ML Group][Group] at [ALCF][10], I work
->     on:
+>   - 🎲 [Building better sampling methods for Lattice QCD]
 >
->     <div class="flex-container">
+>   - 🧬 [Genome-Scale Language Models]
 >
->     <div class="flex-container">
+>     - [ GenSLM]
 >
->     - 🤖 🧪 [AI + Science][2]
+>     - 🥇 [ACM Gordon Bell Special Prize]
 >
->     - 🎲 [Building better sampling methods for Lattice QCD]
+>   </div>
 >
->     - 🧬 [Genome-Scale Language Models]
+>   <div class="flex-container">
 >
->       - [ GenSLM]
+>   - 🌍 [Foundation models for long term climate forecasting]
 >
->       - 🥇 [ACM Gordon Bell Special Prize]
+>   - 🏃‍♂️ [Scaling Large Language Models]
 >
->     </div>
+>   - 🏎️ [Distributed training across thousands of GPUs]
 >
->     <div class="flex-container">
+>   </div>
 >
->     - 🌍 [Foundation models for long term climate forecasting]
+>   </div>
 >
->     - 🏃‍♂️ [Scaling Large Language Models]
+>   </details>
 >
->     - 🏎️ [Distributed training across thousands of GPUs]
+> - <details closed>
 >
->     </div>
+>   <summary>
 >
->     </div>
+>   📍 How I got here
 >
->     </details>
+>   </summary>
 >
->   - <details closed>
+>   My [current research] focuses on using deep generative modeling to
+>   help build better sampling algorithms in lattice gauge theory. In
+>   particular, I’m interested in building gauge equivariant neural
+>   network architectures and using inductive priors to incorporate
+>   physical symmetries into machine learning models.
 >
->     <summary>
+>   I received my PhD in Physics from the University of Iowa in 2019 and
+>   my thesis was on [Learning Better Physics: A Machine Learning
+>   Approach to Lattice Gauge Theory].
 >
->     📍 How I got here
+>   Prior to this, I completed two bachelors degrees (Engineering
+>   Physics and Applied Mathematics, 2015) at The University of Illinois
+>   at Urbana-Champaign. My undergraduate dissertation was titled
+>   [Energy Storage in Quantum Resonators] and was supervised by
+>   Professor [Alfred Hübler] within the Center for Complex Systems
+>   Research at UIUC.
 >
->     </summary>
+>   This work ultimately resulted in a [patent] !!
 >
->     My [current research] focuses on using deep generative modeling to
->     help build better sampling algorithms in lattice gauge theory. In
->     particular, I’m interested in building gauge equivariant neural
->     network architectures and using inductive priors to incorporate
->     physical symmetries into machine learning models.
->
->     I received my PhD in Physics from the University of Iowa in 2019
->     and my thesis was on [Learning Better Physics: A Machine Learning
->     Approach to Lattice Gauge Theory].
->
->     Prior to this, I completed two bachelors degrees (Engineering
->     Physics and Applied Mathematics, 2015) at The University of
->     Illinois at Urbana-Champaign. My undergraduate dissertation was
->     titled [Energy Storage in Quantum Resonators] and was supervised
->     by Professor [Alfred Hübler] within the Center for Complex Systems
->     Research at UIUC.
->
->     This work ultimately resulted in a [patent] !!
->
->     </details>
->
-> </details>
->
-> <span class="highlight">yellow</span>
-> <span class="highlight-pink">pink</span>
-> <span class="highlight-green">green</span>
-> <span class="highlight-blue">blue</span>
-> <span class="circle-sketch-highlight">circle</span>
->
-> ``` python
-> import datetime
-> from rich import print
-> now = datetime.datetime.now()
-> day = now.strftime("%Y-%m-%d")
-> time = now.strftime("%H:%M:%S")
-> print(' '.join([
->     "[#838383]Last Updated[/]:",
->     f"[#E599F7]{day}[/]",
->     "[#838383]@[/]",
->     f"[#00CCFF]{time}[/]"
-> ]))
-> ```
->
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:47:47</span>
-> </pre>
+>   </details>
 >
 > <div style="text-align:center;">
+>
+> <img loading="lazy" src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2322222281&title_bg=%2383838381&icon=&icon_color=%23838383&title=👋&edge_flat=true'>
 >
 > <span class="dim-text">© Copyright [Sam
 > Foreman][<span class="icon dim-text" style="font-size: 1.5rem; padding-right:0pt;"></span>]</span>
 >
-> <img src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%23838383&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false'>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:17:45</span>
+> </pre>
 >
 > </div>
 
@@ -267,12 +238,12 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > <span style="color:#4582ec;">You can find a full list of my
 > publications on my [Google Scholar][5]</span>
 
-- [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
-  Design Workflows with Direct Preference Optimization]
+- [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
+  Design Workflows with Direct Preference Optimization**]
   <span class="dim-text">G. Dharuman, K. Hippe, A. Brace, **S.
   Foreman**, et al. @ [SC’24]</span>
 
-  -  [2024 Gordon Bell Finalist]
+  -  [<span class="highlight-pink">2024 Gordon Bell Finalist</span>]
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects]  
@@ -313,7 +284,8 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   evolutionary dynamics**]  
   <span class="dim-text">@ SC’22 *10/2022*</span>
 
-  - 🥇 [ACM Gordon Bell Special Prize]
+  - 🥇 [<span class="highlight-pink">ACM Gordon Bell Special
+    Prize</span>]
 
 - [Lattice QCD and Particle Physics]  
   <span class="dim-text">A.S. Kronfeld et al., *07/2022*</span>
@@ -1041,86 +1013,22 @@ Table 2: 🎓 Education
 
 ### 🎶 Music
 
-> [!TIP]
->
-> ### <span loading="lazy" style="color:#D41109;">[![][20]][12]</span>
->
-> <script>
-> /**
->   Developed by Prashant Shrestha
->   + https://prashant.me
-> */
-> var lastfmData = {
->   baseURL:
->     "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
->   // Your Last.fm Username
->   user: "saforem2",
->   // Your API key
->   api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
->   additional: "&format=json&limit=1"
-> };
-> &#10;var getSetLastFM = function() {
->   $.ajax({
->     type: "GET",
->     url:
->       lastfmData.baseURL +
->       lastfmData.user +
->       "&api_key=" +
->       lastfmData.api_key +
->       lastfmData.additional,
->     dataType: "json",
->     success: function(resp) {
->       var recentTrack = resp.recenttracks.track[0];
->       var formatted =
->         // "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
->         "🎶 " + recentTrack.name;
->       $("a#tracktitle")
->         .html(formatted)
->         .attr("href", recentTrack.url)
->         .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
->         .attr("target", "_blank");
-> &#10;      var artistFormatted =
->         // "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
->         "🗣️ " + recentTrack.artist["#text"];
->       $("a#trackartist")
->         .html(artistFormatted)
->         .attr("title", "Artist : " + recentTrack.artist["#text"]);
->       $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
->     },
->     error: function(resp) {
->       $("a#tracktitle").html(
->         "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
->       );
->       $("img#trackart").attr("src", "🧑🏻‍💻");
->       var artistFormatted =
->         "Sam Foreman";
->       $("a#trackartist")
->         .html(artistFormatted)
->         .attr("href", "https://samforeman.me");
->     }
->   });
-> };
-> &#10;// Get the new one.
-> getSetLastFM();
-> // Start the countdown.
-> setInterval(getSetLastFM, 10 * 5000);
-> </script> <div class="nowplayingcard">
-> <div class="nowplayingcontainer-inner">
-> <img id="trackart" src="#">
-> <div class="trackInfo">
-> <a id="tracktitle"></a>
-> <a href="#" id="trackartist"></a>
-> </div>
-> </div>
-> </div>
+<div class="flex-container"
+style="justify-content: space-around; align:center;">
 
-<div class="flex-container" style="align-items: flex-start;">
+<div class="flex-container" style="width:55%;">
+
+<iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh));">
+
+</iframe>
+
+</div>
+
+<div class="flex-container" style="flex-direction: column; width:50%;">
 
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false"></a>
 
-<div class="flex-container" style="flex-flow: wrap;">
-
-[<img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" width="100%" align="center" >][12]
+<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" ></a>
 
 </div>
 
@@ -1164,10 +1072,10 @@ Table 2: 🎓 Education
   [Energy Storage in Quantum Resonators]: https://aip.scitation.org/doi/10.1063/1.5009698
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
-  [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization]:
+  [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
     https://doi.org/10.1109/SC41406.2024.00013
   [SC’24]: https://sc24.supercomputing.org/
-  [2024 Gordon Bell Finalist]: https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/
+  [<span class="highlight-pink">2024 Gordon Bell Finalist</span>]: https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/
   [Intro to HPC Bootcamp: Engaging New Communities Through Energy Justice Projects]:
     https://jocse.org/downloads/jocse-15-1-10.pdf
   [Thorough Characterization and Analysis of Large Transformer Model Training At-Scale]:
@@ -1185,6 +1093,7 @@ Table 2: 🎓 Education
   [Intro to HPC Bootcamp @ NERSC]: https://github.com/NERSC/intro-HPC-bootcamp-2023
   [**GenSLMs: Genome-scale language models reveal SARS-Cov-2 evolutionary dynamics**]:
     https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract
+  [<span class="highlight-pink">ACM Gordon Bell Special Prize</span>]: https://www.acm.org/media-center/2023/november/gordon-bell-special-prize-covid-research-2022
   [Lattice QCD and Particle Physics]: https://arxiv.org/abs/2207.07641
   [Applications of ML to Lattice QFT]: https://arxiv.org/abs/2202.05838
   [LeapFrogLayers: Trainable Framework for Effective Sampling]: https://arxiv.org/abs/2112.01582
@@ -1263,4 +1172,3 @@ Table 2: 🎓 Education
   [19]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [20]: ./assets/last-fm-logo.svg
