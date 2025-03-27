@@ -1,5 +1,5 @@
 Sam Foreman
-2025-03-12
+2025-03-24
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -57,7 +57,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### 🎤 <span class="dim-text" style="font-size:1.0em!important;">Recent Talks</span>
+> ### 🎤 <span class="dim-text">Recent Talks</span>
 >
 > <span class="dim-text" style="font-size:1em;">\[[here]\] ( + how I
 > [make them]! )</span>
@@ -226,7 +226,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > <span class="dim-text">© Copyright [Sam
 > Foreman][<span class="icon dim-text" style="font-size: 1.5rem; padding-right:0pt;"></span>]</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">19:32:31</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">18:18:17</span>
 > </pre>
 >
 > </div>
@@ -535,13 +535,9 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 ### 🦜 Talks
 
-> [!NOTE]
->
-> See ’em all, live: [Talks]
-
 > [!TIP]
 >
-> ### <span style="color:#03A669;">HTML ⇆ Reveal.js</span>
+> ### \[HTML ⇆ Reveal.js\]
 >
 > Convert from HTML to slideshow version of a page by appending
 > `/slides` to the end of its URL, e.g.
@@ -799,7 +795,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div class="embedded-slide">
 >
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="width:100%!important; border:none;border-radius:0.25rem;" style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="width:100%!important; ">
 >
 > </iframe>
 >
@@ -1111,7 +1107,6 @@ style="justify-content: space-around; align:center;">
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
-  [Talks]: ./talks/index.qmd
   [**AuroraGPT: Foundation Models for Science**]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
   [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**Parallel Training Methods**]: ./talks/ai-for-science-2024/index.html

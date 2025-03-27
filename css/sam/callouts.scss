@@ -1,29 +1,54 @@
 /*-- scss:defaults --*/
 
-$callout-important-color: #ff5252;
-$callout-color-important: #ff5252;
-$callout-warning-color: $callout-color-warning;
-$callout-color-warning: #fd971f;
-$callout-tip-color: #02b875;
-$callout-color-tip: #02b875;
-$callout-note-color: #4582ec;
-$callout-color-note: #4582ec;
-$callout-color-info: #B695FF;
-$callout-color-info: #B695FF;
-$callout-caution-color: #FF3BD3;
-$callout-color-caution: #FF3BD3;
+$callout-important-color: #ff5252 !default;
+$callout-color-important: #ff5252 !default;
+
+$callout-color-warning: #fd971f !default;
+$callout-warning-color: #fd971f !default;
+
+$callout-tip-color: #838383 !default;
+$callout-color-tip: #838383 !default;
+
+$callout-note-color: #4582ec !default;
+$callout-color-note: #4582ec !default;
+
+$callout-color-info: #B695FF !default;
+$callout-info-color: #B695FF !default;
+
+$callout-caution-color: #FF3BD3 !default;
+$callout-color-caution: #FF3BD3 !default;
 
 /*-- scss:rules --*/
 
+:root {
+  --callout-important-color: #ff5252;
+  --callout-color-important: #ff5252;
+  --callout-warning-color: #fd971F;
+  --callout-color-warning: #fd971F;
+  --callout-tip-color: #838383;
+  --callout-color-tip: #838383;
+  // --callout-tip-color: #02b875;
+  // --callout-color-tip: #02b875;
+  --callout-note-color: #4582ec;
+  --callout-color-note: #4582ec;
+  --callout-color-info: #B695FF;
+  --callout-color-info: #B695FF;
+  --callout-caution-color: #FF3BD3;
+  --callout-color-caution: #FF3BD3;
+  // --callout-warning-color: $callout-warning-color;
+  // --callout-tip-color: $callout-tip-color;
+  // --callout-note-color: $callout-note-color;
+  // --callout-info-color: $callout-color-info;
+  // --callout-caution-color: $callout-caution-color;
+}
 
 
 .callout.callout-style-simple {
 
   opacity: 100% !important;
   display: -webkit-inline-box;
-  box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
+  // box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
   border-radius: 0rem !important;
-
 
 
 
@@ -39,22 +64,23 @@ $callout-color-caution: #FF3BD3;
   /* border-bottom: 1px solid #dee2e6; */
 }
 
-.reveal .callout.callout-style-default:hover,
-.callout.callout-style-default:hover,
-.reveal .callout.callout-style-simple:hover,
-.callout.callout-style-simple:hover {
-  /* border: 1px solid var(--callout-border-hover-color)!important; */
-
-
-
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
-
-
-  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
-
-
-
-}
+//
+// .reveal .callout.callout-style-default:hover,
+// .callout.callout-style-default:hover,
+// .reveal .callout.callout-style-simple:hover,
+// .callout.callout-style-simple:hover {
+//   /* border: 1px solid var(--callout-border-hover-color)!important; */
+//
+//
+//
+//   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
+//
+//
+//   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+//
+//
+//
+// }
 
 .callout.callout-style-simple>div.callout-header {
   font-size: 1rem;
@@ -108,7 +134,7 @@ $callout-color-caution: #FF3BD3;
 }
 
 .callout {
-  width: 100%!important;
+  width: 100% !important;
   margin-block-end: 0.5rem;
 }
 
@@ -125,10 +151,11 @@ $callout-color-caution: #FF3BD3;
 
 .callout.callout-style-simple,
 .callout.callout-style-default {
-  border-left: none !important;
-  border-right: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  // border: unset;
+  // border-left: none !important;
+  // border-right: none !important;
+  // border-top: none !important;
+  // border-bottom: none !important;
   padding: 0pt 5pt;
   margin-block-end: 0.5rem;
 }
@@ -143,8 +170,8 @@ $callout-color-caution: #FF3BD3;
 }
 
 .callout.callout-titled>.callout-header {
-    padding-top: 0;
-    margin-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 0;
 }
 
 .callout:not(.callout-titled) .callout-body> :last-child,
@@ -174,45 +201,45 @@ div.callout-tip.callout {
   background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1)
 }
 
-div.callout-tip.callout:hover {
-  border: 1px solid $callout-tip-color
-}
+// div.callout-tip.callout:hover {
+//   border: 1px solid $callout-tip-color;
+// }
 
 div.callout-note.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-note-color calc(l * 1.15) c h/0.1)
 }
 
-div.callout-note.callout:hover {
-  border: 1px solid $callout-note-color
-}
+// div.callout-note.callout:hover {
+//   border: 1px solid $callout-note-color
+// }
 
 div.callout-caution.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1)
 }
 
-div.callout-caution.callout:hover {
-  border: 1px solid $callout-caution-color
-}
+// div.callout-caution.callout:hover {
+//   border: 1px solid $callout-caution-color
+// }
 
 div.callout-important.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1)
 }
 
-div.callout-important.callout:hover {
-  border: 1px solid $callout-important-color
-}
+// div.callout-important.callout:hover {
+//   border: 1px solid $callout-important-color
+// }
 
 div.callout-warning.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1)
 }
 
-div.callout-warning.callout:hover {
-  border: 1px solid $callout-color-warning
-}
+// div.callout-warning.callout:hover {
+//   border: 1px solid $callout-color-warning
+// }
 
 div.callout-warning.callout .callout .callout-title-container {
   overflow-wrap: anywhere;
@@ -234,12 +261,23 @@ div.callout-info.callout-style-simple .callout-title,
 div.callout-info.callout-style-default .callout-title {
   background-color: oklch(from $callout-color-info calc(l * 1.15) c h/0.1);
   color: $callout-color-info;
+
+  &:hover {
+    border: 1px solid $callout-color-info !important;
+    transition: all 0.2s ease-in-out;
+  }
 }
 
 div.callout-caution.callout-style-simple .callout-title,
 div.callout-caution.callout-style-default .callout-title {
   background-color: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
   color: $callout-caution-color;
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  &:hover {
+    border: 1px solid $callout-caution-color !important;
+    transition: all 0.2s ease-in-out;
+  }
 }
 
 div.callout-warning.callout-style-simple .callout-title,
@@ -303,16 +341,16 @@ div.callout-important.callout-style-default .callout-title {
 .callout.callout-style-simple {
   opacity: 100% !important;
   display: -webkit-inline-box;
-  box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
+  // box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
   border-radius: 0rem !important
 }
 
-.reveal .callout.callout-style-default:hover,
-.callout.callout-style-default:hover,
-.reveal .callout.callout-style-simple:hover,
-.callout.callout-style-simple:hover {
-  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important
-}
+// .reveal .callout.callout-style-default:hover,
+// .callout.callout-style-default:hover,
+// .reveal .callout.callout-style-simple:hover,
+// .callout.callout-style-simple:hover {
+//   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important
+// }
 
 .callout.callout-style-simple>div.callout-header {
   font-size: 1rem;
@@ -320,4 +358,77 @@ div.callout-important.callout-style-default .callout-title {
 
 .callout-toggle {
   opacity: 33%
+}
+
+
+div.callout-tip.callout,
+.callout .callout-tip {
+  background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
+  // border: 1px solid $callout-tip-color !important;
+  border: 1px solid rgba(red($callout-tip-color), green($callout-tip-color), blue($callout-tip-color), 0.25) !important;
+
+  &:hover {
+    border: 1px solid var(--callout-color-tip) !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
+}
+
+div.callout-note.callout,
+.callout .callout-note {
+  background: oklch(from $callout-note-color calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+
+  &:hover {
+    border: 1px solid $callout-note-color !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
+}
+
+div.callout-caution.callout,
+.callout .callout-caution {
+  background: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+
+  &:hover {
+    border: 1px solid $callout-caution-color !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
+}
+
+.callout .callout-important,
+div.callout-important.callout {
+  background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+
+  &:hover {
+    border: 1px solid $callout-important-color !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
+}
+
+.callout .callout-tip,
+div.callout-tip.callout {
+  background: oklch(from $callout-color-tip calc(l * 1.15) c h/0.1);
+  // border: 1px solid rgba(0, 0, 0, 0) !important;
+
+  &:hover {
+    border: 1px solid $callout-color-tip !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
+}
+
+div.callout-tip.callout {
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(131, 131, 131, 0.25);
+
+  &:hover {
+    border: 1px solid rgba(131, 131, 131, 1.0) !important;
+    transition: all 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, .4) 1px 1px 1px !important;
+  }
 }

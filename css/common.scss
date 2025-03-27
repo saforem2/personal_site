@@ -41,18 +41,18 @@ $light: #FAFBFF;
 $dark-bg: #1c1c1c;
 
 $grey-ambivalent: #838383;
-$callout-important-color: #ff5252;
-$callout-color-important: #ff5252;
-$callout-warning-color: #fd971f;
-$callout-color-warning: #fd971f;
-$callout-tip-color: #02b875;
-$callout-color-tip: #02b875;
-$callout-note-color: #4582ec;
-$callout-color-note: #4582ec;
-$callout-color-info: #B695FF;
-$callout-color-info: #B695FF;
-$callout-caution-color: #FF3BD3;
-$callout-color-caution: #FF3BD3;
+// $callout-important-color: #ff5252;
+// $callout-color-important: #ff5252;
+// $callout-warning-color: #fd971f;
+// $callout-color-warning: #fd971f;
+// $callout-tip-color: #02b875;
+// $callout-color-tip: #02b875;
+// $callout-note-color: #4582ec;
+// $callout-color-note: #4582ec;
+// $callout-color-info: #B695FF;
+// $callout-color-info: #B695FF;
+// $callout-caution-color: #FF3BD3;
+// $callout-color-caution: #FF3BD3;
 
 $base-font-size: 16px !default;
 $code-block-font-size: 16px !default;
@@ -76,8 +76,10 @@ $callout-important-color: #ff5252;
 $callout-color-important: #ff5252;
 $callout-warning-color: #fd971f;
 $callout-color-warning: #fd971f;
-$callout-tip-color: #02b875;
-$callout-color-tip: #02b875;
+$callout-tip-color: #838383;
+$callout-color-tip: #838383;
+// $callout-tip-color: #02b875;
+// $callout-color-tip: #02b875;
 $callout-note-color: #4582ec;
 $callout-color-note: #4582ec;
 $callout-color-info: #B695FF;
@@ -211,7 +213,8 @@ $themes: (
     bright-text: #111111,
     brighter-text: #000000,
     callout-note-color: #4582ec,
-    callout-tip-color: #02b875,
+    callout-tip-color: #838383,
+    // callout-tip-color: #02b875,
     callout-warning-color: #FD971F,
     callout-caution-color: #E599F7,
     callout-important-color: #FF5252,
@@ -250,7 +253,8 @@ $themes: (
     link-fg: #32affa,
     link-fg-hover: #FF67FF,
     callout-note-color: #4582ec,
-    callout-tip-color: #02b875,
+    // callout-tip-color: #02b875,
+    callout-tip-color: #838383,
     callout-warning-color: #FD971F,
     callout-caution-color: #E599F7,
     callout-important-color: #FF5252,
@@ -297,6 +301,10 @@ b {
 
 
 :root {
+  --bs-card-spacer-y: 0.5rem;
+  --bs-card-spacer-x: 0.5rem;
+  // --bs-card-spacer-x: 0pt;
+  // --bs-card-spacer-y: 0pt;
   --font-family-sans-serif: $font-family-sans-serif;
   --font-family-headings: $font-family-headings;
   --font-family-monospace: $font-family-monospace;
@@ -304,9 +312,6 @@ b {
   --font-family-presentation-heading: $presentation-heading-font;
   --bs-nav-link-color: $bs-nav-link-color;
   --r-main-font: $presentation-main-font;
-
-  --bs-card-spacer-x: 0pt;
-  --bs-card-spacer-y: 0pt;
   --code-bg: $code-bg;
   --bs-body-font-weight: 400;
   --bs-body-font-family: $font-family-sans-serif;
@@ -426,6 +431,7 @@ mark {
     color: $link-color;
     background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1);
   }
+
   background-color: $selection-bg;
   color: $highlight-yellow;
 }
@@ -484,14 +490,14 @@ body li p {
   color: inherit;
   /* margin-top: auto; */
   /* margin-bottom: auto; */
-  margin-block: auto;
-  white-space: break-spaces;
+  // margin-block: auto;
+  white-space: collapse;
 }
 
 .quarto-grid-item .card-other-values {
-  margin-top: unset;
+  margin: auto;
   font-size: 0.9rem;
-  white-space: break-spaces;
+  white-space: collapse;
 }
 
 body ol,
@@ -1124,51 +1130,51 @@ nav td code:not(.sourceCode) {
   padding: 0 5pt;
 }
 
-div.callout-tip.callout {
-  border-left-color: rgba(0, 0, 0, 0.0);
-  background: oklch(from $callout-tip-color calc(l * 1.15) c h / 0.1);
-
-  &:hover {
-    border: 1px solid $callout-tip-color;
-  }
-}
-
-div.callout-note.callout {
-  border-left-color: rgba(0, 0, 0, 0.0);
-  background: oklch(from $callout-note-color calc(l * 1.15) c h / 0.1);
-
-  &:hover {
-    border: 1px solid $callout-note-color;
-  }
-}
-
-div.callout-caution.callout {
-  border-left-color: rgba(0, 0, 0, 0.0);
-  background: oklch(from $callout-caution-color calc(l * 1.15) c h / 0.1);
-
-  &:hover {
-    border: 1px solid $callout-caution-color;
-  }
-}
-
-div.callout-important.callout {
-  border-left-color: rgba(0, 0, 0, 0.0);
-  background: oklch(from $callout-important-color calc(l * 1.15) c h / 0.1);
-
-  &:hover {
-    border: 1px solid $callout-important-color;
-  }
-}
-
-div.callout-warning.callout {
-  border-left-color: rgba(0, 0, 0, 0.0);
-  background: oklch(from $callout-warning-color calc(l * 1.15) c h / 0.1);
-
-  &:hover {
-    border: 1px solid $callout-warning-color;
-  }
-
-}
+// div.callout-tip.callout {
+//   border-left-color: rgba(0, 0, 0, 0.0);
+//   background: oklch(from $callout-tip-color calc(l * 1.15) c h / 0.1);
+//
+//   &:hover {
+//     border: 1px solid $callout-tip-color;
+//   }
+// }
+//
+// div.callout-note.callout {
+//   border-left-color: rgba(0, 0, 0, 0.0);
+//   background: oklch(from $callout-note-color calc(l * 1.15) c h / 0.1);
+//
+//   &:hover {
+//     border: 1px solid $callout-note-color;
+//   }
+// }
+//
+// div.callout-caution.callout {
+//   border-left-color: rgba(0, 0, 0, 0.0);
+//   background: oklch(from $callout-caution-color calc(l * 1.15) c h / 0.1);
+//
+//   &:hover {
+//     border: 1px solid $callout-caution-color;
+//   }
+// }
+//
+// div.callout-important.callout {
+//   border-left-color: rgba(0, 0, 0, 0.0);
+//   background: oklch(from $callout-important-color calc(l * 1.15) c h / 0.1);
+//
+//   &:hover {
+//     border: 1px solid $callout-important-color;
+//   }
+// }
+//
+// div.callout-warning.callout {
+//   border-left-color: rgba(0, 0, 0, 0.0);
+//   background: oklch(from $callout-warning-color calc(l * 1.15) c h / 0.1);
+//
+//   &:hover {
+//     border: 1px solid $callout-warning-color;
+//   }
+//
+// }
 
 div.callout-warning.callout .callout .callout-title-container {
   overflow-wrap: anywhere;
@@ -1263,10 +1269,6 @@ div.callout-important.callout-style-default .callout-title {
 
 
 
-.card:hover {
-  color: $link-color-hover;
-}
-
 
 
 
@@ -1321,7 +1323,7 @@ div.callout-important.callout-style-default .callout-title {
 
 .card {
   border-radius: 0.25em;
-  padding: 3pt 8pt;
+  // padding: 3pt 8pt;
   margin: auto;
 
   & ol:last-child,
@@ -1345,12 +1347,18 @@ div.callout-important.callout-style-default .callout-title {
 
 
 .card {
-  background: oklch(from $cardbg calc(l * 1.15) c h / 0.1);
+  // background: oklch(from $cardbg calc(l * 1.15) c h / 0.1);
   border: 1px solid $cardbg;
 
   p {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  &:hover {
+    border: 1px solid $link-color-hover;
+    transition: all .3s ease-in;
+    color: $link-color-hover;
   }
 }
 
@@ -1940,9 +1948,6 @@ body {
 }
 
 .card {
-
-
-
   background: $code-bg;
 
 
@@ -1954,7 +1959,7 @@ body {
 
 
 
-  border-radius: 6px;
+  // border-radius: 6px;
 
 
 
@@ -2257,6 +2262,11 @@ div.quarto-about-trestles {
     max-height: 32pt;
     position: relative;
     width: min-content;
+
+    &:hover {
+      filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
+      background: unset;
+    }
   }
 
   .navbar .navbar-container>.navbar-brand-container {
@@ -2587,6 +2597,14 @@ details>summary:hover {
   opacity: 1;
 
   vertical-align: text-top;
+}
+
+.navbar-brand.navbar-brand-logo {
+  &:hover {
+    filter: drop-shadow(RGBA(0, 0, 0, 0.63) 0px 1px 0px);
+    background: unset;
+    transition: all 0.2s ease-in-out;
+  }
 }
 
 .navbar .navbar-container>.navbar-brand-container {
