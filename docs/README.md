@@ -1,35 +1,39 @@
 Sam Foreman
-2025-03-24
+2025-04-07
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"
-style="width: 100%; border: 0px solid var(--bg-border)!important;">![][1]</span>
+<span class="profile-avatar"><img src="./assets/avatar-min.png"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-weight: 400;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
-<div style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; background-color: var(--link-bg-color);">
+<div class="flex-container"
+style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; gap: 5pt; background-color: var(--link-bg-color);font-size:1.5rem;">
 
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][2]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][3]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][4]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][5]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][6]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][7]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][8]
-[<span class="icon dim-text"
-style="font-size: 1.5rem; padding-right:0pt;"></span>][9]
+<a style="color: #838383!important;" href="https://samforeman.me"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://github.com/saforem2" ><iconify-icon loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://twitter.com/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://bsky.com/samforeman"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="mailto:foremans@anl.gov"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://outlook.office.com/"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Email" title="Email"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://linkedin.com/in/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://open.spotify.com/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a>
+
+<a style="color: #838383!important;" href="https://www.last.fm/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a>
 
 </div>
 
@@ -46,7 +50,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 <div class="column">
 
 - [Computational scientist][ALCF] @ Argonne National Laboratory
-  - AI / ML [Group] @ [ALCF][10]
+  - AI / ML [Group] @ [ALCF][1]
 - Working on:
   - 🧪 {AI, HPC} for [science]
   - 🚀 [training large models] on [supercomputers]
@@ -71,7 +75,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > > [!TIP]
 > >
-> > ### <span style="color:#D41109;">[![][11]][12]</span>
+> > ### <span style="color:#D41109;">[![][2]][3]</span>
 > >
 > > <script>
 > > /**
@@ -158,13 +162,13 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >   </summary>
 >
->   As a member of the [AI / ML Group][Group] at [ALCF][10], I work on:
+>   As a member of the [AI / ML Group][Group] at [ALCF][1], I work on:
 >
 >   <div class="flex-container">
 >
 >   <div class="flex-container">
 >
->   - 🤖 🧪 [AI + Science][2]
+>   - 🤖 🧪 [AI + Science]
 >
 >   - 🎲 [Building better sampling methods for Lattice QCD]
 >
@@ -219,15 +223,28 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >   </details>
 >
+> ``` python
+> import datetime
+> from rich import print
+> now = datetime.datetime.now()
+> day = now.strftime("%Y-%m-%d")
+> time = now.strftime("%H:%M:%S")
+> print(' '.join([
+>     "[#838383]Last Updated[/]:",
+>     f"[#E599F7]{day}[/]",
+>     "[#838383]@[/]",
+>     f"[#00CCFF]{time}[/]"
+> ]))
+> ```
+>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">04</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:07:26</span>
+> </pre>
+>
 > <div style="text-align:center;">
 >
-> <img loading="lazy" src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2322222281&title_bg=%2383838381&icon=&icon_color=%23838383&title=👋&edge_flat=true'>
+> <img loading="lazy" alt="Hits" src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me&count_bg=%2322222281&title_bg=%2383838381&icon=&icon_color=%23838383&title=👋&edge_flat=true'>
 >
-> <span class="dim-text">© Copyright [Sam
-> Foreman][<span class="icon dim-text" style="font-size: 1.5rem; padding-right:0pt;"></span>]</span>
->
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">03</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">18:18:17</span>
-> </pre>
+> <span class="dim-text">© Copyright [Sam Foreman]</span>
 >
 > </div>
 
@@ -236,7 +253,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > [!NOTE]
 >
 > <span style="color:#4582ec;">You can find a full list of my
-> publications on my [Google Scholar][5]</span>
+> publications on my [Google Scholar]</span>
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
   Design Workflows with Direct Preference Optimization**]
@@ -263,7 +280,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">@ SC’23, *11/2023*</span>
 
 -  [**DeepSpeed4Science Initiative**: Enabling Large-Scale Scientific
-  Discovery \[…\]][13]  
+  Discovery \[…\]][4]  
   <span class="dim-text">@ [NeurIPS 2023 AI For Science Workshop],
   *10/2023*</span>
 
@@ -301,7 +318,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 - [HMC with Normalizing Flows][] \[[slides]\]  
   <span class="dim-text">**S. Foreman** et al., [Lattice,
-  *2021*][14]</span>
+  *2021*][5]</span>
 
 - [Deep Learning Hamiltonian Monte Carlo][] \[[+ poster]\]  
   <span class="dim-text">**S. Foreman**, X.Y. Jin, & J.C. Osborn, @
@@ -328,7 +345,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span style="color:#03A669;">📓 References</span>
+> ### <span class="dim-text">📓 References</span>
 >
 > - References:
 >   - (Dharuman et al. 2024)
@@ -603,7 +620,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**AuroraGPT**][15] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+> ### <span class="dim-text">[**AuroraGPT**][6] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
@@ -805,7 +822,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][16] \[12/2021\]</span>
+> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][7] \[12/2021\]</span>
 >
 > <div class="embedded-slide">
 >
@@ -881,10 +898,9 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <div style="width: 100%; text-align: center;">
 >
-> [![][17]][18]
+> <a href="https://git.io/streak-stats"><img loading="lazy" align="center" width="100%" src="https://streak-stats.demolab.com?user=saforem2&theme=shadow-blue&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&ring=838383&fire=FF5252&sideNums=838383&sideLabels=838383&date_format=n%2Fj%5B%2FY%5D&background=EB545400" alt="GitHub Streak" /></a>
 >
-> <span loading="lazy" style="width:100%;">![Github
-> Contributions]</span>
+> <img loading="lazy" width="100%" alt="Github Contributions " src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true">
 >
 > </div>
 >
@@ -981,13 +997,11 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 Table 1: 📟 Experience
 
-| Position                                  |     @      | Start | End  |
-|:------------------------------------------|:----------:|:-----:|:----:|
-| [Assistant Computational Scientist][ALCF] | [ALCF][10] | 2022  |  –   |
-| Postdoc                                   |    ALCF    | 2019  | 2022 |
-| Graduate Researcher                       |   [ANL]    | 2018  | 2019 |
-
-📟 Experience
+| Position                                  |     @     | Start | End  |
+|:------------------------------------------|:---------:|:-----:|:----:|
+| [Assistant Computational Scientist][ALCF] | [ALCF][1] | 2022  |  –   |
+| Postdoc                                   |   ALCF    | 2019  | 2022 |
+| Graduate Researcher                       |   [ANL]   | 2018  | 2019 |
 
 </div>
 
@@ -997,13 +1011,11 @@ Table 1: 📟 Experience
 
 Table 2: 🎓 Education
 
-| Degree |      In       |         @          | End  |
-|:-------|:-------------:|:------------------:|:----:|
-| [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][19] |       [UIUC]       | 2015 |
-| B.Sc   |    [Math]     |        UIUC        | 2015 |
-
-🎓 Education
+| Degree |      In      |         @          | End  |
+|:-------|:------------:|:------------------:|:----:|
+| [PhD]  |  [Physics]   | University of Iowa | 2019 |
+| B.Sc   | [Physics][8] |       [UIUC]       | 2015 |
+| B.Sc   |    [Math]    |        UIUC        | 2015 |
 
 </div>
 
@@ -1033,28 +1045,18 @@ style="justify-content: space-around; align:center;">
 </div>
 
   [ALCF]: https://alcf.anl.gov/about/people/sam-foreman
-  [1]: ./assets/avatar.webp
   [<span class="orcid-green" style="background: none!important;"></span>]:
     https://orcid.org/0000-0002-9981-0876
-  [<span class="icon dim-text" style="font-size: 1.5rem; padding-right:0pt;"></span>]:
-    https://samforeman.me
-  [2]: https://github.com/saforem2/
-  [3]: https://www.twitter.com/saforem2
-  [4]: mailto:///foremans@anl.gov
-  [5]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
-  [6]: https://open.spotify.com/user/saforem2
-  [7]: https://www.last.fm/user/saforem2
-  [8]: https://linkedin.com/in/saforem2
-  [9]: https://outlook.office.com/bookwithme/user/450ab3e5d58a4e7f84c802cc4c7205e6@anl.gov?anonymous&ep=plink
   [Group]: https://www.alcf.anl.gov/about/people/group/506
-  [10]: https://alcf.anl.gov
+  [1]: https://alcf.anl.gov
   [science]: https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=vV_1zDwAAAAJ
   [training large models]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html
   [supercomputers]: https://www.alcf.anl.gov/aurora
   [here]: talks/index.qmd
   [make them]: ./posts/dope-slides/index.qmd
-  [11]: https://api.iconify.design/logos:lastfm.svg?color=%23888888
-  [12]: https://last.fm/user/saforem2
+  [2]: https://api.iconify.design/logos:lastfm.svg?color=%23888888
+  [3]: https://last.fm/user/saforem2
+  [AI + Science]: https://github.com/saforem2/
   [Building better sampling methods for Lattice QCD]: https://github.com/saforem2/l2hmc-qcd
   [Genome-Scale Language Models]: https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2
   [GenSLM]: https://github.com/ramanathanlab/genslm
@@ -1068,6 +1070,8 @@ style="justify-content: space-around; align:center;">
   [Energy Storage in Quantum Resonators]: https://aip.scitation.org/doi/10.1063/1.5009698
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
+  [Sam Foreman]: https://samforeman.me
+  [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
   [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
     https://doi.org/10.1109/SC41406.2024.00013
   [SC’24]: https://sc24.supercomputing.org/
@@ -1080,7 +1084,7 @@ style="justify-content: space-around; align:center;">
   [Lattice, 2023 (Proceedings)]: https://indico.fnal.gov/event/57249/
   [Protein Generation via Genome-scale Language Models with Bio-physical Scoring]:
     https://dl.acm.org/doi/abs/10.1145/3624062.3626087
-  [13]: https://arxiv.org/abs/2310.04610
+  [4]: https://arxiv.org/abs/2310.04610
   [NeurIPS 2023 AI For Science Workshop]: https://ai4sciencecommunity.github.io/neurips23.html
   [DeepSpeed4Science.ai Blog Post]: https://deepspeed4science.ai/2023/09/18/model-showcase-genslms/
   [Loooooooong Sequence Lengths]: ./posts/AuroraGPT/long-sequences/index.qmd
@@ -1096,7 +1100,7 @@ style="justify-content: space-around; align:center;">
   [Lattice, *2021*]: https://indico.cern.ch/event/1006302
   [HMC with Normalizing Flows]: https://arxiv.org/abs/2112.01586
   [slides]: https://indico.cern.ch/event/1006302/contributions/4380743/
-  [14]: https://indico.cern.ch/event/1006302/
+  [5]: https://indico.cern.ch/event/1006302/
   [Deep Learning Hamiltonian Monte Carlo]: https://arxiv.org/abs/2105.03418
   [+ poster]: https://simdl.github.io/posters/57-supp_DLHMC_Foreman_SimDL-ICLR2021_poster1.pdf
   [SimDL Workshop @ ICLR]: https://simdl.github.io/
@@ -1113,7 +1117,7 @@ style="justify-content: space-around; align:center;">
   [**AuroraGPT**]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**Machine Learning and Foundation Models at Scale**]: ./talks/alcf-hpc-workshop-2024/index.html
-  [15]: ./talks/hpc-user-forum/index.html
+  [6]: ./talks/hpc-user-forum/index.html
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [**Training LLMs at Scale**]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
@@ -1146,15 +1150,12 @@ style="justify-content: space-around; align:center;">
   [**Scientific Data Science: An Emerging Symbiosis**]: https://saforem2.github.io/anl-job-talk/
   [**Machine Learning in HEP**]: https://saforem2.github.io/physicsSeminar
   [**Accelerated Sampling Methods for LGT**]: https://saforem2.github.io/l2hmc-dwq25/
-  [16]: https://indico.bnl.gov/event/13576/
+  [7]: https://indico.bnl.gov/event/13576/
   [**Training Topological Samplers for LGT**]: https://saforem2.github.io/l2hmc_talk_ect2021
   [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
-  [17]: https://streak-stats.demolab.com?user=saforem2&card_width=800&card_height=200&hide_border=true&date_format=n%2Fj%5B%2FY%5D&border=EB545400&stroke=838383&currStreakNum=838383&ring=838383&currStreakLabel=838383&fire=FF5252&sideNums=838383&sideLabels=838383&dates=838383&excludeDaysLabel=838383&background=EB545400
-  [18]: https://git.io/streak-stats
-  [Github Contributions]: https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true.png
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
@@ -1164,6 +1165,6 @@ style="justify-content: space-around; align:center;">
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [19]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [8]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/

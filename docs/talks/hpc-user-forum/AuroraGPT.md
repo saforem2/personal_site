@@ -2,6 +2,9 @@
 Sam Foreman
 2024-09-04
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
+
 - [🎯 AuroraGPT Goals](#dart-auroragpt-goals)
 - [🧪 AuroraGPT: Open Science Foundation
   Models](#test_tube-auroragpt-open-science-foundation-models)

@@ -2,6 +2,9 @@
 Sam Foreman
 2025-02-12
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
+
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)
 - [🦙 Issues with “Publicly Available”
   LLMs](#llama-issues-with-publicly-available-llms)

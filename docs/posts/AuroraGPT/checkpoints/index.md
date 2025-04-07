@@ -2,6 +2,9 @@
 Sam Foreman
 2024-10-17
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
+
 - [MDS –\> HF](#mds--hf)
 - [🚧 HF to Meg-DS](#construction-hf-to-meg-ds)
   - [2024-10-17](#2024-10-17)

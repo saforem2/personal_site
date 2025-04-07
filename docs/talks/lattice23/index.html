@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.13">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -87,18 +87,17 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a8479ebbed734c8496af42d7a6b486ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-b83160c03339e52216258370fd7369cb.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-9826f66eab7fe5fcb1908ab2bf11d98d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-38ca0d558006fb8a4b4eacb0a9e47cb3.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -140,23 +139,11 @@ gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -185,7 +172,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../css/colors-oklch.min.css">
 <link rel="stylesheet" href="../../css/custom.css">
 <link rel="stylesheet" href="../../css/svgbob.css">
 <link rel="stylesheet" href="../../static/fonts/IosevkaQP/IosevkaQP.css">
@@ -348,26 +334,26 @@ dynamics update that can be trained to improve sampling efficiency.
   <li><a href="#l2hmc-leapfrog-layer" id="toc-l2hmc-leapfrog-layer" class="nav-link" data-scroll-target="#l2hmc-leapfrog-layer">L2HMC: Leapfrog Layer</a></li>
   <li><a href="#l2hmc-update" id="toc-l2hmc-update" class="nav-link" data-scroll-target="#l2hmc-update">L2HMC Update</a></li>
   </ul></li>
-  <li><a href="#sec-su3" id="toc-sec-su3" class="nav-link" data-scroll-target="#sec-su3">4D <span class="math inline">SU(3)</span> Model</a>
+  <li><a href="#sec-su3" id="toc-sec-su3" class="nav-link" data-scroll-target="#sec-su3">4D <span class="math inline">\(SU(3)\)</span> Model</a>
   <ul class="collapse">
-  <li><a href="#sec-hmcsu3" id="toc-sec-hmcsu3" class="nav-link" data-scroll-target="#sec-hmcsu3">HMC: 4D <span class="math inline">SU(3)</span></a></li>
-  <li><a href="#hmc-4d-su3" id="toc-hmc-4d-su3" class="nav-link" data-scroll-target="#hmc-4d-su3">HMC: 4D <span class="math inline">SU(3)</span></a></li>
+  <li><a href="#sec-hmcsu3" id="toc-sec-hmcsu3" class="nav-link" data-scroll-target="#sec-hmcsu3">HMC: 4D <span class="math inline">\(SU(3)\)</span></a></li>
+  <li><a href="#hmc-4d-su3" id="toc-hmc-4d-su3" class="nav-link" data-scroll-target="#hmc-4d-su3">HMC: 4D <span class="math inline">\(SU(3)\)</span></a></li>
   </ul></li>
-  <li><a href="#sec-su3networks" id="toc-sec-su3networks" class="nav-link" data-scroll-target="#sec-su3networks">Networks 4D <span class="math inline">SU(3)</span></a></li>
-  <li><a href="#networks-4d-su3" id="toc-networks-4d-su3" class="nav-link" data-scroll-target="#networks-4d-su3">Networks 4D <span class="math inline">SU(3)</span></a>
+  <li><a href="#sec-su3networks" id="toc-sec-su3networks" class="nav-link" data-scroll-target="#sec-su3networks">Networks 4D <span class="math inline">\(SU(3)\)</span></a></li>
+  <li><a href="#networks-4d-su3" id="toc-networks-4d-su3" class="nav-link" data-scroll-target="#networks-4d-su3">Networks 4D <span class="math inline">\(SU(3)\)</span></a>
   <ul class="collapse">
-  <li><a href="#p-network-pt.-1" id="toc-p-network-pt.-1" class="nav-link" data-scroll-target="#p-network-pt.-1"><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;1)</a></li>
-  <li><a href="#p-network-pt.-2" id="toc-p-network-pt.-2" class="nav-link" data-scroll-target="#p-network-pt.-2"><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;2)</a></li>
+  <li><a href="#p-network-pt.-1" id="toc-p-network-pt.-1" class="nav-link" data-scroll-target="#p-network-pt.-1"><span class="math inline">\(P\)</span>-<code>Network</code> (pt.&nbsp;1)</a></li>
+  <li><a href="#p-network-pt.-2" id="toc-p-network-pt.-2" class="nav-link" data-scroll-target="#p-network-pt.-2"><span class="math inline">\(P\)</span>-<code>Network</code> (pt.&nbsp;2)</a></li>
   </ul></li>
-  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results">Results: 2D <span class="math inline">U(1)</span></a>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results">Results: 2D <span class="math inline">\(U(1)\)</span></a>
   <ul class="collapse">
   <li><a href="#sec-interpretation" id="toc-sec-interpretation" class="nav-link" data-scroll-target="#sec-interpretation">Interpretation</a></li>
   <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
   </ul></li>
-  <li><a href="#sec-su3results" id="toc-sec-su3results" class="nav-link" data-scroll-target="#sec-su3results">4D <span class="math inline">SU(3)</span> Results</a>
+  <li><a href="#sec-su3results" id="toc-sec-su3results" class="nav-link" data-scroll-target="#sec-su3results">4D <span class="math inline">\(SU(3)\)</span> Results</a>
   <ul class="collapse">
-  <li><a href="#d-su3-results-delta-u_munu" id="toc-d-su3-results-delta-u_munu" class="nav-link" data-scroll-target="#d-su3-results-delta-u_munu">4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></a></li>
-  <li><a href="#d-su3-results-delta-u_munu-1" id="toc-d-su3-results-delta-u_munu-1" class="nav-link" data-scroll-target="#d-su3-results-delta-u_munu-1">4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></a></li>
+  <li><a href="#d-su3-results-delta-u_munu" id="toc-d-su3-results-delta-u_munu" class="nav-link" data-scroll-target="#d-su3-results-delta-u_munu">4D <span class="math inline">\(SU(3)\)</span> Results: <span class="math inline">\(\delta U_{\mu\nu}\)</span></a></li>
+  <li><a href="#d-su3-results-delta-u_munu-1" id="toc-d-su3-results-delta-u_munu-1" class="nav-link" data-scroll-target="#d-su3-results-delta-u_munu-1">4D <span class="math inline">\(SU(3)\)</span> Results: <span class="math inline">\(\delta U_{\mu\nu}\)</span></a></li>
   </ul></li>
   <li><a href="#sec-next-steps" id="toc-sec-next-steps" class="nav-link" data-scroll-target="#sec-next-steps">Next Steps</a>
   <ul class="collapse">
@@ -381,16 +367,16 @@ dynamics update that can be trained to improve sampling efficiency.
   <ul class="collapse">
   <li><a href="#integrated-autocorrelation-time" id="toc-integrated-autocorrelation-time" class="nav-link" data-scroll-target="#integrated-autocorrelation-time">Integrated Autocorrelation Time</a></li>
   <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">Comparison</a></li>
-  <li><a href="#plaquette-analysis-x_p" id="toc-plaquette-analysis-x_p" class="nav-link" data-scroll-target="#plaquette-analysis-x_p">Plaquette analysis: <span class="math inline">x_{P}</span></a></li>
+  <li><a href="#plaquette-analysis-x_p" id="toc-plaquette-analysis-x_p" class="nav-link" data-scroll-target="#plaquette-analysis-x_p">Plaquette analysis: <span class="math inline">\(x_{P}\)</span></a></li>
   <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">Loss Function</a></li>
-  <li><a href="#networks-2d-u1" id="toc-networks-2d-u1" class="nav-link" data-scroll-target="#networks-2d-u1">Networks 2D <span class="math inline">U(1)</span></a></li>
-  <li><a href="#v-updatereverse" id="toc-v-updatereverse" class="nav-link" data-scroll-target="#v-updatereverse"><span class="math inline">v</span>-Update</a></li>
-  <li><a href="#x-update" id="toc-x-update" class="nav-link" data-scroll-target="#x-update"><span class="math inline">x</span>-Update</a></li>
-  <li><a href="#lattice-gauge-theory-2d-u1" id="toc-lattice-gauge-theory-2d-u1" class="nav-link" data-scroll-target="#lattice-gauge-theory-2d-u1">Lattice Gauge Theory (2D <span class="math inline">U(1)</span>)</a></li>
+  <li><a href="#networks-2d-u1" id="toc-networks-2d-u1" class="nav-link" data-scroll-target="#networks-2d-u1">Networks 2D <span class="math inline">\(U(1)\)</span></a></li>
+  <li><a href="#v-updatereverse" id="toc-v-updatereverse" class="nav-link" data-scroll-target="#v-updatereverse"><span class="math inline">\(v\)</span>-Update</a></li>
+  <li><a href="#x-update" id="toc-x-update" class="nav-link" data-scroll-target="#x-update"><span class="math inline">\(x\)</span>-Update</a></li>
+  <li><a href="#lattice-gauge-theory-2d-u1" id="toc-lattice-gauge-theory-2d-u1" class="nav-link" data-scroll-target="#lattice-gauge-theory-2d-u1">Lattice Gauge Theory (2D <span class="math inline">\(U(1)\)</span>)</a></li>
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
   <li><a href="#sec-annealing-schedule" id="toc-sec-annealing-schedule" class="nav-link" data-scroll-target="#sec-annealing-schedule">Annealing Schedule</a></li>
-  <li><a href="#sec-networks-2dU1" id="toc-sec-networks-2dU1" class="nav-link" data-scroll-target="#sec-networks-2dU1">Networks 2D <span class="math inline">U(1)</span></a></li>
-  <li><a href="#toy-example-gmm-in-mathbbr2" id="toc-toy-example-gmm-in-mathbbr2" class="nav-link" data-scroll-target="#toy-example-gmm-in-mathbbr2">Toy Example: GMM <span class="math inline">\in \mathbb{R}^{2}</span></a></li>
+  <li><a href="#sec-networks-2dU1" id="toc-sec-networks-2dU1" class="nav-link" data-scroll-target="#sec-networks-2dU1">Networks 2D <span class="math inline">\(U(1)\)</span></a></li>
+  <li><a href="#toy-example-gmm-in-mathbbr2" id="toc-toy-example-gmm-in-mathbbr2" class="nav-link" data-scroll-target="#toy-example-gmm-in-mathbbr2">Toy Example: GMM <span class="math inline">\(\in \mathbb{R}^{2}\)</span></a></li>
   <li><a href="#physical-quantities" id="toc-physical-quantities" class="nav-link" data-scroll-target="#physical-quantities">Physical Quantities</a></li>
   <li><a href="#sec-extra" id="toc-sec-extra" class="nav-link" data-scroll-target="#sec-extra">Extra</a></li>
   </ul></li>
@@ -438,7 +424,7 @@ dynamics update that can be trained to improve sampling efficiency.
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 29, 2024</p>
+      <p class="date-modified">March 29, 2025</p>
     </div>
   </div>
     
@@ -474,7 +460,7 @@ dynamics update that can be trained to improve sampling efficiency.
 </ul></li>
 <li><a href="#sec-l2hmc">L2HMC: Generalizing MD</a>
 <ul>
-<li><a href="#sec-su3">4D <span class="math inline">SU(3)</span> Model</a></li>
+<li><a href="#sec-su3">4D <span class="math inline">\(SU(3)\)</span> Model</a></li>
 <li><a href="#sec-results">Results</a></li>
 </ul></li>
 <li><a href="#sec-references">References</a></li>
@@ -497,21 +483,21 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
+<p>Generate <strong>independent</strong> samples <span class="math inline">\(\{x_{i}\}\)</span>, such that<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[\{x_{i}\} \sim p(x) \propto e^{-S(x)}\]</span> where <span class="math inline">\(S(x)\)</span> is the <em>action</em> (or potential energy)</p>
 </div>
 </div>
 </div>
 <ul>
-<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
-<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
+<li>Want to calculate observables <span class="math inline">\(\mathcal{O}\)</span>:<br>
+<span class="math inline">\(\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}\)</span></li>
 </ul>
 </div><div class="column" style="width:49%;">
 <p><a href="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="img-fluid"></a></p>
 </div>
 </div>
-<p>If these were <span style="color:#00CCFF;">independent</span>, we could approximate: <span class="math inline">\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})</span><br>
-<span class="math display">\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)
-  \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}</span></p>
+<p>If these were <span style="color:#00CCFF;">independent</span>, we could approximate: <span class="math inline">\(\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})\)</span><br>
+<span class="math display">\[\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)
+  \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}\]</span></p>
 <div class="footer">
 <p><a href="https://saforem2.github.io/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a></p>
 </div>
@@ -532,21 +518,21 @@ dynamics update that can be trained to improve sampling efficiency.
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Generate <strong>independent</strong> samples <span class="math inline">\{x_{i}\}</span>, such that<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math display">\{x_{i}\} \sim p(x) \propto e^{-S(x)}</span> where <span class="math inline">S(x)</span> is the <em>action</em> (or potential energy)</p>
+<p>Generate <strong>independent</strong> samples <span class="math inline">\(\{x_{i}\}\)</span>, such that<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math display">\[\{x_{i}\} \sim p(x) \propto e^{-S(x)}\]</span> where <span class="math inline">\(S(x)\)</span> is the <em>action</em> (or potential energy)</p>
 </div>
 </div>
 </div>
 <ul>
-<li>Want to calculate observables <span class="math inline">\mathcal{O}</span>:<br>
-<span class="math inline">\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}</span></li>
+<li>Want to calculate observables <span class="math inline">\(\mathcal{O}\)</span>:<br>
+<span class="math inline">\(\left\langle \mathcal{O}\right\rangle \propto \int \left[\mathcal{D}x\right]\hspace{4pt} {\mathcal{O}(x)\, p(x)}\)</span></li>
 </ul>
 </div><div class="column" style="width:49%;">
 <p><a href="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg" class="img-fluid"></a></p>
 </div>
 </div>
-<p>Instead, nearby configs are <span class="red-text">correlated</span>, and we incur a factor of <span class="math inline">\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}</span>: <span class="math display">\sigma_{\mathcal{O}}^{2} =
+<p>Instead, nearby configs are <span class="red-text">correlated</span>, and we incur a factor of <span class="math inline">\(\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}\)</span>: <span class="math display">\[\sigma_{\mathcal{O}}^{2} =
   \frac{\textcolor{#FF5252}{\tau^{\mathcal{O}}_{\mathrm{int}}}}{N}\mathrm{Var}{\left[\mathcal{O}
-  (x) \right]}</span></p>
+  (x) \right]}\]</span></p>
 <div class="footer">
 <p><a href="https://github.com/saforem2/lattice23"><i class="fa-brands fa-github" aria-label="github"></i> <code>saforem2/lattice23</code></a></p>
 </div>
@@ -554,9 +540,9 @@ dynamics update that can be trained to improve sampling efficiency.
 <section id="hamiltonian-monte-carlo-hmc" class="level1 center" data-background-color="#1c1c1c">
 <h1 class="center" data-background-color="#1c1c1c">Hamiltonian Monte Carlo (HMC)</h1>
 <ul>
-<li><p>Want to (sequentially) construct a chain of states: <span class="math display">x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}</span></p>
-<p>such that, as <span class="math inline">N \rightarrow \infty</span>: <span class="math display">\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
-\propto e^{-S(x)}</span></p></li>
+<li><p>Want to (sequentially) construct a chain of states: <span class="math display">\[x_{0} \rightarrow x_{1} \rightarrow x_{i} \rightarrow \cdots \rightarrow x_{N}\hspace{10pt}\]</span></p>
+<p>such that, as <span class="math inline">\(N \rightarrow \infty\)</span>: <span class="math display">\[\left\{x_{i}, x_{i+1}, x_{i+2}, \cdots, x_{N} \right\} \xrightarrow[]{N\rightarrow\infty} p(x)
+\propto e^{-S(x)}\]</span></p></li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪄 Trick" style="display:inline!important; width: 100%!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
@@ -571,13 +557,13 @@ dynamics update that can be trained to improve sampling efficiency.
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Introduce <span class="green-text">fictitious</span> momentum <span class="math inline">v \sim \mathcal{N}(0, \mathbb{1})</span>
+<li>Introduce <span class="green-text">fictitious</span> momentum <span class="math inline">\(v \sim \mathcal{N}(0, \mathbb{1})\)</span>
 <ul>
-<li>Normally distributed <strong>independent</strong> of <span class="math inline">x</span>, i.e. <span class="math display">\begin{align*}
+<li>Normally distributed <strong>independent</strong> of <span class="math inline">\(x\)</span>, i.e. <span class="math display">\[\begin{align*}
 p(x, v) &amp;\textcolor{#02b875}{=} p(x)\,p(v) \propto e^{-S{(x)}} e^{-\frac{1}{2} v^{T}v}
 = e^{-\left[S(x) + \frac{1}{2} v^{T}{v}\right]}
 \textcolor{#02b875}{=} e^{-H(x, v)}
-\end{align*}</span></li>
+\end{align*}\]</span></li>
 </ul></li>
 </ul>
 </div>
@@ -588,10 +574,10 @@ p(x, v) &amp;\textcolor{#02b875}{=} p(x)\,p(v) \propto e^{-S{(x)}} e^{-\frac{1}{
 <div class="columns">
 <div class="column" style="width:55%;">
 <ul>
-<li><p><span class="green-text"><strong>Idea</strong></span>: Evolve the <span class="math inline">(\dot{x}, \dot{v})</span> system to get new states <span class="math inline">\{x_{i}\}</span>❗</p></li>
-<li><p>Write the <strong>joint distribution</strong> <span class="math inline">p(x, v)</span>: <span class="math display">
+<li><p><span class="green-text"><strong>Idea</strong></span>: Evolve the <span class="math inline">\((\dot{x}, \dot{v})\)</span> system to get new states <span class="math inline">\(\{x_{i}\}\)</span>❗</p></li>
+<li><p>Write the <strong>joint distribution</strong> <span class="math inline">\(p(x, v)\)</span>: <span class="math display">\[
 p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
-</span></p></li>
+\]</span></p></li>
 </ul>
 </div><div class="column" style="width:45%;">
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🔋 Hamiltonian Dynamics" style="width:100%!important;">
@@ -606,8 +592,8 @@ p(x, v) \propto e^{-S[x]} e^{-\frac{1}{2}v^{T} v} = e^{-H(x, v)}
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow</span> <span class="math display">\dot{x} = +\partial_{v} H,
-\,\,\dot{v} = -\partial_{x} H</span></p>
+<p><span class="math inline">\(H = S[x] + \frac{1}{2} v^{T} v \Longrightarrow\)</span> <span class="math display">\[\dot{x} = +\partial_{v} H,
+\,\,\dot{v} = -\partial_{x} H\]</span></p>
 </div>
 </div>
 </div>
@@ -640,7 +626,7 @@ Figure&nbsp;1: Overview of HMC algorithm
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)</span></p>
+<p><span class="math inline">\(\left(\dot{x}, \dot{v}\right) = \left(\partial_{v} H, -\partial_{x} H\right)\)</span></p>
 </div>
 </div>
 </div>
@@ -656,12 +642,12 @@ Figure&nbsp;1: Overview of HMC algorithm
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><code>input</code> <span class="math inline">\,\left(x, v\right) \rightarrow \left(x', v'\right)\,</span> <code>output</code></p>
-<p><span class="math display">\begin{align*}
+<p><code>input</code> <span class="math inline">\(\,\left(x, v\right) \rightarrow \left(x', v'\right)\,\)</span> <code>output</code></p>
+<p><span class="math display">\[\begin{align*}
 \tilde{v} &amp;:= \textcolor{#F06292}{\Gamma}(x, v)\hspace{2.2pt} = v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
 x' &amp;:= \textcolor{#FD971F}{\Lambda}(x, \tilde{v}) \, =  x + \varepsilon \, \tilde{v} \\
 v' &amp;:= \textcolor{#F06292}{\Gamma}(x', \tilde{v}) = \tilde{v} - \frac{\varepsilon}{2} \partial_{x} S(x')
-\end{align*}</span></p>
+\end{align*}\]</span></p>
 </div>
 </div>
 </div>
@@ -678,14 +664,14 @@ v' &amp;:= \textcolor{#F06292}{\Gamma}(x', \tilde{v}) = \tilde{v} - \frac{\varep
 <div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Resample <span class="math inline">v_{0} \sim \mathcal{N}(0, \mathbb{1})</span><br>
+<li>Resample <span class="math inline">\(v_{0} \sim \mathcal{N}(0, \mathbb{1})\)</span><br>
 at the <span class="yellow-text">beginning</span> of each trajectory</li>
 </ul>
 </div>
 </div>
 </div>
 <div style="font-size:0.8em; margin-left:13%;">
-<p><span class="dim-text"><strong>Note</strong>: <span class="math inline">\partial_{x} S(x)</span> is the <em>force</em></span></p>
+<p><span class="dim-text"><strong>Note</strong>: <span class="math inline">\(\partial_{x} S(x)\)</span> is the <em>force</em></span></p>
 </div>
 </div><div class="column" style="text-align:left;">
 <p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="./assets/hmc1/hmc-update-light.svg" class="img-fluid" style="width:60.0%"></a></p>
@@ -697,20 +683,20 @@ at the <span class="yellow-text">beginning</span> of each trajectory</li>
 <div class="columns">
 <div class="column" style="width:65%;">
 <ul>
-<li><p>We build a trajectory of <span class="math inline">N_{\mathrm{LF}}</span> <strong>leapfrog steps</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="math display">\begin{equation*}
+<li><p>We build a trajectory of <span class="math inline">\(N_{\mathrm{LF}}\)</span> <strong>leapfrog steps</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="math display">\[\begin{equation*}
 (x_{0}, v_{0})%
 \rightarrow (x_{1}, v_{1})\rightarrow \cdots%
 \rightarrow (x', v')
-\end{equation*}</span></p></li>
-<li><p>And propose <span class="math inline">x'</span> as the next state in our chain</p></li>
+\end{equation*}\]</span></p></li>
+<li><p>And propose <span class="math inline">\(x'\)</span> as the next state in our chain</p></li>
 </ul>
-<p><span class="math display">\begin{align*}
+<p><span class="math display">\[\begin{align*}
   \textcolor{#F06292}{\Gamma}: (x, v) \textcolor{#F06292}{\rightarrow} v' &amp;:= v - \frac{\varepsilon}{2} \partial_{x} S(x) \\
   \textcolor{#FD971F}{\Lambda}: (x, v) \textcolor{#FD971F}{\rightarrow} x' &amp;:= x + \varepsilon v
-\end{align*}</span></p>
+\end{align*}\]</span></p>
 <ul>
-<li>We then accept / reject <span class="math inline">x'</span> using Metropolis-Hastings criteria,<br>
-<span class="math inline">A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}</span></li>
+<li>We then accept / reject <span class="math inline">\(x'\)</span> using Metropolis-Hastings criteria,<br>
+<span class="math inline">\(A(x'|x) = \min\left\{1, \frac{p(x')}{p(x)}\left|\frac{\partial x'}{\partial x}\right|\right\}\)</span></li>
 </ul>
 </div><div class="column" style="width:30%;">
 <p><a href="./assets/hmc1/hmc-update-light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="./assets/hmc1/hmc-update-light.svg" class="img-fluid"></a></p>
@@ -742,8 +728,8 @@ Figure&nbsp;2: HMC Demo
 </ul></li>
 <li>Problems with HMC:
 <ul>
-<li>Energy levels selected randomly <span class="math inline">\rightarrow</span> <strong>slow mixing</strong></li>
-<li>Cannot easily traverse low-density zones <span class="math inline">\rightarrow</span> <strong>slow convergence</strong></li>
+<li>Energy levels selected randomly <span class="math inline">\(\rightarrow\)</span> <strong>slow mixing</strong></li>
+<li>Cannot easily traverse low-density zones <span class="math inline">\(\rightarrow\)</span> <strong>slow convergence</strong></li>
 </ul></li>
 </ul>
 <div id="fig-hmc-issues" class="quarto-layout-panel">
@@ -754,7 +740,7 @@ Figure&nbsp;2: HMC Demo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="HMC Samples with \varepsilon=0.25"><img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps025.svg" class="img-fluid figure-img"></a></p>
-<figcaption>HMC Samples with <span class="math inline">\varepsilon=0.25</span></figcaption>
+<figcaption>HMC Samples with <span class="math inline">\(\varepsilon=0.25\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -762,14 +748,14 @@ Figure&nbsp;2: HMC Demo
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="HMC Samples with \varepsilon=0.5"><img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/hmc_traj_eps05.svg" class="img-fluid figure-img"></a></p>
-<figcaption>HMC Samples with <span class="math inline">\varepsilon=0.5</span></figcaption>
+<figcaption>HMC Samples with <span class="math inline">\(\varepsilon=0.5\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hmc-issues-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math inline">\varepsilon</span>
+Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math inline">\(\varepsilon\)</span>
 </figcaption>
 </figure>
 </div>
@@ -778,9 +764,9 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 <h1 class="center" data-background-color="#1c1c1c">Topological Freezing</h1>
 <div class="flex-container" style="text-align: center; width: 100%">
 <div class="col1" width="45%" style="text-align: left; font-size: 0.9em;">
-<p><strong>Topological Charge</strong>: <span class="math display">Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}</span></p>
-<p><span class="dim-text" style="font-size:0.8em;"><strong>note:</strong> <span class="math inline">\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi
-\left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor</span></span></p>
+<p><strong>Topological Charge</strong>: <span class="math display">\[Q = \frac{1}{2\pi}\sum_{P}\left\lfloor x_{P}\right\rfloor  \in \mathbb{Z}\]</span></p>
+<p><span class="dim-text" style="font-size:0.8em;"><strong>note:</strong> <span class="math inline">\(\left\lfloor x_{P} \right\rfloor = x_{P} - 2\pi
+\left\lfloor\frac{x_{P} + \pi}{2\pi}\right\rfloor\)</span></span></p>
 <div class="callout callout-style-simple callout-important no-icon callout-titled" title="⏳ Critical Slowing Down" style="text-align:left; width:100%!important;">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -794,15 +780,15 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 <div id="callout-8" class="callout-8-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">Q</span> gets stuck!
+<li><span class="math inline">\(Q\)</span> gets stuck!
 <ul>
-<li>as <span class="math inline">\beta\longrightarrow \infty</span>:
+<li>as <span class="math inline">\(\beta\longrightarrow \infty\)</span>:
 <ul>
-<li><span class="math inline">Q \longrightarrow \text{const.}</span></li>
-<li><span class="math inline">\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}</span></li>
+<li><span class="math inline">\(Q \longrightarrow \text{const.}\)</span></li>
+<li><span class="math inline">\(\delta Q = \left(Q^{\ast} - Q\right) \rightarrow 0 \textcolor{#FF5252}{\Longrightarrow}\)</span></li>
 </ul></li>
 <li># configs required to estimate errors<br>
-<strong>grows exponentially</strong>: <span class="red-text"><span class="math inline">\tau_{\mathrm{int}}^{Q} \longrightarrow \infty</span></span></li>
+<strong>grows exponentially</strong>: <span class="red-text"><span class="math inline">\(\tau_{\mathrm{int}}^{Q} \longrightarrow \infty\)</span></span></li>
 </ul></li>
 </ul>
 </div>
@@ -813,7 +799,7 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Note \delta Q \rightarrow 0 at increasing \beta"><img src="https://raw.githubusercontent.com/saforem2/l2hmc-dwq25/main/docs/assets/critical_slowing_down.svg" class="img-fluid figure-img" style="width:80.0%" alt="Note \delta Q \rightarrow 0 at increasing \beta"></a></p>
-<figcaption>Note <span class="math inline">\delta Q \rightarrow 0</span> at increasing <span class="math inline">\beta</span></figcaption>
+<figcaption>Note <span class="math inline">\(\delta Q \rightarrow 0\)</span> at increasing <span class="math inline">\(\beta\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -826,17 +812,17 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 <ul>
 <li>Introduce two (<strong>invertible NNs</strong>) <code>vNet</code> and <code>xNet</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>:
 <ul>
-<li><span style="font-size:0.9em;"><code>vNet:</code> <span class="math inline">(x, F) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span><br>
+<li><span style="font-size:0.9em;"><code>vNet:</code> <span class="math inline">\((x, F) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)\)</span></span><br>
 </li>
-<li><span style="font-size:0.9em;"><code>xNet:</code> <span class="math inline">(x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+<li><span style="font-size:0.9em;"><code>xNet:</code> <span class="math inline">\((x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)\)</span></span></li>
 </ul></li>
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>Use these <span class="math inline">(s, t, q)</span> in the <em>generalized</em> MD update:
+<li>Use these <span class="math inline">\((s, t, q)\)</span> in the <em>generalized</em> MD update:
 <ul>
-<li><span><span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> <span class="math inline">: ({x}, \textcolor{#07B875}{v}) \xrightarrow[]{\textcolor{#F06292}{s_{v}, t_{v}, q_{v}}} (x, \textcolor{#07B875}{v'})</span></span></li>
-<li><span><span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span> <span class="math inline">: (\textcolor{#AE81FF}{x}, v) \xrightarrow[]{\textcolor{#FD971F}{s_{x}, t_{x}, q_{x}}} (\textcolor{#AE81FF}{x'}, v)</span></span></li>
+<li><span><span class="pink-text"><span class="math inline">\(\Gamma_{\theta}^{\pm}\)</span></span> <span class="math inline">\(: ({x}, \textcolor{#07B875}{v}) \xrightarrow[]{\textcolor{#F06292}{s_{v}, t_{v}, q_{v}}} (x, \textcolor{#07B875}{v'})\)</span></span></li>
+<li><span><span class="orange-text"><span class="math inline">\(\Lambda_{\theta}^{\pm}\)</span></span> <span class="math inline">\(: (\textcolor{#AE81FF}{x}, v) \xrightarrow[]{\textcolor{#FD971F}{s_{x}, t_{x}, q_{x}}} (\textcolor{#AE81FF}{x'}, v)\)</span></span></li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:48%;">
@@ -846,7 +832,7 @@ Figure&nbsp;3: HMC Samples generated with varying step sizes <span class="math i
 <a href="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;4: Generalized MD update where \Lambda_{\theta}^{\pm}, \Gamma_{\theta}^{\pm} are invertible NNs"><img src="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="img-fluid figure-img" style="width:85%; text-align:center;"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span>, <span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> are <strong>invertible NNs</strong>
+Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class="math inline">\(\Lambda_{\theta}^{\pm}\)</span></span>, <span class="pink-text"><span class="math inline">\(\Gamma_{\theta}^{\pm}\)</span></span> are <strong>invertible NNs</strong>
 </figcaption>
 </figure>
 </div>
@@ -859,25 +845,25 @@ Figure&nbsp;4: Generalized MD update where <span class="orange-text"><span class
 <div class="col1" style="width:45%; font-size: 0.8em;">
 <div style="border:1px solid red;">
 <ul>
-<li><p>Introduce <span class="math inline">d \sim \mathcal{U}(\pm)</span> to determine the direction of our update</p>
+<li><p>Introduce <span class="math inline">\(d \sim \mathcal{U}(\pm)\)</span> to determine the direction of our update</p>
 <ol type="1">
-<li><p><span><span class="math inline">\textcolor{#07B875}{v'} =</span> <span class="pink-text"><span class="math inline">\Gamma^{\pm}</span></span><span class="math inline">({x}, \textcolor{#07B875}{v})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{46pt}</span> update <span class="math inline">v</span></span></p></li>
-<li><p><span><span class="math inline">\textcolor{#AE81FF}{x'} =</span> <span class="blue-text"><span class="math inline">x_{B}</span></span><span class="math inline">\,+\,</span><span class="orange-text"><span class="math inline">\Lambda^{\pm}</span></span><span class="math inline">(</span><span class="red-text"><span class="math inline">x_{A}</span></span><span class="math inline">, {v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{10pt}</span> update first <strong>half</strong>: <span class="math inline">x_{A}</span></span></p></li>
-<li><p><span><span class="math inline">\textcolor{#AE81FF}{x''} =</span> <span class="red-text"><span class="math inline">x'_{A}</span></span><span class="math inline">\,+\,</span><span class="orange-text"><span class="math inline">\Lambda^{\pm}</span></span><span class="math inline">(</span><span class="blue-text"><span class="math inline">x'_{B}</span></span><span class="math inline">, {v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{8pt}</span> update other half: <span class="math inline">x_{B}</span></span></p></li>
-<li><p><span><span class="math inline">\textcolor{#07B875}{v''} =</span> <span class="pink-text"><span class="math inline">\Gamma^{\pm}</span></span><span class="math inline">({x''}, \textcolor{#07B875}{v'})</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\hspace{36pt}</span> update <span class="math inline">v</span></span></p></li>
+<li><p><span><span class="math inline">\(\textcolor{#07B875}{v'} =\)</span> <span class="pink-text"><span class="math inline">\(\Gamma^{\pm}\)</span></span><span class="math inline">\(({x}, \textcolor{#07B875}{v})\)</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\(\hspace{46pt}\)</span> update <span class="math inline">\(v\)</span></span></p></li>
+<li><p><span><span class="math inline">\(\textcolor{#AE81FF}{x'} =\)</span> <span class="blue-text"><span class="math inline">\(x_{B}\)</span></span><span class="math inline">\(\,+\,\)</span><span class="orange-text"><span class="math inline">\(\Lambda^{\pm}\)</span></span><span class="math inline">\((\)</span><span class="red-text"><span class="math inline">\(x_{A}\)</span></span><span class="math inline">\(, {v'})\)</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\(\hspace{10pt}\)</span> update first <strong>half</strong>: <span class="math inline">\(x_{A}\)</span></span></p></li>
+<li><p><span><span class="math inline">\(\textcolor{#AE81FF}{x''} =\)</span> <span class="red-text"><span class="math inline">\(x'_{A}\)</span></span><span class="math inline">\(\,+\,\)</span><span class="orange-text"><span class="math inline">\(\Lambda^{\pm}\)</span></span><span class="math inline">\((\)</span><span class="blue-text"><span class="math inline">\(x'_{B}\)</span></span><span class="math inline">\(, {v'})\)</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\(\hspace{8pt}\)</span> update other half: <span class="math inline">\(x_{B}\)</span></span></p></li>
+<li><p><span><span class="math inline">\(\textcolor{#07B875}{v''} =\)</span> <span class="pink-text"><span class="math inline">\(\Gamma^{\pm}\)</span></span><span class="math inline">\(({x''}, \textcolor{#07B875}{v'})\)</span></span> <span class="dim-text" style="font-size:0.9em;"><span class="math inline">\(\hspace{36pt}\)</span> update <span class="math inline">\(v\)</span></span></p></li>
 </ol></li>
 </ul>
 </div>
 <div style="border:1px solid red;">
 <ul>
-<li>Resample both <span class="math inline">v\sim \mathcal{N}(0, 1)</span>, and <span class="math inline">d \sim \mathcal{U}(\pm)</span> at the beginning of each trajectory
+<li>Resample both <span class="math inline">\(v\sim \mathcal{N}(0, 1)\)</span>, and <span class="math inline">\(d \sim \mathcal{U}(\pm)\)</span> at the beginning of each trajectory
 <ul>
-<li>To ensure ergodicity + reversibility, we split the <span class="purple-text"><span class="math inline">x</span></span> update into sequential (complementary) updates</li>
+<li>To ensure ergodicity + reversibility, we split the <span class="purple-text"><span class="math inline">\(x\)</span></span> update into sequential (complementary) updates</li>
 </ul></li>
-<li>Introduce directional variable <span class="math inline">d \sim \mathcal{U}(\pm)</span>, resampled at the beginning of each trajectory:
+<li>Introduce directional variable <span class="math inline">\(d \sim \mathcal{U}(\pm)\)</span>, resampled at the beginning of each trajectory:
 <ul>
-<li>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e. <span class="math display">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x,
-v)\right] = (x, v)</span></li>
+<li>Note that <span class="math inline">\(\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}\)</span>, i.e. <span class="math display">\[\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x,
+v)\right] = (x, v)\]</span></li>
 </ul></li>
 </ul>
 </div>
@@ -889,7 +875,7 @@ v)\right] = (x, v)</span></li>
 <a href="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;5: Generalized MD update with \Lambda_{\theta}^{\pm}, \Gamma_{\theta}^{\pm} invertible NNs"><img src="./assets/leapfrog-layer-2D-U1-vertical.light.svg" class="img-fluid figure-img" style="width:85%; text-align:center;"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mdupdate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class="math inline">\Lambda_{\theta}^{\pm}</span></span>, <span class="pink-text"><span class="math inline">\Gamma_{\theta}^{\pm}</span></span> <strong>invertible NNs</strong>
+Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class="math inline">\(\Lambda_{\theta}^{\pm}\)</span></span>, <span class="pink-text"><span class="math inline">\(\Gamma_{\theta}^{\pm}\)</span></span> <strong>invertible NNs</strong>
 </figcaption>
 </figure>
 </div>
@@ -924,30 +910,30 @@ Figure&nbsp;5: Generalized MD update with <span class="orange-text"><span class=
 <div id="callout-9" class="callout-9-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p><code>input</code>: <span class="purple-text"><span class="math inline">x</span></span></p>
+<li><p><code>input</code>: <span class="purple-text"><span class="math inline">\(x\)</span></span></p>
 <ul>
-<li>Resample: <span class="math inline">\textcolor{#07B875}{v} \sim \mathcal{N}(0, \mathbb{1})</span>; <span class="math inline">\,\,{d\sim\mathcal{U}(\pm)}</span></li>
-<li>Construct initial state: <span class="math inline">\textcolor{#939393}{\xi} =(\textcolor{#AE81FF}{x}, \textcolor{#07B875}{v}, {\pm})</span></li>
+<li>Resample: <span class="math inline">\(\textcolor{#07B875}{v} \sim \mathcal{N}(0, \mathbb{1})\)</span>; <span class="math inline">\(\,\,{d\sim\mathcal{U}(\pm)}\)</span></li>
+<li>Construct initial state: <span class="math inline">\(\textcolor{#939393}{\xi} =(\textcolor{#AE81FF}{x}, \textcolor{#07B875}{v}, {\pm})\)</span></li>
 </ul></li>
-<li><p><code>forward</code>: Generate <span style="color:#f8f8f8">proposal <span class="math inline">\xi'</span></span> by passing <span style="color:#939393">initial <span class="math inline">\xi</span></span> through <span class="math inline">N_{\mathrm{LF}}</span> leapfrog layers<br>
-<span class="math display">\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#f8f8f8}{\xi'} := (\textcolor{#AE81FF}{x''}, \textcolor{#07B875}{v''})</span></p>
+<li><p><code>forward</code>: Generate <span style="color:#f8f8f8">proposal <span class="math inline">\(\xi'\)</span></span> by passing <span style="color:#939393">initial <span class="math inline">\(\xi\)</span></span> through <span class="math inline">\(N_{\mathrm{LF}}\)</span> leapfrog layers<br>
+<span class="math display">\[\textcolor{#939393} \xi \hspace{1pt}\xrightarrow[]{\tiny{\mathrm{LF} \text{ layer}}}\xi_{1} \longrightarrow\cdots \longrightarrow \xi_{N_{\mathrm{LF}}} = \textcolor{#f8f8f8}{\xi'} := (\textcolor{#AE81FF}{x''}, \textcolor{#07B875}{v''})\]</span></p>
 <ul>
-<li>Accept / Reject: <span class="math display">\begin{equation*}
+<li>Accept / Reject: <span class="math display">\[\begin{equation*}
 A({\textcolor{#f8f8f8}{\xi'}}|{\textcolor{#939393}{\xi}})=
 \mathrm{min}\left\{1,
 \frac{\pi(\textcolor{#f8f8f8}{\xi'})}{\pi(\textcolor{#939393}{\xi})} \left| \mathcal{J}\left(\textcolor{#f8f8f8}{\xi'},\textcolor{#939393}{\xi}\right)\right| \right\}
-\end{equation*}</span></li>
+\end{equation*}\]</span></li>
 </ul></li>
 <li><p><code>backward</code> (if training):</p>
 <ul>
-<li>Evaluate the <strong>loss function</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math inline">\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#f8f8f8}{\xi'}, \textcolor{#939393}{\xi})</span> and backprop</li>
+<li>Evaluate the <strong>loss function</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math inline">\(\mathcal{L}\gets \mathcal{L}_{\theta}(\textcolor{#f8f8f8}{\xi'}, \textcolor{#939393}{\xi})\)</span> and backprop</li>
 </ul></li>
-<li><p><code>return</code>: <span class="math inline">\textcolor{#AE81FF}{x}_{i+1}</span><br>
-Evaluate MH criteria <span class="math inline">(1)</span> and return accepted config, <span class="math display">\textcolor{#AE81FF}{{x}_{i+1}}\gets
+<li><p><code>return</code>: <span class="math inline">\(\textcolor{#AE81FF}{x}_{i+1}\)</span><br>
+Evaluate MH criteria <span class="math inline">\((1)\)</span> and return accepted config, <span class="math display">\[\textcolor{#AE81FF}{{x}_{i+1}}\gets
   \begin{cases}
   \textcolor{#f8f8f8}{\textcolor{#AE81FF}{x''}} \small{\text{ w/ prob }} A(\textcolor{#f8f8f8}{\xi''}|\textcolor{#939393}{\xi}) \hspace{26pt} ✅ \\
   \textcolor{#939393}{\textcolor{#AE81FF}{x}} \hspace{5pt}\small{\text{ w/ prob }} 1 - A(\textcolor{#f8f8f8}{\xi''}|{\textcolor{#939393}{\xi}}) \hspace{10pt} 🚫
-  \end{cases}</span></p></li>
+  \end{cases}\]</span></p></li>
 </ol>
 </div>
 </div>
@@ -968,7 +954,7 @@ Figure&nbsp;6: <strong>Leapfrog Layer</strong> used in generalized MD update
 </section>
 </section>
 <section id="sec-su3" class="level1 centeredslide page-columns page-full" data-background-color="#1c1c1c">
-<h1 class="centeredslide" data-background-color="#1c1c1c">4D <span class="math inline">SU(3)</span> Model</h1>
+<h1 class="centeredslide" data-background-color="#1c1c1c">4D <span class="math inline">\(SU(3)\)</span> Model</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="callout callout-style-simple callout-note no-icon callout-titled" title="🔗 Link Variables" style="text-align:left; width: 100%!important;">
@@ -984,12 +970,12 @@ Figure&nbsp;6: <strong>Leapfrog Layer</strong> used in generalized MD update
 <div id="callout-10" class="callout-10-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>Write link variables <span class="math inline">U_{\mu}(x) \in SU(3)</span>:</p>
-<p><span class="math display"> \begin{align*}
+<li><p>Write link variables <span class="math inline">\(U_{\mu}(x) \in SU(3)\)</span>:</p>
+<p><span class="math display">\[ \begin{align*}
 U_{\mu}(x) &amp;= \mathrm{exp}\left[{i\, \textcolor{#AE81FF}{\omega^{k}_{\mu}(x)} \lambda^{k}}\right]\\
 &amp;= e^{i \textcolor{#AE81FF}{Q}},\quad \text{with} \quad \textcolor{#AE81FF}{Q} \in \mathfrak{su}(3)
-\end{align*}</span></p>
-<p><span style="font-size:0.9em;">where <span class="purple-text"><span class="math inline">\omega^{k}_{\mu}(x)</span></span> <span class="math inline">\in \mathbb{R}</span>, and <span class="math inline">\lambda^{k}</span> are the generators of <span class="math inline">SU(3)</span></span></p></li>
+\end{align*}\]</span></p>
+<p><span style="font-size:0.9em;">where <span class="purple-text"><span class="math inline">\(\omega^{k}_{\mu}(x)\)</span></span> <span class="math inline">\(\in \mathbb{R}\)</span>, and <span class="math inline">\(\lambda^{k}\)</span> are the generators of <span class="math inline">\(SU(3)\)</span></span></p></li>
 </ul>
 </div>
 </div>
@@ -1007,7 +993,7 @@ U_{\mu}(x) &amp;= \mathrm{exp}\left[{i\, \textcolor{#AE81FF}{\omega^{k}_{\mu}(x)
 <div id="callout-11" class="callout-11-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Introduce <span class="green-text"><span class="math inline">P_{\mu}(x) = P^{k}_{\mu}(x) \lambda^{k}</span></span> conjugate to <span class="purple-text"><span class="math inline">\omega^{k}_{\mu}(x)</span></span></li>
+<li>Introduce <span class="green-text"><span class="math inline">\(P_{\mu}(x) = P^{k}_{\mu}(x) \lambda^{k}\)</span></span> conjugate to <span class="purple-text"><span class="math inline">\(\omega^{k}_{\mu}(x)\)</span></span></li>
 </ul>
 </div>
 </div>
@@ -1024,11 +1010,11 @@ U_{\mu}(x) &amp;= \mathrm{exp}\left[{i\, \textcolor{#AE81FF}{\omega^{k}_{\mu}(x)
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math display"> S_{G} = -\frac{\beta}{6} \sum
+<p><span class="math display">\[ S_{G} = -\frac{\beta}{6} \sum
 \mathrm{Tr}\left[U_{\mu\nu}(x)
-+ U^{\dagger}_{\mu\nu}(x)\right] </span></p>
-<p>where <span class="math inline">U_{\mu\nu}(x) = U_{\mu}(x) U_{\nu}(x+\hat{\mu})
-U^{\dagger}_{\mu}(x+\hat{\nu}) U^{\dagger}_{\nu}(x)</span></p>
++ U^{\dagger}_{\mu\nu}(x)\right] \]</span></p>
+<p>where <span class="math inline">\(U_{\mu\nu}(x) = U_{\mu}(x) U_{\nu}(x+\hat{\mu})
+U^{\dagger}_{\mu}(x+\hat{\nu}) U^{\dagger}_{\nu}(x)\)</span></p>
 </div>
 </div>
 </div>
@@ -1046,8 +1032,8 @@ Figure&nbsp;7: Illustration of the lattice
 </div>
 </div>
 <section id="sec-hmcsu3" class="level2 page-columns page-full" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="sec-hmcsu3">HMC: 4D <span class="math inline">SU(3)</span></h2>
-<p>Hamiltonian: <span class="math inline">H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow</span></p>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="sec-hmcsu3">HMC: 4D <span class="math inline">\(SU(3)\)</span></h2>
+<p>Hamiltonian: <span class="math inline">\(H[P, U] = \frac{1}{2} P^{2} + S[U] \Longrightarrow\)</span></p>
 <div class="columns page-columns page-full">
 <div class="column page-columns page-full" style="font-size:0.9em; text-align: center;">
 <div class="callout callout-style-simple callout-none no-icon" style="text-align:left; width: 100%!important;">
@@ -1057,20 +1043,20 @@ Figure&nbsp;7: Illustration of the lattice
 </div>
 <div class="callout-body-container">
 <ul>
-<li><span style="border-bottom: 2px solid #AE81FF;"><span class="math inline">U</span> update</span>: <span class="purple-text" style="font-size:1.5em;"><span class="math inline">\frac{d\omega^{k}}{dt} = \frac{\partial H}{\partial P^{k}}</span></span> <span class="math display">\frac{d\omega^{k}}{dt}\lambda^{k} = P^{k}\lambda^{k} \Longrightarrow \frac{dQ}{dt} = P</span> <span class="math display">\begin{align*}
+<li><span style="border-bottom: 2px solid #AE81FF;"><span class="math inline">\(U\)</span> update</span>: <span class="purple-text" style="font-size:1.5em;"><span class="math inline">\(\frac{d\omega^{k}}{dt} = \frac{\partial H}{\partial P^{k}}\)</span></span> <span class="math display">\[\frac{d\omega^{k}}{dt}\lambda^{k} = P^{k}\lambda^{k} \Longrightarrow \frac{dQ}{dt} = P\]</span> <span class="math display">\[\begin{align*}
 Q(\textcolor{#FFEE58}{\varepsilon}) &amp;= Q(0) + \textcolor{#FFEE58}{\varepsilon} P(0)\Longrightarrow\\
 -i\, \log U(\textcolor{#FFEE58}{\varepsilon}) &amp;= -i\, \log U(0) + \textcolor{#FFEE58}{\varepsilon} P(0) \\
 U(\textcolor{#FFEE58}{\varepsilon}) &amp;= e^{i\,\textcolor{#FFEE58}{\varepsilon} P(0)} U(0)\Longrightarrow \\
 &amp;\hspace{1pt}\\
 \textcolor{#FD971F}{\Lambda}:\,\, U \longrightarrow U' &amp;:= e^{i\varepsilon P'} U
-\end{align*}</span></li>
+\end{align*}\]</span></li>
 </ul>
 </div>
 </div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\textcolor{#FFEE58}{\varepsilon}</span> is the step size</span></p>
+<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\(\textcolor{#FFEE58}{\varepsilon}\)</span> is the step size</span></p>
 </div></div></div><div class="column page-columns page-full" style="font-size:0.9em; text-align: center;">
 <div class="callout callout-style-simple callout-none no-icon" style="text-align:left; width: 100%!important;">
 <div class="callout-body d-flex">
@@ -1079,34 +1065,34 @@ U(\textcolor{#FFEE58}{\varepsilon}) &amp;= e^{i\,\textcolor{#FFEE58}{\varepsilon
 </div>
 <div class="callout-body-container">
 <ul>
-<li><span style="border-bottom: 2px solid #07B875;"><span class="math inline">P</span> update</span>: <span class="green-text" style="font-size:1.5em;"><span class="math inline">\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}</span></span> <span class="math display">\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}
-= -\frac{\partial H}{\partial Q} = -\frac{dS}{dQ}\Longrightarrow</span> <span class="math display">\begin{align*}
+<li><span style="border-bottom: 2px solid #07B875;"><span class="math inline">\(P\)</span> update</span>: <span class="green-text" style="font-size:1.5em;"><span class="math inline">\(\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}\)</span></span> <span class="math display">\[\frac{dP^{k}}{dt} = - \frac{\partial H}{\partial \omega^{k}}
+= -\frac{\partial H}{\partial Q} = -\frac{dS}{dQ}\Longrightarrow\]</span> <span class="math display">\[\begin{align*}
 P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \left.\frac{dS}{dQ}\right|_{t=0} \\
 &amp;= P(0) - \textcolor{#FFEE58}{\varepsilon} \,\textcolor{#E599F7}{F[U]} \\
 &amp;\hspace{1pt}\\
 \textcolor{#F06292}{\Gamma}:\,\, P \longrightarrow P' &amp;:= P - \frac{\varepsilon}{2} F[U]
-\end{align*}</span></li>
+\end{align*}\]</span></li>
 </ul>
 </div>
 </div>
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\textcolor{#E599F7}{F[U]}</span> is the force term</span></p>
+<p><span class="dim-text" style="font-size:0.8em;"><span class="math inline">\(\textcolor{#E599F7}{F[U]}\)</span> is the force term</span></p>
 </div></div></div>
 </div>
 </section>
 <section id="hmc-4d-su3" class="level2 centeredslide" data-background-color="#1c1c1c">
-<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="hmc-4d-su3">HMC: 4D <span class="math inline">SU(3)</span></h2>
+<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="hmc-4d-su3">HMC: 4D <span class="math inline">\(SU(3)\)</span></h2>
 <div class="columns">
 <div class="column" style="text-align:left;">
 <ul>
-<li><p><span style="border-bottom: 2px solid #F06292;">Momentum Update</span>: <span class="math display">\textcolor{#F06292}{\Gamma}: P \longrightarrow P' := P - \frac{\varepsilon}{2} F[U]</span></p></li>
-<li><p><span style="border-bottom: 2px solid #FD971F;">Link Update</span>: <span class="math display">\textcolor{#FD971F}{\Lambda}: U \longrightarrow U' := e^{i\varepsilon P'} U\quad\quad</span></p></li>
+<li><p><span style="border-bottom: 2px solid #F06292;">Momentum Update</span>: <span class="math display">\[\textcolor{#F06292}{\Gamma}: P \longrightarrow P' := P - \frac{\varepsilon}{2} F[U]\]</span></p></li>
+<li><p><span style="border-bottom: 2px solid #FD971F;">Link Update</span>: <span class="math display">\[\textcolor{#FD971F}{\Lambda}: U \longrightarrow U' := e^{i\varepsilon P'} U\quad\quad\]</span></p></li>
 <li><p>We maintain a batch of <code>Nb</code> lattices, all updated in parallel</p>
 <ul>
-<li><span class="math inline">U</span><code>.dtype = complex128</code></li>
-<li><span class="math inline">U</span><code>.shape</code><br>
+<li><span class="math inline">\(U\)</span><code>.dtype = complex128</code></li>
+<li><span class="math inline">\(U\)</span><code>.shape</code><br>
 <span style="font-size: 0.95em;"><code>= [Nb, 4, Nt, Nx, Ny, Nz, 3, 3]</code></span></li>
 </ul></li>
 </ul>
@@ -1117,17 +1103,17 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 </section>
 </section>
 <section id="sec-su3networks" class="level1 centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">
-<h1 class="centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">Networks 4D <span class="math inline">SU(3)</span></h1>
+<h1 class="centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">Networks 4D <span class="math inline">\(SU(3)\)</span></h1>
 <div class="columns">
 <div class="column" style="font-size:0.9em;">
 <p>&nbsp;<br></p>
 <p>&nbsp;<br></p>
-<p><span class="purple-text"><span class="math inline">U</span></span>-Network:</p>
-<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)</span></span></p>
+<p><span class="purple-text"><span class="math inline">\(U\)</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">\((U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)\)</span></span></p>
 <p>&nbsp;<br></p>
 <div style="border: 1px solid #1c1c1c; border-radius: 6px; padding:1%;">
-<p><span class="green-text"><span class="math inline">P</span></span>-Network:</p>
-<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)</span></span></p>
+<p><span class="green-text"><span class="math inline">\(P\)</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">\((U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)\)</span></span></p>
 </div>
 </div><div class="column" style="text-align:right;">
 <p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="img-fluid" style="width:80.0%"></a></p>
@@ -1135,69 +1121,69 @@ P(\textcolor{#FFEE58}{\varepsilon}) &amp;= P(0) - \textcolor{#FFEE58}{\varepsilo
 </div>
 </section>
 <section id="networks-4d-su3" class="level1 centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">
-<h1 class="centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">Networks 4D <span class="math inline">SU(3)</span></h1>
+<h1 class="centeredslide" data-auto-animate="true" data-background-color="#1c1c1c">Networks 4D <span class="math inline">\(SU(3)\)</span></h1>
 <div class="columns">
 <div class="column" style="font-size:0.9em;">
 <p>&nbsp;<br></p>
 <p>&nbsp;<br></p>
-<p><span class="purple-text"><span class="math inline">U</span></span>-Network:</p>
-<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)</span></span></p>
+<p><span class="purple-text"><span class="math inline">\(U\)</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>UNet:</code> <span class="math inline">\((U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)\)</span></span></p>
 <p>&nbsp;<br></p>
 <div style="border: 1px solid #07B875; border-radius: 6px; padding:1%;">
-<p><span class="green-text"><span class="math inline">P</span></span>-Network:</p>
-<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">(U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)</span></span></p>
+<p><span class="green-text"><span class="math inline">\(P\)</span></span>-Network:</p>
+<p><span style="font-size:0.9em;"><code>PNet:</code> <span class="math inline">\((U, P) \longrightarrow \left(s_{P},\, t_{P},\, q_{P}\right)\)</span></span></p>
 </div>
-<p><span class="dim-text"><span class="math inline">\uparrow</span></span><br>
+<p><span class="dim-text"><span class="math inline">\(\uparrow\)</span></span><br>
 <span class="dim-text" style="padding-top: 0.5em!important;">let’s look at this</span></p>
 </div><div class="column" style="text-align:right;">
 <p><a href="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="./assets/leapfrog-layer-4D-SU3-vertical.light.svg" class="img-fluid" style="width:80.0%"></a></p>
 </div>
 </div>
 <section id="p-network-pt.-1" class="level2" style="font-size:0.95em;" data-background-color="#1c1c1c">
-<h2 style="font-size:0.95em;" data-background-color="#1c1c1c" class="anchored" data-anchor-id="p-network-pt.-1"><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;1)</h2>
+<h2 style="font-size:0.95em;" data-background-color="#1c1c1c" class="anchored" data-anchor-id="p-network-pt.-1"><span class="math inline">\(P\)</span>-<code>Network</code> (pt.&nbsp;1)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="./assets/SU3/PNetwork.light.svg" class="img-fluid"></a></p>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.493);"><code>input</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>: <span class="math inline">\hspace{7pt}\left(U, F\right) := (e^{i Q}, F)</span></span> <span class="math display">\begin{align*}
+<li><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.493);"><code>input</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>: <span class="math inline">\(\hspace{7pt}\left(U, F\right) := (e^{i Q}, F)\)</span></span> <span class="math display">\[\begin{align*}
 h_{0} &amp;= \sigma\left( w_{Q} Q + w_{F} F + b \right) \\
 h_{1} &amp;= \sigma\left( w_{1} h_{0} + b_{1} \right) \\
 &amp;\vdots \\
 h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 \textcolor{#FF5252}{z} &amp; := \sigma\left(w_{n} h_{n-1} + b_{n}\right) \longrightarrow \\
-\end{align*}</span></li>
+\end{align*}\]</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><p><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.5);"><code>output</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>: <span class="math inline">\hspace{7pt} (s_{P}, t_{P}, q_{P})</span></span></p>
+<li><p><span style="border-bottom: 2px solid rgba(131, 131, 131, 0.5);"><code>output</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>: <span class="math inline">\(\hspace{7pt} (s_{P}, t_{P}, q_{P})\)</span></span></p>
 <ul>
-<li><span class="math inline">s_{P} = \lambda_{s} \tanh(w_s \textcolor{#FF5252}{z} + b_s)</span></li>
-<li><span class="math inline">t_{P} = w_{t} \textcolor{#FF5252}{z} + b_{t}</span></li>
-<li><span class="math inline">q_{P} = \lambda_{q} \tanh(w_{q} \textcolor{#FF5252}{z} + b_{q})</span></li>
+<li><span class="math inline">\(s_{P} = \lambda_{s} \tanh(w_s \textcolor{#FF5252}{z} + b_s)\)</span></li>
+<li><span class="math inline">\(t_{P} = w_{t} \textcolor{#FF5252}{z} + b_{t}\)</span></li>
+<li><span class="math inline">\(q_{P} = \lambda_{q} \tanh(w_{q} \textcolor{#FF5252}{z} + b_{q})\)</span></li>
 </ul></li>
 </ul>
 </div>
 </div>
 </section>
 <section id="p-network-pt.-2" class="level2" style="font-size:0.9em;" data-background-color="#1c1c1c">
-<h2 style="font-size:0.9em;" data-background-color="#1c1c1c" class="anchored" data-anchor-id="p-network-pt.-2"><span class="math inline">P</span>-<code>Network</code> (pt.&nbsp;2)</h2>
+<h2 style="font-size:0.9em;" data-background-color="#1c1c1c" class="anchored" data-anchor-id="p-network-pt.-2"><span class="math inline">\(P\)</span>-<code>Network</code> (pt.&nbsp;2)</h2>
 <div style="text-align:center;">
 <p><a href="./assets/SU3/PNetwork.light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="./assets/SU3/PNetwork.light.svg" class="img-fluid"></a></p>
 </div>
 <ul>
-<li><p>Use <span class="math inline">(s_{P}, t_{P}, q_{P})</span> to update <span class="math inline">\Gamma^{\pm}: (U, P) \rightarrow
-\left(U, P_{\pm}\right)</span><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>:</p>
+<li><p>Use <span class="math inline">\((s_{P}, t_{P}, q_{P})\)</span> to update <span class="math inline">\(\Gamma^{\pm}: (U, P) \rightarrow
+\left(U, P_{\pm}\right)\)</span><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>:</p>
 <ul>
-<li><p><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>: <span class="math display">\Gamma^{\textcolor{#FF5252}{+}}(U, P) := P_{\textcolor{#FF5252}{+}} = P \cdot e^{\frac{\varepsilon}{2} s_{P}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]</span></p></li>
-<li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>: <span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}(U, P) := P_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{P}} \left\{P + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]\right\}</span></p></li>
+<li><p><span style="color:#FF5252">forward</span> <span class="math inline">\((d = \textcolor{#FF5252}{+})\)</span>: <span class="math display">\[\Gamma^{\textcolor{#FF5252}{+}}(U, P) := P_{\textcolor{#FF5252}{+}} = P \cdot e^{\frac{\varepsilon}{2} s_{P}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]\]</span></p></li>
+<li><p><span style="color:#1A8FFF;">backward</span> <span class="math inline">\((d = \textcolor{#1A8FFF}{-})\)</span>: <span class="math display">\[\Gamma^{\textcolor{#1A8FFF}{-}}(U, P) := P_{\textcolor{#1A8FFF}{-}} = e^{-\frac{\varepsilon}{2} s_{P}} \left\{P + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{P}} + t_{P} \right]\right\}\]</span></p></li>
 </ul></li>
 </ul>
 </section>
 </section>
 <section id="sec-results" class="level1 centeredslide" data-background-color="#1c1c1c">
-<h1 class="centeredslide" data-background-color="#1c1c1c">Results: 2D <span class="math inline">U(1)</span></h1>
+<h1 class="centeredslide" data-background-color="#1c1c1c">Results: 2D <span class="math inline">\(U(1)\)</span></h1>
 <div class="columns">
 <div class="column" style="align:top;">
 <p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/autocorr_new.svg" class="img-fluid" style="width:90.0%"></a></p>
@@ -1214,7 +1200,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>We can measure the performance by comparing <span class="math inline">\tau_{\mathrm{int}}</span> for the <span style="color:#FF2052;"><strong>trained model</strong></span> vs. <span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
+<p>We can measure the performance by comparing <span class="math inline">\(\tau_{\mathrm{int}}\)</span> for the <span style="color:#FF2052;"><strong>trained model</strong></span> vs. <span style="color:#9F9F9F;"><strong>HMC</strong></span>.</p>
 <p><strong>Note</strong>: <span style="color:#FF2052;">lower</span> is better</p>
 </div>
 </div>
@@ -1226,7 +1212,7 @@ h_{n} &amp;= \sigma\left(w_{n-1} h_{n-2} + b_{n}\right) \\
 <h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="sec-interpretation">Interpretation</h2>
 <div class="columns" style="margin-left:1pt;">
 <div class="column" style="width:36%;">
-<p><span class="dim-text" style="text-align:center; font-size:0.8em">Deviation in <span class="math inline">x_{P}</span></span></p>
+<p><span class="dim-text" style="text-align:center; font-size:0.8em">Deviation in <span class="math inline">\(x_{P}\)</span></span></p>
 </div><div class="column" style="width:30%;">
 <p><span class="dim-text" style="text-align:right; font-size:0.8em">Topological charge mixing</span></p>
 </div><div class="column" style="width:32%;">
@@ -1254,7 +1240,7 @@ Figure&nbsp;8: Illustration of how different observables evolve over a single L2
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Average plaquette: \langle x_{P}\rangle vs LF step"><img src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_ridgeplot.svg" class="img-fluid figure-img"></a></p>
-<figcaption>Average plaquette: <span class="math inline">\langle x_{P}\rangle</span> vs LF step</figcaption>
+<figcaption>Average plaquette: <span class="math inline">\(\langle x_{P}\rangle\)</span> vs LF step</figcaption>
 </figure>
 </div>
 </div>
@@ -1262,7 +1248,7 @@ Figure&nbsp;8: Illustration of how different observables evolve over a single L2
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Average energy: H - \sum\log|\mathcal{J}|"><img src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/Hf_ridgeplot.svg" class="img-fluid figure-img"></a></p>
-<figcaption>Average energy: <span class="math inline">H - \sum\log|\mathcal{J}|</span></figcaption>
+<figcaption>Average energy: <span class="math inline">\(H - \sum\log|\mathcal{J}|\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -1276,14 +1262,14 @@ Figure&nbsp;9: The trained model artifically increases the energy towards the mi
 </section>
 </section>
 <section id="sec-su3results" class="level1" data-background-color="#1c1c1c">
-<h1 data-background-color="#1c1c1c">4D <span class="math inline">SU(3)</span> Results</h1>
+<h1 data-background-color="#1c1c1c">4D <span class="math inline">\(SU(3)\)</span> Results</h1>
 <ul>
-<li>Distribution of <span class="math inline">\log|\mathcal{J}|</span> over all chains, at each <em>leapfrog step</em>, <span class="math inline">N_{\mathrm{LF}}</span> (<span class="math inline">= 0, 1, \ldots, 8</span>) during training:</li>
+<li>Distribution of <span class="math inline">\(\log|\mathcal{J}|\)</span> over all chains, at each <em>leapfrog step</em>, <span class="math inline">\(N_{\mathrm{LF}}\)</span> (<span class="math inline">\(= 0, 1, \ldots, 8\)</span>) during training:</li>
 </ul>
 <div>
 
 </div>
-<div class="quarto-layout-panel" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;" data-layout="[ [30, 30, 30] ]">
+<div class="quarto-layout-panel" data-layout="[ [30, 30, 30] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: center;">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div id="fig-ridgeplot1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1324,27 +1310,27 @@ Figure&nbsp;12: <code>1000</code> train iters
 </div>
 </div>
 <section id="d-su3-results-delta-u_munu" class="level2" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="d-su3-results-delta-u_munu">4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="d-su3-results-delta-u_munu">4D <span class="math inline">\(SU(3)\)</span> Results: <span class="math inline">\(\delta U_{\mu\nu}\)</span></h2>
 <div id="fig-pdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/SU3/pdiff.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;13: The difference in the average plaquette \left|\delta U_{\mu\nu}\right|^{2} between the trained model and HMC"><img src="./assets/SU3/pdiff.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: The difference in the average plaquette <span class="math inline">\left|\delta U_{\mu\nu}\right|^{2}</span> between the trained model and HMC
+Figure&nbsp;13: The difference in the average plaquette <span class="math inline">\(\left|\delta U_{\mu\nu}\right|^{2}\)</span> between the trained model and HMC
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="d-su3-results-delta-u_munu-1" class="level2" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="d-su3-results-delta-u_munu-1">4D <span class="math inline">SU(3)</span> Results: <span class="math inline">\delta U_{\mu\nu}</span></h2>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="d-su3-results-delta-u_munu-1">4D <span class="math inline">\(SU(3)\)</span> Results: <span class="math inline">\(\delta U_{\mu\nu}\)</span></h2>
 <div id="fig-pdiff-robust" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pdiff-robust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="./assets/SU3/pdiff-robust.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;14: The difference in the average plaquette \left|\delta U_{\mu\nu}\right|^{2} between the trained model and HMC"><img src="./assets/SU3/pdiff-robust.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdiff-robust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: The difference in the average plaquette <span class="math inline">\left|\delta U_{\mu\nu}\right|^{2}</span> between the trained model and HMC
+Figure&nbsp;14: The difference in the average plaquette <span class="math inline">\(\left|\delta U_{\mu\nu}\right|^{2}\)</span> between the trained model and HMC
 </figcaption>
 </figure>
 </div>
@@ -1359,7 +1345,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 </ul></li>
 <li><p>Continue to use / test different network architectures</p>
 <ul>
-<li>Gauge equivariant NNs for <span class="math inline">U_{\mu}(x)</span> update</li>
+<li>Gauge equivariant NNs for <span class="math inline">\(U_{\mu}(x)\)</span> update</li>
 </ul></li>
 <li><p>Continue to test different loss functions for training</p></li>
 <li><p>Scaling:</p>
@@ -1556,18 +1542,18 @@ Figure&nbsp;15: Plot of the integrated autocorrelation time for both the trained
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: Comparison of <span class="math inline">\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}</span> for the trained model <a href="#fig-eval" class="quarto-xref">Figure&nbsp;16 (a)</a> vs.&nbsp;HMC <a href="#fig-hmc" class="quarto-xref">Figure&nbsp;16 (b)</a>
+Figure&nbsp;16: Comparison of <span class="math inline">\(\langle \delta Q\rangle = \frac{1}{N}\sum_{i=k}^{N} \delta Q_{i}\)</span> for the trained model <a href="#fig-eval" class="quarto-xref">Figure&nbsp;16 (a)</a> vs.&nbsp;HMC <a href="#fig-hmc" class="quarto-xref">Figure&nbsp;16 (b)</a>
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="plaquette-analysis-x_p" class="level2 centeredslide" data-background-color="#1c1c1c">
-<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="plaquette-analysis-x_p">Plaquette analysis: <span class="math inline">x_{P}</span></h2>
+<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="plaquette-analysis-x_p">Plaquette analysis: <span class="math inline">\(x_{P}\)</span></h2>
 <div class="columns">
 <div class="column" style="width:55%;">
-<p><span class="dim-text" style="text-align:center; font-size:0.9em;">Deviation from <span class="math inline">V\rightarrow\infty</span> limit, <span class="math inline">x_{P}^{\ast}</span></span></p>
+<p><span class="dim-text" style="text-align:center; font-size:0.9em;">Deviation from <span class="math inline">\(V\rightarrow\infty\)</span> limit, <span class="math inline">\(x_{P}^{\ast}\)</span></span></p>
 </div><div class="column" style="width:45%;">
-<p><span class="dim-text" style="text-align:right!important; font-size:0.9em;">Average <span class="math inline">\langle x_{P}\rangle</span>, with <span class="math inline">x_{P}^{\ast}</span> (dotted-lines)</span></p>
+<p><span class="dim-text" style="text-align:right!important; font-size:0.9em;">Average <span class="math inline">\(\langle x_{P}\rangle\)</span>, with <span class="math inline">\(x_{P}^{\ast}\)</span> (dotted-lines)</span></p>
 </div>
 </div>
 <div id="fig-avg-plaq" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1576,7 +1562,7 @@ Figure&nbsp;16: Comparison of <span class="math inline">\langle \delta Q\rangle 
 <a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;17: Plot showing how average plaquette, \left\langle x_{P}\right\rangle varies over a single trajectory for models trained at different \beta, with varying trajectory lengths N_{\mathrm{LF}}"><img src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/plaqsf_vs_lf_step1.svg" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-avg-plaq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\left\langle x_{P}\right\rangle</span> varies over a single trajectory for models trained at different <span class="math inline">\beta</span>, with varying trajectory lengths <span class="math inline">N_{\mathrm{LF}}</span>
+Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class="math inline">\(\left\langle x_{P}\right\rangle\)</span> varies over a single trajectory for models trained at different <span class="math inline">\(\beta\)</span>, with varying trajectory lengths <span class="math inline">\(N_{\mathrm{LF}}\)</span>
 </figcaption>
 </figure>
 </div>
@@ -1584,64 +1570,64 @@ Figure&nbsp;17: Plot showing how <strong>average plaquette</strong>, <span class
 <section id="loss-function" class="level2" data-background-color="#1c1c1c">
 <h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="loss-function">Loss Function</h2>
 <ul>
-<li><p>Want to maximize the <em>expected</em> squared charge difference<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>: <span class="math display">\begin{equation*}
+<li><p>Want to maximize the <em>expected</em> squared charge difference<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>: <span class="math display">\[\begin{equation*}
 \mathcal{L}_{\theta}\left(\xi^{\ast}, \xi\right) =
 {\mathbb{E}_{p(\xi)}}\big[-\textcolor{#FA5252}{{\delta Q}}^{2}
 \left(\xi^{\ast}, \xi \right)\cdot A(\xi^{\ast}|\xi)\big]
-\end{equation*}</span></p></li>
+\end{equation*}\]</span></p></li>
 <li><p>Where:</p>
 <ul>
-<li><p><span class="math inline">\delta Q</span> is the <em>tunneling rate</em>: <span class="math display">\begin{equation*}
+<li><p><span class="math inline">\(\delta Q\)</span> is the <em>tunneling rate</em>: <span class="math display">\[\begin{equation*}
 \textcolor{#FA5252}{\delta Q}(\xi^{\ast},\xi)=\left|Q^{\ast} - Q\right|
-\end{equation*}</span></p></li>
-<li><p><span class="math inline">A(\xi^{\ast}|\xi)</span> is the probability<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> of accepting the proposal <span class="math inline">\xi^{\ast}</span>: <span class="math display">\begin{equation*}
+\end{equation*}\]</span></p></li>
+<li><p><span class="math inline">\(A(\xi^{\ast}|\xi)\)</span> is the probability<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> of accepting the proposal <span class="math inline">\(\xi^{\ast}\)</span>: <span class="math display">\[\begin{equation*}
 A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 \frac{p(\xi^{\ast})}{p(\xi)}\left|\frac{\partial \xi^{\ast}}{\partial
 \xi^{T}}\right|\right)
-\end{equation*}</span></p></li>
+\end{equation*}\]</span></p></li>
 </ul></li>
 </ul>
 </section>
 <section id="networks-2d-u1" class="level2" data-auto-animate="true" data-background-color="#1c1c1c">
-<h2 data-auto-animate="true" data-background-color="#1c1c1c" class="anchored" data-anchor-id="networks-2d-u1">Networks 2D <span class="math inline">U(1)</span></h2>
+<h2 data-auto-animate="true" data-background-color="#1c1c1c" class="anchored" data-anchor-id="networks-2d-u1">Networks 2D <span class="math inline">\(U(1)\)</span></h2>
 <ul>
-<li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
-<p><span class="math display"> x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]</span></p>
-<p>with <code>shape</code><span class="math inline">\left(x_{\mu}\right)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\in \mathbb{R}</span></p></li>
-<li><p><span class="math inline">x</span>-Network:</p>
+<li><p>Stack gauge links as <code>shape</code><span class="math inline">\(\left(U_{\mu}\right)\)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\(\in \mathbb{C}\)</span></p>
+<p><span class="math display">\[ x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]\]</span></p>
+<p>with <code>shape</code><span class="math inline">\(\left(x_{\mu}\right)\)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\(\in \mathbb{R}\)</span></p></li>
+<li><p><span class="math inline">\(x\)</span>-Network:</p>
 <ul>
-<li><span class="purple-text"><span class="math inline">\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+<li><span class="purple-text"><span class="math inline">\(\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)\)</span></span></li>
 </ul></li>
-<li><p><span class="math inline">v</span>-Network:</p>
+<li><p><span class="math inline">\(v\)</span>-Network:</p>
 <ul>
-<li><span class="green-text"><span class="math inline">\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span> <span class="dim-text"><span class="math inline">\hspace{2pt}\longleftarrow</span> lets look at this</span></li>
+<li><span class="green-text"><span class="math inline">\(\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)\)</span></span> <span class="dim-text"><span class="math inline">\(\hspace{2pt}\longleftarrow\)</span> lets look at this</span></li>
 </ul></li>
 </ul>
 </section>
 <section id="v-updatereverse" class="level2" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="v-updatereverse"><span class="math inline">v</span>-Update<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h2>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="v-updatereverse"><span class="math inline">\(v\)</span>-Update<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h2>
 <ul>
-<li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
+<li><span style="color:#FF5252">forward</span> <span class="math inline">\((d = \textcolor{#FF5252}{+})\)</span>:</li>
 </ul>
-<p><span class="math display">\Gamma^{\textcolor{#FF5252}{+}}: (x, v) \rightarrow v' := v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]</span></p>
+<p><span class="math display">\[\Gamma^{\textcolor{#FF5252}{+}}: (x, v) \rightarrow v' := v \cdot e^{\frac{\varepsilon}{2} s_{v}} - \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\]</span></p>
 <ul>
-<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>:</li>
+<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">\((d = \textcolor{#1A8FFF}{-})\)</span>:</li>
 </ul>
-<p><span class="math display">\Gamma^{\textcolor{#1A8FFF}{-}}: (x, v) \rightarrow v' := e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}</span></p>
+<p><span class="math display">\[\Gamma^{\textcolor{#1A8FFF}{-}}: (x, v) \rightarrow v' := e^{-\frac{\varepsilon}{2} s_{v}} \left\{v + \frac{\varepsilon}{2}\left[ F \cdot e^{\varepsilon q_{v}} + t_{v} \right]\right\}\]</span></p>
 </section>
 <section id="x-update" class="level2" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="x-update"><span class="math inline">x</span>-Update</h2>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="x-update"><span class="math inline">\(x\)</span>-Update</h2>
 <ul>
-<li><span style="color:#FF5252">forward</span> <span class="math inline">(d = \textcolor{#FF5252}{+})</span>:</li>
+<li><span style="color:#FF5252">forward</span> <span class="math inline">\((d = \textcolor{#FF5252}{+})\)</span>:</li>
 </ul>
-<p><span class="math display">\Lambda^{\textcolor{#FF5252}{+}}(x, v) = x \cdot e^{\frac{\varepsilon}{2} s_{x}} - \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]</span></p>
+<p><span class="math display">\[\Lambda^{\textcolor{#FF5252}{+}}(x, v) = x \cdot e^{\frac{\varepsilon}{2} s_{x}} - \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\]</span></p>
 <ul>
-<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">(d = \textcolor{#1A8FFF}{-})</span>:</li>
+<li><span style="color:#1A8FFF;">backward</span> <span class="math inline">\((d = \textcolor{#1A8FFF}{-})\)</span>:</li>
 </ul>
-<p><span class="math display">\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left\{x + \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\right\}</span></p>
+<p><span class="math display">\[\Lambda^{\textcolor{#1A8FFF}{-}}(x, v) = e^{-\frac{\varepsilon}{2} s_{x}} \left\{x + \frac{\varepsilon}{2}\left[ v \cdot e^{\varepsilon q_{x}} + t_{x} \right]\right\}\]</span></p>
 </section>
 <section id="lattice-gauge-theory-2d-u1" class="level2 centeredslide" data-background-color="#1c1c1c">
-<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="lattice-gauge-theory-2d-u1">Lattice Gauge Theory (2D <span class="math inline">U(1)</span>)</h2>
+<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="lattice-gauge-theory-2d-u1">Lattice Gauge Theory (2D <span class="math inline">\(U(1)\)</span>)</h2>
 <div class="columns" data-layout-valign="top">
 <div class="column" style="width:50%;">
 <div style="text-align:center;">
@@ -1657,7 +1643,7 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math display">U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad</span> <span class="math display">x_{\mu}(n) \in [-\pi,\pi)</span></p>
+<p><span class="math display">\[U_{\mu}(n) = e^{i x_{\mu}(n)}\in \mathbb{C},\quad \text{where}\quad\]</span> <span class="math display">\[x_{\mu}(n) \in [-\pi,\pi)\]</span></p>
 </div>
 </div>
 </div>
@@ -1674,13 +1660,13 @@ A(\xi^{\ast}|\xi) = \mathrm{min}\left( 1,
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><span class="math display">S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},</span></p>
-<p><span class="math display">\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})
-- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\right]</span></p>
+<p><span class="math display">\[S_{\beta}(x) = \beta\sum_{P} \cos \textcolor{#00CCFF}{x_{P}},\]</span></p>
+<p><span class="math display">\[\textcolor{#00CCFF}{x_{P}} = \left[x_{\mu}(n) + x_{\nu}(n+\hat{\mu})
+- x_{\mu}(n+\hat{\nu})-x_{\nu}(n)\right]\]</span></p>
 </div>
 </div>
 </div>
-<p><span class="dim-text" style="font-size:0.8em;"><strong>Note</strong>: <span class="math inline">\textcolor{#00CCFF}{x_{P}}</span> is the product of links around <span class="math inline">1\times 1</span> square, called a <span class="blue-text">“plaquette”</span></span></p>
+<p><span class="dim-text" style="font-size:0.8em;"><strong>Note</strong>: <span class="math inline">\(\textcolor{#00CCFF}{x_{P}}\)</span> is the product of links around <span class="math inline">\(1\times 1\)</span> square, called a <span class="blue-text">“plaquette”</span></span></p>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1711,34 +1697,34 @@ Figure&nbsp;18: Jupyter Notebook
 <h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="sec-annealing-schedule">Annealing Schedule</h2>
 <ul>
 <li><p>Introduce an <em>annealing schedule</em> during the training phase:</p>
-<p><span class="math display">\left\{ \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},
-\ldots, \gamma_{N-1}, \gamma_{N} \right\}</span></p>
-<p>where <span class="math inline">\gamma_{0} &lt; \gamma_{1} &lt; \cdots &lt; \gamma_{N} \equiv 1</span>, and <span class="math inline">\left|\gamma_{t+1} - \gamma_{t}\right| \ll 1</span></p></li>
+<p><span class="math display">\[\left\{ \gamma_{t}  \right\}_{t=0}^{N} = \left\{\gamma_{0}, \gamma_{1},
+\ldots, \gamma_{N-1}, \gamma_{N} \right\}\]</span></p>
+<p>where <span class="math inline">\(\gamma_{0} &lt; \gamma_{1} &lt; \cdots &lt; \gamma_{N} \equiv 1\)</span>, and <span class="math inline">\(\left|\gamma_{t+1} - \gamma_{t}\right| \ll 1\)</span></p></li>
 <li><p><span class="green-text"><strong>Note</strong></span>:</p>
 <ul>
-<li>for <span class="math inline">\left|\gamma_{t}\right| &lt; 1</span>, this rescaling helps to reduce the height of the energy barriers <span class="math inline">\Longrightarrow</span></li>
+<li>for <span class="math inline">\(\left|\gamma_{t}\right| &lt; 1\)</span>, this rescaling helps to reduce the height of the energy barriers <span class="math inline">\(\Longrightarrow\)</span></li>
 <li>easier for our sampler to explore previously inaccessible regions of the phase space</li>
 </ul></li>
 </ul>
 </section>
 <section id="sec-networks-2dU1" class="level2" data-background-color="#1c1c1c">
-<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="sec-networks-2dU1">Networks 2D <span class="math inline">U(1)</span></h2>
+<h2 data-background-color="#1c1c1c" class="anchored" data-anchor-id="sec-networks-2dU1">Networks 2D <span class="math inline">\(U(1)\)</span></h2>
 <ul>
-<li><p>Stack gauge links as <code>shape</code><span class="math inline">\left(U_{\mu}\right)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\in \mathbb{C}</span></p>
-<p><span class="math display"> x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]</span></p>
-<p>with <code>shape</code><span class="math inline">\left(x_{\mu}\right)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\in \mathbb{R}</span></p></li>
-<li><p><span class="math inline">x</span>-Network:</p>
+<li><p>Stack gauge links as <code>shape</code><span class="math inline">\(\left(U_{\mu}\right)\)</span><code>=[Nb, 2, Nt, Nx]</code> <span class="math inline">\(\in \mathbb{C}\)</span></p>
+<p><span class="math display">\[ x_{\mu}(n) ≔ \left[\cos(x), \sin(x)\right]\]</span></p>
+<p>with <code>shape</code><span class="math inline">\(\left(x_{\mu}\right)\)</span><code>= [Nb, 2, Nt, Nx, 2]</code> <span class="math inline">\(\in \mathbb{R}\)</span></p></li>
+<li><p><span class="math inline">\(x\)</span>-Network:</p>
 <ul>
-<li><span class="purple-text"><span class="math inline">\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)</span></span></li>
+<li><span class="purple-text"><span class="math inline">\(\psi_{\theta}: (x, v) \longrightarrow \left(s_{x},\, t_{x},\, q_{x}\right)\)</span></span></li>
 </ul></li>
-<li><p><span class="math inline">v</span>-Network:</p>
+<li><p><span class="math inline">\(v\)</span>-Network:</p>
 <ul>
-<li><span class="green-text"><span class="math inline">\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)</span></span></li>
+<li><span class="green-text"><span class="math inline">\(\varphi_{\theta}: (x, v) \longrightarrow \left(s_{v},\, t_{v},\, q_{v}\right)\)</span></span></li>
 </ul></li>
 </ul>
 </section>
 <section id="toy-example-gmm-in-mathbbr2" class="level2 centeredslide" data-background-color="#1c1c1c">
-<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="toy-example-gmm-in-mathbbr2">Toy Example: GMM <span class="math inline">\in \mathbb{R}^{2}</span></h2>
+<h2 class="centeredslide anchored" data-background-color="#1c1c1c" data-anchor-id="toy-example-gmm-in-mathbbr2">Toy Example: GMM <span class="math inline">\(\in \mathbb{R}^{2}\)</span></h2>
 <div id="fig-gmm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gmm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1765,7 +1751,7 @@ Figure&nbsp;19
 <a href="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;20: Increasing the physical resolution (a \rightarrow 0) allows us to make predictions about numerical values of physical quantities in the continuum limit."><img src="https://raw.githubusercontent.com/saforem2/physicsSeminar/main/assets/static/continuum.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-continuum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a \rightarrow 0</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.
+Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">\(a \rightarrow 0\)</span>) allows us to make predictions about numerical values of physical quantities in the continuum limit.
 </figcaption>
 </figure>
 </div>
@@ -1783,19 +1769,19 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Here, <span class="math inline">\sim</span> means “is distributed according to”<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">v_{0} \sim
-\mathcal{N}(0, \mathbb{1})</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Here, <span class="math inline">\(\sim\)</span> means “is distributed according to”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Here, <span class="math inline">\(\sim\)</span> means “is distributed according to”<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>We <strong>always</strong> start by resampling the momentum, <span class="math inline">\(v_{0} \sim
+\mathcal{N}(0, \mathbb{1})\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://github.com/saforem2/l2hmc-qcd">L2HMC:</a> <i class="fa-solid fa-book" aria-label="book"></i> <span class="citation" data-cites="Foreman:2021ixr Foreman:2021rhs">(<a href="#ref-Foreman:2021ixr" role="doc-biblioref">Foreman, Jin, and Osborn 2021</a>, <a href="#ref-Foreman:2021rhs" role="doc-biblioref">2022</a>)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>For simple <span class="math inline">\mathbf{x} \in \mathbb{R}^{2}</span> example, <span class="math inline">\mathcal{L}_{\theta} =
-A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}</span><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\sigma(\cdot)</span> denotes an activation function<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p><span class="math inline">\lambda_{s}, \lambda_{q} \in \mathbb{R}</span>, trainable parameters<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(U, P)\right] = \Gamma^{-}\left[\Gamma^{+}(U, P)\right] = (U, P)</span><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Where <span class="math inline">\xi^{\ast}</span> is the <em>proposed</em> configuration (prior to Accept / Reject)<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>And <span class="math inline">\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|</span> is the Jacobian of the transformation from <span class="math inline">\xi \rightarrow \xi^{\ast}</span><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p><span style="font-size:0.8em;">Note that <span class="math inline">\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}</span>, i.e.&nbsp;<span class="math inline">\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)</span></span><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>For simple <span class="math inline">\(\mathbf{x} \in \mathbb{R}^{2}\)</span> example, <span class="math inline">\(\mathcal{L}_{\theta} =
+A(\xi^{\ast}|\xi)\cdot \left(\mathbf{x}^{\ast} - \mathbf{x}\right)^{2}\)</span><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><span class="math inline">\(\sigma(\cdot)\)</span> denotes an activation function<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><span class="math inline">\(\lambda_{s}, \lambda_{q} \in \mathbb{R}\)</span>, trainable parameters<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Note that <span class="math inline">\(\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}\)</span>, i.e.&nbsp;<span class="math inline">\(\Gamma^{+}\left[\Gamma^{-}(U, P)\right] = \Gamma^{-}\left[\Gamma^{+}(U, P)\right] = (U, P)\)</span><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Where <span class="math inline">\(\xi^{\ast}\)</span> is the <em>proposed</em> configuration (prior to Accept / Reject)<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>And <span class="math inline">\(\left|\frac{\partial \xi^{\ast}}{\partial \xi^{T}}\right|\)</span> is the Jacobian of the transformation from <span class="math inline">\(\xi \rightarrow \xi^{\ast}\)</span><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><span style="font-size:0.8em;">Note that <span class="math inline">\(\left(\Gamma^{+}\right)^{-1} = \Gamma^{-}\)</span>, i.e.&nbsp;<span class="math inline">\(\Gamma^{+}\left[\Gamma^{-}(x, v)\right] = \Gamma^{-}\left[\Gamma^{+}(x, v)\right] = (x, v)\)</span></span><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Foreman, Sam. 2023. <span>“MLMC: Machine Learning Monte Carlo for
@@ -2421,55 +2407,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="saforem2/personal_site" data-repo-id="R_kgDOGbjyRw" data-category="General" data-category-id="DIC_kwDOGbjyR84CjWfk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
 <input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
-function loadGiscusWhenReady() {
-  // Function to get the theme based on body class
-  const getTheme = () => {
-    const baseTheme = document.getElementById('giscus-base-theme').value;
-    const altTheme = document.getElementById('giscus-alt-theme').value;
-    return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
-  };
-  // Create the Giscus script and add it to the desired location
-  const loadGiscus = () => {
-    const script = document.createElement("script");
-    script.src = "https://giscus.app/client.js";
-    script.async = true;
-    script.dataset.repo = "saforem2/personal_site";
-    script.dataset.repoId = "R_kgDOGbjyRw";
-    script.dataset.category = "General";
-    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
-    script.dataset.mapping = "title";
-    script.dataset.reactionsEnabled = "1";
-    script.dataset.emitMetadata = "0";
-    script.dataset.inputPosition = "top";
-    script.dataset.theme = getTheme();
-    script.dataset.lang = "en";
-    script.crossOrigin = "anonymous";
-    // Append the script to the desired div instead of at the end of the body
-    document.getElementById("quarto-content").appendChild(script);
-  };
-  // MutationObserver to detect when the 'quarto-light' or 'quarto-dark' class is added to the body
-  const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === "attributes" && mutation.attributeName === "class") {
-        if (document.body.classList.contains('quarto-light') || document.body.classList.contains('quarto-dark')) {
-          loadGiscus();
-          observer.disconnect(); // Stop observing once Giscus is loaded
-          break;
-        }
-      }
-    }
-  });
-  // Start observing the body for class attribute changes
-  observer.observe(document.body, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
-}
-loadGiscusWhenReady();
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "MLMC: Machine Learning Monte Carlo"</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="an">location:</span><span class="co"> Lattice 2023 (Fermilab)</span></span>
@@ -2602,8 +2543,8 @@ loadGiscusWhenReady();
 <span id="cb1-130"><a href="#cb1-130"></a><span class="fu"># {.title-slide background-color="#1c1c1c" background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span>
 <span id="cb1-131"><a href="#cb1-131"></a></span>
 <span id="cb1-132"><a href="#cb1-132"></a>::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}</span>
-<span id="cb1-133"><a href="#cb1-133"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#939393; font-size:1.5em; font-weight: bold;"</span><span class="dt">&gt;</span>MLMC: Machine Learning Monte Carlo<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span>  </span>
-<span id="cb1-134"><a href="#cb1-134"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#777777; font-size:1.2em; font-weight: bold;"</span><span class="dt">&gt;</span>for Lattice Gauge Theory<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-133"><a href="#cb1-133"></a>&lt;span style="color:#939393; font-size:1.5em; font-weight: bold;"&gt;MLMC: Machine Learning Monte Carlo&lt;/span&gt;  </span>
+<span id="cb1-134"><a href="#cb1-134"></a>&lt;span style="color:#777777; font-size:1.2em; font-weight: bold;"&gt;for Lattice Gauge Theory&lt;/span&gt;  </span>
 <span id="cb1-135"><a href="#cb1-135"></a><span class="co">[</span><span class="ot">&lt;br&gt;&amp;nbsp;</span><span class="co">]</span>{style="padding-bottom: 0.5rem;"}  </span>
 <span id="cb1-136"><a href="#cb1-136"></a><span class="co">[</span><span class="ot">{{&lt; fa solid home &gt;}}</span><span class="co">](https://samforeman.me)</span> Sam Foreman  </span>
 <span id="cb1-137"><a href="#cb1-137"></a><span class="co">[</span><span class="ot">Xiao-Yong Jin, James C. Osborn</span><span class="co">]</span>{.dim-text style="font-size:0.8em;"}  </span>
@@ -2650,7 +2591,7 @@ loadGiscusWhenReady();
 <span id="cb1-178"><a href="#cb1-178"></a></span>
 <span id="cb1-179"><a href="#cb1-179"></a>::::</span>
 <span id="cb1-180"><a href="#cb1-180"></a></span>
-<span id="cb1-181"><a href="#cb1-181"></a>If these were <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"color:#00CCFF;"</span><span class="dt">&gt;</span>independent<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span>, we could approximate:</span>
+<span id="cb1-181"><a href="#cb1-181"></a>If these were &lt;span style="color:#00CCFF;"&gt;independent&lt;/span&gt;, we could approximate:</span>
 <span id="cb1-182"><a href="#cb1-182"></a>  $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$  </span>
 <span id="cb1-183"><a href="#cb1-183"></a>  $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left[\mathcal{O} (x)</span>
 <span id="cb1-184"><a href="#cb1-184"></a>  \right]}\Longrightarrow \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$</span>
@@ -2827,7 +2768,7 @@ loadGiscusWhenReady();
 <span id="cb1-355"><a href="#cb1-355"></a></span>
 <span id="cb1-356"><a href="#cb1-356"></a>::: {#fig-hmc-demo}</span>
 <span id="cb1-357"><a href="#cb1-357"></a></span>
-<span id="cb1-358"><a href="#cb1-358"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> data-src</span><span class="op">=</span><span class="st">"https://chi-feng.github.io/mcmc-demo/app.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"90%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"500"</span><span class="ot"> title</span><span class="op">=</span><span class="st">"l2hmc-qcd"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-358"><a href="#cb1-358"></a>&lt;iframe data-src="https://chi-feng.github.io/mcmc-demo/app.html" width="90%" height="500" title="l2hmc-qcd"&gt;&lt;/iframe&gt;</span>
 <span id="cb1-359"><a href="#cb1-359"></a></span>
 <span id="cb1-360"><a href="#cb1-360"></a>HMC Demo</span>
 <span id="cb1-361"><a href="#cb1-361"></a>:::</span>
@@ -3179,16 +3120,16 @@ loadGiscusWhenReady();
 <span id="cb1-707"><a href="#cb1-707"></a></span>
 <span id="cb1-708"><a href="#cb1-708"></a>::: {.column width="54%" style="font-size:0.9em;"}</span>
 <span id="cb1-709"><a href="#cb1-709"></a></span>
-<span id="cb1-710"><a href="#cb1-710"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-710"><a href="#cb1-710"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-711"><a href="#cb1-711"></a></span>
-<span id="cb1-712"><a href="#cb1-712"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-712"><a href="#cb1-712"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-713"><a href="#cb1-713"></a></span>
 <span id="cb1-714"><a href="#cb1-714"></a><span class="co">[</span><span class="ot">$U$</span><span class="co">]</span>{.purple-text}-Network:</span>
 <span id="cb1-715"><a href="#cb1-715"></a></span>
 <span id="cb1-716"><a href="#cb1-716"></a>  <span class="co">[</span><span class="ot">`UNet: ` $(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}</span>
 <span id="cb1-717"><a href="#cb1-717"></a></span>
 <span id="cb1-718"><a href="#cb1-718"></a></span>
-<span id="cb1-719"><a href="#cb1-719"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-719"><a href="#cb1-719"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-720"><a href="#cb1-720"></a></span>
 <span id="cb1-721"><a href="#cb1-721"></a>::: {style="border: 1px solid #1c1c1c; border-radius: 6px; padding:1%;"}</span>
 <span id="cb1-722"><a href="#cb1-722"></a></span>
@@ -3214,15 +3155,15 @@ loadGiscusWhenReady();
 <span id="cb1-742"><a href="#cb1-742"></a></span>
 <span id="cb1-743"><a href="#cb1-743"></a>::: {.column width="54%" style="font-size:0.9em;"}</span>
 <span id="cb1-744"><a href="#cb1-744"></a></span>
-<span id="cb1-745"><a href="#cb1-745"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-745"><a href="#cb1-745"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-746"><a href="#cb1-746"></a></span>
-<span id="cb1-747"><a href="#cb1-747"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-747"><a href="#cb1-747"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-748"><a href="#cb1-748"></a></span>
 <span id="cb1-749"><a href="#cb1-749"></a><span class="co">[</span><span class="ot">$U$</span><span class="co">]</span>{.purple-text}-Network:</span>
 <span id="cb1-750"><a href="#cb1-750"></a></span>
 <span id="cb1-751"><a href="#cb1-751"></a>  <span class="co">[</span><span class="ot">`UNet: ` $(U, P) \longrightarrow \left(s_{U},\, t_{U},\, q_{U}\right)$</span><span class="co">]</span>{style="font-size:0.9em;"}</span>
 <span id="cb1-752"><a href="#cb1-752"></a></span>
-<span id="cb1-753"><a href="#cb1-753"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-753"><a href="#cb1-753"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-754"><a href="#cb1-754"></a></span>
 <span id="cb1-755"><a href="#cb1-755"></a>::: {style="border: 1px solid #07B875; border-radius: 6px; padding:1%;"}</span>
 <span id="cb1-756"><a href="#cb1-756"></a></span>
@@ -3432,7 +3373,7 @@ loadGiscusWhenReady();
 <span id="cb1-960"><a href="#cb1-960"></a></span>
 <span id="cb1-961"><a href="#cb1-961"></a><span class="fu">## Thank you! {#sec-thank-you background-color="#1c1c1c"}</span></span>
 <span id="cb1-962"><a href="#cb1-962"></a></span>
-<span id="cb1-963"><a href="#cb1-963"></a><span class="dv">&amp;nbsp;</span><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-963"><a href="#cb1-963"></a><span class="dv">&amp;nbsp;</span>&lt;br&gt;  </span>
 <span id="cb1-964"><a href="#cb1-964"></a></span>
 <span id="cb1-965"><a href="#cb1-965"></a>::: {layout-ncol=4 style="text-align:left; font-size:0.8em;"}</span>
 <span id="cb1-966"><a href="#cb1-966"></a></span>
@@ -3460,12 +3401,12 @@ loadGiscusWhenReady();
 <span id="cb1-988"><a href="#cb1-988"></a></span>
 <span id="cb1-989"><a href="#cb1-989"></a><span class="co">[</span><span class="al">![](https://raw.githubusercontent.com/saforem2/l2hmc-qcd/main/assets/logo-small.svg)</span><span class="co">](https://github.com/saforem2/l2hmc-qcd)</span></span>
 <span id="cb1-990"><a href="#cb1-990"></a></span>
-<span id="cb1-991"><a href="#cb1-991"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://hits.seeyoufarm.com"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"hits"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsaforem2%2Fl2hmc-qcd</span><span class="er">&amp;</span><span class="st">count_bg=%2300CCFF</span><span class="er">&amp;</span><span class="st">title_bg=%23555555</span><span class="er">&amp;</span><span class="st">icon=</span><span class="er">&amp;</span><span class="st">icon_color=%23111111</span><span class="er">&amp;</span><span class="st">title=👋</span><span class="er">&amp;</span><span class="st">edge_flat=false"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb1-992"><a href="#cb1-992"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://github.com/saforem2/l2hmc-qcd/"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"l2hmc-qcd"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://img.shields.io/badge/-l2hmc--qcd-252525?style=flat</span><span class="er">&amp;</span><span class="st">logo=github</span><span class="er">&amp;</span><span class="st">labelColor=gray"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"codefactor"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd/badge"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-991"><a href="#cb1-991"></a>&lt;a href="https://hits.seeyoufarm.com"&gt;&lt;img alt="hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsaforem2%2Fl2hmc-qcd&amp;count_bg=%2300CCFF&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23111111&amp;title=👋&amp;edge_flat=false"&gt;&lt;/a&gt;</span>
+<span id="cb1-992"><a href="#cb1-992"></a>&lt;a href="https://github.com/saforem2/l2hmc-qcd/"&gt;&lt;img alt="l2hmc-qcd" src="https://img.shields.io/badge/-l2hmc--qcd-252525?style=flat&amp;logo=github&amp;labelColor=gray"&gt;&lt;/a&gt; &lt;a href="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd"&gt;&lt;img alt="codefactor" src="https://www.codefactor.io/repository/github/saforem2/l2hmc-qcd/badge"&gt;&lt;/a&gt;  </span>
 <span id="cb1-993"><a href="#cb1-993"></a></span>
-<span id="cb1-994"><a href="#cb1-994"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://arxiv.org/abs/2112.01582"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"arxiv"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://img.shields.io/badge/arXiv-2112.01582-B31B1B.svg"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://arxiv.org/abs/2105.03418"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"arxiv"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://img.shields.io/badge/arXiv-2105.03418-B31B1B.svg"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span>  </span>
+<span id="cb1-994"><a href="#cb1-994"></a>&lt;a href="https://arxiv.org/abs/2112.01582"&gt;&lt;img alt="arxiv" src="http://img.shields.io/badge/arXiv-2112.01582-B31B1B.svg"&gt;&lt;/a&gt; &lt;a href="https://arxiv.org/abs/2105.03418"&gt;&lt;img alt="arxiv" src="http://img.shields.io/badge/arXiv-2105.03418-B31B1B.svg"&gt;&lt;/a&gt;  </span>
 <span id="cb1-995"><a href="#cb1-995"></a></span>
-<span id="cb1-996"><a href="#cb1-996"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://hydra.cc"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"hydra"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://img.shields.io/badge/Config-Hydra-89b8cd"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://pytorch.org/get-started/locally/"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"pyTorch"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch</span><span class="er">&amp;</span><span class="st">logoColor=white"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.tensorflow.org"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"tensorflow"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?</span><span class="er">&amp;</span><span class="st">logo=TensorFlow</span><span class="er">&amp;</span><span class="st">logoColor=white"</span><span class="dt">&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> </span>
+<span id="cb1-996"><a href="#cb1-996"></a>&lt;a href="https://hydra.cc"&gt;&lt;img alt="hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"&gt;&lt;/a&gt; &lt;a href="https://pytorch.org/get-started/locally/"&gt;&lt;img alt="pyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&amp;logoColor=white"&gt;&lt;/a&gt; &lt;a href="https://www.tensorflow.org"&gt;&lt;img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&amp;logo=TensorFlow&amp;logoColor=white"&gt;&lt;/a&gt; </span>
 <span id="cb1-997"><a href="#cb1-997"></a><span class="co">[</span><span class="ot">&lt;img src="https://raw.githubusercontent.com/wandb/assets/main/wandb-github-badge-28.svg" alt="Weights &amp; Biases monitoring" height=20&gt;</span><span class="co">](https://wandb.ai/l2hmc-qcd/l2hmc-qcd)</span></span>
 <span id="cb1-998"><a href="#cb1-998"></a></span>
 <span id="cb1-999"><a href="#cb1-999"></a>:::</span>
@@ -3702,7 +3643,7 @@ loadGiscusWhenReady();
 <span id="cb1-1230"><a href="#cb1-1230"></a></span>
 <span id="cb1-1231"><a href="#cb1-1231"></a>::: {#fig-notebook}</span>
 <span id="cb1-1232"><a href="#cb1-1232"></a></span>
-<span id="cb1-1233"><a href="#cb1-1233"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> data-src</span><span class="op">=</span><span class="st">"https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"650"</span><span class="ot"> title</span><span class="op">=</span><span class="st">"l2hmc-qcd"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-1233"><a href="#cb1-1233"></a>&lt;iframe data-src="https://nbviewer.org/github/saforem2/l2hmc-qcd/blob/SU3/src/l2hmc/notebooks/l2hmc-2dU1.ipynb" width="100%" height="650" title="l2hmc-qcd"&gt;&lt;/iframe&gt;</span>
 <span id="cb1-1234"><a href="#cb1-1234"></a></span>
 <span id="cb1-1235"><a href="#cb1-1235"></a>Jupyter Notebook</span>
 <span id="cb1-1236"><a href="#cb1-1236"></a></span>
