@@ -1,4 +1,4 @@
-# ⏳ Starting Up Distributed Training on Aurora
+# 🐢 Starting Up Distributed Training on Aurora
 Sam Foreman
 2024-03-21
 

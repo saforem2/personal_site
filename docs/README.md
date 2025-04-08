@@ -6,34 +6,34 @@ Sam Foreman
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img src="./assets/avatar-min.png"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-min.webp" width="100%"></img></span>
 
-<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt; font-weight: 400;"><span class="dim-text">👋
+<span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
 <div class="flex-container"
 style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; gap: 5pt; background-color: var(--link-bg-color);font-size:1.5rem;">
 
-<a style="color: #838383!important;" href="https://samforeman.me"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
+<a style="color: #838383;" href="https://samforeman.me"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://github.com/saforem2" ><iconify-icon loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a>
+<a style="color: #838383;" href="https://github.com/saforem2" ><iconify-icon loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://twitter.com/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
+<a style="color: #838383;" href="https://twitter.com/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://bsky.com/samforeman"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
+<a style="color: #838383;" href="https://bsky.com/samforeman"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
+<a style="color: #838383;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="mailto:foremans@anl.gov"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a>
+<a style="color: #838383;" href="mailto:foremans@anl.gov"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://outlook.office.com/"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Email" title="Email"></iconify-icon></a>
+<a style="color: #838383;" href="https://outlook.office.com/"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Schedule Time" title="Email"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://linkedin.com/in/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a>
+<a style="color: #838383;" href="https://linkedin.com/in/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://open.spotify.com/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a>
+<a style="color: #838383;" href="https://open.spotify.com/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a>
 
-<a style="color: #838383!important;" href="https://www.last.fm/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a>
+<a style="color: #838383;" href="https://www.last.fm/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a>
 
 </div>
 
@@ -69,7 +69,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > [!TIP]
 >
 > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon"
-> style="height:1.25rem;vertical-align:text-bottom;" /> Now Playing</span>
+> style="height:1.25rem; width: auto; vertical-align:text-bottom;" /> Now Playing</span>
 >
 > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=natemoo-re&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
 >
@@ -237,7 +237,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">04</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:07:26</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">04</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:50:54</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -566,7 +566,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-#### 📆 2025
+## 📆 2025
 
 > [!TIP]
 >
@@ -580,7 +580,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 
-#### 📆 2024
+## 📆 2024
 
 > [!TIP]
 >
@@ -666,7 +666,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 
-#### 📆 2023
+## 📆 2023
 
 > [!TIP]
 >
@@ -752,7 +752,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 
-#### 📆 2022
+## 📆 2022
 
 > [!TIP]
 >
@@ -818,7 +818,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 
-#### 📆 2021
+## 📆 2021
 
 > [!TIP]
 >
@@ -863,7 +863,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 
-#### 📆 2020
+## 📆 2020
 
 > [!TIP]
 >

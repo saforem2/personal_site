@@ -1,4 +1,4 @@
-# ezpz-v1
+# 📝 ezpz-v1
 Sam Foreman
 2024-08-23
 

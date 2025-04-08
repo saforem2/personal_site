@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&family=IBM+Plex+Mono&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&family=IBM+Plex+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 // @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 // @import url("https://unpkg.com/open-props/oklch-hues.min.css");
@@ -258,6 +258,8 @@ $themes: (
     callout-warning-color: #fd971f,
     callout-caution-color: #e599f7,
     callout-important-color: #ff5252,
+    -webkit-font-smoothing: antialiased,
+    -moz-osx-font-smoothing: grayscale,
   ),
 );
 
@@ -691,7 +693,7 @@ a {
 .reveal a:hover,
 a:hover {
   color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  // background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   border-radius: $link-border-radius;
   text-decoration: underline;
   text-decoration-thickness: 2pt;
@@ -700,10 +702,14 @@ a:hover {
 }
 
 .reveal a img:hover,
-a img:hover {
+a img:hover,
+.reveal img:hover,
+img a:hover,
+img a:not(#lightbox):hover{
   color: $link-color-hover;
   background: none !important;
   border-radius: $link-border-radius;
+  transition: 0.5s ease all;
 }
 
 a img:hover,
@@ -760,36 +766,61 @@ img a:hover {
   background: none !important;
 }
 
+div.sidebar-item-container:hover,
+div.sidebar-item-container:focus {
+  color: $link-color-hover;
+  background: none;
+}
+
 .sidebar-item {
   vertical-align: -webkit-baseline-middle;
+}
+
+.ms-2 {
+  margin-left: unset;
 }
 
 div.sidebar-item-container .active,
 div.sidebar-item-container .show > .nav-link,
 div.sidebar-item-container .sidebar-link > code {
   color: $link-color;
-  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  background: none;
   border-left: 2pt solid $link-color;
   padding-left: 4pt;
 }
 
-.sidebar-navigation {
-  font-family: $font-family-headings;
+// .sidebar-navigation {
+//   font-family: $font-family-headings;
+// }
+
+.toc-actions {
+  margin-block: 1rem;
 }
 
 .sidebar-item-text {
   width: 100%;
+  text-wrap: balance;
 }
 
 .sidebar-navigation .sidebar-item li:hover {
   color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
-  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+  background: none !important;
 }
+
+.sidebar-navigation li a {
+  &:hover {
+    color: $link-color-hover;
+    background: none !important;
+  }
+}
+
+// .sidebar-item-text {
+//   font-size: 0.9rem;
+// }
 
 .sidebar-item-text {
   width: 100%;
-  font-size: inherit;
+  // font-size: inherit;
   line-height: normal;
 }
 
@@ -894,17 +925,17 @@ img:hover,
   }
 }
 
-.sidebar nav[role="doc-toc"] > ul a {
-  border-left: 1px solid rgba(100, 100, 100, 0.6);
-  padding-left: 0.6rem;
-  color: $link-color;
-
-  &:hover {
-    color: $link-color-hover;
-    border-left: 1px solid $link-color-hover !important;
-    border-radius: 0;
-  }
-}
+// .sidebar nav[role="doc-toc"] > ul a {
+//   border-left: 1px solid rgba(100, 100, 100, 0.6);
+//   padding-left: 0.6rem;
+//   color: $link-color;
+//
+//   &:hover {
+//     color: $link-color-hover;
+//     border-left: 1px solid $link-color-hover !important;
+//     border-radius: 0;
+//   }
+// }
 
 p code {
   font-size: inherit;
@@ -2042,7 +2073,7 @@ details > summary {
   text-align: left;
   border-radius: 0.05rem;
   color: $link-color;
-
+  border: 1px solid rgba(0, 0, 0, 0);
   background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
   min-width: max-content;
   max-width: min-content;
@@ -2060,7 +2091,7 @@ details > summary:hover {
 
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   border: 1px solid $link-color-hover;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease all;
   // box-shadow: $shadow-color 0px 2px 5px !important;
   min-width: max-content;
   max-width: min-content;
@@ -2095,10 +2126,11 @@ details > summary:hover {
 }
 
 .navbar-brand.navbar-brand-logo {
-  border: 1pt solid rgba(0, 0, 0, 0);
+  // border: 1pt solid rgba(0, 0, 0, 0);
   &:hover {
-    border: 1pt solid $link-color-hover !important;
+    // border: 1pt solid $link-color-hover !important;
     color: $link-color-hover !important;
+    filter: drop-shadow(RGBA(0, 0, 0, 0.63) 0px 1px 0px);
     background-color: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
     // border-bottom: 2pt solid $link-color-hover !important;
     // text-decoration: underline;

@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
+
+  <meta name="author" content="Sam Foreman">
+  <title>Sam Foreman – 🎙️ Talks</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f5f529615e8b4f7f41227c9211fd86b0.css">
+  <link rel="stylesheet" href="../css/colors-oklch.min.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="../css/svgbob.css">
+  <link rel="stylesheet" href="../static/fonts/IosevkaQP/IosevkaQP.css">
+  <link rel="stylesheet" href="../static/fonts/IosevkaTerm/IosevkaTerm.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script>
+
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      const listingTargetEl = window.document.querySelector('#listing-listing-talks-default .list');
+      if (!listingTargetEl) {
+        // No listing discovered, do not attach.
+        return; 
+      }
+
+      const options = {
+        valueNames: ['listing-image','listing-title','listing-location','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+        
+        searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      };
+
+      window['quarto-listings'] = window['quarto-listings'] || {};
+      window['quarto-listings']['listing-listing-talks-default'] = new List('listing-listing-talks-default', options);
+
+      if (window['quarto-listing-loaded']) {
+        window['quarto-listing-loaded']();
+      }
+    });
+
+    window.addEventListener('hashchange',() => {
+      if (window['quarto-listing-loaded']) {
+        window['quarto-listing-loaded']();
+      }
+    })
+    </script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E72QE53WSY"></script>
+
+  <script type="text/javascript">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
+  </script>
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
+<meta property="og:title" content="Sam Foreman">
+<meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
+<meta property="og:site_name" content="Sam Foreman">
+<meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
+<meta name="twitter:creator" content="@saforem2">
+<meta name="twitter:site" content="@saforem2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="🎙️ Talks">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/talks/slides.html">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_abstract=We present a scalable, end-to-end workflow for protein design. By augmenting protein sequences with natural language descriptions of their biochemical properties, we train generative models that can be preferentially aligned with protein fitness landscapes. Through complex experimental- and simulation-based observations, we integrate these measures as preferred parameters for generating new protein variants and demonstrate our workflow on five diverse supercomputers. We achieve &amp;amp;amp;gt;1 ExaFLOPS sustained performance in mixed precision on each supercomputer and a maximum sustained performance of 4.11 ExaFLOPS and peak performance of 5.57 ExaFLOPS. We establish the scientific performance of our model on two tasks: (1) across a predetermined benchmark dataset of deep mutational scanning experiments to optimize the fitness-determining mutations in the yeast protein HIS7, and (2) in optimizing the design of the enzyme malate dehydrogenase to achieve lower activation barriers (and therefore increased catalytic rates) using simulation data. Our implementation thus sets high watermarks for multimodal protein design workflows.;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinö Hatanpää;,citation_author=Varuni K. Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=Bharat Kale;,citation_author=Carla M. Mann;,citation_author=Heng Ma;,citation_author=Yun-Hsuan Cheng;,citation_author=Yuliana Zamora;,citation_author=Shengchao Liu;,citation_author=Chaowei Xiao;,citation_author=Murali Emani;,citation_author=Tom Gibbs;,citation_author=Mahidhar Tatineni;,citation_author=Deepak Canchi;,citation_author=Jerome Mitchell;,citation_author=Koichi Yamada;,citation_author=Maria Garzaran;,citation_author=Michael E. Papka;,citation_author=Ian Foster;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://doi.org/10.1109/SC41406.2024.00013;,citation_doi=10.1109/SC41406.2024.00013;,citation_isbn=9798350352917;,citation_conference_title=Proceedings of the international conference for high performance computing, networking, storage, and analysis;,citation_conference=IEEE Press;,citation_series_title=SC ’24;">
+<meta name="citation_reference" content="citation_title=Quality measures for dynamic graph generative models;,citation_author=Ryien Hosseini;,citation_author=Filippo Simini;,citation_author=Venkatram Vishwanath;,citation_author=Rebecca Willett;,citation_author=Henry Hoffmann;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://openreview.net/forum?id=8bjspmAMBk;,citation_conference_title=The thirteenth international conference on learning representations;">
+<meta name="citation_reference" content="citation_title=Superconductivity of in and sn samples;,citation_author=George Deamont;,citation_author=Sam Foreman;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=RG-inspired machine learning for lattice field theory;,citation_author=Sam Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_volume=175;,citation_conference_title=EPJ web of conferences;,citation_conference=EDP Sciences;">
+<meta name="citation_reference" content="citation_title=Large energy density in three-plate nanocapacitors due to coulomb blockade;,citation_author=A Hubler;,citation_author=S Foreman;,citation_author=J Liu;,citation_author=L Wortsmann;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=10;,citation_volume=123;,citation_journal_title=Journal of Applied Physics;,citation_publisher=AIP Publishing;">
+<meta name="citation_reference" content="citation_title=Examples of renormalization group transformations for image sets;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=5;,citation_volume=98;,citation_journal_title=Physical Review E;,citation_publisher=American Physical Society;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the Ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_doi=10.22323/1.334.0245;,citation_volume=LATTICE2018;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_conference_title=Lattice 2018;">
+<meta name="citation_reference" content="citation_title=Learning better physics: A machine learning approach to lattice gauge theory;,citation_author=Samuel Alfred Foreman;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_dissertation_institution=University of Iowa;">
+<meta name="citation_reference" content="citation_title=Machine learning and neural networks for field theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
+<meta name="citation_reference" content="citation_title=HMC with normalizing flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2112.01586;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy storage in quantum resonators;,citation_author=Jiaqi Liu;,citation_author=Alfred W Hubler;,citation_author=Samuel Alfred Foreman;,citation_author=Katharina Ott;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;">
+<meta name="citation_reference" content="citation_title=Applications of machine learning to lattice quantum field theory;,citation_author=Denis Boyda;,citation_author=Salvatore Calı̀;,citation_author=Sam Foreman;,citation_author=Lena Funcke;,citation_author=Daniel C Hackett;,citation_author=Yin Lin;,citation_author=Gert Aarts;,citation_author=Andrei Alexandru;,citation_author=Xiao-Yong Jin;,citation_author=Biagio Lucini;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_journal_title=arXiv preprint arXiv:2202.05838;">
+<meta name="citation_reference" content="citation_title=Lattice QCD and particle physics;,citation_author=Andreas S Kronfeld;,citation_author=Tanmoy Bhattacharya;,citation_author=Thomas Blum;,citation_author=Norman H Christ;,citation_author=Carleton DeTar;,citation_author=William Detmold;,citation_author=Robert Edwards;,citation_author=Anna Hasenfratz;,citation_author=Huey-Wen Lin;,citation_author=Swagato Mukherjee;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_journal_title=arXiv preprint arXiv:2207.07641;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_issue=6;,citation_volume=37;,citation_journal_title=The International Journal of High Performance Computing Applications;,citation_publisher=SAGE Publications Sage UK: London, England;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo;,citation_author=Sam Foreman;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_conference_title=The international symposium on lattice field theory;">
+<meta name="citation_reference" content="citation_title=Superconductivity of in and sn samples;,citation_author=George Deamont;,citation_author=Sam Foreman;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=A comprehensive performance study of large language models on novel AI accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_journal_title=arXiv preprint arXiv:2310.04607;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_journal_title=arXiv preprint arXiv:2310.04610;">
+<meta name="citation_reference" content="citation_title=Protein generation via genome-scale language models with bio-physical scoring;,citation_author=Gautham Dharuman;,citation_author=Logan Ward;,citation_author=Heng Ma;,citation_author=Priyanka V Setty;,citation_author=Ozan Gokdemir;,citation_author=Sam Foreman;,citation_author=Murali Emani;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Kristopher Keipert;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_conference_title=Proceedings of the SC’23 workshops of the international conference on high performance computing, network, storage, and analysis;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_journal_title=arXiv preprint arXiv:2312.08936;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 computational frontier CompF03 topical group report: Machine learning;,citation_author=Phiala Shanahan;,citation_author=Kazuhiro Terao;,citation_author=Daniel Whiteson;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_journal_title=arXiv preprint arXiv:2209.07559;">
+<meta name="citation_reference" content="citation_title=Thorough characterization and analysis of large transformer model training at-scale;,citation_author=Scott Cheng;,citation_author=Jun-Liang Lin;,citation_author=Murali Emani;,citation_author=Siddhisanket Raskar;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Venkatram Vishwanath;,citation_author=Mahmut Taylan Kandemir;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=8;,citation_journal_title=Proceedings of the ACM on Measurement and Analysis of Computing Systems;,citation_publisher=ACM New York, NY, USA;">
+<meta name="citation_reference" content="citation_title=Communities through energy justice projects;,citation_author=Mary Ann Leung;,citation_author=Katharine Cahill;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois Curfman McInnes;,citation_author=Suzanne Parete-Koon;,citation_author=Subil Abraham;,citation_author=Lacy Beach Barrier;,citation_author=Gladys Chen;,citation_author=Lizanne DeStefano;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science;">
+<meta name="citation_reference" content="citation_title=Applications of a foundation model approach for weather and climate;,citation_author=Troy Arcomano;,citation_author=Alexander Wikner;,citation_author=Romit Maulik;,citation_author=Veerabhadra Rao Kotamarthi;,citation_author=Sam Foreman;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_volume=2023;,citation_conference_title=AGU fall meeting abstracts;">
+<meta name="citation_reference" content="citation_title=Toward a holistic performance evaluation of large language models across diverse ai accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_author=Sanjif Shanmugavelu;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 IEEE international parallel and distributed processing symposium workshops (IPDPSW);,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=Intro to HPC bootcamp: Engaging new communities through energy justice projects;,citation_author=Suzanne Parete-Koon;,citation_author=Michael Sandoval;,citation_author=Kellen Leland;,citation_author=Subil Abraham;,citation_author=Mary Ann Leung;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois McInnes;,citation_author=Sreeranjani Ramprakash;,citation_author=Lacy Beach Barrier;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science Education;,citation_publisher=Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States);">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinä Hatanpää;,citation_author=Varuni K Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 SC24: International conference for high performance computing, networking, storage and analysis SC;,citation_conference=IEEE Computer Society;">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=Connor Holmes;,citation_author=Martin Cai;,citation_author=Adam Ghanem;,citation_author=Zhongzhu Zhou;,citation_author=Yuxiong He;,citation_author=Pete Luferenko;,citation_author=Divya Kumar;,citation_author=Jonathan Weyn;,citation_author=Ruixiong Zhang;,citation_author=Sylwester Klocek;,citation_author=Volodymyr Vragov;,citation_author=Mohammed AlQuraishi;,citation_author=Gustaf Ahdritz;,citation_author=Christina Floristean;,citation_author=Cristina Negri;,citation_author=Rao Kotamarthi;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_author=Sam Foreman;,citation_author=Kyle Hippe;,citation_author=Troy Arcomano;,citation_author=Romit Maulik;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot;,citation_author=Murali Emani;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Prasanna Balaprakash;,citation_author=Gina Tourassi;,citation_author=John Gounley;,citation_author=Heidi Hanson;,citation_author=Thomas E Potok;,citation_author=Massimiliano Lupo Pasini;,citation_author=Kate Evans;,citation_author=Dan Lu;,citation_author=Dalton Lunga;,citation_author=Junqi Yin;,citation_author=Sajal Dash;,citation_author=Feiyi Wang;,citation_author=Mallikarjun Shankar;,citation_author=Isaac Lyngaas;,citation_author=Xiao Wang;,citation_author=Guojing Cong;,citation_author=Pei Zhang;,citation_author=Ming Fan;,citation_author=Siyan Liu;,citation_author=Adolfy Hoisie;,citation_author=Shinjae Yoo;,citation_author=Yihui Ren;,citation_author=William Tang;,citation_author=Kyle Felker;,citation_author=Alexey Svyatkovskiy;,citation_author=Hang Liu;,citation_author=Ashwin Aji;,citation_author=Angela Dalton;,citation_author=Michael Schulte;,citation_author=Karl Schulz;,citation_author=Yuntian Deng;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Anima Anandkumar;,citation_author=Rick Stevens;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04610;">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2105.03418;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=S. Foreman;,citation_author=X. Jin;,citation_author=J. Osborn;,citation_publication_date=2022-07;,citation_cover_date=2022-07;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_conference_title=The 38th international symposium on lattice field theory;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a
+           ;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
+</head>
+<body class="quarto-light">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">🎙️ Talks</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://samforeman.me">Sam Foreman</a> 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:foremans@anl.gov">foremans@anl.gov</a>
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            </a><a href="https://alcf.anl.gov/about/people/sam-foreman">ALCF</a>
+            
+          </p>
+    </div>
+</div>
+
+</section>
+<section class="slide level2 center">
+
+<div title="[HTML ⇆ Reveal.js]">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>[HTML ⇆ Reveal.js]</strong></p>
+</div>
+<div class="callout-content">
+<p>Convert from HTML to slideshow version of a page by appending <code>/slides</code> to the end of its URL, e.g.</p>
+<ul>
+<li>HTML: <a href="https://samforeman.me/talks/ai-for-science-2024/" class="uri">https://samforeman.me/talks/ai-for-science-2024/</a></li>
+<li>Slides: <a href="https://samforeman.me/talks/ai-for-science-2024/slides" class="uri">https://samforeman.me/talks/ai-for-science-2024/slides</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="listing-listing-talks-default" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1739340000000" data-listing-file-modified-sort="1743287444355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="21" data-listing-word-count-sort="4039">
+<a href="../talks/aurora-gpt-fm-for-electric-grid/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/aurora-gpt-fm-for-electric-grid/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AuroraGPT
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2025-02-12
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+<a href="https://events.cels.anl.gov/event/601/">Foundation Models for the Electric Grid</a>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1743287443880" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="40" data-listing-word-count-sort="7885">
+<a href="../talks/ai-for-science-2024/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/ai-for-science-2024/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Parallel Training Methods
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-11-05
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+Intro to AI-driven Science on Supercomputers
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-date-sort="1730264400000" data-listing-file-modified-sort="1743287444495" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3382">
+<a href="../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/AuroraGPT/alcf-hpc-workshop-2024/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AuroraGPT
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-10-30
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+ALCF Hands-on HPC Workshop
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-date-sort="1730178000000" data-listing-file-modified-sort="1743287444296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15200">
+<a href="../talks/alcf-hpc-workshop-2024/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/alcf-hpc-workshop-2024/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Deep Learning and Foundation Models at Scale
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-10-29
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+ALCF Hands-on HPC Workshop
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-date-sort="1725426000000" data-listing-file-modified-sort="1743287444087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3390">
+<a href="../talks/hpc-user-forum/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/hpc-user-forum/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AuroraGPT
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-09-04
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+HPC User Forum Fall ’24
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-date-sort="1723179600000" data-listing-file-modified-sort="1743287444196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
+<a href="../talks/llms-at-scale/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/llms-at-scale/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Training LLMs at Scale
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-08-09
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+ATPESC 2024
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-listing-date-sort="1721192400000" data-listing-file-modified-sort="1743287443849" data-listing-date-modified-sort="1743287443000" data-listing-reading-time-sort="117" data-listing-word-count-sort="23228">
+<a href="../talks/llms-on-polaris/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="https://raw.githubusercontent.com/saforem2/personal_site/main/talks/llms-on-polaris/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+LLMs on Polaris
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2024-07-17
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+SciFM Summer School ’24
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="YWk0c2NpZW5jZSUyQ01DTUMlMkNMYXR0aWNlJTIwUUNE" data-listing-date-sort="1690779600000" data-listing-file-modified-sort="1743287443860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3092">
+<a href="../talks/lattice23/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="https://github.com/saforem2/lattice23/blob/main/assets/thumbnail.png?raw=true" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+MLMC: Machine Learning Monte Carlo
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2023-07-31
+</div>
+</div>
+<table class="card-other-values">
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+Lattice 2023 (Fermilab)
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section" class="slide level2 center">
+<h2>📆 2025</h2>
+<div title="[[**AuroraGPT: Foundation Models for Science**](/talks/aurora-gpt-fm-for-electric-grid/index.html) @ [_Foundation Models for the Electric Grid_](https://www.alcf.anl.gov/alcf-ai-science-training-series) [02/2025]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/aurora-gpt-fm-for-electric-grid/index.html"><strong>AuroraGPT: Foundation Models for Science</strong></a> @ <a href="https://www.alcf.anl.gov/alcf-ai-science-training-series"><em>Foundation Models for the Electric Grid</em></a> [02/2025]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="reveal-full-page">
+<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/aurora-gpt-fm-for-electric-grid/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 center">
+<h2>📆 2024</h2>
+<div title="[[**Parallel Training Methods**](/talks/ai-for-science-2024/index.html) @ [_AI-for-Science on Supercomputers_](https://www.alcf.anl.gov/alcf-ai-science-training-series) [11/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/ai-for-science-2024/index.html"><strong>Parallel Training Methods</strong></a> @ <a href="https://www.alcf.anl.gov/alcf-ai-science-training-series"><em>AI-for-Science on Supercomputers</em></a> [11/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="reveal-full-page">
+<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**AuroraGPT**](/talks/AuroraGPT/alcf-hpc-workshop-2024/index.html) @ [_2024 ALCF Hands-On HPC Workshop_](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)  [10/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html"><strong>AuroraGPT</strong></a> @ <a href="https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop"><em>2024 ALCF Hands-On HPC Workshop</em></a> [10/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="reveal-full-page">
+<iframe class="slide-deck" loading="lazy" src="../talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Machine Learning and Foundation Models at Scale**](/talks/alcf-hpc-workshop-2024/index.html) @ [_2024 ALCF Hands-On HPC Workshop_](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)  [10/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/alcf-hpc-workshop-2024/index.html"><strong>Machine Learning and Foundation Models at Scale</strong></a> @ <a href="https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop"><em>2024 ALCF Hands-On HPC Workshop</em></a> [10/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="reveal-full-page">
+<iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**AuroraGPT**](/talks/hpc-user-forum/index.html) @ [_HPC User Forum_, 2024](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/) [09/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/hpc-user-forum/index.html"><strong>AuroraGPT</strong></a> @ <a href="https://www.hpcuserforum.com/hpc-user-forum-fall-2024/"><em>HPC User Forum</em>, 2024</a> [09/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Training LLMs at Scale**](/talks/llms-at-scale/) @ [_ATPESC_, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) [08/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="../talks/llms-at-scale/"><strong>Training LLMs at Scale</strong></a> @ <a href="https://extremecomputingtraining.anl.gov/atpesc-2024/"><em>ATPESC</em>, 2024</a> [08/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<iframe class="slide-deck" loading="lazy" src="../talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/slides) @ [_Center for Scientific Foundation Models_, Summer School 24'](https://scifm.ai/summer_school.html) [07/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://samforeman.me/talks/llms-on-polaris/slides"><strong>LLMs on Polaris</strong></a> @ <a href="https://scifm.ai/summer_school.html"><em>Center for Scientific Foundation Models</em>, Summer School 24’</a> [07/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<iframe class="slide-deck" loading="lazy" src="../talks/llms-on-polaris/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) @ [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training) [03/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://github.com/saforem2/parallel-training-slides"><strong>Parallel Training Techniques</strong></a> @ <a href="https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training"><em>AI-4-Science Training Series</em></a> [03/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**LLMs from Scratch**](https://saforem2.github.io/llm-workshop-talk) @ [LLM Tutorial Workshop](https://github.com/argonne-lcf/llm-workshop) [02/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/llm-workshop-talk"><strong>LLMs from Scratch</strong></a> @ <a href="https://github.com/argonne-lcf/llm-workshop">LLM Tutorial Workshop</a> [02/2024]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2 center">
+<h2>📆 2023</h2>
+<div title="[[**Creating Small(-ish) LLMs**](https://saforem2.github.io/LLM-tutorial) @ [LLM Tutorial Workshop (1)](https://github.com/brettin/llm_tutorial) [11/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/LLM-tutorial"><strong>Creating Small(-ish) LLMs</strong></a> @ <a href="https://github.com/brettin/llm_tutorial">LLM Tutorial Workshop (1)</a> [11/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Exascale Science on Aurora**](https://saforem2.github.io/oneapi-talk) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/oneapi-talk"><strong>Exascale Science on Aurora</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop">Intel oneAPI Workshop @ UIC</a> [10/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/llm-lunch-talk"><strong>LLM Lunch Talk</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop">ALCF Hands On HPC Workshop</a> [10/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Scaling LLMs for Science**](https://saforem2.github.io/scaling4science) @ [Data-Intensive Computing + AI/ML at Scale](https://events.cels.anl.gov/event/426/overview) [08/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/scaling4science"><strong>Scaling LLMs for Science</strong></a> @ <a href="https://events.cels.anl.gov/event/426/overview">Data-Intensive Computing + AI/ML at Scale</a> [08/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/lattice23"><strong>MLMC: Machine Learning Monte Carlo</strong></a> @ <a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a> [07/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/) @ [PASC23](https://pasc23.pasc-conference.org/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/lqcd-pasc23/"><strong>Generative Modeling and Efficient Sampling</strong></a> @ <a href="https://pasc23.pasc-conference.org/">PASC23</a> [07/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Efficient Sampling for LGT**](https://saforem2.github.io/deep-fridays) @ [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html) [04/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/deep-fridays"><strong>Efficient Sampling for LGT</strong></a> @ <a href="https://www.cs.unibo.it/~asperti/deep_fridays.html">Deep Fridays @ U. Bologna</a> [04/2023]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2 center">
+<h2>📆 2022</h2>
+<div title="[[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) [11/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/ai4sci-large-scale-training"><strong>Large Scale Training</strong></a> @ <a href="https://github.com/argonne-lcf/ai-science-training-series">AI4Science on Supercomputers (ALCF)</a> [11/2022]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) [10/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/hparam-management-sdl2022/"><strong>Hyperparameter Management</strong></a> @ <a href="https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop">ALCF SDL Workshop</a> [10/2022]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) [08/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/ATPESC-StatisticalLearning"><strong>Statistical Learning</strong></a> @ <a href="https://extremecomputingtraining.anl.gov/">ATPESC 2022</a> [08/2022]</span></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><a href="https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb">📕 accompanying notebook</a></li>
+</ul>
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/anl-job-talk/"><strong>Scientific Data Science: An Emerging Symbiosis</strong></a> @ ANL (05/2022)</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro [03/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/physicsSeminar"><strong>Machine Learning in HEP</strong></a> @ UNC Greensboro [03/2022]</span></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><a href="https://saforem2.github.io/physicsSeminar"><strong>Machine Learning in HEP</strong></a>, at UNC Greensboro, March 2022</li>
+</ul>
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="width:100%!important; ">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2 center">
+<h2>📆 2021</h2>
+<div title="[[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 [BNL]](https://indico.bnl.gov/event/13576/) [12/2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/l2hmc-dwq25/"><strong>Accelerated Sampling Methods for LGT</strong></a>, @ <a href="https://indico.bnl.gov/event/13576/">DWQ @ 25 [BNL]</a> [12/2021]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) [09/2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://saforem2.github.io/l2hmc_talk_ect2021"><strong>Training Topological Samplers for LGT</strong></a> @ <a href="https://indico.ectstar.eu/event/77/contributions/2349/">ML4HEP, ECT* Trento</a> [09/2021]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar [2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://github.com/saforem2/l2hmc-qcd"><strong>l2hmc-qcd</strong></a> @ MIT Lattice Group Seminar [2021]</span></strong></p>
+</div>
+<div class="callout-content">
+<p><a href="https://github.com/saforem2/l2hmc-qcd"><strong>l2hmc-qcd</strong></a> at the <em>MIT Lattice Group Seminar</em>, 2021</p>
+</div>
+</div>
+</div>
+</div>
+<div title="[[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) [2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://bit.ly/mainz21"><strong>Deep Learning HMC for Improved Gauge Generation</strong></a> @ <a href="https://bit.ly/mainz21_overview">ML in LQCD Workshop</a> [2021]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2 center">
+<h2>📆 2020</h2>
+<div title="[[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd/embed) @ U. Iowa [2020]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="dim-text"><a href="https://slides.com/samforeman/l2hmc-qcd/embed"><strong>Machine Learning for Lattice QCD</strong></a> @ U. Iowa [2020]</span></strong></p>
+</div>
+<div class="callout-content">
+<div class="embedded-slide">
+<iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../assets/anl.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': true,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: false,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/samforeman\.me");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

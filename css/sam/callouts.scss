@@ -27,6 +27,7 @@ $callout-color-caution: #ff3bd3 !default;
   --callout-color-warning: #fd971f;
   --callout-tip-color: #838383;
   --callout-color-tip: #838383;
+  --bs-border-radius: 0pt;
   // --callout-tip-color: #02b875;
   // --callout-color-tip: #02b875;
   --callout-note-color: #4582ec;
@@ -45,8 +46,6 @@ $callout-color-caution: #ff3bd3 !default;
 .callout.callout-style-simple {
   opacity: 100% !important;
   display: -webkit-inline-box;
-  // box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
-  border-radius: 0rem !important;
 
   /* background-color: inherit; */
   /* margin-left: auto; */
@@ -58,24 +57,6 @@ $callout-color-caution: #ff3bd3 !default;
   /* border-top: 1px solid #dee2e6; */
   /* border-bottom: 1px solid #dee2e6; */
 }
-
-//
-// .reveal .callout.callout-style-default:hover,
-// .callout.callout-style-default:hover,
-// .reveal .callout.callout-style-simple:hover,
-// .callout.callout-style-simple:hover {
-//   /* border: 1px solid var(--callout-border-hover-color)!important; */
-//
-//
-//
-//   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px; */
-//
-//
-//   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
-//
-//
-//
-// }
 
 .callout.callout-style-simple > div.callout-header {
   font-size: 1rem;
@@ -135,11 +116,6 @@ $callout-color-caution: #ff3bd3 !default;
 
 .callout.callout-style-simple,
 .callout.callout-style-default {
-  // border: unset;
-  // border-left: none !important;
-  // border-right: none !important;
-  // border-top: none !important;
-  // border-bottom: none !important;
   padding: 0pt 5pt;
   margin-block-end: 0.5rem;
 }
@@ -211,18 +187,10 @@ div.callout-important.callout {
   background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
 }
 
-// div.callout-important.callout:hover {
-//   border: 1px solid $callout-important-color
-// }
-
 div.callout-warning.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1);
 }
-
-// div.callout-warning.callout:hover {
-//   border: 1px solid $callout-color-warning
-// }
 
 div.callout-warning.callout .callout .callout-title-container {
   overflow-wrap: anywhere;
@@ -324,16 +292,7 @@ div.callout-important.callout-style-default .callout-title {
 .callout.callout-style-simple {
   opacity: 100% !important;
   display: -webkit-inline-box;
-  // box-shadow: RGBA(0, 0, 0, 0.1) 0px 2px 2px;
-  border-radius: 0rem !important;
 }
-
-// .reveal .callout.callout-style-default:hover,
-// .callout.callout-style-default:hover,
-// .reveal .callout.callout-style-simple:hover,
-// .callout.callout-style-simple:hover {
-//   box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important
-// }
 
 .callout.callout-style-simple > div.callout-header {
   font-size: 1rem;
@@ -346,7 +305,6 @@ div.callout-important.callout-style-default .callout-title {
 div.callout-tip.callout,
 .callout .callout-tip {
   background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
-  // border: 1px solid $callout-tip-color !important;
   border: 1px solid
     rgba(
       red($callout-tip-color),
@@ -357,7 +315,7 @@ div.callout-tip.callout,
 
   &:hover {
     border: 1px solid var(--callout-color-tip) !important;
-    transition: all 0.2s ease-in-out;
+    transition: all 1s ease-all;
     box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
@@ -369,8 +327,8 @@ div.callout-note.callout,
 
   &:hover {
     border: 1px solid $callout-note-color !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
+    transition: all 1s ease-all;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
 
@@ -381,8 +339,8 @@ div.callout-caution.callout,
 
   &:hover {
     border: 1px solid $callout-caution-color !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
+    transition: all 1s ease-all;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
 
@@ -393,8 +351,8 @@ div.callout-important.callout {
 
   &:hover {
     border: 1px solid $callout-important-color !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
+    transition: all 1s ease-all;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
 
@@ -405,8 +363,8 @@ div.callout-tip.callout {
 
   &:hover {
     border: 1px solid $callout-color-tip !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
+    transition: all 1s ease-all;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
 
@@ -416,7 +374,7 @@ div.callout-tip.callout {
 
   &:hover {
     border: 1px solid rgba(131, 131, 131, 1) !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.65) !important;
+    transition: all 1s ease-all;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65) !important;
   }
 }
