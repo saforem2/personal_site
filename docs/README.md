@@ -1,12 +1,12 @@
 Sam Foreman
-2025-04-07
+2025-04-08
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-min.webp" width="100%"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-min.webp" width="100%" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
@@ -68,10 +68,9 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon"
-> style="height:1.25rem; width: auto; vertical-align:text-bottom;" /> Now Playing</span>
+> ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-bottom;" alt="spotify" /> Now Playing</span>
 >
-> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=natemoo-re&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
+> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
 >
 > > [!TIP]
 > >
@@ -237,7 +236,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">04</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:50:54</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">04</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:29:50</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1034,9 +1033,11 @@ style="justify-content: space-around; align:center;">
 
 <div class="flex-container" style="flex-direction: column; width:50%;">
 
-<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false"></a>
+<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false" /></a>
 
-<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" ></a>
+<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
+
+<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
 
 </div>
 
