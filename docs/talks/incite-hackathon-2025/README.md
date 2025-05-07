@@ -8,7 +8,14 @@ Sam Foreman
 - [LLMs on Aurora](#llms-on-aurora)
 - [🍋 `ezpz`](#lemon-ezpz)
 - [🐣 Getting Started](#hatching_chick-getting-started)
-- [⏱️ Job Scheduler(s)](#stopwatch-job-schedulers)
+- [✅ Confirm Setup and
+  Installation](#white_check_mark-confirm-setup-and-installation)
+- [⏱️ Working with Job
+  Scheduler(s)](#stopwatch-working-with-job-schedulers)
+- [🏡 Environment Setup with
+  `ezpz_setup_env`](#house_with_garden-environment-setup-with-ezpz_setup_env)
+- [🔄 Use Custom Node
+  Lists](#arrows_counterclockwise-use-custom-node-lists)
 - [👀 How to Modify Existing Code](#eyes-how-to-modify-existing-code)
 - [✨ Features](#sparkles-features)
 - [🧪 Experiment Tracking](#test_tube-experiment-tracking)
@@ -47,19 +54,37 @@ Figure 1: Current state of LLM Pretraining.
 
 ## 🐣 Getting Started
 
-1.  Install[^1]:
+1.  Submit interactive job:
+
+    ``` bash
+    qsub -I -l select=2 -l walltime=01:00:00 \
+        -l filesystems=home:flare \
+        -A gpu_hack \
+        -q gpu_hack_prio
+    ```
+
+2.  Setup environment[^1]:
+
+    ``` bash
+    source <(curl -L https://bit.ly/ezpz-utils)
+    ezpz_setup_env
+    ```
+
+3.  Install[^2]:
 
     ``` bash
     python3 -m pip install "git+https://github.com/saforem2/ezpz"
     ```
 
-2.  Run distributed test:
+## ✅ Confirm Setup and Installation
+
+1.  Run distributed test:
 
     ``` bash
     ezpz-test
     ```
 
-3.  Launching *any* python *from* python
+2.  Launch *any* python *from* python
 
     - Launch a module:
 
@@ -73,14 +98,48 @@ Figure 1: Current state of LLM Pretraining.
       ezpz-launch -c "'import ezpz; ezpz.setup_torch()'"
       ```
 
-## ⏱️ Job Scheduler(s)
+## ⏱️ Working with Job Scheduler(s)
 
+- `ezpz` integrates directly with the ALCF job scheduler
+  - has mechanisms for getting information about our currently running
+    jobs
 - 🪄 *Automagically*:
   - Determine the specifics of our active (PBS, SLURM) job  
     (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, …)
-  - Load the appropriate modules[^2]
+  - Load the appropriate modules[^3]
   - Create (or activate) a virtual environment *on top* of a base conda
     environment
+
+## 🏡 Environment Setup with `ezpz_setup_env`
+
+- Wrapper around `ezpz_setup_job` `&&` `ezpz_setup_python`
+
+1.  `ezpz_setup_job`: Determine the specifics of our active (PBS, SLURM)
+    job[^4]
+
+2.  `ezpz_setup_python`:
+
+    - **if @ ALCF**:
+      - Load the appropriate modules and activate base `conda` env
+    - **else**:
+      - Look for an active `conda` environment
+        - If found, use it to build a new virtual environment
+    - Activate the newly created `venvs/$(basename ${CONDA_PREFIX})`
+      environment
+
+## 🔄 Use Custom Node Lists
+
+- Experiment[^5] with custom `hostfile`(s), e.g.:
+
+  ``` bash
+  source <(curl -L https://bit.ly/ezpz-utils)
+  # 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` 
+  ezpz_setup_job
+  # 2. Grab a subset of nodes:
+  head -n 2 $PBS_NODEFILE > nodefile-0-1
+  # 3. Pass custom `nodefile-0-1`:
+  ezpz_setup_job nodefile-0-1  # will use `nodefile-0-1`
+  ```
 
 ## 👀 How to Modify Existing Code
 
@@ -157,7 +216,7 @@ if rank == 0:
 
 1.  Initialize W&B (if `WANDB_DISABLED` is not set)
 2.  Log summary of metrics to stdout
-3.  Update `history.history` with metrics[^3]
+3.  Update `history.history` with metrics[^6]
 
 </div>
 
@@ -717,9 +776,9 @@ To run the previous example we:
 
 ## 🏗️ Setup Environment
 
-1.  Source[^4] the
+1.  Source[^7] the
     [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/bin/utils.sh)
-    script (using `curl` to download it[^5]):
+    script (using `curl` to download it[^8]):
 
     ``` bash
     source <(curl -L https://bit.ly/ezpz-utils)
@@ -1257,18 +1316,27 @@ bash train_alcf.sh
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-[^1]: You should *always* be working in a virtual environment. See: [🏖️
+[^1]: If you’re unable to connect to the internet, check that all of
+    {`http{s}`, `HTTP{S}_PROXY`, `ftp_proxy`} are set to the ALCF proxy
+    server: `http://proxy.alcf.anl.gov:3128`
+
+[^2]: You should *always* be working in a virtual environment. See: [🏖️
     Shell Environment](#shell-environment)
 
-[^2]: On any of the ALCF systems, including:
+[^3]: On any of the ALCF systems, including:
     [Aurora](https://alcf.anl.gov/aurora),
     [Polaris](https://alcf.anl.gov/polaris), …, etc.
 
-[^3]: Will automatically be reported to W&B if a run is detected
+[^4]: e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, …
 
-[^4]: In *general*, you should be wary of running random scripts from
+[^5]: Or, for example, if you would like to exclude a node you suspect
+    is having issues
+
+[^6]: Will automatically be reported to W&B if a run is detected
+
+[^7]: In *general*, you should be wary of running random scripts from
     the internet.
 
-[^5]: <https://bit.ly/ezpz-utils>, since
+[^8]: <https://bit.ly/ezpz-utils>, since
     <https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh>
     is a bit of a pain

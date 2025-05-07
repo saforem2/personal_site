@@ -54,25 +54,25 @@ format:
 
 ::: {.content-visible when-format="revealjs"}
 
-## {background-image="./assets/colorized-50.jpg" loading="lazy"}
+## {background-image="./assets/colorized-50.jpg" loading="lazy" style="data-background-size: cover;"}
 
-::: {style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 10pt; margin-left: auto; margin-right: auto; line-height: 1.25lh!important;"}
+::: {style="border-radius: 10px; text-align:left; padding: 10pt; margin-left: auto; margin-right: auto; line-height: 1.25lh!important;"}
 
 ::: {style="display:flex;"}
 
-[May 6 -- 8, 2025 $\hspace{5pt}$ {{< fa solid shapes >}}]{style="font-size: 1.25em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8"} [![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg)]{style="display:inline-block;"}
+[ALCF INCITE GPU HACKATHON May 20 -- 22, 2025 $\hspace{5pt}$ {{< fa solid shapes >}}]{style="font-size: 1.25em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);"} [![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg)]{style="display:inline-block;"}
 
 :::
 
-[2025 ALCF INCITE]{style="font-size: 3.0em; font-weight: 700; color: white"}  
-[GPU HACKATHON]{style="font-size: 3.0em; font-weight: 700; color: #FFFFFF"}
+[Large Language Models on Aurora]{style="font-size: 2em; font-weight: 700; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); color:hsla(0, 0%, 100%, 1.0);; margin-block: 1rem;"}
+
+[Sam Foreman]{style="font-size: 1.5em; font-weight: 600; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); color:hsla(0, 0%, 95%, 1.0);"}
+
+[_2025-05-07_]{style="font-size: 1.2em; font-weight: 600; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); color:hsla(0, 0%, 85%, 1.0);"}
 
 :::
 
 :::
-
-
-
 
 ## Currently: {background-color="white"}
 
@@ -95,19 +95,42 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 
 ## 🐣 Getting Started {background-color="white"}
 
+1. Submit interactive job:
+
+    ```bash
+    qsub -I -l select=2 -l walltime=01:00:00 \
+        -l filesystems=home:flare \
+        -A gpu_hack \
+        -q gpu_hack_prio
+    ```
+
+1. Setup environment[^proxy]:
+
+    ```bash
+    source <(curl -L https://bit.ly/ezpz-utils)
+    ezpz_setup_env
+    ```
+
 1. Install[^venv]:
 
     ```bash
     python3 -m pip install "git+https://github.com/saforem2/ezpz"
     ```
 
-2. Run distributed test:
+[^proxy]:
+    If you're unable to connect to the internet, check that all of
+    {`http{s}`, `HTTP{S}_PROXY`, `ftp_proxy`} are set to the ALCF proxy server:
+    `http://proxy.alcf.anl.gov:3128`
+
+## ✅ Confirm Setup and Installation {background-color="white"}
+
+1. Run distributed test:
 
     ```bash
     ezpz-test
     ```
 
-1. Launching _any_ python _from_ python
+1. Launch _any_ python _from_ python
    - Launch a module:
 
      ```bash
@@ -123,9 +146,10 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 [^venv]: You should _always_ be working in a virtual environment.
        See: [🏖️ Shell Environment](#shell-environment)
 
+## ⏱️ Working with Job Scheduler(s) {background-color="white"}
 
-## ⏱️ Job Scheduler(s)
-
+- `ezpz` integrates directly with the ALCF job scheduler
+  - has mechanisms for getting information about our currently running jobs
 - 🪄 _Automagically_:
    - Determine the specifics of our active (PBS, SLURM) job  
      (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...)
@@ -138,7 +162,41 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
     [Polaris](https://alcf.anl.gov/polaris),
     ..., etc.
 
-## 👀 How to Modify Existing Code
+## 🏡 Environment Setup with `ezpz_setup_env` {background-color="white"}
+
+- Wrapper around `ezpz_setup_job` `&&` `ezpz_setup_python`
+
+1. `ezpz_setup_job`: Determine the specifics of our active (PBS, SLURM) job[^job-details]  
+
+1. `ezpz_setup_python`:
+   - **if @ ALCF**:
+     - Load the appropriate modules and activate base `conda` env
+   - **else**:
+     - Look for an active `conda` environment
+       - If found, use it to build a new virtual environment
+   - Activate the newly created `venvs/$(basename ${CONDA_PREFIX})`
+     environment
+
+[^job-details]: e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...
+
+## 🔄 Use Custom Node Lists {background-color="white"}
+
+- Experiment[^bad-nodes] with custom `hostfile`(s), e.g.:
+
+    ```bash
+    source <(curl -L https://bit.ly/ezpz-utils)
+    # 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` 
+    ezpz_setup_job
+    # 2. Grab a subset of nodes:
+    head -n 2 $PBS_NODEFILE > nodefile-0-1
+    # 3. Pass custom `nodefile-0-1`:
+    ezpz_setup_job nodefile-0-1  # will use `nodefile-0-1`
+    ```
+
+[^bad-nodes]: Or, for example, if you would like to exclude a node you suspect
+    is having issues
+
+## 👀 How to Modify Existing Code {background-color="white"}
 
 ```diff
 + import ezpz
