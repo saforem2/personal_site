@@ -3,7 +3,6 @@ Sam Foreman
 2024-03-21
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [Response](#response)
   - [Measuring / Calculating Startup Time](#sec-measurements)
@@ -278,6 +277,8 @@ Sam Foreman
 > | `foremans-nid008240-nhosts16-ngpu64-2023-11-01-210454.log` | GPT1T_16L | 64 | 2023-11-01-210454 | 2023-11-01-211007 | 210454 | 211007 | 553 |
 > | `foremans-nid008321-nhosts2-ngpu8-2023-11-02-154438.log` | GPT1T_2L | 8 | 2023-11-02-154438 | 2023-11-02-154949 | 154438 | 154949 | 511 |
 > | `foremans-nid008192-nhosts128-ngpu512-2023-11-04-001717.log` | GPT1T_128L | 512 | 2023-11-04-001717 | 2023-11-04-002124 | 1717 | 2124 | 407 |
+>
+> Startup times on Perlmutter
 >
 > </div>
 

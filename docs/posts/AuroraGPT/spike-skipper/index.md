@@ -3,7 +3,6 @@ Sam Foreman
 2024-09-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [📝 Example](#pencil-example)
 - [🧪 Implementation](#test_tube-implementation)

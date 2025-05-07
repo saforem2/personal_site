@@ -3,7 +3,6 @@ Sam Foreman
 2025-03-23
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [Patch on Aurora](#patch-on-aurora)
 - [Using PyTorch 2.5](#using-pytorch-25)

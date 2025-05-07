@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.43">
+<meta name="generator" content="quarto-1.8.2">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
 <meta name="dcterms.date" content="2024-08-13">
+<meta name="description" content="Details of how I create my slides, with Quarto + Reveal.js">
 
 <title>💅 How to Make Dope Slides – Sam Foreman</title>
 <style>
@@ -23,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +37,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -67,17 +69,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../posts/ezpz-at-alcf/index.html" rel="next">
-<link href="../../posts/index.html" rel="prev">
+<link href="../../posts/aurora-frameworks-2025-numpy-2/index.html" rel="prev">
 <link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ce24374cd55da3e5692b85b778b2cfab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-4c939d6228d95bcdb4b0bf665daf6c17.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d10c3a9e6902322a4770c56db7863b79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-3cb719820af5089d15fca36804308e9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -129,7 +132,6 @@ gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -159,7 +161,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -264,7 +266,176 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -393,6 +564,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../posts/aurora-frameworks-2025-numpy-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚧 Frameworks Issue with <code>numpy &gt; 2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">💅 How to Make Dope Slides</span></a>
   </div>
@@ -407,6 +584,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../posts/ezpz-v1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 ezpz-v1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/installing-pytorch-on-aurora/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔥 Building PyTorch from Source on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/resume/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👤 Résumé</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -516,31 +705,59 @@ window.Quarto = {
  <span class="menu-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">4dSU3nb</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  <a href="../../posts/ai-for-physics/l2hmc-qcd/4dSU3nb/index-broken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🕸️ l2hmc-qcd Example: 4D SU(3)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">📗 Jupyter</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🏁 <code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">L2hmc</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/jupyter/l2hmc/4dSU3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
@@ -549,11 +766,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../talks/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎙️ Talks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../talks/ai-for-science-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -576,6 +793,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../talks/hpc-user-forum/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AuroraGPT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../talks/incite-hackathon-2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Large Language Models on Aurora</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -604,13 +827,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">AuroraGPT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -645,10 +868,11 @@ window.Quarto = {
   <li><a href="#github-page" id="toc-github-page" class="nav-link" data-scroll-target="#github-page">📃 GitHub Page</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">📓 References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/dope-slides/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/dope-slides/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/dope-slides/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/dope-slides/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -663,6 +887,11 @@ window.Quarto = {
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Details of how I create my slides, with Quarto + Reveal.js
+  </div>
+</div>
 
 <div class="quarto-title-meta-author">
   <div class="quarto-title-meta-heading">Author</div>
@@ -693,7 +922,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 7, 2025</p>
+      <p class="date-modified">May 4, 2025</p>
     </div>
   </div>
     
@@ -710,7 +939,7 @@ window.Quarto = {
 <p>The slides are written using <a href="https://quarto.org/">Quarto</a>, a <em>flavor</em> of Markdown, and uses the built-in <a href="https://quarto.org/docs/presentations/revealjs">Quarto + Reveal.js</a> functionality.</p>
 <p>For this post, I’ll focus on the slides I presented at last years <a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a>, shown below:</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [_Lattice 2023_](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -730,7 +959,7 @@ Your browser does not support iframes.
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[🏃‍♂️ Follow Along...]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -983,10 +1212,7 @@ Figure&nbsp;2: <a href="https://saforem2.github.io/lattice23/#/overview">Overvie
 <section id="multi-column-slides" class="level2">
 <h2 class="anchored" data-anchor-id="multi-column-slides">Multi-Column Slides</h2>
 <p>Side-by-side content (either text or images)</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;" data-layout="[ [50,50] ]">
+<div class="quarto-layout-panel" data-layout="[ [50,50] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-mcmc" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
@@ -1140,9 +1366,9 @@ Figure&nbsp;5: Instructions for building a GitHub page using the <code>docs/</co
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<div id="d3fe80f2" class="cell" data-execution_count="1">
+<div id="5fae6127" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">07</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2025</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">09:52:48</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">05</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">04</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2025</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">11:15:40</span>
 </pre>
 </div>
 </div>
@@ -1181,436 +1407,311 @@ Foreman, Sam. 2024. <span>“How to Make Dope Slides.”</span> August 13,
 2024. <a href="https://samforeman.me/posts/dope-slides">https://samforeman.me/posts/dope-slides</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
     }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
     }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
     }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/samforeman\.me");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/samforeman\.me");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1618,193 +1719,197 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="dark">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "saforem2/personal_site";
+    script.dataset.repoId = "R_kgDOGbjyRw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
   }
-});
+  loadGiscus();
 </script>
-<script src="https://giscus.app/client.js" data-repo="saforem2/personal_site" data-repo-id="R_kgDOGbjyRw" data-category="General" data-category-id="DIC_kwDOGbjyR84CjWfk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/index.html" class="pagination-link" aria-label="📬 Posts">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">📬 Posts</span>
+      <a href="../../posts/aurora-frameworks-2025-numpy-2/index.html" class="pagination-link" aria-label="🚧 Frameworks Issue with <code>numpy > 2</code>">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">🚧 Frameworks Issue with <code>numpy &gt; 2</code></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1815,532 +1920,534 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">---</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="an">title:</span><span class="co"> "💅 How to Make Dope Slides"</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="an">categories:</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co">  - slides</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">  - revealjs</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">  - style</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="an">toc:</span><span class="co"> true</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="an">date:</span><span class="co"> 2024-08-13</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="an">modified:</span><span class="co"> 2024-10-11</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="an">lightbox:</span><span class="co"> auto</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="an">tbl-cap-location:</span><span class="co"> bottom</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="an">citation:</span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="co">   author: Sam Foreman</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="co">   type: webpage</span></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="co">   title: "How to Make Dope Slides"</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a><span class="co">   url: https://samforeman.me/posts/dope-slides</span></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="an">open-graph:</span></span>
-<span id="cb15-18"><a href="#cb15-18"></a><span class="co">  title: "How to Make Dope Slides"</span></span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="co">  description: "Details of how I create my slides, with Quarto + Reveal.js"</span></span>
-<span id="cb15-20"><a href="#cb15-20"></a><span class="co">  image: "./assets/thumbnail.png"</span></span>
-<span id="cb15-21"><a href="#cb15-21"></a><span class="an">twitter-card:</span></span>
-<span id="cb15-22"><a href="#cb15-22"></a><span class="co">  site: "saforem2"</span></span>
-<span id="cb15-23"><a href="#cb15-23"></a><span class="co">  creator: "saforem2"</span></span>
-<span id="cb15-24"><a href="#cb15-24"></a><span class="co">  title: "How to Make Dope Slides"</span></span>
-<span id="cb15-25"><a href="#cb15-25"></a><span class="co">  image: "./assets/thumbnail.png"</span></span>
-<span id="cb15-26"><a href="#cb15-26"></a><span class="co">  description: "Details of how I create my slides, with Quarto + Reveal.js"</span></span>
-<span id="cb15-27"><a href="#cb15-27"></a><span class="co"># format:</span></span>
-<span id="cb15-28"><a href="#cb15-28"></a><span class="co">#   html:</span></span>
-<span id="cb15-29"><a href="#cb15-29"></a><span class="co">#     page-layout: article</span></span>
-<span id="cb15-30"><a href="#cb15-30"></a><span class="co">#   gfm:</span></span>
-<span id="cb15-31"><a href="#cb15-31"></a><span class="co">#     output_file: "dope-slides.md"</span></span>
-<span id="cb15-32"><a href="#cb15-32"></a><span class="co"># twitter-card:                      </span></span>
-<span id="cb15-33"><a href="#cb15-33"></a><span class="co">#     image: "./assets/thumbnail.png"</span></span>
-<span id="cb15-34"><a href="#cb15-34"></a><span class="co">#     creator: "@saforem2"           </span></span>
-<span id="cb15-35"><a href="#cb15-35"></a><span class="co">#     site: "@saforem2"              </span></span>
-<span id="cb15-36"><a href="#cb15-36"></a><span class="co"># open-graph:                        </span></span>
-<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#     image: "./assets/thumbnail.png"</span></span>
-<span id="cb15-38"><a href="#cb15-38"></a><span class="co">---</span></span>
-<span id="cb15-39"><a href="#cb15-39"></a></span>
-<span id="cb15-40"><a href="#cb15-40"></a><span class="fu">## Quarto 🤝 Reveal.js</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="an">description:</span><span class="co"> "Details of how I create my slides, with Quarto + Reveal.js"</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="an">categories:</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">  - slides</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">  - revealjs</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">  - style</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="an">date:</span><span class="co"> 2024-08-13</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># modified: 2024-10-11</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="an">lightbox:</span><span class="co"> auto</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="an">tbl-cap-location:</span><span class="co"> bottom</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="an">citation:</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co">   author: Sam Foreman</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">   type: webpage</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="co">   title: "How to Make Dope Slides"</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="co">   url: https://samforeman.me/posts/dope-slides</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="an">open-graph:</span></span>
+<span id="cb15-20"><a href="#cb15-20"></a><span class="co">  title: "How to Make Dope Slides"</span></span>
+<span id="cb15-21"><a href="#cb15-21"></a><span class="co">  description: "Details of how I create my slides, with Quarto + Reveal.js"</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="co">  image: "./assets/thumbnail.png"</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a><span class="an">twitter-card:</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="co">  site: "saforem2"</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="co">  creator: "saforem2"</span></span>
+<span id="cb15-26"><a href="#cb15-26"></a><span class="co">  title: "How to Make Dope Slides"</span></span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="co">  image: "./assets/thumbnail.png"</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="co">  description: "Details of how I create my slides, with Quarto + Reveal.js"</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="co"># format:</span></span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="co">#   html:</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a><span class="co">#     page-layout: article</span></span>
+<span id="cb15-32"><a href="#cb15-32"></a><span class="co">#   gfm:</span></span>
+<span id="cb15-33"><a href="#cb15-33"></a><span class="co">#     output_file: "dope-slides.md"</span></span>
+<span id="cb15-34"><a href="#cb15-34"></a><span class="co"># twitter-card:                      </span></span>
+<span id="cb15-35"><a href="#cb15-35"></a><span class="co">#     image: "./assets/thumbnail.png"</span></span>
+<span id="cb15-36"><a href="#cb15-36"></a><span class="co">#     creator: "@saforem2"           </span></span>
+<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#     site: "@saforem2"              </span></span>
+<span id="cb15-38"><a href="#cb15-38"></a><span class="co"># open-graph:                        </span></span>
+<span id="cb15-39"><a href="#cb15-39"></a><span class="co">#     image: "./assets/thumbnail.png"</span></span>
+<span id="cb15-40"><a href="#cb15-40"></a><span class="co">---</span></span>
 <span id="cb15-41"><a href="#cb15-41"></a></span>
-<span id="cb15-42"><a href="#cb15-42"></a>So, after making a promise some time ago on [twitter {{&lt;fa brands</span>
-<span id="cb15-43"><a href="#cb15-43"></a>twitter&gt;}}](https://twitter.com/saforem2/status/1689676452235759616?s=20)<span class="ot">[^promises]</span>, and having</span>
-<span id="cb15-44"><a href="#cb15-44"></a>many questions following my talk on [Parallel Training</span>
-<span id="cb15-45"><a href="#cb15-45"></a>Techniques](https://github.com/saforem2/parallel-training-slides:) last week, I’m finally getting</span>
-<span id="cb15-46"><a href="#cb15-46"></a>around to writing this up.</span>
-<span id="cb15-47"><a href="#cb15-47"></a></span>
-<span id="cb15-48"><a href="#cb15-48"></a>The slides are written using <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>, a _flavor_ of Markdown, and uses the</span>
-<span id="cb15-49"><a href="#cb15-49"></a>built-in <span class="co">[</span><span class="ot">Quarto + Reveal.js</span><span class="co">](https://quarto.org/docs/presentations/revealjs)</span> functionality.</span>
-<span id="cb15-50"><a href="#cb15-50"></a></span>
-<span id="cb15-51"><a href="#cb15-51"></a><span class="ot">[^promises]: </span>And countless other people IRL</span>
+<span id="cb15-42"><a href="#cb15-42"></a><span class="fu">## Quarto 🤝 Reveal.js</span></span>
+<span id="cb15-43"><a href="#cb15-43"></a></span>
+<span id="cb15-44"><a href="#cb15-44"></a>So, after making a promise some time ago on [twitter {{<span class="dt">&lt;</span><span class="kw">fa</span><span class="ot"> brands</span></span>
+<span id="cb15-45"><a href="#cb15-45"></a><span class="ot">twitter</span><span class="dt">&gt;</span>}}](https://twitter.com/saforem2/status/1689676452235759616?s=20)<span class="ot">[^promises]</span>, and having</span>
+<span id="cb15-46"><a href="#cb15-46"></a>many questions following my talk on [Parallel Training</span>
+<span id="cb15-47"><a href="#cb15-47"></a>Techniques](https://github.com/saforem2/parallel-training-slides:) last week, I’m finally getting</span>
+<span id="cb15-48"><a href="#cb15-48"></a>around to writing this up.</span>
+<span id="cb15-49"><a href="#cb15-49"></a></span>
+<span id="cb15-50"><a href="#cb15-50"></a>The slides are written using <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>, a _flavor_ of Markdown, and uses the</span>
+<span id="cb15-51"><a href="#cb15-51"></a>built-in <span class="co">[</span><span class="ot">Quarto + Reveal.js</span><span class="co">](https://quarto.org/docs/presentations/revealjs)</span> functionality.</span>
 <span id="cb15-52"><a href="#cb15-52"></a></span>
-<span id="cb15-53"><a href="#cb15-53"></a>For this post, I'll focus on the slides I presented at last years [Lattice</span>
-<span id="cb15-54"><a href="#cb15-54"></a>2023](https://indico.fnal.gov/event/57249/contributions/271305/), shown below:</span>
-<span id="cb15-55"><a href="#cb15-55"></a></span>
-<span id="cb15-56"><a href="#cb15-56"></a><span class="co">&lt;!-- ::: {.callout-tip icon=false title="[[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/#/section) @ [_Center for Scientific Foundation Models_, Summer School 24'](https://scifm.ai/summer_school.html) \[07/2024\]]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"} --&gt;</span></span>
-<span id="cb15-57"><a href="#cb15-57"></a>::: {.callout-tip icon="false" title="🪧 [<span class="co">[</span><span class="ot">**MLMC: Machine Learning Monte Carlo**</span><span class="co">](https://saforem2.github.io/lattice23)</span> @ <span class="co">[</span><span class="ot">_Lattice 2023_</span><span class="co">](https://indico.fnal.gov/event/57249/contributions/271305/)</span> <span class="sc">\[</span>07/2023<span class="sc">\]</span>]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
-<span id="cb15-58"><a href="#cb15-58"></a></span>
-<span id="cb15-59"><a href="#cb15-59"></a>&lt;iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;"&gt;</span>
-<span id="cb15-60"><a href="#cb15-60"></a>    &lt;p&gt;Your browser does not support iframes.&lt;/p&gt;</span>
-<span id="cb15-61"><a href="#cb15-61"></a>  &lt;/iframe&gt;</span>
-<span id="cb15-62"><a href="#cb15-62"></a></span>
-<span id="cb15-63"><a href="#cb15-63"></a>:::</span>
+<span id="cb15-53"><a href="#cb15-53"></a><span class="ot">[^promises]: </span>And countless other people IRL</span>
+<span id="cb15-54"><a href="#cb15-54"></a></span>
+<span id="cb15-55"><a href="#cb15-55"></a>For this post, I'll focus on the slides I presented at last years [Lattice</span>
+<span id="cb15-56"><a href="#cb15-56"></a>2023](https://indico.fnal.gov/event/57249/contributions/271305/), shown below:</span>
+<span id="cb15-57"><a href="#cb15-57"></a></span>
+<span id="cb15-58"><a href="#cb15-58"></a><span class="co">&lt;!-- ::: {.callout-tip icon=false title="[[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/#/section) @ [_Center for Scientific Foundation Models_, Summer School 24'](https://scifm.ai/summer_school.html) \[07/2024\]]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"} --&gt;</span></span>
+<span id="cb15-59"><a href="#cb15-59"></a>::: {.callout-tip icon="false" title="🪧 [<span class="co">[</span><span class="ot">**MLMC: Machine Learning Monte Carlo**</span><span class="co">](https://saforem2.github.io/lattice23)</span> @ <span class="co">[</span><span class="ot">_Lattice 2023_</span><span class="co">](https://indico.fnal.gov/event/57249/contributions/271305/)</span> <span class="sc">\[</span>07/2023<span class="sc">\]</span>]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
+<span id="cb15-60"><a href="#cb15-60"></a></span>
+<span id="cb15-61"><a href="#cb15-61"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> loading</span><span class="op">=</span><span class="st">"lazy"</span><span class="ot"> allow</span><span class="op">=</span><span class="st">"picture-in-picture"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://saforem2.github.io/lattice23/#/title-slide"</span><span class="ot"> title</span><span class="op">=</span><span class="st">"🪧 MLMC: Machine Learning Monte Carlo"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"500"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> webkitallowfullscreen mozallowfullscreen allowfullscreen style</span><span class="op">=</span><span class="st">"border-radius:0.25rem;border:none;align:center;"</span><span class="dt">&gt;</span></span>
+<span id="cb15-62"><a href="#cb15-62"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Your browser does not support iframes.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-63"><a href="#cb15-63"></a>  <span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb15-64"><a href="#cb15-64"></a></span>
-<span id="cb15-65"><a href="#cb15-65"></a>::: {.callout-tip icon="false" title="<span class="co">[</span><span class="ot">🏃‍♂️ Follow Along...</span><span class="co">]</span>{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
+<span id="cb15-65"><a href="#cb15-65"></a>:::</span>
 <span id="cb15-66"><a href="#cb15-66"></a></span>
-<span id="cb15-67"><a href="#cb15-67"></a>Once you've <span class="co">[</span><span class="ot">Installed Quarto</span><span class="co">](https://quarto.org/docs/download/)</span>, you can build these slides</span>
-<span id="cb15-68"><a href="#cb15-68"></a>yourself by:</span>
-<span id="cb15-69"><a href="#cb15-69"></a></span>
-<span id="cb15-70"><a href="#cb15-70"></a><span class="ss">1. </span><span class="in">`git clone`</span> {{&lt;fa brands github&gt;}} <span class="co">[</span><span class="ot">`saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
-<span id="cb15-71"><a href="#cb15-71"></a><span class="ss">2. </span><span class="in">`cd lattice23 &amp;&amp; quarto preview`</span></span>
-<span id="cb15-72"><a href="#cb15-72"></a></span>
-<span id="cb15-73"><a href="#cb15-73"></a>This will create a <span class="in">`docs/`</span> directory with the following structure:</span>
+<span id="cb15-67"><a href="#cb15-67"></a>::: {.callout-tip icon="false" title="<span class="co">[</span><span class="ot">🏃‍♂️ Follow Along...</span><span class="co">]</span>{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
+<span id="cb15-68"><a href="#cb15-68"></a></span>
+<span id="cb15-69"><a href="#cb15-69"></a>Once you've <span class="co">[</span><span class="ot">Installed Quarto</span><span class="co">](https://quarto.org/docs/download/)</span>, you can build these slides</span>
+<span id="cb15-70"><a href="#cb15-70"></a>yourself by:</span>
+<span id="cb15-71"><a href="#cb15-71"></a></span>
+<span id="cb15-72"><a href="#cb15-72"></a><span class="ss">1. </span><span class="in">`git clone`</span> {{<span class="dt">&lt;</span><span class="kw">fa</span><span class="ot"> brands github</span><span class="dt">&gt;</span>}} <span class="co">[</span><span class="ot">`saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
+<span id="cb15-73"><a href="#cb15-73"></a><span class="ss">2. </span><span class="in">`cd lattice23 &amp;&amp; quarto preview`</span></span>
 <span id="cb15-74"><a href="#cb15-74"></a></span>
-<span id="cb15-75"><a href="#cb15-75"></a><span class="in">```bash</span></span>
-<span id="cb15-76"><a href="#cb15-76"></a><span class="ex">📂</span> docs/</span>
-<span id="cb15-77"><a href="#cb15-77"></a><span class="ex">├──</span> 📂 assets/</span>
-<span id="cb15-78"><a href="#cb15-78"></a><span class="ex">├──</span> 📂 css/</span>
-<span id="cb15-79"><a href="#cb15-79"></a><span class="ex">├──</span> 📄 index.html</span>
-<span id="cb15-80"><a href="#cb15-80"></a><span class="ex">├──</span> 📄 lattice23.md</span>
-<span id="cb15-81"><a href="#cb15-81"></a><span class="ex">├──</span> 📄 search.json</span>
-<span id="cb15-82"><a href="#cb15-82"></a><span class="ex">└──</span> 📂 site_libs/</span>
-<span id="cb15-83"><a href="#cb15-83"></a><span class="in">```</span></span>
-<span id="cb15-84"><a href="#cb15-84"></a></span>
-<span id="cb15-85"><a href="#cb15-85"></a>Once you've created this, and the <span class="in">`docs/index.html`</span> file looks how you want, you can add the</span>
-<span id="cb15-86"><a href="#cb15-86"></a><span class="in">`docs/`</span> directory to your GitHub repo:</span>
-<span id="cb15-87"><a href="#cb15-87"></a></span>
-<span id="cb15-88"><a href="#cb15-88"></a><span class="in">```bash</span></span>
-<span id="cb15-89"><a href="#cb15-89"></a><span class="ex">$</span> git add docs</span>
-<span id="cb15-90"><a href="#cb15-90"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'Create site'</span></span>
-<span id="cb15-91"><a href="#cb15-91"></a><span class="ex">$</span> git push</span>
-<span id="cb15-92"><a href="#cb15-92"></a><span class="in">```</span></span>
-<span id="cb15-93"><a href="#cb15-93"></a></span>
-<span id="cb15-94"><a href="#cb15-94"></a>Once you've <span class="co">[</span><span class="ot">enabled the GitHub page</span><span class="co">](#github-page)</span>, the site will be automatically built and</span>
-<span id="cb15-95"><a href="#cb15-95"></a>updated alongside the repo.</span>
-<span id="cb15-96"><a href="#cb15-96"></a></span>
-<span id="cb15-97"><a href="#cb15-97"></a>:::</span>
+<span id="cb15-75"><a href="#cb15-75"></a>This will create a <span class="in">`docs/`</span> directory with the following structure:</span>
+<span id="cb15-76"><a href="#cb15-76"></a></span>
+<span id="cb15-77"><a href="#cb15-77"></a><span class="in">```bash</span></span>
+<span id="cb15-78"><a href="#cb15-78"></a><span class="ex">📂</span> docs/</span>
+<span id="cb15-79"><a href="#cb15-79"></a><span class="ex">├──</span> 📂 assets/</span>
+<span id="cb15-80"><a href="#cb15-80"></a><span class="ex">├──</span> 📂 css/</span>
+<span id="cb15-81"><a href="#cb15-81"></a><span class="ex">├──</span> 📄 index.html</span>
+<span id="cb15-82"><a href="#cb15-82"></a><span class="ex">├──</span> 📄 lattice23.md</span>
+<span id="cb15-83"><a href="#cb15-83"></a><span class="ex">├──</span> 📄 search.json</span>
+<span id="cb15-84"><a href="#cb15-84"></a><span class="ex">└──</span> 📂 site_libs/</span>
+<span id="cb15-85"><a href="#cb15-85"></a><span class="in">```</span></span>
+<span id="cb15-86"><a href="#cb15-86"></a></span>
+<span id="cb15-87"><a href="#cb15-87"></a>Once you've created this, and the <span class="in">`docs/index.html`</span> file looks how you want, you can add the</span>
+<span id="cb15-88"><a href="#cb15-88"></a><span class="in">`docs/`</span> directory to your GitHub repo:</span>
+<span id="cb15-89"><a href="#cb15-89"></a></span>
+<span id="cb15-90"><a href="#cb15-90"></a><span class="in">```bash</span></span>
+<span id="cb15-91"><a href="#cb15-91"></a><span class="ex">$</span> git add docs</span>
+<span id="cb15-92"><a href="#cb15-92"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'Create site'</span></span>
+<span id="cb15-93"><a href="#cb15-93"></a><span class="ex">$</span> git push</span>
+<span id="cb15-94"><a href="#cb15-94"></a><span class="in">```</span></span>
+<span id="cb15-95"><a href="#cb15-95"></a></span>
+<span id="cb15-96"><a href="#cb15-96"></a>Once you've <span class="co">[</span><span class="ot">enabled the GitHub page</span><span class="co">](#github-page)</span>, the site will be automatically built and</span>
+<span id="cb15-97"><a href="#cb15-97"></a>updated alongside the repo.</span>
 <span id="cb15-98"><a href="#cb15-98"></a></span>
-<span id="cb15-99"><a href="#cb15-99"></a><span class="fu">## Getting Started</span></span>
+<span id="cb15-99"><a href="#cb15-99"></a>:::</span>
 <span id="cb15-100"><a href="#cb15-100"></a></span>
-<span id="cb15-101"><a href="#cb15-101"></a>Whenever I give a talk, my workflow is typically:</span>
+<span id="cb15-101"><a href="#cb15-101"></a><span class="fu">## Getting Started</span></span>
 <span id="cb15-102"><a href="#cb15-102"></a></span>
-<span id="cb15-103"><a href="#cb15-103"></a><span class="ss">1. </span>Create new GitHub repo for it</span>
-<span id="cb15-104"><a href="#cb15-104"></a><span class="ss">2. </span>Hunt down the GitHub repo from my _last_ talk and<span class="ot">[^clean-up]</span>:  </span>
-<span id="cb15-105"><a href="#cb15-105"></a></span>
-<span id="cb15-106"><a href="#cb15-106"></a>    <span class="in">```bash</span></span>
-<span id="cb15-107"><a href="#cb15-107"></a>    <span class="ex">$</span> cp <span class="at">-r</span> old_talk/<span class="dt">{_quarto.yml</span><span class="op">,</span><span class="dt">index.qmd</span><span class="op">,</span><span class="dt">references.bib</span><span class="op">,</span><span class="dt">css/</span><span class="pp">*</span><span class="dt">}</span> new_talk/</span>
-<span id="cb15-108"><a href="#cb15-108"></a>    <span class="in">```</span></span>
-<span id="cb15-109"><a href="#cb15-109"></a></span>
-<span id="cb15-110"><a href="#cb15-110"></a><span class="ot">[^clean-up]: </span>One thing I've been meaning to do, is clean up all my <span class="in">`css/*`</span> files and move them all to</span>
-<span id="cb15-111"><a href="#cb15-111"></a>a single repository, but I'll save that for another day.</span>
-<span id="cb15-112"><a href="#cb15-112"></a></span>
-<span id="cb15-113"><a href="#cb15-113"></a>Honestly, other than that, 90% of the work is done automatically by <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
-<span id="cb15-114"><a href="#cb15-114"></a>The remaining 10% consists of figuring out why my css is broken (see <span class="co">[</span><span class="ot">CSS</span><span class="co">](#css)</span>).</span>
-<span id="cb15-115"><a href="#cb15-115"></a></span>
-<span id="cb15-116"><a href="#cb15-116"></a>The best place to start for learning to make slides with Quarto and Reveal.js is the official</span>
-<span id="cb15-117"><a href="#cb15-117"></a>documentation:</span>
-<span id="cb15-118"><a href="#cb15-118"></a></span>
-<span id="cb15-119"><a href="#cb15-119"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Quarto / Presentations / Revealjs</span><span class="co">](https://quarto.org/docs/presentations/revealjs/)</span>:</span>
-<span id="cb15-120"><a href="#cb15-120"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Reveal Basics</span><span class="co">](https://quarto.org/docs/presentations/revealjs/)</span></span>
-<span id="cb15-121"><a href="#cb15-121"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Presenting Slides</span><span class="co">](https://quarto.org/docs/presentations/revealjs/presenting.html)</span></span>
-<span id="cb15-122"><a href="#cb15-122"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Advanced Reveal</span><span class="co">](https://quarto.org/docs/presentations/revealjs/advanced.html)</span></span>
-<span id="cb15-123"><a href="#cb15-123"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Reveal Themes</span><span class="co">](https://quarto.org/docs/presentations/revealjs/themes.html)</span></span>
-<span id="cb15-124"><a href="#cb15-124"></a></span>
-<span id="cb15-125"><a href="#cb15-125"></a><span class="ss">- </span>The slides are written in ~~markdown~~ <span class="co">[</span><span class="ot">Quarto (`.qmd`)</span><span class="co">](https://quarto.org/)</span><span class="ot">[^quarto]</span>, a</span>
-<span id="cb15-126"><a href="#cb15-126"></a>  <span class="co">[</span><span class="ot">pandoc</span><span class="co">](https://pandoc.org/)</span>-compliant based markup language.</span>
-<span id="cb15-127"><a href="#cb15-127"></a></span>
-<span id="cb15-128"><a href="#cb15-128"></a><span class="ss">- </span>For a single slide deck, the content will be placed in <span class="in">`index.qmd`</span> and our directory structure</span>
-<span id="cb15-129"><a href="#cb15-129"></a>  will look something like:</span>
-<span id="cb15-130"><a href="#cb15-130"></a></span>
-<span id="cb15-131"><a href="#cb15-131"></a>  ::: {.tight-code}</span>
-<span id="cb15-132"><a href="#cb15-132"></a>  <span class="in">```bash</span></span>
-<span id="cb15-133"><a href="#cb15-133"></a>  <span class="ex">📂</span> lattice23/</span>
-<span id="cb15-134"><a href="#cb15-134"></a>  <span class="ex">├──</span> 📂 assets/            <span class="co"># for images, etc.</span></span>
-<span id="cb15-135"><a href="#cb15-135"></a>  <span class="ex">│</span>   └── 🖼️ thumbnail.png  <span class="co"># can be used as social preview image</span></span>
-<span id="cb15-136"><a href="#cb15-136"></a>  <span class="ex">├──</span> 📂 css/</span>
-<span id="cb15-137"><a href="#cb15-137"></a>  <span class="ex">│</span>   ├── 📄 callouts.css</span>
-<span id="cb15-138"><a href="#cb15-138"></a>  <span class="ex">│</span>   ├── 📄 dark.scss</span>
-<span id="cb15-139"><a href="#cb15-139"></a>  <span class="ex">│</span>   └── 📄 default.css</span>
-<span id="cb15-140"><a href="#cb15-140"></a>  <span class="ex">├──</span> 🛠️ _quarto.yml        <span class="co"># Configuration goes here</span></span>
-<span id="cb15-141"><a href="#cb15-141"></a>  <span class="ex">├──</span> 📄 index.qmd          <span class="co"># Quarto document containing slides content</span></span>
-<span id="cb15-142"><a href="#cb15-142"></a>  <span class="ex">└──</span> 📜 references.bib     <span class="co"># BibTex references</span></span>
-<span id="cb15-143"><a href="#cb15-143"></a>  <span class="in">```</span></span>
-<span id="cb15-144"><a href="#cb15-144"></a>  :::</span>
-<span id="cb15-145"><a href="#cb15-145"></a></span>
-<span id="cb15-146"><a href="#cb15-146"></a><span class="ss">- </span>Equations are rendered using <span class="in">`$`</span> delimiters for inline math and <span class="in">`$$`</span> for display math<span class="ot">[^latex]</span>.</span>
+<span id="cb15-103"><a href="#cb15-103"></a>Whenever I give a talk, my workflow is typically:</span>
+<span id="cb15-104"><a href="#cb15-104"></a></span>
+<span id="cb15-105"><a href="#cb15-105"></a><span class="ss">1. </span>Create new GitHub repo for it</span>
+<span id="cb15-106"><a href="#cb15-106"></a><span class="ss">2. </span>Hunt down the GitHub repo from my _last_ talk and<span class="ot">[^clean-up]</span>:  </span>
+<span id="cb15-107"><a href="#cb15-107"></a></span>
+<span id="cb15-108"><a href="#cb15-108"></a>    <span class="in">```bash</span></span>
+<span id="cb15-109"><a href="#cb15-109"></a>    <span class="ex">$</span> cp <span class="at">-r</span> old_talk/<span class="dt">{_quarto.yml</span><span class="op">,</span><span class="dt">index.qmd</span><span class="op">,</span><span class="dt">references.bib</span><span class="op">,</span><span class="dt">css/</span><span class="pp">*</span><span class="dt">}</span> new_talk/</span>
+<span id="cb15-110"><a href="#cb15-110"></a>    <span class="in">```</span></span>
+<span id="cb15-111"><a href="#cb15-111"></a></span>
+<span id="cb15-112"><a href="#cb15-112"></a><span class="ot">[^clean-up]: </span>One thing I've been meaning to do, is clean up all my <span class="in">`css/*`</span> files and move them all to</span>
+<span id="cb15-113"><a href="#cb15-113"></a>a single repository, but I'll save that for another day.</span>
+<span id="cb15-114"><a href="#cb15-114"></a></span>
+<span id="cb15-115"><a href="#cb15-115"></a>Honestly, other than that, 90% of the work is done automatically by <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span>.</span>
+<span id="cb15-116"><a href="#cb15-116"></a>The remaining 10% consists of figuring out why my css is broken (see <span class="co">[</span><span class="ot">CSS</span><span class="co">](#css)</span>).</span>
+<span id="cb15-117"><a href="#cb15-117"></a></span>
+<span id="cb15-118"><a href="#cb15-118"></a>The best place to start for learning to make slides with Quarto and Reveal.js is the official</span>
+<span id="cb15-119"><a href="#cb15-119"></a>documentation:</span>
+<span id="cb15-120"><a href="#cb15-120"></a></span>
+<span id="cb15-121"><a href="#cb15-121"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Quarto / Presentations / Revealjs</span><span class="co">](https://quarto.org/docs/presentations/revealjs/)</span>:</span>
+<span id="cb15-122"><a href="#cb15-122"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Reveal Basics</span><span class="co">](https://quarto.org/docs/presentations/revealjs/)</span></span>
+<span id="cb15-123"><a href="#cb15-123"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Presenting Slides</span><span class="co">](https://quarto.org/docs/presentations/revealjs/presenting.html)</span></span>
+<span id="cb15-124"><a href="#cb15-124"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Advanced Reveal</span><span class="co">](https://quarto.org/docs/presentations/revealjs/advanced.html)</span></span>
+<span id="cb15-125"><a href="#cb15-125"></a><span class="ss">    1. </span><span class="co">[</span><span class="ot">Reveal Themes</span><span class="co">](https://quarto.org/docs/presentations/revealjs/themes.html)</span></span>
+<span id="cb15-126"><a href="#cb15-126"></a></span>
+<span id="cb15-127"><a href="#cb15-127"></a><span class="ss">- </span>The slides are written in ~~markdown~~ <span class="co">[</span><span class="ot">Quarto (`.qmd`)</span><span class="co">](https://quarto.org/)</span><span class="ot">[^quarto]</span>, a</span>
+<span id="cb15-128"><a href="#cb15-128"></a>  <span class="co">[</span><span class="ot">pandoc</span><span class="co">](https://pandoc.org/)</span>-compliant based markup language.</span>
+<span id="cb15-129"><a href="#cb15-129"></a></span>
+<span id="cb15-130"><a href="#cb15-130"></a><span class="ss">- </span>For a single slide deck, the content will be placed in <span class="in">`index.qmd`</span> and our directory structure</span>
+<span id="cb15-131"><a href="#cb15-131"></a>  will look something like:</span>
+<span id="cb15-132"><a href="#cb15-132"></a></span>
+<span id="cb15-133"><a href="#cb15-133"></a>  ::: {.tight-code}</span>
+<span id="cb15-134"><a href="#cb15-134"></a>  <span class="in">```bash</span></span>
+<span id="cb15-135"><a href="#cb15-135"></a>  <span class="ex">📂</span> lattice23/</span>
+<span id="cb15-136"><a href="#cb15-136"></a>  <span class="ex">├──</span> 📂 assets/            <span class="co"># for images, etc.</span></span>
+<span id="cb15-137"><a href="#cb15-137"></a>  <span class="ex">│</span>   └── 🖼️ thumbnail.png  <span class="co"># can be used as social preview image</span></span>
+<span id="cb15-138"><a href="#cb15-138"></a>  <span class="ex">├──</span> 📂 css/</span>
+<span id="cb15-139"><a href="#cb15-139"></a>  <span class="ex">│</span>   ├── 📄 callouts.css</span>
+<span id="cb15-140"><a href="#cb15-140"></a>  <span class="ex">│</span>   ├── 📄 dark.scss</span>
+<span id="cb15-141"><a href="#cb15-141"></a>  <span class="ex">│</span>   └── 📄 default.css</span>
+<span id="cb15-142"><a href="#cb15-142"></a>  <span class="ex">├──</span> 🛠️ _quarto.yml        <span class="co"># Configuration goes here</span></span>
+<span id="cb15-143"><a href="#cb15-143"></a>  <span class="ex">├──</span> 📄 index.qmd          <span class="co"># Quarto document containing slides content</span></span>
+<span id="cb15-144"><a href="#cb15-144"></a>  <span class="ex">└──</span> 📜 references.bib     <span class="co"># BibTex references</span></span>
+<span id="cb15-145"><a href="#cb15-145"></a>  <span class="in">```</span></span>
+<span id="cb15-146"><a href="#cb15-146"></a>  :::</span>
 <span id="cb15-147"><a href="#cb15-147"></a></span>
-<span id="cb15-148"><a href="#cb15-148"></a><span class="ss">- </span>We can use <span class="co">[</span><span class="ot">Divs and Spans</span><span class="co">](https://pandoc.org/chunkedhtml-demo/8.18-divs-and-spans.html)</span> from</span>
-<span id="cb15-149"><a href="#cb15-149"></a>  Pandoc.</span>
-<span id="cb15-150"><a href="#cb15-150"></a></span>
-<span id="cb15-151"><a href="#cb15-151"></a><span class="ss">  - </span>**`&lt;span&gt;`**'s: are created by wrapping text in square brackets, and will be treated as a</span>
-<span id="cb15-152"><a href="#cb15-152"></a>  <span class="in">`&lt;span&gt;`</span> with attributes if it is followed immediately by attributes, e.g.:</span>
-<span id="cb15-153"><a href="#cb15-153"></a></span>
-<span id="cb15-154"><a href="#cb15-154"></a><span class="ss">    - </span>Example: <span class="in">`[This is *some text*]{.class key="val"}`</span></span>
+<span id="cb15-148"><a href="#cb15-148"></a><span class="ss">- </span>Equations are rendered using <span class="in">`$`</span> delimiters for inline math and <span class="in">`$$`</span> for display math<span class="ot">[^latex]</span>.</span>
+<span id="cb15-149"><a href="#cb15-149"></a></span>
+<span id="cb15-150"><a href="#cb15-150"></a><span class="ss">- </span>We can use <span class="co">[</span><span class="ot">Divs and Spans</span><span class="co">](https://pandoc.org/chunkedhtml-demo/8.18-divs-and-spans.html)</span> from</span>
+<span id="cb15-151"><a href="#cb15-151"></a>  Pandoc.</span>
+<span id="cb15-152"><a href="#cb15-152"></a></span>
+<span id="cb15-153"><a href="#cb15-153"></a><span class="ss">  - </span>**`&lt;span&gt;`**'s: are created by wrapping text in square brackets, and will be treated as a</span>
+<span id="cb15-154"><a href="#cb15-154"></a>  <span class="in">`&lt;span&gt;`</span> with attributes if it is followed immediately by attributes, e.g.:</span>
 <span id="cb15-155"><a href="#cb15-155"></a></span>
-<span id="cb15-156"><a href="#cb15-156"></a><span class="ss">    - </span>idk what I'm doing really, so I mostly find myself doing things like <span class="in">`[blue text]{style="color:#1E88E5;"}`</span> which produces <span class="co">[</span><span class="ot">blue text</span><span class="co">]</span>{style="color:#1E88E5;"}.</span>
+<span id="cb15-156"><a href="#cb15-156"></a><span class="ss">    - </span>Example: <span class="in">`[This is *some text*]{.class key="val"}`</span></span>
 <span id="cb15-157"><a href="#cb15-157"></a></span>
-<span id="cb15-158"><a href="#cb15-158"></a><span class="ss">  - </span>**`&lt;div&gt;`**'s: are created by wrapping text with a line consisting of at least three colons <span class="in">`:::`</span>.</span>
+<span id="cb15-158"><a href="#cb15-158"></a><span class="ss">    - </span>idk what I'm doing really, so I mostly find myself doing things like <span class="in">`[blue text]{style="color:#1E88E5;"}`</span> which produces <span class="co">[</span><span class="ot">blue text</span><span class="co">]</span>{style="color:#1E88E5;"}.</span>
 <span id="cb15-159"><a href="#cb15-159"></a></span>
-<span id="cb15-160"><a href="#cb15-160"></a><span class="ss">    - </span>Example:</span>
+<span id="cb15-160"><a href="#cb15-160"></a><span class="ss">  - </span>**`&lt;div&gt;`**'s: are created by wrapping text with a line consisting of at least three colons <span class="in">`:::`</span>.</span>
 <span id="cb15-161"><a href="#cb15-161"></a></span>
-<span id="cb15-162"><a href="#cb15-162"></a>        <span class="in">```markdown</span></span>
-<span id="cb15-163"><a href="#cb15-163"></a>        ::: {#special .sidebar}</span>
-<span id="cb15-164"><a href="#cb15-164"></a>        Here is a paragraph.</span>
-<span id="cb15-165"><a href="#cb15-165"></a></span>
-<span id="cb15-166"><a href="#cb15-166"></a><span class="in">        And another.</span></span>
-<span id="cb15-167"><a href="#cb15-167"></a><span class="in">        :::</span></span>
-<span id="cb15-168"><a href="#cb15-168"></a><span class="in">        ```</span></span>
-<span id="cb15-169"><a href="#cb15-169"></a></span>
-<span id="cb15-170"><a href="#cb15-170"></a><span class="in">    - We can use either attributes in curly braces or a single unbraced word, which will be treated</span></span>
-<span id="cb15-171"><a href="#cb15-171"></a><span class="in">      as a class name.</span></span>
-<span id="cb15-172"><a href="#cb15-172"></a></span>
-<span id="cb15-173"><a href="#cb15-173"></a><span class="ot">[^latex]: </span><span class="co">[</span><span class="ot">Equations</span><span class="co">](https://quarto.org/docs/authoring/markdown-basics.html#equations)</span></span>
+<span id="cb15-162"><a href="#cb15-162"></a><span class="ss">    - </span>Example:</span>
+<span id="cb15-163"><a href="#cb15-163"></a></span>
+<span id="cb15-164"><a href="#cb15-164"></a>        <span class="in">```markdown</span></span>
+<span id="cb15-165"><a href="#cb15-165"></a>        ::: {#special .sidebar}</span>
+<span id="cb15-166"><a href="#cb15-166"></a>        Here is a paragraph.</span>
+<span id="cb15-167"><a href="#cb15-167"></a></span>
+<span id="cb15-168"><a href="#cb15-168"></a><span class="in">        And another.</span></span>
+<span id="cb15-169"><a href="#cb15-169"></a><span class="in">        :::</span></span>
+<span id="cb15-170"><a href="#cb15-170"></a><span class="in">        ```</span></span>
+<span id="cb15-171"><a href="#cb15-171"></a></span>
+<span id="cb15-172"><a href="#cb15-172"></a><span class="in">    - We can use either attributes in curly braces or a single unbraced word, which will be treated</span></span>
+<span id="cb15-173"><a href="#cb15-173"></a><span class="in">      as a class name.</span></span>
 <span id="cb15-174"><a href="#cb15-174"></a></span>
-<span id="cb15-175"><a href="#cb15-175"></a><span class="ot">[^quarto]: </span>_An open-source scientific and technical publishing system_</span>
+<span id="cb15-175"><a href="#cb15-175"></a><span class="ot">[^latex]: </span><span class="co">[</span><span class="ot">Equations</span><span class="co">](https://quarto.org/docs/authoring/markdown-basics.html#equations)</span></span>
 <span id="cb15-176"><a href="#cb15-176"></a></span>
-<span id="cb15-177"><a href="#cb15-177"></a><span class="fu">### 🎁 Install Extensions</span></span>
+<span id="cb15-177"><a href="#cb15-177"></a><span class="ot">[^quarto]: </span>_An open-source scientific and technical publishing system_</span>
 <span id="cb15-178"><a href="#cb15-178"></a></span>
-<span id="cb15-179"><a href="#cb15-179"></a>Find the full list of available extensions at <span class="co">[</span><span class="ot">Quarto Extensions</span><span class="co">](https://quarto.org/docs/extensions/)</span></span>
+<span id="cb15-179"><a href="#cb15-179"></a><span class="fu">### 🎁 Install Extensions</span></span>
 <span id="cb15-180"><a href="#cb15-180"></a></span>
-<span id="cb15-181"><a href="#cb15-181"></a>To install various icon sets used in the example slides, we can install the following extensions:</span>
+<span id="cb15-181"><a href="#cb15-181"></a>Find the full list of available extensions at <span class="co">[</span><span class="ot">Quarto Extensions</span><span class="co">](https://quarto.org/docs/extensions/)</span></span>
 <span id="cb15-182"><a href="#cb15-182"></a></span>
-<span id="cb15-183"><a href="#cb15-183"></a><span class="in">```bash</span></span>
-<span id="cb15-184"><a href="#cb15-184"></a><span class="ex">$</span> quarto install extension mcanouil/quarto-iconify      <span class="co"># https://icones.js.org/ [&lt;-- Contains rest of icon sets ??]</span></span>
-<span id="cb15-185"><a href="#cb15-185"></a><span class="ex">$</span> quarto install extension shafayetShafee/bsicons       <span class="co"># bootstrap icons</span></span>
-<span id="cb15-186"><a href="#cb15-186"></a><span class="ex">$</span> quarto install extension schochastics/academicicons   <span class="co"># OrcID, Google Scholar, ...</span></span>
-<span id="cb15-187"><a href="#cb15-187"></a><span class="ex">$</span> quarto install extension quarto-ext/fontawesome       <span class="co"># Font Awesome icons</span></span>
-<span id="cb15-188"><a href="#cb15-188"></a><span class="in">```</span></span>
-<span id="cb15-189"><a href="#cb15-189"></a></span>
-<span id="cb15-190"><a href="#cb15-190"></a>note that these aren't necessary for functionality, but provide additional icons that I like to use 🤷🏻‍♂️ </span>
+<span id="cb15-183"><a href="#cb15-183"></a>To install various icon sets used in the example slides, we can install the following extensions:</span>
+<span id="cb15-184"><a href="#cb15-184"></a></span>
+<span id="cb15-185"><a href="#cb15-185"></a><span class="in">```bash</span></span>
+<span id="cb15-186"><a href="#cb15-186"></a><span class="ex">$</span> quarto install extension mcanouil/quarto-iconify      <span class="co"># https://icones.js.org/ [&lt;-- Contains rest of icon sets ??]</span></span>
+<span id="cb15-187"><a href="#cb15-187"></a><span class="ex">$</span> quarto install extension shafayetShafee/bsicons       <span class="co"># bootstrap icons</span></span>
+<span id="cb15-188"><a href="#cb15-188"></a><span class="ex">$</span> quarto install extension schochastics/academicicons   <span class="co"># OrcID, Google Scholar, ...</span></span>
+<span id="cb15-189"><a href="#cb15-189"></a><span class="ex">$</span> quarto install extension quarto-ext/fontawesome       <span class="co"># Font Awesome icons</span></span>
+<span id="cb15-190"><a href="#cb15-190"></a><span class="in">```</span></span>
 <span id="cb15-191"><a href="#cb15-191"></a></span>
-<span id="cb15-192"><a href="#cb15-192"></a><span class="fu">## Metadata</span></span>
+<span id="cb15-192"><a href="#cb15-192"></a>note that these aren't necessary for functionality, but provide additional icons that I like to use 🤷🏻‍♂️ </span>
 <span id="cb15-193"><a href="#cb15-193"></a></span>
-<span id="cb15-194"><a href="#cb15-194"></a>The first section of our <span class="co">[</span><span class="ot">`index.qmd`</span><span class="co">](https://github.com/saforem2/lattice23/blob/main/index.qmd)</span></span>
-<span id="cb15-195"><a href="#cb15-195"></a>contains the YAML metadata for the Quarto document.</span>
-<span id="cb15-196"><a href="#cb15-196"></a></span>
-<span id="cb15-197"><a href="#cb15-197"></a>Explicitly, we see this consists of:</span>
+<span id="cb15-194"><a href="#cb15-194"></a><span class="fu">## Metadata</span></span>
+<span id="cb15-195"><a href="#cb15-195"></a></span>
+<span id="cb15-196"><a href="#cb15-196"></a>The first section of our <span class="co">[</span><span class="ot">`index.qmd`</span><span class="co">](https://github.com/saforem2/lattice23/blob/main/index.qmd)</span></span>
+<span id="cb15-197"><a href="#cb15-197"></a>contains the YAML metadata for the Quarto document.</span>
 <span id="cb15-198"><a href="#cb15-198"></a></span>
-<span id="cb15-199"><a href="#cb15-199"></a>&lt;details closed&gt;&lt;summary&gt;Expand for &lt;code&gt;yaml&lt;/code&gt;&lt;/summary&gt;</span>
+<span id="cb15-199"><a href="#cb15-199"></a>Explicitly, we see this consists of:</span>
 <span id="cb15-200"><a href="#cb15-200"></a></span>
-<span id="cb15-201"><a href="#cb15-201"></a><span class="in">```yaml</span></span>
-<span id="cb15-202"><a href="#cb15-202"></a><span class="pp">---</span></span>
-<span id="cb15-203"><a href="#cb15-203"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb15-204"><a href="#cb15-204"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb15-205"><a href="#cb15-205"></a><span class="at">    </span><span class="fu">title-block-style</span><span class="kw">:</span><span class="at"> none</span></span>
-<span id="cb15-206"><a href="#cb15-206"></a><span class="at">    </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> c</span></span>
-<span id="cb15-207"><a href="#cb15-207"></a><span class="at">    </span><span class="fu">title-slide-style</span><span class="kw">:</span><span class="at"> default</span></span>
-<span id="cb15-208"><a href="#cb15-208"></a><span class="at">    </span><span class="fu">chalkboard</span><span class="kw">:</span></span>
-<span id="cb15-209"><a href="#cb15-209"></a><span class="at">      </span><span class="fu">buttons</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-210"><a href="#cb15-210"></a><span class="at">    </span><span class="fu">auto-animate</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-211"><a href="#cb15-211"></a><span class="at">    </span><span class="fu">reference-location</span><span class="kw">:</span><span class="at"> section</span></span>
-<span id="cb15-212"><a href="#cb15-212"></a><span class="at">    </span><span class="fu">touch</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-213"><a href="#cb15-213"></a><span class="at">    </span><span class="fu">pause</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-214"><a href="#cb15-214"></a><span class="at">    </span><span class="fu">footnotes-hover</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-215"><a href="#cb15-215"></a><span class="at">    </span><span class="fu">citations-hover</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-216"><a href="#cb15-216"></a><span class="at">    </span><span class="fu">preview-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-217"><a href="#cb15-217"></a><span class="at">    </span><span class="fu">controls-tutorial</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-218"><a href="#cb15-218"></a><span class="at">    </span><span class="fu">controls</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-219"><a href="#cb15-219"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"</span></span>
-<span id="cb15-220"><a href="#cb15-220"></a><span class="at">    </span><span class="fu">history</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-221"><a href="#cb15-221"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">dark</span><span class="kw">,</span><span class="at"> css/dark.scss</span><span class="kw">]</span></span>
-<span id="cb15-222"><a href="#cb15-222"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">css/default.css</span><span class="kw">,</span><span class="at"> css/callouts.css</span><span class="kw">]</span></span>
-<span id="cb15-223"><a href="#cb15-223"></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-224"><a href="#cb15-224"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-225"><a href="#cb15-225"></a><span class="at">    </span><span class="fu">self-contained-math</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-226"><a href="#cb15-226"></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-227"><a href="#cb15-227"></a><span class="at">    </span><span class="fu">highlight-style</span><span class="kw">:</span><span class="at"> </span><span class="st">"atom-one"</span></span>
-<span id="cb15-228"><a href="#cb15-228"></a><span class="at">    </span><span class="fu">default-image-extension</span><span class="kw">:</span><span class="at"> svg</span></span>
-<span id="cb15-229"><a href="#cb15-229"></a><span class="at">    </span><span class="fu">code-line-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-230"><a href="#cb15-230"></a><span class="at">    </span><span class="fu">code-overflow</span><span class="kw">:</span><span class="at"> scroll</span></span>
-<span id="cb15-231"><a href="#cb15-231"></a><span class="at">    </span><span class="fu">html-math-method</span><span class="kw">:</span><span class="at"> katex</span></span>
-<span id="cb15-232"><a href="#cb15-232"></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
-<span id="cb15-233"><a href="#cb15-233"></a><span class="at">    </span><span class="fu">mermaid</span><span class="kw">:</span></span>
-<span id="cb15-234"><a href="#cb15-234"></a><span class="at">      </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
-<span id="cb15-235"><a href="#cb15-235"></a><span class="at">  </span><span class="fu">gfm</span><span class="kw">:</span></span>
-<span id="cb15-236"><a href="#cb15-236"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> </span><span class="st">"lattice23.md"</span></span>
-<span id="cb15-237"><a href="#cb15-237"></a><span class="pp">---</span></span>
-<span id="cb15-238"><a href="#cb15-238"></a><span class="in">```</span></span>
-<span id="cb15-239"><a href="#cb15-239"></a></span>
-<span id="cb15-240"><a href="#cb15-240"></a>&lt;/details&gt;</span>
+<span id="cb15-201"><a href="#cb15-201"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="ot"> closed</span><span class="dt">&gt;&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Expand for <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>yaml<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb15-202"><a href="#cb15-202"></a></span>
+<span id="cb15-203"><a href="#cb15-203"></a><span class="in">```yaml</span></span>
+<span id="cb15-204"><a href="#cb15-204"></a><span class="pp">---</span></span>
+<span id="cb15-205"><a href="#cb15-205"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb15-206"><a href="#cb15-206"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb15-207"><a href="#cb15-207"></a><span class="at">    </span><span class="fu">title-block-style</span><span class="kw">:</span><span class="at"> none</span></span>
+<span id="cb15-208"><a href="#cb15-208"></a><span class="at">    </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> c</span></span>
+<span id="cb15-209"><a href="#cb15-209"></a><span class="at">    </span><span class="fu">title-slide-style</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb15-210"><a href="#cb15-210"></a><span class="at">    </span><span class="fu">chalkboard</span><span class="kw">:</span></span>
+<span id="cb15-211"><a href="#cb15-211"></a><span class="at">      </span><span class="fu">buttons</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-212"><a href="#cb15-212"></a><span class="at">    </span><span class="fu">auto-animate</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-213"><a href="#cb15-213"></a><span class="at">    </span><span class="fu">reference-location</span><span class="kw">:</span><span class="at"> section</span></span>
+<span id="cb15-214"><a href="#cb15-214"></a><span class="at">    </span><span class="fu">touch</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-215"><a href="#cb15-215"></a><span class="at">    </span><span class="fu">pause</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-216"><a href="#cb15-216"></a><span class="at">    </span><span class="fu">footnotes-hover</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-217"><a href="#cb15-217"></a><span class="at">    </span><span class="fu">citations-hover</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-218"><a href="#cb15-218"></a><span class="at">    </span><span class="fu">preview-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-219"><a href="#cb15-219"></a><span class="at">    </span><span class="fu">controls-tutorial</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-220"><a href="#cb15-220"></a><span class="at">    </span><span class="fu">controls</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-221"><a href="#cb15-221"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"</span></span>
+<span id="cb15-222"><a href="#cb15-222"></a><span class="at">    </span><span class="fu">history</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-223"><a href="#cb15-223"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">dark</span><span class="kw">,</span><span class="at"> css/dark.scss</span><span class="kw">]</span></span>
+<span id="cb15-224"><a href="#cb15-224"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">css/default.css</span><span class="kw">,</span><span class="at"> css/callouts.css</span><span class="kw">]</span></span>
+<span id="cb15-225"><a href="#cb15-225"></a><span class="at">    </span><span class="fu">self-contained</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-226"><a href="#cb15-226"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-227"><a href="#cb15-227"></a><span class="at">    </span><span class="fu">self-contained-math</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb15-228"><a href="#cb15-228"></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-229"><a href="#cb15-229"></a><span class="at">    </span><span class="fu">highlight-style</span><span class="kw">:</span><span class="at"> </span><span class="st">"atom-one"</span></span>
+<span id="cb15-230"><a href="#cb15-230"></a><span class="at">    </span><span class="fu">default-image-extension</span><span class="kw">:</span><span class="at"> svg</span></span>
+<span id="cb15-231"><a href="#cb15-231"></a><span class="at">    </span><span class="fu">code-line-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb15-232"><a href="#cb15-232"></a><span class="at">    </span><span class="fu">code-overflow</span><span class="kw">:</span><span class="at"> scroll</span></span>
+<span id="cb15-233"><a href="#cb15-233"></a><span class="at">    </span><span class="fu">html-math-method</span><span class="kw">:</span><span class="at"> katex</span></span>
+<span id="cb15-234"><a href="#cb15-234"></a><span class="at">    </span><span class="fu">fig-align</span><span class="kw">:</span><span class="at"> center</span></span>
+<span id="cb15-235"><a href="#cb15-235"></a><span class="at">    </span><span class="fu">mermaid</span><span class="kw">:</span></span>
+<span id="cb15-236"><a href="#cb15-236"></a><span class="at">      </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb15-237"><a href="#cb15-237"></a><span class="at">  </span><span class="fu">gfm</span><span class="kw">:</span></span>
+<span id="cb15-238"><a href="#cb15-238"></a><span class="at">    </span><span class="fu">output-file</span><span class="kw">:</span><span class="at"> </span><span class="st">"lattice23.md"</span></span>
+<span id="cb15-239"><a href="#cb15-239"></a><span class="pp">---</span></span>
+<span id="cb15-240"><a href="#cb15-240"></a><span class="in">```</span></span>
 <span id="cb15-241"><a href="#cb15-241"></a></span>
-<span id="cb15-242"><a href="#cb15-242"></a>The complete list of Reveal.js options are listed, with descriptions at: [Quarto – Revealjs</span>
-<span id="cb15-243"><a href="#cb15-243"></a>Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)</span>
-<span id="cb15-244"><a href="#cb15-244"></a></span>
-<span id="cb15-245"><a href="#cb15-245"></a><span class="fu">## Title Slide</span></span>
+<span id="cb15-242"><a href="#cb15-242"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb15-243"><a href="#cb15-243"></a></span>
+<span id="cb15-244"><a href="#cb15-244"></a>The complete list of Reveal.js options are listed, with descriptions at: [Quarto – Revealjs</span>
+<span id="cb15-245"><a href="#cb15-245"></a>Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)</span>
 <span id="cb15-246"><a href="#cb15-246"></a></span>
-<span id="cb15-247"><a href="#cb15-247"></a><span class="ss">- </span>Starting with the title slide<span class="ot">[^images]</span>:</span>
+<span id="cb15-247"><a href="#cb15-247"></a><span class="fu">## Title Slide</span></span>
 <span id="cb15-248"><a href="#cb15-248"></a></span>
-<span id="cb15-249"><a href="#cb15-249"></a>  ::: {#fig-title style="text-align:center;"}</span>
+<span id="cb15-249"><a href="#cb15-249"></a><span class="ss">- </span>Starting with the title slide<span class="ot">[^images]</span>:</span>
 <span id="cb15-250"><a href="#cb15-250"></a></span>
-<span id="cb15-251"><a href="#cb15-251"></a>  <span class="al">![](./assets/title-slide.png)</span>{width="66%"}</span>
+<span id="cb15-251"><a href="#cb15-251"></a>  ::: {#fig-title style="text-align:center;"}</span>
 <span id="cb15-252"><a href="#cb15-252"></a></span>
-<span id="cb15-253"><a href="#cb15-253"></a>  <span class="co">[</span><span class="ot">Title Slide</span><span class="co">](https://saforem2.github.io/lattice23/#/section)</span></span>
+<span id="cb15-253"><a href="#cb15-253"></a>  <span class="al">![](./assets/title-slide.png)</span>{width="66%"}</span>
 <span id="cb15-254"><a href="#cb15-254"></a></span>
-<span id="cb15-255"><a href="#cb15-255"></a>  :::</span>
+<span id="cb15-255"><a href="#cb15-255"></a>  <span class="co">[</span><span class="ot">Title Slide</span><span class="co">](https://saforem2.github.io/lattice23/#/section)</span></span>
 <span id="cb15-256"><a href="#cb15-256"></a></span>
-<span id="cb15-257"><a href="#cb15-257"></a><span class="ss">  - </span>The full slide contents are included below:</span>
+<span id="cb15-257"><a href="#cb15-257"></a>  :::</span>
 <span id="cb15-258"><a href="#cb15-258"></a></span>
-<span id="cb15-259"><a href="#cb15-259"></a>    &lt;details closed&gt;&lt;summary&gt;Expand for &lt;code&gt;quarto&lt;/code&gt;&lt;/summary&gt;</span>
+<span id="cb15-259"><a href="#cb15-259"></a><span class="ss">  - </span>The full slide contents are included below:</span>
 <span id="cb15-260"><a href="#cb15-260"></a></span>
-<span id="cb15-261"><a href="#cb15-261"></a>    <span class="in">```markdown</span></span>
-<span id="cb15-262"><a href="#cb15-262"></a>    # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span>
-<span id="cb15-263"><a href="#cb15-263"></a></span>
-<span id="cb15-264"><a href="#cb15-264"></a><span class="in">    ::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}</span></span>
+<span id="cb15-261"><a href="#cb15-261"></a>    <span class="dt">&lt;</span><span class="kw">details</span><span class="ot"> closed</span><span class="dt">&gt;&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Expand for <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>quarto<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb15-262"><a href="#cb15-262"></a></span>
+<span id="cb15-263"><a href="#cb15-263"></a>    <span class="in">```markdown</span></span>
+<span id="cb15-264"><a href="#cb15-264"></a>    # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span>
 <span id="cb15-265"><a href="#cb15-265"></a></span>
-<span id="cb15-266"><a href="#cb15-266"></a><span class="in">    [MLMC: Machine Learning Monte Carlo]{.style="color:#939393; font-size:1.5em; font-weight:bold;}  </span></span>
-<span id="cb15-267"><a href="#cb15-267"></a><span class="in">    [for Lattice Gauge Theory]{style="color:#777777; font-size:1.2em; font-weight: bold;"}</span></span>
-<span id="cb15-268"><a href="#cb15-268"></a><span class="in">    [&lt;br&gt;&amp;nbsp;]{style="padding-bottom: 0.5rem;"}  </span></span>
-<span id="cb15-269"><a href="#cb15-269"></a><span class="in">    [{{&lt; fa solid home &gt;}}](https://samforeman.me) Sam Foreman  </span></span>
-<span id="cb15-270"><a href="#cb15-270"></a><span class="in">    [Xiao-Yong Jin, James C. Osborn]{.dim-text style="font-size:0.8em;"}  </span></span>
-<span id="cb15-271"><a href="#cb15-271"></a><span class="in">    [[[{{&lt; fa brands github &gt;}} `saforem2/`](https://github.com/saforem2/)]{style="border-bottom: 0.5px solid #00ccff;"}`{`[[`lattice23`](https://github.com/saforem2/lattice23)]{style="border-bottom: 0.5px solid #00ccff;"}, [[`l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)]{style="border-bottom: 0.5px solid #00ccff;"}`}`]{style="font-size:0.8em;"}</span></span>
-<span id="cb15-272"><a href="#cb15-272"></a></span>
-<span id="cb15-273"><a href="#cb15-273"></a><span class="in">    :::</span></span>
+<span id="cb15-266"><a href="#cb15-266"></a><span class="in">    ::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}</span></span>
+<span id="cb15-267"><a href="#cb15-267"></a></span>
+<span id="cb15-268"><a href="#cb15-268"></a><span class="in">    [MLMC: Machine Learning Monte Carlo]{.style="color:#939393; font-size:1.5em; font-weight:bold;}  </span></span>
+<span id="cb15-269"><a href="#cb15-269"></a><span class="in">    [for Lattice Gauge Theory]{style="color:#777777; font-size:1.2em; font-weight: bold;"}</span></span>
+<span id="cb15-270"><a href="#cb15-270"></a><span class="in">    [&lt;br&gt;&amp;nbsp;]{style="padding-bottom: 0.5rem;"}  </span></span>
+<span id="cb15-271"><a href="#cb15-271"></a><span class="in">    [{{&lt; fa solid home &gt;}}](https://samforeman.me) Sam Foreman  </span></span>
+<span id="cb15-272"><a href="#cb15-272"></a><span class="in">    [Xiao-Yong Jin, James C. Osborn]{.dim-text style="font-size:0.8em;"}  </span></span>
+<span id="cb15-273"><a href="#cb15-273"></a><span class="in">    [[[{{&lt; fa brands github &gt;}} `saforem2/`](https://github.com/saforem2/)]{style="border-bottom: 0.5px solid #00ccff;"}`{`[[`lattice23`](https://github.com/saforem2/lattice23)]{style="border-bottom: 0.5px solid #00ccff;"}, [[`l2hmc-qcd`](https://github.com/saforem2/l2hmc-qcd)]{style="border-bottom: 0.5px solid #00ccff;"}`}`]{style="font-size:0.8em;"}</span></span>
 <span id="cb15-274"><a href="#cb15-274"></a></span>
-<span id="cb15-275"><a href="#cb15-275"></a><span class="in">    ::: footer</span></span>
-<span id="cb15-276"><a href="#cb15-276"></a><span class="in">    [2023-07-31 @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)]{.dim-text style="text-align:left;'}</span></span>
-<span id="cb15-277"><a href="#cb15-277"></a><span class="in">    :::</span></span>
-<span id="cb15-278"><a href="#cb15-278"></a><span class="in">    ```</span></span>
-<span id="cb15-279"><a href="#cb15-279"></a></span>
-<span id="cb15-280"><a href="#cb15-280"></a><span class="in">    &lt;/details&gt;</span></span>
+<span id="cb15-275"><a href="#cb15-275"></a><span class="in">    :::</span></span>
+<span id="cb15-276"><a href="#cb15-276"></a></span>
+<span id="cb15-277"><a href="#cb15-277"></a><span class="in">    ::: footer</span></span>
+<span id="cb15-278"><a href="#cb15-278"></a><span class="in">    [2023-07-31 @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)]{.dim-text style="text-align:left;'}</span></span>
+<span id="cb15-279"><a href="#cb15-279"></a><span class="in">    :::</span></span>
+<span id="cb15-280"><a href="#cb15-280"></a><span class="in">    ```</span></span>
 <span id="cb15-281"><a href="#cb15-281"></a></span>
-<span id="cb15-282"><a href="#cb15-282"></a><span class="ss">  - </span>For the background, I made a simple animation {{&lt;fa brands github&gt;}}</span>
-<span id="cb15-283"><a href="#cb15-283"></a>  <span class="co">[</span><span class="ot">`saforem2/grid-worms-animation`</span><span class="co">](https://github.com/saforem2/grid-worms-animation)</span></span>
-<span id="cb15-284"><a href="#cb15-284"></a>  that is hosted on GitHub pages as a simple html website</span>
-<span id="cb15-285"><a href="#cb15-285"></a></span>
-<span id="cb15-286"><a href="#cb15-286"></a><span class="ss">  - </span>This static GitHub page is then used as an [IFrame</span>
-<span id="cb15-287"><a href="#cb15-287"></a>  Background](https://quarto.org/docs/presentations/revealjs/#iframe-backgrounds)</span>
-<span id="cb15-288"><a href="#cb15-288"></a>  natively in Quarto with Reveal.js</span>
-<span id="cb15-289"><a href="#cb15-289"></a></span>
-<span id="cb15-290"><a href="#cb15-290"></a><span class="ss">  - </span>This is as simple as:</span>
+<span id="cb15-282"><a href="#cb15-282"></a><span class="in">    &lt;/details&gt;</span></span>
+<span id="cb15-283"><a href="#cb15-283"></a></span>
+<span id="cb15-284"><a href="#cb15-284"></a><span class="ss">  - </span>For the background, I made a simple animation {{<span class="dt">&lt;</span><span class="kw">fa</span><span class="ot"> brands github</span><span class="dt">&gt;</span>}}</span>
+<span id="cb15-285"><a href="#cb15-285"></a>  <span class="co">[</span><span class="ot">`saforem2/grid-worms-animation`</span><span class="co">](https://github.com/saforem2/grid-worms-animation)</span></span>
+<span id="cb15-286"><a href="#cb15-286"></a>  that is hosted on GitHub pages as a simple html website</span>
+<span id="cb15-287"><a href="#cb15-287"></a></span>
+<span id="cb15-288"><a href="#cb15-288"></a><span class="ss">  - </span>This static GitHub page is then used as an [IFrame</span>
+<span id="cb15-289"><a href="#cb15-289"></a>  Background](https://quarto.org/docs/presentations/revealjs/#iframe-backgrounds)</span>
+<span id="cb15-290"><a href="#cb15-290"></a>  natively in Quarto with Reveal.js</span>
 <span id="cb15-291"><a href="#cb15-291"></a></span>
-<span id="cb15-292"><a href="#cb15-292"></a>    <span class="in">```markdown</span></span>
-<span id="cb15-293"><a href="#cb15-293"></a>    # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span>
-<span id="cb15-294"><a href="#cb15-294"></a>    <span class="in">```</span></span>
-<span id="cb15-295"><a href="#cb15-295"></a></span>
-<span id="cb15-296"><a href="#cb15-296"></a><span class="ot">[^images]: </span>Quarto comes with lightbox support, so you can click on images to</span>
-<span id="cb15-297"><a href="#cb15-297"></a>display them full screen.</span>
-<span id="cb15-298"><a href="#cb15-298"></a></span>
-<span id="cb15-299"><a href="#cb15-299"></a><span class="fu">## Single-Column Slides</span></span>
+<span id="cb15-292"><a href="#cb15-292"></a><span class="ss">  - </span>This is as simple as:</span>
+<span id="cb15-293"><a href="#cb15-293"></a></span>
+<span id="cb15-294"><a href="#cb15-294"></a>    <span class="in">```markdown</span></span>
+<span id="cb15-295"><a href="#cb15-295"></a>    # {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span>
+<span id="cb15-296"><a href="#cb15-296"></a>    <span class="in">```</span></span>
+<span id="cb15-297"><a href="#cb15-297"></a></span>
+<span id="cb15-298"><a href="#cb15-298"></a><span class="ot">[^images]: </span>Quarto comes with lightbox support, so you can click on images to</span>
+<span id="cb15-299"><a href="#cb15-299"></a>display them full screen.</span>
 <span id="cb15-300"><a href="#cb15-300"></a></span>
-<span id="cb15-301"><a href="#cb15-301"></a>Other than the title slide, the remainder of the slides are all relatively</span>
-<span id="cb15-302"><a href="#cb15-302"></a>straightforward to construct.</span>
-<span id="cb15-303"><a href="#cb15-303"></a></span>
-<span id="cb15-304"><a href="#cb15-304"></a>For single-column slides, constructing the content is as simple as writing it in Markdown:</span>
+<span id="cb15-301"><a href="#cb15-301"></a><span class="fu">## Single-Column Slides</span></span>
+<span id="cb15-302"><a href="#cb15-302"></a></span>
+<span id="cb15-303"><a href="#cb15-303"></a>Other than the title slide, the remainder of the slides are all relatively</span>
+<span id="cb15-304"><a href="#cb15-304"></a>straightforward to construct.</span>
 <span id="cb15-305"><a href="#cb15-305"></a></span>
-<span id="cb15-306"><a href="#cb15-306"></a>::: {.panel-tabset}</span>
+<span id="cb15-306"><a href="#cb15-306"></a>For single-column slides, constructing the content is as simple as writing it in Markdown:</span>
 <span id="cb15-307"><a href="#cb15-307"></a></span>
-<span id="cb15-308"><a href="#cb15-308"></a><span class="fu">## Code</span></span>
+<span id="cb15-308"><a href="#cb15-308"></a>::: {.panel-tabset}</span>
 <span id="cb15-309"><a href="#cb15-309"></a></span>
-<span id="cb15-310"><a href="#cb15-310"></a><span class="in">```markdown</span></span>
-<span id="cb15-311"><a href="#cb15-311"></a><span class="fu"># Overview</span></span>
-<span id="cb15-312"><a href="#cb15-312"></a></span>
-<span id="cb15-313"><a href="#cb15-313"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Background: `{MCMC,HMC}`</span><span class="co">](#markov-chain-monte-carlo-mcmc)</span></span>
-<span id="cb15-314"><a href="#cb15-314"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Leapfrog Integrator</span><span class="co">](#leapfrog-integrator-hmc)</span></span>
-<span id="cb15-315"><a href="#cb15-315"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Issues with HMC</span><span class="co">](#sec-issues-with-hmc)</span></span>
-<span id="cb15-316"><a href="#cb15-316"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Can we do better?</span><span class="co">](#sec-can-we-do-better)</span></span>
-<span id="cb15-317"><a href="#cb15-317"></a></span>
-<span id="cb15-318"><a href="#cb15-318"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">L2HMC: Generalizing MD</span><span class="co">](#sec-l2hmc)</span></span>
-<span id="cb15-319"><a href="#cb15-319"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">4D $SU(3)$ Model</span><span class="co">](#sec-su3)</span></span>
-<span id="cb15-320"><a href="#cb15-320"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Results</span><span class="co">](#sec-results)</span></span>
-<span id="cb15-321"><a href="#cb15-321"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">References</span><span class="co">](#sec-references)</span></span>
-<span id="cb15-322"><a href="#cb15-322"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">Extras</span><span class="co">](#sec-extras)</span></span>
-<span id="cb15-323"><a href="#cb15-323"></a><span class="in">```</span></span>
-<span id="cb15-324"><a href="#cb15-324"></a></span>
-<span id="cb15-325"><a href="#cb15-325"></a><span class="in">## Slide {style="text-align:center;"}</span></span>
+<span id="cb15-310"><a href="#cb15-310"></a><span class="fu">## Code</span></span>
+<span id="cb15-311"><a href="#cb15-311"></a></span>
+<span id="cb15-312"><a href="#cb15-312"></a><span class="in">```markdown</span></span>
+<span id="cb15-313"><a href="#cb15-313"></a><span class="fu"># Overview</span></span>
+<span id="cb15-314"><a href="#cb15-314"></a></span>
+<span id="cb15-315"><a href="#cb15-315"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Background: `{MCMC,HMC}`</span><span class="co">](#markov-chain-monte-carlo-mcmc)</span></span>
+<span id="cb15-316"><a href="#cb15-316"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Leapfrog Integrator</span><span class="co">](#leapfrog-integrator-hmc)</span></span>
+<span id="cb15-317"><a href="#cb15-317"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Issues with HMC</span><span class="co">](#sec-issues-with-hmc)</span></span>
+<span id="cb15-318"><a href="#cb15-318"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Can we do better?</span><span class="co">](#sec-can-we-do-better)</span></span>
+<span id="cb15-319"><a href="#cb15-319"></a></span>
+<span id="cb15-320"><a href="#cb15-320"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">L2HMC: Generalizing MD</span><span class="co">](#sec-l2hmc)</span></span>
+<span id="cb15-321"><a href="#cb15-321"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">4D $SU(3)$ Model</span><span class="co">](#sec-su3)</span></span>
+<span id="cb15-322"><a href="#cb15-322"></a><span class="ss">    - </span><span class="co">[</span><span class="ot">Results</span><span class="co">](#sec-results)</span></span>
+<span id="cb15-323"><a href="#cb15-323"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">References</span><span class="co">](#sec-references)</span></span>
+<span id="cb15-324"><a href="#cb15-324"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">Extras</span><span class="co">](#sec-extras)</span></span>
+<span id="cb15-325"><a href="#cb15-325"></a><span class="in">```</span></span>
 <span id="cb15-326"><a href="#cb15-326"></a></span>
-<span id="cb15-327"><a href="#cb15-327"></a><span class="in">::: {style="text-align:center;"}</span></span>
-<span id="cb15-328"><a href="#cb15-328"></a><span class="in">![[Overview Slide](https://saforem2.github.io/lattice23/#/overview)](./assets/overview.png){#fig-overview width="60%"}</span></span>
-<span id="cb15-329"><a href="#cb15-329"></a><span class="in">:::</span></span>
-<span id="cb15-330"><a href="#cb15-330"></a></span>
+<span id="cb15-327"><a href="#cb15-327"></a><span class="in">## Slide {style="text-align:center;"}</span></span>
+<span id="cb15-328"><a href="#cb15-328"></a></span>
+<span id="cb15-329"><a href="#cb15-329"></a><span class="in">::: {style="text-align:center;"}</span></span>
+<span id="cb15-330"><a href="#cb15-330"></a><span class="in">![[Overview Slide](https://saforem2.github.io/lattice23/#/overview)](./assets/overview.png){#fig-overview width="60%"}</span></span>
 <span id="cb15-331"><a href="#cb15-331"></a><span class="in">:::</span></span>
 <span id="cb15-332"><a href="#cb15-332"></a></span>
-<span id="cb15-333"><a href="#cb15-333"></a><span class="in">## Centered Slides</span></span>
+<span id="cb15-333"><a href="#cb15-333"></a><span class="in">:::</span></span>
 <span id="cb15-334"><a href="#cb15-334"></a></span>
-<span id="cb15-335"><a href="#cb15-335"></a><span class="in">We can center all the text on a slide by adding the `{.centeredslide}` class to the slide header,</span></span>
-<span id="cb15-336"><a href="#cb15-336"></a><span class="in">e.g.</span></span>
-<span id="cb15-337"><a href="#cb15-337"></a></span>
-<span id="cb15-338"><a href="#cb15-338"></a><span class="in">::: {.panel-tabset}</span></span>
+<span id="cb15-335"><a href="#cb15-335"></a><span class="in">## Centered Slides</span></span>
+<span id="cb15-336"><a href="#cb15-336"></a></span>
+<span id="cb15-337"><a href="#cb15-337"></a><span class="in">We can center all the text on a slide by adding the `{.centeredslide}` class to the slide header,</span></span>
+<span id="cb15-338"><a href="#cb15-338"></a><span class="in">e.g.</span></span>
 <span id="cb15-339"><a href="#cb15-339"></a></span>
-<span id="cb15-340"><a href="#cb15-340"></a><span class="in">Note that `style.scss` is included in the `revealjs` theme of the `yaml` metadata of `index.qmd`.</span></span>
+<span id="cb15-340"><a href="#cb15-340"></a><span class="in">::: {.panel-tabset}</span></span>
 <span id="cb15-341"><a href="#cb15-341"></a></span>
-<span id="cb15-342"><a href="#cb15-342"></a><span class="in">## `index.qmd`</span></span>
+<span id="cb15-342"><a href="#cb15-342"></a><span class="in">Note that `style.scss` is included in the `revealjs` theme of the `yaml` metadata of `index.qmd`.</span></span>
 <span id="cb15-343"><a href="#cb15-343"></a></span>
-<span id="cb15-344"><a href="#cb15-344"></a><span class="in">```markdown</span></span>
-<span id="cb15-345"><a href="#cb15-345"></a><span class="in">---</span></span>
-<span id="cb15-346"><a href="#cb15-346"></a><span class="in">format:</span></span>
-<span id="cb15-347"><a href="#cb15-347"></a><span class="in">  revealjs:</span></span>
-<span id="cb15-348"><a href="#cb15-348"></a><span class="in">    theme: [style.scss]</span></span>
-<span id="cb15-349"><a href="#cb15-349"></a><span class="in">---</span></span>
-<span id="cb15-350"><a href="#cb15-350"></a></span>
-<span id="cb15-351"><a href="#cb15-351"></a><span class="in"># Title {.centeredslide}</span></span>
-<span id="cb15-352"><a href="#cb15-352"></a><span class="in">```</span></span>
-<span id="cb15-353"><a href="#cb15-353"></a></span>
-<span id="cb15-354"><a href="#cb15-354"></a><span class="fu">## `style.scss`</span></span>
+<span id="cb15-344"><a href="#cb15-344"></a><span class="in">## `index.qmd`</span></span>
+<span id="cb15-345"><a href="#cb15-345"></a></span>
+<span id="cb15-346"><a href="#cb15-346"></a><span class="in">```markdown</span></span>
+<span id="cb15-347"><a href="#cb15-347"></a><span class="in">---</span></span>
+<span id="cb15-348"><a href="#cb15-348"></a><span class="in">format:</span></span>
+<span id="cb15-349"><a href="#cb15-349"></a><span class="in">  revealjs:</span></span>
+<span id="cb15-350"><a href="#cb15-350"></a><span class="in">    theme: [style.scss]</span></span>
+<span id="cb15-351"><a href="#cb15-351"></a><span class="in">---</span></span>
+<span id="cb15-352"><a href="#cb15-352"></a></span>
+<span id="cb15-353"><a href="#cb15-353"></a><span class="in"># Title {.centeredslide}</span></span>
+<span id="cb15-354"><a href="#cb15-354"></a><span class="in">```</span></span>
 <span id="cb15-355"><a href="#cb15-355"></a></span>
-<span id="cb15-356"><a href="#cb15-356"></a><span class="in">```scss</span></span>
-<span id="cb15-357"><a href="#cb15-357"></a><span class="in">.centeredslide {</span></span>
-<span id="cb15-358"><a href="#cb15-358"></a><span class="in">  text-align: center;</span></span>
-<span id="cb15-359"><a href="#cb15-359"></a><span class="in">}</span></span>
-<span id="cb15-360"><a href="#cb15-360"></a><span class="in">```</span></span>
-<span id="cb15-361"><a href="#cb15-361"></a></span>
-<span id="cb15-362"><a href="#cb15-362"></a>:::</span>
+<span id="cb15-356"><a href="#cb15-356"></a><span class="fu">## `style.scss`</span></span>
+<span id="cb15-357"><a href="#cb15-357"></a></span>
+<span id="cb15-358"><a href="#cb15-358"></a><span class="in">```scss</span></span>
+<span id="cb15-359"><a href="#cb15-359"></a><span class="in">.centeredslide {</span></span>
+<span id="cb15-360"><a href="#cb15-360"></a><span class="in">  text-align: center;</span></span>
+<span id="cb15-361"><a href="#cb15-361"></a><span class="in">}</span></span>
+<span id="cb15-362"><a href="#cb15-362"></a><span class="in">```</span></span>
 <span id="cb15-363"><a href="#cb15-363"></a></span>
-<span id="cb15-364"><a href="#cb15-364"></a><span class="fu">## Multi-Column Slides</span></span>
+<span id="cb15-364"><a href="#cb15-364"></a>:::</span>
 <span id="cb15-365"><a href="#cb15-365"></a></span>
-<span id="cb15-366"><a href="#cb15-366"></a>Side-by-side content (either text or images)</span>
+<span id="cb15-366"><a href="#cb15-366"></a><span class="fu">## Multi-Column Slides</span></span>
 <span id="cb15-367"><a href="#cb15-367"></a></span>
-<span id="cb15-368"><a href="#cb15-368"></a>::: {layout="[ <span class="co">[</span><span class="ot">50,50</span><span class="co">]</span> ]" layout-valign="top" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;"}</span>
+<span id="cb15-368"><a href="#cb15-368"></a>Side-by-side content (either text or images)</span>
 <span id="cb15-369"><a href="#cb15-369"></a></span>
-<span id="cb15-370"><a href="#cb15-370"></a>::: {#fig-mcmc style="text-align:center;"}</span>
+<span id="cb15-370"><a href="#cb15-370"></a>::: {layout="[ <span class="co">[</span><span class="ot">50,50</span><span class="co">]</span> ]" layout-valign="top" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;"}</span>
 <span id="cb15-371"><a href="#cb15-371"></a></span>
-<span id="cb15-372"><a href="#cb15-372"></a><span class="al">![](./assets/mcmc.png)</span></span>
+<span id="cb15-372"><a href="#cb15-372"></a>::: {#fig-mcmc style="text-align:center;"}</span>
 <span id="cb15-373"><a href="#cb15-373"></a></span>
-<span id="cb15-374"><a href="#cb15-374"></a><span class="co">[</span><span class="ot">Markov Chain Monte Carlo</span><span class="co">](https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc)</span></span>
+<span id="cb15-374"><a href="#cb15-374"></a><span class="al">![](./assets/mcmc.png)</span></span>
 <span id="cb15-375"><a href="#cb15-375"></a></span>
-<span id="cb15-376"><a href="#cb15-376"></a>:::</span>
+<span id="cb15-376"><a href="#cb15-376"></a><span class="co">[</span><span class="ot">Markov Chain Monte Carlo</span><span class="co">](https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc)</span></span>
 <span id="cb15-377"><a href="#cb15-377"></a></span>
-<span id="cb15-378"><a href="#cb15-378"></a>::: {.col1}</span>
+<span id="cb15-378"><a href="#cb15-378"></a>:::</span>
 <span id="cb15-379"><a href="#cb15-379"></a></span>
-<span id="cb15-380"><a href="#cb15-380"></a>This slide is horizontally centered<span class="ot">[^centered]</span> and the content consists of two rows split as follows:</span>
+<span id="cb15-380"><a href="#cb15-380"></a>::: {.col1}</span>
 <span id="cb15-381"><a href="#cb15-381"></a></span>
-<span id="cb15-382"><a href="#cb15-382"></a>|   |   |</span>
-<span id="cb15-383"><a href="#cb15-383"></a>|:-:|:-:|</span>
-<span id="cb15-384"><a href="#cb15-384"></a>| A | B |</span>
-<span id="cb15-385"><a href="#cb15-385"></a>| C | C |</span>
-<span id="cb15-386"><a href="#cb15-386"></a></span>
-<span id="cb15-387"><a href="#cb15-387"></a>: Slide layout. First row split into two columns, second row spans full width. {#tbl-2col .striped .hover}</span>
+<span id="cb15-382"><a href="#cb15-382"></a>This slide is horizontally centered<span class="ot">[^centered]</span> and the content consists of two rows split as follows:</span>
+<span id="cb15-383"><a href="#cb15-383"></a></span>
+<span id="cb15-384"><a href="#cb15-384"></a><span class="pp">|</span>   <span class="pp">|</span>   <span class="pp">|</span></span>
+<span id="cb15-385"><a href="#cb15-385"></a><span class="pp">|</span>:-:<span class="pp">|</span>:-:<span class="pp">|</span></span>
+<span id="cb15-386"><a href="#cb15-386"></a><span class="pp">|</span> A <span class="pp">|</span> B <span class="pp">|</span></span>
+<span id="cb15-387"><a href="#cb15-387"></a><span class="pp">|</span> C <span class="pp">|</span> C <span class="pp">|</span></span>
 <span id="cb15-388"><a href="#cb15-388"></a></span>
-<span id="cb15-389"><a href="#cb15-389"></a><span class="ss">- </span>In panel A, we have a <span class="in">`::: {.callout-note}`</span> block followed by a single list element containing a</span>
-<span id="cb15-390"><a href="#cb15-390"></a>  LaTeX equation.</span>
-<span id="cb15-391"><a href="#cb15-391"></a></span>
-<span id="cb15-392"><a href="#cb15-392"></a><span class="ss">- </span>In panel B we have a standard markdown image</span>
+<span id="cb15-389"><a href="#cb15-389"></a>: Slide layout. First row split into two columns, second row spans full width. {#tbl-2col .striped .hover}</span>
+<span id="cb15-390"><a href="#cb15-390"></a></span>
+<span id="cb15-391"><a href="#cb15-391"></a><span class="ss">- </span>In panel A, we have a <span class="in">`::: {.callout-note}`</span> block followed by a single list element containing a</span>
+<span id="cb15-392"><a href="#cb15-392"></a>  LaTeX equation.</span>
 <span id="cb15-393"><a href="#cb15-393"></a></span>
-<span id="cb15-394"><a href="#cb15-394"></a>    <span class="in">```markdown</span></span>
-<span id="cb15-395"><a href="#cb15-395"></a>    <span class="al">![](./assets/mcmc.png)</span></span>
-<span id="cb15-396"><a href="#cb15-396"></a>    <span class="in">```</span></span>
-<span id="cb15-397"><a href="#cb15-397"></a></span>
-<span id="cb15-398"><a href="#cb15-398"></a><span class="ss">- </span>In panel C we have normal text + math with LaTeX<span class="ot">[^math]</span> syntax.</span>
+<span id="cb15-394"><a href="#cb15-394"></a><span class="ss">- </span>In panel B we have a standard markdown image</span>
+<span id="cb15-395"><a href="#cb15-395"></a></span>
+<span id="cb15-396"><a href="#cb15-396"></a>    <span class="in">```markdown</span></span>
+<span id="cb15-397"><a href="#cb15-397"></a>    <span class="al">![](./assets/mcmc.png)</span></span>
+<span id="cb15-398"><a href="#cb15-398"></a>    <span class="in">```</span></span>
 <span id="cb15-399"><a href="#cb15-399"></a></span>
-<span id="cb15-400"><a href="#cb15-400"></a><span class="ot">[^centered]: </span>By adding the <span class="in">`{.centeredslide}`</span> class to the slide header</span>
-<span id="cb15-401"><a href="#cb15-401"></a><span class="ot">[^math]: </span>Text surrounded by <span class="in">`$`</span> will be rendered with LaTeX</span>
-<span id="cb15-402"><a href="#cb15-402"></a></span>
-<span id="cb15-403"><a href="#cb15-403"></a>:::</span>
+<span id="cb15-400"><a href="#cb15-400"></a><span class="ss">- </span>In panel C we have normal text + math with LaTeX<span class="ot">[^math]</span> syntax.</span>
+<span id="cb15-401"><a href="#cb15-401"></a></span>
+<span id="cb15-402"><a href="#cb15-402"></a><span class="ot">[^centered]: </span>By adding the <span class="in">`{.centeredslide}`</span> class to the slide header</span>
+<span id="cb15-403"><a href="#cb15-403"></a><span class="ot">[^math]: </span>Text surrounded by <span class="in">`$`</span> will be rendered with LaTeX</span>
 <span id="cb15-404"><a href="#cb15-404"></a></span>
 <span id="cb15-405"><a href="#cb15-405"></a>:::</span>
 <span id="cb15-406"><a href="#cb15-406"></a></span>
-<span id="cb15-407"><a href="#cb15-407"></a></span>
-<span id="cb15-408"><a href="#cb15-408"></a><span class="ss">- </span>Note that we additionally have a <span class="in">`::: footer`</span> element included at the bottom of the slide.</span>
+<span id="cb15-407"><a href="#cb15-407"></a>:::</span>
+<span id="cb15-408"><a href="#cb15-408"></a></span>
 <span id="cb15-409"><a href="#cb15-409"></a></span>
-<span id="cb15-410"><a href="#cb15-410"></a><span class="ss">- </span>The code used to generate the slide above is included below:</span>
+<span id="cb15-410"><a href="#cb15-410"></a><span class="ss">- </span>Note that we additionally have a <span class="in">`::: footer`</span> element included at the bottom of the slide.</span>
 <span id="cb15-411"><a href="#cb15-411"></a></span>
-<span id="cb15-412"><a href="#cb15-412"></a>  &lt;details closed&gt;&lt;summary&gt;Expand for&lt;code&gt;quarto&lt;/code&gt;&lt;/summary&gt;</span>
+<span id="cb15-412"><a href="#cb15-412"></a><span class="ss">- </span>The code used to generate the slide above is included below:</span>
 <span id="cb15-413"><a href="#cb15-413"></a></span>
-<span id="cb15-414"><a href="#cb15-414"></a>  <span class="in">```markdown</span></span>
-<span id="cb15-415"><a href="#cb15-415"></a>  # Markov Chain Monte Carlo (MCMC) {.centeredslide}</span>
-<span id="cb15-416"><a href="#cb15-416"></a></span>
-<span id="cb15-417"><a href="#cb15-417"></a>  :::: {.columns}</span>
+<span id="cb15-414"><a href="#cb15-414"></a>  <span class="dt">&lt;</span><span class="kw">details</span><span class="ot"> closed</span><span class="dt">&gt;&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Expand for<span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>quarto<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb15-415"><a href="#cb15-415"></a></span>
+<span id="cb15-416"><a href="#cb15-416"></a>  <span class="in">```markdown</span></span>
+<span id="cb15-417"><a href="#cb15-417"></a>  # Markov Chain Monte Carlo (MCMC) {.centeredslide}</span>
 <span id="cb15-418"><a href="#cb15-418"></a></span>
-<span id="cb15-419"><a href="#cb15-419"></a>  ::: {.column width="50%"}</span>
+<span id="cb15-419"><a href="#cb15-419"></a>  :::: {.columns}</span>
 <span id="cb15-420"><a href="#cb15-420"></a></span>
-<span id="cb15-421"><a href="#cb15-421"></a>  ::: {.callout-note title="Goal" style="text-align:left;!important"}</span>
-<span id="cb15-422"><a href="#cb15-422"></a>  Generate **independent** samples $<span class="sc">\{</span>x_{i}<span class="sc">\}</span>$, such that<span class="ot">[^notation]</span></span>
-<span id="cb15-423"><a href="#cb15-423"></a>  $$<span class="sc">\{</span>x_{i}<span class="sc">\}</span> \sim p(x) \propto e^{-S(x)}$$</span>
-<span id="cb15-424"><a href="#cb15-424"></a>  where $S(x)$ is the _action_ (or potential energy)</span>
-<span id="cb15-425"><a href="#cb15-425"></a>  :::</span>
-<span id="cb15-426"><a href="#cb15-426"></a></span>
-<span id="cb15-427"><a href="#cb15-427"></a><span class="ss">  - </span>Want to calculate observables $\mathcal{O}$:  </span>
-<span id="cb15-428"><a href="#cb15-428"></a>    $\left\langle \mathcal{O}\right\rangle \propto \int \left<span class="co">[</span><span class="ot">\mathcal{D}x\right</span><span class="co">]</span>\hspace{4pt} {\mathcal{O}(x)\, p(x)}$</span>
-<span id="cb15-429"><a href="#cb15-429"></a></span>
-<span id="cb15-430"><a href="#cb15-430"></a>  :::</span>
+<span id="cb15-421"><a href="#cb15-421"></a>  ::: {.column width="50%"}</span>
+<span id="cb15-422"><a href="#cb15-422"></a></span>
+<span id="cb15-423"><a href="#cb15-423"></a>  ::: {.callout-note title="Goal" style="text-align:left;!important"}</span>
+<span id="cb15-424"><a href="#cb15-424"></a>  Generate **independent** samples $<span class="sc">\{</span>x_{i}<span class="sc">\}</span>$, such that<span class="ot">[^notation]</span></span>
+<span id="cb15-425"><a href="#cb15-425"></a>  $$<span class="sc">\{</span>x_{i}<span class="sc">\}</span> \sim p(x) \propto e^{-S(x)}$$</span>
+<span id="cb15-426"><a href="#cb15-426"></a>  where $S(x)$ is the _action_ (or potential energy)</span>
+<span id="cb15-427"><a href="#cb15-427"></a>  :::</span>
+<span id="cb15-428"><a href="#cb15-428"></a></span>
+<span id="cb15-429"><a href="#cb15-429"></a><span class="ss">  - </span>Want to calculate observables $\mathcal{O}$:  </span>
+<span id="cb15-430"><a href="#cb15-430"></a>    $\left\langle \mathcal{O}\right\rangle \propto \int \left<span class="co">[</span><span class="ot">\mathcal{D}x\right</span><span class="co">]</span>\hspace{4pt} {\mathcal{O}(x)\, p(x)}$</span>
 <span id="cb15-431"><a href="#cb15-431"></a></span>
-<span id="cb15-432"><a href="#cb15-432"></a>  ::: {.column width="49%"}</span>
-<span id="cb15-433"><a href="#cb15-433"></a>  <span class="al">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)</span></span>
-<span id="cb15-434"><a href="#cb15-434"></a>  :::</span>
-<span id="cb15-435"><a href="#cb15-435"></a></span>
-<span id="cb15-436"><a href="#cb15-436"></a>  ::::</span>
+<span id="cb15-432"><a href="#cb15-432"></a>  :::</span>
+<span id="cb15-433"><a href="#cb15-433"></a></span>
+<span id="cb15-434"><a href="#cb15-434"></a>  ::: {.column width="49%"}</span>
+<span id="cb15-435"><a href="#cb15-435"></a>  <span class="al">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)</span></span>
+<span id="cb15-436"><a href="#cb15-436"></a>  :::</span>
 <span id="cb15-437"><a href="#cb15-437"></a></span>
-<span id="cb15-438"><a href="#cb15-438"></a>  If these were <span class="co">[</span><span class="ot">independent</span><span class="co">]</span>{.style="color:#00CCFF;"}, we could approximate:</span>
-<span id="cb15-439"><a href="#cb15-439"></a>  $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$</span>
-<span id="cb15-440"><a href="#cb15-440"></a>  $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left<span class="co">[</span><span class="ot">\mathcal{O} (x) \right</span><span class="co">]</span>}\Longrightarrow</span>
-<span id="cb15-441"><a href="#cb15-441"></a>  \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$</span>
-<span id="cb15-442"><a href="#cb15-442"></a></span>
-<span id="cb15-443"><a href="#cb15-443"></a>  <span class="ot">[^notation]: </span>Here, $\sim$ means "is distributed according to"</span>
+<span id="cb15-438"><a href="#cb15-438"></a>  ::::</span>
+<span id="cb15-439"><a href="#cb15-439"></a></span>
+<span id="cb15-440"><a href="#cb15-440"></a>  If these were <span class="co">[</span><span class="ot">independent</span><span class="co">]</span>{.style="color:#00CCFF;"}, we could approximate:</span>
+<span id="cb15-441"><a href="#cb15-441"></a>  $\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$</span>
+<span id="cb15-442"><a href="#cb15-442"></a>  $$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left<span class="co">[</span><span class="ot">\mathcal{O} (x) \right</span><span class="co">]</span>}\Longrightarrow</span>
+<span id="cb15-443"><a href="#cb15-443"></a>  \sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$</span>
 <span id="cb15-444"><a href="#cb15-444"></a></span>
-<span id="cb15-445"><a href="#cb15-445"></a>  ::: footer</span>
-<span id="cb15-446"><a href="#cb15-446"></a>  <span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/lattice23`</span><span class="co">](https://saforem2.github.io/lattice23)</span></span>
-<span id="cb15-447"><a href="#cb15-447"></a>  :::</span>
-<span id="cb15-448"><a href="#cb15-448"></a></span>
-<span id="cb15-449"><a href="#cb15-449"></a>  <span class="in">```</span></span>
+<span id="cb15-445"><a href="#cb15-445"></a>  <span class="ot">[^notation]: </span>Here, $\sim$ means "is distributed according to"</span>
+<span id="cb15-446"><a href="#cb15-446"></a></span>
+<span id="cb15-447"><a href="#cb15-447"></a>  ::: footer</span>
+<span id="cb15-448"><a href="#cb15-448"></a>  <span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} `saforem2/lattice23`</span><span class="co">](https://saforem2.github.io/lattice23)</span></span>
+<span id="cb15-449"><a href="#cb15-449"></a>  :::</span>
 <span id="cb15-450"><a href="#cb15-450"></a></span>
-<span id="cb15-451"><a href="#cb15-451"></a>  &lt;/details&gt;</span>
+<span id="cb15-451"><a href="#cb15-451"></a>  <span class="in">```</span></span>
 <span id="cb15-452"><a href="#cb15-452"></a></span>
-<span id="cb15-453"><a href="#cb15-453"></a><span class="fu">## 💅 CSS</span></span>
+<span id="cb15-453"><a href="#cb15-453"></a>  <span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb15-454"><a href="#cb15-454"></a></span>
-<span id="cb15-455"><a href="#cb15-455"></a>My web developer friend laughs at me, but when something is broken / doesn't look right / I want it</span>
-<span id="cb15-456"><a href="#cb15-456"></a>to look different, I:</span>
-<span id="cb15-457"><a href="#cb15-457"></a></span>
-<span id="cb15-458"><a href="#cb15-458"></a><span class="ss">1. </span>Pull up Chrome Tools ( ⌘ + ⌥ + I )</span>
-<span id="cb15-459"><a href="#cb15-459"></a><span class="ss">2. </span>Inspect element of interest ( ⌘ + ⇧ + C )</span>
-<span id="cb15-460"><a href="#cb15-460"></a><span class="ss">3. </span>Make changes to the CSS</span>
-<span id="cb15-461"><a href="#cb15-461"></a><span class="ss">4. </span>Save the new rule to my <span class="in">`.scss`</span> file 🤷🏻‍♂️</span>
-<span id="cb15-462"><a href="#cb15-462"></a></span>
-<span id="cb15-463"><a href="#cb15-463"></a>I'm guessing this might be obvious to some people, but it took me a while to figure out how things</span>
-<span id="cb15-464"><a href="#cb15-464"></a>worked so maybe its helpful for others.</span>
-<span id="cb15-465"><a href="#cb15-465"></a></span>
-<span id="cb15-466"><a href="#cb15-466"></a>&lt;details closed&gt;&lt;summary&gt;Expand for &lt;code&gt;css&lt;/code&gt;&lt;/summary&gt;</span>
+<span id="cb15-455"><a href="#cb15-455"></a><span class="fu">## 💅 CSS</span></span>
+<span id="cb15-456"><a href="#cb15-456"></a></span>
+<span id="cb15-457"><a href="#cb15-457"></a>My web developer friend laughs at me, but when something is broken / doesn't look right / I want it</span>
+<span id="cb15-458"><a href="#cb15-458"></a>to look different, I:</span>
+<span id="cb15-459"><a href="#cb15-459"></a></span>
+<span id="cb15-460"><a href="#cb15-460"></a><span class="ss">1. </span>Pull up Chrome Tools ( ⌘ + ⌥ + I )</span>
+<span id="cb15-461"><a href="#cb15-461"></a><span class="ss">2. </span>Inspect element of interest ( ⌘ + ⇧ + C )</span>
+<span id="cb15-462"><a href="#cb15-462"></a><span class="ss">3. </span>Make changes to the CSS</span>
+<span id="cb15-463"><a href="#cb15-463"></a><span class="ss">4. </span>Save the new rule to my <span class="in">`.scss`</span> file 🤷🏻‍♂️</span>
+<span id="cb15-464"><a href="#cb15-464"></a></span>
+<span id="cb15-465"><a href="#cb15-465"></a>I'm guessing this might be obvious to some people, but it took me a while to figure out how things</span>
+<span id="cb15-466"><a href="#cb15-466"></a>worked so maybe its helpful for others.</span>
 <span id="cb15-467"><a href="#cb15-467"></a></span>
-<span id="cb15-468"><a href="#cb15-468"></a>::: {#fig-css style="text-align:center;"}</span>
+<span id="cb15-468"><a href="#cb15-468"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="ot"> closed</span><span class="dt">&gt;&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>Expand for <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>css<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
 <span id="cb15-469"><a href="#cb15-469"></a></span>
-<span id="cb15-470"><a href="#cb15-470"></a><span class="al">![](./assets/css.png)</span>{width="80%"}</span>
+<span id="cb15-470"><a href="#cb15-470"></a>::: {#fig-css style="text-align:center;"}</span>
 <span id="cb15-471"><a href="#cb15-471"></a></span>
-<span id="cb15-472"><a href="#cb15-472"></a>Example of selecting an element and making a change to the CSS.</span>
+<span id="cb15-472"><a href="#cb15-472"></a><span class="al">![](./assets/css.png)</span>{width="80%"}</span>
 <span id="cb15-473"><a href="#cb15-473"></a></span>
-<span id="cb15-474"><a href="#cb15-474"></a>:::</span>
+<span id="cb15-474"><a href="#cb15-474"></a>Example of selecting an element and making a change to the CSS.</span>
 <span id="cb15-475"><a href="#cb15-475"></a></span>
-<span id="cb15-476"><a href="#cb15-476"></a>&lt;/details&gt;</span>
+<span id="cb15-476"><a href="#cb15-476"></a>:::</span>
 <span id="cb15-477"><a href="#cb15-477"></a></span>
-<span id="cb15-478"><a href="#cb15-478"></a><span class="fu">## 📃 GitHub Page</span></span>
+<span id="cb15-478"><a href="#cb15-478"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span>
 <span id="cb15-479"><a href="#cb15-479"></a></span>
-<span id="cb15-480"><a href="#cb15-480"></a>To enable your GitHub page, you can do the following:</span>
+<span id="cb15-480"><a href="#cb15-480"></a><span class="fu">## 📃 GitHub Page</span></span>
 <span id="cb15-481"><a href="#cb15-481"></a></span>
-<span id="cb15-482"><a href="#cb15-482"></a>::: {#fig-github-page style="text-align:center;"}</span>
+<span id="cb15-482"><a href="#cb15-482"></a>To enable your GitHub page, you can do the following:</span>
 <span id="cb15-483"><a href="#cb15-483"></a></span>
-<span id="cb15-484"><a href="#cb15-484"></a><span class="al">![](./assets/github-pages.png)</span>{width="80%"}</span>
+<span id="cb15-484"><a href="#cb15-484"></a>::: {#fig-github-page style="text-align:center;"}</span>
 <span id="cb15-485"><a href="#cb15-485"></a></span>
-<span id="cb15-486"><a href="#cb15-486"></a>Instructions for building a GitHub page using the <span class="in">`docs/`</span> directory off the <span class="in">`main`</span> branch.</span>
+<span id="cb15-486"><a href="#cb15-486"></a><span class="al">![](./assets/github-pages.png)</span>{width="80%"}</span>
 <span id="cb15-487"><a href="#cb15-487"></a></span>
-<span id="cb15-488"><a href="#cb15-488"></a>:::</span>
+<span id="cb15-488"><a href="#cb15-488"></a>Instructions for building a GitHub page using the <span class="in">`docs/`</span> directory off the <span class="in">`main`</span> branch.</span>
 <span id="cb15-489"><a href="#cb15-489"></a></span>
-<span id="cb15-490"><a href="#cb15-490"></a>In this case, the repo is:</span>
+<span id="cb15-490"><a href="#cb15-490"></a>:::</span>
 <span id="cb15-491"><a href="#cb15-491"></a></span>
-<span id="cb15-492"><a href="#cb15-492"></a>{{&lt;fa brands github&gt;}} <span class="co">[</span><span class="ot">`saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
+<span id="cb15-492"><a href="#cb15-492"></a>In this case, the repo is:</span>
 <span id="cb15-493"><a href="#cb15-493"></a></span>
-<span id="cb15-494"><a href="#cb15-494"></a>and the site is published at</span>
+<span id="cb15-494"><a href="#cb15-494"></a>{{<span class="dt">&lt;</span><span class="kw">fa</span><span class="ot"> brands github</span><span class="dt">&gt;</span>}} <span class="co">[</span><span class="ot">`saforem2/lattice23`</span><span class="co">](https://github.com/saforem2/lattice23)</span></span>
 <span id="cb15-495"><a href="#cb15-495"></a></span>
-<span id="cb15-496"><a href="#cb15-496"></a><span class="co">[</span><span class="ot">https://saforem2.github.io/lattice23</span><span class="co">](https://saforem2.github.io/lattice23)</span></span>
+<span id="cb15-496"><a href="#cb15-496"></a>and the site is published at</span>
 <span id="cb15-497"><a href="#cb15-497"></a></span>
-<span id="cb15-498"><a href="#cb15-498"></a><span class="fu">## 📓 References</span></span>
+<span id="cb15-498"><a href="#cb15-498"></a><span class="co">[</span><span class="ot">https://saforem2.github.io/lattice23</span><span class="co">](https://saforem2.github.io/lattice23)</span></span>
 <span id="cb15-499"><a href="#cb15-499"></a></span>
-<span id="cb15-500"><a href="#cb15-500"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Reveal Themes</span><span class="co">](https://quarto.org/docs/presentations/revealjs/themes.html)</span></span>
-<span id="cb15-501"><a href="#cb15-501"></a><span class="ss">- </span>Using <span class="co">[</span><span class="ot">Pandoc fenced divs</span><span class="co">](https://thomasmock.quarto.pub/reports-presentations/#/pandoc-fenced-divs)</span></span>
-<span id="cb15-502"><a href="#cb15-502"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Slidecraft 101: Colors and Fonts</span><span class="co">](https://www.emilhvitfeldt.com/post/slidecraft-colors-fonts/)</span></span>
-<span id="cb15-503"><a href="#cb15-503"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beautiful Reports and Presentations with Quarto</span><span class="co">](https://thomasmock.quarto.pub/reports-presentations/#/title-slide)</span></span>
-<span id="cb15-504"><a href="#cb15-504"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} Quarto Clean Theme</span><span class="co">](https://github.com/grantmcdermott/quarto-revealjs-clean)</span></span>
-<span id="cb15-505"><a href="#cb15-505"></a></span>
-<span id="cb15-506"><a href="#cb15-506"></a></span>
-<span id="cb15-507"><a href="#cb15-507"></a>::: {.callout-tip icon=false title='<span class="co">[</span><span class="ot">❤️‍🩹 Status</span><span class="co">]</span>{style="color: #FF5252;"}' collapse="false" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
+<span id="cb15-500"><a href="#cb15-500"></a><span class="fu">## 📓 References</span></span>
+<span id="cb15-501"><a href="#cb15-501"></a></span>
+<span id="cb15-502"><a href="#cb15-502"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Reveal Themes</span><span class="co">](https://quarto.org/docs/presentations/revealjs/themes.html)</span></span>
+<span id="cb15-503"><a href="#cb15-503"></a><span class="ss">- </span>Using <span class="co">[</span><span class="ot">Pandoc fenced divs</span><span class="co">](https://thomasmock.quarto.pub/reports-presentations/#/pandoc-fenced-divs)</span></span>
+<span id="cb15-504"><a href="#cb15-504"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Slidecraft 101: Colors and Fonts</span><span class="co">](https://www.emilhvitfeldt.com/post/slidecraft-colors-fonts/)</span></span>
+<span id="cb15-505"><a href="#cb15-505"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beautiful Reports and Presentations with Quarto</span><span class="co">](https://thomasmock.quarto.pub/reports-presentations/#/title-slide)</span></span>
+<span id="cb15-506"><a href="#cb15-506"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt; fa brands github &gt;}} Quarto Clean Theme</span><span class="co">](https://github.com/grantmcdermott/quarto-revealjs-clean)</span></span>
+<span id="cb15-507"><a href="#cb15-507"></a></span>
 <span id="cb15-508"><a href="#cb15-508"></a></span>
-<span id="cb15-511"><a href="#cb15-511"></a><span class="in">```{python}</span></span>
-<span id="cb15-512"><a href="#cb15-512"></a><span class="co">#| echo: false</span></span>
-<span id="cb15-513"><a href="#cb15-513"></a><span class="im">import</span> datetime</span>
-<span id="cb15-514"><a href="#cb15-514"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span>
-<span id="cb15-515"><a href="#cb15-515"></a>now <span class="op">=</span> datetime.datetime.now()</span>
-<span id="cb15-516"><a href="#cb15-516"></a>day <span class="op">=</span> now.strftime(<span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>)</span>
-<span id="cb15-517"><a href="#cb15-517"></a>time <span class="op">=</span> now.strftime(<span class="st">'%H:%M:%S'</span>)</span>
-<span id="cb15-518"><a href="#cb15-518"></a><span class="bu">print</span>(<span class="st">' '</span>.join([</span>
-<span id="cb15-519"><a href="#cb15-519"></a>  <span class="st">"[dim italic]Last Updated[/]:"</span>,</span>
-<span id="cb15-520"><a href="#cb15-520"></a>  <span class="ss">f"[#F06292]</span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">[/]"</span>,</span>
-<span id="cb15-521"><a href="#cb15-521"></a>  <span class="ss">f"[dim]@[/]"</span>,</span>
-<span id="cb15-522"><a href="#cb15-522"></a>  <span class="ss">f"[#1A8FFF]</span><span class="sc">{</span>time<span class="sc">}</span><span class="ss">[/]"</span></span>
-<span id="cb15-523"><a href="#cb15-523"></a>]))</span>
-<span id="cb15-524"><a href="#cb15-524"></a><span class="in">```</span></span>
-<span id="cb15-525"><a href="#cb15-525"></a></span>
-<span id="cb15-526"><a href="#cb15-526"></a>&lt;p align="center"&gt;</span>
-<span id="cb15-527"><a href="#cb15-527"></a>&lt;a href="https://hits.seeyoufarm.com"&gt;&lt;img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"/&gt;&lt;/a&gt;</span>
-<span id="cb15-528"><a href="#cb15-528"></a>&lt;/p&gt;</span>
-<span id="cb15-529"><a href="#cb15-529"></a></span>
-<span id="cb15-530"><a href="#cb15-530"></a>:::</span>
+<span id="cb15-509"><a href="#cb15-509"></a>::: {.callout-tip icon=false title='<span class="co">[</span><span class="ot">❤️‍🩹 Status</span><span class="co">]</span>{style="color: #FF5252;"}' collapse="false" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;"}</span>
+<span id="cb15-510"><a href="#cb15-510"></a></span>
+<span id="cb15-513"><a href="#cb15-513"></a><span class="in">```{python}</span></span>
+<span id="cb15-514"><a href="#cb15-514"></a><span class="co">#| echo: false</span></span>
+<span id="cb15-515"><a href="#cb15-515"></a><span class="im">import</span> datetime</span>
+<span id="cb15-516"><a href="#cb15-516"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span>
+<span id="cb15-517"><a href="#cb15-517"></a>now <span class="op">=</span> datetime.datetime.now()</span>
+<span id="cb15-518"><a href="#cb15-518"></a>day <span class="op">=</span> now.strftime(<span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>)</span>
+<span id="cb15-519"><a href="#cb15-519"></a>time <span class="op">=</span> now.strftime(<span class="st">'%H:%M:%S'</span>)</span>
+<span id="cb15-520"><a href="#cb15-520"></a><span class="bu">print</span>(<span class="st">' '</span>.join([</span>
+<span id="cb15-521"><a href="#cb15-521"></a>  <span class="st">"[dim italic]Last Updated[/]:"</span>,</span>
+<span id="cb15-522"><a href="#cb15-522"></a>  <span class="ss">f"[#F06292]</span><span class="sc">{</span>day<span class="sc">}</span><span class="ss">[/]"</span>,</span>
+<span id="cb15-523"><a href="#cb15-523"></a>  <span class="ss">f"[dim]@[/]"</span>,</span>
+<span id="cb15-524"><a href="#cb15-524"></a>  <span class="ss">f"[#1A8FFF]</span><span class="sc">{</span>time<span class="sc">}</span><span class="ss">[/]"</span></span>
+<span id="cb15-525"><a href="#cb15-525"></a>]))</span>
+<span id="cb15-526"><a href="#cb15-526"></a><span class="in">```</span></span>
+<span id="cb15-527"><a href="#cb15-527"></a></span>
+<span id="cb15-528"><a href="#cb15-528"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="dt">&gt;</span></span>
+<span id="cb15-529"><a href="#cb15-529"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://hits.seeyoufarm.com"</span><span class="dt">&gt;&lt;</span><span class="kw">img</span><span class="ot"> align</span><span class="op">=</span><span class="st">"center"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F</span><span class="er">&amp;</span><span class="st">count_bg=%2300CCFF</span><span class="er">&amp;</span><span class="st">title_bg=%23303030</span><span class="er">&amp;</span><span class="st">icon=</span><span class="er">&amp;</span><span class="st">icon_color=%23E7E7E7</span><span class="er">&amp;</span><span class="st">title=hits</span><span class="er">&amp;</span><span class="st">edge_flat=false"</span><span class="dt">/&gt;&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb15-530"><a href="#cb15-530"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-531"><a href="#cb15-531"></a></span>
+<span id="cb15-532"><a href="#cb15-532"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

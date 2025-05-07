@@ -7,6 +7,7 @@ strip-comments: true
 #   # - static/fonts-iosevka/IosevkaTerm/IosevkaTerm.css
 format:
   html:
+    respect-user-color-scheme: true
     date-modified: last-modified
     link-external-newwindow: true
     link-external-icon: false
@@ -26,16 +27,17 @@ format:
     fig-align: center
     fig-responsive: true
     anchor-sections: true
-    highlight-style:
-      light: github
-      dark: github-dark
     code-overflow: scroll
     code-copy: hover
     code-summary: " "
-    html-math-method: katex
     citations-hover: true
-    footnotes-hover: true
     crossrefs-hover: true
+    html-math-method: katex
+    footnotes-hover: true
+    section-divs: true
+    highlight-style:
+      light: github
+      dark: github-dark
     css:
       - css/colors-oklch.min.css
       - css/custom.css
@@ -45,17 +47,7 @@ format:
       - static/fonts/MIosevkaterm/MIosevkaTerm.css
       # - static/fonts/IosevkaTerm/IosevkaTerm.css
       # - css/giscus.css
-    section-divs: true
     theme:
-      light:
-        - css/sam/callouts.scss
-        - css/global.scss
-        - css/now_playing.scss
-        - css/common.scss
-        - css/light.scss
-        - css/syntax-light.scss
-        - css/callout-cards.scss
-        - default
       dark:
         - css/sam/callouts.scss
         - css/global.scss
@@ -63,6 +55,15 @@ format:
         - css/common.scss
         - css/dark.scss
         - css/syntax-dark.scss
+        - css/callout-cards.scss
+        - default
+      light:
+        - css/sam/callouts.scss
+        - css/global.scss
+        - css/now_playing.scss
+        - css/common.scss
+        - css/light.scss
+        - css/syntax-light.scss
         - css/callout-cards.scss
         - default
     include-in-header:
@@ -81,15 +82,13 @@ format:
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- End Google Tag Manager (noscript) -->
 
-  gfm:
-    toc: true
   revealjs:
     auto-animate: true
     background-color: white
     comments: false
     # callout-style: simple
     citations-hover: true
-    code-line-numbers: true
+    code-line-numbers: false
     center: true
     code-overflow: scroll
     chalkboard:
@@ -115,12 +114,13 @@ format:
     slide-number: c
     touch: true
     css:
+      - css/navbar-active.css
       - css/colors-oklch.min.css
       - css/custom.css
       - css/svgbob.css
-      # - static/fonts/IosevkaQP/IosevkaQP.css
       - static/fonts/MIosevkaQp/MIosevkaQp.css
       - static/fonts/MIosevkaTerm/MIosevkaTerm.css
+      # - static/fonts/IosevkaQP/IosevkaQP.css
       # - static/fonts/IosevkaTerm/IosevkaTerm.css
       # - static/fonts/IosevkaTerm/IosevkaTerm.css
       # - static/fonts/IosevkaQP/IosevkaQP.css
@@ -145,3 +145,5 @@ format:
           <!-- Google Tag Manager (noscript) -->
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- End Google Tag Manager (noscript) -->
+  gfm:
+    toc: true

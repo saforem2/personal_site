@@ -3,7 +3,6 @@ Sam Foreman
 2024-08-23
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [🍋 `ezpz` v1](#lemon-ezpz-v1)
   - [👀 Overview](#eyes-overview)
@@ -18,6 +17,17 @@ Sam Foreman
   - [🛜 Setup Job](#wireless-setup-job)
   - [🐍 Setup Python](#snake-setup-python)
   - [📝 Test Setup](#pencil-test-setup)
+
+> [!NOTE]
+>
+> See [🍋 ezpz docs](https://saforem2.github.io/ezpz/) for more details.
+
+<details closed>
+
+<summary>
+
+🍋 `ezpz` v1
+</summary>
 
 ## 🍋 `ezpz` v1
 
@@ -1749,6 +1759,8 @@ Program: /home/foremans/tmp/foremans/2024-07-15-124441/venvs/2024-04-29/src/ezpz
 [2024-07-15 12:46:31.433122][INFO][test_dist:318] - [0] runtime=6.820802s
 Application 5ccc89be resources: utime=21s stime=21s maxrss=1383056KB inblock=8080 oublock=3456 minflt=659443 majflt=896 nvcsw=192077 nivcsw=672014
 ```
+
+</details>
 
 [^1]: `deepspeed`, `DDP` only support `pytorch`
 

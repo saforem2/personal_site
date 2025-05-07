@@ -3,7 +3,6 @@ Sam Foreman
 2024-10-30
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [🎯 AuroraGPT Goals](#dart-auroragpt-goals)
 - [🧪 AuroraGPT: Open Science Foundation
@@ -212,6 +211,8 @@ Table 1: Aurora Specs
 |  NICs | 84,992 |
 |   HBM | 8 PB   |
 | DDR5c | 10 PB  |
+
+Aurora Specs
 
 </div>
 

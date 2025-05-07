@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.43">
+<meta name="generator" content="quarto-1.8.2">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,8 +23,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -69,15 +70,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../posts/ai-for-physics/diffusion/index.html" rel="next">
 <link href="../../../posts/AuroraGPT/spike-skipper/index.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ce24374cd55da3e5692b85b778b2cfab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-4c939d6228d95bcdb4b0bf665daf6c17.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-d10c3a9e6902322a4770c56db7863b79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-3cb719820af5089d15fca36804308e9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -121,7 +123,6 @@ gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -151,7 +152,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -254,7 +255,176 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -383,6 +553,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../posts/aurora-frameworks-2025-numpy-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚧 Frameworks Issue with <code>numpy &gt; 2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">💅 How to Make Dope Slides</span></a>
   </div>
@@ -397,6 +573,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../posts/ezpz-v1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 ezpz-v1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/installing-pytorch-on-aurora/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔥 Building PyTorch from Source on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/resume/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👤 Résumé</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -506,31 +694,59 @@ window.Quarto = {
  <span class="menu-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">4dSU3nb</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  <a href="../../../posts/ai-for-physics/l2hmc-qcd/4dSU3nb/index-broken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🕸️ l2hmc-qcd Example: 4D SU(3)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">📗 Jupyter</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🏁 <code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">L2hmc</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/jupyter/l2hmc/4dSU3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
@@ -539,11 +755,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../talks/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎙️ Talks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../talks/ai-for-science-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -566,6 +782,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../talks/hpc-user-forum/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AuroraGPT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../talks/incite-hackathon-2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Large Language Models on Aurora</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -594,13 +816,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">AuroraGPT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -631,6 +853,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -796,7 +1019,7 @@ For examples, we can measure the start-up time for the <code>rank0</code>?</li>
 <span id="cb6-18"><a href="#cb6-18"></a>  <span class="ex">Job</span> started at: 2023-11-02-192739 on x3108c0s25b1n0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[{{< iconify octicon stopwatch-16 >}} Startup Times (Perlmutter)]{.dim-text}" style="text-align: left!important; width:100%; border-color: var(--dim-color)!important; background-color: var(--bg-transparent); background: rgba(0, 0, 0, 0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -815,6 +1038,7 @@ Table&nbsp;1: Startup times on Perlmutter
 <div aria-describedby="tbl-perlmutter-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="table-responsive">
 <table class="caption-top table">
+<caption>Startup times on Perlmutter</caption>
 <colgroup>
 <col style="width: 42%">
 <col style="width: 9%">
@@ -2191,436 +2415,311 @@ Foreman, Sam. 2024. <span>“🐢 Starting Up Distributed Training on
 Aurora.”</span> March 21, 2024. <a href="https://samforeman.me/posts/AuroraGPT/startup-times/">https://samforeman.me/posts/AuroraGPT/startup-times/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
     }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
     }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
     }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/samforeman\.me");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/samforeman\.me");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2628,189 +2727,193 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="dark">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "saforem2/personal_site";
+    script.dataset.repoId = "R_kgDOGbjyRw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
   }
-});
+  loadGiscus();
 </script>
-<script src="https://giscus.app/client.js" data-repo="saforem2/personal_site" data-repo-id="R_kgDOGbjyRw" data-category="General" data-category-id="DIC_kwDOGbjyR84CjWfk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../../posts/AuroraGPT/spike-skipper/index.html" class="pagination-link" aria-label="🏔️ Spike Skipper">
@@ -2875,7 +2978,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-50"><a href="#cb9-50"></a><span class="at">  &gt;</span></span>
 <span id="cb9-51"><a href="#cb9-51"></a><span class="at">  &gt;    ```bash</span></span>
 <span id="cb9-52"><a href="#cb9-52"></a><span class="at">  &gt;    Time stamp A:</span>  </span>
-<span id="cb9-53"><a href="#cb9-53"></a><span class="at">  &gt;    </span>&lt;actual python command using mpiexec&gt;</span>
+<span id="cb9-53"><a href="#cb9-53"></a><span class="at">  &gt;    </span><span class="dt">&lt;</span><span class="kw">actual</span><span class="ot"> python command using mpiexec</span><span class="dt">&gt;</span></span>
 <span id="cb9-54"><a href="#cb9-54"></a><span class="at">  &gt;</span></span>
 <span id="cb9-55"><a href="#cb9-55"></a><span class="at">  &gt;    Inside the model script:</span>  </span>
 <span id="cb9-56"><a href="#cb9-56"></a><span class="at">  &gt;    main()</span>  </span>
@@ -2901,7 +3004,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-76"><a href="#cb9-76"></a><span class="at">  &gt;    ```bash</span></span>
 <span id="cb9-77"><a href="#cb9-77"></a><span class="at">  &gt;    Job script:</span></span>
 <span id="cb9-78"><a href="#cb9-78"></a><span class="at">  &gt;    Time stamp A:</span></span>
-<span id="cb9-79"><a href="#cb9-79"></a><span class="at">  &gt;    </span>&lt;actual python command using mpiexec&gt;</span>
+<span id="cb9-79"><a href="#cb9-79"></a><span class="at">  &gt;    </span><span class="dt">&lt;</span><span class="kw">actual</span><span class="ot"> python command using mpiexec</span><span class="dt">&gt;</span></span>
 <span id="cb9-80"><a href="#cb9-80"></a><span class="at">  &gt;</span></span>
 <span id="cb9-81"><a href="#cb9-81"></a><span class="at">  &gt;    Time stamp B:</span></span>
 <span id="cb9-82"><a href="#cb9-82"></a><span class="at">  &gt;     import torch</span></span>
@@ -2992,127 +3095,127 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-167"><a href="#cb9-167"></a></span>
 <span id="cb9-168"><a href="#cb9-168"></a>::: {#tbl-perlmutter-init style="font-size: 0.8em;"}</span>
 <span id="cb9-169"><a href="#cb9-169"></a></span>
-<span id="cb9-170"><a href="#cb9-170"></a>| ****                                                                     | **model_size** | **world_size** | **start**            | **stop**             | **t0** | **t1** | **dt** |</span>
-<span id="cb9-171"><a href="#cb9-171"></a>|:------------------------------------------------------------------------:|:---------------:|:---------------:|:--------------------:|:--------------------:|:------:|:------:|:------:|</span>
-<span id="cb9-172"><a href="#cb9-172"></a>| <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191101.log`</span>           | GPT1T_1L       | 8               | 2023-10-05-191101 | 2023-10-05-191215 | 191101 | 191215 | 114    |</span>
-<span id="cb9-173"><a href="#cb9-173"></a>| <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191400.log`</span>         | GPT1T_1L       | 8               | 2023-10-05-191400 | 2023-10-05-191511 | 191400 | 191511 | 111    |</span>
-<span id="cb9-174"><a href="#cb9-174"></a>| <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191707.log`</span>         | GPT1T_1L       | 8               | 2023-10-05-191707 | 2023-10-05-191817 | 191707 | 191817 | 110    |</span>
-<span id="cb9-175"><a href="#cb9-175"></a>| <span class="in">`foremans-nid008553-nhosts2-ngpu8-2023-10-15-114506.log`</span>         | GPT1T_2L       | 8               | 2023-10-15-114506 | 2023-10-15-114616 | 114506 | 114616 | 110    |</span>
-<span id="cb9-176"><a href="#cb9-176"></a>| <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-133531.log`</span>         | GPT2_7B        | 8               | 2023-10-15-133531 | 2023-10-15-133745 | 133531 | 133745 | 214    |</span>
-<span id="cb9-177"><a href="#cb9-177"></a>| <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-135041.log`</span>         | GPT2_7B        | 8               | 2023-10-15-135041 | 2023-10-15-135255 | 135041 | 135255 | 214    |</span>
-<span id="cb9-178"><a href="#cb9-178"></a>| <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-140806.log`</span>         | GPT2_7B        | 8               | 2023-10-15-140806 | 2023-10-15-141236 | 140806 | 141236 | 430    |</span>
-<span id="cb9-179"><a href="#cb9-179"></a>| <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-143120.log`</span>         | GPT2_7B        | 8               | 2023-10-15-143120 | 2023-10-15-143655 | 143120 | 143655 | 535    |</span>
-<span id="cb9-180"><a href="#cb9-180"></a>| <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-154337.log`</span>         | GPT2_7B        | 8               | 2023-10-15-154337 | 2023-10-15-154446 | 154337 | 154446 | 109    |</span>
-<span id="cb9-181"><a href="#cb9-181"></a>| <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-154943.log`</span>         | GPT1T_1L       | 8               | 2023-10-15-154943 | 2023-10-15-155317 | 154943 | 155317 | 374    |</span>
-<span id="cb9-182"><a href="#cb9-182"></a>| <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-162315.log`</span>         | GPT1T_1L       | 8               | 2023-10-15-162315 | 2023-10-15-162441 | 162315 | 162441 | 126    |</span>
-<span id="cb9-183"><a href="#cb9-183"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-180714.log`</span>           | GPT2_7B        | 8               | 2023-10-15-180714 | 2023-10-15-180805 | 180714 | 180805 | 91     |</span>
-<span id="cb9-184"><a href="#cb9-184"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-181733.log`</span>           | GPT2_7B        | 8               | 2023-10-15-181733 | 2023-10-15-181834 | 181733 | 181834 | 101    |</span>
-<span id="cb9-185"><a href="#cb9-185"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-182228.log`</span>           | GPT1T_1L       | 8               | 2023-10-15-182228 | 2023-10-15-183031 | 182228 | 183031 | 803    |</span>
-<span id="cb9-186"><a href="#cb9-186"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-183345.log`</span>           | GPT1T_2L       | 8               | 2023-10-15-183345 | 2023-10-15-183750 | 183345 | 183750 | 405    |</span>
-<span id="cb9-187"><a href="#cb9-187"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-184442.log`</span>           | GPT1T_2L       | 8               | 2023-10-15-184442 | 2023-10-15-184727 | 184442 | 184727 | 285    |</span>
-<span id="cb9-188"><a href="#cb9-188"></a>| <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-185952.log`</span>           | GPT1T_1L       | 8               | 2023-10-15-185952 | 2023-10-15-190046 | 185952 | 190046 | 4094   |</span>
-<span id="cb9-189"><a href="#cb9-189"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-191508.log`</span>         | GPT2_7B        | 8               | 2023-10-15-191508 | 2023-10-15-191608 | 191508 | 191608 | 100    |</span>
-<span id="cb9-190"><a href="#cb9-190"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-192404.log`</span>         | GPT2_7B        | 8               | 2023-10-15-192404 | 2023-10-15-192504 | 192404 | 192504 | 100    |</span>
-<span id="cb9-191"><a href="#cb9-191"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-193041.log`</span>       | GPT2_7B        | 8               | 2023-10-15-193041 | 2023-10-15-193137 | 193041 | 193137 | 96     |</span>
-<span id="cb9-192"><a href="#cb9-192"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-193448.log`</span>       | GPT2_7B        | 8               | 2023-10-15-193448 | 2023-10-15-193540 | 193448 | 193540 | 92     |</span>
-<span id="cb9-193"><a href="#cb9-193"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-195802.log`</span>        | GPT1T_1L       | 16              | 2023-10-15-195802 | 2023-10-15-195904 | 195802 | 195904 | 102    |</span>
-<span id="cb9-194"><a href="#cb9-194"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-200019.log`</span>        | GPT2_7B        | 16              | 2023-10-15-200019 | 2023-10-15-200258 | 200019 | 200258 | 239    |</span>
-<span id="cb9-195"><a href="#cb9-195"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-200902.log`</span>        | GPT2_7B        | 16              | 2023-10-15-200902 | 2023-10-15-201239 | 200902 | 201239 | 337    |</span>
-<span id="cb9-196"><a href="#cb9-196"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-201524.log`</span>        | GPT2_7B        | 16              | 2023-10-15-201524 | 2023-10-15-201612 | 201524 | 201612 | 88     |</span>
-<span id="cb9-197"><a href="#cb9-197"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-201834.log`</span>        | GPT2_7B        | 16              | 2023-10-15-201834 | 2023-10-15-201923 | 201834 | 201923 | 89     |</span>
-<span id="cb9-198"><a href="#cb9-198"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-202402.log`</span>        | GPT2_7B        | 16              | 2023-10-15-202402 | 2023-10-15-202501 | 202402 | 202501 | 99     |</span>
-<span id="cb9-199"><a href="#cb9-199"></a>| <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-202606.log`</span>        | GPT2_7B        | 16              | 2023-10-15-202606 | 2023-10-15-202713 | 202606 | 202713 | 107    |</span>
-<span id="cb9-200"><a href="#cb9-200"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-084033.log`</span>       | GPT1T_1L       | 8               | 2023-10-16-084033 | 2023-10-16-084212 | 84033  | 84212  | 179    |</span>
-<span id="cb9-201"><a href="#cb9-201"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-084628.log`</span>       | GPT1T_1L       | 8               | 2023-10-16-084628 | 2023-10-16-084728 | 84628  | 84728  | 100    |</span>
-<span id="cb9-202"><a href="#cb9-202"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-085401.log`</span>       | GPT1T_1L       | 8               | 2023-10-16-085401 | 2023-10-16-085505 | 85401  | 85505  | 104    |</span>
-<span id="cb9-203"><a href="#cb9-203"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-090142.log`</span>       | GPT1T_1L       | 8               | 2023-10-16-090142 | 2023-10-16-090305 | 90142  | 90305  | 163    |</span>
-<span id="cb9-204"><a href="#cb9-204"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-093404.log`</span>       | actCkpt_GPT13B | 8               | 2023-10-16-093404 | 2023-10-16-093504 | 93404  | 93504  | 100    |</span>
-<span id="cb9-205"><a href="#cb9-205"></a>| <span class="in">`foremans-nid008572-nhosts4-ngpu16-2023-10-16-101437.log`</span>      | GPT1T_1L       | 16              | 2023-10-16-101437 | 2023-10-16-101549 | 101437 | 101549 | 112    |</span>
-<span id="cb9-206"><a href="#cb9-206"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-101512.log`</span>      | GPT1T_1L       | 16              | 2023-10-16-101512 | 2023-10-16-101615 | 101512 | 101615 | 103    |</span>
-<span id="cb9-207"><a href="#cb9-207"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-102217.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-102217 | 2023-10-16-102452 | 102217 | 102452 | 235    |</span>
-<span id="cb9-208"><a href="#cb9-208"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-102750.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-102750 | 2023-10-16-103243 | 102750 | 103243 | 493    |</span>
-<span id="cb9-209"><a href="#cb9-209"></a>| <span class="in">`foremans-nid008572-nhosts4-ngpu16-2023-10-16-103113.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-103113 | 2023-10-16-103237 | 103113 | 103237 | 124    |</span>
-<span id="cb9-210"><a href="#cb9-210"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-104037.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-104037 | 2023-10-16-104148 | 104037 | 104148 | 111    |</span>
-<span id="cb9-211"><a href="#cb9-211"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-104819.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-104819 | 2023-10-16-110002 | 104819 | 110002 | 5183   |</span>
-<span id="cb9-212"><a href="#cb9-212"></a>| <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-110119.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-110119 | 2023-10-16-110225 | 110119 | 110225 | 106    |</span>
-<span id="cb9-213"><a href="#cb9-213"></a>| <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-113715.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-16-113715 | 2023-10-16-113824 | 113715 | 113824 | 109    |</span>
-<span id="cb9-214"><a href="#cb9-214"></a>| <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114236.log`</span>      | GPT1T_1L       | 16              | 2023-10-16-114236 | 2023-10-16-114338 | 114236 | 114338 | 102    |</span>
-<span id="cb9-215"><a href="#cb9-215"></a>| <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114610.log`</span>      | GPT1T_1L       | 16              | 2023-10-16-114610 | 2023-10-16-114711 | 114610 | 114711 | 101    |</span>
-<span id="cb9-216"><a href="#cb9-216"></a>| <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114819.log`</span>      | GPT1T_2L       | 16              | 2023-10-16-114819 | 2023-10-16-114953 | 114819 | 114953 | 134    |</span>
-<span id="cb9-217"><a href="#cb9-217"></a>| <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-131058.log`</span>      | GPT1T_2L       | 16              | 2023-10-16-131058 | 2023-10-16-131203 | 131058 | 131203 | 145    |</span>
-<span id="cb9-218"><a href="#cb9-218"></a>| <span class="in">`foremans-nid008576-nhosts1-ngpu4-2023-10-16-151427.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-151427 | 2023-10-16-151600 | 151427 | 151600 | 173    |</span>
-<span id="cb9-219"><a href="#cb9-219"></a>| <span class="in">`foremans-nid008576-nhosts1-ngpu4-2023-10-16-152528.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-152528 | 2023-10-16-152640 | 152528 | 152640 | 112    |</span>
-<span id="cb9-220"><a href="#cb9-220"></a>| <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-175717.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-175717 | 2023-10-16-175829 | 175717 | 175829 | 112    |</span>
-<span id="cb9-221"><a href="#cb9-221"></a>| <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-180457.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-180457 | 2023-10-16-180605 | 180457 | 180605 | 148    |</span>
-<span id="cb9-222"><a href="#cb9-222"></a>| <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-183116.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-183116 | 2023-10-16-183216 | 183116 | 183216 | 100    |</span>
-<span id="cb9-223"><a href="#cb9-223"></a>| <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-183921.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-183921 | 2023-10-16-184033 | 183921 | 184033 | 112    |</span>
-<span id="cb9-224"><a href="#cb9-224"></a>| <span class="in">`foremans-nid008237-nhosts1-ngpu4-2023-10-16-215614.log`</span>       | GPT1T_1L       | 4               | 2023-10-16-215614 | 2023-10-16-215815 | 215614 | 215815 | 201    |</span>
-<span id="cb9-225"><a href="#cb9-225"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-052944.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-052944 | 2023-10-17-053139 | 52944  | 53139  | 195    |</span>
-<span id="cb9-226"><a href="#cb9-226"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-053529.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-053529 | 2023-10-17-053650 | 53529  | 53650  | 121    |</span>
-<span id="cb9-227"><a href="#cb9-227"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-053910.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-053910 | 2023-10-17-054120 | 53910  | 54120  | 210    |</span>
-<span id="cb9-228"><a href="#cb9-228"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-054238.log`</span>       | GPT2_7B        | 4               | 2023-10-17-054238 | 2023-10-17-054346 | 54238  | 54346  | 108    |</span>
-<span id="cb9-229"><a href="#cb9-229"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-060418.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-060418 | 2023-10-17-060600 | 60418  | 60600  | 182    |</span>
-<span id="cb9-230"><a href="#cb9-230"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-061514.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-061514 | 2023-10-17-061653 | 61514  | 61653  | 139    |</span>
-<span id="cb9-231"><a href="#cb9-231"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-062102.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-062102 | 2023-10-17-062252 | 62102  | 62252  | 150    |</span>
-<span id="cb9-232"><a href="#cb9-232"></a>| <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-062445.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-062445 | 2023-10-17-062720 | 62445  | 62720  | 275    |</span>
-<span id="cb9-233"><a href="#cb9-233"></a>| <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-064643.log`</span>       | GPT1T_1L       | 8               | 2023-10-17-064643 | 2023-10-17-064848 | 64643  | 64848  | 205    |</span>
-<span id="cb9-234"><a href="#cb9-234"></a>| <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-065806.log`</span>       | GPT1T_2L       | 8               | 2023-10-17-065806 | 2023-10-17-070003 | 65806  | 70003  | 4197   |</span>
-<span id="cb9-235"><a href="#cb9-235"></a>| <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-075152.log`</span>       | GPT1T_2L       | 8               | 2023-10-17-075152 | 2023-10-17-075502 | 75152  | 75502  | 350    |</span>
-<span id="cb9-236"><a href="#cb9-236"></a>| <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-080059.log`</span>       | GPT1T_2L       | 8               | 2023-10-17-080059 | 2023-10-17-080434 | 80059  | 80434  | 375    |</span>
-<span id="cb9-237"><a href="#cb9-237"></a>| <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-081404.log`</span>      | GPT1T_2L       | 8               | 2023-10-17-081404 | 2023-10-17-081920 | 81404  | 81920  | 516    |</span>
-<span id="cb9-238"><a href="#cb9-238"></a>| <span class="in">`foremans-nid008228-nhosts1-ngpu4-2023-10-17-090344.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-090344 | 2023-10-17-090714 | 90344  | 90714  | 370    |</span>
-<span id="cb9-239"><a href="#cb9-239"></a>| <span class="in">`foremans-nid008228-nhosts1-ngpu4-2023-10-17-100759.log`</span>       | GPT1T_1L       | 4               | 2023-10-17-100759 | 2023-10-17-100957 | 100759 | 100957 | 198    |</span>
-<span id="cb9-240"><a href="#cb9-240"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-182501.log`</span>      | GPT1T_1L       | 16              | 2023-10-17-182501 | 2023-10-17-184001 | 182501 | 184001 | 1500   |</span>
-<span id="cb9-241"><a href="#cb9-241"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-193736.log`</span>      | GPT1T_1L       | 16              | 2023-10-17-193736 | 2023-10-17-193856 | 193736 | 193856 | 120    |</span>
-<span id="cb9-242"><a href="#cb9-242"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-195432.log`</span>      | GPT1T_1L       | 16              | 2023-10-17-195432 | 2023-10-17-195536 | 195432 | 195536 | 104    |</span>
-<span id="cb9-243"><a href="#cb9-243"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-201659.log`</span>      | GPT1T_2L       | 16              | 2023-10-17-201659 | 2023-10-17-201823 | 201659 | 201823 | 164    |</span>
-<span id="cb9-244"><a href="#cb9-244"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-202949.log`</span>      | GPT1T_2L       | 16              | 2023-10-17-202949 | 2023-10-17-203054 | 202949 | 203054 | 105    |</span>
-<span id="cb9-245"><a href="#cb9-245"></a>| <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-205848.log`</span>      | GPT1T_1L       | 16              | 2023-10-17-205848 | 2023-10-17-205952 | 205848 | 205952 | 104    |</span>
-<span id="cb9-246"><a href="#cb9-246"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-213244.log`</span>      | GPT1T_1L       | 32              | 2023-10-17-213244 | 2023-10-17-213406 | 213244 | 213406 | 162    |</span>
-<span id="cb9-247"><a href="#cb9-247"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-213558.log`</span>      | GPT1T_1L       | 32              | 2023-10-17-213558 | 2023-10-17-213720 | 213558 | 213720 | 162    |</span>
-<span id="cb9-248"><a href="#cb9-248"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-214900.log`</span>      | GPT1T_2L       | 32              | 2023-10-17-214900 | 2023-10-17-214959 | 214900 | 214959 | 59     |</span>
-<span id="cb9-249"><a href="#cb9-249"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215201.log`</span>      | GPT1T_2L       | 32              | 2023-10-17-215201 | 2023-10-17-215309 | 215201 | 215309 | 108    |</span>
-<span id="cb9-250"><a href="#cb9-250"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215612.log`</span>      | GPT1T_2L       | 32              | 2023-10-17-215612 | 2023-10-17-215726 | 215612 | 215726 | 114    |</span>
-<span id="cb9-251"><a href="#cb9-251"></a>| <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215938.log`</span>    | GPT1T_2L       | 32              | 2023-10-17-215938 | 2023-10-17-220044 | 215938 | 220044 | 4106   |</span>
-<span id="cb9-252"><a href="#cb9-252"></a>| <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-110001.log`</span>    | GPT1T_4L       | 32              | 2023-10-18-110001 | 2023-10-18-110143 | 110001 | 110143 | 142    |</span>
-<span id="cb9-253"><a href="#cb9-253"></a>| <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-110424.log`</span>     | GPT1T_8L       | 32              | 2023-10-18-110424 | 2023-10-18-110550 | 110424 | 110550 | 126    |</span>
-<span id="cb9-254"><a href="#cb9-254"></a>| <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-110821.log`</span>     | GPT1T_8L       | 16              | 2023-10-18-110821 | 2023-10-18-110952 | 110821 | 110952 | 131    |</span>
-<span id="cb9-255"><a href="#cb9-255"></a>| <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-111345.log`</span>     | GPT1T_8L       | 32              | 2023-10-18-111345 | 2023-10-18-111458 | 111345 | 111458 | 113    |</span>
-<span id="cb9-256"><a href="#cb9-256"></a>| <span class="in">`foremans-nid008197-nhosts16-ngpu64-2023-10-18-112531.log`</span> | GPT1T_16L      | 64              | 2023-10-18-112531 | 2023-10-18-112728 | 112531 | 112728 | 197    |</span>
-<span id="cb9-257"><a href="#cb9-257"></a>| <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-113119.log`</span> | GPT1T_16L      | 64              | 2023-10-18-113119 | 2023-10-18-113343 | 113119 | 113343 | 224    |</span>
-<span id="cb9-258"><a href="#cb9-258"></a>| <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-113131.log`</span>     | GPT1T_4L       | 16              | 2023-10-18-113131 | 2023-10-18-113257 | 113131 | 113257 | 126    |</span>
-<span id="cb9-259"><a href="#cb9-259"></a>| <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-113920.log`</span>      | GPT1T_4L       | 16              | 2023-10-18-113920 | 2023-10-18-114157 | 113920 | 114157 | 237    |</span>
-<span id="cb9-260"><a href="#cb9-260"></a>| <span class="in">`foremans-nid008197-nhosts16-ngpu64-2023-10-18-114549.log`</span>     | GPT1T_16L      | 64              | 2023-10-18-114549 | 2023-10-18-114721 | 114549 | 114721 | 172    |</span>
-<span id="cb9-261"><a href="#cb9-261"></a>| <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-114636.log`</span>     | GPT1T_16L      | 64              | 2023-10-18-114636 | 2023-10-18-114805 | 114636 | 114805 | 169    |</span>
-<span id="cb9-262"><a href="#cb9-262"></a>| <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-115808.log`</span>     | GPT1T_4L       | 16              | 2023-10-18-115808 | 2023-10-18-120146 | 115808 | 120146 | 4338   |</span>
-<span id="cb9-263"><a href="#cb9-263"></a>| <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-123039.log`</span>     | GPT1T_16L      | 64              | 2023-10-18-123039 | 2023-10-18-123221 | 123039 | 123221 | 182    |</span>
-<span id="cb9-264"><a href="#cb9-264"></a>| <span class="in">`foremans-nid008389-nhosts2-ngpu8-2023-10-18-123135.log`</span>       | GPT1T_4L       | 8               | 2023-10-18-123135 | 2023-10-18-123300 | 123135 | 123300 | 165    |</span>
-<span id="cb9-265"><a href="#cb9-265"></a>| <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-123206.log`</span>      | GPT1T_4L       | 16              | 2023-10-18-123206 | 2023-10-18-123352 | 123206 | 123352 | 146    |</span>
-<span id="cb9-266"><a href="#cb9-266"></a>| <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-125022.log`</span>     | GPT1T_16L      | 64              | 2023-10-18-125022 | 2023-10-18-125146 | 125022 | 125146 | 124    |</span>
-<span id="cb9-267"><a href="#cb9-267"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-122736.log`</span>     | GPT1T_8L       | 32              | 2023-10-22-122736 | 2023-10-22-122844 | 122736 | 122844 | 108    |</span>
-<span id="cb9-268"><a href="#cb9-268"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-123824.log`</span>     | GPT1T_8L       | 32              | 2023-10-22-123824 | 2023-10-22-123945 | 123824 | 123945 | 121    |</span>
-<span id="cb9-269"><a href="#cb9-269"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-130148.log`</span>     | GPT1T_8L       | 32              | 2023-10-22-130148 | 2023-10-22-130256 | 130148 | 130256 | 108    |</span>
-<span id="cb9-270"><a href="#cb9-270"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-131746.log`</span>     | GPT1T_8L       | 32              | 2023-10-22-131746 | 2023-10-22-131909 | 131746 | 131909 | 163    |</span>
-<span id="cb9-271"><a href="#cb9-271"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-132700.log`</span>     | GPT1T_8L       | 32              | 2023-10-22-132700 | 2023-10-22-132817 | 132700 | 132817 | 117    |</span>
-<span id="cb9-272"><a href="#cb9-272"></a>| <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-133459.log`</span>      | GPT1T_8L       | 32              | 2023-10-22-133459 | 2023-10-22-133708 | 133459 | 133708 | 249    |</span>
-<span id="cb9-273"><a href="#cb9-273"></a>| <span class="in">`foremans-nid008380-nhosts4-ngpu16-2023-10-22-175049.log`</span>      | actCkpt_GPT25B | 16              | 2023-10-22-175049 | 2023-10-22-175230 | 175049 | 175230 | 181    |</span>
-<span id="cb9-274"><a href="#cb9-274"></a>| <span class="in">`foremans-nid008649-nhosts4-ngpu16-2023-10-22-192352.log`</span>      | GPT1T_4L       | 16              | 2023-10-22-192352 | 2023-10-22-192530 | 192352 | 192530 | 178    |</span>
-<span id="cb9-275"><a href="#cb9-275"></a>| <span class="in">`foremans-nid008212-nhosts16-ngpu64-2023-10-23-081527.log`</span>     | GPT1T_8L       | 64              | 2023-10-23-081527 | 2023-10-23-081702 | 81527  | 81702  | 175    |</span>
-<span id="cb9-276"><a href="#cb9-276"></a>| <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-23-091436.log`</span>       | GPT1T_2L       | 8               | 2023-10-23-091436 | 2023-10-23-091610 | 91436  | 91610  | 174    |</span>
-<span id="cb9-277"><a href="#cb9-277"></a>| <span class="in">`foremans-nid008197-nhosts32-ngpu128-2023-10-24-102617.log`</span>    | GPT1T_32L      | 128             | 2023-10-24-102617 | 2023-10-24-102826 | 102617 | 102826 | 209    |</span>
-<span id="cb9-278"><a href="#cb9-278"></a>| <span class="in">`foremans-nid008192-nhosts64-ngpu256-2023-10-24-191748.log`</span>    | GPT1T_64L      | 256             | 2023-10-24-191748 | 2023-10-24-192021 | 191748 | 192021 | 273    |</span>
-<span id="cb9-279"><a href="#cb9-279"></a>| <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-10-24-201243.log`</span>   | GPT1T_128L     | 512             | 2023-10-24-201243 | 2023-10-24-201629 | 201243 | 201629 | 386    |</span>
-<span id="cb9-280"><a href="#cb9-280"></a>| <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-10-26-005401.log`</span>   | GPT1T_128L     | 512             | 2023-10-26-005401 | 2023-10-26-005811 | 5401   | 5811   | 410    |</span>
-<span id="cb9-281"><a href="#cb9-281"></a>| <span class="in">`foremans-nid008192-nhosts32-ngpu128-2023-10-26-082710.log`</span>    | GPT1T_32L      | 128             | 2023-10-26-082710 | 2023-10-26-083049 | 82710  | 83049  | 339    |</span>
-<span id="cb9-282"><a href="#cb9-282"></a>| <span class="in">`foremans-nid008585-nhosts2-ngpu8-2023-10-31-044203.log`</span>       | GPT1T_2L       | 8               | 2023-10-31-044203 | 2023-10-31-044533 | 44203  | 44533  | 330    |</span>
-<span id="cb9-283"><a href="#cb9-283"></a>| <span class="in">`foremans-nid008272-nhosts4-ngpu16-2023-10-31-072717.log`</span>      | GPT1T_4L       | 16              | 2023-10-31-072717 | 2023-10-31-073131 | 72717  | 73131  | 414    |</span>
-<span id="cb9-284"><a href="#cb9-284"></a>| <span class="in">`foremans-nid008221-nhosts8-ngpu32-2023-10-31-083055.log`</span>      | GPT1T_8L       | 32              | 2023-10-31-083055 | 2023-10-31-083545 | 83055  | 83545  | 490    |</span>
-<span id="cb9-285"><a href="#cb9-285"></a>| <span class="in">`foremans-nid008196-nhosts16-ngpu64-2023-10-31-100336.log`</span>     | GPT1T_16L      | 64              | 2023-10-31-100336 | 2023-10-31-100848 | 100336 | 100848 | 512    |</span>
-<span id="cb9-286"><a href="#cb9-286"></a>| <span class="in">`foremans-nid008285-nhosts2-ngpu8-2023-11-01-200430.log`</span>       | GPT1T_2L       | 8               | 2023-11-01-200430 | 2023-11-01-200829 | 200430 | 200829 | 399    |</span>
-<span id="cb9-287"><a href="#cb9-287"></a>| <span class="in">`foremans-nid008193-nhosts8-ngpu32-2023-11-01-201702.log`</span>      | GPT1T_8L       | 32              | 2023-11-01-201702 | 2023-11-01-202131 | 201702 | 202131 | 429    |</span>
-<span id="cb9-288"><a href="#cb9-288"></a>| <span class="in">`foremans-nid008240-nhosts16-ngpu64-2023-11-01-210454.log`</span>     | GPT1T_16L      | 64              | 2023-11-01-210454 | 2023-11-01-211007 | 210454 | 211007 | 553    |</span>
-<span id="cb9-289"><a href="#cb9-289"></a>| <span class="in">`foremans-nid008321-nhosts2-ngpu8-2023-11-02-154438.log`</span>       | GPT1T_2L       | 8               | 2023-11-02-154438 | 2023-11-02-154949 | 154438 | 154949 | 511    |</span>
-<span id="cb9-290"><a href="#cb9-290"></a>| <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-11-04-001717.log`</span>   | GPT1T_128L     | 512             | 2023-11-04-001717 | 2023-11-04-002124 | 1717   | 2124   | 407    |</span>
+<span id="cb9-170"><a href="#cb9-170"></a><span class="pp">|</span> ****                                                                     <span class="pp">|</span> **model_size** | **world_size** | **start**            | **stop**             | **t0** | **t1** | **dt** <span class="pp">|</span></span>
+<span id="cb9-171"><a href="#cb9-171"></a><span class="pp">|:------------------------------------------------------------------------:|:---------------:|:---------------:|:--------------------:|:--------------------:|:------:|:------:|:------:|</span></span>
+<span id="cb9-172"><a href="#cb9-172"></a><span class="pp">|</span> <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191101.log`</span>           <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-05-191101 <span class="pp">|</span> 2023-10-05-191215 <span class="pp">|</span> 191101 <span class="pp">|</span> 191215 <span class="pp">|</span> 114    <span class="pp">|</span></span>
+<span id="cb9-173"><a href="#cb9-173"></a><span class="pp">|</span> <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191400.log`</span>         <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-05-191400 <span class="pp">|</span> 2023-10-05-191511 <span class="pp">|</span> 191400 <span class="pp">|</span> 191511 <span class="pp">|</span> 111    <span class="pp">|</span></span>
+<span id="cb9-174"><a href="#cb9-174"></a><span class="pp">|</span> <span class="in">`foremans-nid008217-nhosts2-ngpu8-2023-10-05-191707.log`</span>         <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-05-191707 <span class="pp">|</span> 2023-10-05-191817 <span class="pp">|</span> 191707 <span class="pp">|</span> 191817 <span class="pp">|</span> 110    <span class="pp">|</span></span>
+<span id="cb9-175"><a href="#cb9-175"></a><span class="pp">|</span> <span class="in">`foremans-nid008553-nhosts2-ngpu8-2023-10-15-114506.log`</span>         <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-114506 <span class="pp">|</span> 2023-10-15-114616 <span class="pp">|</span> 114506 <span class="pp">|</span> 114616 <span class="pp">|</span> 110    <span class="pp">|</span></span>
+<span id="cb9-176"><a href="#cb9-176"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-133531.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-133531 <span class="pp">|</span> 2023-10-15-133745 <span class="pp">|</span> 133531 <span class="pp">|</span> 133745 <span class="pp">|</span> 214    <span class="pp">|</span></span>
+<span id="cb9-177"><a href="#cb9-177"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-135041.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-135041 <span class="pp">|</span> 2023-10-15-135255 <span class="pp">|</span> 135041 <span class="pp">|</span> 135255 <span class="pp">|</span> 214    <span class="pp">|</span></span>
+<span id="cb9-178"><a href="#cb9-178"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-140806.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-140806 <span class="pp">|</span> 2023-10-15-141236 <span class="pp">|</span> 140806 <span class="pp">|</span> 141236 <span class="pp">|</span> 430    <span class="pp">|</span></span>
+<span id="cb9-179"><a href="#cb9-179"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts2-ngpu8-2023-10-15-143120.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-143120 <span class="pp">|</span> 2023-10-15-143655 <span class="pp">|</span> 143120 <span class="pp">|</span> 143655 <span class="pp">|</span> 535    <span class="pp">|</span></span>
+<span id="cb9-180"><a href="#cb9-180"></a><span class="pp">|</span> <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-154337.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-154337 <span class="pp">|</span> 2023-10-15-154446 <span class="pp">|</span> 154337 <span class="pp">|</span> 154446 <span class="pp">|</span> 109    <span class="pp">|</span></span>
+<span id="cb9-181"><a href="#cb9-181"></a><span class="pp">|</span> <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-154943.log`</span>         <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-154943 <span class="pp">|</span> 2023-10-15-155317 <span class="pp">|</span> 154943 <span class="pp">|</span> 155317 <span class="pp">|</span> 374    <span class="pp">|</span></span>
+<span id="cb9-182"><a href="#cb9-182"></a><span class="pp">|</span> <span class="in">`foremans-nid008268-nhosts2-ngpu8-2023-10-15-162315.log`</span>         <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-162315 <span class="pp">|</span> 2023-10-15-162441 <span class="pp">|</span> 162315 <span class="pp">|</span> 162441 <span class="pp">|</span> 126    <span class="pp">|</span></span>
+<span id="cb9-183"><a href="#cb9-183"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-180714.log`</span>           <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-180714 <span class="pp">|</span> 2023-10-15-180805 <span class="pp">|</span> 180714 <span class="pp">|</span> 180805 <span class="pp">|</span> 91     <span class="pp">|</span></span>
+<span id="cb9-184"><a href="#cb9-184"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-181733.log`</span>           <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-181733 <span class="pp">|</span> 2023-10-15-181834 <span class="pp">|</span> 181733 <span class="pp">|</span> 181834 <span class="pp">|</span> 101    <span class="pp">|</span></span>
+<span id="cb9-185"><a href="#cb9-185"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-182228.log`</span>           <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-182228 <span class="pp">|</span> 2023-10-15-183031 <span class="pp">|</span> 182228 <span class="pp">|</span> 183031 <span class="pp">|</span> 803    <span class="pp">|</span></span>
+<span id="cb9-186"><a href="#cb9-186"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-183345.log`</span>           <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-183345 <span class="pp">|</span> 2023-10-15-183750 <span class="pp">|</span> 183345 <span class="pp">|</span> 183750 <span class="pp">|</span> 405    <span class="pp">|</span></span>
+<span id="cb9-187"><a href="#cb9-187"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-184442.log`</span>           <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-184442 <span class="pp">|</span> 2023-10-15-184727 <span class="pp">|</span> 184442 <span class="pp">|</span> 184727 <span class="pp">|</span> 285    <span class="pp">|</span></span>
+<span id="cb9-188"><a href="#cb9-188"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts2-ngpu8-2023-10-15-185952.log`</span>           <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-185952 <span class="pp">|</span> 2023-10-15-190046 <span class="pp">|</span> 185952 <span class="pp">|</span> 190046 <span class="pp">|</span> 4094   <span class="pp">|</span></span>
+<span id="cb9-189"><a href="#cb9-189"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-191508.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-191508 <span class="pp">|</span> 2023-10-15-191608 <span class="pp">|</span> 191508 <span class="pp">|</span> 191608 <span class="pp">|</span> 100    <span class="pp">|</span></span>
+<span id="cb9-190"><a href="#cb9-190"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-192404.log`</span>         <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-192404 <span class="pp">|</span> 2023-10-15-192504 <span class="pp">|</span> 192404 <span class="pp">|</span> 192504 <span class="pp">|</span> 100    <span class="pp">|</span></span>
+<span id="cb9-191"><a href="#cb9-191"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-193041.log`</span>       <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-193041 <span class="pp">|</span> 2023-10-15-193137 <span class="pp">|</span> 193041 <span class="pp">|</span> 193137 <span class="pp">|</span> 96     <span class="pp">|</span></span>
+<span id="cb9-192"><a href="#cb9-192"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-15-193448.log`</span>       <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-15-193448 <span class="pp">|</span> 2023-10-15-193540 <span class="pp">|</span> 193448 <span class="pp">|</span> 193540 <span class="pp">|</span> 92     <span class="pp">|</span></span>
+<span id="cb9-193"><a href="#cb9-193"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-195802.log`</span>        <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-195802 <span class="pp">|</span> 2023-10-15-195904 <span class="pp">|</span> 195802 <span class="pp">|</span> 195904 <span class="pp">|</span> 102    <span class="pp">|</span></span>
+<span id="cb9-194"><a href="#cb9-194"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-200019.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-200019 <span class="pp">|</span> 2023-10-15-200258 <span class="pp">|</span> 200019 <span class="pp">|</span> 200258 <span class="pp">|</span> 239    <span class="pp">|</span></span>
+<span id="cb9-195"><a href="#cb9-195"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-200902.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-200902 <span class="pp">|</span> 2023-10-15-201239 <span class="pp">|</span> 200902 <span class="pp">|</span> 201239 <span class="pp">|</span> 337    <span class="pp">|</span></span>
+<span id="cb9-196"><a href="#cb9-196"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-201524.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-201524 <span class="pp">|</span> 2023-10-15-201612 <span class="pp">|</span> 201524 <span class="pp">|</span> 201612 <span class="pp">|</span> 88     <span class="pp">|</span></span>
+<span id="cb9-197"><a href="#cb9-197"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-201834.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-201834 <span class="pp">|</span> 2023-10-15-201923 <span class="pp">|</span> 201834 <span class="pp">|</span> 201923 <span class="pp">|</span> 89     <span class="pp">|</span></span>
+<span id="cb9-198"><a href="#cb9-198"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-202402.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-202402 <span class="pp">|</span> 2023-10-15-202501 <span class="pp">|</span> 202402 <span class="pp">|</span> 202501 <span class="pp">|</span> 99     <span class="pp">|</span></span>
+<span id="cb9-199"><a href="#cb9-199"></a><span class="pp">|</span> <span class="in">`foremans-login12-nhosts4-ngpu16-2023-10-15-202606.log`</span>        <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-15-202606 <span class="pp">|</span> 2023-10-15-202713 <span class="pp">|</span> 202606 <span class="pp">|</span> 202713 <span class="pp">|</span> 107    <span class="pp">|</span></span>
+<span id="cb9-200"><a href="#cb9-200"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-084033.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-16-084033 <span class="pp">|</span> 2023-10-16-084212 <span class="pp">|</span> 84033  <span class="pp">|</span> 84212  <span class="pp">|</span> 179    <span class="pp">|</span></span>
+<span id="cb9-201"><a href="#cb9-201"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-084628.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-16-084628 <span class="pp">|</span> 2023-10-16-084728 <span class="pp">|</span> 84628  <span class="pp">|</span> 84728  <span class="pp">|</span> 100    <span class="pp">|</span></span>
+<span id="cb9-202"><a href="#cb9-202"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-085401.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-16-085401 <span class="pp">|</span> 2023-10-16-085505 <span class="pp">|</span> 85401  <span class="pp">|</span> 85505  <span class="pp">|</span> 104    <span class="pp">|</span></span>
+<span id="cb9-203"><a href="#cb9-203"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-090142.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-16-090142 <span class="pp">|</span> 2023-10-16-090305 <span class="pp">|</span> 90142  <span class="pp">|</span> 90305  <span class="pp">|</span> 163    <span class="pp">|</span></span>
+<span id="cb9-204"><a href="#cb9-204"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-16-093404.log`</span>       <span class="pp">|</span> actCkpt_GPT13B <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-16-093404 <span class="pp">|</span> 2023-10-16-093504 <span class="pp">|</span> 93404  <span class="pp">|</span> 93504  <span class="pp">|</span> 100    <span class="pp">|</span></span>
+<span id="cb9-205"><a href="#cb9-205"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts4-ngpu16-2023-10-16-101437.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-101437 <span class="pp">|</span> 2023-10-16-101549 <span class="pp">|</span> 101437 <span class="pp">|</span> 101549 <span class="pp">|</span> 112    <span class="pp">|</span></span>
+<span id="cb9-206"><a href="#cb9-206"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-101512.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-101512 <span class="pp">|</span> 2023-10-16-101615 <span class="pp">|</span> 101512 <span class="pp">|</span> 101615 <span class="pp">|</span> 103    <span class="pp">|</span></span>
+<span id="cb9-207"><a href="#cb9-207"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-102217.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-102217 <span class="pp">|</span> 2023-10-16-102452 <span class="pp">|</span> 102217 <span class="pp">|</span> 102452 <span class="pp">|</span> 235    <span class="pp">|</span></span>
+<span id="cb9-208"><a href="#cb9-208"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-102750.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-102750 <span class="pp">|</span> 2023-10-16-103243 <span class="pp">|</span> 102750 <span class="pp">|</span> 103243 <span class="pp">|</span> 493    <span class="pp">|</span></span>
+<span id="cb9-209"><a href="#cb9-209"></a><span class="pp">|</span> <span class="in">`foremans-nid008572-nhosts4-ngpu16-2023-10-16-103113.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-103113 <span class="pp">|</span> 2023-10-16-103237 <span class="pp">|</span> 103113 <span class="pp">|</span> 103237 <span class="pp">|</span> 124    <span class="pp">|</span></span>
+<span id="cb9-210"><a href="#cb9-210"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-104037.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-104037 <span class="pp">|</span> 2023-10-16-104148 <span class="pp">|</span> 104037 <span class="pp">|</span> 104148 <span class="pp">|</span> 111    <span class="pp">|</span></span>
+<span id="cb9-211"><a href="#cb9-211"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-104819.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-104819 <span class="pp">|</span> 2023-10-16-110002 <span class="pp">|</span> 104819 <span class="pp">|</span> 110002 <span class="pp">|</span> 5183   <span class="pp">|</span></span>
+<span id="cb9-212"><a href="#cb9-212"></a><span class="pp">|</span> <span class="in">`foremans-nid008396-nhosts4-ngpu16-2023-10-16-110119.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-110119 <span class="pp">|</span> 2023-10-16-110225 <span class="pp">|</span> 110119 <span class="pp">|</span> 110225 <span class="pp">|</span> 106    <span class="pp">|</span></span>
+<span id="cb9-213"><a href="#cb9-213"></a><span class="pp">|</span> <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-113715.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-113715 <span class="pp">|</span> 2023-10-16-113824 <span class="pp">|</span> 113715 <span class="pp">|</span> 113824 <span class="pp">|</span> 109    <span class="pp">|</span></span>
+<span id="cb9-214"><a href="#cb9-214"></a><span class="pp">|</span> <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114236.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-114236 <span class="pp">|</span> 2023-10-16-114338 <span class="pp">|</span> 114236 <span class="pp">|</span> 114338 <span class="pp">|</span> 102    <span class="pp">|</span></span>
+<span id="cb9-215"><a href="#cb9-215"></a><span class="pp">|</span> <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114610.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-114610 <span class="pp">|</span> 2023-10-16-114711 <span class="pp">|</span> 114610 <span class="pp">|</span> 114711 <span class="pp">|</span> 101    <span class="pp">|</span></span>
+<span id="cb9-216"><a href="#cb9-216"></a><span class="pp">|</span> <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-114819.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-114819 <span class="pp">|</span> 2023-10-16-114953 <span class="pp">|</span> 114819 <span class="pp">|</span> 114953 <span class="pp">|</span> 134    <span class="pp">|</span></span>
+<span id="cb9-217"><a href="#cb9-217"></a><span class="pp">|</span> <span class="in">`foremans-nid008701-nhosts4-ngpu16-2023-10-16-131058.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-16-131058 <span class="pp">|</span> 2023-10-16-131203 <span class="pp">|</span> 131058 <span class="pp">|</span> 131203 <span class="pp">|</span> 145    <span class="pp">|</span></span>
+<span id="cb9-218"><a href="#cb9-218"></a><span class="pp">|</span> <span class="in">`foremans-nid008576-nhosts1-ngpu4-2023-10-16-151427.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-151427 <span class="pp">|</span> 2023-10-16-151600 <span class="pp">|</span> 151427 <span class="pp">|</span> 151600 <span class="pp">|</span> 173    <span class="pp">|</span></span>
+<span id="cb9-219"><a href="#cb9-219"></a><span class="pp">|</span> <span class="in">`foremans-nid008576-nhosts1-ngpu4-2023-10-16-152528.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-152528 <span class="pp">|</span> 2023-10-16-152640 <span class="pp">|</span> 152528 <span class="pp">|</span> 152640 <span class="pp">|</span> 112    <span class="pp">|</span></span>
+<span id="cb9-220"><a href="#cb9-220"></a><span class="pp">|</span> <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-175717.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-175717 <span class="pp">|</span> 2023-10-16-175829 <span class="pp">|</span> 175717 <span class="pp">|</span> 175829 <span class="pp">|</span> 112    <span class="pp">|</span></span>
+<span id="cb9-221"><a href="#cb9-221"></a><span class="pp">|</span> <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-180457.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-180457 <span class="pp">|</span> 2023-10-16-180605 <span class="pp">|</span> 180457 <span class="pp">|</span> 180605 <span class="pp">|</span> 148    <span class="pp">|</span></span>
+<span id="cb9-222"><a href="#cb9-222"></a><span class="pp">|</span> <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-183116.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-183116 <span class="pp">|</span> 2023-10-16-183216 <span class="pp">|</span> 183116 <span class="pp">|</span> 183216 <span class="pp">|</span> 100    <span class="pp">|</span></span>
+<span id="cb9-223"><a href="#cb9-223"></a><span class="pp">|</span> <span class="in">`foremans-nid008224-nhosts1-ngpu4-2023-10-16-183921.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-183921 <span class="pp">|</span> 2023-10-16-184033 <span class="pp">|</span> 183921 <span class="pp">|</span> 184033 <span class="pp">|</span> 112    <span class="pp">|</span></span>
+<span id="cb9-224"><a href="#cb9-224"></a><span class="pp">|</span> <span class="in">`foremans-nid008237-nhosts1-ngpu4-2023-10-16-215614.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-16-215614 <span class="pp">|</span> 2023-10-16-215815 <span class="pp">|</span> 215614 <span class="pp">|</span> 215815 <span class="pp">|</span> 201    <span class="pp">|</span></span>
+<span id="cb9-225"><a href="#cb9-225"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-052944.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-052944 <span class="pp">|</span> 2023-10-17-053139 <span class="pp">|</span> 52944  <span class="pp">|</span> 53139  <span class="pp">|</span> 195    <span class="pp">|</span></span>
+<span id="cb9-226"><a href="#cb9-226"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-053529.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-053529 <span class="pp">|</span> 2023-10-17-053650 <span class="pp">|</span> 53529  <span class="pp">|</span> 53650  <span class="pp">|</span> 121    <span class="pp">|</span></span>
+<span id="cb9-227"><a href="#cb9-227"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-053910.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-053910 <span class="pp">|</span> 2023-10-17-054120 <span class="pp">|</span> 53910  <span class="pp">|</span> 54120  <span class="pp">|</span> 210    <span class="pp">|</span></span>
+<span id="cb9-228"><a href="#cb9-228"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-054238.log`</span>       <span class="pp">|</span> GPT2_7B        <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-054238 <span class="pp">|</span> 2023-10-17-054346 <span class="pp">|</span> 54238  <span class="pp">|</span> 54346  <span class="pp">|</span> 108    <span class="pp">|</span></span>
+<span id="cb9-229"><a href="#cb9-229"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-060418.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-060418 <span class="pp">|</span> 2023-10-17-060600 <span class="pp">|</span> 60418  <span class="pp">|</span> 60600  <span class="pp">|</span> 182    <span class="pp">|</span></span>
+<span id="cb9-230"><a href="#cb9-230"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-061514.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-061514 <span class="pp">|</span> 2023-10-17-061653 <span class="pp">|</span> 61514  <span class="pp">|</span> 61653  <span class="pp">|</span> 139    <span class="pp">|</span></span>
+<span id="cb9-231"><a href="#cb9-231"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-062102.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-062102 <span class="pp">|</span> 2023-10-17-062252 <span class="pp">|</span> 62102  <span class="pp">|</span> 62252  <span class="pp">|</span> 150    <span class="pp">|</span></span>
+<span id="cb9-232"><a href="#cb9-232"></a><span class="pp">|</span> <span class="in">`foremans-nid008385-nhosts1-ngpu4-2023-10-17-062445.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-062445 <span class="pp">|</span> 2023-10-17-062720 <span class="pp">|</span> 62445  <span class="pp">|</span> 62720  <span class="pp">|</span> 275    <span class="pp">|</span></span>
+<span id="cb9-233"><a href="#cb9-233"></a><span class="pp">|</span> <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-064643.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-17-064643 <span class="pp">|</span> 2023-10-17-064848 <span class="pp">|</span> 64643  <span class="pp">|</span> 64848  <span class="pp">|</span> 205    <span class="pp">|</span></span>
+<span id="cb9-234"><a href="#cb9-234"></a><span class="pp">|</span> <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-065806.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-17-065806 <span class="pp">|</span> 2023-10-17-070003 <span class="pp">|</span> 65806  <span class="pp">|</span> 70003  <span class="pp">|</span> 4197   <span class="pp">|</span></span>
+<span id="cb9-235"><a href="#cb9-235"></a><span class="pp">|</span> <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-075152.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-17-075152 <span class="pp">|</span> 2023-10-17-075502 <span class="pp">|</span> 75152  <span class="pp">|</span> 75502  <span class="pp">|</span> 350    <span class="pp">|</span></span>
+<span id="cb9-236"><a href="#cb9-236"></a><span class="pp">|</span> <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-080059.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-17-080059 <span class="pp">|</span> 2023-10-17-080434 <span class="pp">|</span> 80059  <span class="pp">|</span> 80434  <span class="pp">|</span> 375    <span class="pp">|</span></span>
+<span id="cb9-237"><a href="#cb9-237"></a><span class="pp">|</span> <span class="in">`foremans-nid008333-nhosts2-ngpu8-2023-10-17-081404.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-17-081404 <span class="pp">|</span> 2023-10-17-081920 <span class="pp">|</span> 81404  <span class="pp">|</span> 81920  <span class="pp">|</span> 516    <span class="pp">|</span></span>
+<span id="cb9-238"><a href="#cb9-238"></a><span class="pp">|</span> <span class="in">`foremans-nid008228-nhosts1-ngpu4-2023-10-17-090344.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-090344 <span class="pp">|</span> 2023-10-17-090714 <span class="pp">|</span> 90344  <span class="pp">|</span> 90714  <span class="pp">|</span> 370    <span class="pp">|</span></span>
+<span id="cb9-239"><a href="#cb9-239"></a><span class="pp">|</span> <span class="in">`foremans-nid008228-nhosts1-ngpu4-2023-10-17-100759.log`</span>       <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 4               <span class="pp">|</span> 2023-10-17-100759 <span class="pp">|</span> 2023-10-17-100957 <span class="pp">|</span> 100759 <span class="pp">|</span> 100957 <span class="pp">|</span> 198    <span class="pp">|</span></span>
+<span id="cb9-240"><a href="#cb9-240"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-182501.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-182501 <span class="pp">|</span> 2023-10-17-184001 <span class="pp">|</span> 182501 <span class="pp">|</span> 184001 <span class="pp">|</span> 1500   <span class="pp">|</span></span>
+<span id="cb9-241"><a href="#cb9-241"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-193736.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-193736 <span class="pp">|</span> 2023-10-17-193856 <span class="pp">|</span> 193736 <span class="pp">|</span> 193856 <span class="pp">|</span> 120    <span class="pp">|</span></span>
+<span id="cb9-242"><a href="#cb9-242"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-195432.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-195432 <span class="pp">|</span> 2023-10-17-195536 <span class="pp">|</span> 195432 <span class="pp">|</span> 195536 <span class="pp">|</span> 104    <span class="pp">|</span></span>
+<span id="cb9-243"><a href="#cb9-243"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-201659.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-201659 <span class="pp">|</span> 2023-10-17-201823 <span class="pp">|</span> 201659 <span class="pp">|</span> 201823 <span class="pp">|</span> 164    <span class="pp">|</span></span>
+<span id="cb9-244"><a href="#cb9-244"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-202949.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-202949 <span class="pp">|</span> 2023-10-17-203054 <span class="pp">|</span> 202949 <span class="pp">|</span> 203054 <span class="pp">|</span> 105    <span class="pp">|</span></span>
+<span id="cb9-245"><a href="#cb9-245"></a><span class="pp">|</span> <span class="in">`foremans-nid008404-nhosts4-ngpu16-2023-10-17-205848.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-17-205848 <span class="pp">|</span> 2023-10-17-205952 <span class="pp">|</span> 205848 <span class="pp">|</span> 205952 <span class="pp">|</span> 104    <span class="pp">|</span></span>
+<span id="cb9-246"><a href="#cb9-246"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-213244.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-213244 <span class="pp">|</span> 2023-10-17-213406 <span class="pp">|</span> 213244 <span class="pp">|</span> 213406 <span class="pp">|</span> 162    <span class="pp">|</span></span>
+<span id="cb9-247"><a href="#cb9-247"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-213558.log`</span>      <span class="pp">|</span> GPT1T_1L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-213558 <span class="pp">|</span> 2023-10-17-213720 <span class="pp">|</span> 213558 <span class="pp">|</span> 213720 <span class="pp">|</span> 162    <span class="pp">|</span></span>
+<span id="cb9-248"><a href="#cb9-248"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-214900.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-214900 <span class="pp">|</span> 2023-10-17-214959 <span class="pp">|</span> 214900 <span class="pp">|</span> 214959 <span class="pp">|</span> 59     <span class="pp">|</span></span>
+<span id="cb9-249"><a href="#cb9-249"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215201.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-215201 <span class="pp">|</span> 2023-10-17-215309 <span class="pp">|</span> 215201 <span class="pp">|</span> 215309 <span class="pp">|</span> 108    <span class="pp">|</span></span>
+<span id="cb9-250"><a href="#cb9-250"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215612.log`</span>      <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-215612 <span class="pp">|</span> 2023-10-17-215726 <span class="pp">|</span> 215612 <span class="pp">|</span> 215726 <span class="pp">|</span> 114    <span class="pp">|</span></span>
+<span id="cb9-251"><a href="#cb9-251"></a><span class="pp">|</span> <span class="in">`foremans-nid008577-nhosts8-ngpu32-2023-10-17-215938.log`</span>    <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-17-215938 <span class="pp">|</span> 2023-10-17-220044 <span class="pp">|</span> 215938 <span class="pp">|</span> 220044 <span class="pp">|</span> 4106   <span class="pp">|</span></span>
+<span id="cb9-252"><a href="#cb9-252"></a><span class="pp">|</span> <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-110001.log`</span>    <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-18-110001 <span class="pp">|</span> 2023-10-18-110143 <span class="pp">|</span> 110001 <span class="pp">|</span> 110143 <span class="pp">|</span> 142    <span class="pp">|</span></span>
+<span id="cb9-253"><a href="#cb9-253"></a><span class="pp">|</span> <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-110424.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-18-110424 <span class="pp">|</span> 2023-10-18-110550 <span class="pp">|</span> 110424 <span class="pp">|</span> 110550 <span class="pp">|</span> 126    <span class="pp">|</span></span>
+<span id="cb9-254"><a href="#cb9-254"></a><span class="pp">|</span> <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-110821.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-18-110821 <span class="pp">|</span> 2023-10-18-110952 <span class="pp">|</span> 110821 <span class="pp">|</span> 110952 <span class="pp">|</span> 131    <span class="pp">|</span></span>
+<span id="cb9-255"><a href="#cb9-255"></a><span class="pp">|</span> <span class="in">`foremans-nid008529-nhosts8-ngpu32-2023-10-18-111345.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-18-111345 <span class="pp">|</span> 2023-10-18-111458 <span class="pp">|</span> 111345 <span class="pp">|</span> 111458 <span class="pp">|</span> 113    <span class="pp">|</span></span>
+<span id="cb9-256"><a href="#cb9-256"></a><span class="pp">|</span> <span class="in">`foremans-nid008197-nhosts16-ngpu64-2023-10-18-112531.log`</span> <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-112531 <span class="pp">|</span> 2023-10-18-112728 <span class="pp">|</span> 112531 <span class="pp">|</span> 112728 <span class="pp">|</span> 197    <span class="pp">|</span></span>
+<span id="cb9-257"><a href="#cb9-257"></a><span class="pp">|</span> <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-113119.log`</span> <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-113119 <span class="pp">|</span> 2023-10-18-113343 <span class="pp">|</span> 113119 <span class="pp">|</span> 113343 <span class="pp">|</span> 224    <span class="pp">|</span></span>
+<span id="cb9-258"><a href="#cb9-258"></a><span class="pp">|</span> <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-113131.log`</span>     <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-18-113131 <span class="pp">|</span> 2023-10-18-113257 <span class="pp">|</span> 113131 <span class="pp">|</span> 113257 <span class="pp">|</span> 126    <span class="pp">|</span></span>
+<span id="cb9-259"><a href="#cb9-259"></a><span class="pp">|</span> <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-113920.log`</span>      <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-18-113920 <span class="pp">|</span> 2023-10-18-114157 <span class="pp">|</span> 113920 <span class="pp">|</span> 114157 <span class="pp">|</span> 237    <span class="pp">|</span></span>
+<span id="cb9-260"><a href="#cb9-260"></a><span class="pp">|</span> <span class="in">`foremans-nid008197-nhosts16-ngpu64-2023-10-18-114549.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-114549 <span class="pp">|</span> 2023-10-18-114721 <span class="pp">|</span> 114549 <span class="pp">|</span> 114721 <span class="pp">|</span> 172    <span class="pp">|</span></span>
+<span id="cb9-261"><a href="#cb9-261"></a><span class="pp">|</span> <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-114636.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-114636 <span class="pp">|</span> 2023-10-18-114805 <span class="pp">|</span> 114636 <span class="pp">|</span> 114805 <span class="pp">|</span> 169    <span class="pp">|</span></span>
+<span id="cb9-262"><a href="#cb9-262"></a><span class="pp">|</span> <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-115808.log`</span>     <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-18-115808 <span class="pp">|</span> 2023-10-18-120146 <span class="pp">|</span> 115808 <span class="pp">|</span> 120146 <span class="pp">|</span> 4338   <span class="pp">|</span></span>
+<span id="cb9-263"><a href="#cb9-263"></a><span class="pp">|</span> <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-123039.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-123039 <span class="pp">|</span> 2023-10-18-123221 <span class="pp">|</span> 123039 <span class="pp">|</span> 123221 <span class="pp">|</span> 182    <span class="pp">|</span></span>
+<span id="cb9-264"><a href="#cb9-264"></a><span class="pp">|</span> <span class="in">`foremans-nid008389-nhosts2-ngpu8-2023-10-18-123135.log`</span>       <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-18-123135 <span class="pp">|</span> 2023-10-18-123300 <span class="pp">|</span> 123135 <span class="pp">|</span> 123300 <span class="pp">|</span> 165    <span class="pp">|</span></span>
+<span id="cb9-265"><a href="#cb9-265"></a><span class="pp">|</span> <span class="in">`foremans-nid008244-nhosts4-ngpu16-2023-10-18-123206.log`</span>      <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-18-123206 <span class="pp">|</span> 2023-10-18-123352 <span class="pp">|</span> 123206 <span class="pp">|</span> 123352 <span class="pp">|</span> 146    <span class="pp">|</span></span>
+<span id="cb9-266"><a href="#cb9-266"></a><span class="pp">|</span> <span class="in">`foremans-nid008456-nhosts16-ngpu64-2023-10-18-125022.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-18-125022 <span class="pp">|</span> 2023-10-18-125146 <span class="pp">|</span> 125022 <span class="pp">|</span> 125146 <span class="pp">|</span> 124    <span class="pp">|</span></span>
+<span id="cb9-267"><a href="#cb9-267"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-122736.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-122736 <span class="pp">|</span> 2023-10-22-122844 <span class="pp">|</span> 122736 <span class="pp">|</span> 122844 <span class="pp">|</span> 108    <span class="pp">|</span></span>
+<span id="cb9-268"><a href="#cb9-268"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-123824.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-123824 <span class="pp">|</span> 2023-10-22-123945 <span class="pp">|</span> 123824 <span class="pp">|</span> 123945 <span class="pp">|</span> 121    <span class="pp">|</span></span>
+<span id="cb9-269"><a href="#cb9-269"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-130148.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-130148 <span class="pp">|</span> 2023-10-22-130256 <span class="pp">|</span> 130148 <span class="pp">|</span> 130256 <span class="pp">|</span> 108    <span class="pp">|</span></span>
+<span id="cb9-270"><a href="#cb9-270"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-131746.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-131746 <span class="pp">|</span> 2023-10-22-131909 <span class="pp">|</span> 131746 <span class="pp">|</span> 131909 <span class="pp">|</span> 163    <span class="pp">|</span></span>
+<span id="cb9-271"><a href="#cb9-271"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-132700.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-132700 <span class="pp">|</span> 2023-10-22-132817 <span class="pp">|</span> 132700 <span class="pp">|</span> 132817 <span class="pp">|</span> 117    <span class="pp">|</span></span>
+<span id="cb9-272"><a href="#cb9-272"></a><span class="pp">|</span> <span class="in">`foremans-nid008256-nhosts8-ngpu32-2023-10-22-133459.log`</span>      <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-22-133459 <span class="pp">|</span> 2023-10-22-133708 <span class="pp">|</span> 133459 <span class="pp">|</span> 133708 <span class="pp">|</span> 249    <span class="pp">|</span></span>
+<span id="cb9-273"><a href="#cb9-273"></a><span class="pp">|</span> <span class="in">`foremans-nid008380-nhosts4-ngpu16-2023-10-22-175049.log`</span>      <span class="pp">|</span> actCkpt_GPT25B <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-22-175049 <span class="pp">|</span> 2023-10-22-175230 <span class="pp">|</span> 175049 <span class="pp">|</span> 175230 <span class="pp">|</span> 181    <span class="pp">|</span></span>
+<span id="cb9-274"><a href="#cb9-274"></a><span class="pp">|</span> <span class="in">`foremans-nid008649-nhosts4-ngpu16-2023-10-22-192352.log`</span>      <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-22-192352 <span class="pp">|</span> 2023-10-22-192530 <span class="pp">|</span> 192352 <span class="pp">|</span> 192530 <span class="pp">|</span> 178    <span class="pp">|</span></span>
+<span id="cb9-275"><a href="#cb9-275"></a><span class="pp">|</span> <span class="in">`foremans-nid008212-nhosts16-ngpu64-2023-10-23-081527.log`</span>     <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-23-081527 <span class="pp">|</span> 2023-10-23-081702 <span class="pp">|</span> 81527  <span class="pp">|</span> 81702  <span class="pp">|</span> 175    <span class="pp">|</span></span>
+<span id="cb9-276"><a href="#cb9-276"></a><span class="pp">|</span> <span class="in">`foremans-nid008344-nhosts2-ngpu8-2023-10-23-091436.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-23-091436 <span class="pp">|</span> 2023-10-23-091610 <span class="pp">|</span> 91436  <span class="pp">|</span> 91610  <span class="pp">|</span> 174    <span class="pp">|</span></span>
+<span id="cb9-277"><a href="#cb9-277"></a><span class="pp">|</span> <span class="in">`foremans-nid008197-nhosts32-ngpu128-2023-10-24-102617.log`</span>    <span class="pp">|</span> GPT1T_32L      <span class="pp">|</span> 128             <span class="pp">|</span> 2023-10-24-102617 <span class="pp">|</span> 2023-10-24-102826 <span class="pp">|</span> 102617 <span class="pp">|</span> 102826 <span class="pp">|</span> 209    <span class="pp">|</span></span>
+<span id="cb9-278"><a href="#cb9-278"></a><span class="pp">|</span> <span class="in">`foremans-nid008192-nhosts64-ngpu256-2023-10-24-191748.log`</span>    <span class="pp">|</span> GPT1T_64L      <span class="pp">|</span> 256             <span class="pp">|</span> 2023-10-24-191748 <span class="pp">|</span> 2023-10-24-192021 <span class="pp">|</span> 191748 <span class="pp">|</span> 192021 <span class="pp">|</span> 273    <span class="pp">|</span></span>
+<span id="cb9-279"><a href="#cb9-279"></a><span class="pp">|</span> <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-10-24-201243.log`</span>   <span class="pp">|</span> GPT1T_128L     <span class="pp">|</span> 512             <span class="pp">|</span> 2023-10-24-201243 <span class="pp">|</span> 2023-10-24-201629 <span class="pp">|</span> 201243 <span class="pp">|</span> 201629 <span class="pp">|</span> 386    <span class="pp">|</span></span>
+<span id="cb9-280"><a href="#cb9-280"></a><span class="pp">|</span> <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-10-26-005401.log`</span>   <span class="pp">|</span> GPT1T_128L     <span class="pp">|</span> 512             <span class="pp">|</span> 2023-10-26-005401 <span class="pp">|</span> 2023-10-26-005811 <span class="pp">|</span> 5401   <span class="pp">|</span> 5811   <span class="pp">|</span> 410    <span class="pp">|</span></span>
+<span id="cb9-281"><a href="#cb9-281"></a><span class="pp">|</span> <span class="in">`foremans-nid008192-nhosts32-ngpu128-2023-10-26-082710.log`</span>    <span class="pp">|</span> GPT1T_32L      <span class="pp">|</span> 128             <span class="pp">|</span> 2023-10-26-082710 <span class="pp">|</span> 2023-10-26-083049 <span class="pp">|</span> 82710  <span class="pp">|</span> 83049  <span class="pp">|</span> 339    <span class="pp">|</span></span>
+<span id="cb9-282"><a href="#cb9-282"></a><span class="pp">|</span> <span class="in">`foremans-nid008585-nhosts2-ngpu8-2023-10-31-044203.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-10-31-044203 <span class="pp">|</span> 2023-10-31-044533 <span class="pp">|</span> 44203  <span class="pp">|</span> 44533  <span class="pp">|</span> 330    <span class="pp">|</span></span>
+<span id="cb9-283"><a href="#cb9-283"></a><span class="pp">|</span> <span class="in">`foremans-nid008272-nhosts4-ngpu16-2023-10-31-072717.log`</span>      <span class="pp">|</span> GPT1T_4L       <span class="pp">|</span> 16              <span class="pp">|</span> 2023-10-31-072717 <span class="pp">|</span> 2023-10-31-073131 <span class="pp">|</span> 72717  <span class="pp">|</span> 73131  <span class="pp">|</span> 414    <span class="pp">|</span></span>
+<span id="cb9-284"><a href="#cb9-284"></a><span class="pp">|</span> <span class="in">`foremans-nid008221-nhosts8-ngpu32-2023-10-31-083055.log`</span>      <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-10-31-083055 <span class="pp">|</span> 2023-10-31-083545 <span class="pp">|</span> 83055  <span class="pp">|</span> 83545  <span class="pp">|</span> 490    <span class="pp">|</span></span>
+<span id="cb9-285"><a href="#cb9-285"></a><span class="pp">|</span> <span class="in">`foremans-nid008196-nhosts16-ngpu64-2023-10-31-100336.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-10-31-100336 <span class="pp">|</span> 2023-10-31-100848 <span class="pp">|</span> 100336 <span class="pp">|</span> 100848 <span class="pp">|</span> 512    <span class="pp">|</span></span>
+<span id="cb9-286"><a href="#cb9-286"></a><span class="pp">|</span> <span class="in">`foremans-nid008285-nhosts2-ngpu8-2023-11-01-200430.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-11-01-200430 <span class="pp">|</span> 2023-11-01-200829 <span class="pp">|</span> 200430 <span class="pp">|</span> 200829 <span class="pp">|</span> 399    <span class="pp">|</span></span>
+<span id="cb9-287"><a href="#cb9-287"></a><span class="pp">|</span> <span class="in">`foremans-nid008193-nhosts8-ngpu32-2023-11-01-201702.log`</span>      <span class="pp">|</span> GPT1T_8L       <span class="pp">|</span> 32              <span class="pp">|</span> 2023-11-01-201702 <span class="pp">|</span> 2023-11-01-202131 <span class="pp">|</span> 201702 <span class="pp">|</span> 202131 <span class="pp">|</span> 429    <span class="pp">|</span></span>
+<span id="cb9-288"><a href="#cb9-288"></a><span class="pp">|</span> <span class="in">`foremans-nid008240-nhosts16-ngpu64-2023-11-01-210454.log`</span>     <span class="pp">|</span> GPT1T_16L      <span class="pp">|</span> 64              <span class="pp">|</span> 2023-11-01-210454 <span class="pp">|</span> 2023-11-01-211007 <span class="pp">|</span> 210454 <span class="pp">|</span> 211007 <span class="pp">|</span> 553    <span class="pp">|</span></span>
+<span id="cb9-289"><a href="#cb9-289"></a><span class="pp">|</span> <span class="in">`foremans-nid008321-nhosts2-ngpu8-2023-11-02-154438.log`</span>       <span class="pp">|</span> GPT1T_2L       <span class="pp">|</span> 8               <span class="pp">|</span> 2023-11-02-154438 <span class="pp">|</span> 2023-11-02-154949 <span class="pp">|</span> 154438 <span class="pp">|</span> 154949 <span class="pp">|</span> 511    <span class="pp">|</span></span>
+<span id="cb9-290"><a href="#cb9-290"></a><span class="pp">|</span> <span class="in">`foremans-nid008192-nhosts128-ngpu512-2023-11-04-001717.log`</span>   <span class="pp">|</span> GPT1T_128L     <span class="pp">|</span> 512             <span class="pp">|</span> 2023-11-04-001717 <span class="pp">|</span> 2023-11-04-002124 <span class="pp">|</span> 1717   <span class="pp">|</span> 2124   <span class="pp">|</span> 407    <span class="pp">|</span></span>
 <span id="cb9-291"><a href="#cb9-291"></a></span>
 <span id="cb9-292"><a href="#cb9-292"></a>: Startup times on Perlmutter {.responsive}</span>
 <span id="cb9-293"><a href="#cb9-293"></a></span>

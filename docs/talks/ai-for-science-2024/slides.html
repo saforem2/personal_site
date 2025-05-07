@@ -7,14 +7,14 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-21178ce9c6d9aa40f92a5a0c1af1a00b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
-<script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.43">
+  <meta name="generator" content="quarto-1.8.2">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2024-11-05">
@@ -37,8 +37,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -49,7 +50,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -122,7 +123,8 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-09c61312ab38306ebec03655c5a2272c.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-25e473fdb0025541ad65dea6907e4f82.css">
+  <link rel="stylesheet" href="../../css/navbar-active.css">
   <link rel="stylesheet" href="../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
@@ -250,7 +252,6 @@
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
   <!-- End Google Tag Manager -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 <meta property="og:title" content="Parallel Training Methods for AI">
 <meta property="og:description" content="Talks, Posts, Projects and More">
 <meta property="og:image" content="https://samforeman.me/talks/ai-for-science-2024/assets/thumbnail.png">
@@ -1010,9 +1011,6 @@ Figure&nbsp;14: Pipeline Parallelism
 </section>
 <section id="tensor-parallel-tp" class="slide level2 center" data-background-color="white">
 <h2>Tensor Parallel (TP)</h2>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1051,9 +1049,6 @@ Figure&nbsp;15: Tensor Parallel Training
 </section>
 <section id="tensor-parallel-tp-1" class="slide level2 center" data-background-color="white">
 <h2>Tensor Parallel (TP)</h2>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1223,7 +1218,7 @@ Figure&nbsp;19: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <li><code>PP</code> + <code>ZeRO</code> + <code>TP</code> + <code>DP</code> (less communication, at the cost of <strong>MAJOR</strong> modifications)
 <ul>
 <li><p>when you have slow inter-node connectivity and still low on GPU memory:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><strong>NOTE</strong>: <code>TP</code> is almost <em>always</em> used within a single node, e.g.<br>
 <code>TP &lt;= GPUS_PER_NODE</code></li>
@@ -1262,9 +1257,6 @@ Figure&nbsp;21: See <span class="citation" data-cites="wei2022emergentabilitiesl
 </section>
 <section id="training-llms" class="slide level2 smaller center" data-background-color="white">
 <h2>🚂 Training LLMs</h2>
-<div>
-
-</div>
 <div class="quarto-layout-panel" data-layout="[15,-2,10]">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
 <div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
@@ -1381,15 +1373,15 @@ Figure&nbsp;25: Language Model trained for causal language modeling<sup>1</sup>.
 <li><p>🌱 Clone Repo(s):</p>
 <ul>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay">saforem2/<code>wordplay</code></a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="fu">git</span> clone https://github.com/saforem2/wordplay</span>
-<span id="cb2-2"><a></a><span class="bu">cd</span> wordplay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/wordplay</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> wordplay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>ezpz</code></a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="fu">git</span> clone https://github.com/saforem2/ezpz deps/ezpz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/ezpz deps/ezpz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li><p>🐍 Setup Python:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="bu">export</span> <span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> deps/ezpz/src/ezpz/bin/utils.sh</span>
-<span id="cb4-2"><a></a><span class="ex">ezpz_setup_python</span></span>
-<span id="cb4-3"><a></a><span class="ex">ezpz_setup_job</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> deps/ezpz/src/ezpz/bin/utils.sh</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_python</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </section>
 <section id="install-ezpz-wordplay" class="slide level2 center" data-background-color="white">
@@ -1398,13 +1390,13 @@ Figure&nbsp;25: Language Model trained for causal language modeling<sup>1</sup>.
 <li><p>Install Python packages:</p>
 <ol type="1">
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>ezpz</code></a>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"./deps/ezpz"</span> <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"./deps/ezpz"</span> <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>wordplay</code></a>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="co"># from inside `wordplay/`</span></span>
-<span id="cb6-2"><a></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> . <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># from inside `wordplay/`</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> . <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol></li>
 <li><p>Test distributed setup:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a></a><span class="ex">mpirun</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> python3 <span class="at">-m</span> ezpz.test_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> python3 <span class="at">-m</span> ezpz.test_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>See: 🍋 <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz/test_dist.py</code></a></p></li>
 </ol>
 </section>
@@ -1436,333 +1428,333 @@ Figure&nbsp;27: The simplest, fastest repository for training / finetuning GPT b
 </section>
 <section id="prepare-data" class="slide level2 center" data-background-color="white">
 <h2>Prepare Data</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a></a><span class="ex">$</span> python3 wordplay/data/shakespeare_char/prepare.py</span>
-<span id="cb8-2"><a></a><span class="ex">Using</span> HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface</span>
-<span id="cb8-3"><a></a><span class="ex">length</span> of dataset in characters: 1,115,394</span>
-<span id="cb8-4"><a></a><span class="ex">all</span> the unique characters:</span>
-<span id="cb8-5"><a></a> <span class="ex">!$</span><span class="kw">&amp;</span><span class="ex">\',-.3:</span><span class="kw">;</span><span class="ex">?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</span></span>
-<span id="cb8-6"><a></a><span class="ex">vocab</span> size: 65</span>
-<span id="cb8-7"><a></a><span class="ex">train</span> has 1,003,854 tokens</span>
-<span id="cb8-8"><a></a><span class="ex">val</span> has 111,540 tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 wordplay/data/shakespeare_char/prepare.py</span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Using</span> HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface</span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">length</span> of dataset in characters: 1,115,394</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">all</span> the unique characters:</span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">!$</span><span class="kw">&amp;</span><span class="ex">\',-.3:</span><span class="kw">;</span><span class="ex">?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</span></span>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">vocab</span> size: 65</span>
+<span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">train</span> has 1,003,854 tokens</span>
+<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">val</span> has 111,540 tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="launch-training-ddp" class="slide level2 center" data-background-color="white">
 <h2>Launch Training (DDP)</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">launch</span> python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
-<span id="cb9-2"><a></a>    train.backend=DDP <span class="dt">\</span></span>
-<span id="cb9-3"><a></a>    train.eval_interval=100 <span class="dt">\</span></span>
-<span id="cb9-4"><a></a>    data=shakespeare <span class="dt">\</span></span>
-<span id="cb9-5"><a></a>    train.dtype=bf16 <span class="dt">\</span></span>
-<span id="cb9-6"><a></a>    model.batch_size=64 <span class="dt">\</span></span>
-<span id="cb9-7"><a></a>    model.block_size=1024 <span class="dt">\</span></span>
-<span id="cb9-8"><a></a>    train.max_iters=1000 <span class="dt">\</span></span>
-<span id="cb9-9"><a></a>    train.log_interval=10 <span class="dt">\</span></span>
-<span id="cb9-10"><a></a>    train.compile=false <span class="dt">\</span></span>
-<span id="cb9-11"><a></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">launch</span> python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>    train.backend=DDP <span class="dt">\</span></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>    train.eval_interval=100 <span class="dt">\</span></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>    data=shakespeare <span class="dt">\</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>    train.dtype=bf16 <span class="dt">\</span></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>    model.batch_size=64 <span class="dt">\</span></span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>    model.block_size=1024 <span class="dt">\</span></span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>    train.max_iters=1000 <span class="dt">\</span></span>
+<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>    train.log_interval=10 <span class="dt">\</span></span>
+<span id="cb9-10"><a aria-hidden="true" tabindex="-1"></a>    train.compile=false <span class="dt">\</span></span>
+<span id="cb9-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="training-example-output" class="slide level2 center" data-background-color="white">
 <h2>Training: Example Output</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="ex">$</span> launch python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
-<span id="cb10-2"><a></a>    train.backend=DDP <span class="dt">\</span></span>
-<span id="cb10-3"><a></a>    train.eval_interval=100 <span class="dt">\</span></span>
-<span id="cb10-4"><a></a>    data=shakespeare <span class="dt">\</span></span>
-<span id="cb10-5"><a></a>    train.dtype=bf16 <span class="dt">\</span></span>
-<span id="cb10-6"><a></a>    model.batch_size=64 <span class="dt">\</span></span>
-<span id="cb10-7"><a></a>    model.block_size=1024 <span class="dt">\</span></span>
-<span id="cb10-8"><a></a>    train.max_iters=1000 <span class="dt">\</span></span>
-<span id="cb10-9"><a></a>    train.log_interval=10 <span class="dt">\</span></span>
-<span id="cb10-10"><a></a>    train.compile=false <span class="dt">\</span></span>
-<span id="cb10-11"><a></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span>
-<span id="cb10-12"><a></a><span class="ex">[2024-07-17</span> 07:42:11.746540]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:156</span><span class="pp">]</span> <span class="at">-</span> Setting logging level to <span class="st">'INFO'</span> on <span class="st">'RANK == 0'</span></span>
-<span id="cb10-13"><a></a><span class="ex">[2024-07-17</span> 07:42:11.748763]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:157</span><span class="pp">]</span> <span class="at">-</span> Setting logging level to <span class="st">'CRITICAL'</span> on all others <span class="st">'RANK != 0'</span></span>
-<span id="cb10-14"><a></a><span class="ex">[2024-07-17</span> 07:42:11.749453]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:160</span><span class="pp">]</span> <span class="at">-</span> To disable this behavior, and log from ALL ranks <span class="er">(</span><span class="ex">not</span> recommended<span class="kw">)</span><span class="ex">,</span> set: <span class="st">'export LOG_FROM_ALL_RANKS=1'</span>  in your environment, and re-run.</span>
-<span id="cb10-15"><a></a><span class="ex">[2024-07-17</span> 07:42:11.772718]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:81</span><span class="pp">]</span> <span class="at">-</span> Setting HF_DATASETS_CACHE to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/.cache/huggingface/datasets</span>
-<span id="cb10-16"><a></a><span class="ex">[2024-07-17</span> 07:42:15.341532]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=2/3</span><span class="pp">][</span><span class="ss">local_rank=2/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
-<span id="cb10-17"><a></a><span class="ex">[2024-07-17</span> 07:42:15.342381]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=1/3</span><span class="pp">][</span><span class="ss">local_rank=1/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
-<span id="cb10-18"><a></a><span class="ex">[2024-07-17</span> 07:42:15.342430]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=3/3</span><span class="pp">][</span><span class="ss">local_rank=3/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
-<span id="cb10-19"><a></a><span class="ex">[2024-07-17</span> 07:42:15.348657]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:95</span><span class="pp">]</span> <span class="at">-</span></span>
-<span id="cb10-20"><a></a></span>
-<span id="cb10-21"><a></a><span class="ex">[dist_info]:</span></span>
-<span id="cb10-22"><a></a>  <span class="ex">•</span> DEVICE=cuda</span>
-<span id="cb10-23"><a></a>  <span class="ex">•</span> DEVICE_ID=cuda:0</span>
-<span id="cb10-24"><a></a>  <span class="ex">•</span> DISTRIBUTED_BACKEND=nccl</span>
-<span id="cb10-25"><a></a>  <span class="ex">•</span> GPUS_PER_NODE=4</span>
-<span id="cb10-26"><a></a>  <span class="ex">•</span> HOSTS=<span class="pp">[</span><span class="st">'x3101c0s13b0n0.hsn.cm.polaris.alcf.anl.gov'</span><span class="pp">]</span></span>
-<span id="cb10-27"><a></a>  <span class="ex">•</span> HOSTFILE=/var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov</span>
-<span id="cb10-28"><a></a>  <span class="ex">•</span> HOSTNAME=x3101c0s13b0n0.hsn.cm.polaris.alcf.anl.gov</span>
-<span id="cb10-29"><a></a>  <span class="ex">•</span> LOCAL_RANK=0</span>
-<span id="cb10-30"><a></a>  <span class="ex">•</span> MACHINE=Polaris</span>
-<span id="cb10-31"><a></a>  <span class="ex">•</span> NUM_NODES=1</span>
-<span id="cb10-32"><a></a>  <span class="ex">•</span> NGPUS=4</span>
-<span id="cb10-33"><a></a>  <span class="ex">•</span> NGPUS_AVAILABLE=4</span>
-<span id="cb10-34"><a></a>  <span class="ex">•</span> NODE_ID=0</span>
-<span id="cb10-35"><a></a>  <span class="ex">•</span> RANK=0</span>
-<span id="cb10-36"><a></a>  <span class="ex">•</span> SCHEDULER=PBS</span>
-<span id="cb10-37"><a></a>  <span class="ex">•</span> WORLD_SIZE_TOTAL=4</span>
-<span id="cb10-38"><a></a>  <span class="ex">•</span> WORLD_SIZE_IN_USE=4</span>
-<span id="cb10-39"><a></a>  <span class="ex">•</span> LAUNCH_CMD=mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 4 <span class="at">-ppn</span> 4 <span class="at">--hostfile</span> /var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 16</span>
-<span id="cb10-40"><a></a></span>
-<span id="cb10-41"><a></a><span class="ex">[2024-07-17</span> 07:42:15.351446]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:725</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">0/4</span><span class="pp">]</span> Using device=<span class="st">'cuda'</span> with backend=<span class="st">'DDP'</span> + <span class="st">'nccl'</span> for distributed training.</span>
-<span id="cb10-42"><a></a><span class="ex">[2024-07-17</span> 07:42:15.356169]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=0/3</span><span class="pp">][</span><span class="ss">local_rank=0/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
-<span id="cb10-43"><a></a><span class="ex">[2024-07-17</span> 07:42:15.356692]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist:364</span><span class="pp">]</span> <span class="at">-</span> Using [4 / 4] available <span class="st">"cuda"</span> devices !!</span>
-<span id="cb10-44"><a></a><span class="ex">[2024-07-17</span> 07:42:15.359571]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:317</span><span class="pp">]</span> <span class="at">-</span> Loading val from /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/val.bin</span>
-<span id="cb10-45"><a></a><span class="ex">[2024-07-17</span> 07:42:15.360138]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:317</span><span class="pp">]</span> <span class="at">-</span> Loading train from /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/train.bin</span>
-<span id="cb10-46"><a></a><span class="ex">[2024-07-17</span> 07:42:15.361154]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:442</span><span class="pp">]</span> <span class="at">-</span> Tokens per iteration: 262,144</span>
-<span id="cb10-47"><a></a><span class="ex">[2024-07-17</span> 07:42:15.361574]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:465</span><span class="pp">]</span> <span class="at">-</span> Using self.ptdtype=torch.float16 on self.device_type=<span class="st">'cuda'</span></span>
-<span id="cb10-48"><a></a><span class="ex">[2024-07-17</span> 07:42:15.362002]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:471</span><span class="pp">]</span> <span class="at">-</span> Initializing a new model from scratch</span>
-<span id="cb10-49"><a></a><span class="ex">[2024-07-17</span> 07:42:15.362529]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:874</span><span class="pp">]</span> <span class="at">-</span> Setting up wandb from rank: 0</span>
-<span id="cb10-50"><a></a><span class="ex">[2024-07-17</span> 07:42:15.362896]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:875</span><span class="pp">]</span> <span class="at">-</span> Using: WB PROJECT: WordPlay</span>
-<span id="cb10-51"><a></a><span class="ex">[2024-07-17</span> 07:42:16.451786]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:905</span><span class="pp">]</span> <span class="at">-</span> W<span class="kw">&amp;</span><span class="ex">B</span> RUN: <span class="pp">[</span><span class="ss">still</span><span class="pp">-</span><span class="ss">frog</span><span class="pp">-</span><span class="ss">17</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://wandb.ai/aurora_gpt/WordPlay/runs/6by9vpcj</span><span class="kw">)</span></span>
-<span id="cb10-52"><a></a><span class="ex">[2024-07-17</span> 07:42:16.464106]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:312</span><span class="pp">]</span> <span class="at">-</span> Updating wandb.run: still-frog-17 config with <span class="st">"DIST_INFO"</span></span>
-<span id="cb10-53"><a></a><span class="ex">[2024-07-17</span> 07:42:16.469424]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:938</span><span class="pp">]</span> <span class="at">-</span> Running on machine=<span class="st">'Polaris'</span></span>
-<span id="cb10-54"><a></a><span class="ex">[2024-07-17</span> 07:42:16.471151]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">__main__:89</span><span class="pp">]</span> <span class="at">-</span> {</span>
-<span id="cb10-55"><a></a>    <span class="st">"train"</span><span class="ex">:</span> {</span>
-<span id="cb10-56"><a></a>        <span class="st">"framework"</span><span class="ex">:</span> <span class="st">"pytorch"</span>,</span>
-<span id="cb10-57"><a></a>        <span class="st">"backend"</span><span class="ex">:</span> <span class="st">"DDP"</span>,</span>
-<span id="cb10-58"><a></a>        <span class="st">"device"</span><span class="ex">:</span> null,</span>
-<span id="cb10-59"><a></a>        <span class="st">"seed"</span><span class="ex">:</span> null,</span>
-<span id="cb10-60"><a></a>        <span class="st">"port"</span><span class="ex">:</span> null,</span>
-<span id="cb10-61"><a></a>        <span class="st">"ds_config_path"</span><span class="ex">:</span> null,</span>
-<span id="cb10-62"><a></a>        <span class="st">"precision"</span><span class="ex">:</span> null,</span>
-<span id="cb10-63"><a></a>        <span class="st">"ngpus"</span><span class="ex">:</span> null,</span>
-<span id="cb10-64"><a></a>        <span class="st">"use_wandb"</span><span class="ex">:</span> true,</span>
-<span id="cb10-65"><a></a>        <span class="st">"eval_interval"</span><span class="ex">:</span> 100,</span>
-<span id="cb10-66"><a></a>        <span class="st">"log_interval"</span><span class="ex">:</span> 10,</span>
-<span id="cb10-67"><a></a>        <span class="st">"eval_iters"</span><span class="ex">:</span> 200,</span>
-<span id="cb10-68"><a></a>        <span class="st">"eval_only"</span><span class="ex">:</span> false,</span>
-<span id="cb10-69"><a></a>        <span class="st">"always_save_checkpoint"</span><span class="ex">:</span> false,</span>
-<span id="cb10-70"><a></a>        <span class="st">"init_from"</span><span class="ex">:</span> <span class="st">"scratch"</span>,</span>
-<span id="cb10-71"><a></a>        <span class="st">"wandb_project"</span><span class="ex">:</span> <span class="st">"WordPlay"</span>,</span>
-<span id="cb10-72"><a></a>        <span class="st">"max_iters"</span><span class="ex">:</span> 1000,</span>
-<span id="cb10-73"><a></a>        <span class="st">"warmup_iters"</span><span class="ex">:</span> 100,</span>
-<span id="cb10-74"><a></a>        <span class="st">"dtype"</span><span class="ex">:</span> <span class="st">"bf16"</span>,</span>
-<span id="cb10-75"><a></a>        <span class="st">"compile"</span><span class="ex">:</span> false</span>
-<span id="cb10-76"><a></a>    <span class="er">}</span><span class="ex">,</span></span>
-<span id="cb10-77"><a></a>    <span class="st">"model"</span><span class="ex">:</span> {</span>
-<span id="cb10-78"><a></a>        <span class="st">"n_layer"</span><span class="ex">:</span> 12,</span>
-<span id="cb10-79"><a></a>        <span class="st">"n_head"</span><span class="ex">:</span> 12,</span>
-<span id="cb10-80"><a></a>        <span class="st">"n_embd"</span><span class="ex">:</span> 768,</span>
-<span id="cb10-81"><a></a>        <span class="st">"batch_size"</span><span class="ex">:</span> 64,</span>
-<span id="cb10-82"><a></a>        <span class="st">"block_size"</span><span class="ex">:</span> 1024,</span>
-<span id="cb10-83"><a></a>        <span class="st">"activation"</span><span class="ex">:</span> <span class="st">"gelu"</span>,</span>
-<span id="cb10-84"><a></a>        <span class="st">"dropout"</span><span class="ex">:</span> 0.0,</span>
-<span id="cb10-85"><a></a>        <span class="st">"bias"</span><span class="ex">:</span> false,</span>
-<span id="cb10-86"><a></a>        <span class="st">"vocab_size"</span><span class="ex">:</span> 65</span>
-<span id="cb10-87"><a></a>    <span class="er">}</span><span class="ex">,</span></span>
-<span id="cb10-88"><a></a>    <span class="st">"data"</span><span class="ex">:</span> {</span>
-<span id="cb10-89"><a></a>        <span class="st">"dataset"</span><span class="ex">:</span> <span class="st">"shakespeare_char"</span>,</span>
-<span id="cb10-90"><a></a>        <span class="st">"out_dir"</span><span class="ex">:</span> <span class="st">"out-shakespeare-char"</span>,</span>
-<span id="cb10-91"><a></a>        <span class="st">"root_path"</span><span class="ex">:</span> null</span>
-<span id="cb10-92"><a></a>    <span class="er">}</span><span class="ex">,</span></span>
-<span id="cb10-93"><a></a>    <span class="st">"optimizer"</span><span class="ex">:</span> {</span>
-<span id="cb10-94"><a></a>        <span class="st">"gas"</span><span class="ex">:</span> 1,</span>
-<span id="cb10-95"><a></a>        <span class="st">"name"</span><span class="ex">:</span> <span class="st">"AdamW"</span>,</span>
-<span id="cb10-96"><a></a>        <span class="st">"learning_rate"</span><span class="ex">:</span> 0.0006,</span>
-<span id="cb10-97"><a></a>        <span class="st">"weight_decay"</span><span class="ex">:</span> 0.1,</span>
-<span id="cb10-98"><a></a>        <span class="st">"beta1"</span><span class="ex">:</span> 0.9,</span>
-<span id="cb10-99"><a></a>        <span class="st">"beta2"</span><span class="ex">:</span> 0.95,</span>
-<span id="cb10-100"><a></a>        <span class="st">"grad_clip"</span><span class="ex">:</span> 1.0,</span>
-<span id="cb10-101"><a></a>        <span class="st">"decay_lr"</span><span class="ex">:</span> true,</span>
-<span id="cb10-102"><a></a>        <span class="st">"lr_decay_iters"</span><span class="ex">:</span> 600000,</span>
-<span id="cb10-103"><a></a>        <span class="st">"min_lr"</span><span class="ex">:</span> 6e-05</span>
-<span id="cb10-104"><a></a>    <span class="er">}</span></span>
-<span id="cb10-105"><a></a><span class="er">}</span></span>
-<span id="cb10-106"><a></a><span class="ex">[2024-07-17</span> 07:42:16.474305]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">__main__:90</span><span class="pp">]</span> <span class="at">-</span> Output dir: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
-<span id="cb10-107"><a></a><span class="ex">[2024-07-17</span> 07:42:16.474922]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:246</span><span class="pp">]</span> <span class="at">-</span> Initializing a new model from scratch</span>
-<span id="cb10-108"><a></a><span class="ex">[2024-07-17</span> 07:42:17.258904]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:255</span><span class="pp">]</span> <span class="at">-</span> number of parameters: 85.00M</span>
-<span id="cb10-109"><a></a><span class="ex">[2024-07-17</span> 07:42:17.290004]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:264</span><span class="pp">]</span> <span class="at">-</span> Model size: num_params=85003776</span>
-<span id="cb10-110"><a></a><span class="ex">[2024-07-17</span> 07:42:17.292626]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:445</span><span class="pp">]</span> <span class="at">-</span> num decayed parameter tensors: 50, with 85,771,008 parameters</span>
-<span id="cb10-111"><a></a><span class="ex">[2024-07-17</span> 07:42:17.293296]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:449</span><span class="pp">]</span> <span class="at">-</span> num non-decayed parameter tensors: 25, with 19,200 parameters</span>
-<span id="cb10-112"><a></a><span class="ex">[2024-07-17</span> 07:42:17.515324]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:1'"</span></span>
-<span id="cb10-113"><a></a><span class="ex">[2024-07-17</span> 07:42:17.515340]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:2'"</span></span>
-<span id="cb10-114"><a></a><span class="ex">[2024-07-17</span> 07:42:17.515465]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:3'"</span></span>
-<span id="cb10-115"><a></a><span class="ex">[2024-07-17</span> 07:42:18.431814]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:465</span><span class="pp">]</span> <span class="at">-</span> using fused AdamW: True</span>
-<span id="cb10-116"><a></a><span class="ex">[2024-07-17</span> 07:42:18.432620]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:0'"</span></span>
-<span id="cb10-117"><a></a><span class="ex">[2024-07-17</span> 07:42:19.951020]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:356</span><span class="pp">]</span> <span class="at">-</span> • self.model=GPT<span class="er">(</span></span>
-<span id="cb10-118"><a></a>  <span class="kw">(</span><span class="ex">transformer</span><span class="kw">)</span><span class="bu">:</span> ModuleDict<span class="er">(</span></span>
-<span id="cb10-119"><a></a>    <span class="kw">(</span><span class="ex">wte</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">65,</span> 768<span class="kw">)</span></span>
-<span id="cb10-120"><a></a>    <span class="kw">(</span><span class="ex">wpe</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">1024,</span> 768<span class="kw">)</span></span>
-<span id="cb10-121"><a></a>    <span class="kw">(</span><span class="ex">drop</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-122"><a></a>    <span class="kw">(</span><span class="ex">h</span><span class="kw">)</span><span class="bu">:</span> ModuleList<span class="er">(</span></span>
-<span id="cb10-123"><a></a>      <span class="kw">(</span><span class="ex">0-11</span><span class="kw">)</span><span class="bu">:</span> 12 x Block<span class="er">(</span></span>
-<span id="cb10-124"><a></a>        <span class="kw">(</span><span class="ex">ln_1</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-125"><a></a>        <span class="kw">(</span><span class="ex">attn</span><span class="kw">)</span><span class="bu">:</span> CausalSelfAttention<span class="er">(</span></span>
-<span id="cb10-126"><a></a>          <span class="kw">(</span><span class="ex">c_attn</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>2304, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-127"><a></a>          <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-128"><a></a>          <span class="kw">(</span><span class="ex">attn_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-129"><a></a>          <span class="kw">(</span><span class="ex">resid_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-130"><a></a>        <span class="kw">)</span></span>
-<span id="cb10-131"><a></a>        <span class="kw">(</span><span class="ex">ln_2</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-132"><a></a>        <span class="kw">(</span><span class="ex">mlp</span><span class="kw">)</span><span class="bu">:</span> MLP<span class="er">(</span></span>
-<span id="cb10-133"><a></a>          <span class="kw">(</span><span class="ex">c_fc</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>3072, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-134"><a></a>          <span class="kw">(</span><span class="ex">act_fn</span><span class="kw">)</span><span class="bu">:</span> GELU<span class="er">(</span><span class="va">approximate</span><span class="op">=</span><span class="st">'none'</span><span class="kw">)</span></span>
-<span id="cb10-135"><a></a>          <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>3072, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-136"><a></a>          <span class="kw">(</span><span class="ex">dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-137"><a></a>        <span class="kw">)</span></span>
-<span id="cb10-138"><a></a>      <span class="kw">)</span></span>
-<span id="cb10-139"><a></a>    <span class="kw">)</span></span>
-<span id="cb10-140"><a></a>    <span class="kw">(</span><span class="ex">ln_f</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-141"><a></a>  <span class="kw">)</span></span>
-<span id="cb10-142"><a></a>  <span class="kw">(</span><span class="ex">lm_head</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>65, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-143"><a></a><span class="kw">)</span></span>
-<span id="cb10-144"><a></a><span class="ex">[2024-07-17</span> 07:42:19.955340]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:357</span><span class="pp">]</span> <span class="at">-</span> • self.grad_scaler=<span class="op">&lt;</span>torch.cuda.amp.grad_scaler.GradScaler object at 0x145a38f0f090<span class="op">&gt;</span></span>
-<span id="cb10-145"><a></a><span class="ex">[2024-07-17</span> 07:42:19.956897]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:358</span><span class="pp">]</span> <span class="at">-</span> • self.model_engine=DistributedDataParallel<span class="er">(</span></span>
-<span id="cb10-146"><a></a>  <span class="kw">(</span><span class="ex">module</span><span class="kw">)</span><span class="bu">:</span> GPT<span class="er">(</span></span>
-<span id="cb10-147"><a></a>    <span class="kw">(</span><span class="ex">transformer</span><span class="kw">)</span><span class="bu">:</span> ModuleDict<span class="er">(</span></span>
-<span id="cb10-148"><a></a>      <span class="kw">(</span><span class="ex">wte</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">65,</span> 768<span class="kw">)</span></span>
-<span id="cb10-149"><a></a>      <span class="kw">(</span><span class="ex">wpe</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">1024,</span> 768<span class="kw">)</span></span>
-<span id="cb10-150"><a></a>      <span class="kw">(</span><span class="ex">drop</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-151"><a></a>      <span class="kw">(</span><span class="ex">h</span><span class="kw">)</span><span class="bu">:</span> ModuleList<span class="er">(</span></span>
-<span id="cb10-152"><a></a>        <span class="kw">(</span><span class="ex">0-11</span><span class="kw">)</span><span class="bu">:</span> 12 x Block<span class="er">(</span></span>
-<span id="cb10-153"><a></a>          <span class="kw">(</span><span class="ex">ln_1</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-154"><a></a>          <span class="kw">(</span><span class="ex">attn</span><span class="kw">)</span><span class="bu">:</span> CausalSelfAttention<span class="er">(</span></span>
-<span id="cb10-155"><a></a>            <span class="kw">(</span><span class="ex">c_attn</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>2304, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-156"><a></a>            <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-157"><a></a>            <span class="kw">(</span><span class="ex">attn_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-158"><a></a>            <span class="kw">(</span><span class="ex">resid_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-159"><a></a>          <span class="kw">)</span></span>
-<span id="cb10-160"><a></a>          <span class="kw">(</span><span class="ex">ln_2</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-161"><a></a>          <span class="kw">(</span><span class="ex">mlp</span><span class="kw">)</span><span class="bu">:</span> MLP<span class="er">(</span></span>
-<span id="cb10-162"><a></a>            <span class="kw">(</span><span class="ex">c_fc</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>3072, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-163"><a></a>            <span class="kw">(</span><span class="ex">act_fn</span><span class="kw">)</span><span class="bu">:</span> GELU<span class="er">(</span><span class="va">approximate</span><span class="op">=</span><span class="st">'none'</span><span class="kw">)</span></span>
-<span id="cb10-164"><a></a>            <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>3072, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-165"><a></a>            <span class="kw">(</span><span class="ex">dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-166"><a></a>          <span class="kw">)</span></span>
-<span id="cb10-167"><a></a>        <span class="kw">)</span></span>
-<span id="cb10-168"><a></a>      <span class="kw">)</span></span>
-<span id="cb10-169"><a></a>      <span class="kw">(</span><span class="ex">ln_f</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb10-170"><a></a>    <span class="kw">)</span></span>
-<span id="cb10-171"><a></a>    <span class="kw">(</span><span class="ex">lm_head</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>65, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
-<span id="cb10-172"><a></a>  <span class="kw">)</span></span>
-<span id="cb10-173"><a></a><span class="kw">)</span></span>
-<span id="cb10-174"><a></a><span class="ex">[2024-07-17</span> 07:42:19.961066]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:359</span><span class="pp">]</span> <span class="at">-</span> • self.optimizer=AdamW <span class="er">(</span></span>
-<span id="cb10-175"><a></a><span class="ex">Parameter</span> Group 0</span>
-<span id="cb10-176"><a></a>    <span class="ex">amsgrad:</span> False</span>
-<span id="cb10-177"><a></a>    <span class="ex">betas:</span> <span class="er">(</span><span class="ex">0.9,</span> 0.95<span class="kw">)</span></span>
-<span id="cb10-178"><a></a>    <span class="ex">capturable:</span> False</span>
-<span id="cb10-179"><a></a>    <span class="ex">differentiable:</span> False</span>
-<span id="cb10-180"><a></a>    <span class="ex">eps:</span> 1e-08</span>
-<span id="cb10-181"><a></a>    <span class="ex">foreach:</span> None</span>
-<span id="cb10-182"><a></a>    <span class="ex">fused:</span> True</span>
-<span id="cb10-183"><a></a>    <span class="ex">lr:</span> 0.0006</span>
-<span id="cb10-184"><a></a>    <span class="ex">maximize:</span> False</span>
-<span id="cb10-185"><a></a>    <span class="ex">weight_decay:</span> 0.1</span>
-<span id="cb10-186"><a></a></span>
-<span id="cb10-187"><a></a><span class="ex">Parameter</span> Group 1</span>
-<span id="cb10-188"><a></a>    <span class="ex">amsgrad:</span> False</span>
-<span id="cb10-189"><a></a>    <span class="ex">betas:</span> <span class="er">(</span><span class="ex">0.9,</span> 0.95<span class="kw">)</span></span>
-<span id="cb10-190"><a></a>    <span class="ex">capturable:</span> False</span>
-<span id="cb10-191"><a></a>    <span class="ex">differentiable:</span> False</span>
-<span id="cb10-192"><a></a>    <span class="ex">eps:</span> 1e-08</span>
-<span id="cb10-193"><a></a>    <span class="ex">foreach:</span> None</span>
-<span id="cb10-194"><a></a>    <span class="ex">fused:</span> True</span>
-<span id="cb10-195"><a></a>    <span class="ex">lr:</span> 0.0006</span>
-<span id="cb10-196"><a></a>    <span class="ex">maximize:</span> False</span>
-<span id="cb10-197"><a></a>    <span class="ex">weight_decay:</span> 0.0</span>
-<span id="cb10-198"><a></a><span class="kw">)</span></span>
-<span id="cb10-199"><a></a><span class="ex">[2024-07-17</span> 07:42:19.988827]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:802</span><span class="pp">]</span> <span class="at">-</span> Startup time: 6.7125</span>
-<span id="cb10-200"><a></a>                <span class="ex">Training</span> Legend</span>
-<span id="cb10-201"><a></a><span class="ex">┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓</span></span>
-<span id="cb10-202"><a></a><span class="ex">┃</span>    abbr     ┃ desc                           ┃</span>
-<span id="cb10-203"><a></a><span class="ex">┡━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩</span></span>
-<span id="cb10-204"><a></a><span class="ex">│</span>    step     │ Current training iteration     │</span>
-<span id="cb10-205"><a></a><span class="ex">│</span>    loss     │ Loss value                     │</span>
-<span id="cb10-206"><a></a><span class="ex">│</span>     dt      │ Elapsed time per training step │</span>
-<span id="cb10-207"><a></a><span class="ex">│</span>     dtf     │ Elapsed time per forward step  │</span>
-<span id="cb10-208"><a></a><span class="ex">│</span>     dtb     │ Elapsed time per backward step │</span>
-<span id="cb10-209"><a></a><span class="ex">│</span>     sps     │ Samples per second             │</span>
-<span id="cb10-210"><a></a><span class="ex">│</span> sps_per_gpu │ Samples per second <span class="er">(</span><span class="ex">per</span> GPU<span class="kw">)</span>   <span class="ex">│</span></span>
-<span id="cb10-211"><a></a><span class="ex">│</span>     tps     │ Tokens per second              │</span>
-<span id="cb10-212"><a></a><span class="ex">│</span> tps_per_gpu │ Tokens per second <span class="er">(</span><span class="ex">per</span> GPU<span class="kw">)</span>    <span class="ex">│</span></span>
-<span id="cb10-213"><a></a><span class="ex">│</span>     mfu     │ Model flops utilization        │</span>
-<span id="cb10-214"><a></a><span class="ex">│</span> train_loss  │ Training loss value            │</span>
-<span id="cb10-215"><a></a><span class="ex">│</span>  val_loss   │ Validation loss value          │</span>
-<span id="cb10-216"><a></a><span class="ex">└─────────────┴────────────────────────────────┘</span></span>
-<span id="cb10-217"><a></a><span class="ex">[2024-07-17</span> 07:42:21.451865]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
-<span id="cb10-218"><a></a><span class="ex">[2024-07-17</span> 07:42:21.452667]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
-<span id="cb10-219"><a></a><span class="ex">What</span> is an LLM<span class="pp">?</span>eelEl\'<span class="va">$nltPwBSWal</span>,<span class="kw">;</span><span class="ex">PWw</span> bbu<span class="dt">\'</span>HiyP<span class="dt">\'</span>FWwF <span class="kw">&amp;</span><span class="ex">AhW:ygrn</span> kk-<span class="dt">\'\'</span>KFlMwnlEfflkc,elpWaWtgml<span class="va">$Pgglhllw</span> lglhFllzczPAFHpeAAPPSltgkrWPPhlEMgcrN ggPWt-WPSSzHSkkrzzk.FFrtSSkgMll<span class="kw">&amp;</span><span class="ex">gFXr,hghaueaVPW-pHFF-gg,,,FF,,kbApgg</span> gg<span class="dt">\'</span>aWWzzkk<span class="dt">\'</span>a<span class="dt">\'</span>CggHl<span class="va">$bGeA</span>,FFk,,SF<span class="kw">;</span><span class="ex">UF,,aZ</span> <span class="kw">;</span><span class="ex">gglee$,k.US</span><span class="kw">&amp;</span><span class="ex">kg:S,,zVzzc</span></span>
-<span id="cb10-220"><a></a><span class="ex">[2024-07-17</span> 07:43:01.573073]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=10 loss=3.154310 dt=0.282833 dtf=0.005247 dtb=0.011417 sps=14.142633 sps_per_gpu=3.535658 tps=926851.609409 tps_per_gpu=231712.902352 mfu=46.288281 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-221"><a></a><span class="ex">[2024-07-17</span> 07:43:04.402750]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=20 loss=2.660851 dt=0.306263 dtf=0.005233 dtb=0.011419 sps=13.060678 sps_per_gpu=3.265170 tps=855944.613638 tps_per_gpu=213986.153409 mfu=45.934162 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-222"><a></a><span class="ex">[2024-07-17</span> 07:43:07.237507]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=30 loss=2.543283 dt=0.283021 dtf=0.005238 dtb=0.011245 sps=14.133211 sps_per_gpu=3.533303 tps=926234.088226 tps_per_gpu=231558.522057 mfu=45.966490 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-223"><a></a><span class="ex">[2024-07-17</span> 07:43:10.077248]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=40 loss=2.503963 dt=0.285001 dtf=0.005213 dtb=0.011471 sps=14.035061 sps_per_gpu=3.508765 tps=919801.749941 tps_per_gpu=229950.437485 mfu=45.963461 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-224"><a></a><span class="ex">[2024-07-17</span> 07:43:12.917039]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=50 loss=2.477469 dt=0.283532 dtf=0.005166 dtb=0.011294 sps=14.107763 sps_per_gpu=3.526941 tps=924566.380009 tps_per_gpu=231141.595002 mfu=45.984530 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-225"><a></a><span class="ex">[2024-07-17</span> 07:43:15.760749]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=60 loss=2.471083 dt=0.284630 dtf=0.005140 dtb=0.011224 sps=14.053326 sps_per_gpu=3.513332 tps=920998.786204 tps_per_gpu=230249.696551 mfu=45.985675 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-226"><a></a><span class="ex">[2024-07-17</span> 07:43:18.602785]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=70 loss=2.458894 dt=0.283926 dtf=0.005219 dtb=0.010383 sps=14.088155 sps_per_gpu=3.522039 tps=923281.352698 tps_per_gpu=230820.338174 mfu=45.998106 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-227"><a></a><span class="ex">[2024-07-17</span> 07:43:21.451433]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=80 loss=2.489088 dt=0.285537 dtf=0.005183 dtb=0.011373 sps=14.008683 sps_per_gpu=3.502171 tps=918073.060430 tps_per_gpu=229518.265108 mfu=45.983282 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-228"><a></a><span class="ex">[2024-07-17</span> 07:43:24.302241]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=90 loss=2.471990 dt=0.300767 dtf=0.005445 dtb=0.010290 sps=13.299337 sps_per_gpu=3.324834 tps=871585.359388 tps_per_gpu=217896.339847 mfu=45.737774 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-229"><a></a><span class="ex">[2024-07-17</span> 07:43:27.153275]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=100 loss=2.445556 dt=0.285869 dtf=0.005182 dtb=0.011251 sps=13.992403 sps_per_gpu=3.498101 tps=917006.151328 tps_per_gpu=229251.537832 mfu=45.743655 train_loss=4.125778 val_loss=4.128809</span>
-<span id="cb10-230"><a></a><span class="ex">[2024-07-17</span> 07:43:28.182553]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
-<span id="cb10-231"><a></a><span class="ex">[2024-07-17</span> 07:43:28.183179]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
-<span id="cb10-232"><a></a></span>
-<span id="cb10-233"><a></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
-<span id="cb10-234"><a></a></span>
-<span id="cb10-235"><a></a><span class="ex">Goupay</span> my winghimithell bls ger t bon sinthard ht omind be,</span>
-<span id="cb10-236"><a></a><span class="ex">And</span> lereind h py balithand frd oforondof wimon me hageas thinero mand,</span>
-<span id="cb10-237"><a></a><span class="ex">Thacanes,</span></span>
-<span id="cb10-238"><a></a><span class="ex">An</span> frift ghik med d herthecke ntore thack couthen ale, t thit ang d m t h chy me fache ag, wit my hathan glat ng</span>
-<span id="cb10-239"><a></a><span class="ex">[2024-07-17</span> 07:44:06.025837]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:760</span><span class="pp">]</span> <span class="at">-</span> Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
-<span id="cb10-240"><a></a><span class="ex">[2024-07-17</span> 07:44:06.026607]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:761</span><span class="pp">]</span> <span class="at">-</span> Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span>
-<span id="cb10-241"><a></a><span class="ex">[2024-07-17</span> 07:44:07.682968]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:141</span><span class="pp">]</span> <span class="at">-</span> Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span>
-<span id="cb10-242"><a></a><span class="ex">[2024-07-17</span> 07:44:10.519506]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=110 loss=2.433923 dt=0.285038 dtf=0.005757 dtb=0.011762 sps=14.033209 sps_per_gpu=3.508302 tps=919680.367894 tps_per_gpu=229920.091974 mfu=45.762304 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-243"><a></a><span class="ex">[2024-07-17</span> 07:44:13.362148]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=120 loss=2.429014 dt=0.284445 dtf=0.005222 dtb=0.011486 sps=14.062460 sps_per_gpu=3.515615 tps=921597.361532 tps_per_gpu=230399.340383 mfu=45.788661 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-244"><a></a><span class="ex">[2024-07-17</span> 07:44:16.210694]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=130 loss=2.402059 dt=0.285559 dtf=0.005199 dtb=0.011765 sps=14.007633 sps_per_gpu=3.501908 tps=918004.211586 tps_per_gpu=229501.052897 mfu=45.794438 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-245"><a></a><span class="ex">[2024-07-17</span> 07:44:19.061546]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=140 loss=2.374062 dt=0.285476 dtf=0.005239 dtb=0.011453 sps=14.011662 sps_per_gpu=3.502916 tps=918268.297093 tps_per_gpu=229567.074273 mfu=45.800956 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-246"><a></a><span class="ex">[2024-07-17</span> 07:44:21.917283]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=150 loss=2.365385 dt=0.285846 dtf=0.005125 dtb=0.011320 sps=13.993568 sps_per_gpu=3.498392 tps=917082.475791 tps_per_gpu=229270.618948 mfu=45.800900 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-247"><a></a><span class="ex">[2024-07-17</span> 07:44:24.771924]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=160 loss=2.317337 dt=0.280788 dtf=0.005173 dtb=0.011249 sps=14.245602 sps_per_gpu=3.561401 tps=933599.792506 tps_per_gpu=233399.948127 mfu=45.883340 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-248"><a></a><span class="ex">[2024-07-17</span> 07:44:27.626812]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=170 loss=2.256231 dt=0.284973 dtf=0.005141 dtb=0.011299 sps=14.036416 sps_per_gpu=3.509104 tps=919890.544506 tps_per_gpu=229972.636126 mfu=45.889069 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-249"><a></a><span class="ex">[2024-07-17</span> 07:44:30.480952]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=180 loss=2.216419 dt=0.286555 dtf=0.005180 dtb=0.011402 sps=13.958906 sps_per_gpu=3.489726 tps=914810.852170 tps_per_gpu=228702.713043 mfu=45.868857 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-250"><a></a><span class="ex">[2024-07-17</span> 07:44:33.337342]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=190 loss=2.145123 dt=0.291456 dtf=0.005409 dtb=0.019347 sps=13.724205 sps_per_gpu=3.431051 tps=899429.467247 tps_per_gpu=224857.366812 mfu=45.773849 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-251"><a></a><span class="ex">[2024-07-17</span> 07:44:36.194584]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=200 loss=2.068149 dt=0.285703 dtf=0.005153 dtb=0.011286 sps=14.000555 sps_per_gpu=3.500139 tps=917540.393411 tps_per_gpu=229385.098353 mfu=45.778791 train_loss=2.439494 val_loss=2.478951</span>
-<span id="cb10-252"><a></a><span class="ex">[2024-07-17</span> 07:44:37.224149]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
-<span id="cb10-253"><a></a><span class="ex">[2024-07-17</span> 07:44:37.224745]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
-<span id="cb10-254"><a></a></span>
-<span id="cb10-255"><a></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
-<span id="cb10-256"><a></a></span>
-<span id="cb10-257"><a></a><span class="ex">LORTESS</span> LA:</span>
-<span id="cb10-258"><a></a><span class="ex">No,</span> sighappat selace<span class="pp">?</span> don downd sourciceans note cancen up sof liond</span>
-<span id="cb10-259"><a></a><span class="ex">This</span> and my man, werame, of re thee</span>
-<span id="cb10-260"><a></a><span class="ex">Thise</span> not will I on land brond sul me a fingore<span class="pp">?</span></span>
-<span id="cb10-261"><a></a></span>
-<span id="cb10-262"><a></a><span class="ex">FLER:</span></span>
-<span id="cb10-263"><a></a><span class="ex">Tisint</span> your not nare lame o igen,-to brorst.</span>
-<span id="cb10-264"><a></a></span>
-<span id="cb10-265"><a></a><span class="ex">SamERS:</span></span>
-<span id="cb10-266"><a></a><span class="ex">Sin:</span></span>
-<span id="cb10-267"><a></a><span class="ex">I\'l</span> hell she lor hen w</span>
-<span id="cb10-268"><a></a><span class="ex">[2024-07-17</span> 07:45:14.409129]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:760</span><span class="pp">]</span> <span class="at">-</span> Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
-<span id="cb10-269"><a></a><span class="ex">[2024-07-17</span> 07:45:14.409820]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:761</span><span class="pp">]</span> <span class="at">-</span> Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span>
-<span id="cb10-270"><a></a><span class="ex">[2024-07-17</span> 07:45:16.366935]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:141</span><span class="pp">]</span> <span class="at">-</span> Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span>
-<span id="cb10-271"><a></a><span class="ex">[2024-07-17</span> 07:45:19.245061]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=210 loss=1.982169 dt=0.283305 dtf=0.005223 dtb=0.011284 sps=14.119042 sps_per_gpu=3.529760 tps=925305.515083 tps_per_gpu=231326.378771 mfu=45.822019 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-272"><a></a><span class="ex">[2024-07-17</span> 07:45:22.092430]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=220 loss=1.897731 dt=0.284759 dtf=0.005217 dtb=0.011187 sps=14.046945 sps_per_gpu=3.511736 tps=920580.608106 tps_per_gpu=230145.152026 mfu=45.837327 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-273"><a></a><span class="ex">[2024-07-17</span> 07:45:24.942639]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=230 loss=1.817213 dt=0.285266 dtf=0.005208 dtb=0.011446 sps=14.022003 sps_per_gpu=3.505501 tps=918945.985503 tps_per_gpu=229736.496376 mfu=45.842940 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-274"><a></a><span class="ex">[2024-07-17</span> 07:45:27.797910]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=240 loss=1.779287 dt=0.285465 dtf=0.005189 dtb=0.011220 sps=14.012250 sps_per_gpu=3.503062 tps=918306.793546 tps_per_gpu=229576.698387 mfu=45.844800 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-275"><a></a><span class="ex">[2024-07-17</span> 07:45:30.653597]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=250 loss=1.704220 dt=0.289284 dtf=0.005471 dtb=0.010346 sps=13.827253 sps_per_gpu=3.456813 tps=906182.836379 tps_per_gpu=226545.709095 mfu=45.785926 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-276"><a></a><span class="ex">[2024-07-17</span> 07:45:33.512769]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=260 loss=1.671318 dt=0.287679 dtf=0.005125 dtb=0.011250 sps=13.904380 sps_per_gpu=3.476095 tps=911237.442617 tps_per_gpu=227809.360654 mfu=45.758182 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-277"><a></a><span class="ex">[2024-07-17</span> 07:45:36.373461]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=270 loss=1.650952 dt=0.298661 dtf=0.005118 dtb=0.011520 sps=13.393107 sps_per_gpu=3.348277 tps=877730.651421 tps_per_gpu=219432.662855 mfu=45.565875 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-278"><a></a><span class="ex">[2024-07-17</span> 07:45:39.236930]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=280 loss=1.573242 dt=0.285970 dtf=0.005171 dtb=0.011290 sps=13.987477 sps_per_gpu=3.496869 tps=916683.279847 tps_per_gpu=229170.819962 mfu=45.587333 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-279"><a></a><span class="ex">[2024-07-17</span> 07:45:42.100605]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=290 loss=1.533265 dt=0.286487 dtf=0.005432 dtb=0.011288 sps=13.962259 sps_per_gpu=3.490565 tps=915030.617828 tps_per_gpu=228757.654457 mfu=45.598392 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-280"><a></a><span class="ex">[2024-07-17</span> 07:45:44.964424]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=300 loss=1.492064 dt=0.288480 dtf=0.005355 dtb=0.011480 sps=13.865774 sps_per_gpu=3.466443 tps=908707.340870 tps_per_gpu=227176.835218 mfu=45.576766 train_loss=2.045786 val_loss=2.148510</span>
-<span id="cb10-281"><a></a><span class="ex">[2024-07-17</span> 07:45:45.995833]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
-<span id="cb10-282"><a></a><span class="ex">[2024-07-17</span> 07:45:45.996497]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
-<span id="cb10-283"><a></a></span>
-<span id="cb10-284"><a></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
-<span id="cb10-285"><a></a></span>
-<span id="cb10-286"><a></a><span class="ex">RICHMORD:</span></span>
-<span id="cb10-287"><a></a><span class="ex">Char</span> stire<span class="pp">?</span> how in those are name the range hone.</span>
-<span id="cb10-288"><a></a></span>
-<span id="cb10-289"><a></a><span class="ex">GLOUCESTER:</span></span>
-<span id="cb10-290"><a></a><span class="ex">Nay,</span> in lond<span class="st">'s time the palt are worder more</span></span>
-<span id="cb10-291"><a></a><span class="st">That wilt in the purpose be a pey</span></span>
-<span id="cb10-292"><a></a><span class="st">And thou thine onter hands, and the which broth.</span></span>
-<span id="cb10-293"><a></a></span>
-<span id="cb10-294"><a></a><span class="st">ELBOWINCA:</span></span>
-<span id="cb10-295"><a></a><span class="st">At lie my lord with the me an arms be a s</span></span>
-<span id="cb10-296"><a></a><span class="st">[2024-07-17 07:46:23.549987][INFO][trainer:760] - Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span></span>
-<span id="cb10-297"><a></a><span class="st">[2024-07-17 07:46:23.550696][INFO][trainer:761] - Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span></span>
-<span id="cb10-298"><a></a><span class="st">[2024-07-17 07:46:25.496559][INFO][configs:141] - Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span></span>
-<span id="cb10-299"><a></a><span class="st">[2024-07-17 07:46:28.374854][INFO][trainer:885] - step=310 loss=1.444200 dt=0.299907 dtf=0.005333 dtb=0.010637 sps=13.337481 sps_per_gpu=3.334370 tps=874085.133345 tps_per_gpu=218521.283336 mfu=45.384395 train_loss=1.495372 val_loss=1.713714</span></span>
-<span id="cb10-300"><a></a><span class="st">[2024-07-17 07:46:31.223079][INFO][trainer:885] - step=320 loss=1.429350 dt=0.285238 dtf=0.005245 dtb=0.011485 sps=14.023353 sps_per_gpu=3.505838 tps=919034.479880 tps_per_gpu=229758.619970 mfu=45.435743 train_loss=1.495372 val_loss=1.713714</span></span>
-<span id="cb10-301"><a></a><span class="st">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714</span></span>
-<span id="cb10-302"><a></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> launch python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>    train.backend=DDP <span class="dt">\</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>    train.eval_interval=100 <span class="dt">\</span></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>    data=shakespeare <span class="dt">\</span></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>    train.dtype=bf16 <span class="dt">\</span></span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>    model.batch_size=64 <span class="dt">\</span></span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>    model.block_size=1024 <span class="dt">\</span></span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>    train.max_iters=1000 <span class="dt">\</span></span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>    train.log_interval=10 <span class="dt">\</span></span>
+<span id="cb10-10"><a aria-hidden="true" tabindex="-1"></a>    train.compile=false <span class="dt">\</span></span>
+<span id="cb10-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span>
+<span id="cb10-12"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:11.746540]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:156</span><span class="pp">]</span> <span class="at">-</span> Setting logging level to <span class="st">'INFO'</span> on <span class="st">'RANK == 0'</span></span>
+<span id="cb10-13"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:11.748763]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:157</span><span class="pp">]</span> <span class="at">-</span> Setting logging level to <span class="st">'CRITICAL'</span> on all others <span class="st">'RANK != 0'</span></span>
+<span id="cb10-14"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:11.749453]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">__init__:160</span><span class="pp">]</span> <span class="at">-</span> To disable this behavior, and log from ALL ranks <span class="er">(</span><span class="ex">not</span> recommended<span class="kw">)</span><span class="ex">,</span> set: <span class="st">'export LOG_FROM_ALL_RANKS=1'</span>  in your environment, and re-run.</span>
+<span id="cb10-15"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:11.772718]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:81</span><span class="pp">]</span> <span class="at">-</span> Setting HF_DATASETS_CACHE to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/.cache/huggingface/datasets</span>
+<span id="cb10-16"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.341532]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=2/3</span><span class="pp">][</span><span class="ss">local_rank=2/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
+<span id="cb10-17"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.342381]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=1/3</span><span class="pp">][</span><span class="ss">local_rank=1/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
+<span id="cb10-18"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.342430]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=3/3</span><span class="pp">][</span><span class="ss">local_rank=3/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
+<span id="cb10-19"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.348657]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:95</span><span class="pp">]</span> <span class="at">-</span></span>
+<span id="cb10-20"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[dist_info]:</span></span>
+<span id="cb10-22"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> DEVICE=cuda</span>
+<span id="cb10-23"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> DEVICE_ID=cuda:0</span>
+<span id="cb10-24"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> DISTRIBUTED_BACKEND=nccl</span>
+<span id="cb10-25"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> GPUS_PER_NODE=4</span>
+<span id="cb10-26"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> HOSTS=<span class="pp">[</span><span class="st">'x3101c0s13b0n0.hsn.cm.polaris.alcf.anl.gov'</span><span class="pp">]</span></span>
+<span id="cb10-27"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> HOSTFILE=/var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov</span>
+<span id="cb10-28"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> HOSTNAME=x3101c0s13b0n0.hsn.cm.polaris.alcf.anl.gov</span>
+<span id="cb10-29"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> LOCAL_RANK=0</span>
+<span id="cb10-30"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> MACHINE=Polaris</span>
+<span id="cb10-31"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> NUM_NODES=1</span>
+<span id="cb10-32"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> NGPUS=4</span>
+<span id="cb10-33"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> NGPUS_AVAILABLE=4</span>
+<span id="cb10-34"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> NODE_ID=0</span>
+<span id="cb10-35"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> RANK=0</span>
+<span id="cb10-36"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> SCHEDULER=PBS</span>
+<span id="cb10-37"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> WORLD_SIZE_TOTAL=4</span>
+<span id="cb10-38"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> WORLD_SIZE_IN_USE=4</span>
+<span id="cb10-39"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">•</span> LAUNCH_CMD=mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 4 <span class="at">-ppn</span> 4 <span class="at">--hostfile</span> /var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 16</span>
+<span id="cb10-40"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.351446]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:725</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">0/4</span><span class="pp">]</span> Using device=<span class="st">'cuda'</span> with backend=<span class="st">'DDP'</span> + <span class="st">'nccl'</span> for distributed training.</span>
+<span id="cb10-42"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.356169]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:358</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="ss">device=</span><span class="st">'cuda'</span><span class="pp">][</span><span class="ss">rank=0/3</span><span class="pp">][</span><span class="ss">local_rank=0/3</span><span class="pp">][</span><span class="ss">node=0/0</span><span class="pp">]</span></span>
+<span id="cb10-43"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.356692]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">dist:364</span><span class="pp">]</span> <span class="at">-</span> Using [4 / 4] available <span class="st">"cuda"</span> devices !!</span>
+<span id="cb10-44"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.359571]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:317</span><span class="pp">]</span> <span class="at">-</span> Loading val from /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/val.bin</span>
+<span id="cb10-45"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.360138]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:317</span><span class="pp">]</span> <span class="at">-</span> Loading train from /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/train.bin</span>
+<span id="cb10-46"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.361154]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:442</span><span class="pp">]</span> <span class="at">-</span> Tokens per iteration: 262,144</span>
+<span id="cb10-47"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.361574]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:465</span><span class="pp">]</span> <span class="at">-</span> Using self.ptdtype=torch.float16 on self.device_type=<span class="st">'cuda'</span></span>
+<span id="cb10-48"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.362002]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:471</span><span class="pp">]</span> <span class="at">-</span> Initializing a new model from scratch</span>
+<span id="cb10-49"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.362529]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:874</span><span class="pp">]</span> <span class="at">-</span> Setting up wandb from rank: 0</span>
+<span id="cb10-50"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:15.362896]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:875</span><span class="pp">]</span> <span class="at">-</span> Using: WB PROJECT: WordPlay</span>
+<span id="cb10-51"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.451786]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:905</span><span class="pp">]</span> <span class="at">-</span> W<span class="kw">&amp;</span><span class="ex">B</span> RUN: <span class="pp">[</span><span class="ss">still</span><span class="pp">-</span><span class="ss">frog</span><span class="pp">-</span><span class="ss">17</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://wandb.ai/aurora_gpt/WordPlay/runs/6by9vpcj</span><span class="kw">)</span></span>
+<span id="cb10-52"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.464106]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:312</span><span class="pp">]</span> <span class="at">-</span> Updating wandb.run: still-frog-17 config with <span class="st">"DIST_INFO"</span></span>
+<span id="cb10-53"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.469424]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">dist:938</span><span class="pp">]</span> <span class="at">-</span> Running on machine=<span class="st">'Polaris'</span></span>
+<span id="cb10-54"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.471151]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">__main__:89</span><span class="pp">]</span> <span class="at">-</span> {</span>
+<span id="cb10-55"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"train"</span><span class="ex">:</span> {</span>
+<span id="cb10-56"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"framework"</span><span class="ex">:</span> <span class="st">"pytorch"</span>,</span>
+<span id="cb10-57"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"backend"</span><span class="ex">:</span> <span class="st">"DDP"</span>,</span>
+<span id="cb10-58"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"device"</span><span class="ex">:</span> null,</span>
+<span id="cb10-59"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"seed"</span><span class="ex">:</span> null,</span>
+<span id="cb10-60"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"port"</span><span class="ex">:</span> null,</span>
+<span id="cb10-61"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"ds_config_path"</span><span class="ex">:</span> null,</span>
+<span id="cb10-62"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"precision"</span><span class="ex">:</span> null,</span>
+<span id="cb10-63"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"ngpus"</span><span class="ex">:</span> null,</span>
+<span id="cb10-64"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"use_wandb"</span><span class="ex">:</span> true,</span>
+<span id="cb10-65"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"eval_interval"</span><span class="ex">:</span> 100,</span>
+<span id="cb10-66"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"log_interval"</span><span class="ex">:</span> 10,</span>
+<span id="cb10-67"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"eval_iters"</span><span class="ex">:</span> 200,</span>
+<span id="cb10-68"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"eval_only"</span><span class="ex">:</span> false,</span>
+<span id="cb10-69"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"always_save_checkpoint"</span><span class="ex">:</span> false,</span>
+<span id="cb10-70"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"init_from"</span><span class="ex">:</span> <span class="st">"scratch"</span>,</span>
+<span id="cb10-71"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"wandb_project"</span><span class="ex">:</span> <span class="st">"WordPlay"</span>,</span>
+<span id="cb10-72"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"max_iters"</span><span class="ex">:</span> 1000,</span>
+<span id="cb10-73"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"warmup_iters"</span><span class="ex">:</span> 100,</span>
+<span id="cb10-74"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"dtype"</span><span class="ex">:</span> <span class="st">"bf16"</span>,</span>
+<span id="cb10-75"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"compile"</span><span class="ex">:</span> false</span>
+<span id="cb10-76"><a aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span><span class="ex">,</span></span>
+<span id="cb10-77"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"model"</span><span class="ex">:</span> {</span>
+<span id="cb10-78"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"n_layer"</span><span class="ex">:</span> 12,</span>
+<span id="cb10-79"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"n_head"</span><span class="ex">:</span> 12,</span>
+<span id="cb10-80"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"n_embd"</span><span class="ex">:</span> 768,</span>
+<span id="cb10-81"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"batch_size"</span><span class="ex">:</span> 64,</span>
+<span id="cb10-82"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"block_size"</span><span class="ex">:</span> 1024,</span>
+<span id="cb10-83"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"activation"</span><span class="ex">:</span> <span class="st">"gelu"</span>,</span>
+<span id="cb10-84"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"dropout"</span><span class="ex">:</span> 0.0,</span>
+<span id="cb10-85"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"bias"</span><span class="ex">:</span> false,</span>
+<span id="cb10-86"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"vocab_size"</span><span class="ex">:</span> 65</span>
+<span id="cb10-87"><a aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span><span class="ex">,</span></span>
+<span id="cb10-88"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span><span class="ex">:</span> {</span>
+<span id="cb10-89"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"dataset"</span><span class="ex">:</span> <span class="st">"shakespeare_char"</span>,</span>
+<span id="cb10-90"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"out_dir"</span><span class="ex">:</span> <span class="st">"out-shakespeare-char"</span>,</span>
+<span id="cb10-91"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"root_path"</span><span class="ex">:</span> null</span>
+<span id="cb10-92"><a aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span><span class="ex">,</span></span>
+<span id="cb10-93"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"optimizer"</span><span class="ex">:</span> {</span>
+<span id="cb10-94"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"gas"</span><span class="ex">:</span> 1,</span>
+<span id="cb10-95"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span><span class="ex">:</span> <span class="st">"AdamW"</span>,</span>
+<span id="cb10-96"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"learning_rate"</span><span class="ex">:</span> 0.0006,</span>
+<span id="cb10-97"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"weight_decay"</span><span class="ex">:</span> 0.1,</span>
+<span id="cb10-98"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"beta1"</span><span class="ex">:</span> 0.9,</span>
+<span id="cb10-99"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"beta2"</span><span class="ex">:</span> 0.95,</span>
+<span id="cb10-100"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"grad_clip"</span><span class="ex">:</span> 1.0,</span>
+<span id="cb10-101"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"decay_lr"</span><span class="ex">:</span> true,</span>
+<span id="cb10-102"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"lr_decay_iters"</span><span class="ex">:</span> 600000,</span>
+<span id="cb10-103"><a aria-hidden="true" tabindex="-1"></a>        <span class="st">"min_lr"</span><span class="ex">:</span> 6e-05</span>
+<span id="cb10-104"><a aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span>
+<span id="cb10-105"><a aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb10-106"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.474305]<span class="pp">[</span><span class="ss">WARNING</span><span class="pp">][</span><span class="ss">__main__:90</span><span class="pp">]</span> <span class="at">-</span> Output dir: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
+<span id="cb10-107"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:16.474922]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:246</span><span class="pp">]</span> <span class="at">-</span> Initializing a new model from scratch</span>
+<span id="cb10-108"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.258904]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:255</span><span class="pp">]</span> <span class="at">-</span> number of parameters: 85.00M</span>
+<span id="cb10-109"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.290004]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:264</span><span class="pp">]</span> <span class="at">-</span> Model size: num_params=85003776</span>
+<span id="cb10-110"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.292626]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:445</span><span class="pp">]</span> <span class="at">-</span> num decayed parameter tensors: 50, with 85,771,008 parameters</span>
+<span id="cb10-111"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.293296]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:449</span><span class="pp">]</span> <span class="at">-</span> num non-decayed parameter tensors: 25, with 19,200 parameters</span>
+<span id="cb10-112"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.515324]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:1'"</span></span>
+<span id="cb10-113"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.515340]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:2'"</span></span>
+<span id="cb10-114"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:17.515465]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:3'"</span></span>
+<span id="cb10-115"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:18.431814]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">model:465</span><span class="pp">]</span> <span class="at">-</span> using fused AdamW: True</span>
+<span id="cb10-116"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:18.432620]<span class="pp">[</span><span class="ss">CRITICAL</span><span class="pp">][</span><span class="ss">trainer:316</span><span class="pp">]</span> <span class="at">-</span> <span class="st">"devid='cuda:0'"</span></span>
+<span id="cb10-117"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:19.951020]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:356</span><span class="pp">]</span> <span class="at">-</span> • self.model=GPT<span class="er">(</span></span>
+<span id="cb10-118"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">transformer</span><span class="kw">)</span><span class="bu">:</span> ModuleDict<span class="er">(</span></span>
+<span id="cb10-119"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">wte</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">65,</span> 768<span class="kw">)</span></span>
+<span id="cb10-120"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">wpe</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">1024,</span> 768<span class="kw">)</span></span>
+<span id="cb10-121"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">drop</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-122"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">h</span><span class="kw">)</span><span class="bu">:</span> ModuleList<span class="er">(</span></span>
+<span id="cb10-123"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">0-11</span><span class="kw">)</span><span class="bu">:</span> 12 x Block<span class="er">(</span></span>
+<span id="cb10-124"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">(</span><span class="ex">ln_1</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-125"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">(</span><span class="ex">attn</span><span class="kw">)</span><span class="bu">:</span> CausalSelfAttention<span class="er">(</span></span>
+<span id="cb10-126"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">c_attn</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>2304, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-127"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-128"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">attn_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-129"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">resid_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-130"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">)</span></span>
+<span id="cb10-131"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">(</span><span class="ex">ln_2</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-132"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">(</span><span class="ex">mlp</span><span class="kw">)</span><span class="bu">:</span> MLP<span class="er">(</span></span>
+<span id="cb10-133"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">c_fc</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>3072, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-134"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">act_fn</span><span class="kw">)</span><span class="bu">:</span> GELU<span class="er">(</span><span class="va">approximate</span><span class="op">=</span><span class="st">'none'</span><span class="kw">)</span></span>
+<span id="cb10-135"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>3072, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-136"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-137"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">)</span></span>
+<span id="cb10-138"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">)</span></span>
+<span id="cb10-139"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">)</span></span>
+<span id="cb10-140"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">ln_f</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-141"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">)</span></span>
+<span id="cb10-142"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">lm_head</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>65, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-143"><a aria-hidden="true" tabindex="-1"></a><span class="kw">)</span></span>
+<span id="cb10-144"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:19.955340]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:357</span><span class="pp">]</span> <span class="at">-</span> • self.grad_scaler=<span class="op">&lt;</span>torch.cuda.amp.grad_scaler.GradScaler object at 0x145a38f0f090<span class="op">&gt;</span></span>
+<span id="cb10-145"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:19.956897]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:358</span><span class="pp">]</span> <span class="at">-</span> • self.model_engine=DistributedDataParallel<span class="er">(</span></span>
+<span id="cb10-146"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">module</span><span class="kw">)</span><span class="bu">:</span> GPT<span class="er">(</span></span>
+<span id="cb10-147"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">transformer</span><span class="kw">)</span><span class="bu">:</span> ModuleDict<span class="er">(</span></span>
+<span id="cb10-148"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">wte</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">65,</span> 768<span class="kw">)</span></span>
+<span id="cb10-149"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">wpe</span><span class="kw">)</span><span class="bu">:</span> Embedding<span class="er">(</span><span class="ex">1024,</span> 768<span class="kw">)</span></span>
+<span id="cb10-150"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">drop</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-151"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">h</span><span class="kw">)</span><span class="bu">:</span> ModuleList<span class="er">(</span></span>
+<span id="cb10-152"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">(</span><span class="ex">0-11</span><span class="kw">)</span><span class="bu">:</span> 12 x Block<span class="er">(</span></span>
+<span id="cb10-153"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">ln_1</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-154"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">attn</span><span class="kw">)</span><span class="bu">:</span> CausalSelfAttention<span class="er">(</span></span>
+<span id="cb10-155"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">c_attn</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>2304, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-156"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-157"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">attn_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-158"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">resid_dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-159"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">)</span></span>
+<span id="cb10-160"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">ln_2</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-161"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">(</span><span class="ex">mlp</span><span class="kw">)</span><span class="bu">:</span> MLP<span class="er">(</span></span>
+<span id="cb10-162"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">c_fc</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>3072, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-163"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">act_fn</span><span class="kw">)</span><span class="bu">:</span> GELU<span class="er">(</span><span class="va">approximate</span><span class="op">=</span><span class="st">'none'</span><span class="kw">)</span></span>
+<span id="cb10-164"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">c_proj</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>3072, <span class="va">out_features</span><span class="op">=</span>768, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-165"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">(</span><span class="ex">dropout</span><span class="kw">)</span><span class="bu">:</span> Dropout<span class="er">(</span><span class="va">p</span><span class="op">=</span>0.0, <span class="va">inplace</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-166"><a aria-hidden="true" tabindex="-1"></a>          <span class="kw">)</span></span>
+<span id="cb10-167"><a aria-hidden="true" tabindex="-1"></a>        <span class="kw">)</span></span>
+<span id="cb10-168"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">)</span></span>
+<span id="cb10-169"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">(</span><span class="ex">ln_f</span><span class="kw">)</span><span class="bu">:</span> LayerNorm<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb10-170"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">)</span></span>
+<span id="cb10-171"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">(</span><span class="ex">lm_head</span><span class="kw">)</span><span class="bu">:</span> Linear<span class="er">(</span><span class="va">in_features</span><span class="op">=</span>768, <span class="va">out_features</span><span class="op">=</span>65, <span class="va">bias</span><span class="op">=</span>False<span class="kw">)</span></span>
+<span id="cb10-172"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">)</span></span>
+<span id="cb10-173"><a aria-hidden="true" tabindex="-1"></a><span class="kw">)</span></span>
+<span id="cb10-174"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:19.961066]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:359</span><span class="pp">]</span> <span class="at">-</span> • self.optimizer=AdamW <span class="er">(</span></span>
+<span id="cb10-175"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Parameter</span> Group 0</span>
+<span id="cb10-176"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">amsgrad:</span> False</span>
+<span id="cb10-177"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">betas:</span> <span class="er">(</span><span class="ex">0.9,</span> 0.95<span class="kw">)</span></span>
+<span id="cb10-178"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">capturable:</span> False</span>
+<span id="cb10-179"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">differentiable:</span> False</span>
+<span id="cb10-180"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">eps:</span> 1e-08</span>
+<span id="cb10-181"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">foreach:</span> None</span>
+<span id="cb10-182"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">fused:</span> True</span>
+<span id="cb10-183"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">lr:</span> 0.0006</span>
+<span id="cb10-184"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">maximize:</span> False</span>
+<span id="cb10-185"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">weight_decay:</span> 0.1</span>
+<span id="cb10-186"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-187"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Parameter</span> Group 1</span>
+<span id="cb10-188"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">amsgrad:</span> False</span>
+<span id="cb10-189"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">betas:</span> <span class="er">(</span><span class="ex">0.9,</span> 0.95<span class="kw">)</span></span>
+<span id="cb10-190"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">capturable:</span> False</span>
+<span id="cb10-191"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">differentiable:</span> False</span>
+<span id="cb10-192"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">eps:</span> 1e-08</span>
+<span id="cb10-193"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">foreach:</span> None</span>
+<span id="cb10-194"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">fused:</span> True</span>
+<span id="cb10-195"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">lr:</span> 0.0006</span>
+<span id="cb10-196"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">maximize:</span> False</span>
+<span id="cb10-197"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">weight_decay:</span> 0.0</span>
+<span id="cb10-198"><a aria-hidden="true" tabindex="-1"></a><span class="kw">)</span></span>
+<span id="cb10-199"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:19.988827]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:802</span><span class="pp">]</span> <span class="at">-</span> Startup time: 6.7125</span>
+<span id="cb10-200"><a aria-hidden="true" tabindex="-1"></a>                <span class="ex">Training</span> Legend</span>
+<span id="cb10-201"><a aria-hidden="true" tabindex="-1"></a><span class="ex">┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓</span></span>
+<span id="cb10-202"><a aria-hidden="true" tabindex="-1"></a><span class="ex">┃</span>    abbr     ┃ desc                           ┃</span>
+<span id="cb10-203"><a aria-hidden="true" tabindex="-1"></a><span class="ex">┡━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩</span></span>
+<span id="cb10-204"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    step     │ Current training iteration     │</span>
+<span id="cb10-205"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>    loss     │ Loss value                     │</span>
+<span id="cb10-206"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     dt      │ Elapsed time per training step │</span>
+<span id="cb10-207"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     dtf     │ Elapsed time per forward step  │</span>
+<span id="cb10-208"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     dtb     │ Elapsed time per backward step │</span>
+<span id="cb10-209"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     sps     │ Samples per second             │</span>
+<span id="cb10-210"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> sps_per_gpu │ Samples per second <span class="er">(</span><span class="ex">per</span> GPU<span class="kw">)</span>   <span class="ex">│</span></span>
+<span id="cb10-211"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     tps     │ Tokens per second              │</span>
+<span id="cb10-212"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> tps_per_gpu │ Tokens per second <span class="er">(</span><span class="ex">per</span> GPU<span class="kw">)</span>    <span class="ex">│</span></span>
+<span id="cb10-213"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>     mfu     │ Model flops utilization        │</span>
+<span id="cb10-214"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span> train_loss  │ Training loss value            │</span>
+<span id="cb10-215"><a aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  val_loss   │ Validation loss value          │</span>
+<span id="cb10-216"><a aria-hidden="true" tabindex="-1"></a><span class="ex">└─────────────┴────────────────────────────────┘</span></span>
+<span id="cb10-217"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:21.451865]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
+<span id="cb10-218"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:42:21.452667]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
+<span id="cb10-219"><a aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is an LLM<span class="pp">?</span>eelEl\'<span class="va">$nltPwBSWal</span>,<span class="kw">;</span><span class="ex">PWw</span> bbu<span class="dt">\'</span>HiyP<span class="dt">\'</span>FWwF <span class="kw">&amp;</span><span class="ex">AhW:ygrn</span> kk-<span class="dt">\'\'</span>KFlMwnlEfflkc,elpWaWtgml<span class="va">$Pgglhllw</span> lglhFllzczPAFHpeAAPPSltgkrWPPhlEMgcrN ggPWt-WPSSzHSkkrzzk.FFrtSSkgMll<span class="kw">&amp;</span><span class="ex">gFXr,hghaueaVPW-pHFF-gg,,,FF,,kbApgg</span> gg<span class="dt">\'</span>aWWzzkk<span class="dt">\'</span>a<span class="dt">\'</span>CggHl<span class="va">$bGeA</span>,FFk,,SF<span class="kw">;</span><span class="ex">UF,,aZ</span> <span class="kw">;</span><span class="ex">gglee$,k.US</span><span class="kw">&amp;</span><span class="ex">kg:S,,zVzzc</span></span>
+<span id="cb10-220"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:01.573073]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=10 loss=3.154310 dt=0.282833 dtf=0.005247 dtb=0.011417 sps=14.142633 sps_per_gpu=3.535658 tps=926851.609409 tps_per_gpu=231712.902352 mfu=46.288281 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-221"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:04.402750]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=20 loss=2.660851 dt=0.306263 dtf=0.005233 dtb=0.011419 sps=13.060678 sps_per_gpu=3.265170 tps=855944.613638 tps_per_gpu=213986.153409 mfu=45.934162 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-222"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:07.237507]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=30 loss=2.543283 dt=0.283021 dtf=0.005238 dtb=0.011245 sps=14.133211 sps_per_gpu=3.533303 tps=926234.088226 tps_per_gpu=231558.522057 mfu=45.966490 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-223"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:10.077248]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=40 loss=2.503963 dt=0.285001 dtf=0.005213 dtb=0.011471 sps=14.035061 sps_per_gpu=3.508765 tps=919801.749941 tps_per_gpu=229950.437485 mfu=45.963461 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-224"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:12.917039]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=50 loss=2.477469 dt=0.283532 dtf=0.005166 dtb=0.011294 sps=14.107763 sps_per_gpu=3.526941 tps=924566.380009 tps_per_gpu=231141.595002 mfu=45.984530 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-225"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:15.760749]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=60 loss=2.471083 dt=0.284630 dtf=0.005140 dtb=0.011224 sps=14.053326 sps_per_gpu=3.513332 tps=920998.786204 tps_per_gpu=230249.696551 mfu=45.985675 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-226"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:18.602785]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=70 loss=2.458894 dt=0.283926 dtf=0.005219 dtb=0.010383 sps=14.088155 sps_per_gpu=3.522039 tps=923281.352698 tps_per_gpu=230820.338174 mfu=45.998106 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-227"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:21.451433]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=80 loss=2.489088 dt=0.285537 dtf=0.005183 dtb=0.011373 sps=14.008683 sps_per_gpu=3.502171 tps=918073.060430 tps_per_gpu=229518.265108 mfu=45.983282 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-228"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:24.302241]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=90 loss=2.471990 dt=0.300767 dtf=0.005445 dtb=0.010290 sps=13.299337 sps_per_gpu=3.324834 tps=871585.359388 tps_per_gpu=217896.339847 mfu=45.737774 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-229"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:27.153275]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=100 loss=2.445556 dt=0.285869 dtf=0.005182 dtb=0.011251 sps=13.992403 sps_per_gpu=3.498101 tps=917006.151328 tps_per_gpu=229251.537832 mfu=45.743655 train_loss=4.125778 val_loss=4.128809</span>
+<span id="cb10-230"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:28.182553]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
+<span id="cb10-231"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:43:28.183179]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
+<span id="cb10-232"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-233"><a aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
+<span id="cb10-234"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-235"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Goupay</span> my winghimithell bls ger t bon sinthard ht omind be,</span>
+<span id="cb10-236"><a aria-hidden="true" tabindex="-1"></a><span class="ex">And</span> lereind h py balithand frd oforondof wimon me hageas thinero mand,</span>
+<span id="cb10-237"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Thacanes,</span></span>
+<span id="cb10-238"><a aria-hidden="true" tabindex="-1"></a><span class="ex">An</span> frift ghik med d herthecke ntore thack couthen ale, t thit ang d m t h chy me fache ag, wit my hathan glat ng</span>
+<span id="cb10-239"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:06.025837]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:760</span><span class="pp">]</span> <span class="at">-</span> Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
+<span id="cb10-240"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:06.026607]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:761</span><span class="pp">]</span> <span class="at">-</span> Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span>
+<span id="cb10-241"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:07.682968]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:141</span><span class="pp">]</span> <span class="at">-</span> Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span>
+<span id="cb10-242"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:10.519506]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=110 loss=2.433923 dt=0.285038 dtf=0.005757 dtb=0.011762 sps=14.033209 sps_per_gpu=3.508302 tps=919680.367894 tps_per_gpu=229920.091974 mfu=45.762304 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-243"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:13.362148]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=120 loss=2.429014 dt=0.284445 dtf=0.005222 dtb=0.011486 sps=14.062460 sps_per_gpu=3.515615 tps=921597.361532 tps_per_gpu=230399.340383 mfu=45.788661 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-244"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:16.210694]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=130 loss=2.402059 dt=0.285559 dtf=0.005199 dtb=0.011765 sps=14.007633 sps_per_gpu=3.501908 tps=918004.211586 tps_per_gpu=229501.052897 mfu=45.794438 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-245"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:19.061546]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=140 loss=2.374062 dt=0.285476 dtf=0.005239 dtb=0.011453 sps=14.011662 sps_per_gpu=3.502916 tps=918268.297093 tps_per_gpu=229567.074273 mfu=45.800956 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-246"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:21.917283]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=150 loss=2.365385 dt=0.285846 dtf=0.005125 dtb=0.011320 sps=13.993568 sps_per_gpu=3.498392 tps=917082.475791 tps_per_gpu=229270.618948 mfu=45.800900 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-247"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:24.771924]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=160 loss=2.317337 dt=0.280788 dtf=0.005173 dtb=0.011249 sps=14.245602 sps_per_gpu=3.561401 tps=933599.792506 tps_per_gpu=233399.948127 mfu=45.883340 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-248"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:27.626812]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=170 loss=2.256231 dt=0.284973 dtf=0.005141 dtb=0.011299 sps=14.036416 sps_per_gpu=3.509104 tps=919890.544506 tps_per_gpu=229972.636126 mfu=45.889069 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-249"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:30.480952]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=180 loss=2.216419 dt=0.286555 dtf=0.005180 dtb=0.011402 sps=13.958906 sps_per_gpu=3.489726 tps=914810.852170 tps_per_gpu=228702.713043 mfu=45.868857 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-250"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:33.337342]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=190 loss=2.145123 dt=0.291456 dtf=0.005409 dtb=0.019347 sps=13.724205 sps_per_gpu=3.431051 tps=899429.467247 tps_per_gpu=224857.366812 mfu=45.773849 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-251"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:36.194584]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=200 loss=2.068149 dt=0.285703 dtf=0.005153 dtb=0.011286 sps=14.000555 sps_per_gpu=3.500139 tps=917540.393411 tps_per_gpu=229385.098353 mfu=45.778791 train_loss=2.439494 val_loss=2.478951</span>
+<span id="cb10-252"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:37.224149]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
+<span id="cb10-253"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:44:37.224745]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
+<span id="cb10-254"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-255"><a aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
+<span id="cb10-256"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-257"><a aria-hidden="true" tabindex="-1"></a><span class="ex">LORTESS</span> LA:</span>
+<span id="cb10-258"><a aria-hidden="true" tabindex="-1"></a><span class="ex">No,</span> sighappat selace<span class="pp">?</span> don downd sourciceans note cancen up sof liond</span>
+<span id="cb10-259"><a aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> and my man, werame, of re thee</span>
+<span id="cb10-260"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Thise</span> not will I on land brond sul me a fingore<span class="pp">?</span></span>
+<span id="cb10-261"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-262"><a aria-hidden="true" tabindex="-1"></a><span class="ex">FLER:</span></span>
+<span id="cb10-263"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Tisint</span> your not nare lame o igen,-to brorst.</span>
+<span id="cb10-264"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-265"><a aria-hidden="true" tabindex="-1"></a><span class="ex">SamERS:</span></span>
+<span id="cb10-266"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Sin:</span></span>
+<span id="cb10-267"><a aria-hidden="true" tabindex="-1"></a><span class="ex">I\'l</span> hell she lor hen w</span>
+<span id="cb10-268"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:14.409129]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:760</span><span class="pp">]</span> <span class="at">-</span> Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span>
+<span id="cb10-269"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:14.409820]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:761</span><span class="pp">]</span> <span class="at">-</span> Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span>
+<span id="cb10-270"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:16.366935]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">configs:141</span><span class="pp">]</span> <span class="at">-</span> Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span>
+<span id="cb10-271"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:19.245061]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=210 loss=1.982169 dt=0.283305 dtf=0.005223 dtb=0.011284 sps=14.119042 sps_per_gpu=3.529760 tps=925305.515083 tps_per_gpu=231326.378771 mfu=45.822019 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-272"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:22.092430]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=220 loss=1.897731 dt=0.284759 dtf=0.005217 dtb=0.011187 sps=14.046945 sps_per_gpu=3.511736 tps=920580.608106 tps_per_gpu=230145.152026 mfu=45.837327 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-273"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:24.942639]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=230 loss=1.817213 dt=0.285266 dtf=0.005208 dtb=0.011446 sps=14.022003 sps_per_gpu=3.505501 tps=918945.985503 tps_per_gpu=229736.496376 mfu=45.842940 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-274"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:27.797910]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=240 loss=1.779287 dt=0.285465 dtf=0.005189 dtb=0.011220 sps=14.012250 sps_per_gpu=3.503062 tps=918306.793546 tps_per_gpu=229576.698387 mfu=45.844800 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-275"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:30.653597]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=250 loss=1.704220 dt=0.289284 dtf=0.005471 dtb=0.010346 sps=13.827253 sps_per_gpu=3.456813 tps=906182.836379 tps_per_gpu=226545.709095 mfu=45.785926 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-276"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:33.512769]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=260 loss=1.671318 dt=0.287679 dtf=0.005125 dtb=0.011250 sps=13.904380 sps_per_gpu=3.476095 tps=911237.442617 tps_per_gpu=227809.360654 mfu=45.758182 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-277"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:36.373461]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=270 loss=1.650952 dt=0.298661 dtf=0.005118 dtb=0.011520 sps=13.393107 sps_per_gpu=3.348277 tps=877730.651421 tps_per_gpu=219432.662855 mfu=45.565875 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-278"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:39.236930]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=280 loss=1.573242 dt=0.285970 dtf=0.005171 dtb=0.011290 sps=13.987477 sps_per_gpu=3.496869 tps=916683.279847 tps_per_gpu=229170.819962 mfu=45.587333 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-279"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:42.100605]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=290 loss=1.533265 dt=0.286487 dtf=0.005432 dtb=0.011288 sps=13.962259 sps_per_gpu=3.490565 tps=915030.617828 tps_per_gpu=228757.654457 mfu=45.598392 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-280"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:44.964424]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:885</span><span class="pp">]</span> <span class="at">-</span> step=300 loss=1.492064 dt=0.288480 dtf=0.005355 dtb=0.011480 sps=13.865774 sps_per_gpu=3.466443 tps=908707.340870 tps_per_gpu=227176.835218 mfu=45.576766 train_loss=2.045786 val_loss=2.148510</span>
+<span id="cb10-281"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:45.995833]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:820</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'prompt'</span><span class="pp">]</span>: <span class="st">'What is an LLM?'</span></span>
+<span id="cb10-282"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[2024-07-17</span> 07:45:45.996497]<span class="pp">[</span><span class="ss">INFO</span><span class="pp">][</span><span class="ss">trainer:824</span><span class="pp">]</span> <span class="at">-</span> <span class="pp">[</span><span class="st">'response'</span><span class="pp">]</span>:</span>
+<span id="cb10-283"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-284"><a aria-hidden="true" tabindex="-1"></a><span class="ex">What</span> is an LLM<span class="pp">?</span></span>
+<span id="cb10-285"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-286"><a aria-hidden="true" tabindex="-1"></a><span class="ex">RICHMORD:</span></span>
+<span id="cb10-287"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Char</span> stire<span class="pp">?</span> how in those are name the range hone.</span>
+<span id="cb10-288"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-289"><a aria-hidden="true" tabindex="-1"></a><span class="ex">GLOUCESTER:</span></span>
+<span id="cb10-290"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Nay,</span> in lond<span class="st">'s time the palt are worder more</span></span>
+<span id="cb10-291"><a aria-hidden="true" tabindex="-1"></a><span class="st">That wilt in the purpose be a pey</span></span>
+<span id="cb10-292"><a aria-hidden="true" tabindex="-1"></a><span class="st">And thou thine onter hands, and the which broth.</span></span>
+<span id="cb10-293"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-294"><a aria-hidden="true" tabindex="-1"></a><span class="st">ELBOWINCA:</span></span>
+<span id="cb10-295"><a aria-hidden="true" tabindex="-1"></a><span class="st">At lie my lord with the me an arms be a s</span></span>
+<span id="cb10-296"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:23.549987][INFO][trainer:760] - Saving checkpoint to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13</span></span>
+<span id="cb10-297"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:23.550696][INFO][trainer:761] - Saving model to: /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13/model.pth</span></span>
+<span id="cb10-298"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:25.496559][INFO][configs:141] - Appending /home/foremans/tmp/polaris-talk/outputs/runs/pytorch/DDP/2024-07-17/07-42-13 to /home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/src/ckpts/checkpoints.log</span></span>
+<span id="cb10-299"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:28.374854][INFO][trainer:885] - step=310 loss=1.444200 dt=0.299907 dtf=0.005333 dtb=0.010637 sps=13.337481 sps_per_gpu=3.334370 tps=874085.133345 tps_per_gpu=218521.283336 mfu=45.384395 train_loss=1.495372 val_loss=1.713714</span></span>
+<span id="cb10-300"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:31.223079][INFO][trainer:885] - step=320 loss=1.429350 dt=0.285238 dtf=0.005245 dtb=0.011485 sps=14.023353 sps_per_gpu=3.505838 tps=919034.479880 tps_per_gpu=229758.619970 mfu=45.435743 train_loss=1.495372 val_loss=1.713714</span></span>
+<span id="cb10-301"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714</span></span>
+<span id="cb10-302"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wordplay-example-video" class="slide level2 center" data-background-color="#121314">
 <h2><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h2>
@@ -2018,190 +2010,172 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/samforeman\.me");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/samforeman\.me");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;

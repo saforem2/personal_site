@@ -3,7 +3,6 @@ Sam Foreman
 2024-11-05
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [👀 Overview](#eyes-overview)
 - [📑 Outline](#bookmark_tabs-outline)

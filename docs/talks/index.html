@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.43">
+<meta name="generator" content="quarto-1.8.2">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
+<meta name="description" content="A collection of my recent talks, including slides and videos.">
 
 <title>🎙️ Talks – Sam Foreman</title>
 <style>
@@ -22,8 +23,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,19 +68,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../talks/ai-for-science-2024/index.html" rel="next">
-<link href="../posts/jupyter/test/index.html" rel="prev">
+<link href="../posts/jupyter/l2hmc/4dSU3/index.html" rel="prev">
 <link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ce24374cd55da3e5692b85b778b2cfab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4c939d6228d95bcdb4b0bf665daf6c17.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-d10c3a9e6902322a4770c56db7863b79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3cb719820af5089d15fca36804308e9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -151,7 +154,6 @@ gtag('config', 'G-E72QE53WSY', { 'anonymize_ip': true});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -181,7 +183,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -203,9 +205,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../static/fonts/MIosevkaQp/MIosevkaQp.css">
 <link rel="stylesheet" href="../static/fonts/MIosevkaterm/MIosevkaTerm.css">
 <meta property="og:title" content="Sam Foreman">
+<meta property="og:description" content="A collection of my recent talks, including slides and videos.">
 <meta property="og:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
 <meta property="og:site_name" content="Sam Foreman">
 <meta name="twitter:title" content="Sam Foreman">
+<meta name="twitter:description" content="A collection of my recent talks, including slides and videos.">
 <meta name="twitter:image" content="https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true">
 <meta name="twitter:creator" content="@saforem2">
 <meta name="twitter:site" content="@saforem2">
@@ -276,7 +280,176 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -405,6 +578,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../posts/aurora-frameworks-2025-numpy-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚧 Frameworks Issue with <code>numpy &gt; 2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">💅 How to Make Dope Slides</span></a>
   </div>
@@ -419,6 +598,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../posts/ezpz-v1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📝 ezpz-v1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../posts/installing-pytorch-on-aurora/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔥 Building PyTorch from Source on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../posts/resume/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👤 Résumé</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -528,31 +719,59 @@ window.Quarto = {
  <span class="menu-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">4dSU3nb</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../posts/ai-for-physics/l2hmc-qcd/4dSU3/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  <a href="../posts/ai-for-physics/l2hmc-qcd/4dSU3nb/index-broken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🕸️ l2hmc-qcd Example: 4D SU(3)</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">📗 Jupyter</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🏁 <code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">L2hmc</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../posts/jupyter/l2hmc/4dSU3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
@@ -561,11 +780,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../talks/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">🎙️ Talks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../talks/ai-for-science-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -588,6 +807,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../talks/hpc-user-forum/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AuroraGPT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../talks/incite-hackathon-2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Large Language Models on Aurora</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -616,13 +841,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">AuroraGPT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -650,10 +875,11 @@ window.Quarto = {
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">📆 2021</a></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">📆 2020</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/talks/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/talks/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/talks/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/talks/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -663,6 +889,11 @@ window.Quarto = {
 <div class="quarto-title-block"><div><h1 class="title">🎙️ Talks</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
+<div>
+  <div class="description">
+    A collection of my recent talks, including slides and videos.
+  </div>
+</div>
 
 <div class="quarto-title-meta-author">
   <div class="quarto-title-meta-heading">Author</div>
@@ -687,7 +918,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 7, 2025</p>
+      <p class="date-modified">May 3, 2025</p>
     </div>
   </div>
     
@@ -699,7 +930,7 @@ window.Quarto = {
 
 
 <div class="callout callout-style-simple callout-tip callout-titled" title="[HTML ⇆ Reveal.js]">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -720,7 +951,37 @@ window.Quarto = {
 </div>
 <div id="listing-listing-talks-default" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1739340000000" data-listing-file-modified-sort="1743287444355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="21" data-listing-word-count-sort="4039">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1746507600000" data-listing-file-modified-sort="1746620506873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="95" data-listing-word-count-sort="18880">
+<a href="../talks/incite-hackathon-2025/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-center">
+<p class="card-img-top">
+<img loading="lazy" src="../talks/incite-hackathon-2025/assets/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Large Language Models on Aurora
+</h5>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+2025-05-06
+</div>
+</div>
+<table class="card-other-values">
+
+<tbody><tr>
+<td>
+@
+</td>
+<td class="location">
+<a href="https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon">2025 ALCF INCITE GPU Hackathon</a>
+</td>
+</tr>
+
+</tbody></table>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1739340000000" data-listing-file-modified-sort="1743287444355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="21" data-listing-word-count-sort="4039">
 <a href="../talks/aurora-gpt-fm-for-electric-grid/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -736,6 +997,7 @@ AuroraGPT
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -744,12 +1006,12 @@ AuroraGPT
 <a href="https://events.cels.anl.gov/event/601/">Foundation Models for the Electric Grid</a>
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1745425362915" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="40" data-listing-word-count-sort="7885">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1730786400000" data-listing-file-modified-sort="1745425362915" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="40" data-listing-word-count-sort="7885">
 <a href="../talks/ai-for-science-2024/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -765,6 +1027,7 @@ Parallel Training Methods
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -773,12 +1036,12 @@ Parallel Training Methods
 Intro to AI-driven Science on Supercomputers
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1730264400000" data-listing-file-modified-sort="1743287444495" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3382">
+<div class="g-col-1" data-index="3" data-listing-date-sort="1730264400000" data-listing-file-modified-sort="1743287444495" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3382">
 <a href="../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -794,6 +1057,7 @@ AuroraGPT
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -802,12 +1066,12 @@ AuroraGPT
 ALCF Hands-on HPC Workshop
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1730178000000" data-listing-file-modified-sort="1743287444296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15200">
+<div class="g-col-1" data-index="4" data-listing-date-sort="1730178000000" data-listing-file-modified-sort="1745615208318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="76" data-listing-word-count-sort="15200">
 <a href="../talks/alcf-hpc-workshop-2024/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -823,6 +1087,7 @@ Deep Learning and Foundation Models at Scale
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -831,12 +1096,12 @@ Deep Learning and Foundation Models at Scale
 ALCF Hands-on HPC Workshop
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1725426000000" data-listing-file-modified-sort="1743287444087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3390">
+<div class="g-col-1" data-index="5" data-listing-date-sort="1725426000000" data-listing-file-modified-sort="1743287444087" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3390">
 <a href="../talks/hpc-user-forum/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -852,6 +1117,7 @@ AuroraGPT
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -860,12 +1126,12 @@ AuroraGPT
 HPC User Forum Fall ’24
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1723179600000" data-listing-file-modified-sort="1745330199988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
+<div class="g-col-1" data-index="6" data-listing-date-sort="1723179600000" data-listing-file-modified-sort="1745330199988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
 <a href="../talks/llms-at-scale/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -881,6 +1147,7 @@ Training LLMs at Scale
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -889,12 +1156,12 @@ Training LLMs at Scale
 ATPESC 2024
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1721192400000" data-listing-file-modified-sort="1743287443849" data-listing-date-modified-sort="1743287443000" data-listing-reading-time-sort="117" data-listing-word-count-sort="23228">
+<div class="g-col-1" data-index="7" data-listing-date-sort="1721192400000" data-listing-file-modified-sort="1743287443849" data-listing-date-modified-sort="1743287443000" data-listing-reading-time-sort="117" data-listing-word-count-sort="23228">
 <a href="../talks/llms-on-polaris/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -910,6 +1177,7 @@ LLMs on Polaris
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -918,12 +1186,12 @@ LLMs on Polaris
 SciFM Summer School ’24
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="YWk0c2NpZW5jZSUyQ01DTUMlMkNMYXR0aWNlJTIwUUNE" data-listing-date-sort="1690779600000" data-listing-file-modified-sort="1743287443860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3092">
+<div class="g-col-1" data-index="8" data-categories="YWk0c2NpZW5jZSUyQ01DTUMlMkNMYXR0aWNlJTIwUUNE" data-listing-date-sort="1690779600000" data-listing-file-modified-sort="1743287443860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3092">
 <a href="../talks/lattice23/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-center">
 <p class="card-img-top">
@@ -939,6 +1207,7 @@ MLMC: Machine Learning Monte Carlo
 </div>
 </div>
 <table class="card-other-values">
+
 <tbody><tr>
 <td>
 @
@@ -947,20 +1216,37 @@ MLMC: Machine Learning Monte Carlo
 Lattice 2023 (Fermilab)
 </td>
 </tr>
+
 </tbody></table>
 </div>
+</div></a>
 </div>
-</a>
 </div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">📆 2025</h2>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Large Language Models on Aurora**](/talks/incite-hackathon-2025/index.html) @ [_2025 ALCF INCITE GPU Hackathon_](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) [05/2025]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="dim-text"><a href="../talks/incite-hackathon-2025/index.html"><strong>Large Language Models on Aurora</strong></a> @ <a href="https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon"><em>2025 ALCF INCITE GPU Hackathon</em></a> [05/2025]</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="reveal-full-page">
+<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/incite-hackathon-2025/slides.html" title="Large Language Models on Aurora" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**AuroraGPT: Foundation Models for Science**](/talks/aurora-gpt-fm-for-electric-grid/index.html) @ [_Foundation Models for the Electric Grid_](https://www.alcf.anl.gov/alcf-ai-science-training-series) [02/2025]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -969,10 +1255,10 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="reveal-full-page">
-<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/aurora-gpt-fm-for-electric-grid/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+<iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/aurora-gpt-fm-for-electric-grid/slides.html" title="AuroraGPT: Foundation Models for Science" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
 </iframe>
 </div>
 </div>
@@ -982,7 +1268,7 @@ No matching items
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">📆 2024</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Parallel Training Methods**](/talks/ai-for-science-2024/index.html) @ [_AI-for-Science on Supercomputers_](https://www.alcf.anl.gov/alcf-ai-science-training-series) [11/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -991,7 +1277,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="reveal-full-page">
 <iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1001,7 +1287,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**AuroraGPT**](/talks/AuroraGPT/alcf-hpc-workshop-2024/index.html) @ [_2024 ALCF Hands-On HPC Workshop_](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)  [10/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1010,17 +1296,17 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="reveal-full-page">
-<iframe class="slide-deck" loading="lazy" src="../talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
+<iframe class="slide-deck" loading="lazy" src="../talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
 </iframe>
 </div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning and Foundation Models at Scale**](/talks/alcf-hpc-workshop-2024/index.html) @ [_2024 ALCF Hands-On HPC Workshop_](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop)  [10/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1029,7 +1315,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="reveal-full-page">
 <iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1039,7 +1325,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**AuroraGPT**](/talks/hpc-user-forum/index.html) @ [_HPC User Forum_, 2024](https://www.hpcuserforum.com/hpc-user-forum-fall-2024/) [09/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1048,7 +1334,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <iframe class="slide-deck reveal-full-page" loading="lazy" src="../talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
 </iframe>
@@ -1056,7 +1342,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Training LLMs at Scale**](/talks/llms-at-scale/) @ [_ATPESC_, 2024](https://extremecomputingtraining.anl.gov/atpesc-2024/) [08/2024]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important; ">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1065,7 +1351,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <iframe class="slide-deck" loading="lazy" src="../talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
 </iframe>
@@ -1073,7 +1359,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLMs on Polaris**](https://samforeman.me/talks/llms-on-polaris/slides) @ [_Center for Scientific Foundation Models_, Summer School 24'](https://scifm.ai/summer_school.html) [07/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1082,7 +1368,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <iframe class="slide-deck" loading="lazy" src="../talks/llms-on-polaris/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
 </iframe>
@@ -1090,7 +1376,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Parallel Training Techniques**](https://github.com/saforem2/parallel-training-slides) @ [_AI-4-Science Training Series_](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training) [03/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1099,7 +1385,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1109,7 +1395,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLMs from Scratch**](https://saforem2.github.io/llm-workshop-talk) @ [LLM Tutorial Workshop](https://github.com/argonne-lcf/llm-workshop) [02/2024]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1118,7 +1404,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1131,7 +1417,7 @@ No matching items
 <section id="section-2" class="level2">
 <h2 class="anchored" data-anchor-id="section-2">📆 2023</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Creating Small(-ish) LLMs**](https://saforem2.github.io/LLM-tutorial) @ [LLM Tutorial Workshop (1)](https://github.com/brettin/llm_tutorial) [11/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1140,7 +1426,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="">
@@ -1150,7 +1436,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Exascale Science on Aurora**](https://saforem2.github.io/oneapi-talk) @ [Intel oneAPI Workshop @ UIC](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1159,7 +1445,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="">
@@ -1169,7 +1455,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) [10/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1178,7 +1464,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1188,7 +1474,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scaling LLMs for Science**](https://saforem2.github.io/scaling4science) @ [Data-Intensive Computing + AI/ML at Scale](https://events.cels.anl.gov/event/426/overview) [08/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1197,7 +1483,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1207,7 +1493,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1216,7 +1502,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1226,7 +1512,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Generative Modeling and Efficient Sampling**](https://saforem2.github.io/lqcd-pasc23/) @ [PASC23](https://pasc23.pasc-conference.org/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1235,7 +1521,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1245,7 +1531,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Efficient Sampling for LGT**](https://saforem2.github.io/deep-fridays) @ [Deep Fridays @ U. Bologna](https://www.cs.unibo.it/~asperti/deep_fridays.html) [04/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1254,7 +1540,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1267,7 +1553,7 @@ No matching items
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">📆 2022</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Large Scale Training**](https://saforem2.github.io/ai4sci-large-scale-training) @ [AI4Science on Supercomputers (ALCF)](https://github.com/argonne-lcf/ai-science-training-series) [11/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1276,7 +1562,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1286,7 +1572,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Hyperparameter Management**](https://saforem2.github.io/hparam-management-sdl2022/) @ [ALCF SDL Workshop](https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop) [10/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1295,7 +1581,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1305,7 +1591,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Statistical Learning**](https://saforem2.github.io/ATPESC-StatisticalLearning) @ [ATPESC 2022](https://extremecomputingtraining.anl.gov/) [08/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1314,7 +1600,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb">📕 accompanying notebook</a></li>
@@ -1327,7 +1613,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Scientific Data Science: An Emerging Symbiosis**](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1336,7 +1622,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1346,7 +1632,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning in HEP**](https://saforem2.github.io/physicsSeminar) @ UNC Greensboro [03/2022]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1355,7 +1641,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://saforem2.github.io/physicsSeminar"><strong>Machine Learning in HEP</strong></a>, at UNC Greensboro, March 2022</li>
@@ -1371,7 +1657,7 @@ No matching items
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">📆 2021</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Accelerated Sampling Methods for LGT**](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 [BNL]](https://indico.bnl.gov/event/13576/) [12/2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1380,7 +1666,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1390,7 +1676,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Training Topological Samplers for LGT**](https://saforem2.github.io/l2hmc_talk_ect2021) @ [ML4HEP, ECT* Trento](https://indico.ectstar.eu/event/77/contributions/2349/) [09/2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1399,7 +1685,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1409,7 +1695,7 @@ No matching items
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**l2hmc-qcd**](https://github.com/saforem2/l2hmc-qcd) @ MIT Lattice Group Seminar [2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1418,14 +1704,14 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><a href="https://github.com/saforem2/l2hmc-qcd"><strong>l2hmc-qcd</strong></a> at the <em>MIT Lattice Group Seminar</em>, 2021</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Deep Learning HMC for Improved Gauge Generation**](https://bit.ly/mainz21) @ [ML in LQCD Workshop](https://bit.ly/mainz21_overview) [2021]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1434,7 +1720,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1447,7 +1733,7 @@ No matching items
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">📆 2020</h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[[**Machine Learning for Lattice QCD**](https://slides.com/samforeman/l2hmc-qcd/embed) @ U. Iowa [2020]]{.dim-text}" style="width:100%; background-color: rgba(0,0,0,0.0)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1456,7 +1742,7 @@ No matching items
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="embedded-slide">
 <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen="" allowfullscreen="" style="aspect-ratio:1.3671875;">
@@ -1481,436 +1767,311 @@ No matching items
 Foreman, Sam. n.d. <span>“🎙️ Talks.”</span> <a href="https://samforeman.me/talks/">https://samforeman.me/talks/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
     }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
     }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
     }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
       }
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
     }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/samforeman\.me");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/samforeman\.me");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1918,193 +2079,197 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="dark">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "saforem2/personal_site";
+    script.dataset.repoId = "R_kgDOGbjyRw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
   }
-});
+  loadGiscus();
 </script>
-<script src="https://giscus.app/client.js" data-repo="saforem2/personal_site" data-repo-id="R_kgDOGbjyRw" data-category="General" data-category-id="DIC_kwDOGbjyR84CjWfk" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../posts/jupyter/test/index.html" class="pagination-link" aria-label="🏁 `l2hmc` Example: 2D $U(1)$">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">🏁 <code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span>
+      <a href="../posts/jupyter/l2hmc/4dSU3/index.html" class="pagination-link" aria-label="🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -2119,80 +2284,81 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co">  - ./_metadata.yml</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="an">editor:</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="co">   render-on-save: true</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># toc: false</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># format:</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#   html:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#     toc: false</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#     # page-layout: article</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#     # grid:</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#     #   body-width: 900px</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="an">listing:</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">  # - id: listing-talks</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">  #   table-striped: true</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">  #   filter-ui: false</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">  #   sort: "date desc"</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">  #   type: table</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">  #   contents:</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">  #       - "../talks/**/index.qmd"</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">  #       - "!../talks/index.qmd"</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co">  - id: listing-talks-default</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co">    sort: "date desc"</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co">    filter-ui: false</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co">    sort-ui: false</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co">    date-format: iso</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">    type: grid</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">    grid-item-align: center</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">    # image-height: 80px</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">    image-align: left</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">    # image-height: 75px</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co">    table-hover: true</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co">    table-striped: true</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co">    fields: [image, title, location, date]</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co">    contents:</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="co">        - "../talks/**/index.qmd"</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a><span class="co">        - "../talks/AuroraGPT/**/index.qmd"</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co">        - "!../talks/test/index.qmd"</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="co">        - "!../talks/index.qmd"</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="co">    field-display-names:</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co">        title: ""</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a><span class="co">        author: ""</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="co">        date: ""</span></span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="co">        location: "@"</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co">        # title: "What"</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co">        # location: ""</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a><span class="co">        # location: "Where"</span></span>
-<span id="cb1-49"><a href="#cb1-49"></a><span class="co">        # date: "When"</span></span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="co"># toc: false</span></span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="co"># sidebar: true</span></span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># page-layout: article</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a><span class="co"># format:</span></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co">#   html:</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a><span class="co">#     page-layout: full</span></span>
-<span id="cb1-56"><a href="#cb1-56"></a><span class="co">#     # page-layout: article</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a><span class="co">#     # grid:</span></span>
-<span id="cb1-58"><a href="#cb1-58"></a><span class="co">#     #   body-width: 850px</span></span>
-<span id="cb1-59"><a href="#cb1-59"></a><span class="co">---</span></span>
-<span id="cb1-60"><a href="#cb1-60"></a></span>
-<span id="cb1-61"><a href="#cb1-61"></a>::: {.callout-tip collapse=true title="<span class="co">[</span><span class="ot">HTML ⇆ Reveal.js</span><span class="co">]</span>"}</span>
-<span id="cb1-62"><a href="#cb1-62"></a>Convert from HTML to slideshow version of a page by appending <span class="in">`/slides`</span> to the</span>
-<span id="cb1-63"><a href="#cb1-63"></a>end of its URL, e.g.</span>
-<span id="cb1-64"><a href="#cb1-64"></a></span>
-<span id="cb1-65"><a href="#cb1-65"></a><span class="ss">- </span>HTML: <span class="ot">&lt;https://samforeman.me/talks/ai-for-science-2024/&gt;</span></span>
-<span id="cb1-66"><a href="#cb1-66"></a><span class="ss">- </span>Slides: <span class="ot">&lt;https://samforeman.me/talks/ai-for-science-2024/slides&gt;</span></span>
-<span id="cb1-67"><a href="#cb1-67"></a></span>
-<span id="cb1-68"><a href="#cb1-68"></a>:::</span>
-<span id="cb1-69"><a href="#cb1-69"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="an">description:</span><span class="co"> "A collection of my recent talks, including slides and videos."</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># toc: false</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># format:</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#   html:</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#     toc: false</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#     # page-layout: article</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#     # grid:</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#     #   body-width: 900px</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="an">listing:</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">  # - id: listing-talks</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">  #   table-striped: true</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">  #   filter-ui: false</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">  #   sort: "date desc"</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">  #   type: table</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">  #   contents:</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">  #       - "../talks/**/index.qmd"</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">  #       - "!../talks/index.qmd"</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">  - id: listing-talks-default</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co">    sort: "date desc"</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co">    filter-ui: false</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">    sort-ui: false</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">    date-format: iso</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">    type: grid</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co">    grid-item-align: center</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">    # image-height: 80px</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">    image-align: left</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co">    # image-height: 75px</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co">    table-hover: true</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">    table-striped: true</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co">    fields: [image, title, location, date]</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co">    contents:</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co">        - "../talks/**/index.qmd"</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co">        - "../talks/AuroraGPT/**/index.qmd"</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">        - "!../talks/test/index.qmd"</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co">        - "!../talks/index.qmd"</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co">    field-display-names:</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="co">        title: ""</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co">        author: ""</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co">        date: ""</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co">        location: "@"</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co">        # title: "What"</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="co">        # location: ""</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co">        # location: "Where"</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="co">        # date: "When"</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="co"># toc: false</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># sidebar: true</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="co"># page-layout: article</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># format:</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="co">#   html:</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a><span class="co">#     page-layout: full</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="co">#     # page-layout: article</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a><span class="co">#     # grid:</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a><span class="co">#     #   body-width: 850px</span></span>
+<span id="cb1-60"><a href="#cb1-60"></a><span class="co">---</span></span>
+<span id="cb1-61"><a href="#cb1-61"></a></span>
+<span id="cb1-62"><a href="#cb1-62"></a>::: {.callout-tip collapse=true title="<span class="co">[</span><span class="ot">HTML ⇆ Reveal.js</span><span class="co">]</span>"}</span>
+<span id="cb1-63"><a href="#cb1-63"></a>Convert from HTML to slideshow version of a page by appending <span class="in">`/slides`</span> to the</span>
+<span id="cb1-64"><a href="#cb1-64"></a>end of its URL, e.g.</span>
+<span id="cb1-65"><a href="#cb1-65"></a></span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="ss">- </span>HTML: <span class="ot">&lt;https://samforeman.me/talks/ai-for-science-2024/&gt;</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="ss">- </span>Slides: <span class="ot">&lt;https://samforeman.me/talks/ai-for-science-2024/slides&gt;</span></span>
+<span id="cb1-68"><a href="#cb1-68"></a></span>
+<span id="cb1-69"><a href="#cb1-69"></a>:::</span>
 <span id="cb1-70"><a href="#cb1-70"></a></span>
-<span id="cb1-71"><a href="#cb1-71"></a><span class="co">&lt;!--</span></span>
-<span id="cb1-72"><a href="#cb1-72"></a><span class="co">::: {.callout-tip icon=false aria-title="Recent Talks" title='🎤 [Recent Talks]{.dim-text style="font-size:1.0em!important;"}' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; opacity:100%;"}</span></span>
-<span id="cb1-73"><a href="#cb1-73"></a><span class="co">[\[[here](/talks/index.qmd)\] ( \+ how I [make them](/posts/dope-slides/index.qmd)! )]{.dim-text style="font-size:1em;"}</span></span>
-<span id="cb1-74"><a href="#cb1-74"></a><span class="co">:::</span></span>
-<span id="cb1-75"><a href="#cb1-75"></a><span class="co">--&gt;</span></span>
-<span id="cb1-76"><a href="#cb1-76"></a></span>
-<span id="cb1-77"><a href="#cb1-77"></a>::: {#listing-talks-default}</span>
-<span id="cb1-78"><a href="#cb1-78"></a>:::</span>
-<span id="cb1-79"><a href="#cb1-79"></a></span>
-<span id="cb1-80"><a href="#cb1-80"></a>{{&lt; include _talks.qmd &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-71"><a href="#cb1-71"></a></span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="co">&lt;!--</span></span>
+<span id="cb1-73"><a href="#cb1-73"></a><span class="co">::: {.callout-tip icon=false aria-title="Recent Talks" title='🎤 [Recent Talks]{.dim-text style="font-size:1.0em!important;"}' collapse="false" style="text-align: left!important; width: 100%; background-color:rgba(131,131,131,0.05)!important; opacity:100%;"}</span></span>
+<span id="cb1-74"><a href="#cb1-74"></a><span class="co">[\[[here](/talks/index.qmd)\] ( \+ how I [make them](/posts/dope-slides/index.qmd)! )]{.dim-text style="font-size:1em;"}</span></span>
+<span id="cb1-75"><a href="#cb1-75"></a><span class="co">:::</span></span>
+<span id="cb1-76"><a href="#cb1-76"></a><span class="co">--&gt;</span></span>
+<span id="cb1-77"><a href="#cb1-77"></a></span>
+<span id="cb1-78"><a href="#cb1-78"></a>::: {#listing-talks-default}</span>
+<span id="cb1-79"><a href="#cb1-79"></a>:::</span>
+<span id="cb1-80"><a href="#cb1-80"></a></span>
+<span id="cb1-81"><a href="#cb1-81"></a>{{&lt; include _talks.qmd &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

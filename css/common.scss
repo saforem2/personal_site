@@ -54,11 +54,11 @@ $grey-ambivalent: #838383;
 // $callout-caution-color: #FF3BD3;
 // $callout-color-caution: #FF3BD3;
 
-$base-font-size: 16px !default;
-$code-block-font-size: 16px !default;
+$base-font-size: 18px !default;
+// $code-block-font-size: 16px !default;
 
 $font-size-root: 1rem;
-$font-size-base: 16px; // Assumes the browser default, typically `16px`
+$font-size-base: 18px; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25;
 $quarto-border-width: 1px !default;
@@ -105,11 +105,11 @@ $bs-nav-tabs-border-color: rgba(0, 0, 0, 0.2) !default;
 $presentation-font-size-root: 28px !default;
 $code-font-size: $presentation-font-size-root !default;
 $code-block-font-size: calc($code-font-size * 0.55) !default;
-$code-block-height: calc(0.8 * 100vh) !default;
+$code-block-height: calc(0.66 * 100vh) !default;
 $code-block-height-reveal: calc(0.33 * 100vh) !default;
 
-$presentation-font-family-line-height: 1em !default;
-$presentation-line-height: 1em !default;
+$presentation-font-family-line-height: 1lh !default;
+$presentation-line-height: 1lh !default;
 
 $line-height-sm: 1 !default;
 $font-family-code: $font-family-monospace !default;
@@ -171,6 +171,7 @@ $themes: (
     selection-color: #1c1c1c,
     heading-color: #1c1c1c,
     light-bg-link-color: #1a8fff,
+    --r-link-color: $light-bg-link-color,
     bs-code-color: $code-fg-light-bg,
     code-fg: $code-fg-light-bg,
     code-block-color: $code-fg-light-bg,
@@ -250,6 +251,7 @@ $themes: (
     code-block-shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px,
     code-block-box-shadow-hover: rgba(0, 0, 0, 0.75) 0px 2px 5px,
     codeline-number-fg: #333333,
+    --r-link-color: $dark-bg-link-color,
     link-fg: #32affa,
     link-fg-hover: #ff67ff,
     callout-note-color: #4582ec,
@@ -289,6 +291,12 @@ b {
 }
 
 :root {
+  --h1-font-size: $h1-font-size;
+  --h2-font-size: $h2-font-size;
+  --h3-font-size: $h3-font-size;
+  --h4-font-size: $h4-font-size;
+  --h5-font-size: $h5-font-size;
+  --h6-font-size: $h6-font-size;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   --bs-card-spacer-y: 0.5rem;
@@ -414,34 +422,23 @@ mark {
   color: $highlight-yellow;
 }
 
-.reveal {
-  font-family: $presentation-main-font;
-}
-
-.reveal.has-light-background .sourceCode,
-.reveal.has-dark-background .sourceCode {
-  font-size: min(calc(0.75 * var(--r-main-font-size)), 18pt);
-  line-height: inherit;
-}
-
-.reveal div.callout.callout-style-simple div.callout-title p,
-.reveal div.callout.callout-style-default div.callout-title p {
-  color: unset;
-}
-
 body {
   font-family: $font-family-sans-serif;
 }
 
-p {
-  text-wrap: pretty;
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
+// p {
+//   text-wrap: pretty;
+//   margin-block: 1lh;
+//   // margin-top: 0;
+//   // margin-bottom: 1rem;
+// }
 
 body p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  text-wrap: balance;
+  margin-block: auto;
+  overflow-wrap: break-word;
+  // margin-top: 0.5rem;
+  // margin-bottom: 0.5rem;
 }
 
 body li p {
@@ -523,6 +520,13 @@ ol > li:not(:has(> p)) > ol {
   margin-bottom: 0;
 }
 
+ul > li:not(:has(> p)) > ul > li:has(> p),
+ol > li:not(:has(> p)) > ul > li:has(> p),
+ul > li:not(:has(> p)) > ol > li:has(> p),
+ol > li:not(:has(> p)) > ol > li:has(> p) {
+  margin: auto;
+}
+
 pre,
 code,
 kbd,
@@ -555,7 +559,7 @@ pre code {
 code {
   font-size: inherit;
   color: $code-color;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   font-family: $monofont;
   word-wrap: break-word;
   background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
@@ -679,11 +683,12 @@ a:not(#lightbox):hover,
 .reveal a:not(#lightbox):hover {
   color: $code-fg;
 
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   background-color: none;
 }
 
-a {
+a,
+.reveal a {
   color: $link-color;
   text-underline-offset: 3px;
   text-decoration: underline;
@@ -728,7 +733,7 @@ a img:hover,
 // a:hover {
 //   color: $link-color-hover !important;
 //   background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
-//   border-radius: 0.05rem;
+//   border-radius: $link-border-radius;
 //   text-decoration: underline;
 //   text-decoration-thickness: 2pt;
 //   text-decoration-color: $link-color-hover;
@@ -794,9 +799,9 @@ div.sidebar-item-container .sidebar-link > code {
   padding-left: 4pt;
 }
 
-// .sidebar-navigation {
-//   font-family: $font-family-headings;
-// }
+.sidebar-navigation {
+  padding-left: unset;
+}
 
 .toc-actions {
   margin-block: 1rem;
@@ -843,7 +848,7 @@ div.sidebar-item-container .sidebar-link > code {
 a:not(#lightbox):hover,
 .reveal a:not(#lightbox):hover {
   color: $link-color-hover !important;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .figure a:not(#lightbox):hover,
@@ -860,11 +865,11 @@ a img:hover {
 
 .img-fluid {
   object-fit: scale-down;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 img {
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .reveal a {
@@ -883,7 +888,7 @@ img {
 a img:hover,
 .img-fluid:hover,
 .reveal img:hover {
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   background: none !important;
 }
 
@@ -898,23 +903,23 @@ a img:hover,
   text-align: center;
 }
 
-.quarto-figure-default:hover,
-.reveal .quarto-figure-default:hover {
-  filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
-}
+// .quarto-figure-default:hover,
+// .reveal .quarto-figure-default:hover {
+//   filter: drop-shadow(RGBA(0, 0, 0, 0.33) 0px 2px 5px);
+// }
 
-img:hover,
-.img:hover,
-.figure:hover,
-.img-fluid:hover,
-.reveal img:hover,
-.quarto-figure-center:hover,
-.quarto-figure-default:hover {
-  border-radius: 0.25rem;
-  filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
-  background: none;
-  transition: background 0.3s ease-in-out;
-}
+// img:hover,
+// .img:hover,
+// .figure:hover,
+// .img-fluid:hover,
+// .reveal img:hover,
+// .quarto-figure-center:hover,
+// .quarto-figure-default:hover {
+//   border-radius: 0.25rem;
+//   // filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
+//   background: none;
+//   transition: background 0.3s ease-in-out;
+// }
 
 .gist .gist-data {
   background-color: rgba(0, 0, 0, 0);
@@ -1419,15 +1424,15 @@ pre > code.sourceCode > span {
   font-size: inherit;
 }
 
-section.has-dark-background,
-section.has-dark-background h1,
-section.has-dark-background h2,
-section.has-dark-background h3,
-section.has-dark-background h4,
-section.has-dark-background h5,
-section.has-dark-background h6 {
-  color: $dim-text;
-}
+// section.has-dark-background,
+// section.has-dark-background h1,
+// section.has-dark-background h2,
+// section.has-dark-background h3,
+// section.has-dark-background h4,
+// section.has-dark-background h5,
+// section.has-dark-background h6 {
+//   color: $dim-text;
+// }
 
 .reveal h1,
 .reveal h2,
@@ -1437,6 +1442,8 @@ section.has-dark-background h6 {
 .reveal h6 {
   margin-top: auto;
   margin-bottom: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 h1,
@@ -1447,8 +1454,8 @@ h5,
 h6 {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: subpixel-antialiased;
-  margin-block-start: 0.5rem;
-  line-height: unset;
+  // margin-block-start: 0.5rem;
+  // line-height: unset;
 }
 
 h1.title,
@@ -1482,6 +1489,10 @@ h1 {
   color: $heading-color;
   font-family: $font-family-headings;
   font-weight: 800;
+  margin-block: 0.5lh;
+  code {
+    padding: 0pt 2pt;
+  }
 }
 
 h2 {
@@ -1490,8 +1501,14 @@ h2 {
   border-bottom: none;
   font-family: $font-family-headings;
   padding-bottom: unset;
+  margin-top: unset;
   margin-bottom: unset;
   font-weight: 700;
+  margin-block: 0.5lh;
+
+  code {
+    padding: 0pt 2pt;
+  }
 }
 
 h3 {
@@ -1501,18 +1518,22 @@ h3 {
   margin-top: unset;
   margin-bottom: unset;
   font-weight: 600;
+  margin-block: 0.25lh;
 }
 
 h4 {
   font-family: $font-family-headings;
+  margin-block: 0.25lh;
 }
 
 h5 {
   font-family: $font-family-headings;
+  margin-block: 0.1lh;
 }
 
 h6 {
   font-family: $font-family-headings;
+  margin-block: 0.1lh;
 }
 
 dd {
@@ -1545,14 +1566,35 @@ blockquote {
   background: $blockquote-bg;
   color: $blockquote-text !important;
   border-left: 4px solid $blockquote-border !important;
+  padding-right: unset;
+  padding-left: unset;
+  padding-inline-start: 10pt;
+  // padding: 5pt 0pt;
 }
 
 blockquote:hover {
   display: block;
-  color: $code-color;
-  background: $blockquote-bg;
-  border-left: 4px solid $code-color !important;
-  box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+  border-left: 4px solid $link-color-hover !important;
+  color: $link-color-hover !important;
+  background-color: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
+  padding-left: unset;
+  padding-right: unset;
+  padding-inline-start: 10pt;
+  // padding: 5pt 0pt;
+  // color: $code-color;
+  // background: $blockquote-bg;
+  // box-shadow: RGBA(0, 0, 0, 0.25) 0px 2px 7px !important;
+  // text-decoration: none;
+}
+
+.blockquote {
+  margin-bottom: unset;
+  margin-top: unset;
+  // margin-block: 0.5lh;
+  font-size: 100%;
+  padding-inline-start: 10pt;
+  padding-block: 2pt;
+  // padding-left: 1rem;
 }
 
 small * {
@@ -1675,7 +1717,7 @@ th {
   padding: 1em;
   border: solid 1px var(--dim-color);
   margin-bottom: 1em;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 #quarto-appendix.default > .quarto-appendix-citeas:first-of-type {
@@ -1690,7 +1732,7 @@ li code:not(a, .sourceCode),
 td code:not(a, .sourceCode) {
   /* border: 1px solid rgba(255,26,143, 0.1); */
   color: $code-color;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .quarto-title-tools-only {
@@ -1702,18 +1744,18 @@ td code:not(a, .sourceCode) {
   padding: 1em;
   border: solid 1px var(--dim-color);
   margin-bottom: 0;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .myCard {
   border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
 }
 
 .myCard:hover {
   border: 1px solid $dim-text;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   box-shadow: RGBA(0, 0, 0, 0.15) 0px 2px 5px;
 }
 
@@ -2044,7 +2086,7 @@ ul.task-list {
   margin-top: 1px;
   cursor: pointer;
 
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .nav-tabs .nav-link.active,
@@ -2054,19 +2096,19 @@ ul.task-list {
 }
 
 .nav-tabs .nav-link {
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 }
 
 .nav-tabs .nav-link:hover {
   border: 1px $link-color-hover solid rgba(0, 0, 0, 0);
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   color: $link-color-hover;
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   box-shadow: $shadow-color 0px 2px 5px;
   border: 2px solid $link-color !important;
   background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
@@ -2074,24 +2116,27 @@ ul.task-list {
   color: $link-color;
 }
 
+details {
+  margin-block: 0.5lh;
+}
+
 details > summary {
   text-align: left;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   color: $link-color;
   border: 1px solid rgba(0, 0, 0, 0);
   background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
   min-width: max-content;
   max-width: min-content;
   width: fit-content;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  margin-block-start: 0.25rem;
-  margin-block-end: 0.25rem;
+  padding-inline: 5pt;
+  // margin-block-start: 0.25rem;
+  // margin-block-end: 0.25rem;
 }
 
 details > summary:hover {
   text-align: left;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   color: $link-color-hover;
 
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
@@ -2101,10 +2146,11 @@ details > summary:hover {
   min-width: max-content;
   max-width: min-content;
   width: fit-content;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  margin-block-start: 0.25rem;
-  margin-block-end: 0.25rem;
+  padding-inline: 5pt;
+  // padding-left: 0.5em;
+  // padding-right: 0.5em;
+  // margin-block-start: 0.25rem;
+  // margin-block-end: 0.25rem;
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,
@@ -2170,12 +2216,13 @@ details > summary:hover {
 
 div.sourceCode {
   overflow: auto;
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   box-shadow: $code-block-block-shadow;
+  margin-block: 0.25lh;
 }
 
 div.sourceCode:hover {
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   box-shadow: $code-block-hover-box-shadow;
 }
 
@@ -2306,7 +2353,7 @@ nav.quarto-secondary-nav {
 .code-with-filename-file {
   border: none !important;
 
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
 
   font-style: italic;
 }
@@ -2343,7 +2390,7 @@ figure > figcaption.quarto-float-caption-bottom {
   border: 1px solid
     rgba(red($dim-text), green($dim-text), blue($dim-text), 0.075);
 
-  border-radius: 0.05rem;
+  border-radius: $link-border-radius;
   color: var(--dim-text);
 }
 
@@ -2382,6 +2429,11 @@ figure > figcaption.quarto-float-caption-bottom {
   padding-right: 5pt;
 }
 
+.navbar-expand-lg .navbar-nav .nav-link-active,
+.navbar-nav .nav-link-active {
+  color: var(--bs-nav-link-color);
+}
+
 .em {
   font-style: italic;
   color: $italic-color;
@@ -2411,22 +2463,16 @@ tr {
 
 pre.sourceCode {
   border: none;
-
-  padding: 0.4em;
+  // padding: 0.4em;
   max-height: $code-block-height;
-  overflow-y: scroll;
-}
-
-reveal pre.sourceCode {
-  border: none;
-  padding: 0.4em;
-  max-height: $code-block-height-reveal;
   overflow-y: scroll;
 }
 
 pre.numberSource code > span > a:first-child::before {
   color: $code-line-number-color;
   padding: unset;
+  left: -2ch;
+  width: 8ch;
 }
 
 root::selection {
@@ -2528,13 +2574,6 @@ pre.cell-output {
   color: $primary;
 }
 
-/*
-.navbar-expand-lg .navbar-nav .nav-link:hover,
-.navbar-expand-lg .navbar-nav .nav-link.active {
-	font-family: $gilbert-font-family;
-}
-*/
-
 .navbar-expand-lg .navbar-nav .nav-link:hover {
   color: $primary !important;
   text-decoration: none;
@@ -2547,8 +2586,8 @@ pre.cell-output {
 
 #navbarCollapse > ul > li:nth-child(1) > a:hover,
 #navbarCollapse > ul > li:nth-child(7) > a:hover,
-#navbarCollapse > ul > li:nth-child(1) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(7) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(1) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(7) > a.nav-link.active,
 nav-item tabset-1-1-tab > a:hover,
 nav-item tabset-1-1-tab > a.nav-link.active {
   color: $red !important;
@@ -2558,8 +2597,8 @@ nav-item tabset-1-1-tab > a.nav-link.active {
 
 #navbarCollapse > ul > li:nth-child(2) > a:hover,
 #navbarCollapse > ul > li:nth-child(8) > a:hover,
-#navbarCollapse > ul > li:nth-child(2) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(8) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(2) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(8) > a.nav-link.active,
 #tabset-1-2-tab nav-item > a:hover,
 #tabset-1-2-tab nav-item > a.nav-link.active {
   color: $green !important;
@@ -2568,34 +2607,40 @@ nav-item tabset-1-1-tab > a.nav-link.active {
 
 #navbarCollapse > ul > li:nth-child(3) > a:hover,
 #navbarCollapse > ul > li:nth-child(9) > a:hover,
-#navbarCollapse > ul > li:nth-child(3) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(9) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(3) > a:hover,
-#navbarCollapse > ul > li:nth-child(9) > a:hover {
+// #navbarCollapse > ul > li:nth-child(3) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(9) > a.nav-link.active,
+nav-item tabset-1-3-tab > a:hover,
+nav-item tabset-1-3-tab > a.nav-link.active {
   color: $blue !important;
   background-color: oklch(from $blue calc(l * 1.15) c h/0.1);
 }
 
 #navbarCollapse > ul > li:nth-child(4) > a:hover,
 #navbarCollapse > ul > li:nth-child(10) > a:hover,
-#navbarCollapse > ul > li:nth-child(4) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(10) > a.nav-link.active {
+// #navbarCollapse > ul > li:nth-child(4) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(10) > a.nav-link.active,
+nav-item tabset-1-4-tab > a:hover,
+nav-item tabset-1-4-tab > a.nav-link.active {
   color: $purple !important;
   background-color: oklch(from $purple calc(l * 1.15) c h/0.1);
 }
 
 #navbarCollapse > ul > li:nth-child(5) > a:hover,
 #navbarCollapse > ul > li:nth-child(11) > a:hover,
-#navbarCollapse > ul > li:nth-child(5) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(11) > a.nav-link.active {
+// #navbarCollapse > ul > li:nth-child(5) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(11) > a.nav-link.active,
+nav-item tabset-1-5-tab > a:hover,
+nav-item tabset-1-5-tab > a.nav-link.active {
   color: $pink !important;
   background-color: oklch(from $pink calc(l * 1.15) c h/0.1);
 }
 
 #navbarCollapse > ul > li:nth-child(6) > a:hover,
 #navbarCollapse > ul > li:nth-child(12) > a:hover,
-#navbarCollapse > ul > li:nth-child(6) > a.nav-link.active,
-#navbarCollapse > ul > li:nth-child(12) > a.nav-link.active {
+// #navbarCollapse > ul > li:nth-child(6) > a.nav-link.active,
+// #navbarCollapse > ul > li:nth-child(12) > a.nav-link.active,
+nav-item tabset-1-6-tab > a:hover,
+nav-item tabset-1-6-tab > a.nav-link.active {
   color: $cyan !important;
   background-color: oklch(from $cyan calc(l * 1.15) c h/0.1);
 }
@@ -2728,81 +2773,11 @@ li code:not(a, .sourceCode),
 td code:not(a, .sourceCode) {
   border: 0.075x solid $quarto-border-color;
   color: $code-fg;
-  border-radius: 0.05rem;
-}
-
-.reveal .date {
-  color: $dim-text;
-}
-
-.reveal .site-url {
-  color: $dim-text;
-  color: $link-color;
-  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
-  border-radius: 0.05rem;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-.reveal .footer {
-  display: inline-block;
-  position: fixed;
-  bottom: 5px !important;
-  width: 100%;
-
-  text-align: center;
-  z-index: 2;
-
-  img {
-    margin: auto;
-    max-height: 100%;
-    // height: 2.2rem;
-  }
-}
-
-.reveal .slide-logo {
-  display: inline-block;
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  /* max-height: 2.2rem; */
-  /* height: 100%; */
-  /* width: auto; */
-  z-index: 1;
-  margin: auto;
-}
-
-.reveal .slide-logo {
-  display: inline-block;
-  position: absolute;
-  max-height: 2.2rem;
-  height: 100%;
-  z-index: 2;
-  margin: unset !important;
-  bottom: 5px !important;
-  right: 5px !important;
-}
-
-.reveal .slide aside {
-  color: inherit;
+  border-radius: $link-border-radius;
 }
 
 body.hypothesis-enabled #quarto-header {
   margin-right: 0;
-}
-
-.reveal .slides > section,
-.reveal .slides > section > section {
-  display: none;
-  position: absolute;
-  width: -webkit-fill-available;
-  pointer-events: auto;
-  z-index: 10;
-  transform-style: flat;
-  transition:
-    transform-origin 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
-    transform 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
-    visibility 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
-    opacity 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
 }
 
 .reveal p code:not(.sourceCode),
@@ -2833,57 +2808,14 @@ td code:not(.sourceCode) {
   border-radius: 0pt;
 }
 
-.reveal .scrollable {
-  overflow: auto;
-}
-
 div.code {
   white-space: pre;
-}
-
-@media screen and (max-width: 1020px) {
-  .reveal .footer {
-    display: none !important;
-    // font-size: x-small !important;
-    // bottom: 12px;
-  }
-
-  .reveal img {
-    max-width: 90%;
-    // max-height: 90%;
-    max-height: calc(0.995 * 100vh);
-  }
-}
-
-.reveal .slides section[data-transition="none"],
-.reveal.none .slides section:not([data-transition]) {
-  transform: none;
-  transition: none;
-}
-
-.reveal pre code {
-  display: block;
-  padding: 0px;
-  overflow: auto;
-
-  word-wrap: normal;
-}
-
-.reveal pre.sourceCode code {
-  padding: 0pt;
-  max-height: 500px;
-  white-space: pre;
-}
-
-html.print-pdf .reveal .slide-menu-button,
-html.print-pdf .reveal .slide-chalkboard-buttons {
-  display: none;
 }
 
 .nav-tabs {
   --bs-nav-tabs-border-width: 1px;
   --bs-nav-tabs-border-color: rgba(80, 80, 80, 0.1);
-  --bs-nav-tabs-border-radius: 0.05rem;
+  --bs-nav-tabs-border-radius: $link-border-radius;
   --bs-nav-tabs-link-hover-border-color: $link-color;
   --bs-nav-tabs-link-active-color: $code-fg;
   --bs-nav-tabs-link-active-bg: oklch(
@@ -2917,3 +2849,24 @@ html.print-pdf .reveal .slide-chalkboard-buttons {
   height: 1em;
   vertical-align: -webkit-baseline-middle;
 }
+
+svg:not(:root) {
+  overflow: auto;
+}
+
+.iconify-icon svg {
+  overflow: visible !important;
+
+  // svg:not(:root), symbol, image, marker, pattern, foreignObject {
+  //     overflow: visible;
+  // }
+}
+
+// svg:not(:root), symbol, image, marker, pattern, foreignObject {
+// 	overflow: visible!important;
+// }
+//
+// span,
+// svg {
+//   overflow: inherit !important;
+// }

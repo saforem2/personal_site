@@ -3,7 +3,6 @@ Sam Foreman
 2024-06-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 > \[**NOTE**\]: For additional details, refer to the [W&B
 > Report](https://api.wandb.ai/links/aurora_gpt/nqjjhzd5).

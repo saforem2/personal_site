@@ -2,7 +2,6 @@
 Sam Foreman
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="apple-touch-icon" sizes="57x57" href="https://samforeman.me/apple-touch-icon-57x57.png">
 
 - [📆 2025](#calendar-2025)
 - [📆 2024](#calendar-2024)
@@ -29,11 +28,23 @@ Sam Foreman
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**Large Language Models on Aurora**](../talks/incite-hackathon-2025/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/slides.html" title="Large Language Models on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**AuroraGPT: Foundation Models for Science**](../talks/aurora-gpt-fm-for-electric-grid/index.html) @ [*Foundation Models for the Electric Grid*](https://www.alcf.anl.gov/alcf-ai-science-training-series) \[02/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/aurora-gpt-fm-for-electric-grid/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/aurora-gpt-fm-for-electric-grid/slides.html" title="AuroraGPT: Foundation Models for Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -59,7 +70,7 @@ Sam Foreman
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
