@@ -54,7 +54,7 @@ format:
 
 ::: {.content-visible when-format="revealjs"}
 
-## {background-image="./assets/colorized-50.jpg" loading="lazy" style="data-background-size: cover;"}
+## {background-image="assets/colorized-50.jpg" loading="lazy" style="data-background-size: cover;"}
 
 ::: {style="border-radius: 10px; text-align:left; padding: 10pt; margin-left: auto; margin-right: auto; line-height: 1.25lh!important;"}
 
@@ -74,7 +74,7 @@ format:
 
 :::
 
-## Currently: {background-color="white"}
+## 📍 Currently {background-color="white"}
 
 ::: {#fig-pretraining-infrastructure style="width: 60%; margin: auto;"}
 
@@ -83,7 +83,7 @@ format:
 Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1918822518804132085)]
 :::
 
-## LLMs on Aurora {background-color="white"}
+## 💬 LLMs on Aurora {background-color="white"}
 
 - 🍋 [`ezpz`](https://github.com/saforem2/ezpz)
 - 🤗 [`transformers`](https://github.com/huggingface/transformers)
@@ -104,25 +104,161 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
         -q gpu_hack_prio
     ```
 
-1. Setup environment[^proxy]:
+1. Source[^safety] the
+   [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/bin/utils.sh)
+   script (using `curl` to download it[^bitly]):
 
     ```bash
     source <(curl -L https://bit.ly/ezpz-utils)
+    ```
+
+[^safety]: In _general_, you should be wary of running random scripts from the
+     internet.
+
+[^bitly]: [https://bit.ly/ezpz-utils](https://bit.ly/ezpz-utils), since
+    [https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh](https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh)
+    is a bit of a pain
+
+## 🏖️ Shell Environment {background-color="white"}
+
+1. Setup environment:
+
+    ```bash
     ezpz_setup_env
     ```
+
+   ::: {.content-visible unless-format="revealjs"}
+
+    - <details closed><summary>Output:</summary>
+
+        ```bash
+        ; source <(curl -L https://bit.ly/ezpz-utils) && ezpz_setup_env
+        [2025-05-05-072645][W] PBS_O_WORKDIR is not set! Setting it to current working directory
+        [2025-05-05-072645][I] Exporting PBS_O_WORKDIR=/lus/flare/projects/datascience/foremans/projects/saforem2/ezpz
+        [2025-05-05-072645][I]  ===== Running Full Environment Setup =====
+        [2025-05-05-072645][I] [PYTHON]
+        [2025-05-05-072645][I]   - No conda_prefix OR virtual_env found in environment. Setting up conda...
+        [2025-05-05-072645][I] Setting up conda on aurora
+        [2025-05-05-072647][I] List of active modules:
+
+        Currently Loaded Modules:
+            1) gcc-runtime/13.3.0-ghotoln (H)   7) libiconv/1.17-jjpb4sl         (H)  13) cray-pals/1.4.0
+            2) gmp/6.3.0-mtokfaw          (H)   8) libxml2/2.13.5                     14) cray-libpals/1.4.0
+            3) mpfr/4.2.1-gkcdl5w         (H)   9) hwloc/2.11.3-mpich-level-zero      15) pti-gpu/0.11.0
+            4) mpc/1.3.1-rdrlvsl          (H)  10) yaksa/0.3-7ks5f26             (H)  16) frameworks/2025.0.0
+            5) gcc/13.3.0                      11) mpich/opt/develop-git.6037a7a
+            6) oneapi/release/2025.0.5         12) libfabric/1.22.0
+
+            Where:
+            H:  Hidden Module
+
+        [2025-05-05-072647][I]   - Setting up venv from conda=/opt/aurora/24.347.0/frameworks/aurora_nre_models_frameworks-2025.0.0...
+        [2025-05-05-072647][I]   - Found conda at /opt/aurora/24.347.0/frameworks/aurora_nre_models_frameworks-2025.0.0
+        [2025-05-05-072647][I]   - No VIRTUAL_ENV found in environment!
+        [2025-05-05-072647][I]   - Looking for venv in VENV_DIR=./venvs/aurora_nre_models_frameworks-2025.0.0...
+        [2025-05-05-072647][I]   - Activating existing venv in VENV_DIR=venvs/aurora_nre_models_frameworks-2025.0.0
+        [2025-05-05-072647][I]   - Using python from: /lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/venvs/aurora_nre_models_frameworks-2025.0.0/bin/python3
+        [2025-05-05-072647][I] [JOB]
+        [2025-05-05-072647][I]   - Setting up job for foremans
+        [2025-05-05-072647][I]   - Machine: aurora
+        [2025-05-05-072647][I]   - Hostname: x4318c6s6b0n0
+        [2025-05-05-072647][I] [ezpz_get_pbs_env]
+        [2025-05-05-072647][I]   - hostfile=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
+        [2025-05-05-072647][I]   - jobenv_file=/home/foremans/.pbsenv
+        [2025-05-05-072648][I] [HOSTS]
+        [2025-05-05-072648][I]   - HOSTFILE=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
+        [2025-05-05-072648][I]   - NHOSTS=2
+        [2025-05-05-072648][I]   - HOSTS:
+        [2025-05-05-072648][I]     - [host:0] - x4318c6s5b0n0.hostmgmt2318.cm.aurora.alcf.anl.gov
+        [2025-05-05-072648][I]     - [host:1] - x4318c6s6b0n0.hostmgmt2318.cm.aurora.alcf.anl.gov
+        [2025-05-05-072648][I] [DIST_INFO]
+        [2025-05-05-072648][I]   - HOSTFILE=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
+        [2025-05-05-072648][I]   - NHOSTS=2
+        [2025-05-05-072648][I]   - NGPU_PER_HOST=12
+        [2025-05-05-072648][I]   - NGPUS=24
+        [2025-05-05-072648][I] [LAUNCH]
+        [2025-05-05-072648][I]   - To launch across all available GPUs, use: 'launch'
+        [2025-05-05-072648][I]     launch = mpiexec --verbose --envall -n 24 -ppn 12 --hostfile /var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov --cpu-bind depth -d 8 --no-vni
+        [2025-05-05-072648][I]   - Run 'which launch' to ensure that the alias is set correctly
+        [2025-05-05-072648][I] ===== Environment Setup Complete =====
+        took: 0h:00m:03s
+        ```
+
+   </details>
+
+   :::
+
+&nbsp;
+
+## 🔍 Environment Setup with `ezpz_setup_env`
+
+- Wrapper around `ezpz_setup_job` `&&` `ezpz_setup_python`
+
+1. `ezpz_setup_job`: Determine the specifics of our active (PBS, SLURM) job[^job-details]  
+
+1. `ezpz_setup_python`:
+   - **if @ ALCF**:
+     - Load the appropriate modules and activate base `conda` env
+   - **else**:
+     - Look for an active `conda` environment
+       - If found, use it to build a new virtual environment
+   - Activate the newly created `venvs/$(basename ${CONDA_PREFIX})`
+     environment
+
+[^job-details]: e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...
+
+## ⏱️ Working with Job Scheduler(s) {background-color="white"}
+
+- `ezpz` integrates directly with the ALCF job scheduler[^slurm]
+  - has mechanisms for getting information about our currently running jobs
+- 🪄 _Automagically_:
+   - Determine the specifics of our active (PBS, SLURM) job  
+     (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...)
+  - Load the appropriate modules[^alcf]
+  - Create (or activate) a virtual environment _on top_ of a base conda
+    environment
+
+[^slurm]: _Should also work with SLURM_ (needs further testing)
+
+[^alcf]: On any of the ALCF systems, including:
+    [Aurora](https://alcf.anl.gov/aurora),
+    [Polaris](https://alcf.anl.gov/polaris),
+    ..., etc.
+
+## 🔄 Use Custom Node Lists {background-color="white"}
+
+- Experiment[^bad-nodes] with custom `hostfile`(s), e.g.:
+
+    ```bash
+    source <(curl -L https://bit.ly/ezpz-utils)
+    # 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` 
+    ezpz_setup_job
+    # 2. Grab a subset of nodes:
+    head -n 2 $PBS_NODEFILE > nodefile-0-1
+    # 3. Pass custom `nodefile-0-1`:
+    ezpz_setup_job nodefile-0-1  # will use `nodefile-0-1`
+    ```
+
+[^bad-nodes]: Or, for example, if you would like to exclude a node you suspect
+    is having issues
+
+## 🐍 Python Environments {background-color="white"}
+
+- **ALWAYS** work inside a virtual environment
+  - best practice is to maintain separate virtual environments for:
+    - each project you work on
+    - different versions of a specific package you're working with  
+      e.g you would want different envs for `torch==2.X` vs `torch==2.Y`
+  - _Mangled python environments are one of the most common issues faced by
+    users_
+
+## 📦 Install `ezpz` {background-color="white"}
 
 1. Install[^venv]:
 
     ```bash
     python3 -m pip install "git+https://github.com/saforem2/ezpz"
     ```
-
-[^proxy]:
-    If you're unable to connect to the internet, check that all of
-    {`http{s}`, `HTTP{S}_PROXY`, `ftp_proxy`} are set to the ALCF proxy server:
-    `http://proxy.alcf.anl.gov:3128`
-
-## ✅ Confirm Setup and Installation {background-color="white"}
 
 1. Run distributed test:
 
@@ -146,57 +282,7 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 [^venv]: You should _always_ be working in a virtual environment.
        See: [🏖️ Shell Environment](#shell-environment)
 
-## ⏱️ Working with Job Scheduler(s) {background-color="white"}
-
-- `ezpz` integrates directly with the ALCF job scheduler
-  - has mechanisms for getting information about our currently running jobs
-- 🪄 _Automagically_:
-   - Determine the specifics of our active (PBS, SLURM) job  
-     (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...)
-  - Load the appropriate modules[^alcf]
-  - Create (or activate) a virtual environment _on top_ of a base conda
-    environment
-
-[^alcf]: On any of the ALCF systems, including:
-    [Aurora](https://alcf.anl.gov/aurora),
-    [Polaris](https://alcf.anl.gov/polaris),
-    ..., etc.
-
-## 🏡 Environment Setup with `ezpz_setup_env` {background-color="white"}
-
-- Wrapper around `ezpz_setup_job` `&&` `ezpz_setup_python`
-
-1. `ezpz_setup_job`: Determine the specifics of our active (PBS, SLURM) job[^job-details]  
-
-1. `ezpz_setup_python`:
-   - **if @ ALCF**:
-     - Load the appropriate modules and activate base `conda` env
-   - **else**:
-     - Look for an active `conda` environment
-       - If found, use it to build a new virtual environment
-   - Activate the newly created `venvs/$(basename ${CONDA_PREFIX})`
-     environment
-
-[^job-details]: e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...
-
-## 🔄 Use Custom Node Lists {background-color="white"}
-
-- Experiment[^bad-nodes] with custom `hostfile`(s), e.g.:
-
-    ```bash
-    source <(curl -L https://bit.ly/ezpz-utils)
-    # 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` 
-    ezpz_setup_job
-    # 2. Grab a subset of nodes:
-    head -n 2 $PBS_NODEFILE > nodefile-0-1
-    # 3. Pass custom `nodefile-0-1`:
-    ezpz_setup_job nodefile-0-1  # will use `nodefile-0-1`
-    ```
-
-[^bad-nodes]: Or, for example, if you would like to exclude a node you suspect
-    is having issues
-
-## 👀 How to Modify Existing Code {background-color="white"}
+## ➕ How to Modify Existing Code {background-color="white"}
 
 ```diff
 + import ezpz
@@ -823,105 +909,6 @@ To run the previous example we:
 
 :::
 
-## 🏖️ Shell Environment {background-color="white"}
-
-- Best practice:
-  - Use conda to install a fixed python version
-    - Install _frameworks_ and packages that you anticipate sharing across
-      projects (e.g. `torch`, `numpy`, `matplotlib`, ...)
-    - Distribute
-- **ALWAYS** work inside a virtual environment
-  - best practice is to maintain separate virtual environments for:
-    - each project you work on
-    - different versions of a specific package you're working with  
-      e.g you would want different envs for `torch==2.X` vs `torch==2.Y`
-  - _Mangled python environments are one of the most common issues faced by
-    users_
-
-## 🏗️ Setup Environment {background-color="white"}
-
-1. Source[^safety] the
-   [`ezpz/bin/utils.sh`](https://github.com/saforem2/ezpz/blob/main/bin/utils.sh)
-   script (using `curl` to download it[^bitly]):
-
-    ```bash
-    source <(curl -L https://bit.ly/ezpz-utils)
-    ```
-
-1. Run `ezpz_setup_env`:
-
-    ```bash
-    ezpz_setup_env
-    ```
-
-[^safety]: In _general_, you should be wary of running random scripts from the
-     internet.
-
-[^bitly]: [https://bit.ly/ezpz-utils](https://bit.ly/ezpz-utils), since
-    [https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh](https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh)
-    is a bit of a pain
-
-::: {.content-visible unless-format="revealjs"}
-
-1. <details closed><summary>Output:</summary>
-
-    ```bash
-    ; source <(curl -L https://bit.ly/ezpz-utils) && ezpz_setup_env
-    [2025-05-05-072645][W] PBS_O_WORKDIR is not set! Setting it to current working directory
-    [2025-05-05-072645][I] Exporting PBS_O_WORKDIR=/lus/flare/projects/datascience/foremans/projects/saforem2/ezpz
-    [2025-05-05-072645][I]  ===== Running Full Environment Setup =====
-    [2025-05-05-072645][I] [PYTHON]
-    [2025-05-05-072645][I]   - No conda_prefix OR virtual_env found in environment. Setting up conda...
-    [2025-05-05-072645][I] Setting up conda on aurora
-    [2025-05-05-072647][I] List of active modules:
-
-    Currently Loaded Modules:
-        1) gcc-runtime/13.3.0-ghotoln (H)   7) libiconv/1.17-jjpb4sl         (H)  13) cray-pals/1.4.0
-        2) gmp/6.3.0-mtokfaw          (H)   8) libxml2/2.13.5                     14) cray-libpals/1.4.0
-        3) mpfr/4.2.1-gkcdl5w         (H)   9) hwloc/2.11.3-mpich-level-zero      15) pti-gpu/0.11.0
-        4) mpc/1.3.1-rdrlvsl          (H)  10) yaksa/0.3-7ks5f26             (H)  16) frameworks/2025.0.0
-        5) gcc/13.3.0                      11) mpich/opt/develop-git.6037a7a
-        6) oneapi/release/2025.0.5         12) libfabric/1.22.0
-
-        Where:
-        H:  Hidden Module
-
-    [2025-05-05-072647][I]   - Setting up venv from conda=/opt/aurora/24.347.0/frameworks/aurora_nre_models_frameworks-2025.0.0...
-    [2025-05-05-072647][I]   - Found conda at /opt/aurora/24.347.0/frameworks/aurora_nre_models_frameworks-2025.0.0
-    [2025-05-05-072647][I]   - No VIRTUAL_ENV found in environment!
-    [2025-05-05-072647][I]   - Looking for venv in VENV_DIR=./venvs/aurora_nre_models_frameworks-2025.0.0...
-    [2025-05-05-072647][I]   - Activating existing venv in VENV_DIR=venvs/aurora_nre_models_frameworks-2025.0.0
-    [2025-05-05-072647][I]   - Using python from: /lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/venvs/aurora_nre_models_frameworks-2025.0.0/bin/python3
-    [2025-05-05-072647][I] [JOB]
-    [2025-05-05-072647][I]   - Setting up job for foremans
-    [2025-05-05-072647][I]   - Machine: aurora
-    [2025-05-05-072647][I]   - Hostname: x4318c6s6b0n0
-    [2025-05-05-072647][I] [ezpz_get_pbs_env]
-    [2025-05-05-072647][I]   - hostfile=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
-    [2025-05-05-072647][I]   - jobenv_file=/home/foremans/.pbsenv
-    [2025-05-05-072648][I] [HOSTS]
-    [2025-05-05-072648][I]   - HOSTFILE=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
-    [2025-05-05-072648][I]   - NHOSTS=2
-    [2025-05-05-072648][I]   - HOSTS:
-    [2025-05-05-072648][I]     - [host:0] - x4318c6s5b0n0.hostmgmt2318.cm.aurora.alcf.anl.gov
-    [2025-05-05-072648][I]     - [host:1] - x4318c6s6b0n0.hostmgmt2318.cm.aurora.alcf.anl.gov
-    [2025-05-05-072648][I] [DIST_INFO]
-    [2025-05-05-072648][I]   - HOSTFILE=/var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
-    [2025-05-05-072648][I]   - NHOSTS=2
-    [2025-05-05-072648][I]   - NGPU_PER_HOST=12
-    [2025-05-05-072648][I]   - NGPUS=24
-    [2025-05-05-072648][I] [LAUNCH]
-    [2025-05-05-072648][I]   - To launch across all available GPUs, use: 'launch'
-    [2025-05-05-072648][I]     launch = mpiexec --verbose --envall -n 24 -ppn 12 --hostfile /var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov --cpu-bind depth -d 8 --no-vni
-    [2025-05-05-072648][I]   - Run 'which launch' to ensure that the alias is set correctly
-    [2025-05-05-072648][I] ===== Environment Setup Complete =====
-    took: 0h:00m:03s
-    ```
-
-   </details>
-
-:::
-
 ## 📝 `ezpz-test` {background-color="white"}
 
 - `ezpz-test` is a simple test script that trains a small model using DDP
@@ -1005,7 +992,7 @@ To run the previous example we:
 
 :::
 
-## 🤗 Huggingface Trainer {background-color="white"}
+## 🤗 Huggingface Trainer {#huggingface-trainer background-color="white"}
 
 - See [ezpz/hf_trainer.py](https://github.com/ezpz/ezpz/blob/main/ezpz/hf_trainer.py)
 
@@ -1415,373 +1402,7 @@ To run the previous example we:
 
 :::
 
-
-<!--
-
-- <details closed><summary>Output:</summary>
-
-    ```bash
-    #[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)
-    #[/f/d/f/p/s/ezpz][🌱 update-utils][📦📝🤷✓] [⏱️ 1m3s]
-    #[05/06/25 @ 15:35:37][x4705c6s4b0n0]
-    ; ezpz-launch -m ezpz.hf_trainer --dataset_name=eliplutchok/fineweb-small-sample --streaming --model_name_or_path=meta-llama/Llama-3.2-1B --bf16=true --do_train=true --do_eval=true --report-to=wandb --logging-steps=1 --include-tokens-per-second=true --block-size=128 --max-steps=10 --include-num-input-tokens-seen=true --auto_find_batch_size=true --gradient_checkpointing=true --optim=adamw_torch --overwrite-output-dir=true --logging-first-step --include-for-metrics='inputs,loss' --max-eval-samples=50 --ddp-backend=ccl # --fsdp=shard_grad_op
-    [W506 15:35:41.635172081 OperatorEntry.cpp:155] Warning: Warning only once for all operators,  other operators may also be overridden.
-    Overriding a previously registered kernel for the same operator and the same dispatch key
-    operator: aten::_cummax_helper(Tensor self, Tensor(a!) values, Tensor(b!) indices, int dim) -> ()
-        registered at /build/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
-    dispatch key: XPU
-    previous kernel: registered at /build/pytorch/build/aten/src/ATen/RegisterCPU.cpp:30476
-        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:2971 (function operator())
-    [2025-05-06 15:35:46,556] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to xpu (auto detect)
-    [2025-05-06 15:35:49][I][ezpz/launch:157] Job ID: 4673825
-    [2025-05-06 15:35:49][I][ezpz/launch:163] Node file: /var/spool/pbs/aux/4673825.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov
-    [2025-05-06 15:35:49][I][ezpz/launch:178] Building command to execute by piecing together:(1.) ['launch_cmd'] + (2.) ['python'] + (3.) ['cmd_to_launch']
-    [2025-05-06 15:35:49][I][ezpz/launch:182] (1.) ['launch_cmd']: mpiexec --verbose --envall --np=24 --ppn=12 --hostfile=/var/spool/pbs/aux/4673825.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov --cpu-bind=depth --depth=8
-    [2025-05-06 15:35:49][I][ezpz/launch:183] (2.) ['python']: /lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/venvs/aurora_nre_models_frameworks-2025.0.0/bin/python3
-    [2025-05-06 15:35:49][I][ezpz/launch:184] (3.) ['cmd_to_launch']:  -m ezpz.hf_trainer --dataset_name=eliplutchok/fineweb-small-sample --streaming --model_name_or_path=meta-llama/Llama-3.2-1B --bf16=true --do_train=true --do_eval=true --report-to=wandb --logging-steps=1 --include-tokens-per-second=true --block-size=128 --max-steps=10 --include-num-input-tokens-seen=true --auto_find_batch_size=true --gradient_checkpointing=true --optim=adamw_torch --overwrite-output-dir=true --logging-first-step --include-for-metrics=inputs,loss --max-eval-samples=50 --ddp-backend=ccl
-    [2025-05-06 15:35:49][I][ezpz/launch:189] Took: 0.50 seconds to build command.
-    [2025-05-06 15:35:49][I][ezpz/launch:192] Executing: mpiexec --verbose --envall --np=24 --ppn=12 --hostfile=/var/spool/pbs/aux/4673825.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov --cpu-bind=depth --depth=8 /lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/venvs/aurora_nre_models_frameworks-2025.0.0/bin/python3 -m ezpz.hf_trainer --dataset_name=eliplutchok/fineweb-small-sample --streaming --model_name_or_path=meta-llama/Llama-3.2-1B --bf16=true --do_train=true --do_eval=true --report-to=wandb --logging-steps=1 --include-tokens-per-second=true --block-size=128 --max-steps=10 --include-num-input-tokens-seen=true --auto_find_batch_size=true --gradient_checkpointing=true --optim=adamw_torch --overwrite-output-dir=true --logging-first-step --include-for-metrics=inputs,loss --max-eval-samples=50 --ddp-backend=ccl
-    [2025-05-06 15:35:49][I][ezpz/launch:119] Filtering for Aurora-specific messages. To view list of filters, run with `EZPZ_LOG_LEVEL=DEBUG`
-    [2025-05-06 15:35:49][I][ezpz/launch:199] Execution started @ 2025-05-06-153549...
-
-    Disabling local launch: multi-node application
-    Connected to tcp://x4705c6s4b0n0.hostmgmt2705.cm.aurora.alcf.anl.gov:7919
-    Launching application 20c55979-b3a0-481f-b2fd-c59a45614e6e
-    [2025-05-06 15:36:59][I][ezpz/dist:567] Using get_torch_device_type()='xpu' with backend='ccl'
-    [2025-05-06 15:36:59][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 1/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 5/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 3/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 2/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][10/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 8/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 9/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 6/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][11/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 7/23]
-    [2025-05-06 15:37:00][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 4/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][22/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][14/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][15/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][21/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][23/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][12/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][13/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][16/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][17/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][18/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][19/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s5b0n0'][20/23]
-    [2025-05-06 15:37:17][I][ezpz/dist:947] Using device='xpu' with backend='ddp' + 'ccl' for distributed training.
-    [2025-05-06 15:37:17][I][ezpz/dist:994] ['x4705c6s4b0n0'][ 0/23]
-    2025:05:06-15:37:17:(59486) |CCL_WARN| value of CCL_LOG_LEVEL changed to be error (default:warn)
-    [2025-05-06 15:37:18][I][ezpz/dist:1217] Setting up wandb from rank=0
-    [2025-05-06 15:37:18][I][ezpz/dist:1218] Using WB_PROJECT=ezpz-hf_trainer-meta-llama-Llama-3.2-1B
-    wandb: Currently logged in as: foremans (aurora_gpt) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-    wandb: Tracking run with wandb version 0.19.10
-    wandb: Run data is saved locally in /lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/wandb/run-20250506_153719-swjn42aq
-    wandb: Run `wandb offline` to turn off syncing.
-    wandb: Syncing run scarlet-yogurt-36
-    wandb: ⭐️ View project at https://wandb.ai/aurora_gpt/ezpz-hf_trainer-meta-llama-Llama-3.2-1B
-    wandb: 🚀 View run at https://wandb.ai/aurora_gpt/ezpz-hf_trainer-meta-llama-Llama-3.2-1B/runs/swjn42aq
-    [2025-05-06 15:37:19][I][ezpz/dist:1246] wandb.run=[scarlet-yogurt-36](https://wandb.ai/aurora_gpt/ezpz-hf_trainer-meta-llama-Llama-3.2-1B/runs/swjn42aq)
-    [2025-05-06 15:37:19][I][ezpz/dist:1286] Running on machine='Aurora'
-    [2025-05-06 15:37:19][W][utils/_logger:68:__main__] Process rank: 0, device: xpu:0, n_gpu: 1, distributed training: True
-    [2025-05-06 15:37:19][I][ezpz/hf_trainer:437:__main__] Training/evaluation parameters TrainingArguments(
-    _n_gpu=1,
-    accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
-    adafactor=False,
-    adam_beta1=0.9,
-    adam_beta2=0.999,
-    adam_epsilon=1e-08,
-    auto_find_batch_size=True,
-    average_tokens_across_devices=False,
-    batch_eval_metrics=False,
-    bf16=True,
-    bf16_full_eval=False,
-    data_seed=None,
-    dataloader_drop_last=False,
-    dataloader_num_workers=0,
-    dataloader_persistent_workers=False,
-    dataloader_pin_memory=True,
-    dataloader_prefetch_factor=None,
-    ddp_backend=ccl,
-    ddp_broadcast_buffers=None,
-    ddp_bucket_cap_mb=None,
-    ddp_find_unused_parameters=None,
-    ddp_timeout=1800,
-    debug=[],
-    deepspeed=None,
-    disable_tqdm=True,
-    do_eval=True,
-    do_predict=False,
-    do_train=True,
-    eval_accumulation_steps=None,
-    eval_delay=0,
-    eval_do_concat_batches=True,
-    eval_on_start=False,
-    eval_steps=None,
-    eval_strategy=no,
-    eval_use_gather_object=False,
-    fp16=False,
-    fp16_backend=auto,
-    fp16_full_eval=False,
-    fp16_opt_level=O1,
-    fsdp=[],
-    fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
-    fsdp_min_num_params=0,
-    fsdp_transformer_layer_cls_to_wrap=None,
-    full_determinism=False,
-    gradient_accumulation_steps=1,
-    gradient_checkpointing=True,
-    gradient_checkpointing_kwargs=None,
-    greater_is_better=None,
-    group_by_length=False,
-    half_precision_backend=auto,
-    hub_always_push=False,
-    hub_model_id=None,
-    hub_private_repo=None,
-    hub_strategy=every_save,
-    hub_token='<HUB_TOKEN>',
-    ignore_data_skip=False,
-    include_for_metrics=['inputs,loss'],
-    include_inputs_for_metrics=False,
-    include_num_input_tokens_seen=True,
-    include_tokens_per_second=True,
-    jit_mode_eval=False,
-    label_names=None,
-    label_smoothing_factor=0.0,
-    learning_rate=5e-05,
-    length_column_name=length,
-    load_best_model_at_end=False,
-    local_rank=0,
-    log_level=passive,
-    log_level_replica=warning,
-    log_on_each_node=True,
-    logging_dir=trainer_output/runs/May06_15-37-18_x4705c6s4b0n0,
-    logging_first_step=True,
-    logging_nan_inf_filter=True,
-    logging_steps=1.0,
-    logging_strategy=steps,
-    lr_scheduler_kwargs={},
-    lr_scheduler_type=linear,
-    max_grad_norm=1.0,
-    max_steps=10,
-    metric_for_best_model=None,
-    mp_parameters=,
-    neftune_noise_alpha=None,
-    num_train_epochs=3.0,
-    optim=adamw_torch,
-    optim_args=None,
-    optim_target_modules=None,
-    output_dir=trainer_output,
-    overwrite_output_dir=True,
-    past_index=-1,
-    per_device_eval_batch_size=8,
-    per_device_train_batch_size=8,
-    prediction_loss_only=False,
-    push_to_hub=False,
-    push_to_hub_model_id=None,
-    push_to_hub_organization=None,
-    push_to_hub_token='<PUSH_TO_HUB_TOKEN>',
-    ray_scope=last,
-    remove_unused_columns=True,
-    report_to=['wandb'],
-    restore_callback_states_from_checkpoint=False,
-    resume_from_checkpoint=None,
-    run_name=trainer_output,
-    save_on_each_node=False,
-    save_only_model=False,
-    save_safetensors=True,
-    save_steps=500,
-    save_strategy=steps,
-    save_total_limit=None,
-    seed=42,
-    skip_memory_metrics=True,
-    tf32=None,
-    torch_compile=False,
-    torch_compile_backend=None,
-    torch_compile_mode=None,
-    torch_empty_cache_steps=None,
-    torchdynamo=None,
-    tp_size=0,
-    tpu_metrics_debug=False,
-    tpu_num_cores=None,
-    use_cpu=False,
-    use_ipex=False,
-    use_legacy_prediction_loop=False,
-    use_liger_kernel=False,
-    use_mps_device=False,
-    warmup_ratio=0.0,
-    warmup_steps=0,
-    weight_decay=0.0,
-    )
-    Using the latest cached version of the dataset since eliplutchok/fineweb-small-sample couldnt be found on the Hugging Face Hub
-    [2025-05-06 15:37:21][W][utils/_logger:68:datasets.load] Using the latest cached version of the dataset since eliplutchok/fineweb-small-sample couldnt be found on the Hugging Face Hub
-    Found the latest cached dataset configuration 'default' at /home/foremans/.cache/huggingface/datasets/eliplutchok___fineweb-small-sample/default/0.0.0/037f67404f6f3780614e7f1f4b91b281990f0998 (last modified on Sat Apr 26 14:45:21 2025).
-    [2025-05-06 15:37:21][W][utils/_logger:68:datasets.packaged_modules.cache.cache] Found the latest cached dataset configuration 'default' at /home/foremans/.cache/huggingface/datasets/eliplutchok___fineweb-small-sample/default/0.0.0/037f67404f6f3780614e7f1f4b91b281990f0998 (lastmodified on Sat Apr 26 14:45:21 2025).
-    [2025-05-06 15:37:21][W][utils/_logger:68:datasets.packaged_modules.cache.cache] Found the latest cached dataset configuration 'default' at /home/foremans/.cache/huggingface/datasets/eliplutchok___fineweb-small-sample/default/0.0.0/037f67404f6f3780614e7f1f4b91b281990f0998 (lastmodified on Sat Apr 26 14:45:21 2025).
-    Using the latest cached version of the dataset since eliplutchok/fineweb-small-sample couldnt be found on the Hugging Face Hub
-    [2025-05-06 15:37:21][W][utils/_logger:68:datasets.load] Using the latest cached version of the dataset since eliplutchok/fineweb-small-sample couldnt be found on the Hugging Face Hub
-    Found the latest cached dataset configuration 'default' at /home/foremans/.cache/huggingface/datasets/eliplutchok___fineweb-small-sample/default/0.0.0/037f67404f6f3780614e7f1f4b91b281990f0998 (last modified on Sat Apr 26 14:45:21 2025).
-    [2025-05-06 15:37:21][W][utils/_logger:68:datasets.packaged_modules.cache.cache] Found the latest cached dataset configuration 'default' at /home/foremans/.cache/huggingface/datasets/eliplutchok___fineweb-small-sample/default/0.0.0/037f67404f6f3780614e7f1f4b91b281990f0998 (lastmodified on Sat Apr 26 14:45:21 2025).
-    [INFO|configuration_utils.py:693] 2025-05-06 15:37:22,198 >> loading configuration file config.json from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/config.json
-    [INFO|configuration_utils.py:765] 2025-05-06 15:37:22,200 >> Model config LlamaConfig {
-    "architectures": [
-        "LlamaForCausalLM"
-    ],
-    "attention_bias": false,
-    "attention_dropout": 0.0,
-    "bos_token_id": 128000,
-    "eos_token_id": 128001,
-    "head_dim": 64,
-    "hidden_act": "silu",
-    "hidden_size": 2048,
-    "initializer_range": 0.02,
-    "intermediate_size": 8192,
-    "max_position_embeddings": 131072,
-    "mlp_bias": false,
-    "model_type": "llama",
-    "num_attention_heads": 32,
-    "num_hidden_layers": 16,
-    "num_key_value_heads": 8,
-    "pretraining_tp": 1,
-    "rms_norm_eps": 1e-05,
-    "rope_scaling": {
-        "factor": 32.0,
-        "high_freq_factor": 4.0,
-        "low_freq_factor": 1.0,
-        "original_max_position_embeddings": 8192,
-        "rope_type": "llama3"
-    },
-    "rope_theta": 500000.0,
-    "tie_word_embeddings": true,
-    "torch_dtype": "bfloat16",
-    "transformers_version": "4.51.3",
-    "use_cache": true,
-    "vocab_size": 128256
-    }
-
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,243 >> loading file tokenizer.json from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/tokenizer.json
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,243 >> loading file tokenizer.model from cache at None
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,243 >> loading file added_tokens.json from cache at None
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,243 >> loading file special_tokens_map.json from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/special_tokens_map.json
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,243 >> loading file tokenizer_config.json from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/tokenizer_config.json
-    [INFO|tokenization_utils_base.py:2060] 2025-05-06 15:37:22,244 >> loading file chat_template.jinja from cache at None
-    [INFO|tokenization_utils_base.py:2323] 2025-05-06 15:37:22,623 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
-    [INFO|modeling_utils.py:1124] 2025-05-06 15:37:22,634 >> loading weights file model.safetensors from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/model.safetensors
-    [INFO|configuration_utils.py:1142] 2025-05-06 15:37:22,638 >> Generate config GenerationConfig {
-    "bos_token_id": 128000,
-    "eos_token_id": 128001
-    }
-
-    [INFO|modeling_utils.py:4930] 2025-05-06 15:37:30,991 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
-
-    [INFO|modeling_utils.py:4938] 2025-05-06 15:37:30,992 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Llama-3.2-1B.
-    If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
-    [INFO|configuration_utils.py:1097] 2025-05-06 15:37:31,032 >> loading configuration file generation_config.json from cache at /home/foremans/.cache/huggingface/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08/generation_config.json
-    [INFO|configuration_utils.py:1142] 2025-05-06 15:37:31,032 >> Generate config GenerationConfig {
-    "bos_token_id": 128000,
-    "do_sample": true,
-    "eos_token_id": 128001,
-    "temperature": 0.6,
-    "top_p": 0.9
-    }
-
-    [INFO|trainer.py:698] 2025-05-06 15:37:54,743 >> max_steps is given, it will override any value given in num_train_epochs
-    [INFO|trainer.py:748] 2025-05-06 15:37:54,743 >> Using auto half precision backend
-    [INFO|trainer.py:2414] 2025-05-06 15:38:13,798 >> ***** Running training *****
-    [INFO|trainer.py:2415] 2025-05-06 15:38:13,798 >>   Num examples = 1,920
-    [INFO|trainer.py:2416] 2025-05-06 15:38:13,798 >>   Num Epochs = 9,223,372,036,854,775,807
-    [INFO|trainer.py:2417] 2025-05-06 15:38:13,798 >>   Instantaneous batch size per device = 8
-    [INFO|trainer.py:2420] 2025-05-06 15:38:13,798 >>   Total train batch size (w. parallel, distributed & accumulation) = 192
-    [INFO|trainer.py:2421] 2025-05-06 15:38:13,798 >>   Gradient Accumulation steps = 1
-    [INFO|trainer.py:2422] 2025-05-06 15:38:13,798 >>   Total optimization steps = 10
-    [INFO|trainer.py:2423] 2025-05-06 15:38:13,799 >>   Number of trainable parameters = 1,235,814,400
-    [INFO|integration_utils.py:831] 2025-05-06 15:38:13,799 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
-    wandb: WARNING The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
-    [WARNING|_logger.py:68] 2025-05-06 15:38:14,839 >> `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
-    [INFO|trainer.py:3984] 2025-05-06 15:38:24,585 >> Saving model checkpoint to trainer_output/checkpoint-10
-    [INFO|configuration_utils.py:419] 2025-05-06 15:38:24,609 >> Configuration saved in trainer_output/checkpoint-10/config.json
-    [INFO|configuration_utils.py:911] 2025-05-06 15:38:24,613 >> Configuration saved in trainer_output/checkpoint-10/generation_config.json
-    [INFO|modeling_utils.py:3572] 2025-05-06 15:38:30,324 >> Model weights saved in trainer_output/checkpoint-10/model.safetensors
-    [INFO|tokenization_utils_base.py:2510] 2025-05-06 15:38:30,331 >> tokenizer config file saved in trainer_output/checkpoint-10/tokenizer_config.json
-    [INFO|tokenization_utils_base.py:2519] 2025-05-06 15:38:30,334 >> Special tokens file saved in trainer_output/checkpoint-10/special_tokens_map.json
-    [INFO|trainer.py:2681] 2025-05-06 15:38:41,452 >>
-
-    Training completed. Do not forget to share your model on huggingface.co/models =)
-
-
-    [INFO|trainer.py:3984] 2025-05-06 15:38:41,473 >> Saving model checkpoint to trainer_output
-    [INFO|configuration_utils.py:419] 2025-05-06 15:38:41,482 >> Configuration saved in trainer_output/config.json
-    [INFO|configuration_utils.py:911] 2025-05-06 15:38:41,486 >> Configuration saved in trainer_output/generation_config.json
-    [INFO|modeling_utils.py:3572] 2025-05-06 15:38:46,966 >> Model weights saved in trainer_output/model.safetensors
-    [INFO|tokenization_utils_base.py:2510] 2025-05-06 15:38:46,973 >> tokenizer config file saved in trainer_output/tokenizer_config.json
-    [INFO|tokenization_utils_base.py:2519] 2025-05-06 15:38:46,976 >> Special tokens file saved in trainer_output/special_tokens_map.json
-    [INFO|trainer.py:4307] 2025-05-06 15:38:47,119 >>
-    ***** Running Evaluation *****
-    [INFO|trainer.py:4311] 2025-05-06 15:38:47,119 >>   Num examples: Unknown
-    [INFO|trainer.py:4312] 2025-05-06 15:38:47,119 >>   Batch size = 8
-    {'loss': 2.847, 'grad_norm': 3.8244261741638184, 'learning_rate': 5e-05, 'epoch': 0.1, 'num_input_tokens_seen': 24576}
-    {'loss': 2.9574, 'grad_norm': 7.949646949768066, 'learning_rate': 4.5e-05, 'epoch': 0.2, 'num_input_tokens_seen': 49152}
-    {'loss': 3.1083, 'grad_norm': 7.141191005706787, 'learning_rate': 4e-05, 'epoch': 0.3, 'num_input_tokens_seen': 73728}
-    {'loss': 2.9751, 'grad_norm': 4.429210186004639, 'learning_rate': 3.5e-05, 'epoch': 0.4, 'num_input_tokens_seen': 98304}
-    {'loss': 3.0095, 'grad_norm': 4.167893409729004, 'learning_rate': 3e-05, 'epoch': 0.5, 'num_input_tokens_seen': 122880}
-    {'loss': 2.915, 'grad_norm': 4.2618279457092285, 'learning_rate': 2.5e-05, 'epoch': 0.6, 'num_input_tokens_seen': 147456}
-    {'loss': 2.874, 'grad_norm': 6.888978481292725, 'learning_rate': 2e-05, 'epoch': 0.7, 'num_input_tokens_seen': 172032}
-    {'loss': 3.2852, 'grad_norm': 5.901862144470215, 'learning_rate': 1.5e-05, 'epoch': 0.8, 'num_input_tokens_seen': 196608}
-    {'loss': 2.9933, 'grad_norm': 4.48797082901001, 'learning_rate': 1e-05, 'epoch': 0.9, 'num_input_tokens_seen': 221184}
-    {'loss': 2.8059, 'grad_norm': 6.901059627532959, 'learning_rate': 5e-06, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    {'train_runtime': 10.9865, 'train_samples_per_second': 174.759, 'train_steps_per_second': 0.91, 'train_tokens_per_second': 932.05, 'train_loss': 2.977076530456543, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    {'eval_loss': 1.6794058084487915, 'eval_accuracy': 0.6176377952755906, 'eval_runtime': 13.634, 'eval_samples_per_second': 0.22, 'eval_steps_per_second': 0.073, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    wandb:
-    wandb: 🚀 View run scarlet-yogurt-36 at: https://wandb.ai/aurora_gpt/ezpz-hf_trainer-meta-llama-Llama-3.2-1B/runs/swjn42aq
-    wandb: Find logs at: ../../../../../../lus/flare/projects/datascience/foremans/projects/saforem2/ezpz/wandb/run-20250506_153719-swjn42aq/logs
-    {'loss': 2.847, 'grad_norm': 3.8244261741638184, 'learning_rate': 5e-05, 'epoch': 0.1, 'num_input_tokens_seen': 24576}
-    {'loss': 2.9574, 'grad_norm': 7.949646949768066, 'learning_rate': 4.5e-05, 'epoch': 0.2, 'num_input_tokens_seen': 49152}
-    {'loss': 3.1083, 'grad_norm': 7.141191005706787, 'learning_rate': 4e-05, 'epoch': 0.3, 'num_input_tokens_seen': 73728}
-    {'loss': 2.9751, 'grad_norm': 4.429210186004639, 'learning_rate': 3.5e-05, 'epoch': 0.4, 'num_input_tokens_seen': 98304}
-    {'loss': 3.0095, 'grad_norm': 4.167893409729004, 'learning_rate': 3e-05, 'epoch': 0.5, 'num_input_tokens_seen': 122880}
-    {'loss': 2.915, 'grad_norm': 4.2618279457092285, 'learning_rate': 2.5e-05, 'epoch': 0.6, 'num_input_tokens_seen': 147456}
-    {'loss': 2.874, 'grad_norm': 6.888978481292725, 'learning_rate': 2e-05, 'epoch': 0.7, 'num_input_tokens_seen': 172032}
-    {'loss': 3.2852, 'grad_norm': 5.901862144470215, 'learning_rate': 1.5e-05, 'epoch': 0.8, 'num_input_tokens_seen': 196608}
-    {'loss': 2.9933, 'grad_norm': 4.48797082901001, 'learning_rate': 1e-05, 'epoch': 0.9, 'num_input_tokens_seen': 221184}
-    {'loss': 2.8059, 'grad_norm': 6.901059627532959, 'learning_rate': 5e-06, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    {'train_runtime': 27.6533, 'train_samples_per_second': 69.431, 'train_steps_per_second': 0.362, 'train_tokens_per_second': 370.299, 'train_loss': 2.977076530456543, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    ***** train metrics *****
-    epoch                    =        1.0
-    num_input_tokens_seen    =     245760
-    train_loss               =     2.9771
-    train_runtime            = 0:00:27.65
-    train_samples            =     726000
-    train_samples_per_second =     69.431
-    train_steps_per_second   =      0.362
-    train_tokens_per_second  =    370.299
-    {'eval_loss': 1.6794058084487915, 'eval_accuracy': 0.6176377952755906, 'eval_runtime': 7.8091, 'eval_samples_per_second': 0.384, 'eval_steps_per_second': 0.128, 'epoch': 1.0, 'num_input_tokens_seen': 245760}
-    ***** eval metrics *****
-    epoch                   =        1.0
-    eval_accuracy           =     0.6176
-    eval_loss               =     1.6794
-    eval_runtime            = 0:00:07.80
-    eval_samples            =         50
-    eval_samples_per_second =      0.384
-    eval_steps_per_second   =      0.128
-    num_input_tokens_seen   =     245760
-    perplexity              =     5.3624
-    Application 20c55979 resources: utime=3390s stime=1685s maxrss=15425476KB inblock=5624564 oublock=38691160 minflt=29864140 majflt=2407700 nvcsw=5941224 nivcsw=2299288
-    [2025-05-06 15:38:58][I][ezpz/launch:201] Execution finished @ 2025-05-06-153858
-    [2025-05-06 15:38:58][I][ezpz/launch:202] Command took 189.45 seconds to run. Exiting.
-    took: 0h:03m:22s
-    ```
-
-
-  </details>
-
-:::
-
--->
-
-## 🏎️ Megatron-DeepSpeed {background-color="white"}
-
+## 🏎️ Megatron-DeepSpeed {#megatron-deepspeed background-color="white"}
 
 ```bash
 git clone https://github.com/argonne-lcf/Megatron-DeepSpeed
@@ -1793,7 +1414,7 @@ python3 -m pip install -e \
 bash train_alcf.sh
 ```
 
-## Acknowledgements {background-color="white"}
+## 🙌 Acknowledgements {#acknowledgements background-color="white"}
 
 > This research used resources of the Argonne Leadership Computing Facility,
 > which is a DOE Office of Science User Facility supported under Contract
