@@ -52,6 +52,28 @@ format:
     output-file: "README.md"
 ---
 
+::: {.content-visible when-format="revealjs"}
+
+## {background-image="./assets/colorized-50.jpg" loading="lazy"}
+
+::: {style="background-color: rgba(8, 42, 123, 0.7); border-radius: 10px; text-align:left; padding: 10pt; margin-left: auto; margin-right: auto; line-height: 1.25lh!important;"}
+
+::: {style="display:flex;"}
+
+[May 6 -- 8, 2025 $\hspace{5pt}$ {{< fa solid shapes >}}]{style="font-size: 1.25em; font-weight: 600; border-bottom: 1px solid white; color: #F8F8F8"} [![](https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/anl_logo.svg)]{style="display:inline-block;"}
+
+:::
+
+[2025 ALCF INCITE]{style="font-size: 3.0em; font-weight: 700; color: white"}  
+[GPU HACKATHON]{style="font-size: 3.0em; font-weight: 700; color: #FFFFFF"}
+
+:::
+
+:::
+
+
+
+
 ## Currently: {background-color="white"}
 
 ::: {#fig-pretraining-infrastructure style="width: 60%; margin: auto;"}
@@ -67,22 +89,9 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 - 🤗 [`transformers`](https://github.com/huggingface/transformers)
 - 🏎️ [`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
-
 ## 🍋 `ezpz` {background-color="white"}
 
 > Write once, run anywhere
-
-- 🪄 _Automagically_:
-   - Determine the specifics of our active (PBS, SLURM) job  
-     (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...)
-  - Load the appropriate modules[^alcf]
-  - Create (or activate) a virtual environment _on top_ of a base conda
-    environment
-
-[^alcf]: On any of the ALCF systems, including:
-    [Aurora](https://alcf.anl.gov/aurora),
-    [Polaris](https://alcf.anl.gov/polaris),
-    ..., etc.
 
 ## 🐣 Getting Started {background-color="white"}
 
@@ -95,8 +104,10 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 2. Run distributed test:
 
     ```bash
+    ezpz-test
+    ```
 
-2. Launching _any_ python _from_ python
+1. Launching _any_ python _from_ python
    - Launch a module:
 
      ```bash
@@ -111,6 +122,31 @@ Current state of LLM Pretraining. [[Source](https://x.com/Dorialexander/status/1
 
 [^venv]: You should _always_ be working in a virtual environment.
        See: [🏖️ Shell Environment](#shell-environment)
+
+
+## ⏱️ Job Scheduler(s)
+
+- 🪄 _Automagically_:
+   - Determine the specifics of our active (PBS, SLURM) job  
+     (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, ...)
+  - Load the appropriate modules[^alcf]
+  - Create (or activate) a virtual environment _on top_ of a base conda
+    environment
+
+[^alcf]: On any of the ALCF systems, including:
+    [Aurora](https://alcf.anl.gov/aurora),
+    [Polaris](https://alcf.anl.gov/polaris),
+    ..., etc.
+
+## 👀 How to Modify Existing Code
+
+```diff
++ import ezpz
++ _ = ezpz.setup_torch()
+
+- model.to('cuda')
++ model.to(ezpz.get_torch_device_type())
+```
 
 ## ✨ Features {background-color="white"}
 
@@ -176,8 +212,8 @@ if rank == 0:
 ```
 
 1. Initialize W&B (if `WANDB_DISABLED` is not set)
-2. Log summary of metrics to stdout
-3. Update `history.history` with metrics[^wandb]
+1. Log summary of metrics to stdout
+1. Update `history.history` with metrics[^wandb]
 
 
 [^wandb]: Will automatically be reported to W&B if a run is detected
@@ -194,6 +230,9 @@ if rank == 0:
 -->
 
 ## 🤏 Minimal Example {.smaller background-color="white"}
+
+- See
+  [`ezpz/examples/minimal.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/examples/minimal.py)
 
 ::: {.block-code}
 
@@ -337,13 +376,13 @@ To run the previous example we:
     source <(curl -L https://bit.ly/ezpz-utils)
     ```
 
-2. Setup our environment:
+1. Setup our environment:
 
     ```bash
     ezpz_setup_env
     ```
 
-3. Run the example:
+1. Run the example:
 
     ```bash
     ezpz-launch -m ezpz.examples.minimal
@@ -351,7 +390,7 @@ To run the previous example we:
 
 ::: {.content-visible unless-format="revealjs"}
 
-4. <details closed><summary>Output:</summary>
+1. <details closed><summary>Output:</summary>
 
     ```bash
     #[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)
@@ -751,7 +790,7 @@ To run the previous example we:
     source <(curl -L https://bit.ly/ezpz-utils)
     ```
 
-2. Run `ezpz_setup_env`:
+1. Run `ezpz_setup_env`:
 
     ```bash
     ezpz_setup_env
@@ -766,7 +805,7 @@ To run the previous example we:
 
 ::: {.content-visible unless-format="revealjs"}
 
-3. <details closed><summary>Output:</summary>
+1. <details closed><summary>Output:</summary>
 
     ```bash
     ; source <(curl -L https://bit.ly/ezpz-utils) && ezpz_setup_env
@@ -825,7 +864,6 @@ To run the previous example we:
 
 :::
 
-
 ## 📝 `ezpz-test` {background-color="white"}
 
 - `ezpz-test` is a simple test script that trains a small model using DDP
@@ -842,7 +880,6 @@ To run the previous example we:
     #[05/05/25 @ 07:41:35][x4520c1s0b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷✓] [⏱️ 54s]
     ; ezpz-test
     ```
-
 
 ## 🦜 Generate Text {background-color="white"}
 
@@ -1685,7 +1722,6 @@ To run the previous example we:
 
 -->
 
-
 ## 🏎️ Megatron-DeepSpeed {background-color="white"}
 
 
@@ -1704,3 +1740,5 @@ bash train_alcf.sh
 > This research used resources of the Argonne Leadership Computing Facility,
 > which is a DOE Office of Science User Facility supported under Contract
 > DE-AC02-06CH11357.
+
+

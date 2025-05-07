@@ -8,6 +8,8 @@ Sam Foreman
 - [LLMs on Aurora](#llms-on-aurora)
 - [🍋 `ezpz`](#lemon-ezpz)
 - [🐣 Getting Started](#hatching_chick-getting-started)
+- [⏱️ Job Scheduler(s)](#stopwatch-job-schedulers)
+- [👀 How to Modify Existing Code](#eyes-how-to-modify-existing-code)
 - [✨ Features](#sparkles-features)
 - [🧪 Experiment Tracking](#test_tube-experiment-tracking)
 - [🤏 Minimal Example](#pinching_hand-minimal-example)
@@ -43,16 +45,9 @@ Figure 1: Current state of LLM Pretraining.
 
 > Write once, run anywhere
 
-- 🪄 *Automagically*:
-  - Determine the specifics of our active (PBS, SLURM) job  
-    (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, …)
-  - Load the appropriate modules[^1]
-  - Create (or activate) a virtual environment *on top* of a base conda
-    environment
-
 ## 🐣 Getting Started
 
-1.  Install[^2]:
+1.  Install[^1]:
 
     ``` bash
     python3 -m pip install "git+https://github.com/saforem2/ezpz"
@@ -60,7 +55,9 @@ Figure 1: Current state of LLM Pretraining.
 
 2.  Run distributed test:
 
-    \`\`\`bash
+    ``` bash
+    ezpz-test
+    ```
 
 3.  Launching *any* python *from* python
 
@@ -75,6 +72,25 @@ Figure 1: Current state of LLM Pretraining.
       ``` bash
       ezpz-launch -c "'import ezpz; ezpz.setup_torch()'"
       ```
+
+## ⏱️ Job Scheduler(s)
+
+- 🪄 *Automagically*:
+  - Determine the specifics of our active (PBS, SLURM) job  
+    (e.g. `${NHOSTS}`, `${NGPU_PER_HOST}`, `${NGPUS}`, …)
+  - Load the appropriate modules[^2]
+  - Create (or activate) a virtual environment *on top* of a base conda
+    environment
+
+## 👀 How to Modify Existing Code
+
+``` diff
++ import ezpz
++ _ = ezpz.setup_torch()
+
+- model.to('cuda')
++ model.to(ezpz.get_torch_device_type())
+```
 
 ## ✨ Features
 
@@ -146,6 +162,9 @@ if rank == 0:
 </div>
 
 ## 🤏 Minimal Example
+
+- See
+  [`ezpz/examples/minimal.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/examples/minimal.py)
 
 <div class="block-code">
 
@@ -303,7 +322,7 @@ To run the previous example we:
 
 <!-- -->
 
-4.  <details closed>
+1.  <details closed>
 
     <summary>
 
@@ -714,7 +733,7 @@ To run the previous example we:
 
 <!-- -->
 
-3.  <details closed>
+1.  <details closed>
 
     <summary>
 
@@ -1238,12 +1257,12 @@ bash train_alcf.sh
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-[^1]: On any of the ALCF systems, including:
+[^1]: You should *always* be working in a virtual environment. See: [🏖️
+    Shell Environment](#shell-environment)
+
+[^2]: On any of the ALCF systems, including:
     [Aurora](https://alcf.anl.gov/aurora),
     [Polaris](https://alcf.anl.gov/polaris), …, etc.
-
-[^2]: You should *always* be working in a virtual environment. See: [🏖️
-    Shell Environment](#shell-environment)
 
 [^3]: Will automatically be reported to W&B if a run is detected
 
