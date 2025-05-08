@@ -3,6 +3,11 @@ Sam Foreman
 2024-06-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 > \[**NOTE**\]: For additional details, refer to the [W&B
 > Report](https://api.wandb.ai/links/aurora_gpt/nqjjhzd5).

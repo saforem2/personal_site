@@ -2,10 +2,15 @@ Sam Foreman
 2025-05-07
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-100x100.webp" width="100%" alt="Sam Foreman"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-100x100.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
@@ -46,13 +51,13 @@ style="justify-content: center; loading='lazy';">
 <div class="flex-container"
 style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
-<div class="column" style="width: 66%;">
+<div class="column" style="width: 54%;">
 
 - [Computational scientist][ALCF] @ Argonne National Laboratory
   - AI / ML [Group] @ [ALCF][1]
-- Working on:
-  - 🧪 {AI, HPC} for [science]
-  - 🚀 [training large models] on [supercomputers]
+  - Working on:
+    - 🧪 {AI, HPC} for [science]
+    - 🚀 [training large models] on [supercomputers]
 
 </div>
 
@@ -73,7 +78,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > > [!TIP]
 > >
-> > ### <a href="https://last.fm/user/saforem2" target="_blank"><img src="https://api.iconify.design/logos:lastfm.svg" aria-label="last.fm/user/saforem2" alt="last.fm" style="overflow: visible;"/></a>
+> > ### <a href="https://last.fm/user/saforem2" target="_blank"><img aria-label="last.fm logo" src="https://api.iconify.design/logos:lastfm.svg" aria-label="last.fm/user/saforem2" alt="last.fm" style="overflow: visible;"/></a>
 > >
 > > <script>
 > > /**
@@ -150,7 +155,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">👀 More</span>
+> ### <span class="dim-text">➕ More</span>
 >
 > - <details closed>
 >
@@ -235,7 +240,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > )
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">07:40:57</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">19:44:55</span>
 > </pre>
 >
 > <div style="text-align:center;">

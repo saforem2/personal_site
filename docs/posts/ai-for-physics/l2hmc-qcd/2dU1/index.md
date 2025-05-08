@@ -3,6 +3,11 @@ Sam Foreman
 2023-12-14
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 - [`l2hmc-qcd`: 2D $U(1)$ Example](#l2hmc-qcd-2d-u1-example)
   - [Contents](#contents)

@@ -3,6 +3,11 @@ Sam Foreman
 2024-02-12
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 - [DeepSpeed4Science (09/2023)](#deepspeed4science-092023)
   - [New Features](#new-features)

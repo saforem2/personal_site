@@ -3,6 +3,11 @@ Sam Foreman
 2024-11-15
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 Playing with [ivanceras/`svgbob`](https://github.com/ivanceras/svgbob)
 as an alternative to Mermaid

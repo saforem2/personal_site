@@ -3,6 +3,11 @@ Sam Foreman
 2024-08-23
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="152"
+  defer
+></script>
 
 - [🍋 `ezpz` v1](#lemon-ezpz-v1)
   - [👀 Overview](#eyes-overview)
