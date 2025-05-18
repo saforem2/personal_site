@@ -691,7 +691,7 @@ a:not(#lightbox):hover,
 a,
 .reveal a {
   color: $link-color;
-  text-underline-offset: 3px;
+  text-underline-offset: 1px;
   text-decoration: underline;
 
   &:hover {
@@ -2162,10 +2162,10 @@ details > summary:hover {
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
-  text-underline-offset: 3px;
+  text-underline-offset: 1px;
   text-decoration: underline;
   color: $link-color-hover;
-  text-decoration-thickness: 2pt;
+  text-decoration-thickness: 1pt;
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
@@ -2469,18 +2469,95 @@ pre.sourceCode {
   overflow-y: scroll;
 }
 
-pre.numberSource code > span > a:first-child::before {
-  color: $code-line-number-color;
-  padding: unset;
-  left: -2ch;
-  width: 8ch;
+// pre.numberSource code > span > a:first-child::before {
+//   color: $code-line-number-color;
+//   padding: unset;
+//   left: -2ch;
+//   width: 8ch;
+// }
+pre.code {
+  white-space: pre-wrap;
+  margin-left: 8em;
 }
 
-// :where(*) ::selection {
-// 	color: var(--r-selection-color);
-// 	background: var(--r-selection-background-color);
-// 	text-shadow: none;
+pre.code::before {
+  counter-reset: listing;
+}
+
+pre.code code {
+  counter-increment: listing;
+  text-align: left;
+  float: left;
+  clear: left;
+}
+
+pre.code code::before {
+  content: counter(listing) ". ";
+  display: inline-block;
+  float: left;
+  height: 3em;
+  padding-left: auto;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Inline | http://localhost:4209/talks/incite-hackathon-2025/ */
+
+pre.numberSource code > span > a:first-child::before {
+  content: counter(source-line);
+  position: relative;
+  // left: -1em;
+  text-align: right;
+  vertical-align: baseline;
+  border: none;
+  display: inline-block;
+  user-select: none;
+  padding: 0 5px;
+}
+
+pre.numberSource {
+  margin-left: 3em;
+}
+
+pre.sourceCode {
+  margin: 0px;
+}
+
+pre.numberSource code > span {
+  left: -3em;
+}
+
+pre.sourceCode {
+  padding: 0.4em;
+}
+
+pre > code.sourceCode > span {
+  margin-inline-start: 1pt;
+}
+
+// pre > code.sourceCode > span > a:first-child::before {
+//   padding-right: 10px;
+//   padding-left: 0px;
+//   color: $dim-text;
+//   left: unset;
 // }
+
+pre > code.sourceCode > span > a:first-child::before {
+  color: $dim-text;
+  left: unset;
+  opacity: 50%;
+  padding-inline-end: 0pt;
+  margin-inline-start: 0pt;
+  margin-inline-end: 2ch;
+  padding: 0 0;
+  width: 4em;
+}
+
+:where(*) ::selection {
+  color: var(--r-selection-color);
+  background: var(--r-selection-background-color);
+  text-shadow: none;
+}
 
 root::selection {
   color: hsla(var($interactive-accent-hsl), 0.75);
@@ -2691,17 +2768,17 @@ nav-item tabset-1-6-tab > a.nav-link.active {
 
   .navbar .navbar-nav .nav-item:nth-child(4)::after,
   .navbar .navbar-nav .nav-item:nth-child(10)::after {
-    background-color: $purple;
+    background-color: $pink;
   }
 
   .navbar .navbar-nav .nav-item:nth-child(5)::after,
   .navbar .navbar-nav .nav-item:nth-child(11)::after {
-    background-color: $pink;
+    background-color: $cyan;
   }
 
   .navbar .navbar-nav .nav-item:nth-child(6)::after,
   .navbar .navbar-nav .nav-item:nth-child(12)::after {
-    background-color: $cyan;
+    background-color: $orange;
   }
 
   .navbar .navbar-nav .nav-item:hover::after {
@@ -2781,6 +2858,11 @@ td code:not(a, .sourceCode) {
   border: 0.075x solid $quarto-border-color;
   color: $code-fg;
   border-radius: $link-border-radius;
+}
+
+footer.footer .nav-footer,
+#quarto-header > nav {
+  padding-inline: unset;
 }
 
 body.hypothesis-enabled #quarto-header {
