@@ -72,7 +72,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span style="color:#1CD760;"><img aria-label="Spotify" src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
+> ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
 >
 > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img aria-label="Spotify User: saforem2" loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
 >
@@ -240,7 +240,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > )
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">18</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:44:20</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">18</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:52:00</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -993,6 +993,103 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 ### 🪖 Experience
 
+##### 🎓 Education
+
+- **Ph.D., Physics**
+  - University of Iowa, 2019  
+  - [*Learning Better Physics: A Machine Learning Approach to Lattice
+    Gauge Theory*]
+- **B.S. in Engineering Physics**
+  - University of Illinois at Urbana-Champaign, 2015
+  - [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]
+- **B.S. in Applied Mathematics**
+  - University of Illinois at Urbana-Champaign, 2015
+
+##### 🧑‍🔬 Professional Experience
+
+- **Assistant Computational Scientist**
+  - Argonne National Laboratory, Argonne Leadership Computing Facility
+    (ALCF)  
+  - *Lemont, IL \| 2022 – Present*
+    - Research lead on scaling large language models (LLMs) and
+      generative AI for science on supercomputers (Aurora, Frontier,
+      LUMI, Leonardo, …).
+    - Optimize large-scale training of foundation models and language
+      models for scientific applications.  
+    - Collaborate with interdisciplinary teams to enhance simulation
+      efficiency and scalability.
+    - Focus on AI and HPC for scientific applications, including:
+      - Developing improved sampling algorithms for lattice quantum
+        chromodynamics (QCD)
+      - Training large language models on supercomputers
+    - <https://www.alcf.anl.gov/about/people/sam-foreman>
+- **Postdoctoral Researcher**
+  - Argonne National Laboratory, Argonne Leadership Computing Facility
+    (ALCF)  
+  - *Lemont, IL \| 2019 – 2022*
+    - Applied deep learning to lattice gauge theory and quantum field
+      simulations.
+    - Developed ML-enhanced Monte Carlo methods for QCD.
+    - Engaged in AI-for-Science collaborations with national labs and
+      university partners.
+- **Graduate Researcher**
+  - Argonne National Laboratory, Math and Computer Sciences (MCS)
+  - *Lemont, IL \| 2018 – 2019*  
+  - Collaborated with ALCF while completing Ph.D., integrating ML into
+    physical sciences workflows.
+
+##### 🏆 Awards and Honors
+
+- **ACM Gordon Bell Special Prize for High Performance Computing-Based
+  COVID-19 Research**, 2022
+  - Recognized for contributions to the GenSLMs project, which developed
+    genome-scale language models to study SARS-CoV-2 evolutionary
+    dynamics.
+  - <https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022>
+- **Finalist, ACM Gordon Bell Prize**, 2024
+  - Acknowledged for the MProt-DPO project, which achieved over 4
+    ExaFLOP sustained performance in multimodal protein design workflows
+    using Direct Preference Optimization.
+  - <https://sc.cels.anl.gov/gordon-bell-argonne-team-breaks-new-ground-in-ai-driven-protein-design/>
+- **DOE Office of Science Graduate Student Research Fellow**, 2018
+  - Awarded by the Department of Energy for outstanding research
+    contributions during graduate studies.
+
+##### 📚 Publications[^1]
+
+- [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
+  Design Workflows with Direct Preference Optimization**][6]
+- [**GenSLMs: Genome-Scale Language Models Reveal SARS-CoV-2
+  Evolutionary Dynamics**][7]
+- [**Applications of Machine Learning to Lattice Quantum Field
+  Theory**][Applications of ML to Lattice QFT]
+- [**HMC with Normalizing Flows**][HMC with Normalizing Flows]
+- [**Deep Learning Hamiltonian Monte
+  Carlo**][Deep Learning Hamiltonian Monte Carlo]
+- [**Examples of Renormalization Group Transformations for Image
+  Sets**][Examples of renormalization group transformations for image sets]
+
+##### 🎤 Selected Talks[^2]
+
+- [**AuroraGPT: Foundation Models for Science**][8] @ [*Foundation
+  Models for the Electric Grid*][] \[02/2025\]
+- [**Parallel Training Methods**][9] @ [*AI-for-Science on
+  Supercomputers*][*Foundation Models for the Electric Grid*]
+  \[11/2024\]
+- [**AuroraGPT**][10] @ [*HPC User Forum*, 2024][] \[09/2024\]
+- [**Machine Learning and Foundation Models at Scale**][11] @ [*2024
+  ALCF Hands-On HPC Workshop*][] \[10/2024\]
+- [**Training LLMs at Scale**][12] @ [*ATPESC*, 2024][] \[08/2024\]
+- [**LLMs from Scratch**] @ [LLM Tutorial Workshop][] \[02/2024\]
+- [**Exascale Science on Aurora**] @ [Intel oneAPI Workshop @ UIC][]
+  \[10/2023\]
+- [**Scaling LLMs for Science**] @ [Data-Intensive Computing + AI/ML at
+  Scale][] \[08/2023\]
+- [**MLMC: Machine Learning Monte Carlo**] @ [Lattice 2023][]
+  \[07/2023\]
+- [**Generative Modeling and Efficient Sampling**] @ [PASC23][]
+  \[07/2023\]
+
 #### 🎪 Events
 
 - Organizer for:
@@ -1028,11 +1125,11 @@ Table 1: 📟 Experience
 
 Table 2: 🎓 Education
 
-| Degree |      In      |         @          | End  |
-|:-------|:------------:|:------------------:|:----:|
-| [PhD]  |  [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][6] |       [UIUC]       | 2015 |
-| B.Sc   |    [Math]    |        UIUC        | 2015 |
+| Degree |      In       |         @          | End  |
+|:-------|:-------------:|:------------------:|:----:|
+| [PhD]  |   [Physics]   | University of Iowa | 2019 |
+| B.Sc   | [Physics][13] |       [UIUC]       | 2015 |
+| B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 🎓 Education
 
@@ -1056,6 +1153,10 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 </div>
 
 </div>
+
+[^1]: *See full list on [Google Scholar][14]*
+
+[^2]: *See full list at: [samforeman.me/talks]*
 
   [ALCF]: https://alcf.anl.gov/about/people/sam-foreman
   [<span class="orcid-green" style="background: none!important;"></span>]:
@@ -1170,6 +1271,16 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
   [**Machine Learning for Lattice QCD**]: https://slides.com/samforeman/l2hmc-qcd/embed
   [`saforem2/`]: https://github.com/saforem2?tab=repositories
+  [*Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory*]:
+    https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
+  [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
+  [6]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
+  [7]: https://doi.org/10.1177/10943420231184990
+  [8]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
+  [9]: https://samforeman.me/talks/ai-for-science-2024/
+  [10]: https://samforeman.me/talks/hpc-user-forum/
+  [11]: https://samforeman.me/talks/alcf-hpc-workshop-2024/
+  [12]: https://samforeman.me/talks/llms-at-scale/
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1178,6 +1289,8 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [6]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [13]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
+  [14]: https://scholar.google.com/citations?user=7vBs2ZwAAAAJ
+  [samforeman.me/talks]: https://samforeman.me/talks/

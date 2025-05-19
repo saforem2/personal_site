@@ -10,13 +10,9 @@ Sam Foreman
 ></script>
 
 - [Sam Foreman](#sam-foreman)
-- [🎓 Education](#mortar_board-education)
-- [🧑‍🔬 Professional Experience](#scientist-professional-experience)
-- [🏆 Awards and Honors](#trophy-awards-and-honors)
-- [📚 Publications](#books-publicationspublications)
-- [🎤 Selected Talks](#microphone-selected-talkstalks)
+  - [Résumé](#résumé)
 
-# Sam Foreman
+## Sam Foreman
 
 Computational Scientist  
 [samforeman.me](https://samforeman.me)  
@@ -25,7 +21,9 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 [ORCID](https://orcid.org/0000-0002-9981-0876) •
 [Twitter](https://twitter.com/saforem2)
 
-# 🎓 Education
+### Résumé
+
+##### 🎓 Education
 
 - **Ph.D., Physics**
   - University of Iowa, 2019  
@@ -39,7 +37,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 - **B.S. in Applied Mathematics**
   - University of Illinois at Urbana-Champaign, 2015
 
-# 🧑‍🔬 Professional Experience
+##### 🧑‍🔬 Professional Experience
 
 - **Assistant Computational Scientist**
   - Argonne National Laboratory, Argonne Leadership Computing Facility
@@ -72,7 +70,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
   - Collaborated with ALCF while completing Ph.D., integrating ML into
     physical sciences workflows.
 
-# 🏆 Awards and Honors
+##### 🏆 Awards and Honors
 
 - **ACM Gordon Bell Special Prize for High Performance Computing-Based
   COVID-19 Research**, 2022
@@ -89,7 +87,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
   - Awarded by the Department of Energy for outstanding research
     contributions during graduate studies.
 
-# 📚 Publications[^1]
+##### 📚 Publications[^1]
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
   Design Workflows with Direct Preference
@@ -104,7 +102,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 - [**Examples of Renormalization Group Transformations for Image
   Sets**](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.98.052129)
 
-# 🎤 Selected Talks[^2]
+##### 🎤 Selected Talks[^2]
 
 - [**AuroraGPT: Foundation Models for
   Science**](https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/)

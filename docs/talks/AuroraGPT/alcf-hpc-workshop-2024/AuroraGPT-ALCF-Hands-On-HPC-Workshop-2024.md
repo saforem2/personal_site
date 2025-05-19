@@ -1,4 +1,4 @@
-# AuroraGPT
+# AuroraGPT: ANL’s General Purpose Scientific LLM
 Sam Foreman
 2024-10-30
 

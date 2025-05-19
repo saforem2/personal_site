@@ -1,4 +1,4 @@
-# AuroraGPT
+# AuroraGPT: Foundation Models for Science
 Sam Foreman
 2025-02-12
 
