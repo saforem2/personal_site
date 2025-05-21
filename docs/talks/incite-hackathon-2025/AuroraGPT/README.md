@@ -9,6 +9,7 @@ Sam Foreman
   defer
 ></script>
 
+- [ALCF Incite Hackathon 2025](#alcf-incite-hackathon-2025)
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)
 - [🦙 Issues with “Publicly Available”
   LLMs](#llama-issues-with-publicly-available-llms)
@@ -30,15 +31,25 @@ Sam Foreman
 - [⚖️ Evaluating FM Skills for Science:
   Criteria](#balance_scale-evaluating-fm-skills-for-science-criteria)
 - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
-- [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results-1)
+- [🌎 Aeris: Scaling Results](#earth_americas-aeris-scaling-results)
 - [📓 References](#notebook-references)
 - [❤️ Thank you!](#heart-thank-you)
 - [📑 Bibliography](#bookmark_tabs-bibliography)
-- [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results-2)
+- [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results-1)
 - [🚂 Loooooooooong Sequence
   Lengths](#steam_locomotive-loooooooooong-sequence-lengths)
 - [♻️ Life Cycle of the LLM](#recycle-life-cycle-of-the-llm)
 - [🍎 Training LLMs](#apple-training-llms)
+
+## ALCF Incite Hackathon 2025
+
+- [2025 ALCF INCITE GPU Hackathon (20-May 22,
+  2025)](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon)
+- LLMs on Aurora[^1]:
+  - [🍋 Hands-On:
+    ezpz](https://samforeman.me/talks/incite-hackathon-2025/ezpz/slides)
+  - [🌌 Overview:
+    AuroraGPT](https://samforeman.me/talks/incite-hackathon-2025/AuroraGPT)
 
 ## 🎯 AuroraGPT: Goals
 
@@ -207,7 +218,7 @@ Figure 3: High-level overview of AuroraGPT project
   - Full text scientific papers
   - Structured scientific datasets (suitably mapped to narrative form)
 - **Research grade artifacts** (**models**) for scientific community for
-  adaptation for downstream uses[^1]
+  adaptation for downstream uses[^2]
 - **Promotion of responsible AI** best practices where we can figure
   them out
 - **International Collaborations** around the long term goal of *AGI for
@@ -459,7 +470,7 @@ alt="Brad Ullrich" />
   - Accumulate 20+ T tokens of high-quality scientific text and
     structured data
 - <span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;">**Models
-  / Training**</span>[^2]
+  / Training**</span>[^3]
   - Train (entirely from scratch) a series of models on publicly
     available data
 - **Evaluation**
@@ -560,10 +571,9 @@ Figure 9: Time spent preparing 2T tokens
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
 
-<div class="column"
-style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;">
+<div class="column green-card" style="height:100%; margin:unset;">
 
-✅ <span style="color: #03BD00;">**Goals**</span>
+✅ <span style="color: var(--green-fg);">**Goals**</span>
 
 - Want training runs at scale to be:
   - efficient
@@ -582,10 +592,10 @@ style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px sol
 
 </div>
 
-<div class="column"
-style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;">
+<div class="column red-card">
 
-❌ <span style="color: #E90102;">**Challenges**</span>
+❌
+<span style="color: var(--quarto-scss-export-re);">**Challenges**</span>
 
 - *Looong time* to train, can be:
   - weeks (even months) of continuous training
@@ -640,29 +650,45 @@ Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 ## 🧬 MProt-DPO: Scaling Results
 
-<div id="fig-mprot-3p5B-scaling0">
-
-<img src="./assets/mprot-3p5B-scaling-2.svg" style="width:80.0%" />
-
-Scaling results for `3.5B` Model.  
-==4 EFLOPS== @ 38,400 (= 3200 x 12) XPUs on Aurora\]
-
-Figure 10
-
-</div>
-
-## 🧬 MProt-DPO: Scaling Results
+Results from (Dharuman et al. 2024) ~ <span class="highlight-pink">4
+EFLOPS</span> @ 38,400[^4] XPUs on Aurora
 
 <div class="flex-container"
 style="align-items: center; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;">
 
-<div id="fig-mprot-3p5B-scaling1">
+<div id="fig-mprot-3p5B-scaling0">
 
 <img src="./assets/mprot-3p5B-scaling-2.svg" style="width:80.0%" />
 
-Figure 11: Scaling results for `3.5B` Model[^3]
+Figure 10: Scaling results[^5] for `3.5B` Model
 
 </div>
+
+</div>
+
+## 🌎 Aeris: Scaling Results
+
+<div id="tbl-aeris">
+
+Table 2: Sustained and peak training throughput for Aeris on Aurora,
+across different model sizes. Note: `EF(S)` – sustained ExaFLOPS,
+`EF(P)` – peak ExaFLOPS
+
+| Model | \#Nodes  | DP  | GBS     | TFLOPS/tile | MFU     | EF(S)    | EF(P)    |
+|-------|----------|-----|---------|-------------|---------|----------|----------|
+| 0.6B  | 2304     | 32  | 1152    | 19.0        | 9%      | 0.53     | 0.59     |
+| 4B    | 4352     | 8   | 576     | 18.3        | 8%      | 0.95     | 1.00     |
+| 16B   | 8704     | 16  | 1152    | **42.7**    | **20%** | **4.46** | **5.09** |
+| 37B   | **9000** | 5   | **500** | 32.3        | 16%     | 3.80     | 3.98     |
+
+</div>
+
+<div class="aside">
+
+The gap between peak and sustained ExaFLOPS is primarily due to the time
+spent on the optimizer step and gradient reduction. These components
+occur outside the pipelined forward-backward pass and thus contribute to
+the reduction in sustained throughput relative to the peak.
 
 </div>
 
@@ -799,7 +825,7 @@ in Practice: A Survey on ChatGPT and Beyond.”
 
 ![](./assets/mprot-3p5B-scaling-2.svg)
 
-Figure 12: `3.5B` model
+Figure 11: `3.5B` model
 
 </div>
 
@@ -807,7 +833,7 @@ Figure 12: `3.5B` model
 
 ![](./assets/mprot-7B-scaling-2.svg)
 
-Figure 13: `7B` model
+Figure 12: `7B` model
 
 </div>
 
@@ -845,7 +871,7 @@ style="height:50pt; margin: unset; padding: 0;" />
 
 </div>
 
-Figure 14: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
+Figure 13: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
 models (See: Song et al. (2023))
 
 </div>
@@ -868,7 +894,7 @@ models (See: Song et al. (2023))
 
 ![](https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif)
 
-Figure 15: **Pre-training**: Virtually all of the compute used during
+Figure 14: **Pre-training**: Virtually all of the compute used during
 pretraining phase
 
 </div>
@@ -879,7 +905,7 @@ pretraining phase
 
 ![](https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif)
 
-Figure 16: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 15: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task.
 
 </div>
@@ -896,7 +922,7 @@ weights to make the model better at a certain task.
 
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
-Figure 17: It’s hungry!
+Figure 16: It’s hungry!
 
 </div>
 
@@ -908,7 +934,7 @@ Figure 17: It’s hungry!
 
 ![](https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif)
 
-Figure 18: Visualization from Yang et al. (2023)
+Figure 17: Visualization from Yang et al. (2023)
 
 </div>
 
@@ -916,14 +942,19 @@ Figure 18: Visualization from Yang et al. (2023)
 
 </div>
 
-[^1]:
+[^1]: *my* talks can be found at:
+    <https://samforeman.me/talks/incite-hackathon-2025>
+
+[^2]:
 
     🔔 Gordon Bell Finalist:
     [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
     (Dharuman et al. 2024)
 
-[^2]: Co-led by: Venkat Vishwanath, **Sam Foreman**
+[^3]: Co-led by: Venkat Vishwanath, **Sam Foreman**
 
-[^3]: \| 🔔 Gordon Bell Finalist:
+[^4]: 38,400 = 3200 x 12 (from the 12 XPU devices per node)
+
+[^5]: 🔔 Gordon Bell Finalist:
     [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
     (Dharuman et al. 2024)

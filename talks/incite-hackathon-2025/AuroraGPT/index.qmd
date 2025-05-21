@@ -48,6 +48,7 @@ revealjs-plugins:
   - revealjs-text-resizer
 ---
 
+
 ::: {.content-visible when-format="revealjs"}
 
 ## {background-image="assets/colorized-50.jpg" loading="lazy" style="data-background-size: cover;"}
@@ -55,14 +56,12 @@ revealjs-plugins:
 ::: {style="border-radius: 6px; text-align:left; padding: 10pt; margin-left: auto; margin-right: auto; line-height: 1.25lh!important; background-color: hsla(222, 88%, 13%, 0.5);"}
 
 ::: {.flex-container style="text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); justify-content: space-between; align-content: flex-start; border-bottom: 1px solid hsla(360, 0%, 90%, 0.5);"}
-
 ::: {style="font-size: 1.25em; font-weight: 600;"}
 [ALCF INCITE GPU HACKATHON]{style="color: hsla(0, 0%, 80%, 1.0)!important;"}  
 [May 20--22, 2025]{style="color: hsla(0, 0%, 75%, 1.0)!important;"}
 :::
 
 [{{< fa solid shapes >}}]{style="font-size: 1.5em; font-weight: 600; color:#FFFFFF"}
-
 :::
 
 [LLMs on Aurora: 🌌 AuroraGPT]{style="font-size: 1.9em; font-weight: 700; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); color:hsla(0, 0%, 100%, 1.0); margin-block: 1rem;"}
@@ -70,10 +69,20 @@ revealjs-plugins:
 [Sam Foreman]{style="color:hsla(0, 0%, 80%, 1.0);font-size: 1.5em; font-weight: 600; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); "}
 
 [_2025-05-21_]{style="color:hsla(0, 0%, 75%, 1.0);font-size: 1.2em; font-weight: 500; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);"}
-
 :::
 
 :::
+
+## ALCF Incite Hackathon 2025 {background-color="white"}
+
+- [2025 ALCF INCITE GPU Hackathon (20-May 22, 2025)](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon)
+- LLMs on Aurora[^my-talks]:
+  - [🍋 Hands-On: ezpz](https://samforeman.me/talks/incite-hackathon-2025/ezpz/slides)
+  - [🌌 Overview: AuroraGPT](https://samforeman.me/talks/incite-hackathon-2025/AuroraGPT)
+
+[^my-talks]: _my_ talks can be found at:
+    [https://samforeman.me/talks/incite-hackathon-2025](https://samforeman.me/talks/incite-hackathon-2025)
+
 
 ## 🎯 AuroraGPT: Goals {.smaller background-color="white"}
 
@@ -517,8 +526,9 @@ train and fine-tune AuroraGPT models
 
 :::: {.flex-container style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;"}
 
-::: {.column style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;"}
-✅ [**Goals**]{style="color: #03BD00;"}
+::: {.column .green-card style="height:100%; margin:unset;"}
+
+✅ [**Goals**]{style="color: var(--green-fg);"}
 
 - Want training runs at scale to be:
     - efficient
@@ -536,8 +546,9 @@ train and fine-tune AuroraGPT models
 - _Highly optimized GPU kernels_
 :::
 
-::: {.column style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;"}
-❌ [**Challenges**]{style="color: #E90102;"}
+::: {.column .red-card}
+
+❌ [**Challenges**]{style="color: var(--quarto-scss-export-re);"}
 
 - _Looong time_ to train, can be:
     - weeks (even months) of continuous training
@@ -609,34 +620,52 @@ Loss curve during training on 2T tokens.
   - **\# shots** how many examples are needed for good quality
     - Extent of _prompt engineering_
 
-## 🧬 MProt-DPO: Scaling Results {background-color="white"}
+## 🧬 MProt-DPO: Scaling Results {.smaller background-color="white"}
 
-
-::: {#fig-mprot-3p5B-scaling0}
-
-![](./assets/mprot-3p5B-scaling-2.svg){width=80%}
-
-Scaling results for `3.5B` Model.
-~ ==4 EFLOPS== @ 38,400 (= 3200 x 12) XPUs on Aurora]
-:::
-
-## 🧬 MProt-DPO: Scaling Results {background-color="white"}
+Results from [@mprot-dpo2024] ~ [4 EFLOPS]{.highlight-pink} @
+38,400[^aggregate] XPUs on Aurora
 
 ::: {.flex-container style="align-items: center; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;"}
-
-::: {#fig-mprot-3p5B-scaling1}
-
+::: {#fig-mprot-3p5B-scaling0}
 ![](./assets/mprot-3p5B-scaling-2.svg){width=80%}
 
-Scaling results for `3.5B` Model[^gb-finalist]
-
-
+Scaling results[^gb-finalist] for `3.5B` Model
 :::
 
 :::
 
-[^gb-finalist]: |
-    🔔 Gordon Bell Finalist: [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024]
+[^aggregate]: 38,400 = 3200 x 12 (from the 12 XPU devices per node)
+
+[^gb-finalist]: 🔔 Gordon Bell Finalist:
+    [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024]
+
+
+## 🌎  Aeris: Scaling Results
+
+::: {#tbl-aeris}
+
+
+| Model     | #Nodes | DP  | GBS  | TFLOPS/tile | MFU  | EF(S) | EF(P) |
+|-----------|--------|-----|------|-------------|------|-------|-------|
+| 0.6B      | 2304   | 32  | 1152 | 19.0        | 9%   | 0.53  | 0.59  |
+| 4B        | 4352   | 8   | 576  | 18.3        | 8%   | 0.95  | 1.00  |
+| 16B       | 8704   | 16  | 1152 | **42.7**    | **20%**|**4.46**|**5.09**|
+| 37B       | **9000**| 5  | **500**| 32.3        | 16%  | 3.80  | 3.98  |
+
+
+Sustained and peak training throughput for Aeris on Aurora, across different
+model sizes. Note: `EF(S)` -- sustained ExaFLOPS, `EF(P)` -- peak ExaFLOPS {.responsive .striped .hover}
+
+:::
+
+::: aside
+
+The gap between peak and sustained ExaFLOPS is primarily due to the time spent on the
+optimizer step and gradient reduction. These components occur outside the
+pipelined forward-backward pass and thus contribute to the reduction in
+sustained throughput relative to the peak.
+
+:::
 
 
 ## 📓 References  {background-color="white"}
@@ -698,7 +727,7 @@ DE-AC02-06CH11357.
 ::: {#refs}
 :::
 
-## 🧬 MProt-DPO: Scaling Results {background-color="#1c1c1c"}
+## 🧬 MProt-DPO: Scaling Results {.smaller background-color="#1c1c1c"}
 
 ::: {.columns}
 

@@ -39,7 +39,7 @@ Sam Foreman
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/AuroraGPT/slides.html" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/AuroraGPT/slides.html/section" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -47,7 +47,7 @@ Sam Foreman
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**LLMs on Aurora: 🍋 <code>ezpz</code>**](../talks/incite-hackathon-2025/ezpz/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
+> ### <span class="dim-text">[**LLMs on Aurora: 🍋 ezpz**](../talks/incite-hackathon-2025/ezpz/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
