@@ -25,6 +25,8 @@ Sam Foreman
 > - HTML: <https://samforeman.me/talks/ai-for-science-2024/>
 > - Slides: <https://samforeman.me/talks/ai-for-science-2024/slides>
 
+ 
+
 <div id="listing-talks-default">
 
 </div>
@@ -33,11 +35,23 @@ Sam Foreman
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Large Language Models on Aurora**](../talks/incite-hackathon-2025/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
+> ### <span class="dim-text">[**LLMs on Aurora: 🌌 AuroraGPT**](../talks/incite-hackathon-2025/AuroraGPT/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/slides.html" title="Large Language Models on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/AuroraGPT/slides.html" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**LLMs on Aurora: 🍋 <code>ezpz</code>**](../talks/incite-hackathon-2025/ezpz/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/ezpz/slides.html" title="🍋 ezpz on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >

@@ -1107,8 +1107,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 - With sufficiently fast connectivity between nodes, these three
   strategies should be comparable.
-
-  - Otherwise, `PP` $>$ `ZeRO` $\simeq$ `TP`.
+  - Otherwise, `PP` \> `ZeRO` $\simeq$ `TP`.
 
 #### Multi-Node / Multi-GPU
 

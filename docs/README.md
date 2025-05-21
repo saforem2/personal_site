@@ -1,5 +1,5 @@
 Sam Foreman
-2025-05-18
+2025-05-20
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script
@@ -74,11 +74,11 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
 >
-> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img aria-label="Spotify User: saforem2" loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
+> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
 >
 > > [!TIP]
 > >
-> > ### <a href="https://last.fm/user/saforem2" target="_blank"><img aria-label="last.fm logo" src="https://api.iconify.design/logos:lastfm.svg" aria-label="last.fm/user/saforem2" alt="last.fm" style="overflow: visible;"/></a>
+> > ### <a href="https://last.fm/user/saforem2" target="_blank"><img src="https://api.iconify.design/logos:lastfm.svg" alt="last.fm" style="overflow: visible;"/></a>
 > >
 > > <script>
 > > /**
@@ -226,6 +226,38 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >   </details>
 >
+> > [!NOTE]
+> >
+> > ### Headings
+> >
+> > # Heading 1
+> >
+> > Content 1
+> >
+> > ## Heading 2
+> >
+> > Content 2
+> >
+> > ### Heading 3
+> >
+> > Content 3
+> >
+> > #### Heading 4
+> >
+> > Content 4
+> >
+> > ##### Heading 5
+> >
+> > Content 5
+> >
+> > ###### Heading 6
+> >
+> > Content 6
+> >
+> > Inspired by my neovim config:
+> >
+> > ![][2]
+>
 > ``` python
 > import datetime
 > from rich import print
@@ -240,10 +272,14 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > )
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">18</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:52:00</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">05</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">20</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:40:25</span>
 > </pre>
 >
 > <div style="text-align:center;">
+>
+> <iframe src="https://github.com/sponsors/saforem2/button" title="Sponsor saforem2" height="32" width="114" style="border: 0; border-radius: 6px;">
+>
+> </iframe>
 >
 > <img alt="hits" src="https://hitscounter.dev/api/hit?url=samforeman.me&label=samforeman.me&icon=check2-square&color=%236c757d">
 >
@@ -283,7 +319,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">@ SC’23, *11/2023*</span>
 
 -  [**DeepSpeed4Science Initiative**: Enabling Large-Scale Scientific
-  Discovery \[…\]][2]  
+  Discovery \[…\]][3]  
   <span class="dim-text">@ [NeurIPS 2023 AI For Science Workshop],
   *10/2023*</span>
 
@@ -321,7 +357,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 - [HMC with Normalizing Flows][] \[[slides]\]  
   <span class="dim-text">**S. Foreman** et al., [Lattice,
-  *2021*][3]</span>
+  *2021*][4]</span>
 
 - [Deep Learning Hamiltonian Monte Carlo][] \[[+ poster]\]  
   <span class="dim-text">**S. Foreman**, X.Y. Jin, & J.C. Osborn, @
@@ -573,11 +609,23 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Large Language Models on Aurora**] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
+> ### <span class="dim-text">[**LLMs on Aurora: 🌌 AuroraGPT**] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/slides.html" title="Large Language Models on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/AuroraGPT/slides.html" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**LLMs on Aurora: 🍋 <code>ezpz</code>**] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/incite-hackathon-2025/ezpz/slides.html" title="🍋 ezpz on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -635,7 +683,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**AuroraGPT**][4] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+> ### <span class="dim-text">[**AuroraGPT**][5] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
@@ -837,7 +885,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][5] \[12/2021\]</span>
+> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][6] \[12/2021\]</span>
 >
 > <div class="embedded-slide">
 >
@@ -993,7 +1041,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 ### 🪖 Experience
 
-##### 🎓 Education
+#### 🎓 Education
 
 - **Ph.D., Physics**
   - University of Iowa, 2019  
@@ -1005,7 +1053,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 - **B.S. in Applied Mathematics**
   - University of Illinois at Urbana-Champaign, 2015
 
-##### 🧑‍🔬 Professional Experience
+#### 🧑‍🔬 Professional Experience
 
 - **Assistant Computational Scientist**
   - Argonne National Laboratory, Argonne Leadership Computing Facility
@@ -1038,7 +1086,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   - Collaborated with ALCF while completing Ph.D., integrating ML into
     physical sciences workflows.
 
-##### 🏆 Awards and Honors
+#### 🏆 Awards and Honors
 
 - **ACM Gordon Bell Special Prize for High Performance Computing-Based
   COVID-19 Research**, 2022
@@ -1055,12 +1103,12 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   - Awarded by the Department of Energy for outstanding research
     contributions during graduate studies.
 
-##### 📚 Publications[^1]
+#### 📚 Publications[^1]
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
-  Design Workflows with Direct Preference Optimization**][6]
+  Design Workflows with Direct Preference Optimization**][7]
 - [**GenSLMs: Genome-Scale Language Models Reveal SARS-CoV-2
-  Evolutionary Dynamics**][7]
+  Evolutionary Dynamics**][8]
 - [**Applications of Machine Learning to Lattice Quantum Field
   Theory**][Applications of ML to Lattice QFT]
 - [**HMC with Normalizing Flows**][HMC with Normalizing Flows]
@@ -1069,17 +1117,17 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 - [**Examples of Renormalization Group Transformations for Image
   Sets**][Examples of renormalization group transformations for image sets]
 
-##### 🎤 Selected Talks[^2]
+#### 🎤 Selected Talks[^2]
 
-- [**AuroraGPT: Foundation Models for Science**][8] @ [*Foundation
+- [**AuroraGPT: Foundation Models for Science**][9] @ [*Foundation
   Models for the Electric Grid*][] \[02/2025\]
-- [**Parallel Training Methods**][9] @ [*AI-for-Science on
+- [**Parallel Training Methods**][10] @ [*AI-for-Science on
   Supercomputers*][*Foundation Models for the Electric Grid*]
   \[11/2024\]
-- [**AuroraGPT**][10] @ [*HPC User Forum*, 2024][] \[09/2024\]
-- [**Machine Learning and Foundation Models at Scale**][11] @ [*2024
+- [**AuroraGPT**][11] @ [*HPC User Forum*, 2024][] \[09/2024\]
+- [**Machine Learning and Foundation Models at Scale**][12] @ [*2024
   ALCF Hands-On HPC Workshop*][] \[10/2024\]
-- [**Training LLMs at Scale**][12] @ [*ATPESC*, 2024][] \[08/2024\]
+- [**Training LLMs at Scale**][13] @ [*ATPESC*, 2024][] \[08/2024\]
 - [**LLMs from Scratch**] @ [LLM Tutorial Workshop][] \[02/2024\]
 - [**Exascale Science on Aurora**] @ [Intel oneAPI Workshop @ UIC][]
   \[10/2023\]
@@ -1128,7 +1176,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][13] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][14] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 🎓 Education
@@ -1154,7 +1202,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </div>
 
-[^1]: *See full list on [Google Scholar][14]*
+[^1]: *See full list on [Google Scholar][15]*
 
 [^2]: *See full list at: [samforeman.me/talks]*
 
@@ -1182,6 +1230,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Energy Storage in Quantum Resonators]: https://aip.scitation.org/doi/10.1063/1.5009698
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
+  [2]: ./assets/neovim-headings.png
   [Sam Foreman]: https://samforeman.me
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
   [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
@@ -1196,7 +1245,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Lattice, 2023 (Proceedings)]: https://indico.fnal.gov/event/57249/
   [Protein Generation via Genome-scale Language Models with Bio-physical Scoring]:
     https://dl.acm.org/doi/abs/10.1145/3624062.3626087
-  [2]: https://arxiv.org/abs/2310.04610
+  [3]: https://arxiv.org/abs/2310.04610
   [NeurIPS 2023 AI For Science Workshop]: https://ai4sciencecommunity.github.io/neurips23.html
   [DeepSpeed4Science.ai Blog Post]: https://deepspeed4science.ai/2023/09/18/model-showcase-genslms/
   [Loooooooong Sequence Lengths]: ./posts/AuroraGPT/long-sequences/index.qmd
@@ -1212,7 +1261,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Lattice, *2021*]: https://indico.cern.ch/event/1006302
   [HMC with Normalizing Flows]: https://arxiv.org/abs/2112.01586
   [slides]: https://indico.cern.ch/event/1006302/contributions/4380743/
-  [3]: https://indico.cern.ch/event/1006302/
+  [4]: https://indico.cern.ch/event/1006302/
   [Deep Learning Hamiltonian Monte Carlo]: https://arxiv.org/abs/2105.03418
   [+ poster]: https://simdl.github.io/posters/57-supp_DLHMC_Foreman_SimDL-ICLR2021_poster1.pdf
   [SimDL Workshop @ ICLR]: https://simdl.github.io/
@@ -1223,15 +1272,16 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
-  [**Large Language Models on Aurora**]: ./talks/incite-hackathon-2025/index.html
+  [**LLMs on Aurora: 🌌 AuroraGPT**]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
   [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
+  [**LLMs on Aurora: 🍋 <code>ezpz</code>**]: ./talks/incite-hackathon-2025/ezpz/index.html
   [**AuroraGPT: Foundation Models for Science**]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
   [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**Parallel Training Methods**]: ./talks/ai-for-science-2024/index.html
   [**AuroraGPT**]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**Machine Learning and Foundation Models at Scale**]: ./talks/alcf-hpc-workshop-2024/index.html
-  [4]: ./talks/hpc-user-forum/index.html
+  [5]: ./talks/hpc-user-forum/index.html
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [**Training LLMs at Scale**]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
@@ -1264,7 +1314,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [**Scientific Data Science: An Emerging Symbiosis**]: https://saforem2.github.io/anl-job-talk/
   [**Machine Learning in HEP**]: https://saforem2.github.io/physicsSeminar
   [**Accelerated Sampling Methods for LGT**]: https://saforem2.github.io/l2hmc-dwq25/
-  [5]: https://indico.bnl.gov/event/13576/
+  [6]: https://indico.bnl.gov/event/13576/
   [**Training Topological Samplers for LGT**]: https://saforem2.github.io/l2hmc_talk_ect2021
   [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
@@ -1274,13 +1324,13 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [*Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory*]:
     https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
   [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
-  [6]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
-  [7]: https://doi.org/10.1177/10943420231184990
-  [8]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
-  [9]: https://samforeman.me/talks/ai-for-science-2024/
-  [10]: https://samforeman.me/talks/hpc-user-forum/
-  [11]: https://samforeman.me/talks/alcf-hpc-workshop-2024/
-  [12]: https://samforeman.me/talks/llms-at-scale/
+  [7]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
+  [8]: https://doi.org/10.1177/10943420231184990
+  [9]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
+  [10]: https://samforeman.me/talks/ai-for-science-2024/
+  [11]: https://samforeman.me/talks/hpc-user-forum/
+  [12]: https://samforeman.me/talks/alcf-hpc-workshop-2024/
+  [13]: https://samforeman.me/talks/llms-at-scale/
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1289,8 +1339,8 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [ANL]: https://anl.gov
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [13]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [14]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [14]: https://scholar.google.com/citations?user=7vBs2ZwAAAAJ
+  [15]: https://scholar.google.com/citations?user=7vBs2ZwAAAAJ
   [samforeman.me/talks]: https://samforeman.me/talks/
