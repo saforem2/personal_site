@@ -135,11 +135,11 @@ Credit to the entire AuroraGPT team for slides.
 ## 🦙 Issues with "Publicly Available" LLMs {background-color="white"}
 
 - **Trust** and **Safety**:
-  - Skepticisim about deployment in critical infrastructure
+  - Skepticism about deployment in critical infrastructure
   - Correctness and reliability of model outputs
 
 - **Transparency**:
-  - Data governance, what was used for pre-training? fine-tuning?
+  - Data governance, _what was used for pre-training_? fine-tuning?
     - **generally unknown**
   - What is _open source_?
     - Model weights?
@@ -526,7 +526,7 @@ train and fine-tune AuroraGPT models
 
 :::: {.flex-container style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;"}
 
-::: {.column .green-card style="height:100%; margin:unset;"}
+::: {.column .green-card style="margin:unset;"}
 
 ✅ [**Goals**]{style="color: var(--green-fg);"}
 
@@ -622,22 +622,41 @@ Loss curve during training on 2T tokens.
 
 ## 🧬 MProt-DPO: Scaling Results {.smaller background-color="white"}
 
-Results from [@mprot-dpo2024] ~ [4 EFLOPS]{.highlight-pink} @
-38,400[^aggregate] XPUs on Aurora
+::: {.columns}
 
-::: {.flex-container style="align-items: center; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;"}
+::: {.column style="width:70%;"}
+
+::: {.flex-container style="align-items: center; text-align: center; margin-left: auto; margin-right: auto;"}
+
 ::: {#fig-mprot-3p5B-scaling0}
-![](./assets/mprot-3p5B-scaling-2.svg){width=80%}
+![](./assets/mprot-3p5B-scaling-2.svg){width=100% style="margin:0; padding-unset;"}
 
-Scaling results[^gb-finalist] for `3.5B` Model
+Scaling results for `3.5B` model across ~38,400 GPUs
 :::
 
 :::
 
-[^aggregate]: 38,400 = 3200 x 12 (from the 12 XPU devices per node)
+:::
 
-[^gb-finalist]: 🔔 Gordon Bell Finalist:
-    [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024]
+::: {.column style="width:30%;"}
+
+- ~ [4 EFLOPS]{.highlight-blue} @ Aurora
+- 38,400 XPUs  
+  = 3200 \[node\] x 12 \[XPU / node\]
+
+- 🔔 Gordon Bell Finalist[^mprot-dpo]:
+  - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
+  
+
+:::
+
+:::
+
+[^mprot-dpo]: [@mprot-dpo2024]
+
+<!-- [^aggregate]:  -->
+<!-- [^gb-finalist]: 🔔 Gordon Bell Finalist: [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024] -->
+<!-- Scaling results[^gb-finalist] for `3.5B` Model -->
 
 
 ## 🌎  Aeris: Scaling Results
@@ -654,7 +673,8 @@ Scaling results[^gb-finalist] for `3.5B` Model
 
 
 Sustained and peak training throughput for Aeris on Aurora, across different
-model sizes. Note: `EF(S)` -- sustained ExaFLOPS, `EF(P)` -- peak ExaFLOPS {.responsive .striped .hover}
+model sizes.  
+Note: `EF(S)` -- sustained ExaFLOPS, `EF(P)` -- peak ExaFLOPS {.responsive .striped .hover}
 
 :::
 

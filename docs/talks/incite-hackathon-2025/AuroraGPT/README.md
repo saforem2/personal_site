@@ -117,7 +117,7 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
 ## 🦙 Issues with “Publicly Available” LLMs
 
 - **Trust** and **Safety**:
-  - Skepticisim about deployment in critical infrastructure
+  - Skepticism about deployment in critical infrastructure
   - Correctness and reliability of model outputs
 - **Transparency**:
   - Data governance, what was used for pre-training? fine-tuning?
@@ -571,7 +571,7 @@ Figure 9: Time spent preparing 2T tokens
 <div class="flex-container"
 style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
 
-<div class="column green-card" style="height:100%; margin:unset;">
+<div class="column green-card" style="margin:unset;">
 
 ✅ <span style="color: var(--green-fg);">**Goals**</span>
 
@@ -650,17 +650,37 @@ Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 ## 🧬 MProt-DPO: Scaling Results
 
-Results from (Dharuman et al. 2024) ~ <span class="highlight-pink">4
-EFLOPS</span> @ 38,400[^4] XPUs on Aurora
+<div class="columns">
+
+<div class="column" style="width:70%;">
 
 <div class="flex-container"
-style="align-items: center; text-align: center; max-width: 80%; margin-left: auto; margin-right: auto;">
+style="align-items: center; text-align: center; margin-left: auto; margin-right: auto;">
 
 <div id="fig-mprot-3p5B-scaling0">
 
-<img src="./assets/mprot-3p5B-scaling-2.svg" style="width:80.0%" />
+<img src="./assets/mprot-3p5B-scaling-2.svg"
+style="margin:0; padding-unset;;width:100.0%" />
 
-Figure 10: Scaling results[^5] for `3.5B` Model
+Figure 10: Scaling results for `3.5B` model across ~38,400 GPUs
+
+</div>
+
+</div>
+
+</div>
+
+<div class="column" style="width:30%;">
+
+- ~ <span class="highlight-blue">4 EFLOPS</span> @ Aurora
+
+- 38,400 XPUs  
+  = 3200 \[node\] x 12 \[XPU / node\]
+
+- 🔔 Gordon Bell Finalist[^4]:
+
+  - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
+    Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
 
 </div>
 
@@ -671,8 +691,8 @@ Figure 10: Scaling results[^5] for `3.5B` Model
 <div id="tbl-aeris">
 
 Table 2: Sustained and peak training throughput for Aeris on Aurora,
-across different model sizes. Note: `EF(S)` – sustained ExaFLOPS,
-`EF(P)` – peak ExaFLOPS
+across different model sizes.  
+Note: `EF(S)` – sustained ExaFLOPS, `EF(P)` – peak ExaFLOPS
 
 | Model | \#Nodes  | DP  | GBS     | TFLOPS/tile | MFU     | EF(S)    | EF(P)    |
 |-------|----------|-----|---------|-------------|---------|----------|----------|
@@ -945,16 +965,8 @@ Figure 17: Visualization from Yang et al. (2023)
 [^1]: *my* talks can be found at:
     <https://samforeman.me/talks/incite-hackathon-2025>
 
-[^2]:
-
-    🔔 Gordon Bell Finalist:
-    [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
-    (Dharuman et al. 2024)
+[^2]: (Dharuman et al. 2024)
 
 [^3]: Co-led by: Venkat Vishwanath, **Sam Foreman**
 
-[^4]: 38,400 = 3200 x 12 (from the 12 XPU devices per node)
-
-[^5]: 🔔 Gordon Bell Finalist:
-    [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
-    (Dharuman et al. 2024)
+[^4]: (Dharuman et al. 2024)
