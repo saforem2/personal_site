@@ -57,7 +57,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-7c7514320a139268ec42be3e17a28df2.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-600c39e735488de332685fbc436e8f36.css">
   <link rel="stylesheet" href="../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../css/colors-oklch.min.css">
   <link rel="stylesheet" href="../../../css/custom.css">
@@ -322,7 +322,8 @@
 <div class="column" style="width: 55%">
 <div class="blue-card">
 <p><a href="https://auroragpt.anl.gov"><strong>AuroraGPT</strong></a>: <em>General purpose scientific LLM</em><br>
-Broadly trained on a general corpora plus scientific {papers, texts, data}</p>
+Broadly trained on a general corpora plus scientific<br>
+{papers, texts, data}</p>
 </div>
 <ul>
 <li><strong>Explore pathways</strong> towards a “Scientific Assistant” model</li>
@@ -388,7 +389,7 @@ Figure&nbsp;2: Credit to the entire AuroraGPT team for slides.
 </ul></li>
 <li><strong>Transparency</strong>:
 <ul>
-<li>Data governance, what was used for pre-training? fine-tuning?
+<li>Data governance, <em>what was used for pre-training</em>? fine-tuning?
 <ul>
 <li><strong>generally unknown</strong></li>
 </ul></li>
@@ -986,6 +987,19 @@ Figure&nbsp;9: Time spent preparing 2T tokens
 <aside><div>
 <p><iconify-icon role="img" inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf / Megatron-DeepSpeed</a></p>
 </div></aside></section>
+<section id="loss-curve-training-auroragpt-7b-on-2t-tokens" class="slide level2 center">
+<h2>📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens</h2>
+<div id="fig-loss-curve" class="quarto-float quarto-figure quarto-figure-center" style="margin-left:auto;margin-right:auto;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/train-val-loss-vs-tokens-medium.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;10: Loss curve during training on 2T tokens."><img data-src="./assets/train-val-loss-vs-tokens-medium.svg" style="margin-left:auto;margin-right:auto;;width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Loss curve during training on 2T tokens.
+</figcaption>
+</figure>
+</div>
+</section>
 <section id="evaluating-fm-skills-for-science" class="slide level2 center" data-background-color="white">
 <h2>🤔 Evaluating FM Skills for Science</h2>
 <ul>
@@ -1025,10 +1039,10 @@ Figure&nbsp;9: Time spent preparing 2T tokens
 <div id="fig-mprot-3p5B-scaling0" class="quarto-float quarto-figure quarto-figure-center" style="margin:0; padding-unset;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;10: Scaling results for 3.5B model across ~38,400 GPUs"><img data-src="./assets/mprot-3p5B-scaling-2.svg" style="margin:0; padding-unset;;width:100.0%"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;11: Scaling results for 3.5B model across ~38,400 GPUs"><img data-src="./assets/mprot-3p5B-scaling-2.svg" style="margin:0; padding-unset;;width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
+Figure&nbsp;11: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 </figcaption>
 </figure>
 </div>
@@ -1045,90 +1059,6 @@ Figure&nbsp;10: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 </ul>
 </div></div>
 <aside><ol class="aside-footnotes"><li id="fn5"><p><span class="citation" data-cites="mprot-dpo2024">(<a href="#/bibliography" role="doc-biblioref" onclick="">Dharuman et al. 2024</a>)</span></p></li></ol></aside></section>
-<section id="aeris-scaling-results" class="slide level2 center">
-<h2>🌎 Aeris: Scaling Results</h2>
-<div id="tbl-aeris" class="responsive striped hover quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Sustained and peak training throughput for Aeris on Aurora, across different model sizes.<br>
-Note: <code>EF(S)</code> – sustained ExaFLOPS, <code>EF(P)</code> – peak ExaFLOPS
-</figcaption>
-<div aria-describedby="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="table-responsive">
-<table class="table-striped table-hover caption-top">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 12%">
-<col style="width: 7%">
-<col style="width: 9%">
-<col style="width: 20%">
-<col style="width: 9%">
-<col style="width: 11%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Model</th>
-<th>#Nodes</th>
-<th>DP</th>
-<th>GBS</th>
-<th>TFLOPS/tile</th>
-<th>MFU</th>
-<th>EF(S)</th>
-<th>EF(P)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.6B</td>
-<td>2304</td>
-<td>32</td>
-<td>1152</td>
-<td>19.0</td>
-<td>9%</td>
-<td>0.53</td>
-<td>0.59</td>
-</tr>
-<tr class="even">
-<td>4B</td>
-<td>4352</td>
-<td>8</td>
-<td>576</td>
-<td>18.3</td>
-<td>8%</td>
-<td>0.95</td>
-<td>1.00</td>
-</tr>
-<tr class="odd">
-<td>16B</td>
-<td>8704</td>
-<td>16</td>
-<td>1152</td>
-<td><strong>42.7</strong></td>
-<td><strong>20%</strong></td>
-<td><strong>4.46</strong></td>
-<td><strong>5.09</strong></td>
-</tr>
-<tr class="even">
-<td>37B</td>
-<td><strong>9000</strong></td>
-<td>5</td>
-<td><strong>500</strong></td>
-<td>32.3</td>
-<td>16%</td>
-<td>3.80</td>
-<td>3.98</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-
-<aside><div>
-<p>The gap between peak and sustained ExaFLOPS is primarily due to the time spent on the optimizer step and gradient reduction. These components occur outside the pipelined forward-backward pass and thus contribute to the reduction in sustained throughput relative to the peak.</p>
-</div></aside></section>
 <section id="references" class="slide level2 center" data-background-color="white">
 <h2>📓 References</h2>
 <div class="flex-container" style="gap: 2pt;">
@@ -1216,19 +1146,19 @@ Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming J
 <div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;11: 3.5B model"><img data-src="./assets/mprot-3p5B-scaling-2.svg"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;12: 3.5B model"><img data-src="./assets/mprot-3p5B-scaling-2.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: <code>3.5B</code> model
+Figure&nbsp;12: <code>3.5B</code> model
 </figcaption>
 </figure>
 </div><div id="fig-mprot-7B-scaling" class="column quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;12: 7B model"><img data-src="./assets/mprot-7B-scaling-2.svg"></a>
+<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;13: 7B model"><img data-src="./assets/mprot-7B-scaling-2.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: <code>7B</code> model
+Figure&nbsp;13: <code>7B</code> model
 </figcaption>
 </figure>
 </div></div>
@@ -1236,9 +1166,9 @@ Figure&nbsp;12: <code>7B</code> model
 <section id="loooooooooong-sequence-lengths" class="slide level2 smaller center" data-background-color="#1c1c1c">
 <h2>🚂 Loooooooooong Sequence Lengths</h2>
 <div class="flex-container" style="align-items: center; justify-content: center;">
-<p><a href="../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img data-src="../../../assets/anl.svg" style="height:50pt; margin: unset; padding: 0"></a></p>
+<p><a href="../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img data-src="../../../assets/anl.svg" style="height:50pt; margin: unset; padding: 0"></a></p>
 <p><span class="dim-text" style="font-size: 2.0em;"><iconify-icon role="img" inline="" icon="ic:baseline-plus" aria-label="Icon baseline-plus from ic Iconify.design set." title="Icon baseline-plus from ic Iconify.design set."></iconify-icon></span></p>
-<p><a href="../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img data-src="../../../assets/deepspeed-logo-transparent.svg" style="height:50pt; margin: unset; padding: 0;"></a></p>
+<p><a href="../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img data-src="../../../assets/deepspeed-logo-transparent.svg" style="height:50pt; margin: unset; padding: 0;"></a></p>
 </div>
 <ul>
 <li>Working with <a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-microsoft" aria-label="microsoft"></i> Microsoft/DeepSpeed</a> team to enable longer sequence lengths (context windows) for LLMs
@@ -1252,20 +1182,20 @@ Figure&nbsp;12: <code>7B</code> model
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
 <figcaption>25B</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
 <figcaption>33B</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>)
+Figure&nbsp;14: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>)
 </figcaption>
 </figure>
 </div>
@@ -1283,10 +1213,10 @@ Figure&nbsp;13: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</co
 <div id="fig-pretraining" class="quarto-float quarto-figure quarto-figure-center" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;14: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;15: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+Figure&nbsp;15: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
 </figcaption>
 </figure>
 </div>
@@ -1295,10 +1225,10 @@ Figure&nbsp;14: <strong>Pre-training</strong>: Virtually all of the compute used
 <div id="fig-fine-tuning" class="quarto-float quarto-figure quarto-figure-center" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;15: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;16: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+Figure&nbsp;16: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
 </figcaption>
 </figure>
 </div>
@@ -1313,10 +1243,10 @@ Figure&nbsp;15: <strong>Fine-tuning</strong>: Fine-tuning actually updates the m
 <div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="Figure&nbsp;16: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;17: It’s hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: It’s hungry!
+Figure&nbsp;17: It’s hungry!
 </figcaption>
 </figure>
 </div>
@@ -1324,10 +1254,10 @@ Figure&nbsp;16: It’s hungry!
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="Figure&nbsp;17: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="Figure&nbsp;18: Visualization from @yang2023harnessing"><img data-src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
+Figure&nbsp;18: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (<a href="#/bibliography" role="doc-biblioref" onclick="">2023</a>)</span>
 </figcaption>
 </figure>
 </div>

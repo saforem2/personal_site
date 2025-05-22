@@ -26,12 +26,13 @@ Sam Foreman
 - [🚀 Accelerating Dataset Processing:
   Results](#rocket-accelerating-dataset-processing-results)
 - [🦜 Model Training](#parrot-model-training)
+- [📉 Loss Curve: Training AuroraGPT-7B on 2T
+  Tokens](#chart_with_downwards_trend-loss-curve-training-auroragpt-7b-on-2t-tokens)
 - [🤔 Evaluating FM Skills for
   Science](#thinking-evaluating-fm-skills-for-science)
 - [⚖️ Evaluating FM Skills for Science:
   Criteria](#balance_scale-evaluating-fm-skills-for-science-criteria)
 - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
-- [🌎 Aeris: Scaling Results](#earth_americas-aeris-scaling-results)
 - [📓 References](#notebook-references)
 - [❤️ Thank you!](#heart-thank-you)
 - [📑 Bibliography](#bookmark_tabs-bibliography)
@@ -61,8 +62,8 @@ Sam Foreman
 
 [**AuroraGPT**](https://auroragpt.anl.gov): *General purpose scientific
 LLM*  
-Broadly trained on a general corpora plus scientific {papers, texts,
-data}
+Broadly trained on a general corpora plus scientific  
+{papers, texts, data}
 
 </div>
 
@@ -120,7 +121,7 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
   - Skepticism about deployment in critical infrastructure
   - Correctness and reliability of model outputs
 - **Transparency**:
-  - Data governance, what was used for pre-training? fine-tuning?
+  - Data governance, *what was used for pre-training*? fine-tuning?
     - **generally unknown**
   - What is *open source*?
     - Model weights?
@@ -624,6 +625,8 @@ Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 </div>
 
+## 📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens
+
 ## 🤔 Evaluating FM Skills for Science
 
 - What to measure?
@@ -683,32 +686,6 @@ Figure 10: Scaling results for `3.5B` model across ~38,400 GPUs
     Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
 
 </div>
-
-</div>
-
-## 🌎 Aeris: Scaling Results
-
-<div id="tbl-aeris">
-
-Table 2: Sustained and peak training throughput for Aeris on Aurora,
-across different model sizes.  
-Note: `EF(S)` – sustained ExaFLOPS, `EF(P)` – peak ExaFLOPS
-
-| Model | \#Nodes  | DP  | GBS     | TFLOPS/tile | MFU     | EF(S)    | EF(P)    |
-|-------|----------|-----|---------|-------------|---------|----------|----------|
-| 0.6B  | 2304     | 32  | 1152    | 19.0        | 9%      | 0.53     | 0.59     |
-| 4B    | 4352     | 8   | 576     | 18.3        | 8%      | 0.95     | 1.00     |
-| 16B   | 8704     | 16  | 1152    | **42.7**    | **20%** | **4.46** | **5.09** |
-| 37B   | **9000** | 5   | **500** | 32.3        | 16%     | 3.80     | 3.98     |
-
-</div>
-
-<div class="aside">
-
-The gap between peak and sustained ExaFLOPS is primarily due to the time
-spent on the optimizer step and gradient reduction. These components
-occur outside the pipelined forward-backward pass and thus contribute to
-the reduction in sustained throughput relative to the peak.
 
 </div>
 
