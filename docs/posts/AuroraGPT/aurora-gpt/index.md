@@ -3,11 +3,6 @@ Sam Foreman
 2024-06-15
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script
-  src="https://app.rybbit.io/api/script.js"
-  data-site-id="152"
-  defer
-></script>
 
 - [Install / Setup](#install--setup)
 - [Running](#running)

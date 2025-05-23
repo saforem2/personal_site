@@ -3,11 +3,6 @@ Sam Foreman
 2024-10-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script
-  src="https://app.rybbit.io/api/script.js"
-  data-site-id="152"
-  defer
-></script>
 
 - [MDS –\> HF](#mds--hf)
 - [🚧 HF to Meg-DS](#construction-hf-to-meg-ds)

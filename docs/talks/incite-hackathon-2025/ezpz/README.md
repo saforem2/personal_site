@@ -3,11 +3,6 @@ Sam Foreman
 2025-05-07
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script
-  src="https://app.rybbit.io/api/script.js"
-  data-site-id="152"
-  defer
-></script>
 
 - [📍 Currently](#round_pushpin-currently)
 - [💬 LLMs on Aurora](#speech_balloon-llms-on-aurora)

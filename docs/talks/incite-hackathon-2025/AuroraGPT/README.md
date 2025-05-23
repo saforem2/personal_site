@@ -3,11 +3,6 @@ Sam Foreman
 2025-05-21
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script
-  src="https://app.rybbit.io/api/script.js"
-  data-site-id="152"
-  defer
-></script>
 
 - [ALCF Incite Hackathon 2025](#alcf-incite-hackathon-2025)
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)
