@@ -373,7 +373,6 @@ b {
   --callout-border-hover-color: rgba(229, 153, 247, 100);
   --tight-code-line-height: 1rem;
   --tight-code-padding-top: 5px;
-
   --callout-important-color: #ff5252;
   --callout-color-important: #ff5252;
   --callout-warning-color: #fd971f;
@@ -387,7 +386,6 @@ b {
   --callout-color-info: #b695ff;
   --callout-caution-color: #ff3bd3;
   --callout-color-caution: #ff3bd3;
-
   // --callout-color-info: $callout-color-info;
   // --callout-color-caution: $callout-color-caution;
   // --callout-color-error: $callout-color-error;
@@ -400,14 +398,12 @@ b {
   // --callout-color-warning: $callout-color-warning;
   // --callout-color-caution: $callout-color-caution;
   // --callout-color-important: $callout-color-important;
-
   // --callout-tip-color: $callout-tip-color;
   // --callout-note-color: $callout-note-color;
   // --callout-note-color: $callout-note-color;
   // --callout-warning-color: $callout-warning-color;
   // --callout-important-color: $callout-important-color;
   // --callout-caution-color: $callout-caution-color;
-
   --red-text: $red-text;
   --orange-text: $myorange;
   --yellow-text: $yellow-text;
@@ -415,7 +411,6 @@ b {
   --blue-text: $myblue;
   --purple-text: $mypurple;
   --pink-text: $mypink;
-
   --quarto-font-monospace: $font-family-monospace;
   --bs-font-monospace: $font-family-monospace;
   --quarto-border-color: $quarto-border-color;
@@ -427,7 +422,6 @@ b {
   --alt-text: $alt-text;
   --dim-text: $dim-text;
   --dim-color: $dim-color;
-
   --green-text: $green-text;
   --red-text: $red-text;
   --blue-text: $blue-text;
@@ -480,6 +474,55 @@ b {
   --card-height: 33vh;
   --card-width: 50%;
 }
+
+:where(*) ::selection {
+  color: var(--r-selection-color);
+  background: var(--r-selection-background-color);
+  text-shadow: none;
+}
+
+root::selection {
+  color: hsla(var($interactive-accent-hsl), 0.75);
+}
+
+:where(*) {
+  --color-0: oklch(99% 0.03 var(--color-hue, 0));
+  --color-1: oklch(95% 0.06 var(--color-hue, 0));
+  --color-2: oklch(88% 0.12 var(--color-hue, 0));
+  --color-3: oklch(80% 0.14 var(--color-hue, 0));
+  --color-4: oklch(74% 0.16 var(--color-hue, 0));
+  --color-5: oklch(68% 0.19 var(--color-hue, 0));
+  --color-6: oklch(63% 0.2 var(--color-hue, 0));
+  --color-7: oklch(58% 0.21 var(--color-hue, 0));
+  --color-8: oklch(53% 0.2 var(--color-hue, 0));
+  --color-9: oklch(49% 0.19 var(--color-hue, 0));
+  --color-10: oklch(42% 0.17 var(--color-hue, 0));
+  --color-11: oklch(35% 0.15 var(--color-hue, 0));
+  --color-12: oklch(27% 0.12 var(--color-hue, 0));
+  --color-13: oklch(20% 0.09 var(--color-hue, 0));
+  --color-14: oklch(14% 0.07 var(--color-hue, 0));
+  --color-15: oklch(11% 0.05 var(--color-hue, 0));
+  --color-bright: oklch(65% 0.3 var(--color-hue, 0));
+}
+
+#sourceCode {
+  font-family: $monofont;
+}
+
+pre > code.sourceCode {
+  white-space: pre;
+  position: relative;
+  font-family: $monofont;
+}
+
+sourceCode {
+  font-family: $monofont;
+}
+
+code {
+  font-family: $monofont;
+}
+
 
 mark {
   a {
@@ -3246,34 +3289,6 @@ pre > code.sourceCode > span > a:first-child::before {
   margin-inline-end: 2ch;
   padding: 0 0;
   width: 4em;
-}
-
-:where(*) ::selection {
-  color: var(--r-selection-color);
-  background: var(--r-selection-background-color);
-  text-shadow: none;
-}
-
-root::selection {
-  color: hsla(var($interactive-accent-hsl), 0.75);
-}
-
-#sourceCode {
-  font-family: $monofont;
-}
-
-pre > code.sourceCode {
-  white-space: pre;
-  position: relative;
-  font-family: $monofont;
-}
-
-sourceCode {
-  font-family: $monofont;
-}
-
-code {
-  font-family: $monofont;
 }
 
 #quarto-appendix.default .quarto-appendix-bibtex {
