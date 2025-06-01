@@ -566,7 +566,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-monospace;
+  font-family: $font-family-monospace,monospace;
   direction: ltr;
   unicode-bidi: bidi-override;
 }
@@ -717,6 +717,7 @@ div.sourceCode {
 a:not(#lightbox):hover,
 .reveal a:not(#lightbox):hover {
   color: $code-fg;
+  cursor: pointer;
 
   border-radius: $link-border-radius;
   background-color: none;
@@ -729,6 +730,7 @@ a,
   text-decoration: underline;
 
   &:hover {
+    cursor: pointer;
     color: $link-color-hover;
     // transition: background .3s ease;
     transition: all 0.3s ease-in;
@@ -744,10 +746,12 @@ a:hover {
   text-decoration-thickness: 1pt;
   text-decoration-color: $link-color-hover;
   transition: all 0.3s ease in;
+  cursor: pointer;
 }
 
 main a:not(.img):hover {
   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  cursor: pointer;
 }
 
 .reveal a img:hover,
@@ -759,6 +763,7 @@ img a:not(#lightbox):hover {
   background: none !important;
   border-radius: $link-border-radius;
   transition: 0.5s ease all;
+  cursor: pointer;
 }
 
 a img:hover,
@@ -766,6 +771,7 @@ a img:hover,
 .reveal img:hover {
   border-radius: $link-border-radius;
   background: none !important;
+  cursor: pointer;
 }
 
 // .reveal a:hover,
@@ -801,6 +807,7 @@ a > code {
 .reveal a:hover > img-fluid,
 a:hover > img,
 a:hover > img-fluid {
+  cursor: pointer;
   background: none !important;
 }
 
@@ -1165,14 +1172,14 @@ nav td code:not(.sourceCode) {
 
 .callout:not(.callout-titled) .callout-body > :last-child,
 .callout:not(.callout-titled) .callout-body > div > :last-child {
-  margin-bottom: unset;
+  // margin-bottom: unset;
   padding-bottom: unset;
 }
 
 div.callout-tip.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0)!important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
     transition: all 0.2s ease-in-out;
@@ -1214,6 +1221,7 @@ div.callout-caution.callout {
 div.callout-important.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0, 0, 0, 0)!important;
   &:hover {
     border: 1px solid $callout-important-color !important;
     transition: all 0.2s ease-in-out;
@@ -1223,6 +1231,7 @@ div.callout-important.callout {
 div.callout-warning.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0, 0, 0, 0)!important;
   &:hover {
     border: 1px solid $callout-color-warning !important;
   }
@@ -1845,6 +1854,7 @@ div.callout-important.callout-style-default .callout-title {
   color: inherit;
   margin-top: auto;
   margin-bottom: auto;
+  padding: unset;
   &:hover {
     border: unset;
   }
@@ -2184,6 +2194,11 @@ main {
   background-repeat: no-repeat;
   background-size: 1.5rem 1.5rem;
   vertical-align: unset;
+}
+
+
+.sidebar::before {
+  background: linear-gradient(to bottom,#FF5252,transparent)
 }
 
 #quarto-margin-sidebar .quarto-listing-category {
