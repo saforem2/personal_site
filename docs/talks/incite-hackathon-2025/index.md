@@ -5,4 +5,6 @@ Sam Foreman
 
 - LLMs on Aurora:
   - [🍋 ezpz: Hands-On](./ezpz/index.qmd)
+    - [🎥 video](https://www.youtube.com/watch?v=15ZK9REQiBo)
   - [🌌 AuroraGPT: LLMs for Science](./AuroraGPT/index.qmd)
+    - [🎥 video](https://www.youtube.com/watch?v=KJBbR_oFO2E)

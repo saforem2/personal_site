@@ -32,6 +32,8 @@ Sam Foreman
 >
 > ### <span class="dim-text">[**LLMs on Aurora: 🌌 AuroraGPT**](../talks/incite-hackathon-2025/AuroraGPT/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
 >
+> - [🎥 video](https://www.youtube.com/watch?v=KJBbR_oFO2E)
+>
 > <div class="reveal-full-page">
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/incite-hackathon-2025/AuroraGPT/slides#/section" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
@@ -43,6 +45,8 @@ Sam Foreman
 > [!TIP]
 >
 > ### <span class="dim-text">[**LLMs on Aurora: 🍋 ezpz**](../talks/incite-hackathon-2025/ezpz/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
+>
+> - [🎥 video](https://www.youtube.com/watch?v=15ZK9REQiBo)
 >
 > <div class="reveal-full-page">
 >
@@ -70,6 +74,8 @@ Sam Foreman
 >
 > ### <span class="dim-text">[**Parallel Training Methods**](../talks/ai-for-science-2024/index.html) @ [*AI-for-Science on Supercomputers*](https://www.alcf.anl.gov/alcf-ai-science-training-series) \[11/2024\]</span>
 >
+> - [🎥 video](https://www.youtube.com/watch?v=4ltulBj4oVk)
+>
 > <div class="reveal-full-page">
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
@@ -81,6 +87,8 @@ Sam Foreman
 > [!TIP]
 >
 > ### <span class="dim-text">[**AuroraGPT**](../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html) @ [*2024 ALCF Hands-On HPC Workshop*](https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop) \[10/2024\]</span>
+>
+> - [🎥 video](https://www.youtube.com/watch?v=15ZK9REQiBo)
 >
 > <div class="reveal-full-page">
 >
@@ -179,6 +187,8 @@ Sam Foreman
 > [!TIP]
 >
 > ### <span class="dim-text">[**LLM Lunch Talk**](https://saforem2.github.io/llm-lunch-talk) @ [ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop) \[10/2023\]</span>
+>
+> - [🎥 video](https://www.youtube.com/watch?v=mSx9RVd00xU)
 >
 > <div class="embedded-slide">
 >

@@ -329,6 +329,8 @@ b {
       -moz-osx-font-smoothing: grayscale;
     }
   }
+  --selection-bg-color: var($selection-bg-color);
+  --selection-fg-color: --var($selection-fg-color);
   --r-background-color: $r-background-color;
   --r-heading-margin: 1pt;
   --r-background-color: $background-color;
@@ -476,8 +478,8 @@ b {
 }
 
 :where(*) ::selection {
-  color: var(--r-selection-color);
-  background: var(--r-selection-background-color);
+  color: $selection-fg-color;
+  background: $selection-bg-color;
   text-shadow: none;
 }
 
@@ -522,7 +524,6 @@ sourceCode {
 code {
   font-family: $monofont;
 }
-
 
 mark {
   a {
@@ -609,7 +610,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-monospace,monospace;
+  font-family: $font-family-monospace, monospace;
   direction: ltr;
   unicode-bidi: bidi-override;
 }
@@ -1222,7 +1223,7 @@ nav td code:not(.sourceCode) {
 div.callout-tip.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
-  border: 1px solid rgba(0, 0, 0, 0)!important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
     transition: all 0.2s ease-in-out;
@@ -1264,7 +1265,7 @@ div.callout-caution.callout {
 div.callout-important.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
-  border: 1px solid rgba(0, 0, 0, 0)!important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-important-color !important;
     transition: all 0.2s ease-in-out;
@@ -1274,7 +1275,7 @@ div.callout-important.callout {
 div.callout-warning.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1);
-  border: 1px solid rgba(0, 0, 0, 0)!important;
+  border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-color-warning !important;
   }
@@ -2239,9 +2240,8 @@ main {
   vertical-align: unset;
 }
 
-
 .sidebar::before {
-  background: linear-gradient(to bottom,#FF5252,transparent)
+  background: linear-gradient(to bottom, #ff5252, transparent);
 }
 
 #quarto-margin-sidebar .quarto-listing-category {
