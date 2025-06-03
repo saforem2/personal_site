@@ -234,19 +234,20 @@ flowchart LR
         end
         L2["`Loss`"]
     end
-    subgraph AR["`Average Grads`"]
-        direction TB
-        ar("`(1/n) ∑ gₙ`")
-    end
+    %% subgraph AR["`Average Grads`"]
+    %%     direction TB
+    %%     ar("`(∑ₙgₙ)/n`")
+    %% end
+    ar("`Avg. Grads<br>(∑ₙgₙ)/N`")
     x --> G0
     x1 --> G1
     x2 --> G2
     N0 --> L0
     N1 --> L1
     N2 --> L2
-    G0 -.-> AR
-    G1 -.-> AR
-    G2 -.-> AR
+    G0 -.-> ar
+    G1 -.-> ar
+    G2 -.-> ar
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -365,8 +366,8 @@ flowchart LR
         L2["`L2`"]
     end
     subgraph AR["`Average Grads`"]
-        direction TB
-        ar("`(1/n) ∑ gₙ`")
+        direction LR
+        ar("`(1/N) ∑ gₙ`")
         bc("`Update Weights`")
         ar --> bc
     end
@@ -445,31 +446,31 @@ send result back to everyone.
 
 ``` mermaid
 flowchart TD
-  subgraph R0["`Rank 0`"]
+  subgraph R0["`0`"]
     x0("`x0`")
   end
-  subgraph R1["`Rank 1`"]
+  subgraph R1["`1`"]
     x1("`x1`")
   end
-  subgraph R2["`Rank 2`"]
+  subgraph R2["`2`"]
     x2("`x2`")
   end
-  subgraph R3["`Rank 3`"]
+  subgraph R3["`3`"]
     x3("`x3`")
   end
   subgraph AR["`Allreduce`"]
     xp["`x' = ∑ xₙ `"]
   end
-  subgraph AR3["`Rank 3`"]
+  subgraph AR3["`3`"]
     xp3("`x'`")
   end
-  subgraph AR2["`Rank 2`"]
+  subgraph AR2["`2`"]
     xp2("`x'`")
   end
-  subgraph AR1["`Rank 1`"]
+  subgraph AR1["`1`"]
     xp1("`x'`")
   end
-  subgraph AR0["`Rank 0`"]
+  subgraph AR0["`0`"]
     xp0("`x'`")
   end
   x0 --> AR
@@ -509,29 +510,29 @@ input values across ranks.
 
 ``` mermaid
 flowchart TD
-  subgraph R0["`Rank 0`"]
+  subgraph R0["`0`"]
     x0("`x0`")
   end
-  subgraph R1["`Rank 1`"]
+  subgraph R1["`1`"]
     x1("`x1`")
   end
-  subgraph R2["`Rank 2`"]
+  subgraph R2["`2`"]
     x2("`x2`")
   end
-  subgraph R3["`Rank 3`"]
+  subgraph R3["`3`"]
     x3("`x3`")
   end
   subgraph AR["`Reduce`"]
     xp["`x'=reduce(x, 2, SUM)`"]
   end
-  subgraph AR3["`Rank 3`"]
+  subgraph AR3["`3`"]
   end
-  subgraph AR2["`Rank 2`"]
+  subgraph AR2["`2`"]
     xp2("`x'`")
   end
-  subgraph AR1["`Rank 1`"]
+  subgraph AR1["`1`"]
   end
-  subgraph AR0["`Rank 0`"]
+  subgraph AR0["`0`"]
   end
   x0 --> AR
   x1 --> AR
@@ -568,28 +569,28 @@ values across ranks
 
 ``` mermaid
 flowchart TD
-  subgraph R3["`Rank 3`"]
+  subgraph R3["`3`"]
   end
-  subgraph R2["`Rank 2`"]
+  subgraph R2["`2`"]
     x2("`x2`")
   end
-  subgraph R1["`Rank 1`"]
+  subgraph R1["`1`"]
   end
-  subgraph R0["`Rank 0`"]
+  subgraph R0["`0`"]
   end
   subgraph AR["` `"]
     xp["`broadcast(x2, 2)`"]
   end
-  subgraph AR0["`Rank 0`"]
+  subgraph AR0["`0`"]
     xp0("`x2`")
   end
-  subgraph AR1["`Rank 1`"]
+  subgraph AR1["`1`"]
     xp1("`x2`")
   end
-  subgraph AR2["`Rank 2`"]
+  subgraph AR2["`2`"]
     xp2("`x2`")
   end
-  subgraph AR3["`Rank 3`"]
+  subgraph AR3["`3`"]
     xp3("`x2`")
   end
   x2 --> AR
@@ -617,32 +618,32 @@ all ranks
 
 ``` mermaid
 flowchart LR
-  subgraph R0["`Rank 0`"]
+  subgraph R0["`0`"]
     x0("`x0`")
   end
-  subgraph R1["`Rank 1`"]
+  subgraph R1["`1`"]
     x1("`x1`")
   end
-  subgraph R2["`Rank 2`"]
+  subgraph R2["`2`"]
     x2("`x2`")
   end
   subgraph AG["`Allgather`"]
     %%xp0["`z=[empty_like(x) for _ in range(4)]`"]
     %%xp1["`dist.all_gather(z, x)`"]
   end
-  subgraph AG2["`Rank 2`"]
+  subgraph AG2["`2`"]
     direction TB
     xp02("`x0`")
     xp12("`x1`")
     xp22("`x2`")
   end
-  subgraph AG1["`Rank 1`"]
+  subgraph AG1["`1`"]
     direction TB
     xp01("`x0`")
     xp11("`x1`")
     xp21("`x2`")
   end
-  subgraph AG0["`Rank 0`"]
+  subgraph AG0["`0`"]
     direction TB
     xp00("`x0`")
     xp10("`x1`")
@@ -684,31 +685,31 @@ Figure 9: Gathers tensors from the whole group in a list.
 
 ``` mermaid
 flowchart TD
-  subgraph R3["`Rank 3`"]
+  subgraph R3["`3`"]
   end
-  subgraph R2["`Rank 2`"]
+  subgraph R2["`2`"]
   end
-  subgraph R1["`Rank 1`"]
+  subgraph R1["`1`"]
     direction TB
     xp0("`x0`")
     xp1("`x1`")
     xp2("`x2`")
     xp3("`x3`")
   end
-  subgraph R0["`Rank 0`"]
+  subgraph R0["`0`"]
   end
   subgraph S["`Scatter`"]
   end
-  subgraph S3["`Rank 3`"]
+  subgraph S3["`3`"]
     x3("`x3`")
   end
-  subgraph S2["`Rank 2`"]
+  subgraph S2["`2`"]
     x2("`x2`")
   end
-  subgraph S1["`Rank 1`"]
+  subgraph S1["`1`"]
     x1("`x1`")
   end
-  subgraph S0["`Rank 0`"]
+  subgraph S0["`0`"]
     x0("`x0`")
   end
   R1 --> S

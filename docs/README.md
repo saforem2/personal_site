@@ -1,5 +1,5 @@
 Sam Foreman
-2025-06-01
+2025-06-02
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -226,27 +226,6 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 >   </details>
 >
-> > [!TIP]
-> >
-> > ### Headings
-> >
-> > # Heading 1
-> >
-> > ## Heading 2
-> >
-> > ### Heading 3
-> >
-> > #### Heading 4
-> >
-> > ##### Heading 5
-> >
-> > ###### Heading 6
-> >
-> > Inspired by my neovim config:
-> >
-> > <img src="/assets/nvim-headings-light.png" alt="Light Theme" width="49%" style="display:inline-block;">
-> > <img src="/assets/nvim-headings-dark.png" alt="Dark Theme" width="49%" style="display:inline-block;">
->
 > ``` python
 > import datetime
 > from rich import print
@@ -261,7 +240,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > )
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">06</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:58:32</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">06</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">02</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:00:56</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -282,6 +261,14 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > <span style="color:#4582ec;">You can find a full list of my
 > publications on my [Google Scholar]</span>
+
+- [**HiPerRAG: High-Performance Retrieval Augmented Generation for
+  Scientific Insights**]  
+  <span class="dim-text">O. Gokdemir et al., *05/2025*</span>
+
+- [**MOFA: Discovering Materials for Carbon Capture with a GenAI and
+  Simulation-Based Workflow**]  
+  <span class="dim-text">Xiaoli Yan et al., *01/2025*</span>
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
   Design Workflows with Direct Preference Optimization**]
@@ -376,6 +363,8 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > ### <span class="dim-text">📓 References</span>
 >
 > - References:
+>   - (Yan et al. 2025)
+>   - (Gokdemir et al. 2025)
 >   - (Dharuman et al. 2024)
 >   - (Parete-Koon et al. 2024)
 >   - (Cheng et al. 2024)
@@ -405,7 +394,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
 > Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
 > Learning to Lattice Quantum Field Theory.” *arXiv Preprint
-> arXiv:2202.05838*.
+> arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
 >
 > </div>
 >
@@ -453,7 +442,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and
 > Michael E Papka. 2023. “A Comprehensive Performance Study of Large
 > Language Models on Novel AI Accelerators.” *arXiv Preprint
-> arXiv:2310.04607*.
+> arXiv:2310.04607*. <https://arxiv.org/abs/2310.04607>.
 >
 > </div>
 >
@@ -469,7 +458,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C
 > Osborn, and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv
-> Preprint arXiv:2112.01586*.
+> Preprint arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
 >
 > </div>
 >
@@ -515,6 +504,15 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 >
 > </div>
 >
+> <div id="ref-gokdemir2025hiperrag" class="csl-entry">
+>
+> Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
+> Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
+> High-Performance Retrieval Augmented Generation for Scientific
+> Insights.” <https://arxiv.org/abs/2505.04846>.
+>
+> </div>
+>
 > <div id="ref-hubler2018large" class="csl-entry">
 >
 > Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
@@ -528,6 +526,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H
 > Christ, Carleton DeTar, William Detmold, Robert Edwards, et al. 2022.
 > “Lattice QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
+> <https://arxiv.org/abs/2207.07641>.
 >
 > </div>
 >
@@ -553,6 +552,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Shanahan, Phiala, Kazuhiro Terao, and Daniel Whiteson. 2022. “Snowmass
 > 2021 Computational Frontier CompF03 Topical Group Report: Machine
 > Learning.” *arXiv Preprint arXiv:2209.07559*.
+> <https://arxiv.org/abs/2209.07559>.
 >
 > </div>
 >
@@ -562,7 +562,16 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023.
 > “DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
 > Discovery Through Sophisticated AI System Technologies.” *arXiv
-> Preprint arXiv:2310.04610*.
+> Preprint arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
+>
+> </div>
+>
+> <div id="ref-yan2025mofa" class="csl-entry">
+>
+> Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
+> Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
+> Discovering Materials for Carbon Capture with a GenAI- and
+> Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
 >
 > </div>
 >
@@ -1232,6 +1241,10 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
+  [**HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights**]:
+    https://arxiv.org/abs/2505.04846
+  [**MOFA: Discovering Materials for Carbon Capture with a GenAI and Simulation-Based Workflow**]:
+    https://arxiv.org/abs/2501.10651
   [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
     https://doi.org/10.1109/SC41406.2024.00013
   [SC’24]: https://sc24.supercomputing.org/
