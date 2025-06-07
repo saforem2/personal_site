@@ -1062,8 +1062,6 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ### Deciding on a Parallelism Strategy
 
-<div class="panel-tabset">
-
 #### Single GPU
 
 - Model fits onto a single GPU:
@@ -1120,8 +1118,6 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
       ```
   - **NOTE**: `TP` is almost *always* used within a single node, e.g.  
     `TP <= GPUS_PER_NODE`
-
-</div>
 
 ## 🦙 Large Language Models
 

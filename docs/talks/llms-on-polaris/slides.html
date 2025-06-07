@@ -123,7 +123,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-adcf83d7e7002e91c4132757d8a524eb.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-e625cbb1c4d8f57700035393f8fa5fc3.css">
   <link rel="stylesheet" href="../../css/navbar-active.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
@@ -332,6 +332,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">LLMs on Polaris</h1>
+  <p class="subtitle">Overview of Large Language Models and Training on Polaris</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -351,8 +352,8 @@
 
   <p class="date">2024-07-17</p>
 </section>
-<section id="section" class="title-slide slide level1 centeredslide center" data-background-color="white" data-background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html" loading="lazy">
-<h1></h1>
+<section id="section" class="slide level2 centeredslide center" data-background-color="white" data-background-iframe="https://emilhvitfeldt.github.io/quarto-iframe-examples/colored-particles/index.html" loading="lazy">
+<h2></h2>
 <div style="background-color: #f5f5f5; opacity:0.97; border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;">
 <p><span style="color:#333333; font-size:1.5em; font-weight: bold;">LLMs on Polaris</span> <span style="padding-bottom: 0.5rem;"><br>&nbsp;</span><br>
 <a href="https://samforeman.me">🏡 Sam Foreman</a><br>
@@ -362,9 +363,8 @@
 <p><span class="dim-text">2024-07-17</span></p>
 </div>
 </section>
-
-<section id="sam-foreman" class="title-slide slide level1 center" style="font-size: 0.9em;" data-background-color="white">
-<h1>👤 <a href="https://samforeman.me">Sam Foreman</a></h1>
+<section id="sam-foreman" class="slide level2 smaller center" data-background-color="white">
+<h2>👤 <a href="https://samforeman.me">Sam Foreman</a></h2>
 <ul>
 <li>I’m a Computational Scientist in the <a href="https://www.alcf.anl.gov/about/people/group/506">Data Science Group</a> at <a href="https://alcf.anl.gov">ALCF</a><sup>1</sup>.
 <ul>
@@ -392,9 +392,8 @@
 </ul>
 </div></div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Mostly getting supercomputers to stop yelling at each other <i class="fa-solid fa-network-wired" aria-label="network-wired"></i></p></li></ol></aside></section>
-
-<section id="polaris-alcf" class="title-slide slide level1 center" data-background-color="white">
-<h1>Polaris @ ALCF</h1>
+<section id="polaris-alcf" class="slide level2 center" data-background-color="white">
+<h2>Polaris @ ALCF</h2>
 <p>Refer to <a href="https://docs.alcf.anl.gov/polaris/getting-started/">Getting Started</a> for additional information.</p>
 <ul>
 <li><p>Login:</p>
@@ -404,9 +403,8 @@
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="getting-started" class="title-slide slide level1 center" data-background-color="white">
-<h1>Getting Started</h1>
+<section id="getting-started" class="slide level2 center" data-background-color="white">
+<h2>Getting Started</h2>
 <ul>
 <li><p><a href="https://docs.alcf.anl.gov/running-jobs/job-and-queue-scheduling/">Running Jobs</a></p>
 <ul>
@@ -424,9 +422,8 @@
 <p><a href="mailto:support@alcf.anl.gov">support@alcf.anl.gov</a></p></li>
 </ul>
 </section>
-
-<section id="polaris" class="title-slide slide level1 center" data-background-color="white">
-<h1>Polaris</h1>
+<section id="polaris" class="slide level2 center" data-background-color="white">
+<h2>Polaris</h2>
 <ul>
 <li><p>Polaris is a 560 node HPE Apollo 6500 Gen 10+ based system.</p></li>
 <li><p>Each node has a single 2.8 GHz AMD EPYC Milan 7543P 32 core CPU with:</p>
@@ -439,9 +436,8 @@
 <li><p>There are two nodes per chassis, seven chassis per rack, and 40 racks for a total of 560 nodes.</p></li>
 </ul>
 </section>
-
-<section id="polaris-compute-nodes" class="title-slide slide level1 center" data-background-color="white">
-<h1>Polaris Compute Nodes</h1>
+<section id="polaris-compute-nodes" class="slide level2 center" data-background-color="white">
+<h2>Polaris Compute Nodes</h2>
 <table class="table-striped table-hover caption-top">
 <caption>Details</caption>
 <thead>
@@ -492,10 +488,11 @@
 <li>8 memory channels rated at 204.8 GiB/s</li>
 </ol>
 </div></aside></section>
-
-<section id="polaris-a100-gpu-information" class="title-slide slide level1 center" data-background-color="white">
-<h1>Polaris A100 GPU Information</h1>
-<table class="caption-top">
+<section id="polaris-a100-gpu-information" class="slide level2 center" data-background-color="white">
+<h2>Polaris A100 GPU Information</h2>
+<div class="table-responsive">
+<table class="table-striped table-hover caption-top">
+<caption>Polaris A100 GPU Information</caption>
 <thead>
 <tr class="header">
 <th>DESCRIPTION</th>
@@ -556,10 +553,11 @@
 </tr>
 </tbody>
 </table>
+</div>
+<p>:</p>
 </section>
-
-<section id="using-conda" class="title-slide slide level1 center" data-background-color="white">
-<h1>Using Conda</h1>
+<section id="using-conda" class="slide level2 center" data-background-color="white">
+<h2>Using Conda</h2>
 <ul>
 <li><p>Additional information in our <a href="https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/python/">user guide</a></p></li>
 <li><p>We provide prebuilt <code>conda</code> environment containing GPU-supported builds of:</p>
@@ -574,9 +572,8 @@
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load conda<span class="kw">;</span> <span class="ex">conda</span> activate base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="virtual-environments-venv" class="title-slide slide level1 center" data-background-color="white">
-<h1>Virtual Environments: <code>venv</code></h1>
+<section id="virtual-environments-venv" class="slide level2 center" data-background-color="white">
+<h2>Virtual Environments: <code>venv</code></h2>
 <ul>
 <li><p>To install additional libraries, we can create a virtual environment using <code>venv</code></p></li>
 <li><p>Make sure you’re currently inside the <strong>base</strong> <code>conda</code> environment:</p>
@@ -606,9 +603,8 @@
 </div></li>
 </ul>
 </section>
-
-<section id="note-about-venvs" class="title-slide slide level1 center" data-background-color="white">
-<h1>Note about <code>venv</code>’s</h1>
+<section id="note-about-venvs" class="slide level2 center" data-background-color="white">
+<h2>Note about <code>venv</code>’s</h2>
 <ul>
 <li><p>The value of <code>--system-site-packages</code> can be changed by modifying its value in <code>/path/to/venv/pyvenv.cfg</code></p></li>
 <li><p>To install a <strong>different</strong> version of a package that is already installed in the base environment:</p>
@@ -620,9 +616,8 @@
 <li><p>If you need additional flexibility, we can <strong>clone</strong> the base environment</p></li>
 </ul>
 </section>
-
-<section id="clone-base-conda-environment" class="title-slide slide level1 center" data-background-color="white">
-<h1>Clone base <code>conda</code> environment</h1>
+<section id="clone-base-conda-environment" class="slide level2 center" data-background-color="white">
+<h2>Clone base <code>conda</code> environment</h2>
 <ul>
 <li><p>If we need additional flexibility or to install packages which <strong>require</strong> a <code>conda</code> install, we can clone the base environment</p>
 <ul>
@@ -639,9 +634,8 @@
 <span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">$</span> conda create <span class="at">--clone</span> base <span class="at">--prefix</span><span class="op">=</span><span class="st">"/path/to/envs/base-clone"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-
-<section id="containers-on-polaris" class="title-slide slide level1 center" data-background-color="white">
-<h1>Containers on Polaris</h1>
+<section id="containers-on-polaris" class="slide level2 center" data-background-color="white">
+<h2>Containers on Polaris</h2>
 <ul>
 <li><p>Polaris uses Nvidia A100 GPUs ==&gt;</p>
 <ul>
@@ -660,14 +654,11 @@
 <li><p>See also: <a href="https://argonne-lcf.github.io/user-guides/polaris/data-science-workflows/containers/containers/">Containers - ALCF User Guides</a></p></li>
 </ul>
 </section>
-
-<section id="large-language-models" class="title-slide slide level1 center" data-background-color="white">
-<h1>Large Language Models</h1>
-
+<section id="large-language-models" class="slide level2 center" data-background-color="white">
+<h2>Large Language Models</h2>
 </section>
-
-<section id="status-of-large-language-models" class="title-slide slide level1 center" data-background-color="white">
-<h1>Status of Large Language Models</h1>
+<section id="status-of-large-language-models" class="slide level2 center" data-background-color="white">
+<h2>Status of Large Language Models</h2>
 <div id="fig-llms" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-llms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -679,20 +670,16 @@ Figure&nbsp;1: Large Language Models have (LLM)s have taken the <del>NLP communi
 </figure>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn2"><p><a href="https://github.com/Hannibal046/Awesome-LLM"><i class="fa-brands fa-github" aria-label="github"></i> <code>Hannibal046/Awesome-LLM</code></a> </p></li></ol></aside></section>
-
-<section id="emergent-abilities" class="title-slide slide level1 center" data-background-color="#FBFBFD">
-<h1>Emergent Abilities</h1>
+<section id="emergent-abilities" class="slide level2 center" data-background-color="#FBFBFD">
+<h2>Emergent Abilities</h2>
 <div width="66%" style="text-align: center;">
 <p><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/emergent-abilities.gif?raw=true" height="75%"></p>
 <p><a href="https://arxiv.org/abs/2206.07682">Emergent abilities of Large Language Models</a> <span class="citation" data-cites="yao2023tree">Yao et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p>
 </div>
 </section>
-
-<section id="training-llms" class="title-slide slide level1 center" data-background-color="#FFFFFF">
-<h1>Training LLMs</h1>
-<div class="quarto-layout-panel" data-layout="[ 50, 40 ]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: flex-start;">
+<section id="training-llms" class="slide level2 center" data-background-color="#FFFFFF">
+<h2>Training LLMs</h2>
+<div class="flex-container">
 <div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -703,17 +690,21 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 </figcaption>
 </figure>
 </div>
+<div id="fig-hungry" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-hungry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Its hungry!"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 44.4%;justify-content: center;">
-<p><a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true"></a></p>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hungry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Its hungry!
+</figcaption>
+</figure>
 </div>
 </div>
 </section>
-
-<section id="recent-work-2017-now" class="title-slide slide level1 scrollable center" style="max-height: 95%; height: 100%; font-size: 0.75em;" data-background-color="white">
-<h1>Recent Work (2017 – Now)</h1>
-<div style="font-size: 0.9em;">
+<section id="recent-work-2017-now" class="slide level2 smaller center" data-background-color="white">
+<h2>Recent Work (2017 – Now)</h2>
+<div style="font-size: 0.9em; max-height: 30lh; overflow: auto;">
 <table class="table-striped table-hover caption-top">
 <caption>Papers, 2017–*</caption>
 <colgroup>
@@ -741,25 +732,11 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 <td style="text-align: left;">NeurIPS<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F204e3073870fae3d05bcbc2f6a8e263d9b72e776%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">06/2018</td>
-<td style="text-align: left;"><a href="https://www.cs.ubc.ca/~amuham01/LING530/papers/radford2018improving.pdf">Improving Language Understanding by Generative Pre-Training</a></td>
-<td style="text-align: left;">GPT 1.0</td>
-<td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fcd18800a0fe0b668a1cc19f2ec95b5003d0a5035%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">10/2018</td>
 <td style="text-align: left;"><a href="https://aclanthology.org/N19-1423.pdf">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></td>
 <td style="text-align: left;">BERT</td>
 <td style="text-align: left;">Google</td>
 <td style="text-align: left;">NAACL <br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fdf2b0e26d0599ce3e70df8a9da02e51594e0e992%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">02/2019</td>
-<td style="text-align: left;"><a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language Models are Unsupervised Multitask Learners</a></td>
-<td style="text-align: left;">GPT 2.0</td>
-<td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9405cc0d6169988371b2755e573cc28650d14dfe%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">09/2019</td>
@@ -770,185 +747,59 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 </tr>
 <tr class="even">
 <td style="text-align: right;">10/2019</td>
-<td style="text-align: left;"><a href="https://jmlr.org/papers/v21/20-074.html">Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</a></td>
-<td style="text-align: left;">T5</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;">JMLR<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3cfb319689f06bf04c2e28399361f414ca32c4b3%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10/2019</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/1910.02054.pdf">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</a></td>
 <td style="text-align: left;">ZeRO</td>
 <td style="text-align: left;">Microsoft</td>
 <td style="text-align: left;">SC<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F00c957711b12468cb38424caccdf5291bb354033%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: right;">01/2020</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/2001.08361.pdf">Scaling Laws for Neural Language Models</a></td>
 <td style="text-align: left;">Scaling Law</td>
 <td style="text-align: left;">OpenAI</td>
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fe6c561d02500b2596a230b341a8eb8b921ca5bf2%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: right;">05/2020</td>
 <td style="text-align: left;"><a href="https://papers.nips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf">Language models are few-shot learners</a></td>
 <td style="text-align: left;">GPT 3.0</td>
 <td style="text-align: left;">OpenAI</td>
 <td style="text-align: left;">NeurIPS <br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F6b85b63579a916f705a8e10a49bd8d849d91b1fc%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: right;">01/2021</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/2101.03961.pdf">Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</a></td>
 <td style="text-align: left;">Switch Transformers</td>
 <td style="text-align: left;">Google</td>
 <td style="text-align: left;">JMLR<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Ffdacf2a732f55befdc410ea927091cad3b791f13%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">08/2021</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2107.03374.pdf">Evaluating Large Language Models Trained on Code</a></td>
-<td style="text-align: left;">Codex</td>
-<td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Facbdbf49f9bc3f151b93d9ca9a06009f4f6eb269%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">08/2021</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2108.07258.pdf">On the Opportunities and Risks of Foundation Models</a></td>
-<td style="text-align: left;">Foundation Models</td>
-<td style="text-align: left;">Stanford</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F4f68e07c6c3173480053fd52391851d6f80d651b%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">09/2021</td>
-<td style="text-align: left;"><a href="https://openreview.net/forum?id=gEZrGCozdqR">Finetuned Language Models are Zero-Shot Learners</a></td>
-<td style="text-align: left;">FLAN</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;">ICLR <br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fff0b2681d7b05e16c46dfb71d980cc2f605907cd%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10/2021</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2110.08207">Multitask Prompted Training Enables Zero-Shot Task Generalization</a></td>
-<td style="text-align: left;">T0</td>
-<td style="text-align: left;">HuggingFace et al.</td>
-<td style="text-align: left;">ICLR <br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F17dd3555fd1ccf1141cf984347fa1b3fd6b009ca%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12/2021</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2112.06905.pdf">GLaM: Efficient Scaling of Language Models with Mixture-of-Experts</a></td>
-<td style="text-align: left;">GLaM</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;">ICML<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F80d0116d77beeded0c23cf48946d9d10d4faee14%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12/2021</td>
-<td style="text-align: left;"><a href="https://www.semanticscholar.org/paper/WebGPT%3A-Browser-assisted-question-answering-with-Nakano-Hilton/2f3efe44083af91cef562c1a3451eee2f8601d22">WebGPT: Browser-assisted question-answering with human feedback</a></td>
-<td style="text-align: left;">WebGPT</td>
-<td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F2f3efe44083af91cef562c1a3451eee2f8601d22%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12/2021</td>
-<td style="text-align: left;"><a href="https://www.deepmind.com/publications/improving-language-models-by-retrieving-from-trillions-of-tokens">Improving language models by retrieving from trillions of tokens</a></td>
-<td style="text-align: left;">Retro</td>
-<td style="text-align: left;">DeepMind</td>
-<td style="text-align: left;">ICML<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F002c256d30d6be4b23d365a8de8ae0e67e4c9641%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12/2021</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2112.11446.pdf">Scaling Language Models: Methods, Analysis &amp; Insights from Training Gopher</a></td>
-<td style="text-align: left;">Gopher</td>
-<td style="text-align: left;">DeepMind</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F68f141724814839d556a989646194be88641b143%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">01/2022</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/2201.11903.pdf">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></td>
 <td style="text-align: left;">COT</td>
 <td style="text-align: left;">Google</td>
 <td style="text-align: left;">NeurIPS<br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F1b6e810ce0afd0dd093f789d2b2742d047e316d5%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">01/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2201.08239.pdf">LaMDA: Language Models for Dialog Applications</a></td>
-<td style="text-align: left;">LaMDA</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fb3848d32f7294ec708627897833c4097eb4d8778%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">01/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2206.14858">Solving Quantitative Reasoning Problems with Language Models</a></td>
-<td style="text-align: left;">Minerva</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;">NeurIPS<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fab0e3d3e4d42369de5933a3b4c237780b41c0d77%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">01/2022</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/2201.11990.pdf">Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model</a></td>
 <td style="text-align: left;">Megatron-Turing NLG</td>
 <td style="text-align: left;">Microsoft&amp;NVIDIA</td>
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F7cbc2a7843411a1768ab762930707af0a3c33a19%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">03/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2203.02155.pdf">Training language models to follow instructions with human feedback</a></td>
-<td style="text-align: left;">InstructGPT</td>
-<td style="text-align: left;">OpenAI</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fd766bffc357127e0dc86dd69561d5aeb520d6f4c%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">04/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2204.02311.pdf">PaLM: Scaling Language Modeling with Pathways</a></td>
-<td style="text-align: left;">PaLM</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F094ff971d6a8b8ff870946c9b3ce5aa173617bfb%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">04/2022</td>
 <td style="text-align: left;"><a href="https://www.deepmind.com/publications/an-empirical-analysis-of-compute-optimal-large-language-model-training">An empirical analysis of compute-optimal large language model training</a></td>
 <td style="text-align: left;">Chinchilla</td>
 <td style="text-align: left;">DeepMind</td>
 <td style="text-align: left;">NeurIPS<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fbb0656031cb17adf6bac5fd0fe8d53dd9c291508%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">05/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2205.01068.pdf">OPT: Open Pre-trained Transformer Language Models</a></td>
-<td style="text-align: left;">OPT</td>
-<td style="text-align: left;">Meta</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F13a0d8bb38f739990c8cd65a44061c6534f17221%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">05/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2205.05131v1">Unifying Language Learning Paradigms</a></td>
-<td style="text-align: left;">UL2</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Ff40aeae3e522ada1f6a9f326841b01ef5c8657b6%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">06/2022</td>
 <td style="text-align: left;"><a href="https://openreview.net/pdf?id=yzkSU5zdwD">Emergent Abilities of Large Language Models</a></td>
 <td style="text-align: left;">Emergent Abilities</td>
 <td style="text-align: left;">Google</td>
 <td style="text-align: left;">TMLR<br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fdac3a172b504f4e33c029655e9befb3386e5f63a%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">06/2022</td>
-<td style="text-align: left;"><a href="https://github.com/google/BIG-bench">Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models</a></td>
-<td style="text-align: left;">BIG-bench</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F34503c0b6a615124eaf82cb0e4a1dab2866e8980%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">06/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2206.06336.pdf">Language Models are General-Purpose Interfaces</a></td>
-<td style="text-align: left;">METALM</td>
-<td style="text-align: left;">Microsoft</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa8fd9c1625011741f74401ff9bdc1c584e25c86d%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">09/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2209.14375.pdf">Improving alignment of dialogue agents via targeted human judgements</a></td>
-<td style="text-align: left;">Sparrow</td>
-<td style="text-align: left;">DeepMind</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F74eae12620bd1c1393e268bddcb6f129a5025166%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10/2022</td>
@@ -958,20 +809,6 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F5484d228bfc50efbac6e86677bc2ec2ee4ede1a6%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">10/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2210.02414.pdf">GLM-130B: An Open Bilingual Pre-trained Model</a></td>
-<td style="text-align: left;">GLM-130B</td>
-<td style="text-align: left;">Tsinghua</td>
-<td style="text-align: left;">ICLR<br> <img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F1d26c947406173145a4665dd7ab255e03494ea28%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2211.09110.pdf">Holistic Evaluation of Language Models</a></td>
-<td style="text-align: left;">HELM</td>
-<td style="text-align: left;">Stanford</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F5032c0946ee96ff11a292762f23e6377a6cf2731%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">11/2022</td>
 <td style="text-align: left;"><a href="https://arxiv.org/pdf/2211.05100.pdf">BLOOM: A 176B-Parameter Open-Access Multilingual Language Model</a></td>
 <td style="text-align: left;">BLOOM</td>
@@ -979,74 +816,18 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F964bd39b546f0f6625ff3b9ef1083f797807ef2e%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">11/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2211.09085.pdf">Galactica: A Large Language Model for Science</a></td>
-<td style="text-align: left;">Galactica</td>
-<td style="text-align: left;">Meta</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F7d645a3fd276918374fd9483fd675c28e46506d1%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12/2022</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2212.12017">OPT-IML: Scaling Language Model Instruction Meta Learning through the Lens of Generalization</a></td>
-<td style="text-align: left;">OPT-IML</td>
-<td style="text-align: left;">Meta</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fe965e93e76a9e6c4e4863d145b5c007b540d575d%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">01/2023</td>
-<td style="text-align: left;"><a href="https://arxiv.org/pdf/2301.13688.pdf">The Flan Collection: Designing Data and Methods for Effective Instruction Tuning</a></td>
-<td style="text-align: left;">Flan 2022 Collection</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Ff2b0017ddd77fa38760a18145e63553105a1a236%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">02/2023</td>
 <td style="text-align: left;"><a href="https://research.facebook.com/publications/llama-open-and-efficient-foundation-language-models/">LLaMA: Open and Efficient Foundation Language Models</a></td>
 <td style="text-align: left;">LLaMA</td>
 <td style="text-align: left;">Meta</td>
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F57e849d0de13ed5f91d086936296721d4ff75a75%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">02/2023</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2302.14045">Language Is Not All You Need: Aligning Perception with Language Models</a></td>
-<td style="text-align: left;">Kosmos-1</td>
-<td style="text-align: left;">Microsoft</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Ffbfef4723d8c8467d7bd523e1d0b703cce0e0f9c%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">03/2023</td>
-<td style="text-align: left;"><a href="https://palm-e.github.io">PaLM-E: An Embodied Multimodal Language Model</a></td>
-<td style="text-align: left;">PaLM-E</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F38fe8f324d2162e63a967a9ac6648974fc4c66f3%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">03/2023</td>
 <td style="text-align: left;"><a href="https://openai.com/research/gpt-4">GPT-4 Technical Report</a></td>
 <td style="text-align: left;">GPT 4</td>
 <td style="text-align: left;">OpenAI</td>
 <td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F8ca62fdf4c276ea3052dc96dcfd8ee96ca425a48%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">04/2023</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2304.01373">Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling</a></td>
-<td style="text-align: left;">Pythia</td>
-<td style="text-align: left;">EleutherAI et al.</td>
-<td style="text-align: left;">ICML<br><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fbe55e8ec4213868db08f2c3168ae666001bea4b8%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">05/2023</td>
-<td style="text-align: left;"><a href="https://arxiv.org/abs/2305.03047">Principle-Driven Self-Alignment of Language Models from Scratch with Minimal Human Supervision</a></td>
-<td style="text-align: left;">Dromedary</td>
-<td style="text-align: left;">CMU et al.</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fe01515c6138bc525f7aec30fc85f2adf028d4156%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">05/2023</td>
-<td style="text-align: left;"><a href="https://ai.google/static/documents/palm2techreport.pdf">PaLM 2 Technical Report</a></td>
-<td style="text-align: left;">PaLM 2</td>
-<td style="text-align: left;">Google</td>
-<td style="text-align: left;"><img data-src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Feccee350691708972370b7a12c2a78ad3bddd159%3Ffields%3DcitationCount&amp;query=%24.citationCount&amp;label=citation" alt="Dynamic JSON Badge"></td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">05/2023</td>
@@ -1078,12 +859,10 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 </ol>
 </div>
 </section>
-
-<section id="life-cycle-of-the-llm" class="title-slide slide level1 center" data-auto-animate="true" data-background-color="white">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM</h1>
-<div class="quarto-layout-panel" data-layout="[ 45, 55 ]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div id="column-one" class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
+<section id="life-cycle-of-the-llm" class="slide level2 center" data-auto-animate="true" data-background-color="white">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM</h2>
+<div class="flex-container">
+<div style="width:50%">
 <ol type="1">
 <li><p>Data collection + preprocessing</p></li>
 <li><p><strong>Pre-training</strong></p>
@@ -1100,67 +879,60 @@ Figure&nbsp;2: Visualization from <span class="citation" data-cites="yang2023har
 <li><p>Deploy (+ monitor, re-evaluate, etc.)</p></li>
 </ol>
 </div>
-<div id="column-two" class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;3: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Pre-training: Virtually all of the compute used during pretraining phase."><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<sup>1</sup>.
+Figure&nbsp;4: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase<sup>1</sup>.
 </figcaption>
 </figure>
 </div>
 </div>
-</div>
-</div>
 <aside><ol class="aside-footnotes"><li id="fn3"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
-
-<section id="life-cycle-of-the-llm-pre-training" class="title-slide slide level1 center" data-auto-animate="true" data-background-color="white">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM: Pre-training</h1>
+<section id="life-cycle-of-the-llm-pre-training" class="slide level2 center" data-auto-animate="true" data-background-color="white">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Pre-training</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Pre-training: Virtually all of the compute used during pretraining phase"><img data-src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+Figure&nbsp;5: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="life-cycle-of-the-llm-fine-tuning" class="title-slide slide level1 center" data-auto-animate="true" style="font-size: 0.8em;" data-background-color="white">
-<h1 data-id="quarto-animate-title">Life-Cycle of the LLM: Fine-Tuning</h1>
+<section id="life-cycle-of-the-llm-fine-tuning" class="slide level2 smaller center" data-auto-animate="true" data-background-color="white">
+<h2 data-id="quarto-animate-title">Life-Cycle of the LLM: Fine-Tuning</h2>
 <div id="fig-pretrain-two" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img data-src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretrain-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+Figure&nbsp;6: <strong>Fine-tuning</strong><sup>1</sup>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
 </figcaption>
 </figure>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn4"><p>Figure from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></p></li></ol></aside></section>
-
-<section id="forward-pass" class="title-slide slide level1 center" data-background-color="white">
-<h1>Forward Pass</h1>
+<section id="forward-pass" class="slide level2 center" data-background-color="white">
+<h2>Forward Pass</h2>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<video data-autoplay="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/assisted-generation/gif_1_1080p.mov">
+<video loading="lazy" style="max-width:500pt" data-autoplay="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/assisted-generation/gif_1_1080p.mov">
 </video>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
+Figure&nbsp;7: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="generating-text" class="title-slide slide level1 center" data-background-color="white">
-<h1>Generating Text</h1>
+<section id="generating-text" class="slide level2 center" data-background-color="white">
+<h2>Generating Text</h2>
 <div id="fig-generating-text" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1168,14 +940,13 @@ Figure&nbsp;6: Language Model trained for causal language modeling. Video from: 
 </video>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-generating-text-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
+Figure&nbsp;8: Language Model trained for causal language modeling. Video from: <a href="https://huggingface.co/docs/transformers/main/en/llm_tutorial">🤗 Generation with LLMs</a>
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="parallelism-overview" class="title-slide slide level1 center" data-background-color="white">
-<h1>Parallelism Overview</h1>
+<section id="parallelism-overview" class="slide level2 center" data-background-color="white">
+<h2>Parallelism Overview</h2>
 <blockquote>
 <p><em><strong>Modern parallelism techniques</strong> enable the training of large language models</em></p>
 </blockquote>
@@ -1183,9 +954,8 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 <aside><div>
 <p>See my slides on <a href="https://saforem2.github.io/parallel-training-slides/#/title-slide">Parallel Training Techniques</a> for additional details</p>
 </div></aside></section>
-
-<section id="parallelism-concepts" class="title-slide slide level1 center" style="font-size: 0.9em;" data-background-color="white">
-<h1>Parallelism Concepts</h1>
+<section id="parallelism-concepts" class="slide level2 smaller center" data-background-color="white">
+<h2>Parallelism Concepts</h2>
 <ul>
 <li><strong>DataParallel (DP)</strong>:
 <ul>
@@ -1206,9 +976,8 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 <aside><div>
 <p><a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a></p>
 </div></aside></section>
-
-<section id="parallelism-conceptshf-mp1" class="title-slide slide level1 center" style="font-size: 0.9em;" data-background-color="white">
-<h1>Parallelism Concepts<sup>1</sup></h1>
+<section id="parallelism-conceptshf-mp1" class="slide level2 smaller center" data-background-color="white">
+<h2>Parallelism Concepts<sup>1</sup></h2>
 <ul>
 <li><strong>PipelineParallel (PP)</strong>:
 <ul>
@@ -1228,9 +997,8 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 </ul></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn5"><p><a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a></p></li></ol></aside></section>
-
-<section id="data-parallelism" class="title-slide slide level1 center" style="font-size: 0.9em;" data-background-color="white">
-<h1>Data Parallelism</h1>
+<section id="data-parallelism" class="slide level2 smaller center" data-background-color="white">
+<h2>Data Parallelism</h2>
 <ul>
 <li><strong>Data Parallelism</strong>:
 <ul>
@@ -1246,9 +1014,8 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 <p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-zero.png" width="75%"></p>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn6"><p><a href="https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/">Blog Post</a></p></li></ol></aside></section>
-
-<section id="tensor-parallelismefficient-large-scale" class="title-slide slide level1 center" data-background-color="white">
-<h1>Tensor Parallelism<sup>1</sup></h1>
+<section id="tensor-parallelismefficient-large-scale" class="slide level2 center" data-background-color="white">
+<h2>Tensor Parallelism<sup>1</sup></h2>
 <ul>
 <li><p>In <strong>Tensor Paralleism</strong> each GPU processes only a slice of a tensor and only aggregates the full tensor for operations that require the whole thing.</p>
 <ul>
@@ -1260,9 +1027,8 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 </ul></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn7"><p><a href="https://arxiv.org/abs/2104.04473">Efficient Large-Scale Language Model Training on GPU Clusters</a></p></li></ol></aside></section>
-
-<section id="tensor-parallelism" class="title-slide slide level1 center" style="font-size: 0.9em;" data-background-color="white">
-<h1>Tensor Parallelism</h1>
+<section id="tensor-parallelism" class="slide level2 smaller center" data-background-color="white">
+<h2>Tensor Parallelism</h2>
 <div style="text-align: center;">
 <p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-tp-parallel_gemm.png" width="66%" style="text-align: center;"></p>
 </div>
@@ -1270,48 +1036,43 @@ Figure&nbsp;7: Language Model trained for causal language modeling. Video from: 
 <p>This information is based on (the much more in-depth) <a href="https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530">TP Overview</a> by <a href="https://github.com/anton-l">@anton-l</a></p>
 </div>
 </section>
-
-<section id="d-parallelism" class="title-slide slide level1 center" style="font-size:0.9em;" data-background-color="white">
-<h1>3D Parallelism</h1>
+<section id="d-parallelism" class="slide level2 smaller center" data-background-color="white">
+<h2>3D Parallelism</h2>
 <ul>
 <li><code>DP</code> + <code>TP</code> + <code>PP</code> (3D) Parallelism</li>
 </ul>
 <div id="fig-3dparallel-1" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important; width:90%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-3dparallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;8: 3D Parallelism illustration. Figure from: https://www.deepspeed.ai/"><img data-src="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png"></a>
+<a href="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;9: 3D Parallelism illustration. Figure from: https://www.deepspeed.ai/"><img data-src="https://www.microsoft.com/en-us/research/uploads/prod/2020/09/Blog_DeepSpeed3_Figure-1_highres-2048x1230.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: 3D Parallelism illustration. Figure from: <a href="https://www.deepspeed.ai/">https://www.deepspeed.ai/</a>
+Figure&nbsp;9: 3D Parallelism illustration. Figure from: <a href="https://www.deepspeed.ai/">https://www.deepspeed.ai/</a>
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="d-parallelism-1" class="title-slide slide level1 center" data-background-color="white">
-<h1>3D Parallelism</h1>
+<section id="d-parallelism-1" class="slide level2 center" data-background-color="white">
+<h2>3D Parallelism</h2>
 <ul>
 <li><code>DP</code> + <code>TP</code> + <code>PP</code> (3D) Parallelism</li>
 </ul>
 <div id="fig-3dparallel" class="quarto-float quarto-figure quarto-figure-center" style="text-align:center!important;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;9: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png"></a>
+<a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;10: Figure taken from 3D parallelism: Scaling to trillion-parameter models"><img data-src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/parallelism-deepspeed-3d.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3dparallel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
+Figure&nbsp;10: Figure taken from <a href="https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/">3D parallelism: Scaling to trillion-parameter models</a>
 </figcaption>
 </figure>
 </div>
 </section>
-
-<section id="ezpz" class="title-slide slide level1 center" data-background-color="white">
-<h1>🍋 <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a></h1>
-
+<section id="ezpz" class="slide level2 center" data-background-color="white">
+<h2>🍋 <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a></h2>
 </section>
-
-<section id="clone-repos" class="title-slide slide level1 center" data-background-color="white">
-<h1>Clone Repo(s)</h1>
+<section id="clone-repos" class="slide level2 center" data-background-color="white">
+<h2>Clone Repo(s)</h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:33:08 AM][foremans@x3101c0s13b0n0][~/tmp]</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir ~/tmp/polaris-talk</span>
@@ -1344,9 +1105,8 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <span id="cb9-29"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Resolving</span> deltas: 100% <span class="er">(</span><span class="ex">395/395</span><span class="kw">)</span><span class="ex">,</span> done.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="setup-python" class="title-slide slide level1 scrollable center" data-background-color="white">
-<h1>Setup Python</h1>
+<section id="setup-python" class="slide level2 scrollable center" data-background-color="white">
+<h2>Setup Python</h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:33:53 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> source ezpz/src/ezpz/bin/utils.sh <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_python</span> <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_alcf</span></span>
@@ -1399,9 +1159,8 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <span id="cb10-49"><a aria-hidden="true" tabindex="-1"></a>      <span class="ex">launch</span> = mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 4 <span class="at">-ppn</span> 4 <span class="at">--hostfile</span> /var/spool/pbs/aux/2024084.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 16</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="install-ezpz-wordplay" class="title-slide slide level1 scrollable center" data-background-color="white">
-<h1>Install <code>{ezpz, wordplay}</code></h1>
+<section id="install-ezpz-wordplay" class="slide level2 scrollable center" data-background-color="white">
+<h2>Install <code>{ezpz, wordplay}</code></h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:34:13 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 <span class="at">-m</span> pip install <span class="at">-e</span> ezpz wordplay <span class="at">--require-virtualenv</span></span>
@@ -1444,9 +1203,8 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <span id="cb11-39"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[notice]</span> To update, run: pip install <span class="at">--upgrade</span> pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="launch-ezpz.test_dist" class="title-slide slide level1 scrollable center" data-background-color="white">
-<h1>Launch <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz.test_dist</code></a></h1>
+<section id="launch-ezpz.test_dist" class="slide level2 scrollable center" data-background-color="white">
+<h2>Launch <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz.test_dist</code></a></h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#(👻 2024-04-29)</span></span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:34:07 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327][⏱ 7s]</span></span>
@@ -1792,9 +1550,8 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <span id="cb12-342"><a aria-hidden="true" tabindex="-1"></a><span class="ex">text</span> saved in /home/foremans/tmp/polaris-talk/2024-07-17-073327/test-dist-plots/train/sps.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="pyinstrument-profile" class="title-slide slide level1 center" data-background-color="white">
-<h1>PyInstrument Profile</h1>
+<section id="pyinstrument-profile" class="slide level2 center" data-background-color="white">
+<h2>PyInstrument Profile</h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Recorded:</span> 07:35:34  Samples:  2227</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Duration:</span> 2.948     CPU time: 5.441</span>
@@ -1839,9 +1596,8 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <span id="cb13-41"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Application</span> cff755ee resources: utime=25s stime=23s maxrss=1434396KB inblock=32 oublock=4320 minflt=670179 majflt=864 nvcsw=195893 nivcsw=1331214</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="example-ezpz" class="title-slide slide level1 centeredslide smaller center" height="100%" style="max-height: 100%;" data-slide-background="#FFFFFF">
-<h1>Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h1>
+<section id="example-ezpz" class="slide level2 centeredslide smaller center" height="100%" style="max-height: 100%;" data-slide-background="#FFFFFF">
+<h2>Example: <a href="https://github.com/saforem2/ezpz"><code>ezpz</code> 🍋</a></h2>
 <div class="flex-container">
 <div id="fig-ezpz-asciinema" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
@@ -1849,7 +1605,7 @@ Figure&nbsp;9: Figure taken from <a href="https://www.microsoft.com/en-us/resear
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true" style="max-height: 90%!important;"></script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ezpz-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP
+Figure&nbsp;11: Example: using <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py">🍋 <code>ezpz.test_dist</code></a> to train a small model using DDP
 </figcaption>
 </figure>
 </div>
@@ -1858,14 +1614,11 @@ Figure&nbsp;10: Example: using <a href="https://github.com/saforem2/ezpz/blob/ma
 <aside><div>
 <p>Link to <a href="https://asciinema.org/a/668460">video</a></p>
 </div></aside></section>
-
-<section id="example-wordplay" class="title-slide slide level1 center" data-background-color="white">
-<h1>Example: <a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h1>
-
+<section id="example-wordplay" class="slide level2 center" data-background-color="white">
+<h2>Example: <a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
 </section>
-
-<section id="prepare-data" class="title-slide slide level1 center" data-background-color="white">
-<h1>Prepare Data</h1>
+<section id="prepare-data" class="slide level2 center" data-background-color="white">
+<h2>Prepare Data</h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:41:20 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327][⏱ 29s]</span></span>
 <span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 wordplay/data/shakespeare_char/prepare.py</span>
@@ -1878,9 +1631,8 @@ Figure&nbsp;10: Example: using <a href="https://github.com/saforem2/ezpz/blob/ma
 <span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">val</span> has 111,540 tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="launch-training-ddp" class="title-slide slide level1 center" data-background-color="white">
-<h1>Launch Training (DDP)</h1>
+<section id="launch-training-ddp" class="slide level2 center" data-background-color="white">
+<h2>Launch Training (DDP)</h2>
 <div style="font-size: 0.8em; line-height: 1.0em;">
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#(👻 2024-04-29)</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[⭐][07:42:02 AM][foremans@x3101c0s13b0n0][~/tmp/polaris-talk/2024-07-17-073327]</span></span>
@@ -2179,18 +1931,16 @@ Figure&nbsp;10: Example: using <a href="https://github.com/saforem2/ezpz/blob/ma
 <span id="cb15-295"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-
-<section id="wordplay" class="title-slide slide level1 centeredslide center" height="100%" data-backgound-color="white">
-<h1><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h1>
+<section id="wordplay" class="slide level2 centeredslide center" height="100%" data-backgound-color="white">
+<h2><a href="https://github.com/saforem2/wordplay"><code>wordplay</code> 🎮💬</a></h2>
 <ul>
 <li>Link<sup>1</sup> to <a href="https://asciinema.org/a/668462">video</a></li>
 </ul>
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true" style="max-height: 90%!important;"></script>
 <p>Example: Training a LLM to talk like Shakespeare using <a href="https://github.com/saforem2/wordplay"><code>saforem2/wordplay</code> 🎮💬</a></p>
 <aside><ol class="aside-footnotes"><li id="fn8"><p>idk why it doesn’t render correctly in the slide (seems like refreshing helps?)</p></li></ol></aside></section>
-
-<section id="thank-you" class="title-slide slide level1 center" data-background-color="white">
-<h1>❤️ Thank you!</h1>
+<section id="thank-you" class="slide level2 center" data-background-color="white">
+<h2>❤️ Thank you!</h2>
 <ul>
 <li><p>Organizers</p></li>
 <li><p>Feel free to reach out!</p>
@@ -2211,20 +1961,17 @@ Figure&nbsp;10: Example: using <a href="https://github.com/saforem2/ezpz/blob/ma
 </div>
 </div>
 </section>
-
-<section>
-<section id="extras" class="title-slide slide level1 center" data-background-color="white">
-<h1>Extras</h1>
-
+<section id="extras" class="slide level2 center" data-background-color="white">
+<h2>Extras</h2>
 </section>
 <section id="transformer-architecture" class="slide level2 center" data-background-color="white">
 <h2>Transformer Architecture</h2>
 
 <img src="https://raw.githubusercontent.com/saforem2/llm-lunch-talk/main/docs/assets/diagrams/transformer.svg" width="20%" align="center" class="r-stretch quarto-figure-center" id="fig-transformer"><p class="caption">
-Figure&nbsp;11: <span class="citation" data-cites="vaswani2017attention">Vaswani et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>
-</p></section></section>
-<section id="references" class="title-slide slide level1 smaller scrollable" data-background-color="white">
-<h1>References</h1>
+Figure&nbsp;12: <span class="citation" data-cites="vaswani2017attention">Vaswani et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>
+</p></section>
+<section id="references" class="slide level2 smaller scrollable" data-background-color="white">
+<h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
 Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017. <span>“Attention Is All You Need.”</span> <a href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a>.
@@ -2240,12 +1987,11 @@ Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao
 
 </section>
 
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../assets/anl.svg" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p><a href="https://samforeman.me/talks/llms-on-polaris/slides">samforeman.me/talks/llms-on-polaris/slides</a></p>
 </div>
 </div></div>
 
