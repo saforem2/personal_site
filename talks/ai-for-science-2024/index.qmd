@@ -92,7 +92,6 @@ format:
   for more details
   :::
 
-
 # 🐢 Training on a Single Device {background-color="white"}
 
 - See [🤗 Methods and tools for efficient training on a single GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
@@ -129,7 +128,7 @@ class N0,D,G0,n0 block
 **SLOW** !! model size limited by GPU memory
 :::
 
-::: {.content-visible when-format="revealjs" unless-format="html"}
+<!-- ::: {.content-visible when-format="revealjs" unless-format="html"} -->
 
 # Single GPU {background-color="white"}
 
@@ -211,7 +210,7 @@ class N0,D,G0,n0 block
 **SLOW** !! model size limited by GPU memory
 :::
 
-:::
+<!-- ::: -->
 
 # 🏎️ Training on Multiple GPUs: Data Parallelism {background-color="white"}
 
@@ -1135,24 +1134,16 @@ Tensor Parallel Training
 
 :::
 
-<!-- ::: footnote -->
-<!---->
-<!-- - {{< fa brands github >}} [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed) -->
-<!-- - 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron) -->
-<!---->
-<!-- See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details -->
-<!-- ::: -->
-<!---->
-<!-- ::: {.notes} -->
-<!---->
-<!-- - Split up network over multiple workers -->
-<!--   - Each receives disjoint subset -->
-<!--   - All communication associated with subsets are distributed -->
-<!-- - Communication whenever dataflow between two subsets -->
-<!-- - Typically **more complicated** to implement than data parallel training -->
-<!-- - Suitable when the model is too large to fit onto a single device (CPU / GPU) -->
-<!---->
-<!-- ::: -->
+::: {.notes}
+
+- Split up network over multiple workers
+- Each receives disjoint subset
+- All communication associated with subsets are distributed
+- Communication whenever dataflow between two subsets
+- Typically **more complicated** to implement than data parallel training
+- Suitable when the model is too large to fit onto a single device (CPU / GPU)
+
+:::
 
 # Tensor (/ Model) Parallel Training: Example {background-color="white"}
 
@@ -1224,7 +1215,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ## Deciding on a Parallelism Strategy {background-color="white"}
 
-<!-- ::: {.panel-tabset} -->
+::: {.panel-tabset}
 
 ### Single GPU
 
@@ -1273,7 +1264,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
   - **NOTE**: `TP` is almost _always_ used within a single node, e.g.  
     `TP <= GPUS_PER_NODE`
 
-<!-- ::: --> 
+:::
 
 # 🦙 Large Language Models {background-color="white"}
 
@@ -1820,7 +1811,6 @@ This research used resources of the Argonne Leadership Computing Facility,
 which is a DOE Office of Science User Facility supported under Contract
 DE-AC02-06CH11357
 :::
-
 
 # 📓 References {background-color="white"}
 

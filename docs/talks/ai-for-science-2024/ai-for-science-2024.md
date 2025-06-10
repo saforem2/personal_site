@@ -8,6 +8,8 @@ Sam Foreman
 - [📑 Outline](#bookmark_tabs-outline)
 - [🚀 Scaling: Overview](#rocket-scaling-overview)
 - [🐢 Training on a Single Device](#turtle-training-on-a-single-device)
+- [Single GPU](#single-gpu)
+- [Single GPU](#single-gpu-1)
 - [🏎️ Training on Multiple GPUs: Data
   Parallelism](#racing_car-training-on-multiple-gpus-data-parallelism)
   - [Data Parallel: Forward Pass](#data-parallel-forward-pass)
@@ -141,6 +143,90 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 
 </div>
 
+## Single GPU
+
+- See [🤗 Methods and tools for efficient training on a single
+  GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
+
+<div id="fig-single-gpu-2">
+
+``` mermaid
+flowchart LR
+    subgraph G0["`GPU0`"]
+        subgraph N0["`Network`"]
+        end
+        L0("`Loss`")
+    end
+    subgraph D["`Data`"]
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
+    end
+    x --> N0
+    N0 --> L0
+    L0 --> N0
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,L0 green
+class x1, blue
+class x2, yellow
+class x3, grey
+class N0,D,G0,n0 block
+```
+
+Figure 2: **SLOW** !! model size limited by GPU memory
+
+</div>
+
+## Single GPU
+
+- See [🤗 Methods and tools for efficient training on a single
+  GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
+
+<div id="fig-single-gpu-3">
+
+``` mermaid
+flowchart LR
+    subgraph G0["`GPU0`"]
+        subgraph N0["`Network`"]
+        end
+        L0("`Loss`")
+    end
+    subgraph D["`Data`"]
+        x("`x₂`")
+        x1("`x₃`")
+        x2("`x₄`")
+    end
+    x --> N0
+    N0 --> L0
+    L0 --> N0
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,L0 blue
+class x1, yellow
+class x2, purple
+class x3, grey
+class N0,D,G0,n0 block
+```
+
+Figure 3: **SLOW** !! model size limited by GPU memory
+
+</div>
+
 ## 🏎️ Training on Multiple GPUs: Data Parallelism
 
 <div id="fig-ddp-training-mermaid">
@@ -197,7 +283,7 @@ class AR block
 class bc text
 ```
 
-Figure 2: Each GPU receives **unique** data at each step
+Figure 4: Each GPU receives **unique** data at each step
 
 </div>
 
@@ -266,7 +352,7 @@ class AR block
 class bc text
 ```
 
-Figure 3: Average gradients across all GPUs
+Figure 5: Average gradients across all GPUs
 
 </div>
 
@@ -330,7 +416,7 @@ class BC block
 class bc text
 ```
 
-Figure 4: Send global updates back to each GPU
+Figure 6: Send global updates back to each GPU
 
 </div>
 
@@ -398,7 +484,7 @@ class AR block
 class bc text
 ```
 
-Figure 5: See: [PyTorch / Distributed Data
+Figure 7: See: [PyTorch / Distributed Data
 Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
@@ -497,7 +583,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 6: All-Reduce operation: each rank receives the reduction of
+Figure 8: All-Reduce operation: each rank receives the reduction of
 input values across ranks.
 
 </div>
@@ -558,7 +644,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 7: Reduce operation: one rank receives the reduction of input
+Figure 9: Reduce operation: one rank receives the reduction of input
 values across ranks
 
 </div>
@@ -607,7 +693,7 @@ class x2,xp0,xp1,xp2,xp3 blue
 class xp, text
 ```
 
-Figure 8: `broadcast` (send) a tensor <code>$x$</code> from one rank to
+Figure 10: `broadcast` (send) a tensor <code>$x$</code> from one rank to
 all ranks
 
 </div>
@@ -675,7 +761,7 @@ class x2, blue
 class x3, yellow
 ```
 
-Figure 9: Gathers tensors from the whole group in a list.
+Figure 11: Gathers tensors from the whole group in a list.
 
 </div>
 
@@ -731,7 +817,7 @@ class x2,xp2, blue
 class x3,xp3, yellow
 ```
 
-Figure 10: Scatters a list of tensors to the whole group
+Figure 12: Scatters a list of tensors to the whole group
 
 </div>
 
@@ -796,7 +882,7 @@ classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,co
 class 0,1,2,3,N,X,CKPT block
 ```
 
-Figure 11: To ensure all workers have the same copies, we load on
+Figure 13: To ensure all workers have the same copies, we load on
 `RANK==0` and `broadcast`
 
 </div>
@@ -865,7 +951,7 @@ Figure 11: To ensure all workers have the same copies, we load on
 
 <img src="./assets/zero.png" class="r-stretch" />
 
-Figure 12: [DeepSpeed](deepspeed.ai) +
+Figure 14: [DeepSpeed](deepspeed.ai) +
 [`ZeRO`](https://www.deepspeed.ai/tutorials/zero-offload/)
 
 </div>
@@ -882,7 +968,7 @@ Figure 12: [DeepSpeed](deepspeed.ai) +
 
 ![](assets/fsdp.png)
 
-Figure 13: FSDP Workflow.
+Figure 15: FSDP Workflow.
 [Source](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
 
 </div>
@@ -963,7 +1049,7 @@ class a1, blue
 class b1, yellow
 ```
 
-Figure 14: Pipeline Parallelism
+Figure 16: Pipeline Parallelism
 
 </div>
 
@@ -980,6 +1066,19 @@ Figure 14: Pipeline Parallelism
 ### Tensor Parallel (TP)
 
 <div>
+
+</div>
+
+<div class="notes">
+
+- Split up network over multiple workers
+- Each receives disjoint subset
+- All communication associated with subsets are distributed
+- Communication whenever dataflow between two subsets
+- Typically **more complicated** to implement than data parallel
+  training
+- Suitable when the model is too large to fit onto a single device (CPU
+  / GPU)
 
 </div>
 
@@ -1017,7 +1116,7 @@ flowchart LR
   t2("`x₂`") --> X2
 ```
 
-Figure 17
+Figure 19
 
 </div>
 
@@ -1039,7 +1138,7 @@ Figure 17
 
 ![](assets/parallelism-tp-parallel_gemm.png)
 
-Figure 18: Tensor Parallel GEMM. This information is based on (the much
+Figure 20: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1054,13 +1153,15 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 19: Figure taken from [3D parallelism: Scaling to
+Figure 21: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
 </div>
 
 ### Deciding on a Parallelism Strategy
+
+<div class="panel-tabset">
 
 #### Single GPU
 
@@ -1119,13 +1220,15 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
   - **NOTE**: `TP` is almost *always* used within a single node, e.g.  
     `TP <= GPUS_PER_NODE`
 
+</div>
+
 ## 🦙 Large Language Models
 
 <div id="fig-llms">
 
 ![](./assets/llms.gif)
 
-Figure 20: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 22: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1136,7 +1239,7 @@ community~~ **world** by storm[^3].
 
 ![](./assets/emergent-abilities.gif)
 
-Figure 21: See Wei et al. (2022), Yao et al. (2023)
+Figure 23: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
@@ -1168,7 +1271,7 @@ Figure 21: See Wei et al. (2022), Yao et al. (2023)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 22: **Pre-training**: Virtually *all of the compute* used during
+Figure 24: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1199,7 +1302,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 23: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 25: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1214,7 +1317,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 24: Language Model trained for causal language modeling[^6].
+Figure 26: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1224,7 +1327,7 @@ Figure 24: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 25: Language Model trained for causal language modeling[^7].
+Figure 27: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1290,7 +1393,7 @@ Figure 25: Language Model trained for causal language modeling[^7].
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 26: Example: using [🍋
+Figure 28: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1302,7 +1405,7 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 27: The simplest, fastest repository for training / finetuning
+Figure 29: The simplest, fastest repository for training / finetuning
 GPT based models. Figure from
 [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
@@ -1650,7 +1753,7 @@ At lie my lord with the me an arms be a s
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
 
-Figure 28: Training a LLM to talk like Shakespeare using
+Figure 30: Training a LLM to talk like Shakespeare using
 [saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>
