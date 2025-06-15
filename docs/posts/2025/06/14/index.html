@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.14">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sam Foreman">
+<meta name="dcterms.date" content="2025-06-14">
+<meta name="description" content="Building PyTorch 2.8 from source on Intel Aurora supercomputer with Micromamba and Intel OneAPI.">
+
+<title>🏗️ Building PyTorch 2.8 from Source on Aurora – Sam Foreman</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../posts/2025/06/01/index.html" rel="next">
+<link href="../../../../posts/2025/06/index.html" rel="prev">
+<link href="../../../../assets/favicon-sf.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-89a7970e3d7244a05acd222856ff4956.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2ae9922f953a8b00cbfa2128ca133f49.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-55671b534d610fc379a95d2f6e3ccb82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-c6d24d558912becc386986327224aa38.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "?",
+    "H"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700&amp;family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&amp;family=IBM+Plex+Sans+Condensed&amp;family=IBM+Plex+Mono&amp;display=swap" rel="stylesheet">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+<!-- End Google Tag Manager -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../css/custom.css">
+<link rel="stylesheet" href="../../../../css/svgbob.css">
+<link rel="stylesheet" href="../../../../static/fonts/MIosevkaQp/MIosevkaQp.css">
+<link rel="stylesheet" href="../../../../static/fonts/MIosevkaterm/MIosevkaTerm.css">
+<meta property="og:title" content="🏗️ Building PyTorch 2.8 from Source on Aurora – Sam Foreman">
+<meta property="og:description" content="Building PyTorch 2.8 from source on Intel Aurora supercomputer with Micromamba and Intel OneAPI.">
+<meta property="og:image" content="https://samforeman.me/posts/2025/06/14/assets/thumbnail.png">
+<meta property="og:site_name" content="Sam Foreman">
+<meta name="twitter:title" content="🏗️ Building PyTorch 2.8 from Source on Aurora – Sam Foreman">
+<meta name="twitter:description" content="Building PyTorch 2.8 from source on Intel Aurora supercomputer with Micromamba and Intel OneAPI.">
+<meta name="twitter:image" content="https://samforeman.me/posts/2025/06/14/assets/thumbnail.png">
+<meta name="twitter:site" content="saforem2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="🏗️ Building PyTorch 2.8 from Source on Aurora">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2025-06-14">
+<meta name="citation_cover_date" content="2025-06-14">
+<meta name="citation_year" content="2025">
+<meta name="citation_online_date" content="2025-06-14">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/posts/2025/06/14/">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=HiPerRAG: High-performance retrieval augmented generation for scientific insights;,citation_author=Ozan Gokdemir;,citation_author=Carlo Siebenschuh;,citation_author=Alexander Brace;,citation_author=Azton Wells;,citation_author=Brian Hsu;,citation_author=Kyle Hippe;,citation_author=Priyanka V. Setty;,citation_author=Aswathy Ajith;,citation_author=J. Gregory Pauloski;,citation_author=Varuni Sastry;,citation_author=Sam Foreman;,citation_author=Huihuo Zheng;,citation_author=Heng Ma;,citation_author=Bharat Kale;,citation_author=Nicholas Chia;,citation_author=Thomas Gibbs;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Francis J. Alexander;,citation_author=Anima Anandkumar;,citation_author=Ian Foster;,citation_author=Rick Stevens;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2505.04846;">
+<meta name="citation_reference" content="citation_title=MOFA: Discovering materials for carbon capture with a GenAI- and simulation-based workflow;,citation_author=Xiaoli Yan;,citation_author=Nathaniel Hudson;,citation_author=Hyun Park;,citation_author=Daniel Grzenda;,citation_author=J. Gregory Pauloski;,citation_author=Marcus Schwarting;,citation_author=Haochen Pan;,citation_author=Hassan Harb;,citation_author=Samuel Foreman;,citation_author=Chris Knight;,citation_author=Tom Gibbs;,citation_author=Kyle Chard;,citation_author=Santanu Chaudhuri;,citation_author=Emad Tajkhorshid;,citation_author=Ian Foster;,citation_author=Mohamad Moosavi;,citation_author=Logan Ward;,citation_author=E. A. Huerta;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2501.10651;">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_abstract=We present a scalable, end-to-end workflow for protein design. By augmenting protein sequences with natural language descriptions of their biochemical properties, we train generative models that can be preferentially aligned with protein fitness landscapes. Through complex experimental- and simulation-based observations, we integrate these measures as preferred parameters for generating new protein variants and demonstrate our workflow on five diverse supercomputers. We achieve &amp;amp;amp;gt;1 ExaFLOPS sustained performance in mixed precision on each supercomputer and a maximum sustained performance of 4.11 ExaFLOPS and peak performance of 5.57 ExaFLOPS. We establish the scientific performance of our model on two tasks: (1) across a predetermined benchmark dataset of deep mutational scanning experiments to optimize the fitness-determining mutations in the yeast protein HIS7, and (2) in optimizing the design of the enzyme malate dehydrogenase to achieve lower activation barriers (and therefore increased catalytic rates) using simulation data. Our implementation thus sets high watermarks for multimodal protein design workflows.;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinö Hatanpää;,citation_author=Varuni K. Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=Bharat Kale;,citation_author=Carla M. Mann;,citation_author=Heng Ma;,citation_author=Yun-Hsuan Cheng;,citation_author=Yuliana Zamora;,citation_author=Shengchao Liu;,citation_author=Chaowei Xiao;,citation_author=Murali Emani;,citation_author=Tom Gibbs;,citation_author=Mahidhar Tatineni;,citation_author=Deepak Canchi;,citation_author=Jerome Mitchell;,citation_author=Koichi Yamada;,citation_author=Maria Garzaran;,citation_author=Michael E. Papka;,citation_author=Ian Foster;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://doi.org/10.1109/SC41406.2024.00013;,citation_doi=10.1109/SC41406.2024.00013;,citation_isbn=9798350352917;,citation_conference_title=Proceedings of the international conference for high performance computing, networking, storage, and analysis;,citation_conference=IEEE Press;,citation_series_title=SC ’24;">
+<meta name="citation_reference" content="citation_title=Quality measures for dynamic graph generative models;,citation_author=Ryien Hosseini;,citation_author=Filippo Simini;,citation_author=Venkatram Vishwanath;,citation_author=Rebecca Willett;,citation_author=Henry Hoffmann;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://openreview.net/forum?id=8bjspmAMBk;,citation_conference_title=The thirteenth international conference on learning representations;">
+<meta name="citation_reference" content="citation_title=Superconductivity of in and sn samples;,citation_author=George Deamont;,citation_author=Sam Foreman;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=RG-inspired machine learning for lattice field theory;,citation_author=Sam Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_volume=175;,citation_conference_title=EPJ web of conferences;,citation_conference=EDP Sciences;">
+<meta name="citation_reference" content="citation_title=Large energy density in three-plate nanocapacitors due to coulomb blockade;,citation_author=A Hubler;,citation_author=S Foreman;,citation_author=J Liu;,citation_author=L Wortsmann;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=10;,citation_volume=123;,citation_journal_title=Journal of Applied Physics;,citation_publisher=AIP Publishing;">
+<meta name="citation_reference" content="citation_title=Examples of renormalization group transformations for image sets;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=5;,citation_volume=98;,citation_journal_title=Physical Review E;,citation_publisher=American Physical Society;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the Ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_doi=10.22323/1.334.0245;,citation_volume=LATTICE2018;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_conference_title=Lattice 2018;">
+<meta name="citation_reference" content="citation_title=Learning better physics: A machine learning approach to lattice gauge theory;,citation_author=Samuel Alfred Foreman;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_dissertation_institution=University of Iowa;">
+<meta name="citation_reference" content="citation_title=Machine learning and neural networks for field theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
+<meta name="citation_reference" content="citation_title=HMC with normalizing flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_journal_title=arXiv preprint arXiv:2112.01586;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy storage in quantum resonators;,citation_author=Jiaqi Liu;,citation_author=Alfred W Hubler;,citation_author=Samuel Alfred Foreman;,citation_author=Katharina Ott;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;">
+<meta name="citation_reference" content="citation_title=Applications of machine learning to lattice quantum field theory;,citation_author=Denis Boyda;,citation_author=Salvatore Calı̀;,citation_author=Sam Foreman;,citation_author=Lena Funcke;,citation_author=Daniel C Hackett;,citation_author=Yin Lin;,citation_author=Gert Aarts;,citation_author=Andrei Alexandru;,citation_author=Xiao-Yong Jin;,citation_author=Biagio Lucini;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_journal_title=arXiv preprint arXiv:2202.05838;">
+<meta name="citation_reference" content="citation_title=Lattice QCD and particle physics;,citation_author=Andreas S Kronfeld;,citation_author=Tanmoy Bhattacharya;,citation_author=Thomas Blum;,citation_author=Norman H Christ;,citation_author=Carleton DeTar;,citation_author=William Detmold;,citation_author=Robert Edwards;,citation_author=Anna Hasenfratz;,citation_author=Huey-Wen Lin;,citation_author=Swagato Mukherjee;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2207.07641;,citation_journal_title=arXiv preprint arXiv:2207.07641;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_issue=6;,citation_volume=37;,citation_journal_title=The International Journal of High Performance Computing Applications;,citation_publisher=SAGE Publications Sage UK: London, England;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo;,citation_author=Sam Foreman;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_conference_title=The international symposium on lattice field theory;">
+<meta name="citation_reference" content="citation_title=Superconductivity of in and sn samples;,citation_author=George Deamont;,citation_author=Sam Foreman;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=A comprehensive performance study of large language models on novel AI accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04607;,citation_journal_title=arXiv preprint arXiv:2310.04607;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04610;,citation_journal_title=arXiv preprint arXiv:2310.04610;">
+<meta name="citation_reference" content="citation_title=Protein generation via genome-scale language models with bio-physical scoring;,citation_author=Gautham Dharuman;,citation_author=Logan Ward;,citation_author=Heng Ma;,citation_author=Priyanka V Setty;,citation_author=Ozan Gokdemir;,citation_author=Sam Foreman;,citation_author=Murali Emani;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Kristopher Keipert;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_conference_title=Proceedings of the SC’23 workshops of the international conference on high performance computing, network, storage, and analysis;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2312.08936;,citation_journal_title=arXiv preprint arXiv:2312.08936;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 computational frontier CompF03 topical group report: Machine learning;,citation_author=Phiala Shanahan;,citation_author=Kazuhiro Terao;,citation_author=Daniel Whiteson;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;,citation_journal_title=arXiv preprint arXiv:2209.07559;">
+<meta name="citation_reference" content="citation_title=Thorough characterization and analysis of large transformer model training at-scale;,citation_author=Scott Cheng;,citation_author=Jun-Liang Lin;,citation_author=Murali Emani;,citation_author=Siddhisanket Raskar;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Venkatram Vishwanath;,citation_author=Mahmut Taylan Kandemir;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=8;,citation_journal_title=Proceedings of the ACM on Measurement and Analysis of Computing Systems;,citation_publisher=ACM New York, NY, USA;">
+<meta name="citation_reference" content="citation_title=Communities through energy justice projects;,citation_author=Mary Ann Leung;,citation_author=Katharine Cahill;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois Curfman McInnes;,citation_author=Suzanne Parete-Koon;,citation_author=Subil Abraham;,citation_author=Lacy Beach Barrier;,citation_author=Gladys Chen;,citation_author=Lizanne DeStefano;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science;">
+<meta name="citation_reference" content="citation_title=Applications of a foundation model approach for weather and climate;,citation_author=Troy Arcomano;,citation_author=Alexander Wikner;,citation_author=Romit Maulik;,citation_author=Veerabhadra Rao Kotamarthi;,citation_author=Sam Foreman;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_volume=2023;,citation_conference_title=AGU fall meeting abstracts;">
+<meta name="citation_reference" content="citation_title=Toward a holistic performance evaluation of large language models across diverse ai accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_author=Sanjif Shanmugavelu;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 IEEE international parallel and distributed processing symposium workshops (IPDPSW);,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=Intro to HPC bootcamp: Engaging new communities through energy justice projects;,citation_author=Suzanne Parete-Koon;,citation_author=Michael Sandoval;,citation_author=Kellen Leland;,citation_author=Subil Abraham;,citation_author=Mary Ann Leung;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois McInnes;,citation_author=Sreeranjani Ramprakash;,citation_author=Lacy Beach Barrier;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science Education;,citation_publisher=Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States);">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinä Hatanpää;,citation_author=Varuni K Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 SC24: International conference for high performance computing, networking, storage and analysis SC;,citation_conference=IEEE Computer Society;">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=Connor Holmes;,citation_author=Martin Cai;,citation_author=Adam Ghanem;,citation_author=Zhongzhu Zhou;,citation_author=Yuxiong He;,citation_author=Pete Luferenko;,citation_author=Divya Kumar;,citation_author=Jonathan Weyn;,citation_author=Ruixiong Zhang;,citation_author=Sylwester Klocek;,citation_author=Volodymyr Vragov;,citation_author=Mohammed AlQuraishi;,citation_author=Gustaf Ahdritz;,citation_author=Christina Floristean;,citation_author=Cristina Negri;,citation_author=Rao Kotamarthi;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_author=Sam Foreman;,citation_author=Kyle Hippe;,citation_author=Troy Arcomano;,citation_author=Romit Maulik;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot;,citation_author=Murali Emani;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Prasanna Balaprakash;,citation_author=Gina Tourassi;,citation_author=John Gounley;,citation_author=Heidi Hanson;,citation_author=Thomas E Potok;,citation_author=Massimiliano Lupo Pasini;,citation_author=Kate Evans;,citation_author=Dan Lu;,citation_author=Dalton Lunga;,citation_author=Junqi Yin;,citation_author=Sajal Dash;,citation_author=Feiyi Wang;,citation_author=Mallikarjun Shankar;,citation_author=Isaac Lyngaas;,citation_author=Xiao Wang;,citation_author=Guojing Cong;,citation_author=Pei Zhang;,citation_author=Ming Fan;,citation_author=Siyan Liu;,citation_author=Adolfy Hoisie;,citation_author=Shinjae Yoo;,citation_author=Yihui Ren;,citation_author=William Tang;,citation_author=Kyle Felker;,citation_author=Alexey Svyatkovskiy;,citation_author=Hang Liu;,citation_author=Ashwin Aji;,citation_author=Angela Dalton;,citation_author=Michael Schulte;,citation_author=Karl Schulz;,citation_author=Yuntian Deng;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Anima Anandkumar;,citation_author=Rick Stevens;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04610;">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2105.03418;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James Osborn;,citation_publication_date=00;,citation_cover_date=00;,citation_year=0;,citation_conference_title=40th international symposium on lattice field theory (lattice 2023) (batavia, IL, united states, 07/31/2023 - 08/04/2023);">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=S. Foreman;,citation_author=X. Jin;,citation_author=J. Osborn;,citation_publication_date=2022-07;,citation_cover_date=2022-07;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_conference_title=The 38th international symposium on lattice field theory;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a
+           ;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../../talks/index.html" aria-current="page"> 
+<span class="menu-text">talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../posts/index.html"> 
+<span class="menu-text">posts</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">projects</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../../../../projects/index.html">
+ <span class="dropdown-text">📚 All Projects</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ezpz">
+ <span class="dropdown-text">🍋 <code>ezpz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/l2hmc-qcd">
+ <span class="dropdown-text">🟥 <code>l2hmc-qcd</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/argonne-lcf/Megatron-DeepSpeed)">
+ <span class="dropdown-text">🤖 <code>Megatron-DeepSpeed</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/wordplay">
+ <span class="dropdown-text">💬 <code>wordplay</code> 🎮</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.alcf.anl.gov/alcf-ai-science-training-series?">
+ <span class="dropdown-text">🎓 <code>ai-science-training</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/enrich">
+ <span class="dropdown-text">💸 <code>enrich</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/ambivalent">
+ <span class="dropdown-text">🤷🏻‍♂️<code>ambivalent</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://saforem2.github.io/climate-analysis">
+ <span class="dropdown-text">🌍 <code>climate-analysis</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/glitz">
+ <span class="dropdown-text">🎨 <code>glitz</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/personal_site">
+ <span class="dropdown-text">🙋🏻<code>personal_site</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/saforem2/notes-demo">
+ <span class="dropdown-text">🗒️ <code>Notes-Demo</code></span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/saforem2/personal_site"> 
+<span class="menu-text"><span class="icon" style="font-size: 1.25rem; color:var(--bs-nav-link-color);"><iconify-icon role="img" inline="" icon="ph:github-logo" aria-label="Icon github-logo from ph Iconify.design set." title="Icon github-logo from ph Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.xml"> 
+<span class="menu-text"><span class="icon" style="font-size: 1.25rem; color:var(--bs-nav-link-color);"><iconify-icon role="img" inline="" icon="ph:rss" aria-label="Icon rss from ph Iconify.design set." title="Icon rss from ph Iconify.design set."></iconify-icon></span></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../posts/index.html">📬 Posts</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/index.html">📆 2025</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/06/index.html">06</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/06/14/index.html">🏗️ Building PyTorch 2.8 from Source on Aurora</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📚 Projects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../posts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📬 Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💅 How to Make Dope Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/ezpz-at-alcf/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🍋 <code>ezpz</code> @ ALCF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/ezpz-v1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📝 ezpz-v1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/resume/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">👤 Résumé</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/svgbob/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🫥 svgbob</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/torchtune-aurora/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🪛 Torchtune on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/torchtune-patch-aurora/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚑 Torchtune Patch on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../posts/2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📆 2025</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">04</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2025/04/28/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔥 Building PyTorch 2.6 from Source on Aurora</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">05</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2025/05/03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚧 Frameworks Issue with <code>numpy &gt; 2</code></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../posts/2025/06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2025/06/14/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">🏗️ Building PyTorch 2.8 from Source on Aurora</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2025/06/01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📰 Nice Headings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2025/06/02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🧜‍♀️ Mermaid</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../posts/AuroraGPT/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🤖 AuroraGPT</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/aurora-gpt/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏎️ Megatron-DeepSpeed on Intel XPU</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/checkpoints/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">💾 Converting Checkpoints</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/determinstic-flash-attn/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎰 Deterministic <code>flash-attn</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/flash-attn-sunspot/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📸 <code>flash-attn</code> on Sunspot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/long-sequences/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🚂 Loooooooong Sequence Lengths</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/mpi4py-reproducer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🐛 <code>mpi4py</code> bug on Sunspot</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/spike-skipper/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏔️ Spike Skipper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/AuroraGPT/startup-times/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🐢 Starting Up Distributed Training on Aurora</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">⚛️ AI for Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/ai-for-physics/diffusion/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎲 MCMC + Diffusion Sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">🎢 L2HMC for LQCD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/ai-for-physics/l2hmc-qcd/2dU1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎢 <code>l2hmc-qcd</code> Example: 2D U(1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">4dSU3nb</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/ai-for-physics/l2hmc-qcd/4dSU3nb/index-broken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🕸️ l2hmc-qcd Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">📗 Jupyter</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏁 <code>l2hmc</code> Example: 2D <span class="math inline">U(1)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">L2hmc</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/jupyter/l2hmc/4dSU3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🔳 <code>l2hmc-qcd</code> Example: 4D SU(3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../talks/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🎙️ Talks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/ai-for-science-2024/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parallel Training Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deep Learning and Foundation Models at Scale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/aurora-gpt-fm-for-electric-grid/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AuroraGPT: Foundation Models for Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/hpc-user-forum/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AuroraGPT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/lattice23/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLMC: Machine Learning Monte Carlo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/llms-at-scale/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training LLMs at Scale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/llms-on-polaris/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLMs on Polaris</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/test/slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test Rendering on Mobile</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">AuroraGPT</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AuroraGPT: ANL’s General Purpose Scientific LLM</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../talks/incite-hackathon-2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ALCF Incite Hackathon 2025</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/incite-hackathon-2025/AuroraGPT/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLMs on Aurora: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../talks/incite-hackathon-2025/ezpz/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLMs on Aurora: Hands-On</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link active" data-scroll-target="#helper-functions">🚑 Helper Functions</a></li>
+  <li><a href="#shell-environment" id="toc-shell-environment" class="nav-link" data-scroll-target="#shell-environment">🏖️ Shell Environment</a></li>
+  <li><a href="#build-libraries" id="toc-build-libraries" class="nav-link" data-scroll-target="#build-libraries">🔨 Build Libraries</a>
+  <ul class="collapse">
+  <li><a href="#pytorch" id="toc-pytorch" class="nav-link" data-scroll-target="#pytorch">PyTorch</a></li>
+  <li><a href="#intel-libraries" id="toc-intel-libraries" class="nav-link" data-scroll-target="#intel-libraries">Intel Libraries</a></li>
+  <li><a href="#mpi4py-install" id="toc-mpi4py-install" class="nav-link" data-scroll-target="#mpi4py-install"><code>mpi4py</code> Install</a></li>
+  </ul></li>
+  <li><a href="#verify-installation" id="toc-verify-installation" class="nav-link" data-scroll-target="#verify-installation">✅ Verify Installation</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/2025/06/14/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/2025/06/14/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../posts/index.html">📬 Posts</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/index.html">📆 2025</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/06/index.html">06</a></li><li class="breadcrumb-item"><a href="../../../../posts/2025/06/14/index.html">🏗️ Building PyTorch 2.8 from Source on Aurora</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">🏗️ Building PyTorch 2.8 from Source on Aurora</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">pytorch</div>
+    <div class="quarto-category">Aurora</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Building PyTorch 2.8 from source on Intel Aurora supercomputer with Micromamba and Intel OneAPI.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://samforeman.me">Sam Foreman</a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://alcf.anl.gov/about/people/sam-foreman">
+            </a><a href="https://alcf.anl.gov/about/people/sam-foreman">ALCF</a>
+            
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 14, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 15, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="helper-functions" class="level2">
+<h2 class="anchored" data-anchor-id="helper-functions">🚑 Helper Functions</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">tstamp()</span> <span class="kw">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="fu">date</span> +<span class="st">"%Y-%m-%d-%H%M%S"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">}</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">get_day()</span> <span class="kw">{</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="fu">date</span> +<span class="st">"%Y-%m-%d"</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="shell-environment" class="level2">
+<h2 class="anchored" data-anchor-id="shell-environment">🏖️ Shell Environment</h2>
+<ol type="1">
+<li><p>Load <code>frameworks</code> module:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">module</span> load frameworks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Deactivate <code>conda</code> environment:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create new <code>conda</code> environment:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">ENV_PATH</span><span class="op">=</span><span class="st">"/flare/datascience/foremans/miniconda/2025-06-15"</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">conda</span> create <span class="at">--prefix</span> <span class="st">"</span><span class="va">${ENV_PATH}</span><span class="st">"</span> <span class="at">--y</span> <span class="at">--solver</span><span class="op">=</span>libmamba <span class="at">--verbose</span> python=3.12</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">conda</span> activate <span class="st">"</span><span class="va">${ENV_PATH}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="build-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="build-libraries">🔨 Build Libraries</h2>
+<section id="pytorch" class="level3">
+<h3 class="anchored" data-anchor-id="pytorch">PyTorch</h3>
+<ol type="1">
+<li><p>Clone <a href="https://github.com/pytorch/pytorch">pytorch/<code>pytorch</code></a></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">git</span> clone https://github.com/pytorch/pytorch</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">cd</span> pytorch</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">git</span> submodule sync</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Install dependencies:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install cmake ninja</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="ex">python3</span> <span class="at">-m</span> pip install mkl-static mkl-include</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Make triton:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">export</span> <span class="va">USE_XPU</span><span class="op">=</span>1  <span class="co"># for Intel GPU support</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">make</span> triton</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Set environment variables for PyTorch build:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> gcc<span class="va">)</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">CC</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> g++<span class="va">)</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">CXX</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">export</span> <span class="va">REL_WITH_DEB_INFO</span><span class="op">=</span>1</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="bu">export</span> <span class="va">USE_CUDA</span><span class="op">=</span>0</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bu">export</span> <span class="va">USE_ROCM</span><span class="op">=</span>0</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">export</span> <span class="va">USE_MKLDNN</span><span class="op">=</span>1</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="bu">export</span> <span class="va">USE_MKL</span><span class="op">=</span>1</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bu">export</span> <span class="va">USE_ROCM</span><span class="op">=</span>0</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bu">export</span> <span class="va">USE_CUDNN</span><span class="op">=</span>0</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bu">export</span> <span class="va">USE_FBGEMM</span><span class="op">=</span>1</span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="bu">export</span> <span class="va">USE_NNPACK</span><span class="op">=</span>1</span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bu">export</span> <span class="va">USE_QNNPACK</span><span class="op">=</span>1</span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="bu">export</span> <span class="va">USE_NCCL</span><span class="op">=</span>0</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="bu">export</span> <span class="va">USE_CUDA</span><span class="op">=</span>0</span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="bu">export</span> <span class="va">BUILD_CAFFE2_OPS</span><span class="op">=</span>0</span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="bu">export</span> <span class="va">BUILD_TEST</span><span class="op">=</span>0</span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="bu">export</span> <span class="va">USE_DISTRIBUTED</span><span class="op">=</span>1</span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="bu">export</span> <span class="va">USE_NUMA</span><span class="op">=</span>0</span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="bu">export</span> <span class="va">USE_MPI</span><span class="op">=</span>1</span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="bu">export</span> <span class="va">USE_XPU</span><span class="op">=</span>1</span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="bu">export</span> <span class="va">USE_XCCL</span><span class="op">=</span>1</span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="bu">export</span> <span class="va">INTEL_MKL_DIR</span><span class="op">=</span><span class="va">$MKLROOT</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="bu">export</span> <span class="va">USE_AOT_DEVLIST</span><span class="op">=</span><span class="st">'pvc'</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="bu">export</span> <span class="va">TORCH_XPU_ARCH_LIST</span><span class="op">=</span><span class="st">'pvc'</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="bu">export</span> <span class="va">OCLOC_VERSION</span><span class="op">=</span>24.39.1</span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="fu">which</span> <span class="at">-a</span> gcc</span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="fu">which</span> <span class="at">-a</span> g++</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Build PyTorch (takes ~ 30 mins):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"torch-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">python3</span> <span class="at">-m</span> pip install dist/<span class="pp">*</span>.whl</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>[Optional] Install {<code>torchvision</code>, <code>torchaudio</code>, <code>torchdata</code>} with no dependencies:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install torchvision torchaudio <span class="at">--no-deps</span> <span class="at">--index-url</span> https://download.pytorch.org/whl/xpu</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="ex">python3</span> <span class="at">-m</span> pip install torchdata <span class="at">--no-deps</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="intel-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="intel-libraries">Intel Libraries</h3>
+<ol type="1">
+<li><p><a href="https://github.com/intel/intel-extension-for-pytorch">intel/<code>intel-extension-for-pytorch</code></a></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> clone https://github.com/intel/intel-extension-for-pytorch</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">cd</span> intel-extension-for-pytorch</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">git</span> checkout xpu-main</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">git</span> submodule sync</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> gcc<span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">CC</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> g++<span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">CXX</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="bu">export</span> <span class="va">MAX_JOBS</span><span class="op">=</span>48</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">export</span> <span class="va">INTELONEAPIROOT</span><span class="op">=</span><span class="st">"</span><span class="va">${ONEAPI_ROOT}</span><span class="st">"</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"ipex-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="ex">python3</span> <span class="at">-m</span> pip install dist/<span class="pp">*</span>.whl</span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><a href="https://github.com/intel/torch-ccl">intel/<code>torch-ccl</code></a></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> clone https://github.com/intel/torch-ccl</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">cd</span> torch-ccl</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">git</span> checkout c27ded5</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">git</span> submodule sync</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># see:</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># https://github.com/intel/torch-ccl/blob/c27ded5190a6b115ec68c7a8c28f40cfe7f0a32a/version.txt</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="va">ONECCL_BINDINGS_FOR_PYTORCH_BACKEND</span><span class="op">=</span>xpu <span class="dt">\</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="va">INTELONEAPIROOT</span><span class="op">=</span><span class="st">"</span><span class="va">${ONEAPI_ROOT}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="va">USE_SYSTEM_ONECCL</span><span class="op">=</span>ON <span class="dt">\</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>  <span class="va">COMPUTE_BACKEND</span><span class="op">=</span>dpcpp <span class="ex">\ </span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>  <span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"torch-ccl-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="ex">python3</span> <span class="at">-m</span> pip install dist/oneccl_bind_pt-2.8.0+xpu-cp312-cp312-linux_x86_64.whl</span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="mpi4py-install" class="level3">
+<h3 class="anchored" data-anchor-id="mpi4py-install"><code>mpi4py</code> Install</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">git</span> clone https://github.com/mpi4py/mpi4py</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="bu">cd</span> mpi4py</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="va">CC</span><span class="op">=</span>mpicc <span class="va">CXX</span><span class="op">=</span>mpicxx <span class="ex">python3</span> setup.py build <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="va">CC</span><span class="op">=</span>mpicc <span class="va">CXX</span><span class="op">=</span>mpicxx <span class="ex">python3</span> setup.py install <span class="kw">|&amp;</span> <span class="fu">tee</span> install.log</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="verify-installation" class="level2">
+<h2 class="anchored" data-anchor-id="verify-installation">✅ Verify Installation</h2>
+<ul>
+<li><p>Command:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="ex">python3</span> <span class="at">-c</span> <span class="st">'import torch; print(torch.__file__); print(*torch.__config__.show().split("\n"), sep="\n") ; print(f"{torch.__version__=}"); print(f"{torch.xpu.is_available()=}"); print(f"{torch.xpu.device_count()=}") ; import torch.distributed; print(f"{torch.distributed.is_xccl_available()=}"); import torch; import intel_extension_for_pytorch as ipex; print(f"{torch.__version__=}"); print(f"{ipex.__version__=}"); import oneccl_bindings_for_pytorch as oneccl_bpt; print(f"{oneccl_bpt.__version__=}") ; [print(f"[{i}]: {torch.xpu.get_device_properties(i)}") for i in range(torch.xpu.device_count())]'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Output:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">/lus/flare/projects/datascience/foremans/micromamba/envs/2025-06-12/lib/python3.12/site-packages/torch/__init__.py</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="ex">PyTorch</span> built with:</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="ex">-</span> GCC 13.3</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="ex">-</span> C++ Version: 201703</span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="ex">-</span> Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">oneAPI</span> Math Kernel Library Version 2025.0.1-Product Build 20241031 for Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">64</span> architecture applications</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="ex">-</span> Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">MKL-DNN</span> v3.7.1 <span class="er">(</span><span class="ex">Git</span> Hash 8d263e693366ef8db40acc569cc7d8edf644556d<span class="kw">)</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="ex">-</span> OpenMP 201511 <span class="er">(</span><span class="ex">a.k.a.</span> OpenMP 4.5<span class="kw">)</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="ex">-</span> LAPACK is enabled <span class="er">(</span><span class="ex">usually</span> provided by MKL<span class="kw">)</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="ex">-</span> NNPACK is enabled</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="ex">-</span> CPU capability usage: AVX512</span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="ex">XPU</span> backend  <span class="at">-</span> Build settings: BLAS_INFO=mkl, BUILD_TYPE=Debug, COMMIT_SHA=ce9ba071fd29013e72100dd97728d01c860720d9, CXX_COMPILER=/opt/aurora/24.347.0/spack/unified/0.9.2/install/linux-sles15-x86_64/gcc-13.3.0/gcc-13.3.0-4enwbrb/bin/g++, CXX_FLAGS= <span class="at">-fvisibility-inlines-hidden</span> <span class="at">-DUSE_PTHREADPOOL</span> <span class="at">-DUSE_KINETO</span> <span class="at">-DLIBKINETO_NOCUPTI</span> <span class="at">-DLIBKINETO_NOROCTRACER</span> <span class="at">-DLIBKINETO_NOXPUPTI</span><span class="op">=</span>OFF <span class="at">-DUSE_FBGEMM</span> <span class="at">-DUSE_PYTORCH_QNNPACK</span> <span class="at">-DUSE_XNNPACK</span> <span class="at">-DSYMBOLICATE_MOBILE_DEBUG_HANDLE</span> <span class="at">-O2</span> <span class="at">-fPIC</span> <span class="at">-DC10_NODEPRECATED</span> <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span><span class="op">=</span>return-type <span class="at">-Werror</span><span class="op">=</span>non-virtual-dtor <span class="at">-Werror</span><span class="op">=</span>range-loop-construct <span class="at">-Werror</span><span class="op">=</span>bool-operation <span class="at">-Wnarrowing</span> <span class="at">-Wno-missing-field-initializers</span> <span class="at">-Wno-unknown-pragmas</span> <span class="at">-Wno-unused-parameter</span> <span class="at">-Wno-strict-overflow</span> <span class="at">-Wno-strict-aliasing</span> <span class="at">-Wno-stringop-overflow</span> <span class="at">-Wsuggest-override</span> <span class="at">-Wno-psabi</span> <span class="at">-Wno-error</span><span class="op">=</span>old-style-cast <span class="at">-fdiagnostics-color</span><span class="op">=</span>always <span class="at">-faligned-new</span> <span class="at">-Wno-maybe-uninitialized</span> <span class="at">-fno-math-errno</span> <span class="at">-fno-trapping-math</span> <span class="at">-Werror</span><span class="op">=</span>format <span class="at">-Wno-dangling-reference</span> <span class="at">-Wno-error</span><span class="op">=</span>dangling-reference <span class="at">-DUSE_XPU</span> <span class="at">-Wno-stringop-overflow,</span> LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.8.0, USE_CUDA=0, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=1, USE_MPI=1, USE_NCCL=OFF, USE_NNPACK=1,USE_OPENMP=ON, USE_ROCM=0, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=1, USE_XPU=1,</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="ex">torch.__version__=</span><span class="st">'2.8.0a0+gitce9ba07'</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="fu">torch.xpu.is_available()</span><span class="ex">=True</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="fu">torch.xpu.device_count()</span><span class="ex">=12</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="fu">torch.distributed.is_xccl_available()</span><span class="ex">=True</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="ex">[W614</span> 13:30:37.237440877 OperatorEntry.cpp:217] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
+<span id="cb15-18"><a href="#cb15-18"></a>  <span class="ex">Overriding</span> a previously registered kernel for the same operator and the same dispatch key</span>
+<span id="cb15-19"><a href="#cb15-19"></a>  <span class="ex">operator:</span> aten::geometric_<span class="er">(</span><span class="ex">Tensor</span><span class="er">(</span><span class="ex">a!</span><span class="kw">)</span> <span class="ex">self,</span> float p, <span class="pp">*</span>, Generator<span class="pp">?</span> generator=None<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> Tensor<span class="er">(</span><span class="ex">a!</span><span class="kw">)</span></span>
+<span id="cb15-20"><a href="#cb15-20"></a>    <span class="ex">registered</span> at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6</span>
+<span id="cb15-21"><a href="#cb15-21"></a>  <span class="ex">dispatch</span> key: XPU</span>
+<span id="cb15-22"><a href="#cb15-22"></a>  <span class="ex">previous</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37</span>
+<span id="cb15-23"><a href="#cb15-23"></a>      <span class="ex">new</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/intel/intel-extension-for-pytorch/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 <span class="er">(</span><span class="kw">function</span><span class="fu"> operator()</span><span class="kw">)</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="ex">torch.__version__=</span><span class="st">'2.8.0a0+gitce9ba07'</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="ex">ipex.__version__=</span><span class="st">'2.8.10+git57bb68a'</span></span>
+<span id="cb15-26"><a href="#cb15-26"></a><span class="ex">oneccl_bpt.__version__=</span><span class="st">'2.8.0+xpu'</span></span>
+<span id="cb15-27"><a href="#cb15-27"></a><span class="ex">[0]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="ex">[1]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="ex">[2]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="ex">[3]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a><span class="ex">[4]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-32"><a href="#cb15-32"></a><span class="ex">[5]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-33"><a href="#cb15-33"></a><span class="ex">[6]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-34"><a href="#cb15-34"></a><span class="ex">[7]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-35"><a href="#cb15-35"></a><span class="ex">[8]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-36"><a href="#cb15-36"></a><span class="ex">[9]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-37"><a href="#cb15-37"></a><span class="ex">[10]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-38"><a href="#cb15-38"></a><span class="ex">[11]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb15-39"><a href="#cb15-39"></a><span class="ex">took:</span> 0h:00m:20s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2025,
+  author = {Foreman, Sam},
+  title = {🏗️ {Building} {PyTorch} 2.8 from {Source} on {Aurora}},
+  date = {2025-06-14},
+  url = {https://samforeman.me/posts/2025/06/14/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Foreman, Sam. 2025. <span>“🏗️ Building PyTorch 2.8 from Source on
+Aurora.”</span> June 14, 2025. <a href="https://samforeman.me/posts/2025/06/14/">https://samforeman.me/posts/2025/06/14/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/samforeman\.me");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="dark">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "saforem2/personal_site";
+    script.dataset.repoId = "R_kgDOGbjyRw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../../posts/2025/06/index.html" class="pagination-link" aria-label="06">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">06</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../../posts/2025/06/01/index.html" class="pagination-link" aria-label="📰 Nice Headings">
+        <span class="nav-page-text">📰 Nice Headings</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">---</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="an">title:</span><span class="co"> "🏗️ Building PyTorch 2.8 from Source on Aurora"</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="an">description:</span><span class="co"> "Building PyTorch 2.8 from source on Intel Aurora supercomputer with Micromamba and Intel OneAPI."</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="an">date:</span><span class="co"> 2025-06-14</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="an">categories:</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">  - "pytorch"</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">  - "Aurora"</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="co">---</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="fu">## 🚑 Helper Functions</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a></span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="in">```bash</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="fu">tstamp()</span> <span class="kw">{</span></span>
+<span id="cb16-15"><a href="#cb16-15"></a>    <span class="fu">date</span> +<span class="st">"%Y-%m-%d-%H%M%S"</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="kw">}</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a></span>
+<span id="cb16-18"><a href="#cb16-18"></a><span class="fu">get_day()</span> <span class="kw">{</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a>    <span class="fu">date</span> +<span class="st">"%Y-%m-%d"</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="kw">}</span></span>
+<span id="cb16-21"><a href="#cb16-21"></a><span class="kw">```</span></span>
+<span id="cb16-22"><a href="#cb16-22"></a></span>
+<span id="cb16-23"><a href="#cb16-23"></a><span class="co">## 🏖️ Shell Environment</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a></span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="ex">1.</span> Load <span class="kw">`</span>frameworks<span class="kw">`</span> <span class="ex">module:</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a></span>
+<span id="cb16-27"><a href="#cb16-27"></a>   <span class="kw">```</span>bash</span>
+<span id="cb16-28"><a href="#cb16-28"></a>   <span class="ex">module</span> load frameworks</span>
+<span id="cb16-29"><a href="#cb16-29"></a>   <span class="kw">```</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a></span>
+<span id="cb16-31"><a href="#cb16-31"></a><span class="ex">2.</span> Deactivate <span class="kw">`</span>conda<span class="kw">`</span> <span class="ex">environment:</span></span>
+<span id="cb16-32"><a href="#cb16-32"></a></span>
+<span id="cb16-33"><a href="#cb16-33"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-34"><a href="#cb16-34"></a>    <span class="ex">conda</span> deactivate</span>
+<span id="cb16-35"><a href="#cb16-35"></a>    <span class="kw">```</span></span>
+<span id="cb16-36"><a href="#cb16-36"></a></span>
+<span id="cb16-37"><a href="#cb16-37"></a><span class="ex">3.</span> Create new <span class="kw">`</span>conda<span class="kw">`</span> <span class="ex">environment:</span></span>
+<span id="cb16-38"><a href="#cb16-38"></a></span>
+<span id="cb16-39"><a href="#cb16-39"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-40"><a href="#cb16-40"></a>    <span class="va">ENV_PATH</span><span class="op">=</span><span class="st">"/flare/datascience/foremans/miniconda/2025-06-15"</span></span>
+<span id="cb16-41"><a href="#cb16-41"></a>    <span class="ex">conda</span> create <span class="at">--prefix</span> <span class="st">"</span><span class="va">${ENV_PATH}</span><span class="st">"</span> <span class="at">--y</span> <span class="at">--solver</span><span class="op">=</span>libmamba <span class="at">--verbose</span> python=3.12</span>
+<span id="cb16-42"><a href="#cb16-42"></a>    <span class="ex">conda</span> activate <span class="st">"</span><span class="va">${ENV_PATH}</span><span class="st">"</span></span>
+<span id="cb16-43"><a href="#cb16-43"></a>    <span class="kw">```</span></span>
+<span id="cb16-44"><a href="#cb16-44"></a></span>
+<span id="cb16-45"><a href="#cb16-45"></a><span class="co">## 🔨 Build Libraries</span></span>
+<span id="cb16-46"><a href="#cb16-46"></a></span>
+<span id="cb16-47"><a href="#cb16-47"></a><span class="co">### PyTorch</span></span>
+<span id="cb16-48"><a href="#cb16-48"></a></span>
+<span id="cb16-49"><a href="#cb16-49"></a><span class="ex">1.</span> Clone <span class="pp">[</span><span class="ss">pytorch/`pytorch`</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://github.com/pytorch/pytorch</span><span class="kw">)</span></span>
+<span id="cb16-50"><a href="#cb16-50"></a></span>
+<span id="cb16-51"><a href="#cb16-51"></a>   <span class="kw">```</span>bash</span>
+<span id="cb16-52"><a href="#cb16-52"></a>   <span class="fu">git</span> clone https://github.com/pytorch/pytorch</span>
+<span id="cb16-53"><a href="#cb16-53"></a>   <span class="bu">cd</span> pytorch</span>
+<span id="cb16-54"><a href="#cb16-54"></a>   <span class="fu">git</span> submodule sync</span>
+<span id="cb16-55"><a href="#cb16-55"></a>   <span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb16-56"><a href="#cb16-56"></a>   <span class="kw">```</span></span>
+<span id="cb16-57"><a href="#cb16-57"></a></span>
+<span id="cb16-58"><a href="#cb16-58"></a><span class="ex">1.</span> Install dependencies:</span>
+<span id="cb16-59"><a href="#cb16-59"></a></span>
+<span id="cb16-60"><a href="#cb16-60"></a>   <span class="kw">```</span>bash</span>
+<span id="cb16-61"><a href="#cb16-61"></a>   <span class="ex">python3</span> <span class="at">-m</span> pip install cmake ninja</span>
+<span id="cb16-62"><a href="#cb16-62"></a>   <span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb16-63"><a href="#cb16-63"></a>   <span class="ex">python3</span> <span class="at">-m</span> pip install mkl-static mkl-include</span>
+<span id="cb16-64"><a href="#cb16-64"></a>   <span class="kw">```</span></span>
+<span id="cb16-65"><a href="#cb16-65"></a></span>
+<span id="cb16-66"><a href="#cb16-66"></a><span class="ex">1.</span> Make triton:</span>
+<span id="cb16-67"><a href="#cb16-67"></a></span>
+<span id="cb16-68"><a href="#cb16-68"></a>   <span class="kw">```</span>bash</span>
+<span id="cb16-69"><a href="#cb16-69"></a>   <span class="bu">export</span> <span class="va">USE_XPU</span><span class="op">=</span>1  <span class="co"># for Intel GPU support</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a>   <span class="fu">make</span> triton</span>
+<span id="cb16-71"><a href="#cb16-71"></a>   <span class="kw">```</span></span>
+<span id="cb16-72"><a href="#cb16-72"></a></span>
+<span id="cb16-73"><a href="#cb16-73"></a><span class="ex">1.</span> Set environment variables for PyTorch build:</span>
+<span id="cb16-74"><a href="#cb16-74"></a></span>
+<span id="cb16-75"><a href="#cb16-75"></a>   <span class="kw">```</span>bash</span>
+<span id="cb16-76"><a href="#cb16-76"></a>   <span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> gcc<span class="va">)</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">CC</span></span>
+<span id="cb16-77"><a href="#cb16-77"></a>   <span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> g++<span class="va">)</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">CXX</span></span>
+<span id="cb16-78"><a href="#cb16-78"></a>   <span class="bu">export</span> <span class="va">REL_WITH_DEB_INFO</span><span class="op">=</span>1</span>
+<span id="cb16-79"><a href="#cb16-79"></a>   <span class="bu">export</span> <span class="va">USE_CUDA</span><span class="op">=</span>0</span>
+<span id="cb16-80"><a href="#cb16-80"></a>   <span class="bu">export</span> <span class="va">USE_ROCM</span><span class="op">=</span>0</span>
+<span id="cb16-81"><a href="#cb16-81"></a>   <span class="bu">export</span> <span class="va">USE_MKLDNN</span><span class="op">=</span>1</span>
+<span id="cb16-82"><a href="#cb16-82"></a>   <span class="bu">export</span> <span class="va">USE_MKL</span><span class="op">=</span>1</span>
+<span id="cb16-83"><a href="#cb16-83"></a>   <span class="bu">export</span> <span class="va">USE_ROCM</span><span class="op">=</span>0</span>
+<span id="cb16-84"><a href="#cb16-84"></a>   <span class="bu">export</span> <span class="va">USE_CUDNN</span><span class="op">=</span>0</span>
+<span id="cb16-85"><a href="#cb16-85"></a>   <span class="bu">export</span> <span class="va">USE_FBGEMM</span><span class="op">=</span>1</span>
+<span id="cb16-86"><a href="#cb16-86"></a>   <span class="bu">export</span> <span class="va">USE_NNPACK</span><span class="op">=</span>1</span>
+<span id="cb16-87"><a href="#cb16-87"></a>   <span class="bu">export</span> <span class="va">USE_QNNPACK</span><span class="op">=</span>1</span>
+<span id="cb16-88"><a href="#cb16-88"></a>   <span class="bu">export</span> <span class="va">USE_NCCL</span><span class="op">=</span>0</span>
+<span id="cb16-89"><a href="#cb16-89"></a>   <span class="bu">export</span> <span class="va">USE_CUDA</span><span class="op">=</span>0</span>
+<span id="cb16-90"><a href="#cb16-90"></a>   <span class="bu">export</span> <span class="va">BUILD_CAFFE2_OPS</span><span class="op">=</span>0</span>
+<span id="cb16-91"><a href="#cb16-91"></a>   <span class="bu">export</span> <span class="va">BUILD_TEST</span><span class="op">=</span>0</span>
+<span id="cb16-92"><a href="#cb16-92"></a>   <span class="bu">export</span> <span class="va">USE_DISTRIBUTED</span><span class="op">=</span>1</span>
+<span id="cb16-93"><a href="#cb16-93"></a>   <span class="bu">export</span> <span class="va">USE_NUMA</span><span class="op">=</span>0</span>
+<span id="cb16-94"><a href="#cb16-94"></a>   <span class="bu">export</span> <span class="va">USE_MPI</span><span class="op">=</span>1</span>
+<span id="cb16-95"><a href="#cb16-95"></a>   <span class="bu">export</span> <span class="va">USE_XPU</span><span class="op">=</span>1</span>
+<span id="cb16-96"><a href="#cb16-96"></a>   <span class="bu">export</span> <span class="va">USE_XCCL</span><span class="op">=</span>1</span>
+<span id="cb16-97"><a href="#cb16-97"></a>   <span class="bu">export</span> <span class="va">INTEL_MKL_DIR</span><span class="op">=</span><span class="va">$MKLROOT</span></span>
+<span id="cb16-98"><a href="#cb16-98"></a>   <span class="bu">export</span> <span class="va">USE_AOT_DEVLIST</span><span class="op">=</span><span class="st">'pvc'</span></span>
+<span id="cb16-99"><a href="#cb16-99"></a>   <span class="bu">export</span> <span class="va">TORCH_XPU_ARCH_LIST</span><span class="op">=</span><span class="st">'pvc'</span></span>
+<span id="cb16-100"><a href="#cb16-100"></a>   <span class="bu">export</span> <span class="va">OCLOC_VERSION</span><span class="op">=</span>24.39.1</span>
+<span id="cb16-101"><a href="#cb16-101"></a>   <span class="fu">which</span> <span class="at">-a</span> gcc</span>
+<span id="cb16-102"><a href="#cb16-102"></a>   <span class="fu">which</span> <span class="at">-a</span> g++</span>
+<span id="cb16-103"><a href="#cb16-103"></a>   <span class="kw">```</span></span>
+<span id="cb16-104"><a href="#cb16-104"></a></span>
+<span id="cb16-105"><a href="#cb16-105"></a><span class="ex">1.</span> Build PyTorch <span class="er">(</span><span class="ex">takes</span> ~ 30 mins<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb16-106"><a href="#cb16-106"></a></span>
+<span id="cb16-107"><a href="#cb16-107"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-108"><a href="#cb16-108"></a>    <span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"torch-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb16-109"><a href="#cb16-109"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install dist/<span class="pp">*</span>.whl</span>
+<span id="cb16-110"><a href="#cb16-110"></a>    <span class="bu">cd</span> ..</span>
+<span id="cb16-111"><a href="#cb16-111"></a>    <span class="kw">```</span></span>
+<span id="cb16-112"><a href="#cb16-112"></a></span>
+<span id="cb16-113"><a href="#cb16-113"></a><span class="ex">1.</span> <span class="dt">\[</span>Optional<span class="dt">\]</span> Install {<span class="kw">`</span>torchvision<span class="kw">`</span><span class="ex">,</span> <span class="kw">`</span>torchaudio<span class="kw">`</span><span class="ex">,</span> <span class="kw">`</span>torchdata<span class="kw">`</span><span class="er">}</span> <span class="ex">with</span> no dependencies:</span>
+<span id="cb16-114"><a href="#cb16-114"></a></span>
+<span id="cb16-115"><a href="#cb16-115"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-116"><a href="#cb16-116"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install torchvision torchaudio <span class="at">--no-deps</span> <span class="at">--index-url</span> https://download.pytorch.org/whl/xpu</span>
+<span id="cb16-117"><a href="#cb16-117"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install torchdata <span class="at">--no-deps</span></span>
+<span id="cb16-118"><a href="#cb16-118"></a>    <span class="kw">```</span></span>
+<span id="cb16-119"><a href="#cb16-119"></a></span>
+<span id="cb16-120"><a href="#cb16-120"></a><span class="co">### Intel Libraries</span></span>
+<span id="cb16-121"><a href="#cb16-121"></a></span>
+<span id="cb16-122"><a href="#cb16-122"></a><span class="ex">1.</span> <span class="pp">[</span><span class="ss">intel/`intel</span><span class="pp">-</span><span class="ss">extension</span><span class="pp">-</span><span class="ss">for</span><span class="pp">-</span><span class="ss">pytorch`</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://github.com/intel/intel-extension-for-pytorch</span><span class="kw">)</span></span>
+<span id="cb16-123"><a href="#cb16-123"></a></span>
+<span id="cb16-124"><a href="#cb16-124"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-125"><a href="#cb16-125"></a>    <span class="fu">git</span> clone https://github.com/intel/intel-extension-for-pytorch</span>
+<span id="cb16-126"><a href="#cb16-126"></a>    <span class="bu">cd</span> intel-extension-for-pytorch</span>
+<span id="cb16-127"><a href="#cb16-127"></a>    <span class="fu">git</span> checkout xpu-main</span>
+<span id="cb16-128"><a href="#cb16-128"></a>    <span class="fu">git</span> submodule sync</span>
+<span id="cb16-129"><a href="#cb16-129"></a>    <span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb16-130"><a href="#cb16-130"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb16-131"><a href="#cb16-131"></a></span>
+<span id="cb16-132"><a href="#cb16-132"></a>    <span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> gcc<span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">CC</span></span>
+<span id="cb16-133"><a href="#cb16-133"></a>    <span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> g++<span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">export</span> <span class="va">CXX</span></span>
+<span id="cb16-134"><a href="#cb16-134"></a>    <span class="bu">export</span> <span class="va">MAX_JOBS</span><span class="op">=</span>48</span>
+<span id="cb16-135"><a href="#cb16-135"></a>    <span class="bu">export</span> <span class="va">INTELONEAPIROOT</span><span class="op">=</span><span class="st">"</span><span class="va">${ONEAPI_ROOT}</span><span class="st">"</span></span>
+<span id="cb16-136"><a href="#cb16-136"></a></span>
+<span id="cb16-137"><a href="#cb16-137"></a>    <span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"ipex-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb16-138"><a href="#cb16-138"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install dist/<span class="pp">*</span>.whl</span>
+<span id="cb16-139"><a href="#cb16-139"></a>    <span class="bu">cd</span> ..</span>
+<span id="cb16-140"><a href="#cb16-140"></a>    <span class="kw">```</span></span>
+<span id="cb16-141"><a href="#cb16-141"></a></span>
+<span id="cb16-142"><a href="#cb16-142"></a><span class="ex">1.</span> <span class="pp">[</span><span class="ss">intel/`torch</span><span class="pp">-</span><span class="ss">ccl`</span><span class="pp">]</span><span class="er">(</span><span class="ex">https://github.com/intel/torch-ccl</span><span class="kw">)</span></span>
+<span id="cb16-143"><a href="#cb16-143"></a></span>
+<span id="cb16-144"><a href="#cb16-144"></a>    <span class="kw">```</span>bash</span>
+<span id="cb16-145"><a href="#cb16-145"></a>    <span class="fu">git</span> clone https://github.com/intel/torch-ccl</span>
+<span id="cb16-146"><a href="#cb16-146"></a>    <span class="bu">cd</span> torch-ccl</span>
+<span id="cb16-147"><a href="#cb16-147"></a>    <span class="fu">git</span> checkout c27ded5</span>
+<span id="cb16-148"><a href="#cb16-148"></a>    <span class="fu">git</span> submodule sync</span>
+<span id="cb16-149"><a href="#cb16-149"></a>    <span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span>
+<span id="cb16-150"><a href="#cb16-150"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span>
+<span id="cb16-151"><a href="#cb16-151"></a>    <span class="co"># see:</span></span>
+<span id="cb16-152"><a href="#cb16-152"></a>    <span class="co"># https://github.com/intel/torch-ccl/blob/c27ded5190a6b115ec68c7a8c28f40cfe7f0a32a/version.txt</span></span>
+<span id="cb16-153"><a href="#cb16-153"></a>    <span class="va">ONECCL_BINDINGS_FOR_PYTORCH_BACKEND</span><span class="op">=</span>xpu <span class="dt">\</span></span>
+<span id="cb16-154"><a href="#cb16-154"></a>      <span class="va">INTELONEAPIROOT</span><span class="op">=</span><span class="st">"</span><span class="va">${ONEAPI_ROOT}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb16-155"><a href="#cb16-155"></a>      <span class="va">USE_SYSTEM_ONECCL</span><span class="op">=</span>ON <span class="dt">\</span></span>
+<span id="cb16-156"><a href="#cb16-156"></a>      <span class="va">COMPUTE_BACKEND</span><span class="op">=</span>dpcpp <span class="ex">\ </span></span>
+<span id="cb16-157"><a href="#cb16-157"></a>      <span class="ex">python3</span> setup.py bdist_wheel <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> <span class="st">"torch-ccl-build-whl-</span><span class="va">$(</span><span class="ex">tstamp</span><span class="va">)</span><span class="st">.log"</span></span>
+<span id="cb16-158"><a href="#cb16-158"></a></span>
+<span id="cb16-159"><a href="#cb16-159"></a>    <span class="ex">python3</span> <span class="at">-m</span> pip install dist/oneccl_bind_pt-2.8.0+xpu-cp312-cp312-linux_x86_64.whl</span>
+<span id="cb16-160"><a href="#cb16-160"></a>    <span class="bu">cd</span> ..</span>
+<span id="cb16-161"><a href="#cb16-161"></a>    <span class="kw">```</span></span>
+<span id="cb16-162"><a href="#cb16-162"></a></span>
+<span id="cb16-163"><a href="#cb16-163"></a><span class="co">### </span><span class="kw">`</span>mpi4py<span class="kw">`</span> <span class="ex">Install</span></span>
+<span id="cb16-164"><a href="#cb16-164"></a></span>
+<span id="cb16-165"><a href="#cb16-165"></a><span class="kw">```</span>bash</span>
+<span id="cb16-166"><a href="#cb16-166"></a><span class="fu">git</span> clone https://github.com/mpi4py/mpi4py</span>
+<span id="cb16-167"><a href="#cb16-167"></a><span class="bu">cd</span> mpi4py</span>
+<span id="cb16-168"><a href="#cb16-168"></a><span class="va">CC</span><span class="op">=</span>mpicc <span class="va">CXX</span><span class="op">=</span>mpicxx <span class="ex">python3</span> setup.py build <span class="kw">|&amp;</span> <span class="fu">tee</span> build.log</span>
+<span id="cb16-169"><a href="#cb16-169"></a><span class="va">CC</span><span class="op">=</span>mpicc <span class="va">CXX</span><span class="op">=</span>mpicxx <span class="ex">python3</span> setup.py install <span class="kw">|&amp;</span> <span class="fu">tee</span> install.log</span>
+<span id="cb16-170"><a href="#cb16-170"></a><span class="bu">cd</span> ..</span>
+<span id="cb16-171"><a href="#cb16-171"></a><span class="kw">```</span></span>
+<span id="cb16-172"><a href="#cb16-172"></a></span>
+<span id="cb16-173"><a href="#cb16-173"></a></span>
+<span id="cb16-174"><a href="#cb16-174"></a><span class="co">## ✅ Verify Installation</span></span>
+<span id="cb16-175"><a href="#cb16-175"></a></span>
+<span id="cb16-176"><a href="#cb16-176"></a><span class="ex">-</span> Command:</span>
+<span id="cb16-177"><a href="#cb16-177"></a></span>
+<span id="cb16-178"><a href="#cb16-178"></a>  <span class="kw">```</span>bash</span>
+<span id="cb16-179"><a href="#cb16-179"></a>  <span class="ex">python3</span> <span class="at">-c</span> <span class="st">'import torch; print(torch.__file__); print(*torch.__config__.show().split("\n"), sep="\n") ; print(f"{torch.__version__=}"); print(f"{torch.xpu.is_available()=}"); print(f"{torch.xpu.device_count()=}") ; import torch.distributed; print(f"{torch.distributed.is_xccl_available()=}"); import torch; import intel_extension_for_pytorch as ipex; print(f"{torch.__version__=}"); print(f"{ipex.__version__=}"); import oneccl_bindings_for_pytorch as oneccl_bpt; print(f"{oneccl_bpt.__version__=}") ; [print(f"[{i}]: {torch.xpu.get_device_properties(i)}") for i in range(torch.xpu.device_count())]'</span></span>
+<span id="cb16-180"><a href="#cb16-180"></a>  <span class="kw">```</span></span>
+<span id="cb16-181"><a href="#cb16-181"></a></span>
+<span id="cb16-182"><a href="#cb16-182"></a><span class="ex">-</span> Output:</span>
+<span id="cb16-183"><a href="#cb16-183"></a></span>
+<span id="cb16-184"><a href="#cb16-184"></a>  <span class="kw">```</span>bash</span>
+<span id="cb16-185"><a href="#cb16-185"></a>  <span class="ex">/lus/flare/projects/datascience/foremans/micromamba/envs/2025-06-12/lib/python3.12/site-packages/torch/__init__.py</span></span>
+<span id="cb16-186"><a href="#cb16-186"></a>  <span class="ex">PyTorch</span> built with:</span>
+<span id="cb16-187"><a href="#cb16-187"></a>    <span class="ex">-</span> GCC 13.3</span>
+<span id="cb16-188"><a href="#cb16-188"></a>    <span class="ex">-</span> C++ Version: 201703</span>
+<span id="cb16-189"><a href="#cb16-189"></a>    <span class="ex">-</span> Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">oneAPI</span> Math Kernel Library Version 2025.0.1-Product Build 20241031 for Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">64</span> architecture applications</span>
+<span id="cb16-190"><a href="#cb16-190"></a>    <span class="ex">-</span> Intel<span class="er">(</span><span class="ex">R</span><span class="kw">)</span> <span class="ex">MKL-DNN</span> v3.7.1 <span class="er">(</span><span class="ex">Git</span> Hash 8d263e693366ef8db40acc569cc7d8edf644556d<span class="kw">)</span></span>
+<span id="cb16-191"><a href="#cb16-191"></a>    <span class="ex">-</span> OpenMP 201511 <span class="er">(</span><span class="ex">a.k.a.</span> OpenMP 4.5<span class="kw">)</span></span>
+<span id="cb16-192"><a href="#cb16-192"></a>    <span class="ex">-</span> LAPACK is enabled <span class="er">(</span><span class="ex">usually</span> provided by MKL<span class="kw">)</span></span>
+<span id="cb16-193"><a href="#cb16-193"></a>    <span class="ex">-</span> NNPACK is enabled</span>
+<span id="cb16-194"><a href="#cb16-194"></a>    <span class="ex">-</span> CPU capability usage: AVX512</span>
+<span id="cb16-195"><a href="#cb16-195"></a>  <span class="ex">XPU</span> backend  <span class="at">-</span> Build settings: BLAS_INFO=mkl, BUILD_TYPE=Debug, COMMIT_SHA=ce9ba071fd29013e72100dd97728d01c860720d9, CXX_COMPILER=/opt/aurora/24.347.0/spack/unified/0.9.2/install/linux-sles15-x86_64/gcc-13.3.0/gcc-13.3.0-4enwbrb/bin/g++, CXX_FLAGS= <span class="at">-fvisibility-inlines-hidden</span> <span class="at">-DUSE_PTHREADPOOL</span> <span class="at">-DUSE_KINETO</span> <span class="at">-DLIBKINETO_NOCUPTI</span> <span class="at">-DLIBKINETO_NOROCTRACER</span> <span class="at">-DLIBKINETO_NOXPUPTI</span><span class="op">=</span>OFF <span class="at">-DUSE_FBGEMM</span> <span class="at">-DUSE_PYTORCH_QNNPACK</span> <span class="at">-DUSE_XNNPACK</span> <span class="at">-DSYMBOLICATE_MOBILE_DEBUG_HANDLE</span> <span class="at">-O2</span> <span class="at">-fPIC</span> <span class="at">-DC10_NODEPRECATED</span> <span class="at">-Wall</span> <span class="at">-Wextra</span> <span class="at">-Werror</span><span class="op">=</span>return-type <span class="at">-Werror</span><span class="op">=</span>non-virtual-dtor <span class="at">-Werror</span><span class="op">=</span>range-loop-construct <span class="at">-Werror</span><span class="op">=</span>bool-operation <span class="at">-Wnarrowing</span> <span class="at">-Wno-missing-field-initializers</span> <span class="at">-Wno-unknown-pragmas</span> <span class="at">-Wno-unused-parameter</span> <span class="at">-Wno-strict-overflow</span> <span class="at">-Wno-strict-aliasing</span> <span class="at">-Wno-stringop-overflow</span> <span class="at">-Wsuggest-override</span> <span class="at">-Wno-psabi</span> <span class="at">-Wno-error</span><span class="op">=</span>old-style-cast <span class="at">-fdiagnostics-color</span><span class="op">=</span>always <span class="at">-faligned-new</span> <span class="at">-Wno-maybe-uninitialized</span> <span class="at">-fno-math-errno</span> <span class="at">-fno-trapping-math</span> <span class="at">-Werror</span><span class="op">=</span>format <span class="at">-Wno-dangling-reference</span> <span class="at">-Wno-error</span><span class="op">=</span>dangling-reference <span class="at">-DUSE_XPU</span> <span class="at">-Wno-stringop-overflow,</span> LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.8.0, USE_CUDA=0, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=1, USE_MPI=1, USE_NCCL=OFF, USE_NNPACK=1,USE_OPENMP=ON, USE_ROCM=0, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=1, USE_XPU=1,</span>
+<span id="cb16-196"><a href="#cb16-196"></a></span>
+<span id="cb16-197"><a href="#cb16-197"></a>  <span class="ex">torch.__version__=</span><span class="st">'2.8.0a0+gitce9ba07'</span></span>
+<span id="cb16-198"><a href="#cb16-198"></a>  <span class="fu">torch.xpu.is_available()</span><span class="ex">=True</span></span>
+<span id="cb16-199"><a href="#cb16-199"></a>  <span class="fu">torch.xpu.device_count()</span><span class="ex">=12</span></span>
+<span id="cb16-200"><a href="#cb16-200"></a>  <span class="fu">torch.distributed.is_xccl_available()</span><span class="ex">=True</span></span>
+<span id="cb16-201"><a href="#cb16-201"></a>  <span class="ex">[W614</span> 13:30:37.237440877 OperatorEntry.cpp:217] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
+<span id="cb16-202"><a href="#cb16-202"></a>    <span class="ex">Overriding</span> a previously registered kernel for the same operator and the same dispatch key</span>
+<span id="cb16-203"><a href="#cb16-203"></a>    <span class="ex">operator:</span> aten::geometric_<span class="er">(</span><span class="ex">Tensor</span><span class="er">(</span><span class="ex">a!</span><span class="kw">)</span> <span class="ex">self,</span> float p, <span class="pp">*</span>, Generator<span class="pp">?</span> generator=None<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> Tensor<span class="er">(</span><span class="ex">a!</span><span class="kw">)</span></span>
+<span id="cb16-204"><a href="#cb16-204"></a>      <span class="ex">registered</span> at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6</span>
+<span id="cb16-205"><a href="#cb16-205"></a>    <span class="ex">dispatch</span> key: XPU</span>
+<span id="cb16-206"><a href="#cb16-206"></a>    <span class="ex">previous</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37</span>
+<span id="cb16-207"><a href="#cb16-207"></a>        <span class="ex">new</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-12/intel/intel-extension-for-pytorch/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 <span class="er">(</span><span class="kw">function</span><span class="fu"> operator()</span><span class="kw">)</span></span>
+<span id="cb16-208"><a href="#cb16-208"></a>  <span class="ex">torch.__version__=</span><span class="st">'2.8.0a0+gitce9ba07'</span></span>
+<span id="cb16-209"><a href="#cb16-209"></a>  <span class="ex">ipex.__version__=</span><span class="st">'2.8.10+git57bb68a'</span></span>
+<span id="cb16-210"><a href="#cb16-210"></a>  <span class="ex">oneccl_bpt.__version__=</span><span class="st">'2.8.0+xpu'</span></span>
+<span id="cb16-211"><a href="#cb16-211"></a>  <span class="ex">[0]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-212"><a href="#cb16-212"></a>  <span class="ex">[1]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-213"><a href="#cb16-213"></a>  <span class="ex">[2]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-214"><a href="#cb16-214"></a>  <span class="ex">[3]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-215"><a href="#cb16-215"></a>  <span class="ex">[4]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-216"><a href="#cb16-216"></a>  <span class="ex">[5]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-217"><a href="#cb16-217"></a>  <span class="ex">[6]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-218"><a href="#cb16-218"></a>  <span class="ex">[7]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-219"><a href="#cb16-219"></a>  <span class="ex">[8]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-220"><a href="#cb16-220"></a>  <span class="ex">[9]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-221"><a href="#cb16-221"></a>  <span class="ex">[10]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-222"><a href="#cb16-222"></a>  <span class="ex">[11]:</span> _XpuDeviceProperties<span class="er">(</span><span class="va">name</span><span class="op">=</span><span class="st">'Intel(R) Data Center GPU Max 1550'</span>, <span class="va">platform_name</span><span class="op">=</span><span class="st">'Intel(R) oneAPI Unified Runtime over Level-Zero'</span>, <span class="va">type</span><span class="op">=</span><span class="st">'gpu'</span>, <span class="va">driver_version</span><span class="op">=</span><span class="st">'1.6.32567+18'</span>, <span class="va">total_memory</span><span class="op">=</span>65536MB, <span class="va">max_compute_units</span><span class="op">=</span>448, <span class="va">gpu_eu_count</span><span class="op">=</span>448, <span class="va">gpu_subslice_count</span><span class="op">=</span>56, <span class="va">max_work_group_size</span><span class="op">=</span>1024, <span class="va">max_num_sub_groups</span><span class="op">=</span>64, <span class="va">sub_group_sizes</span><span class="op">=</span>[16 <span class="ex">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span class="kw">)</span></span>
+<span id="cb16-223"><a href="#cb16-223"></a>  <span class="ex">took:</span> 0h:00m:20s</span>
+<span id="cb16-224"><a href="#cb16-224"></a>  <span class="kw">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://samforeman.me">
+<p>samforeman.me</p>
+</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/posts/2025/06/14/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/posts/2025/06/14/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/saforem2">
+      <i class="bi bi-twitter" role="img" aria-label="Sam Foreman Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/saforem2/personal_site">
+      <i class="bi bi-github" role="img" aria-label="Sam Foreman GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://samforeman.me/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="Sam Foreman's Blog RSS">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

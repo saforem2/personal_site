@@ -304,6 +304,7 @@ $primary: $code-fg !default;
 /*-- scss:mixins --*/
 
 /*-- scss:rules --*/
+
 html {
   color-scheme: light dark;
   font-family: $font-family-sans-serif;
@@ -366,6 +367,8 @@ b {
   --bs-navbar-padding-x: $bs-navbar-padding-x;
   --link-color: $link-color;
   --link-color-hover: $link-color-hover;
+  --navbar-fg: $navbar-fg;
+  --navbar-bg: $navbar-bg;
   // --bs-card-spacer-x: 0pt;
   // --bs-card-spacer-y: 0pt;
   --font-family-sans-serif: $font-family-sans-serif;
@@ -374,6 +377,7 @@ b {
   --font-family-presentation: $presentation-main-font;
   --font-family-presentation-heading: $presentation-heading-font;
   --bs-nav-link-color: $bs-nav-link-color;
+  --bs-navbar-active-color: $navbar-fg;
   --r-main-font: $presentation-main-font;
   --code-bg: $code-bg;
   --bs-body-font-weight: 400;
@@ -486,6 +490,21 @@ b {
   --card-width: 50%;
 }
 
+:where(html) {
+  --hue-red: 25;
+  --hue-pink: 350;
+  --hue-purple: 310;
+  --hue-violet: 290;
+  --hue-indigo: 270;
+  --hue-blue: 240;
+  --hue-cyan: 210;
+  --hue-teal: 185;
+  --hue-green: 145;
+  --hue-lime: 125;
+  --hue-yellow: 100;
+  --hue-orange: 75;
+}
+
 :where(*) ::selection {
   color: $selection-fg-color;
   background: $selection-bg-color;
@@ -495,6 +514,28 @@ b {
 root::selection {
   color: hsla(var($interactive-accent-hsl), 0.75);
 }
+
+:where(*) {
+  --color-hue: 230;
+  --color-0: oklch(99% 0.03 var(--color-hue, 0));
+  --color-1: oklch(95% 0.06 var(--color-hue, 0));
+  --color-2: oklch(88% 0.12 var(--color-hue, 0));
+  --color-3: oklch(80% 0.14 var(--color-hue, 0));
+  --color-4: oklch(74% 0.16 var(--color-hue, 0));
+  --color-5: oklch(68% 0.19 var(--color-hue, 0));
+  --color-6: oklch(63% 0.2 var(--color-hue, 0));
+  --color-7: oklch(58% 0.21 var(--color-hue, 0));
+  --color-8: oklch(53% 0.2 var(--color-hue, 0));
+  --color-9: oklch(49% 0.19 var(--color-hue, 0));
+  --color-10: oklch(42% 0.17 var(--color-hue, 0));
+  --color-11: oklch(35% 0.15 var(--color-hue, 0));
+  --color-12: oklch(27% 0.12 var(--color-hue, 0));
+  --color-13: oklch(20% 0.09 var(--color-hue, 0));
+  --color-14: oklch(14% 0.07 var(--color-hue, 0));
+  --color-15: oklch(11% 0.05 var(--color-hue, 0));
+  --color-bright: oklch(65% 0.3 var(--color-hue, 0));
+}
+
 
 :where(*) {
   --color-0: oklch(99% 0.03 var(--color-hue, 0));
@@ -656,41 +697,6 @@ code {
 
 .reveal code {
   font-family: $font-family-monospace;
-}
-
-:where(html) {
-  --hue-red: 25;
-  --hue-pink: 350;
-  --hue-purple: 310;
-  --hue-violet: 290;
-  --hue-indigo: 270;
-  --hue-blue: 240;
-  --hue-cyan: 210;
-  --hue-teal: 185;
-  --hue-green: 145;
-  --hue-lime: 125;
-  --hue-yellow: 100;
-  --hue-orange: 75;
-}
-
-:where(*) {
-  --color-0: oklch(99% 0.03 var(--color-hue, 0));
-  --color-1: oklch(95% 0.06 var(--color-hue, 0));
-  --color-2: oklch(88% 0.12 var(--color-hue, 0));
-  --color-3: oklch(80% 0.14 var(--color-hue, 0));
-  --color-4: oklch(74% 0.16 var(--color-hue, 0));
-  --color-5: oklch(68% 0.19 var(--color-hue, 0));
-  --color-6: oklch(63% 0.2 var(--color-hue, 0));
-  --color-7: oklch(58% 0.21 var(--color-hue, 0));
-  --color-8: oklch(53% 0.2 var(--color-hue, 0));
-  --color-9: oklch(49% 0.19 var(--color-hue, 0));
-  --color-10: oklch(42% 0.17 var(--color-hue, 0));
-  --color-11: oklch(35% 0.15 var(--color-hue, 0));
-  --color-12: oklch(27% 0.12 var(--color-hue, 0));
-  --color-13: oklch(20% 0.09 var(--color-hue, 0));
-  --color-14: oklch(14% 0.07 var(--color-hue, 0));
-  --color-15: oklch(11% 0.05 var(--color-hue, 0));
-  --color-bright: oklch(65% 0.3 var(--color-hue, 0));
 }
 
 #title-block-header .quarto-title-block > div > button {
@@ -989,6 +995,11 @@ div.sidebar-item-container .sidebar-link > code {
 
 .sidebar-item .sidebar-item-toggle .bi {
   vertical-align: -webkit-baseline-middle;
+}
+
+.sidebar nav[role="doc-toc"] > ul a {
+	border-left: 1px solid rgba(255,255,255,0.025);
+	padding-left: .6rem;
 }
 
 .sidebar nav[role="doc-toc"] ul > li > a:hover,
@@ -1910,6 +1921,7 @@ div.callout-important.callout-style-default .callout-title {
   // margin-block: auto;
   white-space: collapse;
   background-color: unset;
+  background: unset;
   color: inherit;
   margin-top: auto;
   margin-bottom: auto;
@@ -2133,10 +2145,11 @@ main {
     padding-inline-start: 5pt;
     color: $h1-fg-color;
     font-size: $h1-font-size;
-    background-color: $h1-bg-color;
+    background: linear-gradient(.25turn, $h1-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     code {
       padding: 0pt 2pt;
     }
@@ -2152,10 +2165,11 @@ main {
     color: $h2-fg-color;
     font-size: $h2-font-size;
     padding-inline-start: 5pt;
-    background-color: $h2-bg-color;
+    background: linear-gradient(.25turn, $h2-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     // padding-bottom: unset;
     // margin-top: unset;
     // margin-bottom: unset;
@@ -2174,10 +2188,11 @@ main {
     color: $h3-fg-color;
     font-size: $h3-font-size;
     padding-inline-start: 5pt;
-    background-color: $h3-bg-color;
+    background: linear-gradient(.25turn, $h3-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     code {
       padding: 0pt 2pt;
     }
@@ -2193,9 +2208,10 @@ main {
     color: $h4-fg-color;
     font-size: $h4-font-size;
     padding-inline-start: 5pt;
-    background-color: $h4-bg-color;
+    background: linear-gradient(.25turn, $h4-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     code {
       padding: 0pt 2pt;
     }
@@ -2211,9 +2227,10 @@ main {
     padding-inline-start: 5pt;
     color: $h5-fg-color;
     font-size: $h5-font-size;
-    background-color: $h5-bg-color;
+    background: linear-gradient(.25turn, $h5-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     code {
       padding: 0pt 2pt;
     }
@@ -2229,9 +2246,10 @@ main {
     padding-inline-start: 5pt;
     color: $h6-fg-color;
     font-size: $h6-font-size;
-    background-color: $h6-bg-color;
+    background: linear-gradient(.25turn, $h6-bg-color, rgba(0,0,0,0.0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
+    border-right: 0pt solid rgba(0,0,0,0.0);
     code {
       padding: 0pt 2pt;
     }
@@ -2265,8 +2283,9 @@ main {
 
 #quarto-appendix.default .quarto-appendix-heading {
   color: $dim-text;
-  background-color: oklch(from $dim-text calc(l * 1.15) c h/0.05);
+  background: linear-gradient(.25turn, oklch(from $dim-text calc(l * 1.15) c h/0.05), rgba(0,0,0,0.0));
   border: 1px solid rgba(0, 0, 0, 0);
+  border-right: 1pt solid rgba(0,0,0,0.0);
   &:hover {
     border: 1px solid $dim-text;
   }
@@ -2913,11 +2932,17 @@ details > summary:hover {
   color: $dim-text;
 }
 
+.nav-link,
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active {
+  color: $navbar-fg;
+}
+
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   text-underline-offset: 1px;
   text-decoration: underline;
-  color: $link-color-hover;
+  // color: $link-color-hover;
   text-decoration-thickness: 1pt;
 }
 
@@ -3348,20 +3373,22 @@ pre.cell-output {
 }
 
 .navbar-nav {
-  --bs-nav-link-padding-x: var(--bs-nav-link-padding-x);
-  --bs-nav-link-padding-y: var(--bs-nav-link-padding-y);
-  --bs-nav-link-font-weight: var(--bs-nav-link-font-weight);
-  --bs-nav-link-color: var(--bs-navbar-color);
-  --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
-  --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
-  flex-direction: column;
-  -webkit-flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  display: inline-flex;
-  align-items: center;
+	--bs-nav-link-padding-x: var(--bs-nav-link-padding-x);
+	--bs-nav-link-padding-y: var(--bs-nav-link-padding-y);
+	--bs-nav-link-font-weight: var(--bs-nav-link-font-weight);
+	--bs-nav-link-color: var(--bs-navbar-color);
+	--bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+	--bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+	display: inline-flex;
+	/* align-items: center; */
+	flex-direction: inherit;
 }
+
 
 .navbar-logo {
   max-height: 36px;
@@ -3389,7 +3416,7 @@ pre.cell-output {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.active {
-  color: $primary;
+  // color: $primary;
   text-decoration: none;
 }
 
@@ -3453,6 +3480,11 @@ nav-item tabset-1-6-tab > a.nav-link.active {
   color: $orange !important;
   background-color: oklch(from $orange calc(l * 1.15) c h/0.1);
 }
+
+nav .nav-item:not(.compact) {
+  padding-top: 0;
+}
+
 
 @media screen and (min-width: 992px) {
   a.nav-link {

@@ -1,4 +1,4 @@
-# 🔥 Building PyTorch from Source on Aurora
+# 🔥 Building PyTorch 2.6 from Source on Aurora
 Sam Foreman
 2025-04-28
 
