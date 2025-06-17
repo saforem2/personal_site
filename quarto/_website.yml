@@ -74,8 +74,6 @@ website:
         menu:
           - text: "📚 All Projects"
             url: "projects/index.qmd"
-            # url: "projects/index.qmd"
-            # url: "./about/_projects.qmd"
           - text: "🍋 `ezpz`"
             url: https://saforem2.github.io/ezpz
           - text: "🟥 `l2hmc-qcd`"
@@ -104,14 +102,200 @@ website:
         aria-label: GitHub
 
       - href: index.xml
-        aria-label: RSS
         text: "[{{< iconify ph rss >}}]{.icon style='font-size: 1.25rem; color:var(--bs-nav-link-color);'}"
+        aria-label: RSS
 
   sidebar:
     # style: "docked"
+    style: "floating"
     search: true
-    contents: auto
+    align: left
+    # search: true
+    # contents: auto
     collapse-level: 1
+    contents:
+      # - id: projects
+      #   section: "📚 Projects"
+      #   href: "projects/index.qmd"
+      #   collapse-level: 1
+      #   # title: "📚 Projects"
+      #   # style: "floating"
+      #   contents:
+      #     # - projects/index.qmd
+      #     - text: "📦 All Repos"
+      #       href: "https://github.com/saforem2"
+      #     - text: "🍋 `ezpz`"
+      #       href: https://saforem2.github.io/ezpz
+      #     - text: "🏎️ Megatron-DeepSpeed"
+      #       href: https://github.com/argonne-lcf/Megatron-DeepSpeed 
+      #     - text: "📚 All Projects"
+      #       url: "projects/index.qmd"
+      #       # url: "projects/index.qmd"
+      #       # url: "./about/_projects.qmd"
+      #     - text: "🍋 `ezpz`"
+      #       url: https://saforem2.github.io/ezpz
+      #     - text: "🟥 `l2hmc-qcd`"
+      #       url: https://saforem2.github.io/l2hmc-qcd
+      #     - text: "🤖 `Megatron-DeepSpeed`"
+      #       url: https://github.com/argonne-lcf/Megatron-DeepSpeed)
+      #     - text: "💬 `wordplay` 🎮"
+      #       url: https://saforem2.github.io/wordplay
+      #     - text: "🎓 `ai-science-training`"
+      #       url: https://www.alcf.anl.gov/alcf-ai-science-training-series?
+      #     - text: "💸 `enrich`"
+      #       url: https://saforem2.github.io/enrich
+      #     - text: "🤷🏻‍♂️`ambivalent`"
+      #       url: https://saforem2.github.io/ambivalent
+      #     - text: "🌍 `climate-analysis`"
+      #       url: https://saforem2.github.io/climate-analysis
+      #     - text: "🎨 `glitz`"
+      #       url: https://github.com/saforem2/glitz
+      #     - text: "🙋🏻`personal_site`"
+      #       url: https://github.com/saforem2/personal_site
+      #     - text: "🗒️ `Notes-Demo`"
+      #       url: https://github.com/saforem2/notes-demo
+
+      - id: posts
+        section: "📬 Posts"
+        href: "posts/index.qmd"
+        collapse-level: 1
+        contents:
+          - section: "2025"
+            contents:
+              # - auto: posts/2025/**/**/*.qmd
+              - id: "2025/06"
+                section: "06"
+                contents:
+                  - auto: posts/2025/06/**/**/*.qmd
+              - id: "2025/05"
+                section: "05"
+                contents:
+                  - auto: posts/2025/05/**/**/*.qmd
+              - id: "2025/04"
+                section: "04"
+                contents:
+                  - auto: posts/2025/04/**/**/*.qmd
+                  - posts/resume/index.qmd
+              - id: "2025/03"
+                section: "03"
+                contents:
+                  - posts/torchtune-patch-aurora/index.qmd
+                  - posts/torchtune-aurora/index.qmd
+          - section: "2024"
+            contents:
+              - id: "2024/11"
+                section: "11"
+                contents:
+                  - posts/svgbob/index.qmd
+              - id: "2024/09"
+                section: "09"
+                contents:
+                  - posts/AuroraGPT/spike-skipper/index.qmd
+                  - posts/AuroraGPT/checkpoints/index.qmd
+              - id: "2024/08"
+                section: "08"
+                contents:
+                  - posts/dope-slides/index.qmd
+                  - posts/ezpz-v1/index.qmd
+                  - posts/ezpz-at-alcf/index.qmd
+              - id: "2024/06"
+                section: "06"
+                contents:
+                  - posts/AuroraGPT/aurora-gpt/index.qmd
+                  - posts/AuroraGPT/flash-attn-sunspot/index.qmd
+                  - posts/AuroraGPT/determinstic-flash-attn/index.qmd
+              - id: "2024/05"
+                section: "05"
+                contents:
+                  - posts/AuroraGPT/mpi4py-reproducer/index.qmd
+              - id: "2024/04"
+                section: "04"
+                contents:
+                  - posts/ai-for-physics/diffusion/index.qmd
+              - id: "2024/03"
+                section: "03"
+                contents:
+                  - posts/AuroraGPT/startup-times/index.qmd
+              - id: "2024/02"
+                section: "02"
+                contents:
+                  - posts/jupyter/test/index.qmd
+                  - posts/AuroraGPT/long-sequences/index.qmd
+
+          - section: "2023"
+            contents:
+              - posts/jupyter/l2hmc/4dSU3/index.qmd
+              - posts/ai-for-physics/l2hmc-qcd/2dU1/index.qmd
+
+      - id: talks
+        section: "🦜 Talks"
+        href: "talks/index.qmd"
+        collapse-level: 1
+        contents:
+          - section: "2025"
+            contents:
+              - talks/incite-hackathon-2025/AuroraGPT/index.qmd
+              - talks/incite-hackathon-2025/ezpz/index.qmd
+              - talks/aurora-gpt-fm-for-electric-grid/index.qmd
+          - section: "2024"
+            contents:
+              - talks/ai-for-science-2024/index.qmd
+              - talks/AuroraGPT/alcf-hpc-workshop-2024/index.qmd
+              - talks/alcf-hpc-workshop-2024/index.qmd
+              - talks/hpc-user-forum/index.qmd
+              - talks/llms-at-scale/index.qmd
+              - talks/llms-on-polaris/index.qmd
+              - text: Parallel Training Techniques
+                href: "https://saforem2.github.io/parallel-training-slides"
+              - text: "LLMs from Scratch"
+                href: "https://saforem2.github.io/llm-workshop-talk"
+          - section: "2023"
+            contents:
+              - text: "Creating Small(-ish) LLMs"
+                href: "https://saforem2.github.io/LLM-tutorial"
+              - text: "Exascale Science on Aurora"
+                href: "https://saforem2.github.io/oneapi-talk"
+              - text: "LLM Lunch Talk"
+                href: "https://saforem2.github.io/llm-lunch-talk"
+              - text: Scaling LLMs for Science
+                href: "https://saforem2.github.io/scaling4science"
+              - text: "MLMC: Machine Learning Monte Carlo"
+                href: "https://saforem2.github.io/lattice23"
+              - text: "Generative Modeling and Efficient Sampling"
+                href: "https://saforem2.github.io/lqcd-pasc23/"
+              - text: "Efficient Sampling for LGT"
+                href: "https://saforem2.github.io/deep-fridays"
+          - section: "2022"
+            contents:
+              - text: "Large Scale Training"
+                href: "https://saforem2.github.io/ai4sci-large-scale-training"
+              - text: "Hyperparameter Management"
+                href: "https://saforem2.github.io/hparam-management-sdl2022/"
+              - text: "Statistical Learning"
+                href: "https://saforem2.github.io/ATPESC-StatisticalLearning"
+              - text: "Scientific Data Science: An Emerging Symbiosis"
+                href: "https://saforem2.github.io/anl-job-talk/"
+              - text: Machine Learning in HEP
+                href: "https://saforem2.github.io/physicsSeminar"
+          - section: "2021"
+            contents:
+              - text: "Accelerated Sampling Methods for LGT"
+                href: "https://saforem2.github.io/l2hmc-dwq25/"
+              - text: "Training Topological Samplers for LGT"
+                href: "https://saforem2.github.io/l2hmc_talk_ect2021"
+              - text: "l2hmc-qcd"
+                href: "https://github.com/saforem2/l2hmc-qcd"
+              - text: "Deep Learning HMC for Improved Gauge Generation"
+                href: "https://bit.ly/mainz21"
+          - section: "2020"
+            contents:
+              - text: "Machine Learning for Lattice QCD"
+                href: "https://slides.com/samforeman/l2hmc-qcd"
+
+      - id: extras
+        section : "🗂️ Extras"
+        contents: auto
+
     # style: docked
     # search: true
     # logo: assets/signature-navbar-orig.svg

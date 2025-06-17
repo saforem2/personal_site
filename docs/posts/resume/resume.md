@@ -41,14 +41,21 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
     - Research lead on scaling large language models (LLMs) and
       generative AI for science on supercomputers (Aurora, Frontier,
       LUMI, Leonardo, …).
+      - Co-lead the Models and Pretraining team of the
+        [AuroraGPT](https://auroragpt.anl.gov) project
     - Optimize large-scale training of foundation models and language
       models for scientific applications.  
     - Collaborate with interdisciplinary teams to enhance simulation
-      efficiency and scalability.
+      efficiency and scalability
     - Focus on AI and HPC for scientific applications, including:
+      - Training large language models on supercomputers
+      - Genome scale language models (GenSLMs) for studying SARS-CoV-2
+        evolutionary dynamics
+      - Direct Preference Optimization (DPO) for multimodal protein
+        design workflows
+      - Climate modeling and weather forecasting using foundation models
       - Developing improved sampling algorithms for lattice quantum
         chromodynamics (QCD)
-      - Training large language models on supercomputers
     - <https://www.alcf.anl.gov/about/people/sam-foreman>
 - **Postdoctoral Researcher**
   - Argonne National Laboratory, Argonne Leadership Computing Facility
@@ -143,7 +150,7 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
   [PASC23](https://pasc23.pasc-conference.org/) \[07/2023\]
 
 [^1]: *See full list on [Google
-    Scholar](https://scholar.google.com/citations?user=7vBs2ZwAAAAJ)*
+    Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en)*
 
 [^2]: *See full list at:
     [samforeman.me/talks](https://samforeman.me/talks/)*
