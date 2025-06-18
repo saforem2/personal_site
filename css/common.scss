@@ -337,6 +337,8 @@ b {
       -moz-osx-font-smoothing: grayscale;
     }
   }
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
   --headings-font-family: var($headings-font-family);
   --font-family-headings: var($font-family-headings);
   --selection-bg-color: var($selection-bg-color);
@@ -535,7 +537,6 @@ root::selection {
   --color-15: oklch(11% 0.05 var(--color-hue, 0));
   --color-bright: oklch(65% 0.3 var(--color-hue, 0));
 }
-
 
 :where(*) {
   --color-0: oklch(99% 0.03 var(--color-hue, 0));
@@ -811,6 +812,14 @@ a:hover {
   cursor: pointer;
 }
 
+// a {
+// 	color: var(--primary);
+// 	text-decoration: none;
+// 	background: linear-gradient(to top,var(--accent),var(--accent) 30%,rgba(255,255,255,0) 30%);
+// 	padding: 0 .1em;
+// 	transition: background .2s;
+// }
+
 main a:not(.img):hover {
   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   cursor: pointer;
@@ -1006,8 +1015,8 @@ div.sidebar-item-container .sidebar-link > code {
 }
 
 .sidebar nav[role="doc-toc"] > ul a {
-	border-left: 1px solid rgba(255,255,255,0.025);
-	padding-left: .6rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.025);
+  padding-left: 0.6rem;
 }
 
 .sidebar nav[role="doc-toc"] ul > li > a:hover,
@@ -2140,11 +2149,11 @@ main {
     padding-inline-start: 5pt;
     color: $h1-fg-color;
     font-size: $h1-font-size;
-    background: linear-gradient(.25turn, $h1-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h1-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     code {
       padding: 0pt 2pt;
     }
@@ -2160,11 +2169,11 @@ main {
     color: $h2-fg-color;
     font-size: $h2-font-size;
     padding-inline-start: 5pt;
-    background: linear-gradient(.25turn, $h2-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h2-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     // padding-bottom: unset;
     // margin-top: unset;
     // margin-bottom: unset;
@@ -2183,11 +2192,11 @@ main {
     color: $h3-fg-color;
     font-size: $h3-font-size;
     padding-inline-start: 5pt;
-    background: linear-gradient(.25turn, $h3-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h3-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     font-family: $font-family-headings;
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     code {
       padding: 0pt 2pt;
     }
@@ -2203,10 +2212,10 @@ main {
     color: $h4-fg-color;
     font-size: $h4-font-size;
     padding-inline-start: 5pt;
-    background: linear-gradient(.25turn, $h4-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h4-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     code {
       padding: 0pt 2pt;
     }
@@ -2222,10 +2231,10 @@ main {
     padding-inline-start: 5pt;
     color: $h5-fg-color;
     font-size: $h5-font-size;
-    background: linear-gradient(.25turn, $h5-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h5-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     code {
       padding: 0pt 2pt;
     }
@@ -2241,10 +2250,10 @@ main {
     padding-inline-start: 5pt;
     color: $h6-fg-color;
     font-size: $h6-font-size;
-    background: linear-gradient(.25turn, $h6-bg-color, rgba(0,0,0,0.0));
+    background: linear-gradient(0.25turn, $h6-bg-color, rgba(0, 0, 0, 0));
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: $link-border-radius;
-    border-right: 0pt solid rgba(0,0,0,0.0);
+    border-right: 0pt solid rgba(0, 0, 0, 0);
     code {
       padding: 0pt 2pt;
     }
@@ -2278,9 +2287,13 @@ main {
 
 #quarto-appendix.default .quarto-appendix-heading {
   color: $dim-text;
-  background: linear-gradient(.25turn, oklch(from $dim-text calc(l * 1.15) c h/0.05), rgba(0,0,0,0.0));
+  background: linear-gradient(
+    0.25turn,
+    oklch(from $dim-text calc(l * 1.15) c h/0.05),
+    rgba(0, 0, 0, 0)
+  );
   border: 1px solid rgba(0, 0, 0, 0);
-  border-right: 1pt solid rgba(0,0,0,0.0);
+  border-right: 1pt solid rgba(0, 0, 0, 0);
   &:hover {
     border: 1px solid $dim-text;
   }
@@ -3368,22 +3381,21 @@ pre.cell-output {
 }
 
 .navbar-nav {
-	--bs-nav-link-padding-x: var(--bs-nav-link-padding-x);
-	--bs-nav-link-padding-y: var(--bs-nav-link-padding-y);
-	--bs-nav-link-font-weight: var(--bs-nav-link-font-weight);
-	--bs-nav-link-color: var(--bs-navbar-color);
-	--bs-nav-link-hover-color: var(--bs-navbar-hover-color);
-	--bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
-	flex-direction: column;
-	-webkit-flex-direction: column;
-	padding-left: 0;
-	margin-bottom: 0;
-	list-style: none;
-	display: inline-flex;
-	/* align-items: center; */
-	flex-direction: inherit;
+  --bs-nav-link-padding-x: var(--bs-nav-link-padding-x);
+  --bs-nav-link-padding-y: var(--bs-nav-link-padding-y);
+  --bs-nav-link-font-weight: var(--bs-nav-link-font-weight);
+  --bs-nav-link-color: var(--bs-navbar-color);
+  --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+  --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  display: inline-flex;
+  /* align-items: center; */
+  flex-direction: inherit;
 }
-
 
 .navbar-logo {
   max-height: 36px;
@@ -3479,7 +3491,6 @@ nav-item tabset-1-6-tab > a.nav-link.active {
 nav .nav-item:not(.compact) {
   padding-top: 0;
 }
-
 
 @media screen and (min-width: 992px) {
   a.nav-link {
