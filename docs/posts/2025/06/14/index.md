@@ -9,6 +9,8 @@ Sam Foreman
   - [PyTorch](#pytorch)
   - [Intel Libraries](#intel-libraries)
   - [`mpi4py`](#mpi4py)
+  - [`h5py`](#h5py)
+  - [TorchTune](#torchtune)
 - [✅ Verify Installation](#white_check_mark-verify-installation)
 
 ## 🏖️ Shell Environment
@@ -159,6 +161,33 @@ cd mpi4py
 CC=mpicc CXX=mpicxx python3 setup.py build |& tee build.log
 CC=mpicc CXX=mpicxx python3 setup.py install |& tee install.log
 cd ..
+```
+
+### `h5py`
+
+``` bash
+module load hdf5
+git clone https://github.com/h5py/h5py
+cd h5py
+CC=mpicc CXX=mpicxx HDF5_MPI="ON" python3 -m pip install --no-binary=h5py .
+h5cc -showconfig
+```
+
+### TorchTune
+
+``` bash
+git clone https://github.com/pytorch/ao
+cd ao
+USE_CUDA=0 USE_XPU=1 USE_XCCL=1 python3 setup.py bdist_wheel 2>&1 | tee "torchao-build-whl-$(tstamp).log"
+python3 -m pip install dist/*.whl
+```
+
+``` bash
+cd ../
+gh repo clone pytorch/torchtune
+cd torchtune
+python3 -m pip install -e "." --require-virtualenv --verbose
+tune download meta-llama/Meta-Llama-3.1-8B-Instruct --output-dir ~/torchtune_anl2/out_dir --ignore-patterns "original/consolidated.00.pth" --hf-token <hf-token>
 ```
 
 ## ✅ Verify Installation

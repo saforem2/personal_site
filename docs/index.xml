@@ -658,12 +658,141 @@ font-style: inherit;">tee</span> install.log</span>
 background-color: null;
 font-style: inherit;">cd</span> ..</span></code></pre></div>
 </section>
+<section id="h5py" class="level3">
+<h3 class="anchored" data-anchor-id="h5py"><code>h5py</code></h3>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">module</span> load hdf5</span>
+<span id="cb14-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> clone https://github.com/h5py/h5py</span>
+<span id="cb14-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> h5py</span>
+<span id="cb14-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">CC</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>mpicc <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">CXX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>mpicxx <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">HDF5_MPI</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ON"</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> pip install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--no-binary</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>h5py .</span>
+<span id="cb14-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">h5cc</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-showconfig</span></span></code></pre></div>
+</section>
+<section id="torchtune" class="level3">
+<h3 class="anchored" data-anchor-id="torchtune">TorchTune</h3>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> clone https://github.com/pytorch/ao</span>
+<span id="cb15-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ao</span>
+<span id="cb15-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">USE_CUDA</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>0 <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">USE_XPU</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>1 <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">USE_XCCL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>1 <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> setup.py bdist_wheel <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&amp;</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tee</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"torchao-build-whl-</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">tstamp</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.log"</span></span>
+<span id="cb15-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> pip install dist/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.whl</span></code></pre></div>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ../</span>
+<span id="cb16-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">gh</span> repo clone pytorch/torchtune</span>
+<span id="cb16-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> torchtune</span>
+<span id="cb16-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">python3</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> pip install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--require-virtualenv</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--verbose</span></span>
+<span id="cb16-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">tune</span> download meta-llama/Meta-Llama-3.1-8B-Instruct <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--output-dir</span> ~/torchtune_anl2/out_dir <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--ignore-patterns</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"original/consolidated.00.pth"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--hf-token</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>hf-token<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span></code></pre></div>
+</section>
 </section>
 <section id="verify-installation" class="level2">
 <h2 class="anchored" data-anchor-id="verify-installation">✅ Verify Installation</h2>
 <ul>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">python3</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -671,26 +800,26 @@ font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'import torch; print(torch.__file__); print(*torch.__config__.show().split("\n"), sep="\n") ; print(f"{torch.__version__=}"); print(f"{torch.xpu.is_available()=}"); print(f"{torch.xpu.device_count()=}") ; import torch.distributed; print(f"{torch.distributed.is_xccl_available()=}"); import torch; import intel_extension_for_pytorch as ipex; print(f"{torch.__version__=}"); print(f"{ipex.__version__=}"); import oneccl_bindings_for_pytorch as oneccl_bpt; print(f"{oneccl_bpt.__version__=}") ; [print(f"[{i}]: {torch.xpu.get_device_properties(i)}") for i in range(torch.xpu.device_count())]'</span></span></code></pre></div></li>
 <li><p>Output:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">$</span> python3 <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'import torch; print(torch.__file__); print(*torch.__config__.show().split("\n"), sep="\n") ; print(f"{torch.__version__=}"); print(f"{torch.xpu.is_available()=}"); print(f"{torch.xpu.device_count()=}") ; import torch.distributed; print(f"{torch.distributed.is_xccl_available()=}"); import torch; import intel_extension_for_pytorch as ipex; print(f"{torch.__version__=}"); print(f"{ipex.__version__=}"); import oneccl_bindings_for_pytorch as oneccl_bpt; print(f"{oneccl_bpt.__version__=}") ; [print(f"[{i}]: {torch.xpu.get_device_properties(i)}") for i in range(torch.xpu.device_count())]'</span></span>
-<span id="cb15-2"><span class="ex" style="color: null;
+<span id="cb18-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">/flare/datascience/foremans/miniconda/2025-06-15/lib/python3.12/site-packages/torch/__init__.py</span></span>
-<span id="cb15-3"><span class="ex" style="color: null;
+<span id="cb18-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">PyTorch</span> built with:</span>
-<span id="cb15-4">  <span class="ex" style="color: null;
+<span id="cb18-4">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> GCC 13.3</span>
-<span id="cb15-5">  <span class="ex" style="color: null;
+<span id="cb18-5">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> C++ Version: 201703</span>
-<span id="cb15-6">  <span class="ex" style="color: null;
+<span id="cb18-6">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> Intel<span class="er" style="color: #AD0000;
 background-color: null;
@@ -711,7 +840,7 @@ font-weight: bold;
 font-style: inherit;">)</span> <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">64</span> architecture applications</span>
-<span id="cb15-7">  <span class="ex" style="color: null;
+<span id="cb18-7">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> Intel<span class="er" style="color: #AD0000;
 background-color: null;
@@ -730,7 +859,7 @@ font-style: inherit;">Git</span> Hash 8d263e693366ef8db40acc569cc7d8edf644556d<s
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-8">  <span class="ex" style="color: null;
+<span id="cb18-8">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> OpenMP 201511 <span class="er" style="color: #AD0000;
 background-color: null;
@@ -740,7 +869,7 @@ font-style: inherit;">a.k.a.</span> OpenMP 4.5<span class="kw" style="color: #00
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-9">  <span class="ex" style="color: null;
+<span id="cb18-9">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> LAPACK is enabled <span class="er" style="color: #AD0000;
 background-color: null;
@@ -750,13 +879,13 @@ font-style: inherit;">usually</span> provided by MKL<span class="kw" style="colo
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-10">  <span class="ex" style="color: null;
+<span id="cb18-10">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> NNPACK is enabled</span>
-<span id="cb15-11">  <span class="ex" style="color: null;
+<span id="cb18-11">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> CPU capability usage: AVX512</span>
-<span id="cb15-12"><span class="ex" style="color: null;
+<span id="cb18-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">XPU</span> backend  <span class="at" style="color: #657422;
 background-color: null;
@@ -857,34 +986,34 @@ background-color: null;
 font-style: inherit;">-DUSE_XPU</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-Wno-stringop-overflow,</span> LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, TORCH_VERSION=2.8.0, USE_CUDA=0, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKL=ON, USE_MKLDNN=1, USE_MPI=1, USE_NCCL=OFF, USE_NNPACK=1,USE_OPENMP=ON, USE_ROCM=0, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=1, USE_XPU=1,</span>
-<span id="cb15-13"></span>
-<span id="cb15-14"><span class="ex" style="color: null;
+<span id="cb18-13"></span>
+<span id="cb18-14"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">torch.__version__=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'2.8.0a0+git655b3b1'</span></span>
-<span id="cb15-15"><span class="fu" style="color: #4758AB;
+<span id="cb18-15"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">torch.xpu.is_available()</span><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">=True</span></span>
-<span id="cb15-16"><span class="fu" style="color: #4758AB;
+<span id="cb18-16"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">torch.xpu.device_count()</span><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">=12</span></span>
-<span id="cb15-17"><span class="fu" style="color: #4758AB;
+<span id="cb18-17"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">torch.distributed.is_xccl_available()</span><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">=True</span></span>
-<span id="cb15-18"><span class="ex" style="color: null;
+<span id="cb18-18"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[W615</span> 14:52:10.420018164 OperatorEntry.cpp:217] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
-<span id="cb15-19">  <span class="ex" style="color: null;
+<span id="cb18-19">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Overriding</span> a previously registered kernel for the same operator and the same dispatch key</span>
-<span id="cb15-20">  <span class="ex" style="color: null;
+<span id="cb18-20">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">operator:</span> aten::geometric_<span class="er" style="color: #AD0000;
 background-color: null;
@@ -918,16 +1047,16 @@ font-style: inherit;">a!</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-21">    <span class="ex" style="color: null;
+<span id="cb18-21">    <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">registered</span> at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-15/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6</span>
-<span id="cb15-22">  <span class="ex" style="color: null;
+<span id="cb18-22">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">dispatch</span> key: XPU</span>
-<span id="cb15-23">  <span class="ex" style="color: null;
+<span id="cb18-23">  <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">previous</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-15/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37</span>
-<span id="cb15-24">       <span class="ex" style="color: null;
+<span id="cb18-24">       <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">new</span> kernel: registered at /lus/flare/projects/datascience/foremans/AuroraBuilds/2025-06-15/intel-extension-for-pytorch/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 <span class="er" style="color: #AD0000;
 background-color: null;
@@ -940,22 +1069,22 @@ font-style: inherit;"> operator()</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-25"><span class="ex" style="color: null;
+<span id="cb18-25"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">torch.__version__=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'2.8.0a0+git655b3b1'</span></span>
-<span id="cb15-26"><span class="ex" style="color: null;
+<span id="cb18-26"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">ipex.__version__=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'2.8.10+git57bb68a'</span></span>
-<span id="cb15-27"><span class="ex" style="color: null;
+<span id="cb18-27"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">oneccl_bpt.__version__=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'2.8.0+xpu'</span></span>
-<span id="cb15-28"><span class="ex" style="color: null;
+<span id="cb18-28"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[0]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1017,7 +1146,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-29"><span class="ex" style="color: null;
+<span id="cb18-29"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[1]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1079,7 +1208,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-30"><span class="ex" style="color: null;
+<span id="cb18-30"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[2]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1141,7 +1270,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-31"><span class="ex" style="color: null;
+<span id="cb18-31"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[3]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1203,7 +1332,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-32"><span class="ex" style="color: null;
+<span id="cb18-32"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[4]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1265,7 +1394,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-33"><span class="ex" style="color: null;
+<span id="cb18-33"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[5]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1327,7 +1456,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-34"><span class="ex" style="color: null;
+<span id="cb18-34"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[6]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1389,7 +1518,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-35"><span class="ex" style="color: null;
+<span id="cb18-35"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[7]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1451,7 +1580,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-36"><span class="ex" style="color: null;
+<span id="cb18-36"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[8]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1513,7 +1642,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-37"><span class="ex" style="color: null;
+<span id="cb18-37"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[9]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1575,7 +1704,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-38"><span class="ex" style="color: null;
+<span id="cb18-38"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[10]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1637,7 +1766,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-39"><span class="ex" style="color: null;
+<span id="cb18-39"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[11]:</span> _XpuDeviceProperties<span class="er" style="color: #AD0000;
 background-color: null;
@@ -1699,7 +1828,7 @@ font-style: inherit;">32],</span> has_fp16=1, has_fp64=1, has_atomic64=1<span cl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">)</span></span>
-<span id="cb15-40"><span class="ex" style="color: null;
+<span id="cb18-40"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">took:</span> 0h:00m:21s</span></code></pre></div></li>
 </ul>
@@ -1754,7 +1883,7 @@ When
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="cHl0b3JjaCUyQ0F1cm9yYQ==" data-listing-date-sort="1749877200000" data-listing-file-modified-sort="1750022077668" data-listing-date-modified-sort="1750022077000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1246" data-listing-title-sort="🏗️ Building PyTorch 2.8 from Source on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="cHl0b3JjaCUyQ0F1cm9yYQ==" data-listing-date-sort="1749877200000" data-listing-file-modified-sort="1750262052930" data-listing-date-modified-sort="1750262052000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1301" data-listing-title-sort="🏗️ Building PyTorch 2.8 from Source on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../../posts/2025/06/14/index.html" class="title listing-title">🏗️ Building PyTorch 2.8 from Source on Aurora</a>
@@ -2070,7 +2199,7 @@ When
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="cHl0b3JjaCUyQ0F1cm9yYQ==" data-listing-date-sort="1749877200000" data-listing-file-modified-sort="1750022077668" data-listing-date-modified-sort="1750022077000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1246" data-listing-title-sort="🏗️ Building PyTorch 2.8 from Source on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="cHl0b3JjaCUyQ0F1cm9yYQ==" data-listing-date-sort="1749877200000" data-listing-file-modified-sort="1750262017885" data-listing-date-modified-sort="1750262017000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1301" data-listing-title-sort="🏗️ Building PyTorch 2.8 from Source on Aurora" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../../../posts/2025/06/14/index.html" class="title listing-title">🏗️ Building PyTorch 2.8 from Source on Aurora</a>
