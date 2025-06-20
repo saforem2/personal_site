@@ -10,6 +10,7 @@ Sam Foreman
   - [Intel Libraries](#intel-libraries)
   - [`mpi4py`](#mpi4py)
   - [`h5py`](#h5py)
+  - [torch / `ao`](#torch--ao)
   - [TorchTune](#torchtune)
 - [✅ Verify Installation](#white_check_mark-verify-installation)
 
@@ -173,21 +174,24 @@ CC=mpicc CXX=mpicxx HDF5_MPI="ON" python3 -m pip install --no-binary=h5py .
 h5cc -showconfig
 ```
 
-### TorchTune
+### torch / `ao`
 
 ``` bash
 git clone https://github.com/pytorch/ao
 cd ao
 USE_CUDA=0 USE_XPU=1 USE_XCCL=1 python3 setup.py bdist_wheel 2>&1 | tee "torchao-build-whl-$(tstamp).log"
 python3 -m pip install dist/*.whl
+cd ../
 ```
 
+### TorchTune
+
 ``` bash
-cd ../
-gh repo clone pytorch/torchtune
+git clone https://github.com/pytorch/torchtune
 cd torchtune
 python3 -m pip install -e "." --require-virtualenv --verbose
 tune download meta-llama/Meta-Llama-3.1-8B-Instruct --output-dir ~/torchtune_anl2/out_dir --ignore-patterns "original/consolidated.00.pth" --hf-token <hf-token>
+cd ../
 ```
 
 ## ✅ Verify Installation
