@@ -1,4 +1,4 @@
-# LLMs on Polaris
+# Training LLMs on Polaris
 Sam Foreman
 2024-07-17
 
