@@ -109,6 +109,7 @@ $bs-navbar-padding-x: 5pt !default;
 $code-font-size: $presentation-font-size-root !default;
 $code-block-font-size: calc($code-font-size * 0.55) !default;
 $code-block-height: calc(0.66 * 100vh) !default;
+$code-block-height-mobile: calc(0.6 * 100vh) !default;
 $code-block-height-reveal: calc(0.33 * 100vh) !default;
 
 $presentation-font-family-line-height: 1lh !default;
@@ -569,11 +570,11 @@ body {
   font-feature-settings: "kern";
 }
 
-
 body p {
-  text-wrap: balance;
+  // text-wrap: balance;
   margin-block: auto;
   overflow-wrap: break-word;
+  overflow: auto;
   // padding-inline: 5pt;
   // margin-top: 0.5rem;
   // margin-bottom: 0.5rem;
@@ -603,7 +604,6 @@ body dl {
   vertical-align: baseline;
   margin-inline-end: 8pt;
 }
-
 
 body ol p,
 body ul p,
@@ -686,8 +686,6 @@ body td code:not(.sourceCode) {
   /* font-size: .875rem; */
 }
 
-
-
 div.sourceCode {
   white-space: pre;
   font-family: $font-family-monospace;
@@ -769,7 +767,6 @@ a:hover {
   cursor: pointer;
 }
 
-
 main a:not(.img):hover {
   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   cursor: pointer;
@@ -794,7 +791,6 @@ a img:hover,
   background: none !important;
   cursor: pointer;
 }
-
 
 .reveal a > code,
 a > code {
@@ -852,7 +848,6 @@ div.sidebar-item-container:focus {
 .ms-2 {
   margin-left: unset;
 }
-
 
 div.sidebar-item-container .active,
 div.sidebar-item-container .show > .nav-link,
@@ -928,7 +923,6 @@ div.sidebar-item-container .sidebar-link > code {
   }
 }
 
-
 .sidebar {
   padding-inline: 1pt;
 }
@@ -943,9 +937,27 @@ div.sidebar-item-container .sidebar-link > code {
   vertical-align: -webkit-baseline-middle;
 }
 
-.sidebar nav[role="doc-toc"] > ul a {
-  border-left: 1px solid rgba(255, 255, 255, 0.025);
-  padding-left: 0.6rem;
+// .sidebar nav[role="doc-toc"] > ul a {
+//   // border-left: 1px solid rgba(255, 255, 255, 0.025);
+//   padding-left: 0.6rem;
+// }
+
+// .sidebar nav[role="doc-toc"] ul > li > a.active,
+// .sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+//   border: 1px dashed $link-color;
+//   color: $link-color;
+// }
+
+.sidebar nav[role="doc-toc"] ul > li > a.active,
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+  border: none;
+  color: $link-color;
+  max-width: min-content;
+  min-width: max-content;
+  border-left: 1px solid $link-color;
+  border-right: 1px dashed $link-color;
+  border-top: 1px dashed $link-color;
+  border-bottom: 1px dashed $link-color;
 }
 
 .sidebar nav[role="doc-toc"] ul > li > a:hover,
@@ -1010,8 +1022,6 @@ a img:hover,
 .quarto-figure-center > figure > div {
   text-align: center;
 }
-
-
 
 .gist .gist-data {
   background-color: rgba(0, 0, 0, 0);
@@ -1173,7 +1183,6 @@ div.callout-tip.callout {
   }
 }
 
-
 div.callout-note.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-note-color calc(l * 1.15) c h/0.1);
@@ -1184,7 +1193,6 @@ div.callout-note.callout {
   }
 }
 
-
 div.callout-caution.callout {
   border-left-color: rgba(0, 0, 0, 0);
   background: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
@@ -1194,7 +1202,6 @@ div.callout-caution.callout {
     // transition: all 0.2s ease-in-out;
   }
 }
-
 
 div.callout-important.callout {
   border-left-color: rgba(0, 0, 0, 0);
@@ -1403,7 +1410,6 @@ div.callout-tip.callout {
   }
 }
 
-
 .reveal .callout.callout-style-default {
   padding: unset;
   border-left: none;
@@ -1431,7 +1437,6 @@ div.callout-tip.callout {
 
   padding: 0 5pt;
 }
-
 
 div.callout-warning.callout .callout .callout-title-container {
   overflow-wrap: anywhere;
@@ -1864,8 +1869,6 @@ pre > code.sourceCode > span {
   font-size: inherit;
 }
 
-
-
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -1915,7 +1918,6 @@ section.has-light-background h5,
 section.has-light-background h6 {
   color: $heading-color;
 }
-
 
 body h1,
 body h2,
@@ -2051,7 +2053,6 @@ main {
   }
 }
 
-
 .reveal .slide-menu-button .fas::before {
   display: inline-block;
   height: 1.5rem;
@@ -2109,7 +2110,6 @@ dd {
   justify-content: space-evenly;
   overflow-x: auto;
 }
-
 
 .tippy-content > * {
   margin: auto;
@@ -2467,6 +2467,13 @@ div.quarto-about-trestles {
 
 /* Small screens */
 @media all and (max-width: 768px) {
+  pre.sourceCode {
+    border: none;
+    // padding: 0.4em;
+    max-height: $code-block-height-mobile;
+    overflow-y: scroll;
+  }
+
   .quarto-layout-row {
     flex-direction: column;
   }
@@ -3074,7 +3081,6 @@ pre > code.sourceCode > span {
   margin-inline-start: 1pt;
 }
 
-
 pre > code.sourceCode > span > a:first-child::before {
   color: $dim-text;
   left: unset;
@@ -3450,7 +3456,6 @@ svg:not(:root) {
   //     overflow: visible;
   // }
 }
-
 
 .reveal .slide aside {
   color: $dim-text;
