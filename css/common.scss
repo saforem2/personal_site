@@ -97,7 +97,8 @@ $link-color: rgba(19, 122, 245, 1) !default;
 $link-bg-color: rgba(19, 122, 245, 0.062745098);
 $light-bg-link-color: #1a8fff !default;
 $dark-bg-link-color: #137af5 !default;
-$link-border-radius: 0.1rem;
+$link-border-radius: 0pt;
+$bs-card-inner-border-radius: 0pt;
 
 $nav-link-padding-x: 5px;
 $nav-link-padding-y: 2px;
@@ -343,6 +344,7 @@ b {
   --h6-font-size: $h6-font-size;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
+  --bs-card-inner-border-radius: $bs-card-inner-border-radius;
   --bs-card-spacer-y: 0.5rem;
   --bs-card-spacer-x: 0.5rem;
   --bs-navbar-padding-x: $bs-navbar-padding-x;
@@ -574,7 +576,7 @@ body p {
   // text-wrap: balance;
   margin-block: auto;
   overflow-wrap: break-word;
-  overflow: auto;
+  overflow-x: auto;
   // padding-inline: 5pt;
   // margin-top: 0.5rem;
   // margin-bottom: 0.5rem;
@@ -780,7 +782,6 @@ img a:not(#lightbox):hover {
   color: $link-color-hover;
   background: none !important;
   border-radius: $link-border-radius;
-  // transition: 0.5s ease all;
   cursor: pointer;
 }
 
@@ -1753,11 +1754,19 @@ div.callout-important.callout-style-default .callout-title {
   overflow: scroll;
 }
 
+.card-img,
+.card-img-bottom {
+  border-bottom-right-radius: $bs-card-inner-border-radius;
+  border-bottom-left-radius: $bs-card-inner-border-radius;
+}
+
+.quarto-grid-item p.card-img-top {
+  margin-bottom: 0;
+  overflow: visible;
+}
+
 .quarto-grid-item .card-title {
   color: inherit;
-  /* margin-top: auto; */
-  /* margin-bottom: auto; */
-  // margin-block: auto;
   white-space: collapse;
   background-color: unset;
   background: unset;
@@ -2677,8 +2686,6 @@ details > summary {
   // max-width: min-content;
   // width: fit-content;
   padding-inline: 5pt;
-  // margin-block-start: 0.25rem;
-  // margin-block-end: 0.25rem;
 }
 
 details > summary:hover {
@@ -2688,16 +2695,7 @@ details > summary:hover {
 
   background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   border: 1px solid $link-color-hover;
-  // transition: all 0.2s ease all;
-  // box-shadow: $shadow-color 0px 2px 5px !important;
-  // min-width: max-content;
-  // max-width: min-content;
-  // width: fit-content;
   padding-inline: 5pt;
-  // padding-left: 0.5em;
-  // padding-right: 0.5em;
-  // margin-block-start: 0.25rem;
-  // margin-block-end: 0.25rem;
 }
 
 .navbar-dark .navbar-nav .show > .nav-link,
@@ -2827,9 +2825,6 @@ nav.quarto-secondary-nav {
   border: 1px solid rgba(0, 0, 0, 0);
   border-top-left-radius: 0pt;
   border-top-right-radius: 0pt;
-  // border-bottom-left-radius: 0.25rem;
-  // border-bottom-right-radius: 0.25rem;
-
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   box-shadow: $shadow-color 0px 2px 7px !important;

@@ -1,5 +1,5 @@
 Sam Foreman
-2025-07-06
+2025-07-08
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -240,7 +240,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > )
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">06</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:38:53</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:25:24</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -262,12 +262,12 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > <span style="color:#4582ec;">You can find a full list of my
 > publications on my [Google Scholar]</span>
 
-- [**HiPerRAG: High-Performance Retrieval Augmented Generation for
-  Scientific Insights**]  
+- [HiPerRAG: High-Performance Retrieval Augmented Generation for
+  Scientific Insights]  
   <span class="dim-text">O. Gokdemir et al., *05/2025*</span>
 
-- [**MOFA: Discovering Materials for Carbon Capture with a GenAI and
-  Simulation-Based Workflow**]  
+- [MOFA: Discovering Materials for Carbon Capture with a GenAI and
+  Simulation-Based Workflow]  
   <span class="dim-text">Xiaoli Yan et al., *01/2025*</span>
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
@@ -1080,14 +1080,21 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
     - Research lead on scaling large language models (LLMs) and
       generative AI for science on supercomputers (Aurora, Frontier,
       LUMI, Leonardo, …).
+      - Co-lead the Models and Pretraining team of the [AuroraGPT]
+        project
     - Optimize large-scale training of foundation models and language
       models for scientific applications.  
     - Collaborate with interdisciplinary teams to enhance simulation
-      efficiency and scalability.
+      efficiency and scalability
     - Focus on AI and HPC for scientific applications, including:
+      - Training large language models on supercomputers
+      - Genome scale language models (GenSLMs) for studying SARS-CoV-2
+        evolutionary dynamics
+      - Direct Preference Optimization (DPO) for multimodal protein
+        design workflows
+      - Climate modeling and weather forecasting using foundation models
       - Developing improved sampling algorithms for lattice quantum
         chromodynamics (QCD)
-      - Training large language models on supercomputers
     - <https://www.alcf.anl.gov/about/people/sam-foreman>
 - **Postdoctoral Researcher**
   - Argonne National Laboratory, Argonne Leadership Computing Facility
@@ -1220,7 +1227,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </div>
 
-[^1]: *See full list on [Google Scholar][16]*
+[^1]: *See full list on [Google Scholar]*
 
 [^2]: *See full list at: [samforeman.me/talks]*
 
@@ -1251,9 +1258,9 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
-  [**HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights**]:
+  [HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights]:
     https://arxiv.org/abs/2505.04846
-  [**MOFA: Discovering Materials for Carbon Capture with a GenAI and Simulation-Based Workflow**]:
+  [MOFA: Discovering Materials for Carbon Capture with a GenAI and Simulation-Based Workflow]:
     https://arxiv.org/abs/2501.10651
   [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
     https://doi.org/10.1109/SC41406.2024.00013
@@ -1350,6 +1357,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [*Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory*]:
     https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
   [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
+  [AuroraGPT]: https://auroragpt.anl.gov
   [8]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
   [9]: https://doi.org/10.1177/10943420231184990
   [10]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
@@ -1367,5 +1375,4 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [15]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [16]: https://scholar.google.com/citations?user=7vBs2ZwAAAAJ
   [samforeman.me/talks]: https://samforeman.me/talks/
