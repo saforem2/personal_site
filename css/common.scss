@@ -347,11 +347,8 @@ b {
   --bs-card-inner-border-radius: $bs-card-inner-border-radius;
   --bs-card-spacer-y: 0.5rem;
   --bs-card-spacer-x: 0.5rem;
-  --bs-navbar-padding-x: $bs-navbar-padding-x;
-  --link-color: $link-color;
+  --shadow-color: $shadow-color, --link-color: $link-color;
   --link-color-hover: $link-color-hover;
-  --navbar-fg: $navbar-fg;
-  --navbar-bg: $navbar-bg;
   // --bs-card-spacer-x: 0pt;
   // --bs-card-spacer-y: 0pt;
   --font-family-sans-serif: $font-family-sans-serif;
@@ -2799,15 +2796,17 @@ nav.quarto-secondary-nav {
   --bs-navbar-brand-color: #adadad;
   --bs-navbar-brand-hover-color: $link-color-hover;
   --bs-navbar-toggler-border-color: rgba(173, 173, 173, 0);
-
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 6 6'> <path class='sun' d='m0,-3 l1,1 1,0 0,1 1,1 -1,1 0,1 -1,0 -1,1 -1,-1 -1,0 0,-1 -1,-1 1,-1 0,-1 1,0 1,-1 0,1.5 a1,1,1,1,0,0,3 1,1,1,1,0,0,-3' /> <circle class='moon' r='1.1' /> </svg>");
 }
 
+.navbar,
 .navbar-dark,
 .navbar[data-bs-theme="light"] {
   --bs-navbar-color: #adadad;
   --bs-navbar-hover-color: $link-color-hover;
   --bs-navbar-disabled-color: rgba(173, 173, 173, 0.75);
+  // --bs-navbar-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px !important;
+  --bs-navbar-box-shadow: 0 0 11px rgba(33, 33, 33, 0.2)!important;
   --bs-navbar-active-color: rgba(
     red($code-color),
     green($code-color),
@@ -2818,6 +2817,9 @@ nav.quarto-secondary-nav {
   --bs-navbar-brand-hover-color: $link-color-hover;
   --bs-navbar-toggler-border-color: rgba(173, 173, 173, 0);
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3svg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 6 6'> <path class='sun' d='m0,-3 l1,1 1,0 0,1 1,1 -1,1 0,1 -1,0 -1,1 -1,-1 -1,0 0,-1 -1,-1 1,-1 0,-1 1,0 1,-1 0,1.5 a1,1,1,1,0,0,3 1,1,1,1,0,0,-3' /> <circle class='moon' r='1.1' /> </svg>"); // url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23adadad' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-padding-x: $bs-navbar-padding-x;
+  --navbar-fg: $navbar-fg;
+  --navbar-bg: $navbar-bg;
 }
 
 .navbar {
@@ -2825,19 +2827,20 @@ nav.quarto-secondary-nav {
   border: 1px solid rgba(0, 0, 0, 0);
   border-top-left-radius: 0pt;
   border-top-right-radius: 0pt;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  box-shadow: $shadow-color 0px 2px 7px !important;
+  // padding-left: 0.5rem;
+  // padding-right: 0.5rem;
+  box-shadow: var(--bs-navbar-box-shadow) !important;
 }
 
 .navbar:hover {
   // border-radius: $link-border-radius;
 
-  box-shadow: $shadow-color 0px 2px 4px !important;
+  // box-shadow: $shadow-color 0px 2px 4px !important;
   width: 100%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  box-shadow: $shadow-color 0px 2px 7px !important;
+  // padding-left: 0.5rem;
+  // padding-right: 0.5rem;
+  box-shadow: var(--bs-navbar-box-shadow) !important;
+  border: 1px solid $link-color-hover;
 }
 
 .navbar .dropdown-item {

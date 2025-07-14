@@ -1,11 +1,11 @@
 Sam Foreman
-2025-07-10
+2025-07-13
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-100x100.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-200x200.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
@@ -39,14 +39,16 @@ style="display: flex; flex-direction: row; align-items: center; text-align: cent
 </div>
 
 <div class="panel-tabset"
-style="justify-content: center; loading='lazy';">
+style="justify-content: center; loading='lazy'; padding-inline: 1pt;">
 
 ### 🧑🏻‍💻 About
 
-<div class="flex-container"
-style="width: 100%; justify-content: space-between; align-items: flex-start;">
+<div style="padding-inline: 5pt;">
 
-<div class="column" style="width: 55%;">
+<div class="flex-container"
+style="justify-content: space-between; align-items: flex-start;">
+
+<div class="column" style="width: 60%;">
 
 - [Computational Scientist][ALCF] @ [Argonne National Laboratory]
   - [AI Group] @ [Leadership Computing Facility (ALCF)]
@@ -56,7 +58,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-<div class="column">
+<div class="column" stle="width: 40%">
 
 > [!TIP]
 >
@@ -230,17 +232,10 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > import datetime
 > from rich import print
 > now = datetime.datetime.now()
-> print(
->     ' '.join([
->         "[#838383]Last Updated[/]:",
->         f"[#E599F7]{now.strftime("%Y-%m-%d")}[/]",
->         "[#838383]@[/]",
->         f"[#00CCFF]{now.strftime("%H:%M:%S")}[/]", 
->     ])
-> )
+> print(' '.join([ "[#838383]Last Updated[/]:", f"[#E599F7]{now.strftime("%Y-%m-%d")}[/]", "[#838383]@[/]", f"[#00CCFF]{now.strftime("%H:%M:%S")}[/]", ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:52:12</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">13</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">00:17:59</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -254,6 +249,8 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
 > <span class="dim-text">© Copyright [Sam Foreman]</span>
 >
 > </div>
+
+</div>
 
 ### 📝 Work
 
@@ -275,7 +272,7 @@ style="width: 100%; justify-content: space-between; align-items: flex-start;">
   <span class="dim-text">G. Dharuman, K. Hippe, A. Brace, **S.
   Foreman**, et al. @ [SC’24]</span>
 
-  -  [<span class="highlight-pink">2024 Gordon Bell Finalist</span>]
+  -  [<span class="highlight-pink">2024 ACM Gordon Bell Finalist</span>]
 
 - [Intro to HPC Bootcamp: Engaging New Communities Through Energy
   Justice Projects]  
@@ -1265,7 +1262,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization**]:
     https://doi.org/10.1109/SC41406.2024.00013
   [SC’24]: https://sc24.supercomputing.org/
-  [<span class="highlight-pink">2024 Gordon Bell Finalist</span>]: https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/
+  [<span class="highlight-pink">2024 ACM Gordon Bell Finalist</span>]: https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/
   [Intro to HPC Bootcamp: Engaging New Communities Through Energy Justice Projects]:
     https://jocse.org/downloads/jocse-15-1-10.pdf
   [Thorough Characterization and Analysis of Large Transformer Model Training At-Scale]:
