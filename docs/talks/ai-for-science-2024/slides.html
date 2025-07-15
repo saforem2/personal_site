@@ -7,14 +7,14 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8f1af79587c2686b78fe4e1fbadd71ab.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.14">
+  <meta name="generator" content="quarto-1.8.16">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2024-11-05">
@@ -123,7 +123,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8641f36c002922900d4ecf7a40b339ab.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-9031035439812240feeced6587f24127.css">
   <link rel="stylesheet" href="../../css/navbar-active.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
@@ -1284,7 +1284,7 @@ Figure&nbsp;21: Figure taken from <a href="https://www.microsoft.com/en-us/resea
 <li><code>PP</code> + <code>ZeRO</code> + <code>TP</code> + <code>DP</code> (less communication, at the cost of <strong>MAJOR</strong> modifications)
 <ul>
 <li><p>when you have slow inter-node connectivity and still low on GPU memory:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">DP</span> + PP + TP + ZeRO-1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 <li><strong>NOTE</strong>: <code>TP</code> is almost <em>always</em> used within a single node, e.g.<br>
 <code>TP &lt;= GPUS_PER_NODE</code></li>
@@ -1439,15 +1439,15 @@ Figure&nbsp;27: Language Model trained for causal language modeling<sup>1</sup>.
 <li><p>🌱 Clone Repo(s):</p>
 <ul>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay">saforem2/<code>wordplay</code></a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/wordplay</span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> wordplay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/wordplay</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> wordplay</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>ezpz</code></a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/ezpz deps/ezpz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/saforem2/ezpz deps/ezpz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 <li><p>🐍 Setup Python:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> deps/ezpz/src/ezpz/bin/utils.sh</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PBS_O_WORKDIR</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="kw">&amp;&amp;</span> <span class="bu">source</span> deps/ezpz/src/ezpz/bin/utils.sh</span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_python</span></span>
-<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="install-ezpz-wordplay" class="slide level2 center" data-background-color="white">
@@ -1456,13 +1456,13 @@ Figure&nbsp;27: Language Model trained for causal language modeling<sup>1</sup>.
 <li><p>Install Python packages:</p>
 <ol type="1">
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>ezpz</code></a>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"./deps/ezpz"</span> <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"./deps/ezpz"</span> <span class="at">--require-virtualenv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2/<code>wordplay</code></a>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># from inside `wordplay/`</span></span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> . <span class="at">--require-virtualenv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># from inside `wordplay/`</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> . <span class="at">--require-virtualenv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol></li>
 <li><p>Test distributed setup:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> python3 <span class="at">-m</span> ezpz.test_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-n</span> <span class="st">"</span><span class="va">${NGPUS}</span><span class="st">"</span> python3 <span class="at">-m</span> ezpz.test_dist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>See: 🍋 <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz/test_dist.py</code></a></p></li>
 </ol>
 </section>
@@ -1494,18 +1494,18 @@ Figure&nbsp;29: The simplest, fastest repository for training / finetuning GPT b
 </section>
 <section id="prepare-data" class="slide level2 center" data-background-color="white">
 <h2>Prepare Data</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 wordplay/data/shakespeare_char/prepare.py</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python3 wordplay/data/shakespeare_char/prepare.py</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Using</span> HF_DATASETS_CACHE=/home/foremans/tmp/polaris-talk/2024-07-17-073327/wordplay/data/shakespeare_char/.cache/huggingface</span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">length</span> of dataset in characters: 1,115,394</span>
 <span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">all</span> the unique characters:</span>
 <span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">!$</span><span class="kw">&amp;</span><span class="ex">\',-.3:</span><span class="kw">;</span><span class="ex">?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</span></span>
 <span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">vocab</span> size: 65</span>
 <span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">train</span> has 1,003,854 tokens</span>
-<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">val</span> has 111,540 tokens</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">val</span> has 111,540 tokens</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="launch-training-ddp" class="slide level2 center" data-background-color="white">
 <h2>Launch Training (DDP)</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">launch</span> python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">launch</span> python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>    train.backend=DDP <span class="dt">\</span></span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>    train.eval_interval=100 <span class="dt">\</span></span>
 <span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>    data=shakespeare <span class="dt">\</span></span>
@@ -1515,11 +1515,11 @@ Figure&nbsp;29: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>    train.max_iters=1000 <span class="dt">\</span></span>
 <span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>    train.log_interval=10 <span class="dt">\</span></span>
 <span id="cb9-10"><a aria-hidden="true" tabindex="-1"></a>    train.compile=false <span class="dt">\</span></span>
-<span id="cb9-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-11"><a aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="fu">tee</span> wordplay-gpt2-DDP.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="training-example-output" class="slide level2 center" data-background-color="white">
 <h2>Training: Example Output</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> launch python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> launch python3 <span class="at">-m</span> wordplay <span class="dt">\</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>    train.backend=DDP <span class="dt">\</span></span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>    train.eval_interval=100 <span class="dt">\</span></span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>    data=shakespeare <span class="dt">\</span></span>
@@ -1820,7 +1820,7 @@ Figure&nbsp;29: The simplest, fastest repository for training / finetuning GPT b
 <span id="cb10-299"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:28.374854][INFO][trainer:885] - step=310 loss=1.444200 dt=0.299907 dtf=0.005333 dtb=0.010637 sps=13.337481 sps_per_gpu=3.334370 tps=874085.133345 tps_per_gpu=218521.283336 mfu=45.384395 train_loss=1.495372 val_loss=1.713714</span></span>
 <span id="cb10-300"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:31.223079][INFO][trainer:885] - step=320 loss=1.429350 dt=0.285238 dtf=0.005245 dtb=0.011485 sps=14.023353 sps_per_gpu=3.505838 tps=919034.479880 tps_per_gpu=229758.619970 mfu=45.435743 train_loss=1.495372 val_loss=1.713714</span></span>
 <span id="cb10-301"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330 loss=1.362220 dt=0.285027 dtf=0.005165 dtb=0.011407 sps=14.033736 sps_per_gpu=3.508434 tps=919714.904826 tps_per_gpu=229928.726207 mfu=45.485355 train_loss=1.495372 val_loss=1.713714</span></span>
-<span id="cb10-302"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-302"><a aria-hidden="true" tabindex="-1"></a><span class="st">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="wordplay-example-video" class="slide level2 center" data-background-color="#121314">
 <h2><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h2>

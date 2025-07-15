@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,12 +78,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-89a7970e3d7244a05acd222856ff4956.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2ae9922f953a8b00cbfa2128ca133f49.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-08a961fa11ce03724f2c52bcc16866f2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b46b4e92112533260d97e25a3cdc1bc1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-6c4a7c18591decf026439ea02c0440f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-b8384d96587f1832b081a8b690284593.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fe0d7e7147fdd360bfebd4b9a7fcb434.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-4ae575ac854f2838dda238ee89007030.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -440,7 +440,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo">
+    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo light-content">
+    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -494,6 +495,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -1671,25 +1676,25 @@ Figure&nbsp;1: Current state of LLM Pretraining. [<a href="https://x.com/Doriale
 <h2 data-background-color="white" class="anchored" data-anchor-id="getting-started">🐣 Getting Started</h2>
 <ol type="1">
 <li><p>Submit interactive job:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">qsub</span> <span class="at">-I</span> <span class="at">-l</span> select=2 <span class="at">-l</span> walltime=01:00:00 <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">qsub</span> <span class="at">-I</span> <span class="at">-l</span> select=2 <span class="at">-l</span> walltime=01:00:00 <span class="dt">\</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="at">-l</span> filesystems=home:flare <span class="dt">\</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>    <span class="at">-A</span> gpu_hack <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="at">-q</span> gpu_hack_prio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="at">-q</span> gpu_hack_prio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Source<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> the <a href="https://github.com/saforem2/ezpz/blob/main/bin/utils.sh"><code>ezpz/bin/utils.sh</code></a> script (using <code>curl</code> to download it<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="shell-environment" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="shell-environment">🏖️ Shell Environment</h2>
 <ol type="1">
 <li><p>Setup environment:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">ezpz_setup_env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">ezpz_setup_env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><details closed="">
 <summary>
 Output:
 </summary>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">;</span> <span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span> <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_env</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">;</span> <span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span> <span class="kw">&amp;&amp;</span> <span class="ex">ezpz_setup_env</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="ex">[2025-05-05-072645][W]</span> PBS_O_WORKDIR is not set! Setting it to current working directory</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="ex">[2025-05-05-072645][I]</span> Exporting PBS_O_WORKDIR=/lus/flare/projects/datascience/foremans/projects/saforem2/ezpz</span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="ex">[2025-05-05-072645][I]</span>  ===== Running Full Environment Setup =====</span>
@@ -1738,7 +1743,7 @@ Output:
 <span id="cb4-47"><a href="#cb4-47"></a><span class="ex">[2025-05-05-072648][I]</span>     launch = mpiexec <span class="at">--verbose</span> <span class="at">--envall</span> <span class="at">-n</span> 24 <span class="at">-ppn</span> 12 <span class="at">--hostfile</span> /var/spool/pbs/aux/4671985.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov <span class="at">--cpu-bind</span> depth <span class="at">-d</span> 8 <span class="at">--no-vni</span></span>
 <span id="cb4-48"><a href="#cb4-48"></a><span class="ex">[2025-05-05-072648][I]</span>   <span class="at">-</span> Run <span class="st">'which launch'</span> to ensure that the alias is set correctly</span>
 <span id="cb4-49"><a href="#cb4-49"></a><span class="ex">[2025-05-05-072648][I]</span> ===== Environment Setup Complete =====</span>
-<span id="cb4-50"><a href="#cb4-50"></a><span class="ex">took:</span> 0h:00m:03s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></details></li>
+<span id="cb4-50"><a href="#cb4-50"></a><span class="ex">took:</span> 0h:00m:03s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></details></li>
 </ul>
 </li>
 </ol>
@@ -1788,13 +1793,13 @@ Output:
 <h2 data-background-color="white" class="anchored" data-anchor-id="use-custom-node-lists">🔄 Use Custom Node Lists</h2>
 <ul>
 <li><p>Experiment<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> with custom <code>hostfile</code>(s), e.g.:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co"># 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` </span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="ex">ezpz_setup_job</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co"># 2. Grab a subset of nodes:</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="fu">head</span> <span class="at">-n</span> 2 <span class="va">$PBS_NODEFILE</span> <span class="op">&gt;</span> nodefile-0-1</span>
 <span id="cb5-6"><a href="#cb5-6"></a><span class="co"># 3. Pass custom `nodefile-0-1`:</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="ex">ezpz_setup_job</span> nodefile-0-1  <span class="co"># will use `nodefile-0-1`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="ex">ezpz_setup_job</span> nodefile-0-1  <span class="co"># will use `nodefile-0-1`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="python-environments" class="level2" data-background-color="white">
@@ -1816,50 +1821,50 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <h2 data-background-color="white" class="anchored" data-anchor-id="install-ezpz">📦 Install <code>ezpz</code></h2>
 <ol type="1">
 <li><p>Install<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Run distributed test:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">ezpz-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Launch <em>any</em> python <em>from</em> python</p>
 <ul>
 <li><p>Launch a module:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.test_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.test_dist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Launch a python string:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">ezpz-launch</span> <span class="at">-c</span> <span class="st">"'import ezpz; ezpz.setup_torch()'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">ezpz-launch</span> <span class="at">-c</span> <span class="st">"'import ezpz; ezpz.setup_torch()'"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 </ol>
 </section>
 <section id="how-to-modify-existing-code" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="how-to-modify-existing-code">➕ How to Modify Existing Code</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource diff number-lines code-with-copy"><code class="sourceCode diff"><span id="cb10-1"><a href="#cb10-1"></a><span class="va">+ import ezpz</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource diff number-lines code-with-copy"><code class="sourceCode diff"><span id="cb10-1"><a href="#cb10-1"></a><span class="va">+ import ezpz</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="va">+ _ = ezpz.setup_torch()</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="st">- model.to('cuda')</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="va">+ model.to(ezpz.get_torch_device_type())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="va">+ model.to(ezpz.get_torch_device_type())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="features" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="features">✨ Features</h2>
 <ul>
 <li><p>Initializing PyTorch across multiple processes</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> ezpz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb11-2"><a href="#cb11-2"></a>_ <span class="op">=</span> ezpz.setup_torch()</span>
 <span id="cb11-3"><a href="#cb11-3"></a>rank <span class="op">=</span> ezpz.get_rank()</span>
 <span id="cb11-4"><a href="#cb11-4"></a>world_size <span class="op">=</span> ezpz.get_world_size()</span>
-<span id="cb11-5"><a href="#cb11-5"></a>local_rank <span class="op">=</span> ezpz.get_local_rank()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb11-5"><a href="#cb11-5"></a>local_rank <span class="op">=</span> ezpz.get_local_rank()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Automatic device detection (<code>xpu</code>, <code>cuda</code>, <code>mps</code>, <code>cpu</code>, …)</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> torch.rand((<span class="dv">10</span>, <span class="dv">10</span>)).to(ezpz.get_torch_device_type())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> torch.rand((<span class="dv">10</span>, <span class="dv">10</span>)).to(ezpz.get_torch_device_type())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Automatic (single-process) logging</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Distributed debugger:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">try</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">try</span>:</span>
 <span id="cb14-2"><a href="#cb14-2"></a>    buggy_code()</span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
-<span id="cb14-4"><a href="#cb14-4"></a>    ezpz.<span class="bu">breakpoint</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb14-4"><a href="#cb14-4"></a>    ezpz.<span class="bu">breakpoint</span>(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="experiment-tracking" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="experiment-tracking">🧪 Experiment Tracking</h2>
 <div class="block-code">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> ezpz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb15-2"><a href="#cb15-2"></a>rank <span class="op">=</span> ezpz.setup_torch()</span>
 <span id="cb15-3"><a href="#cb15-3"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:                   <span class="co"># -- [1.] --</span></span>
@@ -1881,7 +1886,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb15-20"><a href="#cb15-20"></a>    )</span>
 <span id="cb15-21"><a href="#cb15-21"></a></span>
 <span id="cb15-22"><a href="#cb15-22"></a><span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb15-23"><a href="#cb15-23"></a>    history.finalize()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-23"><a href="#cb15-23"></a>    history.finalize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li>Initialize W&amp;B (if <code>WANDB_DISABLED</code> is not set)</li>
 <li>Log summary of metrics to stdout</li>
@@ -1895,7 +1900,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <li>See <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/examples/minimal.py"><code>ezpz/examples/minimal.py</code></a></li>
 </ul>
 <div class="block-code">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> os</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> os</span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> time</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="im">import</span> ezpz</span>
 <span id="cb16-4"><a href="#cb16-4"></a><span class="im">import</span> torch</span>
@@ -2019,7 +2024,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb16-122"><a href="#cb16-122"></a></span>
 <span id="cb16-123"><a href="#cb16-123"></a></span>
 <span id="cb16-124"><a href="#cb16-124"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-125"><a href="#cb16-125"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-125"><a href="#cb16-125"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="running-the-minimal-example" class="level2" data-background-color="white">
@@ -2027,18 +2032,18 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <p>To run the previous example we:</p>
 <ol type="1">
 <li><p>Source the <code>ezpz</code> utils script:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Setup our environment:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">ezpz_setup_env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="ex">ezpz_setup_env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Run the example:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <ol type="1">
 <li><details closed="">
 <summary>
 Output:
 </summary>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="co">#[/f/d/f/p/s/ezpz][🌱 update-utils][📦📝🤷✓] [⏱️ 5m23s]</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="co">#[05/06/25 @ 09:06:04][x4000c2s6b0n0]</span></span>
 <span id="cb20-4"><a href="#cb20-4"></a><span class="kw">;</span> <span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span>
@@ -2403,7 +2408,7 @@ Output:
 <span id="cb20-363"><a href="#cb20-363"></a><span class="ex">Application</span> 9237e362 resources: utime=843s stime=176s maxrss=4006656KB inblock=668002 oublock=1640 minflt=11466255 majflt=45004 nvcsw=498142 nivcsw=5295709</span>
 <span id="cb20-364"><a href="#cb20-364"></a><span class="ex">[2025-05-06</span> 09:07:06]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/launch:201</span><span class="pp">]</span> Execution finished @ 2025-05-06-090706</span>
 <span id="cb20-365"><a href="#cb20-365"></a><span class="ex">[2025-05-06</span> 09:07:06]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/launch:202</span><span class="pp">]</span> Command took 44.95 seconds to run. Exiting.</span>
-<span id="cb20-366"><a href="#cb20-366"></a><span class="ex">took:</span> 0h:00m:56s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-366"><a href="#cb20-366"></a><span class="ex">took:</span> 0h:00m:56s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details></li>
 </ol>
 </section>
@@ -2416,9 +2421,9 @@ Output:
 </ul></li>
 <li><p>See: <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/test.py">ezpz/test.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co">#[05/05/25 @ 07:41:35][x4520c1s0b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷✓] [⏱️ 54s]</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="kw">;</span> <span class="ex">ezpz-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="kw">;</span> <span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="generate-text" class="level2" data-background-color="white">
@@ -2426,14 +2431,14 @@ Output:
 <ul>
 <li><p>See: <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/generate.py">ezpz/generate.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 <ul>
 <li><details closed="">
 <summary>
 Output
 </summary>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">```</span><span class="fu">bash</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">```</span><span class="fu">bash</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="co">#[05/05/25 @ 08:00:04][x4520c1s0b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷</span></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="kw">;</span> <span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span>
@@ -2477,7 +2482,7 @@ Output
 <span id="cb23-42"><a href="#cb23-42"></a><span class="st">that make the experience of prison a difficult one. It is also the psychological and emotional impact that it has on the prisoners themselves. In this blog </span></span>
 <span id="cb23-43"><a href="#cb23-43"></a><span class="st">post, we will'</span></span>
 <span id="cb23-44"><a href="#cb23-44"></a><span class="bu">]</span></span>
-<span id="cb23-45"><a href="#cb23-45"></a><span class="ex">Enter</span> a prompt: </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-45"><a href="#cb23-45"></a><span class="ex">Enter</span> a prompt: </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details></li>
 </ul>
 </section>
@@ -2486,7 +2491,7 @@ Output
 <ul>
 <li><p>See <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/hf_trainer.py">ezpz/hf_trainer.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.hf_trainer <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.hf_trainer <span class="dt">\</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>    <span class="at">--dataset_name</span><span class="op">=</span>eliplutchok/fineweb-small-sample <span class="dt">\</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>    <span class="at">--streaming</span> <span class="dt">\</span></span>
 <span id="cb24-4"><a href="#cb24-4"></a>    <span class="at">--model_name_or_path</span><span class="op">=</span>meta-llama/Llama-3.2-1B <span class="dt">\</span></span>
@@ -2506,14 +2511,14 @@ Output
 <span id="cb24-18"><a href="#cb24-18"></a>    <span class="at">--logging-first-step</span> <span class="dt">\</span></span>
 <span id="cb24-19"><a href="#cb24-19"></a>    <span class="at">--include-for-metrics</span><span class="op">=</span><span class="st">'inputs,loss'</span> <span class="dt">\</span></span>
 <span id="cb24-20"><a href="#cb24-20"></a>    <span class="at">--max-eval-samples</span><span class="op">=</span>50 <span class="dt">\</span></span>
-<span id="cb24-21"><a href="#cb24-21"></a>    <span class="at">--ddp-backend</span><span class="op">=</span>ccl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb24-21"><a href="#cb24-21"></a>    <span class="at">--ddp-backend</span><span class="op">=</span>ccl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 <ul>
 <li><details closed="">
 <summary>
 Output:
 </summary>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co">#[/f/d/f/p/s/ezpz][🌱 update-utils][📦📝🤷✓] [⏱️ 1m54s]</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a><span class="co">#[05/06/25 @ 22:25:54][x4505c5s7b0n0]</span></span>
@@ -2880,19 +2885,19 @@ Output:
 <span id="cb25-365"><a href="#cb25-365"></a><span class="ex">Application</span> 3917764c resources: utime=2709s stime=1798s maxrss=15499424KB inblock=959040 oublock=38691080 minflt=31555618 majflt=73083 nvcsw=1288306 nivcsw=2040486</span>
 <span id="cb25-366"><a href="#cb25-366"></a><span class="ex">[2025-05-06</span> 22:27:37]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/launch:201</span><span class="pp">]</span> Execution finished @ 2025-05-06-222737</span>
 <span id="cb25-367"><a href="#cb25-367"></a><span class="ex">[2025-05-06</span> 22:27:37]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/launch:202</span><span class="pp">]</span> Command took 93.85 seconds to run. Exiting.</span>
-<span id="cb25-368"><a href="#cb25-368"></a><span class="ex">took:</span> 0h:01m:45s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-368"><a href="#cb25-368"></a><span class="ex">took:</span> 0h:01m:45s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details></li>
 </ul>
 </section>
 <section id="megatron-deepspeed" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="megatron-deepspeed">🏎️ Megatron-DeepSpeed</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">git</span> clone https://github.com/argonne-lcf/Megatron-DeepSpeed</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">git</span> clone https://github.com/argonne-lcf/Megatron-DeepSpeed</span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="bu">cd</span> Megatron-DeepSpeed</span>
 <span id="cb26-3"><a href="#cb26-3"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="dt">\</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a>    deepspeed <span class="dt">\</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a>    <span class="st">"git+https://github.com/saforem2/ezpz"</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">bash</span> train_alcf.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">bash</span> train_alcf.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="acknowledgements" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="acknowledgements">🙌 Acknowledgements</h2>
@@ -3439,7 +3444,7 @@ Foreman, Sam. 2025. <span>“LLMs on Aurora: Hands-On.”</span> May 7. <a href=
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">---</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a><span class="an">title:</span><span class="co"> "LLMs on Aurora: Hands-On"</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="an">subtitle:</span><span class="co"> "🍋 ezpz"</span></span>
 <span id="cb27-4"><a href="#cb27-4"></a><span class="an">description:</span><span class="co"> "Presented at the 2025 ALCF INCITE GPU Hackathon"</span></span>
@@ -4863,7 +4868,7 @@ Foreman, Sam. 2025. <span>“LLMs on Aurora: Hands-On.”</span> May 7. <a href=
 <span id="cb27-1422"><a href="#cb27-1422"></a><span class="op">&gt;</span> This <span class="ex">research</span> used resources of the Argonne Leadership Computing Facility,</span>
 <span id="cb27-1423"><a href="#cb27-1423"></a><span class="op">&gt;</span> which <span class="ex">is</span> a DOE Office of Science User Facility supported under Contract</span>
 <span id="cb27-1424"><a href="#cb27-1424"></a><span class="op">&gt;</span> DE-AC02-06CH11357.</span>
-<span id="cb27-1425"><a href="#cb27-1425"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb27-1425"><a href="#cb27-1425"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

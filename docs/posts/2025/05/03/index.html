@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,12 +77,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-89a7970e3d7244a05acd222856ff4956.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2ae9922f953a8b00cbfa2128ca133f49.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-08a961fa11ce03724f2c52bcc16866f2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b46b4e92112533260d97e25a3cdc1bc1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-6c4a7c18591decf026439ea02c0440f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark-b8384d96587f1832b081a8b690284593.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-fe0d7e7147fdd360bfebd4b9a7fcb434.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-4ae575ac854f2838dda238ee89007030.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -431,7 +431,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo">
+    <img src="../../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo light-content">
+    <img src="../../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -485,6 +486,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -1621,27 +1626,27 @@ window.Quarto = {
 <p>Something I just learned</p>
 <p>The TensorFlow that is included in the new frameworks module (<code>aurora_nre_models_frameworks-2025.0.0</code>) was built with <code>numpy==1.26.4 (&lt; 2)</code>.</p>
 <p>Unfortunately, if you then (for whatever reason) then tries to install / upgrade a package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that has <code>numpy</code> in its dependencies, e.g.:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span> transformers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will pull in <code>numpy &gt; 2</code>, effectively breaking the frameworks module.</p>
 <p>In particular, any application that uses <a href="https://github.com/intel/intel-extension-for-pytorch"><code>intel/extension_for_pytorch</code></a>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> intel_extension_for_pytorch <span class="im">as</span> ipex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> intel_extension_for_pytorch <span class="im">as</span> ipex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Will crash with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">A</span> module that was compiled using NumPy 1.x cannot be run in</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">A</span> module that was compiled using NumPy 1.x cannot be run in</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="ex">NumPy</span> 2.2.5 as it may crash. To support both 1.x and 2.x</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="ex">versions</span> of NumPy, modules must be compiled with NumPy 2.0.</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="ex">Some</span> module may need to rebuild instead e.g. with <span class="st">'pybind11&gt;=2.12'</span>.</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">which</span> is obviously frustrating for an application that is only using PyTorch.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">which</span> is obviously frustrating for an application that is only using PyTorch.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Following through the stack trace, I see that the error is actually coming from <a href="https://github.com/huggingface/transformers/image_transforms.py#L47">huggingface/transformers/image_transforms.py#L47</a>.</p>
 <p>Digging around a bit more I found there is a flag in <code>transformers</code> that allows you to bypass the entire <code>import tensorflow as tf</code> logic:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">USE_TORCH</span><span class="op">=</span>1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">USE_TORCH</span><span class="op">=</span>1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>which not only prevents things from crashing with <code>numpy &gt; 2</code>, but is also noticeably quicker.</p>
 <section id="reinstall-modules-built-with-numpy-2" class="level2">
 <h2 class="anchored" data-anchor-id="reinstall-modules-built-with-numpy-2">Reinstall Modules built with <code>numpy &lt; 2</code></h2>
 <p>In addition to <code>tensorflow</code>, it seems that: { <code>jax</code>, <code>jaxlib</code>, <code>ml-dtypes</code>, <code>opt-einsum</code>, <code>scipy</code> } were <em>all</em> built with <code>numpy &lt; 2</code>, and so need to be rebuilt after upgrading numpy.</p>
 <p>To do so:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span>  numpy jax jaxlib ml-dtypes opt-einsum scipy transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">--upgrade</span>  numpy jax jaxlib ml-dtypes opt-einsum scipy transformers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>✅ Now, we’re able to successfully:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">#[05/03/25 @ 12:12:29][x4515c7s4b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷✓] [⏱️ 25s]</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="kw">;</span> <span class="va">USE_TORCH</span><span class="op">=</span>1 <span class="ex">python3</span> <span class="at">-c</span> <span class="st">'import numpy as np; print(np.__version__) ; import ezpz '</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="ex">2.2.5</span></span>
@@ -1653,7 +1658,7 @@ window.Quarto = {
 <span id="cb6-10"><a href="#cb6-10"></a>  <span class="ex">previous</span> kernel: registered at /build/pytorch/build/aten/src/ATen/RegisterCPU.cpp:30476</span>
 <span id="cb6-11"><a href="#cb6-11"></a>       <span class="ex">new</span> kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:2971 <span class="er">(</span><span class="kw">function</span><span class="fu"> operator()</span><span class="kw">)</span></span>
 <span id="cb6-12"><a href="#cb6-12"></a><span class="ex">[2025-05-03</span> 12:13:18]<span class="pp">[</span><span class="ss">W</span><span class="pp">][</span><span class="ss">utils/_logger:68:ezpz</span><span class="pp">]</span> Unable to import deepspeed. Please install it to use DeepSpeed features.</span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="ex">took:</span> 0h:00m:48s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="ex">took:</span> 0h:00m:48s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="profiles-and-timing-comparisons" class="level2">
 <h2 class="anchored" data-anchor-id="profiles-and-timing-comparisons">Profiles and Timing Comparisons</h2>
@@ -1663,22 +1668,22 @@ window.Quarto = {
 <li><a href="https://github.com/joerick/pyinstrument"><code>pyinstrument</code></a>: A call stack profiler for Python</li>
 </ul>
 <p>Below we present the profiles obtained by the usual mechanism, i.e.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">module</span> load frameworks</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">module</span> load frameworks</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="ex">python3</span> <span class="at">-m</span> venv <span class="at">--system-site-packages</span> <span class="st">"venvs/</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${CONDA_PREFIX})</span><span class="st">"</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="bu">source</span> venvs/<span class="va">$(</span><span class="fu">basename</span> <span class="va">${CONDA_PREFIX})</span>/bin/activate</span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="default-behavior" class="level3">
 <h3 class="anchored" data-anchor-id="default-behavior">DEFAULT BEHAVIOR</h3>
 <section id="bash-profile-hyperfine" class="level5">
 <h5 class="anchored" data-anchor-id="bash-profile-hyperfine">Bash Profile (<code>hyperfine</code>)</h5>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">$</span> hyperfine <span class="at">--max-runs</span><span class="op">=</span>10 <span class="at">--shell</span><span class="op">=</span>zsh <span class="at">--show-output</span> <span class="st">'ezpz_init() { $(which python3) -c "import ezpz" }; ezpz_init'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">$</span> hyperfine <span class="at">--max-runs</span><span class="op">=</span>10 <span class="at">--shell</span><span class="op">=</span>zsh <span class="at">--show-output</span> <span class="st">'ezpz_init() { $(which python3) -c "import ezpz" }; ezpz_init'</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># ...[clipped]...</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="ex">Time</span> <span class="er">(</span><span class="ex">mean</span> ± σ<span class="kw">)</span><span class="bu">:</span>     10.754 s ±  0.122 s    [User: 14.574 s, System: 12.795 s]</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">Range</span> <span class="er">(</span><span class="ex">min</span> … max<span class="kw">)</span><span class="bu">:</span>   10.467 s … 10.910 s    10 runs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="ex">Range</span> <span class="er">(</span><span class="ex">min</span> … max<span class="kw">)</span><span class="bu">:</span>   10.467 s … 10.910 s    10 runs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="python-profile-pyinstrument" class="level4">
 <h4 class="anchored" data-anchor-id="python-profile-pyinstrument">Python Profile (<code>pyinstrument</code>)</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">$</span> pyinstrument <span class="at">-c</span> <span class="st">'import ezpz'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">$</span> pyinstrument <span class="at">-c</span> <span class="st">'import ezpz'</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co"># ...[clipped]...</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="ex">12.021</span> <span class="op">&lt;</span>module<span class="op">&gt;</span>  ezpz/__init__.py:1</span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="ex">├─</span> 8.624 <span class="op">&lt;</span>module<span class="op">&gt;</span>  ezpz/dist.py:1</span>
@@ -1686,7 +1691,7 @@ window.Quarto = {
 <span id="cb9-6"><a href="#cb9-6"></a><span class="ex">│</span>        [206 frames hidden]  intel_extension_for_pytorch, transfor...</span>
 <span id="cb9-7"><a href="#cb9-7"></a><span class="ex">│</span>           0.247 <span class="op">&lt;</span>module<span class="op">&gt;</span>  torch/utils/_sympy/functions.py:1</span>
 <span id="cb9-8"><a href="#cb9-8"></a><span class="ex">│</span>           └─ 0.241 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/__init__.py:1</span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="ex">│</span>              └─ 0.126 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/polys/__init__.py:1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="ex">│</span>              └─ 0.126 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/polys/__init__.py:1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="with-use_torch1-and-numpy2.2.5" class="level3">
@@ -1698,14 +1703,14 @@ window.Quarto = {
 </ol>
 <section id="bash-profile-hyperfine-1" class="level4">
 <h4 class="anchored" data-anchor-id="bash-profile-hyperfine-1">Bash Profile (<code>hyperfine</code>)</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">$</span> hyperfine <span class="at">--max-runs</span><span class="op">=</span>10 <span class="at">--shell</span><span class="op">=</span>zsh <span class="at">--show-output</span> <span class="st">'ezpz_init() { USE_TORCH=1 $(which python3) -c "import ezpz" }; ezpz_init'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">$</span> hyperfine <span class="at">--max-runs</span><span class="op">=</span>10 <span class="at">--shell</span><span class="op">=</span>zsh <span class="at">--show-output</span> <span class="st">'ezpz_init() { USE_TORCH=1 $(which python3) -c "import ezpz" }; ezpz_init'</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co"># ...[clipped]...</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="ex">Time</span> <span class="er">(</span><span class="ex">mean</span> ± σ<span class="kw">)</span><span class="bu">:</span>      7.491 s ±  0.162 s    [User: 12.130 s, System: 11.940 s]</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">Range</span> <span class="er">(</span><span class="ex">min</span> … max<span class="kw">)</span><span class="bu">:</span>    7.311 s …  7.883 s    10 runs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">Range</span> <span class="er">(</span><span class="ex">min</span> … max<span class="kw">)</span><span class="bu">:</span>    7.311 s …  7.883 s    10 runs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="python-profile-pyinstrument-1" class="level4">
 <h4 class="anchored" data-anchor-id="python-profile-pyinstrument-1">Python Profile (<code>pyinstrument</code>)</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">$</span> USE_TORCH=1 pyinstrument <span class="at">-c</span> <span class="st">'import ezpz'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">$</span> USE_TORCH=1 pyinstrument <span class="at">-c</span> <span class="st">'import ezpz'</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co"># ...[clipped]...</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="ex">8.478</span> <span class="op">&lt;</span>module<span class="op">&gt;</span>  ezpz/__init__.py:1</span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="ex">├─</span> 5.109 <span class="op">&lt;</span>module<span class="op">&gt;</span>  ezpz/dist.py:1</span>
@@ -1713,7 +1718,7 @@ window.Quarto = {
 <span id="cb11-6"><a href="#cb11-6"></a><span class="ex">│</span>        [174 frames hidden]  intel_extension_for_pytorch, transfor...</span>
 <span id="cb11-7"><a href="#cb11-7"></a><span class="ex">│</span>           0.249 <span class="op">&lt;</span>module<span class="op">&gt;</span>  torch/utils/_sympy/functions.py:1</span>
 <span id="cb11-8"><a href="#cb11-8"></a><span class="ex">│</span>           └─ 0.241 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/__init__.py:1</span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="ex">│</span>              └─ 0.124 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/polys/__init__.py:1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="ex">│</span>              └─ 0.124 <span class="op">&lt;</span>module<span class="op">&gt;</span>  sympy/polys/__init__.py:1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 </section>
@@ -1723,7 +1728,7 @@ window.Quarto = {
 <summary>
 Stack Trace
 </summary>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co">#[05/02/25 @ 15:46:43][x4005c2s6b0n0][/f/d/f/p/s/t/2/ezpz][🌱 update-utils][✓] [⏱️ 19s]</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="kw">;</span> <span class="ex">ezpz-test</span> <span class="at">--profile</span> <span class="at">--tp</span> 2 <span class="at">--pp</span> 4</span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="ex">[W502</span> 16:00:18.739960487 OperatorEntry.cpp:155] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
@@ -1798,7 +1803,7 @@ Stack Trace
 <span id="cb12-73"><a href="#cb12-73"></a><span class="ex">AttributeError:</span> _ARRAY_API not found</span>
 <span id="cb12-74"><a href="#cb12-74"></a><span class="ex">AttributeError:</span> <span class="st">'MessageFactory'</span> object has no attribute <span class="st">'GetPrototype'</span></span>
 <span id="cb12-75"><a href="#cb12-75"></a></span>
-<span id="cb12-76"><a href="#cb12-76"></a><span class="co"># ...[clipped]...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="co"># ...[clipped]...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 
 
@@ -2335,7 +2340,7 @@ Foreman, Sam. 2025. <span>“🚧 Frameworks Issue with &lt;Code&gt;numpy
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="an">title:</span><span class="co"> "🚧 Frameworks Issue with &lt;code&gt;numpy &gt; 2&lt;/code&gt;"</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="an">date:</span><span class="co"> 2025-05-03</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
@@ -2587,7 +2592,7 @@ Foreman, Sam. 2025. <span>“🚧 Frameworks Issue with &lt;Code&gt;numpy
 <span id="cb13-250"><a href="#cb13-250"></a><span class="co"># ...[clipped]...</span></span>
 <span id="cb13-251"><a href="#cb13-251"></a><span class="kw">```</span></span>
 <span id="cb13-252"><a href="#cb13-252"></a></span>
-<span id="cb13-253"><a href="#cb13-253"></a><span class="op">&lt;</span>/details<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb13-253"><a href="#cb13-253"></a><span class="op">&lt;</span>/details<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

@@ -1,0 +1,143 @@
+# 📚 Projects
+Sam Foreman
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+> [!TIP]
+>
+> ### <span class="dim-text-11">📊 GitHub Stats</span>
+>
+> <div class="flex-container" style="flex-flow: wrap;">
+>
+> <a href="https://github.com/saforem2"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a>
+> <a href="https://github.com/saforem2/github-readme-stats"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383"></a>
+>
+> </div>
+>
+> <div style="width: 100%; text-align: center;">
+>
+> <a href="https://git.io/streak-stats"><img loading="lazy" align="center" width="100%" src="https://streak-stats.demolab.com?user=saforem2&theme=shadow-blue&hide_border=true&card_width=800&card_height=200&stroke=838383&currStreakNum=838383&dates=838383&currStreakLabel=838383&ring=838383&fire=FF5252&sideNums=838383&sideLabels=838383&date_format=n%2Fj%5B%2FY%5D&background=EB545400" alt="GitHub Streak" /></a>
+>
+> <img loading="lazy" width="100%" alt="Github Contributions " src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true">
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/720ce003-bc7f-4c57-8f4c-92f0c7f24975.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/4a58bb04-4212-4b5c-8f97-1ac59f2e3250.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/c8e0da32-52d1-485f-b4ca-22645f25ea3f.svg" style="max-width:95%;">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/8a8894dd-519b-4bd5-b521-d09bee799b57.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/d5fd1e4b-0c8f-44be-8173-59d780fe22c8.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/c052a705-7ccf-4028-90ca-adcde26de94d.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> </div>
+>
+> <details closed>
+>
+> <summary>
+>
+> Even More !!
+> </summary>
+>
+> <details closed>
+>
+> <summary>
+>
+> Wakatime
+> </summary>
+>
+> <a href="https://github.com/saforem2/"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&show_icons=true&include_all_commits=true&title_color=838383&hide_border=true&layout=compact&theme=transparent&text_color=838383"></a>
+>
+> </details>
+>
+> <img loading="lazy" src="https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg">
+>
+> </details>
+
+> [!TIP]
+>
+> ### <span class="dim-text-11">📂 [`saforem2/`](https://github.com/saforem2?tab=repositories)</span>
+>
+> <div class="flex-container" style="flex-flow: wrap;">
+>
+> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=Megatron-DeepSpeed&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/ezpz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ezpz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/mmm"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=mmm&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/ambivalent"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=ambivalent&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/l2hmc-qcd"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=l2hmc-qcd&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=personal_site&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/wordplay"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=wordplay&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/enrich"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=enrich&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/public"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=public&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/lattice23"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=lattice23&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="github.com/saforem2/llm-workshop-talk"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=llm-workshop-talk&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/quarto-site-template"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=quarto-site-template&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/starter"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=starter&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=glitz&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/saforem2/awesome-stars"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&repo=awesome-stars&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/nftqcd/fthmc"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&repo=fthmc&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/argonne-lcf/CompPerfWorkshop"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=CompPerfWorkshop&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/argonne-lcf/ai-science-training-series"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=ai-science-training-series&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/argonne-lcf/mlprof"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=mlprof&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> <a href="https://github.com/argonne-lcf/user-guides"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&repo=user-guides&theme=transparent&show_icons=true&include_all_commits=true&hide_border=true&line_height=5&card_width=300px&text_color=838383&title_color=838383"></a>
+>
+> </div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,12 +77,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-89a7970e3d7244a05acd222856ff4956.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2ae9922f953a8b00cbfa2128ca133f49.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-08a961fa11ce03724f2c52bcc16866f2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b46b4e92112533260d97e25a3cdc1bc1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6c4a7c18591decf026439ea02c0440f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-b8384d96587f1832b081a8b690284593.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fe0d7e7147fdd360bfebd4b9a7fcb434.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4ae575ac854f2838dda238ee89007030.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -432,7 +432,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo">
+    <img src="../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo light-content">
+    <img src="../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -486,6 +487,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -1616,7 +1621,7 @@ window.Quarto = {
 
 <section id="patch-on-aurora" class="level2">
 <h2 class="anchored" data-anchor-id="patch-on-aurora">Patch on Aurora</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource diff number-lines code-with-copy"><code class="sourceCode diff"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">diff --git a/torchtune/training/_distributed.py b/torchtune/training/_distributed.py</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource diff number-lines code-with-copy"><code class="sourceCode diff"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">diff --git a/torchtune/training/_distributed.py b/torchtune/training/_distributed.py</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>index ff959c5f..c3966290 100644</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="dt">--- a/torchtune/training/_distributed.py</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="dt">+++ b/torchtune/training/_distributed.py</span></span>
@@ -1644,24 +1649,24 @@ window.Quarto = {
 <span id="cb1-26"><a href="#cb1-26"></a><span class="va">+            # from torch.distributed._composable import CPUOffloadPolicy</span></span>
 <span id="cb1-27"><a href="#cb1-27"></a>         fsdp_kwargs["offload_policy"] = CPUOffloadPolicy()</span>
 <span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>     # Shard the model with FSDP, iterating in reverse to start with</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29"></a>     # Shard the model with FSDP, iterating in reverse to start with</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-pytorch-2.5" class="level2">
 <h2 class="anchored" data-anchor-id="using-pytorch-2.5">Using PyTorch 2.5</h2>
 <p>Using the new enviroment with <code>pytorch==2.5</code> and after applying the above patch, I am almost able to get things working before ultimately crashing with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">[rank0]:</span> RuntimeError: Tried to instantiate dummy base class Stream</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">[rank0]:</span> RuntimeError: Tried to instantiate dummy base class Stream</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The full command (and output) are included below:</p>
 <ul>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#[🐍 anl_2024_12_release_2](👻 anl_2024_12_release_2)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#[🐍 anl_2024_12_release_2](👻 anl_2024_12_release_2)</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#[08:47:46 AM][x4204c5s6b0n0][/f/A/f/p/p/torchtune][🌱 main][!?][⏱️ 2s]</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">$</span> tune run full_finetune_distributed <span class="at">--config</span> llama3_1/8B_full optimizer.fused=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">$</span> tune run full_finetune_distributed <span class="at">--config</span> llama3_1/8B_full optimizer.fused=False</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Output:</p>
 <details closed="">
 <summary>
 <p>Output:</p>
 </summary>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">[W128</span> 08:49:19.162113524 OperatorEntry.cpp:155] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">[W128</span> 08:49:19.162113524 OperatorEntry.cpp:155] Warning: Warning only once for all operators,  other operators may also be overridden.</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="ex">Overriding</span> a previously registered kernel for the same operator and the same dispatch key</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="ex">operator:</span> aten::_cummax_helper<span class="er">(</span><span class="ex">Tensor</span> self, Tensor<span class="er">(</span><span class="ex">a!</span><span class="kw">)</span> <span class="ex">values,</span> Tensor<span class="er">(</span><span class="ex">b!</span><span class="kw">)</span> <span class="ex">indices,</span> int dim<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> <span class="er">(</span><span class="kw">)</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="ex">registered</span> at /build/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6</span>
@@ -1803,7 +1808,7 @@ window.Quarto = {
 <span id="cb4-140"><a href="#cb4-140"></a><span class="ex">[rank0]:</span> RuntimeError: FSDP requires CUDA for streams</span>
 <span id="cb4-141"><a href="#cb4-141"></a><span class="ex">0%</span><span class="kw">|</span>                                                                                                                                                          <span class="kw">|</span> <span class="ex">0/26001</span> [00:00<span class="op">&lt;</span><span class="pp">?</span>, <span class="pp">?</span>it/s]</span>
 <span id="cb4-142"><a href="#cb4-142"></a><span class="ex">[1]</span>    135144 exit 1     tune run full_finetune_distributed <span class="at">--config</span> llama3_1/8B_full</span>
-<span id="cb4-143"><a href="#cb4-143"></a><span class="ex">took:</span> 0h:00m:55s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-143"><a href="#cb4-143"></a><span class="ex">took:</span> 0h:00m:55s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details></li>
 </ul>
 </section>
@@ -1811,15 +1816,15 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="using-pytorch-2.3">Using PyTorch 2.3</h2>
 <ul>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2024.2.1_u1](:ghost: aurora_nre_models_frameworks-2024.2.1_u1)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2024.2.1_u1](:ghost: aurora_nre_models_frameworks-2024.2.1_u1)</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#[08:07:29 AM][x4204c5s6b0n0][/f/A/f/p/p/torchtune][:seedling: main][!?][:stopwatch: 13s]</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">$</span> tune run full_finetune_distributed <span class="at">--config</span> llama4_1/8B_full optimizer.fused=False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">$</span> tune run full_finetune_distributed <span class="at">--config</span> llama4_1/8B_full optimizer.fused=False</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Output:</p>
 <details closed="">
 <summary>
 <p>Output:</p>
 </summary>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">[2025-01-28</span> 08:07:38]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/dist:823</span><span class="pp">]</span> Using device=<span class="st">'xpu'</span> with backend=<span class="st">'DDP'</span> + <span class="st">'ccl'</span> for distributed training.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">[2025-01-28</span> 08:07:38]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/dist:823</span><span class="pp">]</span> Using device=<span class="st">'xpu'</span> with backend=<span class="st">'DDP'</span> + <span class="st">'ccl'</span> for distributed training.</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="ex">[2025-01-28</span> 08:07:38]<span class="pp">[</span><span class="ss">I</span><span class="pp">][</span><span class="ss">ezpz/dist:869</span><span class="pp">]</span> <span class="pp">[</span><span class="st">'x4204c5s6b0n0'</span><span class="pp">][</span><span class="ss">0/0</span><span class="pp">]</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="ex">2025:01:28-08:07:38:</span><span class="er">(</span><span class="ex">115657</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">did</span> not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi</span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="ex">2025:01:28-08:07:38:</span><span class="er">(</span><span class="ex">115657</span><span class="kw">)</span> <span class="kw">|</span><span class="ex">CCL_WARN</span><span class="kw">|</span> <span class="ex">value</span> of CCL_LOCAL_RANK changed to be 0 <span class="er">(</span><span class="ex">default:-1</span><span class="kw">)</span></span>
@@ -1958,7 +1963,7 @@ window.Quarto = {
 <span id="cb6-137"><a href="#cb6-137"></a><span class="ex">[rank0]:</span>     raise RuntimeError<span class="er">(</span><span class="ex">f</span><span class="st">"Tried to instantiate dummy base class {class_name}"</span><span class="kw">)</span></span>
 <span id="cb6-138"><a href="#cb6-138"></a><span class="ex">[rank0]:</span> RuntimeError: Tried to instantiate dummy base class Stream</span>
 <span id="cb6-139"><a href="#cb6-139"></a>  <span class="ex">0%</span><span class="kw">|</span>                                                                                                                                                                                                                                                       <span class="kw">|</span> <span class="ex">0/26001</span> [00:00<span class="op">&lt;</span><span class="pp">?</span>, <span class="pp">?</span>it/s]</span>
-<span id="cb6-140"><a href="#cb6-140"></a><span class="ex">[1]</span>    115657 exit 1     tune run full_finetune_distributed <span class="at">--config</span> llama3_1/8B_full</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-140"><a href="#cb6-140"></a><span class="ex">[1]</span>    115657 exit 1     tune run full_finetune_distributed <span class="at">--config</span> llama3_1/8B_full</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details></li>
 </ul>
 
@@ -2488,7 +2493,7 @@ Foreman, Sam. 2025. <span>“🪛 Torchtune on Aurora,”</span> March. <a href=
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">---</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="an">title:</span><span class="co"> 🪛 Torchtune on Aurora</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="an">categories:</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="co">  - Aurora</span></span>
@@ -2888,7 +2893,7 @@ Foreman, Sam. 2025. <span>“🪛 Torchtune on Aurora,”</span> March. <a href=
 <span id="cb7-398"><a href="#cb7-398"></a>    <span class="kw">```</span></span>
 <span id="cb7-399"><a href="#cb7-399"></a></span>
 <span id="cb7-400"><a href="#cb7-400"></a></span>
-<span id="cb7-401"><a href="#cb7-401"></a>  <span class="op">&lt;</span>/details<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb7-401"><a href="#cb7-401"></a>  <span class="op">&lt;</span>/details<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

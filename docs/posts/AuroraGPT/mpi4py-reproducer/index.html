@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,12 +77,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-89a7970e3d7244a05acd222856ff4956.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2ae9922f953a8b00cbfa2128ca133f49.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-08a961fa11ce03724f2c52bcc16866f2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b46b4e92112533260d97e25a3cdc1bc1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-6c4a7c18591decf026439ea02c0440f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-b8384d96587f1832b081a8b690284593.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fe0d7e7147fdd360bfebd4b9a7fcb434.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-4ae575ac854f2838dda238ee89007030.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -431,7 +431,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo">
+    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo light-content">
+    <img src="../../../assets/signature-navbar-orig.svg" alt="Sam Foreman" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -485,6 +486,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -1606,20 +1611,20 @@ window.Quarto = {
 <p>Simple reproducer:</p>
 <ol type="1">
 <li><p>Load my <code>anl_24_q2_release</code> conda environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#[08:42:38 AM][foremans@x1922c2s3b0n0][~]</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(</span><span class="ex">~/miniconda3/bin/conda</span> shell.zsh hook<span class="va">)</span><span class="st">"</span> <span class="kw">;</span> <span class="ex">conda</span> activate anl_24_q2_release</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#[08:42:38 AM][foremans@x1922c2s3b0n0][~]</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(</span><span class="ex">~/miniconda3/bin/conda</span> shell.zsh hook<span class="va">)</span><span class="st">"</span> <span class="kw">;</span> <span class="ex">conda</span> activate anl_24_q2_release</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Try <code>python3 -c 'from mpi4py import MPI'</code></p>
 <ul>
 <li>fails ❌</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># [08:44:41 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># [08:44:41 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ex">$</span> python3 <span class="at">-c</span> <span class="st">'from mpi4py import MPI'</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="ex">File</span> <span class="st">"&lt;string&gt;"</span>, line 1, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a><span class="ex">ImportError:</span> /home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so: undefined symbol: MPI_Message_c2f</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">[1]</span>    14910 exit 1     python3 <span class="at">-c</span> <span class="st">'from mpi4py import MPI'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">[1]</span>    14910 exit 1     python3 <span class="at">-c</span> <span class="st">'from mpi4py import MPI'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Load correct modules:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># [08:44:58 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># [08:44:58 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="ex">$</span> module use /home/ftartagl/graphics-compute-runtime/modulefiles <span class="kw">;</span> <span class="ex">module</span> load graphics-compute-runtime/agama-ci-devel-803.29 spack-pe-gcc/0.6.1-23.275.2 gcc/12.2.0 <span class="kw">;</span> <span class="ex">module</span> use /soft/preview-modulefiles/24.086.0 <span class="kw">;</span> <span class="ex">module</span> load oneapi/release/2024.04.15.001</span>
 <span id="cb3-3"><a href="#cb3-3"></a>     <span class="ex">UMD:</span> agama-ci-devel-803.29 successfully loaded:</span>
 <span id="cb3-4"><a href="#cb3-4"></a>     <span class="ex">UMD:</span> graphics-compute-runtime/agama-ci-devel-803.29</span>
@@ -1628,14 +1633,14 @@ window.Quarto = {
 <span id="cb3-7"><a href="#cb3-7"></a>  <span class="ex">1</span><span class="er">)</span> <span class="ex">mpich-config/collective-tuning/1024</span></span>
 <span id="cb3-8"><a href="#cb3-8"></a></span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="ex">The</span> following have been reloaded with a version change:</span>
-<span id="cb3-10"><a href="#cb3-10"></a>  <span class="ex">1</span><span class="er">)</span> <span class="ex">intel_compute_runtime/release/agama-devel-736.25</span> =<span class="op">&gt;</span> intel_compute_runtime/release/775.20     2<span class="er">)</span> <span class="ex">mpich/icc-all-pmix-gpu/52.2</span> =<span class="op">&gt;</span> mpich/icc-all-pmix-gpu/20231026     3<span class="er">)</span> <span class="ex">oneapi/eng-compiler/2023.12.15.002</span> =<span class="op">&gt;</span> oneapi/release/2024.04.15.001</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="ex">1</span><span class="er">)</span> <span class="ex">intel_compute_runtime/release/agama-devel-736.25</span> =<span class="op">&gt;</span> intel_compute_runtime/release/775.20     2<span class="er">)</span> <span class="ex">mpich/icc-all-pmix-gpu/52.2</span> =<span class="op">&gt;</span> mpich/icc-all-pmix-gpu/20231026     3<span class="er">)</span> <span class="ex">oneapi/eng-compiler/2023.12.15.002</span> =<span class="op">&gt;</span> oneapi/release/2024.04.15.001</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Retry with new modules:</p>
 <ul>
 <li>works ✅</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># [08:45:01 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># [08:45:01 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="ex">$</span> python3 <span class="at">-c</span> <span class="st">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">/home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">/home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 
 
@@ -2164,7 +2169,7 @@ Foreman, Sam. 2024. <span>“🐛 `Mpi4py` Bug on Sunspot.”</span> May 25,
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">---</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="an">title:</span><span class="co"> "🐛 `mpi4py` bug on Sunspot"</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="an">date:</span><span class="co"> 2024-05-25</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="an">categories:</span></span>
@@ -2215,7 +2220,7 @@ Foreman, Sam. 2024. <span>“🐛 `Mpi4py` Bug on Sunspot.”</span> May 25,
 <span id="cb5-49"><a href="#cb5-49"></a>    <span class="co"># [08:45:01 AM][foremans@x1922c2s3b0n0][~][anl_24_q2_release]</span></span>
 <span id="cb5-50"><a href="#cb5-50"></a>    <span class="ex">$</span> python3 <span class="at">-c</span> <span class="st">'from mpi4py import MPI; print(MPI.__file__)'</span></span>
 <span id="cb5-51"><a href="#cb5-51"></a>    <span class="ex">/home/foremans/miniconda3/envs/anl_24_q2_release/lib/python3.9/site-packages/mpi4py/MPI.cpython-39-x86_64-linux-gnu.so</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a>    <span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb5-52"><a href="#cb5-52"></a>    <span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

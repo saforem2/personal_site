@@ -7,14 +7,14 @@
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-8f1af79587c2686b78fe4e1fbadd71ab.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dd755132419e67449ef99e0994c660a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.14">
+  <meta name="generator" content="quarto-1.8.16">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2025-05-07">
@@ -103,7 +103,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-8641f36c002922900d4ecf7a40b339ab.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-9031035439812240feeced6587f24127.css">
   <link rel="stylesheet" href="../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../css/custom.css">
   <link rel="stylesheet" href="../../../css/svgbob.css">
@@ -367,19 +367,19 @@ Figure&nbsp;1: Current state of LLM Pretraining. [<a href="https://x.com/Doriale
 <h2>🐣 Getting Started</h2>
 <ol type="1">
 <li><p>Submit interactive job:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">qsub</span> <span class="at">-I</span> <span class="at">-l</span> select=2 <span class="at">-l</span> walltime=01:00:00 <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">qsub</span> <span class="at">-I</span> <span class="at">-l</span> select=2 <span class="at">-l</span> walltime=01:00:00 <span class="dt">\</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-l</span> filesystems=home:flare <span class="dt">\</span></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-A</span> gpu_hack <span class="dt">\</span></span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-q</span> gpu_hack_prio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-q</span> gpu_hack_prio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Source<sup>1</sup> the <a href="https://github.com/saforem2/ezpz/blob/main/bin/utils.sh"><code>ezpz/bin/utils.sh</code></a> script (using <code>curl</code> to download it<sup>2</sup>):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>In <em>general</em>, you should be wary of running random scripts from the internet.</p></li><li id="fn2"><p><a href="https://bit.ly/ezpz-utils">https://bit.ly/ezpz-utils</a>, since <a href="https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh">https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh</a> is a bit of a pain</p></li></ol></aside></section>
 <section id="shell-environment" class="slide level2 center" data-background-color="white">
 <h2>🏖️ Shell Environment</h2>
 <ol type="1">
 <li><p>Setup environment:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <p>&nbsp;</p>
 </section>
@@ -427,13 +427,13 @@ Figure&nbsp;1: Current state of LLM Pretraining. [<a href="https://x.com/Doriale
 <h2>🔄 Use Custom Node Lists</h2>
 <ul>
 <li><p>Experiment<sup>1</sup> with custom <code>hostfile</code>(s), e.g.:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 1. If no `hostfile` specified, find and use `$PBS_NODEFILE` </span></span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span></span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Grab a subset of nodes:</span></span>
 <span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 2 <span class="va">$PBS_NODEFILE</span> <span class="op">&gt;</span> nodefile-0-1</span>
 <span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Pass custom `nodefile-0-1`:</span></span>
-<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span> nodefile-0-1  <span class="co"># will use `nodefile-0-1`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_job</span> nodefile-0-1  <span class="co"># will use `nodefile-0-1`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn6"><p>Or, for example, if you would like to exclude a node you suspect is having issues</p></li></ol></aside></section>
 <section id="python-environments" class="slide level2 center" data-background-color="white">
@@ -455,50 +455,50 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <h2>📦 Install <code>ezpz</code></h2>
 <ol type="1">
 <li><p>Install<sup>1</sup>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="st">"git+https://github.com/saforem2/ezpz"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Run distributed test:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Launch <em>any</em> python <em>from</em> python</p>
 <ul>
 <li><p>Launch a module:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.test_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.test_dist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Launch a python string:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-c</span> <span class="st">"'import ezpz; ezpz.setup_torch()'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-c</span> <span class="st">"'import ezpz; ezpz.setup_torch()'"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 </ol>
 <aside><ol class="aside-footnotes"><li id="fn7"><p>You should <em>always</em> be working in a virtual environment. See: <a href="#/shell-environment">🏖️ Shell Environment</a></p></li></ol></aside></section>
 <section id="how-to-modify-existing-code" class="slide level2 center" data-background-color="white">
 <h2>➕ How to Modify Existing Code</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ import ezpz</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ import ezpz</span></span>
 <span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ _ = ezpz.setup_torch()</span></span>
 <span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">- model.to('cuda')</span></span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ model.to(ezpz.get_torch_device_type())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ model.to(ezpz.get_torch_device_type())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="features" class="slide level2 center" data-background-color="white">
 <h2>✨ Features</h2>
 <ul>
 <li><p>Initializing PyTorch across multiple processes</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ezpz.setup_torch()</span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> ezpz.get_rank()</span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>world_size <span class="op">=</span> ezpz.get_world_size()</span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>local_rank <span class="op">=</span> ezpz.get_local_rank()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>local_rank <span class="op">=</span> ezpz.get_local_rank()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Automatic device detection (<code>xpu</code>, <code>cuda</code>, <code>mps</code>, <code>cpu</code>, …)</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand((<span class="dv">10</span>, <span class="dv">10</span>)).to(ezpz.get_torch_device_type())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.rand((<span class="dv">10</span>, <span class="dv">10</span>)).to(ezpz.get_torch_device_type())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Automatic (single-process) logging</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Distributed debugger:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>    buggy_code()</span>
 <span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>    ezpz.<span class="bu">breakpoint</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>    ezpz.<span class="bu">breakpoint</span>(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="experiment-tracking" class="slide level2 smaller center" data-background-color="white">
 <h2>🧪 Experiment Tracking</h2>
 <div class="block-code">
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> ezpz.setup_torch()</span>
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> ezpz.get_logger(<span class="va">__name__</span>)</span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:                   <span class="co"># -- [1.] --</span></span>
@@ -520,7 +520,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb14-20"><a aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb14-21"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-22"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb14-23"><a aria-hidden="true" tabindex="-1"></a>    history.finalize()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-23"><a aria-hidden="true" tabindex="-1"></a>    history.finalize()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li>Initialize W&amp;B (if <code>WANDB_DISABLED</code> is not set)</li>
 <li>Log summary of metrics to stdout</li>
@@ -534,7 +534,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <li>See <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/examples/minimal.py"><code>ezpz/examples/minimal.py</code></a></li>
 </ul>
 <div class="block-code">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
@@ -658,7 +658,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb15-122"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-123"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-124"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb15-125"><a aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-125"><a aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="running-the-minimal-example" class="slide level2 center" data-background-color="white">
@@ -666,11 +666,11 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <p>To run the previous example we:</p>
 <ol type="1">
 <li><p>Source the <code>ezpz</code> utils script:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Setup our environment:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Run the example:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
 <section id="ezpz-test" class="slide level2 center" data-background-color="white">
@@ -682,9 +682,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 </ul></li>
 <li><p>See: <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/test.py">ezpz/test.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[🐍 aurora_nre_models_frameworks-2025.0.0](👻 aurora_nre_models_frameworks-2025.0.0)</span></span>
 <span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[05/05/25 @ 07:41:35][x4520c1s0b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷✓] [⏱️ 54s]</span></span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">;</span> <span class="ex">ezpz-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">;</span> <span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="generate-text" class="slide level2 center" data-background-color="white">
@@ -692,7 +692,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <ul>
 <li><p>See: <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/generate.py">ezpz/generate.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="huggingface-trainer" class="slide level2 smaller center" data-background-color="white">
@@ -700,7 +700,7 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <ul>
 <li><p>See <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/hf_trainer.py">ezpz/hf_trainer.py</a></p></li>
 <li><p>Command:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.hf_trainer <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.hf_trainer <span class="dt">\</span></span>
 <span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--dataset_name</span><span class="op">=</span>eliplutchok/fineweb-small-sample <span class="dt">\</span></span>
 <span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--streaming</span> <span class="dt">\</span></span>
 <span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--model_name_or_path</span><span class="op">=</span>meta-llama/Llama-3.2-1B <span class="dt">\</span></span>
@@ -720,18 +720,18 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb21-18"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--logging-first-step</span> <span class="dt">\</span></span>
 <span id="cb21-19"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--include-for-metrics</span><span class="op">=</span><span class="st">'inputs,loss'</span> <span class="dt">\</span></span>
 <span id="cb21-20"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--max-eval-samples</span><span class="op">=</span>50 <span class="dt">\</span></span>
-<span id="cb21-21"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--ddp-backend</span><span class="op">=</span>ccl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb21-21"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--ddp-backend</span><span class="op">=</span>ccl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="megatron-deepspeed" class="slide level2 center" data-background-color="white">
 <h2>🏎️ Megatron-DeepSpeed</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/argonne-lcf/Megatron-DeepSpeed</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/argonne-lcf/Megatron-DeepSpeed</span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Megatron-DeepSpeed</span>
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
 <span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> pip install <span class="at">-e</span> <span class="dt">\</span></span>
 <span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a>    deepspeed <span class="dt">\</span></span>
 <span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"git+https://github.com/saforem2/ezpz"</span></span>
-<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> train_alcf.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> train_alcf.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="acknowledgements" class="slide level2 center" data-background-color="white">
 <h2>🙌 Acknowledgements</h2>
