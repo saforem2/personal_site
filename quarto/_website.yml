@@ -44,7 +44,8 @@ website:
     type: overlay
     keyboard-shortcut: ["?", "H"]
 
-  open-graph: true
+  open-graph:
+    true
     # title: "Sam Foreman"
     # description: ""
     # image: "https://github.com/saforem2/personal_site/blob/main/assets/thumbnail.png?raw=true"
@@ -63,14 +64,17 @@ website:
     right:
       - id: talks
         text: "talks"
+        # text: "[talks]{style='color:var(--bs-nav-link-color);'}"
         url: "talks/index.qmd"
 
       - id: posts
         text: "posts"
+        # text: "[projects]{style='color:var(--bs-nav-link-color);'}"
         url: "posts/index.qmd"
 
       - id: projects
         text: "projects"
+        # text: "[projects]{style='color:var(--bs-nav-link-color);'}"
         url: "projects/index.qmd"
 
       - href: https://github.com/saforem2/personal_site
@@ -81,6 +85,21 @@ website:
         text: "[{{< iconify ph rss >}}]{.icon style='font-size: 1.25rem; color:var(--bs-nav-link-color);'}"
         aria-label: RSS
 
+  # navbar:
+  #   logo: assets/signature-navbar-orig.svg
+  #   logo-alt: "Sam Foreman"
+  #   title: false
+  #   background: "rgba(34, 34, 34, 0.95)"
+  #   foregound: "#838383"
+  #   right:
+  #     - href: https://github.com/saforem2/personal_site
+  #       text: "[{{< iconify ph github-logo >}}]{.icon style='font-size: 1.25rem; color:var(--bs-nav-link-color);'}"
+  #       aria-label: GitHub
+  #
+  #     - href: index.xml
+  #       aria-label: RSS
+  #       text: "[{{< iconify ph rss >}}]{.icon style='font-size: 1.25rem; color:var(--bs-nav-link-color);'}"
+
   sidebar:
     # style: "docked"
     style: "floating"
@@ -90,7 +109,6 @@ website:
     # contents: auto
     collapse-level: 1
     contents:
-
       - id: posts
         section: "📬 Posts"
         href: "posts/index.qmd"
@@ -233,35 +251,114 @@ website:
         href: "projects/index.qmd"
         collapse-level: 1
         contents:
-          - text: "📦 All Repos"
-            href: "https://github.com/saforem2"
-          - text: "🍋 `ezpz`"
-            href: https://saforem2.github.io/ezpz
-          - text: "📚 All Projects"
-            href: "projects/index.qmd"
-          - text: "🍋 `ezpz`"
-            href: https://github.com/saforem2/ezpz
-          - text: "🟥 `l2hmc-qcd`"
-            href: https://github.com/saforem2/l2hmc-qcd
-          - text: "🤖 `Megatron-DeepSpeed`"
-            href: https://github.com/argonne-lcf/Megatron-DeepSpeed)
-          - text: "💬 `wordplay` 🎮"
-            href: https://github.com/saforem2/wordplay
-          - text: "🎓 `ai-science-training`"
-            href: https://www.alcf.anl.gov/alcf-ai-science-training-series?
-          - text: "💸 `enrich`"
-            href: https://github.com/saforem2/enrich
-          - text: "🤷🏻‍♂️`ambivalent`"
-            href: https://github.com/saforem2/ambivalent
-          - text: "🌍 `climate-analysis`"
-            href: https://github.com/saforem2/climate-analysis
-          - text: "🎨 `glitz`"
-            href: https://github.com/saforem2/glitz
-          - text: "🙋🏻`personal_site`"
-            href: https://github.com/saforem2/personal_site
-          - text: "🗒️ `Notes-Demo`"
-            href: https://github.com/saforem2/notes-demo
+          - id: hpc-bootcamp-2025
+            section: "🎒 Intro to HPC Bootcamp 2025"
+            href: "projects/hpc-bootcamp-2025/index.qmd"
+            # collapse-level: 1
+            contents:
+              - id: 00-intro-AI-HPC
+                section: "00 Intro to AI and HPC"
+                href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/index.qmd"
+                contents:
+                  - text: 0-compute-systems
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/0-compute-systems/index.qmd"
+                  - text: 1-shared-resources
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/1-shared-resources/index.qmd"
+                  - text: 2-jupyter-notebooks
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/2-jupyter-notebooks/index.qmd"
+                  - text: 3-homework
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/3-homework/index.qmd"
+                  - text: 4-alcf
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-alcf/index.qmd"
+                  - text: 5-mcmc-example
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/5-mcmc-example/index.qmd"
+                  - text: 6-linear-regression
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/6-linear-regression/index.qmd"
 
+              - id: 01-neural-networks
+                section: "01 Neural Networks"
+                href: "projects/hpc-bootcamp-2025/01-neural-networks/index.qmd"
+                contents:
+                  - text: 0-intro
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd"
+                  - text: 1-mnist
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.qmd"
+                  - text: 2-advanced
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/2-advanced/index.qmd"
+                  - text: 3-conv-nets
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/3-conv-nets/index.qmd"
+                  - text: 4-representation-learning
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/4-representation-learning/index.qmd"
+                  # - auto: "projects/hpc-bootcamp-2025/01-neural-networks/**/**/*.qmd"
+
+              # - id: 02-llms
+              #   section: "02 Large Language Models"
+              #   href: "projects/hpc-bootcamp-2025/02-llms/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/02-llms/**/**/*.qmd"
+              #
+              # - id: 03-ai-for-science
+              #   section: "03 AI for Science"
+              #   href: "projects/hpc-bootcamp-2025/03-ai-for-science/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/03-ai-for-science/**/**/*.qmd"
+
+              # - auto: "projects/hpc-bootcamp-2025/**/**/*.qmd"
+              # - id: 00-intro-supercomputers
+              #   section: "00 Intro to Supercomputers"
+              #   href: "projects/hpc-bootcamp-2025/00-intro-supercomputers/index.qmd"
+              #   contents:
+              #     # - auto: "projects/hpc-bootcamp-2025/00-intro-supercomputers/**/**/*.qmd"
+              # - id: 01-intro-AI-HPC
+              #   section: "01 Intro to AI and HPC"
+              #   href: "projects/hpc-bootcamp-2025/01-intro-AI-HPC/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/01-intro-AI-HPC/**/**/*.qmd"
+              # - id: 02-neural-networks
+              #   section: "02 Neural Networks"
+              #   href: "projects/hpc-bootcamp-2025/02-neural-networks/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/02-neural-networks/**/**/*.qmd"
+              # - id: 03-llms
+              #   section: "03 Large Language Models"
+              #   href: "projects/hpc-bootcamp-2025/03-llms/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/03-llms/**/**/*.qmd"
+              # - id: 04-ai-for-science
+              #   section: "04 AI for Science"
+              #   href: "projects/hpc-bootcamp-2025/04-ai-for-science/index.qmd"
+              #   contents:
+              #     - auto: "projects/hpc-bootcamp-2025/04-ai-for-science/**/**/*.qmd"
+
+          - id: github-projects
+            section: "📦 GitHub Repos"
+            contents:
+              - text: "👤 `saforem2/`"
+                href: "https://github.com/saforem2"
+              - text: "🍋 `ezpz`"
+                href: https://saforem2.github.io/ezpz
+              - text: "🍋 `ezpz`"
+                href: https://github.com/saforem2/ezpz
+              - text: "🟥 `l2hmc-qcd`"
+                href: https://github.com/saforem2/l2hmc-qcd
+              - text: "🤖 `Megatron-DeepSpeed`"
+                href: https://github.com/argonne-lcf/Megatron-DeepSpeed)
+              - text: "💬 `wordplay` 🎮"
+                href: https://github.com/saforem2/wordplay
+              - text: "🎓 `ai-science-training`"
+                href: https://www.alcf.anl.gov/alcf-ai-science-training-series?
+              - text: "💸 `enrich`"
+                href: https://github.com/saforem2/enrich
+              - text: "🤷🏻‍♂️`ambivalent`"
+                href: https://github.com/saforem2/ambivalent
+              - text: "🌍 `climate-analysis`"
+                href: https://github.com/saforem2/climate-analysis
+              - text: "🎨 `glitz`"
+                href: https://github.com/saforem2/glitz
+              - text: "🌐 `personal_site`"
+                href: https://github.com/saforem2/personal_site
+              - text: "🗒️ `Notes-Demo`"
+                href: https://github.com/saforem2/notes-demo
 
       # - id: projects
       #   section: "📚 Projects"
@@ -276,7 +373,7 @@ website:
       #     - text: "🍋 `ezpz`"
       #       href: https://saforem2.github.io/ezpz
       #     - text: "🏎️ Megatron-DeepSpeed"
-      #       href: https://github.com/argonne-lcf/Megatron-DeepSpeed 
+      #       href: https://github.com/argonne-lcf/Megatron-DeepSpeed
       #     - text: "📚 All Projects"
       #       url: "projects/index.qmd"
       #       # url: "projects/index.qmd"
@@ -305,7 +402,7 @@ website:
       #       url: https://github.com/saforem2/notes-demo
 
       - id: extras
-        section : "🗂️ Extras"
+        section: "🗂️ Extras"
         contents: auto
 
     # style: docked

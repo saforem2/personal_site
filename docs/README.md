@@ -1,11 +1,11 @@
 Sam Foreman
-2025-07-15
+2025-07-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-200x200.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-100x100.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
@@ -235,7 +235,7 @@ style="justify-content: space-between; align-items: flex-start;">
 > print(' '.join([ "[#838383]Last Updated[/]:", f"[#E599F7]{now.strftime("%Y-%m-%d")}[/]", "[#838383]@[/]", f"[#00CCFF]{now.strftime("%H:%M:%S")}[/]", ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">13</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">00:17:59</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:23:17</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -970,7 +970,45 @@ style="justify-content: space-between; align-items: flex-start;">
 >
 > <img loading="lazy" width="100%" alt="Github Contributions " src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&theme=minimal&bg_color=00000000&line=838383&color=838383&days=30&point=838383&hide_border=true&hide_title=true&area=true">
 >
-> <img loading="lazy" width="100%" alt="wakatime-animated-weekdays" src="https://wakatime.com/insights/animated/weekdays.gif" />
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/720ce003-bc7f-4c57-8f4c-92f0c7f24975.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/4a58bb04-4212-4b5c-8f97-1ac59f2e3250.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/c8e0da32-52d1-485f-b4ca-22645f25ea3f.svg" style="max-width:95%;">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/8a8894dd-519b-4bd5-b521-d09bee799b57.svg">
+>
+> </embed>
+>
+> </figure>
+>
+> <figure>
+>
+> <embed src="https://wakatime.com/share/@saforem2/d5fd1e4b-0c8f-44be-8173-59d780fe22c8.svg">
+>
+> </embed>
+>
+> </figure>
 >
 > <figure>
 >
@@ -1185,8 +1223,6 @@ Table 1: 📟 Experience
 | Postdoc | ALCF | 2019 | 2022 |
 | Graduate Researcher | [ANL][Argonne National Laboratory] | 2018 | 2019 |
 
-📟 Experience
-
 </div>
 
 #### 🍎 School
@@ -1200,8 +1236,6 @@ Table 2: 🎓 Education
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
 | B.Sc   | [Physics][15] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
-
-🎓 Education
 
 </div>
 

@@ -91,8 +91,6 @@ Now, there are a few functions in particular worth elaborating on.
 | [Setup Conda](#setup-conda) | `ezpz_setup_conda` | Find and activate appropriate `conda` module to load[^2] |
 | [Setup Virtual Environment](#setup-virtual-environment) | `ezpz_setup_venv_from_conda` | From `${CONDA_NAME}`, build or activate the virtual env located in `venvs/${CONDA_NAME}/` |
 
-Shell Functions
-
 Table 1: Shell Functions
 
 </div>
