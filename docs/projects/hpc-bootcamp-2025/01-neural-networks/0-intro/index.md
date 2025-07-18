@@ -1,5 +1,5 @@
 # Introduction to Neural Networks
-Sam Foreman, Marieme Ngom, Huihuo Zheng, Bethany Lusch, Taylor Childers
+Sam Foreman
 2025-07-15
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@ thousands of examples of handwritten numbers, with each digit labeled
 
 <div id="fig-mnist-example">
 
-![MNIST Task](./images/mnist_task.png)
+![MNIST Task](../images/mnist_task.png)
 
 Figure 1: MNIST Data Sample
 

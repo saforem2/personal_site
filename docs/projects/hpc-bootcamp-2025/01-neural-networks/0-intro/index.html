@@ -7,10 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="author" content="Marieme Ngom">
-<meta name="author" content="Huihuo Zheng">
-<meta name="author" content="Bethany Lusch">
-<meta name="author" content="Taylor Childers">
 <meta name="dcterms.date" content="2025-07-15">
 <meta name="description" content="A beginner’s guide to understanding neural networks, their architecture, and how they function.">
 
@@ -86,8 +82,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0434ab73b344d2590fb99d65eafd6ba5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-8157b4258f897c97499598259d5631d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark-cf7d21b85fb929d7fcba25f20a16014e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-02f2f5c18a5677dc08b565c2c7d1ea72.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-3e3cb11f773e17ec554956066d16b45e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -183,19 +179,19 @@ window.Quarto = {
 <link rel="stylesheet" href="../../../../static/fonts/MIosevkaterm/MIosevkaTerm.css">
 <meta property="og:title" content="Introduction to Neural Networks – Sam Foreman">
 <meta property="og:description" content="A beginner’s guide to understanding neural networks, their architecture, and how they function.">
-<meta property="og:image" content="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:image" content="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/images/mnist_task.png">
 <meta property="og:site_name" content="Sam Foreman">
+<meta property="og:image:height" content="403">
+<meta property="og:image:width" content="1337">
 <meta name="twitter:title" content="Introduction to Neural Networks – Sam Foreman">
 <meta name="twitter:description" content="A beginner’s guide to understanding neural networks, their architecture, and how they function.">
-<meta name="twitter:image" content="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:image" content="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/images/mnist_task.png">
 <meta name="twitter:site" content="saforem2">
+<meta name="twitter:image-height" content="403">
+<meta name="twitter:image-width" content="1337">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Introduction to Neural Networks">
 <meta name="citation_author" content="Sam Foreman">
-<meta name="citation_author" content="Marieme Ngom">
-<meta name="citation_author" content="Huihuo Zheng">
-<meta name="citation_author" content="Bethany Lusch">
-<meta name="citation_author" content="Taylor Childers">
 <meta name="citation_publication_date" content="2025-07-15">
 <meta name="citation_cover_date" content="2025-07-15">
 <meta name="citation_year" content="2025">
@@ -485,7 +481,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/index.html">📚 Projects</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/index.html">🎒 Intro to HPC Bootcamp 2025</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html">01 Neural Networks</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html">0-intro</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/index.html">📚 Projects</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/index.html">🎒 Intro to HPC Bootcamp 2025</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html">[01] Neural Networks</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html">[0] Intro to NNs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1095,7 +1091,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">00 Intro to AI and HPC</span></a>
+ <span class="menu-text">[00] Intro to AI and HPC</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-26" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1104,43 +1100,43 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/0-compute-systems/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">0-compute-systems</span></a>
+ <span class="menu-text">[0] Compute Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/1-shared-resources/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1-shared-resources</span></a>
+ <span class="menu-text">[1] Shared Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/2-jupyter-notebooks/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2-jupyter-notebooks</span></a>
+ <span class="menu-text">[2] Jupyter Notebooks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/3-homework/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3-homework</span></a>
+ <span class="menu-text">[3] Homework</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-alcf/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4-alcf</span></a>
+  <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-nersc/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">[4] NERSC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/5-mcmc-example/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5-mcmc-example</span></a>
+ <span class="menu-text">[5] MCMC Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/6-linear-regression/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6-linear-regression</span></a>
+ <span class="menu-text">[6] Linear Regression</span></a>
   </div>
 </li>
       </ul>
@@ -1148,7 +1144,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 Neural Networks</span></a>
+ <span class="menu-text">[01] Neural Networks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-27" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1157,31 +1153,48 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">0-intro</span></a>
+ <span class="menu-text">[0] Intro to NNs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1-mnist</span></a>
+ <span class="menu-text">[1] MNIST Example</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/2-advanced/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2-advanced</span></a>
+ <span class="menu-text">[2] Advanced</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/3-conv-nets/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3-conv-nets</span></a>
+ <span class="menu-text">[3] Conv. Nets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/4-representation-learning/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4-representation-learning</span></a>
+ <span class="menu-text">[4] Representation Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../projects/hpc-bootcamp-2025/02-llms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">[02] Large Language Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../projects/hpc-bootcamp-2025/02-llms/0-intro-to-llms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">[0] Intro to LLMs</span></a>
   </div>
 </li>
       </ul>
@@ -1190,13 +1203,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false">
  <span class="menu-text">📦 GitHub Repos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-28" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-28" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-29" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://github.com/saforem2" class="sidebar-item-text sidebar-link">
@@ -1281,22 +1294,22 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false">
  <span class="menu-text">🗂️ Extras</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-29" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-29" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../../posts/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">📬 Posts</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-30" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-30" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../posts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📬 Posts</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-31" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-31" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/dope-slides/index.html" class="sidebar-item-text sidebar-link">
@@ -1343,20 +1356,20 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../posts/2025/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📆 2025</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-31" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-31" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-32" role="navigation" aria-expanded="false">
- <span class="menu-text">04</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-32" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-32" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-32" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-33" role="navigation" aria-expanded="false">
+ <span class="menu-text">04</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-33" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-33" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/2025/04/28/index.html" class="sidebar-item-text sidebar-link">
@@ -1367,13 +1380,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-33" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-34" role="navigation" aria-expanded="false">
  <span class="menu-text">05</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-33" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-34" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-33" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-34" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/2025/05/03/index.html" class="sidebar-item-text sidebar-link">
@@ -1386,11 +1399,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../posts/2025/06/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-34" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-35" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-34" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-35" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/2025/06/14/index.html" class="sidebar-item-text sidebar-link">
@@ -1417,11 +1430,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../posts/AuroraGPT/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🤖 AuroraGPT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-35" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-36" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-35" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-36" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/AuroraGPT/aurora-gpt/index.html" class="sidebar-item-text sidebar-link">
@@ -1474,13 +1487,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-36" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-37" role="navigation" aria-expanded="false">
  <span class="menu-text">⚛️ AI for Physics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-36" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-37" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-36" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-37" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/ai-for-physics/diffusion/index.html" class="sidebar-item-text sidebar-link">
@@ -1489,13 +1502,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-37" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-38" role="navigation" aria-expanded="false">
  <span class="menu-text">🎢 L2HMC for LQCD</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-37" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-38" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-37" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-38" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/ai-for-physics/l2hmc-qcd/2dU1/index.html" class="sidebar-item-text sidebar-link">
@@ -1504,13 +1517,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-38" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-39" role="navigation" aria-expanded="false">
  <span class="menu-text">4dSU3nb</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-38" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-39" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-38" class="collapse list-unstyled sidebar-section depth5 ">  
+      <ul id="quarto-sidebar-section-39" class="collapse list-unstyled sidebar-section depth5 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/ai-for-physics/l2hmc-qcd/4dSU3nb/index-broken.html" class="sidebar-item-text sidebar-link">
@@ -1525,13 +1538,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-39" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-40" role="navigation" aria-expanded="false">
  <span class="menu-text">📗 Jupyter</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-39" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-40" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-39" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-40" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/jupyter/test/index.html" class="sidebar-item-text sidebar-link">
@@ -1540,13 +1553,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-40" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-41" role="navigation" aria-expanded="false">
  <span class="menu-text">L2hmc</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-40" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-41" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-40" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-41" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/jupyter/l2hmc/4dSU3/index.html" class="sidebar-item-text sidebar-link">
@@ -1563,11 +1576,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../talks/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">🎙️ Talks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-41" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-42" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-41" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-42" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../talks/ai-for-science-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -1618,13 +1631,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-42" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-43" role="navigation" aria-expanded="false">
  <span class="menu-text">AuroraGPT</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-42" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-43" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-42" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-43" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../talks/AuroraGPT/alcf-hpc-workshop-2024/index.html" class="sidebar-item-text sidebar-link">
@@ -1637,11 +1650,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../talks/incite-hackathon-2025/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ALCF Incite Hackathon 2025</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-43" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-44" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-43" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-44" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../talks/incite-hackathon-2025/AuroraGPT/index.html" class="sidebar-item-text sidebar-link">
@@ -1662,26 +1675,20 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../projects/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">📚 Projects</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-44" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-44" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../../projects/hpc-bootcamp-2025/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Intro to HPC Bootcamp 2025</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-45" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-45" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../projects/hpc-bootcamp-2025/02-llms/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Large Language Models (LLMs)</span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-45" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../projects/hpc-bootcamp-2025/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intro to HPC Bootcamp 2025</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-46" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-46" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/03-ai-for-science/index.html" class="sidebar-item-text sidebar-link">
@@ -1692,11 +1699,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to AI on Supercomputers</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-46" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-47" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-46" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-47" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/0-compute-systems/index.html" class="sidebar-item-text sidebar-link">
@@ -1723,7 +1730,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-alcf/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-nersc/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview of the Argonne Leadership Computing Facility (ALCF)</span></a>
   </div>
 </li>
@@ -1745,11 +1752,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Neural Networks</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-47" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-48" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-47" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-48" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html" class="sidebar-item-text sidebar-link">
@@ -1782,6 +1789,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../projects/hpc-bootcamp-2025/02-llms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Large Language Models (LLMs)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-49" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-49" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../projects/hpc-bootcamp-2025/02-llms/0-intro-to-llms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Large Language Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
       </ul>
@@ -1800,7 +1824,7 @@ window.Quarto = {
   <ul>
   <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references"><strong>References:</strong></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/saforem2/personal_site/blob/main/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/saforem2/personal_site/edit/main/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd" class="toc-action"><i class="bi empty"></i>Edit this page</a></li><li><a href="https://github.com/saforem2/personal_site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li><li><a href="index.ipynb" download="index.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -1809,7 +1833,7 @@ window.Quarto = {
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/index.html">📚 Projects</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/index.html">🎒 Intro to HPC Bootcamp 2025</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html">01 Neural Networks</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html">0-intro</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/index.html">📚 Projects</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/index.html">🎒 Intro to HPC Bootcamp 2025</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html">[01] Neural Networks</a></li><li class="breadcrumb-item"><a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.html">[0] Intro to NNs</a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Introduction to Neural Networks</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
@@ -1825,56 +1849,16 @@ window.Quarto = {
 </div>
 
 <div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Authors</div>
-  <div class="quarto-title-meta-heading">Affiliations</div>
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Sam Foreman <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-9981-0876" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author"><a href="https://samforeman.me">Sam Foreman</a> <a href="mailto:foremans@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
             <a href="https://alcf.anl.gov/about/people/sam-foreman">
-            </a><a href="https://www.anl.gov/">ANL</a>
-            
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Marieme Ngom <a href="mailto:mngom@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov/about/people/marieme-ngom">
-            </a><a href="https://www.anl.gov/">ANL</a>
-            
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Huihuo Zheng <a href="mailto:huihuo.zheng@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov/about/people/huihuo-zheng">
-            </a><a href="https://www.anl.gov/">ANL</a>
-            
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Bethany Lusch <a href="mailto:blusch@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-9521-9990" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov/about/people/bethany-lusch">
-            </a><a href="https://www.anl.gov/">ANL</a>
-            
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">Taylor Childers <a href="mailto:jchilders@anl.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0492-613X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="https://alcf.anl.gov/about/people/taylor-childers">
-            </a><a href="https://www.anl.gov/">ANL</a>
+            </a><a href="https://alcf.anl.gov/about/people/sam-foreman">ALCF</a>
             
           </p>
       </div>
@@ -1932,7 +1916,7 @@ This week, we’ll work on a “classification” problem, which means that we h
 <div aria-describedby="fig-mnist-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./images/mnist_task.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="MNIST Task"><img src="./images/mnist_task.png" class="img-fluid figure-img"></a></p>
+<p><a href="../images/mnist_task.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="MNIST Task"><img src="../images/mnist_task.png" class="img-fluid figure-img"></a></p>
 <figcaption>MNIST Task</figcaption>
 </figure>
 </div>
@@ -1966,17 +1950,15 @@ Figure&nbsp;1: MNIST Data Sample
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2025,
-  author = {Foreman, Sam and Foreman, Sam and Ngom, Marieme and Zheng,
-    Huihuo and Lusch, Bethany and Childers, Taylor},
+  author = {Foreman, Sam},
   title = {Introduction to {Neural} {Networks}},
   date = {2025-07-15},
   url = {https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Foreman, Sam, Sam Foreman, Marieme Ngom, Huihuo Zheng, Bethany Lusch,
-and Taylor Childers. 2025. <span>“Introduction to Neural
-Networks.”</span> July 15, 2025. <a href="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/">https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/</a>.
+Foreman, Sam. 2025. <span>“Introduction to Neural Networks.”</span> July
+15, 2025. <a href="https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/">https://samforeman.me/projects/hpc-bootcamp-2025/01-neural-networks/0-intro/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2480,13 +2462,13 @@ Networks.”</span> July 15, 2025. <a href="https://samforeman.me/projects/hpc-b
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html" class="pagination-link" aria-label="01 Neural Networks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01 Neural Networks</span>
+      <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/index.html" class="pagination-link" aria-label="[01] Neural Networks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">[01] Neural Networks</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.html" class="pagination-link" aria-label="1-mnist">
-        <span class="nav-page-text">1-mnist</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../../projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.html" class="pagination-link" aria-label="[1] MNIST Example">
+        <span class="nav-page-text">[1] MNIST Example</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -2498,71 +2480,71 @@ Networks.”</span> July 15, 2025. <a href="https://samforeman.me/projects/hpc-b
 <span id="cb1-6"><a href="#cb1-6"></a><span class="co">    - hpc</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="an">date:</span><span class="co"> 2025-07-15</span></span>
 <span id="cb1-8"><a href="#cb1-8"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="an">author:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">  - name: Sam Foreman</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">    id: sf</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">    orcid: 0000-0002-9981-0876</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">    email: foremans@anl.gov</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">    affiliation:</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">      - name: '[ANL](https://www.anl.gov/)'</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">        city: Lemont</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">        state: IL</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">        url: https://alcf.anl.gov/about/people/sam-foreman</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">  - name: Marieme Ngom</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">    id: mn</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">    # orcid: 0000-0002-9981-0876</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">    email: mngom@anl.gov</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co">    affiliation:</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co">      - name: '[ANL](https://www.anl.gov/)'</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co">        city: Lemont</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co">        state: IL</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co">        url: https://alcf.anl.gov/about/people/marieme-ngom</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">  - name: Huihuo Zheng</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">    id: hz</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">    # orcid: 0000-0002-9981-0876</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">    email: huihuo.zheng@anl.gov</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">    affiliation:</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co">      - name: '[ANL](https://www.anl.gov/)'</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co">        city: Lemont</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co">        state: IL</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co">        url: https://alcf.anl.gov/about/people/huihuo-zheng</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="co">  - name: Bethany Lusch</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a><span class="co">    id: bl</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co">    email: blusch@anl.gov</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="co">    orcid: 0000-0002-9521-9990</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="co">    # orcid: 0000-0002-9981-0876</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co">    affiliation:</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a><span class="co">      - name: '[ANL](https://www.anl.gov/)'</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="co">        city: Lemont</span></span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="co">        state: IL</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co">        url: https://alcf.anl.gov/about/people/bethany-lusch</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co">  - name: Taylor Childers</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a><span class="co">    id: tc</span></span>
-<span id="cb1-49"><a href="#cb1-49"></a><span class="co">    orcid: 0000-0002-0492-613X</span></span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="co">    email: jchilders@anl.gov</span></span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="co">    affiliation:</span></span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co">      - name: '[ANL](https://www.anl.gov/)'</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a><span class="co">        city: Lemont</span></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co">        state: IL</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a><span class="co">        url: https://alcf.anl.gov/about/people/taylor-childers</span></span>
-<span id="cb1-56"><a href="#cb1-56"></a><span class="co">  # - name: Prasanna Balaprakash</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a><span class="co">  #   id: pb</span></span>
-<span id="cb1-58"><a href="#cb1-58"></a><span class="co">  #   email: pbalapra@ornl.gov</span></span>
-<span id="cb1-59"><a href="#cb1-59"></a><span class="co">  #   orcid: 0000-0002-0292-5715</span></span>
-<span id="cb1-60"><a href="#cb1-60"></a><span class="co">  # - name: Asad Khan</span></span>
-<span id="cb1-61"><a href="#cb1-61"></a><span class="co">  #   id: ak</span></span>
-<span id="cb1-62"><a href="#cb1-62"></a><span class="co">  #   email:  akhan.cb@amu.ac.in</span></span>
-<span id="cb1-63"><a href="#cb1-63"></a><span class="co">  #   orcid: 0000-0001-9191-9423</span></span>
-<span id="cb1-64"><a href="#cb1-64"></a><span class="co">  #   affiliation:</span></span>
-<span id="cb1-65"><a href="#cb1-65"></a><span class="co">  #       - name: Aligarh Muslim University</span></span>
-<span id="cb1-66"><a href="#cb1-66"></a><span class="co">  #         # city: Aligarh, Uttar Pradesh</span></span>
-<span id="cb1-67"><a href="#cb1-67"></a><span class="co">  #         url: https://www.amu.ac.in/faculty/interdisciplinary-biotechnology-unit/asad-u-khan</span></span>
-<span id="cb1-68"><a href="#cb1-68"></a><span class="co">  # - name: Corey Adams</span></span>
-<span id="cb1-69"><a href="#cb1-69"></a><span class="co">  #   id: ca</span></span>
-<span id="cb1-70"><a href="#cb1-70"></a><span class="co">  # - name: Kyle Felker</span></span>
-<span id="cb1-71"><a href="#cb1-71"></a><span class="co">  #   id: kf</span></span>
-<span id="cb1-72"><a href="#cb1-72"></a><span class="co">  # - name: Tanwi Mallick</span></span>
-<span id="cb1-73"><a href="#cb1-73"></a><span class="co">  #   id: tm</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># author:</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#   - name: Sam Foreman</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#     id: sf</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#     orcid: 0000-0002-9981-0876</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#     email: foremans@anl.gov</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#     affiliation:</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#       - name: '[ANL](https://www.anl.gov/)'</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#         city: Lemont</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#         state: IL</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#         url: https://alcf.anl.gov/about/people/sam-foreman</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#   - name: Marieme Ngom</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#     id: mn</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#     # orcid: 0000-0002-9981-0876</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#     email: mngom@anl.gov</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#     affiliation:</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">#       - name: '[ANL](https://www.anl.gov/)'</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co">#         city: Lemont</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co">#         state: IL</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">#         url: https://alcf.anl.gov/about/people/marieme-ngom</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#   - name: Huihuo Zheng</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#     id: hz</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#     # orcid: 0000-0002-9981-0876</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#     email: huihuo.zheng@anl.gov</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#     affiliation:</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co">#       - name: '[ANL](https://www.anl.gov/)'</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co">#         city: Lemont</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">#         state: IL</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co">#         url: https://alcf.anl.gov/about/people/huihuo-zheng</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co">#   - name: Bethany Lusch</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co">#     id: bl</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co">#     email: blusch@anl.gov</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">#     orcid: 0000-0002-9521-9990</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co">#     # orcid: 0000-0002-9981-0876</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co">#     affiliation:</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="co">#       - name: '[ANL](https://www.anl.gov/)'</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co">#         city: Lemont</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co">#         state: IL</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co">#         url: https://alcf.anl.gov/about/people/bethany-lusch</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co">#   - name: Taylor Childers</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="co">#     id: tc</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co">#     orcid: 0000-0002-0492-613X</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="co">#     email: jchilders@anl.gov</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="co">#     affiliation:</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co">#       - name: '[ANL](https://www.anl.gov/)'</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="co">#         city: Lemont</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="co">#         state: IL</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="co">#         url: https://alcf.anl.gov/about/people/taylor-childers</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a><span class="co">#   # - name: Prasanna Balaprakash</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="co">#   #   id: pb</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a><span class="co">#   #   email: pbalapra@ornl.gov</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a><span class="co">#   #   orcid: 0000-0002-0292-5715</span></span>
+<span id="cb1-60"><a href="#cb1-60"></a><span class="co">#   # - name: Asad Khan</span></span>
+<span id="cb1-61"><a href="#cb1-61"></a><span class="co">#   #   id: ak</span></span>
+<span id="cb1-62"><a href="#cb1-62"></a><span class="co">#   #   email:  akhan.cb@amu.ac.in</span></span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="co">#   #   orcid: 0000-0001-9191-9423</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a><span class="co">#   #   affiliation:</span></span>
+<span id="cb1-65"><a href="#cb1-65"></a><span class="co">#   #       - name: Aligarh Muslim University</span></span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="co">#   #         # city: Aligarh, Uttar Pradesh</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="co">#   #         url: https://www.amu.ac.in/faculty/interdisciplinary-biotechnology-unit/asad-u-khan</span></span>
+<span id="cb1-68"><a href="#cb1-68"></a><span class="co">#   # - name: Corey Adams</span></span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="co">#   #   id: ca</span></span>
+<span id="cb1-70"><a href="#cb1-70"></a><span class="co">#   # - name: Kyle Felker</span></span>
+<span id="cb1-71"><a href="#cb1-71"></a><span class="co">#   #   id: kf</span></span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="co">#   # - name: Tanwi Mallick</span></span>
+<span id="cb1-73"><a href="#cb1-73"></a><span class="co">#   #   id: tm</span></span>
 <span id="cb1-74"><a href="#cb1-74"></a><span class="co">---</span></span>
 <span id="cb1-75"><a href="#cb1-75"></a></span>
 <span id="cb1-76"><a href="#cb1-76"></a><span class="co">&lt;!--</span></span>
@@ -2600,7 +2582,7 @@ Networks.”</span> July 15, 2025. <a href="https://samforeman.me/projects/hpc-b
 <span id="cb1-108"><a href="#cb1-108"></a></span>
 <span id="cb1-109"><a href="#cb1-109"></a>::: {#fig-mnist-example}</span>
 <span id="cb1-110"><a href="#cb1-110"></a></span>
-<span id="cb1-111"><a href="#cb1-111"></a><span class="al">![MNIST Task](./images/mnist_task.png)</span></span>
+<span id="cb1-111"><a href="#cb1-111"></a><span class="al">![MNIST Task](../images/mnist_task.png)</span></span>
 <span id="cb1-112"><a href="#cb1-112"></a></span>
 <span id="cb1-113"><a href="#cb1-113"></a>MNIST Data Sample</span>
 <span id="cb1-114"><a href="#cb1-114"></a>:::</span>
