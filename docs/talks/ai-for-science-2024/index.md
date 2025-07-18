@@ -12,58 +12,56 @@ Sam Foreman
 - [Single GPU](#single-gpu-1)
 - [🏎️ Training on Multiple GPUs: Data
   Parallelism](#racing_car-training-on-multiple-gpus-data-parallelism)
-  - [Data Parallel: Forward Pass](#data-parallel-forward-pass)
-  - [Data Parallel: Backward Pass](#data-parallel-backward-pass)
-  - [Data Parallel: Full Setup](#data-parallel-full-setup)
-  - [Data Parallel: Training](#data-parallel-training)
+- [Data Parallel: Forward Pass](#data-parallel-forward-pass)
+- [Data Parallel: Backward Pass](#data-parallel-backward-pass)
+- [Data Parallel: Full Setup](#data-parallel-full-setup)
+- [Data Parallel: Training](#data-parallel-training)
 - [🗣️ Communication](#speaking_head-communication)
-  - [AllReduce](#allreduce)
+- [AllReduce](#allreduce)
   - [Reduce](#reduce)
-  - [Broadcast](#broadcast)
-  - [AllGather](#allgather)
-  - [Scatter](#scatter)
+- [Broadcast](#broadcast)
+- [AllGather](#allgather)
+- [Scatter](#scatter)
 - [Why Distributed Training?](#why-distributed-training)
-  - [Why Distributed Training?
-    Speedup!](#why-distributed-training-speedup)
-  - [Dealing with Data](#dealing-with-data)
-  - [Broadcast Initial State](#broadcast-initial-state)
-  - [Best Practices](#best-practices)
-  - [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
-  - [Going beyond Data Parallelism: DeepSpeed +
-    `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
-  - [Fully Sharded Data Parallel: 🔥 PyTorch +
-    `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
+- [Why Distributed Training?
+  Speedup!](#why-distributed-training-speedup)
+- [Dealing with Data](#dealing-with-data)
+- [Broadcast Initial State](#broadcast-initial-state)
+- [Best Practices](#best-practices)
+- [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
+- [Going beyond Data Parallelism: DeepSpeed +
+  `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+- [Fully Sharded Data Parallel: 🔥 PyTorch +
+  `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
 - [🕸️ Additional Parallelism
   Strategies](#spider_web-additional-parallelism-strategies)
-  - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
-  - [Tensor Parallel (TP)](#tensor-parallel-tp)
-  - [Tensor Parallel (TP)](#tensor-parallel-tp-1)
+- [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
+- [Tensor Parallel (TP)](#tensor-parallel-tp)
+- [Tensor Parallel (TP)](#tensor-parallel-tp-1)
 - [Tensor (/ Model) Parallel Training:
   Example](#tensor--model-parallel-training-example)
-  - [Tensor (Model)
-    Parallelism](#tensor-model-parallelismefficient-large-scale)
-  - [Tensor Parallelism](#tensor-parallelism)
-  - [3D Parallelism](#3d-parallelism)
-  - [Deciding on a Parallelism
-    Strategy](#deciding-on-a-parallelism-strategy)
+- [Tensor (Model)
+  Parallelism](#tensor-model-parallelismefficient-large-scale)
+- [Tensor Parallelism](#tensor-parallelism)
+- [3D Parallelism](#3d-parallelism)
+- [Deciding on a Parallelism
+  Strategy](#deciding-on-a-parallelism-strategy)
 - [🦙 Large Language Models](#llama-large-language-models)
-  - [🔮 Emergent Abilities](#crystal_ball-emergent-abilities)
-  - [🚂 Training LLMs](#steam_locomotive-training-llms)
-  - [♻️ Life-Cycle of the LLM](#recycle-life-cycle-of-the-llm)
-  - [🎀 Life-Cycle of the LLM](#ribbon-life-cycle-of-the-llm)
-  - [⏩ Forward Pass](#fast_forward-forward-pass)
-  - [💬 Generating Text](#speech_balloon-generating-text)
+- [🔮 Emergent Abilities](#crystal_ball-emergent-abilities)
+- [🚂 Training LLMs](#steam_locomotive-training-llms)
+- [♻️ Life-Cycle of the LLM](#recycle-life-cycle-of-the-llm)
+- [🎀 Life-Cycle of the LLM](#ribbon-life-cycle-of-the-llm)
+- [⏩ Forward Pass](#fast_forward-forward-pass)
+- [💬 Generating Text](#speech_balloon-generating-text)
 - [👋 Hands On](#wave-hands-on)
-  - [🧑‍💻 Hands On: Getting
-    Started](#technologist-hands-on-getting-started)
-  - [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
-  - [ `ezpz`: Example \[video\]](#---ezpz-example-video)
-  - [Install `wordplay`
-    🎮💬](#install-wordplay-video_gamespeech_balloon)
-  - [Prepare Data](#prepare-data)
-  - [Launch Training (DDP)](#launch-training-ddp)
-  - [Training: Example Output](#training-example-output)
-  - [ `wordplay`: Example \[video\]](#---wordplay-example-video)
+- [🧑‍💻 Hands On: Getting Started](#technologist-hands-on-getting-started)
+- [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
+- [ `ezpz`: Example \[video\]](#---ezpz-example-video)
+- [Install `wordplay` 🎮💬](#install-wordplay-video_gamespeech_balloon)
+- [Prepare Data](#prepare-data)
+- [Launch Training (DDP)](#launch-training-ddp)
+- [Training: Example Output](#training-example-output)
+- [ `wordplay`: Example \[video\]](#---wordplay-example-video)
 - [❤️ Thank you!](#heart-thank-you)
 - [📓 References](#notebook-references)
 
@@ -99,7 +97,7 @@ Sam Foreman
 
   > [!NOTE]
   >
-  > #### 📑 Note
+  > ### 📑 Note
   >
   > See [🤗 Performance and
   > Scalability](https://huggingface.co/docs/transformers/v4.46.0/performance)
@@ -287,7 +285,7 @@ Figure 4: Each GPU receives **unique** data at each step
 
 </div>
 
-### Data Parallel: Forward Pass
+## Data Parallel: Forward Pass
 
 <div id="fig-ddp-training-mermaid-allreduce">
 
@@ -356,7 +354,7 @@ Figure 5: Average gradients across all GPUs
 
 </div>
 
-### Data Parallel: Backward Pass
+## Data Parallel: Backward Pass
 
 <div id="fig-ddp-backward-mermaid">
 
@@ -420,7 +418,7 @@ Figure 6: Send global updates back to each GPU
 
 </div>
 
-### Data Parallel: Full Setup
+## Data Parallel: Full Setup
 
 <div id="fig-ddp-training">
 
@@ -489,7 +487,7 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
 
-### Data Parallel: Training
+## Data Parallel: Training
 
 - Each GPU:
   - has **identical copy** of model
@@ -516,14 +514,14 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
   > [!WARNING]
   >
-  > #### ⌛ Timeouts
+  > ### ⌛ Timeouts
   >
   > - Collective operations have to be called for each `rank` to form a
   >   complete collective operation.
   >   - Failure to do so will result in other ranks waiting
   >     **indefinitely**
 
-### AllReduce
+## AllReduce
 
 Perform *reductions* on data (e.g. `sum`, `min`, `max`) across ranks,
 send result back to everyone.
@@ -649,7 +647,7 @@ values across ranks
 
 </div>
 
-### Broadcast
+## Broadcast
 
 <div id="fig-broadcast-mermaid">
 
@@ -698,7 +696,7 @@ all ranks
 
 </div>
 
-### AllGather
+## AllGather
 
 <div id="fig-allgather-mermaid">
 
@@ -765,7 +763,7 @@ Figure 11: Gathers tensors from the whole group in a list.
 
 </div>
 
-### Scatter
+## Scatter
 
 <div id="fig-scatter-mermaid">
 
@@ -833,7 +831,7 @@ Figure 12: Scatters a list of tensors to the whole group
 - See: [Large Batch Training of Convolutional
   Networks](https://arxiv.org/abs/1708.03888)
 
-### Why Distributed Training? Speedup!
+## Why Distributed Training? Speedup!
 
 <div id="tbl-recent-progress">
 
@@ -846,7 +844,7 @@ Table 1: Recent progress
 
 </div>
 
-### Dealing with Data
+## Dealing with Data
 
 - At each training step, we want to ensure that **each worker receives
   unique data**
@@ -860,7 +858,7 @@ Table 1: Recent progress
       - ⚠️ When randomly selecting, it is important that each worker
         uses different seeds to ensure they receive unique data
 
-### Broadcast Initial State
+## Broadcast Initial State
 
 - At the start of training (or when loading from a checkpoint), we want
   all of our workers to be initialized consistently
@@ -887,11 +885,11 @@ Figure 13: To ensure all workers have the same copies, we load on
 
 </div>
 
-### Best Practices
+## Best Practices
 
 > [!IMPORTANT]
 >
-> #### ⏰ Keeping things in Sync
+> ### ⏰ Keeping things in Sync
 >
 > **Computation stalls during communication !!**
 >
@@ -925,7 +923,7 @@ Figure 13: To ensure all workers have the same copies, we load on
 
 </div>
 
-### Going Beyond Data Parallelism
+## Going Beyond Data Parallelism
 
 - ✅ Useful when model fits on single GPU:
   - ultimately **limited by GPU memory**
@@ -938,7 +936,7 @@ Figure 13: To ensure all workers have the same copies, we load on
   - Otherwise, resort to [model parallelism
     strategies](#additional-parallelism-strategies)
 
-### Going beyond Data Parallelism:  DeepSpeed + `ZeRO`
+## Going beyond Data Parallelism:  DeepSpeed + `ZeRO`
 
 - Depending on the `ZeRO` stage (1, 2, 3), we can offload:
   1.  **Stage 1**: optimizer states $\left(P_{\mathrm{os}}\right)$
@@ -956,7 +954,7 @@ Figure 14: [DeepSpeed](deepspeed.ai) +
 
 </div>
 
-### Fully Sharded Data Parallel: 🔥 PyTorch + `FSDP`
+## Fully Sharded Data Parallel: 🔥 PyTorch + `FSDP`
 
 - Instead of maintaining per-GPU copy of `{params, grads, opt_states}`,
   FSDP shards (distributes) these across data-parallel workers
@@ -997,7 +995,7 @@ Figure 15: FSDP Workflow.
   [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
   - Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
-### Pipeline Parallelism (PP)
+## Pipeline Parallelism (PP)
 
 <div class="flex-container" style="place-content: end space-evenly;">
 
@@ -1057,13 +1055,13 @@ Figure 16: Pipeline Parallelism
 
 </div>
 
-### Tensor Parallel (TP)
+## Tensor Parallel (TP)
 
 <div>
 
 </div>
 
-### Tensor Parallel (TP)
+## Tensor Parallel (TP)
 
 <div>
 
@@ -1120,7 +1118,7 @@ Figure 19
 
 </div>
 
-### Tensor (Model) Parallelism[^2]
+## Tensor (Model) Parallelism[^2]
 
 - In **Tensor Paralleism** each GPU processes only a slice of a tensor
   and only aggregates the full tensor for operations that require the
@@ -1132,7 +1130,7 @@ Figure 19
   - If we look at the computation in matrix form, it’s easy to see how
     the matrix multiplication can be split between multiple GPUs:
 
-### Tensor Parallelism
+## Tensor Parallelism
 
 <div id="fig-parallel-gemm">
 
@@ -1145,7 +1143,7 @@ by [@anton-l](https://github.com/anton-l)
 
 </div>
 
-### 3D Parallelism
+## 3D Parallelism
 
 - `DP` + `TP` + `PP` (3D) Parallelism
 
@@ -1159,11 +1157,11 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 </div>
 
-### Deciding on a Parallelism Strategy
+## Deciding on a Parallelism Strategy
 
 <div class="panel-tabset">
 
-#### Single GPU
+### Single GPU
 
 - Model fits onto a single GPU:
   - Normal use
@@ -1175,7 +1173,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
     - MCT Allows running of arbitrarily large layers by automatically
       splitting them and executing them sequentially.
 
-#### Single Node / Multi-GPU
+### Single Node / Multi-GPU
 
 <div class="flex-container">
 
@@ -1204,7 +1202,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
   strategies should be comparable.
   - Otherwise, `PP` \> `ZeRO` $\simeq$ `TP`.
 
-#### Multi-Node / Multi-GPU
+### Multi-Node / Multi-GPU
 
 - When you have fast inter-node connectivity:
 
@@ -1233,7 +1231,7 @@ community~~ **world** by storm[^3].
 
 </div>
 
-### 🔮 Emergent Abilities
+## 🔮 Emergent Abilities
 
 <div id="fig-emergent-abilities">
 
@@ -1243,13 +1241,13 @@ Figure 23: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
-### 🚂 Training LLMs
+## 🚂 Training LLMs
 
 <div>
 
 </div>
 
-### ♻️ Life-Cycle of the LLM
+## ♻️ Life-Cycle of the LLM
 
 <div class="flex-container">
 
@@ -1280,7 +1278,7 @@ pre-training[^4].
 
 </div>
 
-### 🎀 Life-Cycle of the LLM
+## 🎀 Life-Cycle of the LLM
 
 <div class="flex-container">
 
@@ -1311,7 +1309,7 @@ weights to make the model better at a certain task[^5].
 
 </div>
 
-### ⏩ Forward Pass
+## ⏩ Forward Pass
 
 <div id="fig-hf-assisted-generation">
 
@@ -1321,7 +1319,7 @@ Figure 26: Language Model trained for causal language modeling[^6].
 
 </div>
 
-### 💬 Generating Text
+## 💬 Generating Text
 
 <div id="fig-generating-text">
 
@@ -1336,7 +1334,7 @@ Figure 27: Language Model trained for causal language modeling[^7].
 [ai-science-training-series /
 06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
 
-### 🧑‍💻 Hands On: Getting Started
+## 🧑‍💻 Hands On: Getting Started
 
 1.  🌱 Clone Repo(s):
 
@@ -1361,7 +1359,7 @@ Figure 27: Language Model trained for causal language modeling[^7].
     ezpz_setup_job
     ```
 
-### 📦 Install {`ezpz`, `wordplay`}
+## 📦 Install {`ezpz`, `wordplay`}
 
 1.  Install Python packages:
 
@@ -1387,7 +1385,7 @@ Figure 27: Language Model trained for causal language modeling[^7].
     See: 🍋
     [`ezpz/test_dist.py`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 
-###  [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
+##  [`ezpz`](https://github.com/saforem2/ezpz): Example \[[video](https://asciinema.org/a/668460)\]
 
 <div id="fig-ezpz-asciinema">
 
@@ -1399,7 +1397,7 @@ to train a small model using DDP
 
 </div>
 
-### Install [`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
+## Install [`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 <div id="fig-nanoGPT">
 
@@ -1411,7 +1409,7 @@ GPT based models. Figure from
 
 </div>
 
-### Prepare Data
+## Prepare Data
 
 ``` bash
 $ python3 wordplay/data/shakespeare_char/prepare.py
@@ -1424,7 +1422,7 @@ train has 1,003,854 tokens
 val has 111,540 tokens
 ```
 
-### Launch Training (DDP)
+## Launch Training (DDP)
 
 ``` bash
 launch python3 -m wordplay \
@@ -1440,7 +1438,7 @@ launch python3 -m wordplay \
     | tee wordplay-gpt2-DDP.log
 ```
 
-### Training: Example Output
+## Training: Example Output
 
 ``` bash
 $ launch python3 -m wordplay \
@@ -1747,7 +1745,7 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
-###  [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
+##  [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
 <div id="fig-wordplay-asciinema">
 
@@ -1774,7 +1772,7 @@ Figure 30: Training a LLM to talk like Shakespeare using
 
 > [!NOTE]
 >
-> #### Acknowledgements
+> ### Acknowledgements
 >
 > This research used resources of the Argonne Leadership Computing
 > Facility, which is a DOE Office of Science User Facility supported

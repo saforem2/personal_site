@@ -1865,14 +1865,14 @@ window.Quarto = {
 <p>But you are welcome to look through it anyways, you can send questions on slack, and we are happy to talk about it.</p>
 <p>Author: Corey Adams</p>
 <p>The previous notebook trained a classifier network which did ok. But what if we didn’t have a lot of data? In this notebook, we’ll apply that model in a new way with <em>representation learning</em>.</p>
-<div id="f003d9c0" class="cell">
+<div id="7a56b28c" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> sys</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="cf">if</span> sys.platform <span class="op">==</span> <span class="st">"darwin"</span>:</span>
 <span id="cb1-4"><a href="#cb1-4"></a>    os.environ[<span class="st">"TORCH_DEVICE"</span>] <span class="op">=</span> <span class="st">"cpu"</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>    os.environ[<span class="st">'PYTORCH_ENABLE_MPS_FALLBACK'</span>] <span class="op">=</span> <span class="st">"1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="3000100e" class="cell">
+<div id="595bb6fc" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy, random</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> torch</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> torchvision</span>
@@ -1889,7 +1889,7 @@ window.Quarto = {
 <span id="cb2-14"><a href="#cb2-14"></a>batch_size <span class="op">=</span> <span class="dv">128</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s the Convolutional Neural Network Again:</p>
-<div id="a49b19de" class="cell">
+<div id="8a11b5a2" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="kw">class</span> Downsampler(nn.Module):</span>
@@ -2008,7 +2008,7 @@ window.Quarto = {
 <span id="cb3-116"><a href="#cb3-116"></a></span>
 <span id="cb3-117"><a href="#cb3-117"></a>        <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5408712e" class="cell">
+<div id="a08d5761" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> create_representation_model(n_features, rank, size):</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>    model <span class="op">=</span> Classifier(<span class="dv">32</span>, <span class="dv">2</span>, <span class="dv">2</span>, n_features)</span>
@@ -2034,7 +2034,7 @@ window.Quarto = {
 <p>This will download the data if needed:</p>
 <p>We’re going to train this on Polaris nodes which have 4 A100s (But only using one node at a time). So, the following helper functions will automatically distribute the code and model to use all 4 GPUs at once:</p>
 <p>(They are all from the <a href="https://pytorch.org/tutorials/intermediate/ddp_tutorial.html">DDP Tutorial</a> )</p>
-<div id="192e0f76" class="cell">
+<div id="bae8b5bd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> setup(rank, world_size):</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    os.environ[<span class="st">'MASTER_ADDR'</span>] <span class="op">=</span> <span class="st">'localhost'</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>    os.environ[<span class="st">'MASTER_PORT'</span>] <span class="op">=</span> <span class="st">'12355'</span></span>
@@ -2045,7 +2045,7 @@ window.Quarto = {
 <span id="cb5-8"><a href="#cb5-8"></a><span class="kw">def</span> cleanup():</span>
 <span id="cb5-9"><a href="#cb5-9"></a>    dist.destroy_process_group()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5cfc0411" class="cell">
+<div id="1c4ed119" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="kw">def</span> create_data_loaders(transforms, batch_size, rank, seed):</span>
@@ -2101,7 +2101,7 @@ window.Quarto = {
 <span id="cb6-53"><a href="#cb6-53"></a></span>
 <span id="cb6-54"><a href="#cb6-54"></a>    <span class="cf">return</span> train_dataloader, val_dataloader</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="809219ad" class="cell">
+<div id="d0cae31d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># def demo_basic(rank, world_size, n_epochs):</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#     print(f"Running basic DDP example on rank {rank}.")</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#     setup(rank, world_size)</span></span>
@@ -2129,7 +2129,7 @@ window.Quarto = {
 <span id="cb7-25"><a href="#cb7-25"></a><span class="co">#              nprocs=world_size,</span></span>
 <span id="cb7-26"><a href="#cb7-26"></a><span class="co">#              join=True)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c51ed54e" class="cell">
+<div id="a0ffb769" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># import sys, os</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># from multiprocessing import Pool</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co"># from multiprocessing.reduction import ForkingPickler</span></span>
@@ -2151,7 +2151,7 @@ window.Quarto = {
 <span id="cb8-19"><a href="#cb8-19"></a><span class="co"># # the command line).</span></span>
 <span id="cb8-20"><a href="#cb8-20"></a><span class="co"># ForkingPickler.reducer_override = staticmethod(reducer_override)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="18fa4e04" class="cell">
+<div id="e30652cf" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># This method is from the pytorch implementation of SimCLR:</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co"># https://github.com/sthalles/SimCLR/blob/master/data_aug/contrastive_learning_dataset.py</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
@@ -2168,32 +2168,32 @@ window.Quarto = {
 <span id="cb9-14"><a href="#cb9-14"></a>                                        ])</span>
 <span id="cb9-15"><a href="#cb9-15"></a>    <span class="cf">return</span> data_transforms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="a47a1ec2" class="cell">
+<div id="73359126" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>transforms1 <span class="op">=</span> get_simclr_pipeline_transform((<span class="dv">32</span>,<span class="dv">32</span>))</span>
 <span id="cb10-2"><a href="#cb10-2"></a>transforms2 <span class="op">=</span> get_simclr_pipeline_transform((<span class="dv">32</span>,<span class="dv">32</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="4fab46d3" class="cell">
+<div id="2ff8421a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>train, val <span class="op">=</span> create_data_loaders(v2.ToTensor(), batch_size, <span class="dv">0</span>, seed <span class="op">=</span> <span class="dv">1234</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fd2e58d0" class="cell">
+<div id="49d35d10" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>batch, (X, Y) <span class="op">=</span> <span class="bu">next</span>(<span class="bu">enumerate</span>(train))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="013ea1d9" class="cell">
+<div id="85a77737" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>X1 <span class="op">=</span> transforms1(X)<span class="op">;</span> X2 <span class="op">=</span> transforms2(X)</span>
 <span id="cb13-2"><a href="#cb13-2"></a></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="bu">print</span>(<span class="bu">type</span>(X1))</span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="bu">print</span>(<span class="bu">type</span>(X2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="36636f73" class="cell">
+<div id="35fb526a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="op">%</span>matplotlib inline</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d189df99" class="cell">
+<div id="fbef933d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.imshow(X[<span class="dv">0</span>].cpu().permute((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))<span class="op">;</span> plt.show()</span>
 <span id="cb15-2"><a href="#cb15-2"></a>plt.imshow(X1[<span class="dv">0</span>].cpu().permute((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))<span class="op">;</span> plt.show()</span>
 <span id="cb15-3"><a href="#cb15-3"></a>plt.imshow(X2[<span class="dv">0</span>].cpu().permute((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ef2fcea9" class="cell">
+<div id="a8af92fd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> contrastive_loss(first_images, second_images, rank, world_size <span class="op">=</span> <span class="dv">1</span>, temperature<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb16-2"><a href="#cb16-2"></a>        <span class="co"># Each image is represented with k parameters,</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a>        <span class="co"># Assume the batch size is N, so the</span></span>
@@ -2340,7 +2340,7 @@ window.Quarto = {
 <span id="cb16-144"><a href="#cb16-144"></a>        loss <span class="op">=</span> torch.mean( <span class="op">-</span> alignment <span class="op">+</span> log_sum_exp)</span>
 <span id="cb16-145"><a href="#cb16-145"></a>        <span class="cf">return</span> loss, loss_metrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c5dccbc5" class="cell">
+<div id="c213a00f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> train_one_epoch(dataloader, t1, t2, model, head, loss_fn, optimizer, rank, size, progress_bar):</span>
 <span id="cb17-2"><a href="#cb17-2"></a>    model.train()</span>
 <span id="cb17-3"><a href="#cb17-3"></a>    head.train()</span>
@@ -2370,7 +2370,7 @@ window.Quarto = {
 <span id="cb17-27"><a href="#cb17-27"></a>        <span class="co"># progress_bar.description = f"Train loss: {loss.cpu():.2f} top5: {metrics['top5'].cpu():.2f}"</span></span>
 <span id="cb17-28"><a href="#cb17-28"></a>        <span class="co"># break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="93a3b34f" class="cell">
+<div id="c800f62f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> validate_one_epoch(dataloader, t1, t2, model, head, loss_fn, rank, size, progress_bar):</span>
 <span id="cb18-2"><a href="#cb18-2"></a>    model.train()</span>
 <span id="cb18-3"><a href="#cb18-3"></a>    head.train()</span>
@@ -2410,10 +2410,10 @@ window.Quarto = {
 <span id="cb18-37"><a href="#cb18-37"></a>        sum_metrics[key] <span class="op">=</span> sum_metrics[key] <span class="op">/</span> n</span>
 <span id="cb18-38"><a href="#cb18-38"></a>    <span class="cf">return</span> sum_metrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="acf23bd3" class="cell">
+<div id="843d7b80" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>optimizer <span class="op">=</span> torch.optim.AdamW(<span class="bu">list</span>(model.parameters()) <span class="op">+</span> <span class="bu">list</span>(head.parameters()), lr<span class="op">=</span><span class="fl">0.001</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="9f195cba" class="cell">
+<div id="8af2cd5d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> tqdm.notebook <span class="im">import</span> tqdm</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a></span>
@@ -2430,10 +2430,10 @@ window.Quarto = {
 <span id="cb20-14"><a href="#cb20-14"></a><span class="co">#         print_metrics = "; ".join(print_metrics.values())</span></span>
 <span id="cb20-15"><a href="#cb20-15"></a><span class="co">#         print(f"Validate epoch {j}: ", print_metrics)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="99343f39" class="cell">
+<div id="d97f52da" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Now, we retrain the classification head without touching the representation. This is called fine tuning.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="55e6f0dc" class="cell">
+<div id="c04f84e1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> evaluate(dataloader, model, head, loss_fn, val_bar):</span>
 <span id="cb22-2"><a href="#cb22-2"></a>    <span class="co"># Set the model to evaluation mode - some NN pieces behave differently during training</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a>    <span class="co"># Unnecessary in this situation but added for best practices</span></span>
@@ -2459,7 +2459,7 @@ window.Quarto = {
 <span id="cb22-23"><a href="#cb22-23"></a>    accuracy <span class="op">=</span> <span class="dv">100</span><span class="op">*</span>correct</span>
 <span id="cb22-24"><a href="#cb22-24"></a>    <span class="cf">return</span> accuracy, loss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="7b1adb52" class="cell">
+<div id="9d0c22ad" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> fine_tune(dataloader, rep_model, head, loss_fn, optimizer, progress_bar):</span>
 <span id="cb23-2"><a href="#cb23-2"></a>    head.train()</span>
 <span id="cb23-3"><a href="#cb23-3"></a>    model.<span class="bu">eval</span>()</span>
@@ -2491,13 +2491,13 @@ window.Quarto = {
 <span id="cb23-29"><a href="#cb23-29"></a>        <span class="co"># progress_bar.description = f"Train loss: {loss.cpu():.2f} top5: {metrics['top5'].cpu():.2f}"</span></span>
 <span id="cb23-30"><a href="#cb23-30"></a>        <span class="co"># break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5c9d5fdf" class="cell">
+<div id="fd61c1ba" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>classification_head <span class="op">=</span> nn.Linear(<span class="dv">256</span>, <span class="dv">10</span>)  <span class="co"># .cuda()</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>classification_loss <span class="op">=</span> loss_fn <span class="op">=</span> nn.CrossEntropyLoss()</span>
 <span id="cb24-3"><a href="#cb24-3"></a>fine_tune_optimizer <span class="op">=</span> torch.optim.AdamW(classification_head.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
 <span id="cb24-4"><a href="#cb24-4"></a><span class="bu">print</span>(fine_tune_optimizer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="d55dd60f" class="cell">
+<div id="c9b7f0db" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># for j in range(5):</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co">#     with tqdm(total=len(train), position=0, leave=True, desc=f"Fine Tune Epoch {j}") as train_bar1:</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="co">#</span></span>
