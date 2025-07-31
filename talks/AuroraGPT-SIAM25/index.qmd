@@ -563,40 +563,46 @@ Loss curve during training on 2T tokens.
 :::
 
 
-## ✨ Features
+## ✨ Features {background-color="white"}
 
-- **Parallelism**:
+- 🕸️ **Parallelism**:
   - {data, tensor, pipeline, sequence, ...}
-- **Checkpoint Converters**:
+- ♻️ **Checkpoint Converters**:
   - Megatron ⇄ 🤗 HF ⇄ ZeRO ⇄ Universal
-- **DeepSpeed Integration**:
+- 🔀 **DeepSpeed Integration**:
   - ZeRO Offloading
   - Activation checkpointing
   - AutoTP (*WIP*)
   - ability to leverage features from DeepSpeed community
-- **Optimizers**[^marieme]:
-  - *Many* different optimizers:
+
+## ✨ Features (even more!) {background-color="white"}
+
+- 🧗 **Optimizers**[^marieme]:
+  - Support for *many* different optimizers:
     - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE, ScheduleFree, ...
-  - See [full list](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502)
-- **Experiment Tracking**:
+  - See
+    [full list](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502)
+  - Large batch training
+- 📊 **Experiment Tracking**:
   - Automatic experiment and metric tracking with Weights \& Biases
-- ...
 
 [^marieme]: Implemented by Marieme Ngom
 
 ::: {.content-visible when-format="revealjs"}
-## {.smaller background-color="#040406" style="text-align:center;"}
+## {.smaller background-color="#040406"}
 :::
 
-::: {.flex-container style="align-items: center;"}
+::: {.flex-container style="align-items: center; gap: 5pt;"}
 
-::: {.column style="width:55%"}
+::: {.column style="width:55%; text-align: center;"}
 
-::: {.callout-note icon=false title="🔭 LLMs for Science"}
+
+<!-- ::: {.callout-tip icon=false title="🔭 LLMs for Science"} -->
+[🔭 LLMs for Science]{style="font-weight: 600; font-size: 1.5em;"}  
 {{< iconify fa twitter >}} [source](https://x.com/tenderizzation/status/1944591320796090606)
 ([\@tenderizzation](https://twitter.com/tenderizzation))  
 ChatGPT: [explain this image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
-:::
+<!-- ::: -->
 
 :::
 
@@ -656,7 +662,6 @@ Scaling results for `3.5B` model across ~38,400 GPUs
 
 - 🔔 Gordon Bell Finalist[^mprot-dpo]:
   - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
-  
 
 :::
 
@@ -667,6 +672,62 @@ Scaling results for `3.5B` model across ~38,400 GPUs
 <!-- [^aggregate]:  -->
 <!-- [^gb-finalist]: 🔔 Gordon Bell Finalist: [MProt-DPO](https://dl.acm.org/doi/10.1109/SC41406.2024.00013) [@mprot-dpo2024] -->
 <!-- Scaling results[^gb-finalist] for `3.5B` Model -->
+
+## 🧬 MProt-DPO: Scaling Results {.smaller background-color="#1c1c1c"}
+
+::: {.columns}
+
+::: {.column #fig-mprot-3p5B-scaling}
+
+![](./assets/mprot-3p5B-scaling-2.svg)
+
+`3.5B` model
+:::
+
+::: {.column #fig-mprot-7B-scaling}
+
+![](./assets/mprot-7B-scaling-2.svg)
+
+`7B` model
+:::
+
+:::
+
+## 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
+
+::: {.flex-container style="align-items: center; justify-content: center;"}
+
+![](/assets/anl.svg){style="height:50pt; margin: unset; padding: 0"}
+
+[{{< iconify ic baseline-plus >}}]{.dim-text style="font-size: 2.0em;"}
+
+![](/assets/deepspeed-logo-transparent.svg){style="height:50pt; margin: unset; padding: 0;"}
+
+:::
+
+- Working with
+  [{{< fa brands microsoft >}} Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed)
+  team to enable longer sequence lengths (context windows) for LLMs
+    - See my [blog post](https://samforeman.me/posts/auroragpt/long-sequences/) for additional details
+
+::: {#fig-long-seq}
+
+::: {.flex-container}
+
+![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+
+![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+
+:::
+
+Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds4sci)
+
+:::
+
+::: aside
+[{{< fa brands github >}} `scaling4science`](https://github.com/saforem2/scaling4science)  
+[{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
+:::
 
 
 <!--
@@ -759,61 +820,6 @@ DE-AC02-06CH11357.
 ::: {#refs}
 :::
 
-## 🧬 MProt-DPO: Scaling Results {.smaller background-color="#1c1c1c"}
-
-::: {.columns}
-
-::: {.column #fig-mprot-3p5B-scaling}
-
-![](./assets/mprot-3p5B-scaling-2.svg)
-
-`3.5B` model
-:::
-
-::: {.column #fig-mprot-7B-scaling}
-
-![](./assets/mprot-7B-scaling-2.svg)
-
-`7B` model
-:::
-
-:::
-
-## 🚂 Loooooooooong Sequence Lengths {.smaller background-color="#1c1c1c"}
-
-::: {.flex-container style="align-items: center; justify-content: center;"}
-
-![](/assets/anl.svg){style="height:50pt; margin: unset; padding: 0"}
-
-[{{< iconify ic baseline-plus >}}]{.dim-text style="font-size: 2.0em;"}
-
-![](/assets/deepspeed-logo-transparent.svg){style="height:50pt; margin: unset; padding: 0;"}
-
-:::
-
-- Working with
-  [{{< fa brands microsoft >}} Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed)
-  team to enable longer sequence lengths (context windows) for LLMs
-    - See my [blog post](https://samforeman.me/posts/auroragpt/long-sequences/) for additional details
-
-::: {#fig-long-seq}
-
-::: {.flex-container}
-
-![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
-
-![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
-
-:::
-
-Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds4sci)
-
-:::
-
-::: aside
-[{{< fa brands github >}} `scaling4science`](https://github.com/saforem2/scaling4science)  
-[{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
-:::
 
 <!--
 

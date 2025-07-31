@@ -19,17 +19,18 @@
 - [📉 Loss Curve: Training AuroraGPT-7B on 2T
   Tokens](#chart_with_downwards_trend-loss-curve-training-auroragpt-7b-on-2t-tokens)
 - [✨ Features](#sparkles-features)
+- [✨ Features (even more!)](#sparkles-features-even-more)
 - [🤔 Evaluating Models on Scientific
   Applications](#thinking-evaluating-models-on-scientific-applications)
 - [⚖️ Evaluating FM Skills for Science:
   Criteria](#balance_scale-evaluating-fm-skills-for-science-criteria)
 - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
-- [📓 References](#notebook-references)
-- [❤️ Thank you!](#heart-thank-you)
-- [📑 Bibliography](#bookmark_tabs-bibliography)
 - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results-1)
 - [🚂 Loooooooooong Sequence
   Lengths](#steam_locomotive-loooooooooong-sequence-lengths)
+- [📓 References](#notebook-references)
+- [❤️ Thank you!](#heart-thank-you)
+- [📑 Bibliography](#bookmark_tabs-bibliography)
 
 ## 🎯 AuroraGPT: Goals
 
@@ -390,37 +391,38 @@ Figure 4: Time spent preparing 2T tokens
 
 ## ✨ Features
 
-- **Parallelism**:
+- 🕸️ **Parallelism**:
   - {data, tensor, pipeline, sequence, …}
-- **Checkpoint Converters**:
+- ♻️ **Checkpoint Converters**:
   - Megatron ⇄ 🤗 HF ⇄ ZeRO ⇄ Universal
-- **DeepSpeed Integration**:
+- 🔀 **DeepSpeed Integration**:
   - ZeRO Offloading
   - Activation checkpointing
   - AutoTP (*WIP*)
   - ability to leverage features from DeepSpeed community
-- **Optimizers**[^5]:
-  - *Many* different optimizers:
+
+## ✨ Features (even more!)
+
+- 🧗 **Optimizers**[^5]:
+  - Support for *many* different optimizers:
     - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE,
       ScheduleFree, …
   - See [full
     list](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502)
-- Automatic metric tracking with W&B
-- …
-- 
+  - Large batch training
+- 📊 **Experiment Tracking**:
+  - Automatic experiment and metric tracking with Weights & Biases
 
-<div class="flex-container" style="align-items: center;">
+<div class="flex-container" style="align-items: center; gap: 5pt;">
 
-<div class="column" style="width:55%">
+<div class="column" style="width:55%; text-align: center;">
 
-> [!NOTE]
->
-> ### 🔭 LLMs for Science
->
-> [source](https://x.com/tenderizzation/status/1944591320796090606)
-> ([@tenderizzation](https://twitter.com/tenderizzation))  
-> ChatGPT: [explain this
-> image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
+<span style="font-weight: 600; font-size: 1.5em;">🔭 LLMs for
+Science</span>  
+[source](https://x.com/tenderizzation/status/1944591320796090606)
+([@tenderizzation](https://twitter.com/tenderizzation))  
+ChatGPT: [explain this
+image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
@@ -491,6 +493,73 @@ Figure 5: Scaling results for `3.5B` model across ~38,400 GPUs
     Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
 
 </div>
+
+</div>
+
+## 🧬 MProt-DPO: Scaling Results
+
+<div class="columns">
+
+<div id="fig-mprot-3p5B-scaling">
+
+![](./assets/mprot-3p5B-scaling-2.svg)
+
+Figure 6: `3.5B` model
+
+</div>
+
+<div id="fig-mprot-7B-scaling">
+
+![](./assets/mprot-7B-scaling-2.svg)
+
+Figure 7: `7B` model
+
+</div>
+
+</div>
+
+## 🚂 Loooooooooong Sequence Lengths
+
+<div class="flex-container"
+style="align-items: center; justify-content: center;">
+
+<img src="../../assets/anl.svg"
+style="height:50pt; margin: unset; padding: 0" />
+
+<span class="dim-text" style="font-size: 2.0em;"></span>
+
+<img src="../../assets/deepspeed-logo-transparent.svg"
+style="height:50pt; margin: unset; padding: 0;" />
+
+</div>
+
+- Working with [
+  Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed) team to
+  enable longer sequence lengths (context windows) for LLMs
+  - See my [blog
+    post](https://samforeman.me/posts/auroragpt/long-sequences/) for
+    additional details
+
+<div id="fig-long-seq">
+
+<div class="flex-container">
+
+![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
+
+![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
+
+</div>
+
+Figure 8: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+(See: Song et al. (2023))
+
+</div>
+
+<div class="aside">
+
+[ `scaling4science`](https://github.com/saforem2/scaling4science)  
+[
+`Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 
 </div>
 
@@ -616,73 +685,6 @@ Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
 Large Language Models.” <https://arxiv.org/abs/2206.07682>.
 
 </div>
-
-</div>
-
-## 🧬 MProt-DPO: Scaling Results
-
-<div class="columns">
-
-<div id="fig-mprot-3p5B-scaling">
-
-![](./assets/mprot-3p5B-scaling-2.svg)
-
-Figure 6: `3.5B` model
-
-</div>
-
-<div id="fig-mprot-7B-scaling">
-
-![](./assets/mprot-7B-scaling-2.svg)
-
-Figure 7: `7B` model
-
-</div>
-
-</div>
-
-## 🚂 Loooooooooong Sequence Lengths
-
-<div class="flex-container"
-style="align-items: center; justify-content: center;">
-
-<img src="../../assets/anl.svg"
-style="height:50pt; margin: unset; padding: 0" />
-
-<span class="dim-text" style="font-size: 2.0em;"></span>
-
-<img src="../../assets/deepspeed-logo-transparent.svg"
-style="height:50pt; margin: unset; padding: 0;" />
-
-</div>
-
-- Working with [
-  Microsoft/DeepSpeed](https://github.com/microsoft/DeepSpeed) team to
-  enable longer sequence lengths (context windows) for LLMs
-  - See my [blog
-    post](https://samforeman.me/posts/auroragpt/long-sequences/) for
-    additional details
-
-<div id="fig-long-seq">
-
-<div class="flex-container">
-
-![25B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg)
-
-![33B](https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg)
-
-</div>
-
-Figure 8: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
-(See: Song et al. (2023))
-
-</div>
-
-<div class="aside">
-
-[ `scaling4science`](https://github.com/saforem2/scaling4science)  
-[
-`Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 
 </div>
 
