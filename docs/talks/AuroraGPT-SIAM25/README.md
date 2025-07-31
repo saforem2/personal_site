@@ -11,7 +11,6 @@
 - [🧰 AuroraGPT: Toolbox](#toolbox-auroragpt-toolbox)
 - [🌌 Aurora](#milky_way-aurora)
 - [🤝 Teams](#handshake-teams)
-- [](#section)
 - [🎯 Goals](#dart-goals)
 - [🏋️ Challenges: In Practice](#weight_lifting-challenges-in-practice)
 - [💾 Training: 2T Tokens](#floppy_disk-training-2t-tokens)
@@ -19,7 +18,7 @@
   Efficiently](#tropical_drink-blending-data-efficiently)
 - [📉 Loss Curve: Training AuroraGPT-7B on 2T
   Tokens](#chart_with_downwards_trend-loss-curve-training-auroragpt-7b-on-2t-tokens)
-- [](#section-1)
+- [✨ Features](#sparkles-features)
 - [🤔 Evaluating Models on Scientific
   Applications](#thinking-evaluating-models-on-scientific-applications)
 - [⚖️ Evaluating FM Skills for Science:
@@ -36,14 +35,13 @@
 
 <div class="flex-container" style="justify-content: space-around;">
 
-<div class="column" style="width: 55%">
+<div class="column" style="width: 50%">
 
 <div class="blue-card">
 
 [**AuroraGPT**](https://auroragpt.anl.gov): *General purpose scientific
-LLM*  
-Broadly trained on a general corpora plus scientific  
-{papers, texts, data}
+LLM* Broadly trained on a general corpora plus scientific {papers,
+texts, data}
 
 </div>
 
@@ -67,15 +65,6 @@ Figure 1: Image from [Hannibal046 /
 </div>
 
 </div>
-
-</div>
-
-<div id="fig-timeline">
-
-<img src="./assets/timelines.png"
-style="margin-left:auto;margin-right:auto;;width:75.0%" />
-
-Figure 2: Credit to the entire AuroraGPT team for slides.
 
 </div>
 
@@ -137,7 +126,7 @@ Figure 2: Credit to the entire AuroraGPT team for slides.
 
 ![](./assets/AuroraGPT.svg)
 
-Figure 3: High-level overview of AuroraGPT project
+Figure 2: High-level overview of AuroraGPT project
 
 </div>
 
@@ -185,7 +174,7 @@ Figure 3: High-level overview of AuroraGPT project
 - **Evaluation of state-of-the-art LLM Models** (how do they perform on
   scientific tasks?)
 
-<div class="flex-container">
+<div class="flex-container" style="gap: 5pt;">
 
 > [!NOTE]
 >
@@ -235,7 +224,7 @@ Table 1: Aurora Specs
 
 ![](./assets/aurora.png)
 
-Figure 4: Aurora[^1]: [Fact
+Figure 3: Aurora[^1]: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
@@ -284,11 +273,9 @@ modalities (gene sequences, geospatial data, …)
 
 </div>
 
-## 
-
 <div class="flex-container" style="align-items: flex-start; gap: 10pt;">
 
-<div class="flex">
+<div class="column">
 
 ### 🍎 Training LLMs
 
@@ -308,7 +295,7 @@ modalities (gene sequences, geospatial data, …)
 
 </div>
 
-<div class="flex">
+<div class="column">
 
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
@@ -391,7 +378,7 @@ style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
 
 <img src="./assets/data-processing.svg" class="r-stretch" />
 
-Figure 5: Time spent preparing 2T tokens
+Figure 4: Time spent preparing 2T tokens
 
 </div>
 
@@ -401,19 +388,39 @@ Figure 5: Time spent preparing 2T tokens
 
 ## 📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens
 
-## 
+## ✨ Features
+
+- **Parallelism**:
+  - {data, tensor, pipeline, sequence, …}
+- **Checkpoint Converters**:
+  - Megatron ⇄ 🤗 HF ⇄ ZeRO ⇄ Universal
+- **DeepSpeed Integration**:
+  - ZeRO Offloading
+  - Activation checkpointing
+  - AutoTP (*WIP*)
+  - ability to leverage features from DeepSpeed community
+- **Optimizers**[^5]:
+  - *Many* different optimizers:
+    - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE,
+      ScheduleFree, …
+  - See [full
+    list](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502)
+- Automatic metric tracking with W&B
+- …
+- 
 
 <div class="flex-container" style="align-items: center;">
 
 <div class="column" style="width:55%">
 
-### 🔭 LLMs for Science
-
-[source](https://x.com/tenderizzation/status/1944591320796090606)
-([@tenderizzation](https://twitter.com/tenderizzation))
-
-ChatGPT: [explain this
-image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
+> [!NOTE]
+>
+> ### 🔭 LLMs for Science
+>
+> [source](https://x.com/tenderizzation/status/1944591320796090606)
+> ([@tenderizzation](https://twitter.com/tenderizzation))  
+> ChatGPT: [explain this
+> image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
@@ -463,7 +470,7 @@ style="align-items: center; text-align: center; margin-left: auto; margin-right:
 <img src="./assets/mprot-3p5B-scaling-2.svg"
 style="margin:0; padding-unset;;width:100.0%" />
 
-Figure 6: Scaling results for `3.5B` model across ~38,400 GPUs
+Figure 5: Scaling results for `3.5B` model across ~38,400 GPUs
 
 </div>
 
@@ -478,7 +485,7 @@ Figure 6: Scaling results for `3.5B` model across ~38,400 GPUs
 - 38,400 XPUs  
   = 3200 \[node\] x 12 \[XPU / node\]
 
-- 🔔 Gordon Bell Finalist[^5]:
+- 🔔 Gordon Bell Finalist[^6]:
 
   - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
     Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
@@ -620,7 +627,7 @@ Large Language Models.” <https://arxiv.org/abs/2206.07682>.
 
 ![](./assets/mprot-3p5B-scaling-2.svg)
 
-Figure 7: `3.5B` model
+Figure 6: `3.5B` model
 
 </div>
 
@@ -628,7 +635,7 @@ Figure 7: `3.5B` model
 
 ![](./assets/mprot-7B-scaling-2.svg)
 
-Figure 8: `7B` model
+Figure 7: `7B` model
 
 </div>
 
@@ -666,7 +673,7 @@ style="height:50pt; margin: unset; padding: 0;" />
 
 </div>
 
-Figure 9: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+Figure 8: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
 (See: Song et al. (2023))
 
 </div>
@@ -684,7 +691,7 @@ Figure 9: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
     🏆 [Aurora Supercomputer Ranks Fastest for
     AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
-[^2]: **Sam Foreman**, co-lead
+[^2]: **Sam Foreman** (co-lead), Varuni Sastry, Marieme Ngom, …
 
 [^3]:
 
@@ -694,4 +701,6 @@ Figure 9: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
 
     *Very much a WIP*
 
-[^5]: (Dharuman et al. 2024)
+[^5]: Implemented by Marieme Ngom
+
+[^6]: (Dharuman et al. 2024)

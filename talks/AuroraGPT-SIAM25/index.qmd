@@ -108,12 +108,11 @@ revealjs-plugins:
 
 ::: {.flex-container style="justify-content: space-around;"}
 
-::: {.column style="width: 55%"}
+::: {.column style="width: 50%"}
 
 ::: {.blue-card}
-[**AuroraGPT**](https://auroragpt.anl.gov): _General purpose scientific LLM_  
-Broadly trained on a general corpora plus scientific  
-{papers, texts, data}
+[**AuroraGPT**](https://auroragpt.anl.gov): *General purpose scientific LLM*
+Broadly trained on a general corpora plus scientific {papers, texts, data}
 :::
 
 - **Explore pathways** towards a "Scientific Assistant" model
@@ -135,11 +134,13 @@ Image from {{< iconify fa github >}}
 
 :::
 
+<!--
 ::: {#fig-timeline}
 ![](./assets/timelines.png){width="75%" style="margin-left:auto;margin-right:auto;"}
 
 Credit to the entire AuroraGPT team for slides.
 :::
+-->
 
 ::: {.notes}
 - Here to talk about AuroraGPT, Argonne's internal effort to build a general
@@ -257,7 +258,7 @@ accelerate computational science
 
 <!-- to train, evaluate and deploy LLMs at scale for scientific resarch purposes-->
 
-::: {.flex-container}
+::: {.flex-container style="gap: 5pt;"}
 
 ::: {.callout-note icon=false title="🚂 Training"}
 {{< fa brands github >}} [argonne-lcf/Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
@@ -357,7 +358,7 @@ Aurora[^fastest]: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024
 - **Post-Training**
   - Fine-tuning, alignment, reinforcement learning
 
-[^me]: **Sam Foreman**, co-lead
+[^me]: **Sam Foreman** (co-lead), Varuni Sastry, Marieme Ngom, ...
 :::
 
 ::: {.column}
@@ -426,11 +427,17 @@ new scientific data modalities (gene sequences, geospatial data, ...)
 
 -->
 
+::: {.content-visible when-format="html" unless-format="revealjs"}
+## 🦜 Training Large Models
+:::
+
+::: {.content-visible when-format="revealjs"}
 ## {.smaller background-color="white"}
+:::
 
 :::: {.flex-container style="align-items: flex-start; gap: 10pt;"}
 
-::: {.flex}
+::: {.column}
 
 ### 🍎 Training LLMs
 
@@ -451,7 +458,7 @@ new scientific data modalities (gene sequences, geospatial data, ...)
 
 :::
 
-::: {.flex}
+::: {.column}
 
 ![](https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true)
 
@@ -555,18 +562,42 @@ Loss curve during training on 2T tokens.
 :::
 :::
 
+
+## ✨ Features
+
+- **Parallelism**:
+  - {data, tensor, pipeline, sequence, ...}
+- **Checkpoint Converters**:
+  - Megatron ⇄ 🤗 HF ⇄ ZeRO ⇄ Universal
+- **DeepSpeed Integration**:
+  - ZeRO Offloading
+  - Activation checkpointing
+  - AutoTP (*WIP*)
+  - ability to leverage features from DeepSpeed community
+- **Optimizers**[^marieme]:
+  - *Many* different optimizers:
+    - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE, ScheduleFree, ...
+  - See [full list](https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502)
+- **Experiment Tracking**:
+  - Automatic experiment and metric tracking with Weights \& Biases
+- ...
+
+[^marieme]: Implemented by Marieme Ngom
+
+::: {.content-visible when-format="revealjs"}
 ## {.smaller background-color="#040406" style="text-align:center;"}
+:::
 
 ::: {.flex-container style="align-items: center;"}
 
 ::: {.column style="width:55%"}
 
-### 🔭 LLMs for Science
-
+::: {.callout-note icon=false title="🔭 LLMs for Science"}
 {{< iconify fa twitter >}} [source](https://x.com/tenderizzation/status/1944591320796090606)
-([\@tenderizzation](https://twitter.com/tenderizzation))
-
+([\@tenderizzation](https://twitter.com/tenderizzation))  
 ChatGPT: [explain this image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
+:::
+
 :::
 
 ::: {.column}
