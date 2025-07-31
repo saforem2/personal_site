@@ -3,6 +3,7 @@ Sam Foreman
 2024-02-12
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [DeepSpeed4Science (09/2023)](#deepspeed4science-092023)
   - [New Features](#new-features)

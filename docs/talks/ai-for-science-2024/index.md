@@ -3,6 +3,7 @@ Sam Foreman
 2024-11-05
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [👀 Overview](#eyes-overview)
 - [📑 Outline](#bookmark_tabs-outline)

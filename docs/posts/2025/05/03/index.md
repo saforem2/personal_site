@@ -3,6 +3,7 @@ Sam Foreman
 2025-05-03
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [Reinstall Modules built with
   `numpy < 2`](#reinstall-modules-built-with-numpy--2)

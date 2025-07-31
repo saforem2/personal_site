@@ -3,6 +3,7 @@ Sam Foreman
 2025-05-21
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [ALCF Incite Hackathon 2025](#alcf-incite-hackathon-2025)
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)

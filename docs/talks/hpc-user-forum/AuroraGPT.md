@@ -3,6 +3,7 @@ Sam Foreman
 2024-09-04
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [🎯 AuroraGPT Goals](#dart-auroragpt-goals)
 - [🧪 AuroraGPT: Open Science Foundation

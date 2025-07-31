@@ -3,6 +3,7 @@ Sam Foreman
 2023-12-06
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [`l2hmc-qcd`](#l2hmc-qcd)
 - [Setup](#setup)

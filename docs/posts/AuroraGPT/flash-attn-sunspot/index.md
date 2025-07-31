@@ -3,6 +3,7 @@ Sam Foreman
 2024-06-17
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [Update: 2024-06-16](#update-2024-06-16)
 - [🐛 Impact on Loss \[Bug?\]](#bug-impact-on-loss-bug)

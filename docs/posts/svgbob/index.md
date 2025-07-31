@@ -3,6 +3,7 @@ Sam Foreman
 2024-11-15
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 Playing with [ivanceras/`svgbob`](https://github.com/ivanceras/svgbob)
 as an alternative to Mermaid

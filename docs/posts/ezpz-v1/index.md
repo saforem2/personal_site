@@ -3,6 +3,7 @@ Sam Foreman
 2024-08-23
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [🍋 `ezpz` v1](#lemon-ezpz-v1)
   - [👀 Overview](#eyes-overview)

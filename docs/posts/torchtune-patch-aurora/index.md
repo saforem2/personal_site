@@ -3,6 +3,7 @@ Sam Foreman
 2025-03-23
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [Patch to get `torchtune` working on
   Aurora](#patch-to-get-torchtune-working-on-aurora)

@@ -3,6 +3,7 @@ Sam Foreman
 2025-04-26
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 - [Sam Foreman](#sam-foreman)
   - [Résumé](#résumé)

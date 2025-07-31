@@ -1,7 +1,8 @@
 Sam Foreman
-2025-07-17
+2025-07-30
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -43,12 +44,10 @@ style="justify-content: center; loading='lazy'; padding-inline: 1pt;">
 
 ### 🧑🏻‍💻 About
 
-<div style="padding-inline: 5pt;">
-
 <div class="flex-container"
-style="justify-content: space-between; align-items: flex-start;">
+style="justify-content: space-between; align-items: flex-start; padding-inline: 1pt">
 
-<div class="column" style="width: 60%;">
+<div class="column" style="width:60%;">
 
 - [Computational Scientist][ALCF] @ [Argonne National Laboratory]
   - [AI Group] @ [Leadership Computing Facility (ALCF)]
@@ -58,7 +57,7 @@ style="justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-<div class="column" stle="width: 40%">
+<div style="width=40%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
@@ -235,7 +234,7 @@ style="justify-content: space-between; align-items: flex-start;">
 > print(' '.join([ "[#838383]Last Updated[/]:", f"[#E599F7]{now.strftime("%Y-%m-%d")}[/]", "[#838383]@[/]", f"[#00CCFF]{now.strftime("%H:%M:%S")}[/]", ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">16</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:23:17</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">23:03:56</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -249,8 +248,6 @@ style="justify-content: space-between; align-items: flex-start;">
 > <span class="dim-text">© Copyright [Sam Foreman]</span>
 >
 > </div>
-
-</div>
 
 ### 📝 Work
 
@@ -1244,6 +1241,22 @@ Table 2: 🎓 Education
 <div class="container"
 style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
 
+<div class="light-content">
+
+<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=ffffff&interchange=false" /></a>
+
+<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
+
+<iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh)); border-radius: 4pt;">
+
+</iframe>
+
+[![Apple Music GitHub profile]][16]
+
+</div>
+
+<div class="dark-content">
+
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false" /></a>
 
 <a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
@@ -1252,7 +1265,9 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </iframe>
 
-<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+[![Apple Music GitHub profile][17]][16]
+
+</div>
 
 </div>
 
@@ -1406,4 +1421,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [15]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
+  [Apple Music GitHub profile]: https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532
+  [16]: https://music-profile.rayriffy.com
+  [17]: https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532
   [samforeman.me/talks]: https://samforeman.me/talks/
