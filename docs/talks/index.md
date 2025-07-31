@@ -31,6 +31,18 @@ Sam Foreman
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**AuroraGPT: Large Scale Training on Diverse Accelerators**](../talks/AuroraGPT-SIAM25/index.html) @ [Scalable Deep Learning, *SIAM AN2025*](https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772) \[07/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/AuroraGPT-SIAM25/slides#" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**LLMs on Aurora: 🌌 AuroraGPT**](../talks/incite-hackathon-2025/AuroraGPT/index.html) @ [*2025 ALCF INCITE GPU Hackathon*](https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon) \[05/2025\]</span>
 >
 > - [🎥 video](https://www.youtube.com/watch?v=KJBbR_oFO2E)

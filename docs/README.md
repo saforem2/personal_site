@@ -601,6 +601,18 @@ style="justify-content: space-between; align-items: flex-start; padding-inline: 
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**AuroraGPT: Large Scale Training on Diverse Accelerators**] @ [Scalable Deep Learning, *SIAM AN2025*][] \[07/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/AuroraGPT-SIAM25/slides#" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**LLMs on Aurora: 🌌 AuroraGPT**] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
 >
 > - [🎥 video]
@@ -1238,10 +1250,10 @@ Table 2: 🎓 Education
 
 ### 🎶 Music
 
-<div class="container"
-style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
-
 <div class="light-content">
+
+<div class="flex-container"
+style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
 
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=ffffff&interchange=false" /></a>
 
@@ -1251,11 +1263,16 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </iframe>
 
-[![Apple Music GitHub profile]][16]
+<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+
+</div>
 
 </div>
 
 <div class="dark-content">
+
+<div class="flex-container"
+style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
 
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false" /></a>
 
@@ -1265,7 +1282,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </iframe>
 
-[![Apple Music GitHub profile][17]][16]
+<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
 
 </div>
 
@@ -1347,6 +1364,8 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
+  [**AuroraGPT: Large Scale Training on Diverse Accelerators**]: ./talks/AuroraGPT-SIAM25/index.html
+  [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
   [**LLMs on Aurora: 🌌 AuroraGPT**]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
   [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
   [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
@@ -1421,7 +1440,4 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [15]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
-  [Apple Music GitHub profile]: https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532
-  [16]: https://music-profile.rayriffy.com
-  [17]: https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532
   [samforeman.me/talks]: https://samforeman.me/talks/

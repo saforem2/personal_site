@@ -405,7 +405,7 @@ Figure 5: Time spent preparing 2T tokens
 
 <div class="flex-container" style="align-items: center;">
 
-<div class="flex" style="width:55%">
+<div class="column" style="width:55%">
 
 ### 🔭 LLMs for Science
 
@@ -417,7 +417,7 @@ image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
-<div class="flex">
+<div class="column">
 
 ![](./assets/modeling-planets.jpg)
 
