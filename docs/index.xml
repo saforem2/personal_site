@@ -732,42 +732,6 @@ September 2. <a href="https://samforeman.me/talks/openskai25/ai4science/slides.h
   <media:content url="https://samforeman.me/talks/openskai25/ai4science/assets/thumbnail.png" medium="image" type="image/png" height="119" width="144"/>
 </item>
 <item>
-  <title>Open SkAI2025</title>
-  <dc:creator>Sam Foreman</dc:creator>
-  <link>https://samforeman.me/talks/openskai25/</link>
-  <description><![CDATA[ 
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-
-
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<ul>
-<li><a href="./">Scientific AI at Scale: Distributed Training</a></li>
-</ul>
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2025,
-  author = {Foreman, Sam},
-  title = {Open {SkAI2025}},
-  date = {2025-09-02},
-  url = {https://samforeman.me/talks/openskai25/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2025. <span>“Open SkAI2025.”</span> September 2, 2025. <a href="https://samforeman.me/talks/openskai25/">https://samforeman.me/talks/openskai25/</a>.
-</div></div></section></div> ]]></description>
-  <guid>https://samforeman.me/talks/openskai25/</guid>
-  <pubDate>Tue, 02 Sep 2025 05:00:00 GMT</pubDate>
-</item>
-<item>
   <title>Scientific AI at Scale: Distributed Training</title>
   <dc:creator>Sam Foreman</dc:creator>
   <link>https://samforeman.me/talks/openskai25/training/</link>
@@ -36081,6 +36045,782 @@ Foreman, Sam. 2024. <span>“Parallel Training Methods.”</span> November
   <guid>https://samforeman.me/talks/ai-for-science-2024/</guid>
   <pubDate>Tue, 05 Nov 2024 06:00:00 GMT</pubDate>
   <media:content url="https://samforeman.me/talks/ai-for-science-2024/assets/thumbnail.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>AuroraGPT: ANL’s General Purpose Scientific LLM</title>
+  <dc:creator>Sam Foreman</dc:creator>
+  <link>https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/</link>
+  <description><![CDATA[ 
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+<section id="auroragpt-goals" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="auroragpt-goals">🎯 AuroraGPT Goals</h2>
+<div class="flex-container" style="flex-direction: column; justify-content: space-around;">
+<div class="flex-container" style="flex-direction: row; justify-content: space-around; align-items:center;">
+<div class="column" style="width: 55%">
+<div class="blue-card">
+<p><strong>AuroraGPT</strong>: <em>General purpose scientific LLM</em><br>
+Broadly trained on a general corpora plus scientific {papers, texts, data}</p>
+</div>
+<ul>
+<li><strong>Explore pathways</strong> towards a “Scientific Assistant” model</li>
+<li><strong>Build with international partners</strong> (RIKEN, BSC, others)</li>
+<li><strong>Multilingual</strong> English, 日本語, French, German, Spanish</li>
+<li><strong>Multimodal</strong>: images, tables, equations, proofs, time series, graphs, fields, sequences, etc</li>
+</ul>
+</div>
+<div class="column" style="text-align: center;">
+<div id="fig-awesome-llm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Image from  Hannibal046/Awesome-LLM"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/llms.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Image from <iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM"><code>Hannibal046/Awesome-LLM</code></a>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="fig-timeline" class="quarto-float quarto-figure quarto-figure-center anchored" style="margin-left:auto;margin-right:auto;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/timelines.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Credit to the entire AuroraGPT team for slides."><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/timelines.png" class="img-fluid figure-img" style="margin-left:auto;margin-right:auto;;width:75.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Credit to the entire AuroraGPT team for slides.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li><p>Here to talk about AuroraGPT, Argonne’s internal effort to build a general purpose scientific LLM, broadly trained on a general corpora of text + scientific {papers, text, data}</p></li>
+<li><p>As part of this effort, we plan to…</p>
+<ul>
+<li>Explore pathways, build with international partners, multi-{lingual, modal}</li>
+</ul></li>
+<li><p>Rough timeline of the project and deliverables:</p>
+<ul>
+<li>202{3,4}: text-only models, plan to release a series of {7B, 70B, 1T} models</li>
+<li>202{4,5}: Basic multi-modal models</li>
+<li>202{5,6}: Advanced scientific multimodal models</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="auroragpt-open-science-foundation-models" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="auroragpt-open-science-foundation-models">🧪 AuroraGPT: Open Science Foundation Models</h2>
+<div id="fig-aurora-gpt" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored" style="vertical-align:center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3:  argonne-lcf/Megatron-DeepSpeed"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: <i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><code>argonne-lcf/Megatron-DeepSpeed</code></a>
+</figcaption>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>AuroraGPT will be a publicly distributed, open source foundation model for open science</li>
+<li>Is being trained on:
+<ul>
+<li>Scientific / engineering structured data</li>
+<li>General text, media, news, etc.</li>
+<li>Large amounts of low to medium quality data</li>
+<li>Much less high quality data (that is publicly available for use)</li>
+</ul></li>
+<li>This data is then cleaned, processed, de-duplicated and used for the initial pre-training phase of the model</li>
+<li>The vast majority of the overall compute is spent during this initial pre-training phase
+<ul>
+<li>This is the group I help to lead and will be talking a bit about today</li>
+</ul></li>
+<li>The initial pre-training phase is currently underway
+<ul>
+<li>Eventually, given a bit of time, effort and magic, the model will be ready for fine-tuning and additional training for a variety of downstream tasks</li>
+</ul></li>
+<li>The pretrained model will then be handed off for additional fine-tuning on a variety of downstream tasks
+<ul>
+<li>Scientific discovery</li>
+<li>Accelerate scientific tasks</li>
+<li>Digital twins</li>
+<li>Inverse design</li>
+<li>Code optimization</li>
+<li>Accelerated simulations</li>
+<li>Autonomous experiments</li>
+<li>Co-design</li>
+</ul></li>
+<li>Becoming increasingly clear that LLMs have the potential to drastically accelerate computational science
+<ul>
+<li>We’ve seen this already for {GenSLMs, Weather / Climate / Earth Systems Modeling, Particle Physics, etc.}</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="auroragpt-outcomes" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="auroragpt-outcomes">📊 AuroraGPT Outcomes</h2>
+<ul>
+<li><strong>Datasets and data pipelines</strong> for preparing science training data</li>
+<li><strong>Software infrastructure and workflows</strong> to train, evaluate and deploy LLMs at scale for scientific resarch purposes</li>
+<li><strong>Evaluation of state-of-the-art LLM Models</strong> to determine where they fall short in deep scientific tasks and where deep data may have an impact</li>
+<li><strong>Assessment of the approach</strong> of augmenting web training data with two forms of data specific to science
+<ul>
+<li>Full text scientific papers</li>
+<li>Structured scientific datasets (suitably mapped to narrative form)</li>
+</ul></li>
+<li><strong>Research grade artifacts</strong> (<strong>models</strong>) for scientific community for adaptation for downstream uses</li>
+<li><strong>Promotion of responsible AI</strong> best practices where we can figure them out</li>
+<li><strong>International Collaborations</strong> around the long term goal of <em>AGI for science</em></li>
+</ul>
+<div class="notes">
+<ul>
+<li><p>Deliverables:</p>
+<ul>
+<li>datasets, pipelines</li>
+<li>software infrastructure, workflows to interface with science applications</li>
+<li>checkpoints, models, logs, workbook, insights, etc.</li>
+</ul></li>
+<li><p>Hope to understand:</p>
+<ul>
+<li>How different state-of-the-art models perform at different scientific tasks</li>
+<li>where deep data may have an impact</li>
+<li>feasibility of generically augmenting text with scientific structured data</li>
+</ul></li>
+<li><p>Huge undertaking that will require large international collaborations around long term goal of AGI for science</p></li>
+<li><p>Extra points:</p>
+<ul>
+<li>Well known that LLMs are good for non-consequential tasks</li>
+<li>Known to “hallucinate” and create false information</li>
+<li>Can this be mitigated reliably ??</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="aurora" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="aurora">🌌 Aurora</h2>
+<div class="flex-container" style="align-items: center;">
+<div class="column" style="width:5%;">
+<div id="tbl-aurora" class="responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Aurora Specs
+</figcaption>
+<div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="table-responsive">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Racks</td>
+<td style="text-align: left;">166</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Nodes</td>
+<td style="text-align: left;">10,624</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">CPUs</td>
+<td style="text-align: left;">21,248</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">GPUs</td>
+<td style="text-align: left;">63,744</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">NICs</td>
+<td style="text-align: left;">84,992</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">HBM</td>
+<td style="text-align: left;">8 PB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">DDR5c</td>
+<td style="text-align: left;">10 PB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="column">
+<div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/aurora.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Aurora Fact Sheet"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/aurora.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Aurora Fact Sheet</a>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="alcf-ai-testbed" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="alcf-ai-testbed">🤖 ALCF AI Testbed</h2>
+<ul>
+<li>ALCF AI Testbed Systems are in production and <a href="https://accounts.alcf.anl.gov/#/allocationRequests">available for allocations</a> to the research community</li>
+<li>Significant improvement in time-to-solution and energy-efficiency for diverse AI for science applications.</li>
+<li><a href="https://nairrpilot.org/">NAIRR Pilot</a></li>
+</ul>
+<div class="red-card" style="color: #FF5252; font-size:90%;">
+<p>Up to <strong>25</strong><img src="https://latex.codecogs.com/png.latex?%5Ctimes"> improvement for genomic foundation models with <strong>6.5</strong><img src="https://latex.codecogs.com/png.latex?%5Ctimes"> energy efficiency</p>
+</div>
+<div class="flex-container" style="align-items: flex-end;">
+<div id="fig-sambanova" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sambanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/sambanova.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: SambaNova SN-30: 2nd Gen, 8 nodes with 64 AI Accelerators"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/sambanova.jpeg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sambanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <strong>SambaNova SN-30</strong>: 2nd Gen, 8 nodes with 64 AI Accelerators
+</figcaption>
+</figure>
+</div>
+<div id="fig-graphcore" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-graphcore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/graphcore.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Graphcore Bow: generation accelerators: Pod-64 configuration with 64 accelerators"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/graphcore.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graphcore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <strong>Graphcore Bow</strong>: generation accelerators: Pod-64 configuration with 64 accelerators
+</figcaption>
+</figure>
+</div>
+<div id="fig-cerebras" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cerebras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/cerebras.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: Cerebras: 2x CS-2 WSE with Memory-X and Swarm-X technologies"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/cerebras.jpeg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cerebras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: <strong>Cerebras</strong>: 2x CS-2 WSE with Memory-X and Swarm-X technologies
+</figcaption>
+</figure>
+</div>
+<div id="fig-groq" class="column quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-groq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/groq.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: GroqRack: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/groq.jpeg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-groq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="team-leads" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="team-leads">👥 Team Leads</h2>
+<div style="font-size: 100%;">
+<div class="flex-container" style="text-align: center; align-items: center;">
+<p><strong>Planning</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/rick-stevens.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Rick Stevens"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/rick-stevens.png" style="height:1.04167in" alt="Rick Stevens" class="figure-img"></a></p>
+<figcaption>Rick Stevens<sup>1</sup></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Ian Foster"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster" class="figure-img"></a></p>
+<figcaption>Ian Foster</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/rinku-gupta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Rinku Gupta"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/rinku-gupta.png" style="height:1.04167in" alt="Rinku Gupta" class="figure-img"></a></p>
+<figcaption>Rinku Gupta</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/mike-papka.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Mike Papka"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/mike-papka.png" style="height:1.04167in" alt="Mike Papka" class="figure-img"></a></p>
+<figcaption>Mike Papka</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/arvind-ramanathan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Arvind Ramanathan"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/arvind-ramanathan.png" style="height:1.04167in" alt="Arvind Ramanathan" class="figure-img"></a></p>
+<figcaption>Arvind Ramanathan</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/fangfang-xia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Fangfang Xia"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/fangfang-xia.png" style="height:1.04167in" alt="Fangfang Xia" class="figure-img"></a></p>
+<figcaption>Fangfang Xia</figcaption>
+</figure>
+</div>
+</div>
+<div class="flex-container" style="text-align: center;">
+<div class="col">
+<p><strong>Data</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Ian Foster"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster" class="figure-img"></a></p>
+<figcaption>Ian Foster</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/robert-underwood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Robert Underwood"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/robert-underwood.png" style="height:1.04167in" alt="Robert Underwood" class="figure-img"></a></p>
+<figcaption>Robert Underwood</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Training</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/venkat-vishwanath.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Venkat Vishwanath"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/venkat-vishwanath.png" style="height:1.04167in" alt="Venkat Vishwanath" class="figure-img"></a></p>
+<figcaption>Venkat Vishwanath</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/sam-foreman.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Sam Foreman"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/sam-foreman.png" style="height:1.04167in" alt="Sam Foreman" class="figure-img"></a></p>
+<figcaption><span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); font-weight: 500;">Sam Foreman</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Evaluation</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/franck-cappello.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Franck Cappello"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/franck-cappello.png" style="height:1.04167in" alt="Franck Cappello" class="figure-img"></a></p>
+<figcaption>Franck Cappello</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/sandeep-madireddy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Sandeep Madireddy"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/sandeep-madireddy.png" style="height:1.04167in" alt="Sandeep Madireddy" class="figure-img"></a></p>
+<figcaption>Sandeep Madireddy</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/bo-li.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Bo Li"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/bo-li.png" style="height:1.04167in" alt="Bo Li" class="figure-img"></a></p>
+<figcaption>Bo Li</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Post</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/eliu-huerta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Eliu Huerta"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/eliu-huerta.png" style="height:1.04167in" alt="Eliu Huerta" class="figure-img"></a></p>
+<figcaption>Eliu Huerta</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/azton-wells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Azton Wells"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/azton-wells.png" style="height:1.04167in" alt="Azton Wells" class="figure-img"></a></p>
+<figcaption>Azton Wells</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Inference</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/rajeev-thakur.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Rajeev Thakur"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/rajeev-thakur.png" style="height:1.04167in" alt="Rajeev Thakur" class="figure-img"></a></p>
+<figcaption>Rajeev Thakur</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Comms</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/charlie-catlett.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Charlie Catlett"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/charlie-catlett.png" style="height:1.04167in" alt="Charlie Catlett" class="figure-img"></a></p>
+<figcaption>Charlie Catlett</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/david-martin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="David Martin"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/david-martin.png" style="height:1.04167in" alt="David Martin" class="figure-img"></a></p>
+<figcaption>David Martin</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Distribution</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/team/brad-ullrich.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Brad Ullrich"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/team/brad-ullrich.png" style="height:1.04167in" alt="Brad Ullrich" class="figure-img"></a></p>
+<figcaption>Brad Ullrich</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="teams" class="level2" data-auto-animate="true" data-background-color="white">
+<h2 data-auto-animate="true" data-background-color="white" class="anchored" data-anchor-id="teams">🤝 Teams</h2>
+<div class="flex-container">
+<div class="column">
+<ul>
+<li><strong>Planning</strong></li>
+<li><strong>Data Prep</strong>
+<ul>
+<li>Accumulate 20+ T tokens of high-quality scientific text and structured data</li>
+</ul></li>
+<li><span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"><strong>Models / Training</strong></span><sup>2</sup>
+<ul>
+<li>Train (entirely from scratch) a series of models on publicly available data</li>
+</ul></li>
+<li><strong>Evaluation</strong>
+<ul>
+<li>Skills, trustworthiness, safety, robustness, privacy, machine ethics</li>
+</ul></li>
+</ul>
+</div>
+<div class="column">
+<ul>
+<li><strong>Post-Training</strong>
+<ul>
+<li>Fine-tuning, alignment</li>
+</ul></li>
+<li><strong>Inference</strong>
+<ul>
+<li>Model serving, API development / public-facing web services</li>
+</ul></li>
+<li><strong>Distribution</strong>
+<ul>
+<li>Licensing, generating and distributing artifacts for public consumption</li>
+</ul></li>
+<li><strong>Communication</strong></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="model-training" class="level2 smaller page-columns page-full" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="model-training">🦜 Model Training</h2>
+<div class="flex-container" style="text-align: left; width: 100%; justify-content: space-around; line-height: 1em; gap: 5pt;">
+<div class="column" style="background: oklch(from #03BD00 calc(l * 1.15) c h / 0.1); border: 1px solid #03BD00; border-radius: 0.25em; padding: 3pt 8pt;">
+<p>✅ <span style="color: #03BD00;"><strong>Goals</strong></span></p>
+<ul>
+<li>Want training runs at scale to be:
+<ul>
+<li>efficient</li>
+<li>stable</li>
+<li>reproducible</li>
+</ul></li>
+<li>This requires:
+<ul>
+<li>robust data pipelines / file IO</li>
+<li>effectively overlapping compute with communication</li>
+<li>stability across {network, filesystem, machine}</li>
+</ul></li>
+<li>3D / Multi-dimensional Parallelism strategies</li>
+<li>Large batch training</li>
+<li>Second order optimizers</li>
+<li>Sub-quadratic attention</li>
+<li>State space models</li>
+<li><em>Highly optimized GPU kernels</em></li>
+</ul>
+</div>
+<div class="column" style="background: oklch(from #E90102 calc(l * 1.15) c h / 0.1); border: 1px solid #E90102; border-radius: 0.25em; padding: 3pt 8pt;">
+<p>❌ <span style="color: #E90102;"><strong>Challenges</strong></span></p>
+<ul>
+<li><em>Looong time</em> to train, can be:
+<ul>
+<li>weeks (even months) of continuous training</li>
+<li>order of magnitude longer than typical NN training jobs</li>
+</ul></li>
+<li>Stability issues:
+<ul>
+<li>failures are expensive (but inevitable)</li>
+<li>stragglers common at scale</li>
+</ul></li>
+<li>Individual jobs are:
+<ul>
+<li><strong>fragile</strong></li>
+<li>only as good as the worst rank</li>
+<li>one hang or bad worker can crash job</li>
+<li>network / filesystem / other-user(s) dependent</li>
+</ul></li>
+<li>Cost / benefits of different collective communication algorithms
+<ul>
+<li>depend on optimized / efficient implementations</li>
+</ul></li>
+<li>Network performance</li>
+<li><em>Highly optimized GPU kernels</em></li>
+</ul>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p><iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf / <code>Megatron-DeepSpeed</code></a></p>
+</div></div></section>
+<section id="accelerating-dataset-processing-at-scale-for-training" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="accelerating-dataset-processing-at-scale-for-training">🚀 Accelerating Dataset Processing at Scale for Training</h2>
+<ul>
+<li>To train a fixed model on trillions of tokens requires:
+<ul>
+<li>Aggregating data from multiple different <em>corpora</em> (e.g.&nbsp;Reddit, StackExchange, GitHub, etc.)</li>
+<li>Sampling <em>each training batch</em> according to a fixed distribution across corpora</li>
+<li>Building indices that map batches of tokens into these files (indexing)</li>
+</ul></li>
+<li>The original implementation was slow, and designed to run on a single device
+<ul>
+<li>Major bottleneck when debugging data pipeline at scale</li>
+</ul></li>
+<li><label><input type="checkbox" checked="">Completely re-wrote an asynchronous, distributed implementation that <em>significantly</em> improves performance</label></li>
+</ul>
+</section>
+<section id="accelerating-dataset-processing-results" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="accelerating-dataset-processing-results">🚀 Accelerating Dataset Processing: Results</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Completely re-wrote an asynchronous, distributed implementation that <em>significantly</em> improves performance (<del>60 min</del> <img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> 4 min)</label></li>
+</ul>
+<div class="flex-container">
+<div id="fig-data-blendable" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-blendable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/blendable.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="Figure&nbsp;9: Time spent building BlendableDataset"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/blendable.svg" class="r-stretch img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-blendable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Time spent building <code>BlendableDataset</code>
+</figcaption>
+</figure>
+</div>
+<div id="fig-data-gpt" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/gpt.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Figure&nbsp;10: Time spent building GPTDataset"><img src="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/gpt.svg" class="r-stretch img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Time spent building <code>GPTDataset</code>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="references" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="references">📓 References</h2>
+<div class="flex-container" style="gap: 2pt;">
+<div class="column">
+<ul>
+<li>See my other slides at <a href="https://samforeman.me/talks">samforeman.me/talks</a>
+<ul>
+<li><a href="https://saforem2.github.io/llm-workshop-talk">LLMs from Scratch</a></li>
+<li><a href="https://saforem2.github.io/LLM-tutorial">Creating Small(~ish) LLMs</a></li>
+<li><a href="https://saforem2.github.io/parallel-training-slides">Parallel Training Techniques</a></li>
+<li><a href="https://samforeman.me/talks/llms-on-polaris/#/title-slide">LLMs on Polaris</a></li>
+<li><a href="https://samforeman.me/talks/llms-at-scale/">Training LLMs at Scale</a></li>
+</ul></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf / <code>Megatron-DeepSpeed</code></a><br>
+<span class="dim-text">For the largest of large language models.</span></li>
+<li><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz">saforem2 / <code>ezpz</code></a><br>
+<span class="dim-text">Distributed training, ezpz. 🍋</span></li>
+</ul>
+</div>
+<div class="column">
+<ul>
+<li>👀 See also:
+<ul>
+<li><a href="https://www.anl.gov/article/new-international-consortium-formed-to-create-trustworthy-and-reliable-generative-ai-models-for">New international consortium for generative AI models for science</a></li>
+<li><a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed Overview</a></li>
+<li><a href="https://pytorch.org/docs/master/notes/ddp.html">Distributed Data Parallel — PyTorch master documentation</a></li>
+<li><a href="https://huggingface.co/docs/transformers/en/perf_train_gpu_many">🤗 Efficient Training on Multiple GPUs</a></li>
+<li><a href="https://www.deepspeed.ai/getting-started/">Getting Started - DeepSpeed</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="thank-you" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="thank-you">❤️ Thank you!</h2>
+<ul>
+<li><p>Organizers</p></li>
+<li><p>Feel free to reach out!</p>
+<p><split even=""></split></p>
+<p><a href="https://samforeman.me"><i class="fas fa-home"></i></a> <a href="mailto:///foremans@anl.gov"><i class="far fa-paper-plane"></i></a> <a href="https://www.twitter.com/saforem2"><i class="fab fa-twitter"></i></a></p>
+<p></p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="🙏 Acknowledgements">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🙏 Acknowledgements
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="bibliography" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="bibliography">📑 Bibliography</h2>
+<ul>
+<li>Refs:
+<ul>
+<li><span class="citation" data-cites="wei2022emergentabilitieslargelanguage">Wei et al. (2022)</span></li>
+<li>Animations from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
+</ul></li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-song2023ds4sci" class="csl-entry">
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. <span>“DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery Through Sophisticated AI System Technologies.”</span> <a href="https://arxiv.org/abs/2310.04610">https://arxiv.org/abs/2310.04610</a>.
+</div>
+<div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry">
+Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian Borgeaud, Dani Yogatama, et al. 2022. <span>“Emergent Abilities of Large Language Models.”</span> <a href="https://arxiv.org/abs/2206.07682">https://arxiv.org/abs/2206.07682</a>.
+</div>
+<div id="ref-yang2023harnessing" class="csl-entry">
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming Jiang, Bing Yin, and Xia Hu. 2023. <span>“Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond.”</span> <a href="https://arxiv.org/abs/2304.13712">https://arxiv.org/abs/2304.13712</a>.
+</div>
+</div>
+</section>
+<section id="extras" class="level2 page-columns page-full" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="extras">🎁 Extras</h2>
+<section id="loooooooooong-sequence-lengths" class="level3 smaller page-columns page-full" data-background-color="#1c1c1c">
+<h3 class="smaller anchored" data-background-color="#1c1c1c" data-anchor-id="loooooooooong-sequence-lengths">🚂 Loooooooooong Sequence Lengths</h3>
+<div class="flex-container" style="align-items: center; justify-content: center;">
+<p><a href="../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="https://samforeman.me/assets/anl.svg" class="img-fluid" style="height:50pt;"></a></p>
+<p><span class="dim-text" style="font-size: 2.0em;"><iconify-icon inline="" icon="ic:baseline-plus" aria-label="Icon baseline-plus from ic Iconify.design set." title="Icon baseline-plus from ic Iconify.design set."></iconify-icon></span></p>
+<p><a href="../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="https://samforeman.me/assets/deepspeed-logo-transparent.svg" class="img-fluid" style="height:50pt;"></a></p>
+</div>
+<ul>
+<li>Working with <a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-microsoft" aria-label="microsoft"></i> Microsoft/DeepSpeed</a> team to enable longer sequence lengths (context windows) for LLMs
+<ul>
+<li>See my <a href="https://samforeman.me/posts/auroragpt/long-sequences/">blog post</a> for additional details</li>
+</ul></li>
+</ul>
+<div id="fig-long-seq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="flex-container">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="25B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="img-fluid figure-img"></a></p>
+<figcaption>25B</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="33B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="img-fluid figure-img"></a></p>
+<figcaption>33B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (2023)</span>)
+</figcaption>
+</figure>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p><a href="https://github.com/saforem2/scaling4science"><i class="fa-brands fa-github" aria-label="github"></i> <code>scaling4science</code></a><br>
+<a href="https://github.com/saforem2/Megatron-DS-Benchmarking"><i class="fa-brands fa-github" aria-label="github"></i> <code>Megatron-DS-Benchmarking</code></a></p>
+</div></div></section>
+<section id="life-cycle-of-the-llm" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="life-cycle-of-the-llm">♻️ Life Cycle of the LLM</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset" style="text-align:center">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">📝 Pre-training</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">🎀 Fine-Tuning</a></li></ul>
+<div class="tab-content" style="text-align:center">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<div id="fig-pretraining" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;12: Pre-training: Virtually all of the compute used during pretraining phase"><img src="https://jalammar.github.io/images/gpt3/03-gpt3-training-step-back-prop.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pretraining-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: <strong>Pre-training</strong>: Virtually all of the compute used during pretraining phase
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<div id="fig-fine-tuning" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:90%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;13: Fine-tuning: Fine-tuning actually updates the model’s weights to make the model better at a certain task."><img src="https://jalammar.github.io/images/gpt3/10-gpt3-fine-tuning.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fine-tuning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: <strong>Fine-tuning</strong>: Fine-tuning actually updates the model’s weights to make the model better at a certain task.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-llms" class="level3 smaller" data-background-color="white">
+<h3 class="smaller anchored" data-background-color="white" data-anchor-id="training-llms">🍎 Training LLMs</h3>
+<div class="flex-container" style="align-items: flex-end;">
+<div class="column" style="width:33%;">
+<div id="fig-it-hungers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="Figure&nbsp;14: It’s hungry!"><img src="https://github.com/saforem2/llm-lunch-talk/blob/main/docs/assets/it_hungers.jpeg?raw=true" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-it-hungers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: It’s hungry!
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="column" style="width:60%;">
+<div id="fig-evolution" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="Figure&nbsp;15: Visualization from @yang2023harnessing"><img src="https://github.com/Mooler0410/LLMsPracticalGuide/raw/main/imgs/survey-gif-test.gif" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Visualization from <span class="citation" data-cites="yang2023harnessing">Yang et al. (2023)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Lead↩︎</p></li>
+<li id="fn2"><p>Co-led by: Venkat Vishwanath, Sam Foreman↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2024,
+  author = {Foreman, Sam},
+  title = {AuroraGPT: {ANL’s} {General} {Purpose} {Scientific} {LLM}},
+  date = {2024-10-30},
+  url = {https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
+Foreman, Sam. 2024. <span>“AuroraGPT: ANL’s General Purpose Scientific
+LLM.”</span> October 30. <a href="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides">https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides</a>.
+</div></div></section></div> ]]></description>
+  <guid>https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/</guid>
+  <pubDate>Wed, 30 Oct 2024 05:00:00 GMT</pubDate>
+  <media:content url="https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/assets/thumbnail.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>
