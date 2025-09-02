@@ -71,8 +71,6 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### 🎶 Bumpin
 >
-> I’m on the road to a million songs
->
 > > [!TIP]
 > >
 > > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
