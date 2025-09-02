@@ -19,7 +19,7 @@ Sam Foreman
 - [Data Parallel: Training](#data-parallel-training)
 - [🗣️ Communication](#speaking_head-communication)
 - [AllReduce](#allreduce)
-  - [Reduce](#reduce)
+- [Reduce](#reduce)
 - [Broadcast](#broadcast)
 - [AllGather](#allgather)
 - [Scatter](#scatter)
@@ -587,7 +587,7 @@ input values across ranks.
 
 </div>
 
-### Reduce
+## Reduce
 
 - Perform a *reduction* on data across ranks, send to individual
 

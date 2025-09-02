@@ -69,7 +69,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
-> ### 🎶 Bumpin
+> ### 🎶 Now Playing
 >
 > > [!TIP]
 > >
