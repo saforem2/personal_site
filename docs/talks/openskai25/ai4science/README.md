@@ -1,4 +1,4 @@
-# Scientific AI at Scale: AI for Science
+# Scientific AI at Scale: AuroraGPT
 [Sam Foreman](https://samforeman.me)
 2025-09-02
 

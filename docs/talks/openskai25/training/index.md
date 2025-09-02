@@ -1,4 +1,4 @@
-# Scientific AI at Scale: AI for Science
+# Scientific AI at Scale: Distributed Training
 Sam Foreman
 2025-09-02
 
@@ -291,7 +291,6 @@ Figure 4: Each GPU receives **unique** data at each step
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        %%xp("`xₙ₊₁`")
         x("`x₀`")
         x1("`x₁`")
         x2("`x₂`")
@@ -301,7 +300,6 @@ flowchart LR
         direction LR
         subgraph N0["`NN`"]
         end
-        %%y0("`y₀`")
         L0["`Loss`"]
     end
     subgraph G1["`GPU1`"]
@@ -316,10 +314,6 @@ flowchart LR
         end
         L2["`Loss`"]
     end
-    %% subgraph AR["`Average Grads`"]
-    %%     direction TB
-    %%     ar("`(∑ₙgₙ)/n`")
-    %% end
     ar("`Avg. Grads<br>(∑ₙgₙ)/N`")
     x --> G0
     x1 --> G1

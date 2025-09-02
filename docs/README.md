@@ -71,6 +71,8 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### 🎶 Bumpin
 >
+> I’m on the road to a million songs
+>
 > > [!TIP]
 > >
 > > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
@@ -606,6 +608,30 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**Scientific AI at Scale: AI for Science**] @ [Open SkAI 2025][] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/ai4science/slides#" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**Scientific AI at Scale: Distributed Training**] @ [Open SkAI 2025][3] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/training/slides.html" title="Scientific AI at Scale: Distributed Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**AuroraGPT: Large Scale Training on Diverse Accelerators**] @ [Scalable Deep Learning, *SIAM AN2025*][] \[07/2025\]</span>
 >
 > <div class="reveal-full-page">
@@ -634,7 +660,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### <span class="dim-text">[**LLMs on Aurora: 🍋 ezpz**] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
 >
-> - [🎥 video][3]
+> - [🎥 video][4]
 >
 > <div class="reveal-full-page">
 >
@@ -662,7 +688,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### <span class="dim-text">[**Parallel Training Methods**] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
 >
-> - [🎥 video][4]
+> - [🎥 video][5]
 >
 > <div class="reveal-full-page">
 >
@@ -676,7 +702,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### <span class="dim-text">[**AuroraGPT**] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
 >
-> - [🎥 video][3]
+> - [🎥 video][4]
 >
 > <div class="reveal-full-page">
 >
@@ -700,7 +726,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**AuroraGPT**][5] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+> ### <span class="dim-text">[**AuroraGPT**][6] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
@@ -776,7 +802,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 >
 > ### <span class="dim-text">[**LLM Lunch Talk**] @ [ALCF Hands On HPC Workshop][Intel oneAPI Workshop @ UIC] \[10/2023\]</span>
 >
-> - [🎥 video][6]
+> - [🎥 video][7]
 >
 > <div class="embedded-slide">
 >
@@ -904,7 +930,7 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][7] \[12/2021\]</span>
+> ### <span class="dim-text">[**Accelerated Sampling Methods for LGT**], @ [DWQ @ 25 \[BNL\]][8] \[12/2021\]</span>
 >
 > <div class="embedded-slide">
 >
@@ -1180,9 +1206,9 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 #### 📚 Publications[^1]
 
 - [**MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
-  Design Workflows with Direct Preference Optimization**][8]
+  Design Workflows with Direct Preference Optimization**][9]
 - [**GenSLMs: Genome-Scale Language Models Reveal SARS-CoV-2
-  Evolutionary Dynamics**][9]
+  Evolutionary Dynamics**][10]
 - [**Applications of Machine Learning to Lattice Quantum Field
   Theory**][Applications of ML to Lattice QFT]
 - [**HMC with Normalizing Flows**][HMC with Normalizing Flows]
@@ -1193,15 +1219,15 @@ style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 #### 🎤 Selected Talks[^2]
 
-- [**AuroraGPT: Foundation Models for Science**][10] @ [*Foundation
+- [**AuroraGPT: Foundation Models for Science**][11] @ [*Foundation
   Models for the Electric Grid*][] \[02/2025\]
-- [**Parallel Training Methods**][11] @ [*AI-for-Science on
+- [**Parallel Training Methods**][12] @ [*AI-for-Science on
   Supercomputers*][*Foundation Models for the Electric Grid*]
   \[11/2024\]
-- [**AuroraGPT**][12] @ [*HPC User Forum*, 2024][] \[09/2024\]
-- [**Machine Learning and Foundation Models at Scale**][13] @ [*2024
+- [**AuroraGPT**][13] @ [*HPC User Forum*, 2024][] \[09/2024\]
+- [**Machine Learning and Foundation Models at Scale**][14] @ [*2024
   ALCF Hands-On HPC Workshop*][] \[10/2024\]
-- [**Training LLMs at Scale**][14] @ [*ATPESC*, 2024][] \[08/2024\]
+- [**Training LLMs at Scale**][15] @ [*ATPESC*, 2024][] \[08/2024\]
 - [**LLMs from Scratch**] @ [LLM Tutorial Workshop][] \[02/2024\]
 - [**Exascale Science on Aurora**] @ [Intel oneAPI Workshop @ UIC][]
   \[10/2023\]
@@ -1248,7 +1274,7 @@ Table 2: 🎓 Education
 | Degree |      In       |         @          | End  |
 |:-------|:-------------:|:------------------:|:----:|
 | [PhD]  |   [Physics]   | University of Iowa | 2019 |
-| B.Sc   | [Physics][15] |       [UIUC]       | 2015 |
+| B.Sc   | [Physics][16] |       [UIUC]       | 2015 |
 | B.Sc   |    [Math]     |        UIUC        | 2015 |
 
 </div>
@@ -1260,7 +1286,7 @@ Table 2: 🎓 Education
 <div class="flex-container"
 style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
 
-<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=bdbdbd&interchange=false" /></a>
+<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=f8f8f8&interchange=false" /></a>
 
 <a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
 
@@ -1367,21 +1393,25 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [*arXiv:1710.02079*]: https://www.arxiv.or/abs/1710.02079
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
+  [**Scientific AI at Scale: AI for Science**]: ./talks/openskai25/ai4science/index.html
+  [Open SkAI 2025]: https://www.openskai-conference.org
+  [**Scientific AI at Scale: Distributed Training**]: ./talks/openskai25/training/index.html
+  [3]: https://www.openskai-conference.org/
   [**AuroraGPT: Large Scale Training on Diverse Accelerators**]: ./talks/AuroraGPT-SIAM25/index.html
   [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
   [**LLMs on Aurora: 🌌 AuroraGPT**]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
   [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
   [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
   [**LLMs on Aurora: 🍋 ezpz**]: ./talks/incite-hackathon-2025/ezpz/index.html
-  [3]: https://www.youtube.com/watch?v=15ZK9REQiBo
+  [4]: https://www.youtube.com/watch?v=15ZK9REQiBo
   [**AuroraGPT: Foundation Models for Science**]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
   [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [**Parallel Training Methods**]: ./talks/ai-for-science-2024/index.html
-  [4]: https://www.youtube.com/watch?v=4ltulBj4oVk
+  [5]: https://www.youtube.com/watch?v=4ltulBj4oVk
   [**AuroraGPT**]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [**Machine Learning and Foundation Models at Scale**]: ./talks/alcf-hpc-workshop-2024/index.html
-  [5]: ./talks/hpc-user-forum/index.html
+  [6]: ./talks/hpc-user-forum/index.html
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [**Training LLMs at Scale**]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
@@ -1396,7 +1426,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [**Exascale Science on Aurora**]: https://saforem2.github.io/oneapi-talk
   [Intel oneAPI Workshop @ UIC]: https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop
   [**LLM Lunch Talk**]: https://saforem2.github.io/llm-lunch-talk
-  [6]: https://www.youtube.com/watch?v=mSx9RVd00xU
+  [7]: https://www.youtube.com/watch?v=mSx9RVd00xU
   [**Scaling LLMs for Science**]: https://saforem2.github.io/scaling4science
   [Data-Intensive Computing + AI/ML at Scale]: https://events.cels.anl.gov/event/426/overview
   [**MLMC: Machine Learning Monte Carlo**]: https://saforem2.github.io/lattice23
@@ -1415,7 +1445,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [**Scientific Data Science: An Emerging Symbiosis**]: https://saforem2.github.io/anl-job-talk/
   [**Machine Learning in HEP**]: https://saforem2.github.io/physicsSeminar
   [**Accelerated Sampling Methods for LGT**]: https://saforem2.github.io/l2hmc-dwq25/
-  [7]: https://indico.bnl.gov/event/13576/
+  [8]: https://indico.bnl.gov/event/13576/
   [**Training Topological Samplers for LGT**]: https://saforem2.github.io/l2hmc_talk_ect2021
   [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
   [**Deep Learning HMC for Improved Gauge Generation**]: https://bit.ly/mainz21
@@ -1426,13 +1456,13 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
     https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
   [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
   [AuroraGPT]: https://auroragpt.anl.gov
-  [8]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
-  [9]: https://doi.org/10.1177/10943420231184990
-  [10]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
-  [11]: https://samforeman.me/talks/ai-for-science-2024/
-  [12]: https://samforeman.me/talks/hpc-user-forum/
-  [13]: https://samforeman.me/talks/alcf-hpc-workshop-2024/
-  [14]: https://samforeman.me/talks/llms-at-scale/
+  [9]: https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization
+  [10]: https://doi.org/10.1177/10943420231184990
+  [11]: https://samforeman.me/talks/aurora-gpt-fm-for-electric-grid/
+  [12]: https://samforeman.me/talks/ai-for-science-2024/
+  [13]: https://samforeman.me/talks/hpc-user-forum/
+  [14]: https://samforeman.me/talks/alcf-hpc-workshop-2024/
+  [15]: https://samforeman.me/talks/llms-at-scale/
   [SC24 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
@@ -1440,7 +1470,7 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Machine Learning and Quantum Computing for Earth Sciences]: https://17.usnccm.org/702
   [PhD]: https://bit.ly/sam-foreman-phd
   [Physics]: https://physics.uiowa.edu/graduate/phd-physics
-  [15]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
+  [16]: https://grainger.illinois.edu/academics/undergraduate/majors-and-minors/physics
   [UIUC]: https://illinois.edu/
   [Math]: https://math.illinois.edu/
   [samforeman.me/talks]: https://samforeman.me/talks/
