@@ -1,5 +1,6 @@
 # 🔳 `l2hmc-qcd` Example: 4D SU(3)
 Sam Foreman
+2025-07-24
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">

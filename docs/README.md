@@ -1,5 +1,5 @@
 Sam Foreman
-2025-07-31
+2025-09-02
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
@@ -44,10 +44,10 @@ style="justify-content: center; loading='lazy'; padding-inline: 1pt;">
 
 ### 🧑🏻‍💻 About
 
-<div class="flex-container"
-style="justify-content: space-between; align-items: flex-start; padding-inline: 1pt">
+<div class="columns"
+style="display: flex; justify-content: space-between; align-items: flex-start; padding-inline: 1pt">
 
-<div class="column" style="width:60%;">
+<div class="column" style="width=60%; margin-block-start: 1pt;">
 
 - [Computational Scientist][ALCF] @ [Argonne National Laboratory]
   - [AI Group] @ [Leadership Computing Facility (ALCF)]
@@ -57,20 +57,25 @@ style="justify-content: space-between; align-items: flex-start; padding-inline: 
 
 </div>
 
-<div style="width=40%; margin-inline-end: 2pt; margin-block-start: 1pt;">
+<div class="column"
+style="width=35%; margin-inline-end: 2pt; margin-block-start: 1pt;">
 
 > [!TIP]
 >
-> ### 🎤 <span class="dim-text">Recent Talks</span>
+> ### ✏️ <span class="dim-text">Last Updated</span>
 >
-> <span class="dim-text" style="font-size:1em;">\[[here]\] ( + how I
-> [make them]! )</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">26</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:01:42</span>
+> </pre>
 
 > [!TIP]
 >
-> ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
+> ### 🎶 Bumpin
 >
-> <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" /></a>
+> > [!TIP]
+> >
+> > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
+> >
+> > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=none&interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:100%;"/></a>
 >
 > > [!TIP]
 > >
@@ -234,7 +239,7 @@ style="justify-content: space-between; align-items: flex-start; padding-inline: 
 > print(' '.join([ "[#838383]Last Updated[/]:", f"[#E599F7]{now.strftime("%Y-%m-%d")}[/]", "[#838383]@[/]", f"[#00CCFF]{now.strftime("%H:%M:%S")}[/]", ]))
 > ```
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">23:03:56</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #838383; text-decoration-color: #838383">Last Updated</span>: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">08</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">26</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:01:42</span>
 > </pre>
 >
 > <div style="text-align:center;">
@@ -1255,7 +1260,7 @@ Table 2: 🎓 Education
 <div class="flex-container"
 style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
 
-<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=ffffff&interchange=false" /></a>
+<a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=bdbdbd&interchange=false" /></a>
 
 <a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
 
@@ -1303,8 +1308,6 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [science]: https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=vV_1zDwAAAAJ
   [training large models]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html
   [supercomputers]: https://www.alcf.anl.gov/aurora
-  [here]: talks/index.qmd
-  [make them]: ./posts/dope-slides/index.qmd
   [AI + Science]: https://github.com/saforem2/
   [Building better sampling methods for Lattice QCD]: https://github.com/saforem2/l2hmc-qcd
   [Genome-Scale Language Models]: https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2

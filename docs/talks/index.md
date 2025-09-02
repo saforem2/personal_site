@@ -31,6 +31,30 @@ Sam Foreman
 
 > [!TIP]
 >
+> ### <span class="dim-text">[**Scientific AI at Scale: AI for Science**](../talks/openskai25/ai4science/index.html) @ [Open SkAI 2025](https://www.openskai-conference.org) \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/ai4science/slides#" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[**Scientific AI at Scale: Distributed Training**](../talks/openskai25/training/index.html) @ [Open SkAI 2025](https://www.openskai-conference.org/) \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/training/slides.html" title="Scientific AI at Scale: Distributed Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[**AuroraGPT: Large Scale Training on Diverse Accelerators**](../talks/AuroraGPT-SIAM25/index.html) @ [Scalable Deep Learning, *SIAM AN2025*](https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772) \[07/2025\]</span>
 >
 > <div class="reveal-full-page">

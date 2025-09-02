@@ -1,0 +1,69 @@
+<section id="$idprefix$title-slide" $for(title-slide-attributes/pairs)$ $it.key$="$it.value$" $endfor$
+    class="quarto-title-block">
+    <div class="quarto-title-container" style="
+        text-align:left;
+        padding: 10pt;
+        margin-left: auto;
+        margin-right: auto;
+        /* line-height: 1.25lh!important; */
+        border-radius: 0pt;
+        background-color: oklch(from hsla(237, 45%, 12%, 1.0) calc(l * 1.15) c h/0.1);
+        border: 1px solid hsla(237, 45%, 12%, 1.0);
+        box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px;
+        /* background-color: oklch(from #BF8CBF calc(l * 1.15) c h / 0.5); */
+        /* border-radius: 10px; */
+        /* text-align:center; */
+        /* padding: 0px; */
+        /* padding-left: 1.5em; */
+        /* padding-right: 1.5em; */
+        /* max-width: min-content; */
+        /* min-width: max-content; */
+        /* border: 1px solid #BF8CBF; */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        /* padding-top: 0.2em; */
+        /* padding-bottom: 0.2em; */
+        /* line-height: 1.5em!important; */
+    ">
+        <h1 class="title" style="color: hsla(0, 0%, 100%, 1.0); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); font-size: 200%; margin-block-end: 0.5lh;">$title$</h1>
+        $if(subtitle)$
+        <h2 class="subtitle" style="color: hsla(0, 0%, 95%, 1.0); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5); font-size: 150%;">$subtitle$</h2>
+        $endif$
+        <div class="flex-container"
+            style="flex-direction: row; gap: 0.5rem; justify-content: space-between; align-items: flex-end;">
+            <div style="">
+                $for(author)$
+                <!-- <p class="author" style="color: hsla(0, 0%, 93%, 1.0); font-weight: 600; font-size: 120%; margin-block-end: 0.5em;">$author$</p> -->
+                <p class="author" style="color: hsla(0, 0%, 93%, 1.0); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 110%; font-weight:600; " >$author$</p>
+                $endfor$
+                $if(email)$
+                <p class="email" style="color: hsla(0, 0%, 93%, 1.0); font-size: 100%;">$email$</p>
+                $endif$
+                $if(affiliation)$
+                $for(affiliation)$
+                <!-- <p class="affiliation" style="color: hsl(0, 0%, 85%); font-weight: 500; font-size: 100%; margin-block-end: 0.25em;">$affiliation$</p> -->
+                <p class="affiliation"
+                    style="color: hsl(0, 0%, 85%); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 100%;">
+                    $affiliation$</p>
+                $endfor$
+                $endif$
+                <!-- $for(institute)$ -->
+                <!--     <p class="institute" style="color: hsl(0, 0%, 80%); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); font-size: 100%;">$institute$</p> -->
+                <!-- $endfor$ -->
+            </div>
+            <div style="text-align:right;">
+                $if(sublocation)$
+                <p class="sublocation" style="color: hsla(0, 0%, 80%, 1.0); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);">$sublocation$</p>
+                $endif$
+                $if(location)$
+                <p class="location" style="color: hsla(0, 0%, 90%, 1.0); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);">@ $location$</p>
+                $endif$
+                $if(date)$
+                <p class="date" style="color: hsl(0, 0%, 70%); text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);">$date$</p>
+                $endif$
+            </div>
+        <!-- $if(site-url)$ -->
+        <!-- <p class="slide-url">$slide-url$</p> -->
+        <!-- $endif$ -->
+    </div>
+</section>
