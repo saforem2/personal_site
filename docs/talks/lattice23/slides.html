@@ -7,13 +7,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dee5d20d6aefa5d20d48fc6915dd6ebd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f16cd255ecb5ae9510f6a112aa2ee9ab.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.21">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2023-07-31">
@@ -56,7 +56,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8e851e94efaccaeb75b287c5c20fbb8e.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-ceb910920f4e870027396fcdcfc2d963.css">
   <link rel="stylesheet" href="../../css/navbar-active.css">
   <link rel="stylesheet" href="../../css/custom.css">
   <link rel="stylesheet" href="../../css/svgbob.css">
@@ -1123,7 +1123,7 @@ Figure&nbsp;14: The difference in the average plaquette <span class="math inline
 <section id="sec-thank-you" class="slide level2 center" data-background-color="#1c1c1c">
 <h2>Thank you!</h2>
 <p>&nbsp;<br></p>
-<div class="quarto-layout-panel" data-layout-ncol="4" style="text-align:left; font-size:0.8em;">
+<div class="quarto-layout-panel" style="text-align:left; font-size:0.8em;" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
 <p><span style="font-size:0.8em;"><a href="https://samforeman.me"><i class="fa-solid fa-home" aria-label="home"></i> <code>samforeman.me</code></a></span></p>
@@ -1759,13 +1759,14 @@ Figure&nbsp;20: Increasing the physical resolution (<span class="math inline">a 
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

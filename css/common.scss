@@ -938,6 +938,18 @@ img a:hover {
   background: none !important;
 }
 
+.sidebar-item .sidebar-item-container {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: unset;
+  margin: auto;
+}
+
+.sidebar-item .sidebar-item-text {
+  padding-block: 1pt;
+}
+
 .sidebar-header-stacked .sidebar-title {
   display: inline-flex;
 }
@@ -969,8 +981,25 @@ div.sidebar-item-container:focus {
   border-radius: 0pt;
 }
 
+// .ms-2 {
+//   margin-left: unset;
+//   margin: auto !important;
+// }
+
 .ms-2 {
-  margin-left: unset;
+	margin-left: unset;
+	margin: 0;
+	padding: 0;
+	height: 1em;
+	display: block;
+	height: auto;
+	margin-block: 0pt;
+	font-size: 100%;
+}
+
+div.sidebar-item-container {
+  border: 1pt solid rgba(0, 0, 0, 0);
+  padding-inline-start: 5pt;
 }
 
 div.sidebar-item-container .active,
@@ -979,21 +1008,19 @@ div.sidebar-item-container .sidebar-link > code {
   color: $link-color;
   background: none;
   border: 1pt solid $link-color;
-  padding-inline-start: 5pt;
-  padding-block: 1pt;
+  // padding-inline-start: 5pt;
   // padding: 1pt;
   // border-left: 3pt solid $link-color;
-  // padding-block: 5pt;
   &:hover {
     color: $link-color-hover;
-    background: none;
-    border: 1pt dashed $link-color-hover;
-    padding-block: 1pt;
-    padding-inline-start: 5pt;
+    // background: none;
+    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    // border: 1pt dashed $link-color-hover;
+    border: 1pt solid $link-color-hover;
+    // padding-inline-start: 5pt;
     // transition: background 0.3s ease-in-out;
     // padding: 1pt;
     // border-left: 3pt solid $link-color-hover;
-    // padding-block: 5pt;
   }
 }
 
@@ -1003,13 +1030,14 @@ div.sidebar-item-container .sidebar-link > code {
   border: 1pt dashed rgba(0, 0, 0, 0);
   // border-left: 3pt solid rgba(0,0,0,0.0);
   // padding-inline-start: 5pt;
-  padding-block: 0.25lh;
-  padding: 2pt;
+  // padding-block: 0.1lh;
+  padding-inline-start: 4pt;
+  // padding: 2pt;
   // padding: 2pt;
   &:hover {
     color: $link-color-hover;
-    background: none;
-    border: 1pt dashed $link-color-hover;
+    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    border: 1pt solid $link-color-hover;
     // border-left: 3pt solid rgba(0,0,0,0.0);
     // padding-inline-start: 5pt;
     // padding-block: 1pt;
@@ -1033,29 +1061,76 @@ div.sidebar-item-container .sidebar-link > code {
 
 .sidebar-navigation .sidebar-item li:hover {
   color: $link-color-hover;
-  background: none !important;
+  // background: none !important;
 }
 
 .sidebar-navigation li a {
   &:hover {
     color: $link-color-hover;
-    background: none !important;
+    // background: none !important;
   }
 }
 
 .sidebar {
-  padding-inline: 1pt;
+  // padding-inline: 1pt;
+  margin-block-start: 10pt;
 }
 
 .sidebar-item-text {
   width: 100%;
   // font-size: inherit;
-  line-height: normal;
+  // line-height: normal;
 }
 
 .sidebar-item .sidebar-item-toggle .bi {
-  vertical-align: -webkit-baseline-middle;
+  // vertical-align: -webkit-baseline-middle;
+  font-size: 1rem;
 }
+
+.bi .bi-chevron-right {
+  &:hover {
+    color: $link-color-hover;
+    border: 1pt solid rgba(0, 0, 0, 0);
+    background: none !important;
+  }
+}
+
+// .sidebar-section .bi-chevron-right::before {
+//   vertical-align: bottom;
+// }
+
+.bi-chevron-right::before {
+  // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from Pixelarticons by Gerrit Halfmann - https://github.com/halfmage/pixelarticons/blob/master/LICENSE --%3E%3Cpath fill='currentColor' d='M8 5v2h2V5zm4 4V7h-2v2zm2 2V9h-2v2zm0 2h2v-2h-2zm-2 2v-2h2v2zm0 0h-2v2h2zm-4 4v-2h2v2z'/%3E%3C/svg%3E");
+  content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><path fill='rgb(131,131,131)' d='M8 5v2h2V5zm4 4V7h-2v2zm2 2V9h-2v2zm0 2h2v-2h-2zm-2 2v-2h2v2zm0 0h-2v2h2zm-4 4v-2h2v2z'/></svg>");
+  // content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'><path stroke-dasharray='64' stroke-dashoffset='64' d='M4 12v7c0 0.55 0.45 1 1 1h14c0.55 0 1 -0.44 1 -1v-14c0 -0.55 -0.45 -1 -1 -1h-14c-0.55 0 -1 0.45 -1 1Z'><animate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='64;0'/></path><path stroke-dasharray='6' stroke-dashoffset='6' d='M14 12l-3 -3M14 12l-3 3'><animate fill='freeze' attributeName='stroke-dashoffset' begin='0.7s' dur='0.3s' values='6;0'/></path></g></svg>");
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+.mt-2 {
+  margin-top: unset;
+}
+
+// .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+//   background-image: url("https://api.iconify.design/pixelarticons:toggle-left.svg");
+// }
+//
+// .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
+//   background-image: url("https://api.iconify.design/pixelarticons:toggle-right.svg");
+// }
+
+.sidebar-section .bi-chevron-right::before {
+  // vertical-align: middle;
+  font-size: 1em;
+}
+
+// .bi-chevron-right::before {
+//   content: "▷";
+//   &:hover {
+//     color: $link-color-hover;
+//     border: 1pt solid rgba(0,0,0,0.0);
+//   }
+// }
 
 // .sidebar nav[role="doc-toc"] > ul a {
 //   // border-left: 1px solid rgba(255, 255, 255, 0.025);
@@ -1181,8 +1256,10 @@ nav td code:not(.sourceCode) {
   color: inherit !important;
 }
 
-.callout.callout-style-simple, .callout-simple, .callout-tip {
-	border-radius: $link-border-radius !important;
+.callout.callout-style-simple,
+.callout-simple,
+.callout-tip {
+  border-radius: $link-border-radius !important;
 }
 
 .callout.callout-style-simple {
@@ -1255,6 +1332,7 @@ nav td code:not(.sourceCode) {
   -webkit-font-smoothing: subpixel-antialiased;
   font-weight: bold;
   margin-block: auto;
+  margin-block-start: 4pt;
 }
 
 .callout.callout-style-simple,
@@ -1647,8 +1725,10 @@ div.callout-important.callout-style-default .callout-title {
   padding-right: 0.5em;
 }
 
-.callout.callout-style-simple, .callout-simple, .callout-tip {
-	border-radius: 0pt !important;
+.callout.callout-style-simple,
+.callout-simple,
+.callout-tip {
+  border-radius: 0pt !important;
 }
 
 .reveal .slides section .callout {
@@ -2277,10 +2357,10 @@ main {
 }
 
 .sidebar-tools-main {
-	display: inline-flex;
-	margin-left: 0px;
-	order: 2;
-	vertical-align: text-bottom;
+  display: inline-flex;
+  margin-left: 0px;
+  order: 2;
+  vertical-align: text-bottom;
 }
 
 .sidebar::before {

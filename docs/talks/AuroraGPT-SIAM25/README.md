@@ -1,6 +1,6 @@
 # AuroraGPT
 [Sam Foreman](https://samforeman.me)
-2025-05-21
+2025-07-31
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">

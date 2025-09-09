@@ -1257,8 +1257,7 @@ Figure 26: Language Model trained for causal language modeling[^7].
 
 ## 👋 Hands On
 
-[ai-science-training-series /
-06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
+[ShakespeareGPT](https://colab.research.google.com/github/saforem2/intro-hpc-bootcamp-2025/blob/main/docs/02-llms/08-shakespeare-example-colab/index.out.ipynb)
 
 ## 🧑‍💻 Hands On: Getting Started
 
