@@ -498,7 +498,7 @@ Figure 5: Scaling results for `3.5B` model across ~38,400 GPUs
 
 ## 🧬 MProt-DPO: Scaling Results
 
-<div class="columns">
+<div class="flex-container">
 
 <div id="fig-mprot-3p5B-scaling">
 
