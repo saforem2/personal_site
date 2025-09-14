@@ -1,5 +1,5 @@
 Sam Foreman
-2025-09-11
+2025-09-13
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
@@ -45,7 +45,7 @@ style="justify-content: center; loading='lazy';">
 ### 🧑🏻‍💻 About
 
 <div class="columns"
-style="display: flex; justify-content: space-between; align-items: flex-start; padding-inline: 1pt">
+style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 <div class="column" style="width=60%; margin-block-start: 1pt;">
 

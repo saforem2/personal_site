@@ -16,23 +16,9 @@ headings in my website.
 
 <div id="fig-headings-neovim">
 
-<div id="fig-light-theme">
+![Light Theme](../../../../assets/nvim-headings-light.png)
 
-<img src="../../../../assets/nvim-headings-light.png"
-data-ref-parent="fig-headings-neovim" />
-
-(a) Light Theme
-
-</div>
-
-<div id="fig-dark-theme">
-
-<img src="../../../../assets/nvim-headings-dark.png"
-data-ref-parent="fig-headings-neovim" />
-
-(b) Dark Theme
-
-</div>
+![Dark Theme](../../../../assets/nvim-headings-dark.png)
 
 Figure 1: My neovim headings in light and dark themes.
 

@@ -1017,8 +1017,6 @@ Figure 15: FSDP Workflow.
 
 <div class="column" style="width:40%;">
 
-<div id="fig-pipeline-parallelism">
-
 ``` mermaid
 flowchart TB
     subgraph G0["`GPU 0`"]
@@ -1048,9 +1046,7 @@ class a1, blue
 class b1, yellow
 ```
 
-Figure 16: Pipeline Parallelism
-
-</div>
+Pipeline Parallelism
 
 </div>
 
@@ -1115,7 +1111,7 @@ flowchart LR
   t2("`x₂`") --> X2
 ```
 
-Figure 19
+Figure 18
 
 </div>
 
@@ -1137,7 +1133,7 @@ Figure 19
 
 ![](assets/parallelism-tp-parallel_gemm.png)
 
-Figure 20: Tensor Parallel GEMM. This information is based on (the much
+Figure 19: Tensor Parallel GEMM. This information is based on (the much
 more in-depth) [TP
 Overview](https://github.com/huggingface/transformers/issues/10321#issuecomment-783543530)
 by [@anton-l](https://github.com/anton-l)
@@ -1152,7 +1148,7 @@ by [@anton-l](https://github.com/anton-l)
 
 ![](assets/parallelism-deepspeed-3d.png)
 
-Figure 21: Figure taken from [3D parallelism: Scaling to
+Figure 20: Figure taken from [3D parallelism: Scaling to
 trillion-parameter
 models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-model-training-for-everyone/)
 
@@ -1227,7 +1223,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 
 ![](./assets/llms.gif)
 
-Figure 22: Large Language Models have (LLM)s have taken the ~~NLP
+Figure 21: Large Language Models have (LLM)s have taken the ~~NLP
 community~~ **world** by storm[^3].
 
 </div>
@@ -1238,7 +1234,7 @@ community~~ **world** by storm[^3].
 
 ![](./assets/emergent-abilities.gif)
 
-Figure 23: See Wei et al. (2022), Yao et al. (2023)
+Figure 22: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
@@ -1270,7 +1266,7 @@ Figure 23: See Wei et al. (2022), Yao et al. (2023)
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
-Figure 24: **Pre-training**: Virtually *all of the compute* used during
+Figure 23: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
 
 </div>
@@ -1301,7 +1297,7 @@ pre-training[^4].
 
 ![](./assets/gpt3-fine-tuning.gif)
 
-Figure 25: **Fine-tuning**: Fine-tuning actually updates the model’s
+Figure 24: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
 
 </div>
@@ -1316,7 +1312,7 @@ weights to make the model better at a certain task[^5].
 
 ![](./assets/hf_assisted_generation.mov)
 
-Figure 26: Language Model trained for causal language modeling[^6].
+Figure 25: Language Model trained for causal language modeling[^6].
 
 </div>
 
@@ -1326,7 +1322,7 @@ Figure 26: Language Model trained for causal language modeling[^6].
 
 ![](./assets/hf_assisted_generation2.mov)
 
-Figure 27: Language Model trained for causal language modeling[^7].
+Figure 26: Language Model trained for causal language modeling[^7].
 
 </div>
 
@@ -1392,7 +1388,7 @@ Figure 27: Language Model trained for causal language modeling[^7].
 
 <script src="https://asciinema.org/a/668460.js" id="asciicast-668460" async="true"></script>
 
-Figure 28: Example: using [🍋
+Figure 27: Example: using [🍋
 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
 
@@ -1404,7 +1400,7 @@ to train a small model using DDP
 
 ![](./assets/nanogpt.jpg)
 
-Figure 29: The simplest, fastest repository for training / finetuning
+Figure 28: The simplest, fastest repository for training / finetuning
 GPT based models. Figure from
 [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
 
@@ -1748,28 +1744,16 @@ At lie my lord with the me an arms be a s
 
 ##  [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
-<div id="fig-wordplay-asciinema">
+<div>
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
-
-Figure 30: Training a LLM to talk like Shakespeare using
-[saforem2/`wordplay` 🎮💬](https://github.com/saforem2/wordplay)
 
 </div>
 
 ## ❤️ Thank you!
 
 - Organizers
-
 - Feel free to reach out!
-
-  <split even>
-
-  [<i class="fas fa-home"></i>](https://samforeman.me)
-  [<i class="far fa-paper-plane"></i>](mailto:foremans@anl.gov)
-  [<i class="fab fa-twitter"></i>](https://www.twitter.com/saforem2)
-
-  </split>
 
 > [!NOTE]
 >
