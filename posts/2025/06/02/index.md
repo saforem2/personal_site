@@ -1,16 +1,11 @@
----
-title: "🧜‍♀️ Mermaid"
-description: "Playing with Mermaid diagrams in Quarto."
-date: 2025-06-02
-date-modified: last-modified
-categories:
-    - "style"
-    - "personal"
-aliases:
-    - "/posts/playing-with-mermaid/"
----
+# 🧜‍♀️ Mermaid
+Sam Foreman
+2025-06-02
 
-```{mermaid}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
+
+``` mermaid
 flowchart LR
     subgraph D["`Data`"]
         direction TB

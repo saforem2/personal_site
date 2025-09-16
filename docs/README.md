@@ -1,5 +1,5 @@
 Sam Foreman
-2025-09-13
+2025-09-15
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
@@ -21,7 +21,7 @@ style="display: flex; flex-direction: row; align-items: center; text-align: cent
 
 <a style="color: #838383;" href="https://twitter.com/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
 
-<a style="color: #838383;" href="https://bsky.com/samforeman"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
+<a style="color: #838383;" href="https://bsky.app/profile/samforeman.bsky.social"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
 
 <a style="color: #838383;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
 
@@ -63,7 +63,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### ✏️ <span class="dim-text">Last Updated</span>
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">15:51:17</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">14</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:59:47</span>
 > </pre>
 
 > [!TIP]
@@ -157,6 +157,13 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">➕ More</span>
 >
+> ``` {pyodide}
+> import micropip as mp
+> await mp.install("seaborn")
+> await mp.install("pandas")
+> await mp.install("https://github.com/saforem2/ambivalent")
+> ```
+>
 > - <details closed>
 >
 >   <summary>
@@ -230,8 +237,6 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >   This work ultimately resulted in a [patent] !!
 >
 >   </details>
->
-> –\>
 >
 > <div style="text-align:center;">
 >
