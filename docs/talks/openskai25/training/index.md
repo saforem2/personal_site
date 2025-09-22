@@ -2,9 +2,6 @@
 Sam Foreman
 2025-09-02
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [👀 Overview](#eyes-overview)
 - [📑 Outline](#bookmark_tabs-outline)
 - [🚀 Scaling: Overview](#rocket-scaling-overview)
@@ -1258,6 +1255,9 @@ Figure 26: Language Model trained for causal language modeling[^7].
 ## 👋 Hands On
 
 [ShakespeareGPT](https://colab.research.google.com/github/saforem2/intro-hpc-bootcamp-2025/blob/main/docs/02-llms/08-shakespeare-example-colab/index.out.ipynb)
+
+[ai-science-training-series /
+06_parallel_training](https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training#hands-on)
 
 ## 🧑‍💻 Hands On: Getting Started
 

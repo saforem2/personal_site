@@ -2,9 +2,6 @@
 Sam Foreman
 2025-02-12
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)
 - [🦙 Issues with “Publicly Available”
   LLMs](#llama-issues-with-publicly-available-llms)

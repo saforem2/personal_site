@@ -2,9 +2,6 @@
 Sam Foreman
 2024-04-15
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [Denoising Diffusion Probabilistic
   Models](#denoising-diffusion-probabilistic-models)
 - [Imports / Setup](#imports--setup)

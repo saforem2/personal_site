@@ -2,9 +2,6 @@
 Sam Foreman
 2024-10-17
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [MDS –\> HF](#mds--hf)
 - [🚧 HF to Meg-DS](#construction-hf-to-meg-ds)
   - [2024-10-17](#2024-10-17)

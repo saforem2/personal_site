@@ -2,9 +2,6 @@
 Sam Foreman
 2025-05-07
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [📍 Currently](#round_pushpin-currently)
 - [💬 LLMs on Aurora](#speech_balloon-llms-on-aurora)
 - [🍋 `ezpz`](#lemon-ezpz)

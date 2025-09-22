@@ -18,13 +18,12 @@ $mermaid-font-family: "mIosevka-Term Web", monospace !default;
 // $font-family-headings: "Iosevka Web", monospace;
 // $mermaid-font-family: "Iosevka Web", monospace;
 
-$presentation-main-font: "IBM Plex Sans", "Iosevka Web", monospace !default;
-$presentation-heading-font:
-  "IBM Plex Sans Condensed", "IBM Plex Sans", "Iosevka Web", monospace !default;
+$presentation-main-font: "IBM Plex Sans", "mIosevka-QP Web", monospace !default;
+$presentation-heading-font: "IBM Plex Sans Condensed", "mIosevka-QP", "IBM Plex Sans", "Iosevka Web", monospace !default;
 $presentation-font-size-root: 28px !default;
-$presentation-h1-font-size: 1.5em !default;
-$presentation-h2-font-size: 1.33em !default;
-$presentation-h3-font-size: 1.25em !default;
+$presentation-h1-font-size: 1.33em !default;
+$presentation-h2-font-size: 1.25em !default;
+$presentation-h3-font-size: 1.15em !default;
 $presentation-h4-font-size: 1.1em !default;
 $presentation-h5-font-size: 1.05em !default;
 $presentation-h6-font-size: 1em !default;
@@ -282,8 +281,8 @@ $themes: (
     callout-warning-color: #fd971f,
     callout-caution-color: #e599f7,
     callout-important-color: #ff5252,
-    -webkit-font-smoothing: antialiased,
-    -moz-osx-font-smoothing: grayscale,
+    // -webkit-font-smoothing: antialiased,
+    // -moz-osx-font-smoothing: grayscale,
   ),
 );
 
@@ -347,9 +346,9 @@ html {
 
 strong,
 b {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-weight: bold;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: 800;
 }
 
 /*-- scss:rules --*/
@@ -363,8 +362,8 @@ b {
     h4,
     h5,
     h6 {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      // -webkit-font-smoothing: antialiased;
+      // -moz-osx-font-smoothing: grayscale;
     }
     a {
       text-underline-offset: unset;
@@ -372,8 +371,8 @@ b {
   }
   scrollbar-color: $dim-text;
   scrollbar-width: thin;
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: auto;
+  // -moz-osx-font-smoothing: auto;
+  // -webkit-font-smoothing: auto;
   --headings-font-family: var($headings-font-family);
   --font-family-headings: var($font-family-headings);
   --selection-bg-color: var($selection-bg-color);
@@ -397,8 +396,8 @@ b {
   --h4-font-size: $h4-font-size;
   --h5-font-size: $h5-font-size;
   --h6-font-size: $h6-font-size;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: auto;
+  // -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: auto;
   --bs-card-inner-border-radius: $bs-card-inner-border-radius;
   --bs-card-spacer-y: 0.5rem;
   --bs-card-spacer-x: 0.5rem;
@@ -1008,6 +1007,7 @@ div.sidebar-item-container .sidebar-link > code {
   color: $link-color;
   background: none;
   border: 1pt solid $link-color;
+  padding-block: 2pt;
   // padding-inline-start: 5pt;
   // padding: 1pt;
   // border-left: 3pt solid $link-color;
@@ -1108,7 +1108,8 @@ div.sidebar-item-container .sidebar-link > code {
 }
 
 .mt-2 {
-  margin-top: unset;
+  margin-top: unset!important;
+  padding-top: unset!important;
 }
 
 // .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
@@ -1132,10 +1133,10 @@ div.sidebar-item-container .sidebar-link > code {
 //   }
 // }
 
-// .sidebar nav[role="doc-toc"] > ul a {
-//   // border-left: 1px solid rgba(255, 255, 255, 0.025);
-//   padding-left: 0.6rem;
-// }
+.sidebar nav[role="doc-toc"] > ul a {
+	border-left: 1px solid hsla(0, 0%, 50%, 0.33);
+	padding-left: .6rem;
+}
 
 // .sidebar nav[role="doc-toc"] ul > li > a.active,
 // .sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
@@ -1328,8 +1329,8 @@ nav td code:not(.sourceCode) {
   overflow-wrap: anywhere;
   font-stretch: semi-condensed;
   overflow-wrap: anywhere;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
   font-weight: bold;
   margin-block: auto;
   // margin-block-start: 2pt;
@@ -2118,8 +2119,8 @@ div.callout-important.callout-style-default .callout-title {
 
 .dim-text {
   color: $dim-text;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .dim-text-09 {
@@ -2166,8 +2167,8 @@ samp {
 .reveal h6 {
   margin-top: auto;
   margin-bottom: auto;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
 }
 
 h1,
@@ -2176,10 +2177,10 @@ h3,
 h4,
 h5,
 h6 {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
   margin: auto;
-  line-height: 1;
+  // line-height: 1;
   // margin-block-start: 0.5rem;
   // line-height: unset;
 }
@@ -2605,6 +2606,8 @@ th {
   --bs-table-hover-color: #000000;
   border-top: $bs-table-border-color;
   border-bottom: $bs-table-border-color;
+  width: auto;
+  margin-left: auto;
 }
 
 table {
@@ -2772,8 +2775,8 @@ body {
 }
 
 .icon .inline-icon {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: subpixel-antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: subpixel-antialiased;
   display: var(--fa-display, inline-block);
   font-style: normal;
   font-variant: normal;
@@ -2962,7 +2965,7 @@ iframe.reveal-demo {
 
 .nav-link {
   padding: $nav-link-padding-y $nav-link-padding-x;
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-tabs .nav-link.active,
@@ -3041,7 +3044,7 @@ ul.task-list {
 }
 
 details {
-  margin-block: 0.5lh;
+  // margin-block: 0.5lh;
   h1,
   h2,
   h3,
@@ -3143,7 +3146,7 @@ details > summary:hover {
   background-color: $navbar-bg;
   color: $navbar-fg;
   font-family: $font-family-headings;
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 }
 
 div.sourceCode {

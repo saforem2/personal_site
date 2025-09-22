@@ -2,11 +2,6 @@
 Sam Foreman
 2025-09-02
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
-- [Contents](#contents)
-
-## Contents
-
-- [Scientific AI at Scale: Distributed Training](./)
+- Scientific AI: At Scale [OpenSKAI](https://www.openskai.org)
+  - [Distributed Training of Large Models](./training/index.qmd)
+  - [For Science! (AuroraGPT)](./ai4science/index.qmd)

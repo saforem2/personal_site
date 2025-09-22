@@ -27,7 +27,6 @@ website:
   #   hypothesis:
   #     theme: clean
   #     openSidebar: false
-  # sidebar: false
   # search: true
   # cookie-consent:
   #   type: implied
@@ -64,9 +63,6 @@ website:
     background: "rgba(34, 34, 34, 0.95)"
     foregound: "#838383"
     right:
-      # - sidebar:talks
-      # - sidebar:posts
-      # - sidebar:projects
       - id: talks
         text: "talks"
         # text: "[talks]{style='color:var(--bs-nav-link-color);'}"
@@ -86,7 +82,7 @@ website:
         text: "more"
         url: "more/index.qmd"
 
-    # right:
+      # right:
       - href: https://github.com/saforem2/personal_site
         text: "[{{< iconify ph github-logo >}}]{.icon style='font-size: 1.25rem; color:var(--bs-nav-link-color);'}"
         aria-label: GitHub
@@ -141,7 +137,6 @@ website:
   #
 
   sidebar:
-    # id: sidebar
     # style: "docked"
     style: "floating"
     # search: true
@@ -154,23 +149,28 @@ website:
     # logo: assets/favicon-sf.svg
     # logo-alt: "Sam Foreman"
     # title: false
+
     tools:
       - icon: home
         href: "index.qmd"
         text: "Home"
       - icon: github
-        href: "https://github.com/saforem2/intro-hpc-bootcamp-2025"
+        href: "https://github.com/saforem2/personal_site"
         text: "GitHub"
     collapse-level: 1
     contents:
       - id: posts
-        section: "📬 Posts"
+        section: "🪧  [Posts]"
         href: "posts/index.qmd"
         collapse-level: 1
         contents:
           - section: "2025"
             contents:
               # - auto: posts/2025/**/**/*.qmd
+              - id: "2025/09"
+                section: "09"
+                contents:
+                  - auto: posts/2025/09/**/**/*.qmd
               - id: "2025/06"
                 section: "06"
                 contents:
@@ -229,26 +229,38 @@ website:
                 contents:
                   - posts/jupyter/test/index.qmd
                   - posts/AuroraGPT/long-sequences/index.qmd
-
-          - section: "2023"
+          - id: "2023"
+            section: "2023"
             contents:
               - posts/jupyter/l2hmc/4dSU3/index.qmd
               - posts/ai-for-physics/l2hmc-qcd/2dU1/index.qmd
 
       - id: talks
-        section: "🦜 Talks"
+        section: "🎤 Talks"
         href: "talks/index.qmd"
         collapse-level: 1
         contents:
-          - section: "2025"
+          - id: talks-2025
+            section: "2025"
             contents:
-              - talks/openskai25/ai4science/index.qmd
-              - talks/openskai25/training/index.qmd
+              - id: openskai25
+                section: "OpenSKAI25"
+                href: talks/openskai25/index.qmd
+                contents:
+                  - auto: talks/openskai25/**/**/*.qmd
+                  # - talks/openskai25/ai4science/index.qmd
+                  # - talks/openskai25/training/index.qmd
               - talks/AuroraGPT-SIAM25/index.qmd
-              - talks/incite-hackathon-2025/AuroraGPT/index.qmd
-              - talks/incite-hackathon-2025/ezpz/index.qmd
+              - id: incite-hackathon-2025
+                section: "Incite Hackathon 2025"
+                href: "talks/incite-hackathon-2025/index.qmd"
+                contents:
+                  - auto: talks/incite-hackathon-2025/**/**/*.qmd
+                  # - talks/incite-hackathon-2025/AuroraGPT/index.qmd
+                  # - talks/incite-hackathon-2025/ezpz/index.qmd
               - talks/aurora-gpt-fm-for-electric-grid/index.qmd
-          - section: "2024"
+          - id: talks-2024
+            section: "2024"
             contents:
               - talks/ai-for-science-2024/index.qmd
               - talks/AuroraGPT/alcf-hpc-workshop-2024/index.qmd
@@ -260,7 +272,8 @@ website:
                 href: "https://saforem2.github.io/parallel-training-slides"
               - text: "LLMs from Scratch"
                 href: "https://saforem2.github.io/llm-workshop-talk"
-          - section: "2023"
+          - id: talks-2023
+            section: "2023"
             contents:
               - text: "Creating Small(-ish) LLMs"
                 href: "https://saforem2.github.io/LLM-tutorial"
@@ -276,7 +289,8 @@ website:
                 href: "https://saforem2.github.io/lqcd-pasc23/"
               - text: "Efficient Sampling for LGT"
                 href: "https://saforem2.github.io/deep-fridays"
-          - section: "2022"
+          - id: talks-2022
+            section: "2022"
             contents:
               - text: "Large Scale Training"
                 href: "https://saforem2.github.io/ai4sci-large-scale-training"
@@ -288,7 +302,8 @@ website:
                 href: "https://saforem2.github.io/anl-job-talk/"
               - text: Machine Learning in HEP
                 href: "https://saforem2.github.io/physicsSeminar"
-          - section: "2021"
+          - id: talks-2021
+            section: "2021"
             contents:
               - text: "Accelerated Sampling Methods for LGT"
                 href: "https://saforem2.github.io/l2hmc-dwq25/"
@@ -298,131 +313,101 @@ website:
                 href: "https://github.com/saforem2/l2hmc-qcd"
               - text: "Deep Learning HMC for Improved Gauge Generation"
                 href: "https://bit.ly/mainz21"
-          - section: "2020"
+          - id: talks-2020
+            section: "2020"
             contents:
               - text: "Machine Learning for Lattice QCD"
                 href: "https://slides.com/samforeman/l2hmc-qcd"
 
-      - id: projects
-        section: "📚 Projects"
-        href: "projects/index.qmd"
+      - id: more
+        section: "➕ More"
+        # href: "talks/index.qmd"
         collapse-level: 1
         contents:
-          - id: hpc-bootcamp-2025
-            section: "🎒 Intro to HPC Bootcamp 2025"
-            href: "projects/hpc-bootcamp-2025/index.qmd"
-            # collapse-level: 1
+          - id: projects
+            section: "📚 Projects"
+            href: "projects/index.qmd"
+            collapse-level: 1
             contents:
-              - id: 00-intro-AI-HPC
-                section: "[00] Intro to AI and HPC"
-                href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/index.qmd"
+              - id: hpc-bootcamp-2025
+                section: "🎒 Intro to HPC Bootcamp 2025"
+                href: "projects/hpc-bootcamp-2025/index.qmd"
+                # collapse-level: 1
                 contents:
-                  - text: "[0] Compute Systems"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/0-compute-systems/index.qmd"
-                  - text: "[1] Shared Resources"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/1-shared-resources/index.qmd"
-                  - text: "[2] Jupyter Notebooks"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/2-jupyter-notebooks/index.qmd"
-                  - text: "[3] Homework"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/3-homework/index.qmd"
-                  - text: "[4] NERSC"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-nersc/index.qmd"
-                  - text: "[5] MCMC Example"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/5-mcmc-example/index.qmd"
-                  - text: "[6] Linear Regression"
-                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/6-linear-regression/index.qmd"
+                  - id: 00-intro-AI-HPC
+                    section: "[00] Intro to AI and HPC"
+                    href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/index.qmd"
+                    contents:
+                      - text: "[0] Compute Systems"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/0-compute-systems/index.qmd"
+                      - text: "[1] Shared Resources"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/1-shared-resources/index.qmd"
+                      - text: "[2] Jupyter Notebooks"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/2-jupyter-notebooks/index.qmd"
+                      - text: "[3] Homework"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/3-homework/index.qmd"
+                      - text: "[4] NERSC"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/4-nersc/index.qmd"
+                      - text: "[5] MCMC Example"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/5-mcmc-example/index.qmd"
+                      - text: "[6] Linear Regression"
+                        href: "projects/hpc-bootcamp-2025/00-intro-AI-HPC/6-linear-regression/index.qmd"
 
-              - id: 01-neural-networks
-                section: "[01] Neural Networks"
-                href: "projects/hpc-bootcamp-2025/01-neural-networks/index.qmd"
+                  - id: 01-neural-networks
+                    section: "[01] Neural Networks"
+                    href: "projects/hpc-bootcamp-2025/01-neural-networks/index.qmd"
+                    contents:
+                      - text: "[0] Intro to NNs"
+                        href: "projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd"
+                      - text: "[1] MNIST Example"
+                        href: "projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.qmd"
+                      - text: "[2] Advanced"
+                        href: "projects/hpc-bootcamp-2025/01-neural-networks/2-advanced/index.qmd"
+                      - text: "[3] Conv. Nets"
+                        href: "projects/hpc-bootcamp-2025/01-neural-networks/3-conv-nets/index.qmd"
+                      - text: "[4] Representation Learning"
+                        href: "projects/hpc-bootcamp-2025/01-neural-networks/4-representation-learning/index.qmd"
+
+                  - id: 02-llms
+                    section: "[02] Large Language Models"
+                    href: "projects/hpc-bootcamp-2025/02-llms/index.qmd"
+                    contents:
+                      - text: "[0] Intro to LLMs"
+                        href: "projects/hpc-bootcamp-2025/02-llms/0-intro-to-llms/index.qmd"
+                      # - auto: "projects/hpc-bootcamp-2025/01-neural-networks/**/**/*.qmd"
+
+              - id: github-projects
+                section: "📦 GitHub Repos"
                 contents:
-                  - text: "[0] Intro to NNs"
-                    href: "projects/hpc-bootcamp-2025/01-neural-networks/0-intro/index.qmd"
-                  - text: "[1] MNIST Example"
-                    href: "projects/hpc-bootcamp-2025/01-neural-networks/1-mnist/index.qmd"
-                  - text: "[2] Advanced"
-                    href: "projects/hpc-bootcamp-2025/01-neural-networks/2-advanced/index.qmd"
-                  - text: "[3] Conv. Nets"
-                    href: "projects/hpc-bootcamp-2025/01-neural-networks/3-conv-nets/index.qmd"
-                  - text: "[4] Representation Learning"
-                    href: "projects/hpc-bootcamp-2025/01-neural-networks/4-representation-learning/index.qmd"
-
-              - id: 02-llms
-                section: "[02] Large Language Models"
-                href: "projects/hpc-bootcamp-2025/02-llms/index.qmd"
-                contents:
-                  - text: "[0] Intro to LLMs"
-                    href: "projects/hpc-bootcamp-2025/02-llms/0-intro-to-llms/index.qmd"
-                  # - auto: "projects/hpc-bootcamp-2025/01-neural-networks/**/**/*.qmd"
-
-              # - id: 02-llms
-              #   section: "02 Large Language Models"
-              #   href: "projects/hpc-bootcamp-2025/02-llms/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/02-llms/**/**/*.qmd"
-              #
-              # - id: 03-ai-for-science
-              #   section: "03 AI for Science"
-              #   href: "projects/hpc-bootcamp-2025/03-ai-for-science/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/03-ai-for-science/**/**/*.qmd"
-
-              # - auto: "projects/hpc-bootcamp-2025/**/**/*.qmd"
-              # - id: 00-intro-supercomputers
-              #   section: "00 Intro to Supercomputers"
-              #   href: "projects/hpc-bootcamp-2025/00-intro-supercomputers/index.qmd"
-              #   contents:
-              #     # - auto: "projects/hpc-bootcamp-2025/00-intro-supercomputers/**/**/*.qmd"
-              # - id: 01-intro-AI-HPC
-              #   section: "01 Intro to AI and HPC"
-              #   href: "projects/hpc-bootcamp-2025/01-intro-AI-HPC/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/01-intro-AI-HPC/**/**/*.qmd"
-              # - id: 02-neural-networks
-              #   section: "02 Neural Networks"
-              #   href: "projects/hpc-bootcamp-2025/02-neural-networks/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/02-neural-networks/**/**/*.qmd"
-              # - id: 03-llms
-              #   section: "03 Large Language Models"
-              #   href: "projects/hpc-bootcamp-2025/03-llms/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/03-llms/**/**/*.qmd"
-              # - id: 04-ai-for-science
-              #   section: "04 AI for Science"
-              #   href: "projects/hpc-bootcamp-2025/04-ai-for-science/index.qmd"
-              #   contents:
-              #     - auto: "projects/hpc-bootcamp-2025/04-ai-for-science/**/**/*.qmd"
-
-          - id: github-projects
-            section: "📦 GitHub Repos"
-            contents:
-              - text: "👤 `saforem2/`"
-                href: "https://github.com/saforem2"
-              - text: "🍋 `ezpz`"
-                href: https://saforem2.github.io/ezpz
-              - text: "🍋 `ezpz`"
-                href: https://github.com/saforem2/ezpz
-              - text: "🟥 `l2hmc-qcd`"
-                href: https://github.com/saforem2/l2hmc-qcd
-              - text: "🤖 `Megatron-DeepSpeed`"
-                href: https://github.com/argonne-lcf/Megatron-DeepSpeed)
-              - text: "💬 `wordplay` 🎮"
-                href: https://github.com/saforem2/wordplay
-              - text: "🎓 `ai-science-training`"
-                href: https://www.alcf.anl.gov/alcf-ai-science-training-series?
-              - text: "💸 `enrich`"
-                href: https://github.com/saforem2/enrich
-              - text: "🤷🏻‍♂️`ambivalent`"
-                href: https://github.com/saforem2/ambivalent
-              - text: "🌍 `climate-analysis`"
-                href: https://github.com/saforem2/climate-analysis
-              - text: "🎨 `glitz`"
-                href: https://github.com/saforem2/glitz
-              - text: "🌐 `personal_site`"
-                href: https://github.com/saforem2/personal_site
-              - text: "🗒️ `Notes-Demo`"
-                href: https://github.com/saforem2/notes-demo
+                  - text: "👤 `saforem2/`"
+                    href: "https://github.com/saforem2"
+                  - text: "🍋 `ezpz`"
+                    href: https://saforem2.github.io/ezpz
+                  - text: "🍋 `ezpz`"
+                    href: https://github.com/saforem2/ezpz
+                  - text: "🟥 `l2hmc-qcd`"
+                    href: https://github.com/saforem2/l2hmc-qcd
+                  - text: "🤖 `Megatron-DeepSpeed`"
+                    href: https://github.com/argonne-lcf/Megatron-DeepSpeed)
+                  - text: "💬 `wordplay` 🎮"
+                    href: https://github.com/saforem2/wordplay
+                  - text: "🎓 `ai-science-training`"
+                    href: https://www.alcf.anl.gov/alcf-ai-science-training-series?
+                  - text: "💸 `enrich`"
+                    href: https://github.com/saforem2/enrich
+                  - text: "🤷🏻‍♂️`ambivalent`"
+                    href: https://github.com/saforem2/ambivalent
+                  - text: "🌍 `climate-analysis`"
+                    href: https://github.com/saforem2/climate-analysis
+                  - text: "🎨 `glitz`"
+                    href: https://github.com/saforem2/glitz
+                  - text: "🌐 `personal_site`"
+                    href: https://github.com/saforem2/personal_site
+                  - text: "🗒️ `Notes-Demo`"
+                    href: https://github.com/saforem2/notes-demo
+          - id: auto
+            section: "🪄 Auto"
+            contents: auto
 
       # - id: projects
       #   section: "📚 Projects"
@@ -464,10 +449,6 @@ website:
       #       url: https://github.com/saforem2/personal_site
       #     - text: "🗒️ `Notes-Demo`"
       #       url: https://github.com/saforem2/notes-demo
-
-      - id: extras
-        section: "🗂️ Extras"
-        contents: auto
 
     # style: docked
     # search: true

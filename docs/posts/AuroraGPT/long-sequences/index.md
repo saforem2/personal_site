@@ -2,9 +2,6 @@
 Sam Foreman
 2024-02-12
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [DeepSpeed4Science (09/2023)](#deepspeed4science-092023)
   - [New Features](#new-features)
   - [New optimizations](#new-optimizations)
@@ -80,10 +77,6 @@ Table 1: Long sequence length support[^1] from
 | 256k | <span class="red-text">OOM</span> | <span style="text-weight:600;">94</span> |
 
 </div>
-
-    Failed to download font: IBM Plex Sans, skipping!
-    Failed to download font: IBM Plex Sans Condensed, skipping!
-    Failed to download font: IBM Plex Serif, skipping!
 
 <details class="code-fold">
 <summary>Data</summary>

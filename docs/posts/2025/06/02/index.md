@@ -2,9 +2,6 @@
 Sam Foreman
 2025-06-02
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 ``` mermaid
 flowchart LR
     subgraph D["`Data`"]

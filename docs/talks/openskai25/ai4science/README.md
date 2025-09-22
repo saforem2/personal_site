@@ -2,9 +2,6 @@
 [Sam Foreman](https://samforeman.me)
 2025-09-02
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [🎯 AuroraGPT: Goals](#dart-auroragpt-goals)
 - [🧪 AuroraGPT: Open Science Foundation
   Model](#test_tube-auroragpt-open-science-foundation-model)

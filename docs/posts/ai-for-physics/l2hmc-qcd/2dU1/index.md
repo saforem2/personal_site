@@ -2,9 +2,6 @@
 Sam Foreman
 2023-12-14
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [`l2hmc-qcd`: 2D $U(1)$ Example](#l2hmc-qcd-2d-u1-example)
   - [Contents](#contents)
 - [`l2hmc`: Example](#l2hmc-example)

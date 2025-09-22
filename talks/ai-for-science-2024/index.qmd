@@ -85,7 +85,7 @@ format:
   - Minimize: [Cost]{.highlight-red} (i.e. amount of time spent training)
   - Maximize: [Performance]{.highlight-blue}
 
-  ::: {.callout-note collapse=false icon=false title="📑 Note"}
+  ::: {.callout-note icon=false title="📑 Note"}
   See
   [🤗 Performance and Scalability](https://huggingface.co/docs/transformers/v4.46.0/performance)
   for more details
@@ -208,8 +208,6 @@ class N0,D,G0,n0 block
 
 **SLOW** !! model size limited by GPU memory
 :::
-
-<!-- ::: -->
 
 ## 🏎️ Training on Multiple GPUs: Data Parallelism {background-color="white"}
 
@@ -493,7 +491,7 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
   - [Nvidia Collective Communications Library (NCCL)](https://developer.nvidia.com/nccl)
   - [Intel oneAPI Collective Communications Library (oneCCL)](https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneccl.html#gs.gouznn)
 
-  ::: {.callout-warning collapse=false icon=false title="⌛ Timeouts"}
+  ::: {.callout-warning icon=false title="⌛ Timeouts"}
   - Collective operations have to be called for each `rank` to form a complete collective operation.
     - Failure to do so will result in other ranks waiting **indefinitely**
   :::
@@ -662,7 +660,9 @@ class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR, block
 class x2,xp0,xp1,xp2,xp3 blue
 class xp, text
 ```
+
 `broadcast` (send) a tensor <code>$x$</code> from one rank to all ranks
+
 :::
 
 ## AllGather {background-color="white"}
@@ -852,7 +852,7 @@ To ensure all workers have the same copies, we load on `RANK==0` and
 
 ## Best Practices {background-color="white"}
 
-::: {.callout-important collapse=false icon=false title="⏰ Keeping things in Sync"}
+::: {.callout-important icon=false title="⏰ Keeping things in Sync"}
 **Computation stalls during communication !!**
 
 Keeping the communication to computation ratio small is important for effective scaling.
@@ -995,9 +995,7 @@ Pipeline Parallelism
 - See: [🤗 Model Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism) for additional details
 :::
 
-::: {.column}
-
-::: {#fig-model-parallel-1}
+::: {#fig-model-parallel-1 .column}
 
 ```{mermaid}
 flowchart LR
@@ -1034,8 +1032,6 @@ class d0,d1 yellow
 ```
 
 Tensor Parallel Training
-:::
-
 :::
 
 :::
@@ -1053,9 +1049,7 @@ Tensor Parallel Training
 - 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron)
 :::
 
-::: {.column}
-
-::: {#fig-model-parallel-1}
+::: {#fig-model-parallel-1 .column}
 
 ```{mermaid}
 flowchart LR
@@ -1084,7 +1078,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+[class](2025-09-18_class.md) G0,G1, block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -1093,19 +1087,6 @@ class d0,d1 yellow
 
 Tensor Parallel Training
 :::
-
-:::
-
-:::
-
-::: {.notes}
-
-- Split up network over multiple workers
-- Each receives disjoint subset
-- All communication associated with subsets are distributed
-- Communication whenever dataflow between two subsets
-- Typically **more complicated** to implement than data parallel training
-- Suitable when the model is too large to fit onto a single device (CPU / GPU)
 
 :::
 
@@ -1235,7 +1216,7 @@ models](https://www.microsoft.com/en-us/research/blog/deepspeed-extreme-scale-mo
 ::: {#fig-llms}
 ![](./assets/llms.gif)
 
-Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].  
+Large Language Models have (LLM)s have taken the ~~NLP community~~ **world** by storm[^llm-animation].
 :::
 
 [^llm-animation]: Source: [{{< fa brands github >}} `Hannibal046/Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
@@ -1253,9 +1234,11 @@ See @wei2022emergentabilitieslargelanguage, @yao2023tree
 ## 🚂 Training LLMs {.smaller background-color="white"}
 
 ::: {layout="[15,-2,10]" layout-valign="bottom"}
+
 ![Visualization from [Hannibal046/Awesome-LLM](https://github.com/Hannibal046/Awesome-LLM)](./assets/evolution.gif)
 
 ![](./assets/it_hungers.jpeg)
+
 :::
 
 ## ♻️ Life-Cycle of the LLM {auto-animate=true background-color="white"}
@@ -1272,14 +1255,11 @@ See @wei2022emergentabilitieslargelanguage, @yao2023tree
 4. Deploy (+ monitor, re-evaluate, etc.)
 :::
 
-::: {.column style="width:50%;"}
+::: {#fig-pretrain-two .column style="width:50%;"}
 
-::: {#fig-pretrain-two}
 ![](./assets/gpt3-training-step-back-prop.gif)
 
 **Pre-training**: Virtually _all of the compute_ used during pre-training[^pretrain-two-source].
-
-:::
 
 :::
 
@@ -1301,14 +1281,12 @@ See @wei2022emergentabilitieslargelanguage, @yao2023tree
 4. Deploy (+ monitor, re-evaluate, etc.)
 :::
 
-::: {.column style="width:50%;"}
+::: {#fig-finetune-lifecycle .column style="width:50%;"}
 
-::: {#fig-finetune-lifecycle}
 ![](./assets/gpt3-fine-tuning.gif)
 
 **Fine-tuning**: Fine-tuning actually updates the model's weights to make the
 model better at a certain task[^ill-transf1].
-:::
 
 :::
 
@@ -1401,15 +1379,18 @@ Language Model trained for causal language modeling[^generating-text-source].
 
 Example: using [🍋 `ezpz.test_dist`](https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py)
 to train a small model using DDP
+
 :::
 
 ## Install [`wordplay` 🎮💬 ](https://github.com/saforem2/wordplay) {background-color="white"}
 
 ::: {#fig-nanoGPT}
+
 ![](./assets/nanogpt.jpg)
 
 The simplest, fastest repository for training / finetuning GPT based models.
 Figure from [karpathy/`nanoGPT`](https://github.com/karpathy/nanoGPT)
+
 :::
 
 ## Prepare Data {background-color="white"}
@@ -1442,6 +1423,8 @@ launch python3 -m wordplay \
 ```
 
 ## Training: Example Output {background-color="white"}
+
+::: {.flex-container .scrollable style="max-height: 400px;"}
 
 ```bash
 $ launch python3 -m wordplay \
@@ -1748,10 +1731,14 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
+:::
+
 ## {{< fa brands github >}} [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\] {background-color="#121314"}
 
-::: {}
+::: {#fig-wordplay-asciinema}
+
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
+
 :::
 
 ## ❤️ Thank you! {background-color="white"}
@@ -1759,7 +1746,7 @@ At lie my lord with the me an arms be a s
 - Organizers
 - Feel free to reach out!
 
-::: {.callout-note icon=false title="Acknowledgements" collapse="false"}
+::: {.callout-note icon=false title="Acknowledgements"}
 
 This research used resources of the Argonne Leadership Computing Facility,
 which is a DOE Office of Science User Facility supported under Contract

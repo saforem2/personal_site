@@ -2,9 +2,6 @@
 Sam Foreman
 2024-07-17
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [](#section)
 - [👤 Sam Foreman](#bust_in_silhouette-sam-foreman)
 - [Polaris @ ALCF](#polaris--alcf)

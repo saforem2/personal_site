@@ -2,9 +2,6 @@
 Sam Foreman
 2024-11-05
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [👀 Overview](#eyes-overview)
 - [📑 Outline](#bookmark_tabs-outline)
 - [🚀 Scaling: Overview](#rocket-scaling-overview)
@@ -1064,19 +1061,6 @@ Pipeline Parallelism
 
 </div>
 
-<div class="notes">
-
-- Split up network over multiple workers
-- Each receives disjoint subset
-- All communication associated with subsets are distributed
-- Communication whenever dataflow between two subsets
-- Typically **more complicated** to implement than data parallel
-  training
-- Suitable when the model is too large to fit onto a single device (CPU
-  / GPU)
-
-</div>
-
 ## Tensor (/ Model) Parallel Training: Example
 
 Want to compute:
@@ -1260,16 +1244,12 @@ Figure 22: See Wei et al. (2022), Yao et al. (2023)
 
 </div>
 
-<div class="column" style="width:50%;">
-
 <div id="fig-pretrain-two">
 
 ![](./assets/gpt3-training-step-back-prop.gif)
 
 Figure 23: **Pre-training**: Virtually *all of the compute* used during
 pre-training[^4].
-
-</div>
 
 </div>
 
@@ -1291,16 +1271,12 @@ pre-training[^4].
 
 </div>
 
-<div class="column" style="width:50%;">
-
 <div id="fig-finetune-lifecycle">
 
 ![](./assets/gpt3-fine-tuning.gif)
 
 Figure 24: **Fine-tuning**: Fine-tuning actually updates the model’s
 weights to make the model better at a certain task[^5].
-
-</div>
 
 </div>
 
@@ -1436,6 +1412,8 @@ launch python3 -m wordplay \
 ```
 
 ## Training: Example Output
+
+<div class="flex-container scrollable" style="max-height: 400px;">
 
 ``` bash
 $ launch python3 -m wordplay \
@@ -1742,11 +1720,15 @@ At lie my lord with the me an arms be a s
 [2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714
 ```
 
+</div>
+
 ##  [`wordplay`](https://github.com/saforem2/wordplay): Example \[[video](https://asciinema.org/a/668462)\]
 
-<div>
+<div id="fig-wordplay-asciinema">
 
 <script src="https://asciinema.org/a/668462.js" id="asciicast-668462" async="true"></script>
+
+Figure 29
 
 </div>
 

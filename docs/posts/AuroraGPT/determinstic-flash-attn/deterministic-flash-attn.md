@@ -2,9 +2,6 @@
 Sam Foreman
 2024-06-17
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 > \[**NOTE**\]: For additional details, refer to the [W&B
 > Report](https://api.wandb.ai/links/aurora_gpt/nqjjhzd5).
 

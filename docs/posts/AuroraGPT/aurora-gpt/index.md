@@ -2,9 +2,6 @@
 Sam Foreman
 2024-06-15
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [Install / Setup](#install--setup)
 - [Running](#running)
   - [Using `launch`](#using-launch)

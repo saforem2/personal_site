@@ -2,9 +2,6 @@
 Sam Foreman
 2024-10-29
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [Overview](#overview)
 - [🚀 Scaling: Overview](#rocket-scaling-overview)
   - [Single GPU](#single-gpu)

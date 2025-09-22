@@ -2,9 +2,6 @@
 Sam Foreman
 2025-03-23
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [Patch on Aurora](#patch-on-aurora)
 - [Using PyTorch 2.5](#using-pytorch-25)
 - [Using PyTorch 2.3](#using-pytorch-23)

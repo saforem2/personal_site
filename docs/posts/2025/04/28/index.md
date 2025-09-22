@@ -2,9 +2,6 @@
 Sam Foreman
 2025-04-28
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [PyTorch 2.6 on Aurora](#pytorch-26-on-aurora)
 
 ## PyTorch 2.6 on Aurora

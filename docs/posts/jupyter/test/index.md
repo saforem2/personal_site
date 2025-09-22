@@ -2,9 +2,6 @@
 Sam Foreman
 2024-02-12
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [Imports / Setup](#imports--setup)
 - [Initialize and Build `Experiment`
   objects:](#initialize-and-build-experiment-objects)

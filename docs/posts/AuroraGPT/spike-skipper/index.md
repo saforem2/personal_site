@@ -2,9 +2,6 @@
 Sam Foreman
 2024-09-17
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-
 - [📝 Example](#pencil-example)
 - [🧪 Implementation](#test_tube-implementation)
 - [✅ Sanity Check](#white_check_mark-sanity-check)
