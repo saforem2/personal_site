@@ -89,52 +89,59 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
     (2025))
     - ✨ [*2025 ACM Gordon Bell Prize for Climate Modeling
       Finalist*](https://awards.acm.org/bell-climate)
-2.  [HiPerRAG: High-Performance Retrieval Augmented Generation for
+2.  Aurora: Architecting Argonne’s First Exascale Supercomputer for
+    Accelerated Scientific Discovery (Allen et al. (2025))
+3.  [HiPerRAG: High-Performance Retrieval Augmented Generation for
     Scientific Insights](https://arxiv.org/abs/2505.04846) (Gokdemir et
     al. (2025))
-3.  [MOFA: Discovering Materials for Carbon Capture with a GenAI and
+4.  [Automated Tuning for HMC Mass
+    Ratios](https://www.osti.gov/biblio/2551828) (Torsiello et al.
+    (2025))
+5.  [MOFA: Discovering Materials for Carbon Capture with a GenAI and
     Simulation-Based Workflow](https://arxiv.org/abs/2501.10651) (Yan et
     al. (2025))
-4.  🧪 [<span class="highlight-pink">**MProt-DPO**</span>: **Breaking
+6.  🧪 [<span class="highlight-pink">**MProt-DPO**</span>: **Breaking
     the ExaFLOPS Barrier for Multimodal Protein Design with
     DPO**](https://doi.org/10.1109/SC41406.2024.00013) (Dharuman et al.
     (2024))
     - 🌟 [*2024 ACM Gordon Bell
       Finalist*](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
-5.  [Intro to HPC Bootcamp: Engaging New Communities Through Energy
+7.  [Intro to HPC Bootcamp: Engaging New Communities Through Energy
     Justice Projects](https://jocse.org/downloads/jocse-15-1-10.pdf)
     (Leung et al. (2024))
-6.  [Thorough Characterization and Analysis of Large Transformer Model
+8.  [Thorough Characterization and Analysis of Large Transformer Model
     Training At-Scale](https://doi.org/10.1145/3639034) (Cheng et al.
     (2024))
-7.  [MLMC: Machine Learning Monte Carlo for Lattice Gauge
+9.  [MLMC: Machine Learning Monte Carlo for Lattice Gauge
     Theory](https://arxiv.org/abs/2312.08936) (Sam Foreman, Jin, and
     Osborn (2023))
-8.  [Protein Generation via Genome-scale Language Models with
+10. [Protein Generation via Genome-scale Language Models with
     Bio-physical
     Scoring](https://dl.acm.org/doi/abs/10.1145/3624062.3626087)
     (Dharuman et al. (2023))
-9.   [DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+11.  [DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
     Discovery](https://arxiv.org/abs/2310.04610) (Song et al. (2023))
     - [📰 DeepSpeed4Science.ai Blog
       Post](https://www.deepspeed.ai/deepspeed4science/#new-megatron-deepspeed-for-large-scale-ai4science-model-training)
     - [🚂 Loooooooong Sequence
       Lengths](../../posts/AuroraGPT/long-sequences/index.qmd)
-10. [Comprehensive Performance Study of LLMs on Novel AI
+12. [Comprehensive Performance Study of LLMs on Novel AI
     Accelerators](https://arxiv.org/abs/2310.04607) (Emani et al.
     (2023))
-11. [Exploratory Analysis of Climate Data with
+13. [Exploratory Analysis of Climate Data with
     `ClimRR`](https://saforem2.github.io/climate-analysis), [Intro to
     HPC Bootcamp @
     NERSC](https://github.com/NERSC/intro-HPC-bootcamp-2023) (Sam
     Foreman (2023))
-12. 🧬 [<span class="highlight">**GenSLMs**</span>: **Genome-scale
+14. 🧬 [<span class="highlight">**GenSLMs**</span>: **Genome-scale
     language models reveal SARS-Cov-2 evolutionary
     dynamics**](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract)
     (Zvyagin et al. (2023))
-    - Winner of the [🏆 *ACM Gordon Bell Special Prize for High
-      Performance Computing-Based COVID-19
-      Research*](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
+
+- Winner of the [🏆 *ACM Gordon Bell Special Prize for High Performance
+  Computing-Based COVID-19
+  Research*](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
+
 13. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641)
     (Kronfeld et al. (2022))
 14. [Applications of ML to Lattice
@@ -338,6 +345,15 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
 
+<div id="ref-allen2025aurora" class="csl-entry">
+
+Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas Applencourt,
+Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin, et al. 2025.
+“Aurora: Architecting Argonne’s First Exascale Supercomputer for
+Accelerated Scientific Discovery.” <https://arxiv.org/abs/2509.08207>.
+
+</div>
+
 <div id="ref-boyda2022applications" class="csl-entry">
 
 Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
@@ -503,6 +519,16 @@ Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
 Initiative: Enabling Large-Scale Scientific Discovery Through
 Sophisticated AI System Technologies.” *arXiv Preprint
 arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
+
+</div>
+
+<div id="ref-torsiello2025automated" class="csl-entry">
+
+Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
+2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
+U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
+States). <https://doi.org/10.22323/1.466.0052>.
 
 </div>
 

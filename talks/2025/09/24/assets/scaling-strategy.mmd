@@ -1,0 +1,17 @@
+---
+config:
+  layout: dagre
+  look: neo
+---
+flowchart TD
+    AA["Want to Train Model"] --> A{"Model Perfect?"}
+    A --❌--> M{"Available Memory?"}
+    A --> |✅| AD["Done"]
+    M --> |✅| MY["Make Model Larger"]
+    M --> |❌| ZMP["Free Up Memory"]
+    MY --> A
+    ZMP --> MP["TP or<br>ZeRO or<br>Act. Ckpt."]
+    MP --> MY
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+class AA,A,M,AD,MY,ZMP,MP block

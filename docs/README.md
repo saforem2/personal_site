@@ -1,5 +1,5 @@
 Sam Foreman
-2025-09-22
+2025-09-24
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -60,7 +60,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">22</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:21:18</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:28:57</span>
 > </pre>
 
 > [!TIP]
@@ -251,37 +251,41 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
     Systems Model for Reliable and Skillful Predictions**] (Hatanpää et
     al. (2025))
     - ✨ [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]
-2.  [HiPerRAG: High-Performance Retrieval Augmented Generation for
+2.  Aurora: Architecting Argonne’s First Exascale Supercomputer for
+    Accelerated Scientific Discovery (Allen et al. (2025))
+3.  [HiPerRAG: High-Performance Retrieval Augmented Generation for
     Scientific Insights] (Gokdemir et al. (2025))
-3.  [MOFA: Discovering Materials for Carbon Capture with a GenAI and
+4.  [Automated Tuning for HMC Mass Ratios] (Torsiello et al. (2025))
+5.  [MOFA: Discovering Materials for Carbon Capture with a GenAI and
     Simulation-Based Workflow] (Yan et al. (2025))
-4.  🧪 [<span class="highlight-pink">**MProt-DPO**</span>: **Breaking
+6.  🧪 [<span class="highlight-pink">**MProt-DPO**</span>: **Breaking
     the ExaFLOPS Barrier for Multimodal Protein Design with DPO**]
     (Dharuman et al. (2024))
     - 🌟 [*2024 ACM Gordon Bell Finalist*]
-5.  [Intro to HPC Bootcamp: Engaging New Communities Through Energy
+7.  [Intro to HPC Bootcamp: Engaging New Communities Through Energy
     Justice Projects] (Leung et al. (2024))
-6.  [Thorough Characterization and Analysis of Large Transformer Model
+8.  [Thorough Characterization and Analysis of Large Transformer Model
     Training At-Scale] (Cheng et al. (2024))
-7.  [MLMC: Machine Learning Monte Carlo for Lattice Gauge Theory] (Sam
+9.  [MLMC: Machine Learning Monte Carlo for Lattice Gauge Theory] (Sam
     Foreman, Jin, and Osborn (2023))
-8.  [Protein Generation via Genome-scale Language Models with
+10. [Protein Generation via Genome-scale Language Models with
     Bio-physical Scoring] (Dharuman et al. (2023))
-9.   [DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+11.  [DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
     Discovery] (Song et al. (2023))
     - [📰 DeepSpeed4Science.ai Blog Post]
     - [🚂 Loooooooong Sequence Lengths]
-10. [Comprehensive Performance Study of LLMs on Novel AI Accelerators]
+12. [Comprehensive Performance Study of LLMs on Novel AI Accelerators]
     (Emani et al. (2023))
-11. [Exploratory Analysis of Climate Data with
+13. [Exploratory Analysis of Climate Data with
     `ClimRR`][Foundation models for long term climate forecasting],
     [Intro to HPC Bootcamp @ NERSC] (Sam Foreman (2023))
-12. 🧬 [<span class="highlight">**GenSLMs**</span>: **Genome-scale
+14. 🧬 [<span class="highlight">**GenSLMs**</span>: **Genome-scale
     language models reveal SARS-Cov-2 evolutionary dynamics**] (Zvyagin
     et al. (2023))
-    - Winner of the [🏆 *ACM Gordon Bell Special Prize for High
-      Performance Computing-Based COVID-19
-      Research*][ACM Gordon Bell Special Prize]
+
+- Winner of the [🏆 *ACM Gordon Bell Special Prize for High Performance
+  Computing-Based COVID-19 Research*][ACM Gordon Bell Special Prize]
+
 13. [Lattice QCD and Particle Physics] (Kronfeld et al. (2022))
 14. [Applications of ML to Lattice QFT] (Boyda et al. (2022))
 15. [LeapFrogLayers: Trainable Framework for Effective Sampling] (Sam
@@ -1000,6 +1004,15 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
 
+<div id="ref-allen2025aurora" class="csl-entry">
+
+Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas Applencourt,
+Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin, et al. 2025.
+“Aurora: Architecting Argonne’s First Exascale Supercomputer for
+Accelerated Scientific Discovery.” <https://arxiv.org/abs/2509.08207>.
+
+</div>
+
 <div id="ref-boyda2022applications" class="csl-entry">
 
 Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
@@ -1168,6 +1181,16 @@ arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
 
 </div>
 
+<div id="ref-torsiello2025automated" class="csl-entry">
+
+Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
+2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
+U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
+States). <https://doi.org/10.22323/1.466.0052>.
+
+</div>
+
 <div id="ref-yan2025mofa" class="csl-entry">
 
 Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
@@ -1219,6 +1242,7 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]: https://awards.acm.org/bell-climate
   [HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights]:
     https://arxiv.org/abs/2505.04846
+  [Automated Tuning for HMC Mass Ratios]: https://www.osti.gov/biblio/2551828
   [MOFA: Discovering Materials for Carbon Capture with a GenAI and Simulation-Based Workflow]:
     https://arxiv.org/abs/2501.10651
   [<span class="highlight-pink">**MProt-DPO**</span>: **Breaking the ExaFLOPS Barrier for Multimodal Protein Design with DPO**]:

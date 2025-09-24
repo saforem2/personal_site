@@ -356,6 +356,7 @@ b {
 :root {
   --bs-border-radius: 0pt;
   .reveal {
+    -webkit-font-smoothing: auto;
     h1,
     h2,
     h3,
@@ -788,6 +789,15 @@ body td code:not(.sourceCode) {
 .reveal body p code:not(.sourceCode) {
   font-size: 1em !important;
   /* font-size: .875rem; */
+}
+
+.reveal div.sourceCode {
+	margin-block: .5lh !important;
+	overflow: auto;
+	border: none;
+	border-radius: $link-border-radius;
+	max-height: calc(0.8*100vh);
+    -webkit-font-smoothing: auto;
 }
 
 div.sourceCode,
@@ -3853,6 +3863,7 @@ div.code {
 
 svg:not(:root) {
   overflow: auto;
+  -webkit-font-smoothing: auto;
 }
 
 .iconify-icon svg {
@@ -3958,6 +3969,12 @@ img {
 }
 .reveal .slides section .callout {
   font-size: calc(0.5625 * $presentation-font-size-root) !important;
+}
+
+@media print {
+  body, pre, blockquote, code, ol, li, p {
+    page-break-inside: avoid;
+  }
 }
 
 div.ansi-escaped-output {

@@ -1,0 +1,53 @@
+flowchart RL
+    subgraph D["`Data`"]
+        direction TB
+        x("`x₀`")
+        x1("`x₁`")
+        x2("`x₂`")
+    end
+    subgraph G0["`GPU0`"]
+        direction RL
+        subgraph N0["`NN`"]
+        end
+        L0["`Loss`"]
+    end
+    subgraph G1["`GPU1`"]
+        direction RL
+        subgraph N1["`NN`"]
+        end
+        L1["`Loss`"]
+    end
+    subgraph G2["`GPU2`"]
+        direction RL
+        subgraph N2["`NN`"]
+        end
+        L2["`Loss`"]
+    end
+    subgraph BC["`Send Updates`"]
+        direction TB
+    end
+    BC -.-> G0
+    BC -.-> G1
+    BC -.-> G2
+    L0 ~~~ N0
+    L1 ~~~ N1
+    L2 ~~~ N2
+    G0 ~~~ x
+    G1 ~~~ x1
+    G2 ~~~ x2
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,y0,L0 red
+class x1,L1 green
+class x2,L2 blue
+class x3,ar grey
+class D,N0,N1,N2,G0,G1,G2,GU block
+class BC block
+class bc text
