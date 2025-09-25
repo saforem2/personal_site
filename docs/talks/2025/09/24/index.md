@@ -27,7 +27,6 @@ Sam Foreman
   - [Tensor Parallel (TP)](#tensor-parallel-tp-1)
   - [Tensor (/ Model) Parallel Training:
     Example](#tensor--model-parallel-training-example)
-- [📊 Scaling Results](#bar_chart-scaling-results)
   - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
   - [🌎 AERIS: Scaling Results](#earth_americas-aeris-scaling-results)
 - [🍋 `ezpz`](#lemon-ezpz)
@@ -630,16 +629,13 @@ Figure 11
 
 </div>
 
-## 📊 Scaling Results
-
 ### 🧬 MProt-DPO: Scaling Results
 
 <div class="flex-container">
 
 <div id="fig-mprot-3p5B-scaling">
 
-<img src="./assets/mprot-3p5B-scaling-2.svg"
-style="margin:0; padding-unset;;width:100.0%" />
+![](./assets/mprot-3p5B-scaling-2.svg)
 
 Figure 12: Scaling results for `3.5B` model across ~38,400 GPUs
 
@@ -679,14 +675,9 @@ Figure 13: AERIS: Scaling Results
 - <span class="highlight-green">**10 EFLOPs**</span> (sustained) @
   **120,960 GPUs**
 - See (Hatanpää et al. (2025)) for additional details
+- [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
-
-</div>
-
-<div class="aside">
-
-[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
 

@@ -123,7 +123,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-c5688308b7a8d52fcf71d12a08f3c6c3.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-bf1306c46027b27bbe56428b14a6a5b9.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -245,15 +245,15 @@
 <meta property="og:description" content="Presented at the 2025 ALCF Hands-on HPC Workshop.">
 <meta property="og:image" content="https://samforeman.me/talks/2025/09/24/assets/thumbnail.png">
 <meta property="og:site_name" content="Sam Foreman">
-<meta property="og:image:height" content="2466">
-<meta property="og:image:width" content="2974">
+<meta property="og:image:height" content="1440">
+<meta property="og:image:width" content="2160">
 <meta name="twitter:title" content="Training Foundation Models on Supercomputers">
 <meta name="twitter:description" content="Presented at the 2025 ALCF Hands-on HPC Workshop.">
 <meta name="twitter:image" content="https://samforeman.me/talks/2025/09/24/assets/thumbnail.png">
 <meta name="twitter:creator" content="saforem2">
 <meta name="twitter:site" content="saforem2">
-<meta name="twitter:image-height" content="2466">
-<meta name="twitter:image-width" content="2974">
+<meta name="twitter:image-height" content="1440">
+<meta name="twitter:image-width" content="2160">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Training Foundation Models on Supercomputers">
 <meta name="citation_author" content="Sam Foreman">
@@ -329,7 +329,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#E599F7" class="quarto-title-block center">
+<section id="title-slide" data-background-color="oklch(from #E599F7 l c * 1.15 h / 0.1)" class="quarto-title-block center">
   <h1 class="title">Training Foundation Models on Supercomputers</h1>
 
 <div class="quarto-title-authors">
@@ -350,8 +350,8 @@
 
   <p class="date">2025-09-24</p>
 </section>
-<section id="scaling-overview" class="slide level2 center" data-background-color="white">
-<h2>👀 Scaling: Overview</h2>
+<section id="scaling-overview" class="title-slide slide level1 center" data-background-color="white">
+<h1>👀 Scaling: Overview</h1>
 <ul>
 <li>✅ <strong>Goal</strong>:
 <ul>
@@ -372,8 +372,9 @@
 </div></li>
 </ul>
 </section>
-<section id="training-on-a-single-device" class="slide level2 center" data-background-color="white">
-<h2>🐢 Training on a Single Device</h2>
+
+<section id="training-on-a-single-device" class="title-slide slide level1 center" data-background-color="white">
+<h1>🐢 Training on a Single Device</h1>
 <ul>
 <li>See also:
 <ul>
@@ -402,8 +403,10 @@ Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
 </figure>
 </div>
 </section>
-<section id="training-on-multiple-gpus-data-parallelism" class="slide level2 center" data-background-color="white">
-<h2>👬 Training on Multiple GPUS: Data Parallelism</h2>
+
+<section>
+<section id="training-on-multiple-gpus-data-parallelism" class="title-slide slide level1 center" data-background-color="white">
+<h1>👬 Training on Multiple GPUS: Data Parallelism</h1>
 <div id="fig-ddp-training-mermaid" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-ddp-training-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -424,7 +427,9 @@ Figure&nbsp;2: Each GPU receives <strong>unique</strong> data at each step
 </figcaption>
 </figure>
 </div>
-<h3 data-background-color="white" id="data-parallel-forward-pass">➡️ Data Parallel: Forward Pass</h3>
+</section>
+<section id="data-parallel-forward-pass" class="slide level2 center" data-background-color="white">
+<h2>➡️ Data Parallel: Forward Pass</h2>
 <div id="fig-ddp-training-mermaid-allreduce" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-ddp-training-mermaid-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -445,8 +450,10 @@ Figure&nbsp;3: Average gradients across all GPUs
 </figcaption>
 </figure>
 </div>
-<h3 data-background-color="white" id="data-parallel-backward-pass">⬅️ Data Parallel: Backward Pass</h3>
-<div id="fig-ddp-backward-mermaid" class="r-stretch quarto-float quarto-figure quarto-figure-center">
+</section>
+<section id="data-parallel-backward-pass" class="slide level2 center" data-background-color="white">
+<h2>⬅️ Data Parallel: Backward Pass</h2>
+<div id="fig-ddp-backward-mermaid" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-ddp-backward-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell" data-layout-align="default">
@@ -466,7 +473,9 @@ Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytor
 </figcaption>
 </figure>
 </div>
-<h3 data-background-color="white" id="data-parallel-training">🔄 Data Parallel: Training</h3>
+</section>
+<section id="data-parallel-training" class="slide level2 center" data-background-color="white">
+<h2>🔄 Data Parallel: Training</h2>
 <ul>
 <li>Each GPU:
 <ul>
@@ -481,7 +490,9 @@ Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytor
 <li><iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="https://www.deepspeed.ai/">Microsoft / <code>DeepSpeed</code></a></li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="communication">📡 Communication</h3>
+</section>
+<section id="communication" class="slide level2 center" data-background-color="white">
+<h2>📡 Communication</h2>
 <div class="flex-container">
 <div class="column">
 <ul>
@@ -522,7 +533,9 @@ Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytor
 </div>
 </div>
 </div>
-<h3 data-background-color="white" id="common-pitfalls">🚧 Common Pitfalls</h3>
+</section>
+<section id="common-pitfalls" class="slide level2 center" data-background-color="white">
+<h2>🚧 Common Pitfalls</h2>
 <div class="flex-container">
 <div class="column">
 <ul>
@@ -557,7 +570,9 @@ Figure&nbsp;5: To ensure all workers have the same copies, we load on <code>RANK
 </figure>
 </div>
 </div>
-<h3 data-background-color="white" id="best-practices">🎀 Best Practices</h3>
+</section>
+<section id="best-practices" class="slide level2 center" data-background-color="white">
+<h2>🎀 Best Practices</h2>
 <div class="flex-container">
 <div class="column" style="width:50%;">
 <ul>
@@ -600,7 +615,9 @@ Figure&nbsp;5: To ensure all workers have the same copies, we load on <code>RANK
 </div>
 </div>
 </div>
-<h3 class="smaller" data-background-color="white" id="plan-of-attack">🤔 Plan of Attack</h3>
+</section>
+<section id="plan-of-attack" class="slide level2 scrollable center" data-background-color="white">
+<h2>🤔 Plan of Attack</h2>
 <div id="fig-scaling-strategy-mermaid" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-scaling-strategy-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -621,9 +638,10 @@ Figure&nbsp;6: General strategy for scaling model training
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="going-beyond-data-parallelism" class="slide level2 center" data-background-color="white">
-<h2>🚀 Going Beyond Data Parallelism</h2>
+</section></section>
+<section>
+<section id="going-beyond-data-parallelism" class="title-slide slide level1 center" data-background-color="white">
+<h1>🚀 Going Beyond Data Parallelism</h1>
 <ul>
 <li>✅ Useful when model fits on single GPU:
 <ul>
@@ -640,7 +658,9 @@ Figure&nbsp;6: General strategy for scaling model training
 <li>Otherwise, resort to <a href="#/additional-parallelism-strategies">model parallelism strategies</a></li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
+</section>
+<section id="going-beyond-data-parallelism-deepspeed-zero" class="slide level2 center" data-background-color="white">
+<h2>Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h2>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -659,7 +679,9 @@ Figure&nbsp;7: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" ar
 </figcaption>
 </figure>
 </div>
-<h3 data-background-color="white" id="additional-parallelism-strategies">🕸️ Additional Parallelism Strategies</h3>
+</section>
+<section id="additional-parallelism-strategies" class="slide level2 center" data-background-color="white">
+<h2>🕸️ Additional Parallelism Strategies</h2>
 <ul>
 <li><strong>Tensor (/ Model) Parallelism</strong> (<code>TP</code>):
 <ul>
@@ -684,7 +706,9 @@ Figure&nbsp;7: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" ar
 <li>Supports 4D Parallelism (<code>DP</code> + <code>TP</code> + <code>PP</code> + <code>SP</code>)</li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="pipeline-parallelism-pp">Pipeline Parallelism (PP)</h3>
+</section>
+<section id="pipeline-parallelism-pp" class="slide level2 center" data-background-color="white">
+<h2>Pipeline Parallelism (PP)</h2>
 <div class="flex-container" style="place-content: end space-evenly;">
 <div class="column" style="width:60%;">
 <ul>
@@ -722,7 +746,9 @@ Figure&nbsp;8: Pipeline Parallelism
 </figure>
 </div>
 </div></div>
-<h3 data-background-color="white" id="tensor-parallel-tp">Tensor Parallel (TP)</h3>
+</section>
+<section id="tensor-parallel-tp" class="slide level2 center" data-background-color="white">
+<h2>Tensor Parallel (TP)</h2>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -758,7 +784,9 @@ Figure&nbsp;9: Tensor Parallel Training
 </div>
 </div></div>
 </div>
-<h3 data-background-color="white" id="tensor-parallel-tp-1">Tensor Parallel (TP)</h3>
+</section>
+<section id="tensor-parallel-tp-1" class="slide level2 center" data-background-color="white">
+<h2>Tensor Parallel (TP)</h2>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -815,7 +843,9 @@ Figure&nbsp;10: Tensor Parallel Training
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<h3 data-background-color="white" id="tensor-model-parallel-training-example">Tensor (/ Model) Parallel Training: Example</h3>
+</section>
+<section id="tensor-model-parallel-training-example" class="slide level2 center" data-background-color="white">
+<h2>Tensor (/ Model) Parallel Training: Example</h2>
 <p>Want to compute: <span class="math inline">y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2</span><br>
 where each GPU only has only its portion of the full weights as shown below</p>
 <ol type="1">
@@ -844,14 +874,13 @@ Figure&nbsp;11
 </figure>
 </div>
 </section>
-<section id="scaling-results" class="slide level2 center" data-background-color="white">
-<h2>📊 Scaling Results</h2>
-<h3 class="smaller" data-background-color="white" id="mprot-dpo-scaling-results">🧬 MProt-DPO: Scaling Results</h3>
+<section id="mprot-dpo-scaling-results" class="slide level2 center" data-background-color="white">
+<h2>🧬 MProt-DPO: Scaling Results</h2>
 <div class="flex-container">
-<div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center" style="margin:0; padding-unset;">
+<div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center" style="width:70%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Scaling results for 3.5B model across ~38,400 GPUs"><img data-src="./assets/mprot-3p5B-scaling-2.svg" style="margin:0; padding-unset;;width:100.0%"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;12: Scaling results for 3.5B model across ~38,400 GPUs"><img data-src="./assets/mprot-3p5B-scaling-2.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
@@ -867,7 +896,9 @@ x 12 [XPU / node]</p></li>
 <li><p><a href="https://dl.acm.org/doi/10.1109/SC41406.2024.00013">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows</a></p></li>
 </ul>
 </div></div>
-<h3 data-background-color="white" id="aeris-scaling-results">🌎 AERIS: Scaling Results</h3>
+</section>
+<section id="aeris-scaling-results" class="slide level2 center" data-background-color="white">
+<h2>🌎 AERIS: Scaling Results</h2>
 <div class="flex-container">
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center" style="width:70%;">
 <figure class="quarto-float quarto-float-fig">
@@ -882,14 +913,13 @@ Figure&nbsp;13: AERIS: Scaling Results
 <ul>
 <li><span class="highlight-green"><strong>10 EFLOPs</strong></span> (sustained) @ <strong>120,960 GPUs</strong></li>
 <li>See (<span class="citation" data-cites="stock2025aeris">Hatanpää et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>) for additional details</li>
+<li><a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a></li>
 </ul>
 </div></div>
-
-<aside><div>
-<p><a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a></p>
-</div></aside></section>
-<section id="ezpz" class="slide level2 center" data-background-color="white">
-<h2>🍋 <code>ezpz</code></h2>
+</section></section>
+<section>
+<section id="ezpz" class="title-slide slide level1 center" data-background-color="white">
+<h1>🍋 <code>ezpz</code></h1>
 <blockquote>
 <p>Write once, run anywhere</p>
 </blockquote>
@@ -906,7 +936,9 @@ Figure&nbsp;13: AERIS: Scaling Results
 <li><a href="https://saforem2.github.io/ezpz">ezpz docs</a></li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="ezpz-alcf">🍋 <code>ezpz</code> @ ALCF</h3>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Can be skipped if you already have an environment with <code>torch</code> + <code>mpi4py</code></p></li></ol></aside></section>
+<section id="ezpz-alcf" class="slide level2 center" data-background-color="white">
+<h2>🍋 <code>ezpz</code> @ ALCF</h2>
 <ul>
 <li><p>Polaris:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv <span class="at">--python</span><span class="op">=</span>3.12</span>
@@ -918,27 +950,33 @@ Figure&nbsp;13: AERIS: Scaling Results
 <span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="va">CC</span><span class="op">=</span>mpicc <span class="va">CXX</span><span class="op">=</span>mpicxx <span class="ex">uv</span> pip install <span class="at">--no-cache</span> <span class="at">--link-mode</span><span class="op">=</span>copy <span class="at">--no-binary</span><span class="op">=</span>mpi4py mpi4py</span>
 <span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--with</span> <span class="st">"git+https://github.com/saforem2/ezpz@saforem2/tests"</span> <span class="at">--with</span> <span class="st">"numpy&lt;2"</span> ezpz-test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<h3 data-background-color="white" id="getting-started">🐣 Getting Started</h3>
+</section>
+<section id="getting-started" class="slide level2 center" data-background-color="white">
+<h2>🐣 Getting Started</h2>
 <ol type="1">
 <li><p>Submit interactive job:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">qsub</span> <span class="at">-I</span> <span class="at">-l</span> select=2 <span class="at">-l</span> walltime=01:00:00 <span class="dt">\</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-l</span> filesystems=home:flare <span class="dt">\</span></span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-A</span> gpu_hack <span class="dt">\</span></span>
 <span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">-q</span> gpu_hack_prio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Source<sup>2</sup> the <a href="https://github.com/saforem2/ezpz/blob/main/bin/utils.sh"><code>ezpz/bin/utils.sh</code></a> script (using <code>curl</code> to download it<sup>3</sup>):</p>
+<li><p>Source<sup>1</sup> the <a href="https://github.com/saforem2/ezpz/blob/main/bin/utils.sh"><code>ezpz/bin/utils.sh</code></a> script (using <code>curl</code> to download it<sup>2</sup>):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
-<h3 data-background-color="white" id="shell-environment">🏖️ Shell Environment</h3>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>In <em>general</em>, you should be wary of running random scripts from the internet.</p></li><li id="fn3"><p><a href="https://bit.ly/ezpz-utils">https://bit.ly/ezpz-utils</a>, since <a href="https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh">https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh</a> is a bit of a pain</p></li></ol></aside></section>
+<section id="shell-environment" class="slide level2 center" data-background-color="white">
+<h2>🏖️ Shell Environment</h2>
 <ol type="1">
 <li><p>Setup environment:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz_setup_env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
-<h3 data-background-color="white" id="environment-setup-with-ezpz_setup_env">🔍 Environment Setup with <code>ezpz_setup_env</code></h3>
+</section>
+<section id="environment-setup-with-ezpz_setup_env" class="slide level2 center" data-background-color="white">
+<h2>🔍 Environment Setup with <code>ezpz_setup_env</code></h2>
 <ul>
 <li>Wrapper around <code>ezpz_setup_job</code> <code>&amp;&amp;</code> <code>ezpz_setup_python</code></li>
 </ul>
 <ol type="1">
-<li><p><code>ezpz_setup_job</code>: Determine the specifics of our active (PBS, SLURM) job<sup>4</sup></p></li>
+<li><p><code>ezpz_setup_job</code>: Determine the specifics of our active (PBS, SLURM) job<sup>1</sup></p></li>
 <li><p><code>ezpz_setup_python</code>:</p>
 <ul>
 <li><strong>if @ ALCF</strong>:
@@ -955,7 +993,9 @@ Figure&nbsp;13: AERIS: Scaling Results
 <li>Activate the newly created <code>venvs/$(basename ${CONDA_PREFIX})</code> environment</li>
 </ul></li>
 </ol>
-<h3 data-background-color="white" id="working-with-job-schedulers">⏱️ Working with Job Scheduler(s)</h3>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>e.g.&nbsp;<code>${NHOSTS}</code>, <code>${NGPU_PER_HOST}</code>, <code>${NGPUS}</code>, …</p></li></ol></aside></section>
+<section id="working-with-job-schedulers" class="slide level2 center" data-background-color="white">
+<h2>⏱️ Working with Job Scheduler(s)</h2>
 <ul>
 <li><code>ezpz</code> integrates directly with your favorite job scheduler (PBS, slurm)
 <ul>
@@ -965,11 +1005,13 @@ Figure&nbsp;13: AERIS: Scaling Results
 <ul>
 <li>Determine the specifics of our active (PBS, SLURM) job<br>
 (e.g.&nbsp;<code>${NHOSTS}</code>, <code>${NGPU_PER_HOST}</code>, <code>${NGPUS}</code>, …)</li>
-<li>Load the appropriate modules<sup>5</sup></li>
+<li>Load the appropriate modules<sup>1</sup></li>
 <li>Create (or activate) a virtual environment <em>on top</em> of a base conda environment</li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="python-environments">🐍 Python Environments</h3>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>On any of the ALCF systems, including: <a href="https://alcf.anl.gov/aurora">Aurora</a>, <a href="https://alcf.anl.gov/polaris">Polaris</a>, …, etc.</p></li></ol></aside></section>
+<section id="python-environments" class="slide level2 center" data-background-color="white">
+<h2>🐍 Python Environments</h2>
 <ul>
 <li><strong>ALWAYS</strong> work inside a virtual environment
 <ul>
@@ -982,7 +1024,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <li><em>Mangled python environments are one of the most common issues faced by users</em></li>
 </ul></li>
 </ul>
-<h3 data-background-color="white" id="simple-distributed-test">🧪 Simple Distributed Test</h3>
+</section>
+<section id="simple-distributed-test" class="slide level2 center" data-background-color="white">
+<h2>🧪 Simple Distributed Test</h2>
 <ol type="1">
 <li><p>Run distributed test:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
@@ -994,13 +1038,17 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-c</span> <span class="st">"'import ezpz; ezpz.setup_torch()'"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul></li>
 </ol>
-<h3 data-background-color="white" id="how-to-modify-existing-code">➕ How to Modify Existing Code</h3>
+</section>
+<section id="how-to-modify-existing-code" class="slide level2 center" data-background-color="white">
+<h2>➕ How to Modify Existing Code</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ import ezpz</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ _ = ezpz.setup_torch()</span></span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">- model.to('cuda')</span></span>
 <span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a><span class="va">+ model.to(ezpz.get_torch_device_type())</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 data-background-color="white" id="features">✨ Features</h3>
+</section>
+<section id="features" class="slide level2 center" data-background-color="white">
+<h2>✨ Features</h2>
 <ul>
 <li><p>Initializing PyTorch across multiple processes</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
@@ -1018,7 +1066,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>    ezpz.<span class="bu">breakpoint</span>(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<h3 class="smaller" data-background-color="white" id="experiment-tracking">🧪 Experiment Tracking</h3>
+</section>
+<section id="experiment-tracking" class="slide level2 smaller center" data-background-color="white">
+<h2>🧪 Experiment Tracking</h2>
 <div class="block-code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ezpz</span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> ezpz.setup_torch()</span>
@@ -1046,10 +1096,12 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <ol type="1">
 <li>Initialize W&amp;B (if <code>WANDB_DISABLED</code> is not set)</li>
 <li>Log summary of metrics to stdout</li>
-<li>Update <code>history.history</code> with metrics<sup>6</sup></li>
+<li>Update <code>history.history</code> with metrics<sup>1</sup></li>
 </ol>
 </div>
-<h3 class="smaller" data-background-color="white" id="minimal-example">🤏 Minimal Example</h3>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>Will automatically be reported to W&amp;B if a run is detected</p></li></ol></aside></section>
+<section id="minimal-example" class="slide level2 smaller center" data-background-color="white">
+<h2>🤏 Minimal Example</h2>
 <ul>
 <li>See <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/examples/minimal.py"><code>ezpz/examples/minimal.py</code></a></li>
 </ul>
@@ -1180,7 +1232,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb16-124"><a aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb16-125"><a aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<h3 data-background-color="white" id="running-the-minimal-example">🏃‍♂️ Running the Minimal Example</h3>
+</section>
+<section id="running-the-minimal-example" class="slide level2 center" data-background-color="white">
+<h2>🏃‍♂️ Running the Minimal Example</h2>
 <p>To run the previous example we:</p>
 <ol type="1">
 <li><p>Source the <code>ezpz</code> utils script:</p>
@@ -1190,7 +1244,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <li><p>Run the example:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ezpz-launch</span> <span class="at">-m</span> ezpz.examples.minimal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
-<h3 data-background-color="white" id="ezpz-test">📝 <code>ezpz-test</code></h3>
+</section>
+<section id="ezpz-test" class="slide level2 center" data-background-color="white">
+<h2>📝 <code>ezpz-test</code></h2>
 <ul>
 <li><p><code>ezpz-test</code> is a simple test script that trains a small model using DDP across all available GPUs</p>
 <ul>
@@ -1202,13 +1258,17 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#[05/05/25 @ 07:41:35][x4520c1s0b0n0][/f/d/f/p/s/ezpz][🌱 update-utils][📦🤷✓] [⏱️ 54s]</span></span>
 <span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">;</span> <span class="ex">ezpz-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<h3 data-background-color="white" id="generate-text">🦜 Generate Text</h3>
+</section>
+<section id="generate-text" class="slide level2 center" data-background-color="white">
+<h2>🦜 Generate Text</h2>
 <ul>
 <li><p>See: <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/generate.py">ezpz/generate.py</a></p></li>
 <li><p>Command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> ezpz.generate <span class="at">--model_name</span> meta-llama/Llama-3.1-8B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<h3 class="smaller" data-background-color="white" id="huggingface-trainer">🤗 Huggingface Trainer</h3>
+</section>
+<section id="huggingface-trainer" class="slide level2 smaller center" data-background-color="white">
+<h2>🤗 Huggingface Trainer</h2>
 <ul>
 <li><p>See <a href="https://github.com/ezpz/ezpz/blob/main/ezpz/hf_trainer.py">ezpz/hf_trainer.py</a></p></li>
 <li><p>Command:</p>
@@ -1234,7 +1294,9 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb22-20"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--max-eval-samples</span><span class="op">=</span>50 <span class="dt">\</span></span>
 <span id="cb22-21"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--ddp-backend</span><span class="op">=</span>ccl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<h3 data-background-color="white" id="megatron-deepspeed">🏎️ Megatron-DeepSpeed</h3>
+</section>
+<section id="megatron-deepspeed" class="slide level2 center" data-background-color="white">
+<h2>🏎️ Megatron-DeepSpeed</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/argonne-lcf/Megatron-DeepSpeed</span>
 <span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Megatron-DeepSpeed</span>
 <span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> https://bit.ly/ezpz-utils<span class="op">)</span></span>
@@ -1242,15 +1304,16 @@ e.g you would want different envs for <code>torch==2.X</code> vs <code>torch==2.
 <span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a>    deepspeed <span class="dt">\</span></span>
 <span id="cb23-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"git+https://github.com/saforem2/ezpz"</span></span>
 <span id="cb23-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> train_alcf.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Can be skipped if you already have an environment with <code>torch</code> + <code>mpi4py</code></p></li><li id="fn2"><p>In <em>general</em>, you should be wary of running random scripts from the internet.</p></li><li id="fn3"><p><a href="https://bit.ly/ezpz-utils">https://bit.ly/ezpz-utils</a>, since <a href="https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh">https://raw.githubusercontent.com/saforem2/ezpz/main/bin/utils.sh</a> is a bit of a pain</p></li><li id="fn4"><p>e.g.&nbsp;<code>${NHOSTS}</code>, <code>${NGPU_PER_HOST}</code>, <code>${NGPUS}</code>, …</p></li><li id="fn5"><p>On any of the ALCF systems, including: <a href="https://alcf.anl.gov/aurora">Aurora</a>, <a href="https://alcf.anl.gov/polaris">Polaris</a>, …, etc.</p></li><li id="fn6"><p>Will automatically be reported to W&amp;B if a run is detected</p></li></ol></aside></section>
-<section id="acknowledgements" class="slide level2 center" data-background-color="white">
-<h2>🙌 Acknowledgements</h2>
+</section></section>
+<section id="acknowledgements" class="title-slide slide level1 center" data-background-color="white">
+<h1>🙌 Acknowledgements</h1>
 <blockquote>
 <p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
 </blockquote>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>📓 References</h2>
+
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>📓 References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-mprot-dpo2024" class="csl-entry" role="listitem">
 Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> In <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em>. SC ’24. Atlanta, GA, USA: IEEE Press. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
@@ -1262,6 +1325,7 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong
 
 
 </section>
+
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
