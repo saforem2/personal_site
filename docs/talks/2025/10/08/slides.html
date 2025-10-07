@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-2dfd4e7d8c46e10927dc1b0552d9a955.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-5a74621aaa618489a07642a6f5db9b26.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -261,9 +261,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="./assets/cover2.svg" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
+<section id="title-slide" data-background-image="./assets/cover0.svg" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">AERIS</h1>
-  <p class="subtitle">Argonne Earth Systems Model for Reliable and Skillful Predictions</p>
+  <p class="subtitle">Argonne’s Earth Systems Model</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -354,20 +354,6 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <section id="model-overview" class="title-slide slide level1 center" data-background-color="white">
 <h1>Model Overview</h1>
 <div class="flex-container" style="align-items: flex-start;">
-<div style="width:33%;">
-<ul>
-<li><strong>Dataset</strong>: ECMWF Reanalysis v5 (ERA5)</li>
-<li><strong>Variables</strong>: Surface and pressure levels</li>
-<li><strong>Usage</strong>: Medium-range weather forecasting</li>
-<li><strong>Partition</strong>:
-<ul>
-<li>Train: 1979–2018</li>
-<li>Val: 2019</li>
-<li>Test: 2020</li>
-</ul></li>
-<li><strong>Data Size</strong>: 100GB at 5.6° to 31TB at 0.25°</li>
-</ul>
-</div>
 <div id="tbl-data-vars" class="responsive striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-vars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -417,8 +403,22 @@ Table&nbsp;2: Variables used in AERIS training and prediction
 </div>
 </figure>
 </div>
+<div class="flex-child">
+<ul>
+<li><strong>Dataset</strong>: ECMWF Reanalysis v5 (ERA5)</li>
+<li><strong>Variables</strong>: Surface and pressure levels</li>
+<li><strong>Usage</strong>: Medium-range weather forecasting</li>
+<li><strong>Partition</strong>:
+<ul>
+<li>Train: 1979–2018<sup>1</sup></li>
+<li>Val: 2019</li>
+<li>Test: 2020</li>
+</ul></li>
+<li><strong>Data Size</strong>: 100GB at 5.6° to 31TB at 0.25°</li>
+</ul>
 </div>
-</section>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>~ 700,000k days</p></li></ol></aside></section>
 
 <section id="windowed-self-attention" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>Windowed Self-Attention</h1>
@@ -464,6 +464,57 @@ Figure&nbsp;3: Model Architecture
 </div>
 </section>
 
+<section id="limitations-of-deterministic-models" class="title-slide slide level1 center" data-background-color="white">
+<h1>Limitations of Deterministic Models</h1>
+<div class="flex-container">
+<div class="flex-child">
+<ul>
+<li><span class="red-text"><iconify-icon role="img" inline="" icon="material-symbols:close" aria-label="Icon close from material-symbols Iconify.design set." title="Icon close from material-symbols Iconify.design set."></iconify-icon></span> <span class="highlight-red"><strong>Transformers</strong></span>:
+<ul>
+<li><em>Deterministic</em></li>
+<li>Single input → single forecast</li>
+</ul></li>
+</ul>
+</div>
+<div class="flex-child">
+<ul>
+<li><span class="green-text"><iconify-icon role="img" inline="" icon="material-symbols:check" aria-label="Icon check from material-symbols Iconify.design set." title="Icon check from material-symbols Iconify.design set."></iconify-icon></span> <span class="highlight-green"><strong>Diffusion</strong></span>:
+<ul>
+<li><em>Probabilistic</em></li>
+<li>Single input → <em><strong>ensemble of forecasts</strong></em></li>
+<li>Captures uncertainty and variability in weather predictions</li>
+<li>Enables ensemble forecasting for better risk assessment</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="transitioning-to-a-probabilistic-model" class="title-slide slide level1 center" data-background-color="white">
+<h1>Transitioning to a Probabilistic Model</h1>
+<div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img data-src="./assets/diffusion/light.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <span class="math inline">t_{0} \rightarrow t_{64}</span>, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
+</figcaption>
+</figure>
+</div>
+<div class="flex-container">
+<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="./assets/diffusion.gif"></a></p>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="./assets/diffusion_forward.png"></a></p>
+</div>
+</section>
+
+<section id="training-at-scale" class="title-slide slide level1 center">
+<h1>Training at Scale</h1>
+<ul>
+<li></li>
+</ul>
+</section>
+
 <section id="sequence-window-pipeline-parallelism-swipe" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>Sequence-Window-Pipeline Parallelism <code>SWiPe</code></h1>
 <div class="flex-container">
@@ -481,10 +532,10 @@ Figure&nbsp;3: Model Architecture
 <div id="fig-swipe-layer" class="quarto-float quarto-figure quarto-figure-center" style="width:66%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/wpsp_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: "><img data-src="./assets/wpsp_light.svg"></a>
+<a href="./assets/wpsp_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;5: "><img data-src="./assets/wpsp_light.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4
+Figure&nbsp;5
 </figcaption>
 </figure>
 </div>
@@ -492,17 +543,17 @@ Figure&nbsp;4
 <div id="fig-comms" class="quarto-float quarto-figure quarto-figure-center" style="width:60%; text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/comms1_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5: SWiPe Communication Patterns"><img data-src="./assets/comms1_light.svg"></a>
+<a href="./assets/comms1_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;6: SWiPe Communication Patterns"><img data-src="./assets/comms1_light.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: <code>SWiPe</code> Communication Patterns
+Figure&nbsp;6: <code>SWiPe</code> Communication Patterns
 </figcaption>
 </figure>
 </div>
 </section>
 
 <section id="aurora" class="title-slide slide level1 center" data-background-color="white" style="width:100%">
-<h1>🌌 Aurora</h1>
+<h1>Aurora</h1>
 <div class="flex-container" style="align-items: center; gap:10pt;">
 <div id="tbl-aurora" class="column responsive striped hover quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
@@ -555,10 +606,10 @@ Table&nbsp;3: Aurora Specs
 </div><div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;6: Aurora: Fact Sheet."><img data-src="./assets/aurora1.png"></a>
+<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;7: Aurora: Fact Sheet."><img data-src="./assets/aurora1.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
+Figure&nbsp;7: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
 </figcaption>
 </figure>
 </div>
@@ -572,15 +623,15 @@ Figure&nbsp;6: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/202
 </div></aside></section>
 
 <section id="aeris-scaling-results" class="title-slide slide level1 center" data-background-color="white">
-<h1>🌎 AERIS: Scaling Results</h1>
+<h1>AERIS: Scaling Results</h1>
 <div class="flex-container">
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center" style="width:70%;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;7: AERIS: Scaling Results"><img data-src="./assets/aeris-scaling.svg"></a>
+<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;8: AERIS: Scaling Results"><img data-src="./assets/aeris-scaling.svg"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: AERIS: Scaling Results
+Figure&nbsp;8: AERIS: Scaling Results
 </figcaption>
 </figure>
 </div><div class="column" style="width:30%;">
@@ -592,47 +643,34 @@ Figure&nbsp;7: AERIS: Scaling Results
 </div></div>
 </section>
 
-<section id="limitations-of-deterministic-models" class="title-slide slide level1 center" data-background-color="white">
-<h1>Limitations of Deterministic Models</h1>
-<div class="flex-container">
-<div class="flex-child">
-<ul>
-<li><span class="highlight-red"><iconify-icon role="img" inline="" icon="material-symbols:close" aria-label="Icon close from material-symbols Iconify.design set." title="Icon close from material-symbols Iconify.design set."></iconify-icon></span> <strong>Transformers</strong>:
-<ul>
-<li><em>Deterministic</em></li>
-<li>Single input → single forecast</li>
-</ul></li>
-</ul>
-</div>
-<div class="flex-child">
-<ul>
-<li><span class="highlight-green"><iconify-icon role="img" inline="" icon="material-symbols:check" aria-label="Icon check from material-symbols Iconify.design set." title="Icon check from material-symbols Iconify.design set."></iconify-icon></span> <strong>Diffusion</strong>:
-<ul>
-<li><em>Probabilistic</em></li>
-<li>Single input → <em><strong>ensemble of forecasts</strong></em></li>
-<li>Captures uncertainty and variability in weather predictions</li>
-<li>Enables ensemble forecasting for better risk assessment</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="transitioning-to-a-probabilistic-model" class="title-slide slide level1 center" data-background-color="white">
-<h1>Transitioning to a Probabilistic Model</h1>
-<div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
+<section id="hurricane-laura" class="title-slide slide level1 center" data-background-color="white">
+<h1>Hurricane Laura</h1>
+<div id="fig-hurricane-laura" class="quarto-float quarto-figure quarto-figure-center" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;8: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img data-src="./assets/diffusion/light.svg"></a>
+<div aria-describedby="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;9: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img data-src="./assets/science/hurricane.png"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <span class="math inline">t_{0} \rightarrow t_{64}</span>, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 </figcaption>
 </figure>
 </div>
-<div class="flex-container">
-<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="./assets/diffusion.gif"></a></p>
-<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="./assets/diffusion_forward.png"></a></p>
+</section>
+
+<section id="seasonal-forecast-stability" class="title-slide slide level1 smaller center" data-background-color="white">
+<h1>Seasonal Forecast Stability</h1>
+<div id="fig-seasonal-forecast-stability" class="quarto-float quarto-figure quarto-figure-center" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;10: "><img data-src="./assets/science/s2s.png"></a></p>
+<ol type="a">
+<li>Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the <span style="color:#65B8EE;">closest</span> ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.</li>
+</ol>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10
+</figcaption>
+</figure>
 </div>
 </section>
 

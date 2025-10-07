@@ -7,14 +7,17 @@ Sam Foreman
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
 - [Model Architecture: Details](#model-architecture-details)
-- [Sequence-Window-Pipeline Parallelism
-  `SWiPe`](#sequence-window-pipeline-parallelism-swipe)
-- [🌌 Aurora](#milky_way-aurora)
-- [🌎 AERIS: Scaling Results](#earth_americas-aeris-scaling-results)
 - [Limitations of Deterministic
   Models](#limitations-of-deterministic-models)
 - [Transitioning to a Probabilistic
   Model](#transitioning-to-a-probabilistic-model)
+- [Training at Scale](#training-at-scale)
+- [Sequence-Window-Pipeline Parallelism
+  `SWiPe`](#sequence-window-pipeline-parallelism-swipe)
+- [Aurora](#aurora)
+- [AERIS: Scaling Results](#aeris-scaling-results)
+- [Hurricane Laura](#hurricane-laura)
+- [Seasonal Forecast Stability](#seasonal-forecast-stability)
 - [References](#references)
 
 ## 🌎 AERIS
@@ -60,19 +63,6 @@ Table 1: Overview of AERIS model and training setup
 
 <div class="flex-container" style="align-items: flex-start;">
 
-<div style="width:33%;">
-
-- **Dataset**: ECMWF Reanalysis v5 (ERA5)
-- **Variables**: Surface and pressure levels
-- **Usage**: Medium-range weather forecasting
-- **Partition**:
-  - Train: 1979–2018
-  - Val: 2019
-  - Test: 2020
-- **Data Size**: 100GB at 5.6° to 31TB at 0.25°
-
-</div>
-
 <div id="tbl-data-vars">
 
 Table 2: Variables used in AERIS training and prediction
@@ -86,6 +76,19 @@ Table 2: Variables used in AERIS training and prediction
 |    `msl`     | Mean Sea Level Pressure       |
 |    `sst`     | Sea Surface Temperature       |
 |    `lsm`     | Land-sea mask                 |
+
+</div>
+
+<div class="flex-child">
+
+- **Dataset**: ECMWF Reanalysis v5 (ERA5)
+- **Variables**: Surface and pressure levels
+- **Usage**: Medium-range weather forecasting
+- **Partition**:
+  - Train: 1979–2018[^2]
+  - Val: 2019
+  - Test: 2020
+- **Data Size**: 100GB at 5.6° to 31TB at 0.25°
 
 </div>
 
@@ -127,6 +130,58 @@ Figure 3: Model Architecture
 
 </div>
 
+## Limitations of Deterministic Models
+
+<div class="flex-container">
+
+<div class="flex-child">
+
+- <span class="red-text"></span>
+  <span class="highlight-red">**Transformers**</span>:
+  - *Deterministic*
+  - Single input → single forecast
+
+</div>
+
+<div class="flex-child">
+
+- <span class="green-text"></span>
+  <span class="highlight-green">**Diffusion**</span>:
+  - *Probabilistic*
+  - Single input → ***ensemble of forecasts***
+  - Captures uncertainty and variability in weather predictions
+  - Enables ensemble forecasting for better risk assessment
+
+</div>
+
+</div>
+
+## Transitioning to a Probabilistic Model
+
+<div id="fig-forward-pass">
+
+![](./assets/diffusion/light.svg)
+
+Figure 4: Reverse diffusion with the
+<span style="color:#228be6">input</span> condition, individual sampling
+steps $t_{0} \rightarrow t_{64}$, the next time step
+<span style="color:#40c057">estimate</span> and the
+<span style="color:#fa5252">target</span> output.
+
+</div>
+
+<div class="flex-container">
+
+![](./assets/diffusion.gif)
+
+![](./assets/diffusion_forward.png)
+
+</div>
+
+## Training at Scale
+
+- 
+
 ## Sequence-Window-Pipeline Parallelism `SWiPe`
 
 <div class="flex-container">
@@ -146,7 +201,7 @@ Figure 3: Model Architecture
 
 ![](./assets/wpsp.svg)
 
-Figure 4
+Figure 5
 
 </div>
 
@@ -156,11 +211,11 @@ Figure 4
 
 ![](./assets/comms1.svg)
 
-Figure 5: `SWiPe` Communication Patterns
+Figure 6: `SWiPe` Communication Patterns
 
 </div>
 
-## 🌌 Aurora
+## Aurora
 
 <div class="flex-container" style="align-items: center; gap:10pt;">
 
@@ -184,7 +239,7 @@ Table 3: Aurora Specs
 
 ![](./assets/aurora1.png)
 
-Figure 6: Aurora: [Fact
+Figure 7: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
@@ -200,7 +255,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 </div>
 
-## 🌎 AERIS: Scaling Results
+## AERIS: Scaling Results
 
 <div class="flex-container">
 
@@ -208,7 +263,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 ![](./assets/aeris-scaling.svg)
 
-Figure 7: AERIS: Scaling Results
+Figure 8: AERIS: Scaling Results
 
 </div>
 
@@ -223,49 +278,32 @@ Figure 7: AERIS: Scaling Results
 
 </div>
 
-## Limitations of Deterministic Models
+## Hurricane Laura
 
-<div class="flex-container">
+<div id="fig-hurricane-laura">
 
-<div class="flex-child">
+![](./assets/science/hurricane.png)
 
-- <span class="highlight-red"></span> **Transformers**:
-  - *Deterministic*
-  - Single input → single forecast
-
-</div>
-
-<div class="flex-child">
-
-- <span class="highlight-green"></span> **Diffusion**:
-  - *Probabilistic*
-  - Single input → ***ensemble of forecasts***
-  - Captures uncertainty and variability in weather predictions
-  - Enables ensemble forecasting for better risk assessment
+Figure 9: Hurricane Laura tracks (top) and intensity (bottom).
+Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 </div>
 
-</div>
+## Seasonal Forecast Stability
 
-## Transitioning to a Probabilistic Model
+<div id="fig-seasonal-forecast-stability">
 
-<div id="fig-forward-pass">
+![](./assets/science/s2s.png)
 
-![](./assets/diffusion/light.svg)
+1)  Spring barrier El Niño with realistic ensemble spread in the
+    ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90
+    days in the future from the
+    <span style="color:#65B8EE;">closest</span> ensemble member to the
+    ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies
+    (climatology removed; m/s), averaged between 10°S and 10°N, for a
+    90-day rollout.
 
-Figure 8: Reverse diffusion with the
-<span style="color:#228be6">input</span> condition, individual sampling
-steps $t_{0} \rightarrow t_{64}$, the next time step
-<span style="color:#40c057">estimate</span> and the
-<span style="color:#fa5252">target</span> output.
-
-</div>
-
-<div class="flex-container">
-
-![](./assets/diffusion.gif)
-
-![](./assets/diffusion_forward.png)
+Figure 10
 
 </div>
 
@@ -287,3 +325,5 @@ Systems Model for Reliable and Skillful Predictions.”
 
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
+
+[^2]: ~ 700,000k days
