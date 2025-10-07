@@ -22,9 +22,11 @@ Sam Foreman
 <img src="./assets/team.png" style="width:40.0%"
 alt="arXiv:2509.13523" />
 
-<img src="./assets/cover2.svg" class="light-content" />
+<img src="./assets/cover2.svg" class="light-content"
+style="width:80.0%" />
 
-<img src="./assets/cover1.svg" class="dark-content" />
+<img src="./assets/cover1.svg" class="dark-content"
+style="width:80.0%" />
 
 ## High-Level Overview of AERIS
 
@@ -227,17 +229,17 @@ Figure 7: AERIS: Scaling Results
 
 <div class="flex-child">
 
-- <span class="highlight-red"> **Transformers**</span>:
-  - Deterministic
-  - *Single initial condition* → *single forecast*
+- <span class="highlight-red"></span> **Transformers**:
+  - *Deterministic*
+  - Single input → single forecast
 
 </div>
 
 <div class="flex-child">
 
-- <span class="highlight-green"> **Diffusion**</span>:
-  - Probabilistic
-  - ***Single initial condition*** → ***ensemble of forecasts***
+- <span class="highlight-green"></span> **Diffusion**:
+  - *Probabilistic*
+  - Single input → ***ensemble of forecasts***
   - Captures uncertainty and variability in weather predictions
   - Enables ensemble forecasting for better risk assessment
 
@@ -261,7 +263,11 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 <div class="flex-container">
 
+<div class="flex-child" style="width:45%;">
+
 ![](./assets/diffusion_forward.png)
+
+</div>
 
 ![](./assets/diffusion.gif)
 
