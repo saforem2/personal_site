@@ -263,13 +263,9 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 <div class="flex-container">
 
-<div class="flex-child" style="width:45%;">
+![](./assets/diffusion.gif)
 
 ![](./assets/diffusion_forward.png)
-
-</div>
-
-![](./assets/diffusion.gif)
 
 </div>
 
