@@ -107,17 +107,50 @@ branches used for this demo:
 
     </details>
 
-- Install dependencies:
+- Install dependencies. From *inside your clone of `torchtitan`*:
 
-  ``` bash
-  # uv not required, but useful!
-  # to download: curl -LsSf https://astral.sh/uv/install.sh | sh
-  uv pip install "git+https://github.com/saforem2/ezpz"
-  # from my fork until PR #2 merged in zhenghh04/blendcorpus
-  python3 -m pip install "git+https://github.com/saforem2/blendcorpus@saforem2/reorg-imports"
-  # from inside auroraGPT-ANL/torchtitan @ saforem2/blendcorpus
-  python3 -m pip install -e "."
-  ```
+  - 🍋 ezpz:
+
+    ``` bash
+    # uv not required, but useful!
+    # to download: curl -LsSf https://astral.sh/uv/install.sh | sh
+    uv pip install "git+https://github.com/saforem2/ezpz"
+    ```
+
+  - 🍹 BlendCorpus:
+
+    ``` bash
+    git clone https://github.com/saforem2/blendcorpus deps/blendcorpus
+    cd deps/blendcorpus
+    git checkout reorg-imports
+    uv pip install -e "."
+    ```
+
+  - 🔥 TorchTitan:
+
+    ``` bash
+    python3 -m pip install "git+https://github.com/saforem2/blendcorpus@saforem2/reorg-imports"
+    # from inside auroraGPT-ANL/torchtitan @ saforem2/blendcorpus
+    python3 -m pip install -e "."
+    ```
+
+- Download Artifacts:
+
+  - AuroraGPT-2B:
+
+    ``` bash
+    python3 scripts/download_hf_assets.py --repo_id google/gemma-7b --assets tokenizer
+    mkdir assets/hf/AuroraGPT-2B
+    cp assets/hf/gemma-7b/tokenizer.model assets/hf/AuroraGPT-2B
+    ```
+
+  - AuroraGPT-7B:
+
+    ``` bash
+    python3 scripts/download_hf_assets.py --repo_id meta-llama/llama-2-7b-hf --assets tokenizer
+    mkdir assets/hf/AuroraGPT-7B
+    cp assets/hf/gemma-7b/tokenizer.model assets/hf/AuroraGPT-7B
+    ```
 
 - Launch:
 
@@ -673,8 +706,6 @@ branches used for this demo:
   [2025-09-12 11:42:06,522266][I][components/metrics:442:log] step: 83  loss:  5.1079  grad_norm:  2.0751  memory: 23.63GiB(36.93%)  tps: 1,911  tflops: 78.83  mfu: 26.44%
   [2025-09-12 11:42:08,668032][I][components/metrics:442:log] step: 84  loss:  5.0744  grad_norm:  1.4189  memory: 23.63GiB(36.93%)  tps: 1,911  tflops: 78.82  mfu: 26.43%
   ```
-
-- 
 
 [^1]: Submitted [PR
     \#2](https://github.com/zhenghh04/blendcorpus/pull/2)
