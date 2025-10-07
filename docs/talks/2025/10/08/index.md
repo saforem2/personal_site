@@ -2,8 +2,7 @@
 Sam Foreman
 2025-10-08
 
-- [🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful
-  Predictions](#earth_americas-aeris-argonne-earth-systems-model-for-reliable-and-skillful-predictions)
+- [🌎 AERIS](#earth_americas-aeris)
 - [High-Level Overview of AERIS](#high-level-overview-of-aeris)
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
@@ -12,17 +11,20 @@ Sam Foreman
   `SWiPe`](#sequence-window-pipeline-parallelism-swipe)
 - [🌌 Aurora](#milky_way-aurora)
 - [🌎 AERIS: Scaling Results](#earth_americas-aeris-scaling-results)
+- [Limitations of Deterministic
+  Models](#limitations-of-deterministic-models)
+- [Transitioning to a Probabilistic
+  Model](#transitioning-to-a-probabilistic-model)
 - [References](#references)
 
-## 🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions
+## 🌎 AERIS
 
-![On Behalf of the whole team](./assets/team.png)
-
-<img src="./assets/cover2.svg" class="light_content"
+<img src="./assets/team.png" style="width:40.0%"
 alt="arXiv:2509.13523" />
 
-<img src="./assets/cover1.svg" class="dark-content"
-alt="arXiv:2509.13523" />
+<img src="./assets/cover2.svg" class="light-content" />
+
+<img src="./assets/cover1.svg" class="dark-content" />
 
 ## High-Level Overview of AERIS
 
@@ -216,6 +218,52 @@ Figure 7: AERIS: Scaling Results
 - [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
+
+</div>
+
+## Limitations of Deterministic Models
+
+<div class="flex-container">
+
+<div class="flex-child">
+
+- <span class="highlight-red"> **Transformers**</span>:
+  - Deterministic
+  - *Single initial condition* → *single forecast*
+
+</div>
+
+<div class="flex-child">
+
+- <span class="highlight-green"> **Diffusion**</span>:
+  - Probabilistic
+  - ***Single initial condition*** → ***ensemble of forecasts***
+  - Captures uncertainty and variability in weather predictions
+  - Enables ensemble forecasting for better risk assessment
+
+</div>
+
+</div>
+
+## Transitioning to a Probabilistic Model
+
+<div id="fig-forward-pass">
+
+![](./assets/diffusion/light.svg)
+
+Figure 8: Reverse diffusion with the
+<span style="color:#228be6">input</span> condition, individual sampling
+steps $t_{0} \rightarrow t_{64}$, the next time step
+<span style="color:#40c057">estimate</span> and the
+<span style="color:#fa5252">target</span> output.
+
+</div>
+
+<div class="flex-container">
+
+![](./assets/diffusion_forward.png)
+
+![](./assets/diffusion.gif)
 
 </div>
 
