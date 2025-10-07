@@ -127,8 +127,12 @@ if __name__ == "__main__":
 
 ## Original Notes
 
-<img src="./assets/notes_light.png" class="light-content"
-alt="Original Notes" />
+<div id="fig-notes">
 
-<img src="./assets/notes_dark.png" class="dark-content"
-alt="Original Notes" />
+<img src="./assets/notes_light.png" class="light-content" />
+
+<img src="./assets/notes_dark.png" class="dark-content" />
+
+Figure 1: Original Notes
+
+</div>
