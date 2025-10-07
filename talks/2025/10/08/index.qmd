@@ -1,0 +1,290 @@
+---
+title: "AERIS"
+subtitle: "Argonne Earth Systems Model for Reliable and Skillful Predictions"
+description: "Presentation at the 2025 ALCF Hands On HPC Workshop"
+location: "[2025 ALCF Hands-on HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)"
+location-url: "https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop"
+date: 2025-10-08
+date-modified: last-modified
+number-sections: false
+image: ./assets/thumbnail.png
+lightbox: auto
+editor:
+  render-on-save: true
+twitter-card:
+  image: ./assets/thumbnail.png
+  site: "saforem2"
+  creator: "saforem2"
+  title: "AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions"
+  description: "Presented at the 2025 ALCF Hands-on HPC Workshop."
+open-graph:
+  title: "AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions"
+  description: "Presented at the 2025 ALCF Hands-on HPC Workshop."
+  image: "./assets/thumbnail.png"
+citation:
+   author: Sam Foreman
+   type: speech
+   url: https://samforeman.me/talks/2025/10/08/slides.html
+# toc-expand: true
+aliases:
+  - /talks/2025/aeris/index.html
+format:
+  html:
+    reader-mode: true
+    # toc-depth: 1
+    # grid:
+    # page-layout: full
+    #   body-width: 1000px
+    #   # margin-width: 250px
+    #   # sidebar-width: 250px
+    #   # gutter-width: 1.5rem
+    # shift-heading-level-by: 1
+    image: "./assets/thumbnail.png"
+    mermaid:
+      # theme: neutral
+      look: neo
+      layout: dagre
+      useMaxWidth: true
+  revealjs:
+    shift-heading-level-by: -1
+    image: "./assets/thumbnail.png"
+    footer: "[samforeman.me/talks/2025/10/08/slides](https://samforeman.me/talks/2025/10/08/slides.html)"
+    slide-url: https://samforeman.me/talks/2025/10/08/slides.html
+    mermaid:
+      layout: dagre
+      useMaxWidth: true
+    # title-slide-attributes:
+    title-slide-attributes:
+      data-background-image: ./assets/cover2.svg
+      data-background-size: contain
+      data-background-opacity: "0.5"
+      # data-background-color: "oklch(from #E599F7 l  c * 1.15 h / 0.1)"
+    # aliases:
+    # - /talks/alcf-hands-on-hpc-2025/slides.html
+  gfm: default
+---
+
+## 🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions {background-color="white"}
+
+![On Behalf of the whole team](./assets/team.png)
+
+![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/cover2.svg){.light_content}
+
+![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/cover1.svg){.dark-content}
+
+## High-Level Overview of AERIS {.smaller background-color="white"}
+
+::: {.flex-container}
+
+::: {#fig-rollout}
+![](./assets/rollout.gif)
+
+Rollout of AERIS model, specific humidity at 700m.
+:::
+
+::: {#tbl-aeris}
+
+|           Property | Description       |
+| -----------------: | :---------------- |
+|             Domain | Global            |
+|         Resolution | 0.25° \& 1.4°     |
+|      Training Data | ERA5 (1979--2018) |
+| Model Architecture | Swin Transformer  |
+|      Speedup[^pde] | O(10k--100k)      |
+
+: Overview of AERIS model and training setup {.responsive .striped .hover}
+
+:::
+
+:::
+
+[^pde]: Relative to PDE-based models, e.g.: [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
+
+## Model Overview {background-color="white"}
+
+::: {.flex-container style="align-items: flex-start;"}
+
+::: {style="width:33%;"}
+- **Dataset**: ECMWF Reanalysis v5 (ERA5)
+- **Variables**: Surface and pressure levels
+- **Usage**: Medium-range weather forecasting
+- **Partition**:
+  - Train: 1979--2018
+  - Val: 2019
+  - Test: 2020
+- **Data Size**: 100GB at 5.6° to 31TB at 0.25°
+:::
+
+::: {#tbl-data-vars}
+
+| Variable     | Description                   |
+| :-----------:| :---------------------------- |
+| `t2m`        | 2m Temperature                |
+| `X` `u`(`v`) | $u$ ($v$) wind component @ Xm |
+| `q`          | Specific Humidity             |
+| `z`          | Geopotential                  |
+| `msl`        | Mean Sea Level Pressure       |
+| `sst`        | Sea Surface Temperature       |
+| `lsm`        | Land-sea mask                 |
+
+: Variables used in AERIS training and prediction {.responsive .striped .hover}
+
+:::
+
+:::
+
+
+## Windowed Self-Attention {.smaller background-color="white"}
+
+::: {.flex-container}
+
+::: {.flex-child style="width:33%;"}
+- **Benefits for weather modeling**:
+  - Shifted windows capture both local patterns and long-range context
+  - Constant scale, windowed self-attention provides high-resolution forecasts
+  - Designed (currently) for fixed, 2D grids
+- **Inspiration from SOTA LLMs**:
+  - `RMSNorm`, `SwiGLU`, 2D `RoPE`
+:::
+
+::: {#fig-windowed-self-attention style="width:66%;"}
+![](./assets/swin-transformer.png)
+
+Windowed Self-Attention
+:::
+
+:::
+
+## Model Architecture: Details {background-color="white"}
+
+::: {.content-visible unless-format="revealjs"}
+
+::: {#fig-model-arch-details style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"}
+![](./assets/model_architecture.svg)
+
+Model Architecture
+:::
+
+:::
+
+::: {.content-visible when-format="revealjs"}
+
+::: {#fig-swipe-layer style="width:90%; text-align: center; margin-left: auto; margin-right: auto;"}
+![](./assets/model_architecture_light.svg)
+
+Model Architecture
+:::
+
+:::
+
+## Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}
+
+::: {.content-visible unless-format="revealjs"}
+
+::: {.flex-container}
+::: {.flex-child style="width:33%;"}
+- `SWiPe` is a **novel parallelism strategy** for Swin-based Transformers
+- Hybrid 3D Parallelism strategy, combining:
+  - Sequence parallelism (`SP`)
+  - Window parallelism (`WP`)
+  - Pipeline parallelism (`PP`)
+:::
+
+::: {#fig-swipe-layer style="width:66%;"}
+![](./assets/wpsp.svg)
+:::
+:::
+
+::: {#fig-comms style="width:80%; text-align: center; margin-left: auto; margin-right: auto; "}
+![](./assets/comms1.svg)
+
+`SWiPe` Communication Patterns
+:::
+:::
+
+::: {.content-visible when-format="revealjs"}
+
+::: {.flex-container}
+
+::: {.flex-child style="width:33%;"}
+- `SWiPe` is a **novel parallelism strategy** for Swin-based Transformers
+- Hybrid 3D Parallelism strategy, combining:
+  - Sequence parallelism (`SP`)
+  - Window parallelism (`WP`)
+  - Pipeline parallelism (`PP`)
+:::
+
+::: {#fig-swipe-layer style="width:66%;"}
+![](./assets/wpsp_light.svg)
+:::
+
+:::
+
+::: {#fig-comms style="width:60%; text-align: center; margin-left: auto; margin-right: auto;"}
+![](./assets/comms1_light.svg)
+
+`SWiPe` Communication Patterns
+:::
+
+:::
+
+## 🌌 Aurora {background-color="white"}
+
+::: {.flex-container style="align-items: center; gap:10pt;"}
+
+::: {.column #tbl-aurora}
+
+|     Property | Value   |
+| -----------: | :------ |
+|        Racks | 166     |
+|        Nodes | 10,624  |
+| XPUs[^tiles] | 127,488 |
+|         CPUs | 21,248  |
+|         NICs | 84,992  |
+|          HBM | 8 PB    |
+|        DDR5c | 10 PB   |
+
+: Aurora Specs {.responsive .striped .hover}
+
+:::
+
+::: {#fig-aurora .r-stretch}
+![](./assets/aurora1.png)
+
+Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
+:::
+
+:::
+
+::: aside
+1. Each node has 6 Intel Data Center GPU Max 1550 (code-named "Ponte Vecchio")
+   tiles, with 2 XPUs per tile.
+1. 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
+:::
+
+## 🌎 AERIS: Scaling Results {background-color="white"}
+
+::: {.flex-container}
+
+::: {.column #fig-aeris-scaling style="width:70%;"}
+
+![](./assets/aeris-scaling.svg)
+
+AERIS: Scaling Results
+
+:::
+
+::: {.column style="width:30%;"}
+
+- [**10 EFLOPs**]{.highlight-blue} (sustained) @ **120,960 GPUs**
+- See (@stock2025aeris) for additional details
+- [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+
+:::
+
+:::
+
+## References {background-color="white"}
+
+::: {#refs}
+:::

@@ -2,8 +2,8 @@
 Sam Foreman
 2025-10-08
 
-- [AERIS: Argonne Earth Systems Model for Reliable and Skillful
-  Predictions](#aeris-argonne-earth-systems-model-for-reliable-and-skillful-predictions)
+- [🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful
+  Predictions](#earth_americas-aeris-argonne-earth-systems-model-for-reliable-and-skillful-predictions)
 - [High-Level Overview of AERIS](#high-level-overview-of-aeris)
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
@@ -14,18 +14,15 @@ Sam Foreman
 - [🌎 AERIS: Scaling Results](#earth_americas-aeris-scaling-results)
 - [References](#references)
 
-------------------------------------------------------------------------
+## 🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions
 
-## AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions
+![On Behalf of the whole team](./assets/team.png)
 
-<div id="fig-cover">
+<img src="./assets/cover2.svg" class="light_content"
+alt="arXiv:2509.13523" />
 
-![](./assets/cover1.svg)  
-[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
-
-Figure 1
-
-</div>
+<img src="./assets/cover1.svg" class="dark-content"
+alt="arXiv:2509.13523" />
 
 ## High-Level Overview of AERIS
 
@@ -35,7 +32,7 @@ Figure 1
 
 ![](./assets/rollout.gif)
 
-Figure 2: Rollout of AERIS model, specific humidity at 700m.
+Figure 1: Rollout of AERIS model, specific humidity at 700m.
 
 </div>
 
@@ -76,15 +73,15 @@ Table 1: Overview of AERIS model and training setup
 
 Table 2: Variables used in AERIS training and prediction
 
-| Variable     | Description                   |
-|:-------------|:------------------------------|
-| `t2m`        | 2m Temperature                |
+|   Variable   | Description                   |
+|:------------:|:------------------------------|
+|    `t2m`     | 2m Temperature                |
 | `X` `u`(`v`) | $u$ ($v$) wind component @ Xm |
-| `q`          | Specific Humidity             |
-| `z`          | Geopotential                  |
-| `msl`        | Mean Sea Level Pressure       |
-| `sst`        | Sea Surface Temperature       |
-| `lsm`        | Land-sea mask                 |
+|     `q`      | Specific Humidity             |
+|     `z`      | Geopotential                  |
+|    `msl`     | Mean Sea Level Pressure       |
+|    `sst`     | Sea Surface Temperature       |
+|    `lsm`     | Land-sea mask                 |
 
 </div>
 
@@ -110,7 +107,7 @@ Table 2: Variables used in AERIS training and prediction
 
 ![](./assets/swin-transformer.png)
 
-Figure 3: Windowed Self-Attention
+Figure 2: Windowed Self-Attention
 
 </div>
 
@@ -122,7 +119,7 @@ Figure 3: Windowed Self-Attention
 
 ![](./assets/model_architecture.svg)
 
-Figure 4: Model Architecture
+Figure 3: Model Architecture
 
 </div>
 
@@ -145,7 +142,7 @@ Figure 4: Model Architecture
 
 ![](./assets/wpsp.svg)
 
-Figure 5
+Figure 4
 
 </div>
 
@@ -155,46 +152,47 @@ Figure 5
 
 ![](./assets/comms1.svg)
 
-Figure 6: `SWiPe` Communication Patterns
+Figure 5: `SWiPe` Communication Patterns
 
 </div>
 
 ## 🌌 Aurora
 
-<div class="flex-container" style="align-items: center;">
-
-<div class="column" style="width:5%;">
+<div class="flex-container" style="align-items: center; gap:10pt;">
 
 <div id="tbl-aurora">
 
 Table 3: Aurora Specs
 
-|       |        |
-|------:|:-------|
-| Racks | 166    |
-| Nodes | 10,624 |
-|  CPUs | 21,248 |
-|  GPUs | 63,744 |
-|  NICs | 84,992 |
-|   HBM | 8 PB   |
-| DDR5c | 10 PB  |
+|       Property | Value   |
+|---------------:|:--------|
+|          Racks | 166     |
+|          Nodes | 10,624  |
+| XPUs\[^tiles\] | 127,488 |
+|           CPUs | 21,248  |
+|           NICs | 84,992  |
+|            HBM | 8 PB    |
+|          DDR5c | 10 PB   |
 
 </div>
-
-</div>
-
-<div class="column" style="text-align:center">
 
 <div id="fig-aurora">
 
-![](./assets/aurora.png)
+![](./assets/aurora1.png)
 
-Figure 7: Aurora[^2]: [Fact
+Figure 6: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
 
 </div>
+
+<div class="aside">
+
+1.  Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
+    Vecchio”) tiles, with 2 XPUs per tile.
+2.  🏆 [Aurora Supercomputer Ranks Fastest for
+    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
 </div>
 
@@ -206,7 +204,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 ![](./assets/aeris-scaling.svg)
 
-Figure 8: AERIS: Scaling Results
+Figure 7: AERIS: Scaling Results
 
 </div>
 
@@ -239,8 +237,3 @@ Systems Model for Reliable and Skillful Predictions.”
 
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
-
-[^2]:
-
-    🏆 [Aurora Supercomputer Ranks Fastest for
-    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
