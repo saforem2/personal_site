@@ -44,8 +44,8 @@ Figure 1: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 <div class="flex-child" style="width:43.6%;">
 
-<img src="./assets/cover2.svg" class="light-content"
-alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25" />
+![ACM Gordon Bell Prize for Climate Modeling Finalist @
+SC’25](./assets/cover2.svg)
 
 </div>
 
