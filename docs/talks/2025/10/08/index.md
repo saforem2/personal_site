@@ -293,14 +293,17 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 <div id="fig-seasonal-forecast-stability">
 
-<img src="./assets/science/s2s.png" style="width:90.0%" />
+![](./assets/science/s2s.png)
 
-Figure 10: S2S Stability: (a) Spring barrier El Niño with realistic
-ensemble spread in the ocean; (b) qualitatively sharp fields of SST and
-Q700 predicted 90 days in the future from the
-<span style="color:#65B8EE;">closest</span> ensemble member to the ERA5
-in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology
-removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
+1)  Spring barrier El Niño with realistic ensemble spread in the
+    ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90
+    days in the future from the
+    <span style="color:#65B8EE;">closest</span> ensemble member to the
+    ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies
+    (climatology removed; m/s), averaged between 10°S and 10°N, for a
+    90-day rollout.
+
+Figure 10
 
 </div>
 
@@ -323,4 +326,4 @@ Systems Model for Reliable and Skillful Predictions.”
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-[^2]: ~ 14,000 days of data
+[^2]: ~ 700,000k days

@@ -1,6 +1,7 @@
 ---
 title: "AERIS"
-subtitle: "Argonne Earth Systems Model for Reliable and Skillful Predictions"
+subtitle: "Argonne's Earth Systems Model"
+# subtitle: "Argonne Earth Systems Model for Reliable and Skillful Predictions"
 description: "Presentation at the 2025 ALCF Hands On HPC Workshop"
 location: "[2025 ALCF Hands-on HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)"
 location-url: "https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop"
@@ -55,7 +56,7 @@ format:
       useMaxWidth: true
     # title-slide-attributes:
     title-slide-attributes:
-      data-background-image: ./assets/cover2.svg
+      data-background-image: ./assets/cover0.svg
       data-background-size: contain
       data-background-opacity: "0.5"
       # data-background-color: "oklch(from #E599F7 l  c * 1.15 h / 0.1)"
@@ -64,13 +65,29 @@ format:
   gfm: default
 ---
 
-## 🌎 AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions {background-color="white"}
+## 🌎 AERIS {background-color="white"}
 
-![On Behalf of the whole team](./assets/team.png)
+::: {.flex-container}
 
-![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/cover2.svg){.light_content}
+::: {.flex-child #fig-arxiv style="width:150%;"}
 
-![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/cover1.svg){.dark-content}
+![](./assets/team.png)
+
+[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+:::
+
+::: {.content-visible unless-format="revealjs"}
+![](./assets/cover2.svg){.light-content width="80%"}
+
+![](./assets/cover1.svg){.dark-content width="80%"}
+:::
+
+::: {.content-visible when-format="revealjs" style="margin-left: auto; margin-right: auto;"}
+![](./assets/cover2.svg){.light-content width="80%"}
+:::
+
+:::
+
 
 ## High-Level Overview of AERIS {.smaller background-color="white"}
 
@@ -104,17 +121,6 @@ Rollout of AERIS model, specific humidity at 700m.
 
 ::: {.flex-container style="align-items: flex-start;"}
 
-::: {style="width:33%;"}
-- **Dataset**: ECMWF Reanalysis v5 (ERA5)
-- **Variables**: Surface and pressure levels
-- **Usage**: Medium-range weather forecasting
-- **Partition**:
-  - Train: 1979--2018
-  - Val: 2019
-  - Test: 2020
-- **Data Size**: 100GB at 5.6° to 31TB at 0.25°
-:::
-
 ::: {#tbl-data-vars}
 
 | Variable     | Description                   |
@@ -131,8 +137,20 @@ Rollout of AERIS model, specific humidity at 700m.
 
 :::
 
+::: {.flex-child}
+- **Dataset**: ECMWF Reanalysis v5 (ERA5)
+- **Variables**: Surface and pressure levels
+- **Usage**: Medium-range weather forecasting
+- **Partition**:
+  - Train: 1979--2018[^days]
+  - Val: 2019
+  - Test: 2020
+- **Data Size**: 100GB at 5.6° to 31TB at 0.25°
 :::
 
+[^days]: ~ 14,000 days of data
+
+:::
 
 ## Windowed Self-Attention {.smaller background-color="white"}
 
@@ -176,6 +194,55 @@ Model Architecture
 :::
 
 :::
+
+## Limitations of Deterministic Models {background-color="white"}
+
+::: {.flex-container}
+
+::: {.flex-child}
+- [{{< iconify material-symbols close>}}]{.red-text} [**Transformers**]{.highlight-red}:
+  - *Deterministic*
+  - Single input → single forecast
+:::
+
+::: {.flex-child}
+
+<!-- {{< iconify ph github-logo-duotone >}} -->
+
+- [{{<iconify material-symbols check>}}]{.green-text} [**Diffusion**]{.highlight-green}:
+  - *Probabilistic*
+  - Single input → _**ensemble of forecasts**_
+  - Captures uncertainty and variability in weather predictions
+  - Enables ensemble forecasting for better risk assessment
+:::
+
+:::
+
+## Transitioning to a Probabilistic Model {background-color="white"}
+
+::: {#fig-forward-pass}
+
+![](./assets/diffusion/light.svg)
+
+Reverse diffusion with the [input]{style="color:#228be6"} condition, individual
+sampling steps $t_{0} \rightarrow t_{64}$, the next time step
+[estimate]{style="color:#40c057"} and the [target]{style="color:#fa5252"}
+output.
+:::
+
+::: {.flex-container}
+
+![](./assets/diffusion.gif)
+
+![](./assets/diffusion_forward.png)
+
+:::
+
+
+## Training at Scale
+
+- 
+
 
 ## Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}
 
@@ -228,7 +295,7 @@ Model Architecture
 
 :::
 
-## 🌌 Aurora {background-color="white"}
+## Aurora {background-color="white" style="width:100%"}
 
 ::: {.flex-container style="align-items: center; gap:10pt;"}
 
@@ -262,7 +329,7 @@ Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora
 1. 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 :::
 
-## 🌎 AERIS: Scaling Results {background-color="white"}
+## AERIS: Scaling Results {background-color="white"}
 
 ::: {.flex-container}
 
@@ -282,6 +349,29 @@ AERIS: Scaling Results
 
 :::
 
+:::
+
+## Hurricane Laura {background-color="white"}
+
+::: {#fig-hurricane-laura}
+
+![](./assets/science/hurricane.png)
+
+Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and
+3(c) days prior to 2020-08-28T00z.
+:::
+
+## Seasonal Forecast Stability {.smaller background-color="white"}
+
+::: {#fig-seasonal-forecast-stability style="text-align: center; margin-left: auto; margin-right: auto;"}
+
+![](./assets/science/s2s.png){width="90%"}
+
+S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the
+ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the
+future from the [closest]{style="color:#65B8EE;"} ensemble member to the ERA5
+in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology
+removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 :::
 
 ## References {background-color="white"}
