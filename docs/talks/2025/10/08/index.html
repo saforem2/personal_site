@@ -102,8 +102,8 @@ div.csl-indent {
 <link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-17df131403ba242817670f5f856a4652.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-7074c760826ccd55cbddbdbcce215411.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark-cb7a72ba8b628e73171d4c47e77610f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-b09e2e756596e6b50a0b4f8d94333ecd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-8b5b70158666e1e902a24ed342e07c5f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -1943,6 +1943,7 @@ window.Quarto = {
   <li><a href="#model-overview" id="toc-model-overview" class="nav-link" data-scroll-target="#model-overview">Model Overview</a></li>
   <li><a href="#windowed-self-attention" id="toc-windowed-self-attention" class="nav-link" data-scroll-target="#windowed-self-attention">Windowed Self-Attention</a></li>
   <li><a href="#model-architecture-details" id="toc-model-architecture-details" class="nav-link" data-scroll-target="#model-architecture-details">Model Architecture: Details</a></li>
+  <li><a href="#overview-of-diffusion-models" id="toc-overview-of-diffusion-models" class="nav-link" data-scroll-target="#overview-of-diffusion-models">Overview of Diffusion Models</a></li>
   <li><a href="#limitations-of-deterministic-models" id="toc-limitations-of-deterministic-models" class="nav-link" data-scroll-target="#limitations-of-deterministic-models">Limitations of Deterministic Models</a></li>
   <li><a href="#transitioning-to-a-probabilistic-model" id="toc-transitioning-to-a-probabilistic-model" class="nav-link" data-scroll-target="#transitioning-to-a-probabilistic-model">Transitioning to a Probabilistic Model</a></li>
   <li><a href="#training-at-scale" id="toc-training-at-scale" class="nav-link" data-scroll-target="#training-at-scale">Training at Scale</a></li>
@@ -2098,13 +2099,13 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <section id="contributions" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="contributions">Contributions</h2>
 <div class="flex-container">
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="🌋 AERIS">
+<div class="callout callout-style-simple callout-caution no-icon callout-titled" title="☔ AERIS">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>🌋 AERIS
+<span class="screen-reader-only">Caution</span>☔ AERIS
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2252,6 +2253,24 @@ Figure&nbsp;4: Model Architecture
 </figcaption>
 </figure>
 </div>
+</section>
+<section id="overview-of-diffusion-models" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-diffusion-models">Overview of Diffusion Models</h2>
+<ul>
+<li><p>We would like to (efficiently) draw samples from a (potentially unknown) <em>target</em> distribution <span class="math inline">q(\cdot)</span>.</p></li>
+<li><p>Suppose we have a sample which is known to be drawn from the target distribution, i.e.&nbsp;<span class="math inline">x_{0} \sim q(x)</span>.</p></li>
+<li><p>We define the <em>forward diffusion process</em> to be that which gradually adds noise over <span class="math inline">T</span> steps, producing a sequence <span class="math inline">x_{0} \rightarrow {x_{1}, \cdots, x_{T}\}</span>.</p>
+<ul>
+<li><p>Step sizes controlled by a <em>variance schedule</em> <span class="math inline">\{\beta\}_{t=1}^{T}</span>, with <span class="math inline">\beta_{t} \in (0, 1)</span>:</p>
+<p><span class="math display">\begin{aligned}
+q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+\end{aligned}</span></p></li>
+</ul></li>
+<li><p>Define a <em>forward diffusion process</em> in which noise is gradually added to a</p></li>
+<li><p>k</p></li>
+<li><p>Define a <em>forward diffusion process</em> which gradually (over <span class="math inline">T</span> steps) adds noise to a given sample <span class="math inline">\mathbf{x} \sim q(\mathbf{x})</span></p></li>
+</ul>
 </section>
 <section id="limitations-of-deterministic-models" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="limitations-of-deterministic-models">Limitations of Deterministic Models</h2>
@@ -3173,7 +3192,7 @@ Reliable and Skillful Predictions.”</span> October 8. <a href="https://samfore
 <span id="cb1-129"><a href="#cb1-129"></a></span>
 <span id="cb1-130"><a href="#cb1-130"></a>::: {.flex-container}</span>
 <span id="cb1-131"><a href="#cb1-131"></a></span>
-<span id="cb1-132"><a href="#cb1-132"></a>::: {.callout-important icon=false title="🌋 AERIS"}</span>
+<span id="cb1-132"><a href="#cb1-132"></a>::: {.callout-caution icon=false title="☔ AERIS"}</span>
 <span id="cb1-133"><a href="#cb1-133"></a>_The first billion-parameter diffusion model for weather and climate_</span>
 <span id="cb1-134"><a href="#cb1-134"></a></span>
 <span id="cb1-135"><a href="#cb1-135"></a><span class="ss">- </span>Operates at the pixel level (1 × 1 patch size) </span>
@@ -3272,215 +3291,240 @@ Reliable and Skillful Predictions.”</span> October 8. <a href="https://samfore
 <span id="cb1-228"><a href="#cb1-228"></a></span>
 <span id="cb1-229"><a href="#cb1-229"></a>:::</span>
 <span id="cb1-230"><a href="#cb1-230"></a></span>
-<span id="cb1-231"><a href="#cb1-231"></a><span class="fu">## Limitations of Deterministic Models {background-color="white"}</span></span>
+<span id="cb1-231"><a href="#cb1-231"></a><span class="fu">## Overview of Diffusion Models</span></span>
 <span id="cb1-232"><a href="#cb1-232"></a></span>
-<span id="cb1-233"><a href="#cb1-233"></a>::: {.flex-container}</span>
-<span id="cb1-234"><a href="#cb1-234"></a></span>
-<span id="cb1-235"><a href="#cb1-235"></a>::: {.flex-child}</span>
-<span id="cb1-236"><a href="#cb1-236"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt; iconify material-symbols close&gt;}}</span><span class="co">]</span>{.red-text} <span class="co">[</span><span class="ot">**Transformers**</span><span class="co">]</span>{.highlight-red}:</span>
-<span id="cb1-237"><a href="#cb1-237"></a><span class="ss">  - </span>*Deterministic*</span>
-<span id="cb1-238"><a href="#cb1-238"></a><span class="ss">  - </span>Single input → single forecast</span>
-<span id="cb1-239"><a href="#cb1-239"></a>:::</span>
-<span id="cb1-240"><a href="#cb1-240"></a></span>
-<span id="cb1-241"><a href="#cb1-241"></a>::: {.flex-child}</span>
-<span id="cb1-242"><a href="#cb1-242"></a></span>
-<span id="cb1-243"><a href="#cb1-243"></a><span class="co">&lt;!-- {{&lt; iconify ph github-logo-duotone &gt;}} --&gt;</span></span>
+<span id="cb1-233"><a href="#cb1-233"></a><span class="ss">- </span>We would like to (efficiently) draw samples from a (potentially unknown)</span>
+<span id="cb1-234"><a href="#cb1-234"></a>  _target_ distribution $q(\cdot)$.</span>
+<span id="cb1-235"><a href="#cb1-235"></a></span>
+<span id="cb1-236"><a href="#cb1-236"></a><span class="ss">- </span>Suppose we have a sample which is known to be drawn from the target</span>
+<span id="cb1-237"><a href="#cb1-237"></a>  distribution, i.e. $x_{0} \sim q(x)$.</span>
+<span id="cb1-238"><a href="#cb1-238"></a><span class="ss">- </span>We define the _forward diffusion process_ to be that which gradually adds</span>
+<span id="cb1-239"><a href="#cb1-239"></a>  noise over $T$ steps, producing a sequence</span>
+<span id="cb1-240"><a href="#cb1-240"></a>  $x_{0} \rightarrow \{x_{1}, \cdots, x_{T}<span class="sc">\}</span>$.</span>
+<span id="cb1-241"><a href="#cb1-241"></a></span>
+<span id="cb1-242"><a href="#cb1-242"></a><span class="ss">  - </span>Step sizes controlled by a _variance schedule_ $\{\beta\}_{t=1}^{T}$, with</span>
+<span id="cb1-243"><a href="#cb1-243"></a>    $\beta_{t} \in (0, 1)$:</span>
 <span id="cb1-244"><a href="#cb1-244"></a></span>
-<span id="cb1-245"><a href="#cb1-245"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt;iconify material-symbols check&gt;}}</span><span class="co">]</span>{.green-text} <span class="co">[</span><span class="ot">**Diffusion**</span><span class="co">]</span>{.highlight-green}:</span>
-<span id="cb1-246"><a href="#cb1-246"></a><span class="ss">  - </span>*Probabilistic*</span>
-<span id="cb1-247"><a href="#cb1-247"></a><span class="ss">  - </span>Single input → _**ensemble of forecasts**_</span>
-<span id="cb1-248"><a href="#cb1-248"></a><span class="ss">  - </span>Captures uncertainty and variability in weather predictions</span>
-<span id="cb1-249"><a href="#cb1-249"></a><span class="ss">  - </span>Enables ensemble forecasting for better risk assessment</span>
-<span id="cb1-250"><a href="#cb1-250"></a>:::</span>
+<span id="cb1-245"><a href="#cb1-245"></a>    $$\begin{aligned}</span>
+<span id="cb1-246"><a href="#cb1-246"></a>    q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) <span class="sc">\\</span></span>
+<span id="cb1-247"><a href="#cb1-247"></a>    q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})</span>
+<span id="cb1-248"><a href="#cb1-248"></a>    \end{aligned}$$</span>
+<span id="cb1-249"><a href="#cb1-249"></a></span>
+<span id="cb1-250"><a href="#cb1-250"></a><span class="ss">- </span>Define a _forward diffusion process_ in which noise is gradually added to a</span>
 <span id="cb1-251"><a href="#cb1-251"></a></span>
-<span id="cb1-252"><a href="#cb1-252"></a>:::</span>
-<span id="cb1-253"><a href="#cb1-253"></a></span>
-<span id="cb1-254"><a href="#cb1-254"></a><span class="fu">## Transitioning to a Probabilistic Model {background-color="white"}</span></span>
+<span id="cb1-252"><a href="#cb1-252"></a><span class="ss">- </span>k</span>
+<span id="cb1-253"><a href="#cb1-253"></a><span class="ss">- </span>Define a _forward diffusion process_ which gradually (over $T$ steps) adds</span>
+<span id="cb1-254"><a href="#cb1-254"></a>  noise to a given sample $\mathbf{x} \sim q(\mathbf{x})$</span>
 <span id="cb1-255"><a href="#cb1-255"></a></span>
-<span id="cb1-256"><a href="#cb1-256"></a>::: {#fig-forward-pass}</span>
+<span id="cb1-256"><a href="#cb1-256"></a><span class="fu">## Limitations of Deterministic Models {background-color="white"}</span></span>
 <span id="cb1-257"><a href="#cb1-257"></a></span>
-<span id="cb1-258"><a href="#cb1-258"></a><span class="al">![](./assets/diffusion/light.svg)</span></span>
+<span id="cb1-258"><a href="#cb1-258"></a>::: {.flex-container}</span>
 <span id="cb1-259"><a href="#cb1-259"></a></span>
-<span id="cb1-260"><a href="#cb1-260"></a>Reverse diffusion with the <span class="co">[</span><span class="ot">input</span><span class="co">]</span>{style="color:#228be6"} condition, individual</span>
-<span id="cb1-261"><a href="#cb1-261"></a>sampling steps $t_{0} \rightarrow t_{64}$, the next time step</span>
-<span id="cb1-262"><a href="#cb1-262"></a><span class="co">[</span><span class="ot">estimate</span><span class="co">]</span>{style="color:#40c057"} and the <span class="co">[</span><span class="ot">target</span><span class="co">]</span>{style="color:#fa5252"}</span>
-<span id="cb1-263"><a href="#cb1-263"></a>output.</span>
+<span id="cb1-260"><a href="#cb1-260"></a>::: {.flex-child}</span>
+<span id="cb1-261"><a href="#cb1-261"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt; iconify material-symbols close&gt;}}</span><span class="co">]</span>{.red-text} <span class="co">[</span><span class="ot">**Transformers**</span><span class="co">]</span>{.highlight-red}:</span>
+<span id="cb1-262"><a href="#cb1-262"></a><span class="ss">  - </span>*Deterministic*</span>
+<span id="cb1-263"><a href="#cb1-263"></a><span class="ss">  - </span>Single input → single forecast</span>
 <span id="cb1-264"><a href="#cb1-264"></a>:::</span>
 <span id="cb1-265"><a href="#cb1-265"></a></span>
-<span id="cb1-266"><a href="#cb1-266"></a>::: {.flex-container}</span>
+<span id="cb1-266"><a href="#cb1-266"></a>::: {.flex-child}</span>
 <span id="cb1-267"><a href="#cb1-267"></a></span>
-<span id="cb1-268"><a href="#cb1-268"></a><span class="al">![Reverse Diffusion Process ($\mathcal{N}\rightarrow \pi)](./assets/diffusion.gif)</span></span>
+<span id="cb1-268"><a href="#cb1-268"></a><span class="co">&lt;!-- {{&lt; iconify ph github-logo-duotone &gt;}} --&gt;</span></span>
 <span id="cb1-269"><a href="#cb1-269"></a></span>
-<span id="cb1-270"><a href="#cb1-270"></a><span class="al">![Forward Diffusion Process ($\pi\rightarrow \mathcal{N}$)](./assets/diffusion_forward.png)</span>{width="89.6%"}</span>
-<span id="cb1-271"><a href="#cb1-271"></a></span>
-<span id="cb1-272"><a href="#cb1-272"></a>:::</span>
-<span id="cb1-273"><a href="#cb1-273"></a></span>
-<span id="cb1-274"><a href="#cb1-274"></a></span>
-<span id="cb1-275"><a href="#cb1-275"></a><span class="fu">## Training at Scale</span></span>
+<span id="cb1-270"><a href="#cb1-270"></a><span class="ss">- </span><span class="co">[</span><span class="ot">{{&lt;iconify material-symbols check&gt;}}</span><span class="co">]</span>{.green-text} <span class="co">[</span><span class="ot">**Diffusion**</span><span class="co">]</span>{.highlight-green}:</span>
+<span id="cb1-271"><a href="#cb1-271"></a><span class="ss">  - </span>*Probabilistic*</span>
+<span id="cb1-272"><a href="#cb1-272"></a><span class="ss">  - </span>Single input → _**ensemble of forecasts**_</span>
+<span id="cb1-273"><a href="#cb1-273"></a><span class="ss">  - </span>Captures uncertainty and variability in weather predictions</span>
+<span id="cb1-274"><a href="#cb1-274"></a><span class="ss">  - </span>Enables ensemble forecasting for better risk assessment</span>
+<span id="cb1-275"><a href="#cb1-275"></a>:::</span>
 <span id="cb1-276"><a href="#cb1-276"></a></span>
-<span id="cb1-277"><a href="#cb1-277"></a><span class="ss">- </span></span>
+<span id="cb1-277"><a href="#cb1-277"></a>:::</span>
 <span id="cb1-278"><a href="#cb1-278"></a></span>
-<span id="cb1-279"><a href="#cb1-279"></a></span>
-<span id="cb1-280"><a href="#cb1-280"></a><span class="fu">## Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}</span></span>
-<span id="cb1-281"><a href="#cb1-281"></a></span>
-<span id="cb1-282"><a href="#cb1-282"></a>::: {.content-visible unless-format="revealjs"}</span>
-<span id="cb1-283"><a href="#cb1-283"></a></span>
-<span id="cb1-284"><a href="#cb1-284"></a>::: {.flex-container}</span>
-<span id="cb1-285"><a href="#cb1-285"></a>::: {.flex-child style="width:33%;"}</span>
-<span id="cb1-286"><a href="#cb1-286"></a><span class="ss">- </span><span class="in">`SWiPe`</span> is a **novel parallelism strategy** for Swin-based Transformers</span>
-<span id="cb1-287"><a href="#cb1-287"></a><span class="ss">- </span>Hybrid 3D Parallelism strategy, combining:</span>
-<span id="cb1-288"><a href="#cb1-288"></a><span class="ss">  - </span>Sequence parallelism (<span class="in">`SP`</span>)</span>
-<span id="cb1-289"><a href="#cb1-289"></a><span class="ss">  - </span>Window parallelism (<span class="in">`WP`</span>)</span>
-<span id="cb1-290"><a href="#cb1-290"></a><span class="ss">  - </span>Pipeline parallelism (<span class="in">`PP`</span>)</span>
-<span id="cb1-291"><a href="#cb1-291"></a>:::</span>
+<span id="cb1-279"><a href="#cb1-279"></a><span class="fu">## Transitioning to a Probabilistic Model {background-color="white"}</span></span>
+<span id="cb1-280"><a href="#cb1-280"></a></span>
+<span id="cb1-281"><a href="#cb1-281"></a>::: {#fig-forward-pass}</span>
+<span id="cb1-282"><a href="#cb1-282"></a></span>
+<span id="cb1-283"><a href="#cb1-283"></a><span class="al">![](./assets/diffusion/light.svg)</span></span>
+<span id="cb1-284"><a href="#cb1-284"></a></span>
+<span id="cb1-285"><a href="#cb1-285"></a>Reverse diffusion with the <span class="co">[</span><span class="ot">input</span><span class="co">]</span>{style="color:#228be6"} condition, individual</span>
+<span id="cb1-286"><a href="#cb1-286"></a>sampling steps $t_{0} \rightarrow t_{64}$, the next time step</span>
+<span id="cb1-287"><a href="#cb1-287"></a><span class="co">[</span><span class="ot">estimate</span><span class="co">]</span>{style="color:#40c057"} and the <span class="co">[</span><span class="ot">target</span><span class="co">]</span>{style="color:#fa5252"}</span>
+<span id="cb1-288"><a href="#cb1-288"></a>output.</span>
+<span id="cb1-289"><a href="#cb1-289"></a>:::</span>
+<span id="cb1-290"><a href="#cb1-290"></a></span>
+<span id="cb1-291"><a href="#cb1-291"></a>::: {.flex-container}</span>
 <span id="cb1-292"><a href="#cb1-292"></a></span>
-<span id="cb1-293"><a href="#cb1-293"></a>::: {#fig-swipe-layer style="width:66%;"}</span>
-<span id="cb1-294"><a href="#cb1-294"></a><span class="al">![](./assets/wpsp.svg)</span></span>
-<span id="cb1-295"><a href="#cb1-295"></a>:::</span>
-<span id="cb1-296"><a href="#cb1-296"></a>:::</span>
-<span id="cb1-297"><a href="#cb1-297"></a></span>
-<span id="cb1-298"><a href="#cb1-298"></a>::: {#fig-comms style="width:80%; text-align: center; margin-left: auto; margin-right: auto; "}</span>
-<span id="cb1-299"><a href="#cb1-299"></a><span class="al">![](./assets/comms1.svg)</span></span>
-<span id="cb1-300"><a href="#cb1-300"></a></span>
-<span id="cb1-301"><a href="#cb1-301"></a><span class="in">`SWiPe`</span> Communication Patterns</span>
-<span id="cb1-302"><a href="#cb1-302"></a>:::</span>
-<span id="cb1-303"><a href="#cb1-303"></a>:::</span>
+<span id="cb1-293"><a href="#cb1-293"></a><span class="al">![Reverse Diffusion Process ($\mathcal{N}\rightarrow \pi)](./assets/diffusion.gif)</span></span>
+<span id="cb1-294"><a href="#cb1-294"></a></span>
+<span id="cb1-295"><a href="#cb1-295"></a><span class="al">![Forward Diffusion Process ($\pi\rightarrow \mathcal{N}$)](./assets/diffusion_forward.png)</span>{width="89.6%"}</span>
+<span id="cb1-296"><a href="#cb1-296"></a></span>
+<span id="cb1-297"><a href="#cb1-297"></a>:::</span>
+<span id="cb1-298"><a href="#cb1-298"></a></span>
+<span id="cb1-299"><a href="#cb1-299"></a></span>
+<span id="cb1-300"><a href="#cb1-300"></a><span class="fu">## Training at Scale</span></span>
+<span id="cb1-301"><a href="#cb1-301"></a></span>
+<span id="cb1-302"><a href="#cb1-302"></a><span class="ss">- </span></span>
+<span id="cb1-303"><a href="#cb1-303"></a></span>
 <span id="cb1-304"><a href="#cb1-304"></a></span>
-<span id="cb1-305"><a href="#cb1-305"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb1-305"><a href="#cb1-305"></a><span class="fu">## Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}</span></span>
 <span id="cb1-306"><a href="#cb1-306"></a></span>
-<span id="cb1-307"><a href="#cb1-307"></a>::: {.flex-container}</span>
+<span id="cb1-307"><a href="#cb1-307"></a>::: {.content-visible unless-format="revealjs"}</span>
 <span id="cb1-308"><a href="#cb1-308"></a></span>
-<span id="cb1-309"><a href="#cb1-309"></a>::: {.flex-child style="width:33%;"}</span>
-<span id="cb1-310"><a href="#cb1-310"></a><span class="ss">- </span><span class="in">`SWiPe`</span> is a **novel parallelism strategy** for Swin-based Transformers</span>
-<span id="cb1-311"><a href="#cb1-311"></a><span class="ss">- </span>Hybrid 3D Parallelism strategy, combining:</span>
-<span id="cb1-312"><a href="#cb1-312"></a><span class="ss">  - </span>Sequence parallelism (<span class="in">`SP`</span>)</span>
-<span id="cb1-313"><a href="#cb1-313"></a><span class="ss">  - </span>Window parallelism (<span class="in">`WP`</span>)</span>
-<span id="cb1-314"><a href="#cb1-314"></a><span class="ss">  - </span>Pipeline parallelism (<span class="in">`PP`</span>)</span>
-<span id="cb1-315"><a href="#cb1-315"></a>:::</span>
-<span id="cb1-316"><a href="#cb1-316"></a></span>
-<span id="cb1-317"><a href="#cb1-317"></a>::: {#fig-swipe-layer style="width:66%;"}</span>
-<span id="cb1-318"><a href="#cb1-318"></a><span class="al">![](./assets/wpsp_light.svg)</span></span>
-<span id="cb1-319"><a href="#cb1-319"></a>:::</span>
-<span id="cb1-320"><a href="#cb1-320"></a></span>
+<span id="cb1-309"><a href="#cb1-309"></a>::: {.flex-container}</span>
+<span id="cb1-310"><a href="#cb1-310"></a>::: {.flex-child style="width:33%;"}</span>
+<span id="cb1-311"><a href="#cb1-311"></a><span class="ss">- </span><span class="in">`SWiPe`</span> is a **novel parallelism strategy** for Swin-based Transformers</span>
+<span id="cb1-312"><a href="#cb1-312"></a><span class="ss">- </span>Hybrid 3D Parallelism strategy, combining:</span>
+<span id="cb1-313"><a href="#cb1-313"></a><span class="ss">  - </span>Sequence parallelism (<span class="in">`SP`</span>)</span>
+<span id="cb1-314"><a href="#cb1-314"></a><span class="ss">  - </span>Window parallelism (<span class="in">`WP`</span>)</span>
+<span id="cb1-315"><a href="#cb1-315"></a><span class="ss">  - </span>Pipeline parallelism (<span class="in">`PP`</span>)</span>
+<span id="cb1-316"><a href="#cb1-316"></a>:::</span>
+<span id="cb1-317"><a href="#cb1-317"></a></span>
+<span id="cb1-318"><a href="#cb1-318"></a>::: {#fig-swipe-layer style="width:66%;"}</span>
+<span id="cb1-319"><a href="#cb1-319"></a><span class="al">![](./assets/wpsp.svg)</span></span>
+<span id="cb1-320"><a href="#cb1-320"></a>:::</span>
 <span id="cb1-321"><a href="#cb1-321"></a>:::</span>
 <span id="cb1-322"><a href="#cb1-322"></a></span>
-<span id="cb1-323"><a href="#cb1-323"></a>::: {#fig-comms style="width:60%; text-align: center; margin-left: auto; margin-right: auto;"}</span>
-<span id="cb1-324"><a href="#cb1-324"></a><span class="al">![](./assets/comms1_light.svg)</span></span>
+<span id="cb1-323"><a href="#cb1-323"></a>::: {#fig-comms style="width:80%; text-align: center; margin-left: auto; margin-right: auto; "}</span>
+<span id="cb1-324"><a href="#cb1-324"></a><span class="al">![](./assets/comms1.svg)</span></span>
 <span id="cb1-325"><a href="#cb1-325"></a></span>
 <span id="cb1-326"><a href="#cb1-326"></a><span class="in">`SWiPe`</span> Communication Patterns</span>
 <span id="cb1-327"><a href="#cb1-327"></a>:::</span>
-<span id="cb1-328"><a href="#cb1-328"></a></span>
-<span id="cb1-329"><a href="#cb1-329"></a>:::</span>
-<span id="cb1-330"><a href="#cb1-330"></a></span>
-<span id="cb1-331"><a href="#cb1-331"></a><span class="fu">## Aurora {background-color="white" style="width:100%"}</span></span>
-<span id="cb1-332"><a href="#cb1-332"></a></span>
-<span id="cb1-333"><a href="#cb1-333"></a>::: {.flex-container style="align-items: center; gap:10pt;"}</span>
-<span id="cb1-334"><a href="#cb1-334"></a></span>
-<span id="cb1-335"><a href="#cb1-335"></a>::: {.column #tbl-aurora}</span>
-<span id="cb1-336"><a href="#cb1-336"></a></span>
-<span id="cb1-337"><a href="#cb1-337"></a><span class="pp">|</span>     Property <span class="pp">|</span> Value   <span class="pp">|</span></span>
-<span id="cb1-338"><a href="#cb1-338"></a><span class="pp">| -----------:</span> <span class="pp">| :------</span> <span class="pp">|</span></span>
-<span id="cb1-339"><a href="#cb1-339"></a><span class="pp">|</span>        Racks <span class="pp">|</span> 166     <span class="pp">|</span></span>
-<span id="cb1-340"><a href="#cb1-340"></a><span class="pp">|</span>        Nodes <span class="pp">|</span> 10,624  <span class="pp">|</span></span>
-<span id="cb1-341"><a href="#cb1-341"></a><span class="pp">|</span> XPUs<span class="ot">[^tiles]</span> <span class="pp">|</span> 127,488 <span class="pp">|</span></span>
-<span id="cb1-342"><a href="#cb1-342"></a><span class="pp">|</span>         CPUs <span class="pp">|</span> 21,248  <span class="pp">|</span></span>
-<span id="cb1-343"><a href="#cb1-343"></a><span class="pp">|</span>         NICs <span class="pp">|</span> 84,992  <span class="pp">|</span></span>
-<span id="cb1-344"><a href="#cb1-344"></a><span class="pp">|</span>          HBM <span class="pp">|</span> 8 PB    <span class="pp">|</span></span>
-<span id="cb1-345"><a href="#cb1-345"></a><span class="pp">|</span>        DDR5c <span class="pp">|</span> 10 PB   <span class="pp">|</span></span>
-<span id="cb1-346"><a href="#cb1-346"></a></span>
-<span id="cb1-347"><a href="#cb1-347"></a>: Aurora<span class="ot">[^aurora-ai]</span> Specs {.responsive .striped .hover}</span>
-<span id="cb1-348"><a href="#cb1-348"></a></span>
-<span id="cb1-349"><a href="#cb1-349"></a>:::</span>
+<span id="cb1-328"><a href="#cb1-328"></a>:::</span>
+<span id="cb1-329"><a href="#cb1-329"></a></span>
+<span id="cb1-330"><a href="#cb1-330"></a>::: {.content-visible when-format="revealjs"}</span>
+<span id="cb1-331"><a href="#cb1-331"></a></span>
+<span id="cb1-332"><a href="#cb1-332"></a>::: {.flex-container}</span>
+<span id="cb1-333"><a href="#cb1-333"></a></span>
+<span id="cb1-334"><a href="#cb1-334"></a>::: {.flex-child style="width:33%;"}</span>
+<span id="cb1-335"><a href="#cb1-335"></a><span class="ss">- </span><span class="in">`SWiPe`</span> is a **novel parallelism strategy** for Swin-based Transformers</span>
+<span id="cb1-336"><a href="#cb1-336"></a><span class="ss">- </span>Hybrid 3D Parallelism strategy, combining:</span>
+<span id="cb1-337"><a href="#cb1-337"></a><span class="ss">  - </span>Sequence parallelism (<span class="in">`SP`</span>)</span>
+<span id="cb1-338"><a href="#cb1-338"></a><span class="ss">  - </span>Window parallelism (<span class="in">`WP`</span>)</span>
+<span id="cb1-339"><a href="#cb1-339"></a><span class="ss">  - </span>Pipeline parallelism (<span class="in">`PP`</span>)</span>
+<span id="cb1-340"><a href="#cb1-340"></a>:::</span>
+<span id="cb1-341"><a href="#cb1-341"></a></span>
+<span id="cb1-342"><a href="#cb1-342"></a>::: {#fig-swipe-layer style="width:66%;"}</span>
+<span id="cb1-343"><a href="#cb1-343"></a><span class="al">![](./assets/wpsp_light.svg)</span></span>
+<span id="cb1-344"><a href="#cb1-344"></a>:::</span>
+<span id="cb1-345"><a href="#cb1-345"></a></span>
+<span id="cb1-346"><a href="#cb1-346"></a>:::</span>
+<span id="cb1-347"><a href="#cb1-347"></a></span>
+<span id="cb1-348"><a href="#cb1-348"></a>::: {#fig-comms style="width:60%; text-align: center; margin-left: auto; margin-right: auto;"}</span>
+<span id="cb1-349"><a href="#cb1-349"></a><span class="al">![](./assets/comms1_light.svg)</span></span>
 <span id="cb1-350"><a href="#cb1-350"></a></span>
-<span id="cb1-351"><a href="#cb1-351"></a>::: {#fig-aurora .r-stretch}</span>
-<span id="cb1-352"><a href="#cb1-352"></a><span class="al">![](./assets/aurora1.png)</span></span>
+<span id="cb1-351"><a href="#cb1-351"></a><span class="in">`SWiPe`</span> Communication Patterns</span>
+<span id="cb1-352"><a href="#cb1-352"></a>:::</span>
 <span id="cb1-353"><a href="#cb1-353"></a></span>
-<span id="cb1-354"><a href="#cb1-354"></a>Aurora: <span class="co">[</span><span class="ot">Fact Sheet</span><span class="co">](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)</span>.</span>
-<span id="cb1-355"><a href="#cb1-355"></a>:::</span>
-<span id="cb1-356"><a href="#cb1-356"></a></span>
-<span id="cb1-357"><a href="#cb1-357"></a>:::</span>
-<span id="cb1-358"><a href="#cb1-358"></a></span>
-<span id="cb1-359"><a href="#cb1-359"></a><span class="ot">[^tiles]: </span>Each node has 6 Intel Data Center GPU Max 1550 </span>
-<span id="cb1-360"><a href="#cb1-360"></a>    (code-named "Ponte Vecchio") tiles, with 2 XPUs per tile.</span>
+<span id="cb1-354"><a href="#cb1-354"></a>:::</span>
+<span id="cb1-355"><a href="#cb1-355"></a></span>
+<span id="cb1-356"><a href="#cb1-356"></a><span class="fu">## Aurora {background-color="white" style="width:100%"}</span></span>
+<span id="cb1-357"><a href="#cb1-357"></a></span>
+<span id="cb1-358"><a href="#cb1-358"></a>::: {.flex-container style="align-items: center; gap:10pt;"}</span>
+<span id="cb1-359"><a href="#cb1-359"></a></span>
+<span id="cb1-360"><a href="#cb1-360"></a>::: {.column #tbl-aurora}</span>
 <span id="cb1-361"><a href="#cb1-361"></a></span>
-<span id="cb1-362"><a href="#cb1-362"></a><span class="ot">[^aurora-ai]: </span>🏆 <span class="co">[</span><span class="ot">Aurora Supercomputer Ranks Fastest for AI</span><span class="co">](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)</span></span>
-<span id="cb1-363"><a href="#cb1-363"></a></span>
-<span id="cb1-364"><a href="#cb1-364"></a><span class="fu">## AERIS: Scaling Results {background-color="white"}</span></span>
-<span id="cb1-365"><a href="#cb1-365"></a></span>
-<span id="cb1-366"><a href="#cb1-366"></a>::: {.flex-container}</span>
-<span id="cb1-367"><a href="#cb1-367"></a></span>
-<span id="cb1-368"><a href="#cb1-368"></a>::: {.column #fig-aeris-scaling style="width:70%;"}</span>
-<span id="cb1-369"><a href="#cb1-369"></a></span>
-<span id="cb1-370"><a href="#cb1-370"></a><span class="al">![](./assets/aeris-scaling.svg)</span></span>
+<span id="cb1-362"><a href="#cb1-362"></a><span class="pp">|</span>     Property <span class="pp">|</span> Value   <span class="pp">|</span></span>
+<span id="cb1-363"><a href="#cb1-363"></a><span class="pp">| -----------:</span> <span class="pp">| :------</span> <span class="pp">|</span></span>
+<span id="cb1-364"><a href="#cb1-364"></a><span class="pp">|</span>        Racks <span class="pp">|</span> 166     <span class="pp">|</span></span>
+<span id="cb1-365"><a href="#cb1-365"></a><span class="pp">|</span>        Nodes <span class="pp">|</span> 10,624  <span class="pp">|</span></span>
+<span id="cb1-366"><a href="#cb1-366"></a><span class="pp">|</span> XPUs<span class="ot">[^tiles]</span> <span class="pp">|</span> 127,488 <span class="pp">|</span></span>
+<span id="cb1-367"><a href="#cb1-367"></a><span class="pp">|</span>         CPUs <span class="pp">|</span> 21,248  <span class="pp">|</span></span>
+<span id="cb1-368"><a href="#cb1-368"></a><span class="pp">|</span>         NICs <span class="pp">|</span> 84,992  <span class="pp">|</span></span>
+<span id="cb1-369"><a href="#cb1-369"></a><span class="pp">|</span>          HBM <span class="pp">|</span> 8 PB    <span class="pp">|</span></span>
+<span id="cb1-370"><a href="#cb1-370"></a><span class="pp">|</span>        DDR5c <span class="pp">|</span> 10 PB   <span class="pp">|</span></span>
 <span id="cb1-371"><a href="#cb1-371"></a></span>
-<span id="cb1-372"><a href="#cb1-372"></a>AERIS: Scaling Results</span>
+<span id="cb1-372"><a href="#cb1-372"></a>: Aurora<span class="ot">[^aurora-ai]</span> Specs {.responsive .striped .hover}</span>
 <span id="cb1-373"><a href="#cb1-373"></a></span>
 <span id="cb1-374"><a href="#cb1-374"></a>:::</span>
 <span id="cb1-375"><a href="#cb1-375"></a></span>
-<span id="cb1-376"><a href="#cb1-376"></a>::: {.column style="width:30%;"}</span>
-<span id="cb1-377"><a href="#cb1-377"></a></span>
-<span id="cb1-378"><a href="#cb1-378"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**10 EFLOPs**</span><span class="co">]</span>{.highlight-blue} (sustained) @ **120,960 GPUs**</span>
-<span id="cb1-379"><a href="#cb1-379"></a><span class="ss">- </span>See (@stock2025aeris) for additional details</span>
-<span id="cb1-380"><a href="#cb1-380"></a><span class="ss">- </span><span class="co">[</span><span class="ot">arXiv:2509.13523</span><span class="co">](https://arxiv.org/abs/2509.13523)</span></span>
+<span id="cb1-376"><a href="#cb1-376"></a>::: {#fig-aurora .r-stretch}</span>
+<span id="cb1-377"><a href="#cb1-377"></a><span class="al">![](./assets/aurora1.png)</span></span>
+<span id="cb1-378"><a href="#cb1-378"></a></span>
+<span id="cb1-379"><a href="#cb1-379"></a>Aurora: <span class="co">[</span><span class="ot">Fact Sheet</span><span class="co">](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf)</span>.</span>
+<span id="cb1-380"><a href="#cb1-380"></a>:::</span>
 <span id="cb1-381"><a href="#cb1-381"></a></span>
 <span id="cb1-382"><a href="#cb1-382"></a>:::</span>
 <span id="cb1-383"><a href="#cb1-383"></a></span>
-<span id="cb1-384"><a href="#cb1-384"></a>:::</span>
-<span id="cb1-385"><a href="#cb1-385"></a></span>
-<span id="cb1-386"><a href="#cb1-386"></a><span class="fu">## Hurricane Laura {background-color="white"}</span></span>
-<span id="cb1-387"><a href="#cb1-387"></a></span>
-<span id="cb1-388"><a href="#cb1-388"></a>::: {#fig-hurricane-laura}</span>
-<span id="cb1-389"><a href="#cb1-389"></a></span>
-<span id="cb1-390"><a href="#cb1-390"></a><span class="al">![](./assets/science/hurricane.png)</span></span>
-<span id="cb1-391"><a href="#cb1-391"></a></span>
-<span id="cb1-392"><a href="#cb1-392"></a>Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and</span>
-<span id="cb1-393"><a href="#cb1-393"></a>3(c) days prior to 2020-08-28T00z.</span>
-<span id="cb1-394"><a href="#cb1-394"></a>:::</span>
-<span id="cb1-395"><a href="#cb1-395"></a></span>
+<span id="cb1-384"><a href="#cb1-384"></a><span class="ot">[^tiles]: </span>Each node has 6 Intel Data Center GPU Max 1550 </span>
+<span id="cb1-385"><a href="#cb1-385"></a>    (code-named "Ponte Vecchio") tiles, with 2 XPUs per tile.</span>
+<span id="cb1-386"><a href="#cb1-386"></a></span>
+<span id="cb1-387"><a href="#cb1-387"></a><span class="ot">[^aurora-ai]: </span>🏆 <span class="co">[</span><span class="ot">Aurora Supercomputer Ranks Fastest for AI</span><span class="co">](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)</span></span>
+<span id="cb1-388"><a href="#cb1-388"></a></span>
+<span id="cb1-389"><a href="#cb1-389"></a><span class="fu">## AERIS: Scaling Results {background-color="white"}</span></span>
+<span id="cb1-390"><a href="#cb1-390"></a></span>
+<span id="cb1-391"><a href="#cb1-391"></a>::: {.flex-container}</span>
+<span id="cb1-392"><a href="#cb1-392"></a></span>
+<span id="cb1-393"><a href="#cb1-393"></a>::: {.column #fig-aeris-scaling style="width:70%;"}</span>
+<span id="cb1-394"><a href="#cb1-394"></a></span>
+<span id="cb1-395"><a href="#cb1-395"></a><span class="al">![](./assets/aeris-scaling.svg)</span></span>
 <span id="cb1-396"><a href="#cb1-396"></a></span>
-<span id="cb1-397"><a href="#cb1-397"></a><span class="fu">## S2S: Subsseasonal-to-Seasonal Forecasts {.smaller background-color="white"}</span></span>
+<span id="cb1-397"><a href="#cb1-397"></a>AERIS: Scaling Results</span>
 <span id="cb1-398"><a href="#cb1-398"></a></span>
-<span id="cb1-399"><a href="#cb1-399"></a>::: {.flex-container}</span>
+<span id="cb1-399"><a href="#cb1-399"></a>:::</span>
 <span id="cb1-400"><a href="#cb1-400"></a></span>
-<span id="cb1-401"><a href="#cb1-401"></a>::: {.callout-important icon=false title="🌡️ S2S Forecasts"}</span>
-<span id="cb1-402"><a href="#cb1-402"></a>We demonstrate for the first time, the ability of a generative, high</span>
-<span id="cb1-403"><a href="#cb1-403"></a>resolution (native ERA5) diffusion model to produce skillful forecasts on the</span>
-<span id="cb1-404"><a href="#cb1-404"></a>S2S timescales with realistic evolutions of the Earth system</span>
-<span id="cb1-405"><a href="#cb1-405"></a>(atmosphere + ocean).</span>
-<span id="cb1-406"><a href="#cb1-406"></a>:::</span>
-<span id="cb1-407"><a href="#cb1-407"></a></span>
-<span id="cb1-408"><a href="#cb1-408"></a>::: {.flex-child}</span>
-<span id="cb1-409"><a href="#cb1-409"></a><span class="ss">- </span>To assess trends that extend beyond that of our medium-range weather forecasts</span>
-<span id="cb1-410"><a href="#cb1-410"></a>  (beyond 14-days) and evaluate the stability of our model, we made 3,000</span>
-<span id="cb1-411"><a href="#cb1-411"></a>  forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</span>
-<span id="cb1-412"><a href="#cb1-412"></a><span class="ss">- </span>AERIS was found to be stable during these 90-day forecasts </span>
-<span id="cb1-413"><a href="#cb1-413"></a><span class="ss">  - </span>Realistic atmospheric states</span>
-<span id="cb1-414"><a href="#cb1-414"></a><span class="ss">  - </span>Correct power spectra even at the smallest scales</span>
-<span id="cb1-415"><a href="#cb1-415"></a>:::</span>
+<span id="cb1-401"><a href="#cb1-401"></a>::: {.column style="width:30%;"}</span>
+<span id="cb1-402"><a href="#cb1-402"></a></span>
+<span id="cb1-403"><a href="#cb1-403"></a><span class="ss">- </span><span class="co">[</span><span class="ot">**10 EFLOPs**</span><span class="co">]</span>{.highlight-blue} (sustained) @ **120,960 GPUs**</span>
+<span id="cb1-404"><a href="#cb1-404"></a><span class="ss">- </span>See (@stock2025aeris) for additional details</span>
+<span id="cb1-405"><a href="#cb1-405"></a><span class="ss">- </span><span class="co">[</span><span class="ot">arXiv:2509.13523</span><span class="co">](https://arxiv.org/abs/2509.13523)</span></span>
+<span id="cb1-406"><a href="#cb1-406"></a></span>
+<span id="cb1-407"><a href="#cb1-407"></a>:::</span>
+<span id="cb1-408"><a href="#cb1-408"></a></span>
+<span id="cb1-409"><a href="#cb1-409"></a>:::</span>
+<span id="cb1-410"><a href="#cb1-410"></a></span>
+<span id="cb1-411"><a href="#cb1-411"></a><span class="fu">## Hurricane Laura {background-color="white"}</span></span>
+<span id="cb1-412"><a href="#cb1-412"></a></span>
+<span id="cb1-413"><a href="#cb1-413"></a>::: {#fig-hurricane-laura}</span>
+<span id="cb1-414"><a href="#cb1-414"></a></span>
+<span id="cb1-415"><a href="#cb1-415"></a><span class="al">![](./assets/science/hurricane.png)</span></span>
 <span id="cb1-416"><a href="#cb1-416"></a></span>
-<span id="cb1-417"><a href="#cb1-417"></a>:::</span>
-<span id="cb1-418"><a href="#cb1-418"></a></span>
-<span id="cb1-419"><a href="#cb1-419"></a><span class="fu">## Seasonal Forecast Stability {.smaller background-color="white"}</span></span>
+<span id="cb1-417"><a href="#cb1-417"></a>Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and</span>
+<span id="cb1-418"><a href="#cb1-418"></a>3(c) days prior to 2020-08-28T00z.</span>
+<span id="cb1-419"><a href="#cb1-419"></a>:::</span>
 <span id="cb1-420"><a href="#cb1-420"></a></span>
-<span id="cb1-421"><a href="#cb1-421"></a>::: {#fig-seasonal-forecast-stability style="text-align: center; margin-left: auto; margin-right: auto;"}</span>
-<span id="cb1-422"><a href="#cb1-422"></a></span>
-<span id="cb1-423"><a href="#cb1-423"></a><span class="al">![](./assets/science/s2s.png)</span></span>
-<span id="cb1-424"><a href="#cb1-424"></a></span>
-<span id="cb1-425"><a href="#cb1-425"></a>S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the</span>
-<span id="cb1-426"><a href="#cb1-426"></a>ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the</span>
-<span id="cb1-427"><a href="#cb1-427"></a>future from the <span class="co">[</span><span class="ot">closest</span><span class="co">]</span>{style="color:#65B8EE;"} ensemble member to the ERA5</span>
-<span id="cb1-428"><a href="#cb1-428"></a>in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology</span>
-<span id="cb1-429"><a href="#cb1-429"></a>removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.</span>
-<span id="cb1-430"><a href="#cb1-430"></a>:::</span>
-<span id="cb1-431"><a href="#cb1-431"></a></span>
-<span id="cb1-432"><a href="#cb1-432"></a><span class="fu">## References {background-color="white"}</span></span>
-<span id="cb1-433"><a href="#cb1-433"></a></span>
-<span id="cb1-434"><a href="#cb1-434"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">What are Diffusion Models? | Lil'Log</span><span class="co">](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)</span></span>
-<span id="cb1-435"><a href="#cb1-435"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Step by Step visual introduction to Diffusion Models. - Blog by Kemal Erdem</span><span class="co">](https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models)</span></span>
-<span id="cb1-436"><a href="#cb1-436"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Understanding Diffusion Models&amp;#58; A Unified Perspective</span><span class="co">](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html)</span></span>
-<span id="cb1-437"><a href="#cb1-437"></a></span>
-<span id="cb1-438"><a href="#cb1-438"></a>::: {#refs}</span>
-<span id="cb1-439"><a href="#cb1-439"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-421"><a href="#cb1-421"></a></span>
+<span id="cb1-422"><a href="#cb1-422"></a><span class="fu">## S2S: Subsseasonal-to-Seasonal Forecasts {.smaller background-color="white"}</span></span>
+<span id="cb1-423"><a href="#cb1-423"></a></span>
+<span id="cb1-424"><a href="#cb1-424"></a>::: {.flex-container}</span>
+<span id="cb1-425"><a href="#cb1-425"></a></span>
+<span id="cb1-426"><a href="#cb1-426"></a>::: {.callout-important icon=false title="🌡️ S2S Forecasts"}</span>
+<span id="cb1-427"><a href="#cb1-427"></a>We demonstrate for the first time, the ability of a generative, high</span>
+<span id="cb1-428"><a href="#cb1-428"></a>resolution (native ERA5) diffusion model to produce skillful forecasts on the</span>
+<span id="cb1-429"><a href="#cb1-429"></a>S2S timescales with realistic evolutions of the Earth system</span>
+<span id="cb1-430"><a href="#cb1-430"></a>(atmosphere + ocean).</span>
+<span id="cb1-431"><a href="#cb1-431"></a>:::</span>
+<span id="cb1-432"><a href="#cb1-432"></a></span>
+<span id="cb1-433"><a href="#cb1-433"></a>::: {.flex-child}</span>
+<span id="cb1-434"><a href="#cb1-434"></a><span class="ss">- </span>To assess trends that extend beyond that of our medium-range weather forecasts</span>
+<span id="cb1-435"><a href="#cb1-435"></a>  (beyond 14-days) and evaluate the stability of our model, we made 3,000</span>
+<span id="cb1-436"><a href="#cb1-436"></a>  forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</span>
+<span id="cb1-437"><a href="#cb1-437"></a><span class="ss">- </span>AERIS was found to be stable during these 90-day forecasts </span>
+<span id="cb1-438"><a href="#cb1-438"></a><span class="ss">  - </span>Realistic atmospheric states</span>
+<span id="cb1-439"><a href="#cb1-439"></a><span class="ss">  - </span>Correct power spectra even at the smallest scales</span>
+<span id="cb1-440"><a href="#cb1-440"></a>:::</span>
+<span id="cb1-441"><a href="#cb1-441"></a></span>
+<span id="cb1-442"><a href="#cb1-442"></a>:::</span>
+<span id="cb1-443"><a href="#cb1-443"></a></span>
+<span id="cb1-444"><a href="#cb1-444"></a><span class="fu">## Seasonal Forecast Stability {.smaller background-color="white"}</span></span>
+<span id="cb1-445"><a href="#cb1-445"></a></span>
+<span id="cb1-446"><a href="#cb1-446"></a>::: {#fig-seasonal-forecast-stability style="text-align: center; margin-left: auto; margin-right: auto;"}</span>
+<span id="cb1-447"><a href="#cb1-447"></a></span>
+<span id="cb1-448"><a href="#cb1-448"></a><span class="al">![](./assets/science/s2s.png)</span></span>
+<span id="cb1-449"><a href="#cb1-449"></a></span>
+<span id="cb1-450"><a href="#cb1-450"></a>S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the</span>
+<span id="cb1-451"><a href="#cb1-451"></a>ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the</span>
+<span id="cb1-452"><a href="#cb1-452"></a>future from the <span class="co">[</span><span class="ot">closest</span><span class="co">]</span>{style="color:#65B8EE;"} ensemble member to the ERA5</span>
+<span id="cb1-453"><a href="#cb1-453"></a>in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology</span>
+<span id="cb1-454"><a href="#cb1-454"></a>removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.</span>
+<span id="cb1-455"><a href="#cb1-455"></a>:::</span>
+<span id="cb1-456"><a href="#cb1-456"></a></span>
+<span id="cb1-457"><a href="#cb1-457"></a><span class="fu">## References {background-color="white"}</span></span>
+<span id="cb1-458"><a href="#cb1-458"></a></span>
+<span id="cb1-459"><a href="#cb1-459"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">What are Diffusion Models? | Lil'Log</span><span class="co">](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)</span></span>
+<span id="cb1-460"><a href="#cb1-460"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Step by Step visual introduction to Diffusion Models. - Blog by Kemal Erdem</span><span class="co">](https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models)</span></span>
+<span id="cb1-461"><a href="#cb1-461"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Understanding Diffusion Models&amp;#58; A Unified Perspective</span><span class="co">](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html)</span></span>
+<span id="cb1-462"><a href="#cb1-462"></a></span>
+<span id="cb1-463"><a href="#cb1-463"></a>::: {#refs}</span>
+<span id="cb1-464"><a href="#cb1-464"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

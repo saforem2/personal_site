@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-a2b6346ecfb7a07913b5344917cf247a.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-3f716a953c57c3b5a7ac73a5f39ca45d.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -369,11 +369,11 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <section id="contributions" class="title-slide slide level1 center" data-background-color="white">
 <h1>Contributions</h1>
 <div class="flex-container">
-<div title="🌋 AERIS">
+<div title="☔ AERIS">
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>🌋 AERIS</strong></p>
+<p><strong>☔ AERIS</strong></p>
 </div>
 <div class="callout-content">
 <p><em>The first billion-parameter diffusion model for weather and climate</em></p>
@@ -524,6 +524,25 @@ Figure&nbsp;4: Model Architecture
 </figcaption>
 </figure>
 </div>
+</section>
+
+<section id="overview-of-diffusion-models" class="title-slide slide level1 center">
+<h1>Overview of Diffusion Models</h1>
+<ul>
+<li><p>We would like to (efficiently) draw samples from a (potentially unknown) <em>target</em> distribution <span class="math inline">q(\cdot)</span>.</p></li>
+<li><p>Suppose we have a sample which is known to be drawn from the target distribution, i.e.&nbsp;<span class="math inline">x_{0} \sim q(x)</span>.</p></li>
+<li><p>We define the <em>forward diffusion process</em> to be that which gradually adds noise over <span class="math inline">T</span> steps, producing a sequence <span class="math inline">x_{0} \rightarrow {x_{1}, \cdots, x_{T}\}</span>.</p>
+<ul>
+<li><p>Step sizes controlled by a <em>variance schedule</em> <span class="math inline">\{\beta\}_{t=1}^{T}</span>, with <span class="math inline">\beta_{t} \in (0, 1)</span>:</p>
+<p><span class="math display">\begin{aligned}
+q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+\end{aligned}</span></p></li>
+</ul></li>
+<li><p>Define a <em>forward diffusion process</em> in which noise is gradually added to a</p></li>
+<li><p>k</p></li>
+<li><p>Define a <em>forward diffusion process</em> which gradually (over <span class="math inline">T</span> steps) adds noise to a given sample <span class="math inline">\mathbf{x} \sim q(\mathbf{x})</span></p></li>
+</ul>
 </section>
 
 <section id="limitations-of-deterministic-models" class="title-slide slide level1 center" data-background-color="white">

@@ -129,7 +129,7 @@ Rollout of AERIS model, specific humidity at 700m.
 
 ::: {.flex-container}
 
-::: {.callout-important icon=false title="🌋 AERIS"}
+::: {.callout-caution icon=false title="☔ AERIS"}
 _The first billion-parameter diffusion model for weather and climate_
 
 - Operates at the pixel level (1 × 1 patch size) 
@@ -227,6 +227,27 @@ Model Architecture
 :::
 
 :::
+
+## Overview of Diffusion Models
+
+- We would like to (efficiently) draw samples from a (potentially unknown)
+  _target_ distribution $q(\cdot)$.
+
+- Suppose we have a sample which is known to be drawn from the target
+  distribution, i.e. $x_{0} \sim q(x)$.
+- We define the _forward diffusion process_ to be that which gradually adds
+  noise over $T$ steps, producing a sequence
+  $x_{0} \rightarrow \{x_{1}, \cdots, x_{T}\}$.
+
+  - Step sizes controlled by a _variance schedule_ $\{\beta\}_{t=1}^{T}$, with
+    $\beta_{t} \in (0, 1)$:
+
+    $$\begin{aligned}
+    q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+    q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+    \end{aligned}$$
+
+- Define a _forward diffusion process_ in which noise is gradually added to a
 
 ## Limitations of Deterministic Models {background-color="white"}
 

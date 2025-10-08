@@ -8,6 +8,7 @@ Sam Foreman
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
 - [Model Architecture: Details](#model-architecture-details)
+- [Overview of Diffusion Models](#overview-of-diffusion-models)
 - [Limitations of Deterministic
   Models](#limitations-of-deterministic-models)
 - [Transitioning to a Probabilistic
@@ -82,7 +83,7 @@ Table 1: Overview of AERIS model and training setup
 
 > [!IMPORTANT]
 >
-> ### 🌋 AERIS
+> ### ☔ AERIS
 >
 > *The first billion-parameter diffusion model for weather and climate*
 >
@@ -173,6 +174,34 @@ Figure 3: Windowed Self-Attention
 Figure 4: Model Architecture
 
 </div>
+
+## Overview of Diffusion Models
+
+- We would like to (efficiently) draw samples from a (potentially
+  unknown) *target* distribution $q(\cdot)$.
+
+- Suppose we have a sample which is known to be drawn from the target
+  distribution, i.e. $x_{0} \sim q(x)$.
+
+- We define the *forward diffusion process* to be that which gradually
+  adds noise over $T$ steps, producing a sequence
+  $x_{0} \rightarrow {x_{1}, \cdots, x_{T}\}$.
+
+  - Step sizes controlled by a *variance schedule*
+    $\{\beta\}_{t=1}^{T}$, with $\beta_{t} \in (0, 1)$:
+
+    $$\begin{aligned}
+    q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+    q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+    \end{aligned}$$
+
+- Define a *forward diffusion process* in which noise is gradually added
+  to a
+
+- k
+
+- Define a *forward diffusion process* which gradually (over $T$ steps)
+  adds noise to a given sample $\mathbf{x} \sim q(\mathbf{x})$
 
 ## Limitations of Deterministic Models
 
