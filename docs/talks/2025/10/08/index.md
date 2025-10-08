@@ -80,9 +80,9 @@ Table 1: Overview of AERIS model and training setup
 
 <div class="flex-container">
 
-> [!TIP]
+> [!IMPORTANT]
 >
-> ### 🌎 <span style="color:var(--green-text)!important">AERIS</span>
+> ### 🌋 AERIS
 >
 > *The first billion-parameter diffusion model for weather and climate*
 >
@@ -216,9 +216,10 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 <div class="flex-container">
 
-![](./assets/diffusion.gif)
+![Reverse Diffusion Process (\$)](./assets/diffusion.gif)
 
-<img src="./assets/diffusion_forward.png" style="width:89.6%" />
+<img src="./assets/diffusion_forward.png" style="width:89.6%"
+alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 </div>
 
