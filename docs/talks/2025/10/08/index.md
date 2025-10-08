@@ -80,7 +80,7 @@ Table 1: Overview of AERIS model and training setup
 
 <div class="flex-container">
 
-> [!IMPORTANT]
+> [!TIP]
 >
 > ### 🌎 <span style="color:var(--green-text)!important">AERIS</span>
 >
@@ -329,6 +329,8 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 <div class="flex-container">
 
 > [!IMPORTANT]
+>
+> ### 🌡️ S2S Forecasts
 >
 > We demonstrate for the first time, the ability of a generative, high
 > resolution (native ERA5) diffusion model to produce skillful forecasts
