@@ -8,8 +8,8 @@ Sam Foreman
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
 - [Model Architecture: Details](#model-architecture-details)
-- [Limitations of Deterministic
-  Models](#limitations-of-deterministic-models)
+- [Issues with the Deterministic
+  Approach](#issues-with-the-deterministic-approach)
 - [Transitioning to a Probabilistic
   Model](#transitioning-to-a-probabilistic-model)
 - [Training at Scale](#training-at-scale)
@@ -190,7 +190,7 @@ Figure 4: Model Architecture
 
 </div>
 
-## Limitations of Deterministic Models
+## Issues with the Deterministic Approach
 
 <div class="flex-container">
 
