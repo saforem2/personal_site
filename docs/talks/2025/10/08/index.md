@@ -4,6 +4,7 @@ Sam Foreman
 
 - [🌎 AERIS](#earth_americas-aeris)
 - [High-Level Overview of AERIS](#high-level-overview-of-aeris)
+- [Contributions](#contributions)
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
 - [Model Architecture: Details](#model-architecture-details)
@@ -17,14 +18,16 @@ Sam Foreman
 - [Aurora](#aurora)
 - [AERIS: Scaling Results](#aeris-scaling-results)
 - [Hurricane Laura](#hurricane-laura)
+- [S2S: Subsseasonal-to-Seasonal
+  Forecasts](#s2s-subsseasonal-to-seasonal-forecasts)
 - [Seasonal Forecast Stability](#seasonal-forecast-stability)
 - [References](#references)
 
 ## 🌎 AERIS
 
-<div class="flex-container">
+<div class="flex-container" background-color="white">
 
-<div class="flex-child">
+<div class="flex-child" style="width:50%;">
 
 <div id="fig-arxiv">
 
@@ -74,6 +77,20 @@ Table 1: Overview of AERIS model and training setup
 
 </div>
 
+## Contributions
+
+- *The first billion-parameter diffusion model for weather and climate*
+  - Operates at the pixel level (1 × 1 patch size)
+  - Guided by physical priors
+- SWiPe, *novel* 3D (sequence-window-pipeline) parallelism strategy for
+  training transformers across high-resolution inputs
+  - Enables scalable small-batch training on large supercomputers[^2]
+    - **10.21 ExaFLOPS** @ 121,000 Intel XPUs (Aurora)
+- Medium-range forecast skill
+  - Surpasses IFS ENS, competitive with GenCast
+    1)  
+  - Uniquely stable on seasonal scales to 90 days
+
 ## Model Overview
 
 <div class="flex-container" style="align-items: flex-start;">
@@ -100,7 +117,7 @@ Table 2: Variables used in AERIS training and prediction
 - **Variables**: Surface and pressure levels
 - **Usage**: Medium-range weather forecasting
 - **Partition**:
-  - Train: 1979–2018[^2]
+  - Train: 1979–2018[^3]
   - Val: 2019
   - Test: 2020
 - **Data Size**: 100GB at 5.6° to 31TB at 0.25°
@@ -189,7 +206,7 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 ![](./assets/diffusion.gif)
 
-![](./assets/diffusion_forward.png)
+<img src="./assets/diffusion_forward.png" style="width:89.6%" />
 
 </div>
 
@@ -236,13 +253,13 @@ Figure 7: `SWiPe` Communication Patterns
 
 <div id="tbl-aurora">
 
-Table 3: Aurora[^3] Specs
+Table 3: Aurora[^4] Specs
 
 | Property | Value   |
 |---------:|:--------|
 |    Racks | 166     |
 |    Nodes | 10,624  |
-| XPUs[^4] | 127,488 |
+| XPUs[^5] | 127,488 |
 |     CPUs | 21,248  |
 |     NICs | 84,992  |
 |      HBM | 8 PB    |
@@ -295,11 +312,34 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 </div>
 
+## S2S: Subsseasonal-to-Seasonal Forecasts
+
+<div class="flex-container">
+
+> We demonstrate for the first time, the ability of a generative, high
+> resolution (native ERA5) diffusion model to produce skillful forecasts
+> on the S2S timescales with realistic evolutions of the Earth system
+> (atmosphere + ocean).
+
+<div class="flex-child">
+
+- To assess trends that extend beyond that of our medium-range weather
+  forecasts (beyond 14-days) and evaluate the stability of our model, we
+  made 3,000 forecasts (60 initial conditions each with 50 ensembles)
+  out to 90 days.
+- AERIS was found to be stable during these 90-day forecasts
+  - Realistic atmospheric states
+  - Correct power spectra even at the smallest scales
+
+</div>
+
+</div>
+
 ## Seasonal Forecast Stability
 
 <div id="fig-seasonal-forecast-stability">
 
-<img src="./assets/science/s2s.png" style="width:90.0%" />
+![](./assets/science/s2s.png)
 
 Figure 11: S2S Stability: (a) Spring barrier El Niño with realistic
 ensemble spread in the ocean; (b) qualitatively sharp fields of SST and
@@ -329,10 +369,13 @@ Systems Model for Reliable and Skillful Predictions.”
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-[^2]: ~ 14,000 days of data
+[^2]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on
+    LUMI.
 
-[^3]: 🏆 [Aurora Supercomputer Ranks Fastest for
+[^3]: ~ 14,000 days of data
+
+[^4]: 🏆 [Aurora Supercomputer Ranks Fastest for
     AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
-[^4]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
+[^5]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
     Vecchio”) tiles, with 2 XPUs per tile.

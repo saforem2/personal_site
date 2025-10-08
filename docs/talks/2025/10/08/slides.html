@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-e5241b8a87644a7baf6f5e441bf77a82.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-82564a9be521909e62318595453d7f29.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -287,7 +287,7 @@
 <section id="aeris" class="title-slide slide level1 center" data-background-color="white">
 <h1>🌎 AERIS</h1>
 <div class="flex-container">
-<div class="flex-child">
+<div class="flex-child" style="width:50%;">
 <div id="fig-arxiv" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -302,7 +302,7 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 <div class="flex-child" style="width:43.6%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="./assets/cover2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Pixel-level Swin diffusion transformer in sizes from [1–80]B"><img data-src="./assets/cover2.svg" class="light-content" alt="Pixel-level Swin diffusion transformer in sizes from [1–80]B"></a></p>
+<p><a href="./assets/cover2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Pixel-level Swin diffusion transformer in sizes from [1–80]B"><img data-src="./assets/cover2.svg" alt="Pixel-level Swin diffusion transformer in sizes from [1–80]B"></a></p>
 <figcaption>Pixel-level Swin diffusion transformer in sizes from [1–80]B</figcaption>
 </figure>
 </div>
@@ -366,6 +366,32 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a></p></li></ol></aside></section>
+
+<section id="contributions" class="title-slide slide level1 smaller center" data-background-color="white">
+<h1>Contributions</h1>
+<ul>
+<li><em>The first billion-parameter diffusion model for weather and climate</em>
+<ul>
+<li>Operates at the pixel level (1 × 1 patch size)</li>
+<li>Guided by physical priors</li>
+</ul></li>
+<li>SWiPe, <em>novel</em> 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs
+<ul>
+<li>Enables scalable small-batch training on large supercomputers<sup>1</sup>
+<ul>
+<li><strong>10.21 ExaFLOPS</strong> @ 121,000 Intel XPUs (Aurora)</li>
+</ul></li>
+</ul></li>
+<li>Medium-range forecast skill
+<ul>
+<li>Surpasses IFS ENS, competitive with GenCast
+<ol class="example" type="1">
+<li></li>
+</ol></li>
+<li>Uniquely stable on seasonal scales to 90 days</li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.</p></li></ol></aside></section>
 
 <section id="model-overview" class="title-slide slide level1 center" data-background-color="white">
 <h1>Model Overview</h1>
@@ -434,7 +460,7 @@ Table&nbsp;2: Variables used in AERIS training and prediction
 </ul>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>~ 14,000 days of data</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>~ 14,000 days of data</p></li></ol></aside></section>
 
 <section id="windowed-self-attention" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>Windowed Self-Attention</h1>
@@ -520,7 +546,7 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 </div>
 <div class="flex-container">
 <p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="./assets/diffusion.gif"></a></p>
-<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="./assets/diffusion_forward.png"></a></p>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="./assets/diffusion_forward.png" style="width:89.6%"></a></p>
 </div>
 </section>
 
@@ -630,7 +656,7 @@ Figure&nbsp;8: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/202
 </figure>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a></p></li><li id="fn4"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a></p></li><li id="fn5"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.</p></li></ol></aside></section>
 
 <section id="aeris-scaling-results" class="title-slide slide level1 center" data-background-color="white">
 <h1>AERIS: Scaling Results</h1>
@@ -667,12 +693,31 @@ Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 </div>
 </section>
 
+<section id="s2s-subsseasonal-to-seasonal-forecasts" class="title-slide slide level1 smaller center" data-background-color="white">
+<h1>S2S: Subsseasonal-to-Seasonal Forecasts</h1>
+<div class="flex-container">
+<blockquote>
+<p>We demonstrate for the first time, the ability of a generative, high resolution (native ERA5) diffusion model to produce skillful forecasts on the S2S timescales with realistic evolutions of the Earth system (atmosphere + ocean).</p>
+</blockquote>
+<div class="flex-child">
+<ul>
+<li>To assess trends that extend beyond that of our medium-range weather forecasts (beyond 14-days) and evaluate the stability of our model, we made 3,000 forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</li>
+<li>AERIS was found to be stable during these 90-day forecasts
+<ul>
+<li>Realistic atmospheric states</li>
+<li>Correct power spectra even at the smallest scales</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+
 <section id="seasonal-forecast-stability" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>Seasonal Forecast Stability</h1>
 <div id="fig-seasonal-forecast-stability" class="quarto-float quarto-figure quarto-figure-center" style="text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img data-src="./assets/science/s2s.png" style="width:90.0%"></a>
+<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img data-src="./assets/science/s2s.png"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the <span style="color:#65B8EE;">closest</span> ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
