@@ -22,14 +22,23 @@ Sam Foreman
 
 ## 🌎 AERIS
 
-<img src="./assets/team.png" style="width:40.0%"
-alt="arXiv:2509.13523" />
+<div class="flex-container">
+
+<div id="fig-arxiv">
+
+![](./assets/team.png)
+
+Figure 1: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+
+</div>
 
 <img src="./assets/cover2.svg" class="light-content"
 style="width:80.0%" />
 
 <img src="./assets/cover1.svg" class="dark-content"
 style="width:80.0%" />
+
+</div>
 
 ## High-Level Overview of AERIS
 
@@ -39,7 +48,7 @@ style="width:80.0%" />
 
 ![](./assets/rollout.gif)
 
-Figure 1: Rollout of AERIS model, specific humidity at 700m.
+Figure 2: Rollout of AERIS model, specific humidity at 700m.
 
 </div>
 
@@ -114,7 +123,7 @@ Table 2: Variables used in AERIS training and prediction
 
 ![](./assets/swin-transformer.png)
 
-Figure 2: Windowed Self-Attention
+Figure 3: Windowed Self-Attention
 
 </div>
 
@@ -126,7 +135,7 @@ Figure 2: Windowed Self-Attention
 
 ![](./assets/model_architecture.svg)
 
-Figure 3: Model Architecture
+Figure 4: Model Architecture
 
 </div>
 
@@ -162,7 +171,7 @@ Figure 3: Model Architecture
 
 ![](./assets/diffusion/light.svg)
 
-Figure 4: Reverse diffusion with the
+Figure 5: Reverse diffusion with the
 <span style="color:#228be6">input</span> condition, individual sampling
 steps $t_{0} \rightarrow t_{64}$, the next time step
 <span style="color:#40c057">estimate</span> and the
@@ -201,7 +210,7 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 ![](./assets/wpsp.svg)
 
-Figure 5
+Figure 6
 
 </div>
 
@@ -211,7 +220,7 @@ Figure 5
 
 ![](./assets/comms1.svg)
 
-Figure 6: `SWiPe` Communication Patterns
+Figure 7: `SWiPe` Communication Patterns
 
 </div>
 
@@ -239,7 +248,7 @@ Table 3: Aurora Specs
 
 ![](./assets/aurora1.png)
 
-Figure 7: Aurora: [Fact
+Figure 8: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
@@ -263,7 +272,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 ![](./assets/aeris-scaling.svg)
 
-Figure 8: AERIS: Scaling Results
+Figure 9: AERIS: Scaling Results
 
 </div>
 
@@ -284,7 +293,7 @@ Figure 8: AERIS: Scaling Results
 
 ![](./assets/science/hurricane.png)
 
-Figure 9: Hurricane Laura tracks (top) and intensity (bottom).
+Figure 10: Hurricane Laura tracks (top) and intensity (bottom).
 Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 </div>
@@ -293,17 +302,14 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 <div id="fig-seasonal-forecast-stability">
 
-![](./assets/science/s2s.png)
+<img src="./assets/science/s2s.png" style="width:90.0%" />
 
-1)  Spring barrier El Niño with realistic ensemble spread in the
-    ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90
-    days in the future from the
-    <span style="color:#65B8EE;">closest</span> ensemble member to the
-    ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies
-    (climatology removed; m/s), averaged between 10°S and 10°N, for a
-    90-day rollout.
-
-Figure 10
+Figure 11: S2S Stability: (a) Spring barrier El Niño with realistic
+ensemble spread in the ocean; (b) qualitatively sharp fields of SST and
+Q700 predicted 90 days in the future from the
+<span style="color:#65B8EE;">closest</span> ensemble member to the ERA5
+in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology
+removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 
 </div>
 
@@ -326,4 +332,4 @@ Systems Model for Reliable and Skillful Predictions.”
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-[^2]: ~ 700,000k days
+[^2]: ~ 14,000 days of data
