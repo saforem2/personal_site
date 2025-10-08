@@ -21,6 +21,7 @@ Sam Foreman
 - [S2S: Subsseasonal-to-Seasonal
   Forecasts](#s2s-subsseasonal-to-seasonal-forecasts)
 - [Seasonal Forecast Stability](#seasonal-forecast-stability)
+- [Next Steps](#next-steps)
 - [References](#references)
 - [Extras](#extras)
   - [Overview of Diffusion Models](#overview-of-diffusion-models)
@@ -382,6 +383,13 @@ in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology
 removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 
 </div>
+
+## Next Steps
+
+- [Swift](https://github.com/stockeh/swift): Swift, a single-step
+  consistency model that, for the first time, enables autoregressive
+  finetuning of a probability flow model with a continuous ranked
+  probability score (CRPS) objective
 
 ## References
 
