@@ -19,7 +19,7 @@
 <generator>quarto-1.9.3</generator>
 <lastBuildDate>Wed, 08 Oct 2025 05:00:00 GMT</lastBuildDate>
 <item>
-  <title>AERIS</title>
+  <title>AERIS: Argonne Earth Systems Model</title>
   <dc:creator>Sam Foreman</dc:creator>
   <link>https://samforeman.me/talks/2025/10/08/</link>
   <description><![CDATA[ 
@@ -34,7 +34,7 @@
 <section id="aeris" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="aeris">🌎 AERIS</h2>
 <div class="flex-container">
-<div class="flex-child">
+<div class="flex-child" style="width:50%;">
 <div id="fig-arxiv" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -46,8 +46,10 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </figure>
 </div>
 </div>
+<div class="flex-child" style="width:43.6%;">
 <p><a href="./assets/cover2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/talks/2025/10/08/assets/cover2.svg" class="light-content img-fluid"></a></p>
 <p><a href="./assets/cover1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/talks/2025/10/08/assets/cover1.svg" class="dark-content img-fluid"></a></p>
+</div>
 </div>
 </section>
 <section id="high-level-overview-of-aeris" class="level2 smaller" data-background-color="white">
@@ -105,6 +107,31 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </figure>
 </div>
 </div>
+</section>
+<section id="contributions" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="contributions">Contributions</h2>
+<ul>
+<li><em>The first billion-parameter diffusion model for weather and climate</em>
+<ul>
+<li>Operates at the pixel level (1 × 1 patch size)</li>
+<li>Guided by physical priors</li>
+</ul></li>
+<li>SWiPe, <em>novel</em> 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs
+<ul>
+<li>Enables scalable small-batch training on large supercomputers<sup>2</sup>
+<ul>
+<li><strong>10.21 ExaFLOPS</strong> @ 121,000 Intel XPUs (Aurora)</li>
+</ul></li>
+</ul></li>
+<li>Medium-range forecast skill
+<ul>
+<li>Surpasses IFS ENS, competitive with GenCast
+<ol class="example" type="1">
+<li></li>
+</ol></li>
+<li>Uniquely stable on seasonal scales to 90 days</li>
+</ul></li>
+</ul>
 </section>
 <section id="model-overview" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="model-overview">Model Overview</h2>
@@ -165,7 +192,7 @@ Table&nbsp;2: Variables used in AERIS training and prediction
 <li><strong>Usage</strong>: Medium-range weather forecasting</li>
 <li><strong>Partition</strong>:
 <ul>
-<li>Train: 1979–2018<sup>2</sup></li>
+<li>Train: 1979–2018<sup>3</sup></li>
 <li>Val: 2019</li>
 <li>Test: 2020</li>
 </ul></li>
@@ -255,7 +282,7 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 </div>
 <div class="flex-container">
 <p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion.gif" class="img-fluid"></a></p>
-<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion_forward.png" class="img-fluid"></a></p>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion_forward.png" class="img-fluid" style="width:89.6%"></a></p>
 </div>
 </section>
 <section id="training-at-scale" class="level2">
@@ -300,13 +327,13 @@ Figure&nbsp;7: <code>SWiPe</code> Communication Patterns
 </figure>
 </div>
 </section>
-<section id="aurora" class="level2 page-columns page-full" data-background-color="white" style="width:100%">
+<section id="aurora" class="level2" data-background-color="white" style="width:100%">
 <h2 data-background-color="white" style="width:100%" class="anchored" data-anchor-id="aurora">Aurora</h2>
 <div class="flex-container" style="align-items: center; gap:10pt;">
 <div id="tbl-aurora" class="column responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Aurora Specs
+Table&nbsp;3: Aurora<sup>4</sup> Specs
 </figcaption>
 <div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="table-responsive">
@@ -327,7 +354,7 @@ Table&nbsp;3: Aurora Specs
 <td style="text-align: left;">10,624</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">XPUs[^tiles]</td>
+<td style="text-align: right;">XPUs<sup>5</sup></td>
 <td style="text-align: left;">127,488</td>
 </tr>
 <tr class="even">
@@ -363,13 +390,7 @@ Figure&nbsp;8: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/202
 </figure>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<ol type="1">
-<li>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.</li>
-<li>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a></li>
-</ol>
-</div></div></section>
+</section>
 <section id="aeris-scaling-results" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="aeris-scaling-results">AERIS: Scaling Results</h2>
 <div class="flex-container">
@@ -405,12 +426,30 @@ Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 </figure>
 </div>
 </section>
+<section id="s2s-subsseasonal-to-seasonal-forecasts" class="level2 smaller" data-background-color="white">
+<h2 class="smaller anchored" data-background-color="white" data-anchor-id="s2s-subsseasonal-to-seasonal-forecasts">S2S: Subsseasonal-to-Seasonal Forecasts</h2>
+<div class="flex-container">
+<blockquote class="blockquote">
+<p>We demonstrate for the first time, the ability of a generative, high resolution (native ERA5) diffusion model to produce skillful forecasts on the S2S timescales with realistic evolutions of the Earth system (atmosphere + ocean).</p>
+</blockquote>
+<div class="flex-child">
+<ul>
+<li>To assess trends that extend beyond that of our medium-range weather forecasts (beyond 14-days) and evaluate the stability of our model, we made 3,000 forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</li>
+<li>AERIS was found to be stable during these 90-day forecasts
+<ul>
+<li>Realistic atmospheric states</li>
+<li>Correct power spectra even at the smallest scales</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
 <section id="seasonal-forecast-stability" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="seasonal-forecast-stability">Seasonal Forecast Stability</h2>
 <div id="fig-seasonal-forecast-stability" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img src="https://samforeman.me/talks/2025/10/08/assets/science/s2s.png" class="img-fluid figure-img" style="width:90.0%"></a>
+<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img src="https://samforeman.me/talks/2025/10/08/assets/science/s2s.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the <span style="color:#65B8EE;">closest</span> ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
@@ -435,17 +474,21 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong
 
 <ol>
 <li id="fn1"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a>↩︎</p></li>
-<li id="fn2"><p>~ 14,000 days of data↩︎</p></li>
+<li id="fn2"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.↩︎</p></li>
+<li id="fn3"><p>~ 14,000 days of data↩︎</p></li>
+<li id="fn4"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a>↩︎</p></li>
+<li id="fn5"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.↩︎</p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2025,
   author = {Foreman, Sam},
-  title = {AERIS},
+  title = {AERIS: {Argonne} {Earth} {Systems} {Model}},
   date = {2025-10-08},
   url = {https://samforeman.me/talks/2025/10/08/slides.html},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2025. <span>“AERIS.”</span> October 8. <a href="https://samforeman.me/talks/2025/10/08/slides.html">https://samforeman.me/talks/2025/10/08/slides.html</a>.
+Foreman, Sam. 2025. <span>“AERIS: Argonne Earth Systems Model.”</span>
+October 8. <a href="https://samforeman.me/talks/2025/10/08/slides.html">https://samforeman.me/talks/2025/10/08/slides.html</a>.
 </div></div></section></div> ]]></description>
   <guid>https://samforeman.me/talks/2025/10/08/</guid>
   <pubDate>Wed, 08 Oct 2025 05:00:00 GMT</pubDate>

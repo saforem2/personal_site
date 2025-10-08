@@ -1,7 +1,6 @@
 ---
-title: "AERIS"
-subtitle: "Argonne's Earth Systems Model"
-# subtitle: "Argonne Earth Systems Model for Reliable and Skillful Predictions"
+title: "AERIS: Argonne Earth Systems Model"
+subtitle: "for Reliable and Skillful Predictions"
 description: "Presentation at the 2025 ALCF Hands On HPC Workshop"
 location: "[2025 ALCF Hands-on HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)"
 location-url: "https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop"
@@ -67,27 +66,39 @@ format:
 
 ## 🌎 AERIS {background-color="white"}
 
+::: {.content-visible unless-format="revealjs"}
+
 ::: {.flex-container}
 
-::: {.flex-child #fig-arxiv style="width:150%;"}
-
-![](./assets/team.png)
-
-[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+::: {.flex-child style="width:50%;"}
+![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/team.png){#fig-arxiv}
 :::
 
-::: {.content-visible unless-format="revealjs"}
-![](./assets/cover2.svg){.light-content width="80%"}
+::: {.flex-child style="width:43.6%;"}
+![](./assets/cover2.svg){.light-content}
 
-![](./assets/cover1.svg){.dark-content width="80%"}
-:::
-
-::: {.content-visible when-format="revealjs" style="margin-left: auto; margin-right: auto;"}
-![](./assets/cover2.svg){.light-content width="80%"}
+![](./assets/cover1.svg){.dark-content}
 :::
 
 :::
 
+:::
+
+::: {.content-visible when-format="revealjs"}
+
+::: {.flex-container}
+
+::: {.flex-child style="width:50%;"}
+![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/team.png){#fig-arxiv}
+:::
+
+::: {.flex-child style="width:43.6%;"}
+![Pixel-level Swin diffusion transformer in sizes from \[1--80\]B](./assets/cover2.svg)
+:::
+
+:::
+
+:::
 
 ## High-Level Overview of AERIS {.smaller background-color="white"}
 
@@ -116,6 +127,29 @@ Rollout of AERIS model, specific humidity at 700m.
 :::
 
 [^pde]: Relative to PDE-based models, e.g.: [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
+
+## Contributions {.smaller background-color="white"}
+
+- _The first billion-parameter diffusion model for weather and climate_
+  - Operates at the pixel level (1 × 1 patch size) 
+  - Guided by physical priors
+- SWiPe, _novel_ 3D (sequence-window-pipeline) parallelism strategy for training
+  transformers across high-resolution inputs
+  - Enables scalable small-batch training on large supercomputers[^aurora-scale]
+    - **10.21 ExaFLOPS** @ 121,000 Intel XPUs (Aurora)
+- Medium-range forecast skill
+  - Surpasses IFS ENS, competitive with GenCast
+    (@price2024gencastdiffusionbasedensembleforecasting)
+  - Uniquely stable on seasonal scales to 90 days
+
+<!--
+  , validated through
+    domain-specific diagnostics and case studies of hurricanes and heatwaves.
+-->
+
+[^amd]: Using AMD MI250x GPUs, see:
+    [GPU nodes - LUMI-G](https://docs.lumi-supercomputer.eu/hardware/lumig/)
+[^aurora-scale]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.
 
 ## Model Overview {background-color="white"}
 
@@ -234,7 +268,7 @@ output.
 
 ![](./assets/diffusion.gif)
 
-![](./assets/diffusion_forward.png)
+![](./assets/diffusion_forward.png){width="89.6%"}
 
 :::
 
@@ -311,7 +345,7 @@ output.
 |          HBM | 8 PB    |
 |        DDR5c | 10 PB   |
 
-: Aurora Specs {.responsive .striped .hover}
+: Aurora[^aurora-ai] Specs {.responsive .striped .hover}
 
 :::
 
@@ -323,11 +357,10 @@ Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora
 
 :::
 
-::: aside
-1. Each node has 6 Intel Data Center GPU Max 1550 (code-named "Ponte Vecchio")
-   tiles, with 2 XPUs per tile.
-1. 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
-:::
+[^tiles]: Each node has 6 Intel Data Center GPU Max 1550 
+    (code-named "Ponte Vecchio") tiles, with 2 XPUs per tile.
+
+[^aurora-ai]: 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
 ## AERIS: Scaling Results {background-color="white"}
 
@@ -361,11 +394,32 @@ Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and
 3(c) days prior to 2020-08-28T00z.
 :::
 
+
+## S2S: Subsseasonal-to-Seasonal Forecasts {.smaller background-color="white"}
+
+::: {.flex-container}
+
+> We demonstrate for the first time, the ability of a generative, high
+> resolution (native ERA5) diffusion model to produce skillful forecasts on the
+> S2S timescales with realistic evolutions of the Earth system
+> (atmosphere + ocean).
+
+::: {.flex-child}
+- To assess trends that extend beyond that of our medium-range weather forecasts
+  (beyond 14-days) and evaluate the stability of our model, we made 3,000
+  forecasts (60 initial conditions each with 50 ensembles) out to 90 days.
+- AERIS was found to be stable during these 90-day forecasts 
+  - Realistic atmospheric states
+  - Correct power spectra even at the smallest scales
+:::
+
+:::
+
 ## Seasonal Forecast Stability {.smaller background-color="white"}
 
 ::: {#fig-seasonal-forecast-stability style="text-align: center; margin-left: auto; margin-right: auto;"}
 
-![](./assets/science/s2s.png){width="90%"}
+![](./assets/science/s2s.png)
 
 S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the
 ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the

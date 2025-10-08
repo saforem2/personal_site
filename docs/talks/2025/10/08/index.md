@@ -1,4 +1,4 @@
-# AERIS
+# AERIS: Argonne Earth Systems Model
 Sam Foreman
 2025-10-08
 
@@ -24,6 +24,8 @@ Sam Foreman
 
 <div class="flex-container">
 
+<div class="flex-child">
+
 <div id="fig-arxiv">
 
 ![](./assets/team.png)
@@ -32,11 +34,15 @@ Figure 1: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
 
-<img src="./assets/cover2.svg" class="light-content"
-style="width:80.0%" />
+</div>
 
-<img src="./assets/cover1.svg" class="dark-content"
-style="width:80.0%" />
+<div class="flex-child" style="width:43.6%;">
+
+<img src="./assets/cover2.svg" class="light-content" />
+
+<img src="./assets/cover1.svg" class="dark-content" />
+
+</div>
 
 </div>
 
@@ -230,17 +236,17 @@ Figure 7: `SWiPe` Communication Patterns
 
 <div id="tbl-aurora">
 
-Table 3: Aurora Specs
+Table 3: Aurora[^3] Specs
 
-|       Property | Value   |
-|---------------:|:--------|
-|          Racks | 166     |
-|          Nodes | 10,624  |
-| XPUs\[^tiles\] | 127,488 |
-|           CPUs | 21,248  |
-|           NICs | 84,992  |
-|            HBM | 8 PB    |
-|          DDR5c | 10 PB   |
+| Property | Value   |
+|---------:|:--------|
+|    Racks | 166     |
+|    Nodes | 10,624  |
+| XPUs[^4] | 127,488 |
+|     CPUs | 21,248  |
+|     NICs | 84,992  |
+|      HBM | 8 PB    |
+|    DDR5c | 10 PB   |
 
 </div>
 
@@ -252,15 +258,6 @@ Figure 8: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
-
-</div>
-
-<div class="aside">
-
-1.  Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
-    Vecchio”) tiles, with 2 XPUs per tile.
-2.  🏆 [Aurora Supercomputer Ranks Fastest for
-    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
 </div>
 
@@ -333,3 +330,9 @@ Systems Model for Reliable and Skillful Predictions.”
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
 [^2]: ~ 14,000 days of data
+
+[^3]: 🏆 [Aurora Supercomputer Ranks Fastest for
+    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
+
+[^4]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
+    Vecchio”) tiles, with 2 XPUs per tile.
