@@ -55,6 +55,11 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </div>
 </div>
 </div>
+<div class="notes">
+<blockquote class="blockquote">
+<p>We demonstrate a significant advancement in AI weather and climate modeling with AERIS by efficient scaling of window-based transformer models. We have performed global medium-range forecasts with performance competitive with GenCast and surpassing the IFS ENS model, with longer, 90- day rollouts showing our ability to learn atmospheric dynamics on seasonal scales without collapsing, becoming the first diffusion-based model that can work across forecast scales from 6 hours all the way to 3 months with remarkably accurate out of distribution predictions of extreme events.</p>
+</blockquote>
+</div>
 </section>
 <section id="high-level-overview-of-aeris" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="high-level-overview-of-aeris">High-Level Overview of AERIS</h2>
@@ -125,7 +130,7 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>The first billion-parameter diffusion model for weather and climate</em></p>
+<p><em>First billion-parameter diffusion model for weather + climate</em></p>
 <ul>
 <li>Operates at the pixel level (1 × 1 patch size)</li>
 <li>Guided by physical priors</li>
@@ -269,21 +274,6 @@ Figure&nbsp;4: Model Architecture
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="overview-of-diffusion-models" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-diffusion-models">Overview of Diffusion Models</h2>
-<ul>
-<li><p>We would like to (efficiently) draw samples from a (potentially unknown) <em>target</em> distribution <img src="https://latex.codecogs.com/png.latex?q(%5Ccdot)">.</p></li>
-<li><p>Suppose we have a sample which is known to be drawn from the target distribution, i.e.&nbsp;<img src="https://latex.codecogs.com/png.latex?x_%7B0%7D%20%5Csim%20q(x)">.</p></li>
-<li><p>We define the <em>forward diffusion process</em> to be that which gradually adds noise over <img src="https://latex.codecogs.com/png.latex?T"> steps, producing a sequence <img src="https://latex.codecogs.com/png.latex?x_%7B0%7D%20%5Crightarrow%20%7Bx_%7B1%7D,%20%5Ccdots,%20x_%7BT%7D%5C%7D">.</p>
-<ul>
-<li><p>Step sizes controlled by a <em>variance schedule</em> <img src="https://latex.codecogs.com/png.latex?%5C%7B%5Cbeta%5C%7D_%7Bt=1%7D%5E%7BT%7D">, with <img src="https://latex.codecogs.com/png.latex?%5Cbeta_%7Bt%7D%20%5Cin%20(0,%201)">:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Baligned%7D%0Aq(x_%7Bt%7D%7Cx_%7Bt-1%7D)%20=%20%5Cmathcal%7BN%7D(x_%7Bt%7D;%20%5Csqrt%7B1-%5Cbeta_%7Bt%7D%7D%20x_%7Bt-1%7D,%20%5Cbeta_%7Bt%7D%20I)%20%5C%5C%0Aq(x_%7B1:T%7D%7Cx_%7B0%7D)%20=%20%5Cprod_%7Bt=1%7D%5E%7BT%7D%20q(x_%7Bt%7D%7Cx_%7Bt-1%7D)%0A%5Cend%7Baligned%7D"></p></li>
-</ul></li>
-<li><p>Define a <em>forward diffusion process</em> in which noise is gradually added to a</p></li>
-<li><p>k</p></li>
-<li><p>Define a <em>forward diffusion process</em> which gradually (over <img src="https://latex.codecogs.com/png.latex?T"> steps) adds noise to a given sample <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D%20%5Csim%20q(%5Cmathbf%7Bx%7D)"></p></li>
-</ul>
 </section>
 <section id="limitations-of-deterministic-models" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="limitations-of-deterministic-models">Limitations of Deterministic Models</h2>
@@ -534,9 +524,31 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong
 Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. <span>“GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”</span> <a href="https://arxiv.org/abs/2312.15796">https://arxiv.org/abs/2312.15796</a>.
 </div>
 </div>
+</section>
+<section id="extras" class="level2">
+<h2 class="anchored" data-anchor-id="extras">Extras</h2>
+<section id="overview-of-diffusion-models" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-diffusion-models">Overview of Diffusion Models</h3>
+<p><strong>Goal</strong>: We would like to (efficiently) draw samples <img src="https://latex.codecogs.com/png.latex?x_%7Bi%7D"> from a (potentially unknown) <em>target</em> distribution <img src="https://latex.codecogs.com/png.latex?q(%5Ccdot)">.</p>
+<ul>
+<li><p>Given <img src="https://latex.codecogs.com/png.latex?x_%7B0%7D%20%5Csim%20q(x)">, we can construct a <em>forward diffusion process</em> by gradually adding noise to <img src="https://latex.codecogs.com/png.latex?x_%7B0%7D"> over <img src="https://latex.codecogs.com/png.latex?T"> steps: <img src="https://latex.codecogs.com/png.latex?x_%7B0%7D%20%5Crightarrow%20%5Cleft%5C%7Bx_%7B1%7D,%20%5Cldots,%20x_%7BT%7D%5Cright%5C%7D">.</p>
+<ul>
+<li><p>Step sizes <img src="https://latex.codecogs.com/png.latex?%5Cbeta_%7Bt%7D%20%5Cin%20(0,%201)"> controlled by a <em>variance schedule</em> <img src="https://latex.codecogs.com/png.latex?%5C%7B%5Cbeta%5C%7D_%7Bt=1%7D%5E%7BT%7D">, with:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Baligned%7D%0Aq(x_%7Bt%7D%7Cx_%7Bt-1%7D)%20=%20%5Cmathcal%7BN%7D(x_%7Bt%7D;%20%5Csqrt%7B1-%5Cbeta_%7Bt%7D%7D%20x_%7Bt-1%7D,%20%5Cbeta_%7Bt%7D%20I)%20%5C%5C%0Aq(x_%7B1:T%7D%7Cx_%7B0%7D)%20=%20%5Cprod_%7Bt=1%7D%5E%7BT%7D%20q(x_%7Bt%7D%7Cx_%7Bt-1%7D)%0A%5Cend%7Baligned%7D"></p></li>
+<li><p>Introduce:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Calpha_%7Bt%7D%20%5Cequiv%201%20-%20%5Cbeta_%7Bt%7D"></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cbar%7B%5Calpha%7D_%7Bt%7D%20%5Cequiv%20%5Cprod_%7Bs=1%7D%5E%7BT%7D%20%5Calpha_%7Bs%7D"></li>
+</ul>
+<p>We can write the forward process as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20q(x_%7B1%7D%7Cx_%7B0%7D)%20=%20%5Cmathcal%7BN%7D(x_%7B1%7D;%20%5Csqrt%7B%5Cbar%7B%5Calpha%7D_%7B1%7D%7D%20x_%7B0%7D,%20(1-%5Cbar%7B%5Calpha%7D_%7B1%7D)%20I)"></p></li>
+<li><p>We see that the <em>mean</em> <img src="https://latex.codecogs.com/png.latex?%5Cmu_%7Bt%7D%20=%20%5Csqrt%7B%5Calpha_%7Bt%7D%7D%20x_%7Bt-1%7D%20=%20%5Csqrt%7B%5Cbar%7B%5Calpha%7D_%7Bt%7D%7D%20x_%7B0%7D"></p></li>
+</ul></li>
+</ul>
 
 
 
+</section>
 </section>
 
 

@@ -8,7 +8,6 @@ Sam Foreman
 - [Model Overview](#model-overview)
 - [Windowed Self-Attention](#windowed-self-attention)
 - [Model Architecture: Details](#model-architecture-details)
-- [Overview of Diffusion Models](#overview-of-diffusion-models)
 - [Limitations of Deterministic
   Models](#limitations-of-deterministic-models)
 - [Transitioning to a Probabilistic
@@ -23,6 +22,8 @@ Sam Foreman
   Forecasts](#s2s-subsseasonal-to-seasonal-forecasts)
 - [Seasonal Forecast Stability](#seasonal-forecast-stability)
 - [References](#references)
+- [Extras](#extras)
+  - [Overview of Diffusion Models](#overview-of-diffusion-models)
 
 ## 🌎 AERIS
 
@@ -46,6 +47,20 @@ Figure 1: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25" />
 
 </div>
+
+</div>
+
+<div class="notes">
+
+> We demonstrate a significant advancement in AI weather and climate
+> modeling with AERIS by efficient scaling of window-based transformer
+> models. We have performed global medium-range forecasts with
+> performance competitive with GenCast and surpassing the IFS ENS model,
+> with longer, 90- day rollouts showing our ability to learn atmospheric
+> dynamics on seasonal scales without collapsing, becoming the first
+> diffusion-based model that can work across forecast scales from 6
+> hours all the way to 3 months with remarkably accurate out of
+> distribution predictions of extreme events.
 
 </div>
 
@@ -81,11 +96,11 @@ Table 1: Overview of AERIS model and training setup
 
 <div class="flex-container">
 
-> [!IMPORTANT]
+> [!CAUTION]
 >
 > ### ☔ AERIS
 >
-> *The first billion-parameter diffusion model for weather and climate*
+> *First billion-parameter diffusion model for weather + climate*
 >
 > - Operates at the pixel level (1 × 1 patch size)
 > - Guided by physical priors
@@ -174,34 +189,6 @@ Figure 3: Windowed Self-Attention
 Figure 4: Model Architecture
 
 </div>
-
-## Overview of Diffusion Models
-
-- We would like to (efficiently) draw samples from a (potentially
-  unknown) *target* distribution $q(\cdot)$.
-
-- Suppose we have a sample which is known to be drawn from the target
-  distribution, i.e. $x_{0} \sim q(x)$.
-
-- We define the *forward diffusion process* to be that which gradually
-  adds noise over $T$ steps, producing a sequence
-  $x_{0} \rightarrow {x_{1}, \cdots, x_{T}\}$.
-
-  - Step sizes controlled by a *variance schedule*
-    $\{\beta\}_{t=1}^{T}$, with $\beta_{t} \in (0, 1)$:
-
-    $$\begin{aligned}
-    q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
-    q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
-    \end{aligned}$$
-
-- Define a *forward diffusion process* in which noise is gradually added
-  to a
-
-- k
-
-- Define a *forward diffusion process* which gradually (over $T$ steps)
-  adds noise to a given sample $\mathbf{x} \sim q(\mathbf{x})$
 
 ## Limitations of Deterministic Models
 
@@ -428,6 +415,37 @@ Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
 </div>
 
 </div>
+
+## Extras
+
+### Overview of Diffusion Models
+
+**Goal**: We would like to (efficiently) draw samples $x_{i}$ from a
+(potentially unknown) *target* distribution $q(\cdot)$.
+
+- Given $x_{0} \sim q(x)$, we can construct a *forward diffusion
+  process* by gradually adding noise to $x_{0}$ over $T$ steps:
+  $x_{0} \rightarrow \left\{x_{1}, \ldots, x_{T}\right\}$.
+
+  - Step sizes $\beta_{t} \in (0, 1)$ controlled by a *variance
+    schedule* $\{\beta\}_{t=1}^{T}$, with:
+
+    $$\begin{aligned}
+    q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+    q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+    \end{aligned}$$
+
+  - Introduce:
+
+    - $\alpha_{t} \equiv 1 - \beta_{t}$
+    - $\bar{\alpha}_{t} \equiv \prod_{s=1}^{T} \alpha_{s}$
+
+    We can write the forward process as:
+
+    $$ q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)$$
+
+  - We see that the *mean*
+    $\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}$
 
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)

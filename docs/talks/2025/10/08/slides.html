@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-3f716a953c57c3b5a7ac73a5f39ca45d.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-7e7a91a23f1181050e2e9286e4b5c2de.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -307,6 +307,21 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </div>
 </div>
 </div>
+<aside class="notes">
+<blockquote>
+<p>We demonstrate a significant advancement in AI weather and climate modeling with AERIS by efficient scaling of window-based transformer models. We have performed global medium-range forecasts with performance competitive with GenCast and surpassing the IFS ENS model, with longer, 90- day rollouts showing our ability to learn atmospheric dynamics on seasonal scales without collapsing, becoming the first diffusion-based model that can work across forecast scales from 6 hours all the way to 3 months with remarkably accurate out of distribution predictions of extreme events.</p>
+</blockquote>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="high-level-overview-of-aeris" class="title-slide slide level1 smaller center" data-background-color="white">
@@ -370,13 +385,13 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <h1>Contributions</h1>
 <div class="flex-container">
 <div title="☔ AERIS">
-<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>☔ AERIS</strong></p>
 </div>
 <div class="callout-content">
-<p><em>The first billion-parameter diffusion model for weather and climate</em></p>
+<p><em>First billion-parameter diffusion model for weather + climate</em></p>
 <ul>
 <li>Operates at the pixel level (1 × 1 patch size)</li>
 <li>Guided by physical priors</li>
@@ -524,25 +539,6 @@ Figure&nbsp;4: Model Architecture
 </figcaption>
 </figure>
 </div>
-</section>
-
-<section id="overview-of-diffusion-models" class="title-slide slide level1 center">
-<h1>Overview of Diffusion Models</h1>
-<ul>
-<li><p>We would like to (efficiently) draw samples from a (potentially unknown) <em>target</em> distribution <span class="math inline">q(\cdot)</span>.</p></li>
-<li><p>Suppose we have a sample which is known to be drawn from the target distribution, i.e.&nbsp;<span class="math inline">x_{0} \sim q(x)</span>.</p></li>
-<li><p>We define the <em>forward diffusion process</em> to be that which gradually adds noise over <span class="math inline">T</span> steps, producing a sequence <span class="math inline">x_{0} \rightarrow {x_{1}, \cdots, x_{T}\}</span>.</p>
-<ul>
-<li><p>Step sizes controlled by a <em>variance schedule</em> <span class="math inline">\{\beta\}_{t=1}^{T}</span>, with <span class="math inline">\beta_{t} \in (0, 1)</span>:</p>
-<p><span class="math display">\begin{aligned}
-q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
-q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
-\end{aligned}</span></p></li>
-</ul></li>
-<li><p>Define a <em>forward diffusion process</em> in which noise is gradually added to a</p></li>
-<li><p>k</p></li>
-<li><p>Define a <em>forward diffusion process</em> which gradually (over <span class="math inline">T</span> steps) adds noise to a given sample <span class="math inline">\mathbf{x} \sim q(\mathbf{x})</span></p></li>
-</ul>
 </section>
 
 <section id="limitations-of-deterministic-models" class="title-slide slide level1 center" data-background-color="white">
@@ -799,10 +795,37 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong
 Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. <span>“GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”</span> <a href="https://arxiv.org/abs/2312.15796">https://arxiv.org/abs/2312.15796</a>.
 </div>
 </div>
-
-
 </section>
 
+<section>
+<section id="extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
+
+</section>
+<section id="overview-of-diffusion-models" class="slide level2 center">
+<h2>Overview of Diffusion Models</h2>
+<p><strong>Goal</strong>: We would like to (efficiently) draw samples <span class="math inline">x_{i}</span> from a (potentially unknown) <em>target</em> distribution <span class="math inline">q(\cdot)</span>.</p>
+<ul>
+<li><p>Given <span class="math inline">x_{0} \sim q(x)</span>, we can construct a <em>forward diffusion process</em> by gradually adding noise to <span class="math inline">x_{0}</span> over <span class="math inline">T</span> steps: <span class="math inline">x_{0} \rightarrow \left\{x_{1}, \ldots, x_{T}\right\}</span>.</p>
+<ul>
+<li><p>Step sizes <span class="math inline">\beta_{t} \in (0, 1)</span> controlled by a <em>variance schedule</em> <span class="math inline">\{\beta\}_{t=1}^{T}</span>, with:</p>
+<p><span class="math display">\begin{aligned}
+q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
+q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
+\end{aligned}</span></p></li>
+<li><p>Introduce:</p>
+<ul>
+<li><span class="math inline">\alpha_{t} \equiv 1 - \beta_{t}</span></li>
+<li><span class="math inline">\bar{\alpha}_{t} \equiv \prod_{s=1}^{T} \alpha_{s}</span></li>
+</ul>
+<p>We can write the forward process as:</p>
+<p><span class="math display"> q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)</span></p></li>
+<li><p>We see that the <em>mean</em> <span class="math inline">\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}</span></p></li>
+</ul></li>
+</ul>
+
+
+</section></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
