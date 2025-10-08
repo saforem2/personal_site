@@ -16,7 +16,7 @@
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2025-10-08">
-  <title>Sam Foreman – AERIS: Argonne Earth Systems Model</title>
+  <title>Sam Foreman – AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-82564a9be521909e62318595453d7f29.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-c84c70f2da832e9f9107bd992dd5bc7f.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -187,7 +187,7 @@
 <meta name="twitter:image-height" content="2160">
 <meta name="twitter:image-width" content="3840">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="citation_title" content="AERIS: Argonne Earth Systems Model">
+<meta name="citation_title" content="AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions">
 <meta name="citation_author" content="Sam Foreman">
 <meta name="citation_publication_date" content="2025-10-08">
 <meta name="citation_cover_date" content="2025-10-08">
@@ -263,8 +263,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="./assets/cover0.svg" data-background-opacity="0.5" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">AERIS: Argonne Earth Systems Model</h1>
-  <p class="subtitle">for Reliable and Skillful Predictions</p>
+  <h1 class="title">AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -367,14 +366,38 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a></p></li></ol></aside></section>
 
-<section id="contributions" class="title-slide slide level1 smaller center" data-background-color="white">
+<section id="contributions" class="title-slide slide level1 center" data-background-color="white">
 <h1>Contributions</h1>
-<ul>
-<li><em>The first billion-parameter diffusion model for weather and climate</em>
+<div class="flex-container">
+<div title="🌎 [AERIS]{style='color:var(--green-text)!important'}" style="background-color: oklch(from var(--green-text) calc(l * 1.15) c h/0.1)!important;">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🌎 <span style="color:var(--green-text)!important">AERIS</span></strong></p>
+</div>
+<div class="callout-content">
+<p><em>The first billion-parameter diffusion model for weather and climate</em></p>
 <ul>
 <li>Operates at the pixel level (1 × 1 patch size)</li>
 <li>Guided by physical priors</li>
+<li>Medium-range forecast skill
+<ul>
+<li>Surpasses IFS ENS, competitive with GenCast (<span class="citation" data-cites="price2024gencast">Price et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>)</li>
+<li>Uniquely stable on seasonal scales to 90 days</li>
 </ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div title="🌀 SWiPe">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🌀 SWiPe</strong></p>
+</div>
+<div class="callout-content">
+<ul>
 <li>SWiPe, <em>novel</em> 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs
 <ul>
 <li>Enables scalable small-batch training on large supercomputers<sup>1</sup>
@@ -382,15 +405,12 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <li><strong>10.21 ExaFLOPS</strong> @ 121,000 Intel XPUs (Aurora)</li>
 </ul></li>
 </ul></li>
-<li>Medium-range forecast skill
-<ul>
-<li>Surpasses IFS ENS, competitive with GenCast
-<ol class="example" type="1">
-<li></li>
-</ol></li>
-<li>Uniquely stable on seasonal scales to 90 days</li>
-</ul></li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.</p></li></ol></aside></section>
 
 <section id="model-overview" class="title-slide slide level1 center" data-background-color="white">
@@ -696,9 +716,19 @@ Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 <section id="s2s-subsseasonal-to-seasonal-forecasts" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>S2S: Subsseasonal-to-Seasonal Forecasts</h1>
 <div class="flex-container">
-<blockquote>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
 <p>We demonstrate for the first time, the ability of a generative, high resolution (native ERA5) diffusion model to produce skillful forecasts on the S2S timescales with realistic evolutions of the Earth system (atmosphere + ocean).</p>
-</blockquote>
+</div>
+</div>
+</div>
 <div class="flex-child">
 <ul>
 <li>To assess trends that extend beyond that of our medium-range weather forecasts (beyond 14-days) and evaluate the stability of our model, we made 3,000 forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</li>
@@ -728,9 +758,17 @@ Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemb
 
 <section id="references" class="title-slide slide level1 smaller scrollable" data-background-color="white">
 <h1>References</h1>
+<ol type="1">
+<li><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/">What are Diffusion Models? | Lil’Log</a></li>
+<li><a href="https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models">Step by Step visual introduction to Diffusion Models. - Blog by Kemal Erdem</a></li>
+<li><a href="https://calvinyluo.com/2022/08/26/diffusion-tutorial.html">Understanding Diffusion Models: A Unified Perspective</a></li>
+</ol>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-stock2025aeris" class="csl-entry" role="listitem">
 Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong Jung, Sandeep Madireddy, et al. 2025. <span>“AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions.”</span> <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
+</div>
+<div id="ref-price2024gencast" class="csl-entry" role="listitem">
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. <span>“GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”</span> <a href="https://arxiv.org/abs/2312.15796">https://arxiv.org/abs/2312.15796</a>.
 </div>
 </div>
 

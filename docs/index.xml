@@ -19,7 +19,7 @@
 <generator>quarto-1.9.3</generator>
 <lastBuildDate>Wed, 08 Oct 2025 05:00:00 GMT</lastBuildDate>
 <item>
-  <title>AERIS: Argonne Earth Systems Model</title>
+  <title>AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions</title>
   <dc:creator>Sam Foreman</dc:creator>
   <link>https://samforeman.me/talks/2025/10/08/</link>
   <description><![CDATA[ 
@@ -47,8 +47,12 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </div>
 </div>
 <div class="flex-child" style="width:43.6%;">
-<p><a href="./assets/cover2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/talks/2025/10/08/assets/cover2.svg" class="light-content img-fluid"></a></p>
-<p><a href="./assets/cover1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://samforeman.me/talks/2025/10/08/assets/cover1.svg" class="dark-content img-fluid"></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/cover2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"><img src="https://samforeman.me/talks/2025/10/08/assets/cover2.svg" class="light-content img-fluid figure-img" alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"></a></p>
+<figcaption>ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -58,7 +62,7 @@ Figure&nbsp;1: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 <div id="fig-rollout" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/08/assets/rollout.gif" class="img-fluid figure-img"></a>
+<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/08/assets/rollout.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Rollout of AERIS model, specific humidity at 700m.
@@ -108,14 +112,42 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 </section>
-<section id="contributions" class="level2 smaller" data-background-color="white">
-<h2 class="smaller anchored" data-background-color="white" data-anchor-id="contributions">Contributions</h2>
-<ul>
-<li><em>The first billion-parameter diffusion model for weather and climate</em>
+<section id="contributions" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="contributions">Contributions</h2>
+<div class="flex-container">
+<div class="callout callout-style-simple callout-important no-icon callout-titled" title="🌎 [AERIS]{style='color:var(--green-text)!important'}" style="background-color: oklch(from var(--green-text) calc(l * 1.15) c h/0.1)!important;">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>🌎 <span style="color:var(--green-text)!important">AERIS</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>The first billion-parameter diffusion model for weather and climate</em></p>
 <ul>
 <li>Operates at the pixel level (1 × 1 patch size)</li>
 <li>Guided by physical priors</li>
+<li>Medium-range forecast skill
+<ul>
+<li>Surpasses IFS ENS, competitive with GenCast (<span class="citation" data-cites="price2024gencast">Price et al. (2024)</span>)</li>
+<li>Uniquely stable on seasonal scales to 90 days</li>
 </ul></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="🌀 SWiPe">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🌀 SWiPe
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
 <li>SWiPe, <em>novel</em> 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs
 <ul>
 <li>Enables scalable small-batch training on large supercomputers<sup>2</sup>
@@ -123,15 +155,10 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <li><strong>10.21 ExaFLOPS</strong> @ 121,000 Intel XPUs (Aurora)</li>
 </ul></li>
 </ul></li>
-<li>Medium-range forecast skill
-<ul>
-<li>Surpasses IFS ENS, competitive with GenCast
-<ol class="example" type="1">
-<li></li>
-</ol></li>
-<li>Uniquely stable on seasonal scales to 90 days</li>
-</ul></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 <section id="model-overview" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="model-overview">Model Overview</h2>
@@ -221,7 +248,7 @@ Table&nbsp;2: Variables used in AERIS training and prediction
 <div id="fig-windowed-self-attention" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:66%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-windowed-self-attention-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/swin-transformer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;3: Windowed Self-Attention"><img src="https://samforeman.me/talks/2025/10/08/assets/swin-transformer.png" class="img-fluid figure-img"></a>
+<a href="./assets/swin-transformer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;3: Windowed Self-Attention"><img src="https://samforeman.me/talks/2025/10/08/assets/swin-transformer.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-windowed-self-attention-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Windowed Self-Attention
@@ -235,7 +262,7 @@ Figure&nbsp;3: Windowed Self-Attention
 <div id="fig-model-arch-details" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-model-arch-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/model_architecture.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: Model Architecture"><img src="https://samforeman.me/talks/2025/10/08/assets/model_architecture.svg" class="img-fluid figure-img"></a>
+<a href="./assets/model_architecture.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4: Model Architecture"><img src="https://samforeman.me/talks/2025/10/08/assets/model_architecture.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-arch-details-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Model Architecture
@@ -273,7 +300,7 @@ Figure&nbsp;4: Model Architecture
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
+<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <img src="https://latex.codecogs.com/png.latex?t_%7B0%7D%20%5Crightarrow%20t_%7B64%7D">, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
@@ -281,8 +308,8 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 </figure>
 </div>
 <div class="flex-container">
-<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion.gif" class="img-fluid"></a></p>
-<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion_forward.png" class="img-fluid" style="width:89.6%"></a></p>
+<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion.gif" class="img-fluid"></a></p>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://samforeman.me/talks/2025/10/08/assets/diffusion_forward.png" class="img-fluid" style="width:89.6%"></a></p>
 </div>
 </section>
 <section id="training-at-scale" class="level2">
@@ -308,7 +335,7 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 <div id="fig-swipe-layer" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:66%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;6: "><img src="https://samforeman.me/talks/2025/10/08/assets/wpsp.svg" class="img-fluid figure-img"></a>
+<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;6: "><img src="https://samforeman.me/talks/2025/10/08/assets/wpsp.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6
@@ -319,7 +346,7 @@ Figure&nbsp;6
 <div id="fig-comms" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:80%; text-align: center; margin-left: auto; margin-right: auto; ">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;7: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/08/assets/comms1.svg" class="img-fluid figure-img"></a>
+<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;7: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/08/assets/comms1.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: <code>SWiPe</code> Communication Patterns
@@ -382,7 +409,7 @@ Table&nbsp;3: Aurora<sup>4</sup> Specs
 <div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;8: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/08/assets/aurora1.png" class="img-fluid figure-img"></a>
+<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;8: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/08/assets/aurora1.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
@@ -397,7 +424,7 @@ Figure&nbsp;8: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/202
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored" style="width:70%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;9: AERIS: Scaling Results"><img src="https://samforeman.me/talks/2025/10/08/assets/aeris-scaling.svg" class="img-fluid figure-img"></a>
+<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;9: AERIS: Scaling Results"><img src="https://samforeman.me/talks/2025/10/08/assets/aeris-scaling.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9: AERIS: Scaling Results
@@ -418,7 +445,7 @@ Figure&nbsp;9: AERIS: Scaling Results
 <div id="fig-hurricane-laura" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img src="https://samforeman.me/talks/2025/10/08/assets/science/hurricane.png" class="img-fluid figure-img"></a>
+<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img src="https://samforeman.me/talks/2025/10/08/assets/science/hurricane.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
@@ -429,9 +456,16 @@ Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 <section id="s2s-subsseasonal-to-seasonal-forecasts" class="level2 smaller" data-background-color="white">
 <h2 class="smaller anchored" data-background-color="white" data-anchor-id="s2s-subsseasonal-to-seasonal-forecasts">S2S: Subsseasonal-to-Seasonal Forecasts</h2>
 <div class="flex-container">
-<blockquote class="blockquote">
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
 <p>We demonstrate for the first time, the ability of a generative, high resolution (native ERA5) diffusion model to produce skillful forecasts on the S2S timescales with realistic evolutions of the Earth system (atmosphere + ocean).</p>
-</blockquote>
+</div>
+</div>
+</div>
 <div class="flex-child">
 <ul>
 <li>To assess trends that extend beyond that of our medium-range weather forecasts (beyond 14-days) and evaluate the stability of our model, we made 3,000 forecasts (60 initial conditions each with 50 ensembles) out to 90 days.</li>
@@ -449,7 +483,7 @@ Figure&nbsp;10: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 <div id="fig-seasonal-forecast-stability" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align: center; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img src="https://samforeman.me/talks/2025/10/08/assets/science/s2s.png" class="img-fluid figure-img"></a>
+<a href="./assets/science/s2s.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the closest ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout."><img src="https://samforeman.me/talks/2025/10/08/assets/science/s2s.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seasonal-forecast-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemble spread in the ocean; (b) qualitatively sharp fields of SST and Q700 predicted 90 days in the future from the <span style="color:#65B8EE;">closest</span> ensemble member to the ERA5 in (a); and (c) stable Hovmöller diagrams of U850 anomalies (climatology removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
@@ -459,9 +493,17 @@ Figure&nbsp;11: S2S Stability: (a) Spring barrier El Niño with realistic ensemb
 </section>
 <section id="references" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/">What are Diffusion Models? | Lil’Log</a></li>
+<li><a href="https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models">Step by Step visual introduction to Diffusion Models. - Blog by Kemal Erdem</a></li>
+<li><a href="https://calvinyluo.com/2022/08/26/diffusion-tutorial.html">Understanding Diffusion Models: A Unified Perspective</a></li>
+</ol>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-stock2025aeris" class="csl-entry">
 Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong Jung, Sandeep Madireddy, et al. 2025. <span>“AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions.”</span> <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
+</div>
+<div id="ref-price2024gencast" class="csl-entry">
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. <span>“GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”</span> <a href="https://arxiv.org/abs/2312.15796">https://arxiv.org/abs/2312.15796</a>.
 </div>
 </div>
 
@@ -481,14 +523,15 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2025,
   author = {Foreman, Sam},
-  title = {AERIS: {Argonne} {Earth} {Systems} {Model}},
+  title = {AERIS: {Argonne} {Earth} {Systems} {Model} for {Reliable} and
+    {Skillful} {Predictions}},
   date = {2025-10-08},
   url = {https://samforeman.me/talks/2025/10/08/slides.html},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2025. <span>“AERIS: Argonne Earth Systems Model.”</span>
-October 8. <a href="https://samforeman.me/talks/2025/10/08/slides.html">https://samforeman.me/talks/2025/10/08/slides.html</a>.
+Foreman, Sam. 2025. <span>“AERIS: Argonne Earth Systems Model for
+Reliable and Skillful Predictions.”</span> October 8. <a href="https://samforeman.me/talks/2025/10/08/slides.html">https://samforeman.me/talks/2025/10/08/slides.html</a>.
 </div></div></section></div> ]]></description>
   <guid>https://samforeman.me/talks/2025/10/08/</guid>
   <pubDate>Wed, 08 Oct 2025 05:00:00 GMT</pubDate>

@@ -1,6 +1,5 @@
 ---
-title: "AERIS: Argonne Earth Systems Model"
-subtitle: "for Reliable and Skillful Predictions"
+title: "AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions"
 description: "Presentation at the 2025 ALCF Hands On HPC Workshop"
 location: "[2025 ALCF Hands-on HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)"
 location-url: "https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop"
@@ -45,6 +44,7 @@ format:
       look: neo
       layout: dagre
       useMaxWidth: true
+  gfm: default
   revealjs:
     shift-heading-level-by: -1
     image: "./assets/thumbnail.png"
@@ -61,7 +61,6 @@ format:
       # data-background-color: "oklch(from #E599F7 l  c * 1.15 h / 0.1)"
     # aliases:
     # - /talks/alcf-hands-on-hpc-2025/slides.html
-  gfm: default
 ---
 
 ## 🌎 AERIS {background-color="white"}
@@ -75,9 +74,7 @@ format:
 :::
 
 ::: {.flex-child style="width:43.6%;"}
-![](./assets/cover2.svg){.light-content}
-
-![](./assets/cover1.svg){.dark-content}
+![ACM Gordon Bell Prize for Climate Modeling Finalist @ SC'25](./assets/cover2.svg){.light-content}
 :::
 
 :::
@@ -128,24 +125,28 @@ Rollout of AERIS model, specific humidity at 700m.
 
 [^pde]: Relative to PDE-based models, e.g.: [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-## Contributions {.smaller background-color="white"}
+## Contributions {background-color="white"}
 
-- _The first billion-parameter diffusion model for weather and climate_
-  - Operates at the pixel level (1 × 1 patch size) 
-  - Guided by physical priors
+::: {.flex-container}
+
+::: {.callout-important icon=false title="🌎 [AERIS]{style='color:var(--green-text)!important'}" style="background-color: oklch(from var(--green-text) calc(l * 1.15) c h/0.1)!important;"}
+_The first billion-parameter diffusion model for weather and climate_
+
+- Operates at the pixel level (1 × 1 patch size) 
+- Guided by physical priors
+- Medium-range forecast skill
+  - Surpasses IFS ENS, competitive with GenCast (@price2024gencast)
+  - Uniquely stable on seasonal scales to 90 days
+:::
+
+::: {.callout-note icon=false title="🌀 SWiPe"}
 - SWiPe, _novel_ 3D (sequence-window-pipeline) parallelism strategy for training
   transformers across high-resolution inputs
   - Enables scalable small-batch training on large supercomputers[^aurora-scale]
     - **10.21 ExaFLOPS** @ 121,000 Intel XPUs (Aurora)
-- Medium-range forecast skill
-  - Surpasses IFS ENS, competitive with GenCast
-    (@price2024gencastdiffusionbasedensembleforecasting)
-  - Uniquely stable on seasonal scales to 90 days
+:::
 
-<!--
-  , validated through
-    domain-specific diagnostics and case studies of hurricanes and heatwaves.
--->
+:::
 
 [^aurora-scale]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.
 
@@ -397,10 +398,12 @@ Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and
 
 ::: {.flex-container}
 
-> We demonstrate for the first time, the ability of a generative, high
-> resolution (native ERA5) diffusion model to produce skillful forecasts on the
-> S2S timescales with realistic evolutions of the Earth system
-> (atmosphere + ocean).
+::: {.callout-important}
+We demonstrate for the first time, the ability of a generative, high
+resolution (native ERA5) diffusion model to produce skillful forecasts on the
+S2S timescales with realistic evolutions of the Earth system
+(atmosphere + ocean).
+:::
 
 ::: {.flex-child}
 - To assess trends that extend beyond that of our medium-range weather forecasts
@@ -427,6 +430,10 @@ removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 :::
 
 ## References {background-color="white"}
+
+1. [What are Diffusion Models? | Lil'Log](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+1. [Step by Step visual introduction to Diffusion Models. - Blog by Kemal Erdem](https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models)
+1. [Understanding Diffusion Models&#58; A Unified Perspective](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html)
 
 ::: {#refs}
 :::

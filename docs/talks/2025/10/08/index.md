@@ -1,4 +1,4 @@
-# AERIS: Argonne Earth Systems Model
+# AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions
 Sam Foreman
 2025-10-08
 
@@ -41,9 +41,8 @@ Figure 1: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 <div class="flex-child" style="width:43.6%;">
 
-<img src="./assets/cover2.svg" class="light-content" />
-
-<img src="./assets/cover1.svg" class="dark-content" />
+<img src="./assets/cover2.svg" class="light-content"
+alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25" />
 
 </div>
 
@@ -79,17 +78,30 @@ Table 1: Overview of AERIS model and training setup
 
 ## Contributions
 
-- *The first billion-parameter diffusion model for weather and climate*
-  - Operates at the pixel level (1 × 1 patch size)
-  - Guided by physical priors
-- SWiPe, *novel* 3D (sequence-window-pipeline) parallelism strategy for
-  training transformers across high-resolution inputs
-  - Enables scalable small-batch training on large supercomputers[^2]
-    - **10.21 ExaFLOPS** @ 121,000 Intel XPUs (Aurora)
-- Medium-range forecast skill
-  - Surpasses IFS ENS, competitive with GenCast
-    1)  
-  - Uniquely stable on seasonal scales to 90 days
+<div class="flex-container">
+
+> [!IMPORTANT]
+>
+> ### 🌎 <span style="color:var(--green-text)!important">AERIS</span>
+>
+> *The first billion-parameter diffusion model for weather and climate*
+>
+> - Operates at the pixel level (1 × 1 patch size)
+> - Guided by physical priors
+> - Medium-range forecast skill
+>   - Surpasses IFS ENS, competitive with GenCast (Price et al. (2024))
+>   - Uniquely stable on seasonal scales to 90 days
+
+> [!NOTE]
+>
+> ### 🌀 SWiPe
+>
+> - SWiPe, *novel* 3D (sequence-window-pipeline) parallelism strategy
+>   for training transformers across high-resolution inputs
+>   - Enables scalable small-batch training on large supercomputers[^2]
+>     - **10.21 ExaFLOPS** @ 121,000 Intel XPUs (Aurora)
+
+</div>
 
 ## Model Overview
 
@@ -316,6 +328,8 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 <div class="flex-container">
 
+> [!IMPORTANT]
+>
 > We demonstrate for the first time, the ability of a generative, high
 > resolution (native ERA5) diffusion model to produce skillful forecasts
 > on the S2S timescales with realistic evolutions of the Earth system
@@ -352,6 +366,14 @@ removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 
 ## References
 
+1.  [What are Diffusion Models? \|
+    Lil’Log](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+2.  [Step by Step visual introduction to Diffusion Models. - Blog by
+    Kemal
+    Erdem](https://erdem.pl/2023/11/step-by-step-visual-introduction-to-diffusion-models)
+3.  [Understanding Diffusion Models: A Unified
+    Perspective](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html)
+
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
 
@@ -361,6 +383,15 @@ Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
 Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
 Systems Model for Reliable and Skillful Predictions.”
 <https://arxiv.org/abs/2509.13523>.
+
+</div>
+
+<div id="ref-price2024gencast" class="csl-entry">
+
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson,
+Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. “GenCast:
+Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
+<https://arxiv.org/abs/2312.15796>.
 
 </div>
 
