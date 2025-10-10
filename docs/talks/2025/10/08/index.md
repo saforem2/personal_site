@@ -1,4 +1,4 @@
-# AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions
+# AERIS: Argonne’s Earth Systems Model
 Sam Foreman
 2025-10-08
 
