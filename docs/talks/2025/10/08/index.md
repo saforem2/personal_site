@@ -233,7 +233,8 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 
 <div class="flex-container">
 
-![Reverse Diffusion Process (\$)](./assets/diffusion.gif)
+![Reverse Diffusion Process
+($\mathcal{N}\rightarrow \pi$)](./assets/diffusion.gif)
 
 <img src="./assets/diffusion_forward.png" style="width:89.6%"
 alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
@@ -454,6 +455,15 @@ Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
 
   - We see that the *mean*
     $\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}$
+
+| RoPE $\theta$ | \[optimizer\]  | \[tok/batch\] | \[Nodes\] | \[color\] |
+|:-------------:|----------------|---------------|:---------:|:---------:|
+|      50k      | ipex.fusedLamb | 100M          |    512    |   grey    |
+|      50k      | ipex.fusedLamb | 50M           |    256    |   blue    |
+|      5M       | ipex.fusedLamb | 50M           |    256    |  purple   |
+|      5M       | muon           | 50M           |    256    |  orange   |
+|      5M       | muonclip       | 50M           |    256    |    red    |
+|      5M       | sophiag        | 50M           |    256    |   green   |
 
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)

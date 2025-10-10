@@ -1014,14 +1014,19 @@ div.sidebar-item-container:focus {
 // }
 
 .ms-2 {
-	margin-left: unset;
+	margin-left: unset!important;
 	margin: 0;
 	padding: 0;
 	height: 1em;
 	display: block;
 	height: auto;
 	margin-block: 0pt;
-	font-size: 100%;
+	// font-size: 100%;
+}
+
+.sidebar-navigation li a {
+  padding-inline-start: unset!important;
+	/* padding-inline-start: 4pt; */
 }
 
 div.sidebar-item-container {
@@ -1420,8 +1425,9 @@ nav td code:not(.sourceCode) {
 
 div.callout-tip.callout {
   border-left-color: rgba(0, 0, 0, 0);
-  background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
-  border: 1px solid rgba(0, 0, 0, 0) !important;
+  // background: none!impor
+  // background: oklch(from rgba(0, 0, 0, 0.0) calc(l * 1.15) c h/0.1);
+  border: 1px solid rgba(0,0,0,0.1) !important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
     // transition: all 0.2s ease-in-out;
@@ -2412,20 +2418,6 @@ main {
 	border-color: rgba(255,255,255,10%);
 }
 
-.navbar .quarto-reader-toggle:not(.reader) .bi::before,
-.sidebar-navigation .quarto-reader-toggle:not(.reader) .bi::before {
-  background-image: none!important;
-	content: "📓";
-	font-size: 1rem;
-}
-
-.navbar .quarto-reader-toggle.reader .bi::before,
-.sidebar-navigation .quarto-reader-toggle.reader .bi::before {
-  background-image: none!important;
-	content: "📖";
-  font-size: 1rem;
-}
-
 .quarto-reader-toggle.reader.quarto-navigation-tool .quarto-reader-toggle-btn {
 	background-color: unset;
 	border-radius: 0pt;
@@ -2468,31 +2460,54 @@ main {
   margin-block: 4pt;
 }
 
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  font-size: 1.1rem;
+}
+
+// Sidebar GitHub Icon
+
 .sidebar-navigation .bi-github::before {
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="currentColor"><path d="M208 104v8a48 48 0 0 1-48 48h-24a32 32 0 0 1 32 32v40h-64v-40a32 32 0 0 1 32-32h-24a48 48 0 0 1-48-48v-8a49.3 49.3 0 0 1 8.51-27.3A51.92 51.92 0 0 1 76 32a52 52 0 0 1 43.83 24h32.34A52 52 0 0 1 196 32a51.92 51.92 0 0 1 3.49 44.7A49.3 49.3 0 0 1 208 104" opacity=".2"/><path d="M208.3 75.68A59.74 59.74 0 0 0 202.93 28a8 8 0 0 0-6.93-4a59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24a8 8 0 0 0-6.93 4a59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24a40 40 0 0 0-40-40a8 8 0 0 0 0 16a24 24 0 0 1 24 24a40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58 58 0 0 0-7.7-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48a8 8 0 0 0 1.1-7.69a43.8 43.8 0 0 1 .79-33.58a43.88 43.88 0 0 1 32.32 20.06a8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69a43.87 43.87 0 0 1 32.32-20.06a43.8 43.8 0 0 1 .77 33.58a8.09 8.09 0 0 0 1 7.65a41.76 41.76 0 0 1 7 22.52Z"/></g></svg>');
+  background-image: none!important;
   content: "📦";
 }
 
+// Theme Toggle Icon
+
 .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(204, 204, 204)"><path d="M227.89 147.89A96 96 0 1 1 108.11 28.11a96.09 96.09 0 0 0 119.78 119.78" opacity=".2"/><path d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.1 103.1 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4"/></g></svg>');
   background-image: none!important;
 	content: "🔦";
 }
 .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(204, 204, 204)"><path d="M227.89 147.89A96 96 0 1 1 108.11 28.11a96.09 96.09 0 0 0 119.78 119.78" opacity=".2"/><path d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.1 103.1 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4"/></g></svg>');
-  // border: 1pt solid rgba(0,0,0,0.3);
-  // box-shadow: 1pt 2pt black;
 }
-
-.navbar .quarto-navbar-tools .quarto-navigation-tool {
-  font-size: 1.1rem;
-}
-
 
 .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(131,131,131)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>');
   background-image: none!important;
 	content: "💡";
 }
 .navbar .quarto-color-scheme-toggle.alternate .bi::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(131,131,131)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>');
+}
+
+// Sidebar Toggle Reader Icon
+
+.navbar .quarto-reader-toggle:not(.reader) .bi::before,
+.sidebar-navigation .quarto-reader-toggle:not(.reader) .bi::before {
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="currentColor"><path d="m215.88 56.39l-29.75 169a8 8 0 0 1-9.27 6.49l-130.25-23a8 8 0 0 1-6.49-9.26l29.75-169a8 8 0 0 1 9.27-6.49l130.25 23a8 8 0 0 1 6.49 9.26" opacity=".2"/><path d="m210.78 39.25l-130.25-23A16 16 0 0 0 62 29.23l-29.75 169a16 16 0 0 0 13 18.53l130.25 23a16 16 0 0 0 18.54-13l29.75-169a16 16 0 0 0-13.01-18.51M178.26 224L48 201L77.75 32L208 55ZM89.34 58.42a8 8 0 0 1 9.27-6.48l83 14.65a8 8 0 0 1-1.39 15.88a8.4 8.4 0 0 1-1.4-.12l-83-14.66a8 8 0 0 1-6.48-9.27M83.8 89.94a8 8 0 0 1 9.27-6.49l83 14.66a8 8 0 0 1-1.4 15.89a7.6 7.6 0 0 1-1.41-.13l-83-14.65a8 8 0 0 1-6.46-9.28m-5.55 31.51a8 8 0 0 1 9.27-6.45l41.48 7.29a8 8 0 0 1-1.38 15.88a8.3 8.3 0 0 1-1.4-.12l-41.5-7.33a8 8 0 0 1-6.47-9.27"/></g></svg>');
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(204, 204, 204)"><path d="M227.89 147.89A96 96 0 1 1 108.11 28.11a96.09 96.09 0 0 0 119.78 119.78" opacity=".2"/><path d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.1 103.1 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4"/></g></svg>');
+  background-image: none!important;
+	content: "📄";
+}
+
+.navbar .quarto-reader-toggle.reader .bi::before,
+.sidebar-navigation .quarto-reader-toggle.reader .bi::before {
+  // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="currentColor"><path d="M80 40v176H48a8 8 0 0 1-8-8V48a8 8 0 0 1 8-8Z" opacity=".2"/><path d="M184 112a8 8 0 0 1-8 8h-64a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8m-8 24h-64a8 8 0 0 0 0 16h64a8 8 0 0 0 0-16m48-88v160a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16M48 208h24V48H48Zm160 0V48H88v160z"/></g></svg>');
+	// content: "📖";
+  background-image: none!important;
+  content: "📓";
 }
 
 
@@ -3889,7 +3904,23 @@ nav .nav-item:not(.compact) {
   background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
   color: $link-color-hover !important;
   border: 1px solid $link-color-hover !important;
-  box-shadow: 0 0 8px $link-color-hover !important;
+  // box-shadow: 0 0 8px $link-color-hover !important;
+  box-shadow: 2pt 2pt $link-color-hover!important;
+  outline: 1px solid #000000!important;
+}
+
+.reveal .panel-tabset [role="tab"]:hover:not([aria-selected="true"]),
+.panel-tabset [role="tab"]:hover:not([aria-selected="true"]),
+.reveal .panel-tabset [role="tab"][aria-selected="true"],
+.panel-tabset [role="tab"][aria-selected="true"] {
+  &:hover {
+    box-shadow: 2pt 2pt black !important;
+    box-shadow: $code-block-hover-box-shadow;
+    border: 1pt solid $link-color-hover !important;
+    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    color: $link-color-hover !important;
+    // outline: 1px solid #000000!important;
+  }
 }
 
 .panel-tabset [role="tab"]:hover,
@@ -4145,6 +4176,27 @@ img {
   body, pre, blockquote, code, ol, li, p {
     page-break-inside: avoid;
   }
+  #header, #navigation, .sidebar {
+      display: none;
+    }
+
+    /* Adjust font sizes or line heights for better readability */
+    body {
+      font-size: 12pt;
+      line-height: 1.5;
+    }
+
+    /* Ensure content flows well across pages */
+    p, div {
+      widows: 3; /* Minimum number of lines of a paragraph to be shown at the top of a page */
+      orphans: 3; /* Minimum number of lines of a paragraph to be shown at the bottom of a page */
+    }
+
+    /* Remove background colors or images to save ink */
+    body, section {
+      background-color: transparent;
+      color: black;
+    }
 }
 
 div.ansi-escaped-output {

@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-b1cdf34d54aba6704f83e2c421d37a19.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-03a8e39a0db39cfe4a7748fd58898b79.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -582,8 +582,8 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Reverse Diffusion Process ($)"><img data-src="./assets/diffusion.gif" alt="Reverse Diffusion Process ($)"></a></p>
-<figcaption>Reverse Diffusion Process ($)</figcaption>
+<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"><img data-src="./assets/diffusion.gif" alt="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"></a></p>
+<figcaption>Reverse Diffusion Process (<span class="math inline">\mathcal{N}\rightarrow \pi</span>)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -830,6 +830,61 @@ q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
 <li><p>We see that the <em>mean</em> <span class="math inline">\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}</span></p></li>
 </ul></li>
 </ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">RoPE <span class="math inline">\theta</span></th>
+<th>[optimizer]</th>
+<th>[tok/batch]</th>
+<th style="text-align: center;">[Nodes]</th>
+<th style="text-align: center;">[color]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">50k</td>
+<td>ipex.fusedLamb</td>
+<td>100M</td>
+<td style="text-align: center;">512</td>
+<td style="text-align: center;">grey</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">50k</td>
+<td>ipex.fusedLamb</td>
+<td>50M</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">blue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5M</td>
+<td>ipex.fusedLamb</td>
+<td>50M</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">purple</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5M</td>
+<td>muon</td>
+<td>50M</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">orange</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5M</td>
+<td>muonclip</td>
+<td>50M</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">red</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5M</td>
+<td>sophiag</td>
+<td>50M</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">green</td>
+</tr>
+</tbody>
+</table>
 
 
 </section></section>

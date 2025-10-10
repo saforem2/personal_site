@@ -278,7 +278,7 @@ output.
 
 ::: {.flex-container}
 
-![Reverse Diffusion Process ($\mathcal{N}\rightarrow \pi)](./assets/diffusion.gif)
+![Reverse Diffusion Process ($\mathcal{N}\rightarrow \pi$)](./assets/diffusion.gif)
 
 ![Forward Diffusion Process ($\pi\rightarrow \mathcal{N}$)](./assets/diffusion_forward.png){width="89.6%"}
 
@@ -486,3 +486,14 @@ removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
     $$ q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)$$
 
   - We see that the _mean_ $\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}$
+ 
+
+| RoPE $\theta$ | [optimizer]    | [tok/batch] | [Nodes] | [color] |
+| :-----------: | -------------- | ----------- | :-----: | :-----: |
+|      50k      | ipex.fusedLamb | 100M        |   512   |  grey   |
+|      50k      | ipex.fusedLamb | 50M         |   256   |  blue   |
+|      5M       | ipex.fusedLamb | 50M         |   256   |  purple   |
+|      5M       | muon           | 50M         |   256   | orange  |
+|      5M       | muonclip       | 50M         |   256   |   red   |
+|      5M       | sophiag        | 50M         |   256   |  green  |
+

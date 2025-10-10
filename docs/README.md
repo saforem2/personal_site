@@ -1,5 +1,5 @@
 Sam Foreman
-2025-10-08
+2025-10-10
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -60,7 +60,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:28:57</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">06:42:15</span>
 > </pre>
 
 > [!TIP]
@@ -322,6 +322,30 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 </div>
 
 ## 📆 2025
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AERIS: Argonne Earth Systems Model] @ [2025 ALCF Hands On HPC Workshop][] \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/09/24/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
 
 > [!TIP]
 >
@@ -1276,6 +1300,9 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Superconductivity of In and Sn Samples]: https://doi.org/10.1063/1.4896340
+  [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
+  [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
+  [Training Foundation Models on Supercomputers]: ./talks/2025/09/24/index.html
   [Scientific AI at Scale: AI for Science]: ./talks/openskai25/ai4science/index.html
   [Open SkAI 2025]: https://www.openskai-conference.org
   [Scientific AI at Scale: Distributed Training]: ./talks/openskai25/training/index.html
