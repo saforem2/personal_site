@@ -2,71 +2,129 @@
 
 
 ```{=html}
-<script>
-/**
-  Developed by Prashant Shrestha
-  + https://prashant.me
-*/
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "saforem2",
-  // Your API key
-  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-  additional: "&format=json&limit=1"
+<script type="module">
+const lastFmConfig = {
+  user: 'saforem2',
+  apiKey: '1dbc15037c1fe71ce06acbb3f73adc75',
+  endpoint: 'https://ws.audioscrobbler.com/2.0/',
+  refreshInterval: 60000,
 };
 
-var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-        // "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-        "🎶 " + recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-        .attr("target", "_blank");
-
-      var artistFormatted =
-        // "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-        "🗣️ " + recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-    error: function(resp) {
-      $("a#tracktitle").html(
-        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
-      );
-      $("img#trackart").attr("src", "🧑🏻‍💻");
-      var artistFormatted =
-        "Sam Foreman";
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("href", "https://samforeman.me");
-    }
+const buildUrl = () => {
+  const params = new URLSearchParams({
+    method: 'user.getrecenttracks',
+    user: lastFmConfig.user,
+    api_key: lastFmConfig.apiKey,
+    format: 'json',
+    limit: '1',
   });
+  return `${lastFmConfig.endpoint}?${params.toString()}`;
 };
 
-// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 5000);
-</script> <div class="nowplayingcard">
+const select = (selector) => document.querySelector(selector);
+
+const elements = {
+  art: select('img#trackart'),
+  title: select('a#tracktitle'),
+  artist: select('a#trackartist'),
+};
+
+const setFallback = () => {
+  if (!elements.title || !elements.artist || !elements.art) {
+    return;
+  }
+  elements.title.textContent = 'Silence!';
+  elements.title.removeAttribute('href');
+  elements.title.removeAttribute('target');
+  elements.title.setAttribute('aria-label', 'Not currently playing');
+  elements.artist.textContent = 'Sam Foreman';
+  elements.artist.setAttribute('href', 'https://samforeman.me');
+  elements.artist.removeAttribute('target');
+  elements.artist.setAttribute('aria-label', 'Visit Sam Foreman online');
+  elements.art.src = elements.art.dataset.placeholder || elements.art.src;
+};
+
+const renderTrack = (track) => {
+  if (!track || !elements.title || !elements.artist || !elements.art) {
+    setFallback();
+    return;
+  }
+  const trackName = track.name ?? 'Unknown Track';
+  const artistName = track.artist?.['#text'] ?? 'Unknown Artist';
+  const trackUrl = track.url || '#';
+  elements.title.textContent = `🎶 ${trackName}`;
+  if (trackUrl && trackUrl !== '#') {
+    elements.title.href = trackUrl;
+    elements.title.target = '_blank';
+    elements.title.rel = 'noopener noreferrer';
+  } else {
+    elements.title.removeAttribute('href');
+    elements.title.removeAttribute('target');
+    elements.title.removeAttribute('rel');
+  }
+  elements.title.title = `${trackName} by ${artistName}`;
+  elements.title.setAttribute('aria-label', `Now playing ${trackName} by ${artistName}`);
+
+  elements.artist.textContent = `🗣️ ${artistName}`;
+  elements.artist.title = `Artist: ${artistName}`;
+  if (track.artist?.url) {
+    elements.artist.href = track.artist.url;
+    elements.artist.target = '_blank';
+    elements.artist.rel = 'noopener noreferrer';
+  } else {
+    elements.artist.removeAttribute('target');
+    elements.artist.removeAttribute('rel');
+  }
+
+  const albumImages = Array.isArray(track.image) ? track.image : [];
+  const artSrc = albumImages.reverse().find((img) => img['#text'])?.['#text'];
+  if (artSrc) {
+    elements.art.src = artSrc;
+    elements.art.removeAttribute('data-placeholder');
+  } else {
+    setFallback();
+  }
+};
+
+const fetchTrack = async () => {
+  const response = await fetch(buildUrl(), {
+    headers: { 'Cache-Control': 'no-cache' },
+  });
+  if (!response.ok) {
+    throw new Error(`Last.fm request failed: ${response.status}`);
+  }
+  const payload = await response.json();
+  return payload?.recenttracks?.track?.[0];
+};
+
+const updateTrack = async () => {
+  try {
+    const track = await fetchTrack();
+    renderTrack(track);
+  } catch (error) {
+    console.error('Unable to refresh Last.fm data.', error);
+    setFallback();
+  }
+};
+
+const startPolling = () => {
+  updateTrack();
+  window.setInterval(() => {
+    if (!document.hidden) {
+      updateTrack();
+    }
+  }, lastFmConfig.refreshInterval);
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startPolling, { once: true });
+} else {
+  startPolling();
+}
+</script>
+<div class="nowplayingcard">
 <div class="nowplayingcontainer-inner">
-<img id="trackart" src="#">
+<img id="trackart" width="120" height="120" loading="lazy" decoding="async" data-placeholder="./assets/avatar-100x100.webp" src="./assets/avatar-100x100.webp" alt="Album artwork placeholder">
 <div class="trackInfo">
 <a id="tracktitle"></a>
 <a href="#" id="trackartist"></a>
