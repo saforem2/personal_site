@@ -686,7 +686,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;theme=novatorem&amp;show_offline=false&amp;background_color=1CD7607Fnone&amp;interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:100%;"></a></p>
+<p><a href="https://open.spotify.com/user/saforem2" target="_blank"><img class="deferred-media" data-defer-src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;theme=novatorem&amp;show_offline=false&amp;background_color=1CD7607Fnone&amp;interchange=true" alt="Now Playing" loading="lazy" decoding="async" fetchpriority="low" style="background-color:rgba(0,0,0,0.025); width:100%; aspect-ratio: 5 / 2; object-fit: contain;"></a></p>
 </div>
 </div>
 </div>
@@ -702,71 +702,128 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<script>
-/**
-  Developed by Prashant Shrestha
-  + https://prashant.me
-*/
-var lastfmData = {
-  baseURL:
-    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
-  // Your Last.fm Username
-  user: "saforem2",
-  // Your API key
-  api_key: "1dbc15037c1fe71ce06acbb3f73adc75",
-  additional: "&format=json&limit=1"
+<script type="module">
+const lastFmConfig = {
+  user: 'saforem2',
+  apiKey: '1dbc15037c1fe71ce06acbb3f73adc75',
+  endpoint: 'https://ws.audioscrobbler.com/2.0/',
+  refreshInterval: 60000,
 };
 
-var getSetLastFM = function() {
-  $.ajax({
-    type: "GET",
-    url:
-      lastfmData.baseURL +
-      lastfmData.user +
-      "&api_key=" +
-      lastfmData.api_key +
-      lastfmData.additional,
-    dataType: "json",
-    success: function(resp) {
-      var recentTrack = resp.recenttracks.track[0];
-      var formatted =
-        // "<img src='https://api.iconify.design/streamline-emojis:musical-notes.svg?color=%23888888'>" + recentTrack.name;
-        "🎶 " + recentTrack.name;
-      $("a#tracktitle")
-        .html(formatted)
-        .attr("href", recentTrack.url)
-        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
-        .attr("target", "_blank");
-
-      var artistFormatted =
-        // "<img src='https://api.iconify.design/material-symbols:person.svg?color=%23888888'>" + recentTrack.artist["#text"];
-        "🗣️ " + recentTrack.artist["#text"];
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("title", "Artist : " + recentTrack.artist["#text"]);
-      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
-    },
-    error: function(resp) {
-      $("a#tracktitle").html(
-        "<img src='https://api.iconify.design/streamline-emojis:muted-speaker.svg?color=%23888888'>" + "Silence!"
-      );
-      $("img#trackart").attr("src", "🧑🏻‍💻");
-      var artistFormatted =
-        "Sam Foreman";
-      $("a#trackartist")
-        .html(artistFormatted)
-        .attr("href", "https://samforeman.me");
-    }
+const buildUrl = () => {
+  const params = new URLSearchParams({
+    method: 'user.getrecenttracks',
+    user: lastFmConfig.user,
+    api_key: lastFmConfig.apiKey,
+    format: 'json',
+    limit: '1',
   });
+  return `${lastFmConfig.endpoint}?${params.toString()}`;
 };
 
-// Get the new one.
-getSetLastFM();
-// Start the countdown.
-setInterval(getSetLastFM, 10 * 5000);
+const select = (selector) => document.querySelector(selector);
+
+const elements = {
+  art: select('img#trackart'),
+  title: select('a#tracktitle'),
+  artist: select('a#trackartist'),
+};
+
+const setFallback = () => {
+  if (!elements.title || !elements.artist || !elements.art) {
+    return;
+  }
+  elements.title.textContent = 'Silence!';
+  elements.title.removeAttribute('href');
+  elements.title.removeAttribute('target');
+  elements.title.setAttribute('aria-label', 'Not currently playing');
+  elements.artist.textContent = 'Sam Foreman';
+  elements.artist.setAttribute('href', 'https://samforeman.me');
+  elements.artist.removeAttribute('target');
+  elements.artist.setAttribute('aria-label', 'Visit Sam Foreman online');
+  elements.art.src = elements.art.dataset.placeholder || elements.art.src;
+};
+
+const renderTrack = (track) => {
+  if (!track || !elements.title || !elements.artist || !elements.art) {
+    setFallback();
+    return;
+  }
+  const trackName = track.name ?? 'Unknown Track';
+  const artistName = track.artist?.['#text'] ?? 'Unknown Artist';
+  const trackUrl = track.url || '#';
+  elements.title.textContent = `🎶 ${trackName}`;
+  if (trackUrl && trackUrl !== '#') {
+    elements.title.href = trackUrl;
+    elements.title.target = '_blank';
+    elements.title.rel = 'noopener noreferrer';
+  } else {
+    elements.title.removeAttribute('href');
+    elements.title.removeAttribute('target');
+    elements.title.removeAttribute('rel');
+  }
+  elements.title.title = `${trackName} by ${artistName}`;
+  elements.title.setAttribute('aria-label', `Now playing ${trackName} by ${artistName}`);
+
+  elements.artist.textContent = `🗣️ ${artistName}`;
+  elements.artist.title = `Artist: ${artistName}`;
+  if (track.artist?.url) {
+    elements.artist.href = track.artist.url;
+    elements.artist.target = '_blank';
+    elements.artist.rel = 'noopener noreferrer';
+  } else {
+    elements.artist.removeAttribute('target');
+    elements.artist.removeAttribute('rel');
+  }
+
+  const albumImages = Array.isArray(track.image) ? track.image : [];
+  const artSrc = albumImages.reverse().find((img) => img['#text'])?.['#text'];
+  if (artSrc) {
+    elements.art.src = artSrc;
+    elements.art.removeAttribute('data-placeholder');
+  } else {
+    setFallback();
+  }
+};
+
+const fetchTrack = async () => {
+  const response = await fetch(buildUrl(), {
+    headers: { 'Cache-Control': 'no-cache' },
+  });
+  if (!response.ok) {
+    throw new Error(`Last.fm request failed: ${response.status}`);
+  }
+  const payload = await response.json();
+  return payload?.recenttracks?.track?.[0];
+};
+
+const updateTrack = async () => {
+  try {
+    const track = await fetchTrack();
+    renderTrack(track);
+  } catch (error) {
+    console.error('Unable to refresh Last.fm data.', error);
+    setFallback();
+  }
+};
+
+const startPolling = () => {
+  updateTrack();
+  window.setInterval(() => {
+    if (!document.hidden) {
+      updateTrack();
+    }
+  }, lastFmConfig.refreshInterval);
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startPolling, { once: true });
+} else {
+  startPolling();
+}
 </script> <div class="nowplayingcard">
 <div class="nowplayingcontainer-inner">
-<img id="trackart" src="#">
+<img id="trackart" width="120" height="120" loading="lazy" decoding="async" data-placeholder="./assets/avatar-100x100.webp" src="./assets/avatar-100x100.webp" alt="Album artwork placeholder">
 <div class="trackInfo">
 <a id="tracktitle"></a>
 <a href="#" id="trackartist"></a>
@@ -833,9 +890,9 @@ setInterval(getSetLastFM, 10 * 5000);
 </details></li>
 </ul>
 <div style="text-align:center;">
-<iframe src="https://github.com/sponsors/saforem2/button" title="Sponsor saforem2" height="32" width="114" style="border: 0; border-radius: 6px;">
+<iframe class="deferred-media" data-defer-src="https://github.com/sponsors/saforem2/button" title="Sponsor saforem2" height="32" width="114" loading="lazy" style="border: 0; border-radius: 6px;">
 </iframe>
-<p><img alt="hits" src="https://hitscounter.dev/api/hit?url=samforeman.me&amp;label=samforeman.me&amp;icon=check2-square&amp;color=%236c757d"></p>
+<p><img class="deferred-media" alt="hits" data-defer-src="https://hitscounter.dev/api/hit?url=samforeman.me&amp;label=samforeman.me&amp;icon=check2-square&amp;color=%236c757d" loading="lazy" decoding="async" fetchpriority="low" style="max-width: 114px; height: auto;"></p>
 <p><span class="dim-text">© Copyright <a href="https://samforeman.me">Sam Foreman</a></span></p>
 </div>
 </div>
@@ -2292,33 +2349,33 @@ When
 <div id="callout-40" class="callout-40-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div class="flex-container" style="flex-flow: wrap;">
-<p><a href="https://github.com/saforem2"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a> <a href="https://github.com/saforem2/github-readme-stats"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&amp;layout=compact&amp;langs_count=10&amp;theme=transparent&amp;hide_title=true&amp;hide_border=true&amp;text_color=838383"></a></p>
+<p><a href="https://github.com/saforem2"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="495" height="195" style="width:100%; height:auto;" data-defer-src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a> <a href="https://github.com/saforem2/github-readme-stats"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="495" height="195" style="width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&amp;layout=compact&amp;langs_count=10&amp;theme=transparent&amp;hide_title=true&amp;hide_border=true&amp;text_color=838383"></a></p>
 </div>
 <div style="width: 100%; text-align: center;">
-<p><a href="https://git.io/streak-stats"><img loading="lazy" align="center" width="100%" src="https://streak-stats.demolab.com?user=saforem2&amp;theme=shadow-blue&amp;hide_border=true&amp;card_width=800&amp;card_height=200&amp;stroke=838383&amp;currStreakNum=838383&amp;dates=838383&amp;currStreakLabel=838383&amp;ring=838383&amp;fire=FF5252&amp;sideNums=838383&amp;sideLabels=838383&amp;date_format=n%2Fj%5B%2FY%5D&amp;background=EB545400" alt="GitHub Streak"></a> </p>
-<p><img loading="lazy" width="100%" alt="Github Contributions " src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&amp;theme=minimal&amp;bg_color=00000000&amp;line=838383&amp;color=838383&amp;days=30&amp;point=838383&amp;hide_border=true&amp;hide_title=true&amp;area=true"></p>
+<p><a href="https://git.io/streak-stats"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" align="center" width="800" height="200" style="width:100%; height:auto; aspect-ratio: 4 / 1;" data-defer-src="https://streak-stats.demolab.com?user=saforem2&amp;theme=shadow-blue&amp;hide_border=true&amp;card_width=800&amp;card_height=200&amp;stroke=838383&amp;currStreakNum=838383&amp;dates=838383&amp;currStreakLabel=838383&amp;ring=838383&amp;fire=FF5252&amp;sideNums=838383&amp;sideLabels=838383&amp;date_format=n%2Fj%5B%2FY%5D&amp;background=EB545400" alt="GitHub Streak"></a> </p>
+<p><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="1000" height="400" style="width:100%; height:auto; aspect-ratio: 5 / 2;" alt="Github Contributions " data-defer-src="https://github-readme-activity-graph.vercel.app/graph?username=saforem2&amp;theme=minimal&amp;bg_color=00000000&amp;line=838383&amp;color=838383&amp;days=30&amp;point=838383&amp;hide_border=true&amp;hide_title=true&amp;area=true"></p>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/720ce003-bc7f-4c57-8f4c-92f0c7f24975.svg">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/720ce003-bc7f-4c57-8f4c-92f0c7f24975.svg">
 
 </figure>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/4a58bb04-4212-4b5c-8f97-1ac59f2e3250.svg">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/4a58bb04-4212-4b5c-8f97-1ac59f2e3250.svg">
 
 </figure>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/c8e0da32-52d1-485f-b4ca-22645f25ea3f.svg" style="max-width:95%;">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/c8e0da32-52d1-485f-b4ca-22645f25ea3f.svg" style="max-width:95%;">
 
 </figure>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/8a8894dd-519b-4bd5-b521-d09bee799b57.svg">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/8a8894dd-519b-4bd5-b521-d09bee799b57.svg">
 
 </figure>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/d5fd1e4b-0c8f-44be-8173-59d780fe22c8.svg">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/d5fd1e4b-0c8f-44be-8173-59d780fe22c8.svg">
 
 </figure>
 <figure class="figure">
-<embed src="https://wakatime.com/share/@saforem2/c052a705-7ccf-4028-90ca-adcde26de94d.svg">
+<embed data-defer-src="https://wakatime.com/share/@saforem2/c052a705-7ccf-4028-90ca-adcde26de94d.svg">
 
 </figure>
 </div>
@@ -2330,9 +2387,9 @@ Even More !!
 <summary>
 Wakatime
 </summary>
-<p><a href="https://github.com/saforem2/"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&amp;show_icons=true&amp;include_all_commits=true&amp;title_color=838383&amp;hide_border=true&amp;layout=compact&amp;theme=transparent&amp;text_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://github-readme-stats.vercel.app/api/wakatime?username=saforem2&amp;show_icons=true&amp;include_all_commits=true&amp;title_color=838383&amp;hide_border=true&amp;layout=compact&amp;theme=transparent&amp;text_color=838383"></a></p>
 </details>
-<p><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg"></p>
+<p><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://raw.githubusercontent.com/saforem2/saforem2/main/github-metrics.svg"></p>
 </details>
 </div>
 </div>
@@ -2350,27 +2407,27 @@ Wakatime
 <div id="callout-41" class="callout-41-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div class="flex-container" style="flex-flow: wrap;">
-<p><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=Megatron-DeepSpeed&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/ezpz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=ezpz&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/mmm"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=mmm&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/ambivalent"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=ambivalent&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/l2hmc-qcd"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=l2hmc-qcd&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/personal_site"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=personal_site&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/wordplay"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=wordplay&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/enrich"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=enrich&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/public"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=public&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/lattice23"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=lattice23&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="github.com/saforem2/llm-workshop-talk"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=llm-workshop-talk&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/quarto-site-template"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=quarto-site-template&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/starter"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=starter&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=glitz&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/glitz"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=glitz&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/saforem2/awesome-stars"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=awesome-stars&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/nftqcd/fthmc"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&amp;repo=fthmc&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/argonne-lcf/CompPerfWorkshop"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=CompPerfWorkshop&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/argonne-lcf/ai-science-training-series"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=ai-science-training-series&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/argonne-lcf/mlprof"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=mlprof&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
-<p><a href="https://github.com/argonne-lcf/user-guides"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=user-guides&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=Megatron-DeepSpeed&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/ezpz"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=ezpz&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/mmm"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=mmm&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/ambivalent"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=ambivalent&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/l2hmc-qcd"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=l2hmc-qcd&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/personal_site"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=personal_site&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/wordplay"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=wordplay&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/enrich"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=enrich&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/public"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=public&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/lattice23"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=lattice23&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="github.com/saforem2/llm-workshop-talk"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=llm-workshop-talk&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/quarto-site-template"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=quarto-site-template&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/starter"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=starter&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/glitz"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=glitz&amp;theme=transparent&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/glitz"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=glitz&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/saforem2/awesome-stars"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=saforem2&amp;repo=awesome-stars&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/nftqcd/fthmc"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=nftqcd&amp;repo=fthmc&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/argonne-lcf/CompPerfWorkshop"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=CompPerfWorkshop&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/argonne-lcf/ai-science-training-series"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=ai-science-training-series&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/argonne-lcf/mlprof"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=mlprof&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
+<p><a href="https://github.com/argonne-lcf/user-guides"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" width="300" height="150" style="max-width:100%; height:auto;" data-defer-src="https://github-readme-stats.vercel.app/api/pin/?username=argonne-lcf&amp;repo=user-guides&amp;theme=transparent&amp;show_icons=true&amp;include_all_commits=true&amp;hide_border=true&amp;line_height=5&amp;card_width=300px&amp;text_color=838383&amp;title_color=838383"></a></p>
 </div>
 </div>
 </div>
@@ -2483,20 +2540,20 @@ Lemont, IL | 2018 – 2019
 <div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
 <div class="light-content">
 <div class="flex-container" style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
-<p><a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;loading=lazy&amp;theme=default&amp;show_offline=false&amp;background_color=f8f8f8&amp;interchange=false"></a></p>
-<p><a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center"></a></p>
+<p><a href="https://github.com/kittinan/spotify-github-profile"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;loading=lazy&amp;theme=default&amp;show_offline=false&amp;background_color=f8f8f8&amp;interchange=false"></a></p>
+<p><a href="https://last.fm/user/saforem2"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center"></a></p>
 <iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh)); border-radius: 4pt;">
 </iframe>
-<p><a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center"></a></p>
+<p><a href="https://music-profile.rayriffy.com"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center"></a></p>
 </div>
 </div>
 <div class="dark-content">
 <div class="flex-container" style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
-<p><a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;loading=lazy&amp;theme=default&amp;show_offline=false&amp;background_color=1c1c1c&amp;interchange=false"></a></p>
-<p><a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center"></a></p>
+<p><a href="https://github.com/kittinan/spotify-github-profile"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&amp;cover_image=true&amp;loading=lazy&amp;theme=default&amp;show_offline=false&amp;background_color=1c1c1c&amp;interchange=false"></a></p>
+<p><a href="https://last.fm/user/saforem2"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center"></a></p>
 <iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh)); border-radius: 4pt;">
 </iframe>
-<p><a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center"></a></p>
+<p><a href="https://music-profile.rayriffy.com"><img class="deferred-media" loading="lazy" decoding="async" fetchpriority="low" data-defer-src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center"></a></p>
 </div>
 </div>
 </div>
@@ -3340,4 +3397,5 @@ Foreman, Sam. 2025. October 10, 2025. <a href="https://samforeman.me/">https://s
 
 
 
+<script src="/static/js/defer-media.js" type="module"></script>
 </body></html>
