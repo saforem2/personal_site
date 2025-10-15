@@ -150,9 +150,9 @@ Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x0`")
-        x1("`x1`")
         x2("`x2`")
+        x1("`x1`")
+        x("`x0`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -181,6 +181,7 @@ Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
     N1 --&gt; L1
     N2 --&gt; L2
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -194,7 +195,8 @@ class x,y0,L0 red
 class x1,L1 green
 class x2,L2 blue
 class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
+class N0,N1,N2,G0,G1,G2,GU block
+class D eblock
 class AR block
 class bc text
 </pre>
@@ -491,13 +493,13 @@ Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values
 <li>Offloading to CPU/NVMe</li>
 </ul></li>
 </ul>
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="⏰ Keeping things in Sync">
+<div class="callout callout-style-simple callout-important no-icon callout-titled" title="🔄 Keeping things in Sync">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>⏰ Keeping things in Sync
+<span class="screen-reader-only">Important</span>🔄 Keeping things in Sync
 </div>
 </div>
 <div class="callout-body-container callout-body">

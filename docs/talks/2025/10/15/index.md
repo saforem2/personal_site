@@ -163,9 +163,9 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x0`")
-        x1("`x1`")
         x2("`x2`")
+        x1("`x1`")
+        x("`x0`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -194,6 +194,7 @@ flowchart LR
     N1 --> L1
     N2 --> L2
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -207,7 +208,8 @@ class x,y0,L0 red
 class x1,L1 green
 class x2,L2 blue
 class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
+class N0,N1,N2,G0,G1,G2,GU block
+class D eblock
 class AR block
 class bc text
 ```
@@ -458,7 +460,7 @@ style="gap: 5pt;">
 
 > [!IMPORTANT]
 >
-> ### ⏰ Keeping things in Sync
+> ### 🔄 Keeping things in Sync
 >
 > **Computation stalls during communication !!**
 >
