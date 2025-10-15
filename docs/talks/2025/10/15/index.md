@@ -663,11 +663,11 @@ flowchart LR
         direction LR
         c("`W2`")
     end
-  t0("`x₀`")-->X0
-  X0 -->|"`x₀ W₀`"|X1
-  X1 -->|"`x₀ W₀ <br>+ x₁ W₁`"|X2
-  t1("`x₁`") --> X1
-  t2("`x₂`") --> X2
+  t0("`x0`")-->X0
+  X0 -->|"`x0 W0`"|X1
+  X1 -->|"`x0 W0 <br>+ x1 W1`"|X2
+  t1("`x1`") --> X1
+  t2("`x1`") --> X2
 ```
 
 Figure 11
@@ -908,28 +908,6 @@ Figure 15: Time spent preparing 2T tokens
     modalities to build aligned representations for protein
     sequence-function mapping
 
-<div class="aside">
-
-</div>
-
-<div class="notes">
-
-One of the first multimodal protein design toolkits that:␍ integrates
-text, (protein/gene) sequence, structure/conformational sampling
-modalities to build aligned representations for protein
-sequence-function mapping␍ preference optimization strategies that have
-been scaled to include various design constraints imposed in diverse
-protein design tasks␍ Two application scenarios: ␍ Protein design: at
-least 5x gains in productive designs␍ Antibody optimization: designs
-result in greater complementarity and exploration of sequence space␍
-High water marks for training/ fine-tuning multimodal models:␍ achieves
-~4.11 EFLOPS sustained performance (peak 5.57 EFLOPS) on Aurora, with
-\>1 EFLOPS on each HPC resource including the NVIDIA DGX cloud ␍ Novel
-integrated workflow that supports diverse backbone foundation models as
-well as custom models ␍
-
-</div>
-
 ### 🧬 Scaling Results (2024)
 
 <div class="columns">
@@ -1054,7 +1032,7 @@ models (See: Song et al. (2023))
 
 ## 🌎 AERIS (2025)
 
-<div class="flex-container" background-color="white">
+<div class="flex-container">
 
 <div class="flex-child" style="width:50%;">
 
