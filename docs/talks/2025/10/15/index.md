@@ -30,6 +30,7 @@ Sam Foreman
   - [Tensor Parallel (TP)](#tensor-parallel-tp-1)
   - [Tensor (/ Model) Parallel Training:
     Example](#tensor--model-parallel-training-example)
+  - [🏗️ Aurora](#building_construction-aurora)
 - [🌌 AuroraGPT (2024–)](#milky_way-auroragpt-2024)
   - [🧪 AuroraGPT: Open Science Foundation
     Model](#test_tube-auroragpt-open-science-foundation-model)
@@ -47,22 +48,20 @@ Sam Foreman
   - [🧬 MProt-DPO: Scaling Results](#dna-mprot-dpo-scaling-results)
   - [🚂 Loooooooooong Sequence
     Lengths](#steam_locomotive-loooooooooong-sequence-lengths)
-- [🌎 AERIS:<br> Argonne Earth Systems Model for Reliable and Skillful
-  Prediction
-  (2025)](#earth_americas-aeris--argonne-earth-systems-model-for-reliable-and-skillful-prediction-2025)
-  - [High-Level Overview of AERIS](#high-level-overview-of-aeris)
-  - [Contributions](#contributions)
-  - [Issues with the Deterministic
-    Approach](#issues-with-the-deterministic-approach)
-  - [Transitioning to a Probabilistic
-    Model](#transitioning-to-a-probabilistic-model)
-  - [Sequence-Window-Pipeline Parallelism
-    `SWiPe`](#sequence-window-pipeline-parallelism-swipe)
-  - [Aurora](#aurora)
-  - [AERIS: Scaling Results](#aeris-scaling-results)
-  - [Hurricane Laura](#hurricane-laura)
+- [🌎 AERIS (2025)](#earth_americas-aeris-2025)
+  - [👀 High-Level Overview of
+    AERIS](#eyes-high-level-overview-of-aeris)
+  - [➕ Contributions](#heavy_plus_sign-contributions)
+  - [⚠️ Issues with the Deterministic
+    Approach](#warning-issues-with-the-deterministic-approach)
+  - [🎲 Transitioning to a Probabilistic
+    Model](#game_die-transitioning-to-a-probabilistic-model)
+  - [🌀 Sequence-Window-Pipeline Parallelism
+    `SWiPe`](#cyclone-sequence-window-pipeline-parallelism-swipe)
+  - [🚀 AERIS: Scaling Results](#rocket-aeris-scaling-results)
+  - [🌪️ Hurricane Laura](#tornado-hurricane-laura)
 - [📓 References](#notebook-references)
-- [Acknowledgements](#acknowledgements)
+- [❤️ Acknowledgements](#heart-acknowledgements)
 
 ## 🌐 Distributed Training
 
@@ -698,6 +697,37 @@ image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
+### 🏗️ Aurora
+
+<div class="flex-container" style="align-items: center; gap:10pt;">
+
+<div id="tbl-aurora">
+
+Table 1: Aurora[^1] Specs
+
+| Property | Value   |
+|---------:|:--------|
+|    Racks | 166     |
+|    Nodes | 10,624  |
+| XPUs[^2] | 127,488 |
+|     CPUs | 21,248  |
+|     NICs | 84,992  |
+|      HBM | 8 PB    |
+|    DDR5c | 10 PB   |
+
+</div>
+
+<div id="fig-aurora">
+
+![](./assets/aurora1.png)
+
+Figure 12: Aurora: [Fact
+Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
+
+</div>
+
+</div>
+
 ## 🌌 AuroraGPT (2024–)
 
 <div class="flex-container" style="justify-content: space-around;">
@@ -726,7 +756,7 @@ texts, data}
 
 ![](./assets/llms.gif)
 
-Figure 12: Image from [Hannibal046 /
+Figure 13: Image from [Hannibal046 /
 `Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
 
 </div>
@@ -741,7 +771,7 @@ Figure 12: Image from [Hannibal046 /
 
 ![](./assets/AuroraGPT.svg)
 
-Figure 13: High-level overview of AuroraGPT project
+Figure 14: High-level overview of AuroraGPT project
 
 </div>
 
@@ -831,7 +861,7 @@ style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
 
 <img src="./assets/data-processing.svg" class="r-stretch" />
 
-Figure 14: Time spent preparing 2T tokens
+Figure 15: Time spent preparing 2T tokens
 
 </div>
 
@@ -855,7 +885,7 @@ Figure 14: Time spent preparing 2T tokens
 
 ### ✨ Features (even more!)
 
-- 🧗 **Optimizers**[^1]:
+- 🧗 **Optimizers**[^3]:
   - Support for *many* different optimizers:
     - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE,
       ScheduleFree, …
@@ -867,21 +897,18 @@ Figure 14: Time spent preparing 2T tokens
 
 ## 🧬 MProt-DPO
 
-- <span class="highlight-yellow">Finalist</span>: SC’24 [ACM Gordon Bell
+- <span class="highlight-green">Finalist</span>: SC’24 [ACM Gordon Bell
   Prize](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
-- One of the first protein design toolkits that:
-  - Integrates text, (protein/gene) sequence, structure/conformational
-    sampling modalities to build aligned representations for protein
+  - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
+    Design Workﬂows with Direct Preference
+    Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
+    1)  
+- One of the first protein design toolkits that integrates:
+  - Text, (protein/gene) sequence, structure/conformational sampling
+    modalities to build aligned representations for protein
     sequence-function mapping
-  - preference optimization strategies that have been scaled to include
-    various design constraints imposed in diverse protein design tasks
 
 <div class="aside">
-
-[MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design
-Workﬂows with Direct Preference
-Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
-(Dharuman et al. (2024))
 
 </div>
 
@@ -917,7 +944,7 @@ style="align-items: center; text-align: center; margin-left: auto; margin-right:
 <img src="./assets/mprot-3p5B-scaling-2.svg"
 style="margin:0; padding-unset;;width:100.0%" />
 
-Figure 15: Scaling results for `3.5B` model across ~38,400 GPUs
+Figure 16: Scaling results for `3.5B` model across ~38,400 GPUs
 
 </div>
 
@@ -937,7 +964,7 @@ Figure 15: Scaling results for `3.5B` model across ~38,400 GPUs
 
   - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
     Design Workflows](https://dl.acm.org/doi/10.1109/SC41406.2024.00013)
-    (Dharuman et al. (2024))
+    (1)
 
 </div>
 
@@ -966,7 +993,7 @@ Aurora, Frontier, Leonardo and PDX.
 
 ![](./assets/mprot-3p5B-scaling-2.svg)
 
-Figure 16: `3.5B` model
+Figure 17: `3.5B` model
 
 </div>
 
@@ -974,7 +1001,7 @@ Figure 16: `3.5B` model
 
 ![](./assets/mprot-7B-scaling-2.svg)
 
-Figure 17: `7B` model
+Figure 18: `7B` model
 
 </div>
 
@@ -1012,7 +1039,7 @@ style="height:50pt; margin: unset; padding: 0;" />
 
 </div>
 
-Figure 18: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
+Figure 19: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
 models (See: Song et al. (2023))
 
 </div>
@@ -1025,7 +1052,7 @@ models (See: Song et al. (2023))
 
 </div>
 
-## 🌎 AERIS:<br> Argonne Earth Systems Model for Reliable and Skillful Prediction (2025)
+## 🌎 AERIS (2025)
 
 <div class="flex-container" background-color="white">
 
@@ -1035,7 +1062,7 @@ models (See: Song et al. (2023))
 
 ![](./assets/team.png)
 
-Figure 19: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+Figure 20: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
 
@@ -1064,7 +1091,7 @@ SC’25](./assets/aeris.svg)
 
 </div>
 
-### High-Level Overview of AERIS
+### 👀 High-Level Overview of AERIS
 
 <div class="flex-container">
 
@@ -1072,13 +1099,13 @@ SC’25](./assets/aeris.svg)
 
 ![](./assets/rollout.gif)
 
-Figure 20: Rollout of AERIS model, specific humidity at 700m.
+Figure 21: Rollout of AERIS model, specific humidity at 700m.
 
 </div>
 
 <div id="tbl-aeris">
 
-Table 1: Overview of AERIS model and training setup
+Table 2: Overview of AERIS model and training setup
 
 |           Property | Description      |
 |-------------------:|:-----------------|
@@ -1086,13 +1113,13 @@ Table 1: Overview of AERIS model and training setup
 |         Resolution | 0.25° & 1.4°     |
 |      Training Data | ERA5 (1979–2018) |
 | Model Architecture | Swin Transformer |
-|        Speedup[^2] | O(10k–100k)      |
+|        Speedup[^4] | O(10k–100k)      |
 
 </div>
 
 </div>
 
-### Contributions
+### ➕ Contributions
 
 <div class="flex-container">
 
@@ -1106,7 +1133,7 @@ Table 1: Overview of AERIS model and training setup
 > - Operates at the pixel level (1 × 1 patch size), guided by physical
 >   priors
 > - Medium-range forecast skill:
->   - **Surpasses IFS ENS, competitive with GenCast[^3]**
+>   - **Surpasses IFS ENS, competitive with GenCast[^5]**
 >   - Uniquely stable on seasonal scales to 90 days
 
 > [!NOTE]
@@ -1117,13 +1144,13 @@ Table 1: Overview of AERIS model and training setup
 > (sequence-window-pipeline) parallelism strategy for training
 > transformers across high-resolution inputs*</span>
 >
-> - Enables scalable small-batch training on large supercomputers[^4]
+> - Enables scalable small-batch training on large supercomputers[^6]
 >   - **10.21 ExaFLOPS**
 >   - @ 121,000 Intel XPUs (Aurora)
 
 </div>
 
-### Issues with the Deterministic Approach
+### ⚠️ Issues with the Deterministic Approach
 
 <div class="flex-container">
 
@@ -1149,13 +1176,13 @@ Table 1: Overview of AERIS model and training setup
 
 </div>
 
-### Transitioning to a Probabilistic Model
+### 🎲 Transitioning to a Probabilistic Model
 
 <div id="fig-forward-pass">
 
 ![](./assets/diffusion/light.svg)
 
-Figure 21: Reverse diffusion with the
+Figure 22: Reverse diffusion with the
 <span style="color:#228be6">input</span> condition, individual sampling
 steps $t_{0} \rightarrow t_{64}$, the next time step
 <span style="color:#40c057">estimate</span> and the
@@ -1173,7 +1200,7 @@ alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 </div>
 
-### Sequence-Window-Pipeline Parallelism `SWiPe`
+### 🌀 Sequence-Window-Pipeline Parallelism `SWiPe`
 
 <div class="flex-container">
 
@@ -1192,7 +1219,7 @@ alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 ![](./assets/wpsp.svg)
 
-Figure 22
+Figure 23
 
 </div>
 
@@ -1202,42 +1229,11 @@ Figure 22
 
 ![](./assets/comms1.svg)
 
-Figure 23: `SWiPe` Communication Patterns
+Figure 24: `SWiPe` Communication Patterns
 
 </div>
 
-### Aurora
-
-<div class="flex-container" style="align-items: center; gap:10pt;">
-
-<div id="tbl-aurora">
-
-Table 2: Aurora[^5] Specs
-
-| Property | Value   |
-|---------:|:--------|
-|    Racks | 166     |
-|    Nodes | 10,624  |
-| XPUs[^6] | 127,488 |
-|     CPUs | 21,248  |
-|     NICs | 84,992  |
-|      HBM | 8 PB    |
-|    DDR5c | 10 PB   |
-
-</div>
-
-<div id="fig-aurora">
-
-![](./assets/aurora1.png)
-
-Figure 24: Aurora: [Fact
-Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
-
-</div>
-
-</div>
-
-### AERIS: Scaling Results
+### 🚀 AERIS: Scaling Results
 
 <div class="flex-container">
 
@@ -1260,7 +1256,7 @@ Figure 25: AERIS: Scaling Results
 
 </div>
 
-### Hurricane Laura
+### 🌪️ Hurricane Laura
 
 <div id="fig-hurricane-laura">
 
@@ -1275,18 +1271,6 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
-
-<div id="ref-mprot-dpo2024" class="csl-entry">
-
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
-Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
-<https://doi.org/10.1109/SC41406.2024.00013>.
-
-</div>
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
@@ -1318,26 +1302,26 @@ Sophisticated AI System Technologies.”
 
 </div>
 
-## Acknowledgements
+## ❤️ Acknowledgements
 
 > This research used resources of the Argonne Leadership Computing
 > Facility, which is a DOE Office of Science User Facility supported
 > under Contract DE-AC02-06CH11357.
 
-[^1]: Implemented by Marieme Ngom
+[^1]: 🏆 [Aurora Supercomputer Ranks Fastest for
+    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
 
-[^2]: Relative to PDE-based models, e.g.:
+[^2]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
+    Vecchio”) tiles, with 2 XPUs per tile.
+
+[^3]: Implemented by Marieme Ngom
+
+[^4]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-[^3]: [GenCast: A Generative Model for Medium-Range Global Weather
+[^5]: [GenCast: A Generative Model for Medium-Range Global Weather
     Forecasting](https://arxiv.org/html/2312.15796v1) (Price et al.
     (2024))
 
-[^4]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on
+[^6]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on
     LUMI.
-
-[^5]: 🏆 [Aurora Supercomputer Ranks Fastest for
-    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
-
-[^6]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
-    Vecchio”) tiles, with 2 XPUs per tile.

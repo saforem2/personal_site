@@ -52,9 +52,9 @@ format:
   gfm: default
 ---
 
-## 🌐 Distributed Training {style="width:100%; background-color:white;"}
+## 🌐 Distributed Training {style="width:100%}
 
-### 🚀 Scaling: Overview {background-color="white"}
+### 🚀 Scaling: Overview
 
 - ✅ **Goal**:
   - Minimize: [Cost]{.highlight-red} (i.e. amount of time spent training)
@@ -75,7 +75,7 @@ processes. Attendees will gain insights into the latest advancements in
 hardware and software that facilitate efficient model training at scale.
 :::
 
-### 🐢 Training on a Single Device {background-color="white"}
+### 🐢 Training on a Single Device
 
 ::: {.content-visible unless-format="revealjs"}
 
@@ -258,7 +258,7 @@ class N0,G0,n0 block
 
 :::
 
-### 👬 Training on Multiple GPUs: Data Parallelism {style="width:100%" background-color="white"}
+### 👬 Training on Multiple GPUs: Data Parallelism {style="width:100%"}
 
 ::: {#fig-ddp-training-mermaid}
 
@@ -324,7 +324,7 @@ Each GPU receives **unique** data at each step
 - See [🤗 Methods and tools for efficient training on a single GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
 :::
 
-### ▶️ Data Parallel: Forward Pass {background-color="white"}
+### ▶️ Data Parallel: Forward Pass
 
 ::: {#fig-ddp-training-mermaid-allreduce}
 
@@ -388,7 +388,7 @@ class bc text
 Average gradients across all GPUs
 :::
 
-### ◀️ Data Parallel: Backward Pass {background-color="white"}
+### ◀️ Data Parallel: Backward Pass
 
 ::: {#fig-ddp-backward-mermaid}
 
@@ -464,7 +464,7 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 - **Scatter**: Distribute data from one node to all other nodes
 
 
-### Reduce {background-color="white"}
+### Reduce
 
 - Perform a _reduction_ on data across ranks, send to individual
 
@@ -557,7 +557,7 @@ Keeping the communication to computation ratio small is important for effective 
 
 :::
 
-### 📝 Plan of Attack {background-color="white"}
+### 📝 Plan of Attack
 
 ::: {#fig-scaling-strategy-mermaid}
 
@@ -585,7 +585,7 @@ General strategy for scaling model training
 :::
 
 
-### 🚀 Going Beyond Data Parallelism {background-color="white"}
+### 🚀 Going Beyond Data Parallelism
 
 - ✅ Useful when model fits on single GPU:
   - ultimately **limited by GPU memory**
@@ -597,7 +597,7 @@ General strategy for scaling model training
     - 🔥 [PyTorch + `FSDP`](https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/)
   - Otherwise, resort to [model parallelism strategies](#additional-parallelism-strategies)
 
-### Going beyond Data Parallelism: {{< iconify logos microsoft-icon >}} DeepSpeed + `ZeRO` {background-color="white"}
+### Going beyond Data Parallelism: {{< iconify logos microsoft-icon >}} DeepSpeed + `ZeRO`
 
 - Depending on the `ZeRO` stage (1, 2, 3), we can offload:
   1. **Stage 1**: optimizer states $\left(P_{\mathrm{os}}\right)$
@@ -606,7 +606,7 @@ General strategy for scaling model training
 
 ![{{< iconify logos microsoft-icon >}} [DeepSpeed](deepspeed.ai) + [`ZeRO`](https://www.deepspeed.ai/tutorials/zero-offload/)](./assets/zero.png){#fig-zero width=70%}
 
-### 🕸️ Additional Parallelism Strategies {background-color="white"}
+### 🕸️ Additional Parallelism Strategies
 
 - **Tensor (/ Model) Parallelism** (`TP`):
     - 🤗 [Tensor Parallelism](https://huggingface.co/docs/text-generation-inference/en/conceptual/tensor_parallelism)
@@ -622,7 +622,7 @@ General strategy for scaling model training
 - [x] {{< fa brands github >}} [argonne-lcf/`Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
   - Supports 4D Parallelism (`DP` + `TP` + `PP` + `SP`)
 
-### Pipeline Parallelism (PP) {background-color="white"}
+### Pipeline Parallelism (PP)
 
 ::: {.flex-container style="place-content: end space-evenly;"}
 
@@ -677,7 +677,7 @@ Pipeline Parallelism
 
 :::
 
-### Tensor Parallel (TP) {background-color="white"}
+### Tensor Parallel (TP)
 
 ::: {layout="[50,50]"}
 
@@ -736,7 +736,7 @@ Tensor Parallel Training
 
 :::
 
-### Tensor Parallel (TP) {background-color="white"}
+### Tensor Parallel (TP)
 
 ::: {layout="[50,50]"}
 
@@ -805,7 +805,7 @@ Tensor Parallel Training
 
 :::
 
-### Tensor (/ Model) Parallel Training: Example {.smaller style="width:100%;" background-color="white"}
+### Tensor (/ Model) Parallel Training: Example {.smaller style="width:100%;"}
 
 Want to compute: $y = \sum_{i} x_{i} W_{i} = x_0 * W_0 + x_1 * W_1 + x_2 * W_2$  
 where each GPU has only its portion of the full weights as shown below
@@ -860,7 +860,41 @@ ChatGPT: [explain this image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-
 
 :::
 
-## 🌌 AuroraGPT (2024--) {background-color="white"}
+### 🏗️ Aurora {style="width:100%"}
+
+::: {.flex-container style="align-items: center; gap:10pt;"}
+
+::: {.column #tbl-aurora}
+
+|     Property | Value   |
+| -----------: | :------ |
+|        Racks | 166     |
+|        Nodes | 10,624  |
+| XPUs[^tiles] | 127,488 |
+|         CPUs | 21,248  |
+|         NICs | 84,992  |
+|          HBM | 8 PB    |
+|        DDR5c | 10 PB   |
+
+: Aurora[^aurora-ai] Specs {.responsive .striped .hover}
+
+:::
+
+::: {#fig-aurora .r-stretch}
+![](./assets/aurora1.png)
+
+Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
+:::
+
+:::
+
+[^tiles]: Each node has 6 Intel Data Center GPU Max 1550 
+    (code-named "Ponte Vecchio") tiles, with 2 XPUs per tile.
+
+[^aurora-ai]: 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
+
+
+## 🌌 AuroraGPT (2024--)
 
 ::: {.flex-container style="justify-content: space-around;"}
 
@@ -890,7 +924,7 @@ Image from {{< iconify fa github >}}
 
 :::
 
-### 🧪 AuroraGPT: Open Science Foundation Model {background-color="white"}
+### 🧪 AuroraGPT: Open Science Foundation Model
 
 ::: {#fig-aurora-gpt .r-stretch style="vertical-align:center;"}
 ![](./assets/AuroraGPT.svg)
@@ -898,7 +932,7 @@ Image from {{< iconify fa github >}}
 High-level overview of AuroraGPT project
 :::
 
-### 🧰 AuroraGPT: Toolbox {background-color="white"}
+### 🧰 AuroraGPT: Toolbox
 
 - **Datasets and data pipelines**
   (how do we deal with scientific data?)
@@ -922,7 +956,7 @@ High-level overview of AuroraGPT project
 
 :::
 
-### 🏋️ Challenges: In Practice {background-color="white"}
+### 🏋️ Challenges: In Practice
 
 This is _incredibly_ difficult in practice, due in part to:
 
@@ -936,7 +970,7 @@ This is _incredibly_ difficult in practice, due in part to:
 - Combinatorial explosion of possible configurations and experiments
   - {hyperparameters, architectures, tokenizers, learning rates, ...}
 
-### 💾 AuroraGPT: Training {background-color="white"}
+### 💾 AuroraGPT: Training
 
 - To train a fixed model on trillions of tokens requires:
     1. **Aggregating** data from multiple different _corpora_  
@@ -953,7 +987,7 @@ This is _incredibly_ difficult in practice, due in part to:
   - **Major bottleneck** when debugging data pipeline at scale
   :::
 
-### 🍹 AuroraGPT: Blending Data, Efficiently {background-color="white"}
+### 🍹 AuroraGPT: Blending Data, Efficiently
 
 ::: {.flex-container style="padding: 10pt; justify-content: space-around; align-items: flex-start;"}
 
@@ -974,7 +1008,7 @@ This is _incredibly_ difficult in practice, due in part to:
 
 :::
 
-### 📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens {background-color="white"}
+### 📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens
 
 ::: {.content-visible when-format="html" unless-format="revealjs"}
 ::: {#fig-loss-curve}
@@ -993,7 +1027,7 @@ Loss curve during training on 2T tokens.
 :::
 
 
-### ✨ Features {background-color="white"}
+### ✨ Features
 
 - 🕸️ **Parallelism**:
   - {data, tensor, pipeline, sequence, ...}
@@ -1005,7 +1039,7 @@ Loss curve during training on 2T tokens.
   - AutoTP (*WIP*)
   - ability to leverage features from DeepSpeed community
 
-### ✨ Features (even more!) {background-color="white"}
+### ✨ Features (even more!)
 
 - 🧗 **Optimizers**[^marieme]:
   - Support for *many* different optimizers:
@@ -1020,14 +1054,14 @@ Loss curve during training on 2T tokens.
 
 ## 🧬 MProt-DPO {style="width:100%;" background-color="white"}
 
-- [Finalist]{.highlight-yellow}: SC'24 [ACM Gordon Bell Prize](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
-- One of the first protein design toolkits that:
-  - Integrates text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping
-  - preference optimization strategies that have been scaled to include various design constraints imposed in diverse protein design tasks
+- [Finalist]{.highlight-green}: SC'24 [ACM Gordon Bell Prize](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
+  - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
+    (@mprot-dpo2024)
+- One of the first protein design toolkits that integrates:
+  - Text, (protein/gene) sequence, structure/conformational sampling modalities
+    to build aligned representations for protein sequence-function mapping
 
 ::: aside
-[MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
-(@mprot-dpo2024)
 :::
 
 ::: notes
@@ -1140,7 +1174,7 @@ Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds
 [{{< fa brands github >}} `Megatron-DS-Benchmarking`](https://github.com/saforem2/Megatron-DS-Benchmarking)
 :::
 
-## 🌎 AERIS:<br> Argonne Earth Systems Model for Reliable and Skillful Prediction (2025)
+## 🌎 AERIS (2025)
 
 ::: {.content-visible unless-format="revealjs"}
 
@@ -1162,12 +1196,12 @@ Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds
 
 ::: {.flex-container}
 
-::: {.flex-child style="width:50%;"}
+::: {.column style="width:50%;"}
 ![[arXiv:2509.13523](https://arxiv.org/abs/2509.13523)](./assets/team.png){#fig-arxiv}
 :::
 
-::: {.flex-child style="width:43.6%;"}
-![Pixel-level Swin diffusion transformer in sizes from \[1--80\]B](./assets/cover2.svg)
+::: {.column style="width:43.6%;"}
+![Pixel-level Swin diffusion transformer in sizes from \[1--80\]B](./assets/aeris.svg){#fig-aeris-cover}
 :::
 
 :::
@@ -1187,7 +1221,7 @@ Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models (See: @song2023ds
 > out of distribution predictions of extreme events.
 :::
 
-### High-Level Overview of AERIS {.smaller background-color="white"}
+### 👀 High-Level Overview of AERIS {.smaller background-color="white"}
 
 ::: {.flex-container}
 
@@ -1215,7 +1249,7 @@ Rollout of AERIS model, specific humidity at 700m.
 
 [^pde]: Relative to PDE-based models, e.g.: [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-### Contributions {background-color="white"}
+### ➕ Contributions
 
 ::: {.flex-container}
 
@@ -1241,7 +1275,7 @@ Rollout of AERIS model, specific humidity at 700m.
 [^gen-cast]: [GenCast: A Generative Model for Medium-Range Global Weather Forecasting](https://arxiv.org/html/2312.15796v1) (@price2024gencast)
 [^aurora-scale]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.
 
-### Issues with the Deterministic Approach {background-color="white"}
+### ⚠️ Issues with the Deterministic Approach
 
 ::: {.flex-container}
 
@@ -1264,7 +1298,7 @@ Rollout of AERIS model, specific humidity at 700m.
 
 :::
 
-### Transitioning to a Probabilistic Model {background-color="white"}
+### 🎲 Transitioning to a Probabilistic Model
 
 ::: {#fig-forward-pass}
 
@@ -1284,7 +1318,7 @@ output.
 
 :::
 
-### Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}
+### 🌀 Sequence-Window-Pipeline Parallelism `SWiPe` {.smaller background-color="white"}
 
 ::: {.content-visible unless-format="revealjs"}
 
@@ -1335,40 +1369,7 @@ output.
 
 :::
 
-### Aurora {background-color="white" style="width:100%"}
-
-::: {.flex-container style="align-items: center; gap:10pt;"}
-
-::: {.column #tbl-aurora}
-
-|     Property | Value   |
-| -----------: | :------ |
-|        Racks | 166     |
-|        Nodes | 10,624  |
-| XPUs[^tiles] | 127,488 |
-|         CPUs | 21,248  |
-|         NICs | 84,992  |
-|          HBM | 8 PB    |
-|        DDR5c | 10 PB   |
-
-: Aurora[^aurora-ai] Specs {.responsive .striped .hover}
-
-:::
-
-::: {#fig-aurora .r-stretch}
-![](./assets/aurora1.png)
-
-Aurora: [Fact Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
-:::
-
-:::
-
-[^tiles]: Each node has 6 Intel Data Center GPU Max 1550 
-    (code-named "Ponte Vecchio") tiles, with 2 XPUs per tile.
-
-[^aurora-ai]: 🏆 [Aurora Supercomputer Ranks Fastest for AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
-
-### AERIS: Scaling Results {background-color="white"}
+### 🚀 AERIS: Scaling Results
 
 ::: {.flex-container}
 
@@ -1390,7 +1391,7 @@ AERIS: Scaling Results
 
 :::
 
-### Hurricane Laura {background-color="white"}
+### 🌪️ Hurricane Laura
 
 ::: {#fig-hurricane-laura}
 
@@ -1406,7 +1407,7 @@ Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and
 ::: {#refs}
 :::
 
-## Acknowledgements {background-color="white"}
+## ❤️ Acknowledgements
 
 > This research used resources of the Argonne Leadership Computing
 > Facility, which is a DOE Office of Science User Facility supported

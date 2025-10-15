@@ -31,10 +31,10 @@
 
 
 
-<section id="distributed-training" class="level2 page-columns page-full" style="width:100%; background-color:white;">
-<h2 style="width:100%; background-color:white;" class="anchored" data-anchor-id="distributed-training">🌐 Distributed Training</h2>
-<section id="scaling-overview" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="scaling-overview">🚀 Scaling: Overview</h3>
+<section id="distributed-training" class="level2 page-columns page-full" style="&quot;width:100%">
+<h2 style="&quot;width:100%" class="anchored" data-anchor-id="distributed-training">🌐 Distributed Training</h2>
+<section id="scaling-overview" class="level3">
+<h3 class="anchored" data-anchor-id="scaling-overview">🚀 Scaling: Overview</h3>
 <ul>
 <li>✅ <strong>Goal</strong>:
 <ul>
@@ -59,8 +59,8 @@
 <p>In this talk, we will explore the intricacies of training foundation models on supercomputers. We will discuss the architecture of these models, the computational requirements, and the strategies employed to optimize training processes. Attendees will gain insights into the latest advancements in hardware and software that facilitate efficient model training at scale.</p>
 </div>
 </section>
-<section id="training-on-a-single-device" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="training-on-a-single-device">🐢 Training on a Single Device</h3>
+<section id="training-on-a-single-device" class="level3">
+<h3 class="anchored" data-anchor-id="training-on-a-single-device">🐢 Training on a Single Device</h3>
 <div id="fig-html-single-device" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-html-single-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -137,8 +137,8 @@ Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
 </div>
 </div>
 </section>
-<section id="training-on-multiple-gpus-data-parallelism" class="level3 page-columns page-full" style="width:100%" data-background-color="white">
-<h3 style="width:100%" data-background-color="white" class="anchored" data-anchor-id="training-on-multiple-gpus-data-parallelism">👬 Training on Multiple GPUs: Data Parallelism</h3>
+<section id="training-on-multiple-gpus-data-parallelism" class="level3 page-columns page-full" style="width:100%">
+<h3 style="width:100%" class="anchored" data-anchor-id="training-on-multiple-gpus-data-parallelism">👬 Training on Multiple GPUs: Data Parallelism</h3>
 <div id="fig-ddp-training-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ddp-training-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -217,8 +217,8 @@ Figure&nbsp;2: Each GPU receives <strong>unique</strong> data at each step
 <li>See <a href="https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one">🤗 Methods and tools for efficient training on a single GPU</a></li>
 </ul>
 </div></div></section>
-<section id="data-parallel-forward-pass" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="data-parallel-forward-pass">▶️ Data Parallel: Forward Pass</h3>
+<section id="data-parallel-forward-pass" class="level3">
+<h3 class="anchored" data-anchor-id="data-parallel-forward-pass">▶️ Data Parallel: Forward Pass</h3>
 <div id="fig-ddp-training-mermaid-allreduce" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ddp-training-mermaid-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -294,8 +294,8 @@ Figure&nbsp;3: Average gradients across all GPUs
 </figure>
 </div>
 </section>
-<section id="data-parallel-backward-pass" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="data-parallel-backward-pass">◀️ Data Parallel: Backward Pass</h3>
+<section id="data-parallel-backward-pass" class="level3">
+<h3 class="anchored" data-anchor-id="data-parallel-backward-pass">◀️ Data Parallel: Backward Pass</h3>
 <div id="fig-ddp-backward-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ddp-backward-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -387,8 +387,8 @@ Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytor
 <li><strong>Scatter</strong>: Distribute data from one node to all other nodes</li>
 </ul>
 </section>
-<section id="reduce" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="reduce">Reduce</h3>
+<section id="reduce" class="level3">
+<h3 class="anchored" data-anchor-id="reduce">Reduce</h3>
 <ul>
 <li>Perform a <em>reduction</em> on data across ranks, send to individual</li>
 </ul>
@@ -510,8 +510,8 @@ Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values
 </div>
 </div>
 </section>
-<section id="plan-of-attack" class="level3 scrollable" data-background-color="white">
-<h3 class="scrollable anchored" data-background-color="white" data-anchor-id="plan-of-attack">📝 Plan of Attack</h3>
+<section id="plan-of-attack" class="level3">
+<h3 class="anchored" data-anchor-id="plan-of-attack">📝 Plan of Attack</h3>
 <div id="fig-scaling-strategy-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scaling-strategy-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -549,8 +549,8 @@ Figure&nbsp;6: General strategy for scaling model training
 </figure>
 </div>
 </section>
-<section id="going-beyond-data-parallelism" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism">🚀 Going Beyond Data Parallelism</h3>
+<section id="going-beyond-data-parallelism" class="level3">
+<h3 class="anchored" data-anchor-id="going-beyond-data-parallelism">🚀 Going Beyond Data Parallelism</h3>
 <ul>
 <li>✅ Useful when model fits on single GPU:
 <ul>
@@ -568,8 +568,8 @@ Figure&nbsp;6: General strategy for scaling model training
 </ul></li>
 </ul>
 </section>
-<section id="going-beyond-data-parallelism-deepspeed-zero" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
+<section id="going-beyond-data-parallelism-deepspeed-zero" class="level3">
+<h3 class="anchored" data-anchor-id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -589,8 +589,8 @@ Figure&nbsp;7: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="I
 </figure>
 </div>
 </section>
-<section id="additional-parallelism-strategies" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="additional-parallelism-strategies">🕸️ Additional Parallelism Strategies</h3>
+<section id="additional-parallelism-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="additional-parallelism-strategies">🕸️ Additional Parallelism Strategies</h3>
 <ul>
 <li><strong>Tensor (/ Model) Parallelism</strong> (<code>TP</code>):
 <ul>
@@ -616,8 +616,8 @@ Figure&nbsp;7: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="I
 </ul></li>
 </ul>
 </section>
-<section id="pipeline-parallelism-pp" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="pipeline-parallelism-pp">Pipeline Parallelism (PP)</h3>
+<section id="pipeline-parallelism-pp" class="level3">
+<h3 class="anchored" data-anchor-id="pipeline-parallelism-pp">Pipeline Parallelism (PP)</h3>
 <div class="flex-container" style="place-content: end space-evenly;">
 <div class="column" style="width:60%;">
 <ul>
@@ -684,8 +684,8 @@ Figure&nbsp;8: Pipeline Parallelism
 </div>
 </div>
 </section>
-<section id="tensor-parallel-tp" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="tensor-parallel-tp">Tensor Parallel (TP)</h3>
+<section id="tensor-parallel-tp" class="level3">
+<h3 class="anchored" data-anchor-id="tensor-parallel-tp">Tensor Parallel (TP)</h3>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -755,8 +755,8 @@ Figure&nbsp;9: Tensor Parallel Training
 </div>
 </div>
 </section>
-<section id="tensor-parallel-tp-1" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="tensor-parallel-tp-1">Tensor Parallel (TP)</h3>
+<section id="tensor-parallel-tp-1" class="level3">
+<h3 class="anchored" data-anchor-id="tensor-parallel-tp-1">Tensor Parallel (TP)</h3>
 <div class="quarto-layout-panel" data-layout="[50,50]">
 <div class="quarto-layout-row">
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -837,8 +837,8 @@ Figure&nbsp;10: Tensor Parallel Training
 </ul>
 </div>
 </section>
-<section id="tensor-model-parallel-training-example" class="level3 smaller" style="width:100%;" data-background-color="white">
-<h3 class="smaller anchored" style="width:100%;" data-background-color="white" data-anchor-id="tensor-model-parallel-training-example">Tensor (/ Model) Parallel Training: Example</h3>
+<section id="tensor-model-parallel-training-example" class="level3 smaller" style="width:100%;">
+<h3 class="smaller anchored" style="width:100%;" data-anchor-id="tensor-model-parallel-training-example">Tensor (/ Model) Parallel Training: Example</h3>
 <p>Want to compute: <img src="https://latex.codecogs.com/png.latex?y%20=%20%5Csum_%7Bi%7D%20x_%7Bi%7D%20W_%7Bi%7D%20=%20x_0%20*%20W_0%20+%20x_1%20*%20W_1%20+%20x_2%20*%20W_2"><br>
 where each GPU has only its portion of the full weights as shown below</p>
 <ol type="1">
@@ -896,9 +896,73 @@ Figure&nbsp;11
 </div>
 </div>
 </section>
+<section id="aurora" class="level3" style="width:100%">
+<h3 style="width:100%" class="anchored" data-anchor-id="aurora">🏗️ Aurora</h3>
+<div class="flex-container" style="align-items: center; gap:10pt;">
+<div id="tbl-aurora" class="column responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Aurora<sup>1</sup> Specs
+</figcaption>
+<div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="table-responsive">
+<table class="column table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Property</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Racks</td>
+<td style="text-align: left;">166</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Nodes</td>
+<td style="text-align: left;">10,624</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">XPUs<sup>2</sup></td>
+<td style="text-align: left;">127,488</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">CPUs</td>
+<td style="text-align: left;">21,248</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">NICs</td>
+<td style="text-align: left;">84,992</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">HBM</td>
+<td style="text-align: left;">8 PB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">DDR5c</td>
+<td style="text-align: left;">10 PB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+<div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;12: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/15/assets/aurora1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
+</figcaption>
+</figure>
+</div>
+</div>
 </section>
-<section id="auroragpt-2024" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="auroragpt-2024">🌌 AuroraGPT (2024–)</h2>
+</section>
+<section id="auroragpt-2024" class="level2">
+<h2 class="anchored" data-anchor-id="auroragpt-2024">🌌 AuroraGPT (2024–)</h2>
 <div class="flex-container" style="justify-content: space-around;">
 <div class="column" style="width: 50%">
 <div class="blue-card">
@@ -915,30 +979,30 @@ Figure&nbsp;11
 <div id="fig-awesome-llm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;12: Image from  Hannibal046 / Awesome-LLM"><img src="https://samforeman.me/talks/2025/10/15/assets/llms.gif" class="img-fluid figure-img"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;13: Image from  Hannibal046 / Awesome-LLM"><img src="https://samforeman.me/talks/2025/10/15/assets/llms.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Image from <iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM">Hannibal046 / <code>Awesome-LLM</code></a>
+Figure&nbsp;13: Image from <iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM">Hannibal046 / <code>Awesome-LLM</code></a>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="auroragpt-open-science-foundation-model" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="auroragpt-open-science-foundation-model">🧪 AuroraGPT: Open Science Foundation Model</h3>
+<section id="auroragpt-open-science-foundation-model" class="level3">
+<h3 class="anchored" data-anchor-id="auroragpt-open-science-foundation-model">🧪 AuroraGPT: Open Science Foundation Model</h3>
 <div id="fig-aurora-gpt" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored" style="vertical-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;13: High-level overview of AuroraGPT project"><img src="https://samforeman.me/talks/2025/10/15/assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
+<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;14: High-level overview of AuroraGPT project"><img src="https://samforeman.me/talks/2025/10/15/assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: High-level overview of AuroraGPT project
+Figure&nbsp;14: High-level overview of AuroraGPT project
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="auroragpt-toolbox" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="auroragpt-toolbox">🧰 AuroraGPT: Toolbox</h3>
+<section id="auroragpt-toolbox" class="level3">
+<h3 class="anchored" data-anchor-id="auroragpt-toolbox">🧰 AuroraGPT: Toolbox</h3>
 <ul>
 <li><strong>Datasets and data pipelines</strong> (how do we deal with scientific data?)</li>
 <li><strong>Software infrastructure and workflows</strong> (scalable, robust, extensible)</li>
@@ -975,8 +1039,8 @@ Figure&nbsp;13: High-level overview of AuroraGPT project
 </div>
 </div>
 </section>
-<section id="challenges-in-practice" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="challenges-in-practice">🏋️ Challenges: In Practice</h3>
+<section id="challenges-in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-practice">🏋️ Challenges: In Practice</h3>
 <p>This is <em>incredibly</em> difficult in practice, due in part to:</p>
 <ul>
 <li>Brand new {hardware, architecture, software}</li>
@@ -994,8 +1058,8 @@ Figure&nbsp;13: High-level overview of AuroraGPT project
 </ul></li>
 </ul>
 </section>
-<section id="auroragpt-training" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="auroragpt-training">💾 AuroraGPT: Training</h3>
+<section id="auroragpt-training" class="level3">
+<h3 class="anchored" data-anchor-id="auroragpt-training">💾 AuroraGPT: Training</h3>
 <ul>
 <li>To train a fixed model on trillions of tokens requires:
 <ol type="1">
@@ -1013,8 +1077,8 @@ Figure&nbsp;13: High-level overview of AuroraGPT project
 </div></li>
 </ul>
 </section>
-<section id="auroragpt-blending-data-efficiently" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="auroragpt-blending-data-efficiently">🍹 AuroraGPT: Blending Data, Efficiently</h3>
+<section id="auroragpt-blending-data-efficiently" class="level3">
+<h3 class="anchored" data-anchor-id="auroragpt-blending-data-efficiently">🍹 AuroraGPT: Blending Data, Efficiently</h3>
 <div class="flex-container" style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
 <div class="column" style="width:25%;">
 <ul>
@@ -1035,31 +1099,31 @@ Figure&nbsp;13: High-level overview of AuroraGPT project
 <div id="fig-data-processing" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/data-processing.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;14: Time spent preparing 2T tokens"><img src="https://samforeman.me/talks/2025/10/15/assets/data-processing.svg" class="r-stretch img-fluid figure-img"></a>
+<a href="./assets/data-processing.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;15: Time spent preparing 2T tokens"><img src="https://samforeman.me/talks/2025/10/15/assets/data-processing.svg" class="r-stretch img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Time spent preparing 2T tokens
+Figure&nbsp;15: Time spent preparing 2T tokens
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="loss-curve-training-auroragpt-7b-on-2t-tokens" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="loss-curve-training-auroragpt-7b-on-2t-tokens">📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens</h3>
+<section id="loss-curve-training-auroragpt-7b-on-2t-tokens" class="level3">
+<h3 class="anchored" data-anchor-id="loss-curve-training-auroragpt-7b-on-2t-tokens">📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens</h3>
 <div id="fig-loss-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/train-val-loss-vs-tokens-wide.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;15: Loss curve during training on 2T tokens."><img src="https://samforeman.me/talks/2025/10/15/assets/train-val-loss-vs-tokens-wide.svg" class="img-fluid figure-img"></a>
+<a href="./assets/train-val-loss-vs-tokens-wide.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;16: Loss curve during training on 2T tokens."><img src="https://samforeman.me/talks/2025/10/15/assets/train-val-loss-vs-tokens-wide.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: Loss curve during training on 2T tokens.
+Figure&nbsp;16: Loss curve during training on 2T tokens.
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="features" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="features">✨ Features</h3>
+<section id="features" class="level3">
+<h3 class="anchored" data-anchor-id="features">✨ Features</h3>
 <ul>
 <li>🕸️ <strong>Parallelism</strong>:
 <ul>
@@ -1078,10 +1142,10 @@ Figure&nbsp;15: Loss curve during training on 2T tokens.
 </ul></li>
 </ul>
 </section>
-<section id="features-even-more" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="features-even-more">✨ Features (even more!)</h3>
+<section id="features-even-more" class="level3">
+<h3 class="anchored" data-anchor-id="features-even-more">✨ Features (even more!)</h3>
 <ul>
-<li>🧗 <strong>Optimizers</strong><sup>1</sup>:
+<li>🧗 <strong>Optimizers</strong><sup>3</sup>:
 <ul>
 <li>Support for <em>many</em> different optimizers:
 <ul>
@@ -1100,16 +1164,21 @@ Figure&nbsp;15: Loss curve during training on 2T tokens.
 <section id="mprot-dpo" class="level2 page-columns page-full" style="width:100%;" data-background-color="white">
 <h2 style="width:100%;" data-background-color="white" class="anchored" data-anchor-id="mprot-dpo">🧬 MProt-DPO</h2>
 <ul>
-<li><span class="highlight-yellow">Finalist</span>: SC’24 <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">ACM Gordon Bell Prize</a></li>
-<li>One of the first protein design toolkits that:
+<li><span class="highlight-green">Finalist</span>: SC’24 <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">ACM Gordon Bell Prize</a>
 <ul>
-<li>Integrates text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping</li>
-<li>preference optimization strategies that have been scaled to include various design constraints imposed in diverse protein design tasks</li>
+<li><a href="https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization</a>
+<ol class="example" type="1">
+<li></li>
+</ol></li>
+</ul></li>
+<li>One of the first protein design toolkits that integrates:
+<ul>
+<li>Text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping</li>
 </ul></li>
 </ul>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p><a href="https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (2024)</span>)</p>
+
 </div></div><div class="notes">
 <p>One of the first multimodal protein design toolkits that:␍ integrates text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping␍ preference optimization strategies that have been scaled to include various design constraints imposed in diverse protein design tasks␍ Two application scenarios: ␍ Protein design: at least 5x gains in productive designs␍ Antibody optimization: designs result in greater complementarity and exploration of sequence space␍ High water marks for training/ fine-tuning multimodal models:␍ achieves ~4.11 EFLOPS sustained performance (peak 5.57 EFLOPS) on Aurora, with &gt;1 EFLOPS on each HPC resource including the NVIDIA DGX cloud ␍ Novel integrated workflow that supports diverse backbone foundation models as well as custom models ␍</p>
 </div>
@@ -1121,10 +1190,10 @@ Figure&nbsp;15: Loss curve during training on 2T tokens.
 <div id="fig-mprot-3p5B-scaling0" class="quarto-float quarto-figure quarto-figure-center anchored" style="margin:0; padding-unset;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;16: Scaling results for 3.5B model across ~38,400 GPUs"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img" style="margin:0; padding-unset;;width:100.0%"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;17: Scaling results for 3.5B model across ~38,400 GPUs"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img" style="margin:0; padding-unset;;width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
+Figure&nbsp;17: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 </figcaption>
 </figure>
 </div>
@@ -1136,7 +1205,7 @@ Figure&nbsp;16: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 = 3200 [node] x 12 [XPU / node]</p></li>
 <li><p>🎖️ <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">Gordon Bell Finalist</a>:</p>
 <ul>
-<li><a href="https://dl.acm.org/doi/10.1109/SC41406.2024.00013">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (2024)</span>)</li>
+<li><a href="https://dl.acm.org/doi/10.1109/SC41406.2024.00013">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows</a> (1)</li>
 </ul></li>
 </ul>
 </div>
@@ -1152,20 +1221,20 @@ Figure&nbsp;16: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 <div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;17: 3.5B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;18: 3.5B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: <code>3.5B</code> model
+Figure&nbsp;18: <code>3.5B</code> model
 </figcaption>
 </figure>
 </div>
 <div id="fig-mprot-7B-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;18: 7B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-7B-scaling-2.svg" class="img-fluid figure-img"></a>
+<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;19: 7B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-7B-scaling-2.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: <code>7B</code> model
+Figure&nbsp;19: <code>7B</code> model
 </figcaption>
 </figure>
 </div>
@@ -1174,9 +1243,9 @@ Figure&nbsp;18: <code>7B</code> model
 <section id="loooooooooong-sequence-lengths" class="level3 smaller page-columns page-full" data-background-color="white" style="width: 100%;">
 <h3 class="smaller anchored" data-background-color="white" style="width: 100%;" data-anchor-id="loooooooooong-sequence-lengths">🚂 Loooooooooong Sequence Lengths</h3>
 <div class="flex-container" style="align-items: center; justify-content: center;">
-<p><a href="../../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://samforeman.me/assets/anl.svg" class="img-fluid" style="height:50pt; margin: unset; padding: 0"></a></p>
+<p><a href="../../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://samforeman.me/assets/anl.svg" class="img-fluid" style="height:50pt; margin: unset; padding: 0"></a></p>
 <p><span class="dim-text" style="font-size: 2.0em;"><iconify-icon inline="" icon="ic:baseline-plus" aria-label="Icon baseline-plus from ic Iconify.design set." title="Icon baseline-plus from ic Iconify.design set."></iconify-icon></span></p>
-<p><a href="../../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://samforeman.me/assets/deepspeed-logo-transparent.svg" class="img-fluid" style="height:50pt; margin: unset; padding: 0;"></a></p>
+<p><a href="../../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="https://samforeman.me/assets/deepspeed-logo-transparent.svg" class="img-fluid" style="height:50pt; margin: unset; padding: 0;"></a></p>
 </div>
 <ul>
 <li>Working with <a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-microsoft" aria-label="microsoft"></i> Microsoft/DeepSpeed</a> team to enable longer sequence lengths (context windows) for LLMs
@@ -1190,20 +1259,20 @@ Figure&nbsp;18: <code>7B</code> model
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="25B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="img-fluid figure-img"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="25B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="img-fluid figure-img"></a></p>
 <figcaption>25B</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="33B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="img-fluid figure-img"></a></p>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="33B"><img src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="img-fluid figure-img"></a></p>
 <figcaption>33B</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (2023)</span>)
+Figure&nbsp;20: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (2023)</span>)
 </figcaption>
 </figure>
 </div>
@@ -1213,17 +1282,17 @@ Figure&nbsp;19: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</co
 <a href="https://github.com/saforem2/Megatron-DS-Benchmarking"><i class="fa-brands fa-github" aria-label="github"></i> <code>Megatron-DS-Benchmarking</code></a></p>
 </div></div></section>
 </section>
-<section id="aeris-argonne-earth-systems-model-for-reliable-and-skillful-prediction-2025" class="level2">
-<h2 class="anchored" data-anchor-id="aeris-argonne-earth-systems-model-for-reliable-and-skillful-prediction-2025">🌎 AERIS:<br> Argonne Earth Systems Model for Reliable and Skillful Prediction (2025)</h2>
+<section id="aeris-2025" class="level2">
+<h2 class="anchored" data-anchor-id="aeris-2025">🌎 AERIS (2025)</h2>
 <div class="flex-container" data-background-color="white">
 <div class="flex-child" style="width:50%;">
 <div id="fig-arxiv" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/team.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;20: arXiv:2509.13523"><img src="https://samforeman.me/talks/2025/10/15/assets/team.png" class="img-fluid figure-img"></a>
+<a href="./assets/team.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Figure&nbsp;21: arXiv:2509.13523"><img src="https://samforeman.me/talks/2025/10/15/assets/team.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
+Figure&nbsp;21: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </figcaption>
 </figure>
 </div>
@@ -1231,7 +1300,7 @@ Figure&nbsp;20: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 <div class="flex-child" style="width:43.6%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/aeris.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"><img src="https://samforeman.me/talks/2025/10/15/assets/aeris.svg" class="img-fluid figure-img" alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"></a></p>
+<p><a href="./assets/aeris.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"><img src="https://samforeman.me/talks/2025/10/15/assets/aeris.svg" class="img-fluid figure-img" alt="ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25"></a></p>
 <figcaption>ACM Gordon Bell Prize for Climate Modeling Finalist @ SC’25</figcaption>
 </figure>
 </div>
@@ -1243,22 +1312,22 @@ Figure&nbsp;20: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </blockquote>
 </div>
 <section id="high-level-overview-of-aeris" class="level3 smaller" data-background-color="white">
-<h3 class="smaller anchored" data-background-color="white" data-anchor-id="high-level-overview-of-aeris">High-Level Overview of AERIS</h3>
+<h3 class="smaller anchored" data-background-color="white" data-anchor-id="high-level-overview-of-aeris">👀 High-Level Overview of AERIS</h3>
 <div class="flex-container">
 <div id="fig-rollout" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;21: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/15/assets/rollout.gif" class="img-fluid figure-img"></a>
+<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;22: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/15/assets/rollout.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21: Rollout of AERIS model, specific humidity at 700m.
+Figure&nbsp;22: Rollout of AERIS model, specific humidity at 700m.
 </figcaption>
 </figure>
 </div>
 <div id="tbl-aeris" class="responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Overview of AERIS model and training setup
+Table&nbsp;2: Overview of AERIS model and training setup
 </figcaption>
 <div aria-describedby="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="table-responsive">
@@ -1287,7 +1356,7 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <td style="text-align: left;">Swin Transformer</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">Speedup<sup>2</sup></td>
+<td style="text-align: right;">Speedup<sup>4</sup></td>
 <td style="text-align: left;">O(10k–100k)</td>
 </tr>
 </tbody>
@@ -1298,8 +1367,8 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 </section>
-<section id="contributions" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="contributions">Contributions</h3>
+<section id="contributions" class="level3">
+<h3 class="anchored" data-anchor-id="contributions">➕ Contributions</h3>
 <div class="flex-container">
 <div class="callout callout-style-simple callout-caution no-icon callout-titled" title="☔ AERIS">
 <div class="callout-header d-flex align-content-center">
@@ -1316,7 +1385,7 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <li>Operates at the pixel level (1 × 1 patch size), guided by physical priors</li>
 <li>Medium-range forecast skill:
 <ul>
-<li><strong>Surpasses IFS ENS, competitive with GenCast<sup>3</sup></strong></li>
+<li><strong>Surpasses IFS ENS, competitive with GenCast<sup>5</sup></strong></li>
 <li>Uniquely stable on seasonal scales to 90 days</li>
 </ul></li>
 </ul>
@@ -1334,7 +1403,7 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <div class="callout-body-container callout-body">
 <p><span style="color:var(--callout-color-note)!important;"><em>A novel 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs</em></span></p>
 <ul>
-<li>Enables scalable small-batch training on large supercomputers<sup>4</sup>
+<li>Enables scalable small-batch training on large supercomputers<sup>6</sup>
 <ul>
 <li><strong>10.21 ExaFLOPS</strong></li>
 <li>@ 121,000 Intel XPUs (Aurora)</li>
@@ -1344,8 +1413,8 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 </section>
-<section id="issues-with-the-deterministic-approach" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="issues-with-the-deterministic-approach">Issues with the Deterministic Approach</h3>
+<section id="issues-with-the-deterministic-approach" class="level3">
+<h3 class="anchored" data-anchor-id="issues-with-the-deterministic-approach">⚠️ Issues with the Deterministic Approach</h3>
 <div class="flex-container">
 <div class="flex-child">
 <ul>
@@ -1369,35 +1438,35 @@ Table&nbsp;1: Overview of AERIS model and training setup
 </div>
 </div>
 </section>
-<section id="transitioning-to-a-probabilistic-model" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="transitioning-to-a-probabilistic-model">Transitioning to a Probabilistic Model</h3>
+<section id="transitioning-to-a-probabilistic-model" class="level3">
+<h3 class="anchored" data-anchor-id="transitioning-to-a-probabilistic-model">🎲 Transitioning to a Probabilistic Model</h3>
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;22: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
+<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Figure&nbsp;23: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <img src="https://latex.codecogs.com/png.latex?t_%7B0%7D%20%5Crightarrow%20t_%7B64%7D">, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
+Figure&nbsp;23: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <img src="https://latex.codecogs.com/png.latex?t_%7B0%7D%20%5Crightarrow%20t_%7B64%7D">, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
 </figcaption>
 </figure>
 </div>
 <div class="flex-container">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion.gif" class="img-fluid figure-img" alt="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"></a></p>
+<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion.gif" class="img-fluid figure-img" alt="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"></a></p>
 <figcaption>Reverse Diffusion Process (<img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D%5Crightarrow%20%5Cpi">)</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion_forward.png" class="img-fluid figure-img" style="width:89.6%" alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"></a></p>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion_forward.png" class="img-fluid figure-img" style="width:89.6%" alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"></a></p>
 <figcaption>Forward Diffusion Process (<img src="https://latex.codecogs.com/png.latex?%5Cpi%5Crightarrow%20%5Cmathcal%7BN%7D">)</figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="sequence-window-pipeline-parallelism-swipe" class="level3 smaller" data-background-color="white">
-<h3 class="smaller anchored" data-background-color="white" data-anchor-id="sequence-window-pipeline-parallelism-swipe">Sequence-Window-Pipeline Parallelism <code>SWiPe</code></h3>
+<h3 class="smaller anchored" data-background-color="white" data-anchor-id="sequence-window-pipeline-parallelism-swipe">🌀 Sequence-Window-Pipeline Parallelism <code>SWiPe</code></h3>
 <div class="flex-container">
 <div class="column" style="width:33%;">
 <ul>
@@ -1413,10 +1482,10 @@ Figure&nbsp;22: Reverse diffusion with the <span style="color:#228be6">input</sp
 <div id="fig-swipe-layer" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:66%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;23: "><img src="https://samforeman.me/talks/2025/10/15/assets/wpsp.svg" class="img-fluid figure-img"></a>
+<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;24: "><img src="https://samforeman.me/talks/2025/10/15/assets/wpsp.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23
+Figure&nbsp;24
 </figcaption>
 </figure>
 </div>
@@ -1424,80 +1493,16 @@ Figure&nbsp;23
 <div id="fig-comms" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:80%; text-align: center; margin-left: auto; margin-right: auto; ">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;24: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/15/assets/comms1.svg" class="img-fluid figure-img"></a>
+<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;25: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/15/assets/comms1.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: <code>SWiPe</code> Communication Patterns
+Figure&nbsp;25: <code>SWiPe</code> Communication Patterns
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="aurora" class="level3" data-background-color="white" style="width:100%">
-<h3 data-background-color="white" style="width:100%" class="anchored" data-anchor-id="aurora">Aurora</h3>
-<div class="flex-container" style="align-items: center; gap:10pt;">
-<div id="tbl-aurora" class="column responsive striped hover quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Aurora<sup>5</sup> Specs
-</figcaption>
-<div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="table-responsive">
-<table class="column table-striped table-hover caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Property</th>
-<th style="text-align: left;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">Racks</td>
-<td style="text-align: left;">166</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">Nodes</td>
-<td style="text-align: left;">10,624</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">XPUs<sup>6</sup></td>
-<td style="text-align: left;">127,488</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">CPUs</td>
-<td style="text-align: left;">21,248</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">NICs</td>
-<td style="text-align: left;">84,992</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">HBM</td>
-<td style="text-align: left;">8 PB</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">DDR5c</td>
-<td style="text-align: left;">10 PB</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-<div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;25: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/15/assets/aurora1.png" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
-</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="aeris-scaling-results" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="aeris-scaling-results">AERIS: Scaling Results</h3>
+<section id="aeris-scaling-results" class="level3">
+<h3 class="anchored" data-anchor-id="aeris-scaling-results">🚀 AERIS: Scaling Results</h3>
 <div class="flex-container">
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored" style="width:70%;">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1518,8 +1523,8 @@ Figure&nbsp;26: AERIS: Scaling Results
 </div>
 </div>
 </section>
-<section id="hurricane-laura" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="hurricane-laura">Hurricane Laura</h3>
+<section id="hurricane-laura" class="level3">
+<h3 class="anchored" data-anchor-id="hurricane-laura">🌪️ Hurricane Laura</h3>
 <div id="fig-hurricane-laura" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1535,9 +1540,6 @@ Figure&nbsp;27: Hurricane Laura tracks (top) and intensity (bottom). Initialized
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">📓 References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-mprot-dpo2024" class="csl-entry">
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> In <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em>. SC ’24. Atlanta, GA, USA: IEEE Press. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
-</div>
 <div id="ref-stock2025aeris" class="csl-entry">
 Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong Jung, Sandeep Madireddy, et al. 2025. <span>“AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions.”</span> <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
 </div>
@@ -1549,8 +1551,8 @@ Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang Chen, Chen
 </div>
 </div>
 </section>
-<section id="acknowledgements" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">❤️ Acknowledgements</h2>
 <blockquote class="blockquote">
 <p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
 </blockquote>
@@ -1563,12 +1565,12 @@ Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang Chen, Chen
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Implemented by Marieme Ngom↩︎</p></li>
-<li id="fn2"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a>↩︎</p></li>
-<li id="fn3"><p><a href="https://arxiv.org/html/2312.15796v1">GenCast: A Generative Model for Medium-Range Global Weather Forecasting</a> (<span class="citation" data-cites="price2024gencast">Price et al. (2024)</span>)↩︎</p></li>
-<li id="fn4"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.↩︎</p></li>
-<li id="fn5"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a>↩︎</p></li>
-<li id="fn6"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.↩︎</p></li>
+<li id="fn1"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a>↩︎</p></li>
+<li id="fn2"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.↩︎</p></li>
+<li id="fn3"><p>Implemented by Marieme Ngom↩︎</p></li>
+<li id="fn4"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a>↩︎</p></li>
+<li id="fn5"><p><a href="https://arxiv.org/html/2312.15796v1">GenCast: A Generative Model for Medium-Range Global Weather Forecasting</a> (<span class="citation" data-cites="price2024gencast">Price et al. (2024)</span>)↩︎</p></li>
+<li id="fn6"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.↩︎</p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@unpublished{foreman2025,
   author = {Foreman, Sam},
