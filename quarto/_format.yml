@@ -38,9 +38,10 @@ format:
     html-math-method: katex
     footnotes-hover: true
     section-divs: true
-    highlight-style:
-      light: github
-      dark: github-dark
+    highlight-style: atom
+    # highlight-style:
+    #   light: github
+    #   dark: github-dark
     css:
       # - css/colors-oklch.min.css
       # - css/custom.css
@@ -52,36 +53,49 @@ format:
       # - css/giscus.css
     theme:
       dark:
+        # - css/hljs-onedark.scss
         - css/global.scss
         - css/now_playing.scss
         - css/common.scss
         - css/dark.scss
         - css/syntax-dark.scss
         - css/callout-cards.scss
+        # - css/hljs/auto.scss
+        - css/hljs/dark.scss
         - default
+        # - css/hljs/github-dark.scss
+        # - css/hljs-dark-custom.scss
         # - css/sam/callouts.scss
         # - css/common.cleaned.scss
         # - css/common.cleaned.minimal.scss
         # - css/common-min.scss
         # - css/sf.scss
+
       light:
+        # - css/hljs-one-light.scss
         - css/global.scss
         - css/now_playing.scss
         - css/common.scss
         - css/light.scss
         - css/syntax-light.scss
         - css/callout-cards.scss
+        # - css/hljs-light-custom.scss
+        - css/hljs/light.scss
+        # - css/hljs/atom-one-light.scss
+        # - css/hljs/auto.scss
         - default
         # - css/sam/callouts.scss
         # - css/common-min.scss
         # - css/sf.scss
+    # header-includes: |
+    #   <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
+    #   <link href="https://iosevka-webfonts.github.io/iosevkafixed/IosevkaFixed.css" rel="stylesheet">
+    #   <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
     include-in-header:
       - text: | # KaTeX
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-
           <!-- The loading of KaTeX is deferred to speed up page rendering -->
           <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
-
           <!-- To automatically render math in text elements, include the auto-render extension: -->
           <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
@@ -99,10 +113,66 @@ format:
           <!-- Google Tag Manager (noscript) -->
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!-- End Google Tag Manager (noscript) -->
-    # header-includes: |
-    #   <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-    #   <link href="https://iosevka-webfonts.github.io/iosevkafixed/IosevkaFixed.css" rel="stylesheet">
-    #   <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">
+    # include-after-body:
+    #   # - text: | # Shiki
+    #   #     <script type="module">
+    #   #       import { codeToHtml } from 'https://esm.sh/shiki@3.0.0'
+    #   #       import { codegen } from 'shiki-codegen'
+    #   #       const { code } = await codegen({
+    #   #         langs: ['bash', 'python', 'json', 'toml', 'yaml', 'markdown', 'css', 'shell', 'log'],
+    #   #         themes: ['light-plus', 'dark-plus'],
+    #   #         engine: 'javascript',
+    #   #       const code = document.getElementById('sourceCode')
+    #   #       foo.innerHTML = await codeToHtml(code, { lang: 'bash' })
+    #   #     </script>
+    #   - text: | # Highlight.js
+    #       // <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-jy5nBnLsmJWYNN2/Ji+IRDigMKzl6GpAp7i8HP14KrU3xSR99ZvobmHxR1uU1kk9tRYRmtuyGqj1ZTx8qE4fpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    #       <!-- and it's easy to individually load additional languages -->
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/markdown.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python-repl.min.js"></script>
+    #       // <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    #       <script src="/javascripts/python-hljs.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/plaintext.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/scss.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/less.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/latex.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/julia.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lua.min.js"></script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/vim.min.js"></script>
+    #       // <script>hljs.highlightAll();</script>
+    #       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
+    #       <script>
+    #         // first, find all the div.code blocks
+    #         document.querySelectorAll('sourceCode').forEach(el => {
+    #           // then highlight each
+    #           hljs.highlightElement(el);
+    #         });
+    #         document.querySelectorAll('div.sourceCode').forEach(el => {
+    #           // then highlight each
+    #           hljs.highlightElement(el);
+    #         });
+    #         document.querySelectorAll('pre sourceCode').forEach(el => {
+    #           // then highlight each
+    #           hljs.highlightElement(el);
+    #         });
+    #         document.querySelectorAll('pre.sourceCode').forEach(el => {
+    #           // then highlight each
+    #           hljs.highlightElement(el);
+    #         });
+    #         document.querySelectorAll('code').forEach(el => {
+    #           // then highlight each
+    #           hljs.highlightElement(el);
+    #         });
+    #         hljs.highlightAll();
+    #         hljs.initLineNumbersOnLoad();
+    #       </script>
 
 
   revealjs:
@@ -172,99 +242,3 @@ format:
           <!-- End Google Tag Manager (noscript) -->
   gfm:
     toc: true
-
-  live-html:
-    respect-user-color-scheme: true
-    date-modified: last-modified
-    link-external-newwindow: true
-    link-external-icon: false
-    callout-appearance: simple
-    code-tools: true
-    code-link: true
-    code-line-numbers: true
-    toc: true
-    self-contained: false
-    default-image-extension: svg
-    toc-title: ""
-    page-layout: article
-    grid:
-      body-width: 1000px
-      margin-width: 250px
-      sidebar-width: 250px
-      # gutter-width: 1.5rem
-    fig-align: center
-    fig-responsive: true
-    anchor-sections: true
-    code-overflow: scroll
-    code-copy: hover
-    code-summary: " "
-    citations-hover: true
-    crossrefs-hover: true
-    html-math-method: katex
-    footnotes-hover: true
-    section-divs: true
-    highlight-style:
-      light: github
-      dark: github-dark
-    css:
-      # - css/colors-oklch.min.css
-      # - css/custom.css
-      - css/svgbob.css
-      # - static/fonts/IosevkaQP/IosevkaQP.css
-      - static/fonts/MIosevkaQp/MIosevkaQp.css
-      - static/fonts/MIosevkaterm/MIosevkaTerm.css
-      # - static/fonts/IosevkaTerm/IosevkaTerm.css
-      # - css/giscus.css
-    theme:
-      dark:
-        - css/global.scss
-        - css/now_playing.scss
-        - css/common.scss
-        - css/dark.scss
-        - css/syntax-dark.scss
-        - css/callout-cards.scss
-        - default
-        # - css/sam/callouts.scss
-        # - css/common.cleaned.scss
-        # - css/common.cleaned.minimal.scss
-        # - css/common-min.scss
-        # - css/sf.scss
-      light:
-        - css/global.scss
-        - css/now_playing.scss
-        - css/common.scss
-        - css/light.scss
-        - css/syntax-light.scss
-        - css/callout-cards.scss
-        - default
-        # - css/sam/callouts.scss
-        # - css/common-min.scss
-        # - css/sf.scss
-    include-in-header:
-      - text: | # KaTeX
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-
-          <!-- The loading of KaTeX is deferred to speed up page rendering -->
-          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
-
-          <!-- To automatically render math in text elements, include the auto-render extension: -->
-          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-      - text: | # Google fonts
-          <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
-          <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-      - text: | # Google Tag Manager
-          <!-- Google Tag Manager -->
-          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
-          <!-- End Google Tag Manager -->
-    include-before-body:
-      - text: |
-          <!-- Google Tag Manager (noscript) -->
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-          <!-- End Google Tag Manager (noscript) -->
-    # header-includes: |
-    #   <link href="https://iosevka-webfonts.github.io/iosevka/iosevka.css" rel="stylesheet">
-    #   <link href="https://iosevka-webfonts.github.io/iosevkafixed/IosevkaFixed.css" rel="stylesheet">
-    #   <link href="https://iosevka-webfonts.github.io/iosevka-term/iosevka-term.css" rel="stylesheet">

@@ -7,12 +7,12 @@
 <script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-6172778a27b0bfa6b3b3f65992e46a92.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-485605091aded536db53fb751867c3cd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script src="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.3">
+  <meta name="generator" content="quarto-1.9.4">
 
   <meta name="author" content="Sam Foreman">
   <meta name="dcterms.date" content="2025-10-08">
@@ -55,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-f5abd5472d0c29d8af2e729308aaffa6.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-ba3a089994c331d7d9de05acab25b186.css">
   <link rel="stylesheet" href="../../../../css/navbar-active.css">
   <link rel="stylesheet" href="../../../../css/custom.css">
   <link rel="stylesheet" href="../../../../css/svgbob.css">
@@ -595,13 +595,6 @@ Figure&nbsp;5: Reverse diffusion with the <span style="color:#228be6">input</spa
 </div>
 </section>
 
-<section id="training-at-scale" class="title-slide slide level1 center">
-<h1>Training at Scale</h1>
-<ul>
-<li></li>
-</ul>
-</section>
-
 <section id="sequence-window-pipeline-parallelism-swipe" class="title-slide slide level1 smaller center" data-background-color="white">
 <h1>Sequence-Window-Pipeline Parallelism <code>SWiPe</code></h1>
 <div class="flex-container">
@@ -820,6 +813,12 @@ Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-K
 q(x_{t}|x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-\beta_{t}} x_{t-1}, \beta_{t} I) \\
 q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
 \end{aligned}</span></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="diffusion-model-forward-process" class="slide level2 center">
+<h2>Diffusion Model: Forward Process</h2>
+<ul>
 <li><p>Introduce:</p>
 <ul>
 <li><span class="math inline">\alpha_{t} \equiv 1 - \beta_{t}</span></li>
@@ -828,66 +827,17 @@ q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
 <p>We can write the forward process as:</p>
 <p><span class="math display"> q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)</span></p></li>
 <li><p>We see that the <em>mean</em> <span class="math inline">\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}</span></p></li>
-</ul></li>
 </ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: center;">RoPE <span class="math inline">\theta</span></th>
-<th>[optimizer]</th>
-<th>[tok/batch]</th>
-<th style="text-align: center;">[Nodes]</th>
-<th style="text-align: center;">[color]</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">50k</td>
-<td>ipex.fusedLamb</td>
-<td>100M</td>
-<td style="text-align: center;">512</td>
-<td style="text-align: center;">grey</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">50k</td>
-<td>ipex.fusedLamb</td>
-<td>50M</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">blue</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5M</td>
-<td>ipex.fusedLamb</td>
-<td>50M</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">purple</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5M</td>
-<td>muon</td>
-<td>50M</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">orange</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5M</td>
-<td>muonclip</td>
-<td>50M</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">red</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5M</td>
-<td>sophiag</td>
-<td>50M</td>
-<td style="text-align: center;">256</td>
-<td style="text-align: center;">green</td>
-</tr>
-</tbody>
-</table>
-
-
 </section></section>
+<section id="acknowledgements" class="title-slide slide level1 center" data-background-color="white">
+<h1>Acknowledgements</h1>
+<blockquote>
+<p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</blockquote>
+
+
+</section>
+
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

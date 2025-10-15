@@ -12,7 +12,6 @@ Sam Foreman
   Approach](#issues-with-the-deterministic-approach)
 - [Transitioning to a Probabilistic
   Model](#transitioning-to-a-probabilistic-model)
-- [Training at Scale](#training-at-scale)
 - [Sequence-Window-Pipeline Parallelism
   `SWiPe`](#sequence-window-pipeline-parallelism-swipe)
 - [Aurora](#aurora)
@@ -25,6 +24,8 @@ Sam Foreman
 - [References](#references)
 - [Extras](#extras)
   - [Overview of Diffusion Models](#overview-of-diffusion-models)
+  - [Diffusion Model: Forward Process](#diffusion-model-forward-process)
+- [Acknowledgements](#acknowledgements)
 
 ## 🌎 AERIS
 
@@ -241,10 +242,6 @@ alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 </div>
 
-## Training at Scale
-
-- 
-
 ## Sequence-Window-Pipeline Parallelism `SWiPe`
 
 <div class="flex-container">
@@ -444,26 +441,25 @@ Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
     q(x_{1:T}|x_{0}) = \prod_{t=1}^{T} q(x_{t}|x_{t-1})
     \end{aligned}$$
 
-  - Introduce:
+### Diffusion Model: Forward Process
 
-    - $\alpha_{t} \equiv 1 - \beta_{t}$
-    - $\bar{\alpha}_{t} \equiv \prod_{s=1}^{T} \alpha_{s}$
+- Introduce:
 
-    We can write the forward process as:
+  - $\alpha_{t} \equiv 1 - \beta_{t}$
+  - $\bar{\alpha}_{t} \equiv \prod_{s=1}^{T} \alpha_{s}$
 
-    $$ q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)$$
+  We can write the forward process as:
 
-  - We see that the *mean*
-    $\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}$
+  $$ q(x_{1}|x_{0}) = \mathcal{N}(x_{1}; \sqrt{\bar{\alpha}_{1}} x_{0}, (1-\bar{\alpha}_{1}) I)$$
 
-| RoPE $\theta$ | \[optimizer\]  | \[tok/batch\] | \[Nodes\] | \[color\] |
-|:-------------:|----------------|---------------|:---------:|:---------:|
-|      50k      | ipex.fusedLamb | 100M          |    512    |   grey    |
-|      50k      | ipex.fusedLamb | 50M           |    256    |   blue    |
-|      5M       | ipex.fusedLamb | 50M           |    256    |  purple   |
-|      5M       | muon           | 50M           |    256    |  orange   |
-|      5M       | muonclip       | 50M           |    256    |    red    |
-|      5M       | sophiag        | 50M           |    256    |   green   |
+- We see that the *mean*
+  $\mu_{t} = \sqrt{\alpha_{t}} x_{t-1} = \sqrt{\bar{\alpha}_{t}} x_{0}$
+
+## Acknowledgements
+
+> This research used resources of the Argonne Leadership Computing
+> Facility, which is a DOE Office of Science User Facility supported
+> under Contract DE-AC02-06CH11357.
 
 [^1]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
