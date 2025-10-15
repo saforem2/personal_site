@@ -2,19 +2,22 @@
 Sam Foreman
 2025-10-15
 
-- [🚀 Scaling: Overview](#rocket-scaling-overview)
 - [🌐 Distributed Training](#globe_with_meridians-distributed-training)
+  - [🚀 Scaling: Overview](#rocket-scaling-overview)
   - [🐢 Training on a Single
     Device](#turtle-training-on-a-single-device)
   - [🕸️ Parallelism Strategies](#spider_web-parallelism-strategies)
   - [👬 Training on Multiple GPUs: Data
     Parallelism](#two_men_holding_hands-training-on-multiple-gpus-data-parallelism)
-  - [▶️ Data Parallel Training](#arrow_forward-data-parallel-training)
+  - [▶️ Data Parallel: Forward
+    Pass](#arrow_forward-data-parallel-forward-pass)
+  - [◀️ Data Parallel: Backward
+    Pass](#arrow_backward-data-parallel-backward-pass)
   - [🔄 Collective
     Communication](#arrows_counterclockwise-collective-communication)
-  - [📦 Distributed Training
-    Frameworks](#package-distributed-training-frameworks)
-  - [⛑️ Best Practices](#rescue_worker_helmet-best-practices)
+  - [Reduce](#reduce)
+  - [🐣 Getting Started: In
+    Practice](#hatching_chick-getting-started-in-practice)
   - [📝 Plan of Attack](#pencil-plan-of-attack)
   - [🚀 Going Beyond Data
     Parallelism](#rocket-going-beyond-data-parallelism)
@@ -61,7 +64,9 @@ Sam Foreman
 - [📓 References](#notebook-references)
 - [Acknowledgements](#acknowledgements)
 
-## 🚀 Scaling: Overview
+## 🌐 Distributed Training
+
+### 🚀 Scaling: Overview
 
 - ✅ **Goal**:
   - Minimize: <span class="highlight-red">Cost</span> (i.e. amount of
@@ -86,8 +91,6 @@ latest advancements in hardware and software that facilitate efficient
 model training at scale.
 
 </div>
-
-## 🌐 Distributed Training
 
 ### 🐢 Training on a Single Device
 
@@ -160,9 +163,9 @@ Figure 1: **SLOW** !! model size limited by GPU memory
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -220,7 +223,7 @@ Figure 2: Each GPU receives **unique** data at each step
 
 </div>
 
-### ▶️ Data Parallel Training
+### ▶️ Data Parallel: Forward Pass
 
 <div id="fig-ddp-training-mermaid-allreduce">
 
@@ -228,9 +231,9 @@ Figure 2: Each GPU receives **unique** data at each step
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -261,6 +264,7 @@ flowchart LR
     L0 -.-> ar
     L1 -.-> ar
     L2 -.-> ar
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -274,12 +278,81 @@ class x,y0,L0 red
 class x1,L1 green
 class x2,L2 blue
 class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
+class N0,N1,N2,G0,G1,G2,GU block
+class D eblock
 class AR block
 class bc text
 ```
 
 Figure 3: Average gradients across all GPUs
+
+</div>
+
+### ◀️ Data Parallel: Backward Pass
+
+<div id="fig-ddp-backward-mermaid">
+
+``` mermaid
+flowchart RL
+    subgraph D["`Data`"]
+        direction TB
+        x("`x0`")
+        x1("`x1`")
+        x2("`x1`")
+    end
+    subgraph G0["`GPU0`"]
+        direction RL
+        subgraph N0["`NN`"]
+        end
+        L0["`Loss`"]
+    end
+    subgraph G1["`GPU1`"]
+        direction RL
+        subgraph N1["`NN`"]
+        end
+        L1["`Loss`"]
+    end
+    subgraph G2["`GPU2`"]
+        direction RL
+        subgraph N2["`NN`"]
+        end
+        L2["`Loss`"]
+    end
+    subgraph BC["`Send Updates`"]
+        direction TB
+    end
+    BC -.-> G0
+    BC -.-> G1
+    BC -.-> G2
+    L0 ~~~ N0
+    L1 ~~~ N1
+    L2 ~~~ N2
+    G0 ~~~ x
+    G1 ~~~ x1
+    G2 ~~~ x2
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,y0,L0 red
+class x1,L1 green
+class x2,L2 blue
+class x3,ar grey
+class N0,N1,N2,G0,G1,G2,GU block
+class BC block
+class bc text
+class D eblock
+```
+
+Figure 4: Send global updates back to each GPU. See: [PyTorch /
+Distributed Data
+Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 </div>
 
@@ -292,22 +365,85 @@ Figure 3: Average gradients across all GPUs
   - **AllGather**: Collect data from all nodes to all nodes
 - **Scatter**: Distribute data from one node to all other nodes
 
-### 📦 Distributed Training Frameworks
+### Reduce
+
+- Perform a *reduction* on data across ranks, send to individual
+
+<div id="fig-reduce-mermaid">
+
+``` mermaid
+flowchart TD
+  subgraph R0["`0`"]
+    x0("`x0`")
+  end
+  subgraph R1["`1`"]
+    x1("`x1`")
+  end
+  subgraph R2["`2`"]
+    x2("`x2`")
+  end
+  subgraph R3["`3`"]
+    x3("`x3`")
+  end
+  subgraph AR["`Reduce`"]
+    xp["`z=reduce(x, 2, SUM)`"]
+  end
+  subgraph AR3["`3`"]
+  end
+  subgraph AR2["`2`"]
+    xp2("`z`")
+  end
+  subgraph AR1["`1`"]
+  end
+  subgraph AR0["`0`"]
+  end
+  x0 --> AR
+  x1 --> AR
+  x2 --> AR
+  x3 --> AR
+  AR --> AR3
+  AR --> xp2
+  AR --> AR1
+  AR --> AR0
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class xp,xp2 purple
+class x0, red
+class x1, green
+class x2, blue
+class x3, yellow
+```
+
+Figure 5: Reduce operation: one rank receives the reduction of input
+values across ranks
+
+</div>
+
+### 🐣 Getting Started: In Practice
 
 <div class="flex-container" justify-content="space-around"
 style="gap: 5pt;">
 
 <div class="column" width="45%">
 
-- 🍋 `ezpz`
-- PyTorch
-  - DDP
-  - FSDP
-- DeepSpeed
-  - ZeRO Offloading
-  - Megatron-DeepSpeed
-- Megatron-LM
-- 🤗 Accelerate
+- 📦 **Distributed Training Frameworks**:
+  - 🍋 [saforem2 / `ezpz`](https://github.com/saforem2/ezpz)
+  - 🤖 [Megatron-LM](https://github.com/NVIDIA/Megatron-LM)
+  - 🤗 [Accelerate](https://huggingface.co/docs/accelerate/index)
+  - 🔥 PyTorch
+    - [DDP](https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html)
+      /
+      [FSDP](https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
+- 🚀 [DeepSpeed](https://www.deepspeed.ai/)
+  - [ZeRO Offloading](https://www.deepspeed.ai/tutorials/zero/)
+  - [Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 
 </div>
 
@@ -320,11 +456,18 @@ style="gap: 5pt;">
   - Gradient Accumulation
   - Offloading to CPU/NVMe
 
-</div>
+> [!IMPORTANT]
+>
+> ### ⏰ Keeping things in Sync
+>
+> **Computation stalls during communication !!**
+>
+> Keeping the communication to computation ratio small is important for
+> effective scaling.
 
 </div>
 
-### ⛑️ Best Practices
+</div>
 
 ### 📝 Plan of Attack
 
@@ -349,7 +492,7 @@ flowchart TB
     classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 ```
 
-Figure 4: General strategy for scaling model training
+Figure 6: General strategy for scaling model training
 
 </div>
 
@@ -379,7 +522,7 @@ Figure 4: General strategy for scaling model training
 
 <img src="./assets/zero.png" style="width:70.0%" />
 
-Figure 5: [DeepSpeed](deepspeed.ai) +
+Figure 7: [DeepSpeed](deepspeed.ai) +
 [`ZeRO`](https://www.deepspeed.ai/tutorials/zero-offload/)
 
 </div>
@@ -460,7 +603,7 @@ class a1, blue
 class b1, yellow
 ```
 
-Figure 6: Pipeline Parallelism
+Figure 8: Pipeline Parallelism
 
 </div>
 
@@ -526,7 +669,7 @@ flowchart LR
   t2("`x₂`") --> X2
 ```
 
-Figure 9
+Figure 11
 
 </div>
 
@@ -537,7 +680,11 @@ Figure 9
 <span style="font-weight: 600; font-size: 1.5em;">🔭
 AI-for-Science</span>  
 [source](https://x.com/tenderizzation/status/1944591320796090606)
-([@tenderizzation](https://twitter.com/tenderizzation))
+([@tenderizzation](https://twitter.com/tenderizzation))  
+ <br>
+
+ChatGPT: [explain this
+image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
@@ -546,13 +693,6 @@ AI-for-Science</span>
 ![](./assets/modeling-planets.jpg)
 
 </div>
-
-</div>
-
-<div class="aside">
-
-ChatGPT: [explain this
-image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 
 </div>
 
@@ -584,7 +724,7 @@ texts, data}
 
 ![](./assets/llms.gif)
 
-Figure 10: Image from [Hannibal046 /
+Figure 12: Image from [Hannibal046 /
 `Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
 
 </div>
@@ -599,7 +739,7 @@ Figure 10: Image from [Hannibal046 /
 
 ![](./assets/AuroraGPT.svg)
 
-Figure 11: High-level overview of AuroraGPT project
+Figure 13: High-level overview of AuroraGPT project
 
 </div>
 
@@ -689,7 +829,7 @@ style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
 
 <img src="./assets/data-processing.svg" class="r-stretch" />
 
-Figure 12: Time spent preparing 2T tokens
+Figure 14: Time spent preparing 2T tokens
 
 </div>
 
@@ -736,7 +876,9 @@ Figure 12: Time spent preparing 2T tokens
 
 <div class="aside">
 
-[10.1109/SC41406.2024.000130](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
+[MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design
+Workﬂows with Direct Preference
+Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
 (Dharuman et al. (2024))
 
 </div>
@@ -773,7 +915,7 @@ style="align-items: center; text-align: center; margin-left: auto; margin-right:
 <img src="./assets/mprot-3p5B-scaling-2.svg"
 style="margin:0; padding-unset;;width:100.0%" />
 
-Figure 13: Scaling results for `3.5B` model across ~38,400 GPUs
+Figure 15: Scaling results for `3.5B` model across ~38,400 GPUs
 
 </div>
 
@@ -822,7 +964,7 @@ Aurora, Frontier, Leonardo and PDX.
 
 ![](./assets/mprot-3p5B-scaling-2.svg)
 
-Figure 14: `3.5B` model
+Figure 16: `3.5B` model
 
 </div>
 
@@ -830,7 +972,7 @@ Figure 14: `3.5B` model
 
 ![](./assets/mprot-7B-scaling-2.svg)
 
-Figure 15: `7B` model
+Figure 17: `7B` model
 
 </div>
 
@@ -868,7 +1010,7 @@ style="height:50pt; margin: unset; padding: 0;" />
 
 </div>
 
-Figure 16: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
+Figure 18: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
 models (See: Song et al. (2023))
 
 </div>
@@ -891,7 +1033,7 @@ models (See: Song et al. (2023))
 
 ![](./assets/team.png)
 
-Figure 17: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+Figure 19: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
 
@@ -928,7 +1070,7 @@ SC’25](./assets/aeris.svg)
 
 ![](./assets/rollout.gif)
 
-Figure 18: Rollout of AERIS model, specific humidity at 700m.
+Figure 20: Rollout of AERIS model, specific humidity at 700m.
 
 </div>
 
@@ -1011,7 +1153,7 @@ Table 1: Overview of AERIS model and training setup
 
 ![](./assets/diffusion/light.svg)
 
-Figure 19: Reverse diffusion with the
+Figure 21: Reverse diffusion with the
 <span style="color:#228be6">input</span> condition, individual sampling
 steps $t_{0} \rightarrow t_{64}$, the next time step
 <span style="color:#40c057">estimate</span> and the
@@ -1048,7 +1190,7 @@ alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 ![](./assets/wpsp.svg)
 
-Figure 20
+Figure 22
 
 </div>
 
@@ -1058,7 +1200,7 @@ Figure 20
 
 ![](./assets/comms1.svg)
 
-Figure 21: `SWiPe` Communication Patterns
+Figure 23: `SWiPe` Communication Patterns
 
 </div>
 
@@ -1086,7 +1228,7 @@ Table 2: Aurora[^5] Specs
 
 ![](./assets/aurora1.png)
 
-Figure 22: Aurora: [Fact
+Figure 24: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
 
 </div>
@@ -1101,7 +1243,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 ![](./assets/aeris-scaling.svg)
 
-Figure 23: AERIS: Scaling Results
+Figure 25: AERIS: Scaling Results
 
 </div>
 
@@ -1122,7 +1264,7 @@ Figure 23: AERIS: Scaling Results
 
 ![](./assets/science/hurricane.png)
 
-Figure 24: Hurricane Laura tracks (top) and intensity (bottom).
+Figure 26: Hurricane Laura tracks (top) and intensity (bottom).
 Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 </div>

@@ -52,7 +52,9 @@ format:
   gfm: default
 ---
 
-## 🚀 Scaling: Overview {background-color="white"}
+## 🌐 Distributed Training {style="width:100%; background-color:white;"}
+
+### 🚀 Scaling: Overview {background-color="white"}
 
 - ✅ **Goal**:
   - Minimize: [Cost]{.highlight-red} (i.e. amount of time spent training)
@@ -72,8 +74,6 @@ computational requirements, and the strategies employed to optimize training
 processes. Attendees will gain insights into the latest advancements in
 hardware and software that facilitate efficient model training at scale.
 :::
-
-## 🌐 Distributed Training {style="width:100%; background-color:white;"}
 
 ### 🐢 Training on a Single Device {background-color="white"}
 
@@ -266,9 +266,9 @@ class N0,G0,n0 block
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -322,7 +322,7 @@ Each GPU receives **unique** data at each step
 - See [🤗 Methods and tools for efficient training on a single GPU](https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one)
 :::
 
-### ▶️ Data Parallel Training {background-color="white"}
+### ▶️ Data Parallel: Forward Pass {background-color="white"}
 
 ::: {#fig-ddp-training-mermaid-allreduce}
 
@@ -330,9 +330,9 @@ Each GPU receives **unique** data at each step
 flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -363,6 +363,7 @@ flowchart LR
     L0 -.-> ar
     L1 -.-> ar
     L2 -.-> ar
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -376,12 +377,79 @@ class x,y0,L0 red
 class x1,L1 green
 class x2,L2 blue
 class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
+class N0,N1,N2,G0,G1,G2,GU block
+class D eblock
 class AR block
 class bc text
 ```
 
 Average gradients across all GPUs
+:::
+
+### ◀️ Data Parallel: Backward Pass {background-color="white"}
+
+::: {#fig-ddp-backward-mermaid}
+
+```{mermaid}
+flowchart RL
+    subgraph D["`Data`"]
+        direction TB
+        x("`x0`")
+        x1("`x1`")
+        x2("`x1`")
+    end
+    subgraph G0["`GPU0`"]
+        direction RL
+        subgraph N0["`NN`"]
+        end
+        L0["`Loss`"]
+    end
+    subgraph G1["`GPU1`"]
+        direction RL
+        subgraph N1["`NN`"]
+        end
+        L1["`Loss`"]
+    end
+    subgraph G2["`GPU2`"]
+        direction RL
+        subgraph N2["`NN`"]
+        end
+        L2["`Loss`"]
+    end
+    subgraph BC["`Send Updates`"]
+        direction TB
+    end
+    BC -.-> G0
+    BC -.-> G1
+    BC -.-> G2
+    L0 ~~~ N0
+    L1 ~~~ N1
+    L2 ~~~ N2
+    G0 ~~~ x
+    G1 ~~~ x1
+    G2 ~~~ x2
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,y0,L0 red
+class x1,L1 green
+class x2,L2 blue
+class x3,ar grey
+class N0,N1,N2,G0,G1,G2,GU block
+class BC block
+class bc text
+class D eblock
+```
+
+Send global updates back to each GPU.
+See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 :::
 
 ### 🔄 Collective Communication
@@ -393,20 +461,80 @@ Average gradients across all GPUs
   - **AllGather**: Collect data from all nodes to all nodes
 - **Scatter**: Distribute data from one node to all other nodes
 
-### 📦 Distributed Training Frameworks
+
+### Reduce {background-color="white"}
+
+- Perform a _reduction_ on data across ranks, send to individual
+
+::: {#fig-reduce-mermaid}
+
+```{mermaid}
+flowchart TD
+  subgraph R0["`0`"]
+    x0("`x0`")
+  end
+  subgraph R1["`1`"]
+    x1("`x1`")
+  end
+  subgraph R2["`2`"]
+    x2("`x2`")
+  end
+  subgraph R3["`3`"]
+    x3("`x3`")
+  end
+  subgraph AR["`Reduce`"]
+    xp["`z=reduce(x, 2, SUM)`"]
+  end
+  subgraph AR3["`3`"]
+  end
+  subgraph AR2["`2`"]
+    xp2("`z`")
+  end
+  subgraph AR1["`1`"]
+  end
+  subgraph AR0["`0`"]
+  end
+  x0 --> AR
+  x1 --> AR
+  x2 --> AR
+  x3 --> AR
+  AR --> AR3
+  AR --> xp2
+  AR --> AR1
+  AR --> AR0
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class xp,xp2 purple
+class x0, red
+class x1, green
+class x2, blue
+class x3, yellow
+```
+
+Reduce operation: one rank receives the reduction of input values across ranks
+:::
+
+### 🐣 Getting Started: In Practice
 
 ::: {.flex-container justify-content="space-around" style="gap: 5pt;"}
 
 ::: {.column width="45%"}
-- 🍋 `ezpz`
-- PyTorch
-  - DDP
-  - FSDP
-- DeepSpeed
-  - ZeRO Offloading
-  - Megatron-DeepSpeed
-- Megatron-LM
-- 🤗 Accelerate
+- 📦 **Distributed Training Frameworks**:
+  - 🍋 [saforem2 / `ezpz`](https://github.com/saforem2/ezpz)
+  - 🤖 [Megatron-LM](https://github.com/NVIDIA/Megatron-LM)
+  - 🤗 [Accelerate](https://huggingface.co/docs/accelerate/index)
+  - 🔥 PyTorch
+    - [DDP](https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html) / [FSDP](https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html)
+- 🚀 [DeepSpeed](https://www.deepspeed.ai/)
+  - [ZeRO Offloading](https://www.deepspeed.ai/tutorials/zero/)
+  - [Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
 :::
 
 ::: {.column width="45%"}
@@ -416,11 +544,16 @@ Average gradients across all GPUs
   - Mixed Precision Training
   - Gradient Accumulation
   - Offloading to CPU/NVMe
+
+::: {.callout-important icon=false title="⏰ Keeping things in Sync"}
+**Computation stalls during communication !!**
+
+Keeping the communication to computation ratio small is important for effective scaling.
 :::
 
 :::
 
-### ⛑️ Best Practices
+:::
 
 ### 📝 Plan of Attack {.scrollable background-color="white"}
 
@@ -713,17 +846,16 @@ flowchart LR
 ::: {.column style="width:55%; text-align: center;"}
 [🔭 AI-for-Science]{style="font-weight: 600; font-size: 1.5em;"}  
 {{< iconify fa twitter >}} [source](https://x.com/tenderizzation/status/1944591320796090606)
-([\@tenderizzation](https://twitter.com/tenderizzation))
+([\@tenderizzation](https://twitter.com/tenderizzation))  
+&nbsp;<br>
+
+ChatGPT: [explain this image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 :::
 
 ::: {.column}
 ![](./assets/modeling-planets.jpg)
 :::
 
-:::
-
-::: aside
-ChatGPT: [explain this image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
 :::
 
 ## 🌌 AuroraGPT (2024--) {background-color="white"}
@@ -892,7 +1024,8 @@ Loss curve during training on 2T tokens.
   - preference optimization strategies that have been scaled to include various design constraints imposed in diverse protein design tasks
 
 ::: aside
-[10.1109/SC41406.2024.000130](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf) (@mprot-dpo2024)
+[MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
+(@mprot-dpo2024)
 :::
 
 ::: notes

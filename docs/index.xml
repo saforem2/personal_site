@@ -31,8 +31,10 @@
 
 
 
-<section id="scaling-overview" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="scaling-overview">🚀 Scaling: Overview</h2>
+<section id="distributed-training" class="level2 page-columns page-full" style="width:100%; background-color:white;">
+<h2 style="width:100%; background-color:white;" class="anchored" data-anchor-id="distributed-training">🌐 Distributed Training</h2>
+<section id="scaling-overview" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="scaling-overview">🚀 Scaling: Overview</h3>
 <ul>
 <li>✅ <strong>Goal</strong>:
 <ul>
@@ -57,8 +59,6 @@
 <p>In this talk, we will explore the intricacies of training foundation models on supercomputers. We will discuss the architecture of these models, the computational requirements, and the strategies employed to optimize training processes. Attendees will gain insights into the latest advancements in hardware and software that facilitate efficient model training at scale.</p>
 </div>
 </section>
-<section id="distributed-training" class="level2 page-columns page-full" style="width:100%; background-color:white;">
-<h2 style="width:100%; background-color:white;" class="anchored" data-anchor-id="distributed-training">🌐 Distributed Training</h2>
 <section id="training-on-a-single-device" class="level3" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="training-on-a-single-device">🐢 Training on a Single Device</h3>
 <div id="fig-html-single-device" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -150,9 +150,9 @@ Figure&nbsp;1: <strong>SLOW</strong> !! model size limited by GPU memory
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -215,8 +215,8 @@ Figure&nbsp;2: Each GPU receives <strong>unique</strong> data at each step
 <li>See <a href="https://huggingface.co/docs/transformers/v4.46.0/perf_train_gpu_one">🤗 Methods and tools for efficient training on a single GPU</a></li>
 </ul>
 </div></div></section>
-<section id="data-parallel-training" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="data-parallel-training">▶️ Data Parallel Training</h3>
+<section id="data-parallel-forward-pass" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="data-parallel-forward-pass">▶️ Data Parallel: Forward Pass</h3>
 <div id="fig-ddp-training-mermaid-allreduce" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ddp-training-mermaid-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -228,9 +228,9 @@ Figure&nbsp;2: Each GPU receives <strong>unique</strong> data at each step
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph D["`Data`"]
         direction TB
-        x("`x₀`")
-        x1("`x₁`")
-        x2("`x₂`")
+        x("`x0`")
+        x1("`x1`")
+        x2("`x2`")
     end
     direction LR
     subgraph G0["`GPU0`"]
@@ -261,6 +261,7 @@ Figure&nbsp;2: Each GPU receives <strong>unique</strong> data at each step
     L0 -.-&gt; ar
     L1 -.-&gt; ar
     L2 -.-&gt; ar
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
@@ -274,7 +275,8 @@ class x,y0,L0 red
 class x1,L1 green
 class x2,L2 blue
 class x3,ar grey
-class D,N0,N1,N2,G0,G1,G2,GU block
+class N0,N1,N2,G0,G1,G2,GU block
+class D eblock
 class AR block
 class bc text
 </pre>
@@ -286,6 +288,84 @@ class bc text
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ddp-training-mermaid-allreduce-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Average gradients across all GPUs
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="data-parallel-backward-pass" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="data-parallel-backward-pass">◀️ Data Parallel: Backward Pass</h3>
+<div id="fig-ddp-backward-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ddp-backward-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart RL
+    subgraph D["`Data`"]
+        direction TB
+        x("`x0`")
+        x1("`x1`")
+        x2("`x1`")
+    end
+    subgraph G0["`GPU0`"]
+        direction RL
+        subgraph N0["`NN`"]
+        end
+        L0["`Loss`"]
+    end
+    subgraph G1["`GPU1`"]
+        direction RL
+        subgraph N1["`NN`"]
+        end
+        L1["`Loss`"]
+    end
+    subgraph G2["`GPU2`"]
+        direction RL
+        subgraph N2["`NN`"]
+        end
+        L2["`Loss`"]
+    end
+    subgraph BC["`Send Updates`"]
+        direction TB
+    end
+    BC -.-&gt; G0
+    BC -.-&gt; G1
+    BC -.-&gt; G2
+    L0 ~~~ N0
+    L1 ~~~ N1
+    L2 ~~~ N2
+    G0 ~~~ x
+    G1 ~~~ x1
+    G2 ~~~ x2
+classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
+classDef eblock fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
+class x,y0,L0 red
+class x1,L1 green
+class x2,L2 blue
+class x3,ar grey
+class N0,N1,N2,G0,G1,G2,GU block
+class BC block
+class bc text
+class D eblock
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ddp-backward-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytorch.org/tutorials/intermediate/ddp_tutorial.html">PyTorch / Distributed Data Parallel</a>
 </figcaption>
 </figure>
 </div>
@@ -305,24 +385,99 @@ Figure&nbsp;3: Average gradients across all GPUs
 <li><strong>Scatter</strong>: Distribute data from one node to all other nodes</li>
 </ul>
 </section>
-<section id="distributed-training-frameworks" class="level3">
-<h3 class="anchored" data-anchor-id="distributed-training-frameworks">📦 Distributed Training Frameworks</h3>
+<section id="reduce" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="reduce">Reduce</h3>
+<ul>
+<li>Perform a <em>reduction</em> on data across ranks, send to individual</li>
+</ul>
+<div id="fig-reduce-mermaid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-reduce-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  subgraph R0["`0`"]
+    x0("`x0`")
+  end
+  subgraph R1["`1`"]
+    x1("`x1`")
+  end
+  subgraph R2["`2`"]
+    x2("`x2`")
+  end
+  subgraph R3["`3`"]
+    x3("`x3`")
+  end
+  subgraph AR["`Reduce`"]
+    xp["`z=reduce(x, 2, SUM)`"]
+  end
+  subgraph AR3["`3`"]
+  end
+  subgraph AR2["`2`"]
+    xp2("`z`")
+  end
+  subgraph AR1["`1`"]
+  end
+  subgraph AR0["`0`"]
+  end
+  x0 --&gt; AR
+  x1 --&gt; AR
+  x2 --&gt; AR
+  x3 --&gt; AR
+  AR --&gt; AR3
+  AR --&gt; xp2
+  AR --&gt; AR1
+  AR --&gt; AR0
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class xp,xp2 purple
+class x0, red
+class x1, green
+class x2, blue
+class x3, yellow
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reduce-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Reduce operation: one rank receives the reduction of input values across ranks
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="getting-started-in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started-in-practice">🐣 Getting Started: In Practice</h3>
 <div class="flex-container" data-justify-content="space-around" style="gap: 5pt;">
 <div class="column" style="width:45%;">
 <ul>
-<li>🍋 <code>ezpz</code></li>
-<li>PyTorch
+<li>📦 <strong>Distributed Training Frameworks</strong>:
 <ul>
-<li>DDP</li>
-<li>FSDP</li>
-</ul></li>
-<li>DeepSpeed
+<li>🍋 <a href="https://github.com/saforem2/ezpz">saforem2 / <code>ezpz</code></a></li>
+<li>🤖 <a href="https://github.com/NVIDIA/Megatron-LM">Megatron-LM</a></li>
+<li>🤗 <a href="https://huggingface.co/docs/accelerate/index">Accelerate</a></li>
+<li>🔥 PyTorch
 <ul>
-<li>ZeRO Offloading</li>
-<li>Megatron-DeepSpeed</li>
+<li><a href="https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html">DDP</a> / <a href="https://docs.pytorch.org/tutorials/intermediate/FSDP_tutorial.html">FSDP</a></li>
 </ul></li>
-<li>Megatron-LM</li>
-<li>🤗 Accelerate</li>
+</ul></li>
+<li>🚀 <a href="https://www.deepspeed.ai/">DeepSpeed</a>
+<ul>
+<li><a href="https://www.deepspeed.ai/tutorials/zero/">ZeRO Offloading</a></li>
+<li><a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">Megatron-DeepSpeed</a></li>
+</ul></li>
 </ul>
 </div>
 <div class="column" style="width:45%;">
@@ -336,11 +491,22 @@ Figure&nbsp;3: Average gradients across all GPUs
 <li>Offloading to CPU/NVMe</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-simple callout-important no-icon callout-titled" title="⏰ Keeping things in Sync">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>⏰ Keeping things in Sync
 </div>
 </div>
-</section>
-<section id="best-practices" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices">⛑️ Best Practices</h3>
+<div class="callout-body-container callout-body">
+<p><strong>Computation stalls during communication !!</strong></p>
+<p>Keeping the communication to computation ratio small is important for effective scaling.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="plan-of-attack" class="level3 scrollable" data-background-color="white">
 <h3 class="scrollable anchored" data-background-color="white" data-anchor-id="plan-of-attack">📝 Plan of Attack</h3>
@@ -376,7 +542,7 @@ Figure&nbsp;3: Average gradients across all GPUs
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scaling-strategy-mermaid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: General strategy for scaling model training
+Figure&nbsp;6: General strategy for scaling model training
 </figcaption>
 </figure>
 </div>
@@ -413,10 +579,10 @@ Figure&nbsp;4: General strategy for scaling model training
 <div id="fig-zero" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/zero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;5:  DeepSpeed + ZeRO"><img src="https://samforeman.me/talks/2025/10/15/assets/zero.png" class="img-fluid figure-img" style="width:70.0%"></a>
+<a href="./assets/zero.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;7:  DeepSpeed + ZeRO"><img src="https://samforeman.me/talks/2025/10/15/assets/zero.png" class="img-fluid figure-img" style="width:70.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="deepspeed.ai">DeepSpeed</a> + <a href="https://www.deepspeed.ai/tutorials/zero-offload/"><code>ZeRO</code></a>
+Figure&nbsp;7: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> <a href="deepspeed.ai">DeepSpeed</a> + <a href="https://www.deepspeed.ai/tutorials/zero-offload/"><code>ZeRO</code></a>
 </figcaption>
 </figure>
 </div>
@@ -509,7 +675,7 @@ class b1, yellow
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pipeline-parallelism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Pipeline Parallelism
+Figure&nbsp;8: Pipeline Parallelism
 </figcaption>
 </figure>
 </div>
@@ -579,7 +745,7 @@ class d0,d1 yellow
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Tensor Parallel Training
+Figure&nbsp;9: Tensor Parallel Training
 </figcaption>
 </figure>
 </div>
@@ -651,7 +817,7 @@ class d0,d1 yellow
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Tensor Parallel Training
+Figure&nbsp;10: Tensor Parallel Training
 </figcaption>
 </figure>
 </div>
@@ -669,7 +835,7 @@ Figure&nbsp;8: Tensor Parallel Training
 </ul>
 </div>
 </section>
-<section id="tensor-model-parallel-training-example" class="level3 smaller page-columns page-full" style="width:100%;" data-background-color="white">
+<section id="tensor-model-parallel-training-example" class="level3 smaller" style="width:100%;" data-background-color="white">
 <h3 class="smaller anchored" style="width:100%;" data-background-color="white" data-anchor-id="tensor-model-parallel-training-example">Tensor (/ Model) Parallel Training: Example</h3>
 <p>Want to compute: <img src="https://latex.codecogs.com/png.latex?y%20=%20%5Csum_%7Bi%7D%20x_%7Bi%7D%20W_%7Bi%7D%20=%20x_0%20*%20W_0%20+%20x_1%20*%20W_1%20+%20x_2%20*%20W_2"><br>
 where each GPU has only its portion of the full weights as shown below</p>
@@ -712,23 +878,22 @@ where each GPU has only its portion of the full weights as shown below</p>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tensor-parallel-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9
+Figure&nbsp;11
 </figcaption>
 </figure>
 </div>
 <div class="flex-container" style="align-items: center; gap: 5pt;">
 <div class="column" style="width:55%; text-align: center;">
 <p><span style="font-weight: 600; font-size: 1.5em;">🔭 AI-for-Science</span><br>
-<iconify-icon inline="" icon="fa:twitter" aria-label="Icon twitter from fa Iconify.design set." title="Icon twitter from fa Iconify.design set."></iconify-icon> <a href="https://x.com/tenderizzation/status/1944591320796090606">source</a> (<a href="https://twitter.com/tenderizzation">@tenderizzation</a>)</p>
+<iconify-icon inline="" icon="fa:twitter" aria-label="Icon twitter from fa Iconify.design set." title="Icon twitter from fa Iconify.design set."></iconify-icon> <a href="https://x.com/tenderizzation/status/1944591320796090606">source</a> (<a href="https://twitter.com/tenderizzation">@tenderizzation</a>)<br>
+&nbsp;<br></p>
+<p>ChatGPT: <a href="https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce">explain this image</a></p>
 </div>
 <div class="column">
 <p><a href="./assets/modeling-planets.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://samforeman.me/talks/2025/10/15/assets/modeling-planets.jpg" class="img-fluid"></a></p>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>ChatGPT: <a href="https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce">explain this image</a></p>
-</div></div></section>
+</section>
 </section>
 <section id="auroragpt-2024" class="level2" data-background-color="white">
 <h2 data-background-color="white" class="anchored" data-anchor-id="auroragpt-2024">🌌 AuroraGPT (2024–)</h2>
@@ -748,10 +913,10 @@ Figure&nbsp;9
 <div id="fig-awesome-llm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;10: Image from  Hannibal046 / Awesome-LLM"><img src="https://samforeman.me/talks/2025/10/15/assets/llms.gif" class="img-fluid figure-img"></a>
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;12: Image from  Hannibal046 / Awesome-LLM"><img src="https://samforeman.me/talks/2025/10/15/assets/llms.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: Image from <iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM">Hannibal046 / <code>Awesome-LLM</code></a>
+Figure&nbsp;12: Image from <iconify-icon inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM">Hannibal046 / <code>Awesome-LLM</code></a>
 </figcaption>
 </figure>
 </div>
@@ -762,10 +927,10 @@ Figure&nbsp;10: Image from <iconify-icon inline="" icon="fa:github" aria-label="
 <div id="fig-aurora-gpt" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored" style="vertical-align:center;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;11: High-level overview of AuroraGPT project"><img src="https://samforeman.me/talks/2025/10/15/assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
+<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;13: High-level overview of AuroraGPT project"><img src="https://samforeman.me/talks/2025/10/15/assets/AuroraGPT.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: High-level overview of AuroraGPT project
+Figure&nbsp;13: High-level overview of AuroraGPT project
 </figcaption>
 </figure>
 </div>
@@ -868,10 +1033,10 @@ Figure&nbsp;11: High-level overview of AuroraGPT project
 <div id="fig-data-processing" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/data-processing.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;12: Time spent preparing 2T tokens"><img src="https://samforeman.me/talks/2025/10/15/assets/data-processing.svg" class="r-stretch img-fluid figure-img"></a>
+<a href="./assets/data-processing.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;14: Time spent preparing 2T tokens"><img src="https://samforeman.me/talks/2025/10/15/assets/data-processing.svg" class="r-stretch img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Time spent preparing 2T tokens
+Figure&nbsp;14: Time spent preparing 2T tokens
 </figcaption>
 </figure>
 </div>
@@ -883,10 +1048,10 @@ Figure&nbsp;12: Time spent preparing 2T tokens
 <div id="fig-loss-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/train-val-loss-vs-tokens-wide.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;13: Loss curve during training on 2T tokens."><img src="https://samforeman.me/talks/2025/10/15/assets/train-val-loss-vs-tokens-wide.svg" class="img-fluid figure-img"></a>
+<a href="./assets/train-val-loss-vs-tokens-wide.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;15: Loss curve during training on 2T tokens."><img src="https://samforeman.me/talks/2025/10/15/assets/train-val-loss-vs-tokens-wide.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: Loss curve during training on 2T tokens.
+Figure&nbsp;15: Loss curve during training on 2T tokens.
 </figcaption>
 </figure>
 </div>
@@ -942,7 +1107,7 @@ Figure&nbsp;13: Loss curve during training on 2T tokens.
 </ul>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p><a href="https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf">10.1109/SC41406.2024.000130</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (2024)</span>)</p>
+<p><a href="https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (2024)</span>)</p>
 </div></div><div class="notes">
 <p>One of the first multimodal protein design toolkits that:␍ integrates text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping␍ preference optimization strategies that have been scaled to include various design constraints imposed in diverse protein design tasks␍ Two application scenarios: ␍ Protein design: at least 5x gains in productive designs␍ Antibody optimization: designs result in greater complementarity and exploration of sequence space␍ High water marks for training/ fine-tuning multimodal models:␍ achieves ~4.11 EFLOPS sustained performance (peak 5.57 EFLOPS) on Aurora, with &gt;1 EFLOPS on each HPC resource including the NVIDIA DGX cloud ␍ Novel integrated workflow that supports diverse backbone foundation models as well as custom models ␍</p>
 </div>
@@ -954,10 +1119,10 @@ Figure&nbsp;13: Loss curve during training on 2T tokens.
 <div id="fig-mprot-3p5B-scaling0" class="quarto-float quarto-figure quarto-figure-center anchored" style="margin:0; padding-unset;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;14: Scaling results for 3.5B model across ~38,400 GPUs"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img" style="margin:0; padding-unset;;width:100.0%"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;16: Scaling results for 3.5B model across ~38,400 GPUs"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img" style="margin:0; padding-unset;;width:100.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
+Figure&nbsp;16: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 </figcaption>
 </figure>
 </div>
@@ -985,20 +1150,20 @@ Figure&nbsp;14: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
 <div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;15: 3.5B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img"></a>
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;17: 3.5B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-3p5B-scaling-2.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15: <code>3.5B</code> model
+Figure&nbsp;17: <code>3.5B</code> model
 </figcaption>
 </figure>
 </div>
 <div id="fig-mprot-7B-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;16: 7B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-7B-scaling-2.svg" class="img-fluid figure-img"></a>
+<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;18: 7B model"><img src="https://samforeman.me/talks/2025/10/15/assets/mprot-7B-scaling-2.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16: <code>7B</code> model
+Figure&nbsp;18: <code>7B</code> model
 </figcaption>
 </figure>
 </div>
@@ -1036,7 +1201,7 @@ Figure&nbsp;16: <code>7B</code> model
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (2023)</span>)
+Figure&nbsp;19: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (2023)</span>)
 </figcaption>
 </figure>
 </div>
@@ -1053,10 +1218,10 @@ Figure&nbsp;17: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</co
 <div id="fig-arxiv" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/team.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;18: arXiv:2509.13523"><img src="https://samforeman.me/talks/2025/10/15/assets/team.png" class="img-fluid figure-img"></a>
+<a href="./assets/team.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;20: arXiv:2509.13523"><img src="https://samforeman.me/talks/2025/10/15/assets/team.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
+Figure&nbsp;20: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 </figcaption>
 </figure>
 </div>
@@ -1081,10 +1246,10 @@ Figure&nbsp;18: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
 <div id="fig-rollout" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;19: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/15/assets/rollout.gif" class="img-fluid figure-img"></a>
+<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Figure&nbsp;21: Rollout of AERIS model, specific humidity at 700m."><img src="https://samforeman.me/talks/2025/10/15/assets/rollout.gif" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19: Rollout of AERIS model, specific humidity at 700m.
+Figure&nbsp;21: Rollout of AERIS model, specific humidity at 700m.
 </figcaption>
 </figure>
 </div>
@@ -1207,10 +1372,10 @@ Table&nbsp;1: Overview of AERIS model and training setup
 <div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;20: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
+<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Figure&nbsp;22: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img src="https://samforeman.me/talks/2025/10/15/assets/diffusion/light.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <img src="https://latex.codecogs.com/png.latex?t_%7B0%7D%20%5Crightarrow%20t_%7B64%7D">, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
+Figure&nbsp;22: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <img src="https://latex.codecogs.com/png.latex?t_%7B0%7D%20%5Crightarrow%20t_%7B64%7D">, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
 </figcaption>
 </figure>
 </div>
@@ -1246,10 +1411,10 @@ Figure&nbsp;20: Reverse diffusion with the <span style="color:#228be6">input</sp
 <div id="fig-swipe-layer" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:66%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;21: "><img src="https://samforeman.me/talks/2025/10/15/assets/wpsp.svg" class="img-fluid figure-img"></a>
+<a href="./assets/wpsp.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Figure&nbsp;23: "><img src="https://samforeman.me/talks/2025/10/15/assets/wpsp.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;21
+Figure&nbsp;23
 </figcaption>
 </figure>
 </div>
@@ -1257,10 +1422,10 @@ Figure&nbsp;21
 <div id="fig-comms" class="quarto-float quarto-figure quarto-figure-center anchored" style="width:80%; text-align: center; margin-left: auto; margin-right: auto; ">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;22: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/15/assets/comms1.svg" class="img-fluid figure-img"></a>
+<a href="./assets/comms1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;24: SWiPe Communication Patterns"><img src="https://samforeman.me/talks/2025/10/15/assets/comms1.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;22: <code>SWiPe</code> Communication Patterns
+Figure&nbsp;24: <code>SWiPe</code> Communication Patterns
 </figcaption>
 </figure>
 </div>
@@ -1320,10 +1485,10 @@ Table&nbsp;2: Aurora<sup>5</sup> Specs
 <div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;23: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/15/assets/aurora1.png" class="img-fluid figure-img"></a>
+<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Figure&nbsp;25: Aurora: Fact Sheet."><img src="https://samforeman.me/talks/2025/10/15/assets/aurora1.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
+Figure&nbsp;25: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
 </figcaption>
 </figure>
 </div>
@@ -1335,10 +1500,10 @@ Figure&nbsp;23: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/20
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored" style="width:70%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;24: AERIS: Scaling Results"><img src="https://samforeman.me/talks/2025/10/15/assets/aeris-scaling.svg" class="img-fluid figure-img"></a>
+<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Figure&nbsp;26: AERIS: Scaling Results"><img src="https://samforeman.me/talks/2025/10/15/assets/aeris-scaling.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;24: AERIS: Scaling Results
+Figure&nbsp;26: AERIS: Scaling Results
 </figcaption>
 </figure>
 </div>
@@ -1356,10 +1521,10 @@ Figure&nbsp;24: AERIS: Scaling Results
 <div id="fig-hurricane-laura" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;25: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img src="https://samforeman.me/talks/2025/10/15/assets/science/hurricane.png" class="img-fluid figure-img"></a>
+<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Figure&nbsp;27: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img src="https://samforeman.me/talks/2025/10/15/assets/science/hurricane.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;25: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
+Figure&nbsp;27: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 </figcaption>
 </figure>
 </div>
