@@ -28,11 +28,23 @@ Sam Foreman
 
 > [!TIP]
 >
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/15/index.html) @ Georgia Institute of Technology \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/15/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[AERIS: Argonne Earth Systems Model](../talks/2025/10/08/index.html) @ [2025 ALCF Hands On HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop) \[10/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="AERIS: Argonne Earth Systems Model" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
