@@ -1,5 +1,5 @@
 Sam Foreman
-2025-10-23
+2025-10-24
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -61,7 +61,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">23</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:39:43</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">23</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:48:05</span>
 > </pre>
 
 > [!TIP]
@@ -283,27 +283,26 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 14. 🧬 [<span class="highlight">**GenSLMs**</span>: **Genome-scale
     language models reveal SARS-Cov-2 evolutionary dynamics**] (Zvyagin
     et al. (2023))
-
-- Winner of the [🏆 *ACM Gordon Bell Special Prize for High Performance
-  Computing-Based COVID-19 Research*][ACM Gordon Bell Special Prize]
-
-13. [Lattice QCD and Particle Physics] (Kronfeld et al. (2022))
-14. [Applications of ML to Lattice QFT] (Boyda et al. (2022))
-15. [LeapFrogLayers: Trainable Framework for Effective Sampling] (Sam
+    - Winner of the [🏆 *ACM Gordon Bell Special Prize for High
+      Performance Computing-Based COVID-19
+      Research*][ACM Gordon Bell Special Prize]
+15. [Lattice QCD and Particle Physics] (Kronfeld et al. (2022))
+16. [Applications of ML to Lattice QFT] (Boyda et al. (2022))
+17. [LeapFrogLayers: Trainable Framework for Effective Sampling] (Sam
     Foreman et al. (2021))
-16. [HMC with Normalizing Flows][] \[[slides]\] (Sam Foreman et al.
+18. [HMC with Normalizing Flows][] \[[slides]\] (Sam Foreman et al.
     (2021))
-17. [Deep Learning Hamiltonian Monte Carlo][] \[[+ poster]\] (Sam
+19. [Deep Learning Hamiltonian Monte Carlo][] \[[+ poster]\] (Sam
     Foreman, Jin, and C. (2021))
-18. [Machine Learning and Neural Networks for Field Theory] (Sam
+20. [Machine Learning and Neural Networks for Field Theory] (Sam
     Foreman, Jin, and Osborn (2020))
-19. [Examples of renormalization group transformations for image sets]
+21. [Examples of renormalization group transformations for image sets]
     (Samuel Foreman et al. (2018))
-20. [RG inspired Machine Learning for lattice field theory] (Sam Foreman
+22. [RG inspired Machine Learning for lattice field theory] (Sam Foreman
     et al. (2018))
-21. [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb
+23. [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb
     Blockade] (Hubler et al. (2018))
-22. [Superconductivity of In and Sn Samples] (Deamont and Foreman
+24. [Superconductivity of In and Sn Samples] (Deamont and Foreman
     (2014))
 
 ### 🦜 Talks

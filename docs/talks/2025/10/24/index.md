@@ -17,9 +17,10 @@ Sam Foreman
   - [💾 AuroraGPT: Training](#floppy_disk-auroragpt-training)
   - [🍹 AuroraGPT: Blending Data,
     Efficiently](#tropical_drink-auroragpt-blending-data-efficiently)
-  - [📉 Loss Curve: Training AuroraGPT-7B on 2T
-    Tokens](#chart_with_downwards_trend-loss-curve-training-auroragpt-7b-on-2t-tokens)
-- [AuroraGPT-2B Pre-Training](#auroragpt-2b-pre-training)
+  - [📉 Training AuroraGPT-7B on 2T
+    Tokens](#chart_with_downwards_trend-training-auroragpt-7b-on-2t-tokens)
+  - [📉 Training AuroraGPT-2B on 7T
+    Tokens](#chart_with_downwards_trend-training-auroragpt-2b-on-7t-tokens)
   - [✨ Features](#sparkles-features)
   - [✨ Features (even more!)](#sparkles-features-even-more)
 - [🧬 MProt-DPO](#dna-mprot-dpo)
@@ -42,7 +43,6 @@ Sam Foreman
 - [📓 References](#notebook-references)
 - [❤️ Acknowledgements](#heart-acknowledgements)
 - [Extras](#extras)
-  - [Timeline](#timeline)
 
 ## 🧑🏻‍💻 About Me
 
@@ -86,12 +86,13 @@ Current Research:
 
 ## Argonne Leadership Computing Facility (ALCF)
 
-<div class="flex-container" style="gap: 3%;">
+<div class="flex-container" style="gap: 5pt; align-items: flex-end;">
 
 <div class="column" style="width:50%;">
 
 > The ALCF enables breakthroughs in science and engineering by providing
-> supercomputing resources and expertise to the research community.
+> supercomputing resources and expertise to the research community.  
+> –[*alcf.anl.gov*](https://alcf.anl.gov)
 
 ![](https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-nodes.jpg)
 
@@ -99,7 +100,9 @@ Current Research:
 
 <div class="column" style="width:30%;">
 
-![](https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-Argonne.jpg)
+<img
+src="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-Argonne.jpg"
+style="width:100%;max-width:unset;" />
 
 </div>
 
@@ -511,15 +514,17 @@ Figure 8: Time spent preparing 2T tokens
 
 </div>
 
-### 📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens
+### 📉 Training AuroraGPT-7B on 2T Tokens
 
-## AuroraGPT-2B Pre-Training
+### 📉 Training AuroraGPT-2B on 7T Tokens
 
 <div id="fig-auroragpt-2b">
 
 ![](../../../../assets/aGPT-2B-train-loss-7T.png)
 
-Figure 9: Loss curve for (new) AuroraGPT-2B model trained on 7T tokens.
+Figure 9: (**new**) Loss vs number of consumed training tokens for
+AuroraGPT-2B on 256 (blue) and 520 nodes (grey) of Aurora. Both runs
+show stability through 7T tokens.
 
 </div>
 
@@ -552,7 +557,7 @@ Figure 9: Loss curve for (new) AuroraGPT-2B model trained on 7T tokens.
 - <span class="highlight-green">Finalist</span>: SC’24 [ACM Gordon Bell
   Prize](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
   - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
-    Design Workﬂows with Direct Preference
+    Design Workflows with Direct Preference
     Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
     (Dharuman et al. (2024))
 - One of the first protein design toolkits that integrates:
@@ -951,24 +956,6 @@ Sophisticated AI System Technologies.”
 > under Contract DE-AC02-06CH11357.
 
 ## Extras
-
-### Timeline
-
-``` mermaid
-timeline
-    title How I got Here
-    2015: UIUC
-        : B.S. in Engineering Physics
-        : Applied Mathematics
-    2018: Received SCGSR Fellowship
-        : Allowed me to finish my PhD at ANL
-    2019: University of Iowa
-        : Ph.D. in Physics
-    2022: Argonne Leadership Computing Facility
-        : Postdoctoral Researcher
-    Present: Argonne National Laboratory
-           : Computational Scientist (HPC & Large-Scale AI)
-```
 
 [^1]: [A Machine Learning Approach to Lattice Gauge
     Theory](https://www.researchgate.net/publication/337499051_Learning_better_physics_a_machine_learning_approach_to_lattice_gauge_theory)

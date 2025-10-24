@@ -137,37 +137,35 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
     language models reveal SARS-Cov-2 evolutionary
     dynamics**](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v1.abstract)
     (Zvyagin et al. (2023))
-
-- Winner of the [🏆 *ACM Gordon Bell Special Prize for High Performance
-  Computing-Based COVID-19
-  Research*](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
-
-13. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641)
+    - Winner of the [🏆 *ACM Gordon Bell Special Prize for High
+      Performance Computing-Based COVID-19
+      Research*](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
+15. [Lattice QCD and Particle Physics](https://arxiv.org/abs/2207.07641)
     (Kronfeld et al. (2022))
-14. [Applications of ML to Lattice
+16. [Applications of ML to Lattice
     QFT](https://arxiv.org/abs/2202.05838) (Boyda et al. (2022))
-15. [LeapFrogLayers: Trainable Framework for Effective
+17. [LeapFrogLayers: Trainable Framework for Effective
     Sampling](https://arxiv.org/abs/2112.01582) (Sam Foreman et al.
     (2021))
-16. [HMC with Normalizing Flows](https://arxiv.org/abs/2112.01586)
+18. [HMC with Normalizing Flows](https://arxiv.org/abs/2112.01586)
     \[[slides](https://indico.cern.ch/event/1006302/contributions/4380743/)\]
     (Sam Foreman et al. (2021))
-17. [Deep Learning Hamiltonian Monte
+19. [Deep Learning Hamiltonian Monte
     Carlo](https://arxiv.org/abs/2105.03418) \[[+
     poster](https://simdl.github.io/posters/57-supp_DLHMC_Foreman_SimDL-ICLR2021_poster1.pdf)\]
     (Sam Foreman, Jin, and C. (2021))
-18. [Machine Learning and Neural Networks for Field
+20. [Machine Learning and Neural Networks for Field
     Theory](https://bit.ly/snowmass_ml2020) (Sam Foreman, Jin, and
     Osborn (2020))
-19. [Examples of renormalization group transformations for image
+21. [Examples of renormalization group transformations for image
     sets](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.98.052129)
     (Samuel Foreman et al. (2018))
-20. [RG inspired Machine Learning for lattice field
+22. [RG inspired Machine Learning for lattice field
     theory](https://arxiv.org/abs/1710.02079) (Sam Foreman et al.
     (2018))
-21. [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb
+23. [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb
     Blockade](https://doi.org/10.1063/1.5009698) (Hubler et al. (2018))
-22. [Superconductivity of In and Sn
+24. [Superconductivity of In and Sn
     Samples](https://doi.org/10.1063/1.4896340) (Deamont and Foreman
     (2014))
 
