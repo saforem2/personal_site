@@ -1,5 +1,5 @@
 Sam Foreman
-2025-10-15
+2025-10-23
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -61,7 +61,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">13</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:05:35</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">23</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:39:43</span>
 > </pre>
 
 > [!TIP]
@@ -326,11 +326,11 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[AERIS: Argonne Earth Systems Model] @ [2025 ALCF Hands On HPC Workshop][] \[10/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers] @ UIUC \[10/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/24/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
 > </iframe>
 >
@@ -338,7 +338,31 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][2] @ Georgia Institute of Technology \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/15/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AERIS: Argonne Earth Systems Model] @ [2025 ALCF Hands On HPC Workshop][] \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="AERIS: Argonne Earth Systems Model" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][3] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -362,7 +386,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][2] \[09/2025\]</span>
+> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][4] \[09/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -402,7 +426,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[LLMs on Aurora: 🍋 ezpz] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
 >
-> - [🎥 video][3]
+> - [🎥 video][5]
 >
 > <div class="reveal-full-page">
 >
@@ -430,7 +454,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[Parallel Training Methods] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
 >
-> - [🎥 video][4]
+> - [🎥 video][6]
 >
 > <div class="reveal-full-page">
 >
@@ -444,7 +468,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[AuroraGPT] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
 >
-> - [🎥 video][3]
+> - [🎥 video][5]
 >
 > <div class="reveal-full-page">
 >
@@ -468,7 +492,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[AuroraGPT][5] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+> ### <span class="dim-text">[AuroraGPT][7] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
 >
 > <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
 >
@@ -544,7 +568,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 >
 > ### <span class="dim-text">[LLM Lunch Talk] @ [ALCF Hands On HPC Workshop][Intel oneAPI Workshop @ UIC] \[10/2023\]</span>
 >
-> - [🎥 video][6]
+> - [🎥 video][8]
 >
 > <div class="embedded-slide">
 >
@@ -672,7 +696,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Accelerated Sampling Methods for LGT], @ [DWQ @ 25 \[BNL\]][7] \[12/2021\]</span>
+> ### <span class="dim-text">[Accelerated Sampling Methods for LGT], @ [DWQ @ 25 \[BNL\]][9] \[12/2021\]</span>
 >
 > <div class="embedded-slide">
 >
@@ -896,7 +920,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
     - Research lead on scaling large language models (LLMs) and
       generative AI for science on supercomputers (Aurora, Frontier,
       LUMI, Leonardo, …).
-      - Co-lead the Models and Pretraining team of the [AuroraGPT][8]
+      - Co-lead the Models and Pretraining team of the [AuroraGPT][10]
         project
     - Optimize large-scale training of foundation models and language
       models for scientific applications.
@@ -981,7 +1005,7 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
   - [SC23 Workshop: High Performance Python for Science at Scale
     (HPPSS)], November 2023
   - [\[Machine\](2025-09-20_machine.md) Learning and Quantum Computing
-    for Earth Sciences][9] at 17th U. S. National Congress on
+    for Earth Sciences][11] at 17th U. S. National Congress on
     Computational Mechanics, July 2023
 
 ### 🎶 Music
@@ -1301,28 +1325,30 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [Large Energy Density in Three-Plate Nanocapacitors due to Coulomb Blockade]:
     https://doi.org/10.1063/1.5009698
   [Superconductivity of In and Sn Samples]: https://doi.org/10.1063/1.4896340
+  [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/index.html
+  [2]: ./talks/2025/10/15/index.html
   [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
   [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
-  [Training Foundation Models on Supercomputers]: ./talks/2025/09/24/index.html
+  [3]: ./talks/2025/09/24/index.html
   [Scientific AI at Scale: AI for Science]: ./talks/openskai25/ai4science/index.html
   [Open SkAI 2025]: https://www.openskai-conference.org
   [Scientific AI at Scale: Distributed Training]: ./talks/openskai25/training/index.html
-  [2]: https://www.openskai-conference.org/
+  [4]: https://www.openskai-conference.org/
   [Large Scale Training on Diverse Accelerators]: ./talks/AuroraGPT-SIAM25/index.html
   [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
   [LLMs on Aurora: 🌌 AuroraGPT]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
   [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
   [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
   [LLMs on Aurora: 🍋 ezpz]: ./talks/incite-hackathon-2025/ezpz/index.html
-  [3]: https://www.youtube.com/watch?v=15ZK9REQiBo
+  [5]: https://www.youtube.com/watch?v=15ZK9REQiBo
   [AuroraGPT: Foundation Models for Science]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
   [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [Parallel Training Methods]: ./talks/ai-for-science-2024/index.html
-  [4]: https://www.youtube.com/watch?v=4ltulBj4oVk
+  [6]: https://www.youtube.com/watch?v=4ltulBj4oVk
   [AuroraGPT]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [Machine Learning and Foundation Models at Scale]: ./talks/alcf-hpc-workshop-2024/index.html
-  [5]: ./talks/hpc-user-forum/index.html
+  [7]: ./talks/hpc-user-forum/index.html
   [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
   [Training LLMs at Scale]: ./talks/llms-at-scale/
   [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
@@ -1337,7 +1363,7 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [Exascale Science on Aurora]: https://saforem2.github.io/oneapi-talk
   [Intel oneAPI Workshop @ UIC]: https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop
   [LLM Lunch Talk]: https://saforem2.github.io/llm-lunch-talk
-  [6]: https://www.youtube.com/watch?v=mSx9RVd00xU
+  [8]: https://www.youtube.com/watch?v=mSx9RVd00xU
   [Scaling LLMs for Science]: https://saforem2.github.io/scaling4science
   [Data-Intensive Computing + AI/ML at Scale]: https://events.cels.anl.gov/event/426/overview
   [MLMC: Machine Learning Monte Carlo]: https://saforem2.github.io/lattice23
@@ -1356,7 +1382,7 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [Scientific Data Science: An Emerging Symbiosis]: https://saforem2.github.io/anl-job-talk/
   [Machine Learning in HEP]: https://saforem2.github.io/physicsSeminar
   [Accelerated Sampling Methods for LGT]: https://saforem2.github.io/l2hmc-dwq25/
-  [7]: https://indico.bnl.gov/event/13576/
+  [9]: https://indico.bnl.gov/event/13576/
   [Training Topological Samplers for LGT]: https://saforem2.github.io/l2hmc_talk_ect2021
   [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
   [Deep Learning HMC for Improved Gauge Generation]: https://bit.ly/mainz21
@@ -1366,7 +1392,7 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [*Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory*]:
     https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
   [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
-  [8]: https://auroragpt.anl.gov
+  [10]: https://auroragpt.anl.gov
   [**Coordinating Panel for Software and Computing**]: https://imfisk.github.io/CPSC/
   [Argonne team breaks new ground in AI-driven protein design – Argonne @ SC]:
     https://sc.cels.anl.gov/gordon-bell-argonne-team-breaks-new-ground-in-ai-driven-protein-design/
@@ -1377,4 +1403,4 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC23/
-  [9]: https://17.usnccm.org/702
+  [11]: https://17.usnccm.org/702

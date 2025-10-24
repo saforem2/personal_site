@@ -220,6 +220,15 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 > \[You can see all of my talks online at <https://samforeman.me/talks/>
 
 - 2025-:
+  - 10: [Training Foundation Models on
+    Supercomputers](../../talks/2025/10/24/index.html) @ University of
+    Illinois at Urbana-Champaign
+  - 10: [Training Foundation Models on
+    Supercomputers](../../talks/2025/10/15/index.html) @ Georgia
+    Institute of Technology
+  - 10: [AERIS: Argonne’s Earth Systems
+    Model](../../talks/2025/10/08/index.html) @ [2025 ALCF Hands-On HPC
+    Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)
   - 09: [Scientific AI at Scale: AI for
     Science](../../talks/openskai25/ai4science/index.html) @ [Open SkAI
     2025](https://www.openskai-conference.org)

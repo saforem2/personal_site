@@ -759,16 +759,16 @@ pre code {
   /* margin-top: 0; */
   // margin-bottom: 1rem;
   overflow: auto;
-  font-size: 1em;
+  // font-size: 1em;
   // background-color: oklab(from #444444 calc(l * 1.15) c h/0.1);
   line-height: 1;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: none;
   border-radius: 0;
-  padding-block: 0.5lh;
+  // padding-block: 0.5lh;
   line-height: 1;
-  padding-inline-start: 1ch;
-  margin-block: 0.25lh;
+  // padding-inline-start: 1ch;
+  // margin-block: 0.25lh;
 }
 
 code {
@@ -1526,10 +1526,10 @@ div.callout-info.callout-style-default .callout-title {
   background-color: oklch(from $callout-color-info calc(l * 1.15) c h/0.1);
   color: $callout-color-info;
 
-  &:hover {
-    border: 1px solid $callout-color-info !important;
-    // transition: all 0.2s ease-in-out;
-  }
+  // &:hover {
+  //   border: 1px solid $callout-color-info !important;
+  //   // transition: all 0.2s ease-in-out;
+  // }
 }
 
 div.callout-caution.callout-style-simple .callout-title,
@@ -1538,10 +1538,10 @@ div.callout-caution.callout-style-default .callout-title {
   color: $callout-caution-color;
   border: 1px solid rgba(0, 0, 0, 0);
 
-  &:hover {
-    border: 1px solid $callout-caution-color !important;
-    // transition: all 0.2s ease-in-out;
-  }
+  // &:hover {
+  //   border: 1px solid $callout-caution-color !important;
+  //   // transition: all 0.2s ease-in-out;
+  // }
 }
 
 div.callout-warning.callout-style-simple .callout-title,
@@ -2255,19 +2255,19 @@ samp {
   // -webkit-font-smoothing: subpixel-antialiased;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-font-smoothing: subpixel-antialiased;
-  margin: auto;
-  // line-height: 1;
-  // margin-block-start: 0.5rem;
-  // line-height: unset;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   // -moz-osx-font-smoothing: grayscale;
+//   // -webkit-font-smoothing: subpixel-antialiased;
+//   margin: auto;
+//   // line-height: 1;
+//   // margin-block-start: 0.5rem;
+//   // line-height: unset;
+// }
 
 h1.title,
 .title.h1 {
@@ -3378,7 +3378,8 @@ div.sourceCode {
   overflow: auto;
   border-radius: $link-border-radius;
   box-shadow: $code-block-block-shadow;
-  margin-block: 0.5lh;
+  // margin-block: 0.5lh;
+  // padding-block: 2pt;
 }
 
 div.sourceCode:hover {
@@ -3704,19 +3705,24 @@ pre.sourceCode {
   padding: 0.4em;
 }
 
-pre > code.sourceCode > span {
-  margin-inline-start: 1pt;
-}
+// pre > code.sourceCode > span {
+//   margin-inline-start: 1pt;
+// }
 
 pre > code.sourceCode > span > a:first-child::before {
   color: $dim-text;
   left: unset;
   opacity: 50%;
-  padding-inline-end: 0pt;
-  margin-inline-start: 0pt;
-  margin-inline-end: 2ch;
+  // padding-inline-end: 0pt;
+  margin-inline-start: 1ch;
+  margin-inline-end: 1ch;
+  width: 10ch;
+  border-right: 1pt solid var(--quarto-border-color);
+  padding-inline-end: 1ch;
+  left: -1ch;
+  background-color: $code-block-line-number-bg;
   padding: 0 0;
-  width: 4em;
+  // width: 4em;
 }
 
 #quarto-appendix.default .quarto-appendix-bibtex {
@@ -3751,6 +3757,7 @@ pre > code.sourceCode > span > a:first-child::before {
 div.sourceCode,
 div.sourceCode pre.sourceCode {
   width: -webkit-fill-available;
+  border: none;
 }
 
 #title-block-header.quarto-title-block.default .quarto-title-meta-contents a {
@@ -4085,6 +4092,10 @@ body.hypothesis-enabled #quarto-header {
 
 div.code {
   white-space: pre;
+}
+
+div.code-copy-outer-scaffold {
+  margin-block: 0.5rem;
 }
 
 .nav-tabs {

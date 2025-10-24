@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../../../assets/favicon-sf.ico" rel="icon">
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-485605091aded536db53fb751867c3cd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
+<link href="../../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.4">
+
+  <meta name="author" content="Sam Foreman">
+  <meta name="dcterms.date" content="2025-10-24">
+  <title>Sam Foreman – Training Foundation Models on Supercomputers</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../../../site_libs/revealjs/dist/theme/quarto-64a0bedff2cc82652fd1e6d5a9e42d71.css">
+  <link rel="stylesheet" href="../../../../css/navbar-active.css">
+  <link rel="stylesheet" href="../../../../css/custom.css">
+  <link rel="stylesheet" href="../../../../css/svgbob.css">
+  <link rel="stylesheet" href="../../../../static/fonts/MIosevkaQp/MIosevkaQp.css">
+  <link rel="stylesheet" href="../../../../static/fonts/MIosevkaTerm/MIosevkaTerm.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="../../../../site_libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
+  <!-- End Google Tag Manager -->
+<meta property="og:title" content="Training Foundation Models on Supercomputers">
+<meta property="og:description" content="Presented at the University of Illinois at Urbana-Champaign">
+<meta property="og:image" content="https://samforeman.me/talks/2025/10/24/assets/thumbnail.png">
+<meta property="og:site_name" content="Sam Foreman">
+<meta property="og:image:height" content="2160">
+<meta property="og:image:width" content="3840">
+<meta name="twitter:title" content="Training Foundation Models on Supercomputers">
+<meta name="twitter:description" content="Presented at the University of Illinois at Urbana-Champaign">
+<meta name="twitter:image" content="https://samforeman.me/talks/2025/10/24/assets/thumbnail.png">
+<meta name="twitter:creator" content="saforem2">
+<meta name="twitter:site" content="saforem2">
+<meta name="twitter:image-height" content="2160">
+<meta name="twitter:image-width" content="3840">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Training Foundation Models on Supercomputers">
+<meta name="citation_author" content="Sam Foreman">
+<meta name="citation_publication_date" content="2025-10-24">
+<meta name="citation_cover_date" content="2025-10-24">
+<meta name="citation_year" content="2025">
+<meta name="citation_online_date" content="2025-10-24">
+<meta name="citation_fulltext_html_url" content="https://samforeman.me/talks/2025/10/24/slides.html">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=GenCast: Diffusion-based ensemble forecasting for medium-range weather;,citation_author=Ilan Price;,citation_author=Alvaro Sanchez-Gonzalez;,citation_author=Ferran Alet;,citation_author=Tom R. Andersson;,citation_author=Andrew El-Kadi;,citation_author=Dominic Masters;,citation_author=Timo Ewalds;,citation_author=Jacklynn Stott;,citation_author=Shakir Mohamed;,citation_author=Peter Battaglia;,citation_author=Remi Lam;,citation_author=Matthew Willson;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://arxiv.org/abs/2312.15796;">
+<meta name="citation_reference" content="citation_title=Aurora: Architecting argonne’s first exascale supercomputer for accelerated scientific discovery;,citation_author=Benjamin S. Allen;,citation_author=James Anchell;,citation_author=Victor Anisimov;,citation_author=Thomas Applencourt;,citation_author=Abhishek Bagusetty;,citation_author=Ramesh Balakrishnan;,citation_author=Riccardo Balin;,citation_author=Solomon Bekele;,citation_author=Colleen Bertoni;,citation_author=Cyrus Blackworth;,citation_author=Renzo Bustamante;,citation_author=Kevin Canada;,citation_author=John Carrier;,citation_author=Christopher Chan-nui;,citation_author=Lance C. Cheney;,citation_author=Taylor Childers;,citation_author=Paul Coffman;,citation_author=Susan Coghlan;,citation_author=Michael D’Mello;,citation_author=Murali Emani;,citation_author=Kyle G. Felker;,citation_author=Sam Foreman;,citation_author=Olivier Franza;,citation_author=Longfei Gao;,citation_author=Marta García;,citation_author=María Garzarán;,citation_author=Balazs Gerofi;,citation_author=Yasaman Ghadar;,citation_author=Neha Gupta;,citation_author=Kevin Harms;,citation_author=Väinö Hatanpää;,citation_author=Brian Holland;,citation_author=Carissa Holohan;,citation_author=Brian Homerding;,citation_author=Khalid Hossain;,citation_author=Louise Huot;,citation_author=Huda Ibeid;,citation_author=Joseph A. Insley;,citation_author=Sai Jayanthi;,citation_author=Hong Jiang;,citation_author=Wei Jiang;,citation_author=Xiao-Yong Jin;,citation_author=Jeongnim Kim;,citation_author=Christopher Knight;,citation_author=Kalyan Kumaran;,citation_author=JaeHyuk Kwack;,citation_author=Ti Leggett;,citation_author=Ben Lenard;,citation_author=Chris Lewis;,citation_author=Nevin Liber;,citation_author=Johann Lombardi;,citation_author=Raymond M. Loy;,citation_author=Ye Luo;,citation_author=Bethany Lusch;,citation_author=Nilakantan Mahadevan;,citation_author=Victor A. Mateevitsi;,citation_author=Gordon McPheeters;,citation_author=Ryan Milner;,citation_author=Vitali A. Morozov;,citation_author=Servesh Muralidharan;,citation_author=Tom Musta;,citation_author=Mrigendra Nagar;,citation_author=Vikram Narayana;,citation_author=Marieme Ngom;,citation_author=Anthony-Trung Nguyen;,citation_author=Nathan Nichols;,citation_author=Aditya Nishtala;,citation_author=James C. Osborn;,citation_author=Michael E. Papka;,citation_author=Scott Parker;,citation_author=Saumil S. Patel;,citation_author=Adrian C. Pope;,citation_author=Sucheta Raghunanda;,citation_author=Esteban Rangel;,citation_author=Paul M. Rich;,citation_author=Silvio Rizzi;,citation_author=Kris Rowe;,citation_author=Varuni Sastry;,citation_author=Adam Scovel;,citation_author=Filippo Simini;,citation_author=Haritha Siddabathuni Som;,citation_author=Patrick Steinbrecher;,citation_author=Rick Stevens;,citation_author=Xinmin Tian;,citation_author=Peter Upton;,citation_author=Thomas Uram;,citation_author=Archit K. Vasan;,citation_author=Álvaro Vázquez-Mayagoitia;,citation_author=Kaushik Velusamy;,citation_author=Brice Videau;,citation_author=Venkatram Vishwanath;,citation_author=Brian Whitney;,citation_author=Timothy J. Williams;,citation_author=Michael Woodacre;,citation_author=Sam Zeltner;,citation_author=Gengbin Zheng;,citation_author=Huihuo Zheng;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2509.08207;">
+<meta name="citation_reference" content="citation_title=Automated tuning for HMC mass ratios;,citation_author=J. Torsiello;,citation_author=G. T. Fleming;,citation_author=S. Foreman;,citation_author=X.-Y. Jin;,citation_author=J. C. Osborn;,citation_publication_date=2025-02;,citation_cover_date=2025-02;,citation_year=2025;,citation_fulltext_html_url=https://www.osti.gov/biblio/2551828;,citation_doi=10.22323/1.466.0052;,citation_journal_title=PoS;,citation_publisher=Argonne, ALCF; Argonne National Laboratory (ANL), Argonne, IL (United States); Temple U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United States);">
+<meta name="citation_reference" content="citation_title=AERIS: Argonne earth systems model for reliable and skillful predictions;,citation_author=Väinö Hatanpää;,citation_author=Eugene Ku;,citation_author=Jason Stock;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Chunyong Jung;,citation_author=Sandeep Madireddy;,citation_author=Tung Nguyen;,citation_author=Varuni Sastry;,citation_author=Ray A. O. Sinurat;,citation_author=Sam Wheeler;,citation_author=Huihuo Zheng;,citation_author=Troy Arcomano;,citation_author=Venkatram Vishwanath;,citation_author=Rao Kotamarthi;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2509.13523;">
+<meta name="citation_reference" content="citation_title=An empirical model of large-batch training;,citation_author=Sam McCandlish;,citation_author=Jared Kaplan;,citation_author=Dario Amodei;,citation_author=OpenAI Dota Team;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://arxiv.org/abs/1812.06162;">
+<meta name="citation_reference" content="citation_title=HiPerRAG: High-performance retrieval augmented generation for scientific insights;,citation_author=Ozan Gokdemir;,citation_author=Carlo Siebenschuh;,citation_author=Alexander Brace;,citation_author=Azton Wells;,citation_author=Brian Hsu;,citation_author=Kyle Hippe;,citation_author=Priyanka V. Setty;,citation_author=Aswathy Ajith;,citation_author=J. Gregory Pauloski;,citation_author=Varuni Sastry;,citation_author=Sam Foreman;,citation_author=Huihuo Zheng;,citation_author=Heng Ma;,citation_author=Bharat Kale;,citation_author=Nicholas Chia;,citation_author=Thomas Gibbs;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Francis J. Alexander;,citation_author=Anima Anandkumar;,citation_author=Ian Foster;,citation_author=Rick Stevens;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2505.04846;">
+<meta name="citation_reference" content="citation_title=MOFA: Discovering materials for carbon capture with a GenAI- and simulation-based workflow;,citation_author=Xiaoli Yan;,citation_author=Nathaniel Hudson;,citation_author=Hyun Park;,citation_author=Daniel Grzenda;,citation_author=J. Gregory Pauloski;,citation_author=Marcus Schwarting;,citation_author=Haochen Pan;,citation_author=Hassan Harb;,citation_author=Samuel Foreman;,citation_author=Chris Knight;,citation_author=Tom Gibbs;,citation_author=Kyle Chard;,citation_author=Santanu Chaudhuri;,citation_author=Emad Tajkhorshid;,citation_author=Ian Foster;,citation_author=Mohamad Moosavi;,citation_author=Logan Ward;,citation_author=E. A. Huerta;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://arxiv.org/abs/2501.10651;">
+<meta name="citation_reference" content="citation_title=Intro to HPC bootcamp: Engaging new communities through energy justice projects;,citation_author=Mary Ann Leung;,citation_author=Katharine Cahill;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois Curfman McInnes;,citation_author=Suzanne Parete-Koon;,citation_author=Sreeranjani Ramprakash;,citation_author=Subil Abraham;,citation_author=Lacy Beach Barrier;,citation_author=Gladys Chen;,citation_author=others;,citation_publication_date=2024-02;,citation_cover_date=2024-02;,citation_year=2024;,citation_fulltext_html_url=https://www.osti.gov/biblio/2447313;,citation_issue=1;,citation_doi=10.22369/issn.2153-4136/15/1/10;,citation_issn=ISSN 2153-4136;,citation_volume=15;,citation_journal_title=Journal of Computational Science Education;,citation_publisher=Shodor Education Foundation, Inc.;">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_abstract=We present a scalable, end-to-end workflow for protein design. By augmenting protein sequences with natural language descriptions of their biochemical properties, we train generative models that can be preferentially aligned with protein fitness landscapes. Through complex experimental- and simulation-based observations, we integrate these measures as preferred parameters for generating new protein variants and demonstrate our workflow on five diverse supercomputers. We achieve &amp;amp;amp;gt;1 ExaFLOPS sustained performance in mixed precision on each supercomputer and a maximum sustained performance of 4.11 ExaFLOPS and peak performance of 5.57 ExaFLOPS. We establish the scientific performance of our model on two tasks: (1) across a predetermined benchmark dataset of deep mutational scanning experiments to optimize the fitness-determining mutations in the yeast protein HIS7, and (2) in optimizing the design of the enzyme malate dehydrogenase to achieve lower activation barriers (and therefore increased catalytic rates) using simulation data. Our implementation thus sets high watermarks for multimodal protein design workflows.;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinö Hatanpää;,citation_author=Varuni K. Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=Bharat Kale;,citation_author=Carla M. Mann;,citation_author=Heng Ma;,citation_author=Yun-Hsuan Cheng;,citation_author=Yuliana Zamora;,citation_author=Shengchao Liu;,citation_author=Chaowei Xiao;,citation_author=Murali Emani;,citation_author=Tom Gibbs;,citation_author=Mahidhar Tatineni;,citation_author=Deepak Canchi;,citation_author=Jerome Mitchell;,citation_author=Koichi Yamada;,citation_author=Maria Garzaran;,citation_author=Michael E. Papka;,citation_author=Ian Foster;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://doi.org/10.1109/SC41406.2024.00013;,citation_doi=10.1109/SC41406.2024.00013;,citation_isbn=9798350352917;,citation_conference_title=Proceedings of the international conference for high performance computing, networking, storage, and analysis;,citation_conference=IEEE Press;,citation_series_title=SC ’24;">
+<meta name="citation_reference" content="citation_title=Quality measures for dynamic graph generative models;,citation_author=Ryien Hosseini;,citation_author=Filippo Simini;,citation_author=Venkatram Vishwanath;,citation_author=Rebecca Willett;,citation_author=Henry Hoffmann;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_fulltext_html_url=https://openreview.net/forum?id=8bjspmAMBk;,citation_conference_title=The thirteenth international conference on learning representations;">
+<meta name="citation_reference" content="citation_title=Superconductivity of in and sn samples;,citation_author=George Deamont;,citation_author=Sam Foreman;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;">
+<meta name="citation_reference" content="citation_title=RG-inspired machine learning for lattice field theory;,citation_author=Sam Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018-03;,citation_cover_date=2018-03;,citation_year=2018;,citation_fulltext_html_url=https://arxiv.org/abs/1710.02079;,citation_doi=10.1051/epjconf/201817511025;,citation_volume=175;,citation_conference_title=European physical journal web of conferences;,citation_series_title=European physical journal web of conferences;">
+<meta name="citation_reference" content="citation_title=Large energy density in three-plate nanocapacitors due to coulomb blockade;,citation_author=A Hubler;,citation_author=S Foreman;,citation_author=J Liu;,citation_author=L Wortsmann;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=10;,citation_volume=123;,citation_journal_title=Journal of Applied Physics;,citation_publisher=AIP Publishing;">
+<meta name="citation_reference" content="citation_title=Examples of renormalization group transformations for image sets;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_issue=5;,citation_volume=98;,citation_journal_title=Physical Review E;,citation_publisher=American Physical Society;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the Ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_doi=10.22323/1.334.0245;,citation_volume=LATTICE2018;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Machine learning inspired analysis of the ising model transition;,citation_author=Samuel Foreman;,citation_author=Joel Giedt;,citation_author=Yannick Meurice;,citation_author=Judah Unmuth-Yockey;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_conference_title=Lattice 2018;">
+<meta name="citation_reference" content="citation_title=Learning better physics: A machine learning approach to lattice gauge theory;,citation_author=Samuel Alfred Foreman;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_dissertation_institution=University of Iowa;">
+<meta name="citation_reference" content="citation_title=Machine learning and neural networks for field theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;">
+<meta name="citation_reference" content="citation_title=HMC with normalizing flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_journal_title=arXiv preprint arXiv:2112.01586;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy storage in quantum resonators;,citation_author=Jiaqi Liu;,citation_author=Alfred W Hubler;,citation_author=Samuel Alfred Foreman;,citation_author=Katharina Ott;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;">
+<meta name="citation_reference" content="citation_title=Applications of machine learning to lattice quantum field theory;,citation_author=Denis Boyda;,citation_author=Salvatore Calı̀;,citation_author=Sam Foreman;,citation_author=Lena Funcke;,citation_author=Daniel C Hackett;,citation_author=Yin Lin;,citation_author=Gert Aarts;,citation_author=Andrei Alexandru;,citation_author=Xiao-Yong Jin;,citation_author=Biagio Lucini;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_journal_title=arXiv preprint arXiv:2202.05838;">
+<meta name="citation_reference" content="citation_title=Lattice QCD and particle physics;,citation_author=Andreas S Kronfeld;,citation_author=Tanmoy Bhattacharya;,citation_author=Thomas Blum;,citation_author=Norman H Christ;,citation_author=Carleton DeTar;,citation_author=William Detmold;,citation_author=Robert Edwards;,citation_author=Anna Hasenfratz;,citation_author=Huey-Wen Lin;,citation_author=Swagato Mukherjee;,citation_author=others;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2207.07641;,citation_journal_title=arXiv preprint arXiv:2207.07641;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_issue=6;,citation_volume=37;,citation_journal_title=The International Journal of High Performance Computing Applications;,citation_publisher=SAGE Publications Sage UK: London, England;">
+<meta name="citation_reference" content="citation_title=A comprehensive performance study of large language models on novel AI accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04607;,citation_journal_title=arXiv preprint arXiv:2310.04607;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04610;,citation_journal_title=arXiv preprint arXiv:2310.04610;">
+<meta name="citation_reference" content="citation_title=Protein generation via genome-scale language models with bio-physical scoring;,citation_author=Gautham Dharuman;,citation_author=Logan Ward;,citation_author=Heng Ma;,citation_author=Priyanka V Setty;,citation_author=Ozan Gokdemir;,citation_author=Sam Foreman;,citation_author=Murali Emani;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Kristopher Keipert;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_conference_title=Proceedings of the SC’23 workshops of the international conference on high performance computing, network, storage, and analysis;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=🚂 Loooooooong Sequence Lengths;,citation_author=Sam Foreman;,citation_publication_date=2024-02-12;,citation_cover_date=2024-02-12;,citation_year=2024;,citation_fulltext_html_url=https://samforeman.me/posts/AuroraGPT/long-sequences/;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=MLMC: Machine learning monte carlo for lattice gauge theory;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2312.08936;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 computational frontier CompF03 topical group report: Machine learning;,citation_author=Phiala Shanahan;,citation_author=Kazuhiro Terao;,citation_author=Daniel Whiteson;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;,citation_journal_title=arXiv preprint arXiv:2209.07559;">
+<meta name="citation_reference" content="citation_title=Thorough characterization and analysis of large transformer model training at-scale;,citation_abstract=Large transformer models have recently achieved great success across various domains. With a growing number of model parameters , a large transformer model training today typically involves model sharding, data parallelism, and model parallelism. Thus, the throughput of large-scale model training depends heavily on the network bandwidth since a combination of model sharding and multiple parallelism strategies incurs various costs. However, prior characterizations of transformer models on high-bandwidth DGX machines that use TFLOPS as a metric may not reflect the performance of a system with lower bandwidth. Furthermore, data and model parallelism reveal significantly distinct training profiles on different system bandwidths at scale and, thus, need a thorough study. In this paper, we provide a bottom-up breakdown of training throughput into compute and communication time, and quantitatively analyze their respective influences on overall end-to-end training scaling. Our evaluation involves an in-depth exploration of data parallelism, scaling up to 512 GPUs with limited bandwidth, and examines three model sharding strategies among six model sizes. We also evaluate three combinations of model parallelism on both high and low bandwidth supercomputing systems. Overall, our work provides a broader perspective on large-scale transformer model training, and our analysis and evaluation yield practical insights for predicting training scaling, shaping the future development of supercomputing system design.;,citation_author=Scott Cheng;,citation_author=Jun-Liang Lin;,citation_author=Murali Emani;,citation_author=Siddhisanket Raskar;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Venkatram Vishwanath;,citation_author=Mahmut Taylan Kandemir;,citation_publication_date=2024-02;,citation_cover_date=2024-02;,citation_year=2024;,citation_fulltext_html_url=https://doi.org/10.1145/3639034;,citation_issue=1;,citation_doi=10.1145/3639034;,citation_volume=8;,citation_journal_title=Proc. ACM Meas. Anal. Comput. Syst.;,citation_publisher=Association for Computing Machinery;">
+<meta name="citation_reference" content="citation_title=Communities through energy justice projects;,citation_author=Mary Ann Leung;,citation_author=Katharine Cahill;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois Curfman McInnes;,citation_author=Suzanne Parete-Koon;,citation_author=Subil Abraham;,citation_author=Lacy Beach Barrier;,citation_author=Gladys Chen;,citation_author=Lizanne DeStefano;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science;">
+<meta name="citation_reference" content="citation_title=Applications of a foundation model approach for weather and climate;,citation_author=Troy Arcomano;,citation_author=Alexander Wikner;,citation_author=Romit Maulik;,citation_author=Veerabhadra Rao Kotamarthi;,citation_author=Sam Foreman;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_volume=2023;,citation_conference_title=AGU fall meeting abstracts;">
+<meta name="citation_reference" content="citation_title=Toward a holistic performance evaluation of large language models across diverse ai accelerators;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Varuni Sastry;,citation_author=Zhen Xie;,citation_author=Siddhisanket Raskar;,citation_author=William Arnold;,citation_author=Rajeev Thakur;,citation_author=Venkatram Vishwanath;,citation_author=Michael E Papka;,citation_author=Sanjif Shanmugavelu;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 IEEE international parallel and distributed processing symposium workshops (IPDPSW);,citation_conference=IEEE;">
+<meta name="citation_reference" content="citation_title=Intro to HPC bootcamp: Engaging new communities through energy justice projects;,citation_author=Suzanne Parete-Koon;,citation_author=Michael Sandoval;,citation_author=Kellen Leland;,citation_author=Subil Abraham;,citation_author=Mary Ann Leung;,citation_author=Rebecca Hartman-Baker;,citation_author=Paige Kinsley;,citation_author=Lois McInnes;,citation_author=Sreeranjani Ramprakash;,citation_author=Lacy Beach Barrier;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=15;,citation_journal_title=Journal of Computational Science Education;,citation_publisher=Oak Ridge National Laboratory (ORNL), Oak Ridge, TN (United States);">
+<meta name="citation_reference" content="citation_title=MProt-DPO: Breaking the ExaFLOPS barrier for multimodal protein design workflows with direct preference optimization;,citation_author=Gautham Dharuman;,citation_author=Kyle Hippe;,citation_author=Alexander Brace;,citation_author=Sam Foreman;,citation_author=Väinä Hatanpää;,citation_author=Varuni K Sastry;,citation_author=Huihuo Zheng;,citation_author=Logan Ward;,citation_author=Servesh Muralidharan;,citation_author=Archit Vasan;,citation_author=others;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_conference_title=2024 SC24: International conference for high performance computing, networking, storage and analysis SC;,citation_conference=IEEE Computer Society;">
+<meta name="citation_reference" content="citation_title=DeepSpeed4Science initiative: Enabling large-scale scientific discovery through sophisticated AI system technologies;,citation_author=Shuaiwen Leon Song;,citation_author=Bonnie Kruft;,citation_author=Minjia Zhang;,citation_author=Conglong Li;,citation_author=Shiyang Chen;,citation_author=Chengming Zhang;,citation_author=Masahiro Tanaka;,citation_author=Xiaoxia Wu;,citation_author=Jeff Rasley;,citation_author=Ammar Ahmad Awan;,citation_author=Connor Holmes;,citation_author=Martin Cai;,citation_author=Adam Ghanem;,citation_author=Zhongzhu Zhou;,citation_author=Yuxiong He;,citation_author=Pete Luferenko;,citation_author=Divya Kumar;,citation_author=Jonathan Weyn;,citation_author=Ruixiong Zhang;,citation_author=Sylwester Klocek;,citation_author=Volodymyr Vragov;,citation_author=Mohammed AlQuraishi;,citation_author=Gustaf Ahdritz;,citation_author=Christina Floristean;,citation_author=Cristina Negri;,citation_author=Rao Kotamarthi;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_author=Sam Foreman;,citation_author=Kyle Hippe;,citation_author=Troy Arcomano;,citation_author=Romit Maulik;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot;,citation_author=Murali Emani;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Prasanna Balaprakash;,citation_author=Gina Tourassi;,citation_author=John Gounley;,citation_author=Heidi Hanson;,citation_author=Thomas E Potok;,citation_author=Massimiliano Lupo Pasini;,citation_author=Kate Evans;,citation_author=Dan Lu;,citation_author=Dalton Lunga;,citation_author=Junqi Yin;,citation_author=Sajal Dash;,citation_author=Feiyi Wang;,citation_author=Mallikarjun Shankar;,citation_author=Isaac Lyngaas;,citation_author=Xiao Wang;,citation_author=Guojing Cong;,citation_author=Pei Zhang;,citation_author=Ming Fan;,citation_author=Siyan Liu;,citation_author=Adolfy Hoisie;,citation_author=Shinjae Yoo;,citation_author=Yihui Ren;,citation_author=William Tang;,citation_author=Kyle Felker;,citation_author=Alexey Svyatkovskiy;,citation_author=Hang Liu;,citation_author=Ashwin Aji;,citation_author=Angela Dalton;,citation_author=Michael Schulte;,citation_author=Karl Schulz;,citation_author=Yuntian Deng;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Anima Anandkumar;,citation_author=Rick Stevens;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2310.04610;">
+<meta name="citation_reference" content="citation_title=Emergent abilities of large language models;,citation_author=Jason Wei;,citation_author=Yi Tay;,citation_author=Rishi Bommasani;,citation_author=Colin Raffel;,citation_author=Barret Zoph;,citation_author=Sebastian Borgeaud;,citation_author=Dani Yogatama;,citation_author=Maarten Bosma;,citation_author=Denny Zhou;,citation_author=Donald Metzler;,citation_author=Ed H. Chi;,citation_author=Tatsunori Hashimoto;,citation_author=Oriol Vinyals;,citation_author=Percy Liang;,citation_author=Jeff Dean;,citation_author=William Fedus;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2206.07682;">
+<meta name="citation_reference" content="citation_title=The climate risk &amp;amp;amp; resilience portal (ClimRR) metadata and data dictionary;,citation_author=C. Burdi;,citation_author=Wall. T Branham;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://dub.sh/ClimRR-Metadata;">
+<meta name="citation_reference" content="citation_title=Progress on $(g-2)_\mu$ from lattice QCD;,citation_author=Hartmut Wittig;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2306.04165;">
+<meta name="citation_reference" content="citation_title=Hybrid Monte Carlo;,citation_author=S. Duane;,citation_author=A. D. Kennedy;,citation_author=B. J. Pendleton;,citation_author=D. Roweth;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_doi=10.1016/0370-2693(87)91197-X;,citation_volume=195;,citation_journal_title=Phys. Lett. B;">
+<meta name="citation_reference" content="citation_title=Snowmass 2021 Computational Frontier CompF03 Topical Group Report: Machine Learning;,citation_author=Phiala Shanahan;,citation_author=others;,citation_publication_date=2022-09;,citation_cover_date=2022-09;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2209.07559;">
+<meta name="citation_reference" content="citation_title=Applications of Machine Learning to Lattice Quantum Field Theory;,citation_author=Denis Boyda;,citation_author=others;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2202.05838;,citation_conference_title=Snowmass 2021;">
+<meta name="citation_reference" content="citation_title=HMC with Normalizing Flows;,citation_author=Sam Foreman;,citation_author=Taku Izubuchi;,citation_author=Luchang Jin;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_author=Akio Tomiya;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01586;,citation_doi=10.22323/1.396.0073;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_volume=LATTICE2021;,citation_journal_title=PoS;">
+<meta name="citation_reference" content="citation_title=Deep Learning Hamiltonian Monte Carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C. Osborn;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;,citation_conference_title=9th International Conference on Learning Representations;">
+<meta name="citation_reference" content="citation_title=Deep learning hamiltonian monte carlo;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=Osborn James C.;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2105.03418;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A trainable framework for effective topological sampling;,citation_author=Sam Foreman;,citation_author=Xiao-Yong Jin;,citation_author=James C Osborn;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_journal_title=arXiv preprint arXiv:2112.01582;">
+<meta name="citation_reference" content="citation_title=Energy Justice Analysis of Climate Data with ClimRR;,citation_author=Sam Foreman;,citation_publication_date=2023-08-07;,citation_cover_date=2023-08-07;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/climate-analysis;,citation_language=en;">
+<meta name="citation_reference" content="citation_author=Sam Foreman;,citation_publication_date=2023-08-19;,citation_cover_date=2023-08-19;,citation_year=2023;,citation_fulltext_html_url=https://saforem2.github.io/l2hmc-qcd;,citation_language=en;">
+<meta name="citation_reference" content="citation_title=LeapfrogLayers: A Trainable Framework for Effective Topological Sampling;,citation_author=S. Foreman;,citation_author=X. Jin;,citation_author=J. Osborn;,citation_publication_date=2022-07;,citation_cover_date=2022-07;,citation_year=2022;,citation_fulltext_html_url=https://arxiv.org/abs/2112.01582;,citation_doi=10.22323/1.396.0508;,citation_conference_title=The 38th international symposium on lattice field theory;">
+<meta name="citation_reference" content="citation_title=Mastering language models;,citation_author=Samuel Montgomery;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_fulltext_html_url=https://towardsdatascience.com/mastering-language-models-32e1d891511a
+           ;,citation_journal_title=Medium;,citation_publisher=Towards Data Science;">
+<meta name="citation_reference" content="citation_title=Harnessing the power of LLMs in practice: A survey on ChatGPT and beyond;,citation_author=Jingfeng Yang;,citation_author=Hongye Jin;,citation_author=Ruixiang Tang;,citation_author=Xiaotian Han;,citation_author=Qizhang Feng;,citation_author=Haoming Jiang;,citation_author=Bing Yin;,citation_author=Xia Hu;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2304.13712;">
+<meta name="citation_reference" content="citation_title=Training tips for the transformer model;,citation_author=Martin Popel;,citation_author=Ondřej Bojar;,citation_publication_date=2018-04;,citation_cover_date=2018-04;,citation_year=2018;,citation_fulltext_html_url=https://doi.org/10.2478%2Fpralin-2018-0002;,citation_issue=1;,citation_doi=10.2478/pralin-2018-0002;,citation_volume=110;,citation_journal_title=The Prague Bulletin of Mathematical Linguistics;,citation_publisher=Charles University in Prague, Karolinum Press;">
+<meta name="citation_reference" content="citation_title=Attention is all you need;,citation_author=Ashish Vaswani;,citation_author=Noam Shazeer;,citation_author=Niki Parmar;,citation_author=Jakob Uszkoreit;,citation_author=Llion Jones;,citation_author=Aidan N. Gomez;,citation_author=Lukasz Kaiser;,citation_author=Illia Polosukhin;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_fulltext_html_url=https://arxiv.org/abs/1706.03762;">
+<meta name="citation_reference" content="citation_title=Tree of thoughts: Deliberate problem solving with large language models;,citation_author=Shunyu Yao;,citation_author=Dian Yu;,citation_author=Jeffrey Zhao;,citation_author=Izhak Shafran;,citation_author=Thomas L. Griffiths;,citation_author=Yuan Cao;,citation_author=Karthik Narasimhan;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2305.10601;">
+<meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
+</head>
+<body class="quarto-light">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#F8C3AB" class="quarto-title-block center">
+    <div class="quarto-title-container" style="
+        text-align:left;
+        padding: 10pt;
+        margin-left: auto;
+        margin-right: auto;
+        /* line-height: 1.25lh!important; */
+        border-radius: 0pt;
+        /* background-color: oklch(from hsla(0, 0%, 33%, 1.0) calc(l * 1.15) c h/0.1); */
+        /* background-color: oklch(from #CCFFCC calc(l * 1.15) c h/0.1); */
+        background-color: rgba(255, 255, 255, 0.55);
+        /* border: 1px solid ; */
+        /* box-shadow: 2pt 2pt black; */
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+        /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+        /* box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px; */
+        /* box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px; */
+        /* box-shadow: RGBA(0, 0, 0, 0.35) 0px 5px 15px; */
+        /* background-color: oklch(from #BF8CBF calc(l * 1.15) c h / 0.5); */
+        /* border-radius: 10px; */
+        /* text-align:center; */
+        /* padding: 0px; */
+        /* padding-left: 1.5em; */
+        /* padding-right: 1.5em; */
+        /* max-width: min-content; */
+        /* min-width: max-content; */
+        /* border: 1px solid #BF8CBF; */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+        /* padding-top: 0.2em; */
+        /* padding-bottom: 0.2em; */
+        /* line-height: 1.5em!important; */
+    ">
+        <h1 class="title" style="color: #000000; overflow-word-wrap: break-word; font-size: 175%; margin-block-end: 0.5lh;">Training Foundation Models on Supercomputers</h1>
+                <div class="flex-container" style="flex-direction: row; gap: 0.5rem; justify-content: space-between; align-items: flex-end;">
+            <div style="">
+                                <!-- <p class="author" style="color: hsla(0, 0%, 93%, 1.0); font-weight: 600; font-size: 120%; margin-block-end: 0.5em;">Sam Foreman</p> -->
+                <p class="author" style="color: hsla(0, 0%, 30%, 1.0); font-size: 110%; font-weight:600; ">Sam Foreman</p>
+                                                                                <!-- <p class="affiliation" style="color: hsl(0, 0%, 85%); font-weight: 500; font-size: 100%; margin-block-end: 0.25em;"><a href="https://alcf.anl.gov/about/people/sam-foreman">Argonne National Laboratory</a></p> -->
+                <p class="affiliation" style="color: hsl(0, 0%, 85%); font-size: 100%;">
+                    <a href="https://alcf.anl.gov/about/people/sam-foreman">Argonne National Laboratory</a></p>
+                                                <!--  -->
+            </div>
+            <div style="text-align:right;">
+                                <img class="location-logo" src="assets/uiuc.png" alt="Location Logo" style="max-height: 3em; max-width: 12em; object-fit: contain; margin-top: 0.25em; margin-bottom: 0.25em;">
+                                                <p class="location" style="color: hsla(0, 0%, 40%, 1.0);">@ University of Illinois at Urbana-Champaign</p>
+                                                                <p class="date" style="color: hsla(0, 0%, 50%, 1.0);">2025-10-24</p>
+                            </div>
+        <!--  -->
+        <!-- <p class="slide-url">https://samforeman.me/talks/2025/10/24/slides.html</p> -->
+        <!--  -->
+    </div>
+</div></section>
+<section id="about-me" class="title-slide slide level1 smaller center">
+<h1>🧑🏻‍💻 About Me</h1>
+<div class="flex-container">
+<div class="column" style="width:50%;">
+<ul>
+<li>🏡 <a href="https://samforeman.me">samforeman.me</a></li>
+<li>UIUC (2015):
+<ul>
+<li>Engineering Physics + Applied Mathematics</li>
+</ul></li>
+<li>University of Iowa (2015–2019):
+<ul>
+<li>PhD. Physics<sup>1</sup></li>
+</ul></li>
+<li>ANL (2019–2022): Postdoctoral Researcher</li>
+<li>ANL (2022–Present): Assistant Computational Scientist
+<ul>
+<li>Member of the <a href="https://www.alcf.anl.gov/about/people/group/506">AI/ML Group</a> at ALCF</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Current Research:</p>
+<ul>
+<li><a href="https://auroragpt.anl.gov">AuroraGPT</a>: Foundation Models for Science</li>
+<li><a href="https://arxiv.org/abs/2509.13523">AERIS</a>: Argonne’s Earth System Model
+<ul>
+<li>Finalist for the <a href="https://awards.acm.org/bell-climate">2025 ACM Gordon Bell Prize in Climate Modeling</a></li>
+</ul></li>
+<li><a href="https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization">MProt-DPO</a>: Multimodal Protein Design
+<ul>
+<li>Finalist for the <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">ACM Gordon Bell Prize 2024</a></li>
+</ul></li>
+<li><a href="https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2">GenSLMs</a>: Genome Scale Language Models.
+<ul>
+<li>Winner of the <a href="https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022">ACM Gordon Bell Special Prize for HPC-Based COVID-19 Research</a></li>
+</ul></li>
+</ul>
+</div></div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://www.researchgate.net/publication/337499051_Learning_better_physics_a_machine_learning_approach_to_lattice_gauge_theory">A Machine Learning Approach to Lattice Gauge Theory</a></p></li></ol></aside></section>
+
+<section>
+<section id="argonne-leadership-computing-facility-alcf" class="title-slide slide level1 center">
+<h1>Argonne Leadership Computing Facility (ALCF)</h1>
+<div class="flex-container" style="gap: 3%;">
+<div class="column" style="width:50%;">
+<blockquote>
+<p>The ALCF enables breakthroughs in science and engineering by providing supercomputing resources and expertise to the research community.</p>
+</blockquote>
+<p><a href="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-nodes.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-nodes.jpg"></a></p>
+</div><div class="column" style="width:30%;">
+<p><a href="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-Argonne.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-Argonne.jpg"></a></p>
+</div></div>
+
+<aside><div>
+<p>Images from <a href="https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/">The Computer That Will Change Everything – Chicago Magazine</a></p>
+</div></aside></section>
+<section id="aurora" class="slide level2 center" style="width:100%">
+<h2>🏗️ Aurora</h2>
+<div class="flex-container" style="align-items: center; gap:10pt;">
+<div id="tbl-aurora" class="column responsive striped hover quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Aurora<sup>1</sup> Specs
+</figcaption>
+<div aria-describedby="tbl-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="table-responsive">
+<table class="column table-striped table-hover caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Property</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Racks</td>
+<td style="text-align: left;">166</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Nodes</td>
+<td style="text-align: left;">10,624</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">XPUs<sup>2</sup></td>
+<td style="text-align: left;">127,488</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">CPUs</td>
+<td style="text-align: left;">21,248</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">NICs</td>
+<td style="text-align: left;">84,992</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">HBM</td>
+<td style="text-align: left;">8 PB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">DDR5c</td>
+<td style="text-align: left;">10 PB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div><div id="fig-aurora" class="r-stretch quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/aurora1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;1: Aurora: Fact Sheet."><img data-src="./assets/aurora1.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Aurora: <a href="https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf">Fact Sheet</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>🏆 <a href="https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html">Aurora Supercomputer Ranks Fastest for AI</a></p></li><li id="fn3"><p>Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte Vecchio”) tiles, with 2 XPUs per tile.</p></li></ol></aside></section>
+<section id="alcf-ai-testbed" class="slide level2 center" data-background-color="white">
+<h2>🤖 ALCF AI Testbed</h2>
+<ul>
+<li>ALCF AI Testbed Systems are in production and <a href="https://accounts.alcf.anl.gov/#/allocationRequests">available for allocations</a> to the research community</li>
+<li>Significant improvement in time-to-solution and energy-efficiency for diverse AI for science applications.</li>
+<li><a href="https://nairrpilot.org/">NAIRR Pilot</a></li>
+</ul>
+<div class="red-card" style="color: #FF5252; font-size:90%;">
+<p>Up to <strong>25</strong><span class="math inline">\times</span> improvement for genomic foundation models with <strong>6.5</strong><span class="math inline">\times</span> energy efficiency</p>
+</div>
+<div class="flex-container" style="align-items: flex-start;">
+<div id="fig-sambanova" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-sambanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../../../assets/sambanova.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2: SambaNova SN-30: 2nd Gen, 8 nodes with 64 AI Accelerators"><img data-src="../../../../assets/sambanova.jpeg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sambanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: <strong>SambaNova SN-30</strong>: 2nd Gen, 8 nodes with 64 AI Accelerators
+</figcaption>
+</figure>
+</div>
+<div id="fig-graphcore" class="column quarto-float quarto-figure quarto-figure-center" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-graphcore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../../../assets/graphcore.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;3: Graphcore Bow: generation accelerators: Pod-64 configuration with 64 accelerators"><img data-src="../../../../assets/graphcore.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graphcore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: <strong>Graphcore Bow</strong>: generation accelerators: Pod-64 configuration with 64 accelerators
+</figcaption>
+</figure>
+</div><div id="fig-cerebras" class="column quarto-float quarto-figure quarto-figure-center" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-cerebras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../../../assets/cerebras.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4: Cerebras: 2x CS-2 WSE with Memory-X and Swarm-X technologies"><img data-src="../../../../assets/cerebras.jpeg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cerebras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <strong>Cerebras</strong>: 2x CS-2 WSE with Memory-X and Swarm-X technologies
+</figcaption>
+</figure>
+</div><div id="fig-groq" class="column quarto-float quarto-figure quarto-figure-center" style="text-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-groq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../../../assets/groq.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5: GroqRack: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node"><img data-src="../../../../assets/groq.jpeg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-groq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor streaming processors accelerators per node
+</figcaption>
+</figure>
+</div></div>
+</section></section>
+<section id="section" class="title-slide slide level1 smaller center" data-background-color="#040406">
+<h1></h1>
+<div class="flex-container" style="align-items: center; gap: 5pt;">
+<div class="column" style="width:55%; text-align: center;">
+<p><span style="font-weight: 600; font-size: 1.5em;">🔭 AI-for-Science</span><br>
+<iconify-icon role="img" inline="" icon="fa:twitter" aria-label="Icon twitter from fa Iconify.design set." title="Icon twitter from fa Iconify.design set."></iconify-icon> <a href="https://x.com/tenderizzation/status/1944591320796090606">source</a> (<a href="https://twitter.com/tenderizzation">@tenderizzation</a>)<br>
+&nbsp;<br></p>
+<p>ChatGPT: <a href="https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce">explain this image</a></p>
+</div><div class="column">
+<p><a href="./assets/modeling-planets.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="./assets/modeling-planets.jpg"></a></p>
+</div></div>
+</section>
+
+<section>
+<section id="auroragpt-2024" class="title-slide slide level1 smaller center">
+<h1>🌌 AuroraGPT (2024–)</h1>
+<div class="flex-container" style="justify-content: space-around;">
+<div class="column" style="width: 50%;">
+<div class="blue-card">
+<p><a href="https://auroragpt.anl.gov"><strong>AuroraGPT</strong></a>: <em>General purpose scientific LLM</em> Broadly trained on a general corpora plus scientific {papers, texts, data}</p>
+</div>
+<ul>
+<li><strong>Explore pathways</strong> towards a “Scientific Assistant” model</li>
+<li><strong>Build with international partners</strong> (RIKEN, BSC, others)</li>
+<li><strong>Multimodal</strong>: images, tables, equations, proofs, time series, graphs, fields, sequences, etc</li>
+</ul>
+</div><div class="column" style="text-align: center; width: 50%;">
+<div id="fig-awesome-llm" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/llms.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;6: Image from  Hannibal046 / Awesome-LLM"><img data-src="./assets/llms.gif"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-awesome-llm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Image from <iconify-icon role="img" inline="" icon="fa:github" aria-label="Icon github from fa Iconify.design set." title="Icon github from fa Iconify.design set."></iconify-icon> <a href="https://github.com/Hannibal046/Awesome-LLM">Hannibal046 / <code>Awesome-LLM</code></a>
+</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="auroragpt-open-science-foundation-model" class="slide level2 center">
+<h2>🧪 AuroraGPT: Open Science Foundation Model</h2>
+<div id="fig-aurora-gpt" class="quarto-float quarto-figure quarto-figure-center" style="vertical-align:center;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/AuroraGPT.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;7: High-level overview of AuroraGPT project"><img data-src="./assets/AuroraGPT.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aurora-gpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: High-level overview of AuroraGPT project
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="auroragpt-toolbox" class="slide level2 center">
+<h2>🧰 AuroraGPT: Toolbox</h2>
+<ul>
+<li><strong>Datasets and data pipelines</strong> (how do we deal with scientific data?)</li>
+<li><strong>Software infrastructure and workflows</strong> (scalable, robust, extensible)</li>
+<li><strong>Evaluation of state-of-the-art LLM Models</strong> (how do they perform on scientific tasks?)</li>
+</ul>
+<div class="flex-container" style="gap: 5pt;">
+<div title="🚂 Training">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🚂 Training</strong></p>
+</div>
+<div class="callout-content">
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed">argonne-lcf/Megatron-DeepSpeed</a><br>
+<span class="dim-text">Large Model Training: Any Scale, Any Accelerator</span></p>
+</div>
+</div>
+</div>
+</div>
+<div title="🏃‍♂️ Running">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🏃‍♂️ Running</strong></p>
+</div>
+<div class="callout-content">
+<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/argonne-lcf/inference-endpoints">argonne-lcf/inference-endpoints</a><br>
+<span class="dim-text">Inference endpoints for LLMs, hosted @ ALCF</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="team-leads" class="slide level2 smaller center" data-background-color="white">
+<h2>👥 Team Leads</h2>
+<div style="font-size: 100%;">
+<div class="flex-container" style="text-align: center; align-items: center;">
+<p><strong>Planning</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/rick-stevens.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Rick Stevens"><img data-src="../../../../assets/team/rick-stevens.png" style="height:1.04167in" alt="Rick Stevens"></a></p>
+<figcaption>Rick Stevens<sup>1</sup></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Ian Foster"><img data-src="../../../../assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster"></a></p>
+<figcaption>Ian Foster</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/rinku-gupta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Rinku Gupta"><img data-src="../../../../assets/team/rinku-gupta.png" style="height:1.04167in" alt="Rinku Gupta"></a></p>
+<figcaption>Rinku Gupta</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/mike-papka.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Mike Papka"><img data-src="../../../../assets/team/mike-papka.png" style="height:1.04167in" alt="Mike Papka"></a></p>
+<figcaption>Mike Papka</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/arvind-ramanathan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Arvind Ramanathan"><img data-src="../../../../assets/team/arvind-ramanathan.png" style="height:1.04167in" alt="Arvind Ramanathan"></a></p>
+<figcaption>Arvind Ramanathan</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/fangfang-xia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Fangfang Xia"><img data-src="../../../../assets/team/fangfang-xia.png" style="height:1.04167in" alt="Fangfang Xia"></a></p>
+<figcaption>Fangfang Xia</figcaption>
+</figure>
+</div>
+</div>
+<div class="flex-container" style="text-align: center;">
+<div class="col">
+<p><strong>Data</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Ian Foster"><img data-src="../../../../assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster"></a></p>
+<figcaption>Ian Foster</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/robert-underwood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Robert Underwood"><img data-src="../../../../assets/team/robert-underwood.png" style="height:1.04167in" alt="Robert Underwood"></a></p>
+<figcaption>Robert Underwood</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Training</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/venkat-vishwanath.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Venkat Vishwanath"><img data-src="../../../../assets/team/venkat-vishwanath.png" style="height:1.04167in" alt="Venkat Vishwanath"></a></p>
+<figcaption>Venkat Vishwanath</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/sam-foreman.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Sam Foreman"><img data-src="../../../../assets/team/sam-foreman.png" style="height:1.04167in" alt="Sam Foreman"></a></p>
+<figcaption><span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); font-weight: 500;">Sam Foreman</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Evaluation</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/franck-cappello.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Franck Cappello"><img data-src="../../../../assets/team/franck-cappello.png" style="height:1.04167in" alt="Franck Cappello"></a></p>
+<figcaption>Franck Cappello</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/sandeep-madireddy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Sandeep Madireddy"><img data-src="../../../../assets/team/sandeep-madireddy.png" style="height:1.04167in" alt="Sandeep Madireddy"></a></p>
+<figcaption>Sandeep Madireddy</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/bo-li.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Bo Li"><img data-src="../../../../assets/team/bo-li.png" style="height:1.04167in" alt="Bo Li"></a></p>
+<figcaption>Bo Li</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Post</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/eliu-huerta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Eliu Huerta"><img data-src="../../../../assets/team/eliu-huerta.png" style="height:1.04167in" alt="Eliu Huerta"></a></p>
+<figcaption>Eliu Huerta</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/azton-wells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Azton Wells"><img data-src="../../../../assets/team/azton-wells.png" style="height:1.04167in" alt="Azton Wells"></a></p>
+<figcaption>Azton Wells</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Inference</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/rajeev-thakur.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="Rajeev Thakur"><img data-src="../../../../assets/team/rajeev-thakur.png" style="height:1.04167in" alt="Rajeev Thakur"></a></p>
+<figcaption>Rajeev Thakur</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Comms</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/charlie-catlett.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Charlie Catlett"><img data-src="../../../../assets/team/charlie-catlett.png" style="height:1.04167in" alt="Charlie Catlett"></a></p>
+<figcaption>Charlie Catlett</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/david-martin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="David Martin"><img data-src="../../../../assets/team/david-martin.png" style="height:1.04167in" alt="David Martin"></a></p>
+<figcaption>David Martin</figcaption>
+</figure>
+</div>
+</div>
+<div class="col">
+<p><strong>Distribution</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="../../../../assets/team/brad-ullrich.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="Brad Ullrich"><img data-src="../../../../assets/team/brad-ullrich.png" style="height:1.04167in" alt="Brad Ullrich"></a></p>
+<figcaption>Brad Ullrich</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>Lead</p></li></ol></aside></section>
+<section id="teams" class="slide level2 center" data-auto-animate="true" data-background-color="white">
+<h2 data-id="quarto-animate-title">🤝 Teams</h2>
+<div class="flex-container">
+<div class="column">
+<ul>
+<li><strong>Planning</strong></li>
+<li><strong>Data Prep</strong>
+<ul>
+<li>Accumulate 20+ T tokens of high-quality scientific text and structured data</li>
+</ul></li>
+<li><span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;"><strong>Models / Training</strong></span><sup>1</sup>
+<ul>
+<li>Train (entirely from scratch) a series of models on publicly available data</li>
+</ul></li>
+<li><strong>Evaluation</strong>
+<ul>
+<li>Skills, trustworthiness, safety, robustness, privacy, machine ethics</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<ul>
+<li><strong>Post-Training</strong>
+<ul>
+<li>Fine-tuning, alignment</li>
+</ul></li>
+<li><strong>Inference</strong>
+<ul>
+<li>Model serving, API development / public-facing web services</li>
+</ul></li>
+<li><strong>Distribution</strong>
+<ul>
+<li>Licensing, generating and distributing artifacts for public consumption</li>
+</ul></li>
+<li><strong>Communication</strong></li>
+</ul>
+</div></div>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>Co-led by: Venkat Vishwanath, Sam Foreman</p></li></ol></aside></section>
+<section id="challenges-in-practice" class="slide level2 center">
+<h2>🏋️ Challenges: In Practice</h2>
+<p>This is <em>incredibly</em> difficult in practice, due in part to:</p>
+<ul>
+<li>Brand new {hardware, architecture, software}</li>
+<li>Lack of native support in existing frameworks (though getting better!)</li>
+<li>General system stability<br>
++10k Nodes <span class="math inline">\left(\times \frac{12\,\,\mathrm{XPU}}{1\,\,\mathrm{Node}}\right)\Rightarrow</span> +<strong>100k</strong> XPUs
+<ul>
+<li>network performance</li>
+<li>file system stability (impacted by <em>other users</em> !)</li>
+<li><em>many</em> unexpected difficulties occur at increasingly large scales</li>
+</ul></li>
+<li>Combinatorial explosion of possible configurations and experiments
+<ul>
+<li>{hyperparameters, architectures, tokenizers, learning rates, …}</li>
+</ul></li>
+</ul>
+</section>
+<section id="auroragpt-training" class="slide level2 center">
+<h2>💾 AuroraGPT: Training</h2>
+<ul>
+<li>To train a fixed model on trillions of tokens requires:
+<ol type="1">
+<li><strong>Aggregating</strong> data from multiple different <em>corpora</em><br>
+(e.g.&nbsp;ArXiv, Reddit, StackExchange, GitHub, Wikipedia, etc.)</li>
+<li><strong>Sampling</strong> <em>each training batch</em> according to a fixed distribution across corpora</li>
+<li><strong>Building</strong> indices that map batches of tokens into these files (indexing)</li>
+</ol>
+<div class="red-card">
+<p>The original implementation was <em>slow</em>:</p>
+<ul>
+<li>Designed to run <em>serially</em> on a <strong>single device</strong></li>
+<li><strong>Major bottleneck</strong> when debugging data pipeline at scale</li>
+</ul>
+</div></li>
+</ul>
+</section>
+<section id="auroragpt-blending-data-efficiently" class="slide level2 center">
+<h2>🍹 AuroraGPT: Blending Data, Efficiently</h2>
+<div class="flex-container" style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
+<div class="column" style="width:25%;">
+<ul>
+<li>🐢 Original implementation:
+<ul>
+<li><strong>Slow</strong> (serial, single device)</li>
+<li><span class="dim-text">~ 1 hr</span>/2T tokens</li>
+</ul></li>
+<li>🐇 New implementation:
+<ul>
+<li><strong>Fast!</strong> (distributed, asynchronous)</li>
+<li><span style="color:#2296F3;">~ <strong>2 min</strong></span>/2T tokens<br>
+(<strong>30x</strong> faster !!)</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<div id="fig-data-processing" class="r-stretch quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/data-processing.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Figure&nbsp;8: Time spent preparing 2T tokens"><img data-src="./assets/data-processing.svg" class="r-stretch"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-processing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Time spent preparing 2T tokens
+</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="loss-curve-training-auroragpt-7b-on-2t-tokens" class="slide level2 center">
+<h2>📉 Loss Curve: Training AuroraGPT-7B on 2T Tokens</h2>
+<div id="fig-loss-curve" class="quarto-float quarto-figure quarto-figure-center" style="margin-left:auto;margin-right:auto;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/train-val-loss-vs-tokens-medium.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="Figure&nbsp;9: Loss curve during training on 2T tokens."><img data-src="./assets/train-val-loss-vs-tokens-medium.svg" style="margin-left:auto;margin-right:auto;;width:90.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loss-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Loss curve during training on 2T tokens.
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="auroragpt-2b-pre-training" class="title-slide slide level1 center">
+<h1>AuroraGPT-2B Pre-Training</h1>
+<div id="fig-auroragpt-2b" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-auroragpt-2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../../../../assets/aGPT-2B-train-loss-7T.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="Figure&nbsp;10: Loss curve for (new) AuroraGPT-2B model trained on 7T tokens."><img data-src="../../../../assets/aGPT-2B-train-loss-7T.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-auroragpt-2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Loss curve for (new) AuroraGPT-2B model trained on 7T tokens.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="features" class="slide level2 center">
+<h2>✨ Features</h2>
+<ul>
+<li>🕸️ <strong>Parallelism</strong>:
+<ul>
+<li>{data, tensor, pipeline, sequence, …}</li>
+</ul></li>
+<li>♻️ <strong>Checkpoint Converters</strong>:
+<ul>
+<li>Megatron ⇄ 🤗 HF ⇄ ZeRO ⇄ Universal</li>
+</ul></li>
+<li>🔀 <strong>DeepSpeed Integration</strong>:
+<ul>
+<li>ZeRO Offloading</li>
+<li>Activation checkpointing</li>
+<li>AutoTP (<em>WIP</em>)</li>
+<li>ability to leverage features from DeepSpeed community</li>
+</ul></li>
+</ul>
+</section>
+<section id="features-even-more" class="slide level2 center">
+<h2>✨ Features (even more!)</h2>
+<ul>
+<li>🧗 <strong>Optimizers</strong><sup>1</sup>:
+<ul>
+<li>Support for <em>many</em> different optimizers:
+<ul>
+<li>Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE, ScheduleFree, …</li>
+</ul></li>
+<li>See <a href="https://github.com/argonne-lcf/Megatron-DeepSpeed/blob/e3b0398d2f2d3f8ec543e99373ca14bd18a1e4f8/megatron/arguments.py#L1477-L1502">full list</a></li>
+<li>Large batch training</li>
+</ul></li>
+<li>📊 <strong>Experiment Tracking</strong>:
+<ul>
+<li>Automatic experiment and metric tracking with Weights &amp; Biases</li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>Implemented by Marieme Ngom</p></li></ol></aside></section></section>
+<section>
+<section id="mprot-dpo" class="title-slide slide level1 center" style="width:100%;">
+<h1>🧬 MProt-DPO</h1>
+<ul>
+<li><span class="highlight-green">Finalist</span>: SC’24 <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">ACM Gordon Bell Prize</a>
+<ul>
+<li><a href="https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workﬂows with Direct Preference Optimization</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>)</li>
+</ul></li>
+<li>One of the first protein design toolkits that integrates:
+<ul>
+<li>Text, (protein/gene) sequence, structure/conformational sampling modalities to build aligned representations for protein sequence-function mapping</li>
+</ul></li>
+</ul>
+</section>
+<section id="scaling-results-2024" class="slide level2 smaller center">
+<h2>🧬 Scaling Results (2024)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="flex-container" style="align-items: center; text-align: center; margin-left: auto; margin-right: auto;">
+<div id="fig-mprot-3p5B-scaling0" class="quarto-float quarto-figure quarto-figure-center" style="margin:0; padding-unset;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="Figure&nbsp;11: Scaling results for 3.5B model across ~38,400 GPUs"><img data-src="./assets/mprot-3p5B-scaling-2.svg" style="margin:0; padding-unset;;width:100.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Scaling results for <code>3.5B</code> model across ~38,400 GPUs
+</figcaption>
+</figure>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li><p>~ <span class="highlight-blue">4 EFLOPS</span> @ Aurora</p></li>
+<li><p>38,400 XPUs<br>
+= 3200 [node] x 12 [XPU / node]</p></li>
+<li><p>🎖️ <a href="https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/">Gordon Bell Finalist</a>:</p>
+<ul>
+<li><a href="https://dl.acm.org/doi/10.1109/SC41406.2024.00013">MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows</a> (<span class="citation" data-cites="mprot-dpo2024">Dharuman et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>)</li>
+</ul></li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>This novel work presents a scalable, multimodal workflow for protein design that trains an LLM to generate protein sequences, computationally evaluates the generated sequences, and then exploits them to fine-tune the model.</p>
+<p>Direct Preference Optimization steers the LLM toward the generation of preferred sequences, and enhanced workflow technology enables its efficient execution. A 3.5B and a 7B model demonstrate scalability and exceptional mixed precision performance of the full workflow on ALPS, Aurora, Frontier, Leonardo and PDX.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mprot-dpo-scaling-results" class="slide level2 smaller center">
+<h2>🧬 MProt-DPO: Scaling Results</h2>
+<div class="flex-container">
+<div id="fig-mprot-3p5B-scaling" class="column quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/mprot-3p5B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="Figure&nbsp;12: 3.5B model"><img data-src="./assets/mprot-3p5B-scaling-2.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-3p5B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: <code>3.5B</code> model
+</figcaption>
+</figure>
+</div><div id="fig-mprot-7B-scaling" class="column quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/mprot-7B-scaling-2.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="Figure&nbsp;13: 7B model"><img data-src="./assets/mprot-7B-scaling-2.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mprot-7B-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: <code>7B</code> model
+</figcaption>
+</figure>
+</div></div>
+</section>
+<section id="loooooooooong-sequence-lengths" class="slide level2 smaller center" style="width: 100%;">
+<h2>🚂 Loooooooooong Sequence Lengths</h2>
+<div class="flex-container" style="align-items: center; justify-content: center;">
+<p><a href="../../../../assets/anl.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img data-src="../../../../assets/anl.svg" style="height:50pt; margin: unset; padding: 0"></a></p>
+<p><span class="dim-text" style="font-size: 2.0em;"><iconify-icon role="img" inline="" icon="ic:baseline-plus" aria-label="Icon baseline-plus from ic Iconify.design set." title="Icon baseline-plus from ic Iconify.design set."></iconify-icon></span></p>
+<p><a href="../../../../assets/deepspeed-logo-transparent.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img data-src="../../../../assets/deepspeed-logo-transparent.svg" style="height:50pt; margin: unset; padding: 0;"></a></p>
+</div>
+<ul>
+<li>Working with <a href="https://github.com/microsoft/DeepSpeed"><i class="fa-brands fa-microsoft" aria-label="microsoft"></i> Microsoft/DeepSpeed</a> team to enable longer sequence lengths (context windows) for LLMs
+<ul>
+<li>See my <a href="https://samforeman.me/posts/auroragpt/long-sequences/">blog post</a> for additional details</li>
+</ul></li>
+</ul>
+<div id="fig-long-seq" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="flex-container">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="25B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/25B.svg"></a></p>
+<figcaption>25B</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="33B"><img data-src="https://raw.githubusercontent.com/saforem2/scaling4science/main/assets/33B.svg"></a></p>
+<figcaption>33B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-long-seq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Maximum (achievable) <code>SEQ_LEN</code> for both <code>25B</code> and <code>33B</code> models (See: <span class="citation" data-cites="song2023ds4sci">Song et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>)
+</figcaption>
+</figure>
+</div>
+
+<aside><div>
+<p><a href="https://github.com/saforem2/scaling4science"><i class="fa-brands fa-github" aria-label="github"></i> <code>scaling4science</code></a><br>
+<a href="https://github.com/saforem2/Megatron-DS-Benchmarking"><i class="fa-brands fa-github" aria-label="github"></i> <code>Megatron-DS-Benchmarking</code></a></p>
+</div></aside></section></section>
+<section>
+<section id="aeris-2025" class="title-slide slide level1 center">
+<h1>🌎 AERIS (2025)</h1>
+<div class="flex-container">
+<div class="column" style="width:50%;">
+<div id="fig-arxiv" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/team.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="Figure&nbsp;15: arXiv:2509.13523"><img data-src="./assets/team.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arxiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: <a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a>
+</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:43.6%;">
+<div id="fig-aeris-cover" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-aeris-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/aeris.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-41" title="Figure&nbsp;16: Pixel-level Swin diffusion transformer in sizes from [1–80]B"><img data-src="./assets/aeris.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Pixel-level Swin diffusion transformer in sizes from [1–80]B
+</figcaption>
+</figure>
+</div>
+</div></div>
+<aside class="notes">
+<blockquote>
+<p>We demonstrate a significant advancement in AI weather and climate modeling with AERIS by efficient scaling of window-based transformer models. We have performed global medium-range forecasts with performance competitive with GenCast and surpassing the IFS ENS model, with longer, 90- day rollouts showing our ability to learn atmospheric dynamics on seasonal scales without collapsing, becoming the first diffusion-based model that can work across forecast scales from 6 hours all the way to 3 months with remarkably accurate out of distribution predictions of extreme events.</p>
+</blockquote>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="high-level-overview-of-aeris" class="slide level2 smaller center">
+<h2>👀 High-Level Overview of AERIS</h2>
+<div class="flex-container">
+<div id="fig-rollout" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/rollout.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-42" title="Figure&nbsp;17: Rollout of AERIS model, specific humidity at 700m."><img data-src="./assets/rollout.gif"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rollout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Rollout of AERIS model, specific humidity at 700m.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-aeris" class="responsive striped hover quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Overview of AERIS model and training setup
+</figcaption>
+<div aria-describedby="tbl-aeris-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="table-responsive">
+<table class="table-striped table-hover caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Property</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Domain</td>
+<td style="text-align: left;">Global</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Resolution</td>
+<td style="text-align: left;">0.25° &amp; 1.4°</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Training Data</td>
+<td style="text-align: left;">ERA5 (1979–2018)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Model Architecture</td>
+<td style="text-align: left;">Swin Transformer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Speedup<sup>1</sup></td>
+<td style="text-align: left;">O(10k–100k)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Relative to PDE-based models, e.g.: <a href="https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs">GFS</a></p></li></ol></aside></section>
+<section id="contributions" class="slide level2 center">
+<h2>➕ Contributions</h2>
+<div class="flex-container">
+<div title="☔ AERIS">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>☔ AERIS</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="color:var(--callout-color-caution)!important;"><em>First billion-parameter diffusion model for weather + climate</em></span></p>
+<ul>
+<li>Operates at the pixel level (1 × 1 patch size), guided by physical priors</li>
+<li>Medium-range forecast skill:
+<ul>
+<li><strong>Surpasses IFS ENS, competitive with GenCast<sup>1</sup></strong></li>
+<li>Uniquely stable on seasonal scales to 90 days</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div title="🌀 SWiPe">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>🌀 SWiPe</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="color:var(--callout-color-note)!important;"><em>A novel 3D (sequence-window-pipeline) parallelism strategy for training transformers across high-resolution inputs</em></span></p>
+<ul>
+<li>Enables scalable small-batch training on large supercomputers<sup>2</sup>
+<ul>
+<li><strong>10.21 ExaFLOPS</strong></li>
+<li>@ 121,000 Intel XPUs (Aurora)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn8"><p><a href="https://arxiv.org/html/2312.15796v1">GenCast: A Generative Model for Medium-Range Global Weather Forecasting</a> (<span class="citation" data-cites="price2024gencast">Price et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>)</p></li><li id="fn9"><p>Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on LUMI.</p></li></ol></aside></section>
+<section id="issues-with-the-deterministic-approach" class="slide level2 center">
+<h2>⚠️ Issues with the Deterministic Approach</h2>
+<div class="flex-container">
+<div class="flex-child">
+<ul>
+<li><span class="red-text"><iconify-icon role="img" inline="" icon="material-symbols:close" aria-label="Icon close from material-symbols Iconify.design set." title="Icon close from material-symbols Iconify.design set."></iconify-icon></span> <span class="highlight-red"><strong>Transformers</strong></span>:
+<ul>
+<li><em>Deterministic</em></li>
+<li>Single input → single forecast</li>
+</ul></li>
+</ul>
+</div>
+<div class="flex-child">
+<ul>
+<li><span class="green-text"><iconify-icon role="img" inline="" icon="material-symbols:check" aria-label="Icon check from material-symbols Iconify.design set." title="Icon check from material-symbols Iconify.design set."></iconify-icon></span> <span class="highlight-green"><strong>Diffusion</strong></span>:
+<ul>
+<li><em>Probabilistic</em></li>
+<li>Single input → <em><strong>ensemble of forecasts</strong></em></li>
+<li>Captures uncertainty and variability in weather predictions</li>
+<li>Enables ensemble forecasting for better risk assessment</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="transitioning-to-a-probabilistic-model" class="slide level2 center">
+<h2>🎲 Transitioning to a Probabilistic Model</h2>
+<div id="fig-forward-pass" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/diffusion/light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-43" title="Figure&nbsp;18: Reverse diffusion with the input condition, individual sampling steps t_{0} \rightarrow t_{64}, the next time step estimate and the target output."><img data-src="./assets/diffusion/light.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forward-pass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Reverse diffusion with the <span style="color:#228be6">input</span> condition, individual sampling steps <span class="math inline">t_{0} \rightarrow t_{64}</span>, the next time step <span style="color:#40c057">estimate</span> and the <span style="color:#fa5252">target</span> output.
+</figcaption>
+</figure>
+</div>
+<div class="flex-container">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-44" title="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"><img data-src="./assets/diffusion.gif" alt="Reverse Diffusion Process (\mathcal{N}\rightarrow \pi)"></a></p>
+<figcaption>Reverse Diffusion Process (<span class="math inline">\mathcal{N}\rightarrow \pi</span>)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="./assets/diffusion_forward.png" class="lightbox" data-gallery="quarto-lightbox-gallery-45" title="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"><img data-src="./assets/diffusion_forward.png" style="width:89.6%" alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})"></a></p>
+<figcaption>Forward Diffusion Process (<span class="math inline">\pi\rightarrow \mathcal{N}</span>)</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="sequence-window-pipeline-parallelism-swipe" class="slide level2 smaller center">
+<h2>🌀 Sequence-Window-Pipeline Parallelism <code>SWiPe</code></h2>
+<div class="flex-container">
+<div class="column" style="width:33%;">
+<ul>
+<li><code>SWiPe</code> is a <strong>novel parallelism strategy</strong> for Swin-based Transformers</li>
+<li>Hybrid 3D Parallelism strategy, combining:
+<ul>
+<li>Sequence parallelism (<code>SP</code>)</li>
+<li>Window parallelism (<code>WP</code>)</li>
+<li>Pipeline parallelism (<code>PP</code>)</li>
+</ul></li>
+</ul>
+</div><div id="fig-swipe-layer" class="quarto-float quarto-figure quarto-figure-center" style="width:66%;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/wpsp_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-46" title="Figure&nbsp;19: "><img data-src="./assets/wpsp_light.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-swipe-layer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="fig-comms" class="quarto-float quarto-figure quarto-figure-center" style="width:60%; text-align: center; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/comms1_light.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-47" title="Figure&nbsp;20: SWiPe Communication Patterns"><img data-src="./assets/comms1_light.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: <code>SWiPe</code> Communication Patterns
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="aeris-scaling-results" class="slide level2 center">
+<h2>🚀 AERIS: Scaling Results</h2>
+<div class="flex-container">
+<div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center" style="width:70%;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-48" title="Figure&nbsp;21: AERIS: Scaling Results"><img data-src="./assets/aeris-scaling.svg"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21: AERIS: Scaling Results
+</figcaption>
+</figure>
+</div><div class="column" style="width:30%;">
+<ul>
+<li><span class="highlight-blue"><strong>10 EFLOPs</strong></span> (sustained) @ <strong>120,960 GPUs</strong></li>
+<li>See (<span class="citation" data-cites="stock2025aeris">Hatanpää et al. (<a href="#/references" role="doc-biblioref" onclick="">2025</a>)</span>) for additional details</li>
+<li><a href="https://arxiv.org/abs/2509.13523">arXiv:2509.13523</a></li>
+</ul>
+</div></div>
+</section>
+<section id="hurricane-laura" class="slide level2 center">
+<h2>🌪️ Hurricane Laura</h2>
+<div id="fig-hurricane-laura" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./assets/science/hurricane.png" class="lightbox" data-gallery="quarto-lightbox-gallery-49" title="Figure&nbsp;22: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z."><img data-src="./assets/science/hurricane.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hurricane-laura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22: Hurricane Laura tracks (top) and intensity (bottom). Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
+</figcaption>
+</figure>
+</div>
+</section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>📓 References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-mprot-dpo2024" class="csl-entry" role="listitem">
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> In <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em>. SC ’24. Atlanta, GA, USA: IEEE Press. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
+</div>
+<div id="ref-stock2025aeris" class="csl-entry" role="listitem">
+Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong Jung, Sandeep Madireddy, et al. 2025. <span>“AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions.”</span> <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
+</div>
+<div id="ref-price2024gencast" class="csl-entry" role="listitem">
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson, Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. <span>“GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”</span> <a href="https://arxiv.org/abs/2312.15796">https://arxiv.org/abs/2312.15796</a>.
+</div>
+<div id="ref-song2023ds4sci" class="csl-entry" role="listitem">
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. <span>“DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery Through Sophisticated AI System Technologies.”</span> <a href="https://arxiv.org/abs/2310.04610">https://arxiv.org/abs/2310.04610</a>.
+</div>
+</div>
+</section>
+
+<section id="acknowledgements" class="title-slide slide level1 center">
+<h1>❤️ Acknowledgements</h1>
+<blockquote>
+<p>This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.</p>
+</blockquote>
+</section>
+
+<section>
+<section id="extras" class="title-slide slide level1 center">
+<h1>Extras</h1>
+
+</section>
+<section id="timeline" class="slide level2 center">
+<h2>Timeline</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg aria-roledescription="timeline" role="graphics-document document" viewbox="0 -61 1190 577.6000366210938" style="; display: block; margin: auto auto auto auto" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .edge{stroke-width:3;}#mermaid-figure-1 .section--1 rect,#mermaid-figure-1 .section--1 path,#mermaid-figure-1 .section--1 circle,#mermaid-figure-1 .section--1 path{fill:hsl(240, 100%, 76.2745098039%);}#mermaid-figure-1 .section--1 text{fill:#ffffff;}#mermaid-figure-1 .node-icon--1{font-size:40px;color:#ffffff;}#mermaid-figure-1 .section-edge--1{stroke:hsl(240, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth--1{stroke-width:17;}#mermaid-figure-1 .section--1 line{stroke:hsl(60, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:#ffffff;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-0 rect,#mermaid-figure-1 .section-0 path,#mermaid-figure-1 .section-0 circle,#mermaid-figure-1 .section-0 path{fill:hsl(60, 100%, 73.5294117647%);}#mermaid-figure-1 .section-0 text{fill:black;}#mermaid-figure-1 .node-icon-0{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-0{stroke:hsl(60, 100%, 73.5294117647%);}#mermaid-figure-1 .edge-depth-0{stroke-width:14;}#mermaid-figure-1 .section-0 line{stroke:hsl(240, 100%, 83.5294117647%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-1 rect,#mermaid-figure-1 .section-1 path,#mermaid-figure-1 .section-1 circle,#mermaid-figure-1 .section-1 path{fill:hsl(80, 100%, 76.2745098039%);}#mermaid-figure-1 .section-1 text{fill:black;}#mermaid-figure-1 .node-icon-1{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-1{stroke:hsl(80, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-1{stroke-width:11;}#mermaid-figure-1 .section-1 line{stroke:hsl(260, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-2 rect,#mermaid-figure-1 .section-2 path,#mermaid-figure-1 .section-2 circle,#mermaid-figure-1 .section-2 path{fill:hsl(270, 100%, 76.2745098039%);}#mermaid-figure-1 .section-2 text{fill:#ffffff;}#mermaid-figure-1 .node-icon-2{font-size:40px;color:#ffffff;}#mermaid-figure-1 .section-edge-2{stroke:hsl(270, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-2{stroke-width:8;}#mermaid-figure-1 .section-2 line{stroke:hsl(90, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:#ffffff;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-3 rect,#mermaid-figure-1 .section-3 path,#mermaid-figure-1 .section-3 circle,#mermaid-figure-1 .section-3 path{fill:hsl(300, 100%, 76.2745098039%);}#mermaid-figure-1 .section-3 text{fill:black;}#mermaid-figure-1 .node-icon-3{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-3{stroke:hsl(300, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-3{stroke-width:5;}#mermaid-figure-1 .section-3 line{stroke:hsl(120, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-4 rect,#mermaid-figure-1 .section-4 path,#mermaid-figure-1 .section-4 circle,#mermaid-figure-1 .section-4 path{fill:hsl(330, 100%, 76.2745098039%);}#mermaid-figure-1 .section-4 text{fill:black;}#mermaid-figure-1 .node-icon-4{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-4{stroke:hsl(330, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-4{stroke-width:2;}#mermaid-figure-1 .section-4 line{stroke:hsl(150, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-5 rect,#mermaid-figure-1 .section-5 path,#mermaid-figure-1 .section-5 circle,#mermaid-figure-1 .section-5 path{fill:hsl(0, 100%, 76.2745098039%);}#mermaid-figure-1 .section-5 text{fill:black;}#mermaid-figure-1 .node-icon-5{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-5{stroke:hsl(0, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-5{stroke-width:-1;}#mermaid-figure-1 .section-5 line{stroke:hsl(180, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-6 rect,#mermaid-figure-1 .section-6 path,#mermaid-figure-1 .section-6 circle,#mermaid-figure-1 .section-6 path{fill:hsl(30, 100%, 76.2745098039%);}#mermaid-figure-1 .section-6 text{fill:black;}#mermaid-figure-1 .node-icon-6{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-6{stroke:hsl(30, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-6{stroke-width:-4;}#mermaid-figure-1 .section-6 line{stroke:hsl(210, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-7 rect,#mermaid-figure-1 .section-7 path,#mermaid-figure-1 .section-7 circle,#mermaid-figure-1 .section-7 path{fill:hsl(90, 100%, 76.2745098039%);}#mermaid-figure-1 .section-7 text{fill:black;}#mermaid-figure-1 .node-icon-7{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-7{stroke:hsl(90, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-7{stroke-width:-7;}#mermaid-figure-1 .section-7 line{stroke:hsl(270, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-8 rect,#mermaid-figure-1 .section-8 path,#mermaid-figure-1 .section-8 circle,#mermaid-figure-1 .section-8 path{fill:hsl(150, 100%, 76.2745098039%);}#mermaid-figure-1 .section-8 text{fill:black;}#mermaid-figure-1 .node-icon-8{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-8{stroke:hsl(150, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-8{stroke-width:-10;}#mermaid-figure-1 .section-8 line{stroke:hsl(330, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-9 rect,#mermaid-figure-1 .section-9 path,#mermaid-figure-1 .section-9 circle,#mermaid-figure-1 .section-9 path{fill:hsl(180, 100%, 76.2745098039%);}#mermaid-figure-1 .section-9 text{fill:black;}#mermaid-figure-1 .node-icon-9{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-9{stroke:hsl(180, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-9{stroke-width:-13;}#mermaid-figure-1 .section-9 line{stroke:hsl(0, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-10 rect,#mermaid-figure-1 .section-10 path,#mermaid-figure-1 .section-10 circle,#mermaid-figure-1 .section-10 path{fill:hsl(210, 100%, 76.2745098039%);}#mermaid-figure-1 .section-10 text{fill:black;}#mermaid-figure-1 .node-icon-10{font-size:40px;color:black;}#mermaid-figure-1 .section-edge-10{stroke:hsl(210, 100%, 76.2745098039%);}#mermaid-figure-1 .edge-depth-10{stroke-width:-16;}#mermaid-figure-1 .section-10 line{stroke:hsl(30, 100%, 86.2745098039%);stroke-width:3;}#mermaid-figure-1 .lineWrapper line{stroke:black;}#mermaid-figure-1 .disabled,#mermaid-figure-1 .disabled circle,#mermaid-figure-1 .disabled text{fill:lightgray;}#mermaid-figure-1 .disabled text{fill:#efefef;}#mermaid-figure-1 .section-root rect,#mermaid-figure-1 .section-root path,#mermaid-figure-1 .section-root circle{fill:hsl(240, 100%, 46.2745098039%);}#mermaid-figure-1 .section-root text{fill:#ffffff;}#mermaid-figure-1 .icon-container{height:100%;display:flex;justify-content:center;align-items:center;}#mermaid-figure-1 .edge{fill:none;}#mermaid-figure-1 .eventWrapper{filter:brightness(120%);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g></g><g></g><defs><marker orient="auto" markerheight="4" markerwidth="6" refy="2" refx="5" id="mermaid-figure-1-arrowhead"><path d="M 0,0 V 4 L6,2 Z"></path></marker></defs><g transform="translate(100, 50)" class="taskWrapper"><g class="timeline-node section--1"><g><path d="M0 62.8 v-57.8 q0,-5 5,-5 h180 q5,0 5,5 v62.8 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="67.8" x2="190" y1="67.8" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">2015</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="2" y2="466.5999984741211" x2="195" y1="117.8" x1="195"></line></g><g transform="translate(100, 250)" class="eventWrapper"><g class="timeline-node section--1"><g><path d="M0 45 v-40 q0,-5 5,-5 h180 q5,0 5,5 v45 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="50" x2="190" y1="50" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">UIUC</tspan></text></g></g></g><g transform="translate(100, 310)" class="eventWrapper"><g class="timeline-node section--1"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">B.S. in Engineering</tspan><tspan dy="1.1em" x="0">Physics</tspan></text></g></g></g><g transform="translate(100, 385.3999984741211)" class="eventWrapper"><g class="timeline-node section--1"><g><path d="M0 45 v-40 q0,-5 5,-5 h180 q5,0 5,5 v45 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="50" x2="190" y1="50" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Applied Mathematics</tspan></text></g></g></g><g transform="translate(300, 50)" class="taskWrapper"><g class="timeline-node section-0"><g><path d="M0 62.8 v-57.8 q0,-5 5,-5 h180 q5,0 5,5 v62.8 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="67.8" x2="190" y1="67.8" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">2018</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="2" y2="466.5999984741211" x2="395" y1="117.8" x1="395"></line></g><g transform="translate(300, 250)" class="eventWrapper"><g class="timeline-node section-0"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Received SCGSR</tspan><tspan dy="1.1em" x="0">Fellowship</tspan></text></g></g></g><g transform="translate(300, 325.3999984741211)" class="eventWrapper"><g class="timeline-node section-0"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Allowed me to finish</tspan><tspan dy="1.1em" x="0">my PhD at ANL</tspan></text></g></g></g><g transform="translate(500, 50)" class="taskWrapper"><g class="timeline-node section-1"><g><path d="M0 62.8 v-57.8 q0,-5 5,-5 h180 q5,0 5,5 v62.8 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="67.8" x2="190" y1="67.8" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">2019</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="2" y2="466.5999984741211" x2="595" y1="117.8" x1="595"></line></g><g transform="translate(500, 250)" class="eventWrapper"><g class="timeline-node section-1"><g><path d="M0 45 v-40 q0,-5 5,-5 h180 q5,0 5,5 v45 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="50" x2="190" y1="50" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">University of Iowa</tspan></text></g></g></g><g transform="translate(500, 310)" class="eventWrapper"><g class="timeline-node section-1"><g><path d="M0 45 v-40 q0,-5 5,-5 h180 q5,0 5,5 v45 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="50" x2="190" y1="50" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Ph.D.&nbsp;in Physics</tspan></text></g></g></g><g transform="translate(700, 50)" class="taskWrapper"><g class="timeline-node section-2"><g><path d="M0 62.8 v-57.8 q0,-5 5,-5 h180 q5,0 5,5 v62.8 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="67.8" x2="190" y1="67.8" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">2022</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="2" y2="466.5999984741211" x2="795" y1="117.8" x1="795"></line></g><g transform="translate(700, 250)" class="eventWrapper"><g class="timeline-node section-2"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Argonne Leadership</tspan><tspan dy="1.1em" x="0">Computing Facility</tspan></text></g></g></g><g transform="translate(700, 325.3999984741211)" class="eventWrapper"><g class="timeline-node section-2"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Postdoctoral</tspan><tspan dy="1.1em" x="0">Researcher</tspan></text></g></g></g><g transform="translate(900, 50)" class="taskWrapper"><g class="timeline-node section-3"><g><path d="M0 62.8 v-57.8 q0,-5 5,-5 h180 q5,0 5,5 v62.8 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="67.8" x2="190" y1="67.8" x1="0" class="node-line-3"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Present</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="2" y2="466.5999984741211" x2="995" y1="117.8" x1="995"></line></g><g transform="translate(900, 250)" class="eventWrapper"><g class="timeline-node section-3"><g><path d="M0 60.39999847412109 v-55.39999847412109 q0,-5 5,-5 h180 q5,0 5,5 v60.39999847412109 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.39999847412109" x2="190" y1="65.39999847412109" x1="0" class="node-line-3"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Argonne National</tspan><tspan dy="1.1em" x="0">Laboratory</tspan></text></g></g></g><g transform="translate(900, 325.3999984741211)" class="eventWrapper"><g class="timeline-node section-3"><g><path d="M0 77.99999694824218 v-72.99999694824218 q0,-5 5,-5 h180 q5,0 5,5 v77.99999694824218 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="82.99999694824218" x2="190" y1="82.99999694824218" x1="0" class="node-line-3"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Computational</tspan><tspan dy="1.1em" x="0">Scientist (HPC &amp;</tspan><tspan dy="1.1em" x="0">Large-Scale AI)</tspan></text></g></g></g><text y="20" font-weight="bold" font-size="4ex" x="445">How I got Here</text><g class="lineWrapper"><line marker-end="url(#mermaid-figure-1-arrowhead)" stroke="black" stroke-width="4" y2="167.8" x2="1140" y1="167.8" x1="50"></line></g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+
+
+</section></section>
+
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../../../assets/anl-black.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://samforeman.me/talks/2025/10/24/slides">samforeman.me/talks/2025/10/24/slides</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/reveal-text-resizer/revealjs-text-resizer.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': true,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: false,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, RevealTextResizer, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/samforeman\.me");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>

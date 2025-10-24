@@ -732,7 +732,7 @@ Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_202
 
 <div class="flex-container" style="justify-content: space-around;">
 
-<div class="column" style="width: 50%">
+<div class="column" style="width: 50%;">
 
 <div class="blue-card">
 
@@ -750,7 +750,7 @@ texts, data}
 
 </div>
 
-<div class="column" style="text-align: center;">
+<div class="column" style="text-align: center; width: 50%;">
 
 <div id="fig-awesome-llm">
 
