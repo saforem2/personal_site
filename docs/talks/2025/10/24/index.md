@@ -530,6 +530,8 @@ show stability through 7T tokens.
 
 ### ✨ Features
 
+[argonne-lcf/Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+
 - 🕸️ **Parallelism**:
   - {data, tensor, pipeline, sequence, …}
 - ♻️ **Checkpoint Converters**:
