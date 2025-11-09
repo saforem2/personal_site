@@ -43,7 +43,7 @@ style="justify-content: center; loading='lazy';">
 
 <div class="flex-container">
 
-<div class="column" style="width:auto;">
+<div class="column" style="width:50%;">
 
 - [Computational Scientist][Argonne National Laboratory] @ [Argonne
   National Laboratory][1]
@@ -54,13 +54,13 @@ style="justify-content: center; loading='lazy';">
 
 </div>
 
-<div class="column" style="width: auto;">
+<div class="column" style="width: 50%;">
 
 > [!TIP]
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:45:35</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:26:31</span>
 > </pre>
 
 > [!TIP]
@@ -71,7 +71,7 @@ style="justify-content: center; loading='lazy';">
 > >
 > > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
 > >
-> > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=1CD7607Fnone&interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:100%;"/></a>
+> > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=1CD7607Fnone&interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:auto%;"/></a>
 >
 > > [!TIP]
 > >
