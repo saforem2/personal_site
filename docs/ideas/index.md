@@ -1,0 +1,2 @@
+# 💡 Ideas
+Sam Foreman

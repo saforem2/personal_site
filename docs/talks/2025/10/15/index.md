@@ -900,7 +900,7 @@ Figure 15: Time spent preparing 2T tokens
 - <span class="highlight-green">Finalist</span>: SC’24 [ACM Gordon Bell
   Prize](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
   - [MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein
-    Design Workﬂows with Direct Preference
+    Design Workflows with Direct Preference
     Optimization](https://www.researchgate.net/profile/Carla-Mann-3/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization/links/67a0f736645ef274a46243f1/MProt-DPO-Breaking-the-ExaFLOPS-Barrier-for-Multimodal-Protein-Design-Workflows-with-Direct-Preference-Optimization.pdf)
     1)  
 - One of the first protein design toolkits that integrates:

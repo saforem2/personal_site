@@ -1,5 +1,5 @@
 Sam Foreman
-2025-10-24
+2025-11-09
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -10,7 +10,7 @@ Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
 <div class="flex-container"
-style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; gap: 5pt; background-color: var(--link-bg-color);font-size:1.5rem;">
+style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; gap: 5pt; font-size:1.5rem;">
 
 <a style="color: #838383;" href="https://samforeman.me"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
 
@@ -41,10 +41,9 @@ style="justify-content: center; loading='lazy';">
 
 ### 🧑🏻‍💻 About
 
-<div class="columns"
-style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div class="flex-container">
 
-<div class="column" style="width=60%; margin-block-start: 1pt;">
+<div class="column" style="width:auto;">
 
 - [Computational Scientist][Argonne National Laboratory] @ [Argonne
   National Laboratory][1]
@@ -55,13 +54,13 @@ style="display: flex; justify-content: space-between; align-items: flex-start;">
 
 </div>
 
-<div class="column" style="width=35%; margin-block-start: 1pt;">
+<div class="column" style="width: auto;">
 
 > [!TIP]
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">10</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">23</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:48:05</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:45:35</span>
 > </pre>
 
 > [!TIP]
