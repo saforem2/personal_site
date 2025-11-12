@@ -1,36 +1,66 @@
 Sam Foreman
-2025-11-09
+2025-11-11
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avatar-100x100.webp" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avi-medium.jpeg" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
 <div class="flex-container"
-style="display: flex; flex-direction: row; align-items: center; text-align: center!important; justify-content: center; gap: 5pt; font-size:1.5rem;">
+style="font-size: 1.5rem; justify-content: center; gap: 0.5rem; flex-direction: row;">
 
-<a style="color: #838383;" href="https://samforeman.me"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
+<p>
 
-<a style="color: #838383;" href="https://github.com/saforem2" ><iconify-icon loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a>
+<a style="color: #838383;" href="https://samforeman.me/" data-original-href="https://samforeman.me/"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a>
+</p>
 
-<a style="color: #838383;" href="https://twitter.com/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
+<p>
 
-<a style="color: #838383;" href="https://bsky.app/profile/samforeman.bsky.social"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
+<a style="color: #838383;" href="https://github.com/saforem2" data-original-href="https://github.com/saforem2" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a>
+</p>
 
-<a style="color: #838383;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
+<p>
 
-<a style="color: #838383;" href="mailto:foremans@anl.gov"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a>
+<a style="color: #838383;" href="https://twitter.com/saforem2" data-original-href="https://twitter.com/saforem2" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a>
+</p>
 
-<a style="color: #838383;" href="https://outlook.office.com/"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Schedule Time" title="Email"></iconify-icon></a>
+<p>
 
-<a style="color: #838383;" href="https://linkedin.com/in/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a>
+<a style="color: #838383;" href="https://bsky.app/profile/samforeman.bsky.social" data-original-href="https://bsky.app/profile/samforeman.bsky.social" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a>
+</p>
 
-<a style="color: #838383;" href="https://open.spotify.com/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a>
+<p>
 
-<a style="color: #838383;" href="https://www.last.fm/user/saforem2"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a>
+<a style="color: #838383;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&amp;hl=en" data-original-href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&amp;hl=en" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a>
+</p>
+
+<p>
+
+<a style="color: #838383;" href="mailto:foremans@anl.gov" data-original-href="mailto:foremans@anl.gov"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a>
+</p>
+
+<p>
+
+<a style="color: #838383;" href="https://outlook.office.com/" data-original-href="https://outlook.office.com/" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Schedule Time" title="Email"></iconify-icon></a>
+</p>
+
+<p>
+
+<a style="color: #838383;" href="https://linkedin.com/in/saforem2" data-original-href="https://linkedin.com/in/saforem2" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a>
+</p>
+
+<p>
+
+<a style="color: #838383;" href="https://open.spotify.com/user/saforem2" data-original-href="https://open.spotify.com/user/saforem2" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a>
+</p>
+
+<p>
+
+<a style="color: #838383;" href="https://www.last.fm/user/saforem2" data-original-href="https://www.last.fm/user/saforem2" target="_blank" rel="noopener"><iconify-icon loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a>
+</p>
 
 </div>
 
@@ -41,16 +71,21 @@ style="justify-content: center; loading='lazy';">
 
 ### 🧑🏻‍💻 About
 
-<div class="flex-container">
+<div class="flex-container" style="gap: 5pt;">
 
 <div class="column" style="width:50%;">
 
-- [Computational Scientist][Argonne National Laboratory] @ [Argonne
-  National Laboratory][1]
-  - [AI Group] @ [Leadership Computing Facility (ALCF)]
-  - Working on:
-    - 🧪 {AI, HPC} for [science]
-    - 🚀 [training large models] on [supercomputers]
+I’m a [Computational Scientist][Argonne National Laboratory] in the
+[AI/ML group] at the [Leadership Computing Facility (ALCF)] at Argonne
+National Laboratory (ANL).
+
+I’m generally interested in training large models for scientific
+applications on supercomputers and co-lead the Models / Pre-Training
+group of the [AuroraGPT] project.
+
+I received my PhD in Physics from the University of Iowa in 2019 for my
+work on using ML to accelerate MCMC simulations in Lattice Quantum
+Chromodynamics ([`l2hmc-qcd`]).
 
 </div>
 
@@ -58,9 +93,17 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
+> ### ✨ New!
+>
+> 🌎 <span class="highlight-green">AERIS</span>: [Argonne Earth Systems
+> Model for Reliable and Skillful Predictions][^1] (Hatanpää et al.
+> (2025))
+
+> [!TIP]
+>
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">09</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:26:31</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:11:12</span>
 > </pre>
 
 > [!TIP]
@@ -69,9 +112,9 @@ style="justify-content: center; loading='lazy';">
 >
 > > [!TIP]
 > >
-> > ### <span style="color:#1CD760;"><img src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
+> > ### <span style="color:#1CD760;"><img loading="lazy" src="./assets/spotify-green.svg" class="inline-icon img-fluid" height="24" width="24" style="height:1.25rem; width: auto; vertical-align:text-top;" alt="spotify" /> Now Playing</span>
 > >
-> > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=1CD7607Fnone&interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:auto%;"/></a>
+> > <a href="https://open.spotify.com/user/saforem2" target="_blank"><img src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&theme=novatorem&show_offline=false&background_color=1CD7607Fnone&interchange=true" alt="Now Playing" style="background-color:rgba(0,0,0,0.025); width:auto; max-width: 100%;"/></a>
 >
 > > [!TIP]
 > >
@@ -162,7 +205,7 @@ style="justify-content: center; loading='lazy';">
 >
 >   </summary>
 >
->   As a member of the [AI / ML Group][AI Group] at
+>   As a member of the [AI / ML Group][AI/ML group] at
 >   [ALCF][Leadership Computing Facility (ALCF)], I work on:
 >
 >   <div class="flex-container">
@@ -171,7 +214,7 @@ style="justify-content: center; loading='lazy';">
 >
 >   - 🤖 🧪 [AI + Science]
 >
->   - 🎲 [Building better sampling methods for Lattice QCD]
+>   - 🎲 [Building better sampling methods for Lattice QCD][`l2hmc-qcd`]
 >
 >   - 🧬 [Genome-Scale Language Models]
 >
@@ -248,8 +291,9 @@ style="justify-content: center; loading='lazy';">
 > publications on my [Google Scholar]</span>
 
 1.  🌎 [<span class="highlight-green">**AERIS**</span>: **Argonne Earth
-    Systems Model for Reliable and Skillful Predictions**] (Hatanpää et
-    al. (2025))
+    Systems Model for Reliable and Skillful
+    Predictions**][Argonne Earth Systems Model for Reliable and Skillful Predictions]
+    (Hatanpää et al. (2025))
     - ✨ [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]
 2.  Aurora: Architecting Argonne’s First Exascale Supercomputer for
     Accelerated Scientific Discovery (Allen et al. (2025))
@@ -304,7 +348,225 @@ style="justify-content: center; loading='lazy';">
 24. [Superconductivity of In and Sn Samples] (Deamont and Foreman
     (2014))
 
-### 🦜 Talks
+> [!NOTE]
+>
+> ### 📓 References
+>
+> <div id="refs" class="references csl-bib-body hanging-indent"
+> entry-spacing="0">
+>
+> <div id="ref-allen2025aurora" class="csl-entry">
+>
+> Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas
+> Applencourt, Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin,
+> et al. 2025. “Aurora: Architecting Argonne’s First Exascale
+> Supercomputer for Accelerated Scientific Discovery.”
+> <https://arxiv.org/abs/2509.08207>.
+>
+> </div>
+>
+> <div id="ref-boyda2022applications" class="csl-entry">
+>
+> Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
+> Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
+> Learning to Lattice Quantum Field Theory.” *arXiv Preprint
+> arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
+>
+> </div>
+>
+> <div id="ref-cheng2024thorough" class="csl-entry">
+>
+> Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
+> Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
+> 2024. “Thorough Characterization and Analysis of Large Transformer
+> Model Training at-Scale.” *Proc. ACM Meas. Anal. Comput. Syst.* 8 (1).
+> <https://doi.org/10.1145/3639034>.
+>
+> </div>
+>
+> <div id="ref-deamont2014superconductivity" class="csl-entry">
+>
+> Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and
+> Sn Samples.”
+>
+> </div>
+>
+> <div id="ref-mprot-dpo2024" class="csl-entry">
+>
+> Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
+> Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+> Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
+> with Direct Preference Optimization.” In *Proceedings of the
+> International Conference for High Performance Computing, Networking,
+> Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+> <https://doi.org/10.1109/SC41406.2024.00013>.
+>
+> </div>
+>
+> <div id="ref-dharuman2023protein" class="csl-entry">
+>
+> Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan
+> Gokdemir, Sam Foreman, Murali Emani, et al. 2023. “Protein Generation
+> via Genome-Scale Language Models with Bio-Physical Scoring.” In
+> *Proceedings of the SC’23 Workshops of the International Conference on
+> High Performance Computing, Network, Storage, and Analysis*, 95–101.
+>
+> </div>
+>
+> <div id="ref-emani2023comprehensive" class="csl-entry">
+>
+> Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
+> Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and
+> Michael E Papka. 2023. “A Comprehensive Performance Study of Large
+> Language Models on Novel AI Accelerators.” *arXiv Preprint
+> arXiv:2310.04607*. <https://arxiv.org/abs/2310.04607>.
+>
+> </div>
+>
+> <div id="ref-foreman2023climrr" class="csl-entry">
+>
+> Foreman, Sam. 2023. “Energy Justice Analysis of Climate Data with
+> ClimRR.” August 7, 2023.
+> <https://saforem2.github.io/climate-analysis>.
+>
+> </div>
+>
+> <div id="ref-foreman2018rg" class="csl-entry">
+>
+> Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “<span class="nocase">RG-inspired machine learning for lattice
+> field theory</span>.” In *European Physical Journal Web of
+> Conferences*, 175:11025. European Physical Journal Web of Conferences.
+> <https://doi.org/10.1051/epjconf/201817511025>.
+>
+> </div>
+>
+> <div id="ref-foreman2021hmc" class="csl-entry">
+>
+> Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C
+> Osborn, and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv
+> Preprint arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
+>
+> </div>
+>
+> <div id="ref-foreman2021deep" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and Osborn James C. 2021. “Deep Learning
+> Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
+>
+> </div>
+>
+> <div id="ref-foreman2020machine" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine
+> Learning and Neural Networks for Field Theory.”
+>
+> </div>
+>
+> <div id="ref-foreman2023mlmc" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2023. “MLMC: Machine
+> Learning Monte Carlo for Lattice Gauge Theory.”
+> <https://arxiv.org/abs/2312.08936>.
+>
+> </div>
+>
+> <div id="ref-foreman2018examples" class="csl-entry">
+>
+> Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “Examples of Renormalization Group Transformations for Image
+> Sets.” *Physical Review E* 98 (5): 052129.
+>
+> </div>
+>
+> <div id="ref-gokdemir2025hiperrag" class="csl-entry">
+>
+> Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
+> Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
+> High-Performance Retrieval Augmented Generation for Scientific
+> Insights.” <https://arxiv.org/abs/2505.04846>.
+>
+> </div>
+>
+> <div id="ref-stock2025aeris" class="csl-entry">
+>
+> Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
+> Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
+> Systems Model for Reliable and Skillful Predictions.”
+> <https://arxiv.org/abs/2509.13523>.
+>
+> </div>
+>
+> <div id="ref-hubler2018large" class="csl-entry">
+>
+> Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
+> Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.”
+> *Journal of Applied Physics* 123 (10).
+>
+> </div>
+>
+> <div id="ref-kronfeld2022lattice" class="csl-entry">
+>
+> Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H
+> Christ, Carleton DeTar, William Detmold, Robert Edwards, et al. 2022.
+> “Lattice QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
+> <https://arxiv.org/abs/2207.07641>.
+>
+> </div>
+>
+> <div id="ref-leung2024intro" class="csl-entry">
+>
+> Leung, Mary Ann, Katharine Cahill, Rebecca Hartman-Baker, Paige
+> Kinsley, Lois Curfman McInnes, Suzanne Parete-Koon, Sreeranjani
+> Ramprakash, et al. 2024. “Intro to HPC Bootcamp: Engaging New
+> Communities Through Energy Justice Projects.” *Journal of
+> Computational Science Education* 15 (1).
+> <https://doi.org/10.22369/issn.2153-4136/15/1/10>.
+>
+> </div>
+>
+> <div id="ref-song2023deepspeed4science" class="csl-entry">
+>
+> Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
+> Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023.
+> “DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+> Discovery Through Sophisticated AI System Technologies.” *arXiv
+> Preprint arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
+>
+> </div>
+>
+> <div id="ref-torsiello2025automated" class="csl-entry">
+>
+> Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
+> 2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+> Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
+> U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
+> States). <https://doi.org/10.22323/1.466.0052>.
+>
+> </div>
+>
+> <div id="ref-yan2025mofa" class="csl-entry">
+>
+> Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
+> Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
+> Discovering Materials for Carbon Capture with a GenAI- and
+> Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
+>
+> </div>
+>
+> <div id="ref-zvyagin2023genslms" class="csl-entry">
+>
+> Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
+> Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
+> Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
+> *The International Journal of High Performance Computing Applications*
+> 37 (6): 683–705.
+>
+> </div>
+>
+> </div>
+
+### 💬 Talks
 
 > [!TIP]
 >
@@ -336,7 +598,7 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers][2] @ Georgia Institute of Technology \[10/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][1] @ Georgia Institute of Technology \[10/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -360,7 +622,7 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers][3] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][2] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -384,7 +646,7 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][4] \[09/2025\]</span>
+> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][3] \[09/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -424,7 +686,7 @@ style="justify-content: center; loading='lazy';">
 >
 > ### <span class="dim-text">[LLMs on Aurora: 🍋 ezpz] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
 >
-> - [🎥 video][5]
+> - [🎥 video][4]
 >
 > <div class="reveal-full-page">
 >
@@ -452,7 +714,7 @@ style="justify-content: center; loading='lazy';">
 >
 > ### <span class="dim-text">[Parallel Training Methods] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
 >
-> - [🎥 video][6]
+> - [🎥 video][5]
 >
 > <div class="reveal-full-page">
 >
@@ -464,9 +726,9 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[AuroraGPT] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
+> ### <span class="dim-text">[AuroraGPT][6] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
 >
-> - [🎥 video][5]
+> - [🎥 video][4]
 >
 > <div class="reveal-full-page">
 >
@@ -718,10 +980,9 @@ style="justify-content: center; loading='lazy';">
 
 > [!TIP]
 >
-> ### <span class="dim-text">[l2hmc-qcd][Building better sampling methods for Lattice QCD] @ MIT Lattice Group Seminar \[2021\]</span>
+> ### <span class="dim-text">[l2hmc-qcd][`l2hmc-qcd`] @ MIT Lattice Group Seminar \[2021\]</span>
 >
-> [l2hmc-qcd][Building better sampling methods for Lattice QCD] at the
-> *MIT Lattice Group Seminar*, 2021
+> [l2hmc-qcd][`l2hmc-qcd`] at the *MIT Lattice Group Seminar*, 2021
 
 > [!TIP]
 >
@@ -755,7 +1016,7 @@ style="justify-content: center; loading='lazy';">
 
 </div>
 
-### 📦 Projects
+### 📂 Projects
 
 > [!TIP]
 >
@@ -896,7 +1157,7 @@ style="justify-content: center; loading='lazy';">
 >
 > </div>
 
-### 🪖 Experience
+### 👔 Experience
 
 ## 🎓 Education
 
@@ -918,7 +1179,7 @@ style="justify-content: center; loading='lazy';">
     - Research lead on scaling large language models (LLMs) and
       generative AI for science on supercomputers (Aurora, Frontier,
       LUMI, Leonardo, …).
-      - Co-lead the Models and Pretraining team of the [AuroraGPT][10]
+      - Co-lead the Models and Pretraining team of the [AuroraGPT]
         project
     - Optimize large-scale training of foundation models and language
       models for scientific applications.
@@ -940,16 +1201,15 @@ style="justify-content: center; loading='lazy';">
     - Applied deep learning to lattice gauge theory and quantum field
       simulations.
     - Developed ML-enhanced Monte Carlo methods for QCD
-      ([l2hmc-qcd][Building better sampling methods for Lattice QCD]).
+      ([l2hmc-qcd][`l2hmc-qcd`]).
     - Engaged in AI-for-Science collaborations with national labs and
       university partners.
 - **Graduate Researcher (DOE SCGSR Fellowship)**
   - *Argonne National Laboratory*, Mathematics and Computer Sciences
     Division (MCS)  
     Lemont, IL \| 2018 – 2019
-    - Development of
-      [l2hmc-qcd][Building better sampling methods for Lattice QCD] in
-      collaboration with ALCF for my PhD Thesis research
+    - Development of [l2hmc-qcd][`l2hmc-qcd`] in collaboration with ALCF
+      for my PhD Thesis research
 
 ## 🏆 Awards and Honors
 
@@ -1002,9 +1262,8 @@ style="justify-content: center; loading='lazy';">
     (HPPSS)], November 2024
   - [SC23 Workshop: High Performance Python for Science at Scale
     (HPPSS)], November 2023
-  - [\[Machine\](2025-09-20_machine.md) Learning and Quantum Computing
-    for Earth Sciences][11] at 17th U. S. National Congress on
-    Computational Mechanics, July 2023
+  - [Machine Learning and Quantum Computing for Earth Sciences] at
+    17th U. S. National Congress on Computational Mechanics, July 2023
 
 ### 🎶 Music
 
@@ -1048,228 +1307,18 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 </div>
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
-
-<div id="ref-allen2025aurora" class="csl-entry">
-
-Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas Applencourt,
-Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin, et al. 2025.
-“Aurora: Architecting Argonne’s First Exascale Supercomputer for
-Accelerated Scientific Discovery.” <https://arxiv.org/abs/2509.08207>.
-
-</div>
-
-<div id="ref-boyda2022applications" class="csl-entry">
-
-Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
-Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
-Learning to Lattice Quantum Field Theory.” *arXiv Preprint
-arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
-
-</div>
-
-<div id="ref-cheng2024thorough" class="csl-entry">
-
-Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
-Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
-2024. “Thorough Characterization and Analysis of Large Transformer Model
-Training at-Scale.” *Proc. ACM Meas. Anal. Comput. Syst.* 8 (1).
-<https://doi.org/10.1145/3639034>.
-
-</div>
-
-<div id="ref-deamont2014superconductivity" class="csl-entry">
-
-Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and Sn
-Samples.”
-
-</div>
-
-<div id="ref-mprot-dpo2024" class="csl-entry">
-
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
-Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
-<https://doi.org/10.1109/SC41406.2024.00013>.
-
-</div>
-
-<div id="ref-dharuman2023protein" class="csl-entry">
-
-Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan Gokdemir,
-Sam Foreman, Murali Emani, et al. 2023. “Protein Generation via
-Genome-Scale Language Models with Bio-Physical Scoring.” In *Proceedings
-of the SC’23 Workshops of the International Conference on High
-Performance Computing, Network, Storage, and Analysis*, 95–101.
-
-</div>
-
-<div id="ref-emani2023comprehensive" class="csl-entry">
-
-Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
-Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and Michael
-E Papka. 2023. “A Comprehensive Performance Study of Large Language
-Models on Novel AI Accelerators.” *arXiv Preprint arXiv:2310.04607*.
-<https://arxiv.org/abs/2310.04607>.
-
-</div>
-
-<div id="ref-foreman2023climrr" class="csl-entry">
-
-Foreman, Sam. 2023. “Energy Justice Analysis of Climate Data with
-ClimRR.” August 7, 2023. <https://saforem2.github.io/climate-analysis>.
-
-</div>
-
-<div id="ref-foreman2018rg" class="csl-entry">
-
-Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
-2018. “<span class="nocase">RG-inspired machine learning for lattice
-field theory</span>.” In *European Physical Journal Web of Conferences*,
-175:11025. European Physical Journal Web of Conferences.
-<https://doi.org/10.1051/epjconf/201817511025>.
-
-</div>
-
-<div id="ref-foreman2021hmc" class="csl-entry">
-
-Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C Osborn,
-and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv Preprint
-arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
-
-</div>
-
-<div id="ref-foreman2021deep" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and Osborn James C. 2021. “Deep Learning
-Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
-
-</div>
-
-<div id="ref-foreman2020machine" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine Learning
-and Neural Networks for Field Theory.”
-
-</div>
-
-<div id="ref-foreman2023mlmc" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2023. “MLMC: Machine
-Learning Monte Carlo for Lattice Gauge Theory.”
-<https://arxiv.org/abs/2312.08936>.
-
-</div>
-
-<div id="ref-foreman2018examples" class="csl-entry">
-
-Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
-2018. “Examples of Renormalization Group Transformations for Image
-Sets.” *Physical Review E* 98 (5): 052129.
-
-</div>
-
-<div id="ref-gokdemir2025hiperrag" class="csl-entry">
-
-Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
-Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
-High-Performance Retrieval Augmented Generation for Scientific
-Insights.” <https://arxiv.org/abs/2505.04846>.
-
-</div>
-
-<div id="ref-stock2025aeris" class="csl-entry">
-
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
-<https://arxiv.org/abs/2509.13523>.
-
-</div>
-
-<div id="ref-hubler2018large" class="csl-entry">
-
-Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
-Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.” *Journal
-of Applied Physics* 123 (10).
-
-</div>
-
-<div id="ref-kronfeld2022lattice" class="csl-entry">
-
-Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H Christ,
-Carleton DeTar, William Detmold, Robert Edwards, et al. 2022. “Lattice
-QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
-<https://arxiv.org/abs/2207.07641>.
-
-</div>
-
-<div id="ref-leung2024intro" class="csl-entry">
-
-Leung, Mary Ann, Katharine Cahill, Rebecca Hartman-Baker, Paige Kinsley,
-Lois Curfman McInnes, Suzanne Parete-Koon, Sreeranjani Ramprakash, et
-al. 2024. “Intro to HPC Bootcamp: Engaging New Communities Through
-Energy Justice Projects.” *Journal of Computational Science Education*
-15 (1). <https://doi.org/10.22369/issn.2153-4136/15/1/10>.
-
-</div>
-
-<div id="ref-song2023deepspeed4science" class="csl-entry">
-
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.” *arXiv Preprint
-arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
-
-</div>
-
-<div id="ref-torsiello2025automated" class="csl-entry">
-
-Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
-2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
-Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
-U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
-States). <https://doi.org/10.22323/1.466.0052>.
-
-</div>
-
-<div id="ref-yan2025mofa" class="csl-entry">
-
-Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
-Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
-Discovering Materials for Carbon Capture with a GenAI- and
-Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
-
-</div>
-
-<div id="ref-zvyagin2023genslms" class="csl-entry">
-
-Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
-Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
-Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
-*The International Journal of High Performance Computing Applications*
-37 (6): 683–705.
-
-</div>
-
-</div>
+[^1]: 🏅 Finalist for the Gordon Bell Prize in Climate Based Modeling at
+    SC25!
 
   [Argonne National Laboratory]: https://alcf.anl.gov/about/people/sam-foreman
   [<span class="orcid-green" style="background: none!important;"></span>]:
     https://orcid.org/0000-0002-9981-0876
-  [1]: https://anl.gov
-  [AI Group]: https://www.alcf.anl.gov/about/people/group/506
+  [AI/ML group]: https://www.alcf.anl.gov/about/people/group/506
   [Leadership Computing Facility (ALCF)]: https://alcf.anl.gov
-  [science]: https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=vV_1zDwAAAAJ
-  [training large models]: https://samforeman.me/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html
-  [supercomputers]: https://www.alcf.anl.gov/aurora
+  [AuroraGPT]: https://auroragpt.anl.gov
+  [`l2hmc-qcd`]: https://github.com/saforem2/l2hmc-qcd
+  [Argonne Earth Systems Model for Reliable and Skillful Predictions]: https://arxiv.org/abs/2509.13523
   [AI + Science]: https://github.com/saforem2/
-  [Building better sampling methods for Lattice QCD]: https://github.com/saforem2/l2hmc-qcd
   [Genome-Scale Language Models]: https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2
   [GenSLM]: https://github.com/ramanathanlab/genslm
   [ACM Gordon Bell Special Prize]: https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022
@@ -1284,8 +1333,6 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
-  [<span class="highlight-green">**AERIS**</span>: **Argonne Earth Systems Model for Reliable and Skillful Predictions**]:
-    https://arxiv.org/abs/2509.13523
   [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]: https://awards.acm.org/bell-climate
   [HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights]:
     https://arxiv.org/abs/2505.04846
@@ -1324,26 +1371,26 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
     https://doi.org/10.1063/1.5009698
   [Superconductivity of In and Sn Samples]: https://doi.org/10.1063/1.4896340
   [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/index.html
-  [2]: ./talks/2025/10/15/index.html
+  [1]: ./talks/2025/10/15/index.html
   [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
   [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
-  [3]: ./talks/2025/09/24/index.html
+  [2]: ./talks/2025/09/24/index.html
   [Scientific AI at Scale: AI for Science]: ./talks/openskai25/ai4science/index.html
   [Open SkAI 2025]: https://www.openskai-conference.org
   [Scientific AI at Scale: Distributed Training]: ./talks/openskai25/training/index.html
-  [4]: https://www.openskai-conference.org/
+  [3]: https://www.openskai-conference.org/
   [Large Scale Training on Diverse Accelerators]: ./talks/AuroraGPT-SIAM25/index.html
   [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
   [LLMs on Aurora: 🌌 AuroraGPT]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
   [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
   [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
   [LLMs on Aurora: 🍋 ezpz]: ./talks/incite-hackathon-2025/ezpz/index.html
-  [5]: https://www.youtube.com/watch?v=15ZK9REQiBo
+  [4]: https://www.youtube.com/watch?v=15ZK9REQiBo
   [AuroraGPT: Foundation Models for Science]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
   [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
   [Parallel Training Methods]: ./talks/ai-for-science-2024/index.html
-  [6]: https://www.youtube.com/watch?v=4ltulBj4oVk
-  [AuroraGPT]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
+  [5]: https://www.youtube.com/watch?v=4ltulBj4oVk
+  [6]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
   [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
   [Machine Learning and Foundation Models at Scale]: ./talks/alcf-hpc-workshop-2024/index.html
   [7]: ./talks/hpc-user-forum/index.html
@@ -1390,7 +1437,6 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
   [*Learning Better Physics: A Machine Learning Approach to Lattice Gauge Theory*]:
     https://www.proquest.com/openview/95d7f7c12da8da8aa5ead3ac0f6ca0e8/1?cbl=18750&diss=y&pq-origsite=gscholar
   [Energy Storage in Quantum Resonators (US Patent \#US9741492B2)]: https://patents.google.com/patent/US9741492B2/en
-  [10]: https://auroragpt.anl.gov
   [**Coordinating Panel for Software and Computing**]: https://imfisk.github.io/CPSC/
   [Argonne team breaks new ground in AI-driven protein design – Argonne @ SC]:
     https://sc.cels.anl.gov/gordon-bell-argonne-team-breaks-new-ground-in-ai-driven-protein-design/
@@ -1401,4 +1447,4 @@ Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
     https://hppss.github.io/SC24/
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC23/
-  [11]: https://17.usnccm.org/702
+  [Machine Learning and Quantum Computing for Earth Sciences]: https://17.usnccm.org/702

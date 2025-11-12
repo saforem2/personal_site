@@ -169,6 +169,224 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
     Samples](https://doi.org/10.1063/1.4896340) (Deamont and Foreman
     (2014))
 
+> [!NOTE]
+>
+> ### 📓 References
+>
+> <div id="refs" class="references csl-bib-body hanging-indent"
+> entry-spacing="0">
+>
+> <div id="ref-allen2025aurora" class="csl-entry">
+>
+> Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas
+> Applencourt, Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin,
+> et al. 2025. “Aurora: Architecting Argonne’s First Exascale
+> Supercomputer for Accelerated Scientific Discovery.”
+> <https://arxiv.org/abs/2509.08207>.
+>
+> </div>
+>
+> <div id="ref-boyda2022applications" class="csl-entry">
+>
+> Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
+> Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
+> Learning to Lattice Quantum Field Theory.” *arXiv Preprint
+> arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
+>
+> </div>
+>
+> <div id="ref-cheng2024thorough" class="csl-entry">
+>
+> Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
+> Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
+> 2024. “Thorough Characterization and Analysis of Large Transformer
+> Model Training at-Scale.” *Proc. ACM Meas. Anal. Comput. Syst.* 8 (1).
+> <https://doi.org/10.1145/3639034>.
+>
+> </div>
+>
+> <div id="ref-deamont2014superconductivity" class="csl-entry">
+>
+> Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and
+> Sn Samples.”
+>
+> </div>
+>
+> <div id="ref-mprot-dpo2024" class="csl-entry">
+>
+> Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
+> Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+> Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
+> with Direct Preference Optimization.” In *Proceedings of the
+> International Conference for High Performance Computing, Networking,
+> Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+> <https://doi.org/10.1109/SC41406.2024.00013>.
+>
+> </div>
+>
+> <div id="ref-dharuman2023protein" class="csl-entry">
+>
+> Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan
+> Gokdemir, Sam Foreman, Murali Emani, et al. 2023. “Protein Generation
+> via Genome-Scale Language Models with Bio-Physical Scoring.” In
+> *Proceedings of the SC’23 Workshops of the International Conference on
+> High Performance Computing, Network, Storage, and Analysis*, 95–101.
+>
+> </div>
+>
+> <div id="ref-emani2023comprehensive" class="csl-entry">
+>
+> Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
+> Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and
+> Michael E Papka. 2023. “A Comprehensive Performance Study of Large
+> Language Models on Novel AI Accelerators.” *arXiv Preprint
+> arXiv:2310.04607*. <https://arxiv.org/abs/2310.04607>.
+>
+> </div>
+>
+> <div id="ref-foreman2023climrr" class="csl-entry">
+>
+> Foreman, Sam. 2023. “Energy Justice Analysis of Climate Data with
+> ClimRR.” August 7, 2023.
+> <https://saforem2.github.io/climate-analysis>.
+>
+> </div>
+>
+> <div id="ref-foreman2018rg" class="csl-entry">
+>
+> Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “<span class="nocase">RG-inspired machine learning for lattice
+> field theory</span>.” In *European Physical Journal Web of
+> Conferences*, 175:11025. European Physical Journal Web of Conferences.
+> <https://doi.org/10.1051/epjconf/201817511025>.
+>
+> </div>
+>
+> <div id="ref-foreman2021hmc" class="csl-entry">
+>
+> Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C
+> Osborn, and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv
+> Preprint arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
+>
+> </div>
+>
+> <div id="ref-foreman2021deep" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and Osborn James C. 2021. “Deep Learning
+> Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
+>
+> </div>
+>
+> <div id="ref-foreman2020machine" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine
+> Learning and Neural Networks for Field Theory.”
+>
+> </div>
+>
+> <div id="ref-foreman2023mlmc" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2023. “MLMC: Machine
+> Learning Monte Carlo for Lattice Gauge Theory.”
+> <https://arxiv.org/abs/2312.08936>.
+>
+> </div>
+>
+> <div id="ref-foreman2018examples" class="csl-entry">
+>
+> Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “Examples of Renormalization Group Transformations for Image
+> Sets.” *Physical Review E* 98 (5): 052129.
+>
+> </div>
+>
+> <div id="ref-gokdemir2025hiperrag" class="csl-entry">
+>
+> Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
+> Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
+> High-Performance Retrieval Augmented Generation for Scientific
+> Insights.” <https://arxiv.org/abs/2505.04846>.
+>
+> </div>
+>
+> <div id="ref-stock2025aeris" class="csl-entry">
+>
+> Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
+> Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
+> Systems Model for Reliable and Skillful Predictions.”
+> <https://arxiv.org/abs/2509.13523>.
+>
+> </div>
+>
+> <div id="ref-hubler2018large" class="csl-entry">
+>
+> Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
+> Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.”
+> *Journal of Applied Physics* 123 (10).
+>
+> </div>
+>
+> <div id="ref-kronfeld2022lattice" class="csl-entry">
+>
+> Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H
+> Christ, Carleton DeTar, William Detmold, Robert Edwards, et al. 2022.
+> “Lattice QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
+> <https://arxiv.org/abs/2207.07641>.
+>
+> </div>
+>
+> <div id="ref-leung2024intro" class="csl-entry">
+>
+> Leung, Mary Ann, Katharine Cahill, Rebecca Hartman-Baker, Paige
+> Kinsley, Lois Curfman McInnes, Suzanne Parete-Koon, Sreeranjani
+> Ramprakash, et al. 2024. “Intro to HPC Bootcamp: Engaging New
+> Communities Through Energy Justice Projects.” *Journal of
+> Computational Science Education* 15 (1).
+> <https://doi.org/10.22369/issn.2153-4136/15/1/10>.
+>
+> </div>
+>
+> <div id="ref-song2023deepspeed4science" class="csl-entry">
+>
+> Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
+> Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023.
+> “DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+> Discovery Through Sophisticated AI System Technologies.” *arXiv
+> Preprint arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
+>
+> </div>
+>
+> <div id="ref-torsiello2025automated" class="csl-entry">
+>
+> Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
+> 2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+> Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
+> U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
+> States). <https://doi.org/10.22323/1.466.0052>.
+>
+> </div>
+>
+> <div id="ref-yan2025mofa" class="csl-entry">
+>
+> Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
+> Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
+> Discovering Materials for Carbon Capture with a GenAI- and
+> Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
+>
+> </div>
+>
+> <div id="ref-zvyagin2023genslms" class="csl-entry">
+>
+> Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
+> Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
+> Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
+> *The International Journal of High Performance Computing Applications*
+> 37 (6): 683–705.
+>
+> </div>
+>
+> </div>
+
 ## 🏆 Awards and Honors
 
 - Nominated to serve on the US [**Coordinating Panel for Software and
@@ -215,7 +433,8 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 
 > [!NOTE]
 >
-> \[You can see all of my talks online at <https://samforeman.me/talks/>
+> <span style="color:#4582ec;">You can see all of my talks online at
+> <https://samforeman.me/talks/></span>
 
 - 2025-:
   - 10: [Training Foundation Models on
@@ -343,219 +562,226 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
     (HPPSS)](https://hppss.github.io/SC24/), November 2024
   - [SC23 Workshop: High Performance Python for Science at Scale
     (HPPSS)](https://hppss.github.io/SC23/), November 2023
-  - [\[Machine\](2025-09-20_machine.md) Learning and Quantum Computing
-    for Earth Sciences](https://17.usnccm.org/702) at 17th U. S.
-    National Congress on Computational Mechanics, July 2023
+  - [Machine Learning and Quantum Computing for Earth
+    Sciences](https://17.usnccm.org/702) at 17th U. S. National Congress
+    on Computational Mechanics, July 2023
 
 ## 📓 References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
-
-<div id="ref-allen2025aurora" class="csl-entry">
-
-Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas Applencourt,
-Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin, et al. 2025.
-“Aurora: Architecting Argonne’s First Exascale Supercomputer for
-Accelerated Scientific Discovery.” <https://arxiv.org/abs/2509.08207>.
-
-</div>
-
-<div id="ref-boyda2022applications" class="csl-entry">
-
-Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
-Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
-Learning to Lattice Quantum Field Theory.” *arXiv Preprint
-arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
-
-</div>
-
-<div id="ref-cheng2024thorough" class="csl-entry">
-
-Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
-Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
-2024. “Thorough Characterization and Analysis of Large Transformer Model
-Training at-Scale.” *Proc. ACM Meas. Anal. Comput. Syst.* 8 (1).
-<https://doi.org/10.1145/3639034>.
-
-</div>
-
-<div id="ref-deamont2014superconductivity" class="csl-entry">
-
-Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and Sn
-Samples.”
-
-</div>
-
-<div id="ref-mprot-dpo2024" class="csl-entry">
-
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
-Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
-<https://doi.org/10.1109/SC41406.2024.00013>.
-
-</div>
-
-<div id="ref-dharuman2023protein" class="csl-entry">
-
-Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan Gokdemir,
-Sam Foreman, Murali Emani, et al. 2023. “Protein Generation via
-Genome-Scale Language Models with Bio-Physical Scoring.” In *Proceedings
-of the SC’23 Workshops of the International Conference on High
-Performance Computing, Network, Storage, and Analysis*, 95–101.
-
-</div>
-
-<div id="ref-emani2023comprehensive" class="csl-entry">
-
-Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
-Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and Michael
-E Papka. 2023. “A Comprehensive Performance Study of Large Language
-Models on Novel AI Accelerators.” *arXiv Preprint arXiv:2310.04607*.
-<https://arxiv.org/abs/2310.04607>.
-
-</div>
-
-<div id="ref-foreman2023climrr" class="csl-entry">
-
-Foreman, Sam. 2023. “Energy Justice Analysis of Climate Data with
-ClimRR.” August 7, 2023. <https://saforem2.github.io/climate-analysis>.
-
-</div>
-
-<div id="ref-foreman2018rg" class="csl-entry">
-
-Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
-2018. “<span class="nocase">RG-inspired machine learning for lattice
-field theory</span>.” In *European Physical Journal Web of Conferences*,
-175:11025. European Physical Journal Web of Conferences.
-<https://doi.org/10.1051/epjconf/201817511025>.
-
-</div>
-
-<div id="ref-foreman2021hmc" class="csl-entry">
-
-Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C Osborn,
-and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv Preprint
-arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
-
-</div>
-
-<div id="ref-foreman2021deep" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and Osborn James C. 2021. “Deep Learning
-Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
-
-</div>
-
-<div id="ref-foreman2020machine" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine Learning
-and Neural Networks for Field Theory.”
-
-</div>
-
-<div id="ref-foreman2023mlmc" class="csl-entry">
-
-Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2023. “MLMC: Machine
-Learning Monte Carlo for Lattice Gauge Theory.”
-<https://arxiv.org/abs/2312.08936>.
-
-</div>
-
-<div id="ref-foreman2018examples" class="csl-entry">
-
-Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
-2018. “Examples of Renormalization Group Transformations for Image
-Sets.” *Physical Review E* 98 (5): 052129.
-
-</div>
-
-<div id="ref-gokdemir2025hiperrag" class="csl-entry">
-
-Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
-Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
-High-Performance Retrieval Augmented Generation for Scientific
-Insights.” <https://arxiv.org/abs/2505.04846>.
-
-</div>
-
-<div id="ref-stock2025aeris" class="csl-entry">
-
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
-<https://arxiv.org/abs/2509.13523>.
-
-</div>
-
-<div id="ref-hubler2018large" class="csl-entry">
-
-Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
-Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.” *Journal
-of Applied Physics* 123 (10).
-
-</div>
-
-<div id="ref-kronfeld2022lattice" class="csl-entry">
-
-Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H Christ,
-Carleton DeTar, William Detmold, Robert Edwards, et al. 2022. “Lattice
-QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
-<https://arxiv.org/abs/2207.07641>.
-
-</div>
-
-<div id="ref-leung2024intro" class="csl-entry">
-
-Leung, Mary Ann, Katharine Cahill, Rebecca Hartman-Baker, Paige Kinsley,
-Lois Curfman McInnes, Suzanne Parete-Koon, Sreeranjani Ramprakash, et
-al. 2024. “Intro to HPC Bootcamp: Engaging New Communities Through
-Energy Justice Projects.” *Journal of Computational Science Education*
-15 (1). <https://doi.org/10.22369/issn.2153-4136/15/1/10>.
-
-</div>
-
-<div id="ref-song2023deepspeed4science" class="csl-entry">
-
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.” *arXiv Preprint
-arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
-
-</div>
-
-<div id="ref-torsiello2025automated" class="csl-entry">
-
-Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
-2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
-Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
-U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
-States). <https://doi.org/10.22323/1.466.0052>.
-
-</div>
-
-<div id="ref-yan2025mofa" class="csl-entry">
-
-Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
-Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
-Discovering Materials for Carbon Capture with a GenAI- and
-Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
-
-</div>
-
-<div id="ref-zvyagin2023genslms" class="csl-entry">
-
-Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
-Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
-Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
-*The International Journal of High Performance Computing Applications*
-37 (6): 683–705.
-
-</div>
-
-</div>
+> [!NOTE]
+>
+> ### 📓 References
+>
+> <div id="refs" class="references csl-bib-body hanging-indent"
+> entry-spacing="0">
+>
+> <div id="ref-allen2025aurora" class="csl-entry">
+>
+> Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas
+> Applencourt, Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin,
+> et al. 2025. “Aurora: Architecting Argonne’s First Exascale
+> Supercomputer for Accelerated Scientific Discovery.”
+> <https://arxiv.org/abs/2509.08207>.
+>
+> </div>
+>
+> <div id="ref-boyda2022applications" class="csl-entry">
+>
+> Boyda, Denis, Salvatore Calı̀, Sam Foreman, Lena Funcke, Daniel C
+> Hackett, Yin Lin, Gert Aarts, et al. 2022. “Applications of Machine
+> Learning to Lattice Quantum Field Theory.” *arXiv Preprint
+> arXiv:2202.05838*. <https://arxiv.org/abs/2202.05838>.
+>
+> </div>
+>
+> <div id="ref-cheng2024thorough" class="csl-entry">
+>
+> Cheng, Scott, Jun-Liang Lin, Murali Emani, Siddhisanket Raskar, Sam
+> Foreman, Zhen Xie, Venkatram Vishwanath, and Mahmut Taylan Kandemir.
+> 2024. “Thorough Characterization and Analysis of Large Transformer
+> Model Training at-Scale.” *Proc. ACM Meas. Anal. Comput. Syst.* 8 (1).
+> <https://doi.org/10.1145/3639034>.
+>
+> </div>
+>
+> <div id="ref-deamont2014superconductivity" class="csl-entry">
+>
+> Deamont, George, and Sam Foreman. 2014. “Superconductivity of in and
+> Sn Samples.”
+>
+> </div>
+>
+> <div id="ref-mprot-dpo2024" class="csl-entry">
+>
+> Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
+> Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+> Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
+> with Direct Preference Optimization.” In *Proceedings of the
+> International Conference for High Performance Computing, Networking,
+> Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+> <https://doi.org/10.1109/SC41406.2024.00013>.
+>
+> </div>
+>
+> <div id="ref-dharuman2023protein" class="csl-entry">
+>
+> Dharuman, Gautham, Logan Ward, Heng Ma, Priyanka V Setty, Ozan
+> Gokdemir, Sam Foreman, Murali Emani, et al. 2023. “Protein Generation
+> via Genome-Scale Language Models with Bio-Physical Scoring.” In
+> *Proceedings of the SC’23 Workshops of the International Conference on
+> High Performance Computing, Network, Storage, and Analysis*, 95–101.
+>
+> </div>
+>
+> <div id="ref-emani2023comprehensive" class="csl-entry">
+>
+> Emani, Murali, Sam Foreman, Varuni Sastry, Zhen Xie, Siddhisanket
+> Raskar, William Arnold, Rajeev Thakur, Venkatram Vishwanath, and
+> Michael E Papka. 2023. “A Comprehensive Performance Study of Large
+> Language Models on Novel AI Accelerators.” *arXiv Preprint
+> arXiv:2310.04607*. <https://arxiv.org/abs/2310.04607>.
+>
+> </div>
+>
+> <div id="ref-foreman2023climrr" class="csl-entry">
+>
+> Foreman, Sam. 2023. “Energy Justice Analysis of Climate Data with
+> ClimRR.” August 7, 2023.
+> <https://saforem2.github.io/climate-analysis>.
+>
+> </div>
+>
+> <div id="ref-foreman2018rg" class="csl-entry">
+>
+> Foreman, Sam, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “<span class="nocase">RG-inspired machine learning for lattice
+> field theory</span>.” In *European Physical Journal Web of
+> Conferences*, 175:11025. European Physical Journal Web of Conferences.
+> <https://doi.org/10.1051/epjconf/201817511025>.
+>
+> </div>
+>
+> <div id="ref-foreman2021hmc" class="csl-entry">
+>
+> Foreman, Sam, Taku Izubuchi, Luchang Jin, Xiao-Yong Jin, James C
+> Osborn, and Akio Tomiya. 2021. “HMC with Normalizing Flows.” *arXiv
+> Preprint arXiv:2112.01586*. <https://arxiv.org/abs/2112.01586>.
+>
+> </div>
+>
+> <div id="ref-foreman2021deep" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and Osborn James C. 2021. “Deep Learning
+> Hamiltonian Monte Carlo.” <https://arxiv.org/abs/2105.03418>.
+>
+> </div>
+>
+> <div id="ref-foreman2020machine" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C Osborn. 2020. “Machine
+> Learning and Neural Networks for Field Theory.”
+>
+> </div>
+>
+> <div id="ref-foreman2023mlmc" class="csl-entry">
+>
+> Foreman, Sam, Xiao-Yong Jin, and James C. Osborn. 2023. “MLMC: Machine
+> Learning Monte Carlo for Lattice Gauge Theory.”
+> <https://arxiv.org/abs/2312.08936>.
+>
+> </div>
+>
+> <div id="ref-foreman2018examples" class="csl-entry">
+>
+> Foreman, Samuel, Joel Giedt, Yannick Meurice, and Judah Unmuth-Yockey.
+> 2018. “Examples of Renormalization Group Transformations for Image
+> Sets.” *Physical Review E* 98 (5): 052129.
+>
+> </div>
+>
+> <div id="ref-gokdemir2025hiperrag" class="csl-entry">
+>
+> Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
+> Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
+> High-Performance Retrieval Augmented Generation for Scientific
+> Insights.” <https://arxiv.org/abs/2505.04846>.
+>
+> </div>
+>
+> <div id="ref-stock2025aeris" class="csl-entry">
+>
+> Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
+> Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
+> Systems Model for Reliable and Skillful Predictions.”
+> <https://arxiv.org/abs/2509.13523>.
+>
+> </div>
+>
+> <div id="ref-hubler2018large" class="csl-entry">
+>
+> Hubler, A, S Foreman, J Liu, and L Wortsmann. 2018. “Large Energy
+> Density in Three-Plate Nanocapacitors Due to Coulomb Blockade.”
+> *Journal of Applied Physics* 123 (10).
+>
+> </div>
+>
+> <div id="ref-kronfeld2022lattice" class="csl-entry">
+>
+> Kronfeld, Andreas S, Tanmoy Bhattacharya, Thomas Blum, Norman H
+> Christ, Carleton DeTar, William Detmold, Robert Edwards, et al. 2022.
+> “Lattice QCD and Particle Physics.” *arXiv Preprint arXiv:2207.07641*.
+> <https://arxiv.org/abs/2207.07641>.
+>
+> </div>
+>
+> <div id="ref-leung2024intro" class="csl-entry">
+>
+> Leung, Mary Ann, Katharine Cahill, Rebecca Hartman-Baker, Paige
+> Kinsley, Lois Curfman McInnes, Suzanne Parete-Koon, Sreeranjani
+> Ramprakash, et al. 2024. “Intro to HPC Bootcamp: Engaging New
+> Communities Through Energy Justice Projects.” *Journal of
+> Computational Science Education* 15 (1).
+> <https://doi.org/10.22369/issn.2153-4136/15/1/10>.
+>
+> </div>
+>
+> <div id="ref-song2023deepspeed4science" class="csl-entry">
+>
+> Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
+> Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023.
+> “DeepSpeed4Science Initiative: Enabling Large-Scale Scientific
+> Discovery Through Sophisticated AI System Technologies.” *arXiv
+> Preprint arXiv:2310.04610*. <https://arxiv.org/abs/2310.04610>.
+>
+> </div>
+>
+> <div id="ref-torsiello2025automated" class="csl-entry">
+>
+> Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
+> 2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+> Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
+> U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
+> States). <https://doi.org/10.22323/1.466.0052>.
+>
+> </div>
+>
+> <div id="ref-yan2025mofa" class="csl-entry">
+>
+> Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
+> Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
+> Discovering Materials for Carbon Capture with a GenAI- and
+> Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
+>
+> </div>
+>
+> <div id="ref-zvyagin2023genslms" class="csl-entry">
+>
+> Zvyagin, Maxim, Alexander Brace, Kyle Hippe, Yuntian Deng, Bin Zhang,
+> Cindy Orozco Bohorquez, Austin Clyde, et al. 2023. “GenSLMs:
+> Genome-Scale Language Models Reveal SARS-CoV-2 Evolutionary Dynamics.”
+> *The International Journal of High Performance Computing Applications*
+> 37 (6): 683–705.
+>
+> </div>
+>
+> </div>
