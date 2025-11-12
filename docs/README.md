@@ -79,9 +79,8 @@ I’m a [Computational Scientist][Argonne National Laboratory] in the
 [AI/ML group] at the [Leadership Computing Facility (ALCF)] at Argonne
 National Laboratory (ANL).
 
-I’m generally interested in training large models for scientific
-applications on supercomputers and co-lead the Models / Pre-Training
-group of the [AuroraGPT] project.
+I’m generally interested in training large models on supercomputers and
+co-lead the Models / Pre-Training group of the [AuroraGPT] project.
 
 I received my PhD in Physics from the University of Iowa in 2019 for my
 work on using ML to accelerate MCMC simulations in Lattice Quantum
@@ -103,7 +102,7 @@ Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:11:12</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:26:52</span>
 > </pre>
 
 > [!TIP]
