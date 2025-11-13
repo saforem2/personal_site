@@ -19,6 +19,20 @@ Sam Foreman
 > See W&B Report: [Cooling Down
 > Checkpoints](https://api.wandb.ai/links/aurora_gpt/dek99dmd) for more
 > details.
+>
+> <div id="fig-wandb">
+>
+> <div style="padding:0.5rem; border: 1px solid var(--dim-text); border-radius: 0.2rem;">
+>
+> <iframe src="https://api.wandb.ai/links/aurora_gpt/dek99dmd" style="border:none;height:1024px;width:100%">
+>
+> </iframe>
+>
+> </div>
+>
+> Figure 1: Weights & Biases Report
+>
+> </div>
 
 ## ☃️ Cooling Down
 
