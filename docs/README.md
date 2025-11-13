@@ -3,7 +3,7 @@ Sam Foreman
 
 <div style="font-size:1.0em; text-align: center;">
 
-<span class="profile-avatar"><img width=75 height=75 src="./assets/avi-medium.jpeg" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
+<span class="profile-avatar"><img width=75 height=75 src="./assets/avi-small" width="100%" aria-label="Sam Foreman" alt="Sam Foreman"></img></span>
 
 <span style="font-size: 1.5rem; color: var(--dim-text)!important; padding-bottom: 0pt;"><span class="dim-text">👋
 Hi, I’m Sam!</span> [<span class="orcid-green"
@@ -102,7 +102,7 @@ Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:36:07</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">20:04:33</span>
 > </pre>
 
 > [!TIP]
