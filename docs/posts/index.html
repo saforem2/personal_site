@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../posts/2025/11/12/index.html" rel="next">
-<link href="../assets/favicon-sf.ico" rel="icon">
+<link href="../assets/favicon-sf.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0ed973bfe27f8b22ae2d16ae1c0c13b5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-41a33faf288b8f1cd159be19d8478a9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-68b8d5832504399a2a3a3f5ea630d257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5e632a7a851895b4dfd37c01aba4f8a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -136,58 +136,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   })
   </script>
-<!-- Add this to your HTML <head> or via _quarto.yml's include-in-header -->
 <script>
-const renderBlockingCSS = [
-  'https://samforeman.me/static/fonts/MIosevkaQp/MIosevkaQp.css',
-  'https://samforeman.me/static/fonts/MIosevkaterm/MIosevkaTerm.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-icons.css',
-  'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/all.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-8cec440e0985b0d75f5ce7a7d4c4512f.min.css',
-  'https://fonts.googleapis.com/css?family=Source+Sans+Pro',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap',
-  'https://samforeman.me/css/profile.css',
-  'https://samforeman.me/css/svgbob.css',
-  'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/size.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-dark-fe8ddee25f818492ba601a5529fa0bd5.min.css',
-  'https://samforeman.me/site_libs/quarto-html/tippy.css',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap',
-  'https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&family=IBM+Plex+Mono&display=swap',
-  'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
-  'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css'
-  // ... list all your render-blocking CSS URLs here ...
-];
+  const renderBlockingCSS = new Set([
+    'https://samforeman.me/static/fonts/MIosevkaQp/MIosevkaQp.css',
+    'https://samforeman.me/static/fonts/MIosevkaterm/MIosevkaTerm.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-icons.css',
+    'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/all.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-8cec440e0985b0d75f5ce7a7d4c4512f.min.css',
+    'https://fonts.googleapis.com/css?family=Source+Sans+Pro',
+    'https://samforeman.me/css/profile.css',
+    'https://samforeman.me/css/svgbob.css',
+    'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/size.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-dark-fe8ddee25f818492ba601a5529fa0bd5.min.css',
+    'https://samforeman.me/site_libs/quarto-html/tippy.css',
+    'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
+    'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css'
+  ]);
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-        if (renderBlockingCSS.includes(link.href)) {
-            // Change rel to preload, then back to stylesheet on load
-            link.rel = 'preload';
-            link.as = 'style';
-            link.onload = function() {
-                this.rel = 'stylesheet';
-            };
-            // Fallback for browsers that don't support preload's onload
-            const noscript = document.createElement('noscript');
-            noscript.innerHTML = `<link rel="stylesheet" href="${link.href}">`;
-            document.head.appendChild(noscript);
-        }
+  // run immediately — NOT after DOMContentLoaded
+  (function() {
+    const links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    links.forEach(link => {
+      const href = link.href;
+
+      if (!renderBlockingCSS.has(href)) return;
+
+      // Convert to preload
+      link.rel = 'preload';
+      link.as = 'style';
+
+      // Restore to stylesheet when ready
+      link.onload = function () {
+        this.rel = 'stylesheet';
+      };
+
+      // Fallback for older browsers that ignore onload
+      const noscript = document.createElement('noscript');
+      noscript.innerHTML = `<link rel="stylesheet" href="${href}">`;
+      link.after(noscript);
     });
-});
+  })();
 </script>
 <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
 <!-- The loading of KaTeX is deferred to speed up page rendering -->
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
 <!-- To automatically render math in text elements, include the auto-render extension: -->
 <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700&amp;family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&amp;family=IBM+Plex+Sans+Condensed&amp;family=IBM+Plex+Mono&amp;display=swap" rel="stylesheet">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TC329HJ');</script>
 <!-- End Google Tag Manager -->
-
 
   <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {

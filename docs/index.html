@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sam Foreman">
-<meta name="dcterms.date" content="2025-11-13">
+<meta name="dcterms.date" content="2025-11-14">
 <meta name="description" content="Sam Foreman’s personal website">
 
 <title>Sam Foreman</title>
@@ -100,8 +100,8 @@ div.csl-indent {
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5914d1efbf07de8bb898b37985b69a5c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ea7093e5bc66e8de06dc5eed166398f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c7d8cabfb491a46094b0848a1323dd7a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-78163e3222c9860da2f6e992de12c17f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -187,48 +187,51 @@ div.csl-indent {
     }
   })
   </script>
+<script>
+  const renderBlockingCSS = new Set([
+    'https://samforeman.me/static/fonts/MIosevkaQp/MIosevkaQp.css',
+    'https://samforeman.me/static/fonts/MIosevkaterm/MIosevkaTerm.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-icons.css',
+    'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/all.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-8cec440e0985b0d75f5ce7a7d4c4512f.min.css',
+    'https://fonts.googleapis.com/css?family=Source+Sans+Pro',
+    'https://samforeman.me/css/profile.css',
+    'https://samforeman.me/css/svgbob.css',
+    'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/size.css',
+    'https://samforeman.me/site_libs/bootstrap/bootstrap-dark-fe8ddee25f818492ba601a5529fa0bd5.min.css',
+    'https://samforeman.me/site_libs/quarto-html/tippy.css',
+    'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
+    'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css'
+  ]);
+
+  // run immediately — NOT after DOMContentLoaded
+  (function() {
+    const links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    links.forEach(link => {
+      const href = link.href;
+
+      if (!renderBlockingCSS.has(href)) return;
+
+      // Convert to preload
+      link.rel = 'preload';
+      link.as = 'style';
+
+      // Restore to stylesheet when ready
+      link.onload = function () {
+        this.rel = 'stylesheet';
+      };
+
+      // Fallback for older browsers that ignore onload
+      const noscript = document.createElement('noscript');
+      noscript.innerHTML = `<link rel="stylesheet" href="${href}">`;
+      link.after(noscript);
+    });
+  })();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<!-- Add this to your HTML <head> or via _quarto.yml's include-in-header -->
-<script>
-const renderBlockingCSS = [
-  'https://samforeman.me/static/fonts/MIosevkaQp/MIosevkaQp.css',
-  'https://samforeman.me/static/fonts/MIosevkaterm/MIosevkaTerm.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-icons.css',
-  'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/all.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-8cec440e0985b0d75f5ce7a7d4c4512f.min.css',
-  'https://fonts.googleapis.com/css?family=Source+Sans+Pro',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap',
-  'https://samforeman.me/css/profile.css',
-  'https://samforeman.me/css/svgbob.css',
-  'https://samforeman.me/site_libs/quarto-contrib/academicons-1.9.4/size.css',
-  'https://samforeman.me/site_libs/bootstrap/bootstrap-dark-fe8ddee25f818492ba601a5529fa0bd5.min.css',
-  'https://samforeman.me/site_libs/quarto-html/tippy.css',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap',
-  'https://fonts.googleapis.com/css?family=IBM+Plex+Sans&family=IBM+Plex+Sans+Condensed&family=IBM+Plex+Mono&display=swap',
-  'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css',
-  'https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css'
-  // ... list all your render-blocking CSS URLs here ...
-];
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-        if (renderBlockingCSS.includes(link.href)) {
-            // Change rel to preload, then back to stylesheet on load
-            link.rel = 'preload';
-            link.as = 'style';
-            link.onload = function() {
-                this.rel = 'stylesheet';
-            };
-            // Fallback for browsers that don't support preload's onload
-            const noscript = document.createElement('noscript');
-            noscript.innerHTML = `<link rel="stylesheet" href="${link.href}">`;
-            document.head.appendChild(noscript);
-        }
-    });
-});
-</script>
 <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
 <!-- The loading of KaTeX is deferred to speed up page rendering -->
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
@@ -300,10 +303,10 @@ window.Quarto = {
 <meta name="twitter:image-width" content="2814">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_author" content="Sam Foreman">
-<meta name="citation_publication_date" content="2025-11-13">
-<meta name="citation_cover_date" content="2025-11-13">
+<meta name="citation_publication_date" content="2025-11-14">
+<meta name="citation_cover_date" content="2025-11-14">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-11-13">
+<meta name="citation_online_date" content="2025-11-14">
 <meta name="citation_fulltext_html_url" content="https://samforeman.me/">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=GenCast: Diffusion-based ensemble forecasting for medium-range weather;,citation_author=Ilan Price;,citation_author=Alvaro Sanchez-Gonzalez;,citation_author=Ferran Alet;,citation_author=Tom R. Andersson;,citation_author=Andrew El-Kadi;,citation_author=Dominic Masters;,citation_author=Timo Ewalds;,citation_author=Jacklynn Stott;,citation_author=Shakir Mohamed;,citation_author=Peter Battaglia;,citation_author=Remi Lam;,citation_author=Matthew Willson;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url=https://arxiv.org/abs/2312.15796;">
@@ -625,7 +628,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 13, 2025</p>
+      <p class="date">November 14, 2025</p>
     </div>
   </div>
   
@@ -718,7 +721,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">13</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">15:14:29</span>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">14</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:15:55</span>
 </pre>
 </div>
 </div>
@@ -2743,12 +2746,12 @@ Lemont, IL | 2018 – 2019
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2025,
   author = {Foreman, Sam},
-  date = {2025-11-13},
+  date = {2025-11-14},
   url = {https://samforeman.me/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Foreman, Sam. 2025. November 13, 2025. <a href="https://samforeman.me/">https://samforeman.me/</a>.
+Foreman, Sam. 2025. November 14, 2025. <a href="https://samforeman.me/">https://samforeman.me/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
