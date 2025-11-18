@@ -1,25 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-
 /*-- scss:defaults --*/
 $right-arrow: "\2192"; // Unicode character for right arrow
-$font-family-monospace: "mIosevka-Term Web" !default;
-$font-family-sans-serif: "mIosevka-QP Web" !default;
-$headings-font-family: $font-family-sans-serif !default;
-$heading-font: "mIosevka-QP Web" !default;
-$monofont: $font-family-monospace !default;
-$font-family-headings: "mIosevka-QP Web" !default;
-$mermaid-font-family: "mIosevka-Term Web" !default;
+$font-family-monospace: "mIosevka-Term Web", monospace !default;
+$font-family-sans-serif: "mIosevka-QP Web", monospace !default;
+$headings-font-family: $font-family-sans-serif, monospace !default;
+$heading-font: "mIosevka-QP Web", monospace !default;
+$monofont: $font-family-monospace, monospace !default;
+$font-family-headings: "mIosevka-QP Web", monospace !default;
+$mermaid-font-family: "mIosevka-Term Web", monospace !default;
 $mermaid-font-size: small !default;
 
-// $font-family-monospace: "Iosevka Web";
-// $font-family-sans-serif: "Iosevka Web";
-// $headings-font-family: $font-family-sans-serif;
-// $heading-font: "Iosevka Web";
-// $monofont: $font-family-monospace;
-// $font-family-headings: "Iosevka Web";
-// $mermaid-font-family: "Iosevka Web";
+// $font-family-monospace: "Iosevka Web", monospace;
+// $font-family-sans-serif: "Iosevka Web", monospace;
+// $headings-font-family: $font-family-sans-serif, monospace;
+// $heading-font: "Iosevka Web", monospace;
+// $monofont: $font-family-monospace, monospace;
+// $font-family-headings: "Iosevka Web", monospace;
+// $mermaid-font-family: "Iosevka Web", monospace;
 
-$presentation-main-font: "IBM Plex Sans", "mIosevka-QP Web" !default;
+$presentation-main-font: "IBM Plex Sans", "mIosevka-QP Web", monospace !default;
 $presentation-heading-font:
   "IBM Plex Sans Condensed", "mIosevka-QP", "IBM Plex Sans", "Iosevka Web",
   monospace !default;
@@ -38,7 +36,7 @@ $presentation-heading-text-shadow: none !default;
 $presentation-heading-text-transform: none !default;
 $presentation-heading-letter-spacing: normal !default;
 
-$black-block-shadow: 2t 2pt black !important;
+$black-box-shadow-hover: 2pt 2pt black !important;
 
 // $myred: #ff5252;
 // $myorange: #fd971f;
@@ -1494,7 +1492,7 @@ div.callout-tip.callout {
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
-    box-shadow: 2pt 2pt rgba(0, 0, 0, 1);
+    box-shadow: $code-block-box-shadow-hover;
     // transition: all 0.2s ease-in-out;
   }
 }
@@ -1505,7 +1503,7 @@ div.callout-note.callout {
   border: 1px solid rgba(0, 0, 0, 0);
   &:hover {
     border: 1px solid $callout-note-color !important;
-    box-shadow: 2pt 2pt rgba(0, 0, 0, 1);
+    box-shadow: $black-box-shadow-hover;
     // transition: all 0.2s ease-in-out;
   }
 }
@@ -1684,7 +1682,7 @@ div.callout-tip.callout,
   &:hover {
     border: 1px solid $callout-tip-color !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
     // box-shadow: 2pt 2pt $link-color-hover!important;
   }
 }
@@ -1697,7 +1695,7 @@ div.callout-note.callout,
   &:hover {
     border: 1px solid $callout-note-color !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
   }
 }
 
@@ -1709,7 +1707,7 @@ div.callout-caution.callout,
   &:hover {
     border: 1px solid $callout-caution-color !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
   }
 }
 
@@ -1721,7 +1719,7 @@ div.callout-important.callout {
   &:hover {
     border: 1px solid $callout-important-color !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
   }
 }
 
@@ -1733,7 +1731,7 @@ div.callout-tip.callout {
   &:hover {
     border: 1px solid $callout-color-tip !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
   }
 }
 
@@ -1744,7 +1742,7 @@ div.callout-tip.callout {
   &:hover {
     border: 1px solid rgba(131, 131, 131, 1) !important;
     // transition: all 1s ease-all;
-    box-shadow: $black-block-shadow !important;
+    box-shadow: $black-box-shadow-hover !important;
   }
 }
 
@@ -2556,9 +2554,9 @@ main {
   font-size: 1.1rem;
 }
 
-.quarto-navbar-tools {
-  margin: auto;
-}
+// .quarto-navbar-tools {
+//   margin: auto;
+// }
 
 // Sidebar GitHub Icon
 
@@ -2575,26 +2573,32 @@ main {
   background-image: none !important;
   content: "🔦";
 }
-.navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(204, 204, 204)"><path d="M227.89 147.89A96 96 0 1 1 108.11 28.11a96.09 96.09 0 0 0 119.78 119.78" opacity=".2"/><path d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.1 103.1 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4"/></g></svg>');
-  height: 1.25rem;
-  width: 1.25rem;
-  background-size: 1.25rem 1.25rem;
-  vertical-align: sub;
-}
+// .navbar .quarto-color-scheme-toggle:not(.alternate) .bi::before {
+//   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(204, 204, 204)"><path d="M227.89 147.89A96 96 0 1 1 108.11 28.11a96.09 96.09 0 0 0 119.78 119.78" opacity=".2"/><path d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.1 103.1 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4"/></g></svg>');
+//   height: 1.5rem;
+//   width: 1.55rem;
+//   background-size: 1.5rem 1.5rem;
+//   // vertical-align: sub;
+// }
 
 .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
   // background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(131,131,131)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>');
   background-image: none !important;
   content: "💡";
 }
-.navbar .quarto-color-scheme-toggle.alternate .bi::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(131,131,131)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>');
-  height: 1.25rem;
-  width: 1.25rem;
-  background-size: 1.25rem 1.25rem;
-  vertical-align: sub;
-}
+
+// .navbar .quarto-color-scheme-toggle.alternate .bi::before {
+//   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(131,131,131)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>');
+//   // background-image:  <symbol viewBox="0 0 256 256" id="ph-lightbulb-duotone"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="currentColor"><path d="M208 104a79.86 79.86 0 0 1-30.59 62.92A24.29 24.29 0 0 0 168 186v6a8 8 0 0 1-8 8H96a8 8 0 0 1-8-8v-6a24.11 24.11 0 0 0-9.3-19A79.87 79.87 0 0 1 48 104.45C47.76 61.09 82.72 25 126.07 24A80 80 0 0 1 208 104" opacity=".2"></path><path d="M176 232a8 8 0 0 1-8 8H88a8 8 0 0 1 0-16h80a8 8 0 0 1 8 8m40-128a87.55 87.55 0 0 1-33.64 69.21A16.24 16.24 0 0 0 176 186v6a16 16 0 0 1-16 16H96a16 16 0 0 1-16-16v-6a16 16 0 0 0-6.23-12.66A87.59 87.59 0 0 1 40 104.49C39.74 56.83 78.26 17.14 125.88 16A88 88 0 0 1 216 104m-16 0a72 72 0 0 0-73.74-72c-39 .92-70.47 33.39-70.26 72.39a71.65 71.65 0 0 0 27.64 56.3A32 32 0 0 1 96 186v6h64v-6a32.15 32.15 0 0 1 12.47-25.35A71.65 71.65 0 0 0 200 104m-16.11-9.34a57.6 57.6 0 0 0-46.56-46.55a8 8 0 0 0-2.66 15.78c16.57 2.79 30.63 16.85 33.44 33.45A8 8 0 0 0 176 104a9 9 0 0 0 1.35-.11a8 8 0 0 0 6.54-9.23"></path></g></symbol>
+//   height: 1.5rem;
+//   width: 1.5rem;
+//   background-size: 1.5rem 1.5rem;
+//   // vertical-align: sub;
+//   &:hover {
+//       backround-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(255,255,1)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>') !important;
+//       background-color: oklch(from #FFFF00 calc(l * 1.15) c h / 0.1);
+//   }
+// }
 
 // Sidebar Toggle Reader Icon
 
@@ -3017,6 +3021,7 @@ body {
 
 .card:hover {
   color: $link-color-hover;
+  box-shadow: $black-box-shadow-hover;
   // transition: color 1s;
 }
 

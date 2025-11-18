@@ -1,5 +1,5 @@
 Sam Foreman
-2025-11-14
+2025-11-17
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -75,16 +75,16 @@ style="justify-content: center; loading='lazy';">
 
 <div class="column" style="width:50%;">
 
-I’m a [Computational Scientist][Argonne National Laboratory] in the
-[AI/ML group] at the [Leadership Computing Facility (ALCF)] at Argonne
-National Laboratory (ANL).
+I’m a [Computational Scientist][Argonne National Laboratory] in the [AI
+/ ML group] at the [Argonne Leadership Computing Facility (ALCF)].
 
-I’m generally interested in training large models on supercomputers and
-co-lead the Models / Pre-Training group of the [AuroraGPT] project.
+I’m generally interested in the large scale distributed training of AI
+models for scientific applications, and am the co-lead of the [Models /
+Pre-Training group] for the [AuroraGPT] project.
 
-I received my PhD in Physics from the University of Iowa in 2019 for my
-work on using ML to accelerate MCMC simulations in Lattice Quantum
-Chromodynamics ([`l2hmc-qcd`]).
+Prior to this, I received my PhD in Physics from the University of Iowa
+in 2019, where I used ML to build better Markov Chain Monte Carlo
+sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 
 </div>
 
@@ -102,7 +102,7 @@ Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">14</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">11:16:21</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">17</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">22:03:18</span>
 > </pre>
 
 > [!TIP]
@@ -204,8 +204,7 @@ Chromodynamics ([`l2hmc-qcd`]).
 >
 >   </summary>
 >
->   As a member of the [AI / ML Group][AI/ML group] at
->   [ALCF][Leadership Computing Facility (ALCF)], I work on:
+>   As a member of the [AI / ML Group] at [ALCF], I work on:
 >
 >   <div class="flex-container">
 >
@@ -272,11 +271,7 @@ Chromodynamics ([`l2hmc-qcd`]).
 >
 > <div style="text-align:center;">
 >
-> <iframe src="https://github.com/sponsors/saforem2/button" title="Sponsor saforem2" height="32" width="114" style="border: 0; border-radius: 6px;">
->
-> </iframe>
->
-> <img alt="hits" src="https://hitscounter.dev/api/hit?url=samforeman.me&label=samforeman.me&icon=check2-square&color=%236c757d">
+> <img loading="lazy" alt="hits" src="https://hitscounter.dev/api/hit?url=samforeman.me&label=samforeman.me&icon=check2-square&color=%236c757d">
 >
 > <span class="dim-text">© Copyright [Sam Foreman]</span>
 >
@@ -1312,11 +1307,13 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Argonne National Laboratory]: https://alcf.anl.gov/about/people/sam-foreman
   [<span class="orcid-green" style="background: none!important;"></span>]:
     https://orcid.org/0000-0002-9981-0876
-  [AI/ML group]: https://www.alcf.anl.gov/about/people/group/506
-  [Leadership Computing Facility (ALCF)]: https://alcf.anl.gov
+  [AI / ML group]: https://www.alcf.anl.gov/about/people/group/506
+  [Argonne Leadership Computing Facility (ALCF)]: https://www.alcf.anl.gov/
+  [Models / Pre-Training group]: https://auroragpt.anl.gov/about/#teams
   [AuroraGPT]: https://auroragpt.anl.gov
   [`l2hmc-qcd`]: https://github.com/saforem2/l2hmc-qcd
   [Argonne Earth Systems Model for Reliable and Skillful Predictions]: https://arxiv.org/abs/2509.13523
+  [ALCF]: https://alcf.anl.gov
   [AI + Science]: https://github.com/saforem2/
   [Genome-Scale Language Models]: https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2
   [GenSLM]: https://github.com/ramanathanlab/genslm
