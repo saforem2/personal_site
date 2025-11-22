@@ -36,7 +36,7 @@ $presentation-heading-text-shadow: none !default;
 $presentation-heading-text-transform: none !default;
 $presentation-heading-letter-spacing: normal !default;
 
-$black-box-shadow-hover: 2pt 2pt black !important;
+$black-box-shadow-hover: 2px 2px black !important;
 
 // $myred: #ff5252;
 // $myorange: #fd971f;
@@ -57,6 +57,8 @@ $purple: #da3ab3;
 $royal-blue: #01299f;
 $dark-blue: #001247;
 $very-dark-blue: #000d33;
+$green-spotify: #1CD760;
+$red-lastfm: rgba(212, 17, 9, 0.25);
 
 $light: #fafbff;
 $dark-bg: #1c1c1c;
@@ -910,8 +912,8 @@ div.sourceCode pre.sourceCode {
   font-size: $mermaid-font-size;
 }
 
-a:not(#lightbox):hover,
-.reveal a:not(#lightbox):hover {
+a:not(#lightbox, .icon):hover,
+.reveal a:not(#lightbox, .icon):hover {
   color: $code-fg;
   cursor: pointer;
 
@@ -945,7 +947,7 @@ a:hover {
   cursor: pointer;
 }
 
-main a:not(.img):hover {
+main a:not(.img, .icon):hover {
   background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   cursor: pointer;
 }
@@ -1492,7 +1494,7 @@ div.callout-tip.callout {
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
-    box-shadow: $code-block-box-shadow-hover;
+    box-shadow: $black-box-shadow-hover;
     // transition: all 0.2s ease-in-out;
   }
 }
@@ -1514,7 +1516,7 @@ div.callout-caution.callout {
   border: 1px solid rgba(0, 0, 0, 0);
   &:hover {
     border: 1px solid $callout-caution-color !important;
-    box-shadow: 2pt 2pt rgba(0, 0, 0, 1);
+    box-shadow: $black-box-shadow-hover;
     // transition: all 0.2s ease-in-out;
   }
 }
@@ -1525,7 +1527,7 @@ div.callout-important.callout {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-important-color !important;
-    box-shadow: 2pt 2pt rgba(0, 0, 0, 1);
+    box-shadow: $black-box-shadow-hover;
     // transition: all 0.2s ease-in-out;
   }
 }
@@ -1536,7 +1538,7 @@ div.callout-warning.callout {
   border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-color-warning !important;
-    box-shadow: 2pt 2pt rgba(0, 0, 0, 1);
+    box-shadow: $black-box-shadow-hover;
   }
 }
 
@@ -2666,6 +2668,18 @@ dd {
   overflow-x: auto;
 }
 
+.fa-mastodon:hover { color: var(--violet-6); }
+.fa-github:hover { color: var(--gray-5); }
+.fa-youtube:hover { color: var(--red-7); }
+.fa-ul li a:hover .fa-newspaper { color: var(--orange-5); }
+.fa-ul li a:hover .fa-wave-pulse { color: var(--red-5); }
+.fa-ul li a:hover .fa-brackets-curly { color: var(--cyan-5); }
+.fa-ul li a:hover .fa-handshake-angle { color: var(--green-5); }
+.fa-ul li a:hover .fa-scale-balanced { color: var(--grape-5); }
+
+.fa-ul li a:hover .fa-trophy { color: var(--yellow-6); }
+.fa-ul li a:hover .fa-jar { color: var(--lime-5); }
+
 .tippy-content > * {
   margin: auto;
 }
@@ -3265,7 +3279,15 @@ iframe.reveal-demo {
   }
 }
 
+.nav:not(.nav-hidden) {
+  gap: 5pt;
+}
+
 @media (min-width: 575px) {
+  .nav:not(.nav-hidden) {
+    gap: 10pt;
+  }
+
   .link-cards {
     display: flex;
     flex-direction: row;
@@ -3304,7 +3326,7 @@ iframe.reveal-demo {
 }
 
 .nav:not(.nav-hidden) {
-  gap: 1rem;
+  gap: 10pt;
 }
 
 .reveal ol,
@@ -3499,6 +3521,17 @@ nav.quarto-secondary-nav {
 
 .toc {
   font-family: $font-family-headings;
+}
+
+.navbar-toggler-icon {
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.25rem;
+	background-image: var(--bs-navbar-toggler-icon-bg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	margin-block-start: 4pt;
 }
 
 // .navbar-toggler-icon {
@@ -3882,9 +3915,6 @@ pre > code.sourceCode > span > a:first-child::before {
   .quarto-secondary-nav nav.quarto-page-breadcrumbs {
     display: flex;
     align-items: center;
-    padding-right: 1em;
-    margin-left: -0.25em;
-    margin-top: 0.5rem;
   }
   #quarto-sidebar {
     top: 20pt!important;
@@ -3910,6 +3940,63 @@ pre > code.sourceCode > span > a:first-child::before {
     font-size: 0.8em;
   }
 }
+
+.fa-li a:hover {
+  color: currentColor!important;
+  background-color: unset!important;
+}
+
+iconify-icon {
+  padding: 2pt;
+}
+
+.icon-home:hover {
+  color: oklch(from $myred calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+}
+
+.icon-github:hover {
+  color: oklch(from $myorange calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+
+}
+.icon-twitter:hover {
+  color: oklch(from $myyellow calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $myyellow calc(l * 1.15) c h / 0.1) !important;
+}
+.icon-bluesky:hover {
+  color: oklch(from $mygreen calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $mygreen calc(l * 1.15) c h / 0.1) !important;
+}
+
+.icon-scholar:hover {
+  color: oklch(from $myblue calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $myblue calc(l * 1.15) c h / 0.1) !important;
+}
+
+.icon-email:hover {
+  color: oklch(from $mypurple calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $mypurple calc(l * 1.15) c h/0.1) !important;
+}
+
+.icon-calendar:hover {
+  color: oklch(from $mypink calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $mypink calc(l * 1.15) c h/0.1) !important;
+}
+
+.icon-linkedin:hover {
+  color: oklch(from $blue-text calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $blue-text calc(l * 1.15) c h/0.1) !important;
+}
+.icon-spotify:hover {
+  color: oklch(from $green-spotify calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $green-spotify calc(l * 1.15) c h/0.1)!important;
+}
+.icon-lastfm:hover {
+  color: oklch(from $red-lastfm calc(l * 1.0) c h / 1.0) !important;
+  background-color: oklch(from $red-lastfm calc(l * 1.15) c h/0.1) !important;
+}
+
 
 div.sourceCode,
 div.sourceCode pre.sourceCode {
@@ -4151,7 +4238,7 @@ nav .nav-item:not(.compact) {
 .reveal .panel-tabset [role="tab"][aria-selected="true"],
 .panel-tabset [role="tab"][aria-selected="true"] {
   &:hover {
-    box-shadow: 2pt 2pt black !important;
+    box-shadow: 2px 2px black !important;
     box-shadow: $code-block-hover-box-shadow;
     border: 1pt solid $link-color-hover !important;
     background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
