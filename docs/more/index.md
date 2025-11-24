@@ -89,8 +89,8 @@ Sam Foreman
 >
 > <div class="flex-container" style="flex-flow: wrap;">
 >
-> <a href="https://github.com/saforem2"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg"></a>
-> <a href="https://github.com/saforem2/github-readme-stats"><img loading="lazy" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saforem2&layout=compact&langs_count=10&theme=transparent&hide_title=true&hide_border=true&text_color=838383"></a>
+> <a href="https://github.com/saforem2"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/master/generated/overview.svg" /></a>
+> <a href="https://github.com/saforem2/github-stats"><img loading="lazy" src="https://raw.githubusercontent.com/saforem2/github-stats/refs/heads/master/generated/languages.svg" /></a>
 >
 > </div>
 >
