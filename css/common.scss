@@ -379,7 +379,7 @@ b {
       text-underline-offset: unset;
     }
   }
-  scrollbar-color: $dim-text;
+  // scrollbar-color: $dim-text;
   scrollbar-width: thin;
   // -moz-osx-font-smoothing: auto;
   // -webkit-font-smoothing: auto;
@@ -826,7 +826,6 @@ body td code:not(.sourceCode) {
 
 .reveal body p code:not(.sourceCode) {
   font-size: 1em !important;
-  /* font-size: .875rem; */
 }
 
 .reveal div.sourceCode {
@@ -940,7 +939,7 @@ a:hover {
   color: $link-color-hover;
   // background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   border-radius: $link-border-radius;
-  text-decoration: underline;
+  text-decoration: wavy underline;
   text-decoration-thickness: 1pt;
   text-decoration-color: $link-color-hover;
   // transition: all 0.3s ease in;
@@ -1013,15 +1012,16 @@ img a:hover {
   justify-content: space-between;
   cursor: pointer;
   align-items: unset;
-  margin: auto;
-  padding-block: 1pt;
-  margin-inline: 1px;
-  margin-block: 1pt;
+  // margin: auto;
+  // padding-block: 2pt;
+  // margin-inline: 1px;
+  // margin-block: 1pt;
 }
 
-.sidebar-item .sidebar-item-text {
-  padding-block: 1pt;
-}
+// .sidebar-item .sidebar-item-text {
+//   // padding-block: 1pt;
+//   font-size: small;
+// }
 
 .sidebar-header-stacked .sidebar-title {
   display: inline-flex;
@@ -1065,6 +1065,8 @@ div.sidebar-item-container:focus {
   vertical-align: -webkit-baseline-middle;
   margin: auto;
   border-radius: 0pt;
+  line-height: initial;
+  padding-block: 1pt;
 }
 
 // .ms-2 {
@@ -1090,7 +1092,7 @@ div.sidebar-item-container:focus {
 
 div.sidebar-item-container {
   border: 1pt solid rgba(0, 0, 0, 0);
-  padding-inline-start: 5pt;
+  // padding-inline-start: 5pt;
 }
 
 div.sidebar-item-container .active,
@@ -1099,7 +1101,7 @@ div.sidebar-item-container .sidebar-link > code {
   color: $link-color;
   background: none;
   border: 1pt solid $link-color;
-  padding-block: 2pt;
+  // padding-block: 2pt;
   // padding-inline-start: 5pt;
   // padding: 1pt;
   // border-left: 3pt solid $link-color;
@@ -1167,10 +1169,10 @@ div.sidebar-item-container .sidebar-link > code {
   }
 }
 
-.sidebar {
-  // padding-inline: 1pt;
-  margin-block-start: 10pt;
-}
+// .sidebar {
+//   // padding-inline: 1pt;
+//   margin-block-start: 10pt;
+// }
 
 .sidebar-item-text {
   width: 100%;
@@ -1199,8 +1201,8 @@ div.sidebar-item-container .sidebar-link > code {
   // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from Pixelarticons by Gerrit Halfmann - https://github.com/halfmage/pixelarticons/blob/master/LICENSE --%3E%3Cpath fill='currentColor' d='M8 5v2h2V5zm4 4V7h-2v2zm2 2V9h-2v2zm0 2h2v-2h-2zm-2 2v-2h2v2zm0 0h-2v2h2zm-4 4v-2h2v2z'/%3E%3C/svg%3E");
   content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><path fill='rgb(131,131,131)' d='M8 5v2h2V5zm4 4V7h-2v2zm2 2V9h-2v2zm0 2h2v-2h-2zm-2 2v-2h2v2zm0 0h-2v2h2zm-4 4v-2h2v2z'/></svg>");
   // content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'><path stroke-dasharray='64' stroke-dashoffset='64' d='M4 12v7c0 0.55 0.45 1 1 1h14c0.55 0 1 -0.44 1 -1v-14c0 -0.55 -0.45 -1 -1 -1h-14c-0.55 0 -1 0.45 -1 1Z'><animate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='64;0'/></path><path stroke-dasharray='6' stroke-dashoffset='6' d='M14 12l-3 -3M14 12l-3 3'><animate fill='freeze' attributeName='stroke-dashoffset' begin='0.7s' dur='0.3s' values='6;0'/></path></g></svg>");
-  font-size: 100%;
-  vertical-align: middle;
+  // font-size: 100%;
+  // vertical-align: middle;
 }
 
 .mt-2 {
@@ -2245,7 +2247,7 @@ div.callout-important.callout-style-default .callout-title {
 
 .dim-text {
   color: $dim-text;
-  // -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
   // -webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -2370,6 +2372,10 @@ main {
       border: 1px solid $h1-fg-color;
     }
   }
+  // h1:hover::before {
+  //   content: "# ";
+  //   margin-left: -2ch;
+  // }
   h2 {
     // padding: $h2-padding;
     opacity: 100%;
@@ -2394,6 +2400,10 @@ main {
       border: 1px solid $h2-fg-color;
     }
   }
+  // h2:hover::before {
+  //   content: "## ";
+  //   margin-left: -3ch;
+  // }
   h3 {
     // padding: $h3-padding;
     opacity: 100%;
@@ -2414,6 +2424,10 @@ main {
       border: 1px solid $h3-fg-color;
     }
   }
+  // h3:hover::before {
+  //   content: "### ";
+  //   margin-left: -4ch;
+  // }
   h4 {
     // padding: $h4-padding;
     opacity: 100%;
@@ -2433,6 +2447,9 @@ main {
       border: 1px solid $h4-fg-color;
     }
   }
+  // h4:hover::before {
+  //   content: "#### ";
+  // }
   h5 {
     // padding: $h5-padding;
     opacity: 100%;
@@ -2473,6 +2490,16 @@ main {
   }
 }
 
+[data-anchorjs-icon]::after {
+  content: "#";
+}
+
+// [data-anchorjs-icon]:hover::before {
+// 	content: "# ";
+//   margin-left: -2ch;
+//   padding-right: 0.5ch;
+// }
+
 .reveal .slide-menu-button .fas::before {
   display: inline-block;
   height: 1.5rem;
@@ -2501,11 +2528,24 @@ main {
   height: 30pt;
   margin-inline-start: 10pt;
   margin-inline-end: 0pt;
+  &:hover {
+    fill: $red !important;
+    background-color: oklch(from $red calc(l * 1.15) c h/0.1);
+  }
 }
 
 .quarto-sidebar-toggle {
-  border-color: rgba(255, 255, 255, 10%);
+  border-bottom-left-radius: 0pt;
+  border-bottom-right-radius: 0pt;
 }
+// #quarto-content .quarto-sidebar-toggle {
+//   background: $code;
+// }
+// .quarto-sidebar-toggle {
+//   border-color:hsla(0,0%,0%,0.1);
+// }
+
+
 
 .quarto-reader-toggle.reader.quarto-navigation-tool .quarto-reader-toggle-btn {
   background-color: unset;
@@ -2724,7 +2764,7 @@ blockquote,
   font-size: 100%;
   background: $blockquote-bg;
   color: inherit;
-  opacity: 0.66;
+  // opacity: 0.66;
   // color: $blockquote-text !important;
   margin: unset;
   padding: unset;
@@ -3124,9 +3164,16 @@ body {
 
 .icon {
   font-size: 1.33rem;
-  &:hover {
-    color: $link-color-hover !important;
-  }
+  // &:hover {
+  //   color: $link-color-hover !important;
+  // }
+}
+
+.menu-text {
+  // font-size: small;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  line-height: 1.33;
 }
 
 .icon .inline-icon {
@@ -3610,8 +3657,8 @@ nav.quarto-secondary-nav {
 
 .navbar {
   // width: 1000px;
-  border: 1px solid rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
+  // border: 1px solid rgba(0, 0, 0, 0);
+  // background-color: rgba(0, 0, 0, 0);
   border-top-left-radius: 0pt;
   border-top-right-radius: 0pt;
   // padding-left: 0.5rem;
@@ -3966,13 +4013,25 @@ pre > code.sourceCode > span > a:first-child::before {
   background-color: unset !important;
 }
 
-iconify-icon {
+p iconify-icon {
   padding: 2pt;
 }
+
+.list.grid.quarto-listing-cols-3 {
+  margin-inline-end: 2pt;
+}
+
+// iconify-icon {
+//   padding: 2pt;
+// }
 
 .icon-home:hover {
   color: oklch(from $myred calc(l * 1) c h / 1) !important;
   background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+}
+.icon-github-navbar:hover {
+  color: oklch(from $myorange calc(l * 1) c h / 1) !important;
+  background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
 }
 
 .icon-github:hover {
@@ -4050,13 +4109,27 @@ pre.cell-output {
   align-items: inherit;
 }
 
+.navbar-nav.navbar-nav-scroll.ms-auto {
+  align-items: center;
+}
+
+@function random-rgb-color() {
+  $r: random(256) - 1;
+  $g: random(256) - 1;
+  $b: random(256) - 1;
+  @return rgb($r, $g, $b);
+}
+
 .navbar-logo {
   max-height: 36px;
   width: auto;
   padding-right: 0pt;
   &:hover {
-    fill: $red !important;
-    background-color: oklch(from $red calc(l * 1.15) c h/0.1);
+    --r-color: random-rgb-color();
+    color: var(--r-color) !important;
+    background-color: oklch(from var(--r-color) calc(l * 1.15) c h/0.1);
+    // fill: $red !important;
+    // background-color: oklch(from $red calc(l * 1.15) c h/0.1);
   }
 }
 
@@ -4137,7 +4210,7 @@ nav-item tabset-1-6-tab > a.nav-link.active {
 nav .nav-item:not(.compact) {
   padding: 0;
   margin: 0;
-  font-size: 1.1rem;
+  // font-size: 1.1rem;
   line-height: normal;
   color: var(--bs-nav-link-color);
 }

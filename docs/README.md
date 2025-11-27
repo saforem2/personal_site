@@ -1,5 +1,5 @@
 Sam Foreman
-2025-11-24
+2025-11-27
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -10,7 +10,7 @@ Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
 <div class="flex-container icon-flex"
-style="font-size: 1.5rem; justify-content: center; gap: 0.5rem; flex-direction: row;">
+style="font-size: 1.5rem; justify-content: center; flex-direction: row;">
 
 <p>
 
@@ -66,7 +66,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:37:22</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">27</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">10:20:54</span>
 > </pre>
 
 > [!TIP]
@@ -1320,7 +1320,15 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 ### 💭 Thoughts
 
-<script src="https://status.lol/sf.js?time&link&fluent&pretty"></script>
+- From <https://sf.status.lol>:
+
+  <script src="https://status.lol/sf.js?time&link&fluent&pretty"></script>
+
+### 💌 Guestbook
+
+<iframe src="https://guestbooks.meadow.cafe/guestbook/745" width="100%" height="600" frameborder="0" style="border: 1px dotted #666666; border-radius: 0px;">
+
+</iframe>
 
 </div>
 
