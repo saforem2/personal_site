@@ -11,7 +11,17 @@ Sam Foreman
 
 ## 📉 Simple Experiment to Compare Validation Loss
 
+<div class="light-content">
+
 ![Cool Down Comparison](./assets/cooldown.png)
+
+</div>
+
+<div class="dark-content">
+
+![Cool Down Comparison](./assets/cooldown-dark.png)
+
+</div>
 
 ## ☃️ Cooling Down
 

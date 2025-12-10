@@ -1893,11 +1893,21 @@ window.Quarto = {
 
 <section id="simple-experiment-to-compare-validation-loss" class="level2">
 <h2 class="anchored" data-anchor-id="simple-experiment-to-compare-validation-loss">📉 Simple Experiment to Compare Validation Loss</h2>
+<div class="light-content">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="./assets/cooldown.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Cool Down Comparison"><img src="./assets/cooldown.png" class="img-fluid figure-img" alt="Cool Down Comparison"></a></p>
 <figcaption>Cool Down Comparison</figcaption>
 </figure>
+</div>
+</div>
+<div class="dark-content">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./assets/cooldown-dark.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Cool Down Comparison"><img src="./assets/cooldown-dark.png" class="img-fluid figure-img" alt="Cool Down Comparison"></a></p>
+<figcaption>Cool Down Comparison</figcaption>
+</figure>
+</div>
 </div>
 </section>
 <section id="cooling-down" class="level2">
@@ -2485,60 +2495,66 @@ for Model Evaluation.”</span> November 12, 2025. <a href="https://samforeman.m
 <span id="cb3-14"><a href="#cb3-14"></a></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="fu">## 📉 Simple Experiment to Compare Validation Loss</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="al">![Cool Down Comparison](./assets/cooldown.png)</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="fu">## ☃️ Cooling Down</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>::: {.light-content}</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="al">![Cool Down Comparison](./assets/cooldown.png)</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>:::</span>
 <span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="ss">- </span>256 Nodes of Aurora:</span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="ss">  - </span>Cooled down over last 10\%:</span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="ss">    - </span>W&amp;B Run: <span class="co">[</span><span class="ot">volcanic-blaze-4312</span><span class="co">](https://wandb.ai/aurora_gpt/AuroraGPT/runs/7bjj8vgu/overview?nw=nwuserforemans)</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="ss">  - </span>Explicit command:</span>
-<span id="cb3-27"><a href="#cb3-27"></a></span>
-<span id="cb3-28"><a href="#cb3-28"></a>    <span class="in">```bash</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a>    <span class="va">ROPE_THETA</span><span class="op">=</span>50000 <span class="dt">\</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a>      <span class="va">GRAD_ACC_STEPS</span><span class="op">=</span>2 <span class="dt">\</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a>      <span class="va">MICRO_BATCH</span><span class="op">=</span>1 <span class="dt">\</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a>      <span class="va">USE_ACTIVATION_CHECKPOINTING</span><span class="op">=</span>0 <span class="dt">\</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a>      <span class="va">ZERO_STAGE</span><span class="op">=</span>0 <span class="dt">\</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a>      <span class="va">TRAIN_TOKENS</span><span class="op">=</span>4673780159710 <span class="dt">\</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>      <span class="va">OPT</span><span class="op">=</span>sophiag <span class="dt">\</span></span>
-<span id="cb3-36"><a href="#cb3-36"></a>      <span class="va">DATA_FILE_LIST</span><span class="op">=</span>ALCF/data-lists/aurora/olmo-mix-1124.txt <span class="dt">\</span></span>
-<span id="cb3-37"><a href="#cb3-37"></a>      <span class="va">LR_DECAY_STYLE</span><span class="op">=</span>constant <span class="dt">\</span></span>
-<span id="cb3-38"><a href="#cb3-38"></a>      <span class="va">LOAD</span><span class="op">=</span>cooldown-checkpoints/sophiag-global-step-73500/global_step73500 <span class="dt">\</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a>      <span class="fu">bash</span> train_alcf.sh <span class="dt">\</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a>        <span class="at">--no-load-lr-state</span> <span class="dt">\</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a>        <span class="at">--lr_constant_plus_cooldown</span> <span class="dt">\</span></span>
-<span id="cb3-42"><a href="#cb3-42"></a>        <span class="at">--lr_constant_plus_cooldown_frac</span> 0.10</span>
-<span id="cb3-43"><a href="#cb3-43"></a>    <span class="in">```</span></span>
-<span id="cb3-44"><a href="#cb3-44"></a></span>
-<span id="cb3-45"><a href="#cb3-45"></a><span class="fu">## ♻️ Convert to Universal (Optional)</span></span>
-<span id="cb3-46"><a href="#cb3-46"></a></span>
-<span id="cb3-47"><a href="#cb3-47"></a><span class="in">```bash</span></span>
-<span id="cb3-48"><a href="#cb3-48"></a><span class="va">TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD</span><span class="op">=</span>1 <span class="ex">python3</span> ALCF/ds_to_universal.py <span class="dt">\</span></span>
-<span id="cb3-49"><a href="#cb3-49"></a>    <span class="at">--input_folder</span> test_rollback/global_step136000 <span class="dt">\</span></span>
-<span id="cb3-50"><a href="#cb3-50"></a>    <span class="at">--output_folder</span> test_rollback/global_step136000_universal</span>
-<span id="cb3-51"><a href="#cb3-51"></a><span class="in">```</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>::: {.dark-content}</span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="al">![Cool Down Comparison](./assets/cooldown-dark.png)</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>:::</span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="fu">## ☃️ Cooling Down</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="ss">- </span>256 Nodes of Aurora:</span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="ss">  - </span>Cooled down over last 10\%:</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="ss">    - </span>W&amp;B Run: <span class="co">[</span><span class="ot">volcanic-blaze-4312</span><span class="co">](https://wandb.ai/aurora_gpt/AuroraGPT/runs/7bjj8vgu/overview?nw=nwuserforemans)</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="ss">  - </span>Explicit command:</span>
+<span id="cb3-33"><a href="#cb3-33"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a>    <span class="in">```bash</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="va">ROPE_THETA</span><span class="op">=</span>50000 <span class="dt">\</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a>      <span class="va">GRAD_ACC_STEPS</span><span class="op">=</span>2 <span class="dt">\</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a>      <span class="va">MICRO_BATCH</span><span class="op">=</span>1 <span class="dt">\</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a>      <span class="va">USE_ACTIVATION_CHECKPOINTING</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a>      <span class="va">ZERO_STAGE</span><span class="op">=</span>0 <span class="dt">\</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>      <span class="va">TRAIN_TOKENS</span><span class="op">=</span>4673780159710 <span class="dt">\</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a>      <span class="va">OPT</span><span class="op">=</span>sophiag <span class="dt">\</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a>      <span class="va">DATA_FILE_LIST</span><span class="op">=</span>ALCF/data-lists/aurora/olmo-mix-1124.txt <span class="dt">\</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a>      <span class="va">LR_DECAY_STYLE</span><span class="op">=</span>constant <span class="dt">\</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a>      <span class="va">LOAD</span><span class="op">=</span>cooldown-checkpoints/sophiag-global-step-73500/global_step73500 <span class="dt">\</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a>      <span class="fu">bash</span> train_alcf.sh <span class="dt">\</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a>        <span class="at">--no-load-lr-state</span> <span class="dt">\</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a>        <span class="at">--lr_constant_plus_cooldown</span> <span class="dt">\</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a>        <span class="at">--lr_constant_plus_cooldown_frac</span> 0.10</span>
+<span id="cb3-49"><a href="#cb3-49"></a>    <span class="in">```</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a></span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="fu">## ♻️ Convert to Universal (Optional)</span></span>
 <span id="cb3-52"><a href="#cb3-52"></a></span>
-<span id="cb3-53"><a href="#cb3-53"></a><span class="fu">## 📄 W&amp;B Report</span></span>
-<span id="cb3-54"><a href="#cb3-54"></a></span>
-<span id="cb3-55"><a href="#cb3-55"></a>::: {.column-page}</span>
-<span id="cb3-56"><a href="#cb3-56"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> loading</span><span class="op">=</span><span class="st">"lazy"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://api.wandb.ai/links/aurora_gpt/dek99dmd"</span><span class="ot">  align</span><span class="op">=</span><span class="st">"center"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> webkitallowfullscreen allowfullscreen style</span><span class="op">=</span><span class="st">"border:none;height:1024px;width:100%"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
-<span id="cb3-57"><a href="#cb3-57"></a>:::</span>
+<span id="cb3-53"><a href="#cb3-53"></a><span class="in">```bash</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="va">TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD</span><span class="op">=</span>1 <span class="ex">python3</span> ALCF/ds_to_universal.py <span class="dt">\</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a>    <span class="at">--input_folder</span> test_rollback/global_step136000 <span class="dt">\</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a>    <span class="at">--output_folder</span> test_rollback/global_step136000_universal</span>
+<span id="cb3-57"><a href="#cb3-57"></a><span class="in">```</span></span>
 <span id="cb3-58"><a href="#cb3-58"></a></span>
-<span id="cb3-59"><a href="#cb3-59"></a><span class="co">&lt;!--</span></span>
-<span id="cb3-60"><a href="#cb3-60"></a><span class="co">::: {.callout-note icon=false title="📑 W&amp;B Report" style="background-color: oklch(from var(#4582ec) calc(l * 1.15) c h / 0.1);"}</span></span>
-<span id="cb3-61"><a href="#cb3-61"></a><span class="co">See W&amp;B Report: [Cooling Down Checkpoints](https://api.wandb.ai/links/aurora_gpt/dek99dmd) for more details.</span></span>
-<span id="cb3-62"><a href="#cb3-62"></a><span class="co">--&gt;</span></span>
-<span id="cb3-63"><a href="#cb3-63"></a><span class="co">&lt;!--</span></span>
-<span id="cb3-64"><a href="#cb3-64"></a><span class="co">::: {#fig-wandb}</span></span>
-<span id="cb3-65"><a href="#cb3-65"></a><span class="co">&lt;iframe loading="lazy" src="https://api.wandb.ai/links/aurora_gpt/dek99dmd"  align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="border:none;height:1024px;width:100%"&gt;&lt;/iframe&gt;</span></span>
-<span id="cb3-66"><a href="#cb3-66"></a><span class="co">Weights \&amp; Biases Report: [Cooling Down Checkpoints](https://api.wandb.ai/links/aurora_gpt/dek99dmd)</span></span>
-<span id="cb3-67"><a href="#cb3-67"></a><span class="co">:::</span></span>
-<span id="cb3-68"><a href="#cb3-68"></a></span>
-<span id="cb3-69"><a href="#cb3-69"></a><span class="co">:::</span></span>
-<span id="cb3-70"><a href="#cb3-70"></a><span class="co">--&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb3-59"><a href="#cb3-59"></a><span class="fu">## 📄 W&amp;B Report</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a></span>
+<span id="cb3-61"><a href="#cb3-61"></a>::: {.column-page}</span>
+<span id="cb3-62"><a href="#cb3-62"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> loading</span><span class="op">=</span><span class="st">"lazy"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://api.wandb.ai/links/aurora_gpt/dek99dmd"</span><span class="ot">  align</span><span class="op">=</span><span class="st">"center"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> webkitallowfullscreen allowfullscreen style</span><span class="op">=</span><span class="st">"border:none;height:1024px;width:100%"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb3-63"><a href="#cb3-63"></a>:::</span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a><span class="co">&lt;!--</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a><span class="co">::: {.callout-note icon=false title="📑 W&amp;B Report" style="background-color: oklch(from var(#4582ec) calc(l * 1.15) c h / 0.1);"}</span></span>
+<span id="cb3-67"><a href="#cb3-67"></a><span class="co">See W&amp;B Report: [Cooling Down Checkpoints](https://api.wandb.ai/links/aurora_gpt/dek99dmd) for more details.</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a><span class="co">--&gt;</span></span>
+<span id="cb3-69"><a href="#cb3-69"></a><span class="co">&lt;!--</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a><span class="co">::: {#fig-wandb}</span></span>
+<span id="cb3-71"><a href="#cb3-71"></a><span class="co">&lt;iframe loading="lazy" src="https://api.wandb.ai/links/aurora_gpt/dek99dmd"  align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="border:none;height:1024px;width:100%"&gt;&lt;/iframe&gt;</span></span>
+<span id="cb3-72"><a href="#cb3-72"></a><span class="co">Weights \&amp; Biases Report: [Cooling Down Checkpoints](https://api.wandb.ai/links/aurora_gpt/dek99dmd)</span></span>
+<span id="cb3-73"><a href="#cb3-73"></a><span class="co">:::</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a></span>
+<span id="cb3-75"><a href="#cb3-75"></a><span class="co">:::</span></span>
+<span id="cb3-76"><a href="#cb3-76"></a><span class="co">--&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
