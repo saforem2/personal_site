@@ -1,12 +1,12 @@
 /*-- scss:defaults -k*/
 $right-arrow: "\2192"; // Unicode character for right arrow
-$font-family-monospace: "mIosevka-Term Web", monospace !default;
-$font-family-sans-serif: "mIosevka-QP Web", monospace !default;
-$headings-font-family: $font-family-sans-serif, monospace !default;
-$heading-font: "mIosevka-QP Web", monospace !default;
-$monofont: $font-family-monospace, monospace !default;
-$font-family-headings: "mIosevka-QP Web", monospace !default;
-$mermaid-font-family: "mIosevka-Term Web", monospace !default;
+$font-family-monospace: "mIosevka-Term Web" !default;
+$font-family-sans-serif: "mIosevka-QP Web" !default;
+$headings-font-family: $font-family-sans-serif !default;
+$heading-font: "mIosevka-QP Web" !default;
+$monofont: $font-family-monospace !default;
+$font-family-headings: "mIosevka-QP Web" !default;
+$mermaid-font-family: "mIosevka-Term Web" !default;
 $mermaid-font-size: small !default;
 
 // $font-family-monospace: "Iosevka Web", monospace;
@@ -362,7 +362,9 @@ b {
 /*-- scss:rules --*/
 
 :root {
-  scrollbar-color: $link-color-hover;
+  --bs-border-color: #{$quarto-border-color};
+  --bs-secondary-bg: #{$alt-bg};
+  // scrollbar-color: #{$link-color-hover} #{$dim-text};
   --bs-border-radius: 0pt;
   .reveal {
     -webkit-font-smoothing: auto;
@@ -386,7 +388,7 @@ b {
   --headings-font-family: #{$headings-font-family};
   --font-family-headings: #{$font-family-headings};
   --selection-bg-color: #{$selection-bg-color};
-  --selection-fg-color: --$selection-fg-color;
+  --selection-fg-color: #{$selection-fg-color};
   // --r-background-color: #{$r-background-color};
   --r-heading-margin: 1pt;
   // --r-background-color: #{$background-color};
@@ -757,7 +759,7 @@ pre {
   color: $body-color;
   display: block;
   overflow: auto;
-  font-size: 1em;
+  // font-size: 1em;
   // background-color: oklab(from $code-block-bg-color calc(l * 1.15) c h/0.1);
   // border: 1px solid var(--bs-border-color, $code-block-border-color);
   padding: 0;
@@ -766,9 +768,10 @@ pre {
   border-radius: 0;
   margin-top: 0;
   margin-bottom: 0;
-  margin-block: 0.25lh;
-  line-height: 1;
-  padding-block: 2pt;
+  // margin-block: 0.25lh;
+  margin-block: auto;
+  // line-height: 1;
+  // padding-block: 2pt;
 }
 
 .ansi-escaped-output > pre {
@@ -940,7 +943,7 @@ a:hover {
   // background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
   border-radius: $link-border-radius;
   text-decoration: wavy underline;
-  text-decoration-thickness: 1pt;
+  // text-decoration-thickness: 1pt;
   text-decoration-color: $link-color-hover;
   // transition: all 0.3s ease in;
   cursor: pointer;
@@ -1183,6 +1186,7 @@ div.sidebar-item-container .sidebar-link > code {
 .sidebar-item .sidebar-item-toggle .bi {
   // vertical-align: -webkit-baseline-middle;
   font-size: 1rem;
+  padding-right: 2pt;
 }
 
 .bi .bi-chevron-right {
@@ -1432,6 +1436,8 @@ nav td code:not(.sourceCode) {
   overflow-wrap: anywhere;
   font-stretch: semi-condensed;
   overflow-wrap: anywhere;
+  -webkit-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
   // -moz-osx-font-smoothing: grayscale;
   // -webkit-font-smoothing: subpixel-antialiased;
   font-weight: bold;
@@ -1457,10 +1463,16 @@ nav td code:not(.sourceCode) {
 
 .callout.callout-style-simple .callout-body {
   font-size: inherit;
+  margin-block: 2pt;
+  padding-inline: 2pt;
+  // margin-block-end: 4pt;
+  // margin-block-start: 0pt;
+  margin-inline: 0pt;
   /* font-weight: 400; */
   /* margin-bottom: -0.4em; */
   /* margin-top: .5em; */
-  margin-block: 0.1lh;
+  // margin-block: 0.1lh;
+  // padding: 0pt;
 }
 
 .callout.callout-titled > .callout-header {
@@ -2062,7 +2074,7 @@ div.callout-important.callout-style-default .callout-title {
 
   p {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     text-wrap: auto;
   }
   &:hover {
@@ -2544,8 +2556,6 @@ main {
 // .quarto-sidebar-toggle {
 //   border-color:hsla(0,0%,0%,0.1);
 // }
-
-
 
 .quarto-reader-toggle.reader.quarto-navigation-tool .quarto-reader-toggle-btn {
   background-color: unset;
@@ -3163,17 +3173,25 @@ body {
 }
 
 .icon {
-  font-size: 1.33rem;
-  // &:hover {
-  //   color: $link-color-hover !important;
-  // }
+  font-size: 1.29rem;
+  margin-block: 0pt;
+  padding: 0pt;
+  display: inline;
 }
+
+// .icon {
+//   font-size: 1.33rem;
+//   // &:hover {
+//   //   color: $link-color-hover !important;
+//   // }
+// }
 
 .menu-text {
   // font-size: small;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.33;
+  font-size: 1rem;
 }
 
 .icon .inline-icon {
@@ -4008,13 +4026,18 @@ pre > code.sourceCode > span > a:first-child::before {
   }
 }
 
+.navbar .fa-li a {
+  font-size: 1.33rem;
+}
+
 .fa-li a:hover {
   color: currentColor !important;
   background-color: unset !important;
 }
 
 p iconify-icon {
-  padding: 2pt;
+  padding: 0pt 1pt;
+  margin: 0pt -1pt;
 }
 
 .list.grid.quarto-listing-cols-3 {

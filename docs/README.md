@@ -1,5 +1,5 @@
 Sam Foreman
-2025-11-27
+2025-12-11
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -66,7 +66,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">27</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">18:55:16</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">11</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">08:18:19</span>
 > </pre>
 
 > [!TIP]
@@ -994,8 +994,8 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
   }
 &#10;  .repo-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-    border-color: var(--bs-primary, #0d6efd);
+    box-shadow: 3pt 3pt black;
+    /* border-color: var(--bs-primary, #0d6efd); */
   }
 &#10;  .repo-header {
     display: flex;
@@ -1011,7 +1011,9 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
     font-weight: 600;
     margin: 0;
     word-break: break-word;
-  }
+    border: 1pt solid rgba(0,0,0,0.0) !important;
+    padding-inline: 1pt;
+}
 &#10;  .repo-name a {
     text-decoration: none;
     color: var(--bs-link-color, #0d6efd);
@@ -1024,8 +1026,8 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
     font-size: 0.7rem;
     padding: 0.15rem 0.45rem;
     /* border-radius: 999px; */
-    border: 1px solid var(--bs-border-color, #dee2e6);
-    background: var(--bs-secondary-bg, #f5f5f5);
+    border: 1px solid var(--bs-border-color, #838383);
+    background: var(--bs-secondary-bg, rgba(108, 117, 125, 0.1));
     white-space: nowrap;
   }
 &#10;  .repo-description {
@@ -1074,7 +1076,8 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 
 <h2 class="anchored">
 
-GitHub Repositories
+<a href="https://github.com/saforem2/"><code>saforem2</code></a>s GitHub
+Repositories
 </h2>
 
 <p class="repo-grid-loading" id="repo-grid-status">
@@ -1280,20 +1283,25 @@ Loading repositories from GitHub…
 
 ### 🎶 Music
 
+<div style="text-align: center;">
+
 <div class="light-content">
 
-<div class="flex-container"
-style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
+<div class="flex-container" style="gap: 10pt; text-align: center;">
 
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=f8f8f8&interchange=false" /></a>
 
-<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
+<a href="https://music-profile.rayriffy.com"><img width="85%" loading="lazy" src="https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+
+</div>
+
+<div class="flex-container" style="gap: 10pt; text-align: center;">
 
 <iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh)); border-radius: 4pt;">
 
 </iframe>
 
-<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/light.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
 
 </div>
 
@@ -1301,18 +1309,23 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
 
 <div class="dark-content">
 
-<div class="flex-container"
-style="display: grid; text-align:center; gap: 10px; grid-template-columns: repeat(2, minmax(120px, 1fr)); grid-template-rows: masonry;">
+<div class="flex-container" style="gap: 10pt; text-align: center;">
 
 <a href="https://github.com/kittinan/spotify-github-profile"><img loading="lazy" src="https://spotify-github-profile.kittinanx.com/api/view?uid=saforem2&cover_image=true&loading=lazy&theme=default&show_offline=false&background_color=1c1c1c&interchange=false" /></a>
 
-<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
+<a href="https://music-profile.rayriffy.com"><img width="85%" loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+
+</div>
+
+<div class="flex-container" style="gap: 10pt; text-align: center;">
 
 <iframe loading="lazy" width="auto" src="https://descent.live/saforem2" style="width: 100%; border: none; height: min(800px, calc(0.8*100vh)); border-radius: 4pt;">
 
 </iframe>
 
-<a href="https://music-profile.rayriffy.com"><img loading="lazy" src="https://music-profile.rayriffy.com/theme/dark.svg?uid=002028.5a338f21979147c78f6193b6138a1ec7.1532" align="center" /></a>
+<a href="https://last.fm/user/saforem2"><img loading="lazy" src="https://lastfm-recently-played.vercel.app/api?user=saforem2" align="center" /></a>
+
+</div>
 
 </div>
 
@@ -1359,8 +1372,8 @@ style="display: grid; text-align:center; gap: 10px; grid-template-columns: repea
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
-  [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/index.html
-  [1]: ./talks/2025/10/15/index.html
+  [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/slides.html
+  [1]: ./talks/2025/10/15/slides.html
   [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
   [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
   [2]: ./talks/2025/09/24/index.html

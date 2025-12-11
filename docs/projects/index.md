@@ -29,8 +29,8 @@ Sam Foreman
 >   }
 > &#10;  .repo-card:hover {
 >     transform: translateY(-3px);
->     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
->     border-color: var(--bs-primary, #0d6efd);
+>     box-shadow: 3pt 3pt black;
+>     /* border-color: var(--bs-primary, #0d6efd); */
 >   }
 > &#10;  .repo-header {
 >     display: flex;
@@ -46,7 +46,9 @@ Sam Foreman
 >     font-weight: 600;
 >     margin: 0;
 >     word-break: break-word;
->   }
+>     border: 1pt solid rgba(0,0,0,0.0) !important;
+>     padding-inline: 1pt;
+> }
 > &#10;  .repo-name a {
 >     text-decoration: none;
 >     color: var(--bs-link-color, #0d6efd);
@@ -59,8 +61,8 @@ Sam Foreman
 >     font-size: 0.7rem;
 >     padding: 0.15rem 0.45rem;
 >     /* border-radius: 999px; */
->     border: 1px solid var(--bs-border-color, #dee2e6);
->     background: var(--bs-secondary-bg, #f5f5f5);
+>     border: 1px solid var(--bs-border-color, #838383);
+>     background: var(--bs-secondary-bg, rgba(108, 117, 125, 0.1));
 >     white-space: nowrap;
 >   }
 > &#10;  .repo-description {
@@ -109,6 +111,7 @@ Sam Foreman
 >
 > <h2 class="anchored">
 >
+> <a href="https://github.com/saforem2/"><code>saforem2</code></a>s
 > GitHub Repositories
 > </h2>
 >

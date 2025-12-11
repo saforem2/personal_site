@@ -2,6 +2,7 @@
 Sam Foreman
 2025-06-14
 
+- [📦 GitHub Project](#package-github-project)
 - [🏖️ Shell Environment](#beach_umbrella-shell-environment)
 - [🔨 Build Libraries](#hammer-build-libraries)
   - [PyTorch](#pytorch)
@@ -11,6 +12,14 @@ Sam Foreman
   - [torch / `ao`](#torch--ao)
   - [TorchTune](#torchtune)
 - [✅ Verify Installation](#white_check_mark-verify-installation)
+
+## 📦 GitHub Project
+
+See:
+
+- [argonne-lcf/frameworks-standalone](https://github.com/argonne-lcf/frameworks-standalone)
+  - [Aurora/pytorch/README.md](https://github.com/argonne-lcf/frameworks-standalone/blob/main/Aurora/pytorch/README.md)
+    for additional details.
 
 ## 🏖️ Shell Environment
 

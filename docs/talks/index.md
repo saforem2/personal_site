@@ -28,7 +28,7 @@ Sam Foreman
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/24/index.html) @ UIUC \[10/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/24/slides.html) @ UIUC \[10/2025\]</span>
 >
 > <div class="reveal-full-page">
 >
@@ -40,7 +40,7 @@ Sam Foreman
 
 > [!TIP]
 >
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/15/index.html) @ Georgia Institute of Technology \[10/2025\]</span>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/15/slides.html) @ Georgia Institute of Technology \[10/2025\]</span>
 >
 > <div class="reveal-full-page">
 >

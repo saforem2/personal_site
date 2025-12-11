@@ -61,7 +61,7 @@ TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1 python3 ALCF/ds_to_universal.py \
 
 ## 📄 W&B Report
 
-<div class="column-page">
+<div class="column-body-outset">
 
 <iframe loading="lazy" src="https://api.wandb.ai/links/aurora_gpt/dek99dmd" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="border:none;height:1024px;width:100%">
 
