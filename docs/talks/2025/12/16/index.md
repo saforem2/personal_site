@@ -2,18 +2,10 @@
 Sam Foreman
 2025-12-16
 
-- [🧑🏻‍💻 About Me](#adultcomputer-about-me)
-- [Argonne Leadership Computing Facility
-  (ALCF)](#argonne-leadership-computing-facility-alcf)
-  - [🏗️ Aurora](#building_construction-aurora)
-  - [🤖 ALCF AI Testbed](#robot-alcf-ai-testbed)
-- [🌌 AuroraGPT (2024–)](#milky_way-auroragpt-2024)
-  - [🧪 AuroraGPT: Open Science Foundation
-    Model](#test_tube-auroragpt-open-science-foundation-model)
-  - [🧰 AuroraGPT: Toolbox](#toolbox-auroragpt-toolbox)
-  - [👥 Team Leads](#busts_in_silhouette-team-leads)
-  - [🤝 Teams](#handshake-teams)
-  - [🏋️ Challenges: In Practice](#weight_lifting-challenges-in-practice)
+- [🧰 AuroraGPT: Toolbox](#toolbox-auroragpt-toolbox)
+- [👥 Team Leads](#busts_in_silhouette-team-leads)
+- [🤝 Teams](#handshake-teams)
+- [🏋️ Challenges](#weight_lifting-challenges)
   - [💾 AuroraGPT: Training](#floppy_disk-auroragpt-training)
   - [🍹 AuroraGPT: Blending Data,
     Efficiently](#tropical_drink-auroragpt-blending-data-efficiently)
@@ -44,232 +36,6 @@ Sam Foreman
 - [❤️ Acknowledgements](#heart-acknowledgements)
 - [Extras](#extras)
 
-## 🧑🏻‍💻 About Me
-
-<div class="flex-container">
-
-<div class="column" style="width:50%;">
-
-- 🏡 [samforeman.me](https://samforeman.me)
-- UIUC (2015):
-  - Engineering Physics + Applied Mathematics
-- University of Iowa (2015–2019):
-  - PhD. Physics[^1]
-- ANL (2019–2022): Postdoctoral Researcher
-- ANL (2022–Present): Assistant Computational Scientist
-  - Member of the [AI/ML
-    Group](https://www.alcf.anl.gov/about/people/group/506) at ALCF
-
-</div>
-
-<div class="column" style="width:50%;">
-
-Current Research:
-
-- [AuroraGPT](https://auroragpt.anl.gov): Foundation Models for Science
-- [AERIS](https://arxiv.org/abs/2509.13523): Argonne’s Earth System
-  Model
-  - Finalist for the [2025 ACM Gordon Bell Prize in Climate
-    Modeling](https://awards.acm.org/bell-climate)
-- [MProt-DPO](https://www.researchgate.net/publication/387390653_MProt-DPO_Breaking_the_ExaFLOPS_Barrier_for_Multimodal_Protein_Design_Workflows_with_Direct_Preference_Optimization):
-  Multimodal Protein Design
-  - Finalist for the [ACM Gordon Bell Prize
-    2024](https://sc24.supercomputing.org/2024/10/presenting-the-finalists-for-the-2024-gordon-bell-prize/)
-- [GenSLMs](https://www.biorxiv.org/content/10.1101/2022.10.10.511571v2):
-  Genome Scale Language Models.
-  - Winner of the [ACM Gordon Bell Special Prize for HPC-Based COVID-19
-    Research](https://www.acm.org/media-center/2022/november/gordon-bell-special-prize-covid-research-2022)
-
-</div>
-
-</div>
-
-## Argonne Leadership Computing Facility (ALCF)
-
-<div class="flex-container" style="gap: 5pt; align-items: flex-end;">
-
-<div class="column" style="width:50%;">
-
-> The ALCF enables breakthroughs in science and engineering by providing
-> supercomputing resources and expertise to the research community.  
-> –[*alcf.anl.gov*](https://alcf.anl.gov)
-
-![](https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-nodes.jpg)
-
-</div>
-
-<div class="column" style="width:30%;">
-
-<img
-src="https://www.chicagomag.com/wp-content/uploads/2023/01/C202302-Aurora-Supercomputer-Argonne.jpg"
-style="width:100%;max-width:unset;" />
-
-</div>
-
-</div>
-
-<div class="aside">
-
-Images from [The Computer That Will Change Everything – Chicago
-Magazine](https://www.chicagomag.com/chicago-magazine/february-2023/the-computer-that-will-change-everything/)
-
-</div>
-
-### 🏗️ Aurora
-
-<div class="flex-container" style="align-items: center; gap:10pt;">
-
-<div id="tbl-aurora">
-
-Table 1: Aurora[^2] Specs
-
-| Property | Value   |
-|---------:|:--------|
-|    Racks | 166     |
-|    Nodes | 10,624  |
-| XPUs[^3] | 127,488 |
-|     CPUs | 21,248  |
-|     NICs | 84,992  |
-|      HBM | 8 PB    |
-|    DDR5c | 10 PB   |
-
-</div>
-
-<div id="fig-aurora">
-
-![](../../../../assets/aurora1.png)
-
-Figure 1: Aurora: [Fact
-Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
-
-</div>
-
-</div>
-
-### 🤖 ALCF AI Testbed
-
-- ALCF AI Testbed Systems are in production and [available for
-  allocations](https://accounts.alcf.anl.gov/#/allocationRequests) to
-  the research community
-- Significant improvement in time-to-solution and energy-efficiency for
-  diverse AI for science applications.
-- [NAIRR Pilot](https://nairrpilot.org/)
-
-<div class="red-card" style="color: #FF5252; font-size:90%;">
-
-Up to **25**$\times$ improvement for genomic foundation models with
-**6.5**$\times$ energy efficiency
-
-</div>
-
-<div class="flex-container" style="align-items: flex-start;">
-
-<div id="fig-sambanova">
-
-![](../../../../assets/sambanova.jpeg)
-
-Figure 2: **SambaNova SN-30**: 2nd Gen, 8 nodes with 64 AI Accelerators
-
-</div>
-
-<div id="fig-graphcore">
-
-![](../../../../assets/graphcore.png)
-
-Figure 3: **Graphcore Bow**: generation accelerators: Pod-64
-configuration with 64 accelerators
-
-</div>
-
-<div id="fig-cerebras">
-
-![](../../../../assets/cerebras.jpeg)
-
-Figure 4: **Cerebras**: 2x CS-2 WSE with Memory-X and Swarm-X
-technologies
-
-</div>
-
-<div id="fig-groq">
-
-![](../../../../assets/groq.jpeg)
-
-Figure 5: **GroqRack**: 9 nodes, 8 GroqChip v1.5 Tensor streaming
-processors accelerators per node
-
-</div>
-
-</div>
-
-<div class="flex-container" style="align-items: center; gap: 5pt;">
-
-<div class="column" style="width:55%; text-align: center;">
-
-<span style="font-weight: 600; font-size: 1.5em;">🔭
-AI-for-Science</span>  
-[source](https://x.com/tenderizzation/status/1944591320796090606)
-([@tenderizzation](https://twitter.com/tenderizzation))  
- <br>
-
-ChatGPT: [explain this
-image](https://chatgpt.com/share/688ab77e-9ca0-800a-8ab0-a293e06b3cce)
-
-</div>
-
-<div class="column">
-
-![](./assets/modeling-planets.jpg)
-
-</div>
-
-</div>
-
-## 🌌 AuroraGPT (2024–)
-
-<div class="flex-container" style="justify-content: space-around;">
-
-<div class="column" style="width: 50%;">
-
-<div class="blue-card">
-
-[**AuroraGPT**](https://auroragpt.anl.gov): *General purpose scientific
-LLM* Broadly trained on a general corpora plus scientific {papers,
-texts, data}
-
-</div>
-
-- **Explore pathways** towards a “Scientific Assistant” model
-- **Build with international partners** (RIKEN, BSC, others)
-- **Multimodal**: images, tables, equations, proofs, time series,
-  graphs, fields, sequences, etc
-
-</div>
-
-<div class="column" style="text-align: center; width: 50%;">
-
-<div id="fig-awesome-llm">
-
-![](./assets/llms.gif)
-
-Figure 6: Image from [Hannibal046 /
-`Awesome-LLM`](https://github.com/Hannibal046/Awesome-LLM)
-
-</div>
-
-</div>
-
-</div>
-
-### 🧪 AuroraGPT: Open Science Foundation Model
-
-<div id="fig-aurora-gpt">
-
-![](./assets/AuroraGPT.svg)
-
-Figure 7: High-level overview of AuroraGPT project
-
-</div>
-
 ### 🧰 AuroraGPT: Toolbox
 
 - **Datasets and data pipelines** (how do we deal with scientific data?)
@@ -278,15 +44,21 @@ Figure 7: High-level overview of AuroraGPT project
 - **Evaluation of state-of-the-art LLM Models** (how do they perform on
   scientific tasks?)
 
-<div class="flex-container" style="gap: 5pt;">
+<div class="flex-container" style="gap: 5pt; margin-block-end: 5pt;">
+
+> [!TIP]
+>
+> ### 🍋 ezpz
+>
+> [saforem2/ezpz](https://github.com/saforem2/ezpz)  
+> <span class="dim-text">Write once, run anywhere</span>
 
 > [!NOTE]
 >
 > ### 🚂 Training
 >
 > [argonne-lcf/Megatron-DeepSpeed](https://github.com/argonne-lcf/Megatron-DeepSpeed)  
-> <span class="dim-text">Large Model Training: Any Scale, Any
-> Accelerator</span>
+> <span class="dim-text">For the largest of large language models</span>
 
 > [!IMPORTANT]
 >
@@ -425,7 +197,7 @@ style="height:1.04167in" alt="Brad Ullrich" />
   - Accumulate 20+ T tokens of high-quality scientific text and
     structured data
 - <span style="background: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); border: 1px solid #ff1a8f; border-radius: 0.25px;">**Models
-  / Training**</span>[^4]
+  / Training**</span>[^1]
   - Train (entirely from scratch) a series of models on publicly
     available data
 - **Evaluation**
@@ -448,7 +220,7 @@ style="height:1.04167in" alt="Brad Ullrich" />
 
 </div>
 
-### 🏋️ Challenges: In Practice
+## 🏋️ Challenges
 
 This is *incredibly* difficult in practice, due in part to:
 
@@ -504,9 +276,10 @@ style="padding: 10pt; justify-content: space-around; align-items: flex-start;">
 
 <div id="fig-data-processing">
 
-<img src="./assets/data-processing.svg" class="r-stretch" />
+<img src="../../../../assets/AuroraGPT/data-processing.svg"
+class="r-stretch" />
 
-Figure 8: Time spent preparing 2T tokens
+Figure 1: Time spent preparing 2T tokens
 
 </div>
 
@@ -522,7 +295,7 @@ Figure 8: Time spent preparing 2T tokens
 
 ![](../../../../assets/aGPT-2B-train-loss-7T.png)
 
-Figure 9: (**new**) Loss vs number of consumed training tokens for
+Figure 2: (**new**) Loss vs number of consumed training tokens for
 AuroraGPT-2B on 256 (blue) and 520 nodes (grey) of Aurora. Both runs
 show stability through 7T tokens.
 
@@ -544,7 +317,7 @@ show stability through 7T tokens.
 
 ### ✨ Features (even more!)
 
-- 🧗 **Optimizers**[^5]:
+- 🧗 **Optimizers**[^2]:
   - Support for *many* different optimizers:
     - Distributed Shampoo, Muon, Adopt, Sophia, Lamb, GaLORE,
       ScheduleFree, …
@@ -578,10 +351,10 @@ style="align-items: center; text-align: center; margin-left: auto; margin-right:
 
 <div id="fig-mprot-3p5B-scaling0">
 
-<img src="./assets/mprot-3p5B-scaling-2.svg"
+<img src="../../../../assets/AuroraGPT/mprot-3p5B-scaling-2.svg"
 style="margin:0; padding-unset;;width:100.0%" />
 
-Figure 10: Scaling results for `3.5B` model across ~38,400 GPUs
+Figure 3: Scaling results for `3.5B` model across ~38,400 GPUs
 
 </div>
 
@@ -628,17 +401,17 @@ Aurora, Frontier, Leonardo and PDX.
 
 <div id="fig-mprot-3p5B-scaling">
 
-![](./assets/mprot-3p5B-scaling-2.svg)
+![](../../../../assets/AuroraGPT/mprot-3p5B-scaling-2.svg)
 
-Figure 11: `3.5B` model
+Figure 4: `3.5B` model
 
 </div>
 
 <div id="fig-mprot-7B-scaling">
 
-![](./assets/mprot-7B-scaling-2.svg)
+![](../../../../assets/AuroraGPT/mprot-7B-scaling-2.svg)
 
-Figure 12: `7B` model
+Figure 5: `7B` model
 
 </div>
 
@@ -676,8 +449,8 @@ style="height:50pt; margin: unset; padding: 0;" />
 
 </div>
 
-Figure 13: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B`
-models (See: Song et al. (2023))
+Figure 6: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
+(See: Song et al. (2023))
 
 </div>
 
@@ -697,9 +470,9 @@ models (See: Song et al. (2023))
 
 <div id="fig-arxiv">
 
-![](../../../../assets/team.png)
+![](../../../../assets/aeris/team.png)
 
-Figure 14: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
+Figure 7: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 
 </div>
 
@@ -708,7 +481,7 @@ Figure 14: [arXiv:2509.13523](https://arxiv.org/abs/2509.13523)
 <div class="flex-child" style="width:43.6%;">
 
 ![ACM Gordon Bell Prize for Climate Modeling Finalist @
-SC’25](./assets/aeris.svg)
+SC’25](../../../../assets/aeris/aeris.svg)
 
 </div>
 
@@ -734,15 +507,15 @@ SC’25](./assets/aeris.svg)
 
 <div id="fig-rollout">
 
-![](./assets/rollout.gif)
+![](../../../../assets/aeris/rollout.gif)
 
-Figure 15: Rollout of AERIS model, specific humidity at 700m.
+Figure 8: Rollout of AERIS model, specific humidity at 700m.
 
 </div>
 
 <div id="tbl-aeris">
 
-Table 2: Overview of AERIS model and training setup
+Table 1: Overview of AERIS model and training setup
 
 |           Property | Description      |
 |-------------------:|:-----------------|
@@ -750,7 +523,7 @@ Table 2: Overview of AERIS model and training setup
 |         Resolution | 0.25° & 1.4°     |
 |      Training Data | ERA5 (1979–2018) |
 | Model Architecture | Swin Transformer |
-|        Speedup[^6] | O(10k–100k)      |
+|        Speedup[^3] | O(10k–100k)      |
 
 </div>
 
@@ -770,7 +543,7 @@ Table 2: Overview of AERIS model and training setup
 > - Operates at the pixel level (1 × 1 patch size), guided by physical
 >   priors
 > - Medium-range forecast skill:
->   - **Surpasses IFS ENS, competitive with GenCast[^7]**
+>   - **Surpasses IFS ENS, competitive with GenCast[^4]**
 >   - Uniquely stable on seasonal scales to 90 days
 
 > [!NOTE]
@@ -781,7 +554,7 @@ Table 2: Overview of AERIS model and training setup
 > (sequence-window-pipeline) parallelism strategy for training
 > transformers across high-resolution inputs*</span>
 >
-> - Enables scalable small-batch training on large supercomputers[^8]
+> - Enables scalable small-batch training on large supercomputers[^5]
 >   - **10.21 ExaFLOPS**
 >   - @ 121,000 Intel XPUs (Aurora)
 
@@ -817,9 +590,9 @@ Table 2: Overview of AERIS model and training setup
 
 <div id="fig-forward-pass">
 
-![](./assets/diffusion/light.svg)
+![](../../../../assets/aeris/diffusion/light.svg)
 
-Figure 16: Reverse diffusion with the
+Figure 9: Reverse diffusion with the
 <span style="color:#228be6">input</span> condition, individual sampling
 steps $t_{0} \rightarrow t_{64}$, the next time step
 <span style="color:#40c057">estimate</span> and the
@@ -830,9 +603,10 @@ steps $t_{0} \rightarrow t_{64}$, the next time step
 <div class="flex-container">
 
 ![Reverse Diffusion Process
-($\mathcal{N}\rightarrow \pi$)](./assets/diffusion.gif)
+($\mathcal{N}\rightarrow \pi$)](../../../../assets/aeris/diffusion.gif)
 
-<img src="./assets/diffusion_forward.png" style="width:89.6%"
+<img src="../../../../assets/aeris/diffusion_forward.png"
+style="width:89.6%"
 alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 </div>
@@ -854,9 +628,9 @@ alt="Forward Diffusion Process (\pi\rightarrow \mathcal{N})" />
 
 <div id="fig-swipe-layer">
 
-![](./assets/wpsp.svg)
+![](../../../../assets/aeris/wpsp.svg)
 
-Figure 17
+Figure 10
 
 </div>
 
@@ -864,9 +638,9 @@ Figure 17
 
 <div id="fig-comms">
 
-![](./assets/comms1.svg)
+![](../../../../assets/aeris/comms1.svg)
 
-Figure 18: `SWiPe` Communication Patterns
+Figure 11: `SWiPe` Communication Patterns
 
 </div>
 
@@ -876,9 +650,9 @@ Figure 18: `SWiPe` Communication Patterns
 
 <div id="fig-aeris-scaling">
 
-![](./assets/aeris-scaling.svg)
+![](../../../../assets/aeris/aeris-scaling.svg)
 
-Figure 19: AERIS: Scaling Results
+Figure 12: AERIS: Scaling Results
 
 </div>
 
@@ -897,9 +671,9 @@ Figure 19: AERIS: Scaling Results
 
 <div id="fig-hurricane-laura">
 
-![](./assets/science/hurricane.png)
+![](../../../../assets/aeris/science/hurricane.png)
 
-Figure 20: Hurricane Laura tracks (top) and intensity (bottom).
+Figure 13: Hurricane Laura tracks (top) and intensity (bottom).
 Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 </div>
@@ -959,25 +733,16 @@ Sophisticated AI System Technologies.”
 
 ## Extras
 
-[^1]: [A Machine Learning Approach to Lattice Gauge
-    Theory](https://www.researchgate.net/publication/337499051_Learning_better_physics_a_machine_learning_approach_to_lattice_gauge_theory)
+[^1]: Co-led by: Venkat Vishwanath, Sam Foreman
 
-[^2]: 🏆 [Aurora Supercomputer Ranks Fastest for
-    AI](https://www.intel.com/content/www/us/en/newsroom/news/intel-powered-aurora-supercomputer-breaks-exascale-barrier.html)
+[^2]: Implemented by Marieme Ngom
 
-[^3]: Each node has 6 Intel Data Center GPU Max 1550 (code-named “Ponte
-    Vecchio”) tiles, with 2 XPUs per tile.
-
-[^4]: Co-led by: Venkat Vishwanath, Sam Foreman
-
-[^5]: Implemented by Marieme Ngom
-
-[^6]: Relative to PDE-based models, e.g.:
+[^3]: Relative to PDE-based models, e.g.:
     [GFS](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
-[^7]: [GenCast: A Generative Model for Medium-Range Global Weather
+[^4]: [GenCast: A Generative Model for Medium-Range Global Weather
     Forecasting](https://arxiv.org/html/2312.15796v1) (Price et al.
     (2024))
 
-[^8]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on
+[^5]: Demonstrated on up to 120,960 GPUs on Aurora and 8,064 GPUs on
     LUMI.
