@@ -28,6 +28,18 @@ Sam Foreman
 
 > [!TIP]
 >
+> ### <span class="dim-text">[AuroraGPT: Training Foundation Models on Supercomputers](../talks/2025/12/16/slides.html) @ ANL \[12/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/12/16/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
+
+> [!TIP]
+>
 > ### <span class="dim-text">[Training Foundation Models on Supercomputers](../talks/2025/10/24/slides.html) @ UIUC \[10/2025\]</span>
 >
 > <div class="reveal-full-page">

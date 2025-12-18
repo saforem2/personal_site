@@ -437,6 +437,9 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 > <https://samforeman.me/talks/></span>
 
 - 2025-:
+  - 12: [Training Foundation Models on
+    Supercomputers](../../talks/2025/12/16/index.html) @ Argonne
+    National Laboratory
   - 10: [Training Foundation Models on
     Supercomputers](../../talks/2025/10/24/index.html) @ University of
     Illinois at Urbana-Champaign
