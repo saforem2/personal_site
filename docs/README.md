@@ -1,5 +1,5 @@
 Sam Foreman
-2025-12-19
+2025-12-24
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -66,7 +66,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">14:12:09</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:31:19</span>
 > </pre>
 
 > [!TIP]
@@ -258,6 +258,18 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 </div>
 
 ## 📆 2025
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AuroraGPT: Training Foundation Models on Supercomputers] @ ANL \[12/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/12/16/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
+>
+> </iframe>
+>
+> </div>
 
 > [!TIP]
 >
@@ -1331,6 +1343,92 @@ Loading repositories from GitHub…
 
 </div>
 
+### ➕ More
+
+<div class="panel-tabset"
+style="justify-content: center; loading='lazy';">
+
+### 👤 About Me
+
+> [!TIP]
+>
+> ### ➕ More
+>
+> > [!TIP]
+> >
+> > ### 🔥 What I Work on
+> >
+> > As a member of the [AI / ML Group] at [ALCF], I work on:
+> >
+> > <div class="flex-container">
+> >
+> > <div class="flex-container">
+> >
+> > - 🤖 🧪 [AI + Science]
+> >
+> > - 🎲 [Building better sampling methods for Lattice QCD][`l2hmc-qcd`]
+> >
+> > - 🧬 [Genome-Scale Language Models]
+> >
+> >   - [ GenSLM]
+> >
+> >   - 🥇 [ACM Gordon Bell Special Prize]
+> >
+> > </div>
+> >
+> > <div class="flex-container">
+> >
+> > - 🌍 [Foundation models for long term climate forecasting]
+> >
+> > - 🏃‍♂️ [Scaling Large Language Models]
+> >
+> > - 🏎️ [Distributed training across thousands of GPUs]
+> >
+> > </div>
+> >
+> > </div>
+>
+> > [!TIP]
+> >
+> > ### 📍 How I got here
+> >
+> > My [current research] focuses on using deep generative modeling to
+> > help build better sampling algorithms in lattice gauge theory. In
+> > particular, I’m interested in building gauge equivariant neural
+> > network architectures and using inductive priors to incorporate
+> > physical symmetries into machine learning models.
+> >
+> > <br>
+> >
+> > I received my PhD in Physics from the University of Iowa in 2019 and
+> > my thesis was on [Learning Better Physics: A Machine Learning
+> > Approach to Lattice Gauge Theory].
+> >
+> > <br>
+> >
+> > Prior to this, I completed two bachelors degrees (Engineering
+> > Physics and Applied Mathematics, 2015) at The University of Illinois
+> > at Urbana-Champaign. My undergraduate dissertation was titled
+> > [Energy Storage in Quantum Resonators] and was supervised by
+> > Professor [Alfred Hübler] within the Center for Complex Systems
+> > Research at UIUC.
+> >
+> > This work ultimately resulted in a [patent] !!
+>
+> > [!TIP]
+> >
+> > ### 💌 Contact
+> >
+> > <script data-letterbirduser="sam" src="https://letterbird.co/embed/v1.js"></script>
+>
+> <div style="text-align:center;">
+>
+> <img loading="lazy" alt="hits" src="https://hitscounter.dev/api/hit?url=samforeman.me&label=samforeman.me&icon=check2-square&color=%236c757d">
+>
+> <span class="dim-text">© Copyright 2025 [Sam Foreman]</span>
+>
+> </div>
+
 ### 💭 Thoughts
 
 - From <https://sf.status.lol>:
@@ -1342,6 +1440,8 @@ Loading repositories from GitHub…
 <iframe src="https://guestbooks.meadow.cafe/guestbook/745" width="100%" height="600" frameborder="0" style="border: 1px dotted #666666; border-radius: 0px;">
 
 </iframe>
+
+</div>
 
 </div>
 
@@ -1372,6 +1472,7 @@ Loading repositories from GitHub…
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
+  [AuroraGPT: Training Foundation Models on Supercomputers]: ./talks/2025/12/16/slides.html
   [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/slides.html
   [1]: ./talks/2025/10/15/slides.html
   [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html

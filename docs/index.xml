@@ -16,7 +16,7 @@
 <height>78</height>
 <width>144</width>
 </image>
-<generator>quarto-1.9.13</generator>
+<generator>quarto-1.9.14</generator>
 <lastBuildDate>Tue, 16 Dec 2025 06:00:00 GMT</lastBuildDate>
 <item>
   <title>AuroraGPT: Training Foundation Models on Supercomputers</title>
@@ -2144,9 +2144,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,G0,n0 block
 class D eblock
 </pre>
@@ -2495,12 +2495,12 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
 class xp,xp2 purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -2622,8 +2622,8 @@ Figure&nbsp;6: General strategy for scaling model training
 </ul></li>
 </ul>
 </section>
-<section id="going-beyond-data-parallelism-deepspeed-zero" class="level3">
-<h3 class="anchored" data-anchor-id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
+<section id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" class="level3">
+<h3 class="anchored" data-anchor-id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -2718,11 +2718,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -2788,7 +2788,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -2860,7 +2860,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -4704,9 +4704,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,D,G0,n0 block
 </pre>
 </div>
@@ -5031,15 +5031,15 @@ Figure&nbsp;4: Send global updates back to each GPU. See: <a href="https://pytor
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  0["GPU0"] --&gt; 1["GPU 1"]
-  CKPT --&gt; 0
-  0 --&gt; 2["GPU 2"]
-  0 --Model + Optim. State--&gt;3["GPU 3"]
-  0 --&gt; X["`...`"]
-  0 --&gt; N["GPU N"]
+  g0["GPU0"] --&gt; g1["GPU 1"]
+  CKPT --&gt; g0
+  g0 --&gt; g2["GPU 2"]
+  g0 --Model + Optim. State--&gt; g3["GPU 3"]
+  g0 --&gt; X["`...`"]
+  g0 --&gt; N["GPU N"]
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class 0,1,2,3,N,X,CKPT block
+class g0,g1,g2,g3,N,X,CKPT block
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -5161,8 +5161,8 @@ Figure&nbsp;6: General strategy for scaling model training
 <li>Otherwise, resort to model parallelism strategies</li>
 </ul></li>
 </ul>
-<section id="going-beyond-data-parallelism-deepspeed-zero" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
+<section id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -5257,11 +5257,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -5279,9 +5279,8 @@ Figure&nbsp;8: Pipeline Parallelism
 </section>
 <section id="tensor-parallel-tp" class="level3" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="tensor-parallel-tp">Tensor Parallel (TP)</h3>
-<div class="quarto-layout-panel" data-layout="[50,50]">
-<div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="flex-container">
+<div class="column">
 <ul>
 <li>Each tensor is split up into multiple chunks</li>
 <li>Each shard of the tensor resides on its designated GPU</li>
@@ -5292,7 +5291,7 @@ Figure&nbsp;8: Pipeline Parallelism
 <li>See: <a href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">🤗 Model Parallelism</a> for additional details</li>
 </ul>
 </div>
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="column">
 <div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -5327,7 +5326,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -5346,13 +5345,11 @@ Figure&nbsp;9: Tensor Parallel Training
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="tensor-parallel-tp-1" class="level3" data-background-color="white">
 <h3 data-background-color="white" class="anchored" data-anchor-id="tensor-parallel-tp-1">Tensor Parallel (TP)</h3>
-<div class="quarto-layout-panel" data-layout="[50,50]">
-<div class="quarto-layout-row">
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="flex-container">
+<div class="column">
 <ul>
 <li>Suitable when the model is too large to fit onto a single device (CPU / GPU)</li>
 <li>Typically <strong>more complicated</strong> to implement than data parallel training
@@ -5364,10 +5361,10 @@ Figure&nbsp;9: Tensor Parallel Training
 <li>🤗 <a href="https://github.com/huggingface/nanotron"><code>huggingface/nanotron</code></a></li>
 </ul>
 </div>
-<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-model-parallel-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="column">
+<div id="fig-model-parallel-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-model-parallel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -5399,7 +5396,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -5411,11 +5408,10 @@ class d0,d1 yellow
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-parallel-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10: Tensor Parallel Training
 </figcaption>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -5509,7 +5505,7 @@ x 12 [XPU / node]</p></li>
 <div id="fig-aeris-scaling" class="column quarto-float quarto-figure quarto-figure-center anchored" style="width:70%;">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;13: AERIS: Scaling Results"><img src="https://samforeman.me/talks/2025/09/24/assets/aeris-scaling.svg" class="img-fluid figure-img"></a>
+<a href="../../../../assets/aeris/aeris-scaling.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;13: AERIS: Scaling Results"><img src="https://samforeman.me/assets/aeris/aeris-scaling.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aeris-scaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;13: AERIS: Scaling Results
@@ -22402,9 +22398,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,D,G0,n0 block
 </pre>
 </div>
@@ -22456,9 +22452,9 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class x,L0 green
-class x1, blue
-class x2, yellow
-class x3, grey
+class x1 blue
+class x2 yellow
+class x3 grey
 class N0,D,G0,n0 block
 </pre>
 </div>
@@ -22510,9 +22506,9 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class x,L0 blue
-class x1, yellow
-class x2, purple
-class x3, grey
+class x1 yellow
+class x2 purple
+class x3 grey
 class N0,D,G0,n0 block
 </pre>
 </div>
@@ -22860,11 +22856,11 @@ classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
-class xp,xp0,xp1,xp2,xp3, purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class xp,xp0,xp1,xp2,xp3 purple
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -22932,12 +22928,12 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
 class xp,xp2 purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -22995,9 +22991,9 @@ classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR, block
+class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR block
 class x2,xp0,xp1,xp2,xp3 blue
-class xp, text
+class xp text
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -23067,16 +23063,16 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class xp0,xp1, text
-class AG0,AG1,AG2,AG3,AG,R0,R1,R2,R3, block
-class xp00,xp01,xp02,xp03, red
-class xp10,xp11,xp12,xp13, green
-class xp20,xp21,xp22,xp23, blue
-class xp30,xp31,xp32,xp33, yellow
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class xp0,xp1 text
+class AG0,AG1,AG2,AG3,AG,R0,R1,R2,R3 block
+class xp00,xp01,xp02,xp03 red
+class xp10,xp11,xp12,xp13 green
+class xp20,xp21,xp22,xp23 blue
+class xp30,xp31,xp32,xp33 yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -23140,11 +23136,11 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S0,S1,S2,S3, block
-class x0,xp0, red
-class x1,xp1, green
-class x2,xp2, blue
-class x3,xp3, yellow
+class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S0,S1,S2,S3 block
+class x0,xp0 red
+class x1,xp1 green
+class x2,xp2 blue
+class x3,xp3 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -23358,8 +23354,8 @@ Figure&nbsp;12: To ensure all workers have the same copies, we load on <code>RAN
 </ul></li>
 </ul>
 </section>
-<section id="going-beyond-data-parallelism-deepspeed-zero" class="level2" data-background-color="white">
-<h2 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h2>
+<section id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" class="level2" data-background-color="white">
+<h2 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero">Going beyond Data Parallelism: <iconify-icon inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h2>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -23474,11 +23470,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -23544,7 +23540,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -23616,7 +23612,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -24044,8 +24040,8 @@ font-style: inherit;">-m</span> ezpz.test_dist</span></code></pre></div></div>
 <p>See: 🍋 <a href="https://github.com/saforem2/ezpz/blob/main/src/ezpz/test_dist.py"><code>ezpz/test_dist.py</code></a></p></li>
 </ol>
 </section>
-<section id="ezpz-example-video" class="level2" data-background-color="#121314">
-<h2 data-background-color="#121314" class="anchored" data-anchor-id="ezpz-example-video"><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a>: Example [<a href="https://asciinema.org/a/668460">video</a>]</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--ezpz-example-video" class="level2" data-background-color="#121314">
+<h2 data-background-color="#121314" class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--ezpz-example-video"><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/ezpz"><code>ezpz</code></a>: Example [<a href="https://asciinema.org/a/668460">video</a>]</h2>
 <div id="fig-ezpz-asciinema" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ezpz-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -27193,8 +27189,8 @@ font-style: inherit;">[2024-07-17 07:46:34.074957][INFO][trainer:885] - step=330
 background-color: null;
 font-style: inherit;">[2024-07-17 07:46:36.929464][INFO][trainer:885] - step=340 loss=1.350888 dt=0.284436 dtf=0.005199 dtb=0.011287 sps=14.062893 sps_per_gpu=3.515723 tps=921625.744709 tps_per_gpu=230406.436177 mfu=45.539549 train_loss=1.495372 val_loss=1.713714</span></span></code></pre></div></div>
 </section>
-<section id="wordplay-example-video" class="level2" data-background-color="#121314">
-<h2 data-background-color="#121314" class="anchored" data-anchor-id="wordplay-example-video"><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--wordplay-example-video" class="level2" data-background-color="#121314">
+<h2 data-background-color="#121314" class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--wordplay-example-video"><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/wordplay"><code>wordplay</code></a>: Example [<a href="https://asciinema.org/a/668462">video</a>]</h2>
 <div id="fig-wordplay-asciinema" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wordplay-asciinema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

@@ -28,7 +28,7 @@ Sam Foreman
 - [Best Practices](#best-practices)
 - [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
 - [Going beyond Data Parallelism: DeepSpeed +
-  `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+  `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
 - [Fully Sharded Data Parallel: 🔥 PyTorch +
   `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
 - [🕸️ Additional Parallelism
@@ -54,12 +54,14 @@ Sam Foreman
 - [👋 Hands On](#wave-hands-on)
 - [🧑‍💻 Hands On: Getting Started](#technologist-hands-on-getting-started)
 - [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
-- [ `ezpz`: Example \[video\]](#---ezpz-example-video)
+- [ `ezpz`: Example
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--ezpz-example-video)
 - [Install `wordplay` 🎮💬](#install-wordplay-video_gamespeech_balloon)
 - [Prepare Data](#prepare-data)
 - [Launch Training (DDP)](#launch-training-ddp)
 - [Training: Example Output](#training-example-output)
-- [ `wordplay`: Example \[video\]](#---wordplay-example-video)
+- [ `wordplay`: Example
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--wordplay-example-video)
 - [❤️ Thank you!](#heart-thank-you)
 - [📓 References](#notebook-references)
 

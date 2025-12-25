@@ -29,7 +29,7 @@ Sam Foreman
 - [Best Practices](#best-practices)
 - [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
 - [Going beyond Data Parallelism: DeepSpeed +
-  `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+  `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
 - [Fully Sharded Data Parallel: 🔥 PyTorch +
   `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
 - [🕸️ Additional Parallelism
@@ -55,12 +55,14 @@ Sam Foreman
 - [👋 Hands On](#wave-hands-on)
 - [🧑‍💻 Hands On: Getting Started](#technologist-hands-on-getting-started)
 - [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
-- [ `ezpz`: Example \[video\]](#---ezpz-example-video)
+- [ `ezpz`: Example
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--ezpz-example-video)
 - [Install `wordplay` 🎮💬](#install-wordplay-video_gamespeech_balloon)
 - [Prepare Data](#prepare-data)
 - [Launch Training (DDP)](#launch-training-ddp)
 - [Training: Example Output](#training-example-output)
-- [ `wordplay`: Example \[video\]](#---wordplay-example-video)
+- [ `wordplay`: Example
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--wordplay-example-video)
 - [❤️ Thank you!](#heart-thank-you)
 - [📓 References](#notebook-references)
 
@@ -126,9 +128,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,D,G0,n0 block
 ```
 
@@ -168,9 +170,9 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class x,L0 green
-class x1, blue
-class x2, yellow
-class x3, grey
+class x1 blue
+class x2 yellow
+class x3 grey
 class N0,D,G0,n0 block
 ```
 
@@ -210,9 +212,9 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
 class x,L0 blue
-class x1, yellow
-class x2, purple
-class x3, grey
+class x1 yellow
+class x2 purple
+class x3 grey
 class N0,D,G0,n0 block
 ```
 
@@ -497,11 +499,11 @@ classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
-class xp,xp0,xp1,xp2,xp3, purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class xp,xp0,xp1,xp2,xp3 purple
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 ```
 
 Figure 7: All-Reduce operation: each rank receives the reduction of
@@ -557,12 +559,12 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
 class xp,xp2 purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 ```
 
 Figure 8: Reduce operation: one rank receives the reduction of input
@@ -609,9 +611,9 @@ classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR, block
+class R0,R1,R2,R3,AR0,AR1,AR2,AR3,AR block
 class x2,xp0,xp1,xp2,xp3 blue
-class xp, text
+class xp text
 ```
 
 Figure 9: `broadcast` (send) a tensor <code>$x$</code> from one rank to
@@ -670,16 +672,16 @@ classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383
-class xp0,xp1, text
-class AG0,AG1,AG2,AG3,AG,R0,R1,R2,R3, block
-class xp00,xp01,xp02,xp03, red
-class xp10,xp11,xp12,xp13, green
-class xp20,xp21,xp22,xp23, blue
-class xp30,xp31,xp32,xp33, yellow
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class xp0,xp1 text
+class AG0,AG1,AG2,AG3,AG,R0,R1,R2,R3 block
+class xp00,xp01,xp02,xp03 red
+class xp10,xp11,xp12,xp13 green
+class xp20,xp21,xp22,xp23 blue
+class xp30,xp31,xp32,xp33 yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 ```
 
 Figure 10: Gathers tensors from the whole group in a list.
@@ -731,11 +733,11 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S0,S1,S2,S3, block
-class x0,xp0, red
-class x1,xp1, green
-class x2,xp2, blue
-class x3,xp3, yellow
+class AG0,AG1,AG2,AG3,S,R0,R1,R2,R3,S0,S1,S2,S3 block
+class x0,xp0 red
+class x1,xp1 green
+class x2,xp2 blue
+class x3,xp3 yellow
 ```
 
 Figure 11: Scatters a list of tensors to the whole group
@@ -963,11 +965,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 ```
 
 Figure 15: Pipeline Parallelism

@@ -22,7 +22,7 @@ Sam Foreman
   - [🚀 Going Beyond Data
     Parallelism](#rocket-going-beyond-data-parallelism)
   - [Going beyond Data Parallelism: DeepSpeed +
-    `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
   - [🕸️ Additional Parallelism
     Strategies](#spider_web-additional-parallelism-strategies)
   - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
@@ -117,9 +117,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,G0,n0 block
 class D eblock
 ```
@@ -414,12 +414,12 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef pink fill:#E599F7,stroke:#333,stroke-width:1px,color:#000
-class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3, block
+class R0,R1,R2,R3,AR,AR0,AR1,AR2,AR3 block
 class xp,xp2 purple
-class x0, red
-class x1, green
-class x2, blue
-class x3, yellow
+class x0 red
+class x1 green
+class x2 blue
+class x3 yellow
 ```
 
 Figure 5: Reduce operation: one rank receives the reduction of input
@@ -597,11 +597,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 ```
 
 Figure 8: Pipeline Parallelism

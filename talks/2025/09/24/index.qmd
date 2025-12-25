@@ -1,7 +1,5 @@
 ---
 title: "Training Foundation Models on Supercomputers"
-# subtitle: "Distributed Training"
-# callout-style: simple
 location: "[2025 ALCF Hands-on HPC Workshop](https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop)"
 location-url: "https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop"
 date: 2025-09-24
@@ -26,38 +24,37 @@ citation:
    author: Sam Foreman
    type: speech
    url: https://samforeman.me/talks/2025/09/24/slides.html
-# toc-expand: true
 aliases:
   - /talks/alcf-hands-on-hpc-2025/index.html
 format:
   html:
-    # toc-depth: 1
-    # grid:
-    # page-layout: full
-    #   body-width: 1000px
-    #   # margin-width: 250px
-    #   # sidebar-width: 250px
-    #   # gutter-width: 1.5rem
-    # shift-heading-level-by: 1
     image: "./assets/thumbnail.png"
     mermaid:
-      # theme: neutral
       look: neo
       layout: dagre
       useMaxWidth: true
-  gfm: default
   revealjs:
-    shift-heading-level-by: -1
     image: "./assets/thumbnail.png"
-    footer: "[samforeman.me/talks/2025/09/24/slides](https://samforeman.me/talks/2025/09/24/slides.html)"
+    shift-heading-level-by: -1
+    logo: "/assets/anl-black.svg"
     slide-url: https://samforeman.me/talks/2025/09/24/slides.html
+    footer: "[samforeman.me/talks/2025/09/24/slides](https://samforeman.me/talks/2025/09/24/slides.html)"
+    # mermaid:
+    #   look: neo
+    #   layout: dagre
+    #   useMaxWidth: true
+    template-partials:
+      - "title-slide.html"
+    title-slide-attributes:
+      data-background-color: "oklch(from #E599F7 l  c * 1.15 h / 0.1)"
+    mermaid-format: "svg"
     mermaid:
+      theme: default
       layout: dagre
       useMaxWidth: true
-    title-slide-attributes:
-          data-background-color: "oklch(from #E599F7 l  c * 1.15 h / 0.1)"
-    # aliases:
-    # - /talks/alcf-hands-on-hpc-2025/slides.html
+      timeline:
+        disableMulticolor: true
+  gfm: default
 ---
 
 ## 👀 Scaling: Overview {background-color="white"}
@@ -101,9 +98,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,D,G0,n0 block
 ```
 
@@ -355,15 +352,15 @@ See: [PyTorch / Distributed Data Parallel](https://pytorch.org/tutorials/interme
 
 ```{mermaid}
 flowchart LR
-  0["GPU0"] --> 1["GPU 1"]
-  CKPT --> 0
-  0 --> 2["GPU 2"]
-  0 --Model + Optim. State-->3["GPU 3"]
-  0 --> X["`...`"]
-  0 --> N["GPU N"]
+  g0["GPU0"] --> g1["GPU 1"]
+  CKPT --> g0
+  g0 --> g2["GPU 2"]
+  g0 --Model + Optim. State--> g3["GPU 3"]
+  g0 --> X["`...`"]
+  g0 --> N["GPU N"]
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class 0,1,2,3,N,X,CKPT block
+class g0,g1,g2,g3,N,X,CKPT block
 ```
 
 To ensure all workers have the same copies, we load on `RANK==0` and
@@ -510,11 +507,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 ```
 
 Pipeline Parallelism
@@ -526,7 +523,7 @@ Pipeline Parallelism
 
 ### Tensor Parallel (TP) {background-color="white"}
 
-::: {layout="[50,50]"}
+::: {.flex-container}
 
 ::: {.column}
 - Each tensor is split up into multiple chunks
@@ -569,7 +566,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -585,7 +582,9 @@ Tensor Parallel Training
 
 ### Tensor Parallel (TP) {background-color="white"}
 
-::: {layout="[50,50]"}
+<!-- ::: {layout="[50,50]"} -->
+
+::: {.flex-container}
 
 ::: {.column}
 - Suitable when the model is too large to fit onto a single device (CPU / GPU)
@@ -598,7 +597,7 @@ Tensor Parallel Training
 
 ::: {.column}
 
-::: {#fig-model-parallel-1}
+::: {#fig-model-parallel-2}
 
 ```{mermaid}
 flowchart LR
@@ -627,7 +626,7 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
-class G0,G1, block
+class G0,G1 block
 class a0,a1 red
 class b0,b1 green
 class c0,c1 blue
@@ -718,7 +717,7 @@ Scaling results for `3.5B` model across ~38,400 GPUs
 
 ::: {.column #fig-aeris-scaling style="width:70%;"}
 
-![](./assets/aeris-scaling.svg)
+![](/assets/aeris/aeris-scaling.svg)
 
 AERIS: Scaling Results
 

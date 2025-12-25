@@ -1112,8 +1112,33 @@ img a:hover {
 //
 .sidebar-navigation .quarto-navigation-tool {
   opacity: 1;
-  margin-inline-start: 6pt;
+  padding-inline: 2pt;
+  margin: 2pt;
+  position: relative;
+  color: inherit;
+  // border-radius: 999px;
+  // background-image: linear-gradient(
+  //   120deg,
+  //   rgba(0, 0, 0, 0) 0%,
+  //   rgba(0, 0, 0, 0) 35%,
+  //   rgba(0, 0, 0, 0.08) 50%,
+  //   rgba(0, 0, 0, 0) 65%,
+  //   rgba(0, 0, 0, 0) 100%
+  // );
+  background-size: 200% 200%;
+  background-position: 100% 0%;
+  display: inline-flex;
+  font-size: 1rem;
+  transition:
+    background-position 180ms ease,
+    background-color 180ms ease;
 }
+
+// .sidebar-navigation .quarto-navigation-tool:hover,
+// .sidebar-navigation .quarto-navigation-tool:focus-visible {
+//   background-color: $cardbg;
+//   background-position: 0% 100%;
+// }
 
 div.sidebar.sidebar-navigation.rollup.quarto-sidebar-toggle-contents,
 nav.sidebar.sidebar-navigation:not(.rollup) {
@@ -2660,18 +2685,20 @@ main {
   // <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16.755 2h-9.51c-1.159 0-1.738 0-2.206.163a3.05 3.05 0 0 0-1.881 1.936C3 4.581 3 5.177 3 6.37v14.004c0 .858.985 1.314 1.608.744a.946.946 0 0 1 1.284 0l.483.442a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0l.483-.442a.946.946 0 0 1 1.284 0c.623.57 1.608.114 1.608-.744V6.37c0-1.193 0-1.79-.158-2.27a3.05 3.05 0 0 0-1.881-1.937C18.493 2 17.914 2 16.755 2Z" opacity=".5"/><path stroke-linecap="round" d="M10.5 11H17M7 11h.5M7 7.5h.5m-.5 7h.5m3-7H17m-6.5 7H17"/></g></svg>');
 }
 
-.sidebar-tools-main {
-  flex-direction: row;
+.sidebar-logo {
+  height: 2.5rem;
+  display: inline-block;
+  margin-inline-start: 5pt;
+  // margin-inline-end: 0pt;
+  &:hover {
+    outline: 1pt solid $myblue;
+    background: oklch(from $myblue calc(l * 1.15) c h/0.1) !important;
+    color: oklch(from $myblue l c h / 1) !important;
+  }
 }
 
-.sidebar-logo {
-  height: 30pt;
-  margin-inline-start: 10pt;
-  margin-inline-end: 0pt;
-  &:hover {
-    fill: $red !important;
-    background-color: oklch(from $red calc(l * 1.15) c h/0.1);
-  }
+.sidebar-logo-link:hover {
+	text-decoration: none;
 }
 
 .quarto-sidebar-toggle {
@@ -2691,10 +2718,16 @@ main {
 }
 
 .sidebar-tools-main {
-  display: inline-flex;
+  // flex-direction: row;
+  display: inline-block;
   margin-left: 0px;
   order: 2;
-  vertical-align: text-bottom;
+  margin-inline-start: 5pt;
+  vertical-align: middle;
+  width: auto;
+  height: 2.5rem;
+  padding-block-start: 0.2rem;
+  font-size: 1.5rem;
 }
 
 .sidebar::before {
@@ -2746,24 +2779,27 @@ main {
 //   // content: "📦";
 // }
 
+.sidebar-navigation .quarto-navigation-tool {
+  font-size: 1rem;
+}
+
+.sidebar-navigation .bi.bi-github {
+  color: $dim-text;
+  padding: 2pt 4pt 0pt 5pt;
+  &:hover {
+    background: oklch(from $mygreen calc(l * 1.15) c h/0.1) !important;
+    color: oklch(from $mygreen l c h / 1) !important;
+  }
+}
+
 .sidebar-navigation .bi-github::before {
   content: "";
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgba(121,121,121,1.0)"><path d="M208 104v8a48 48 0 0 1-48 48h-24a32 32 0 0 1 32 32v40h-64v-40a32 32 0 0 1 32-32h-24a48 48 0 0 1-48-48v-8a49.3 49.3 0 0 1 8.51-27.3A51.92 51.92 0 0 1 76 32a52 52 0 0 1 43.83 24h32.34A52 52 0 0 1 196 32a51.92 51.92 0 0 1 3.49 44.7A49.3 49.3 0 0 1 208 104" opacity=".2"/><path d="M208.3 75.68A59.74 59.74 0 0 0 202.93 28a8 8 0 0 0-6.93-4a59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24a8 8 0 0 0-6.93 4a59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24a40 40 0 0 0-40-40a8 8 0 0 0 0 16a24 24 0 0 1 24 24a40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58 58 0 0 0-7.7-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48a8 8 0 0 0 1.1-7.69a43.8 43.8 0 0 1 .79-33.58a43.88 43.88 0 0 1 32.32 20.06a8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69a43.87 43.87 0 0 1 32.32-20.06a43.8 43.8 0 0 1 .77 33.58a8.09 8.09 0 0 0 1 7.65a41.76 41.76 0 0 1 7 22.52Z"/></g></svg>') !important;
-}
-
-.sidebar-navigation .bi-home::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><path fill="currentColor" d="M240 208h-16v-72l2.34 2.34A8 8 0 0 0 237.66 127l-98.35-98.32a16 16 0 0 0-22.62 0L18.34 127a8 8 0 0 0 11.32 11.31L32 136v72H16a8 8 0 0 0 0 16h224a8 8 0 0 0 0-16M48 120l80-80l80 80v88h-48v-56a8 8 0 0 0-8-8h-48a8 8 0 0 0-8 8v56H48Zm96 88h-32v-48h32Z"/></svg>') !important;
+  background-color: currentColor;
+  mask: url("/static/icons/github-loop.svg") no-repeat center / contain;
+  -webkit-mask: url("/static/icons/github-loop.svg") no-repeat center / contain;
 }
 
 // .bi.bi-github {
@@ -2776,38 +2812,54 @@ main {
 // 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><path fill="rgba(121,121,121,1.0)" d="M208.31 75.68A59.78 59.78 0 0 0 202.93 28a8 8 0 0 0-6.93-4a59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24a8 8 0 0 0-6.93 4a59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24a40 40 0 0 0-40-40a8 8 0 0 0 0 16a24 24 0 0 1 24 24a40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58.14 58.14 0 0 0-7.69-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48a8 8 0 0 0 1.1-7.69a43.8 43.8 0 0 1 .79-33.58a43.88 43.88 0 0 1 32.32 20.06a8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69a43.87 43.87 0 0 1 32.32-20.06a43.8 43.8 0 0 1 .77 33.58a8.09 8.09 0 0 0 1 7.65a41.7 41.7 0 0 1 7 22.52Z"/></svg>');
 // }
 
-.bi-github::before {
-  content: "";
-}
-
 // Theme Toggle Icon
 //
 //
+.sidebar-navigation .quarto-color-scheme-toggle .bi {
+  padding: 2pt 4pt 0pt 5pt;
+  color: $dim-text;
+  background: none;
+  &:hover {
+    background: oklch(from $myorange calc(l * 1.15) c h / 0.1) !important;
+    color: oklch(from $myorange l c h / 1) !important;
+  }
+}
+
+
 .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgba(121,121,121,1.0)"><path d="M102.38 17.62a64.06 64.06 0 0 1-76.76 76.76A64.12 64.12 0 0 0 63 138.93a44.08 44.08 0 0 1 43.33-8.54a68.13 68.13 0 0 1 45.47-47.32h.15c0-1 .07-2 .07-3a64 64 0 0 0-49.64-62.45" opacity=".2"/><path d="M172 72a76.5 76.5 0 0 0-12.36 1a71.93 71.93 0 0 0-55.47-63.17a8 8 0 0 0-9.59 9.58A56.05 56.05 0 0 1 40 88a56.5 56.5 0 0 1-12.59-1.42a8 8 0 0 0-9.59 9.59a72.22 72.22 0 0 0 32.29 45.06A52 52 0 0 0 92 224h80a76 76 0 0 0 0-152M37.37 104H40a72.08 72.08 0 0 0 72-72v-2.67a55.63 55.63 0 0 1 32 48a76.28 76.28 0 0 0-43 43.4a52 52 0 0 0-39 8.86A56.22 56.22 0 0 1 37.37 104M172 208H92a36 36 0 1 1 4.78-71.69c-.37 2.37-.63 4.79-.77 7.23a8 8 0 0 0 16 .92a59 59 0 0 1 1.88-11.81c0-.16.09-.32.12-.48A60.06 60.06 0 1 1 172 208"/></g></svg>') !important;
-	width: 1.5em;
-	height: 1.5em;
-	font-size: inherit;
-	display: inline-block;
-	background-size: contain;
+  background-image: none;
+  background-color: currentColor;
+  mask: url("/static/icons/sunny-outline.svg") no-repeat center / contain;
+  -webkit-mask: url("/static/icons/sunny-outline.svg") no-repeat center /
+    contain;
+  width: 1.5em;
+  height: 1.5em;
+  font-size: inherit;
+  display: inline-block;
+  background-size: contain;
+  // color: oklch(from $dim-text l c h);
 }
+
 .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><path fill="rgba(121,121,121,1.0)" d="M164 72a76.2 76.2 0 0 0-20.26 2.73a55.6 55.6 0 0 0-9.41-11.54l9.51-13.57a8 8 0 1 0-13.11-9.18L121.22 54A55.9 55.9 0 0 0 96 48h-1.74l-2.89-16.29a8 8 0 1 0-15.75 2.77l2.88 16.34a56.1 56.1 0 0 0-23.27 14.85l-13.62-9.53a8 8 0 1 0-9.17 13.11L46 78.77A55.55 55.55 0 0 0 40 104v1.72l-16.29 2.88a8 8 0 0 0 1.38 15.88a8 8 0 0 0 1.39-.12l16.32-2.88a55.7 55.7 0 0 0 5.86 12.42A52 52 0 0 0 84 224h80a76 76 0 0 0 0-152M56 104a40 40 0 0 1 72.54-23.24a76.26 76.26 0 0 0-35.62 40a52.14 52.14 0 0 0-31 4.17A40 40 0 0 1 56 104m108 104H84a36 36 0 1 1 4.78-71.69c-.37 2.37-.63 4.79-.77 7.23a8 8 0 0 0 16 .92a59 59 0 0 1 1.88-11.81c0-.16.09-.32.12-.48A60.06 60.06 0 1 1 164 208"/></svg>') !important;
-	width: 1.5em;
-	height: 1.5em;
-	font-size: inherit;
-	display: inline-block;
-	background-size: contain;
+  background-image: none;
+  background-color: currentColor;
+  mask: url("/static/icons/moon-outline-loop.svg") no-repeat center / contain;
+  -webkit-mask: url("/static/icons/moon-outline-loop.svg") no-repeat center / contain;
+  width: 1.5em;
+  height: 1.5em;
+  font-size: inherit;
+  display: inline-block;
+  background-size: contain;
 }
-.navbar .quarto-reader-toggle:not(.reader) .bi::before,
-.sidebar-navigation .quarto-reader-toggle:not(.reader) .bi::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgba(121,121,121,1.0)"><path d="M208 88h-56V32Z" opacity=".2"/><path d="m213.66 82.34l-56-56A8 8 0 0 0 152 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V88a8 8 0 0 0-2.34-5.66M160 51.31L188.69 80H160ZM200 216H56V40h88v48a8 8 0 0 0 8 8h48z"/></g></svg>') !important;
-	width: 1.5em;
-	height: 1.5em;
-	font-size: inherit;
-	display: inline-block;
-	background-size: contain;
-}
+// .navbar .quarto-reader-toggle:not(.reader) .bi::before,
+// .sidebar-navigation .quarto-reader-toggle:not(.reader) .bi::before {
+//   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgba(121,121,121,1.0)"><path d="M208 88h-56V32Z" opacity=".2"/><path d="m213.66 82.34l-56-56A8 8 0 0 0 152 24H56a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V88a8 8 0 0 0-2.34-5.66M160 51.31L188.69 80H160ZM200 216H56V40h88v48a8 8 0 0 0 8 8h48z"/></g></svg>') !important;
+// 	width: 1.5em;
+// 	height: 1.5em;
+// 	font-size: inherit;
+// 	display: inline-block;
+// 	background-size: contain;
+// }
 
 // .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
 //   // content: "🔦";

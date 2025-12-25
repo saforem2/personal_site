@@ -19,7 +19,7 @@ Sam Foreman
 - [🚀 Going Beyond Data
   Parallelism](#rocket-going-beyond-data-parallelism)
   - [Going beyond Data Parallelism: DeepSpeed +
-    `ZeRO`](#going-beyond-data-parallelism----deepspeed--zero)
+    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
   - [🕸️ Additional Parallelism
     Strategies](#spider_web-additional-parallelism-strategies)
   - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
@@ -99,9 +99,9 @@ classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef grey fill:#cccccc,stroke:#333,stroke-width:1px,color:#000
 class x,L0 red
-class x1, green
-class x2, blue
-class x3, grey
+class x1 green
+class x2 blue
+class x3 grey
 class N0,D,G0,n0 block
 ```
 
@@ -367,15 +367,15 @@ Parallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 
 ``` mermaid
 flowchart LR
-  0["GPU0"] --> 1["GPU 1"]
-  CKPT --> 0
-  0 --> 2["GPU 2"]
-  0 --Model + Optim. State-->3["GPU 3"]
-  0 --> X["`...`"]
-  0 --> N["GPU N"]
+  g0["GPU0"] --> g1["GPU 1"]
+  CKPT --> g0
+  g0 --> g2["GPU 2"]
+  g0 --Model + Optim. State--> g3["GPU 3"]
+  g0 --> X["`...`"]
+  g0 --> N["GPU N"]
 classDef text fill:#CCCCCC02,stroke:#838383,stroke-width:0px,color:#838383,font-weight:500
 classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,font-weight:500,color:#838383
-class 0,1,2,3,N,X,CKPT block
+class g0,g1,g2,g3,N,X,CKPT block
 ```
 
 Figure 5: To ensure all workers have the same copies, we load on
@@ -551,11 +551,11 @@ classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
 classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
 classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
 classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
-class G0,G1, block
-class a0, red
-class b0, green
-class a1, blue
-class b1, yellow
+class G0,G1 block
+class a0 red
+class b0 green
+class a1 blue
+class b1 yellow
 ```
 
 Figure 8: Pipeline Parallelism
@@ -568,13 +568,128 @@ Figure 8: Pipeline Parallelism
 
 ### Tensor Parallel (TP)
 
-<div>
+<div class="flex-container">
+
+<div class="column">
+
+- Each tensor is split up into multiple chunks
+- Each shard of the tensor resides on its designated GPU
+- During processing each shard gets processed separately (and in
+  parallel) on different GPUs
+  - synced at the end of the step
+- See: [🤗 Model
+  Parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
+  for additional details
+
+</div>
+
+<div class="column">
+
+<div id="fig-model-parallel-1">
+
+``` mermaid
+flowchart LR
+   subgraph G0["`GPU0`"]
+    direction TB
+    a0("`Layer 0`")
+    b0("`Layer 1`")
+    c0("`Layer 2`")
+    d0("`Layer 3`")
+   end
+   subgraph G1["`GPU1`"]
+    direction TB
+    a1("`Layer 0`")
+    b1("`Layer 1`")
+    c1("`Layer 2`")
+    d1("`Layer 3`")
+   end
+   a0 <-.-> a1
+   b0 <-.-> b1
+   c0 <-.-> c1
+   d0 <-.-> d1
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+class G0,G1 block
+class a0,a1 red
+class b0,b1 green
+class c0,c1 blue
+class d0,d1 yellow
+```
+
+Figure 9: Tensor Parallel Training
+
+</div>
+
+</div>
 
 </div>
 
 ### Tensor Parallel (TP)
 
-<div>
+<div class="flex-container">
+
+<div class="column">
+
+- Suitable when the model is too large to fit onto a single device (CPU
+  / GPU)
+- Typically **more complicated** to implement than data parallel
+  training
+  - This is what one may call *horizontal parallelism*
+  - Communication whenever dataflow between two subsets
+- 
+  [`argonne-lcf/Megatron-DeepSpeed`](https://github.com/argonne-lcf/Megatron-DeepSpeed)
+- 🤗 [`huggingface/nanotron`](https://github.com/huggingface/nanotron)
+
+</div>
+
+<div class="column">
+
+<div id="fig-model-parallel-2">
+
+``` mermaid
+flowchart LR
+   subgraph G0["`GPU0`"]
+    direction TB
+    a0("`Layer 0`")
+    b0("`Layer 1`")
+    c0("`Layer 2`")
+    d0("`Layer 3`")
+   end
+   subgraph G1["`GPU1`"]
+    direction TB
+    a1("`Layer 0`")
+    b1("`Layer 1`")
+    c1("`Layer 2`")
+    d1("`Layer 3`")
+   end
+   a0 <-.-> a1
+   b0 <-.-> b1
+   c0 <-.-> c1
+   d0 <-.-> d1
+classDef red fill:#ff8181,stroke:#333,stroke-width:1px,color:#000
+classDef orange fill:#FFC47F,stroke:#333,stroke-width:1px,color:#000
+classDef yellow fill:#FFFF7F,stroke:#333,stroke-width:1px,color:#000
+classDef green fill:#98E6A5,stroke:#333,stroke-width:1px,color:#000
+classDef blue fill:#7DCAFF,stroke:#333,stroke-width:1px,color:#000
+classDef purple fill:#FFCBE6,stroke:#333,stroke-width:1px,color:#000
+classDef block fill:#CCCCCC02,stroke:#838383,stroke-width:1px,color:#838383
+class G0,G1 block
+class a0,a1 red
+class b0,b1 green
+class c0,c1 blue
+class d0,d1 yellow
+```
+
+Figure 10: Tensor Parallel Training
+
+</div>
+
+</div>
 
 </div>
 
@@ -664,7 +779,7 @@ Figure 12: Scaling results for `3.5B` model across ~38,400 GPUs
 
 <div id="fig-aeris-scaling">
 
-![](./assets/aeris-scaling.svg)
+![](../../../../assets/aeris/aeris-scaling.svg)
 
 Figure 13: AERIS: Scaling Results
 

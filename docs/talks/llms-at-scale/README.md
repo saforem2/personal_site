@@ -30,8 +30,10 @@ Sam Foreman
   - [`wordplay` 🎮💬](#wordplay-video_gamespeech_balloon)
 - [Thank you!](#thank-you)
 - [🎁 Extras](#gift-extras)
-  - [ DeepSpeed `ZeRO` Offloading](#---deepspeed-zero-offloading)
-  - [ DeepSpeed `ZeRO` Offloading](#---deepspeed-zero-offloading-1)
+  - [ DeepSpeed `ZeRO`
+    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero-offloading)
+  - [ DeepSpeed `ZeRO`
+    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero-offloading-1)
   - [Hands-On](#hands-on)
 - [References](#references)
   - [Bibliography](#bibliography)
