@@ -1,5 +1,5 @@
 Sam Foreman
-2025-12-24
+2025-12-25
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -10,21 +10,167 @@ Hi, I’m Sam!</span> [<span class="orcid-green"
 style="background: none!important;"></span>]</span>
 
 <div class="flex-container icon-flex"
-style="font-size: 1.5rem; justify-content: center; flex-direction: row;">
+style="justify-content: center; flex-direction: row;">
 
-<p>
-
-<span class="fa-li"><a style="color: #838383;" href="https://samforeman.me/" data-original-href="https://samforeman.me/"><iconify-icon class="icon-home" loading="lazy" role="img" inline="true" icon="ph:house" aria-label="Homepage" title="Homepage"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://github.com/saforem2"><iconify-icon class="icon-github" loading="lazy" role="img" inline="true" icon="ph:github-logo" aria-label="GitHub" title="GitHub"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://twitter.com/saforem2"><iconify-icon class="icon-twitter" loading="lazy" role="img" inline="true" icon="ph:twitter-logo" aria-label="Twitter" title="Twitter"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://bsky.app/profile/samforeman.bsky.social"><iconify-icon class="icon-bluesky" loading="lazy" role="img" inline="true" icon="ph:butterfly" aria-label="Bluesky" title="Bluesky"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"><iconify-icon class="icon-scholar" loading="lazy" role="img" inline="true" icon="ph:graduation-cap" aria-label="Google Scholar" title="Google Scholar"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="mailto:foremans@anl.gov"><iconify-icon class="icon-email" loading="lazy" role="img" inline="true" icon="ph:envelope-open" aria-label="Email" title="Email"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://outlook.office.com/"><iconify-icon class="icon-calendar" loading="lazy" role="img" inline="true" icon="ph:calendar" aria-label="Schedule Time" title="Email"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://linkedin.com/in/saforem2" data-original-href="https://linkedin.com/in/saforem2" target="_blank" rel="noopener"><iconify-icon class="icon-linkedin" loading="lazy" role="img" inline="true" icon="ph:linkedin-logo" aria-label="LinkedIn" title="LinkedIn"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://open.spotify.com/user/saforem2" data-original-href="https://open.spotify.com/user/saforem2" target="_blank" rel="noopener"><iconify-icon class="icon-spotify" loading="lazy" role="img" inline="true" icon="ph:spotify-logo" aria-label="Spotify" title="Spotify"></iconify-icon></a></span>
-<span class="fa-li"><a style="color: #838383;" href="https://www.last.fm/user/saforem2" data-original-href="https://www.last.fm/user/saforem2" target="_blank" rel="noopener"><iconify-icon class="icon-lastfm" loading="lazy" role="img" inline="true" icon="ph:lastfm-logo" aria-label="LastFM" title="LastFM"></iconify-icon></a></span>
-</p>
+<span class="fa-li">
+  <i class="icon-home" aria-label="Home">
+    <a style="color: #838383" href="https://samforeman.me">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="m219.31 108.68l-80-80a16 16 0 0 0-22.62 0l-80 80A15.87 15.87 0 0 0 32 120v96a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-56h32v56a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-96a15.87 15.87 0 0 0-4.69-11.32M208 208h-48v-56a8 8 0 0 0-8-8h-48a8 8 0 0 0-8 8v56H48v-88l80-80l80 80Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-github" aria-label="GitHub">
+    <a style="color: #838383" href="https://github.com/saforem2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 256 256"
+      >
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M208.31 75.68A59.78 59.78 0 0 0 202.93 28a8 8 0 0 0-6.93-4a59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24a8 8 0 0 0-6.93 4a59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24a40 40 0 0 0-40-40a8 8 0 0 0 0 16a24 24 0 0 1 24 24a40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58.14 58.14 0 0 0-7.69-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48a8 8 0 0 0 1.1-7.69a43.8 43.8 0 0 1 .79-33.58a43.88 43.88 0 0 1 32.32 20.06a8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69a43.87 43.87 0 0 1 32.32-20.06a43.8 43.8 0 0 1 .77 33.58a8.09 8.09 0 0 0 1 7.65a41.7 41.7 0 0 1 7 22.52Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-twitter" aria-label="Twitter">
+    <a style="color: #838383" href="https://twitter.com/saforem2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M247.39 68.94A8 8 0 0 0 240 64h-30.43a48.66 48.66 0 0 0-41.47-24a46.9 46.9 0 0 0-33.75 13.7A47.9 47.9 0 0 0 120 88v6.09C79.74 83.47 46.81 50.72 46.46 50.37a8 8 0 0 0-13.65 4.92c-4.31 47.79 9.57 79.77 22 98.18a111 111 0 0 0 21.88 24.2c-15.23 17.53-39.21 26.74-39.47 26.84a8 8 0 0 0-3.85 11.93c.75 1.12 3.75 5.05 11.08 8.72C53.51 229.7 65.48 232 80 232c70.67 0 129.72-54.42 135.75-124.44l29.91-29.9a8 8 0 0 0 1.73-8.72m-45 29.41a8 8 0 0 0-2.32 5.14C196 166.58 143.28 216 80 216c-10.56 0-18-1.4-23.22-3.08c11.51-6.25 27.56-17 37.88-32.48A8 8 0 0 0 92 169.08c-.47-.27-43.91-26.34-44-96c16 13 45.25 33.17 78.67 38.79A8 8 0 0 0 136 104V88a32 32 0 0 1 9.6-22.92A30.94 30.94 0 0 1 167.9 56c12.66.16 24.49 7.88 29.44 19.21a8 8 0 0 0 7.33 4.79h16Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-bluesky" aria-label="Bluesky">
+    <a
+      style="color: #838383"
+      href="https://bsky.app/profile/samforeman.bsky.social"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M232.7 50.48C229 45.7 221.84 40 209 40c-16.85 0-38.46 11.28-57.81 30.16A140 140 0 0 0 136 87.53V56a8 8 0 0 0-16 0v31.53a140 140 0 0 0-15.15-17.37C85.49 51.28 63.88 40 47 40c-12.84 0-20 5.7-23.7 10.48c-6.82 8.77-12.18 24.08-.21 71.2c6.05 23.83 19.51 33 30.63 36.42A44 44 0 0 0 128 205.27a44 44 0 0 0 74.28-47.17c11.12-3.4 24.57-12.59 30.63-36.42c6.72-26.44 11.94-55.58-.21-71.2M92 208a28.12 28.12 0 0 1-3.14-56a8 8 0 1 0-1.76-15.9a43.64 43.64 0 0 0-20.74 7.9c-8.43.09-22-3.57-27.76-26.26c-2.88-11.35-11.6-45.88-2.66-57.44C37.37 58.46 40.09 56 47 56c27.27 0 73 44.88 73 71.67V180a28 28 0 0 1-28 28m125.4-90.26c-5.77 22.69-19.33 26.34-27.77 26.26a43.6 43.6 0 0 0-20.74-7.95a8 8 0 1 0-1.76 15.9A28.11 28.11 0 1 1 136 180v-52.33C136 100.88 181.69 56 209 56c6.95 0 9.66 2.46 11.1 4.3c8.95 11.56.18 46.09-2.7 57.44"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-scholar" aria-label="Google Scholar">
+    <a
+      style="color: #838383"
+      href="https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="m251.76 88.94l-120-64a8 8 0 0 0-7.52 0l-120 64a8 8 0 0 0 0 14.12L32 117.87v48.42a15.9 15.9 0 0 0 4.06 10.65C49.16 191.53 78.51 216 128 216a130 130 0 0 0 48-8.76V240a8 8 0 0 0 16 0v-40.49a115.6 115.6 0 0 0 27.94-22.57a15.9 15.9 0 0 0 4.06-10.65v-48.42l27.76-14.81a8 8 0 0 0 0-14.12M128 200c-43.27 0-68.72-21.14-80-33.71V126.4l76.24 40.66a8 8 0 0 0 7.52 0L176 143.47v46.34c-12.6 5.88-28.48 10.19-48 10.19m80-33.75a97.8 97.8 0 0 1-16 14.25v-45.57l16-8.53Zm-20-47.31l-.22-.13l-56-29.87a8 8 0 0 0-7.52 14.12L171 128l-43 22.93L25 96l103-54.93L231 96Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-mail" aria-label="Email">
+    <a style="color: #838383" href="mailto:sf@omg.lol">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-96 85.15L52.57 64h150.86ZM98.71 128L40 181.81V74.19Zm11.84 10.85l12 11.05a8 8 0 0 0 10.82 0l12-11.05l58 53.15H52.57ZM157.29 128L216 74.18v107.64Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-calendar" aria-label="Calendar">
+    <a style="color: #838383" href="https://outlook.office.com/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16M72 48v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24v32H48V48Zm136 160H48V96h160zm-96-88v64a8 8 0 0 1-16 0v-51.06l-4.42 2.22a8 8 0 0 1-7.16-14.32l16-8A8 8 0 0 1 112 120m59.16 30.45L152 176h16a8 8 0 0 1 0 16h-32a8 8 0 0 1-6.4-12.8l28.78-38.37a8 8 0 1 0-13.31-8.83a8 8 0 1 1-13.85-8A24 24 0 0 1 176 136a23.76 23.76 0 0 1-4.84 14.45"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-linkedin" aria-label="LinkedIn">
+    <a
+      style="color: #838383"
+      href="https://linkedin.com/in/saforem2"
+      data-original-href="https://linkedin.com/in/saforem2"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M216 24H40a16 16 0 0 0-16 16v176a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16m0 192H40V40h176zM96 112v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0m88 28v36a8 8 0 0 1-16 0v-36a20 20 0 0 0-40 0v36a8 8 0 0 1-16 0v-64a8 8 0 0 1 15.79-1.78A36 36 0 0 1 184 140m-84-56a12 12 0 1 1-12-12a12 12 0 0 1 12 12"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-spotify" aria-label="Spotify">
+    <a
+      style="color: #838383"
+      href="https://open.spotify.com/user/saforem2"
+      data-original-href="https://open.spotify.com/user/saforem2"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m31.07-46.26a8 8 0 0 1-10.81 3.33a42.79 42.79 0 0 0-40.52 0a8 8 0 0 1-7.48-14.14a59.33 59.33 0 0 1 55.48 0a8 8 0 0 1 3.33 10.81m32-56a8 8 0 0 1-10.83 3.29a110.62 110.62 0 0 0-104.46 0a8 8 0 0 1-7.54-14.12a126.67 126.67 0 0 1 119.54 0a8 8 0 0 1 3.28 10.85Zm-16 28a8 8 0 0 1-10.82 3.3a77 77 0 0 0-72.48 0a8 8 0 0 1-7.52-14.12a93 93 0 0 1 87.52 0a8 8 0 0 1 3.29 10.84Z"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
+&#10;<span class="fa-li">
+  <i class="icon-lastfm" aria-label="Last.fm">
+    <a
+      style="color: #838383"
+      href="https://www.last.fm/user/saforem2"
+      data-original-href="https://www.last.fm/user/saforem2"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+        <!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE -->
+        <path
+          fill="currentColor"
+          d="M248 160a40 40 0 0 1-40 40h-17.43a56.22 56.22 0 0 1-50.75-32.32l-30.14-64.6A40.15 40.15 0 0 0 73.43 80H64a40 40 0 0 0-40 40v24a40 40 0 0 0 40 40h8a32 32 0 0 0 29.34-19.2a8 8 0 1 1 14.66 6.4A48 48 0 0 1 72 200h-8a56.06 56.06 0 0 1-56-56v-24a56.06 56.06 0 0 1 56-56h9.43a56.22 56.22 0 0 1 50.75 32.32l30.14 64.6A40.15 40.15 0 0 0 190.57 184H208a24 24 0 0 0 0-48h-20a36 36 0 0 1 0-72h20a32 32 0 0 1 32 32a8 8 0 0 1-16 0a16 16 0 0 0-16-16h-20a20 20 0 0 0 0 40h20a40 40 0 0 1 40 40"
+        />
+      </svg>
+    </a>
+  </i>
+</span>
 
 </div>
 
@@ -66,7 +212,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">24</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">21:31:19</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">25</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">15:01:03</span>
 > </pre>
 
 > [!TIP]
@@ -243,6 +389,10 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 
 ### 📊 Talks
 
+> [!NOTE]
+>
+> See [talks] for a live view!
+
 > [!TIP]
 >
 > ### \[HTML ⇆ Reveal.js\]
@@ -256,446 +406,6 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 <div id="listing-talks">
 
 </div>
-
-## 📆 2025
-
-> [!TIP]
->
-> ### <span class="dim-text">[AuroraGPT: Training Foundation Models on Supercomputers] @ ANL \[12/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/12/16/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers] @ UIUC \[10/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/24/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers][1] @ Georgia Institute of Technology \[10/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/15/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[AERIS: Argonne Earth Systems Model] @ [2025 ALCF Hands On HPC Workshop][] \[10/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides#" title="AERIS: Argonne Earth Systems Model" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Training Foundation Models on Supercomputers][2] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/09/24/slides#" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Scientific AI at Scale: AI for Science] @ [Open SkAI 2025][] \[09/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/ai4science/slides#" title="Scientific AI at Scale: AI for Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][3] \[09/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/training/slides.html" title="Scientific AI at Scale: Distributed Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Large Scale Training on Diverse Accelerators] @ [Scalable Deep Learning, *SIAM AN2025*][] \[07/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/AuroraGPT-SIAM25/slides#" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[LLMs on Aurora: 🌌 AuroraGPT] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
->
-> - [🎥 video]
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/incite-hackathon-2025/AuroraGPT/slides#/section" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[LLMs on Aurora: 🍋 ezpz] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
->
-> - [🎥 video][4]
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/incite-hackathon-2025/ezpz/slides#/section" title="🍋 ezpz on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[AuroraGPT: Foundation Models for Science] @ [*Foundation Models for the Electric Grid*][] \[02/2025\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/aurora-gpt-fm-for-electric-grid/slides.html" title="AuroraGPT: Foundation Models for Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-## 📆 2024
-
-> [!TIP]
->
-> ### <span class="dim-text">[Parallel Training Methods] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
->
-> - [🎥 video][5]
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/ai-for-science-2024/slides.html" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[AuroraGPT][6] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
->
-> - [🎥 video][4]
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Machine Learning and Foundation Models at Scale] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
->
-> <div class="reveal-full-page">
->
-> <iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[AuroraGPT][7] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
->
-> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Training LLMs at Scale] @ [*ATPESC*, 2024][] \[08/2024\]</span>
->
-> <iframe class="slide-deck" loading="lazy" src="/talks/llms-at-scale/slides.html" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
-
-> [!TIP]
->
-> ### <span class="dim-text">[LLMs on Polaris] @ [*Center for Scientific Foundation Models*, Summer School 24’][] \[07/2024\]</span>
->
-> <iframe class="slide-deck" loading="lazy" src="/talks/llms-on-polaris/slides.html" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Parallel Training Techniques] @ [*AI-4-Science Training Series*][] \[03/2024\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[LLMs from Scratch] @ [LLM Tutorial Workshop][] \[02/2024\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-## 📆 2023
-
-> [!TIP]
->
-> ### <span class="dim-text">[Creating Small(-ish) LLMs] @ [LLM Tutorial Workshop (1)][] \[11/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen allowfullscreen>
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Exascale Science on Aurora] @ [Intel oneAPI Workshop @ UIC][] \[10/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen>
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[LLM Lunch Talk] @ [ALCF Hands On HPC Workshop][Intel oneAPI Workshop @ UIC] \[10/2023\]</span>
->
-> - [🎥 video][8]
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Scaling LLMs for Science] @ [Data-Intensive Computing + AI/ML at Scale][] \[08/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[MLMC: Machine Learning Monte Carlo] @ [Lattice 2023][] \[07/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Generative Modeling and Efficient Sampling] @ [PASC23][] \[07/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Efficient Sampling for LGT] @ [Deep Fridays @ U. Bologna][] \[04/2023\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-## 📆 2022
-
-> [!TIP]
->
-> ### <span class="dim-text">[Large Scale Training] @ [AI4Science on Supercomputers (ALCF)][] \[11/2022\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Hyperparameter Management] @ [ALCF SDL Workshop][] \[10/2022\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Statistical Learning] @ [ATPESC 2022][] \[08/2022\]</span>
->
-> - [📕 accompanying notebook]
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Scientific Data Science: An Emerging Symbiosis] @ ANL (05/2022)</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Machine Learning in HEP] @ UNC Greensboro \[03/2022\]</span>
->
-> - [Machine Learning in HEP], at UNC Greensboro, March 2022
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="width:100%!important; ">
->
-> </iframe>
->
-> </div>
-
-## 📆 2021
-
-> [!TIP]
->
-> ### <span class="dim-text">[Accelerated Sampling Methods for LGT], @ [DWQ @ 25 \[BNL\]][9] \[12/2021\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[Training Topological Samplers for LGT] @ [ML4HEP, ECT\* Trento][] \[09/2021\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-> [!TIP]
->
-> ### <span class="dim-text">[l2hmc-qcd][`l2hmc-qcd`] @ MIT Lattice Group Seminar \[2021\]</span>
->
-> [l2hmc-qcd][`l2hmc-qcd`] at the *MIT Lattice Group Seminar*, 2021
-
-> [!TIP]
->
-> ### <span class="dim-text">[Deep Learning HMC for Improved Gauge Generation] @ [ML in LQCD Workshop][] \[2021\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
-
-## 📆 2020
-
-> [!TIP]
->
-> ### <span class="dim-text">[Machine Learning for Lattice QCD] @ U. Iowa \[2020\]</span>
->
-> <div class="embedded-slide">
->
-> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;">
->
-> </iframe>
->
-> </div>
 
 ### 📝 Work
 
@@ -1437,9 +1147,8 @@ style="justify-content: center; loading='lazy';">
 
 ### 💌 Guestbook
 
-<iframe src="https://guestbooks.meadow.cafe/guestbook/745" width="100%" height="600" frameborder="0" style="border: 1px dotted #666666; border-radius: 0px;">
-
-</iframe>
+> *Temporarily disabled while [guesbooks] gets their Azure issues worked
+> out* :(
 
 </div>
 
@@ -1472,70 +1181,7 @@ style="justify-content: center; loading='lazy';">
   [Alfred Hübler]: https://en.wikipedia.org/wiki/Alfred_H%C3%BCbler
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
-  [AuroraGPT: Training Foundation Models on Supercomputers]: ./talks/2025/12/16/slides.html
-  [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/slides.html
-  [1]: ./talks/2025/10/15/slides.html
-  [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
-  [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
-  [2]: ./talks/2025/09/24/index.html
-  [Scientific AI at Scale: AI for Science]: ./talks/openskai25/ai4science/index.html
-  [Open SkAI 2025]: https://www.openskai-conference.org
-  [Scientific AI at Scale: Distributed Training]: ./talks/openskai25/training/index.html
-  [3]: https://www.openskai-conference.org/
-  [Large Scale Training on Diverse Accelerators]: ./talks/AuroraGPT-SIAM25/index.html
-  [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
-  [LLMs on Aurora: 🌌 AuroraGPT]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
-  [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
-  [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
-  [LLMs on Aurora: 🍋 ezpz]: ./talks/incite-hackathon-2025/ezpz/index.html
-  [4]: https://www.youtube.com/watch?v=15ZK9REQiBo
-  [AuroraGPT: Foundation Models for Science]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
-  [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
-  [Parallel Training Methods]: ./talks/ai-for-science-2024/index.html
-  [5]: https://www.youtube.com/watch?v=4ltulBj4oVk
-  [6]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
-  [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
-  [Machine Learning and Foundation Models at Scale]: ./talks/alcf-hpc-workshop-2024/index.html
-  [7]: ./talks/hpc-user-forum/index.html
-  [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
-  [Training LLMs at Scale]: ./talks/llms-at-scale/
-  [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
-  [LLMs on Polaris]: https://samforeman.me/talks/llms-on-polaris/slides
-  [*Center for Scientific Foundation Models*, Summer School 24’]: https://scifm.ai/summer_school.html
-  [Parallel Training Techniques]: https://github.com/saforem2/parallel-training-slides
-  [*AI-4-Science Training Series*]: https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training
-  [LLMs from Scratch]: https://saforem2.github.io/llm-workshop-talk
-  [LLM Tutorial Workshop]: https://github.com/argonne-lcf/llm-workshop
-  [Creating Small(-ish) LLMs]: https://saforem2.github.io/LLM-tutorial
-  [LLM Tutorial Workshop (1)]: https://github.com/brettin/llm_tutorial
-  [Exascale Science on Aurora]: https://saforem2.github.io/oneapi-talk
-  [Intel oneAPI Workshop @ UIC]: https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop
-  [LLM Lunch Talk]: https://saforem2.github.io/llm-lunch-talk
-  [8]: https://www.youtube.com/watch?v=mSx9RVd00xU
-  [Scaling LLMs for Science]: https://saforem2.github.io/scaling4science
-  [Data-Intensive Computing + AI/ML at Scale]: https://events.cels.anl.gov/event/426/overview
-  [MLMC: Machine Learning Monte Carlo]: https://saforem2.github.io/lattice23
-  [Lattice 2023]: https://indico.fnal.gov/event/57249/contributions/271305/
-  [Generative Modeling and Efficient Sampling]: https://saforem2.github.io/lqcd-pasc23/
-  [PASC23]: https://pasc23.pasc-conference.org/
-  [Efficient Sampling for LGT]: https://saforem2.github.io/deep-fridays
-  [Deep Fridays @ U. Bologna]: https://www.cs.unibo.it/~asperti/deep_fridays.html
-  [Large Scale Training]: https://saforem2.github.io/ai4sci-large-scale-training
-  [AI4Science on Supercomputers (ALCF)]: https://github.com/argonne-lcf/ai-science-training-series
-  [Hyperparameter Management]: https://saforem2.github.io/hparam-management-sdl2022/
-  [ALCF SDL Workshop]: https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop
-  [Statistical Learning]: https://saforem2.github.io/ATPESC-StatisticalLearning
-  [ATPESC 2022]: https://extremecomputingtraining.anl.gov/
-  [📕 accompanying notebook]: https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb
-  [Scientific Data Science: An Emerging Symbiosis]: https://saforem2.github.io/anl-job-talk/
-  [Machine Learning in HEP]: https://saforem2.github.io/physicsSeminar
-  [Accelerated Sampling Methods for LGT]: https://saforem2.github.io/l2hmc-dwq25/
-  [9]: https://indico.bnl.gov/event/13576/
-  [Training Topological Samplers for LGT]: https://saforem2.github.io/l2hmc_talk_ect2021
-  [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
-  [Deep Learning HMC for Improved Gauge Generation]: https://bit.ly/mainz21
-  [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
-  [Machine Learning for Lattice QCD]: https://slides.com/samforeman/l2hmc-qcd/embed
+  [talks]: ./talks/index.qmd
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
   [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]: https://awards.acm.org/bell-climate
   [HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights]:
@@ -1588,3 +1234,4 @@ style="justify-content: center; loading='lazy';">
   [SC23 Workshop: High Performance Python for Science at Scale (HPPSS)]:
     https://hppss.github.io/SC23/
   [Machine Learning and Quantum Computing for Earth Sciences]: https://17.usnccm.org/702
+  [guesbooks]: https://guestbooks.meadow.cafe/guestbook/745

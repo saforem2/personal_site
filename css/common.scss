@@ -373,12 +373,32 @@ b {
   font-weight: 800;
 }
 
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba($dim-text, 0.2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $link-color-hover;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: $link-color-hover;
+}
+
 /*-- scss:rules --*/
 
 :root {
   --bs-border-color: #{$quarto-border-color};
   --bs-secondary-bg: #{$alt-bg};
-  // scrollbar-color: #{$link-color-hover} #{$dim-text};
+  scrollbar-color: #{$link-color-hover} #{$dim-text};
   --bs-border-radius: 0pt;
   .reveal {
     // -webkit-font-smoothing: auto;
@@ -395,7 +415,6 @@ b {
       text-underline-offset: unset;
     }
   }
-  // scrollbar-color: $dim-text;
   scrollbar-width: thin;
   // -moz-osx-font-smoothing: auto;
   // -webkit-font-smoothing: auto;
@@ -959,7 +978,7 @@ div.sourceCode pre.sourceCode {
 
 a:not(#lightbox, .icon):hover,
 .reveal a:not(#lightbox, .icon):hover {
-  color: $code-fg;
+  // color: $code-fg;
   cursor: pointer;
 
   border-radius: $link-border-radius;
@@ -1346,7 +1365,7 @@ div.sidebar-item-container .sidebar-link > code {
 
 a:not(#lightbox):hover,
 .reveal a:not(#lightbox):hover {
-  color: $link-color-hover !important;
+  color: $link-color-hover;
   border-radius: $link-border-radius;
 }
 
@@ -2698,7 +2717,7 @@ main {
 }
 
 .sidebar-logo-link:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .quarto-sidebar-toggle {
@@ -2825,13 +2844,11 @@ main {
   }
 }
 
-
 .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
   background-image: none;
   background-color: currentColor;
-  mask: url("/static/icons/sunny-outline.svg") no-repeat center / contain;
-  -webkit-mask: url("/static/icons/sunny-outline.svg") no-repeat center /
-    contain;
+  mask: url("/static/icons/moon-cloud.svg") no-repeat center / contain;
+  -webkit-mask: url("/static/icons/moon-cloud.svg") no-repeat center / contain;
   width: 1.5em;
   height: 1.5em;
   font-size: inherit;
@@ -2843,8 +2860,8 @@ main {
 .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
   background-image: none;
   background-color: currentColor;
-  mask: url("/static/icons/moon-outline-loop.svg") no-repeat center / contain;
-  -webkit-mask: url("/static/icons/moon-outline-loop.svg") no-repeat center / contain;
+  mask: url("/static/icons/sun-cloud.svg") no-repeat center / contain;
+  -webkit-mask: url("/static/icons/sun-cloud.svg") no-repeat center / contain;
   width: 1.5em;
   height: 1.5em;
   font-size: inherit;
@@ -4306,56 +4323,182 @@ p iconify-icon {
 //   padding: 2pt;
 // }
 
-.icon-home:hover {
-  color: oklch(from $myred calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+.icon-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
 }
+
+.icon-flex .fa-li {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.icon-flex .fa-li i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0.1rem;
+  line-height: 1;
+}
+
+.icon-flex .fa-li svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.icon-flex .fa-li a {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.icon-flex .fa-li a:hover {
+  color: inherit !important;
+  background: none !important;
+  border-radius: 0;
+}
+
+.icon-home {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $myred calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+  }
+}
+
+// .icon-home:hover {
+//   color: oklch(from $myred calc(l * 1) c h / 1) !important;
+//   background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+// }
+
 .icon-github-navbar:hover {
   color: oklch(from $myorange calc(l * 1) c h / 1) !important;
   background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
 }
 
-.icon-github:hover {
-  color: oklch(from $myorange calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
-}
-.icon-twitter:hover {
-  color: oklch(from $myyellow calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $myyellow calc(l * 1.15) c h / 0.1) !important;
-}
-.icon-bluesky:hover {
-  color: oklch(from $mygreen calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $mygreen calc(l * 1.15) c h / 0.1) !important;
-}
-
-.icon-scholar:hover {
-  color: oklch(from $myblue calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $myblue calc(l * 1.15) c h / 0.1) !important;
+.icon-github {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $myorange calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+  }
 }
 
-.icon-email:hover {
-  color: oklch(from $mypurple calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $mypurple calc(l * 1.15) c h/0.1) !important;
+// .icon-github:hover {
+//   color: oklch(from $myorange calc(l * 1) c h / 1) !important;
+//   background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+// }
+
+.icon-twitter {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $myyellow calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $myyellow calc(l * 1.15) c h / 0.1) !important;
+  }
 }
 
-.icon-calendar:hover {
-  color: oklch(from $mypink calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $mypink calc(l * 1.15) c h/0.1) !important;
+.icon-bluesky {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $mygreen calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $mygreen calc(l * 1.15) c h / 0.1) !important;
+  }
 }
 
-.icon-linkedin:hover {
-  color: oklch(from $blue-text calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $blue-text calc(l * 1.15) c h/0.1) !important;
+.icon-scholar {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $myblue calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $myblue calc(l * 1.15) c h / 0.1) !important;
+  }
 }
-.icon-spotify:hover {
-  color: oklch(from $green-spotify calc(l * 1) c h / 1) !important;
-  background-color: oklch(
-    from $green-spotify calc(l * 1.15) c h/0.1
-  ) !important;
+
+.icon-mail {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $mypurple calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $mypurple calc(l * 1.15) c h/0.1) !important;
+  }
 }
-.icon-lastfm:hover {
-  color: oklch(from $red-lastfm calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $red-lastfm calc(l * 1.15) c h/0.1) !important;
+
+.icon-calendar {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $mypink calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $mypink calc(l * 1.15) c h/0.1) !important;
+  }
+}
+
+.icon-linkedin {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $blue-text calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $blue-text calc(l * 1.15) c h/0.1) !important;
+  }
+}
+
+.icon-spotify {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $green-spotify calc(l * 1) c h / 1) !important;
+    background-color: oklch(
+      from $green-spotify calc(l * 1.15) c h/0.1
+    ) !important;
+  }
+}
+.icon-lastfm {
+  display: inline-block;
+  margin-inline: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  &:hover {
+    color: oklch(from $red-lastfm calc(l * 1) c h / 1) !important;
+    background-color: oklch(from $red-lastfm calc(l * 1.15) c h/0.1) !important;
+  }
 }
 
 div.sourceCode,
