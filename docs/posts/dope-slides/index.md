@@ -37,13 +37,8 @@ below:
 > ### 🪧 <span class="dim-text">[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [*Lattice 2023*](https://indico.fnal.gov/event/57249/contributions/271305/) \[07/2023\]</span>
 >
 > <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
->
-> <p>
->
-> Your browser does not support iframes.
-> </p>
->
-> </iframe>
+>     <p>Your browser does not support iframes.</p>
+>   </iframe>
 
 > [!TIP]
 >

@@ -51,11 +51,11 @@ format:
       dark:
         - /css/syntax-dark.scss
         - /css/dark.scss 
-        - /css/common.scss
+        - /style/common.scss
       light:
         - /css/syntax-light.scss
         - /css/light.scss
-        - /css/common.scss
+        - /style/common.scss
     # smooth-scroll: true
     citations-hover: true
     footnotes-hover: true

@@ -1,5 +1,5 @@
 Sam Foreman
-2025-12-31
+2026-01-07
 
 <div style="font-size:1.0em; text-align: center;">
 
@@ -212,7 +212,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2025</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">12</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">31</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">09:36:50</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2026</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:49:15</span>
 > </pre>
 
 > [!TIP]
@@ -406,6 +406,299 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 <div id="listing-talks">
 
 </div>
+
+## 📆 2025
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AuroraGPT: Training Foundation Models on Supercomputers] @ ANL \[12/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/12/16/slides.html?view=scroll" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers] @ UIUC \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/24/slides.html?view=scroll" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][1] @ Georgia Institute of Technology \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/15/slides.html?view=scroll" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AERIS: Argonne Earth Systems Model] @ [2025 ALCF Hands On HPC Workshop][] \[10/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/10/08/slides.html?view=scroll" title="AERIS: Argonne Earth Systems Model" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Foundation Models on Supercomputers][2] @ [2025 ALCF Hands On HPC Workshop][] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/2025/09/24/slides.html?view=scroll" title="Training Foundation Models on Supercomputers" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Scientific AI at Scale: AI for Science] @ [Open SkAI 2025][] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/ai4science/slides.html?view=scroll" title="Scientific AI at Scale: AI for Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Scientific AI at Scale: Distributed Training] @ [Open SkAI 2025][3] \[09/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/openskai25/training/slides.html?view=scroll" title="Scientific AI at Scale: Distributed Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Large Scale Training on Diverse Accelerators] @ [Scalable Deep Learning, *SIAM AN2025*][] \[07/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/AuroraGPT-SIAM25/slides.html?view=scroll" title="AuroraGPT: Large Scale Training on Diverse Accelerators" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[LLMs on Aurora: 🌌 AuroraGPT] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
+>
+> - [🎥 video]
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/incite-hackathon-2025/auroragpt/slides?view=scroll/section#/section" title="LLMs on Aurora: AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[LLMs on Aurora: 🍋 ezpz] @ [*2025 ALCF INCITE GPU Hackathon*][] \[05/2025\]</span>
+>
+> - [🎥 video][4]
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="https://samforeman.me/talks/incite-hackathon-2025/ezpz/slides?view=scroll/section#/section" title="🍋 ezpz on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AuroraGPT: Foundation Models for Science] @ [*Foundation Models for the Electric Grid*][] \[02/2025\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/aurora-gpt-fm-for-electric-grid/slides.html?view=scroll" title="AuroraGPT: Foundation Models for Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+## 📆 2024
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Parallel Training Methods] @ [*AI-for-Science on Supercomputers*][*Foundation Models for the Electric Grid*] \[11/2024\]</span>
+>
+> - [🎥 video][5]
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/ai-for-science-2024/slides.html?view=scroll" title="Parallel Training Methods" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AuroraGPT][6] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
+>
+> - [🎥 video][4]
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck" loading="lazy" src="/talks/AuroraGPT/alcf-hpc-workshop-2024/slides.html?view=scroll" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Machine Learning and Foundation Models at Scale] @ [*2024 ALCF Hands-On HPC Workshop*][] \[10/2024\]</span>
+>
+> <div class="reveal-full-page">
+>
+> <iframe class="slide-deck" loading="lazy" src="https://samforeman.me/talks/alcf-hpc-workshop-2024/slides?view=scroll/section#/section" title="Machine Learning and Foundation Models at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+>
+> </div>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[AuroraGPT][7] @ [*HPC User Forum*, 2024][] \[09/2024\]</span>
+>
+> <iframe class="slide-deck reveal-full-page" loading="lazy" src="/talks/hpc-user-forum/slides.html?view=scroll" title="AuroraGPT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training LLMs at Scale] @ [*ATPESC*, 2024][] \[08/2024\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="/talks/llms-at-scale/slides.html?view=scroll" title="Training LLMs at Scale" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[LLMs on Polaris] @ [*Center for Scientific Foundation Models*, Summer School 24’][] \[07/2024\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="/talks/llms-on-polaris/slides.html?view=scroll" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Parallel Training Techniques] @ [*AI-4-Science Training Series*][] \[03/2024\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/parallel-training-slides?view=scroll" title="Parallel Training Techniques" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[LLMs from Scratch] @ [LLM Tutorial Workshop][] \[02/2024\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-workshop-talk" title="LLMs from Scratch" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+## 📆 2023
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Creating Small(-ish) LLMs] @ [LLM Tutorial Workshop (1)][] \[11/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/LLM-tutorial" title="Creating Small(-ish) LLMs" align="center" frameborder="0" webkitallowfullscreen allowfullscreen > </iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Exascale Science on Aurora] @ [Intel oneAPI Workshop @ UIC][] \[10/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/oneapi-talk" title="Exascale Science on Aurora" align="center" frameborder="0" webkitallowfullscreen allowfullscreen > </iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[LLM Lunch Talk] @ [ALCF Hands On HPC Workshop][Intel oneAPI Workshop @ UIC] \[10/2023\]</span>
+>
+> - [🎥 video][8]
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/llm-lunch-talk/#/section" title="LLMs on Polaris" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Scaling LLMs for Science] @ [Data-Intensive Computing + AI/ML at Scale][] \[08/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/scaling4science/#/section" title="Scaling LLMs for Science and Ongoing Collaborations" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[MLMC: Machine Learning Monte Carlo] @ [Lattice 2023][] \[07/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lattice23/#/title-slide" title="MLMC: Machine Learning Monte Carlo" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Generative Modeling and Efficient Sampling] @ [PASC23][] \[07/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/lqcd-pasc23/" title="Generative Modeling and Efficient Sampling" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Efficient Sampling for LGT] @ [Deep Fridays @ U. Bologna][] \[04/2023\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/deep-fridays/" title="Efficient Sampling for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+## 📆 2022
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Large Scale Training] @ [AI4Science on Supercomputers (ALCF)][] \[11/2022\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ai4sci-large-scale-training/#" title="Large Scale Training" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Hyperparameter Management] @ [ALCF SDL Workshop][] \[10/2022\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/hparam-management-sdl2022" title="Hyperparameter Management" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Statistical Learning] @ [ATPESC 2022][] \[08/2022\]</span>
+>
+> - [📕 accompanying notebook]
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/ATPESC-StatisticalLearning/#/" title="Statistical Learning" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+> &#10;:::
+> &#10;::: {.callout-tip icon="false" title="[[Scientific Data Science: An Emerging Symbiosis](https://saforem2.github.io/anl-job-talk/) @ ANL (05/2022)]{.dim-text}" collapse="true" style="width:100%;background-color: rgba(0,0,0,0.0)!important;"}
+> &#10;```{=html}
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/anl-job-talk" title="Scientific Data Science" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Machine Learning in HEP] @ UNC Greensboro \[03/2022\]</span>
+>
+> - [Machine Learning in HEP], at UNC Greensboro, March 2022
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/physicsSeminar" title="Machine Learning in HEP" align="center" frameborder="0" webkitallowfullscreen allowfullscreen style="width:100%!important; "></iframe>
+> &#10;:::
+> &#10;## 📆 2021
+> &#10;::: {.callout-tip icon="false" title="[[Accelerated Sampling Methods for LGT](https://saforem2.github.io/l2hmc-dwq25/), @ [DWQ @ 25 \[BNL\]](https://indico.bnl.gov/event/13576/) \[12/2021\]]{.dim-text}" collapse="true" style="width:100%; background-color: rgba(0,0,0,0.0)!important;"}
+> &#10;```{=html}
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc-dwq25/" title="Accelerated Sampling Methods for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Training Topological Samplers for LGT] @ [ML4HEP, ECT\* Trento][] \[09/2021\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://saforem2.github.io/l2hmc_talk_ect2021" title="Training Topological Samplers for LGT" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
+
+> [!TIP]
+>
+> ### <span class="dim-text">[l2hmc-qcd][`l2hmc-qcd`] @ MIT Lattice Group Seminar \[2021\]</span>
+>
+> [l2hmc-qcd][`l2hmc-qcd`] at the *MIT Lattice Group Seminar*, 2021
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Deep Learning HMC for Improved Gauge Generation] @ [ML in LQCD Workshop][] \[2021\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/dlhmc/embed" title="Deep Learning HMC for Improved Gauge Generation" scrolling="no" frameborder="0" webkitallowfullscreen allowfullscreen style="aspect-ratio:1.3671875;"></iframe>
+
+## 📆 2020
+
+> [!TIP]
+>
+> ### <span class="dim-text">[Machine Learning for Lattice QCD] @ U. Iowa \[2020\]</span>
+>
+> <iframe class="slide-deck" loading="lazy" src="https://slides.com/samforeman/l2hmc-qcd/embed" title="Machine Learning for Lattice QCD" align="center" frameborder="0" webkitallowfullscreen allowfullscreen  style="aspect-ratio:1.3671875;"></iframe>
 
 ### 📝 Work
 
@@ -1182,6 +1475,67 @@ style="justify-content: center; loading='lazy';">
   [patent]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=vV_1zDwAAAAJ&pagesize=80&citation_for_view=vV_1zDwAAAAJ:SeFeTyx0c_EC
   [Sam Foreman]: https://samforeman.me
   [talks]: ./talks/index.qmd
+  [AuroraGPT: Training Foundation Models on Supercomputers]: ./talks/2025/12/16/slides.html
+  [Training Foundation Models on Supercomputers]: ./talks/2025/10/24/slides.html
+  [1]: ./talks/2025/10/15/slides.html
+  [AERIS: Argonne Earth Systems Model]: ./talks/2025/10/08/index.html
+  [2025 ALCF Hands On HPC Workshop]: https://www.alcf.anl.gov/events/2025-alcf-hands-hpc-workshop
+  [2]: ./talks/2025/09/24/index.html
+  [Scientific AI at Scale: AI for Science]: ./talks/openskai25/ai4science/index.html
+  [Open SkAI 2025]: https://www.openskai-conference.org
+  [Scientific AI at Scale: Distributed Training]: ./talks/openskai25/training/index.html
+  [3]: https://www.openskai-conference.org/
+  [Large Scale Training on Diverse Accelerators]: ./talks/AuroraGPT-SIAM25/index.html
+  [Scalable Deep Learning, *SIAM AN2025*]: https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=84772
+  [LLMs on Aurora: 🌌 AuroraGPT]: ./talks/incite-hackathon-2025/AuroraGPT/index.html
+  [*2025 ALCF INCITE GPU Hackathon*]: https://www.alcf.anl.gov/events/alcf-incite-gpu-hackathon
+  [🎥 video]: https://www.youtube.com/watch?v=KJBbR_oFO2E
+  [LLMs on Aurora: 🍋 ezpz]: ./talks/incite-hackathon-2025/ezpz/index.html
+  [4]: https://www.youtube.com/watch?v=15ZK9REQiBo
+  [AuroraGPT: Foundation Models for Science]: ./talks/aurora-gpt-fm-for-electric-grid/index.html
+  [*Foundation Models for the Electric Grid*]: https://www.alcf.anl.gov/alcf-ai-science-training-series
+  [Parallel Training Methods]: ./talks/ai-for-science-2024/index.html
+  [5]: https://www.youtube.com/watch?v=4ltulBj4oVk
+  [6]: ./talks/AuroraGPT/alcf-hpc-workshop-2024/index.html
+  [*2024 ALCF Hands-On HPC Workshop*]: https://www.alcf.anl.gov/events/2024-alcf-hands-hpc-workshop
+  [Machine Learning and Foundation Models at Scale]: ./talks/alcf-hpc-workshop-2024/index.html
+  [7]: ./talks/hpc-user-forum/index.html
+  [*HPC User Forum*, 2024]: https://www.hpcuserforum.com/hpc-user-forum-fall-2024/
+  [Training LLMs at Scale]: ./talks/llms-at-scale/
+  [*ATPESC*, 2024]: https://extremecomputingtraining.anl.gov/atpesc-2024/
+  [LLMs on Polaris]: https://samforeman.me/talks/llms-on-polaris/slides.html
+  [*Center for Scientific Foundation Models*, Summer School 24’]: https://scifm.ai/summer_school.html
+  [Parallel Training Techniques]: https://github.com/saforem2/parallel-training-slides
+  [*AI-4-Science Training Series*]: https://github.com/argonne-lcf/ai-science-training-series/tree/main/06_parallel_training
+  [LLMs from Scratch]: https://saforem2.github.io/llm-workshop-talk
+  [LLM Tutorial Workshop]: https://github.com/argonne-lcf/llm-workshop
+  [Creating Small(-ish) LLMs]: https://saforem2.github.io/LLM-tutorial
+  [LLM Tutorial Workshop (1)]: https://github.com/brettin/llm_tutorial
+  [Exascale Science on Aurora]: https://saforem2.github.io/oneapi-talk
+  [Intel oneAPI Workshop @ UIC]: https://www.alcf.anl.gov/events/alcf-hands-hpc-workshop
+  [LLM Lunch Talk]: https://saforem2.github.io/llm-lunch-talk
+  [8]: https://www.youtube.com/watch?v=mSx9RVd00xU
+  [Scaling LLMs for Science]: https://saforem2.github.io/scaling4science
+  [Data-Intensive Computing + AI/ML at Scale]: https://events.cels.anl.gov/event/426/overview
+  [MLMC: Machine Learning Monte Carlo]: https://saforem2.github.io/lattice23
+  [Lattice 2023]: https://indico.fnal.gov/event/57249/contributions/271305/
+  [Generative Modeling and Efficient Sampling]: https://saforem2.github.io/lqcd-pasc23/
+  [PASC23]: https://pasc23.pasc-conference.org/
+  [Efficient Sampling for LGT]: https://saforem2.github.io/deep-fridays
+  [Deep Fridays @ U. Bologna]: https://www.cs.unibo.it/~asperti/deep_fridays.html
+  [Large Scale Training]: https://saforem2.github.io/ai4sci-large-scale-training
+  [AI4Science on Supercomputers (ALCF)]: https://github.com/argonne-lcf/ai-science-training-series
+  [Hyperparameter Management]: https://saforem2.github.io/hparam-management-sdl2022/
+  [ALCF SDL Workshop]: https://www.alcf.anl.gov/events/2022-alcf-simulation-data-and-learning-workshop
+  [Statistical Learning]: https://saforem2.github.io/ATPESC-StatisticalLearning
+  [ATPESC 2022]: https://extremecomputingtraining.anl.gov/
+  [📕 accompanying notebook]: https://github.com/argonne-lcf/ATPESC_MachineLearning/blob/master/00_statisticalLearning/src/atpesc/notebooks/statistical_learning.ipynb
+  [Machine Learning in HEP]: https://saforem2.github.io/physicsSeminar
+  [Training Topological Samplers for LGT]: https://saforem2.github.io/l2hmc_talk_ect2021
+  [ML4HEP, ECT\* Trento]: https://indico.ectstar.eu/event/77/contributions/2349/
+  [Deep Learning HMC for Improved Gauge Generation]: https://bit.ly/mainz21
+  [ML in LQCD Workshop]: https://bit.ly/mainz21_overview
+  [Machine Learning for Lattice QCD]: https://slides.com/samforeman/l2hmc-qcd/embed
   [Google Scholar]: https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en
   [*2025 ACM Gordon Bell Prize for Climate Modeling Finalist*]: https://awards.acm.org/bell-climate
   [HiPerRAG: High-Performance Retrieval Augmented Generation for Scientific Insights]:
