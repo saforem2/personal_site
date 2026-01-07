@@ -389,6 +389,11 @@ Scholar](https://scholar.google.com/citations?user=vV_1zDwAAAAJ&hl=en) •
 
 ## 🏆 Awards and Honors
 
+- Member of the DeepSpeed Technical Steering Commiittee, 2025 – Present
+
+  - Contributing to the development and direction of the DeepSpeed
+    library for large-scale model training.
+
 - Nominated to serve on the US [**Coordinating Panel for Software and
   Computing**](https://imfisk.github.io/CPSC/) by the Division of
   Particles and Fields of the American Physical Society (APS).

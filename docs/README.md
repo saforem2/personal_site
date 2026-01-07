@@ -212,7 +212,7 @@ sampling techniques for Lattice Quantum Chromodynamics ([`l2hmc-qcd`]).
 >
 > ### ✏️ Last Updated
 >
-> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2026</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">12:49:15</span>
+> <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Updated: <span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">2026</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">01</span><span style="color: #e599f7; text-decoration-color: #e599f7">-</span><span style="color: #e599f7; text-decoration-color: #e599f7; font-weight: bold">07</span> <span style="color: #838383; text-decoration-color: #838383">@</span> <span style="color: #00ccff; text-decoration-color: #00ccff; font-weight: bold">17:00:12</span>
 > </pre>
 
 > [!TIP]
@@ -1243,6 +1243,11 @@ Loading repositories from GitHub…
       for my PhD Thesis research
 
 ## 🏆 Awards and Honors
+
+- Member of the DeepSpeed Technical Steering Commiittee, 2025 – Present
+
+  - Contributing to the development and direction of the DeepSpeed
+    library for large-scale model training.
 
 - Nominated to serve on the US [**Coordinating Panel for Software and
   Computing**] by the Division of Particles and Fields of the American
