@@ -18,7 +18,7 @@ thinking about / working on.
   Additional details can be found in some of my recent talks:
 
   - [AuroraGPT: Training Foundation Models on
-    Supercomputers](https://samforeman.me/talks/2026/12/16/)
+    Supercomputers](https://samforeman.me/talks/2025/12/16/)
 
   - [Training Foundation Models on
     Supercomputers](https://samforeman.me/talks/2025/10/24/)
