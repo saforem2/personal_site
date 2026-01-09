@@ -777,11 +777,18 @@ Figure 12: Scaling results for `3.5B` model across ~38,400 GPUs
 
 <div class="flex-container">
 
+<div class="column" style="width:70%;">
+
 <div id="fig-aeris-scaling">
 
-![](../../../../assets/aeris/aeris-scaling.svg)
+<img src="../../../../assets/aeris/aeris-scaling.svg"
+id="fig-aeris-scaling" />
 
-Figure 13: AERIS: Scaling Results
+Figure 13
+
+</div>
+
+AERIS: Scaling Results
 
 </div>
 
