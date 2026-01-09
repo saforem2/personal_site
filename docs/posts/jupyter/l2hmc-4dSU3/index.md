@@ -1,6 +1,6 @@
 # 🔳 `l2hmc-qcd` Example: 4D SU(3)
 Sam Foreman
-2025-07-24
+2024-07-24
 
 - [Load config + build Experiment](#load-config--build-experiment)
 - [HMC](#hmc)

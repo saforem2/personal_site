@@ -1327,6 +1327,11 @@ div.sidebar-item-container .sidebar-link > code {
   font-size: 1em;
 }
 
+.sidebar nav[role="doc-toc"] ul > li > a.active, .sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+	border-left: 1pt solid inherit;
+	color: inherit;
+}
+
 // .bi-chevron-right::before {
 //   content: "▷";
 //   &:hover {
@@ -2278,7 +2283,6 @@ div.callout-important.callout-style-default .callout-title {
   font-weight: bold;
   font-size: 120%;
   /* margin-top: auto; */
-  /* margin-bottom: auto; */
   /* padding: unset; */
   // margin-block-end: 0.5lh;
   margin-block-start: 0pt;
@@ -2407,23 +2411,7 @@ samp {
 .reveal h6 {
   margin-top: auto;
   margin-bottom: auto;
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-font-smoothing: subpixel-antialiased;
 }
-
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   // -moz-osx-font-smoothing: grayscale;
-//   // -webkit-font-smoothing: subpixel-antialiased;
-//   margin: auto;
-//   // line-height: 1;
-//   // margin-block-start: 0.5rem;
-//   // line-height: unset;
-// }
 
 h1.title,
 .title.h1 {
@@ -2463,9 +2451,7 @@ body h6 {
 }
 
 main {
-  // section.has-light-background, section.has-dark-background {
   h1 {
-    // padding: $h1-padding;
     opacity: 100%;
     font-weight: 800;
     padding-inline-start: 5pt;
@@ -2742,7 +2728,7 @@ main {
   display: inline-block;
   margin-left: 0px;
   order: 2;
-  margin-inline-start: 5pt;
+  margin-inline-start: 27px;
   vertical-align: middle;
   width: auto;
   height: 2.5rem;
@@ -3574,25 +3560,33 @@ div.quarto-about-trestles {
     flex-direction: row;
   }
 
-  .navbar-logo {
-    max-height: 32pt;
-    // position: relative;
-    width: min-content;
-
-    // &:hover {
-    //   filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
-    //   border: 1px solid $red !important;
-    //   // background: unset;
-    //   color: $red !important;
-    //   background-color: oklch(from $red calc(l * 1.15) c h/0.1);
-    // }
-  }
-
+  // .navbar-logo {
+  //   max-height: 32pt;
+  //   // position: relative;
+  //   width: min-content;
+  //
+  //   // &:hover {
+  //   //   filter: drop-shadow(RGBA(0, 0, 0, 0.13) 0px 1px 2px);
+  //   //   border: 1px solid $red !important;
+  //   //   // background: unset;
+  //   //   color: $red !important;
+  //   //   background-color: oklch(from $red calc(l * 1.15) c h/0.1);
+  //   // }
+  // }
+  //
   .navbar .navbar-container > .navbar-brand-container {
     margin-left: auto !important;
     margin-right: auto !important;
     position: relative;
     left: 5pt;
+  }
+  #navbarCollapse {
+    font-family: $headings-font-family;
+    color: $light;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    margin-right: 25%;
   }
 }
 
@@ -3682,6 +3676,20 @@ iframe.reveal-demo {
   padding-left: unset;
 }
 
+
+// ol, ul, dl {
+// 	margin-top: 0;
+// 	margin-bottom: 1rem;
+// }
+
+main ol ol, main ul ul, main ol ul, main ul ol {
+  margin-bottom:  1rem;
+}
+
+main.content > p:has(+ section) {
+	margin-bottom: inherit;
+}
+
 ul > li:not(:has(> p)) > ul,
 ol > li:not(:has(> p)) > ul,
 ul > li:not(:has(> p)) > ol,
@@ -3766,7 +3774,7 @@ details > summary {
   // max-width: min-content;
   // width: fit-content;
   padding-inline: 5pt;
-  margin-block: 0.5lh;
+  margin-block: 1pt;
 }
 
 details > summary:hover {
@@ -4266,8 +4274,9 @@ pre > code.sourceCode > span > a:first-child::before {
     align-items: center;
   }
   #quarto-sidebar {
-    top: 20pt !important;
-    max-height: calc(-20pt + 100vh) !important;
+    top: 40px !important;
+    max-height: calc(-40px + 100vh) !important;
+    margin-block-start: 1px;
   }
 }
 
@@ -4285,7 +4294,7 @@ pre > code.sourceCode > span > a:first-child::before {
     z-index: 10000;
     // margin-top: 12pt;
     outline: 1pt solid rgba(0, 0, 0, 0.05);
-    padding-block: 0.5lh;
+    // padding-block: 0.5lh;
   }
 }
 
@@ -4547,7 +4556,11 @@ pre.cell-output {
 
 .navbar-logo {
   max-height: 36px;
-  width: auto;
+  // width: auto;
+  width: 100%;
+  padding: 0pt;
+  margin-left: auto!important;
+  margin-right: auto!important;
   padding-right: 0pt;
   &:hover {
     --r-color: random-rgb-color();
@@ -4697,10 +4710,10 @@ nav .nav-item:not(.compact) {
   // }
 }
 
-.navbar-logo {
-  max-height: 36px;
-  width: auto;
-}
+// .navbar-logo {
+//   max-height: 36px;
+//   width: auto;
+// }
 
 .reveal .panel-tabset [role="tab"] {
   padding: 0.25em 0.7em;
