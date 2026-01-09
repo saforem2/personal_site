@@ -23,13 +23,13 @@ Sam Foreman
 
 <div class="dark-content">
 
-![](assets/dark.svg)
+<img loading="lazy" src="https://github.com/user-attachments/assets/49bbdd98-9670-4064-bea1-948dda949b64" />
 
 </div>
 
 <div class="light-content">
 
-![](assets/light.svg)
+<img loading="lazy" src="https://github.com/user-attachments/assets/4f1c4503-2478-436e-91da-13c421da7523" />
 
 </div>
 

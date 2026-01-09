@@ -137,7 +137,7 @@ Table 1: Aurora[^2] Specs
 
 <div id="fig-aurora">
 
-![](./assets/aurora1.png)
+<img loading="lazy" width="100%" src="./assets/aurora1.png" />
 
 Figure 1: Aurora: [Fact
 Sheet](https://www.alcf.anl.gov/sites/default/files/2024-07/Aurora_FactSheet_2024.pdf).
