@@ -34,14 +34,6 @@ below:
 
 > [!TIP]
 >
-> ### 🪧 <span class="dim-text">[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [*Lattice 2023*](https://indico.fnal.gov/event/57249/contributions/271305/) \[07/2023\]</span>
->
-> <iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="border-radius:0.25rem;border:none;align:center;">
->     <p>Your browser does not support iframes.</p>
->   </iframe>
-
-> [!TIP]
->
 > ### <span class="dim-text">🏃‍♂️ Follow Along…</span>
 >
 > Once you’ve [Installed Quarto](https://quarto.org/docs/download/), you
@@ -500,11 +492,6 @@ and the site is published at
 >
 > <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">12</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">22</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2025</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">18:27:29</span>
 > </pre>
->
-> <p align="center">
->
-> <a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&count_bg=%2300CCFF&title_bg=%23303030&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
-> </p>
 
 [^1]: And countless other people IRL
 
