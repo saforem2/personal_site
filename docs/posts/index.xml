@@ -17,7 +17,193 @@
 <width>144</width>
 </image>
 <generator>quarto-1.9.16</generator>
-<lastBuildDate>Wed, 07 Jan 2026 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 10 Jan 2026 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>🍋 ezpz</title>
+  <dc:creator>Sam Foreman</dc:creator>
+  <link>https://samforeman.me/posts/2026/01/10/</link>
+  <description><![CDATA[ 
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+<p>In ancient times<sup>1</sup>, back in ~ 2022–2023, virtually all (production) PyTorch code was designed to run on NVIDIA GPUs.</p>
+<p>In April 2023, AMD announced day-zero support for PyTorch 2.0 within the ROCm 6.0 ecosystem, leveraging new features like TorchDynamo for performance</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gantt
+    title AMD and Intel PyTorch Enablement Timeline
+    dateFormat  YYYY
+    axisFormat  %Y
+    %% ROCm                                             :vert, amd1, 2021-03-04, 1d
+    %% Installable PyTorch ROCm Python packages         :milestone, amd2, 2021-03-04, 1d
+
+    section AMD ROCm and PyTorch
+      Torch7 era and early CUDA to HIP ports        :milestone,amd1, 2012, 2016
+      ROCm 1.0 and HIPIFY tooling                   :milestone,amd2, 2016, 2020
+      Official PyTorch ROCm Python packages         :milestone,amd3, 2021, 2022
+      PyTorch Foundation governance participation   :milestone,amd4, 2022, 2023
+      Triton ecosystem support                      :milestone,amd6, 2023, 2024
+      MI300x PyTorch guidance                       :milestone,amd7, 2024, 2024
+      %% PyTorch 2.0 day zero ROCm support             :milestone,amd5, 2023, 2023
+      %% Torchtune on AMD GPUs guide                   :milestone,amd8, 2024, 2024
+      %% PyTorch on Windows public preview             :milestone,amd9, 2025, 2025
+      %% AMD PyTorch on Windows ROCm 7.1.1             :milestone,amd10, 2025, 2025
+      %% MI450X rack scale roadmap                     :milestone,amd11, 2026, 2026
+      %% MI500 series future roadmap                   :milestone,amd12, 2027, 2028
+
+    section Intel and PyTorch
+      Initial PyTorch contributions                :i2,2018, 2019
+      Intel Extension for PyTorch launch           :i3,2020, 2024
+      VTune ITT API integration in PyTorch         :i4,2022, 2022
+      PyTorch Foundation Premier membership        :i5,2023, 2023
+      Prototype native Intel GPU support           :i6,2024, 2024
+      Solid native Intel GPU support               :i7,2025, 2025
+      IPEX feature upstreaming completion          :i8,2025, 2025
+      Intel Extension for PyTorch end of life      :i9,2026, 2026
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gantt
+    title PyTorch Vendor Integration Timeline AMD vs Intel
+    dateFormat  YYYY-MM-DD
+    axisFormat  %Y
+
+
+section PyTorch Releases
+    1.8                                             :crit,milestone, pt180, 2021-03-04, 1d
+    1.12                                            :done,milestone, pt1120, 2022-06-28, 1d
+    2.0                                             :crit,milestone, pt200, 2023-03-15, 1d
+    2.4                                             :done,milestone,pt24, 2024-07-24, 1d
+    2.5                                             :crit,milestone, pt250, 2024-10-17, 1d
+    2.6                                             :milestone,done,2025-01-29, 1d
+    2.7                                             :done,milestone, pt270, 2025-04-23, 1d
+    2.8                                             :crit,milestone, pt280, 2025-08-06, 1d
+    2.9                                            :done,milestone, pt290, 2025-10-15, 1d
+    2.10                                           :milestone, pt210, 2026-01-15, 1d
+
+section AMD
+    ROCm                                             :vert, amd1, 2021-03-04, 1d
+    Installable PyTorch ROCm Python packages         :milestone, amd2, 2021-03-04, 1d
+    %% ROCm development                                 :amd25, 2021-03-04, 2022-06-28,
+    ROCm marked stable                               :vert,done,amd3,2022-06-28,
+    %% PyTorch 1.12 ROCm marked stable                  :done,milestone,amd3 2022-06-28, 1d
+    %% PyTorch joins Linux Foundation (AMD board)       :done, amd4, 2022-09-01, 2022-12-31
+    %% Torch 2.0 TorchInductor MI250 Performance        :vert,amd5,2023-03-15, 1d
+    %% PyTorch 2.0 day zero ROCm support                :done, amd6, 2023-04-01, 2023-12-31
+    %% Triton kernel ecosystem support                  :done, amd7, 2023-06-01, 2024-03-31
+    %% MI300x PyTorch deployment guides                 :done, amd8, 2024-06-01, 2024-08-31
+    %% Torchtune LLM fine tuning on AMD GPUs             :done, amd9, 2024-10-01, 2024-10-31
+    %% Expanded ROCm wheel variants in PyTorch 2.8 2.9    :milestone, amd10, 2025-10-15, 1d
+
+section Intel
+    %% Intel Extension for PyTorch launched               :milestone, int1, 2020-01-01, 1d
+    Incremental Intel GPU improvements begin           :milestone, int2, 2024-07-24, 1d
+    Native Intel GPU support announced in PyTorch 2.5  :milestone, int3, 2024-10-17, 1d
+    XPU                                                :vert, 2024-10-17, 1d
+    Intel GPU eager and compile parity in PyTorch 2.7  :milestone, int4, 2025-04-23, 1d
+    XCCL Backend                                       :vert,done, 2025-08-06,
+    IPEX discontinued                                  :int5, 2025-08-06, 2026-03-31
+    IPEX end of life                                   :milestone, int6, 2026-03-31, 1d
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="amd-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="amd-timeline">AMD Timeline</h2>
+<ul>
+<li>Pre-2021: Early Efforts and Torch7
+<ul>
+<li>2012: Torch7 was released, a precursor to PyTorch, written in C++ and CUDA.</li>
+<li>ROCm 1.0: AMD demonstrated the ability to port CUDA code to HIP (AMD’s C++ dialect for GPU computing) using the HIPIFY tool, including ports of Caffe and Torch7.</li>
+</ul></li>
+<li>2021-2022: Official Support and Foundation
+<ul>
+<li>March 2021: PyTorch for the AMD ROCm platform became officially available as a Python package, simplifying installation on supported Linux systems.</li>
+<li>September 2022: The PyTorch project joined the independent Linux Foundation, with AMD participating as a founding member of the PyTorch Foundation governing board.</li>
+</ul></li>
+<li>2023: PyTorch 2.0 Integration
+<ul>
+<li>April 2023: AMD announced day-zero support for PyTorch 2.0 within the ROCm 6.0 ecosystem, leveraging new features like TorchDynamo for performance improvements.</li>
+<li>OpenAI Triton Support: The ecosystem grew to include support for OpenAI Triton, a key component for high-performance AI workloads.</li>
+</ul></li>
+<li>2024-2025: Expanding Accessibility (Windows &amp; Consumer GPUs)
+<ul>
+<li>June 2024: AMD released guides and information on running PyTorch models on AMD MI300x systems, highlighting near drop-in compatibility with code written for Nvidia GPUs.</li>
+<li>September 2025: AMD released a public preview of PyTorch on Windows, enabling native AI inference on select consumer Radeon RX 7000 and 9000 series GPUs and Ryzen AI APUs, without needing workarounds like WSL2.</li>
+<li>October 2024: AMD released a “how-to” guide for using Torchtune, a PyTorch library for fine-tuning LLMs, on AMD GPUs.</li>
+<li>November 2025: Release of AMD Software: PyTorch on Windows Edition 7.1.1, featuring an update to AMD ROCm 7.1.1.</li>
+</ul></li>
+<li>Future/Upcoming
+<ul>
+<li>2026: AMD is working on its next generation MI450X rack-scale solution, which aims to be competitive with NVIDIA’s high-end offerings by the second half of 2026.</li>
+<li>Post-2026: The company has also detailed plans for future MI500 series data center GPUs, targeting a significant increase in AI performance</li>
+</ul></li>
+</ul>
+</section>
+<section id="intel-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="intel-timeline">Intel Timeline</h2>
+<ul>
+<li>2018: Intel begins contributing to the open-source PyTorch framework.</li>
+<li>2020: The Intel® Extension for PyTorch* (IPEX) is launched as a separate package to provide optimized performance on Intel CPUs and GPUs.</li>
+<li>October 2022<sup>2</sup>: PyTorch 1.13 is released with integrated support for Intel® VTune™ Profiler’s ITT APIs.</li>
+<li>August 2023<sup>3</sup>: Intel joins the PyTorch Foundation as a Premier member, deepening its commitment to the ecosystem.</li>
+<li>July 2024: PyTorch 2.4 debuts with initial (prototype) native support for Intel GPUs (client and data center).</li>
+<li>April 2025: PyTorch 2.7 establishes a solid foundation for Intel GPU support in both eager and graph modes (torch.compile) on Windows and Linux.</li>
+<li>August 2025: Active development of the separate Intel® Extension for PyTorch* ceases following the PyTorch 2.8 release, as most features are now upstreamed into the main PyTorch project.</li>
+<li>End of March 2026 (Planned): The Intel® Extension for PyTorch* project will officially reach end-of-life. Users are strongly recommended to use native PyTorch directly.</li>
+</ul>
+<p>This made sense at the time, as NVIDIA had the vast majority of the GPU market share and was the only major GPU manufacturer.</p>
+<p>This was before the advent of</p>
+<p>we were still in the early days of trying to run PyTorch on</p>
+<p>I’ve been working on the 🍋 <a href="https://ezpz.cool"><code>ezpz</code></a> package for a while now,</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Even now, in 2026, a lot of code is still NVIDIA-centric and is rarely designed with multi-platform support in mind.↩︎</p></li>
+<li id="fn2"><p><a href="https://pytorch.org/blog/pytorch-1-13-release/">PyTorch 1.13 release</a>↩︎</p></li>
+<li id="fn3"><p><a href="https://www.edge-ai-vision.com/2023/08/driving-pytorch-and-ai-everywhere-intel-joins-the-pytorch-foundation/">Intel Joins the PyTorch Foundation</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2026,
+  author = {Foreman, Sam},
+  title = {🍋 \textless Code\textgreater
+    ezpz\textless/Code\textgreater{}},
+  date = {2026-01-10},
+  url = {https://samforeman.me/posts/2026/01/10/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2026" class="csl-entry quarto-appendix-citeas">
+Foreman, Sam. 2026. <span>“🍋 &lt;Code&gt;ezpz&lt;/Code&gt;.”</span>
+January 10, 2026. <a href="https://samforeman.me/posts/2026/01/10/">https://samforeman.me/posts/2026/01/10/</a>.
+</div></div></section></div> ]]></description>
+  <guid>https://samforeman.me/posts/2026/01/10/</guid>
+  <pubDate>Sat, 10 Jan 2026 06:00:00 GMT</pubDate>
+</item>
 <item>
   <title>🎉 Happy New Year!</title>
   <dc:creator>Sam Foreman</dc:creator>
@@ -71749,1143 +71935,6 @@ August. <a href="https://samforeman.me/posts/ezpz-at-alcf">https://samforeman.me
   <category>ai4science</category>
   <guid>https://samforeman.me/posts/ezpz-v1/</guid>
   <pubDate>Fri, 23 Aug 2024 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>💅 How to Make Dope Slides</title>
-  <dc:creator>Sam Foreman</dc:creator>
-  <link>https://samforeman.me/posts/dope-slides/</link>
-  <description><![CDATA[ 
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC329HJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-
-
-
-<section id="quarto-reveal.js" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-reveal.js">Quarto 🤝 Reveal.js</h2>
-<p>So, after making a promise some time ago on <a href="https://twitter.com/saforem2/status/1689676452235759616?s=20">twitter <i class="fa-brands fa-twitter" aria-label="twitter"></i></a><sup>1</sup>, and having many questions following my talk on <a href="https://github.com/saforem2/parallel-training-slides:">Parallel Training Techniques</a> last week, I’m finally getting around to writing this up.</p>
-<p>The slides are written using <a href="https://quarto.org/">Quarto</a>, a <em>flavor</em> of Markdown, and uses the built-in <a href="https://quarto.org/docs/presentations/revealjs">Quarto + Reveal.js</a> functionality.</p>
-<p>For this post, I’ll focus on the slides I presented at last years <a href="https://indico.fnal.gov/event/57249/contributions/271305/">Lattice 2023</a>, shown below:</p>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="🪧 [[**MLMC: Machine Learning Monte Carlo**](https://saforem2.github.io/lattice23) @ [_Lattice 2023_](https://indico.fnal.gov/event/57249/contributions/271305/) [07/2023]]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🪧 <span class="dim-text"><a href="https://saforem2.github.io/lattice23"><strong>MLMC: Machine Learning Monte Carlo</strong></a> @ <a href="https://indico.fnal.gov/event/57249/contributions/271305/"><em>Lattice 2023</em></a> [07/2023]</span>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<iframe loading="lazy" allow="picture-in-picture" src="https://saforem2.github.io/lattice23/#/title-slide" title="🪧 MLMC: Machine Learning Monte Carlo" width="100%" align="center" height="500" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="border-radius:0.25rem;border:none;align:center;">
-    <p>Your browser does not support iframes.</p>
-  </iframe>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[🏃‍♂️ Follow Along...]{.dim-text}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><span class="dim-text">🏃‍♂️ Follow Along…</span>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Once you’ve <a href="https://quarto.org/docs/download/">Installed Quarto</a>, you can build these slides yourself by:</p>
-<ol type="1">
-<li><code>git clone</code> <i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/lattice23"><code>saforem2/lattice23</code></a></li>
-<li><code>cd lattice23 &amp;&amp; quarto preview</code></li>
-</ol>
-<p>This will create a <code>docs/</code> directory with the following structure:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">📂</span> docs/</span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📂 assets/</span>
-<span id="cb1-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📂 css/</span>
-<span id="cb1-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📄 index.html</span>
-<span id="cb1-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📄 lattice23.md</span>
-<span id="cb1-6"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📄 search.json</span>
-<span id="cb1-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">└──</span> 📂 site_libs/</span></code></pre></div></div>
-<p>Once you’ve created this, and the <code>docs/index.html</code> file looks how you want, you can add the <code>docs/</code> directory to your GitHub repo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> git add docs</span>
-<span id="cb2-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> git commit <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-m</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'Create site'</span></span>
-<span id="cb2-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> git push</span></code></pre></div></div>
-<p>Once you’ve enabled the GitHub page, the site will be automatically built and updated alongside the repo.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Whenever I give a talk, my workflow is typically:</p>
-<ol type="1">
-<li><p>Create new GitHub repo for it</p></li>
-<li><p>Hunt down the GitHub repo from my <em>last</em> talk and<sup>2</sup>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> cp <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> old_talk/<span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">{_quarto.yml</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">index.qmd</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">references.bib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">css/</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">}</span> new_talk/</span></code></pre></div></div></li>
-</ol>
-<p>Honestly, other than that, 90% of the work is done automatically by <a href="https://quarto.org/">Quarto</a>. The remaining 10% consists of figuring out why my css is broken (see CSS).</p>
-<p>The best place to start for learning to make slides with Quarto and Reveal.js is the official documentation:</p>
-<ol type="1">
-<li><a href="https://quarto.org/docs/presentations/revealjs/">Quarto / Presentations / Revealjs</a>:
-<ol type="1">
-<li><a href="https://quarto.org/docs/presentations/revealjs/">Reveal Basics</a></li>
-<li><a href="https://quarto.org/docs/presentations/revealjs/presenting.html">Presenting Slides</a></li>
-<li><a href="https://quarto.org/docs/presentations/revealjs/advanced.html">Advanced Reveal</a></li>
-<li><a href="https://quarto.org/docs/presentations/revealjs/themes.html">Reveal Themes</a></li>
-</ol></li>
-</ol>
-<ul>
-<li><p>The slides are written in <del>markdown</del> <a href="https://quarto.org/">Quarto (<code>.qmd</code>)</a><sup>3</sup>, a <a href="https://pandoc.org/">pandoc</a>-compliant based markup language.</p></li>
-<li><p>For a single slide deck, the content will be placed in <code>index.qmd</code> and our directory structure will look something like:</p>
-<div class="tight-code">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">📂</span> lattice23/</span>
-<span id="cb4-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📂 assets/            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># for images, etc.</span></span>
-<span id="cb4-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">│</span>   └── 🖼️ thumbnail.png  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># can be used as social preview image</span></span>
-<span id="cb4-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📂 css/</span>
-<span id="cb4-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">│</span>   ├── 📄 callouts.css</span>
-<span id="cb4-6"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">│</span>   ├── 📄 dark.scss</span>
-<span id="cb4-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">│</span>   └── 📄 default.css</span>
-<span id="cb4-8"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 🛠️ _quarto.yml        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Configuration goes here</span></span>
-<span id="cb4-9"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">├──</span> 📄 index.qmd          <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Quarto document containing slides content</span></span>
-<span id="cb4-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">└──</span> 📜 references.bib     <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># BibTex references</span></span></code></pre></div></div>
-</div></li>
-<li><p>Equations are rendered using <code>$</code> delimiters for inline math and <code>$$</code> for display math<sup>4</sup>.</p></li>
-<li><p>We can use <a href="https://pandoc.org/chunkedhtml-demo/8.18-divs-and-spans.html">Divs and Spans</a> from Pandoc.</p>
-<ul>
-<li><p><strong><code>&lt;span&gt;</code></strong>’s: are created by wrapping text in square brackets, and will be treated as a <code>&lt;span&gt;</code> with attributes if it is followed immediately by attributes, e.g.:</p>
-<ul>
-<li><p>Example: <code>[This is *some text*]{.class key="val"}</code></p></li>
-<li><p>idk what I’m doing really, so I mostly find myself doing things like <code>[blue text]{style="color:#1E88E5;"}</code> which produces <span style="color:#1E88E5;">blue text</span>.</p></li>
-</ul></li>
-<li><p><strong><code>&lt;div&gt;</code></strong>’s: are created by wrapping text with a line consisting of at least three colons <code>:::</code>.</p>
-<ul>
-<li><p>Example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1">::: {#special .sidebar}</span>
-<span id="cb5-2">Here is a paragraph.</span>
-<span id="cb5-3"></span>
-<span id="cb5-4">And another.</span>
-<span id="cb5-5">:::</span></code></pre></div></div></li>
-<li><p>We can use either attributes in curly braces or a single unbraced word, which will be treated as a class name.</p></li>
-</ul></li>
-</ul></li>
-</ul>
-<section id="install-extensions" class="level3">
-<h3 class="anchored" data-anchor-id="install-extensions">🎁 Install Extensions</h3>
-<p>Find the full list of available extensions at <a href="https://quarto.org/docs/extensions/">Quarto Extensions</a></p>
-<p>To install various icon sets used in the example slides, we can install the following extensions:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> quarto install extension mcanouil/quarto-iconify      <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># https://icones.js.org/ [&lt;-- Contains rest of icon sets ??]</span></span>
-<span id="cb6-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> quarto install extension shafayetShafee/bsicons       <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># bootstrap icons</span></span>
-<span id="cb6-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> quarto install extension schochastics/academicicons   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># OrcID, Google Scholar, ...</span></span>
-<span id="cb6-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> quarto install extension quarto-ext/fontawesome       <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Font Awesome icons</span></span></code></pre></div></div>
-<p>note that these aren’t necessary for functionality, but provide additional icons that I like to use 🤷🏻‍♂️</p>
-</section>
-</section>
-<section id="metadata" class="level2">
-<h2 class="anchored" data-anchor-id="metadata">Metadata</h2>
-<p>The first section of our <a href="https://github.com/saforem2/lattice23/blob/main/index.qmd"><code>index.qmd</code></a> contains the YAML metadata for the Quarto document.</p>
-<p>Explicitly, we see this consists of:</p>
-<details closed="">
-<summary>
-Expand for <code>yaml</code>
-</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb7-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb7-3"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">revealjs</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb7-4"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">title-block-style</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> none</span></span>
-<span id="cb7-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">slide-number</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> c</span></span>
-<span id="cb7-6"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">title-slide-style</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> default</span></span>
-<span id="cb7-7"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chalkboard</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb7-8"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">buttons</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-9"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">auto-animate</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-10"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">reference-location</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> section</span></span>
-<span id="cb7-11"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">touch</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-12"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pause</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-13"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">footnotes-hover</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-14"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">citations-hover</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-15"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">preview-links</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-16"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">controls-tutorial</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-17"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">controls</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-18"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">logo</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://raw.githubusercontent.com/saforem2/anl-job-talk/main/docs/assets/anl.svg"</span></span>
-<span id="cb7-19"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">history</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-20"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">dark</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> css/dark.scss</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">]</span></span>
-<span id="cb7-21"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">css</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">css/default.css</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> css/callouts.css</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">]</span></span>
-<span id="cb7-22"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">self-contained</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-23"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">embed-resources</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-24"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">self-contained-math</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb7-25"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">center</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-26"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">highlight-style</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"atom-one"</span></span>
-<span id="cb7-27"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">default-image-extension</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> svg</span></span>
-<span id="cb7-28"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">code-line-numbers</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb7-29"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">code-overflow</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> scroll</span></span>
-<span id="cb7-30"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">html-math-method</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> katex</span></span>
-<span id="cb7-31"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fig-align</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> center</span></span>
-<span id="cb7-32"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mermaid</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb7-33"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">theme</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> dark</span></span>
-<span id="cb7-34"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gfm</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb7-35"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">output-file</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lattice23.md"</span></span>
-<span id="cb7-36"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span></code></pre></div></div>
-</details>
-<p>The complete list of Reveal.js options are listed, with descriptions at: <a href="https://quarto.org/docs/reference/formats/presentations/revealjs.html">Quarto – Revealjs Options</a></p>
-</section>
-<section id="title-slide" class="level2">
-<h2 class="anchored" data-anchor-id="title-slide">Title Slide</h2>
-<ul>
-<li><p>Starting with the title slide<sup>5</sup>:</p>
-<div id="fig-title" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/title-slide.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Title Slide"><img src="https://samforeman.me/posts/dope-slides/assets/title-slide.png" class="img-fluid figure-img" style="width:66.0%"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: <a href="https://saforem2.github.io/lattice23/#/section">Title Slide</a>
-</figcaption>
-</figure>
-</div>
-<ul>
-<li><p>The full slide contents are included below:</p>
-<details closed="">
-<summary>
-<p>Expand for <code>quarto</code></p>
-</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"># {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span>
-<span id="cb8-2"></span>
-<span id="cb8-3">::: {style="background-color: rgba(22,22,22,0.75); border-radius: 10px; text-align:center; padding: 0px; padding-left: 1.5em; padding-right: 1.5em; max-width: min-content; min-width: max-content; margin-left: auto; margin-right: auto; padding-top: 0.2em; padding-bottom: 0.2em; line-height: 1.5em!important;"}</span>
-<span id="cb8-4"></span>
-<span id="cb8-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">MLMC: Machine Learning Monte Carlo</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{.style="color:#939393; font-size:1.5em; font-weight:bold;}  </span>
-<span id="cb8-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for Lattice Gauge Theory</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{style="color:#777777; font-size:1.2em; font-weight: bold;"}</span>
-<span id="cb8-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;br&gt;&amp;nbsp;</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{style="padding-bottom: 0.5rem;"}  </span>
-<span id="cb8-8">[](https://samforeman.me) Sam Foreman  </span>
-<span id="cb8-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Xiao-Yong Jin, James C. Osborn</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{.dim-text style="font-size:0.8em;"}  </span>
-<span id="cb8-10">[[<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;"> `saforem2/`</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](https://github.com/saforem2/)</span>]{style="border-bottom: 0.5px solid #00ccff;"}<span class="in" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">`{`</span>[<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`lattice23`</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](https://github.com/saforem2/lattice23)</span>]{style="border-bottom: 0.5px solid #00ccff;"}, [<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`l2hmc-qcd`</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](https://github.com/saforem2/l2hmc-qcd)</span>]{style="border-bottom: 0.5px solid #00ccff;"}<span class="in" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">`}`</span>]{style="font-size:0.8em;"}</span>
-<span id="cb8-11"></span>
-<span id="cb8-12">:::</span>
-<span id="cb8-13"></span>
-<span id="cb8-14">::: footer</span>
-<span id="cb8-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">2023-07-31 @ [Lattice 2023](https://indico.fnal.gov/event/57249/contributions/271305/)</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{.dim-text style="text-align:left;'}</span>
-<span id="cb8-16">:::</span></code></pre></div></div>
-</details></li>
-<li><p>For the background, I made a simple animation <i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/grid-worms-animation"><code>saforem2/grid-worms-animation</code></a> that is hosted on GitHub pages as a simple html website</p></li>
-<li><p>This static GitHub page is then used as an <a href="https://quarto.org/docs/presentations/revealjs/#iframe-backgrounds">IFrame Background</a> natively in Quarto with Reveal.js</p></li>
-<li><p>This is as simple as:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"># {.title-slide .centeredslide background-iframe="https://saforem2.github.io/grid-worms-animation/" loading="lazy"}</span></span></code></pre></div></div></li>
-</ul></li>
-</ul>
-</section>
-<section id="single-column-slides" class="level2">
-<h2 class="anchored" data-anchor-id="single-column-slides">Single-Column Slides</h2>
-<p>Other than the title slide, the remainder of the slides are all relatively straightforward to construct.</p>
-<p>For single-column slides, constructing the content is as simple as writing it in Markdown:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Code</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false" href="">Slide</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"># Overview</span></span>
-<span id="cb10-2"></span>
-<span id="cb10-3"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">1. </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Background: `{MCMC,HMC}`</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#markov-chain-monte-carlo-mcmc)</span></span>
-<span id="cb10-4"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">    - </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Leapfrog Integrator</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#leapfrog-integrator-hmc)</span></span>
-<span id="cb10-5"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">    - </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Issues with HMC</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-issues-with-hmc)</span></span>
-<span id="cb10-6"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">    - </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Can we do better?</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-can-we-do-better)</span></span>
-<span id="cb10-7"></span>
-<span id="cb10-8"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">2. </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">L2HMC: Generalizing MD</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-l2hmc)</span></span>
-<span id="cb10-9"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">    - </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">4D $SU(3)$ Model</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-su3)</span></span>
-<span id="cb10-10"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">    - </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Results</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-results)</span></span>
-<span id="cb10-11"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">3. </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">References</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-references)</span></span>
-<span id="cb10-12"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">4. </span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">Extras</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](#sec-extras)</span></span></code></pre></div></div>
-</div>
-<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
-<div style="text-align:center;">
-<div id="fig-overview" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/overview.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Overview Slide"><img src="https://samforeman.me/posts/dope-slides/assets/overview.png" class="img-fluid figure-img" style="width:60.0%"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: <a href="https://saforem2.github.io/lattice23/#/overview">Overview Slide</a>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="centered-slides" class="level2">
-<h2 class="anchored" data-anchor-id="centered-slides">Centered Slides</h2>
-<p>We can center all the text on a slide by adding the <code>{.centeredslide}</code> class to the slide header, e.g.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true" href=""><code>index.qmd</code></a></li><li class="nav-item"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" aria-controls="tabset-2-2" aria-selected="false" href=""><code>style.scss</code></a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" aria-labelledby="tabset-2-1-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb11-2"><span class="an" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">format:</span></span>
-<span id="cb11-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">  revealjs:</span></span>
-<span id="cb11-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    theme: [style.scss]</span></span>
-<span id="cb11-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb11-6"></span>
-<span id="cb11-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"># Title {.centeredslide}</span></span></code></pre></div></div>
-</div>
-<div id="tabset-2-2" class="tab-pane" aria-labelledby="tabset-2-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource scss number-lines code-with-copy"><code class="sourceCode scss"><span id="cb12-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">.centeredslide</span> {</span>
-<span id="cb12-2">  <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">text-align</span>: <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">center</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb12-3">}</span></code></pre></div></div>
-</div>
-</div>
-</div>
-</section>
-<section id="multi-column-slides" class="level2">
-<h2 class="anchored" data-anchor-id="multi-column-slides">Multi-Column Slides</h2>
-<p>Side-by-side content (either text or images)</p>
-<div class="quarto-layout-panel" data-layout="[ [50,50] ]" style="display: flex; flex-direction: row; margin-top: -0.0em; align-items: start;">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-mcmc" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/mcmc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Markov Chain Monte Carlo"><img src="https://samforeman.me/posts/dope-slides/assets/mcmc.png" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mcmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: <a href="https://saforem2.github.io/lattice23/#/markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo</a>
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="col1 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>This slide is horizontally centered<sup>6</sup> and the content consists of two rows split as follows:</p>
-<div id="tbl-2col" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<div aria-describedby="tbl-2col-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table-striped table-hover table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">A</td>
-<td style="text-align: center;">B</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">C</td>
-<td style="text-align: center;">C</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-2col-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Slide layout. First row split into two columns, second row spans full width.
-</figcaption>
-</figure>
-</div>
-<ul>
-<li><p>In panel A, we have a <code>::: {.callout-note}</code> block followed by a single list element containing a LaTeX equation.</p></li>
-<li><p>In panel B we have a standard markdown image</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">![](./assets/mcmc.png)</span></span></code></pre></div></div></li>
-<li><p>In panel C we have normal text + math with LaTeX<sup>7</sup> syntax.</p></li>
-</ul>
-</div>
-</div>
-</div>
-<ul>
-<li><p>Note that we additionally have a <code>::: footer</code> element included at the bottom of the slide.</p></li>
-<li><p>The code used to generate the slide above is included below:</p>
-<details closed="">
-<summary>
-<p>Expand for<code>quarto</code></p>
-</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"># Markov Chain Monte Carlo (MCMC) {.centeredslide}</span></span>
-<span id="cb14-2"></span>
-<span id="cb14-3">:::: {.columns}</span>
-<span id="cb14-4"></span>
-<span id="cb14-5">::: {.column width="50%"}</span>
-<span id="cb14-6"></span>
-<span id="cb14-7">::: {.callout-note title="Goal" style="text-align:left;!important"}</span>
-<span id="cb14-8">Generate **independent** samples $<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\{</span>x_{i}<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\}</span>$, such that<span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[^notation]</span></span>
-<span id="cb14-9">$$<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\{</span>x_{i}<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\}</span> \sim p(x) \propto e^{-S(x)}$$</span>
-<span id="cb14-10">where $S(x)$ is the _action_ (or potential energy)</span>
-<span id="cb14-11">:::</span>
-<span id="cb14-12"></span>
-<span id="cb14-13"><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">- </span>Want to calculate observables $\mathcal{O}$:  </span>
-<span id="cb14-14">  $\left\langle \mathcal{O}\right\rangle \propto \int \left<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">\mathcal{D}x\right</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>\hspace{4pt} {\mathcal{O}(x)\, p(x)}$</span>
-<span id="cb14-15"></span>
-<span id="cb14-16">:::</span>
-<span id="cb14-17"></span>
-<span id="cb14-18">::: {.column width="49%"}</span>
-<span id="cb14-19"><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">![](https://raw.githubusercontent.com/saforem2/deep-fridays/main/assets/normal_distribution.dark.svg)</span></span>
-<span id="cb14-20">:::</span>
-<span id="cb14-21"></span>
-<span id="cb14-22">::::</span>
-<span id="cb14-23"></span>
-<span id="cb14-24">If these were <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">independent</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>{.style="color:#00CCFF;"}, we could approximate:</span>
-<span id="cb14-25">$\left\langle\mathcal{O}\right\rangle \simeq \frac{1}{N}\sum^{N}_{n=1}\mathcal{O}(x_{n})$</span>
-<span id="cb14-26">$$\sigma_{\mathcal{O}}^{2} = \frac{1}{N}\mathrm{Var}{\left<span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">\mathcal{O} (x) \right</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span>}\Longrightarrow</span>
-<span id="cb14-27">\sigma_{\mathcal{O}} \propto \frac{1}{\sqrt{N}}$$</span>
-<span id="cb14-28"></span>
-<span id="cb14-29"><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[^notation]: </span>Here, $\sim$ means "is distributed according to"</span>
-<span id="cb14-30"></span>
-<span id="cb14-31">::: footer</span>
-<span id="cb14-32"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;"> `saforem2/lattice23`</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">](https://saforem2.github.io/lattice23)</span></span>
-<span id="cb14-33">:::</span></code></pre></div></div>
-</details></li>
-</ul>
-</section>
-<section id="css" class="level2">
-<h2 class="anchored" data-anchor-id="css">💅 CSS</h2>
-<p>My web developer friend laughs at me, but when something is broken / doesn’t look right / I want it to look different, I:</p>
-<ol type="1">
-<li>Pull up Chrome Tools ( ⌘ + ⌥ + I )</li>
-<li>Inspect element of interest ( ⌘ + ⇧ + C )</li>
-<li>Make changes to the CSS</li>
-<li>Save the new rule to my <code>.scss</code> file 🤷🏻‍♂️</li>
-</ol>
-<p>I’m guessing this might be obvious to some people, but it took me a while to figure out how things worked so maybe its helpful for others.</p>
-<details closed="">
-<summary>
-Expand for <code>css</code>
-</summary>
-<div id="fig-css" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/css.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Example of selecting an element and making a change to the CSS."><img src="https://samforeman.me/posts/dope-slides/assets/css.png" class="img-fluid figure-img" style="width:80.0%"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Example of selecting an element and making a change to the CSS.
-</figcaption>
-</figure>
-</div>
-</details>
-</section>
-<section id="github-page" class="level2">
-<h2 class="anchored" data-anchor-id="github-page">📃 GitHub Page</h2>
-<p>To enable your GitHub page, you can do the following:</p>
-<div id="fig-github-page" class="quarto-float quarto-figure quarto-figure-center anchored" style="text-align:center;">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./assets/github-pages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Instructions for building a GitHub page using the docs/ directory off the main branch."><img src="https://samforeman.me/posts/dope-slides/assets/github-pages.png" class="img-fluid figure-img" style="width:80.0%"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-github-page-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Instructions for building a GitHub page using the <code>docs/</code> directory off the <code>main</code> branch.
-</figcaption>
-</figure>
-</div>
-<p>In this case, the repo is:</p>
-<p><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://github.com/saforem2/lattice23"><code>saforem2/lattice23</code></a></p>
-<p>and the site is published at</p>
-<p><a href="https://saforem2.github.io/lattice23">https://saforem2.github.io/lattice23</a></p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">📓 References</h2>
-<ul>
-<li><a href="https://quarto.org/docs/presentations/revealjs/themes.html">Reveal Themes</a></li>
-<li>Using <a href="https://thomasmock.quarto.pub/reports-presentations/#/pandoc-fenced-divs">Pandoc fenced divs</a></li>
-<li><a href="https://www.emilhvitfeldt.com/post/slidecraft-colors-fonts/">Slidecraft 101: Colors and Fonts</a></li>
-<li><a href="https://thomasmock.quarto.pub/reports-presentations/#/title-slide">Beautiful Reports and Presentations with Quarto</a></li>
-<li><a href="https://github.com/grantmcdermott/quarto-revealjs-clean"><i class="fa-brands fa-github" aria-label="github"></i> Quarto Clean Theme</a></li>
-</ul>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="[❤️‍🩹 Status]{style=&quot;color: #FF5252;&quot;}" style="width:100%;background-color: rgba(0,0,0,0.0)!important;border:1px solid rgba(131,131,131,0.2)!important;">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span><span style="color: #FF5252;">❤️‍🩹 Status</span>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div id="61c870aa" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic">Last Updated</span>: <span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">12</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">22</span><span style="color: #f06292; text-decoration-color: #f06292">/</span><span style="color: #f06292; text-decoration-color: #f06292; font-weight: bold">2025</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">@</span> <span style="color: #1a8fff; text-decoration-color: #1a8fff; font-weight: bold">18:27:32</span>
-</pre>
-</div>
-</div>
-<p align="center">
-<a href="https://hits.seeyoufarm.com"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fsamforeman.me%2Fqmd%2Fdope-slides%2F&amp;count_bg=%2300CCFF&amp;title_bg=%23303030&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"></a>
-</p>
-</div>
-</div>
-</div>
-
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>And countless other people IRL↩︎</p></li>
-<li id="fn2"><p>One thing I’ve been meaning to do, is clean up all my <code>css/*</code> files and move them all to a single repository, but I’ll save that for another day.↩︎</p></li>
-<li id="fn3"><p><em>An open-source scientific and technical publishing system</em>↩︎</p></li>
-<li id="fn4"><p><a href="https://quarto.org/docs/authoring/markdown-basics.html#equations">Equations</a>↩︎</p></li>
-<li id="fn5"><p>Quarto comes with lightbox support, so you can click on images to display them full screen.↩︎</p></li>
-<li id="fn6"><p>By adding the <code>{.centeredslide}</code> class to the slide header↩︎</p></li>
-<li id="fn7"><p>Text surrounded by <code>$</code> will be rendered with LaTeX↩︎</p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{foreman2024,
-  author = {Foreman, Sam},
-  title = {How to {Make} {Dope} {Slides}},
-  date = {2024-08-13},
-  url = {https://samforeman.me/posts/dope-slides},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-foreman2024" class="csl-entry quarto-appendix-citeas">
-Foreman, Sam. 2024. <span>“How to Make Dope Slides.”</span> August 13,
-2024. <a href="https://samforeman.me/posts/dope-slides">https://samforeman.me/posts/dope-slides</a>.
-</div></div></section></div> ]]></description>
-  <category>slides</category>
-  <category>revealjs</category>
-  <category>style</category>
-  <guid>https://samforeman.me/posts/dope-slides/</guid>
-  <pubDate>Tue, 13 Aug 2024 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
