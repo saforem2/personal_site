@@ -141,7 +141,7 @@ $mermaid-edge-color: #838383 !default;
 $mermaid-fg-color--lighter: rgba(100, 100, 100, 0.5) !default;
 $mermaid-fg-color--lightest: rgba(100, 100, 100, 0.05) !default;
 $mermaid-node-bg-color: oklch(
-  from $mermaid-accent calc(l * 1.15) c h / 0.1
+  from $mermaid-accent calc(l * $bg-scaling-factor) c h / 0.1
 ) !default;
 $mermaid-node-fg-color: $mermaid-accent !default;
 $mermaid-label-bg-color: RGBA(100, 100, 100, 0.1) !default;
@@ -195,7 +195,9 @@ $highlight-bg-light: #ffca27 !default;
 $highlight-text-color: $highlight-bg-light !default;
 $light: #cccccc !default;
 $highlight-yellow: #ffff00 !default;
-$selection-bg: oklch(from $highlight-yellow calc(l * 1.15) c h / 0.1) !default;
+$selection-bg: oklch(
+  from $highlight-yellow calc(l * $bg-scaling-factor) c h / 0.1
+) !default;
 $themes: (
   light: (
     bg: #ffffff,
@@ -209,7 +211,7 @@ $themes: (
     interactive-accent-hsl: #ffff00,
     text-selection: rgba(255, 255, 0, 0.3),
     // text-selection: hsla(var($interactive-accent-hsl), 0.25),
-    // mermaid-node-bg-color: oklch(from $code-fg-light-bg calc(l * 1.15) c h / 0.1),
+    // mermaid-node-bg-color: oklch(from $code-fg-light-bg calc(l * $bg-scaling-factor) c h / 0.1),
     // selection-fg: rgba(256, 255, 0, 1.0),
     selection-color: #1c1c1c,
     heading-color: #1c1c1c,
@@ -221,10 +223,12 @@ $themes: (
     code-block-color: $code-fg-light-bg,
     code-border: #f9f9f9,
     mermaid-node-bg-color: oklch(
-        from $code-fg-light-bg calc(l * 1.15) c h / 0.1
+        from $code-fg-light-bg calc(l * $bg-scaling-factor) c h / 0.1
       ),
     // code-bg: oklab(0.97 0 0 / 1),
-    code-bg: oklch(from ($code-fg-light-bg) calc(l * 1.15) c h / 0.1),
+    code-bg: oklch(
+        from ($code-fg-light-bg) calc(l * $bg-scaling-factor) c h / 0.1
+      ),
     shadow-color: rgba(0, 0, 0, 0.4),
     // shadow-border: #E599F7,
     // navbar-fg: #adadad,
@@ -287,7 +291,9 @@ $themes: (
     code-fg-dark-bg: $code-fg-dark-bg,
     code-fg: $code-fg-dark-bg,
     code-block-color: $code-fg-dark-bg,
-    code-bg: oklch(from ($code-fg-dark-bg) calc(l * 1.15) c h / 0.1),
+    code-bg: oklch(
+        from ($code-fg-dark-bg) calc(l * $bg-scaling-factor) c h / 0.1
+      ),
     // background-color: oklab(from $code-block-bg-color calc(1 * 1.15) c h / 0.1);
     // code-fg: #E599F7,
     code-border: #222222,
@@ -722,7 +728,9 @@ code {
 mark {
   a {
     color: $link-color;
-    background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+    background-color: oklch(
+      from $link-color calc(l * $bg-scaling-factor) c h / 0.1
+    );
   }
 
   background-color: $selection-bg;
@@ -823,7 +831,7 @@ pre {
   display: block;
   overflow: auto;
   // font-size: 1em;
-  // background-color: oklab(from $code-block-bg-color calc(l * 1.15) c h/0.1);
+  // background-color: oklab(from $code-block-bg-color calc(l * $bg-scaling-factor) c h/0.1);
   // border: 1px solid var(--bs-border-color, $code-block-border-color);
   padding: 0;
   margin-bottom: 0;
@@ -852,7 +860,7 @@ pre code {
   // margin-bottom: 1rem;
   overflow: auto;
   // font-size: 1em;
-  // background-color: oklab(from #444444 calc(l * 1.15) c h/0.1);
+  // background-color: oklab(from #444444 calc(l * $bg-scaling-factor) c h/0.1);
   line-height: 1;
   padding: 0;
   border: none;
@@ -869,7 +877,7 @@ code {
   border-radius: $link-border-radius;
   font-family: $monofont;
   word-wrap: break-word;
-  background: oklch(from $code-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $code-fg calc(l * $bg-scaling-factor) c h / 0.1);
 }
 
 .reveal code {
@@ -1003,7 +1011,7 @@ a,
 .reveal a:hover,
 a:hover {
   color: $link-color-hover;
-  // background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  // background: oklch(from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1);
   border-radius: $link-border-radius;
   text-decoration: wavy underline;
   // text-decoration-thickness: 1pt;
@@ -1013,7 +1021,9 @@ a:hover {
 }
 
 main a:not(.img, .icon):hover {
-  background-color: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
   cursor: pointer;
 }
 
@@ -1039,7 +1049,9 @@ a img:hover,
 .reveal a > code,
 a > code {
   color: $link-color !important;
-  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1) !important;
+  background-color: oklch(
+    from $link-color calc(l * $bg-scaling-factor) c h / 0.1
+  ) !important;
   border-radius: $link-border-radius !important;
 
   padding: 0pt 2pt;
@@ -1048,7 +1060,7 @@ a > code {
     background: none;
     color: $link-color-hover !important;
     background-color: oklch(
-      from $link-color-hover calc(l * 1.15) c h / 0.1
+      from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
     ) !important;
     // transition: background 0.3s ease-in-out;
   }
@@ -1228,7 +1240,9 @@ div.sidebar-item-container .sidebar-link > code {
   border: 1pt solid $link-color;
   &:hover {
     color: $link-color-hover;
-    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    background: oklch(
+      from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
     border: 1pt solid $link-color-hover;
   }
 }
@@ -1241,7 +1255,9 @@ div.sidebar-item-container .sidebar-link > code {
   padding-block: 1pt;
   &:hover {
     color: $link-color-hover;
-    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    background: oklch(
+      from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
     border: 1pt solid $link-color-hover;
     transition: background 0.3s ease-in-out;
   }
@@ -1466,7 +1482,9 @@ p a code:not(.sourceCode),
 li a code:not(.sourceCode),
 td a code:not(.sourceCode) {
   color: $link-color;
-  background-color: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $link-color calc(l * $bg-scaling-factor) c h / 0.1
+  );
 }
 
 nav p code:not(.sourceCode),
@@ -1622,7 +1640,7 @@ nav td code:not(.sourceCode) {
 div.callout-tip.callout {
   border-left-color: rgba(0, 0, 0, 0);
   // background: none!impor
-  // background: oklch(from rgba(0, 0, 0, 0.0) calc(l * 1.15) c h/0.1);
+  // background: oklch(from rgba(0, 0, 0, 0.0) calc(l * $bg-scaling-factor) c h/0.1);
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   &:hover {
     border: 1px solid $callout-tip-color !important;
@@ -1633,7 +1651,9 @@ div.callout-tip.callout {
 
 div.callout-note.callout {
   border-left-color: rgba(0, 0, 0, 0);
-  background: oklch(from $callout-note-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-note-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0);
   &:hover {
     border: 1px solid $callout-note-color !important;
@@ -1644,7 +1664,9 @@ div.callout-note.callout {
 
 div.callout-caution.callout {
   border-left-color: rgba(0, 0, 0, 0);
-  background: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-caution-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0);
   &:hover {
     border: 1px solid $callout-caution-color !important;
@@ -1655,7 +1677,9 @@ div.callout-caution.callout {
 
 div.callout-important.callout {
   border-left-color: rgba(0, 0, 0, 0);
-  background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-important-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-important-color !important;
@@ -1666,7 +1690,9 @@ div.callout-important.callout {
 
 div.callout-warning.callout {
   border-left-color: rgba(0, 0, 0, 0);
-  background: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-color-warning calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0) !important;
   &:hover {
     border: 1px solid $callout-color-warning !important;
@@ -1686,13 +1712,17 @@ div.callout-important.callout .callout .callout-title-container {
 
 div.callout-note.callout-style-default .callout-title,
 div.callout-note.callout-style-simple .callout-title {
-  background-color: oklch(from $callout-note-color calc(l * 1.15) c h/0.1);
+  background-color: oklch(
+    from $callout-note-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   color: $callout-note-color;
 }
 
 div.callout-info.callout-style-simple .callout-title,
 div.callout-info.callout-style-default .callout-title {
-  background-color: oklch(from $callout-color-info calc(l * 1.15) c h/0.1);
+  background-color: oklch(
+    from $callout-color-info calc(l * $bg-scaling-factor) c h/0.1
+  );
   color: $callout-color-info;
 
   // &:hover {
@@ -1703,7 +1733,9 @@ div.callout-info.callout-style-default .callout-title {
 
 div.callout-caution.callout-style-simple .callout-title,
 div.callout-caution.callout-style-default .callout-title {
-  background-color: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
+  background-color: oklch(
+    from $callout-caution-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   color: $callout-caution-color;
   border: 1px solid rgba(0, 0, 0, 0);
 
@@ -1715,7 +1747,9 @@ div.callout-caution.callout-style-default .callout-title {
 
 div.callout-warning.callout-style-simple .callout-title,
 div.callout-warning.callout-style-default .callout-title {
-  background-color: oklch(from $callout-color-warning calc(l * 1.15) c h/0.1);
+  background-color: oklch(
+    from $callout-color-warning calc(l * $bg-scaling-factor) c h/0.1
+  );
   color: $callout-color-warning;
 }
 
@@ -1745,7 +1779,9 @@ div.callout-important.callout-style-simple > div.callout-header {
 
 div.callout-important.callout-style-simple .callout-title,
 div.callout-important.callout-style-default .callout-title {
-  background-color: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
+  background-color: oklch(
+    from $callout-important-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   color: $callout-important-color;
 }
 
@@ -1801,7 +1837,9 @@ div.callout-important.callout-style-default .callout-title {
 
 div.callout-tip.callout,
 .callout .callout-tip {
-  background: oklch(from $callout-tip-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-tip-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(131, 131, 131, 0.1) !important;
   // border: 1px solid rgba(0, 0, 0, 0) !important;
   // border: $callout-tip-border !important;
@@ -1823,7 +1861,9 @@ div.callout-tip.callout,
 
 div.callout-note.callout,
 .callout .callout-note {
-  background: oklch(from $callout-note-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-note-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0) !important;
 
   &:hover {
@@ -1835,7 +1875,9 @@ div.callout-note.callout,
 
 div.callout-caution.callout,
 .callout .callout-caution {
-  background: oklch(from $callout-caution-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-caution-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0) !important;
 
   &:hover {
@@ -1847,7 +1889,9 @@ div.callout-caution.callout,
 
 .callout .callout-important,
 div.callout-important.callout {
-  background: oklch(from $callout-important-color calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-important-color calc(l * $bg-scaling-factor) c h/0.1
+  );
   border: 1px solid rgba(0, 0, 0, 0) !important;
 
   &:hover {
@@ -1859,7 +1903,9 @@ div.callout-important.callout {
 
 .callout .callout-tip,
 div.callout-tip.callout {
-  background: oklch(from $callout-color-tip calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $callout-color-tip calc(l * $bg-scaling-factor) c h/0.1
+  );
   // border: 1px solid rgba(0, 0, 0, 0) !important;
 
   &:hover {
@@ -1920,25 +1966,33 @@ div.callout-important.callout .callout .callout-title-container {
 
 div.callout-note.callout-style-default .callout-title,
 div.callout-note.callout-style-simple .callout-title {
-  background-color: oklch(from $callout-color-note calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $callout-color-note calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $callout-color-note;
 }
 
 div.callout-info.callout-style-simple .callout-title,
 div.callout-info.callout-style-default .callout-title {
-  background-color: oklch(from $callout-color-info calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $callout-color-info calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $callout-color-info;
 }
 
 div.callout-caution.callout-style-simple .callout-title,
 div.callout-caution.callout-style-default .callout-title {
-  background-color: oklch(from $callout-color-caution calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $callout-color-caution calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $callout-color-caution;
 }
 
 div.callout-warning.callout-style-simple .callout-title,
 div.callout-warning.callout-style-default .callout-title {
-  background-color: oklch(from $callout-color-warning calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $callout-color-warning calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $callout-color-warning;
 }
 
@@ -1969,7 +2023,7 @@ div.callout-important.callout-style-simple > div.callout-header {
 div.callout-important.callout-style-simple .callout-title,
 div.callout-important.callout-style-default .callout-title {
   background-color: oklch(
-    from $callout-color-important calc(l * 1.15) c h / 0.1
+    from $callout-color-important calc(l * $bg-scaling-factor) c h / 0.1
   );
   color: $callout-color-important;
 }
@@ -2054,7 +2108,9 @@ div.callout-important.callout-style-default .callout-title {
   .quarto-title-meta-contents
   a:hover:not(#lightbox) {
   color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
   border-bottom: 1px solid $link-color-hover;
 }
 
@@ -2072,7 +2128,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .card {
-  // background: oklch(from $cardbg calc(l * 1.15) c h / 0.1);
+  // background: oklch(from $cardbg calc(l * $bg-scaling-factor) c h / 0.1);
   // border-radius: $link-border-radius;
   // padding: 3pt 8pt;
   margin: auto;
@@ -2085,12 +2141,12 @@ div.callout-important.callout-style-default .callout-title {
   }
 
   &.bg-light {
-    background: oklch (from #efefef calc(l * 1.15) c h / 0.1);
+    background: oklch (from #efefef calc(l * $bg-scaling-factor) c h / 0.1);
     border: 1px solid #efefef;
   }
 
   &.bg-dark {
-    background: oklch(from #222222 calc(l * 1.15) c h / 0.1);
+    background: oklch(from #222222 calc(l * $bg-scaling-factor) c h / 0.1);
     border: 1px solid #222222;
   }
 
@@ -2111,7 +2167,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .red-card {
-  background: oklch(from $myred calc(l * 1.15) c h / 0.1);
+  background: oklch(from $myred calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $myred;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2130,7 +2186,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .orange-card {
-  background: oklch(from $orange-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $orange-fg calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $orange-fg;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2148,7 +2204,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .yellow-card {
-  background: oklch(from $yellow-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $yellow-fg calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $yellow-fg;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2166,7 +2222,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .green-card {
-  background: oklch(from $green-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $green-fg calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $green-fg;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2184,7 +2240,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .blue-card {
-  background: oklch(from $myblue calc(l * 1.15) c h / 0.1);
+  background: oklch(from $myblue calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $myblue;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2202,7 +2258,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .pink-card {
-  background: oklch(from $pink-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $pink-fg calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $pink-fg;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2220,7 +2276,7 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .purple-card {
-  background: oklch(from $purple-fg calc(l * 1.15) c h / 0.1);
+  background: oklch(from $purple-fg calc(l * $bg-scaling-factor) c h / 0.1);
   border: 1px solid $purple-fg;
   border-radius: $link-border-radius;
   padding: 3pt 8pt;
@@ -2343,28 +2399,36 @@ div.callout-important.callout-style-default .callout-title {
 }
 
 .red-bg {
-  background-color: oklch(from $red-text calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $red-text calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $red-text;
   border-radius: $link-border-radius;
   font-weight: 500;
 }
 
 .blue-bg {
-  background-color: oklch(from $blue-text calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $blue-text calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $blue-text;
   border-radius: $link-border-radius;
   font-weight: 500;
 }
 
 .green-bg {
-  background-color: oklch(from $green-text calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $green-text calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $green-text;
   border-radius: $link-border-radius;
   font-weight: 500;
 }
 
 .orange-bg {
-  background-color: oklch(from $myorange calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $myorange calc(l * $bg-scaling-factor) c h / 0.1
+  );
   color: $myorange;
   border-radius: $link-border-radius;
   font-weight: 500;
@@ -2711,7 +2775,9 @@ main {
   // margin-inline-end: 0pt;
   &:hover {
     outline: 1pt solid $myblue;
-    background: oklch(from $myblue calc(l * 1.15) c h/0.1) !important;
+    background: oklch(
+      from $myblue calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
     color: oklch(from $myblue l c h / 1) !important;
   }
 }
@@ -2761,7 +2827,7 @@ main {
   color: $dim-text;
   background: linear-gradient(
     0.25turn,
-    oklch(from $dim-text calc(l * 1.15) c h/0.05),
+    oklch(from $dim-text calc(l * $bg-scaling-factor) c h/0.05),
     rgba(0, 0, 0, 0)
   );
   border: 1px solid rgba(0, 0, 0, 0);
@@ -2806,7 +2872,9 @@ main {
   color: $dim-text;
   padding: 2pt 4pt 0pt 5pt;
   &:hover {
-    background: oklch(from $mygreen calc(l * 1.15) c h/0.1) !important;
+    background: oklch(
+      from $mygreen calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
     color: oklch(from $mygreen l c h / 1) !important;
   }
 }
@@ -2839,7 +2907,9 @@ main {
   color: $dim-text;
   background: none;
   &:hover {
-    background: oklch(from $myorange calc(l * 1.15) c h / 0.1) !important;
+    background: oklch(
+      from $myorange calc(l * $bg-scaling-factor) c h / 0.1
+    ) !important;
     color: oklch(from $myorange l c h / 1) !important;
   }
 }
@@ -2847,8 +2917,8 @@ main {
 .sidebar-navigation .quarto-color-scheme-toggle:not(.alternate) .bi::before {
   background-image: none;
   background-color: currentColor;
-  mask: url("/static/icons/moon-linemd.svg") no-repeat center / contain;
-  -webkit-mask: url("/static/icons/moon-linemd.svg") no-repeat center / contain;
+  mask: url("static/icons/moon-linemd.svg") no-repeat center / contain;
+  -webkit-mask: url("static/icons/moon-linemd.svg") no-repeat center / contain;
   width: 1.5em;
   height: 1.5em;
   font-size: inherit;
@@ -2860,8 +2930,8 @@ main {
 .sidebar-navigation .quarto-color-scheme-toggle.alternate .bi::before {
   background-image: none;
   background-color: currentColor;
-  mask: url("/static/icons/sun-linemd.svg") no-repeat center / contain;
-  -webkit-mask: url("/static/icons/sun-linemd.svg") no-repeat center / contain;
+  mask: url("static/icons/sun-linemd.svg") no-repeat center / contain;
+  -webkit-mask: url("static/icons/sun-linemd.svg") no-repeat center / contain;
   width: 1.5em;
   height: 1.5em;
   font-size: inherit;
@@ -2908,7 +2978,7 @@ main {
 //   // vertical-align: sub;
 //   &:hover {
 //       backround-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><!-- Icon from Phosphor by Phosphor Icons - https://github.com/phosphor-icons/core/blob/main/LICENSE --><g fill="rgb(255,255,1)"><path d="M184 128a56 56 0 1 1-56-56a56 56 0 0 1 56 56" opacity=".2"/><path d="M120 40v-8a8 8 0 0 1 16 0v8a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-8-8a8 8 0 0 0-11.32 11.32Zm0 116.68l-8 8a8 8 0 0 0 11.32 11.32l8-8a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l8-8a8 8 0 0 0-11.32-11.32l-8 8A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l8 8a8 8 0 0 0 11.32-11.32ZM40 120h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16m88 88a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8m96-88h-8a8 8 0 0 0 0 16h8a8 8 0 0 0 0-16"/></g></svg>') !important;
-//       background-color: oklch(from #FFFF00 calc(l * 1.15) c h / 0.1);
+//       background-color: oklch(from #FFFF00 calc(l * $bg-scaling-factor) c h / 0.1);
 //   }
 // }
 
@@ -3047,7 +3117,9 @@ blockquote,
   &:hover {
     border-left: 4px solid $link-color-hover !important;
     color: $link-color-hover !important;
-    background-color: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
+    background-color: oklch(
+      from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+    );
     // padding-inline-start: 10pt;
   }
 }
@@ -3149,7 +3221,7 @@ boxed {
   margin: 0;
   &:hover {
     background: oklch(
-      from $code-block-bg-color calc(l * 1.15) c h / 0.1
+      from $code-block-bg-color calc(l * $bg-scaling-factor) c h / 0.1
     ) !important;
     border-left: 1px solid $link-color-hover !important;
   }
@@ -3175,7 +3247,7 @@ boxed {
 // .cell-output {
 //   // border-left: 2px solid $dim-text;
 //   // margin-inline-start: 17pt;
-//   // background: oklch(from $code-bg calc(l * 1.15) c h / 0.1);
+//   // background: oklch(from $code-bg calc(l * $bg-scaling-factor) c h / 0.1);
 //   padding-inline: 1ch;
 //   margin-block: 1lh;
 //   background: $code-block-bg-color;
@@ -3184,7 +3256,7 @@ boxed {
 //     background: $code-block-bg-color;
 //
 //     // border-left: 2px solid $link-color-hover;
-//     // background: oklch(from $code-block-bg-color calc(l * 1.15) c h / 0.1);
+//     // background: oklch(from $code-block-bg-color calc(l * $bg-scaling-factor) c h / 0.1);
 //     // color: $link-color-hover;
 //   }
 // }
@@ -3583,7 +3655,7 @@ div.quarto-about-trestles {
   //   //   border: 1px solid $red !important;
   //   //   // background: unset;
   //   //   color: $red !important;
-  //   //   background-color: oklch(from $red calc(l * 1.15) c h/0.1);
+  //   //   background-color: oklch(from $red calc(l * $bg-scaling-factor) c h/0.1);
   //   // }
   // }
   //
@@ -3750,7 +3822,9 @@ ul.task-list {
   border: 1px $link-color-hover solid rgba(0, 0, 0, 0);
   border-radius: $link-border-radius;
   color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
 }
 
 .nav-tabs .nav-link.active,
@@ -3758,7 +3832,7 @@ ul.task-list {
   border-radius: $link-border-radius;
   box-shadow: $shadow-color 0px 2px 5px;
   border: 2px solid $link-color !important;
-  background: oklch(from $link-color calc(l * 1.15) c h / 0.1);
+  background: oklch(from $link-color calc(l * $bg-scaling-factor) c h / 0.1);
 
   color: $link-color;
 }
@@ -3784,7 +3858,7 @@ details > summary {
   border-radius: $link-border-radius;
   color: $body-color;
   border: 1px solid rgba(0, 0, 0, 0);
-  background: oklch(from $body-color calc(l * 1.15) c h / 0.1);
+  background: oklch(from $body-color calc(l * $bg-scaling-factor) c h / 0.1);
   // min-width: max-content;
   // max-width: min-content;
   // width: fit-content;
@@ -3797,7 +3871,9 @@ details > summary:hover {
   border-radius: $link-border-radius;
   color: $link-color-hover;
 
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
   border: 1px solid $link-color-hover;
   padding-inline: 5pt;
 }
@@ -3837,7 +3913,9 @@ details > summary:hover {
     // border: 1pt solid $link-color-hover !important;
     color: $link-color-hover !important;
     filter: drop-shadow(RGBA(0, 0, 0, 0.63) 0px 1px 0px);
-    background-color: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
+    background-color: oklch(
+      from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+    );
     // border-bottom: 2pt solid $link-color-hover !important;
     // text-decoration: underline;
     // text-decoration-thickness: 2pt;
@@ -3991,7 +4069,9 @@ nav.quarto-secondary-nav {
 
   box-shadow: $code-block-hover-box-shadow;
   border: 1px solid $code-fg;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
   border: 1px solid $link-color-hover;
 }
 
@@ -4020,7 +4100,9 @@ nav.quarto-secondary-nav {
   color: $link-color-hover;
 
   border: 1px solid $link-color-hover !important;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h / 0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
+  );
 
   color: $link-color-hover;
 
@@ -4044,12 +4126,12 @@ nav.quarto-secondary-nav {
 
 .quarto-dark .code-with-filename .code-with-filename-file strong {
   color: oklch(from $code-fg l c h);
-  background: oklch(from $code-fg calc(l * 1.15) c h / 0.085);
+  background: oklch(from $code-fg calc(l * $bg-scaling-factor) c h / 0.085);
 }
 
 .quarto-light .code-with-filename .code-with-filename-file strong {
   color: oklch(from $code-fg l c h);
-  background: oklch(from $code-fg calc(l * 1.15) c h / 0.085);
+  background: oklch(from $code-fg calc(l * $bg-scaling-factor) c h / 0.085);
 }
 
 figure > figcaption.quarto-float-caption-bottom {
@@ -4143,12 +4225,14 @@ figure > figcaption.quarto-float-caption-bottom {
 .em {
   font-style: italic;
   color: $italic-color;
-  background-color: oklch(from $italic-color calc(l * 1.15) c h / 0.1);
+  background-color: oklch(
+    from $italic-color calc(l * $bg-scaling-factor) c h / 0.1
+  );
 }
 
 .alert-text {
   color: $strong-color;
-  background: oklch(from $strong-color calc(l * 1.15) c h / 0.1);
+  background: oklch(from $strong-color calc(l * $bg-scaling-factor) c h / 0.1);
 }
 
 tr {
@@ -4402,18 +4486,22 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $myred calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $myred calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
 // .icon-home:hover {
 //   color: oklch(from $myred calc(l * 1) c h / 1) !important;
-//   background-color: oklch(from $myred calc(l * 1.15) c h/0.1) !important;
+//   background-color: oklch(from $myred calc(l * $bg-scaling-factor) c h/0.1) !important;
 // }
 
 .icon-github-navbar:hover {
   color: oklch(from $myorange calc(l * 1) c h / 1) !important;
-  background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+  background-color: oklch(
+    from $myorange calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
 }
 
 .icon-github {
@@ -4424,13 +4512,15 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $myorange calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $myorange calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
 // .icon-github:hover {
 //   color: oklch(from $myorange calc(l * 1) c h / 1) !important;
-//   background-color: oklch(from $myorange calc(l * 1.15) c h/0.1) !important;
+//   background-color: oklch(from $myorange calc(l * $bg-scaling-factor) c h/0.1) !important;
 // }
 
 .icon-twitter {
@@ -4441,7 +4531,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $myyellow calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $myyellow calc(l * 1.15) c h / 0.1) !important;
+    background-color: oklch(
+      from $myyellow calc(l * $bg-scaling-factor) c h / 0.1
+    ) !important;
   }
 }
 
@@ -4453,7 +4545,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $mygreen calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $mygreen calc(l * 1.15) c h / 0.1) !important;
+    background-color: oklch(
+      from $mygreen calc(l * $bg-scaling-factor) c h / 0.1
+    ) !important;
   }
 }
 
@@ -4465,7 +4559,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $myblue calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $myblue calc(l * 1.15) c h / 0.1) !important;
+    background-color: oklch(
+      from $myblue calc(l * $bg-scaling-factor) c h / 0.1
+    ) !important;
   }
 }
 
@@ -4475,7 +4571,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $mypurple calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $mypurple calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $mypurple calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
@@ -4487,7 +4585,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $mypink calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $mypink calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $mypink calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
@@ -4497,7 +4597,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $blue-text calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $blue-text calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $blue-text calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
@@ -4510,7 +4612,7 @@ p iconify-icon {
   &:hover {
     color: oklch(from $green-spotify calc(l * 1) c h / 1) !important;
     background-color: oklch(
-      from $green-spotify calc(l * 1.15) c h/0.1
+      from $green-spotify calc(l * $bg-scaling-factor) c h/0.1
     ) !important;
   }
 }
@@ -4522,7 +4624,9 @@ p iconify-icon {
   vertical-align: middle;
   &:hover {
     color: oklch(from $red-lastfm calc(l * 1) c h / 1) !important;
-    background-color: oklch(from $red-lastfm calc(l * 1.15) c h/0.1) !important;
+    background-color: oklch(
+      from $red-lastfm calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
   }
 }
 
@@ -4580,9 +4684,11 @@ pre.cell-output {
   &:hover {
     --r-color: random-rgb-color();
     color: var(--r-color) !important;
-    background-color: oklch(from var(--r-color) calc(l * 1.15) c h/0.1);
+    background-color: oklch(
+      from var(--r-color) calc(l * $bg-scaling-factor) c h/0.1
+    );
     // fill: $red !important;
-    // background-color: oklch(from $red calc(l * 1.15) c h/0.1);
+    // background-color: oklch(from $red calc(l * $bg-scaling-factor) c h/0.1);
   }
 }
 
@@ -4611,7 +4717,7 @@ pre.cell-output {
 nav-item tabset-1-1-tab > a:hover,
 nav-item tabset-1-1-tab > a.nav-link.active {
   color: $red-fg !important;
-  background-color: oklch(from $red-fg calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $red-fg calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4620,7 +4726,7 @@ nav-item tabset-1-1-tab > a.nav-link.active {
 #tabset-1-2-tab nav-item > a:hover,
 #tabset-1-2-tab nav-item > a.nav-link.active {
   color: $green-fg !important;
-  background-color: oklch(from $green-fg calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $green-fg calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4629,7 +4735,7 @@ nav-item tabset-1-1-tab > a.nav-link.active {
 nav-item tabset-1-3-tab > a:hover,
 nav-item tabset-1-3-tab > a.nav-link.active {
   color: $blue-fg !important;
-  background-color: oklch(from $blue-fg calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $blue-fg calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4638,7 +4744,7 @@ nav-item tabset-1-3-tab > a.nav-link.active {
 nav-item tabset-1-4-tab > a:hover,
 nav-item tabset-1-4-tab > a.nav-link.active {
   color: $pink-fg !important;
-  background-color: oklch(from $pink-fg calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $pink-fg calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4647,7 +4753,7 @@ nav-item tabset-1-4-tab > a.nav-link.active {
 nav-item tabset-1-5-tab > a:hover,
 nav-item tabset-1-5-tab > a.nav-link.active {
   color: $cyan !important;
-  background-color: oklch(from $cyan calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $cyan calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4656,7 +4762,7 @@ nav-item tabset-1-5-tab > a.nav-link.active {
 nav-item tabset-1-6-tab > a:hover,
 nav-item tabset-1-6-tab > a.nav-link.active {
   color: $orange !important;
-  background-color: oklch(from $orange calc(l * 1.15) c h/0.1);
+  background-color: oklch(from $orange calc(l * $bg-scaling-factor) c h/0.1);
   text-decoration: none !important;
 }
 
@@ -4768,10 +4874,12 @@ nav .nav-item:not(.compact) {
   /* border-top-color: rgba(0, 0, 0, 0); */
   /* color: #ff67ff; */
   /* border: 1px solid #ff67ff; */
-  /* background: oklch(from #FF67FF calc(l * 1.15) c h/0.1) !important; */
+  /* background: oklch(from #FF67FF calc(l * $bg-scaling-factor) c h/0.1) !important; */
   /* z-index: 5; */
   text-decoration: none;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
   color: $link-color-hover !important;
   border: 1px solid $link-color-hover !important;
   // box-shadow: 0 0 8px $link-color-hover !important;
@@ -4787,7 +4895,9 @@ nav .nav-item:not(.compact) {
     box-shadow: 2px 2px black !important;
     box-shadow: $code-block-hover-box-shadow;
     border: 1pt solid $link-color-hover !important;
-    background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+    background: oklch(
+      from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+    ) !important;
     color: $link-color-hover !important;
     // outline: 1px solid #000000!important;
   }
@@ -4799,7 +4909,9 @@ nav .nav-item:not(.compact) {
 .reveal .panel-tabset [role="tab"]:hover:not([aria-selected="true"]) {
   text-decoration: none;
   border: 1px solid $link-color-hover !important;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
   color: $link-color-hover !important;
   box-shadow: 0 0 8px $link-color-hover !important;
 }
@@ -4809,7 +4921,9 @@ nav .nav-item:not(.compact) {
   border-top-color: rgba(0, 0, 0, 0);
   color: $link-color-hover !important;
   border: 1px solid $link-color-hover !important;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1) !important;
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
   z-index: 5;
   box-shadow: 0 0 8px $link-color-hover !important;
 }
@@ -4821,7 +4935,9 @@ nav .nav-item:not(.compact) {
   border-radius: $link-border-radius;
   box-shadow: $shadow-color 1px 1px 1px !important;
   border: 1px solid $link-color !important;
-  background: oklch(from $link-color calc(l * 1.15) c h/0.1) !important;
+  background: oklch(
+    from $link-color calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
   color: $link-color;
 }
 
@@ -4829,7 +4945,9 @@ nav .nav-item:not(.compact) {
 .panel-tabset [role="tab"][aria-selected="true"] {
   box-shadow: $shadow-color 1px 1px 1px !important;
   border: 1px solid $link-color;
-  background-color: oklch(from $link-color calc(l * 1.15) c h/0.1) !important;
+  background-color: oklch(
+    from $link-color calc(l * $bg-scaling-factor) c h/0.1
+  ) !important;
   color: $link-color;
 }
 
@@ -4881,7 +4999,9 @@ body.hypothesis-enabled #quarto-header {
   .quarto-title-meta-contents
   a:hover:not(#lightbox) {
   color: $link-color-hover;
-  background: oklch(from $link-color-hover calc(l * 1.15) c h/0.1);
+  background: oklch(
+    from $link-color-hover calc(l * $bg-scaling-factor) c h/0.1
+  );
   border-bottom: 1px solid $link-color-hover;
 }
 
@@ -4900,7 +5020,7 @@ div.code-copy-outer-scaffold {
   --bs-nav-tabs-link-hover-border-color: $link-color;
   --bs-nav-tabs-link-active-color: $code-fg;
   --bs-nav-tabs-link-active-bg: oklch(
-    from $link-color-hover calc(l * 1.15) c h / 0.1
+    from $link-color-hover calc(l * $bg-scaling-factor) c h / 0.1
   );
   --bs-nav-tabs-link-active-border-color: $link-color-hover;
 }
@@ -5462,33 +5582,214 @@ rect.backdrop,
   stroke: blue;
 }
 
-
-.titleText {
-  font-family: $monofont, monospace!important;
+// match all:
+//    #mermaid-1 .milestoneText,
+//    #mermaid-2 .milestoneText,
+//    ...
+[id^="mermaid"] [id^="mermaid"] {
+  [class*="Text"] {
+    fill: var(--alt-text) !important;
+  }
+  [class^="taskText"] {
+    fill: var(--alt-text) !important;
+  }
+  .milestoneText {
+    fill: var(--ansi-bright-blue-fg) !important;
+  }
 }
 
-.milestoneText {
-  font-family: $monofont, monospace!important;
+// .titleText {
+//   font-family: $monofont, monospace!important;
+//   fill: var(--alt-text)!important;
+// }
+//
+// .milestoneText {
+//   font-family: $monofont, monospace!important;
+//   fill: var(--ansi-bright-blue-fg)!important;
+// }
+//
+// .grid .tick text {
+//   font-family: $monofont, monospace!important;
+//   fill: var(--alt-text)!important;
+// }
+//
+// .vertText {
+//   font-family: $monofont, monospace!important;
+//   fill: var(--alt-text)!important;
+// }
+//
+// .taskTextOutsideRight {
+// 	text-anchor: start;
+//   fill: var(--alt-text)!important;
+// 	font-family: var(--font-family-monospace)!important;
+// }
+//
+// .taskTextOutsideLeft {
+//   text-anchor: end;
+//   fill: var(--alt-text)!important;
+//   font-family: var(--font-family-monospace)!important;
+// }
+//
+// text {
+//   font-family: var(--font-family-monospace)!important;
+//   fill: var(--alt-text)!important;
+// }
+//
+// .vert {
+//   stroke:var(--ansi-bright-blue-fg)!important;
+// }
+
+// .doneText0, .doneText1, .doneText2, .doneText3 {
+// 	fill: var(--alt-text) !important;
+// }
+
+// .vertText {
+//   fill:var(--ansi-bright-blue-fg) !important;
+// }
+// .vertText {
+//   fill: var(--ansi-bright-blue-fg)!important;
+// }
+
+// [id^="mermaid"]
+
+// [id^="mermaid"]
+
+// [id^="mermaid"]
+// [id^="mermaid"] [class^="crit"] {
+//     stroke: var(--ansi-bright-red-fg);
+//     fill: oklch(from var(--ansi-bright-red-fg) calc(l * $bg-scaling-factor) c h / 0.25) !important;
+//     // stroke-width: 2;
+// }
+
+// [id^="mermaid"] {
+//   .vertText {
+//     fill: var(--ansi-bright-blue-fg) !important;
+//   }
+//   [class^="crit"] {
+//     fill: oklch(from var(--ansi-bright-red-fg) calc(l*1.15) c h/0.25) !important;
+//     stroke: var(--ansi-bright-red-fg) !important;
+//   }
+//   [class^="milestone"] {
+//     fill: oklch(from var(--ansi-bright-red-fg) calc(l*1.15) c h/0.33);
+//     stroke: var(--ansi-bright-red-fg);
+//   }
+//   [class^="done"] {
+//     stroke: var(--ansi-bright-green-fg);
+//     fill: oklch(from var(--ansi-bright-green-fg) calc(l * $bg-scaling-factor) c h / 0.1);
+//   }
+//   [class^="doneText"] {
+//     fill: var(--alt-text)!important;
+//   }
+//   [class^="task"] {
+//     // stroke: var(--ansi-bright-blue-fg);
+//     // fill: oklch(from var(--ansi-bright-blue-fg) calc(l * $bg-scaling-factor) c h / 0.1);
+//     fill: var(--alt-text);
+//   }
+//   [class^="taskTextOutside"] {
+//     fill: var(--alt-text);
+//     [class^=doneText] {
+//       fill: var(--alt-text)!important;
+//     }
+//   }
+// }
+
+// @media (prefers-color-scheme: dark) {
+//   @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-onedark.css");
+// }
+//
+// @media (prefers-color-scheme: light) {
+//   @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-light.css");
+// }
+
+[id^="mermaid"] [class*="text"] {
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="taskText"] {
+  fill: var(--alt-text) !important;
+  font-family: var(--font-family-headings) !important;
+  // text-shadow: 1pt 1pt black;
+}
+
+#mermaid-1 .section1 {
+  opacity: 0.1;
+}
+
+[id^="mermaid"] .section1 {
+  opacity: 0.1;
+}
+
+[id^="mermaid"] [class^="taskText"] [class^="doneText"] {
+  fill: unset;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="taskTextOutsideRight"] {
+  fill: var(--alt-text) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="doneText"] {
+  fill: var(--alt-text) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="vert"] {
+  stroke: var(--ansi-bright-blue-fg) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="vertText"] {
+  fill: var(--ansi-bright-blue-fg) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] [class^="sectionTitle"] {
+  fill: var(--brighter-text) !important;
+  font-size: smaller;
+  outline: 1pt solid;
+  font-family: var(--font-family-headings) !important;
+}
+
+// improve selector
+// #mermaid2 .doneText0, #mermaid2 .doneText1, #mermaid2 .doneText2, #mermaid2 .doneText3,
+[id^="mermaid"] .doneText0,
+[id^="mermaid"] .doneText1,
+[id^="mermaid"] .doneText2,
+[id^="mermaid"] .doneText3 {
+  fill: var(--alt-text) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] .sectionTitle {
+  fill: var(--brighter-text) !important;
+  outline: 1px solid;
+  font-size: smaller;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] .grid .tick text {
+  fill: var(--dim-text);
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] .titleText {
+  fill: var(--dim-text) !important;
+  font-family: var(--font-family-headings) !important;
+}
+
+[id^="mermaid"] .task {
+  stroke-width: 2;
+  fill: oklch(
+    from var(--ansi-bright-blue-fg) calc(l * 1.15) c h/0.1
+  ) !important;
+  stroke: var(--ansi-bright-blue-fg) !important;
 }
 
 .grid .tick text {
-  font-family: $monofont, monospace!important;
+  fill: var(--dim-text) !important;
 }
 
-.vertText {
-  font-family: $monofont, monospace!important;
-}
-
-.taskTextOutsideRight {
-	text-anchor: start;
-	font-family: var(--font-family-monospace)!important;
-}
-
-.taskTextOutsideLeft {
-  text-anchor: end;
-  font-family: var(--font-family-monospace)!important;
-}
-
-text {
-  font-family: var(--font-family-monospace)!important;
+[id^="mermaid"] line {
+  opacity: 0.25;
 }

@@ -17,22 +17,14 @@ gantt
     title AMD and Intel PyTorch Enablement Timeline
     dateFormat  YYYY
     axisFormat  %Y
-    %% ROCm                                             :vert, amd1, 2021-03-04, 1d
-    %% Installable PyTorch ROCm Python packages         :milestone, amd2, 2021-03-04, 1d
 
     section AMD ROCm and PyTorch
-      Torch7 era and early CUDA to HIP ports        :milestone,amd1, 2012, 2016
-      ROCm 1.0 and HIPIFY tooling                   :milestone,amd2, 2016, 2020
-      Official PyTorch ROCm Python packages         :milestone,amd3, 2021, 2022
-      PyTorch Foundation governance participation   :milestone,amd4, 2022, 2023
-      Triton ecosystem support                      :milestone,amd6, 2023, 2024
-      MI300x PyTorch guidance                       :milestone,amd7, 2024, 2024
-      %% PyTorch 2.0 day zero ROCm support             :milestone,amd5, 2023, 2023
-      %% Torchtune on AMD GPUs guide                   :milestone,amd8, 2024, 2024
-      %% PyTorch on Windows public preview             :milestone,amd9, 2025, 2025
-      %% AMD PyTorch on Windows ROCm 7.1.1             :milestone,amd10, 2025, 2025
-      %% MI450X rack scale roadmap                     :milestone,amd11, 2026, 2026
-      %% MI500 series future roadmap                   :milestone,amd12, 2027, 2028
+      Torch7 era and early CUDA to HIP ports        :amd1, 2012, 2016
+      ROCm 1.0 and HIPIFY tooling                   :amd2, 2016, 2020
+      Official PyTorch ROCm Python packages         :amd3, 2021, 2022
+      PyTorch Foundation governance participation   :amd4, 2022, 2023
+      Triton ecosystem support                      :amd6, 2023, 2024
+      MI300x PyTorch guidance                       :amd7, 2024, 2024
 
     section Intel and PyTorch
       Initial PyTorch contributions                :i2,2018, 2019
@@ -52,42 +44,29 @@ gantt
     dateFormat  YYYY-MM-DD
     axisFormat  %Y
 
+section AMD
+    Installable PyTorch ROCm Python packages         :amd2, 2021-03-04,
+    ROCm marked stable                               :amd3,2022-06-28,
 
 section PyTorch Releases
-    1.8                                             :crit,milestone, pt180, 2021-03-04, 1d
-    1.12                                            :done,milestone, pt1120, 2022-06-28, 1d
-    2.0                                             :crit,milestone, pt200, 2023-03-15, 1d
-    2.4                                             :done,milestone,pt24, 2024-07-24, 1d
-    2.5                                             :crit,milestone, pt250, 2024-10-17, 1d
-    2.6                                             :milestone,done,2025-01-29, 1d
-    2.7                                             :done,milestone, pt270, 2025-04-23, 1d
-    2.8                                             :crit,milestone, pt280, 2025-08-06, 1d
-    2.9                                            :done,milestone, pt290, 2025-10-15, 1d
-    2.10                                           :milestone, pt210, 2026-01-15, 1d
-
-section AMD
-    ROCm                                             :vert, amd1, 2021-03-04, 1d
-    Installable PyTorch ROCm Python packages         :milestone, amd2, 2021-03-04, 1d
-    %% ROCm development                                 :amd25, 2021-03-04, 2022-06-28,
-    ROCm marked stable                               :vert,done,amd3,2022-06-28,
-    %% PyTorch 1.12 ROCm marked stable                  :done,milestone,amd3 2022-06-28, 1d
-    %% PyTorch joins Linux Foundation (AMD board)       :done, amd4, 2022-09-01, 2022-12-31
-    %% Torch 2.0 TorchInductor MI250 Performance        :vert,amd5,2023-03-15, 1d
-    %% PyTorch 2.0 day zero ROCm support                :done, amd6, 2023-04-01, 2023-12-31
-    %% Triton kernel ecosystem support                  :done, amd7, 2023-06-01, 2024-03-31
-    %% MI300x PyTorch deployment guides                 :done, amd8, 2024-06-01, 2024-08-31
-    %% Torchtune LLM fine tuning on AMD GPUs             :done, amd9, 2024-10-01, 2024-10-31
-    %% Expanded ROCm wheel variants in PyTorch 2.8 2.9    :milestone, amd10, 2025-10-15, 1d
+    1.8                                             :milestone,crit, pt180, 2021-03-04,
+    1.12                                            :pt1120, 2022-06-28,
+    2.0                                             :milestone,crit,pt200, 2023-03-15,
+    2.4                                             :pt24, 2024-07-24,
+    2.5                                             :milestone,crit,pt250, 2024-10-17,
+    2.6                                             :pt260, 2025-01-29,
+    2.7                                             :pt270, 2025-04-23,
+    2.8                                             :crit, pt280, 2025-08-06,
+    2.9                                             :pt290, 2025-10-15,
+    2.10                                            :pt210, 2026-01-15,
 
 section Intel
-    %% Intel Extension for PyTorch launched               :milestone, int1, 2020-01-01, 1d
-    Incremental Intel GPU improvements begin           :milestone, int2, 2024-07-24, 1d
-    Native Intel GPU support announced in PyTorch 2.5  :milestone, int3, 2024-10-17, 1d
-    XPU                                                :vert, 2024-10-17, 1d
-    Intel GPU eager and compile parity in PyTorch 2.7  :milestone, int4, 2025-04-23, 1d
-    XCCL Backend                                       :vert,done, 2025-08-06,
-    IPEX discontinued                                  :int5, 2025-08-06, 2026-03-31
-    IPEX end of life                                   :milestone, int6, 2026-03-31, 1d
+    Incremental Intel GPU improvements begin           :int2, 2024-07-24,
+    Native Intel GPU support announced in PyTorch 2.5  :int3, 2024-10-17,
+    Intel GPU eager and compile parity in PyTorch 2.7  :int4, 2025-04-23,
+    Intel XCCL Backend introduced in PyTorch 2.8       :int5, 2025-04-23,
+    IPEX discontinued                                  :int6, 2025-08-06, 2026-03-31
+    IPEX end of life                                   :int7, 2026-03-31,
 
 ```
 
@@ -104,22 +83,14 @@ section Intel
         title AMD and Intel PyTorch Enablement Timeline
         dateFormat  YYYY
         axisFormat  %Y
-        %% ROCm                                             :vert, amd1, 2021-03-04, 1d
-        %% Installable PyTorch ROCm Python packages         :milestone, amd2, 2021-03-04, 1d
 
         section AMD ROCm and PyTorch
-          Torch7 era and early CUDA to HIP ports        :milestone,amd1, 2012, 2016
-          ROCm 1.0 and HIPIFY tooling                   :milestone,amd2, 2016, 2020
-          Official PyTorch ROCm Python packages         :milestone,amd3, 2021, 2022
-          PyTorch Foundation governance participation   :milestone,amd4, 2022, 2023
-          Triton ecosystem support                      :milestone,amd6, 2023, 2024
-          MI300x PyTorch guidance                       :milestone,amd7, 2024, 2024
-          %% PyTorch 2.0 day zero ROCm support             :milestone,amd5, 2023, 2023
-          %% Torchtune on AMD GPUs guide                   :milestone,amd8, 2024, 2024
-          %% PyTorch on Windows public preview             :milestone,amd9, 2025, 2025
-          %% AMD PyTorch on Windows ROCm 7.1.1             :milestone,amd10, 2025, 2025
-          %% MI450X rack scale roadmap                     :milestone,amd11, 2026, 2026
-          %% MI500 series future roadmap                   :milestone,amd12, 2027, 2028
+          Torch7 era and early CUDA to HIP ports        :amd1, 2012, 2016
+          ROCm 1.0 and HIPIFY tooling                   :amd2, 2016, 2020
+          Official PyTorch ROCm Python packages         :amd3, 2021, 2022
+          PyTorch Foundation governance participation   :amd4, 2022, 2023
+          Triton ecosystem support                      :amd6, 2023, 2024
+          MI300x PyTorch guidance                       :amd7, 2024, 2024
 
         section Intel and PyTorch
           Initial PyTorch contributions                :i2,2018, 2019
