@@ -29,9 +29,7 @@ successfully instantiate and run an experiment.
 For this example, we wish to train the L2HMC sampler for the 2D $U(1)$
 lattice gauge model with Wilson action:
 
-$$
-S_{\beta}(n) = \beta \sum_{n}\sum_{\mu<\nu}\mathrm{Re}\left[1 - U_{\mu\nu}(n) \right]
-$$
+$$S_{\beta}(n) = \beta \sum_{n}\sum_{\mu<\nu}\mathrm{Re}\left[1 - U_{\mu\nu}(n) \right]$$
 
 This consists of the following steps:
 
@@ -1478,9 +1476,7 @@ different charge sectors.
 
 We can write this quantity as:
 
-$$
-\delta Q = |Q^{(i)} - Q^{(i-1)}|
-$$
+$$\delta Q = |Q^{(i)} - Q^{(i-1)}|$$
 
 where we look at the difference in the topological charge between
 sequential configurations.
@@ -1492,9 +1488,7 @@ style="background:rgba(34,139,230,0.1); color: rgb(34,139,230); border: 0px soli
 the tunneling rate, which is inversely proportional to the integrated
 autocorrelation time $\tau$, i.e.
 
-$$
-\text{Efficiency} \propto \delta Q \propto \frac{1}{\tau}
-$$
+$$\text{Efficiency} \propto \delta Q \propto \frac{1}{\tau}$$
 
 Explicitly, this means that the **more efficient** the model
 $\longrightarrow$

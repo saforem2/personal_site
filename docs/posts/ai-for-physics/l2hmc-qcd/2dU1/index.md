@@ -69,9 +69,9 @@ Explicitly, we measure the performance of our model by comparing the
 *tunneling rate* $\delta Q$ of our **trained** sampler to that of
 generic HMC.
 Explicitly, the tunneling rate is given by:
-$$
-\delta Q = \frac{1}{N_{\mathrm{chains}}}\sum_{\mathrm{chains}} \left|Q_{i+1} - Q_{i}\right|
-$$
+
+$$\delta Q = \frac{1}{N_{\mathrm{chains}}}\sum_{\mathrm{chains}} \left|Q_{i+1} - Q_{i}\right|$$
+
 where the difference is between subsequent states in a chain, and the
 sum is over all $N$ chains (each being ran in parallel,
 *independently*).
@@ -928,9 +928,7 @@ different charge sectors.
 
 We can write this quantity as:
 
-$$
-\delta Q = |Q^{(i)} - Q^{(i-1)}|
-$$
+$$\delta Q = |Q^{(i)} - Q^{(i-1)}|$$
 
 where we look at the difference in the topological charge between
 sequential configurations.
@@ -939,9 +937,9 @@ sequential configurations.
 the tunneling rate, which is inversely proportional to the integrated
 autocorrelation time $\tau$, i.e.
  
-$$
-\text{Efficiency} \propto \delta Q \propto \frac{1}{\tau}
-$$
+
+$$\text{Efficiency} \propto \delta Q \propto \frac{1}{\tau}$$
+
 Explicitly, this means that the **more efficient** the model
 $\longrightarrow$
 - the **larger** tunneling rate - the **smaller** integrated

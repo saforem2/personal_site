@@ -22,7 +22,7 @@ Sam Foreman
   - [🚀 Going Beyond Data
     Parallelism](#rocket-going-beyond-data-parallelism)
   - [Going beyond Data Parallelism: DeepSpeed +
-    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
+    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed--zero)
   - [🕸️ Additional Parallelism
     Strategies](#spider_web-additional-parallelism-strategies)
   - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
@@ -1247,33 +1247,29 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 ## 📓 References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>
 
 <div id="ref-price2024gencast" class="csl-entry">
 
-Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson,
-Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. “GenCast:
-Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
-<https://arxiv.org/abs/2312.15796>.
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, et al. 2024.
+*GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range
+Weather*. <https://arxiv.org/abs/2312.15796>.
 
 </div>
 
 <div id="ref-song2023ds4sci" class="csl-entry">
 
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.”
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, et al. 2023.
+*DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery
+Through Sophisticated AI System Technologies*.
 <https://arxiv.org/abs/2310.04610>.
 
 </div>

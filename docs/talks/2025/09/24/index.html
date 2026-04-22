@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.16">
+<meta name="generator" content="quarto-1.9.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>Training Foundation Models on Supercomputers – Sam Foreman</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -99,8 +101,8 @@ div.csl-indent {
 <link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-faabe995f10d165e9eb0c609bfa2ec4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark-42061dab9d62fa38510aca0c6a3d24d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-2a34f7be5abea24bdc304a3070525245.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-b866f17b05e1f1005e111d418b8d0ca2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
@@ -1926,7 +1928,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#going-beyond-data-parallelism" id="toc-going-beyond-data-parallelism" class="nav-link" data-scroll-target="#going-beyond-data-parallelism">🚀 Going Beyond Data Parallelism</a>
   <ul class="collapse">
-  <li><a href="#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" id="toc-going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" class="nav-link" data-scroll-target="#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero">Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></a></li>
+  <li><a href="#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero" id="toc-going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero" class="nav-link" data-scroll-target="#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></a></li>
   <li><a href="#additional-parallelism-strategies" id="toc-additional-parallelism-strategies" class="nav-link" data-scroll-target="#additional-parallelism-strategies">🕸️ Additional Parallelism Strategies</a></li>
   <li><a href="#pipeline-parallelism-pp" id="toc-pipeline-parallelism-pp" class="nav-link" data-scroll-target="#pipeline-parallelism-pp">Pipeline Parallelism (PP)</a></li>
   <li><a href="#tensor-parallel-tp" id="toc-tensor-parallel-tp" class="nav-link" data-scroll-target="#tensor-parallel-tp">Tensor Parallel (TP)</a></li>
@@ -2529,8 +2531,8 @@ Figure&nbsp;6: General strategy for scaling model training
 <li>Otherwise, resort to <a href="#additional-parallelism-strategies">model parallelism strategies</a></li>
 </ul></li>
 </ul>
-<section id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero" class="level3" data-background-color="white">
-<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero">Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
+<section id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero" class="level3" data-background-color="white">
+<h3 data-background-color="white" class="anchored" data-anchor-id="going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero">Going beyond Data Parallelism: <iconify-icon role="img" inline="" icon="logos:microsoft-icon" aria-label="Icon microsoft-icon from logos Iconify.design set." title="Icon microsoft-icon from logos Iconify.design set."></iconify-icon> DeepSpeed + <code>ZeRO</code></h3>
 <ul>
 <li>Depending on the <code>ZeRO</code> stage (1, 2, 3), we can offload:
 <ol type="1">
@@ -4121,12 +4123,12 @@ Output:
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">📓 References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-mprot-dpo2024" class="csl-entry" role="listitem">
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> In <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em>. SC ’24. Atlanta, GA, USA: IEEE Press. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em> (Atlanta, GA, USA), SC ’24. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
 </div>
 <div id="ref-stock2025aeris" class="csl-entry" role="listitem">
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman, Chunyong Jung, Sandeep Madireddy, et al. 2025. <span>“AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions.”</span> <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. <em>AERIS: Argonne Earth Systems Model for Reliable and Skillful Predictions</em>. <a href="https://arxiv.org/abs/2509.13523">https://arxiv.org/abs/2509.13523</a>.
 </div>
 </div>
 
@@ -4644,7 +4646,7 @@ Supercomputers.”</span> September 24. <a href="https://samforeman.me/talks/202
     script.dataset.repo = "saforem2/personal_site";
     script.dataset.repoId = "R_kgDOGbjyRw";
     script.dataset.category = "General";
-    script.dataset.categoryId = "";
+    script.dataset.categoryId = "DIC_kwDOGbjyR84CjWfk";
     script.dataset.mapping = "title";
     script.dataset.reactionsEnabled = "1";
     script.dataset.emitMetadata = "0";

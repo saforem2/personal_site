@@ -116,14 +116,12 @@ thinking about / working on.
 
 </details>
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>

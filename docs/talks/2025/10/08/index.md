@@ -399,24 +399,21 @@ removed; m/s), averaged between 10°S and 10°N, for a 90-day rollout.
 3.  [Understanding Diffusion Models: A Unified
     Perspective](https://calvinyluo.com/2022/08/26/diffusion-tutorial.html)
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>
 
 <div id="ref-price2024gencast" class="csl-entry">
 
-Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson,
-Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. “GenCast:
-Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
-<https://arxiv.org/abs/2312.15796>.
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, et al. 2024.
+*GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range
+Weather*. <https://arxiv.org/abs/2312.15796>.
 
 </div>
 
