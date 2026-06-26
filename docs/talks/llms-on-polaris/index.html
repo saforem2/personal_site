@@ -267,7 +267,134 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-dark">
+<!-- Deprecation banner: announces move to sam.onl with a per-page link.
+     Injected on every HTML page via format.html.include-before-body.
+     Self-contained: no external assets. Excluded from reveal.js decks. -->
+<style>
+  #samonl-deprecation-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1040;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    background: var(--bs-body-bg, #1c1c1c);
+    color: var(--bs-body-color, #dee2e6);
+    border-bottom: 1px solid var(--bs-border-color, rgba(131,131,131,0.7));
+  }
+  #samonl-deprecation-banner a {
+    color: var(--bs-link-color, #82b1ff);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  #samonl-deprecation-banner a:hover { text-decoration: none; }
+  #samonl-deprecation-banner .samonl-sep { opacity: 0.6; margin: 0 0.4rem; }
+  #samonl-deprecation-dismiss {
+    position: absolute;
+    top: 50%;
+    right: 0.6rem;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    opacity: 0.7;
+  }
+  #samonl-deprecation-dismiss:hover { opacity: 1; }
+  #samonl-deprecation-dismiss:focus-visible { outline: 2px solid var(--bs-link-color, #82b1ff); }
+</style>
+<script>
+(function () {
+  var STORAGE_KEY = 'samonl-deprecation-dismissed';
+  try { if (localStorage.getItem(STORAGE_KEY) === '1') return; } catch (e) {}
+
+  function resolveSamOnl(pathname) {
+    var HOME = 'https://sam.onl';
+    var key = pathname || '/';
+    if (key.endsWith('/index.html')) key = key.slice(0, -'/index.html'.length);
+    else if (key.endsWith('.html')) key = key.slice(0, -'.html'.length);
+    if (key.length > 1 && key.endsWith('/')) key = key.slice(0, -1);
+    if (key === '') key = '/';
+
+    var base = key;
+    if (base === '/slides') base = '/';
+    else if (base.endsWith('/slides')) base = base.slice(0, -'/slides'.length);
+
+    var OVERRIDES = {
+      '/posts/AuroraGPT/determinstic-flash-attn':
+        '/posts/AuroraGPT/determinstic-flash-attn/deterministic-flash-attn',
+      '/talks/hpc-user-forum': '/talks/hpc-user-forum/AuroraGPT',
+      '/talks/alcf-hpc-workshop-2024':
+        '/talks/alcf-hpc-workshop-2024/alcf-hpc-workshop-2024',
+      '/talks/aurora-gpt-fm-for-electric-grid':
+        '/talks/aurora-gpt-fm-for-electric-grid/AuroraGPT-FM-for-electric-grid',
+      '/talks/AuroraGPT/alcf-hpc-workshop-2024':
+        '/talks/AuroraGPT/alcf-hpc-workshop-2024/AuroraGPT-ALCF-Hands-On-HPC-Workshop-2024',
+      '/talks/lattice23': null
+    };
+    if (Object.prototype.hasOwnProperty.call(OVERRIDES, base)) {
+      var target = OVERRIDES[base];
+      if (target === null) return { url: HOME, hasPageLink: false };
+      return { url: HOME + target, hasPageLink: true };
+    }
+    if (base === '/') return { url: HOME, hasPageLink: false };
+    return { url: HOME + base, hasPageLink: true };
+  }
+
+  function build() {
+    var r = resolveSamOnl(location.pathname);
+    var banner = document.createElement('div');
+    banner.id = 'samonl-deprecation-banner';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Site deprecation notice');
+
+    var msg = document.createElement('span');
+    msg.appendChild(document.createTextNode('📦 This site has moved to '));
+    var home = document.createElement('a');
+    home.href = 'https://sam.onl';
+    home.textContent = 'sam.onl';
+    msg.appendChild(home);
+    msg.appendChild(document.createTextNode('.'));
+
+    if (r.hasPageLink) {
+      var sep = document.createElement('span');
+      sep.className = 'samonl-sep';
+      sep.textContent = '→'; // →
+      msg.appendChild(sep);
+      var page = document.createElement('a');
+      page.href = r.url;
+      page.textContent = 'View this page on the new site';
+      msg.appendChild(page);
+    }
+    banner.appendChild(msg);
+
+    var btn = document.createElement('button');
+    btn.id = 'samonl-deprecation-dismiss';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Dismiss deprecation notice');
+    btn.textContent = '✕'; // ✕
+    btn.addEventListener('click', function () {
+      banner.remove();
+      try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    });
+    banner.appendChild(btn);
+
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+
+  if (document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
