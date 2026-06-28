@@ -293,22 +293,22 @@ style="text-align: center; align-items: center;">
 
 **Planning**
 
-<img src="./assets/team/rick-stevens.png" style="height:1.04167in"
+<img src="./assets/team/rick-stevens.png" style="height:75pt"
 alt="Rick Stevens" />
 
-<img src="./assets/team/ian-foster.png" style="height:1.04167in"
+<img src="./assets/team/ian-foster.png" style="height:75pt"
 alt="Ian Foster" />
 
-<img src="./assets/team/rinku-gupta.png" style="height:1.04167in"
+<img src="./assets/team/rinku-gupta.png" style="height:75pt"
 alt="Rinku Gupta" />
 
-<img src="./assets/team/mike-papka.png" style="height:1.04167in"
+<img src="./assets/team/mike-papka.png" style="height:75pt"
 alt="Mike Papka" />
 
-<img src="./assets/team/arvind-ramanathan.png" style="height:1.04167in"
+<img src="./assets/team/arvind-ramanathan.png" style="height:75pt"
 alt="Arvind Ramanathan" />
 
-<img src="./assets/team/fangfang-xia.png" style="height:1.04167in"
+<img src="./assets/team/fangfang-xia.png" style="height:75pt"
 alt="Fangfang Xia" />
 
 </div>
@@ -319,10 +319,10 @@ alt="Fangfang Xia" />
 
 **Data**
 
-<img src="./assets/team/ian-foster.png" style="height:1.04167in"
+<img src="./assets/team/ian-foster.png" style="height:75pt"
 alt="Ian Foster" />
 
-<img src="./assets/team/robert-underwood.png" style="height:1.04167in"
+<img src="./assets/team/robert-underwood.png" style="height:75pt"
 alt="Robert Underwood" />
 
 </div>
@@ -331,10 +331,10 @@ alt="Robert Underwood" />
 
 **Training**
 
-<img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in"
+<img src="./assets/team/venkat-vishwanath.png" style="height:75pt"
 alt="Venkat Vishwanath" />
 
-<img src="./assets/team/sam-foreman.png" style="height:1.04167in"
+<img src="./assets/team/sam-foreman.png" style="height:75pt"
 alt="Sam Foreman" />
 
 </div>
@@ -343,14 +343,13 @@ alt="Sam Foreman" />
 
 **Evaluation**
 
-<img src="./assets/team/franck-cappello.png" style="height:1.04167in"
+<img src="./assets/team/franck-cappello.png" style="height:75pt"
 alt="Franck Cappello" />
 
-<img src="./assets/team/sandeep-madireddy.png" style="height:1.04167in"
+<img src="./assets/team/sandeep-madireddy.png" style="height:75pt"
 alt="Sandeep Madireddy" />
 
-<img src="./assets/team/bo-li.png" style="height:1.04167in"
-alt="Bo Li" />
+<img src="./assets/team/bo-li.png" style="height:75pt" alt="Bo Li" />
 
 </div>
 
@@ -358,10 +357,10 @@ alt="Bo Li" />
 
 **Post**
 
-<img src="./assets/team/eliu-huerta.png" style="height:1.04167in"
+<img src="./assets/team/eliu-huerta.png" style="height:75pt"
 alt="Eliu Huerta" />
 
-<img src="./assets/team/azton-wells.png" style="height:1.04167in"
+<img src="./assets/team/azton-wells.png" style="height:75pt"
 alt="Azton Wells" />
 
 </div>
@@ -370,7 +369,7 @@ alt="Azton Wells" />
 
 **Inference**
 
-<img src="./assets/team/rajeev-thakur.png" style="height:1.04167in"
+<img src="./assets/team/rajeev-thakur.png" style="height:75pt"
 alt="Rajeev Thakur" />
 
 </div>
@@ -379,10 +378,10 @@ alt="Rajeev Thakur" />
 
 **Comms**
 
-<img src="./assets/team/charlie-catlett.png" style="height:1.04167in"
+<img src="./assets/team/charlie-catlett.png" style="height:75pt"
 alt="Charlie Catlett" />
 
-<img src="./assets/team/david-martin.png" style="height:1.04167in"
+<img src="./assets/team/david-martin.png" style="height:75pt"
 alt="David Martin" />
 
 </div>
@@ -391,7 +390,7 @@ alt="David Martin" />
 
 **Distribution**
 
-<img src="./assets/team/brad-ullrich.png" style="height:1.04167in"
+<img src="./assets/team/brad-ullrich.png" style="height:75pt"
 alt="Brad Ullrich" />
 
 </div>
@@ -605,32 +604,28 @@ Figure 10: Time spent building `GPTDataset`
   - Animations from [The Illustrated
     Transformer](http://jalammar.github.io/illustrated-transformer/)
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-song2023ds4sci" class="csl-entry">
 
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.”
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, et al. 2023.
+*DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery
+Through Sophisticated AI System Technologies*.
 <https://arxiv.org/abs/2310.04610>.
 
 </div>
 
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry">
 
-Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph,
-Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
-Large Language Models.” <https://arxiv.org/abs/2206.07682>.
+Wei, Jason, Yi Tay, Rishi Bommasani, et al. 2022. *Emergent Abilities of
+Large Language Models*. <https://arxiv.org/abs/2206.07682>.
 
 </div>
 
 <div id="ref-yang2023harnessing" class="csl-entry">
 
-Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng,
-Haoming Jiang, Bing Yin, and Xia Hu. 2023. “Harnessing the Power of LLMs
-in Practice: A Survey on ChatGPT and Beyond.”
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, et al. 2023. *Harnessing the
+Power of LLMs in Practice: A Survey on ChatGPT and Beyond*.
 <https://arxiv.org/abs/2304.13712>.
 
 </div>

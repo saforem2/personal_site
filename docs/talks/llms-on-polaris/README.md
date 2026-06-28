@@ -174,7 +174,7 @@ additional information.
 | GPUS            | NVIDIA A100       | 4        | 2240          |
 | Local SSD       | 1.6 TB            | 2/3.2 TB | 1120/1.8PB    |
 
-Details
+Details {.table-striped .table-hover}
 
 <div class="aside">
 
@@ -199,7 +199,8 @@ Details
 | INT8 Tensor Core | 624 TOPS          | 2496 TOPS          |
 | Max TDP Power    | 250 W             | 400 W              |
 
-Polaris A100 GPU Information
+Polaris A100 GPU Information {.table-responsive .table-striped
+.table-hover}
 
 :
 
@@ -390,7 +391,7 @@ Figure 3: Its hungry!
 | 05/2023 | [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/pdf/2305.18290.pdf) | DPO | Stanford | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F0d1c76d45afa012ded7ab741194baf142117c495%3Ffields%3DcitationCount&query=%24.citationCount&label=citation) |
 | 07/2023 | [Llama 2: Open Foundation and Fine-Tuned Chat Models](https://arxiv.org/pdf/2307.09288.pdf) | LLaMA 2 | Meta | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F104b0bb1da562d53cbda87aec79ef6a2827d191a%3Ffields%3DcitationCount&query=%24.citationCount&label=citation) |
 
-Papers, 2017–\*
+Papers, 2017–\* {.table-striped .table-hover}
 
 </div>
 
@@ -1555,31 +1556,27 @@ Figure 12: Vaswani et al. (2017)
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-vaswani2017attention" class="csl-entry">
 
-Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
-Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
-“Attention Is All You Need.” <https://arxiv.org/abs/1706.03762>.
+Vaswani, Ashish, Noam Shazeer, Niki Parmar, et al. 2017. *Attention Is
+All You Need*. <https://arxiv.org/abs/1706.03762>.
 
 </div>
 
 <div id="ref-yang2023harnessing" class="csl-entry">
 
-Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng,
-Haoming Jiang, Bing Yin, and Xia Hu. 2023. “Harnessing the Power of LLMs
-in Practice: A Survey on ChatGPT and Beyond.”
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, et al. 2023. *Harnessing the
+Power of LLMs in Practice: A Survey on ChatGPT and Beyond*.
 <https://arxiv.org/abs/2304.13712>.
 
 </div>
 
 <div id="ref-yao2023tree" class="csl-entry">
 
-Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths,
-Yuan Cao, and Karthik Narasimhan. 2023. “Tree of Thoughts: Deliberate
-Problem Solving with Large Language Models.”
+Yao, Shunyu, Dian Yu, Jeffrey Zhao, et al. 2023. *Tree of Thoughts:
+Deliberate Problem Solving with Large Language Models*.
 <https://arxiv.org/abs/2305.10601>.
 
 </div>

@@ -632,17 +632,15 @@ Figure 8: Maximum (achievable) `SEQ_LEN` for both `25B` and `33B` models
   - Animations from [The Illustrated
     Transformer](http://jalammar.github.io/illustrated-transformer/)
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-mprot-dpo2024" class="csl-entry">
 
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. “MProt-DPO:
 Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+with Direct Preference Optimization.” *Proceedings of the International
+Conference for High Performance Computing, Networking, Storage, and
+Analysis* (Atlanta, GA, USA), SC ’24.
 <https://doi.org/10.1109/SC41406.2024.00013>.
 
 </div>
@@ -651,7 +649,7 @@ Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
 
 Hosseini, Ryien, Filippo Simini, Venkatram Vishwanath, Rebecca Willett,
 and Henry Hoffmann. 2025. “Quality Measures for Dynamic Graph Generative
-Models.” In *The Thirteenth International Conference on Learning
+Models.” *The Thirteenth International Conference on Learning
 Representations*. <https://openreview.net/forum?id=8bjspmAMBk>.
 
 </div>
@@ -660,26 +658,24 @@ Representations*. <https://openreview.net/forum?id=8bjspmAMBk>.
 class="csl-entry">
 
 McCandlish, Sam, Jared Kaplan, Dario Amodei, and OpenAI Dota Team. 2018.
-“An Empirical Model of Large-Batch Training.”
+*An Empirical Model of Large-Batch Training*.
 <https://arxiv.org/abs/1812.06162>.
 
 </div>
 
 <div id="ref-song2023ds4sci" class="csl-entry">
 
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.”
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, et al. 2023.
+*DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery
+Through Sophisticated AI System Technologies*.
 <https://arxiv.org/abs/2310.04610>.
 
 </div>
 
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry">
 
-Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph,
-Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
-Large Language Models.” <https://arxiv.org/abs/2206.07682>.
+Wei, Jason, Yi Tay, Rishi Bommasani, et al. 2022. *Emergent Abilities of
+Large Language Models*. <https://arxiv.org/abs/2206.07682>.
 
 </div>
 

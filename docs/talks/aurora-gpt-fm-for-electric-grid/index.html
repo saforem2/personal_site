@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.16">
+<meta name="generator" content="quarto-1.9.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>AuroraGPT: Foundation Models for Science – Sam Foreman</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -99,8 +101,8 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-faabe995f10d165e9eb0c609bfa2ec4a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-42061dab9d62fa38510aca0c6a3d24d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-2a34f7be5abea24bdc304a3070525245.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-b866f17b05e1f1005e111d418b8d0ca2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
@@ -269,7 +271,134 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=GenSLMs: Genome-scale language models reveal SARS-CoV-2 evolutionary dynamics;,citation_abstract=We seek to transform how new and emergent variants of pandemiccausing viruses, specifically SARS-CoV-2, are identified and classified. By adapting large language models (LLMs) for genomic data, we build genome-scale language models (GenSLMs) which can learn the evolutionary landscape of SARS-CoV-2 genomes. By pretraining on over 110 million prokaryotic gene sequences and finetuning a SARS-CoV-2-specific model on 1.5 million genomes, we show that GenSLMs can accurately and rapidly identify variants of concern. Thus, to our knowledge, GenSLMs represents one of the first whole genome scale foundation models which can generalize to other prediction tasks. We demonstrate scaling of GenSLMs on GPU-based supercomputers and AI-hardware accelerators utilizing 1.63 Zettaflops in training runs with a sustained performance of 121 PFLOPS in mixed precision and peak of 850 PFLOPS. We present initial scientific insights from examining GenSLMs in tracking evolutionary dynamics of SARS-CoV-2, paving the path to realizing this on large biological data.Competing Interest StatementThe authors have declared no competing interest.;,citation_author=Maxim Zvyagin;,citation_author=Alexander Brace;,citation_author=Kyle Hippe;,citation_author=Yuntian Deng;,citation_author=Bin Zhang;,citation_author=Cindy Orozco Bohorquez;,citation_author=Austin Clyde;,citation_author=Bharat Kale;,citation_author=Danilo Perez-Rivera;,citation_author=Heng Ma;,citation_author=Carla M. Mann;,citation_author=Michael Irvin;,citation_author=J. Gregory Pauloski;,citation_author=Logan Ward;,citation_author=Valerie Hayot-Sasson;,citation_author=Murali Emani;,citation_author=Sam Foreman;,citation_author=Zhen Xie;,citation_author=Diangen Lin;,citation_author=Maulik Shukla;,citation_author=Weili Nie;,citation_author=Josh Romero;,citation_author=Christian Dallago;,citation_author=Arash Vahdat;,citation_author=Chaowei Xiao;,citation_author=Thomas Gibbs;,citation_author=Ian Foster;,citation_author=James J. Davis;,citation_author=Michael E. Papka;,citation_author=Thomas Brettin;,citation_author=Rick Stevens;,citation_author=Anima Anandkumar;,citation_author=Venkatram Vishwanath;,citation_author=Arvind Ramanathan;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.biorxiv.org/content/early/2022/11/23/2022.10.10.511571;,citation_doi=10.1101/2022.10.10.511571;,citation_journal_title=bioRxiv;,citation_publisher=Cold Spring Harbor Laboratory;">
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-dark">
+<!-- Deprecation banner: announces move to sam.onl with a per-page link.
+     Injected on every HTML page via format.html.include-before-body.
+     Self-contained: no external assets. Excluded from reveal.js decks. -->
+<style>
+  #samonl-deprecation-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1040;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    background: var(--bs-body-bg, #1c1c1c);
+    color: var(--bs-body-color, #dee2e6);
+    border-bottom: 1px solid var(--bs-border-color, rgba(131,131,131,0.7));
+  }
+  #samonl-deprecation-banner a {
+    color: var(--bs-link-color, #82b1ff);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  #samonl-deprecation-banner a:hover { text-decoration: none; }
+  #samonl-deprecation-banner .samonl-sep { opacity: 0.6; margin: 0 0.4rem; }
+  #samonl-deprecation-dismiss {
+    position: absolute;
+    top: 50%;
+    right: 0.6rem;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    opacity: 0.7;
+  }
+  #samonl-deprecation-dismiss:hover { opacity: 1; }
+  #samonl-deprecation-dismiss:focus-visible { outline: 2px solid var(--bs-link-color, #82b1ff); }
+</style>
+<script>
+(function () {
+  var STORAGE_KEY = 'samonl-deprecation-dismissed';
+  try { if (localStorage.getItem(STORAGE_KEY) === '1') return; } catch (e) {}
+
+  function resolveSamOnl(pathname) {
+    var HOME = 'https://sam.onl';
+    var key = pathname || '/';
+    if (key.endsWith('/index.html')) key = key.slice(0, -'/index.html'.length);
+    else if (key.endsWith('.html')) key = key.slice(0, -'.html'.length);
+    if (key.length > 1 && key.endsWith('/')) key = key.slice(0, -1);
+    if (key === '') key = '/';
+
+    var base = key;
+    if (base === '/slides') base = '/';
+    else if (base.endsWith('/slides')) base = base.slice(0, -'/slides'.length);
+
+    var OVERRIDES = {
+      '/posts/AuroraGPT/determinstic-flash-attn':
+        '/posts/AuroraGPT/determinstic-flash-attn/deterministic-flash-attn',
+      '/talks/hpc-user-forum': '/talks/hpc-user-forum/AuroraGPT',
+      '/talks/alcf-hpc-workshop-2024':
+        '/talks/alcf-hpc-workshop-2024/alcf-hpc-workshop-2024',
+      '/talks/aurora-gpt-fm-for-electric-grid':
+        '/talks/aurora-gpt-fm-for-electric-grid/AuroraGPT-FM-for-electric-grid',
+      '/talks/AuroraGPT/alcf-hpc-workshop-2024':
+        '/talks/AuroraGPT/alcf-hpc-workshop-2024/AuroraGPT-ALCF-Hands-On-HPC-Workshop-2024',
+      '/talks/lattice23': null
+    };
+    if (Object.prototype.hasOwnProperty.call(OVERRIDES, base)) {
+      var target = OVERRIDES[base];
+      if (target === null) return { url: HOME, hasPageLink: false };
+      return { url: HOME + target, hasPageLink: true };
+    }
+    if (base === '/') return { url: HOME, hasPageLink: false };
+    return { url: HOME + base, hasPageLink: true };
+  }
+
+  function build() {
+    var r = resolveSamOnl(location.pathname);
+    var banner = document.createElement('div');
+    banner.id = 'samonl-deprecation-banner';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-label', 'Site deprecation notice');
+
+    var msg = document.createElement('span');
+    msg.appendChild(document.createTextNode('📦 This site has moved to '));
+    var home = document.createElement('a');
+    home.href = 'https://sam.onl';
+    home.textContent = 'sam.onl';
+    msg.appendChild(home);
+    msg.appendChild(document.createTextNode('.'));
+
+    if (r.hasPageLink) {
+      var sep = document.createElement('span');
+      sep.className = 'samonl-sep';
+      sep.textContent = '→'; // →
+      msg.appendChild(sep);
+      var page = document.createElement('a');
+      page.href = r.url;
+      page.textContent = 'View this page on the new site';
+      msg.appendChild(page);
+    }
+    banner.appendChild(msg);
+
+    var btn = document.createElement('button');
+    btn.id = 'samonl-deprecation-dismiss';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Dismiss deprecation notice');
+    btn.textContent = '✕'; // ✕
+    btn.addEventListener('click', function () {
+      banner.remove();
+      try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    });
+    banner.appendChild(btn);
+
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+
+  if (document.body) build();
+  else document.addEventListener('DOMContentLoaded', build);
+})();
+</script>
+<script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -2332,37 +2461,37 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Planning</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/rick-stevens.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Rick Stevens"><img src="./assets/team/rick-stevens.png" style="height:1.04167in" alt="Rick Stevens" class="figure-img"></a></p>
+<p><a href="./assets/team/rick-stevens.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Rick Stevens"><img src="./assets/team/rick-stevens.png" style="height:75pt" alt="Rick Stevens" class="figure-img"></a></p>
 <figcaption>Rick Stevens<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Ian Foster"><img src="./assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster" class="figure-img"></a></p>
+<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Ian Foster"><img src="./assets/team/ian-foster.png" style="height:75pt" alt="Ian Foster" class="figure-img"></a></p>
 <figcaption>Ian Foster</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/rinku-gupta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Rinku Gupta"><img src="./assets/team/rinku-gupta.png" style="height:1.04167in" alt="Rinku Gupta" class="figure-img"></a></p>
+<p><a href="./assets/team/rinku-gupta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Rinku Gupta"><img src="./assets/team/rinku-gupta.png" style="height:75pt" alt="Rinku Gupta" class="figure-img"></a></p>
 <figcaption>Rinku Gupta</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/mike-papka.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Mike Papka"><img src="./assets/team/mike-papka.png" style="height:1.04167in" alt="Mike Papka" class="figure-img"></a></p>
+<p><a href="./assets/team/mike-papka.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Mike Papka"><img src="./assets/team/mike-papka.png" style="height:75pt" alt="Mike Papka" class="figure-img"></a></p>
 <figcaption>Mike Papka</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/arvind-ramanathan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Arvind Ramanathan"><img src="./assets/team/arvind-ramanathan.png" style="height:1.04167in" alt="Arvind Ramanathan" class="figure-img"></a></p>
+<p><a href="./assets/team/arvind-ramanathan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Arvind Ramanathan"><img src="./assets/team/arvind-ramanathan.png" style="height:75pt" alt="Arvind Ramanathan" class="figure-img"></a></p>
 <figcaption>Arvind Ramanathan</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/fangfang-xia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Fangfang Xia"><img src="./assets/team/fangfang-xia.png" style="height:1.04167in" alt="Fangfang Xia" class="figure-img"></a></p>
+<p><a href="./assets/team/fangfang-xia.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Fangfang Xia"><img src="./assets/team/fangfang-xia.png" style="height:75pt" alt="Fangfang Xia" class="figure-img"></a></p>
 <figcaption>Fangfang Xia</figcaption>
 </figure>
 </div>
@@ -2372,13 +2501,13 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Data</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Ian Foster"><img src="./assets/team/ian-foster.png" style="height:1.04167in" alt="Ian Foster" class="figure-img"></a></p>
+<p><a href="./assets/team/ian-foster.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Ian Foster"><img src="./assets/team/ian-foster.png" style="height:75pt" alt="Ian Foster" class="figure-img"></a></p>
 <figcaption>Ian Foster</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/robert-underwood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Robert Underwood"><img src="./assets/team/robert-underwood.png" style="height:1.04167in" alt="Robert Underwood" class="figure-img"></a></p>
+<p><a href="./assets/team/robert-underwood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="Robert Underwood"><img src="./assets/team/robert-underwood.png" style="height:75pt" alt="Robert Underwood" class="figure-img"></a></p>
 <figcaption>Robert Underwood</figcaption>
 </figure>
 </div>
@@ -2387,13 +2516,13 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Training</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/venkat-vishwanath.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Venkat Vishwanath"><img src="./assets/team/venkat-vishwanath.png" style="height:1.04167in" alt="Venkat Vishwanath" class="figure-img"></a></p>
+<p><a href="./assets/team/venkat-vishwanath.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="Venkat Vishwanath"><img src="./assets/team/venkat-vishwanath.png" style="height:75pt" alt="Venkat Vishwanath" class="figure-img"></a></p>
 <figcaption>Venkat Vishwanath</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/sam-foreman.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Sam Foreman"><img src="./assets/team/sam-foreman.png" style="height:1.04167in" alt="Sam Foreman" class="figure-img"></a></p>
+<p><a href="./assets/team/sam-foreman.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="Sam Foreman"><img src="./assets/team/sam-foreman.png" style="height:75pt" alt="Sam Foreman" class="figure-img"></a></p>
 <figcaption><span style="color: #ff1a8f; background-color: oklch(from #ff1a8f calc(l * 1.15) c h / 0.1); font-weight: 500;">Sam Foreman</span></figcaption>
 </figure>
 </div>
@@ -2402,19 +2531,19 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Evaluation</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/franck-cappello.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Franck Cappello"><img src="./assets/team/franck-cappello.png" style="height:1.04167in" alt="Franck Cappello" class="figure-img"></a></p>
+<p><a href="./assets/team/franck-cappello.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="Franck Cappello"><img src="./assets/team/franck-cappello.png" style="height:75pt" alt="Franck Cappello" class="figure-img"></a></p>
 <figcaption>Franck Cappello</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/sandeep-madireddy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Sandeep Madireddy"><img src="./assets/team/sandeep-madireddy.png" style="height:1.04167in" alt="Sandeep Madireddy" class="figure-img"></a></p>
+<p><a href="./assets/team/sandeep-madireddy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="Sandeep Madireddy"><img src="./assets/team/sandeep-madireddy.png" style="height:75pt" alt="Sandeep Madireddy" class="figure-img"></a></p>
 <figcaption>Sandeep Madireddy</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/bo-li.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Bo Li"><img src="./assets/team/bo-li.png" style="height:1.04167in" alt="Bo Li" class="figure-img"></a></p>
+<p><a href="./assets/team/bo-li.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Bo Li"><img src="./assets/team/bo-li.png" style="height:75pt" alt="Bo Li" class="figure-img"></a></p>
 <figcaption>Bo Li</figcaption>
 </figure>
 </div>
@@ -2423,13 +2552,13 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Post</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/eliu-huerta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Eliu Huerta"><img src="./assets/team/eliu-huerta.png" style="height:1.04167in" alt="Eliu Huerta" class="figure-img"></a></p>
+<p><a href="./assets/team/eliu-huerta.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="Eliu Huerta"><img src="./assets/team/eliu-huerta.png" style="height:75pt" alt="Eliu Huerta" class="figure-img"></a></p>
 <figcaption>Eliu Huerta</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/azton-wells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Azton Wells"><img src="./assets/team/azton-wells.png" style="height:1.04167in" alt="Azton Wells" class="figure-img"></a></p>
+<p><a href="./assets/team/azton-wells.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="Azton Wells"><img src="./assets/team/azton-wells.png" style="height:75pt" alt="Azton Wells" class="figure-img"></a></p>
 <figcaption>Azton Wells</figcaption>
 </figure>
 </div>
@@ -2438,7 +2567,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Inference</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/rajeev-thakur.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Rajeev Thakur"><img src="./assets/team/rajeev-thakur.png" style="height:1.04167in" alt="Rajeev Thakur" class="figure-img"></a></p>
+<p><a href="./assets/team/rajeev-thakur.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="Rajeev Thakur"><img src="./assets/team/rajeev-thakur.png" style="height:75pt" alt="Rajeev Thakur" class="figure-img"></a></p>
 <figcaption>Rajeev Thakur</figcaption>
 </figure>
 </div>
@@ -2447,13 +2576,13 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Comms</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/charlie-catlett.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Charlie Catlett"><img src="./assets/team/charlie-catlett.png" style="height:1.04167in" alt="Charlie Catlett" class="figure-img"></a></p>
+<p><a href="./assets/team/charlie-catlett.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="Charlie Catlett"><img src="./assets/team/charlie-catlett.png" style="height:75pt" alt="Charlie Catlett" class="figure-img"></a></p>
 <figcaption>Charlie Catlett</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/david-martin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="David Martin"><img src="./assets/team/david-martin.png" style="height:1.04167in" alt="David Martin" class="figure-img"></a></p>
+<p><a href="./assets/team/david-martin.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="David Martin"><img src="./assets/team/david-martin.png" style="height:75pt" alt="David Martin" class="figure-img"></a></p>
 <figcaption>David Martin</figcaption>
 </figure>
 </div>
@@ -2462,7 +2591,7 @@ Figure&nbsp;8: <strong>GroqRack</strong>: 9 nodes, 8 GroqChip v1.5 Tensor stream
 <p><strong>Distribution</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./assets/team/brad-ullrich.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Brad Ullrich"><img src="./assets/team/brad-ullrich.png" style="height:1.04167in" alt="Brad Ullrich" class="figure-img"></a></p>
+<p><a href="./assets/team/brad-ullrich.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="Brad Ullrich"><img src="./assets/team/brad-ullrich.png" style="height:75pt" alt="Brad Ullrich" class="figure-img"></a></p>
 <figcaption>Brad Ullrich</figcaption>
 </figure>
 </div>
@@ -2757,21 +2886,21 @@ Figure&nbsp;10: Scaling results for <code>3.5B</code> Model
 <li>Animations from <a href="http://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></li>
 </ul></li>
 </ul>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-mprot-dpo2024" class="csl-entry" role="listitem">
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> In <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em>. SC ’24. Atlanta, GA, USA: IEEE Press. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. <span>“MProt-DPO: Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows with Direct Preference Optimization.”</span> <em>Proceedings of the International Conference for High Performance Computing, Networking, Storage, and Analysis</em> (Atlanta, GA, USA), SC ’24. <a href="https://doi.org/10.1109/SC41406.2024.00013">https://doi.org/10.1109/SC41406.2024.00013</a>.
 </div>
 <div id="ref-hosseini2025quality" class="csl-entry" role="listitem">
-Hosseini, Ryien, Filippo Simini, Venkatram Vishwanath, Rebecca Willett, and Henry Hoffmann. 2025. <span>“Quality Measures for Dynamic Graph Generative Models.”</span> In <em>The Thirteenth International Conference on Learning Representations</em>. <a href="https://openreview.net/forum?id=8bjspmAMBk">https://openreview.net/forum?id=8bjspmAMBk</a>.
+Hosseini, Ryien, Filippo Simini, Venkatram Vishwanath, Rebecca Willett, and Henry Hoffmann. 2025. <span>“Quality Measures for Dynamic Graph Generative Models.”</span> <em>The Thirteenth International Conference on Learning Representations</em>. <a href="https://openreview.net/forum?id=8bjspmAMBk">https://openreview.net/forum?id=8bjspmAMBk</a>.
 </div>
 <div id="ref-song2023ds4sci" class="csl-entry" role="listitem">
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. <span>“DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery Through Sophisticated AI System Technologies.”</span> <a href="https://arxiv.org/abs/2310.04610">https://arxiv.org/abs/2310.04610</a>.
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, et al. 2023. <em>DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery Through Sophisticated AI System Technologies</em>. <a href="https://arxiv.org/abs/2310.04610">https://arxiv.org/abs/2310.04610</a>.
 </div>
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry" role="listitem">
-Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian Borgeaud, Dani Yogatama, et al. 2022. <span>“Emergent Abilities of Large Language Models.”</span> <a href="https://arxiv.org/abs/2206.07682">https://arxiv.org/abs/2206.07682</a>.
+Wei, Jason, Yi Tay, Rishi Bommasani, et al. 2022. <em>Emergent Abilities of Large Language Models</em>. <a href="https://arxiv.org/abs/2206.07682">https://arxiv.org/abs/2206.07682</a>.
 </div>
 <div id="ref-yang2023harnessing" class="csl-entry" role="listitem">
-Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng, Haoming Jiang, Bing Yin, and Xia Hu. 2023. <span>“Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond.”</span> <a href="https://arxiv.org/abs/2304.13712">https://arxiv.org/abs/2304.13712</a>.
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, et al. 2023. <em>Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond</em>. <a href="https://arxiv.org/abs/2304.13712">https://arxiv.org/abs/2304.13712</a>.
 </div>
 </div>
 </section>

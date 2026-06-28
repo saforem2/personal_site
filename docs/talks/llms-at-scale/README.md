@@ -31,9 +31,9 @@ Sam Foreman
 - [Thank you!](#thank-you)
 - [🎁 Extras](#gift-extras)
   - [ DeepSpeed `ZeRO`
-    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero-offloading)
+    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero-offloading)
   - [ DeepSpeed `ZeRO`
-    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed-zero-offloading-1)
+    Offloading](#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed-zero-offloading-1)
   - [Hands-On](#hands-on)
 - [References](#references)
   - [Bibliography](#bibliography)
@@ -1292,31 +1292,27 @@ Figure 17
 
 ## Bibliography
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry">
 
-Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph,
-Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
-Large Language Models.” <https://arxiv.org/abs/2206.07682>.
+Wei, Jason, Yi Tay, Rishi Bommasani, et al. 2022. *Emergent Abilities of
+Large Language Models*. <https://arxiv.org/abs/2206.07682>.
 
 </div>
 
 <div id="ref-yang2023harnessing" class="csl-entry">
 
-Yang, Jingfeng, Hongye Jin, Ruixiang Tang, Xiaotian Han, Qizhang Feng,
-Haoming Jiang, Bing Yin, and Xia Hu. 2023. “Harnessing the Power of LLMs
-in Practice: A Survey on ChatGPT and Beyond.”
+Yang, Jingfeng, Hongye Jin, Ruixiang Tang, et al. 2023. *Harnessing the
+Power of LLMs in Practice: A Survey on ChatGPT and Beyond*.
 <https://arxiv.org/abs/2304.13712>.
 
 </div>
 
 <div id="ref-yao2023tree" class="csl-entry">
 
-Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths,
-Yuan Cao, and Karthik Narasimhan. 2023. “Tree of Thoughts: Deliberate
-Problem Solving with Large Language Models.”
+Yao, Shunyu, Dian Yu, Jeffrey Zhao, et al. 2023. *Tree of Thoughts:
+Deliberate Problem Solving with Large Language Models*.
 <https://arxiv.org/abs/2305.10601>.
 
 </div>

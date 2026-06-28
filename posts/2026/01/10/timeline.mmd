@@ -1,0 +1,49 @@
+
+sequenceDiagram
+    autonumber
+    participant AMD as AMD / ROCm
+    participant PT as PyTorch
+    participant Intel as Intel
+    participant IPEX as Intel Extension for PyTorch
+
+    rect rgb(245,245,245)
+      note over AMD,Intel: Parallel vendor timelines around PyTorch enablement, upstreaming, and platform expansion
+    end
+
+    %% --- Early groundwork ---
+    AMD->>PT: 2012: Torch7 era (precursor ecosystem)
+    note over AMD: ROCm 1.0: HIP/HIPIFY ports (e.g., Caffe, Torch7)\nCUDA -> HIP pathway established
+
+    Intel->>PT: 2018: Starts contributing to open-source PyTorch
+
+    %% --- Packaging / separate extension paths ---
+    Intel->>IPEX: 2020: Launch IPEX as separate optimized package
+    IPEX->>PT: 2020-2025: Downstream features mature outside upstream
+
+    %% --- Foundation / governance ---
+    AMD->>PT: Mar 2021: Official PyTorch ROCm Python package available
+    AMD->>PT: "Sep 2022: PyTorch joins Linux Foundation AMD, on founding PyTorch Foundation board"
+    Intel->>PT: Aug 2023: Joins PyTorch Foundation as Premier member
+
+    %% --- Major compiler/runtime integration era ---
+    AMD->>PT: Apr 2023: Day-zero PyTorch 2.0 support in ROCm 6.0\n(TorchDynamo/compile-era perf focus)
+    AMD->>PT: 2023: Ecosystem adds OpenAI Triton support
+
+    Intel->>PT: Oct 2022: PyTorch 1.13 integrates VTune ITT APIs
+    Intel->>PT: Jul 2024: PyTorch 2.4 prototype native Intel GPU support
+
+    %% --- Accessibility (Windows + consumer/client devices) ---
+    AMD->>PT: Jun 2024: MI300x PyTorch guidance (near drop-in CUDA-like experience)
+    AMD->>PT: Oct 2024: Torchtune-on-AMD guide (LLM finetuning enablement)
+    AMD->>PT: Sep 2025: Public preview PyTorch on Windows\n(RX 7000/9000, Ryzen AI no WSL2 workaround)
+    AMD->>PT: Nov 2025: AMD Software: PyTorch on Windows Edition 7.1.1<br>(ROCm 7.1.,1 update)
+
+    Intel->>PT: Apr 2025: PyTorch 2.7 solidifies Intel GPU support<br>(eager + torch.compile, Windows + Linux)
+
+    %% --- Upstreaming + deprecation of side package (Intel) ---
+    IPEX->>PT: Aug 2025: After PyTorch 2.8, IPEX development stops\n(features largely upstreamed)
+    IPEX-->>Intel: Mar 2026 (planned): IPEX end-of-life\nUsers move to native PyTorch
+
+    %% --- Forward-looking roadmap (AMD) ---
+    AMD-->>PT: 2026: MI450X rack-scale target (2H 2026 competitiveness)
+    AMD-->>PT: Post-2026: MI500 series plans (major AI perf increase)

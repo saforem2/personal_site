@@ -307,23 +307,23 @@ style="text-align: center; align-items: center;">
 
 **Planning**
 
-<img src="../../../../assets/team/rick-stevens.png"
-style="height:1.04167in" alt="Rick Stevens" />
+<img src="../../../../assets/team/rick-stevens.png" style="height:75pt"
+alt="Rick Stevens" />
 
-<img src="../../../../assets/team/ian-foster.png"
-style="height:1.04167in" alt="Ian Foster" />
+<img src="../../../../assets/team/ian-foster.png" style="height:75pt"
+alt="Ian Foster" />
 
-<img src="../../../../assets/team/rinku-gupta.png"
-style="height:1.04167in" alt="Rinku Gupta" />
+<img src="../../../../assets/team/rinku-gupta.png" style="height:75pt"
+alt="Rinku Gupta" />
 
-<img src="../../../../assets/team/mike-papka.png"
-style="height:1.04167in" alt="Mike Papka" />
+<img src="../../../../assets/team/mike-papka.png" style="height:75pt"
+alt="Mike Papka" />
 
 <img src="../../../../assets/team/arvind-ramanathan.png"
-style="height:1.04167in" alt="Arvind Ramanathan" />
+style="height:75pt" alt="Arvind Ramanathan" />
 
-<img src="../../../../assets/team/fangfang-xia.png"
-style="height:1.04167in" alt="Fangfang Xia" />
+<img src="../../../../assets/team/fangfang-xia.png" style="height:75pt"
+alt="Fangfang Xia" />
 
 </div>
 
@@ -333,11 +333,11 @@ style="height:1.04167in" alt="Fangfang Xia" />
 
 **Data**
 
-<img src="../../../../assets/team/ian-foster.png"
-style="height:1.04167in" alt="Ian Foster" />
+<img src="../../../../assets/team/ian-foster.png" style="height:75pt"
+alt="Ian Foster" />
 
 <img src="../../../../assets/team/robert-underwood.png"
-style="height:1.04167in" alt="Robert Underwood" />
+style="height:75pt" alt="Robert Underwood" />
 
 </div>
 
@@ -346,10 +346,10 @@ style="height:1.04167in" alt="Robert Underwood" />
 **Training**
 
 <img src="../../../../assets/team/venkat-vishwanath.png"
-style="height:1.04167in" alt="Venkat Vishwanath" />
+style="height:75pt" alt="Venkat Vishwanath" />
 
-<img src="../../../../assets/team/sam-foreman.png"
-style="height:1.04167in" alt="Sam Foreman" />
+<img src="../../../../assets/team/sam-foreman.png" style="height:75pt"
+alt="Sam Foreman" />
 
 </div>
 
@@ -358,12 +358,12 @@ style="height:1.04167in" alt="Sam Foreman" />
 **Evaluation**
 
 <img src="../../../../assets/team/franck-cappello.png"
-style="height:1.04167in" alt="Franck Cappello" />
+style="height:75pt" alt="Franck Cappello" />
 
 <img src="../../../../assets/team/sandeep-madireddy.png"
-style="height:1.04167in" alt="Sandeep Madireddy" />
+style="height:75pt" alt="Sandeep Madireddy" />
 
-<img src="../../../../assets/team/bo-li.png" style="height:1.04167in"
+<img src="../../../../assets/team/bo-li.png" style="height:75pt"
 alt="Bo Li" />
 
 </div>
@@ -372,11 +372,11 @@ alt="Bo Li" />
 
 **Post**
 
-<img src="../../../../assets/team/eliu-huerta.png"
-style="height:1.04167in" alt="Eliu Huerta" />
+<img src="../../../../assets/team/eliu-huerta.png" style="height:75pt"
+alt="Eliu Huerta" />
 
-<img src="../../../../assets/team/azton-wells.png"
-style="height:1.04167in" alt="Azton Wells" />
+<img src="../../../../assets/team/azton-wells.png" style="height:75pt"
+alt="Azton Wells" />
 
 </div>
 
@@ -384,8 +384,8 @@ style="height:1.04167in" alt="Azton Wells" />
 
 **Inference**
 
-<img src="../../../../assets/team/rajeev-thakur.png"
-style="height:1.04167in" alt="Rajeev Thakur" />
+<img src="../../../../assets/team/rajeev-thakur.png" style="height:75pt"
+alt="Rajeev Thakur" />
 
 </div>
 
@@ -394,10 +394,10 @@ style="height:1.04167in" alt="Rajeev Thakur" />
 **Comms**
 
 <img src="../../../../assets/team/charlie-catlett.png"
-style="height:1.04167in" alt="Charlie Catlett" />
+style="height:75pt" alt="Charlie Catlett" />
 
-<img src="../../../../assets/team/david-martin.png"
-style="height:1.04167in" alt="David Martin" />
+<img src="../../../../assets/team/david-martin.png" style="height:75pt"
+alt="David Martin" />
 
 </div>
 
@@ -405,8 +405,8 @@ style="height:1.04167in" alt="David Martin" />
 
 **Distribution**
 
-<img src="../../../../assets/team/brad-ullrich.png"
-style="height:1.04167in" alt="Brad Ullrich" />
+<img src="../../../../assets/team/brad-ullrich.png" style="height:75pt"
+alt="Brad Ullrich" />
 
 </div>
 
@@ -906,45 +906,40 @@ Initialized 7(a), 5(b) and 3(c) days prior to 2020-08-28T00z.
 
 ## 📓 References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-mprot-dpo2024" class="csl-entry">
 
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. “MProt-DPO:
 Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+with Direct Preference Optimization.” *Proceedings of the International
+Conference for High Performance Computing, Networking, Storage, and
+Analysis* (Atlanta, GA, USA), SC ’24.
 <https://doi.org/10.1109/SC41406.2024.00013>.
 
 </div>
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>
 
 <div id="ref-price2024gencast" class="csl-entry">
 
-Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, Tom R. Andersson,
-Andrew El-Kadi, Dominic Masters, Timo Ewalds, et al. 2024. “GenCast:
-Diffusion-Based Ensemble Forecasting for Medium-Range Weather.”
-<https://arxiv.org/abs/2312.15796>.
+Price, Ilan, Alvaro Sanchez-Gonzalez, Ferran Alet, et al. 2024.
+*GenCast: Diffusion-Based Ensemble Forecasting for Medium-Range
+Weather*. <https://arxiv.org/abs/2312.15796>.
 
 </div>
 
 <div id="ref-song2023ds4sci" class="csl-entry">
 
-Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, Conglong Li, Shiyang
-Chen, Chengming Zhang, Masahiro Tanaka, et al. 2023. “DeepSpeed4Science
-Initiative: Enabling Large-Scale Scientific Discovery Through
-Sophisticated AI System Technologies.”
+Song, Shuaiwen Leon, Bonnie Kruft, Minjia Zhang, et al. 2023.
+*DeepSpeed4Science Initiative: Enabling Large-Scale Scientific Discovery
+Through Sophisticated AI System Technologies*.
 <https://arxiv.org/abs/2310.04610>.
 
 </div>

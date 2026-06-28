@@ -171,44 +171,39 @@ Sam Foreman
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-allen2025aurora" class="csl-entry">
 
-Allen, Benjamin S., James Anchell, Victor Anisimov, Thomas Applencourt,
-Abhishek Bagusetty, Ramesh Balakrishnan, Riccardo Balin, et al. 2025.
-“Aurora: Architecting Argonne’s First Exascale Supercomputer for
-Accelerated Scientific Discovery.” <https://arxiv.org/abs/2509.08207>.
+Allen, Benjamin S., James Anchell, Victor Anisimov, et al. 2025.
+*Aurora: Architecting Argonne’s First Exascale Supercomputer for
+Accelerated Scientific Discovery*. <https://arxiv.org/abs/2509.08207>.
 
 </div>
 
 <div id="ref-mprot-dpo2024" class="csl-entry">
 
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. “MProt-DPO:
 Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+with Direct Preference Optimization.” *Proceedings of the International
+Conference for High Performance Computing, Networking, Storage, and
+Analysis* (Atlanta, GA, USA), SC ’24.
 <https://doi.org/10.1109/SC41406.2024.00013>.
 
 </div>
 
 <div id="ref-gokdemir2025hiperrag" class="csl-entry">
 
-Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, Azton Wells, Brian
-Hsu, Kyle Hippe, Priyanka V. Setty, et al. 2025. “HiPerRAG:
-High-Performance Retrieval Augmented Generation for Scientific
-Insights.” <https://arxiv.org/abs/2505.04846>.
+Gokdemir, Ozan, Carlo Siebenschuh, Alexander Brace, et al. 2025.
+*HiPerRAG: High-Performance Retrieval Augmented Generation for
+Scientific Insights*. <https://arxiv.org/abs/2505.04846>.
 
 </div>
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>
@@ -216,7 +211,7 @@ Systems Model for Reliable and Skillful Predictions.”
 <div id="ref-torsiello2025automated" class="csl-entry">
 
 Torsiello, J., G. T. Fleming, S. Foreman, X.-Y. Jin, and J. C. Osborn.
-2025. “Automated Tuning for HMC Mass Ratios.” *PoS*. Argonne, ALCF;
+2025. “Automated Tuning for HMC Mass Ratios.” In *PoS*. Argonne, ALCF;
 Argonne National Laboratory (ANL), Argonne, IL (United States); Temple
 U.; Fermi National Accelerator Laboratory (FNAL), Batavia, IL (United
 States). <https://doi.org/10.22323/1.466.0052>.
@@ -225,10 +220,9 @@ States). <https://doi.org/10.22323/1.466.0052>.
 
 <div id="ref-yan2025mofa" class="csl-entry">
 
-Yan, Xiaoli, Nathaniel Hudson, Hyun Park, Daniel Grzenda, J. Gregory
-Pauloski, Marcus Schwarting, Haochen Pan, et al. 2025. “MOFA:
+Yan, Xiaoli, Nathaniel Hudson, Hyun Park, et al. 2025. *MOFA:
 Discovering Materials for Carbon Capture with a GenAI- and
-Simulation-Based Workflow.” <https://arxiv.org/abs/2501.10651>.
+Simulation-Based Workflow*. <https://arxiv.org/abs/2501.10651>.
 
 </div>
 

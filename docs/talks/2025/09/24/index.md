@@ -19,7 +19,7 @@ Sam Foreman
 - [🚀 Going Beyond Data
   Parallelism](#rocket-going-beyond-data-parallelism)
   - [Going beyond Data Parallelism: DeepSpeed +
-    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
+    `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed--zero)
   - [🕸️ Additional Parallelism
     Strategies](#spider_web-additional-parallelism-strategies)
   - [Pipeline Parallelism (PP)](#pipeline-parallelism-pp)
@@ -2051,26 +2051,23 @@ bash train_alcf.sh
 
 ## 📓 References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-mprot-dpo2024" class="csl-entry">
 
-Dharuman, Gautham, Kyle Hippe, Alexander Brace, Sam Foreman, Väinö
-Hatanpää, Varuni K. Sastry, Huihuo Zheng, et al. 2024. “MProt-DPO:
+Dharuman, Gautham, Kyle Hippe, Alexander Brace, et al. 2024. “MProt-DPO:
 Breaking the ExaFLOPS Barrier for Multimodal Protein Design Workflows
-with Direct Preference Optimization.” In *Proceedings of the
-International Conference for High Performance Computing, Networking,
-Storage, and Analysis*. SC ’24. Atlanta, GA, USA: IEEE Press.
+with Direct Preference Optimization.” *Proceedings of the International
+Conference for High Performance Computing, Networking, Storage, and
+Analysis* (Atlanta, GA, USA), SC ’24.
 <https://doi.org/10.1109/SC41406.2024.00013>.
 
 </div>
 
 <div id="ref-stock2025aeris" class="csl-entry">
 
-Hatanpää, Väinö, Eugene Ku, Jason Stock, Murali Emani, Sam Foreman,
-Chunyong Jung, Sandeep Madireddy, et al. 2025. “AERIS: Argonne Earth
-Systems Model for Reliable and Skillful Predictions.”
+Hatanpää, Väinö, Eugene Ku, Jason Stock, et al. 2025. *AERIS: Argonne
+Earth Systems Model for Reliable and Skillful Predictions*.
 <https://arxiv.org/abs/2509.13523>.
 
 </div>

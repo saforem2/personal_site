@@ -28,7 +28,7 @@ Sam Foreman
 - [Best Practices](#best-practices)
 - [Going Beyond Data Parallelism](#going-beyond-data-parallelism)
 - [Going beyond Data Parallelism: DeepSpeed +
-  `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d--deepspeed--zero)
+  `ZeRO`](#going-beyond-data-parallelism-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2069636f6e696679206c6f676f73206d6963726f736f66742d69636f6e203e7d7d-deepspeed--zero)
 - [Fully Sharded Data Parallel: 🔥 PyTorch +
   `FSDP`](#fully-sharded-data-parallel-fire-pytorch--fsdp)
 - [🕸️ Additional Parallelism
@@ -55,13 +55,13 @@ Sam Foreman
 - [🧑‍💻 Hands On: Getting Started](#technologist-hands-on-getting-started)
 - [📦 Install {`ezpz`, `wordplay`}](#package-install-ezpz-wordplay)
 - [ `ezpz`: Example
-  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--ezpz-example-video)
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320676974687562203e7d7d-ezpz-example-video)
 - [Install `wordplay` 🎮💬](#install-wordplay-video_gamespeech_balloon)
 - [Prepare Data](#prepare-data)
 - [Launch Training (DDP)](#launch-training-ddp)
 - [Training: Example Output](#training-example-output)
 - [ `wordplay`: Example
-  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff-7b7b3c206661206272616e647320676974687562203e7d7d--wordplay-example-video)
+  \[video\]](#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320676974687562203e7d7d-wordplay-example-video)
 - [❤️ Thank you!](#heart-thank-you)
 - [📓 References](#notebook-references)
 
@@ -1752,22 +1752,19 @@ Figure 29
 - Title slide (Tetris animation) from:
   [emilhvitfeldt/quarto-iframe-examples](https://github.com/emilhvitfeldt/quarto-iframe-examples)
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-wei2022emergentabilitieslargelanguage" class="csl-entry">
 
-Wei, Jason, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph,
-Sebastian Borgeaud, Dani Yogatama, et al. 2022. “Emergent Abilities of
-Large Language Models.” <https://arxiv.org/abs/2206.07682>.
+Wei, Jason, Yi Tay, Rishi Bommasani, et al. 2022. *Emergent Abilities of
+Large Language Models*. <https://arxiv.org/abs/2206.07682>.
 
 </div>
 
 <div id="ref-yao2023tree" class="csl-entry">
 
-Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths,
-Yuan Cao, and Karthik Narasimhan. 2023. “Tree of Thoughts: Deliberate
-Problem Solving with Large Language Models.”
+Yao, Shunyu, Dian Yu, Jeffrey Zhao, et al. 2023. *Tree of Thoughts:
+Deliberate Problem Solving with Large Language Models*.
 <https://arxiv.org/abs/2305.10601>.
 
 </div>
