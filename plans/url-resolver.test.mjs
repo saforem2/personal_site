@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { resolveSamOnl } from './url-resolver.mjs';
 
-const HOME = 'https://sam.onl';
+const HOME = 'https://samf.sh';
 
 // --- identity (casing preserved) ---
 test('identity: simple post keeps path', () => {

@@ -1,8 +1,8 @@
-// Pure resolver: old samforeman.me pathname -> { url, hasPageLink } on sam.onl.
+// Pure resolver: old samforeman.me pathname -> { url, hasPageLink } on samf.sh.
 // NOTE: keep this body byte-for-byte identical to the <script> in
 // _include/deprecation-banner.html. New site PRESERVES casing — do not lowercase.
 export function resolveSamOnl(pathname) {
-  const HOME = 'https://sam.onl';
+  const HOME = 'https://samf.sh';
 
   // 1. Normalize: drop /index.html or trailing .html, then trailing slash.
   let key = pathname || '/';
