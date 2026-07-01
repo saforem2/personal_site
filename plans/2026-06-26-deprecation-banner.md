@@ -1,5 +1,10 @@
 # Deprecation Banner Implementation Plan
 
+> **Superseded 2026-06-29:** the new site was renamed `sam.onl` → `samf.sh`
+> (repo `saforem2/sam.onl` → `saforem2/samf.sh`). The live banner, resolver,
+> tests, and rendered `docs/` now use `samf.sh`. This plan is kept as the
+> original implementation record; read every `sam.onl` below as `samf.sh`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Add a dismissible banner to the top of every page on the old Quarto site (`samforeman.me`) announcing the move to `sam.onl`, with a link to the *corresponding* page on the new site.

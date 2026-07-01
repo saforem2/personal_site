@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inject the sam.onl deprecation banner partial into rendered docs/ HTML.
+"""Inject the samf.sh deprecation banner partial into rendered docs/ HTML.
 
 Why this exists: a full `quarto render` is impractically slow in this working
 copy (Quarto walks ~210k files). The banner is identical static HTML on every

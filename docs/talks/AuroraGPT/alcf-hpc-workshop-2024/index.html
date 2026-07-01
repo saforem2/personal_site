@@ -272,7 +272,7 @@ window.Quarto = {
 </head>
 
 <body class="nav-sidebar floating slimcontent quarto-dark">
-<!-- Deprecation banner: announces move to sam.onl with a per-page link.
+<!-- Deprecation banner: announces move to samf.sh with a per-page link.
      Injected on every HTML page via format.html.include-before-body.
      Self-contained: no external assets. Excluded from reveal.js decks. -->
 <style>
@@ -290,6 +290,17 @@ window.Quarto = {
     background: var(--bs-body-bg, #1c1c1c);
     color: var(--bs-body-color, #dee2e6);
     border-bottom: 1px solid var(--bs-border-color, rgba(131,131,131,0.7));
+  }
+  /* Quarto's sticky-footer container is sized `min-height: calc(100vh - 132px)`
+     (132px = its reserve for navbar + footer). The in-flow banner adds its own
+     height on top of that, so the page overflows the viewport by the banner
+     height and the footer drops below the fold. Subtract the banner's real
+     height (measured into --samonl-bh by the script below) from that reserve so
+     the page fits again. Fallback 2.6rem covers the default banner height if a
+     browser lacks :has() support or the script hasn't run yet. Harmless on
+     layouts that don't use the 132px formula. */
+  body:has(#samonl-deprecation-banner) .quarto-container {
+    min-height: calc(100vh - 132px - var(--samonl-bh, 2.6rem));
   }
   #samonl-deprecation-banner a {
     color: var(--bs-link-color, #82b1ff);
@@ -321,7 +332,7 @@ window.Quarto = {
   try { if (localStorage.getItem(STORAGE_KEY) === '1') return; } catch (e) {}
 
   function resolveSamOnl(pathname) {
-    var HOME = 'https://sam.onl';
+    var HOME = 'https://samf.sh';
     var key = pathname || '/';
     if (key.endsWith('/index.html')) key = key.slice(0, -'/index.html'.length);
     else if (key.endsWith('.html')) key = key.slice(0, -'.html'.length);
@@ -363,8 +374,8 @@ window.Quarto = {
     var msg = document.createElement('span');
     msg.appendChild(document.createTextNode('📦 This site has moved to '));
     var home = document.createElement('a');
-    home.href = 'https://sam.onl';
-    home.textContent = 'sam.onl';
+    home.href = 'https://samf.sh';
+    home.textContent = 'samf.sh';
     msg.appendChild(home);
     msg.appendChild(document.createTextNode('.'));
 
@@ -387,11 +398,24 @@ window.Quarto = {
     btn.textContent = '✕'; // ✕
     btn.addEventListener('click', function () {
       banner.remove();
+      // Banner gone: drop the height reservation so .quarto-container reclaims
+      // the space (footer returns to its original position).
+      document.documentElement.style.removeProperty('--samonl-bh');
       try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     });
     banner.appendChild(btn);
 
     document.body.insertBefore(banner, document.body.firstChild);
+
+    // Publish the banner's real rendered height so the .quarto-container
+    // min-height override (see <style>) subtracts exactly the right amount,
+    // independent of root font-size / zoom.
+    var setH = function () {
+      document.documentElement.style.setProperty(
+        '--samonl-bh', banner.offsetHeight + 'px');
+    };
+    setH();
+    if (window.addEventListener) window.addEventListener('resize', setH);
   }
 
   if (document.body) build();

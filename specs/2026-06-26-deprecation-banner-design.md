@@ -1,5 +1,10 @@
 # Deprecation banner linking samforeman.me → sam.onl
 
+> **Superseded 2026-06-29:** the new site was renamed `sam.onl` → `samf.sh`
+> (repo `saforem2/sam.onl` → `saforem2/samf.sh`). The live banner, resolver,
+> tests, and rendered `docs/` now use `samf.sh`. This document is kept as the
+> original design record; read every `sam.onl` below as `samf.sh`.
+
 **Date:** 2026-06-26
 **Status:** Approved design, pending implementation plan
 
